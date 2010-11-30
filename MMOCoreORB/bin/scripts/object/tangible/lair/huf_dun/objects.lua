@@ -48,6 +48,7 @@ object_tangible_lair_huf_dun_shared_lair_huf_dun = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_huf_dun_shared_lair_huf_dun = SharedTangibleObjectTemplate:
 	clientObjectCRC = 323029276
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun, "object/tangible/lair/huf_dun/shared_lair_huf_dun.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun, "object/tangible/lair/huf_dun/shared_lair_huf_dun.iff")
 
 object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland = SharedTangibleObjec
 	clientObjectCRC = 1957462040
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland, "object/tangible/lair/huf_dun/shared_lair_huf_dun_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland, "object/tangible/lair/huf_dun/shared_lair_huf_dun_grassland.iff")

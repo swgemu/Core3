@@ -48,6 +48,7 @@ object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1570783223
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_base_shared_hair_base, "object/tangible/hair/base/shared_hair_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_base_shared_hair_base, "object/tangible/hair/base/shared_hair_base.iff")

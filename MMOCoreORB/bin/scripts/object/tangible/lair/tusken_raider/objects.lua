@@ -48,6 +48,7 @@ object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc = SharedTangibl
 	clientObjectCRC = 2693069296
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc, "object/tangible/lair/tusken_raider/shared_lair_tusken_raider_npc.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc, "object/tangible/lair/tusken_raider/shared_lair_tusken_raider_npc.iff")

@@ -49,6 +49,7 @@ object_weapon_ranged_droid_shared_droid_astromech_ranged = SharedWeaponObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_ranged_droid_shared_droid_astromech_ranged = SharedWeaponObjectTem
 	clientObjectCRC = 1112246409
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_astromech_ranged, "object/weapon/ranged/droid/shared_droid_astromech_ranged.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_droid_shared_droid_astromech_ranged, "object/weapon/ranged/droid/shared_droid_astromech_ranged.iff")
 
 object_weapon_ranged_droid_shared_droid_droideka_ranged = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -106,6 +107,7 @@ object_weapon_ranged_droid_shared_droid_droideka_ranged = SharedWeaponObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_ranged_droid_shared_droid_droideka_ranged = SharedWeaponObjectTemp
 	clientObjectCRC = 3685860278
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_droideka_ranged, "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_droid_shared_droid_droideka_ranged, "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff")
 
 object_weapon_ranged_droid_shared_droid_probot_ranged = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_cdef.apt",
@@ -163,6 +165,7 @@ object_weapon_ranged_droid_shared_droid_probot_ranged = SharedWeaponObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,4 +213,4 @@ object_weapon_ranged_droid_shared_droid_probot_ranged = SharedWeaponObjectTempla
 	clientObjectCRC = 380494511
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_probot_ranged, "object/weapon/ranged/droid/shared_droid_probot_ranged.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_droid_shared_droid_probot_ranged, "object/weapon/ranged/droid/shared_droid_probot_ranged.iff")

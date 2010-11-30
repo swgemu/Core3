@@ -48,6 +48,7 @@ object_tangible_lair_pharple_shared_lair_pharple = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_pharple_shared_lair_pharple = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3003958462
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_pharple_shared_lair_pharple, "object/tangible/lair/pharple/shared_lair_pharple.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple, "object/tangible/lair/pharple/shared_lair_pharple.iff")
 
 object_tangible_lair_pharple_shared_lair_pharple_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_pharple_shared_lair_pharple_wasteland = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_pharple_shared_lair_pharple_wasteland = SharedTangibleObjec
 	clientObjectCRC = 4033646950
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_pharple_shared_lair_pharple_wasteland, "object/tangible/lair/pharple/shared_lair_pharple_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple_wasteland, "object/tangible/lair/pharple/shared_lair_pharple_wasteland.iff")

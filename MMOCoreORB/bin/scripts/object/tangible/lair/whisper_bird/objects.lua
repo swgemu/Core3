@@ -48,6 +48,7 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird = SharedTangibleObjec
 	clientObjectCRC = 3979491544
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird.iff")
 
 object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle = SharedTangib
 	clientObjectCRC = 3994387683
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird_jungle.iff")
 
 object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp = SharedTangibl
 	clientObjectCRC = 522402134
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird_swamp.iff")

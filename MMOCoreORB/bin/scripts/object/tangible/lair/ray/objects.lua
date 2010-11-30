@@ -48,6 +48,7 @@ object_tangible_lair_ray_shared_lair_ray = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_ray_shared_lair_ray = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3495854251
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_ray_shared_lair_ray, "object/tangible/lair/ray/shared_lair_ray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_ray_shared_lair_ray, "object/tangible/lair/ray/shared_lair_ray.iff")
 
 object_tangible_lair_ray_shared_lair_ray_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_ray_shared_lair_ray_underwater = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_ray_shared_lair_ray_underwater = SharedTangibleObjectTempla
 	clientObjectCRC = 3792404273
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_ray_shared_lair_ray_underwater, "object/tangible/lair/ray/shared_lair_ray_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_ray_shared_lair_ray_underwater, "object/tangible/lair/ray/shared_lair_ray_underwater.iff")

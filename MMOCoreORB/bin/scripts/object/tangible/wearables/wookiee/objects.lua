@@ -48,6 +48,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s01 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 982220507
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s01, "object/tangible/wearables/wookiee/shared_wke_gloves_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s01, "object/tangible/wearables/wookiee/shared_wke_gloves_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s02_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTe
 	clientObjectCRC = 3785152076
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s02, "object/tangible/wearables/wookiee/shared_wke_gloves_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s02, "object/tangible/wearables/wookiee/shared_wke_gloves_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s03_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTe
 	clientObjectCRC = 2828120513
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s03, "object/tangible/wearables/wookiee/shared_wke_gloves_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s03, "object/tangible/wearables/wookiee/shared_wke_gloves_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s04_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTe
 	clientObjectCRC = 1400019669
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s04, "object/tangible/wearables/wookiee/shared_wke_gloves_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s04, "object/tangible/wearables/wookiee/shared_wke_gloves_s04.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hat_s01_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 143220595
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hat_s01, "object/tangible/wearables/wookiee/shared_wke_hat_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hat_s01, "object/tangible/wearables/wookiee/shared_wke_hat_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s01_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 773028987
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s01, "object/tangible/wearables/wookiee/shared_wke_hood_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s01, "object/tangible/wearables/wookiee/shared_wke_hood_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s02_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemp
 	clientObjectCRC = 4110734572
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s02, "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s02, "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s03_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemp
 	clientObjectCRC = 3154752353
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s03, "object/tangible/wearables/wookiee/shared_wke_hood_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s03, "object/tangible/wearables/wookiee/shared_wke_hood_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObject
 	clientObjectCRC = 1294873415
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_f.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObje
 	clientObjectCRC = 2316465710
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_f.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_f.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_m.sat",
@@ -578,6 +588,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObje
 	clientObjectCRC = 283957695
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_m.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_m.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s01_f.sat",
@@ -631,6 +642,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 2791438893
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s01, "object/tangible/wearables/wookiee/shared_wke_shirt_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s01, "object/tangible/wearables/wookiee/shared_wke_shirt_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s02_f.sat",
@@ -684,6 +696,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 2104906426
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s02, "object/tangible/wearables/wookiee/shared_wke_shirt_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s02, "object/tangible/wearables/wookiee/shared_wke_shirt_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s03_f.sat",
@@ -737,6 +750,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTem
 	clientObjectCRC = 880489783
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s03, "object/tangible/wearables/wookiee/shared_wke_shirt_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s03, "object/tangible/wearables/wookiee/shared_wke_shirt_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s04_f.sat",
@@ -790,6 +804,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTem
 	clientObjectCRC = 3482852899
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s04, "object/tangible/wearables/wookiee/shared_wke_shirt_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s04, "object/tangible/wearables/wookiee/shared_wke_shirt_s04.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shoulder_pad_s01_f.sat",
@@ -843,6 +858,7 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleOb
 	clientObjectCRC = 1209883613
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shoulder_pad_s02_f.sat",
@@ -896,6 +912,7 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleOb
 	clientObjectCRC = 2466968394
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s01_f.sat",
@@ -949,6 +966,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 2927288103
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s01, "object/tangible/wearables/wookiee/shared_wke_skirt_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s01, "object/tangible/wearables/wookiee/shared_wke_skirt_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s02_f.sat",
@@ -1002,6 +1020,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 1970108336
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s02, "object/tangible/wearables/wookiee/shared_wke_skirt_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s02, "object/tangible/wearables/wookiee/shared_wke_skirt_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s03_f.sat",
@@ -1055,6 +1074,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTem
 	clientObjectCRC = 1012928573
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s03, "object/tangible/wearables/wookiee/shared_wke_skirt_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s03, "object/tangible/wearables/wookiee/shared_wke_skirt_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s04_f.sat",
@@ -1108,6 +1128,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777232,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,4 +1173,4 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTem
 	clientObjectCRC = 3347266345
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s04, "object/tangible/wearables/wookiee/shared_wke_skirt_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s04, "object/tangible/wearables/wookiee/shared_wke_skirt_s04.iff")

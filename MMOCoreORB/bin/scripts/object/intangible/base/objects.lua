@@ -47,6 +47,7 @@ object_intangible_base_shared_base_intangible = SharedIntangibleObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_intangible_base_shared_base_intangible = SharedIntangibleObjectTemplate:n
 	clientObjectCRC = 3949582877
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_base_shared_base_intangible, "object/intangible/base/shared_base_intangible.iff")
+ObjectTemplates:addTemplate(object_intangible_base_shared_base_intangible, "object/intangible/base/shared_base_intangible.iff")
 
 object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplat
 	clientObjectCRC = 1331018210
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_base_shared_intangible_default, "object/intangible/base/shared_intangible_default.iff")
+ObjectTemplates:addTemplate(object_intangible_base_shared_intangible_default, "object/intangible/base/shared_intangible_default.iff")

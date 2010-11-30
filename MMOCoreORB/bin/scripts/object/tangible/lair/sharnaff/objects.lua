@@ -48,6 +48,7 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff = SharedTangibleObjectTemplat
 	clientObjectCRC = 196553824
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, "object/tangible/lair/sharnaff/shared_lair_sharnaff.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, "object/tangible/lair/sharnaff/shared_lair_sharnaff.iff")
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObject
 	clientObjectCRC = 150207939
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, "object/tangible/lair/sharnaff/shared_lair_sharnaff_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, "object/tangible/lair/sharnaff/shared_lair_sharnaff_forest.iff")
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObj
 	clientObjectCRC = 2092015518
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, "object/tangible/lair/sharnaff/shared_lair_sharnaff_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, "object/tangible/lair/sharnaff/shared_lair_sharnaff_grassland.iff")

@@ -48,6 +48,7 @@ object_tangible_item_quest_crowd_pleaser_shared_dance_reward = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_item_quest_crowd_pleaser_shared_dance_reward = SharedTangibleObj
 	clientObjectCRC = 972371039
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_item_quest_crowd_pleaser_shared_dance_reward, "object/tangible/item/quest/crowd_pleaser/shared_dance_reward.iff")
+ObjectTemplates:addTemplate(object_tangible_item_quest_crowd_pleaser_shared_dance_reward, "object/tangible/item/quest/crowd_pleaser/shared_dance_reward.iff")
 
 object_tangible_item_quest_crowd_pleaser_shared_music_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_item_quest_crowd_pleaser_shared_music_reward = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_item_quest_crowd_pleaser_shared_music_reward = SharedTangibleObj
 	clientObjectCRC = 1862695356
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_item_quest_crowd_pleaser_shared_music_reward, "object/tangible/item/quest/crowd_pleaser/shared_music_reward.iff")
+ObjectTemplates:addTemplate(object_tangible_item_quest_crowd_pleaser_shared_music_reward, "object/tangible/item/quest/crowd_pleaser/shared_music_reward.iff")

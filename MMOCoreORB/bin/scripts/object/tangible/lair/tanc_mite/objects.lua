@@ -48,6 +48,7 @@ object_tangible_lair_tanc_mite_shared_lair_tanc_mite = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_tanc_mite_shared_lair_tanc_mite = SharedTangibleObjectTempl
 	clientObjectCRC = 3444207030
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite, "object/tangible/lair/tanc_mite/shared_lair_tanc_mite.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite, "object/tangible/lair/tanc_mite/shared_lair_tanc_mite.iff")
 
 object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain = SharedTangibleOb
 	clientObjectCRC = 1352445484
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain, "object/tangible/lair/tanc_mite/shared_lair_tanc_mite_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain, "object/tangible/lair/tanc_mite/shared_lair_tanc_mite_mountain.iff")

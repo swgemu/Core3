@@ -48,6 +48,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt = Shar
 	clientObjectCRC = 1505873604
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_belt.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_belt.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_bicep_l_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = S
 	clientObjectCRC = 2184224460
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_l.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_bicep_r_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = S
 	clientObjectCRC = 4075150175
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_r.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_bracer_l_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = 
 	clientObjectCRC = 4163428868
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_l.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_bracer_r_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = 
 	clientObjectCRC = 2298324887
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_r.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_chest_plate_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate
 	clientObjectCRC = 609377308
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_chest_plate.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_gloves_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = Sh
 	clientObjectCRC = 2170849590
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_gloves.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_gloves.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_helmet_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = Sh
 	clientObjectCRC = 933521470
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_helmet.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_leggings_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = 
 	clientObjectCRC = 1997291291
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_leggings.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_leggings.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_mandalorian_shoes_f.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,4 +579,4 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = Sha
 	clientObjectCRC = 2225952259
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_shoes.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_shoes.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_verne_shared_lair_verne = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_verne_shared_lair_verne = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1856597850
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_verne_shared_lair_verne, "object/tangible/lair/verne/shared_lair_verne.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne, "object/tangible/lair/verne/shared_lair_verne.iff")
 
 object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTempla
 	clientObjectCRC = 2461392200
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_verne_shared_lair_verne_forest, "object/tangible/lair/verne/shared_lair_verne_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne_forest, "object/tangible/lair/verne/shared_lair_verne_forest.iff")

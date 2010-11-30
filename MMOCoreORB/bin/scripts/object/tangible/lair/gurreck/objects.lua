@@ -48,6 +48,7 @@ object_tangible_lair_gurreck_shared_lair_gurreck = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gurreck_shared_lair_gurreck = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2258425428
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gurreck_shared_lair_gurreck, "object/tangible/lair/gurreck/shared_lair_gurreck.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gurreck_shared_lair_gurreck, "object/tangible/lair/gurreck/shared_lair_gurreck.iff")
 
 object_tangible_lair_gurreck_shared_lair_gurreck_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gurreck_shared_lair_gurreck_mountain = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_gurreck_shared_lair_gurreck_mountain = SharedTangibleObject
 	clientObjectCRC = 2418881242
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gurreck_shared_lair_gurreck_mountain, "object/tangible/lair/gurreck/shared_lair_gurreck_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gurreck_shared_lair_gurreck_mountain, "object/tangible/lair/gurreck/shared_lair_gurreck_mountain.iff")

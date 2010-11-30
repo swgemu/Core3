@@ -47,6 +47,7 @@ object_draft_schematic_instrument_shared_instrument_bandfill = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_instrument_shared_instrument_bandfill = SharedDraftSchema
 	clientObjectCRC = 1069929316
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_bandfill, "object/draft_schematic/instrument/shared_instrument_bandfill.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_bandfill, "object/draft_schematic/instrument/shared_instrument_bandfill.iff")
 
 object_draft_schematic_instrument_shared_instrument_base = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_instrument_shared_instrument_base = SharedDraftSchematicO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_instrument_shared_instrument_base = SharedDraftSchematicO
 	clientObjectCRC = 3133647251
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_base, "object/draft_schematic/instrument/shared_instrument_base.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_base, "object/draft_schematic/instrument/shared_instrument_base.iff")
 
 object_draft_schematic_instrument_shared_instrument_drums = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_instrument_shared_instrument_drums = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_instrument_shared_instrument_drums = SharedDraftSchematic
 	clientObjectCRC = 592945841
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_drums, "object/draft_schematic/instrument/shared_instrument_drums.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_drums, "object/draft_schematic/instrument/shared_instrument_drums.iff")
 
 object_draft_schematic_instrument_shared_instrument_fanfar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_instrument_shared_instrument_fanfar = SharedDraftSchemati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_instrument_shared_instrument_fanfar = SharedDraftSchemati
 	clientObjectCRC = 1598981907
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_fanfar, "object/draft_schematic/instrument/shared_instrument_fanfar.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_fanfar, "object/draft_schematic/instrument/shared_instrument_fanfar.iff")
 
 object_draft_schematic_instrument_shared_instrument_fizz = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_instrument_shared_instrument_fizz = SharedDraftSchematicO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_instrument_shared_instrument_fizz = SharedDraftSchematicO
 	clientObjectCRC = 1476982860
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_fizz, "object/draft_schematic/instrument/shared_instrument_fizz.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_fizz, "object/draft_schematic/instrument/shared_instrument_fizz.iff")
 
 object_draft_schematic_instrument_shared_instrument_flute_droopy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_instrument_shared_instrument_flute_droopy = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_instrument_shared_instrument_flute_droopy = SharedDraftSc
 	clientObjectCRC = 3913461118
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_flute_droopy, "object/draft_schematic/instrument/shared_instrument_flute_droopy.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_flute_droopy, "object/draft_schematic/instrument/shared_instrument_flute_droopy.iff")
 
 object_draft_schematic_instrument_shared_instrument_kloo_horn = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_instrument_shared_instrument_kloo_horn = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_instrument_shared_instrument_kloo_horn = SharedDraftSchem
 	clientObjectCRC = 4207775926
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_kloo_horn, "object/draft_schematic/instrument/shared_instrument_kloo_horn.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_kloo_horn, "object/draft_schematic/instrument/shared_instrument_kloo_horn.iff")
 
 object_draft_schematic_instrument_shared_instrument_mandoviol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_instrument_shared_instrument_mandoviol = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_instrument_shared_instrument_mandoviol = SharedDraftSchem
 	clientObjectCRC = 1835965889
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_mandoviol, "object/draft_schematic/instrument/shared_instrument_mandoviol.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_mandoviol, "object/draft_schematic/instrument/shared_instrument_mandoviol.iff")
 
 object_draft_schematic_instrument_shared_instrument_nalargon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_instrument_shared_instrument_nalargon = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_instrument_shared_instrument_nalargon = SharedDraftSchema
 	clientObjectCRC = 2180987107
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_nalargon, "object/draft_schematic/instrument/shared_instrument_nalargon.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_nalargon, "object/draft_schematic/instrument/shared_instrument_nalargon.iff")
 
 object_draft_schematic_instrument_shared_instrument_omni_box = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_instrument_shared_instrument_omni_box = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_instrument_shared_instrument_omni_box = SharedDraftSchema
 	clientObjectCRC = 3365239168
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_omni_box, "object/draft_schematic/instrument/shared_instrument_omni_box.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_omni_box, "object/draft_schematic/instrument/shared_instrument_omni_box.iff")
 
 object_draft_schematic_instrument_shared_instrument_organ_figrin_dan = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_instrument_shared_instrument_organ_figrin_dan = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_instrument_shared_instrument_organ_figrin_dan = SharedDra
 	clientObjectCRC = 12716542
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_organ_figrin_dan, "object/draft_schematic/instrument/shared_instrument_organ_figrin_dan.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_organ_figrin_dan, "object/draft_schematic/instrument/shared_instrument_organ_figrin_dan.iff")
 
 object_draft_schematic_instrument_shared_instrument_organ_max_rebo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_instrument_shared_instrument_organ_max_rebo = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_instrument_shared_instrument_organ_max_rebo = SharedDraft
 	clientObjectCRC = 747863128
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_organ_max_rebo, "object/draft_schematic/instrument/shared_instrument_organ_max_rebo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_organ_max_rebo, "object/draft_schematic/instrument/shared_instrument_organ_max_rebo.iff")
 
 object_draft_schematic_instrument_shared_instrument_slitherhorn = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_instrument_shared_instrument_slitherhorn = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_instrument_shared_instrument_slitherhorn = SharedDraftSch
 	clientObjectCRC = 2027141215
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_slitherhorn, "object/draft_schematic/instrument/shared_instrument_slitherhorn.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_slitherhorn, "object/draft_schematic/instrument/shared_instrument_slitherhorn.iff")
 
 object_draft_schematic_instrument_shared_instrument_traz = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_instrument_shared_instrument_traz = SharedDraftSchematicO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,4 +655,4 @@ object_draft_schematic_instrument_shared_instrument_traz = SharedDraftSchematicO
 	clientObjectCRC = 1146643573
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_traz, "object/draft_schematic/instrument/shared_instrument_traz.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_traz, "object/draft_schematic/instrument/shared_instrument_traz.iff")

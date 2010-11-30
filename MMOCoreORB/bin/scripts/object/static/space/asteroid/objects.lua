@@ -47,6 +47,7 @@ object_static_space_asteroid_shared_asteroid_acid_large_01 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_static_space_asteroid_shared_asteroid_acid_large_01 = SharedStaticObjectT
 	clientObjectCRC = 2146976297
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_large_01, "object/static/space/asteroid/shared_asteroid_acid_large_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_large_01, "object/static/space/asteroid/shared_asteroid_acid_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_large_s02.apt",
@@ -90,6 +91,7 @@ object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectT
 	clientObjectCRC = 2767186622
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_large_02, "object/static/space/asteroid/shared_asteroid_acid_large_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_large_02, "object/static/space/asteroid/shared_asteroid_acid_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_medium_s01.apt",
@@ -133,6 +135,7 @@ object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObject
 	clientObjectCRC = 162308775
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_01, "object/static/space/asteroid/shared_asteroid_acid_medium_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_01, "object/static/space/asteroid/shared_asteroid_acid_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_medium_s02.apt",
@@ -176,6 +179,7 @@ object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObject
 	clientObjectCRC = 3535473200
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_02, "object/static/space/asteroid/shared_asteroid_acid_medium_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_02, "object/static/space/asteroid/shared_asteroid_acid_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_small_s01.apt",
@@ -219,6 +223,7 @@ object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectT
 	clientObjectCRC = 2850972277
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_small_01, "object/static/space/asteroid/shared_asteroid_acid_small_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_small_01, "object/static/space/asteroid/shared_asteroid_acid_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_small_s02.apt",
@@ -262,6 +267,7 @@ object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectT
 	clientObjectCRC = 1928973026
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_small_02, "object/static/space/asteroid/shared_asteroid_acid_small_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_small_02, "object/static/space/asteroid/shared_asteroid_acid_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_large_s01.apt",
@@ -305,6 +311,7 @@ object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTe
 	clientObjectCRC = 1920047316
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_large_01, "object/static/space/asteroid/shared_asteroid_ice_large_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_large_01, "object/static/space/asteroid/shared_asteroid_ice_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_large_s02.apt",
@@ -348,6 +355,7 @@ object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTe
 	clientObjectCRC = 2842046531
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_large_02, "object/static/space/asteroid/shared_asteroid_ice_large_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_large_02, "object/static/space/asteroid/shared_asteroid_ice_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_medium_s01.apt",
@@ -391,6 +399,7 @@ object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectT
 	clientObjectCRC = 2981878132
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_01, "object/static/space/asteroid/shared_asteroid_ice_medium_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_01, "object/static/space/asteroid/shared_asteroid_ice_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_medium_s02.apt",
@@ -434,6 +443,7 @@ object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectT
 	clientObjectCRC = 1789686243
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_02, "object/static/space/asteroid/shared_asteroid_ice_medium_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_02, "object/static/space/asteroid/shared_asteroid_ice_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_small_s01.apt",
@@ -477,6 +487,7 @@ object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTe
 	clientObjectCRC = 2758260872
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_small_01, "object/static/space/asteroid/shared_asteroid_ice_small_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_small_01, "object/static/space/asteroid/shared_asteroid_ice_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_small_s02.apt",
@@ -520,6 +531,7 @@ object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTe
 	clientObjectCRC = 2138050591
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_small_02, "object/static/space/asteroid/shared_asteroid_ice_small_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_small_02, "object/static/space/asteroid/shared_asteroid_ice_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_large_s01.apt",
@@ -563,6 +575,7 @@ object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectT
 	clientObjectCRC = 1650332563
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_large_01, "object/static/space/asteroid/shared_asteroid_iron_large_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_large_01, "object/static/space/asteroid/shared_asteroid_iron_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_large_s02.apt",
@@ -606,6 +619,7 @@ object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectT
 	clientObjectCRC = 3108616964
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_large_02, "object/static/space/asteroid/shared_asteroid_iron_large_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_large_02, "object/static/space/asteroid/shared_asteroid_iron_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_medium_s01.apt",
@@ -649,6 +663,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObject
 	clientObjectCRC = 3525395716
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_01, "object/static/space/asteroid/shared_asteroid_iron_medium_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_01, "object/static/space/asteroid/shared_asteroid_iron_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_medium_s02.apt",
@@ -692,6 +707,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObject
 	clientObjectCRC = 154594707
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_02, "object/static/space/asteroid/shared_asteroid_iron_medium_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_02, "object/static/space/asteroid/shared_asteroid_iron_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_medium_s03.apt",
@@ -735,6 +751,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObject
 	clientObjectCRC = 1077643806
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_03, "object/static/space/asteroid/shared_asteroid_iron_medium_03.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_03, "object/static/space/asteroid/shared_asteroid_iron_medium_03.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_small_s01.apt",
@@ -778,6 +795,7 @@ object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectT
 	clientObjectCRC = 3024630735
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_small_01, "object/static/space/asteroid/shared_asteroid_iron_small_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_small_01, "object/static/space/asteroid/shared_asteroid_iron_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_small_s02.apt",
@@ -821,6 +839,7 @@ object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectT
 	clientObjectCRC = 1868536664
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_small_02, "object/static/space/asteroid/shared_asteroid_iron_small_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_small_02, "object/static/space/asteroid/shared_asteroid_iron_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_large_01.apt",
@@ -864,6 +883,7 @@ object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTempla
 	clientObjectCRC = 1475082056
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_large_01, "object/static/space/asteroid/shared_asteroid_large_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_large_01, "object/static/space/asteroid/shared_asteroid_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_large_02.apt",
@@ -907,6 +927,7 @@ object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTempla
 	clientObjectCRC = 2365349855
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_large_02, "object/static/space/asteroid/shared_asteroid_large_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_large_02, "object/static/space/asteroid/shared_asteroid_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_mammoth_01.apt",
@@ -950,6 +971,7 @@ object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemp
 	clientObjectCRC = 2771529923
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_mammoth_01, "object/static/space/asteroid/shared_asteroid_mammoth_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_mammoth_01, "object/static/space/asteroid/shared_asteroid_mammoth_01.iff")
 
 object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_mammoth_02.apt",
@@ -993,6 +1015,7 @@ object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemp
 	clientObjectCRC = 2116393044
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_mammoth_02, "object/static/space/asteroid/shared_asteroid_mammoth_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_mammoth_02, "object/static/space/asteroid/shared_asteroid_mammoth_02.iff")
 
 object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_medium_01.apt",
@@ -1036,6 +1059,7 @@ object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTempl
 	clientObjectCRC = 2754779391
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_medium_01, "object/static/space/asteroid/shared_asteroid_medium_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_medium_01, "object/static/space/asteroid/shared_asteroid_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_medium_02.apt",
@@ -1079,6 +1103,7 @@ object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTempl
 	clientObjectCRC = 2133143656
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_medium_02, "object/static/space/asteroid/shared_asteroid_medium_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_medium_02, "object/static/space/asteroid/shared_asteroid_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_large_s01.apt",
@@ -1122,6 +1147,7 @@ object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObject
 	clientObjectCRC = 513619551
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_large_01, "object/static/space/asteroid/shared_asteroid_metal_large_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_large_01, "object/static/space/asteroid/shared_asteroid_metal_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_large_s02.apt",
@@ -1165,6 +1191,7 @@ object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObject
 	clientObjectCRC = 3314196168
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_large_02, "object/static/space/asteroid/shared_asteroid_metal_large_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_large_02, "object/static/space/asteroid/shared_asteroid_metal_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_medium_s01.apt",
@@ -1208,6 +1235,7 @@ object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1243,7 +1271,7 @@ object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjec
 	clientObjectCRC = 3300659079
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_01, "object/static/space/asteroid/shared_asteroid_metal_medium_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_01, "object/static/space/asteroid/shared_asteroid_metal_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_medium_s02.apt",
@@ -1251,6 +1279,7 @@ object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1286,7 +1315,7 @@ object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjec
 	clientObjectCRC = 531343120
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_02, "object/static/space/asteroid/shared_asteroid_metal_medium_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_02, "object/static/space/asteroid/shared_asteroid_metal_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_small_s01.apt",
@@ -1294,6 +1323,7 @@ object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1329,7 +1359,7 @@ object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObject
 	clientObjectCRC = 3364558339
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_small_01, "object/static/space/asteroid/shared_asteroid_metal_small_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_small_01, "object/static/space/asteroid/shared_asteroid_metal_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_small_s02.apt",
@@ -1337,6 +1367,7 @@ object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1372,7 +1403,7 @@ object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObject
 	clientObjectCRC = 329039508
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_small_02, "object/static/space/asteroid/shared_asteroid_metal_small_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_small_02, "object/static/space/asteroid/shared_asteroid_metal_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_large_s01.apt",
@@ -1380,6 +1411,7 @@ object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1415,7 +1447,7 @@ object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjec
 	clientObjectCRC = 319418639
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_large_01, "object/static/space/asteroid/shared_asteroid_molten_large_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_large_01, "object/static/space/asteroid/shared_asteroid_molten_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_large_s02.apt",
@@ -1423,6 +1455,7 @@ object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1458,7 +1491,7 @@ object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjec
 	clientObjectCRC = 3357432216
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_large_02, "object/static/space/asteroid/shared_asteroid_molten_large_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_large_02, "object/static/space/asteroid/shared_asteroid_molten_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_medium_s01.apt",
@@ -1466,6 +1499,7 @@ object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1501,7 +1535,7 @@ object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObje
 	clientObjectCRC = 1639373140
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_01, "object/static/space/asteroid/shared_asteroid_molten_medium_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_01, "object/static/space/asteroid/shared_asteroid_molten_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_medium_s02.apt",
@@ -1509,6 +1543,7 @@ object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1544,7 +1579,7 @@ object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObje
 	clientObjectCRC = 3131142595
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_02, "object/static/space/asteroid/shared_asteroid_molten_medium_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_02, "object/static/space/asteroid/shared_asteroid_molten_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_small_s01.apt",
@@ -1552,6 +1587,7 @@ object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1587,7 +1623,7 @@ object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjec
 	clientObjectCRC = 3307196755
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_small_01, "object/static/space/asteroid/shared_asteroid_molten_small_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_small_01, "object/static/space/asteroid/shared_asteroid_molten_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_small_s02.apt",
@@ -1595,6 +1631,7 @@ object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1630,7 +1667,7 @@ object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjec
 	clientObjectCRC = 503871940
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_small_02, "object/static/space/asteroid/shared_asteroid_molten_small_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_small_02, "object/static/space/asteroid/shared_asteroid_molten_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_large_s01.apt",
@@ -1638,6 +1675,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1673,7 +1711,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObj
 	clientObjectCRC = 1492758381
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_01, "object/static/space/asteroid/shared_asteroid_obsidian_large_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_01, "object/static/space/asteroid/shared_asteroid_obsidian_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_large_s02.apt",
@@ -1681,6 +1719,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1716,7 +1755,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObj
 	clientObjectCRC = 2213414906
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_02, "object/static/space/asteroid/shared_asteroid_obsidian_large_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_02, "object/static/space/asteroid/shared_asteroid_obsidian_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_medium_s01.apt",
@@ -1724,6 +1763,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1759,7 +1799,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticOb
 	clientObjectCRC = 2384789570
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_01, "object/static/space/asteroid/shared_asteroid_obsidian_medium_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_01, "object/static/space/asteroid/shared_asteroid_obsidian_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_medium_s02.apt",
@@ -1767,6 +1807,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1802,7 +1843,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticOb
 	clientObjectCRC = 1429383381
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_02, "object/static/space/asteroid/shared_asteroid_obsidian_medium_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_02, "object/static/space/asteroid/shared_asteroid_obsidian_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_small_s01.apt",
@@ -1810,6 +1851,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1845,7 +1887,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObj
 	clientObjectCRC = 2398064433
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_01, "object/static/space/asteroid/shared_asteroid_obsidian_small_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_01, "object/static/space/asteroid/shared_asteroid_obsidian_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_small_s02.apt",
@@ -1853,6 +1895,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1888,7 +1931,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObj
 	clientObjectCRC = 1442326438
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_02, "object/static/space/asteroid/shared_asteroid_obsidian_small_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_02, "object/static/space/asteroid/shared_asteroid_obsidian_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_small_01.apt",
@@ -1896,6 +1939,7 @@ object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1931,7 +1975,7 @@ object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTempla
 	clientObjectCRC = 2180896532
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_small_01, "object/static/space/asteroid/shared_asteroid_small_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_small_01, "object/static/space/asteroid/shared_asteroid_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_small_02.apt",
@@ -1939,6 +1983,7 @@ object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1974,7 +2019,7 @@ object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTempla
 	clientObjectCRC = 1525317507
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_small_02, "object/static/space/asteroid/shared_asteroid_small_02.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_small_02, "object/static/space/asteroid/shared_asteroid_small_02.iff")
 
 object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/planetoid_ice_s01.apt",
@@ -1982,6 +2027,7 @@ object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2017,7 +2063,7 @@ object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplat
 	clientObjectCRC = 3193266020
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_ice_01, "object/static/space/asteroid/shared_planetoid_ice_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_planetoid_ice_01, "object/static/space/asteroid/shared_planetoid_ice_01.iff")
 
 object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/planetoid_iron_s01.apt",
@@ -2025,6 +2071,7 @@ object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2060,7 +2107,7 @@ object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTempla
 	clientObjectCRC = 2558377422
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_iron_01, "object/static/space/asteroid/shared_planetoid_iron_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_planetoid_iron_01, "object/static/space/asteroid/shared_planetoid_iron_01.iff")
 
 object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/planetoid_moltenrock_s01.apt",
@@ -2068,6 +2115,7 @@ object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8227,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2103,4 +2151,4 @@ object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemp
 	clientObjectCRC = 2070404336
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_molten_01, "object/static/space/asteroid/shared_planetoid_molten_01.iff")
+ObjectTemplates:addTemplate(object_static_space_asteroid_shared_planetoid_molten_01, "object/static/space/asteroid/shared_planetoid_molten_01.iff")

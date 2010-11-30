@@ -48,6 +48,7 @@ object_tangible_newbie_tutorial_shared_debris = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/newbie_tutorial/shared_debris.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_newbie_tutorial_shared_debris = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 4070737588
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_newbie_tutorial_shared_debris, "object/tangible/newbie_tutorial/shared_debris.iff")
+ObjectTemplates:addTemplate(object_tangible_newbie_tutorial_shared_debris, "object/tangible/newbie_tutorial/shared_debris.iff")

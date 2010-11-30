@@ -48,6 +48,7 @@ object_tangible_lair_nuna_shared_lair_nuna = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_nuna_shared_lair_nuna = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1870027501
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna, "object/tangible/lair/nuna/shared_lair_nuna.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna, "object/tangible/lair/nuna/shared_lair_nuna.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate
 	clientObjectCRC = 3366083630
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, "object/tangible/lair/nuna/shared_lair_nuna_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, "object/tangible/lair/nuna/shared_lair_nuna_forest.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 2100068580
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, "object/tangible/lair/nuna/shared_lair_nuna_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, "object/tangible/lair/nuna/shared_lair_nuna_grassland.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:
 	clientObjectCRC = 222503390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, "object/tangible/lair/nuna/shared_lair_nuna_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, "object/tangible/lair/nuna/shared_lair_nuna_swamp.iff")

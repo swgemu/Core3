@@ -47,6 +47,7 @@ object_manufacture_schematic_base_shared_base_manufacture_schematic = SharedManu
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2050,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_manufacture_schematic_base_shared_base_manufacture_schematic = SharedManu
 	clientObjectCRC = 3062041799
 }
 
-ObjectTemplates:addClientTemplate(object_manufacture_schematic_base_shared_base_manufacture_schematic, "object/manufacture_schematic/base/shared_base_manufacture_schematic.iff")
+ObjectTemplates:addTemplate(object_manufacture_schematic_base_shared_base_manufacture_schematic, "object/manufacture_schematic/base/shared_base_manufacture_schematic.iff")
 
 object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedManufactureSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedM
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2050,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedM
 	clientObjectCRC = 933697332
 }
 
-ObjectTemplates:addClientTemplate(object_manufacture_schematic_base_shared_manufacture_schematic_default, "object/manufacture_schematic/base/shared_manufacture_schematic_default.iff")
+ObjectTemplates:addTemplate(object_manufacture_schematic_base_shared_manufacture_schematic_default, "object/manufacture_schematic/base/shared_manufacture_schematic_default.iff")

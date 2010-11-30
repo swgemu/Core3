@@ -48,6 +48,7 @@ object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01
 	clientObjectCRC = 781466578
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01, "object/tangible/wearables/armor/nightsister/shared_armor_nightsister_bicep_r_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01, "object/tangible/wearables/armor/nightsister/shared_armor_nightsister_bicep_r_s01.iff")

@@ -49,6 +49,7 @@ object_weapon_ranged_turret_shared_turret_block_large = SharedWeaponObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_ranged_turret_shared_turret_block_large = SharedWeaponObjectTempla
 	clientObjectCRC = 4214506567
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_turret_shared_turret_block_large, "object/weapon/ranged/turret/shared_turret_block_large.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_turret_shared_turret_block_large, "object/weapon/ranged/turret/shared_turret_block_large.iff")

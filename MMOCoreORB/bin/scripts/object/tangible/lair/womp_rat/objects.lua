@@ -48,6 +48,7 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat = SharedTangibleObjectTemplat
 	clientObjectCRC = 2053935761
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat, "object/tangible/lair/womp_rat/shared_lair_womp_rat.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat, "object/tangible/lair/womp_rat/shared_lair_womp_rat.iff")
 
 object_tangible_lair_womp_rat_shared_lair_womp_rat_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat_desert = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat_desert = SharedTangibleObject
 	clientObjectCRC = 703016558
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat_desert, "object/tangible/lair/womp_rat/shared_lair_womp_rat_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat_desert, "object/tangible/lair/womp_rat/shared_lair_womp_rat_desert.iff")

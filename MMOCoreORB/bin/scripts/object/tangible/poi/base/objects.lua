@@ -48,6 +48,7 @@ object_tangible_poi_base_shared_poi_base = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_poi_base_shared_poi_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2572869140
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_poi_base_shared_poi_base, "object/tangible/poi/base/shared_poi_base.iff")
+ObjectTemplates:addTemplate(object_tangible_poi_base_shared_poi_base, "object/tangible/poi/base/shared_poi_base.iff")
 
 object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
@@ -101,6 +102,7 @@ object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 165055566
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_poi_base_shared_poi_base_nosnap, "object/tangible/poi/base/shared_poi_base_nosnap.iff")
+ObjectTemplates:addTemplate(object_tangible_poi_base_shared_poi_base_nosnap, "object/tangible/poi/base/shared_poi_base_nosnap.iff")

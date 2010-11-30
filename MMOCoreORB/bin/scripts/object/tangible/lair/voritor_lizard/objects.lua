@@ -48,6 +48,7 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard = SharedTangibleO
 	clientObjectCRC = 908714854
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard.iff")
 
 object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = Share
 	clientObjectCRC = 3526592210
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_grassland.iff")
 
 object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = Shared
 	clientObjectCRC = 1883986886
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_mountain.iff")

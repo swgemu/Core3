@@ -48,6 +48,7 @@ object_tangible_lair_vynock_shared_lair_vynock = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_vynock_shared_lair_vynock = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3826434758
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock, "object/tangible/lair/vynock/shared_lair_vynock.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock, "object/tangible/lair/vynock/shared_lair_vynock.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTempla
 	clientObjectCRC = 453779300
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_dune, "object/tangible/lair/vynock/shared_lair_vynock_dune.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_dune, "object/tangible/lair/vynock/shared_lair_vynock_dune.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 2882460738
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_mountain, "object/tangible/lair/vynock/shared_lair_vynock_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_mountain, "object/tangible/lair/vynock/shared_lair_vynock_mountain.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectT
 	clientObjectCRC = 1253121111
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_wasteland, "object/tangible/lair/vynock/shared_lair_vynock_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_wasteland, "object/tangible/lair/vynock/shared_lair_vynock_wasteland.iff")

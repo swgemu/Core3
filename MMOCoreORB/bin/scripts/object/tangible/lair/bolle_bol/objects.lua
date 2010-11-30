@@ -48,6 +48,7 @@ object_tangible_lair_bolle_bol_shared_lair_bolle_bol = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_bolle_bol_shared_lair_bolle_bol = SharedTangibleObjectTempl
 	clientObjectCRC = 3363205545
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bolle_bol_shared_lair_bolle_bol, "object/tangible/lair/bolle_bol/shared_lair_bolle_bol.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bolle_bol_shared_lair_bolle_bol, "object/tangible/lair/bolle_bol/shared_lair_bolle_bol.iff")
 
 object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland = SharedTangibleO
 	clientObjectCRC = 457571636
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland, "object/tangible/lair/bolle_bol/shared_lair_bolle_bol_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland, "object/tangible/lair/bolle_bol/shared_lair_bolle_bol_grassland.iff")

@@ -48,6 +48,7 @@ object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1 = 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1 = 
 	clientObjectCRC = 1494270747
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1, "object/tangible/ship/components/engine/shared_eng_corellian_cruiser_grade_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1, "object/tangible/ship/components/engine/shared_eng_corellian_cruiser_grade_mk1.iff")
 
 object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2 = 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2 = 
 	clientObjectCRC = 2181524364
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2, "object/tangible/ship/components/engine/shared_eng_corellian_cruiser_grade_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2, "object/tangible/ship/components/engine/shared_eng_corellian_cruiser_grade_mk2.iff")
 
 object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade
 	clientObjectCRC = 1126310988
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade_mk1, "object/tangible/ship/components/engine/shared_eng_corellian_deluxe_cruiser_grade_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade_mk1, "object/tangible/ship/components/engine/shared_eng_corellian_deluxe_cruiser_grade_mk1.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hd3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd3 = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd3 = SharedTangibleObj
 	clientObjectCRC = 1087324097
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd3, "object/tangible/ship/components/engine/shared_eng_cygnus_hd3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd3, "object/tangible/ship/components/engine/shared_eng_cygnus_hd3.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hd7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd7 = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd7 = SharedTangibleObj
 	clientObjectCRC = 1614527554
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd7, "object/tangible/ship/components/engine/shared_eng_cygnus_hd7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd7, "object/tangible/ship/components/engine/shared_eng_cygnus_hd7.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hd8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd8 = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd8 = SharedTangibleObj
 	clientObjectCRC = 3660681296
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd8, "object/tangible/ship/components/engine/shared_eng_cygnus_hd8.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd8, "object/tangible/ship/components/engine/shared_eng_cygnus_hd8.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hd_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd_5 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd_5 = SharedTangibleOb
 	clientObjectCRC = 775508572
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd_5, "object/tangible/ship/components/engine/shared_eng_cygnus_hd_5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd_5, "object/tangible/ship/components/engine/shared_eng_cygnus_hd_5.iff")
 
 object_tangible_ship_components_engine_shared_eng_cygnus_hdx = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hdx = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hdx = SharedTangibleObj
 	clientObjectCRC = 3707474702
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hdx, "object/tangible/ship/components/engine/shared_eng_cygnus_hdx.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hdx, "object/tangible/ship/components/engine/shared_eng_cygnus_hdx.iff")
 
 object_tangible_ship_components_engine_shared_eng_freitek_dual_jet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_components_engine_shared_eng_freitek_dual_jet = SharedTangi
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_components_engine_shared_eng_freitek_dual_jet = SharedTangi
 	clientObjectCRC = 2546925520
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_freitek_dual_jet, "object/tangible/ship/components/engine/shared_eng_freitek_dual_jet.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_freitek_dual_jet, "object/tangible/ship/components/engine/shared_eng_freitek_dual_jet.iff")
 
 object_tangible_ship_components_engine_shared_eng_gallofree_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_ship_components_engine_shared_eng_gallofree_advanced = SharedTan
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_components_engine_shared_eng_gallofree_advanced = SharedTan
 	clientObjectCRC = 4109218739
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_advanced, "object/tangible/ship/components/engine/shared_eng_gallofree_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_advanced, "object/tangible/ship/components/engine/shared_eng_gallofree_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_gallofree_jx2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_components_engine_shared_eng_gallofree_jx2 = SharedTangible
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_components_engine_shared_eng_gallofree_jx2 = SharedTangible
 	clientObjectCRC = 3029000329
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx2, "object/tangible/ship/components/engine/shared_eng_gallofree_jx2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx2, "object/tangible/ship/components/engine/shared_eng_gallofree_jx2.iff")
 
 object_tangible_ship_components_engine_shared_eng_gallofree_jx3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_components_engine_shared_eng_gallofree_jx3 = SharedTangible
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_components_engine_shared_eng_gallofree_jx3 = SharedTangible
 	clientObjectCRC = 4253517572
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx3, "object/tangible/ship/components/engine/shared_eng_gallofree_jx3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx3, "object/tangible/ship/components/engine/shared_eng_gallofree_jx3.iff")
 
 object_tangible_ship_components_engine_shared_eng_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_components_engine_shared_eng_generic = SharedTangibleObject
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_ship_components_engine_shared_eng_generic = SharedTangibleObject
 	clientObjectCRC = 2137568563
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_generic, "object/tangible/ship/components/engine/shared_eng_generic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_generic, "object/tangible/ship/components/engine/shared_eng_generic.iff")
 
 object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine = Shared
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine = Shared
 	clientObjectCRC = 3688131239
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine, "object/tangible/ship/components/engine/shared_eng_haor_chall_old_engine.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine, "object/tangible/ship/components/engine/shared_eng_haor_chall_old_engine.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -790,6 +804,7 @@ object_tangible_ship_components_engine_shared_eng_incom_advanced = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_ship_components_engine_shared_eng_incom_advanced = SharedTangibl
 	clientObjectCRC = 1656121527
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced, "object/tangible/ship/components/engine/shared_eng_incom_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced, "object/tangible/ship/components/engine/shared_eng_incom_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust = 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust = 
 	clientObjectCRC = 1530662903
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_advanced_fusialthrust.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_advanced_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_ship_components_engine_shared_eng_incom_elite = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_ship_components_engine_shared_eng_incom_elite = SharedTangibleOb
 	clientObjectCRC = 1983861509
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_incom_elite, "object/tangible/ship/components/engine/shared_eng_incom_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_elite, "object/tangible/ship/components/engine/shared_eng_incom_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_ship_components_engine_shared_eng_incom_fusialthrust = SharedTan
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_ship_components_engine_shared_eng_incom_fusialthrust = SharedTan
 	clientObjectCRC = 1150814129
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_fusialthrust.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2 = SharedT
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2 = SharedT
 	clientObjectCRC = 3839998653
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2, "object/tangible/ship/components/engine/shared_eng_incom_fusialthrust_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2, "object/tangible/ship/components/engine/shared_eng_incom_fusialthrust_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust = Sha
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust = Sha
 	clientObjectCRC = 1860270722
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_heavy_fusialthrust.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_heavy_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1108,6 +1128,7 @@ object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2 
 	clientObjectCRC = 3821177042
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2, "object/tangible/ship/components/engine/shared_eng_incom_improved_fusialthrust_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2, "object/tangible/ship/components/engine/shared_eng_incom_improved_fusialthrust_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1161,6 +1182,7 @@ object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust = Sha
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust = Sha
 	clientObjectCRC = 1630933097
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_light_fusialthrust.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust, "object/tangible/ship/components/engine/shared_eng_incom_light_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperion_drive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1214,6 +1236,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperi
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperi
 	clientObjectCRC = 3350954365
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperion_drive, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_rendili_hyperion_drive.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperion_drive, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_rendili_hyperion_drive.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1267,6 +1290,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_fo
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_fo
 	clientObjectCRC = 267311659
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_forces, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_sds_special_forces.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_forces, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_sds_special_forces.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1320,6 +1344,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_fo
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_fo
 	clientObjectCRC = 2153536772
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_forces, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_sfs_special_forces.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_forces, "object/tangible/ship/components/engine/shared_eng_kessel_imperial_sfs_special_forces.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1373,6 +1398,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite =
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite =
 	clientObjectCRC = 1686514173
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_incom_t11_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_incom_t11_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhole_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhol
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhol
 	clientObjectCRC = 2912460069
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhole_elite, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_novaldex_blackhole_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhole_elite, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_novaldex_blackhole_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1479,6 +1506,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138 
 	clientObjectCRC = 3829446933
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_novaldex_grb1138.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138, "object/tangible/ship/components/engine/shared_eng_kessel_rebel_novaldex_grb1138.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1532,6 +1560,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_advanced = SharedTang
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_advanced = SharedTang
 	clientObjectCRC = 2950758561
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_advanced, "object/tangible/ship/components/engine/shared_eng_koensayr_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_advanced, "object/tangible/ship/components/engine/shared_eng_koensayr_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1585,6 +1614,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet = S
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet = S
 	clientObjectCRC = 2074333945
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_dual_small_ionjet.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_dual_small_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1638,6 +1668,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_elite = SharedTangibl
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_elite = SharedTangibl
 	clientObjectCRC = 856779265
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_elite, "object/tangible/ship/components/engine/shared_eng_koensayr_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_elite, "object/tangible/ship/components/engine/shared_eng_koensayr_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1691,6 +1722,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_i
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_i
 	clientObjectCRC = 2994323720
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_enhanced_dual_small_ionjet.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_enhanced_dual_small_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1744,6 +1776,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet = Shared
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet = Shared
 	clientObjectCRC = 399309085
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_heavy_ionjet.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_heavy_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet = Shared
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet = Shared
 	clientObjectCRC = 1091345516
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_small_ionjet.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_small_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1850,6 +1884,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet = 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet = 
 	clientObjectCRC = 225753299
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_tuned_small_ionjet.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet, "object/tangible/ship/components/engine/shared_eng_koensayr_tuned_small_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_a2x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1903,6 +1938,7 @@ object_tangible_ship_components_engine_shared_eng_kse_a2x = SharedTangibleObject
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_ship_components_engine_shared_eng_kse_a2x = SharedTangibleObject
 	clientObjectCRC = 3609646499
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kse_a2x, "object/tangible/ship/components/engine/shared_eng_kse_a2x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a2x, "object/tangible/ship/components/engine/shared_eng_kse_a2x.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_a5x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1956,6 +1992,7 @@ object_tangible_ship_components_engine_shared_eng_kse_a5x = SharedTangibleObject
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_ship_components_engine_shared_eng_kse_a5x = SharedTangibleObject
 	clientObjectCRC = 2533291979
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kse_a5x, "object/tangible/ship/components/engine/shared_eng_kse_a5x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a5x, "object/tangible/ship/components/engine/shared_eng_kse_a5x.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_a7x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2009,6 +2046,7 @@ object_tangible_ship_components_engine_shared_eng_kse_a7x = SharedTangibleObject
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_ship_components_engine_shared_eng_kse_a7x = SharedTangibleObject
 	clientObjectCRC = 2695818555
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kse_a7x, "object/tangible/ship/components/engine/shared_eng_kse_a7x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a7x, "object/tangible/ship/components/engine/shared_eng_kse_a7x.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_a8x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2062,6 +2100,7 @@ object_tangible_ship_components_engine_shared_eng_kse_a8x = SharedTangibleObject
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_ship_components_engine_shared_eng_kse_a8x = SharedTangibleObject
 	clientObjectCRC = 943105171
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kse_a8x, "object/tangible/ship/components/engine/shared_eng_kse_a8x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a8x, "object/tangible/ship/components/engine/shared_eng_kse_a8x.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2115,6 +2154,7 @@ object_tangible_ship_components_engine_shared_eng_kse_advanced = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_ship_components_engine_shared_eng_kse_advanced = SharedTangibleO
 	clientObjectCRC = 4154059461
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kse_advanced, "object/tangible/ship/components/engine/shared_eng_kse_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_advanced, "object/tangible/ship/components/engine/shared_eng_kse_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2168,6 +2208,7 @@ object_tangible_ship_components_engine_shared_eng_kse_elite = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_ship_components_engine_shared_eng_kse_elite = SharedTangibleObje
 	clientObjectCRC = 3273736550
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kse_elite, "object/tangible/ship/components/engine/shared_eng_kse_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_elite, "object/tangible/ship/components/engine/shared_eng_kse_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_kse_improved_a2x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2221,6 +2262,7 @@ object_tangible_ship_components_engine_shared_eng_kse_improved_a2x = SharedTangi
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_ship_components_engine_shared_eng_kse_improved_a2x = SharedTangi
 	clientObjectCRC = 1881362164
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_kse_improved_a2x, "object/tangible/ship/components/engine/shared_eng_kse_improved_a2x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_improved_a2x, "object/tangible/ship/components/engine/shared_eng_kse_improved_a2x.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2274,6 +2316,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_advanced = SharedTangib
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_advanced = SharedTangib
 	clientObjectCRC = 2801444011
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mandal_advanced, "object/tangible/ship/components/engine/shared_eng_mandal_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_advanced, "object/tangible/ship/components/engine/shared_eng_mandal_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2327,6 +2370,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_elite = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_elite = SharedTangibleO
 	clientObjectCRC = 1878143653
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mandal_elite, "object/tangible/ship/components/engine/shared_eng_mandal_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_elite, "object/tangible/ship/components/engine/shared_eng_mandal_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2380,6 +2424,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy = Shared
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy = Shared
 	clientObjectCRC = 3570273187
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy, "object/tangible/ship/components/engine/shared_eng_mandal_enhanced_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy, "object/tangible/ship/components/engine/shared_eng_mandal_enhanced_heavy.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_firestorm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2433,6 +2478,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_firestorm = SharedTangi
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_firestorm = SharedTangi
 	clientObjectCRC = 3541249894
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm, "object/tangible/ship/components/engine/shared_eng_mandal_firestorm.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm, "object/tangible/ship/components/engine/shared_eng_mandal_firestorm.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2486,6 +2532,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2 = SharedTan
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2 = SharedTan
 	clientObjectCRC = 727952579
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2, "object/tangible/ship/components/engine/shared_eng_mandal_firestorm_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2, "object/tangible/ship/components/engine/shared_eng_mandal_firestorm_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2539,6 +2586,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_heavy = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_heavy = SharedTangibleO
 	clientObjectCRC = 4269473500
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mandal_heavy, "object/tangible/ship/components/engine/shared_eng_mandal_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_heavy, "object/tangible/ship/components/engine/shared_eng_mandal_heavy.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2592,6 +2640,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal = SharedTang
 	clientObjectCRC = 1398811681
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal, "object/tangible/ship/components/engine/shared_eng_mandal_x37_vandal.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal, "object/tangible/ship/components/engine/shared_eng_mandal_x37_vandal.iff")
 
 object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2645,6 +2694,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal = SharedTang
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal = SharedTang
 	clientObjectCRC = 691790673
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal, "object/tangible/ship/components/engine/shared_eng_mandal_x57_vandal.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal, "object/tangible/ship/components/engine/shared_eng_mandal_x57_vandal.iff")
 
 object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus_megadrive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2698,6 +2748,7 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus
 	clientObjectCRC = 116254934
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus_megadrive, "object/tangible/ship/components/engine/shared_eng_mission_reward_imperial_cygnus_megadrive.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus_megadrive, "object/tangible/ship/components/engine/shared_eng_mission_reward_imperial_cygnus_megadrive.iff")
 
 object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_chall_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2751,6 +2802,7 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_ch
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_ch
 	clientObjectCRC = 1833143091
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_chall_military, "object/tangible/ship/components/engine/shared_eng_mission_reward_neutral_haor_chall_military.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_chall_military, "object/tangible/ship/components/engine/shared_eng_mission_reward_neutral_haor_chall_military.iff")
 
 object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_inferno = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2804,6 +2856,7 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_
 	clientObjectCRC = 2762799874
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_inferno, "object/tangible/ship/components/engine/shared_eng_mission_reward_neutral_mandal_inferno.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_inferno, "object/tangible/ship/components/engine/shared_eng_mission_reward_neutral_mandal_inferno.iff")
 
 object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2857,6 +2910,7 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_mil
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_mil
 	clientObjectCRC = 3414312899
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_military, "object/tangible/ship/components/engine/shared_eng_mission_reward_rebel_incom_military.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_military, "object/tangible/ship/components/engine/shared_eng_mission_reward_rebel_incom_military.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_charged_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2910,6 +2964,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_charged_standard = Shar
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_charged_standard = Shar
 	clientObjectCRC = 2970369817
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_moncal_charged_standard, "object/tangible/ship/components/engine/shared_eng_moncal_charged_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_charged_standard, "object/tangible/ship/components/engine/shared_eng_moncal_charged_standard.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -2963,6 +3018,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light = Shared
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light = Shared
 	clientObjectCRC = 2303167784
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light, "object/tangible/ship/components/engine/shared_eng_moncal_enhanced_light.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light, "object/tangible/ship/components/engine/shared_eng_moncal_enhanced_light.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3016,6 +3072,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_heavy = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_heavy = SharedTangibleO
 	clientObjectCRC = 1507745225
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_moncal_heavy, "object/tangible/ship/components/engine/shared_eng_moncal_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_heavy, "object/tangible/ship/components/engine/shared_eng_moncal_heavy.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_ifs32 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3069,6 +3126,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_ifs32 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_ifs32 = SharedTangibleO
 	clientObjectCRC = 81343226
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs32, "object/tangible/ship/components/engine/shared_eng_moncal_ifs32.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs32, "object/tangible/ship/components/engine/shared_eng_moncal_ifs32.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_ifs64 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3122,6 +3180,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_ifs64 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_ifs64 = SharedTangibleO
 	clientObjectCRC = 3250538235
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs64, "object/tangible/ship/components/engine/shared_eng_moncal_ifs64.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs64, "object/tangible/ship/components/engine/shared_eng_moncal_ifs64.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3175,6 +3234,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy = Shared
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy = Shared
 	clientObjectCRC = 3680559351
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy, "object/tangible/ship/components/engine/shared_eng_moncal_improved_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy, "object/tangible/ship/components/engine/shared_eng_moncal_improved_heavy.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3228,6 +3288,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_light = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_light = SharedTangibleO
 	clientObjectCRC = 2558943511
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_moncal_light, "object/tangible/ship/components/engine/shared_eng_moncal_light.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_light, "object/tangible/ship/components/engine/shared_eng_moncal_light.iff")
 
 object_tangible_ship_components_engine_shared_eng_moncal_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3281,6 +3342,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_standard = SharedTangib
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_ship_components_engine_shared_eng_moncal_standard = SharedTangib
 	clientObjectCRC = 1515726133
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_moncal_standard, "object/tangible/ship/components/engine/shared_eng_moncal_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_standard, "object/tangible/ship/components/engine/shared_eng_moncal_standard.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3334,6 +3396,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_advanced = SharedTang
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_advanced = SharedTang
 	clientObjectCRC = 3212374131
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_advanced, "object/tangible/ship/components/engine/shared_eng_novaldex_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_advanced, "object/tangible/ship/components/engine/shared_eng_novaldex_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3387,6 +3450,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon = Shared
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon = Shared
 	clientObjectCRC = 954786503
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon, "object/tangible/ship/components/engine/shared_eng_novaldex_eventhorizon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon, "object/tangible/ship/components/engine/shared_eng_novaldex_eventhorizon.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3440,6 +3504,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon = 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon = 
 	clientObjectCRC = 4190415358
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon, "object/tangible/ship/components/engine/shared_eng_novaldex_light_eventhorizon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon, "object/tangible/ship/components/engine/shared_eng_novaldex_light_eventhorizon.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_x6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3493,6 +3558,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x6 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x6 = SharedTangibleOb
 	clientObjectCRC = 1243009933
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x6, "object/tangible/ship/components/engine/shared_eng_novaldex_x6.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x6, "object/tangible/ship/components/engine/shared_eng_novaldex_x6.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_x7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3546,6 +3612,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x7 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x7 = SharedTangibleOb
 	clientObjectCRC = 52147200
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x7, "object/tangible/ship/components/engine/shared_eng_novaldex_x7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x7, "object/tangible/ship/components/engine/shared_eng_novaldex_x7.iff")
 
 object_tangible_ship_components_engine_shared_eng_novaldex_x9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3599,6 +3666,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x9 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x9 = SharedTangibleOb
 	clientObjectCRC = 4028432287
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x9, "object/tangible/ship/components/engine/shared_eng_novaldex_x9.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x9, "object/tangible/ship/components/engine/shared_eng_novaldex_x9.iff")
 
 object_tangible_ship_components_engine_shared_eng_prototype_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3652,6 +3720,7 @@ object_tangible_ship_components_engine_shared_eng_prototype_engine = SharedTangi
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_ship_components_engine_shared_eng_prototype_engine = SharedTangi
 	clientObjectCRC = 938019795
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_prototype_engine, "object/tangible/ship/components/engine/shared_eng_prototype_engine.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_prototype_engine, "object/tangible/ship/components/engine/shared_eng_prototype_engine.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_a13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3705,6 +3774,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_a13 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_a13 = SharedTangibleOb
 	clientObjectCRC = 1058854056
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_a13, "object/tangible/ship/components/engine/shared_eng_qualdex_a13.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_a13, "object/tangible/ship/components/engine/shared_eng_qualdex_a13.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3758,6 +3828,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_advanced = SharedTangi
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_advanced = SharedTangi
 	clientObjectCRC = 1072902230
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_advanced, "object/tangible/ship/components/engine/shared_eng_qualdex_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_advanced, "object/tangible/ship/components/engine/shared_eng_qualdex_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_b10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3811,6 +3882,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_b10 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_b10 = SharedTangibleOb
 	clientObjectCRC = 905102348
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_b10, "object/tangible/ship/components/engine/shared_eng_qualdex_b10.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_b10, "object/tangible/ship/components/engine/shared_eng_qualdex_b10.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3864,6 +3936,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_elite = SharedTangible
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_elite = SharedTangible
 	clientObjectCRC = 2316920034
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_elite, "object/tangible/ship/components/engine/shared_eng_qualdex_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_elite, "object/tangible/ship/components/engine/shared_eng_qualdex_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3917,6 +3990,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster = SharedTan
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster = SharedTan
 	clientObjectCRC = 3668146278
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster, "object/tangible/ship/components/engine/shared_eng_qualdex_kyromaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster, "object/tangible/ship/components/engine/shared_eng_qualdex_kyromaster.iff")
 
 object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -3970,6 +4044,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster = Sha
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster = Sha
 	clientObjectCRC = 4106286177
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster, "object/tangible/ship/components/engine/shared_eng_qualdex_small_kyromaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster, "object/tangible/ship/components/engine/shared_eng_qualdex_small_kyromaster.iff")
 
 object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4023,6 +4098,7 @@ object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1 = SharedTang
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1 = SharedTang
 	clientObjectCRC = 2203700275
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1, "object/tangible/ship/components/engine/shared_eng_rendili_demon_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1, "object/tangible/ship/components/engine/shared_eng_rendili_demon_mk1.iff")
 
 object_tangible_ship_components_engine_shared_eng_rendili_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4076,6 +4152,7 @@ object_tangible_ship_components_engine_shared_eng_rendili_elite = SharedTangible
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_ship_components_engine_shared_eng_rendili_elite = SharedTangible
 	clientObjectCRC = 3783532255
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_rendili_elite, "object/tangible/ship/components/engine/shared_eng_rendili_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rendili_elite, "object/tangible/ship/components/engine/shared_eng_rendili_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4129,6 +4206,7 @@ object_tangible_ship_components_engine_shared_eng_reward_incom_elite = SharedTan
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_ship_components_engine_shared_eng_reward_incom_elite = SharedTan
 	clientObjectCRC = 1914888370
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_reward_incom_elite, "object/tangible/ship/components/engine/shared_eng_reward_incom_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_incom_elite, "object/tangible/ship/components/engine/shared_eng_reward_incom_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4182,6 +4260,7 @@ object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite = Shared
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite = Shared
 	clientObjectCRC = 1042959246
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite, "object/tangible/ship/components/engine/shared_eng_reward_koensayr_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite, "object/tangible/ship/components/engine/shared_eng_reward_koensayr_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_kuat_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4235,6 +4314,7 @@ object_tangible_ship_components_engine_shared_eng_reward_kuat_elite = SharedTang
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_ship_components_engine_shared_eng_reward_kuat_elite = SharedTang
 	clientObjectCRC = 3024393485
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_reward_kuat_elite, "object/tangible/ship/components/engine/shared_eng_reward_kuat_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_kuat_elite, "object/tangible/ship/components/engine/shared_eng_reward_kuat_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4288,6 +4368,7 @@ object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite = Shared
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite = Shared
 	clientObjectCRC = 1822981655
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite, "object/tangible/ship/components/engine/shared_eng_reward_novaldex_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite, "object/tangible/ship/components/engine/shared_eng_reward_novaldex_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_reward_surronian_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4341,6 +4422,7 @@ object_tangible_ship_components_engine_shared_eng_reward_surronian_elite = Share
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_ship_components_engine_shared_eng_reward_surronian_elite = Share
 	clientObjectCRC = 1593887000
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_reward_surronian_elite, "object/tangible/ship/components/engine/shared_eng_reward_surronian_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_surronian_elite, "object/tangible/ship/components/engine/shared_eng_reward_surronian_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4394,6 +4476,7 @@ object_tangible_ship_components_engine_shared_eng_rss_advanced = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_ship_components_engine_shared_eng_rss_advanced = SharedTangibleO
 	clientObjectCRC = 2871154859
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_rss_advanced, "object/tangible/ship/components/engine/shared_eng_rss_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_advanced, "object/tangible/ship/components/engine/shared_eng_rss_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4447,6 +4530,7 @@ object_tangible_ship_components_engine_shared_eng_rss_elite = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_ship_components_engine_shared_eng_rss_elite = SharedTangibleObje
 	clientObjectCRC = 2026233667
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_rss_elite, "object/tangible/ship/components/engine/shared_eng_rss_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_elite, "object/tangible/ship/components/engine/shared_eng_rss_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4500,6 +4584,7 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner = Share
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner = Share
 	clientObjectCRC = 4106763643
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4553,6 +4638,7 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2 = Sha
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2 = Sha
 	clientObjectCRC = 348283927
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4606,6 +4692,7 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3 = Sha
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3 = Sha
 	clientObjectCRC = 1573847962
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_3.iff")
 
 object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4659,6 +4746,7 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4 = Sha
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4 = Sha
 	clientObjectCRC = 2787911822
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4, "object/tangible/ship/components/engine/shared_eng_rss_imperial_skyrunner_4.iff")
 
 object_tangible_ship_components_engine_shared_eng_sds_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4712,6 +4800,7 @@ object_tangible_ship_components_engine_shared_eng_sds_imperial_1 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_ship_components_engine_shared_eng_sds_imperial_1 = SharedTangibl
 	clientObjectCRC = 161369355
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_1, "object/tangible/ship/components/engine/shared_eng_sds_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_1, "object/tangible/ship/components/engine/shared_eng_sds_imperial_1.iff")
 
 object_tangible_ship_components_engine_shared_eng_sds_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4765,6 +4854,7 @@ object_tangible_ship_components_engine_shared_eng_sds_imperial_2 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_ship_components_engine_shared_eng_sds_imperial_2 = SharedTangibl
 	clientObjectCRC = 3532252572
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_2, "object/tangible/ship/components/engine/shared_eng_sds_imperial_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_2, "object/tangible/ship/components/engine/shared_eng_sds_imperial_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4818,6 +4908,7 @@ object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1 = Share
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1 = Share
 	clientObjectCRC = 3869362638
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1, "object/tangible/ship/components/engine/shared_eng_sds_limited_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1, "object/tangible/ship/components/engine/shared_eng_sds_limited_imperial_1.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4871,6 +4962,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_advanced = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_advanced = SharedTangibleO
 	clientObjectCRC = 3251975169
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_advanced, "object/tangible/ship/components/engine/shared_eng_sfs_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_advanced, "object/tangible/ship/components/engine/shared_eng_sfs_advanced.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4924,6 +5016,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_elite = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_elite = SharedTangibleObje
 	clientObjectCRC = 4146255416
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_elite, "object/tangible/ship/components/engine/shared_eng_sfs_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_elite, "object/tangible/ship/components/engine/shared_eng_sfs_elite.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -4977,6 +5070,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_1 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_1 = SharedTangibl
 	clientObjectCRC = 641216433
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_1, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_1, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_1.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5030,6 +5124,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_2 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_2 = SharedTangibl
 	clientObjectCRC = 4247750438
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_2, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_2, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5083,6 +5178,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_3 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_3 = SharedTangibl
 	clientObjectCRC = 3022184619
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_3, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_3, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_3.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5136,6 +5232,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_4 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_4 = SharedTangibl
 	clientObjectCRC = 1338100671
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_4, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_4, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_4.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_imperial_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5189,6 +5286,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_5 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_5 = SharedTangibl
 	clientObjectCRC = 114076722
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_5, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_5, "object/tangible/ship/components/engine/shared_eng_sfs_imperial_5.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5242,6 +5340,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3 = Shar
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3 = Shar
 	clientObjectCRC = 3416202828
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3, "object/tangible/ship/components/engine/shared_eng_sfs_modified_imperial_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3, "object/tangible/ship/components/engine/shared_eng_sfs_modified_imperial_3.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5295,6 +5394,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1 = S
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1 = S
 	clientObjectCRC = 4285524122
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1, "object/tangible/ship/components/engine/shared_eng_sfs_performance_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1, "object/tangible/ship/components/engine/shared_eng_sfs_performance_imperial_1.iff")
 
 object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5348,6 +5448,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2 = SharedT
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2 = SharedT
 	clientObjectCRC = 3062194398
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2, "object/tangible/ship/components/engine/shared_eng_sfs_tuned_imperial_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2, "object/tangible/ship/components/engine/shared_eng_sfs_tuned_imperial_2.iff")
 
 object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5401,6 +5502,7 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine = Sh
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine = Sh
 	clientObjectCRC = 2256977477
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine, "object/tangible/ship/components/engine/shared_eng_sorosuub_l_337_ion_engine.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine, "object/tangible/ship/components/engine/shared_eng_sorosuub_l_337_ion_engine.iff")
 
 object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5454,6 +5556,7 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engin
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engin
 	clientObjectCRC = 2014640684
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engine, "object/tangible/ship/components/engine/shared_eng_sorosuub_tuned_l_337_ion_engine.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engine, "object/tangible/ship/components/engine/shared_eng_sorosuub_tuned_l_337_ion_engine.iff")
 
 object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5507,6 +5610,7 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive = Shar
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive = Shar
 	clientObjectCRC = 1154791429
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive, "object/tangible/ship/components/engine/shared_eng_sorosuub_u83r_ion_drive.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive, "object/tangible/ship/components/engine/shared_eng_sorosuub_u83r_ion_drive.iff")
 
 object_tangible_ship_components_engine_shared_eng_subpro_light_engines = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5560,6 +5664,7 @@ object_tangible_ship_components_engine_shared_eng_subpro_light_engines = SharedT
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_ship_components_engine_shared_eng_subpro_light_engines = SharedT
 	clientObjectCRC = 2953087891
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_subpro_light_engines, "object/tangible/ship/components/engine/shared_eng_subpro_light_engines.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_subpro_light_engines, "object/tangible/ship/components/engine/shared_eng_subpro_light_engines.iff")
 
 object_tangible_ship_components_engine_shared_eng_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5613,6 +5718,7 @@ object_tangible_ship_components_engine_shared_eng_tiefighter_basic = SharedTangi
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_ship_components_engine_shared_eng_tiefighter_basic = SharedTangi
 	clientObjectCRC = 717637110
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_tiefighter_basic, "object/tangible/ship/components/engine/shared_eng_tiefighter_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_tiefighter_basic, "object/tangible/ship/components/engine/shared_eng_tiefighter_basic.iff")
 
 object_tangible_ship_components_engine_shared_eng_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5666,6 +5772,7 @@ object_tangible_ship_components_engine_shared_eng_z95_basic = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_ship_components_engine_shared_eng_z95_basic = SharedTangibleObje
 	clientObjectCRC = 3860835004
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_eng_z95_basic, "object/tangible/ship/components/engine/shared_eng_z95_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_z95_basic, "object/tangible/ship/components/engine/shared_eng_z95_basic.iff")
 
 object_tangible_ship_components_engine_shared_engine_cygnus_hd7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5719,6 +5826,7 @@ object_tangible_ship_components_engine_shared_engine_cygnus_hd7 = SharedTangible
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_ship_components_engine_shared_engine_cygnus_hd7 = SharedTangible
 	clientObjectCRC = 4025396591
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_cygnus_hd7, "object/tangible/ship/components/engine/shared_engine_cygnus_hd7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_cygnus_hd7, "object/tangible/ship/components/engine/shared_engine_cygnus_hd7.iff")
 
 object_tangible_ship_components_engine_shared_engine_damorian_rx7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5772,6 +5880,7 @@ object_tangible_ship_components_engine_shared_engine_damorian_rx7 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_ship_components_engine_shared_engine_damorian_rx7 = SharedTangib
 	clientObjectCRC = 3590792483
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_damorian_rx7, "object/tangible/ship/components/engine/shared_engine_damorian_rx7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_damorian_rx7, "object/tangible/ship/components/engine/shared_engine_damorian_rx7.iff")
 
 object_tangible_ship_components_engine_shared_engine_incom_e16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5825,6 +5934,7 @@ object_tangible_ship_components_engine_shared_engine_incom_e16 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_ship_components_engine_shared_engine_incom_e16 = SharedTangibleO
 	clientObjectCRC = 1073664893
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_incom_e16, "object/tangible/ship/components/engine/shared_engine_incom_e16.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_incom_e16, "object/tangible/ship/components/engine/shared_engine_incom_e16.iff")
 
 object_tangible_ship_components_engine_shared_engine_incom_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5878,6 +5988,7 @@ object_tangible_ship_components_engine_shared_engine_incom_fusialthrust = Shared
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_ship_components_engine_shared_engine_incom_fusialthrust = Shared
 	clientObjectCRC = 3226309687
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_incom_fusialthrust, "object/tangible/ship/components/engine/shared_engine_incom_fusialthrust.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_incom_fusialthrust, "object/tangible/ship/components/engine/shared_engine_incom_fusialthrust.iff")
 
 object_tangible_ship_components_engine_shared_engine_koensayr_ionjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5931,6 +6042,7 @@ object_tangible_ship_components_engine_shared_engine_koensayr_ionjet = SharedTan
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_ship_components_engine_shared_engine_koensayr_ionjet = SharedTan
 	clientObjectCRC = 1396982474
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_koensayr_ionjet, "object/tangible/ship/components/engine/shared_engine_koensayr_ionjet.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_koensayr_ionjet, "object/tangible/ship/components/engine/shared_engine_koensayr_ionjet.iff")
 
 object_tangible_ship_components_engine_shared_engine_kongar_defender = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -5984,6 +6096,7 @@ object_tangible_ship_components_engine_shared_engine_kongar_defender = SharedTan
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_ship_components_engine_shared_engine_kongar_defender = SharedTan
 	clientObjectCRC = 1377789974
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_kongar_defender, "object/tangible/ship/components/engine/shared_engine_kongar_defender.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kongar_defender, "object/tangible/ship/components/engine/shared_engine_kongar_defender.iff")
 
 object_tangible_ship_components_engine_shared_engine_kuat_a9x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6037,6 +6150,7 @@ object_tangible_ship_components_engine_shared_engine_kuat_a9x = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_ship_components_engine_shared_engine_kuat_a9x = SharedTangibleOb
 	clientObjectCRC = 528919760
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_kuat_a9x, "object/tangible/ship/components/engine/shared_engine_kuat_a9x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_a9x, "object/tangible/ship/components/engine/shared_engine_kuat_a9x.iff")
 
 object_tangible_ship_components_engine_shared_engine_kuat_f31 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6090,6 +6204,7 @@ object_tangible_ship_components_engine_shared_engine_kuat_f31 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_ship_components_engine_shared_engine_kuat_f31 = SharedTangibleOb
 	clientObjectCRC = 383630325
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_kuat_f31, "object/tangible/ship/components/engine/shared_engine_kuat_f31.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_f31, "object/tangible/ship/components/engine/shared_engine_kuat_f31.iff")
 
 object_tangible_ship_components_engine_shared_engine_kuat_tc40 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6143,6 +6258,7 @@ object_tangible_ship_components_engine_shared_engine_kuat_tc40 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_ship_components_engine_shared_engine_kuat_tc40 = SharedTangibleO
 	clientObjectCRC = 630949966
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_kuat_tc40, "object/tangible/ship/components/engine/shared_engine_kuat_tc40.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_tc40, "object/tangible/ship/components/engine/shared_engine_kuat_tc40.iff")
 
 object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6196,6 +6312,7 @@ object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon = Sha
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,7 +6357,7 @@ object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon = Sha
 	clientObjectCRC = 958710190
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon, "object/tangible/ship/components/engine/shared_engine_novaldex_eventhorizon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon, "object/tangible/ship/components/engine/shared_engine_novaldex_eventhorizon.iff")
 
 object_tangible_ship_components_engine_shared_engine_novaldex_singularity = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6249,6 +6366,7 @@ object_tangible_ship_components_engine_shared_engine_novaldex_singularity = Shar
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6293,7 +6411,7 @@ object_tangible_ship_components_engine_shared_engine_novaldex_singularity = Shar
 	clientObjectCRC = 1145254225
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_singularity, "object/tangible/ship/components/engine/shared_engine_novaldex_singularity.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_singularity, "object/tangible/ship/components/engine/shared_engine_novaldex_singularity.iff")
 
 object_tangible_ship_components_engine_shared_engine_novaldex_x12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6302,6 +6420,7 @@ object_tangible_ship_components_engine_shared_engine_novaldex_x12 = SharedTangib
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6346,7 +6465,7 @@ object_tangible_ship_components_engine_shared_engine_novaldex_x12 = SharedTangib
 	clientObjectCRC = 1195098255
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_x12, "object/tangible/ship/components/engine/shared_engine_novaldex_x12.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_x12, "object/tangible/ship/components/engine/shared_engine_novaldex_x12.iff")
 
 object_tangible_ship_components_engine_shared_engine_nubian_221 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6355,6 +6474,7 @@ object_tangible_ship_components_engine_shared_engine_nubian_221 = SharedTangible
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6399,7 +6519,7 @@ object_tangible_ship_components_engine_shared_engine_nubian_221 = SharedTangible
 	clientObjectCRC = 408364665
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221, "object/tangible/ship/components/engine/shared_engine_nubian_221.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221, "object/tangible/ship/components/engine/shared_engine_nubian_221.iff")
 
 object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6408,6 +6528,7 @@ object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod = Sha
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6452,7 +6573,7 @@ object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod = Sha
 	clientObjectCRC = 3449726708
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod, "object/tangible/ship/components/engine/shared_engine_nubian_221_racing_mod.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod, "object/tangible/ship/components/engine/shared_engine_nubian_221_racing_mod.iff")
 
 object_tangible_ship_components_engine_shared_engine_qualdex_a10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6461,6 +6582,7 @@ object_tangible_ship_components_engine_shared_engine_qualdex_a10 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6505,7 +6627,7 @@ object_tangible_ship_components_engine_shared_engine_qualdex_a10 = SharedTangibl
 	clientObjectCRC = 1616448620
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_a10, "object/tangible/ship/components/engine/shared_engine_qualdex_a10.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_a10, "object/tangible/ship/components/engine/shared_engine_qualdex_a10.iff")
 
 object_tangible_ship_components_engine_shared_engine_qualdex_igt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6514,6 +6636,7 @@ object_tangible_ship_components_engine_shared_engine_qualdex_igt = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6558,7 +6681,7 @@ object_tangible_ship_components_engine_shared_engine_qualdex_igt = SharedTangibl
 	clientObjectCRC = 157942210
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_igt, "object/tangible/ship/components/engine/shared_engine_qualdex_igt.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_igt, "object/tangible/ship/components/engine/shared_engine_qualdex_igt.iff")
 
 object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6567,6 +6690,7 @@ object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster = Shared
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6611,7 +6735,7 @@ object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster = Shared
 	clientObjectCRC = 1584851936
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster, "object/tangible/ship/components/engine/shared_engine_qualdex_kyromaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster, "object/tangible/ship/components/engine/shared_engine_qualdex_kyromaster.iff")
 
 object_tangible_ship_components_engine_shared_engine_seinar_ps56 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6620,6 +6744,7 @@ object_tangible_ship_components_engine_shared_engine_seinar_ps56 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6664,7 +6789,7 @@ object_tangible_ship_components_engine_shared_engine_seinar_ps56 = SharedTangibl
 	clientObjectCRC = 425327830
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_seinar_ps56, "object/tangible/ship/components/engine/shared_engine_seinar_ps56.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_seinar_ps56, "object/tangible/ship/components/engine/shared_engine_seinar_ps56.iff")
 
 object_tangible_ship_components_engine_shared_engine_surronian_a2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6673,6 +6798,7 @@ object_tangible_ship_components_engine_shared_engine_surronian_a2 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6717,7 +6843,7 @@ object_tangible_ship_components_engine_shared_engine_surronian_a2 = SharedTangib
 	clientObjectCRC = 3679552737
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a2, "object/tangible/ship/components/engine/shared_engine_surronian_a2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a2, "object/tangible/ship/components/engine/shared_engine_surronian_a2.iff")
 
 object_tangible_ship_components_engine_shared_engine_surronian_a25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6726,6 +6852,7 @@ object_tangible_ship_components_engine_shared_engine_surronian_a25 = SharedTangi
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6770,7 +6897,7 @@ object_tangible_ship_components_engine_shared_engine_surronian_a25 = SharedTangi
 	clientObjectCRC = 3019065064
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a25, "object/tangible/ship/components/engine/shared_engine_surronian_a25.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a25, "object/tangible/ship/components/engine/shared_engine_surronian_a25.iff")
 
 object_tangible_ship_components_engine_shared_engine_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6779,6 +6906,7 @@ object_tangible_ship_components_engine_shared_engine_test = SharedTangibleObject
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6823,7 +6951,7 @@ object_tangible_ship_components_engine_shared_engine_test = SharedTangibleObject
 	clientObjectCRC = 3349337615
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_test, "object/tangible/ship/components/engine/shared_engine_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_test, "object/tangible/ship/components/engine/shared_engine_test.iff")
 
 object_tangible_ship_components_engine_shared_engine_ubrikkian_n2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -6832,6 +6960,7 @@ object_tangible_ship_components_engine_shared_engine_ubrikkian_n2 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6876,7 +7005,7 @@ object_tangible_ship_components_engine_shared_engine_ubrikkian_n2 = SharedTangib
 	clientObjectCRC = 2229515854
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_engine_ubrikkian_n2, "object/tangible/ship/components/engine/shared_engine_ubrikkian_n2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_ubrikkian_n2, "object/tangible/ship/components/engine/shared_engine_ubrikkian_n2.iff")
 
 object_tangible_ship_components_engine_shared_xwing_engine_s01_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
@@ -6885,6 +7014,7 @@ object_tangible_ship_components_engine_shared_xwing_engine_s01_test = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6929,7 +7059,7 @@ object_tangible_ship_components_engine_shared_xwing_engine_s01_test = SharedTang
 	clientObjectCRC = 1817330955
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s01_test, "object/tangible/ship/components/engine/shared_xwing_engine_s01_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s01_test, "object/tangible/ship/components/engine/shared_xwing_engine_s01_test.iff")
 
 object_tangible_ship_components_engine_shared_xwing_engine_s02_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
@@ -6938,6 +7068,7 @@ object_tangible_ship_components_engine_shared_xwing_engine_s02_test = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741826,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6982,4 +7113,4 @@ object_tangible_ship_components_engine_shared_xwing_engine_s02_test = SharedTang
 	clientObjectCRC = 3911366677
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s02_test, "object/tangible/ship/components/engine/shared_xwing_engine_s02_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s02_test, "object/tangible/ship/components/engine/shared_xwing_engine_s02_test.iff")

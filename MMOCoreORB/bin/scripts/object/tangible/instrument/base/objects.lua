@@ -48,6 +48,7 @@ object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTem
 	clientObjectCRC = 2963077221
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_base_shared_instrument_base, "object/tangible/instrument/base/shared_instrument_base.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_base_shared_instrument_base, "object/tangible/instrument/base/shared_instrument_base.iff")

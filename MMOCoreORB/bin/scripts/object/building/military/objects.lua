@@ -48,6 +48,7 @@ object_building_military_shared_military_abandoned_police_station_rebel = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_military_police_station.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_military_shared_military_abandoned_police_station_rebel = Shared
 	clientObjectCRC = 61695795
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_abandoned_police_station_rebel, "object/building/military/shared_military_abandoned_police_station_rebel.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_abandoned_police_station_rebel, "object/building/military/shared_military_abandoned_police_station_rebel.iff")
 
 object_building_military_shared_military_base_gate_house_imperial = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_gate_house_impl_s01.apt",
@@ -104,6 +105,7 @@ object_building_military_shared_military_base_gate_house_imperial = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 12,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,7 +153,7 @@ object_building_military_shared_military_base_gate_house_imperial = SharedBuildi
 	clientObjectCRC = 3485179638
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_gate_house_imperial, "object/building/military/shared_military_base_gate_house_imperial.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_gate_house_imperial, "object/building/military/shared_military_base_gate_house_imperial.iff")
 
 object_building_military_shared_military_base_gate_house_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_gate_house_rebl_s01.apt",
@@ -160,6 +162,7 @@ object_building_military_shared_military_base_gate_house_rebel = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 12,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -207,7 +210,7 @@ object_building_military_shared_military_base_gate_house_rebel = SharedBuildingO
 	clientObjectCRC = 301400937
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_gate_house_rebel, "object/building/military/shared_military_base_gate_house_rebel.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_gate_house_rebel, "object/building/military/shared_military_base_gate_house_rebel.iff")
 
 object_building_military_shared_military_base_police_station_imperial_lok_otto = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -216,6 +219,7 @@ object_building_military_shared_military_base_police_station_imperial_lok_otto =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -263,7 +267,7 @@ object_building_military_shared_military_base_police_station_imperial_lok_otto =
 	clientObjectCRC = 603572205
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_police_station_imperial_lok_otto, "object/building/military/shared_military_base_police_station_imperial_lok_otto.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_police_station_imperial_lok_otto, "object/building/military/shared_military_base_police_station_imperial_lok_otto.iff")
 
 object_building_military_shared_military_base_police_station_imperial_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -272,6 +276,7 @@ object_building_military_shared_military_base_police_station_imperial_style_01 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -319,7 +324,7 @@ object_building_military_shared_military_base_police_station_imperial_style_01 =
 	clientObjectCRC = 3633066758
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_police_station_imperial_style_01, "object/building/military/shared_military_base_police_station_imperial_style_01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_police_station_imperial_style_01, "object/building/military/shared_military_base_police_station_imperial_style_01.iff")
 
 object_building_military_shared_military_base_police_station_rebel_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -328,6 +333,7 @@ object_building_military_shared_military_base_police_station_rebel_style_01 = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -375,7 +381,7 @@ object_building_military_shared_military_base_police_station_rebel_style_01 = Sh
 	clientObjectCRC = 2265285311
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_police_station_rebel_style_01, "object/building/military/shared_military_base_police_station_rebel_style_01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_police_station_rebel_style_01, "object/building/military/shared_military_base_police_station_rebel_style_01.iff")
 
 object_building_military_shared_military_base_shed_imperial_barracks_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -384,6 +390,7 @@ object_building_military_shared_military_base_shed_imperial_barracks_s01 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -431,7 +438,7 @@ object_building_military_shared_military_base_shed_imperial_barracks_s01 = Share
 	clientObjectCRC = 4255048531
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_barracks_s01, "object/building/military/shared_military_base_shed_imperial_barracks_s01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_barracks_s01, "object/building/military/shared_military_base_shed_imperial_barracks_s01.iff")
 
 object_building_military_shared_military_base_shed_imperial_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -440,6 +447,7 @@ object_building_military_shared_military_base_shed_imperial_style_01 = SharedBui
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -487,7 +495,7 @@ object_building_military_shared_military_base_shed_imperial_style_01 = SharedBui
 	clientObjectCRC = 196947849
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_01, "object/building/military/shared_military_base_shed_imperial_style_01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_01, "object/building/military/shared_military_base_shed_imperial_style_01.iff")
 
 object_building_military_shared_military_base_shed_imperial_style_bank_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -496,6 +504,7 @@ object_building_military_shared_military_base_shed_imperial_style_bank_s01 = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -543,7 +552,7 @@ object_building_military_shared_military_base_shed_imperial_style_bank_s01 = Sha
 	clientObjectCRC = 3577026459
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_bank_s01, "object/building/military/shared_military_base_shed_imperial_style_bank_s01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_bank_s01, "object/building/military/shared_military_base_shed_imperial_style_bank_s01.iff")
 
 object_building_military_shared_military_base_shed_imperial_style_cantina_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -552,6 +561,7 @@ object_building_military_shared_military_base_shed_imperial_style_cantina_s01 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -599,7 +609,7 @@ object_building_military_shared_military_base_shed_imperial_style_cantina_s01 = 
 	clientObjectCRC = 4151796568
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_cantina_s01, "object/building/military/shared_military_base_shed_imperial_style_cantina_s01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_cantina_s01, "object/building/military/shared_military_base_shed_imperial_style_cantina_s01.iff")
 
 object_building_military_shared_military_base_shed_imperial_style_hospital_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -608,6 +618,7 @@ object_building_military_shared_military_base_shed_imperial_style_hospital_01 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +666,7 @@ object_building_military_shared_military_base_shed_imperial_style_hospital_01 = 
 	clientObjectCRC = 3493400176
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_hospital_01, "object/building/military/shared_military_base_shed_imperial_style_hospital_01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_hospital_01, "object/building/military/shared_military_base_shed_imperial_style_hospital_01.iff")
 
 object_building_military_shared_military_base_shed_imperial_style_officer_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -664,6 +675,7 @@ object_building_military_shared_military_base_shed_imperial_style_officer_s01 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -711,7 +723,7 @@ object_building_military_shared_military_base_shed_imperial_style_officer_s01 = 
 	clientObjectCRC = 279599580
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_officer_s01, "object/building/military/shared_military_base_shed_imperial_style_officer_s01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_officer_s01, "object/building/military/shared_military_base_shed_imperial_style_officer_s01.iff")
 
 object_building_military_shared_military_base_shed_imperial_style_prison_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -720,6 +732,7 @@ object_building_military_shared_military_base_shed_imperial_style_prison_01 = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -767,7 +780,7 @@ object_building_military_shared_military_base_shed_imperial_style_prison_01 = Sh
 	clientObjectCRC = 3201291643
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_prison_01, "object/building/military/shared_military_base_shed_imperial_style_prison_01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_prison_01, "object/building/military/shared_military_base_shed_imperial_style_prison_01.iff")
 
 object_building_military_shared_military_base_shed_rebel_abandoned_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -776,6 +789,7 @@ object_building_military_shared_military_base_shed_rebel_abandoned_01 = SharedBu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_military_base_shed.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -823,7 +837,7 @@ object_building_military_shared_military_base_shed_rebel_abandoned_01 = SharedBu
 	clientObjectCRC = 1836586352
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_rebel_abandoned_01, "object/building/military/shared_military_base_shed_rebel_abandoned_01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_rebel_abandoned_01, "object/building/military/shared_military_base_shed_rebel_abandoned_01.iff")
 
 object_building_military_shared_military_base_shed_rebel_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -832,6 +846,7 @@ object_building_military_shared_military_base_shed_rebel_style_01 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_military_base_shed.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -879,7 +894,7 @@ object_building_military_shared_military_base_shed_rebel_style_01 = SharedBuildi
 	clientObjectCRC = 3606723543
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_rebel_style_01, "object/building/military/shared_military_base_shed_rebel_style_01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_rebel_style_01, "object/building/military/shared_military_base_shed_rebel_style_01.iff")
 
 object_building_military_shared_military_imperial_detachment_hq = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -888,6 +903,7 @@ object_building_military_shared_military_imperial_detachment_hq = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -935,7 +951,7 @@ object_building_military_shared_military_imperial_detachment_hq = SharedBuilding
 	clientObjectCRC = 3881652814
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_detachment_hq, "object/building/military/shared_military_imperial_detachment_hq.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_detachment_hq, "object/building/military/shared_military_imperial_detachment_hq.iff")
 
 object_building_military_shared_military_imperial_field_hospital = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -944,6 +960,7 @@ object_building_military_shared_military_imperial_field_hospital = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -991,7 +1008,7 @@ object_building_military_shared_military_imperial_field_hospital = SharedBuildin
 	clientObjectCRC = 1587777178
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_field_hospital, "object/building/military/shared_military_imperial_field_hospital.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_field_hospital, "object/building/military/shared_military_imperial_field_hospital.iff")
 
 object_building_military_shared_military_imperial_forward_outpost = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1000,6 +1017,7 @@ object_building_military_shared_military_imperial_forward_outpost = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1047,7 +1065,7 @@ object_building_military_shared_military_imperial_forward_outpost = SharedBuildi
 	clientObjectCRC = 3707185089
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_forward_outpost, "object/building/military/shared_military_imperial_forward_outpost.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_forward_outpost, "object/building/military/shared_military_imperial_forward_outpost.iff")
 
 object_building_military_shared_military_imperial_strategic_base = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1056,6 +1074,7 @@ object_building_military_shared_military_imperial_strategic_base = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1103,7 +1122,7 @@ object_building_military_shared_military_imperial_strategic_base = SharedBuildin
 	clientObjectCRC = 1767088646
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_strategic_base, "object/building/military/shared_military_imperial_strategic_base.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_strategic_base, "object/building/military/shared_military_imperial_strategic_base.iff")
 
 object_building_military_shared_military_imperial_tactical_center = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1112,6 +1131,7 @@ object_building_military_shared_military_imperial_tactical_center = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1159,7 +1179,7 @@ object_building_military_shared_military_imperial_tactical_center = SharedBuildi
 	clientObjectCRC = 3834889912
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_tactical_center, "object/building/military/shared_military_imperial_tactical_center.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_tactical_center, "object/building/military/shared_military_imperial_tactical_center.iff")
 
 object_building_military_shared_military_outpost_guard_house_imperial = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1168,6 +1188,7 @@ object_building_military_shared_military_outpost_guard_house_imperial = SharedBu
 	certificationsRequired = {},
 	clearFloraRadius = 12,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1215,7 +1236,7 @@ object_building_military_shared_military_outpost_guard_house_imperial = SharedBu
 	clientObjectCRC = 1294596356
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_outpost_guard_house_imperial, "object/building/military/shared_military_outpost_guard_house_imperial.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_outpost_guard_house_imperial, "object/building/military/shared_military_outpost_guard_house_imperial.iff")
 
 object_building_military_shared_military_outpost_guard_house_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1224,6 +1245,7 @@ object_building_military_shared_military_outpost_guard_house_rebel = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 12,
 	clientDataFile = "clientdata/building/shared_military_outpost_guard_house.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1293,7 @@ object_building_military_shared_military_outpost_guard_house_rebel = SharedBuild
 	clientObjectCRC = 4257226961
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_outpost_guard_house_rebel, "object/building/military/shared_military_outpost_guard_house_rebel.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_outpost_guard_house_rebel, "object/building/military/shared_military_outpost_guard_house_rebel.iff")
 
 object_building_military_shared_military_outpost_guard_tower_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
@@ -1280,6 +1302,7 @@ object_building_military_shared_military_outpost_guard_tower_1 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 8,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1327,7 +1350,7 @@ object_building_military_shared_military_outpost_guard_tower_1 = SharedBuildingO
 	clientObjectCRC = 3846575780
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_outpost_guard_tower_1, "object/building/military/shared_military_outpost_guard_tower_1.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_outpost_guard_tower_1, "object/building/military/shared_military_outpost_guard_tower_1.iff")
 
 object_building_military_shared_military_rebel_detachment_hq = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1336,6 +1359,7 @@ object_building_military_shared_military_rebel_detachment_hq = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1383,7 +1407,7 @@ object_building_military_shared_military_rebel_detachment_hq = SharedBuildingObj
 	clientObjectCRC = 27534614
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_detachment_hq, "object/building/military/shared_military_rebel_detachment_hq.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_detachment_hq, "object/building/military/shared_military_rebel_detachment_hq.iff")
 
 object_building_military_shared_military_rebel_field_hospital = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1392,6 +1416,7 @@ object_building_military_shared_military_rebel_field_hospital = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1439,7 +1464,7 @@ object_building_military_shared_military_rebel_field_hospital = SharedBuildingOb
 	clientObjectCRC = 2029763921
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_field_hospital, "object/building/military/shared_military_rebel_field_hospital.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_field_hospital, "object/building/military/shared_military_rebel_field_hospital.iff")
 
 object_building_military_shared_military_rebel_forward_outpost = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1448,6 +1473,7 @@ object_building_military_shared_military_rebel_forward_outpost = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1495,7 +1521,7 @@ object_building_military_shared_military_rebel_forward_outpost = SharedBuildingO
 	clientObjectCRC = 107026323
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_forward_outpost, "object/building/military/shared_military_rebel_forward_outpost.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_forward_outpost, "object/building/military/shared_military_rebel_forward_outpost.iff")
 
 object_building_military_shared_military_rebel_strategic_base = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1504,6 +1530,7 @@ object_building_military_shared_military_rebel_strategic_base = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1551,7 +1578,7 @@ object_building_military_shared_military_rebel_strategic_base = SharedBuildingOb
 	clientObjectCRC = 1326158285
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_strategic_base, "object/building/military/shared_military_rebel_strategic_base.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_strategic_base, "object/building/military/shared_military_rebel_strategic_base.iff")
 
 object_building_military_shared_military_rebel_tactical_center = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1560,6 +1587,7 @@ object_building_military_shared_military_rebel_tactical_center = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1607,7 +1635,7 @@ object_building_military_shared_military_rebel_tactical_center = SharedBuildingO
 	clientObjectCRC = 1040578282
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_tactical_center, "object/building/military/shared_military_rebel_tactical_center.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_tactical_center, "object/building/military/shared_military_rebel_tactical_center.iff")
 
 object_building_military_shared_mun_all_military_tower_impl_guard_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1616,6 +1644,7 @@ object_building_military_shared_mun_all_military_tower_impl_guard_s01 = SharedBu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1663,7 +1692,7 @@ object_building_military_shared_mun_all_military_tower_impl_guard_s01 = SharedBu
 	clientObjectCRC = 4049657385
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_mun_all_military_tower_impl_guard_s01, "object/building/military/shared_mun_all_military_tower_impl_guard_s01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_mun_all_military_tower_impl_guard_s01, "object/building/military/shared_mun_all_military_tower_impl_guard_s01.iff")
 
 object_building_military_shared_outpost_cloning_facility = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1672,6 +1701,7 @@ object_building_military_shared_outpost_cloning_facility = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_cloning.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1719,7 +1749,7 @@ object_building_military_shared_outpost_cloning_facility = SharedBuildingObjectT
 	clientObjectCRC = 1152524774
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_cloning_facility, "object/building/military/shared_outpost_cloning_facility.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_cloning_facility, "object/building/military/shared_outpost_cloning_facility.iff")
 
 object_building_military_shared_outpost_cloning_facility_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1728,6 +1758,7 @@ object_building_military_shared_outpost_cloning_facility_s02 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_cloning.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1775,7 +1806,7 @@ object_building_military_shared_outpost_cloning_facility_s02 = SharedBuildingObj
 	clientObjectCRC = 1476076676
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_cloning_facility_s02, "object/building/military/shared_outpost_cloning_facility_s02.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_cloning_facility_s02, "object/building/military/shared_outpost_cloning_facility_s02.iff")
 
 object_building_military_shared_outpost_cloning_facility_s03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1784,6 +1815,7 @@ object_building_military_shared_outpost_cloning_facility_s03 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_cloning.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1831,7 +1863,7 @@ object_building_military_shared_outpost_cloning_facility_s03 = SharedBuildingObj
 	clientObjectCRC = 519455497
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_cloning_facility_s03, "object/building/military/shared_outpost_cloning_facility_s03.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_cloning_facility_s03, "object/building/military/shared_outpost_cloning_facility_s03.iff")
 
 object_building_military_shared_outpost_shed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1840,6 +1872,7 @@ object_building_military_shared_outpost_shed = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1887,7 +1920,7 @@ object_building_military_shared_outpost_shed = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 1037564192
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed, "object/building/military/shared_outpost_shed.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed, "object/building/military/shared_outpost_shed.iff")
 
 object_building_military_shared_outpost_shed_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1896,6 +1929,7 @@ object_building_military_shared_outpost_shed_s02 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1943,7 +1977,7 @@ object_building_military_shared_outpost_shed_s02 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3955868475
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed_s02, "object/building/military/shared_outpost_shed_s02.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed_s02, "object/building/military/shared_outpost_shed_s02.iff")
 
 object_building_military_shared_outpost_shed_s03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1952,6 +1986,7 @@ object_building_military_shared_outpost_shed_s03 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1999,7 +2034,7 @@ object_building_military_shared_outpost_shed_s03 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2730796214
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed_s03, "object/building/military/shared_outpost_shed_s03.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed_s03, "object/building/military/shared_outpost_shed_s03.iff")
 
 object_building_military_shared_outpost_shed_s04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2008,6 +2043,7 @@ object_building_military_shared_outpost_shed_s04 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2055,7 +2091,7 @@ object_building_military_shared_outpost_shed_s04 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1495764898
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed_s04, "object/building/military/shared_outpost_shed_s04.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed_s04, "object/building/military/shared_outpost_shed_s04.iff")
 
 object_building_military_shared_outpost_shed_s05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2064,6 +2100,7 @@ object_building_military_shared_outpost_shed_s05 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2111,7 +2148,7 @@ object_building_military_shared_outpost_shed_s05 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 271247407
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed_s05, "object/building/military/shared_outpost_shed_s05.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed_s05, "object/building/military/shared_outpost_shed_s05.iff")
 
 object_building_military_shared_outpost_starport = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2120,6 +2157,7 @@ object_building_military_shared_outpost_starport = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 20,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2167,7 +2205,7 @@ object_building_military_shared_outpost_starport = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3035022053
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_starport, "object/building/military/shared_outpost_starport.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_outpost_starport, "object/building/military/shared_outpost_starport.iff")
 
 object_building_military_shared_pirate_outpost = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2176,6 +2214,7 @@ object_building_military_shared_pirate_outpost = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2223,7 +2262,7 @@ object_building_military_shared_pirate_outpost = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2804382550
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_pirate_outpost, "object/building/military/shared_pirate_outpost.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_pirate_outpost, "object/building/military/shared_pirate_outpost.iff")
 
 object_building_military_shared_pirate_warehouse = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2232,6 +2271,7 @@ object_building_military_shared_pirate_warehouse = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2279,7 +2319,7 @@ object_building_military_shared_pirate_warehouse = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2437476511
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_pirate_warehouse, "object/building/military/shared_pirate_warehouse.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_pirate_warehouse, "object/building/military/shared_pirate_warehouse.iff")
 
 object_building_military_shared_poi_all_alum_mine_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2288,6 +2328,7 @@ object_building_military_shared_poi_all_alum_mine_s01 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2335,7 +2376,7 @@ object_building_military_shared_poi_all_alum_mine_s01 = SharedBuildingObjectTemp
 	clientObjectCRC = 568013580
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_poi_all_alum_mine_s01, "object/building/military/shared_poi_all_alum_mine_s01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_poi_all_alum_mine_s01, "object/building/military/shared_poi_all_alum_mine_s01.iff")
 
 object_building_military_shared_poi_all_impl_bunker_recon_outpost = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2344,6 +2385,7 @@ object_building_military_shared_poi_all_impl_bunker_recon_outpost = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2391,7 +2433,7 @@ object_building_military_shared_poi_all_impl_bunker_recon_outpost = SharedBuildi
 	clientObjectCRC = 339089158
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_poi_all_impl_bunker_recon_outpost, "object/building/military/shared_poi_all_impl_bunker_recon_outpost.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_poi_all_impl_bunker_recon_outpost, "object/building/military/shared_poi_all_impl_bunker_recon_outpost.iff")
 
 object_building_military_shared_poi_all_jedi_temple_ruined = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2400,6 +2442,7 @@ object_building_military_shared_poi_all_jedi_temple_ruined = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2447,7 +2490,7 @@ object_building_military_shared_poi_all_jedi_temple_ruined = SharedBuildingObjec
 	clientObjectCRC = 149503406
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_poi_all_jedi_temple_ruined, "object/building/military/shared_poi_all_jedi_temple_ruined.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_poi_all_jedi_temple_ruined, "object/building/military/shared_poi_all_jedi_temple_ruined.iff")
 
 object_building_military_shared_poi_all_mad_bio_mine_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2456,6 +2499,7 @@ object_building_military_shared_poi_all_mad_bio_mine_s01 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2503,7 +2547,7 @@ object_building_military_shared_poi_all_mad_bio_mine_s01 = SharedBuildingObjectT
 	clientObjectCRC = 2675557351
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_poi_all_mad_bio_mine_s01, "object/building/military/shared_poi_all_mad_bio_mine_s01.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_poi_all_mad_bio_mine_s01, "object/building/military/shared_poi_all_mad_bio_mine_s01.iff")
 
 object_building_military_shared_rebel_hideout_themepark = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2512,6 +2556,7 @@ object_building_military_shared_rebel_hideout_themepark = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2559,7 +2604,7 @@ object_building_military_shared_rebel_hideout_themepark = SharedBuildingObjectTe
 	clientObjectCRC = 1446333372
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_rebel_hideout_themepark, "object/building/military/shared_rebel_hideout_themepark.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_rebel_hideout_themepark, "object/building/military/shared_rebel_hideout_themepark.iff")
 
 object_building_military_shared_small_imperial_cloning_facility = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2568,6 +2613,7 @@ object_building_military_shared_small_imperial_cloning_facility = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_cloning.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2615,7 +2661,7 @@ object_building_military_shared_small_imperial_cloning_facility = SharedBuilding
 	clientObjectCRC = 2082976950
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_small_imperial_cloning_facility, "object/building/military/shared_small_imperial_cloning_facility.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_small_imperial_cloning_facility, "object/building/military/shared_small_imperial_cloning_facility.iff")
 
 object_building_military_shared_small_imperial_cloning_facility_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2624,6 +2670,7 @@ object_building_military_shared_small_imperial_cloning_facility_s02 = SharedBuil
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_cloning.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2671,4 +2718,4 @@ object_building_military_shared_small_imperial_cloning_facility_s02 = SharedBuil
 	clientObjectCRC = 972900942
 }
 
-ObjectTemplates:addClientTemplate(object_building_military_shared_small_imperial_cloning_facility_s02, "object/building/military/shared_small_imperial_cloning_facility_s02.iff")
+ObjectTemplates:addTemplate(object_building_military_shared_small_imperial_cloning_facility_s02, "object/building/military/shared_small_imperial_cloning_facility_s02.iff")

@@ -48,6 +48,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_bank.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangib
 	clientObjectCRC = 3236011689
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_bank, "object/tangible/sign/municipal/shared_municipal_sign_hanging_bank.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_bank, "object/tangible/sign/municipal/shared_municipal_sign_hanging_bank.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -101,6 +102,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_cantina.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTan
 	clientObjectCRC = 3410306211
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cantina.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cantina.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -154,6 +156,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_capitol.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTan
 	clientObjectCRC = 3771237737
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol, "object/tangible/sign/municipal/shared_municipal_sign_hanging_capitol.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol, "object/tangible/sign/municipal/shared_municipal_sign_hanging_capitol.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -207,6 +210,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_cloning.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTan
 	clientObjectCRC = 3647827532
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cloning.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cloning.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -260,6 +264,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_combat.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTang
 	clientObjectCRC = 1785001308
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_combat, "object/tangible/sign/municipal/shared_municipal_sign_hanging_combat.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_combat, "object/tangible/sign/municipal/shared_municipal_sign_hanging_combat.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -313,6 +318,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_commerce.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTa
 	clientObjectCRC = 1680490925
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce, "object/tangible/sign/municipal/shared_municipal_sign_hanging_commerce.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce, "object/tangible/sign/municipal/shared_municipal_sign_hanging_commerce.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -366,6 +372,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_hospital.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTa
 	clientObjectCRC = 3811548404
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hospital.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hospital.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -419,6 +426,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_hotel.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangi
 	clientObjectCRC = 101788547
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hotel.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hotel.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -472,6 +480,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_parking.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTan
 	clientObjectCRC = 2041501823
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_parking, "object/tangible/sign/municipal/shared_municipal_sign_hanging_parking.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_parking, "object/tangible/sign/municipal/shared_municipal_sign_hanging_parking.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -525,6 +534,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_shuttle.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTan
 	clientObjectCRC = 2402289971
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle, "object/tangible/sign/municipal/shared_municipal_sign_hanging_shuttle.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle, "object/tangible/sign/municipal/shared_municipal_sign_hanging_shuttle.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -578,6 +588,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_starport.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTa
 	clientObjectCRC = 555356506
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_starport, "object/tangible/sign/municipal/shared_municipal_sign_hanging_starport.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_starport, "object/tangible/sign/municipal/shared_municipal_sign_hanging_starport.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -631,6 +642,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_theater.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTan
 	clientObjectCRC = 1423370292
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_theater, "object/tangible/sign/municipal/shared_municipal_sign_hanging_theater.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_theater, "object/tangible/sign/municipal/shared_municipal_sign_hanging_theater.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_university = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
@@ -684,6 +696,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_university = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/sign/client_shared_municipal_sign_hanging_university.cdf",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,4 +741,4 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_university = Shared
 	clientObjectCRC = 2713174086
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_university, "object/tangible/sign/municipal/shared_municipal_sign_hanging_university.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_university, "object/tangible/sign/municipal/shared_municipal_sign_hanging_university.iff")

@@ -48,6 +48,7 @@ object_tangible_container_medical_shared_medbag_base = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_container_medical_shared_medbag_base = SharedTangibleObjectTempl
 	clientObjectCRC = 1834451270
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_medical_shared_medbag_base, "object/tangible/container/medical/shared_medbag_base.iff")
+ObjectTemplates:addTemplate(object_tangible_container_medical_shared_medbag_base, "object/tangible/container/medical/shared_medbag_base.iff")

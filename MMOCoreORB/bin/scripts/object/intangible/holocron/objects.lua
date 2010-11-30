@@ -47,6 +47,7 @@ object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2054,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplat
 	clientObjectCRC = 1789110379
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_holocron_shared_newbie_mission, "object/intangible/holocron/shared_newbie_mission.iff")
+ObjectTemplates:addTemplate(object_intangible_holocron_shared_newbie_mission, "object/intangible/holocron/shared_newbie_mission.iff")

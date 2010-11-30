@@ -48,6 +48,7 @@ object_tangible_encoded_disk_shared_dead_eye_decoder = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_encoded_disk_shared_dead_eye_decoder = SharedTangibleObjectTempl
 	clientObjectCRC = 2852692407
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_dead_eye_decoder, "object/tangible/encoded_disk/shared_dead_eye_decoder.iff")
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_dead_eye_decoder, "object/tangible/encoded_disk/shared_dead_eye_decoder.iff")
 
 object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -101,6 +102,7 @@ object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemp
 	clientObjectCRC = 1811104039
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_encoded_disk_base, "object/tangible/encoded_disk/shared_encoded_disk_base.iff")
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_encoded_disk_base, "object/tangible/encoded_disk/shared_encoded_disk_base.iff")
 
 object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -154,6 +156,7 @@ object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjec
 	clientObjectCRC = 3642693212
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_message_assembled_base, "object/tangible/encoded_disk/shared_message_assembled_base.iff")
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_message_assembled_base, "object/tangible/encoded_disk/shared_message_assembled_base.iff")
 
 object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -207,6 +210,7 @@ object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObject
 	clientObjectCRC = 378623221
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_message_fragment_base, "object/tangible/encoded_disk/shared_message_fragment_base.iff")
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_message_fragment_base, "object/tangible/encoded_disk/shared_message_fragment_base.iff")

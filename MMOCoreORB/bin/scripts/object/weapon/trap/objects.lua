@@ -48,6 +48,7 @@ object_weapon_trap_shared_eqp_weapon_auto_laser_trap = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_weapon_trap_shared_eqp_weapon_auto_laser_trap = SharedTangibleObjectTempl
 	clientObjectCRC = 1619506188
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_trap_shared_eqp_weapon_auto_laser_trap, "object/weapon/trap/shared_eqp_weapon_auto_laser_trap.iff")
+ObjectTemplates:addTemplate(object_weapon_trap_shared_eqp_weapon_auto_laser_trap, "object/weapon/trap/shared_eqp_weapon_auto_laser_trap.iff")

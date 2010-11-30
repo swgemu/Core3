@@ -48,6 +48,7 @@ object_tangible_harvesting_shared_shellfish_harvester = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32768,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_harvesting_shared_shellfish_harvester = SharedTangibleObjectTemp
 	clientObjectCRC = 867105366
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_harvesting_shared_shellfish_harvester, "object/tangible/harvesting/shared_shellfish_harvester.iff")
+ObjectTemplates:addTemplate(object_tangible_harvesting_shared_shellfish_harvester, "object/tangible/harvesting/shared_shellfish_harvester.iff")

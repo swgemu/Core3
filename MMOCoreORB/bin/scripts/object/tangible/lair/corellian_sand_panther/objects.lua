@@ -48,6 +48,7 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther =
 	clientObjectCRC = 1294781391
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther.iff")
 
 object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_g
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_g
 	clientObjectCRC = 3907598549
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther_grassland.iff")

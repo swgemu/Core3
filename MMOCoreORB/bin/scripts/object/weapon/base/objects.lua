@@ -49,6 +49,7 @@ object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131072,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1343110417
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_base_shared_base_weapon, "object/weapon/base/shared_base_weapon.iff")
+ObjectTemplates:addTemplate(object_weapon_base_shared_base_weapon, "object/weapon/base/shared_base_weapon.iff")
 
 object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -106,6 +107,7 @@ object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131072,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,4 +155,4 @@ object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 3295718930
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_base_shared_weapon_default, "object/weapon/base/shared_weapon_default.iff")
+ObjectTemplates:addTemplate(object_weapon_base_shared_weapon_default, "object/weapon/base/shared_weapon_default.iff")

@@ -48,6 +48,7 @@ object_tangible_crafting_station_shared_armor_repair = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32771,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_crafting_station_shared_armor_repair = SharedTangibleObjectTempl
 	clientObjectCRC = 3769226262
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_armor_repair, "object/tangible/crafting/station/shared_armor_repair.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_armor_repair, "object/tangible/crafting/station/shared_armor_repair.iff")
 
 object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_plain.apt",
@@ -101,6 +102,7 @@ object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32771,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTe
 	clientObjectCRC = 4032677980
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_repair, "object/tangible/crafting/station/shared_clothing_repair.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_clothing_repair, "object/tangible/crafting/station/shared_clothing_repair.iff")
 
 object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_clothing_mfg_station_m_s1.apt",
@@ -154,6 +156,7 @@ object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_clothing_station.cdf",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectT
 	clientObjectCRC = 737990049
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_station, "object/tangible/crafting/station/shared_clothing_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_clothing_station, "object/tangible/crafting/station/shared_clothing_station.iff")
 
 object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_hairdressing_hair_dye_kit.apt",
@@ -207,6 +210,7 @@ object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32769,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemp
 	clientObjectCRC = 753735496
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_tool, "object/tangible/crafting/station/shared_clothing_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_clothing_tool, "object/tangible/crafting/station/shared_clothing_tool.iff")
 
 object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
@@ -260,6 +264,7 @@ object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32771,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTempl
 	clientObjectCRC = 3945578306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_droid_repair, "object/tangible/crafting/station/shared_droid_repair.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_droid_repair, "object/tangible/crafting/station/shared_droid_repair.iff")
 
 object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_food_mfg_station_m_s1.apt",
@@ -313,6 +318,7 @@ object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_food_factory.cdf",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTempl
 	clientObjectCRC = 3133859016
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_food_station, "object/tangible/crafting/station/shared_food_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_food_station, "object/tangible/crafting/station/shared_food_station.iff")
 
 object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_portable_stove_lg_s1.apt",
@@ -366,6 +372,7 @@ object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32769,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate
 	clientObjectCRC = 2849609519
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_food_tool, "object/tangible/crafting/station/shared_food_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_food_tool, "object/tangible/crafting/station/shared_food_tool.iff")
 
 object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
@@ -419,6 +426,7 @@ object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32769,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTempl
 	clientObjectCRC = 1055200365
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_generic_tool, "object/tangible/crafting/station/shared_generic_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_generic_tool, "object/tangible/crafting/station/shared_generic_tool.iff")
 
 object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_lightsaber_crafting_kit.apt",
@@ -472,6 +480,7 @@ object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32769,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate
 	clientObjectCRC = 754074226
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_jedi_tool, "object/tangible/crafting/station/shared_jedi_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_jedi_tool, "object/tangible/crafting/station/shared_jedi_tool.iff")
 
 object_tangible_crafting_station_shared_public_clothing_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_clothing_mfg_station_m_s1.apt",
@@ -525,6 +534,7 @@ object_tangible_crafting_station_shared_public_clothing_station = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_clothing_station.cdf",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_crafting_station_shared_public_clothing_station = SharedTangible
 	clientObjectCRC = 2936644592
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_clothing_station, "object/tangible/crafting/station/shared_public_clothing_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_clothing_station, "object/tangible/crafting/station/shared_public_clothing_station.iff")
 
 object_tangible_crafting_station_shared_public_food_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_food_mfg_station_m_s1.apt",
@@ -578,6 +588,7 @@ object_tangible_crafting_station_shared_public_food_station = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_food_factory.cdf",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_crafting_station_shared_public_food_station = SharedTangibleObje
 	clientObjectCRC = 804779915
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_food_station, "object/tangible/crafting/station/shared_public_food_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_food_station, "object/tangible/crafting/station/shared_public_food_station.iff")
 
 object_tangible_crafting_station_shared_public_space_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_starship_mfg_station_m_s1.apt",
@@ -631,6 +642,7 @@ object_tangible_crafting_station_shared_public_space_station = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_crafting_station_shared_public_space_station = SharedTangibleObj
 	clientObjectCRC = 395482180
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_space_station, "object/tangible/crafting/station/shared_public_space_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_space_station, "object/tangible/crafting/station/shared_public_space_station.iff")
 
 object_tangible_crafting_station_shared_public_structure_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_structure_mfg_station_m_s1.apt",
@@ -684,6 +696,7 @@ object_tangible_crafting_station_shared_public_structure_station = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_structure_factory.cdf",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_crafting_station_shared_public_structure_station = SharedTangibl
 	clientObjectCRC = 464244555
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_structure_station, "object/tangible/crafting/station/shared_public_structure_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_structure_station, "object/tangible/crafting/station/shared_public_structure_station.iff")
 
 object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_weapon_weapon_mfg_station_m_s1.apt",
@@ -737,6 +750,7 @@ object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_weapon_factory.cdf",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleOb
 	clientObjectCRC = 1920049130
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_weapon_station, "object/tangible/crafting/station/shared_public_weapon_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_weapon_station, "object/tangible/crafting/station/shared_public_weapon_station.iff")
 
 object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_starship_mfg_station_m_s1.apt",
@@ -790,6 +804,7 @@ object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemp
 	clientObjectCRC = 408520625
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_space_station, "object/tangible/crafting/station/shared_space_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_space_station, "object/tangible/crafting/station/shared_space_station.iff")
 
 object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_toolkit.apt",
@@ -843,6 +858,7 @@ object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32769,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplat
 	clientObjectCRC = 2903391664
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_space_tool, "object/tangible/crafting/station/shared_space_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_space_tool, "object/tangible/crafting/station/shared_space_tool.iff")
 
 object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
@@ -896,6 +912,7 @@ object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32771,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectT
 	clientObjectCRC = 1513899009
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_repair, "object/tangible/crafting/station/shared_structure_repair.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_structure_repair, "object/tangible/crafting/station/shared_structure_repair.iff")
 
 object_tangible_crafting_station_shared_structure_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_structure_mfg_station_m_s1.apt",
@@ -949,6 +966,7 @@ object_tangible_crafting_station_shared_structure_station = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_structure_factory.cdf",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_crafting_station_shared_structure_station = SharedTangibleObject
 	clientObjectCRC = 2496989305
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_station, "object/tangible/crafting/station/shared_structure_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_structure_station, "object/tangible/crafting/station/shared_structure_station.iff")
 
 object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
@@ -1002,6 +1020,7 @@ object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32769,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTem
 	clientObjectCRC = 4275700789
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_tool, "object/tangible/crafting/station/shared_structure_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_structure_tool, "object/tangible/crafting/station/shared_structure_tool.iff")
 
 object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_other.apt",
@@ -1055,6 +1074,7 @@ object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32771,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemp
 	clientObjectCRC = 2607871827
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_repair, "object/tangible/crafting/station/shared_weapon_repair.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_weapon_repair, "object/tangible/crafting/station/shared_weapon_repair.iff")
 
 object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_weapon_weapon_mfg_station_m_s1.apt",
@@ -1108,6 +1128,7 @@ object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_weapon_factory.cdf",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTem
 	clientObjectCRC = 2167265111
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_station, "object/tangible/crafting/station/shared_weapon_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_weapon_station, "object/tangible/crafting/station/shared_weapon_station.iff")
 
 object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_weapon_repair_kit_s1.apt",
@@ -1161,6 +1182,7 @@ object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32769,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,4 +1227,4 @@ object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTempla
 	clientObjectCRC = 1693896753
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_tool, "object/tangible/crafting/station/shared_weapon_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_weapon_tool, "object/tangible/crafting/station/shared_weapon_tool.iff")

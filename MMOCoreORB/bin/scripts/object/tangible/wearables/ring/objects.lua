@@ -48,6 +48,7 @@ object_tangible_wearables_ring_shared_aakuan_ring = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_ring_shared_aakuan_ring = SharedTangibleObjectTemplate
 	clientObjectCRC = 923373873
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_aakuan_ring, "object/tangible/wearables/ring/shared_aakuan_ring.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_aakuan_ring, "object/tangible/wearables/ring/shared_aakuan_ring.iff")
 
 object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 4136025825
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_base, "object/tangible/wearables/ring/shared_ring_base.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_base, "object/tangible/wearables/ring/shared_ring_base.iff")
 
 object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_quest_hero.apt",
@@ -154,6 +156,7 @@ object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTempl
 	clientObjectCRC = 3368096094
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_mark_hero, "object/tangible/wearables/ring/shared_ring_mark_hero.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_mark_hero, "object/tangible/wearables/ring/shared_ring_mark_hero.iff")
 
 object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s03.apt",
@@ -207,6 +210,7 @@ object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTem
 	clientObjectCRC = 186168033
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_nightsister, "object/tangible/wearables/ring/shared_ring_nightsister.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_nightsister, "object/tangible/wearables/ring/shared_ring_nightsister.iff")
 
 object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1300460406
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s01, "object/tangible/wearables/ring/shared_ring_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s01, "object/tangible/wearables/ring/shared_ring_s01.iff")
 
 object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s02.apt",
@@ -313,6 +318,7 @@ object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2526338017
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s02, "object/tangible/wearables/ring/shared_ring_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s02, "object/tangible/wearables/ring/shared_ring_s02.iff")
 
 object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s03.apt",
@@ -366,6 +372,7 @@ object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3751394412
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s03, "object/tangible/wearables/ring/shared_ring_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s03, "object/tangible/wearables/ring/shared_ring_s03.iff")
 
 object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s03.apt",
@@ -419,6 +426,7 @@ object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTempl
 	clientObjectCRC = 266162342
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s03_quest, "object/tangible/wearables/ring/shared_ring_s03_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s03_quest, "object/tangible/wearables/ring/shared_ring_s03_quest.iff")
 
 object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s04.apt",
@@ -472,6 +480,7 @@ object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,4 +525,4 @@ object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 612013944
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s04, "object/tangible/wearables/ring/shared_ring_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s04, "object/tangible/wearables/ring/shared_ring_s04.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_eopie_shared_lair_eopie = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_eopie_shared_lair_eopie = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 390824199
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie, "object/tangible/lair/eopie/shared_lair_eopie.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie, "object/tangible/lair/eopie/shared_lair_eopie.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTempla
 	clientObjectCRC = 2432430820
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_desert, "object/tangible/lair/eopie/shared_lair_eopie_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_desert, "object/tangible/lair/eopie/shared_lair_eopie_desert.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate
 	clientObjectCRC = 769893304
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_dune, "object/tangible/lair/eopie/shared_lair_eopie_dune.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_dune, "object/tangible/lair/eopie/shared_lair_eopie_dune.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemp
 	clientObjectCRC = 2248131866
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_mountain, "object/tangible/lair/eopie/shared_lair_eopie_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_mountain, "object/tangible/lair/eopie/shared_lair_eopie_mountain.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -260,6 +264,7 @@ object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTem
 	clientObjectCRC = 3741668029
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_wasteland, "object/tangible/lair/eopie/shared_lair_eopie_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_wasteland, "object/tangible/lair/eopie/shared_lair_eopie_wasteland.iff")

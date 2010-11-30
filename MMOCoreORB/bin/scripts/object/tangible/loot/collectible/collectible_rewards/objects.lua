@@ -48,6 +48,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_blue_rug = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_blue_rug = SharedTan
 	clientObjectCRC = 2581547421
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_blue_rug, "object/tangible/loot/collectible/collectible_rewards/shared_blue_rug.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_blue_rug, "object/tangible/loot/collectible/collectible_rewards/shared_blue_rug.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculpture_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_sculpture_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculptur
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculptur
 	clientObjectCRC = 1595043156
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculpture_s01, "object/tangible/loot/collectible/collectible_rewards/shared_collectible_sculpture_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculpture_s01, "object/tangible/loot/collectible/collectible_rewards/shared_collectible_sculpture_s01.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_light_table.apt",
@@ -154,6 +156,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = 
 	clientObjectCRC = 1553506726
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_table, "object/tangible/loot/collectible/collectible_rewards/shared_collectible_table.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_table, "object/tangible/loot/collectible/collectible_rewards/shared_collectible_table.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_power_output_analyzer.apt",
@@ -207,6 +210,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device =
 	clientObjectCRC = 3016575876
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device, "object/tangible/loot/collectible/collectible_rewards/shared_fs_tracking_device.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device, "object/tangible/loot/collectible/collectible_rewards/shared_fs_tracking_device.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_giant_gong.apt",
@@ -260,6 +264,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibl
 	clientObjectCRC = 1260578344
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_gong, "object/tangible/loot/collectible/collectible_rewards/shared_gong.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_gong, "object/tangible/loot/collectible/collectible_rewards/shared_gong.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_m_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,4 +363,4 @@ object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedT
 	clientObjectCRC = 1620517273
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_orange_rug, "object/tangible/loot/collectible/collectible_rewards/shared_orange_rug.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_orange_rug, "object/tangible/loot/collectible/collectible_rewards/shared_orange_rug.iff")

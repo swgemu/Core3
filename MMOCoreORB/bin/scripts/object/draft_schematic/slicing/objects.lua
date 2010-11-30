@@ -47,6 +47,7 @@ object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSch
 	clientObjectCRC = 1225468655
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_armor_upgrade_kit.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_armor_upgrade_kit.iff")
 
 object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchemat
 	clientObjectCRC = 425747428
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, "object/draft_schematic/slicing/shared_slicing_flow_analyzer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, "object/draft_schematic/slicing/shared_slicing_flow_analyzer.iff")
 
 object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematic
 	clientObjectCRC = 1575116633
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, "object/draft_schematic/slicing/shared_slicing_laser_knife.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, "object/draft_schematic/slicing/shared_slicing_laser_knife.iff")
 
 object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchem
 	clientObjectCRC = 2888384407
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, "object/draft_schematic/slicing/shared_slicing_molecular_clamp.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, "object/draft_schematic/slicing/shared_slicing_molecular_clamp.iff")
 
 object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,4 +259,4 @@ object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSc
 	clientObjectCRC = 2390191987
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_weapon_upgrade_kit.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_weapon_upgrade_kit.iff")

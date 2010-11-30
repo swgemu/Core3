@@ -123,6 +123,7 @@ void SceneObjectImplementation::initializePrivateData() {
 	containerType = 0;
 	containerVolumeLimit = 0;
 	gameObjectType = 0;
+	clientGameObjectType = 0;
 	containmentType = 0;
 
 	zone = NULL;
@@ -151,7 +152,7 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	containerVolumeLimit = templateData->getContainerVolumeLimit();
 
 	gameObjectType = templateData->getGameObjectType();
-
+	clientGameObjectType = templateData->getClientGameObjectType();
 	clientObjectCRC = templateData->getClientObjectCRC();
 
 	arrangementDescriptors = templateData->getArrangementDescriptors();

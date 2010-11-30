@@ -48,6 +48,7 @@ object_tangible_travel_shuttle_base_shared_base_travel_shuttle = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_travel_shuttle_base_shared_base_travel_shuttle = SharedTangibleO
 	clientObjectCRC = 1622629631
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_travel_shuttle_base_shared_base_travel_shuttle, "object/tangible/travel/shuttle/base/shared_base_travel_shuttle.iff")
+ObjectTemplates:addTemplate(object_tangible_travel_shuttle_base_shared_base_travel_shuttle, "object/tangible/travel/shuttle/base/shared_base_travel_shuttle.iff")

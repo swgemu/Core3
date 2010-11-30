@@ -48,6 +48,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_graul = 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_graul = 
 	clientObjectCRC = 2016356298
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_graul, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_graul.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_graul, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_graul.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila
 	clientObjectCRC = 1660029328
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_kimogila.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_kimogila.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dragon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dr
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dr
 	clientObjectCRC = 1633798217
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dragon, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_krayt_dragon.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dragon, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_krayt_dragon.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor =
 	clientObjectCRC = 1557292930
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_rancor.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_rancor.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_condor_dragon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -260,6 +264,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 	clientObjectCRC = 2312630242
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_condor_dragon, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_condor_dragon.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_condor_dragon, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_condor_dragon.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_gulginaw = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -313,6 +318,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 	clientObjectCRC = 2074553503
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_gulginaw, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_gulginaw.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_gulginaw, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_gulginaw.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_kai_tok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -366,6 +372,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 	clientObjectCRC = 729911354
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_kai_tok, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_kai-tok.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_kai_tok, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_kai-tok.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_perlek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -419,6 +426,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 	clientObjectCRC = 3681532635
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_perlek, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_perlek.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_perlek, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_perlek.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -472,6 +480,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk = 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk = 
 	clientObjectCRC = 2976215460
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_gurk.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_gurk.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -525,6 +534,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak
 	clientObjectCRC = 3339660099
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_hanadak.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_hanadak.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -578,6 +588,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien 
 	clientObjectCRC = 900308717
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_mamien.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_mamien.iff")
 
 object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -631,6 +642,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok
 	clientObjectCRC = 3278136073
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_veermok.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_veermok.iff")
 
 object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -684,6 +696,7 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrak
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrak
 	clientObjectCRC = 4055467361
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrake, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_dalyrake.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrake, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_dalyrake.iff")
 
 object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -737,6 +750,7 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik
 	clientObjectCRC = 2106034291
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_kliknik.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_kliknik.iff")
 
 object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -790,6 +804,7 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,4 +849,4 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek =
 	clientObjectCRC = 151624394
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_merek.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_merek.iff")

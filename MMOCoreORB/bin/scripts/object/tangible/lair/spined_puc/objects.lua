@@ -48,6 +48,7 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc = SharedTangibleObjectTem
 	clientObjectCRC = 3786767749
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc, "object/tangible/lair/spined_puc/shared_lair_spined_puc.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc, "object/tangible/lair/spined_puc/shared_lair_spined_puc.iff")
 
 object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater = SharedTangib
 	clientObjectCRC = 2429481167
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater, "object/tangible/lair/spined_puc/shared_lair_spined_puc_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater, "object/tangible/lair/spined_puc/shared_lair_spined_puc_underwater.iff")

@@ -48,6 +48,7 @@ object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,4 +96,4 @@ object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTempl
 	clientObjectCRC = 2341623398
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_farm_shared_tatooine_flora_large, "object/building/poi/farm/shared_tatooine_flora_large.iff")
+ObjectTemplates:addTemplate(object_building_poi_farm_shared_tatooine_flora_large, "object/building/poi/farm/shared_tatooine_flora_large.iff")

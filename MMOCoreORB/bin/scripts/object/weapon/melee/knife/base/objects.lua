@@ -49,6 +49,7 @@ object_weapon_melee_knife_base_shared_knife_base = SharedWeaponObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_melee_knife_base_shared_knife_base = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 2605941713
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_knife_base_shared_knife_base, "object/weapon/melee/knife/base/shared_knife_base.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_knife_base_shared_knife_base, "object/weapon/melee/knife/base/shared_knife_base.iff")

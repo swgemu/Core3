@@ -48,6 +48,7 @@ object_tangible_wearables_ithorian_shared_apron_chef_jacket_s01_ith = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_ithorian_shared_apron_chef_jacket_s01_ith = SharedTang
 	clientObjectCRC = 2484025416
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_apron_chef_jacket_s01_ith, "object/tangible/wearables/ithorian/shared_apron_chef_jacket_s01_ith.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_apron_chef_jacket_s01_ith, "object/tangible/wearables/ithorian/shared_apron_chef_jacket_s01_ith.iff")
 
 object_tangible_wearables_ithorian_shared_hat_chef_s01_ith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_chef_s01_ith_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_ithorian_shared_hat_chef_s01_ith = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777226,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_ithorian_shared_hat_chef_s01_ith = SharedTangibleObjec
 	clientObjectCRC = 1415345053
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_hat_chef_s01_ith, "object/tangible/wearables/ithorian/shared_hat_chef_s01_ith.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_hat_chef_s01_ith, "object/tangible/wearables/ithorian/shared_hat_chef_s01_ith.iff")
 
 object_tangible_wearables_ithorian_shared_hat_chef_s02_ith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_chef_s02_ith_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_ithorian_shared_hat_chef_s02_ith = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777226,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_ithorian_shared_hat_chef_s02_ith = SharedTangibleObjec
 	clientObjectCRC = 1184665728
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_hat_chef_s02_ith, "object/tangible/wearables/ithorian/shared_hat_chef_s02_ith.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_hat_chef_s02_ith, "object/tangible/wearables/ithorian/shared_hat_chef_s02_ith.iff")
 
 object_tangible_wearables_ithorian_shared_ith_backpack_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_backpack_s01_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s01 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8213,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s01 = SharedTangibleObjec
 	clientObjectCRC = 4148168248
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_backpack_s01, "object/tangible/wearables/ithorian/shared_ith_backpack_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_backpack_s01, "object/tangible/wearables/ithorian/shared_ith_backpack_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_backpack_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_backpack_s03_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s03 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8213,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s03 = SharedTangibleObjec
 	clientObjectCRC = 1700448546
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_backpack_s03, "object/tangible/wearables/ithorian/shared_ith_backpack_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_backpack_s03, "object/tangible/wearables/ithorian/shared_ith_backpack_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_backpack_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_backpack_s05_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s05 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8213,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s05 = SharedTangibleObjec
 	clientObjectCRC = 3618932155
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_backpack_s05, "object/tangible/wearables/ithorian/shared_ith_backpack_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_backpack_s05, "object/tangible/wearables/ithorian/shared_ith_backpack_s05.iff")
 
 object_tangible_wearables_ithorian_shared_ith_backpack_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_backpack_s06_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s06 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8213,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s06 = SharedTangibleObjec
 	clientObjectCRC = 212020524
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_backpack_s06, "object/tangible/wearables/ithorian/shared_ith_backpack_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_backpack_s06, "object/tangible/wearables/ithorian/shared_ith_backpack_s06.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s02_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s02 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s02 = SharedTangibleObje
 	clientObjectCRC = 347486328
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s02, "object/tangible/wearables/ithorian/shared_ith_bandolier_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s02, "object/tangible/wearables/ithorian/shared_ith_bandolier_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s03_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s03 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s03 = SharedTangibleObje
 	clientObjectCRC = 1572560885
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s03, "object/tangible/wearables/ithorian/shared_ith_bandolier_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s03, "object/tangible/wearables/ithorian/shared_ith_bandolier_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s04_f.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s04 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s04 = SharedTangibleObje
 	clientObjectCRC = 2790814945
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s04, "object/tangible/wearables/ithorian/shared_ith_bandolier_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s04, "object/tangible/wearables/ithorian/shared_ith_bandolier_s04.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s05_f.sat",
@@ -578,6 +588,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s05 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s05 = SharedTangibleObje
 	clientObjectCRC = 4015330156
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s05, "object/tangible/wearables/ithorian/shared_ith_bandolier_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s05, "object/tangible/wearables/ithorian/shared_ith_bandolier_s05.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s06_f.sat",
@@ -631,6 +642,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s06 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s06 = SharedTangibleObje
 	clientObjectCRC = 876788731
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s06, "object/tangible/wearables/ithorian/shared_ith_bandolier_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s06, "object/tangible/wearables/ithorian/shared_ith_bandolier_s06.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s07_f.sat",
@@ -684,6 +696,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s07 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s07 = SharedTangibleObje
 	clientObjectCRC = 2102385782
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s07, "object/tangible/wearables/ithorian/shared_ith_bandolier_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s07, "object/tangible/wearables/ithorian/shared_ith_bandolier_s07.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s08_f.sat",
@@ -737,6 +750,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s08 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s08 = SharedTangibleObje
 	clientObjectCRC = 3343249508
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s08, "object/tangible/wearables/ithorian/shared_ith_bandolier_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bandolier_s08, "object/tangible/wearables/ithorian/shared_ith_bandolier_s08.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s01_f.sat",
@@ -790,6 +804,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s01 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 3042876922
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s01, "object/tangible/wearables/ithorian/shared_ith_belt_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s01, "object/tangible/wearables/ithorian/shared_ith_belt_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s02_f.sat",
@@ -843,6 +858,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s02 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 1850291565
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s02, "object/tangible/wearables/ithorian/shared_ith_belt_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s02, "object/tangible/wearables/ithorian/shared_ith_belt_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s03_f.sat",
@@ -896,6 +912,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s03 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s03 = SharedTangibleObjectTem
 	clientObjectCRC = 658789088
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s03, "object/tangible/wearables/ithorian/shared_ith_belt_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s03, "object/tangible/wearables/ithorian/shared_ith_belt_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s04_f.sat",
@@ -949,6 +966,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s04 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s04 = SharedTangibleObjectTem
 	clientObjectCRC = 3701963252
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s04, "object/tangible/wearables/ithorian/shared_ith_belt_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s04, "object/tangible/wearables/ithorian/shared_ith_belt_s04.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s05_f.sat",
@@ -1002,6 +1020,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s05 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s05 = SharedTangibleObjectTem
 	clientObjectCRC = 2510954105
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s05, "object/tangible/wearables/ithorian/shared_ith_belt_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s05, "object/tangible/wearables/ithorian/shared_ith_belt_s05.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s07_f.sat",
@@ -1055,6 +1074,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s07 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s07 = SharedTangibleObjectTem
 	clientObjectCRC = 129028451
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s07, "object/tangible/wearables/ithorian/shared_ith_belt_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s07, "object/tangible/wearables/ithorian/shared_ith_belt_s07.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s09_f.sat",
@@ -1108,6 +1128,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s09 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s09 = SharedTangibleObjectTem
 	clientObjectCRC = 4105673468
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s09, "object/tangible/wearables/ithorian/shared_ith_belt_s09.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s09, "object/tangible/wearables/ithorian/shared_ith_belt_s09.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s11_f.sat",
@@ -1161,6 +1182,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s11 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s11 = SharedTangibleObjectTem
 	clientObjectCRC = 2927005826
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s11, "object/tangible/wearables/ithorian/shared_ith_belt_s11.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s11, "object/tangible/wearables/ithorian/shared_ith_belt_s11.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s12_f.sat",
@@ -1214,6 +1236,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s12 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s12 = SharedTangibleObjectTem
 	clientObjectCRC = 1969305621
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s12, "object/tangible/wearables/ithorian/shared_ith_belt_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s12, "object/tangible/wearables/ithorian/shared_ith_belt_s12.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s13_f.sat",
@@ -1267,6 +1290,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s13 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s13 = SharedTangibleObjectTem
 	clientObjectCRC = 1013735320
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s13, "object/tangible/wearables/ithorian/shared_ith_belt_s13.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s13, "object/tangible/wearables/ithorian/shared_ith_belt_s13.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s14_f.sat",
@@ -1320,6 +1344,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s14 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s14 = SharedTangibleObjectTem
 	clientObjectCRC = 3348067468
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s14, "object/tangible/wearables/ithorian/shared_ith_belt_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s14, "object/tangible/wearables/ithorian/shared_ith_belt_s14.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s15_f.sat",
@@ -1373,6 +1398,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s15 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s15 = SharedTangibleObjectTem
 	clientObjectCRC = 2390889217
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s15, "object/tangible/wearables/ithorian/shared_ith_belt_s15.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s15, "object/tangible/wearables/ithorian/shared_ith_belt_s15.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s16_f.sat",
@@ -1426,6 +1452,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s16 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s16 = SharedTangibleObjectTem
 	clientObjectCRC = 1435876246
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s16, "object/tangible/wearables/ithorian/shared_ith_belt_s16.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s16, "object/tangible/wearables/ithorian/shared_ith_belt_s16.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s17_f.sat",
@@ -1479,6 +1506,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s17 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s17 = SharedTangibleObjectTem
 	clientObjectCRC = 479779867
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s17, "object/tangible/wearables/ithorian/shared_ith_belt_s17.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s17, "object/tangible/wearables/ithorian/shared_ith_belt_s17.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s18_f.sat",
@@ -1532,6 +1560,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s18 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s18 = SharedTangibleObjectTem
 	clientObjectCRC = 2794647561
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s18, "object/tangible/wearables/ithorian/shared_ith_belt_s18.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s18, "object/tangible/wearables/ithorian/shared_ith_belt_s18.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s19_f.sat",
@@ -1585,6 +1614,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s19 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s19 = SharedTangibleObjectTem
 	clientObjectCRC = 4020213636
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s19, "object/tangible/wearables/ithorian/shared_ith_belt_s19.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s19, "object/tangible/wearables/ithorian/shared_ith_belt_s19.iff")
 
 object_tangible_wearables_ithorian_shared_ith_belt_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s20_f.sat",
@@ -1638,6 +1668,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s20 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s20 = SharedTangibleObjectTem
 	clientObjectCRC = 3389251719
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s20, "object/tangible/wearables/ithorian/shared_ith_belt_s20.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_belt_s20, "object/tangible/wearables/ithorian/shared_ith_belt_s20.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s01_f.sat",
@@ -1691,6 +1722,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s01 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s01 = SharedTangibleObjec
 	clientObjectCRC = 1624619856
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s01, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s01, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s02_f.sat",
@@ -1744,6 +1776,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s02 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s02 = SharedTangibleObjec
 	clientObjectCRC = 3150058439
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s02, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s02, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s03_f.sat",
@@ -1797,6 +1830,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s03 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s03 = SharedTangibleObjec
 	clientObjectCRC = 4073681994
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s03, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s03, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s04_f.sat",
@@ -1850,6 +1884,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s04 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s04 = SharedTangibleObjec
 	clientObjectCRC = 153902942
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s04, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s04, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s04.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s05_f.sat",
@@ -1903,6 +1938,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s05 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s05 = SharedTangibleObjec
 	clientObjectCRC = 1075919059
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s05, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s05, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s05.iff")
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s06_f.sat",
@@ -1956,6 +1992,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s06 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s06 = SharedTangibleObjec
 	clientObjectCRC = 2604044356
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s06, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_bodysuit_s06, "object/tangible/wearables/ithorian/shared_ith_bodysuit_s06.iff")
 
 object_tangible_wearables_ithorian_shared_ith_dress_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_dress_s02_f.sat",
@@ -2009,6 +2046,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_s02 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777223,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_s02 = SharedTangibleObjectTe
 	clientObjectCRC = 2776825848
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_dress_s02, "object/tangible/wearables/ithorian/shared_ith_dress_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_dress_s02, "object/tangible/wearables/ithorian/shared_ith_dress_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_dress_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_dress_s03_f.sat",
@@ -2062,6 +2100,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_s03 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777223,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_s03 = SharedTangibleObjectTe
 	clientObjectCRC = 3968833653
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_dress_s03, "object/tangible/wearables/ithorian/shared_ith_dress_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_dress_s03, "object/tangible/wearables/ithorian/shared_ith_dress_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_dress_short_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_dress_short_s01_f.sat",
@@ -2115,6 +2154,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_short_s01 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_short_s01 = SharedTangibleOb
 	clientObjectCRC = 4091398496
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_dress_short_s01, "object/tangible/wearables/ithorian/shared_ith_dress_short_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_dress_short_s01, "object/tangible/wearables/ithorian/shared_ith_dress_short_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_gloves_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_gloves_s01_f.sat",
@@ -2168,6 +2208,7 @@ object_tangible_wearables_ithorian_shared_ith_gloves_s01 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777224,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_wearables_ithorian_shared_ith_gloves_s01 = SharedTangibleObjectT
 	clientObjectCRC = 698134614
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_gloves_s01, "object/tangible/wearables/ithorian/shared_ith_gloves_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_gloves_s01, "object/tangible/wearables/ithorian/shared_ith_gloves_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_gloves_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_gloves_s02_f.sat",
@@ -2221,6 +2262,7 @@ object_tangible_wearables_ithorian_shared_ith_gloves_s02 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777224,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_wearables_ithorian_shared_ith_gloves_s02 = SharedTangibleObjectT
 	clientObjectCRC = 4069202113
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_gloves_s02, "object/tangible/wearables/ithorian/shared_ith_gloves_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_gloves_s02, "object/tangible/wearables/ithorian/shared_ith_gloves_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_hat_s01_f.sat",
@@ -2274,6 +2316,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s01 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777226,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 2858642362
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_hat_s01, "object/tangible/wearables/ithorian/shared_ith_hat_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_hat_s01, "object/tangible/wearables/ithorian/shared_ith_hat_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_hat_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_hat_s02_f.sat",
@@ -2327,6 +2370,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s02 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777226,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s02 = SharedTangibleObjectTemp
 	clientObjectCRC = 1903477549
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_hat_s02, "object/tangible/wearables/ithorian/shared_ith_hat_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_hat_s02, "object/tangible/wearables/ithorian/shared_ith_hat_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_hat_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_hat_s03_f.sat",
@@ -2380,6 +2424,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s03 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777226,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s03 = SharedTangibleObjectTemp
 	clientObjectCRC = 947496096
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_hat_s03, "object/tangible/wearables/ithorian/shared_ith_hat_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_hat_s03, "object/tangible/wearables/ithorian/shared_ith_hat_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_hat_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_hat_s04_f.sat",
@@ -2433,6 +2478,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s04 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777226,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s04 = SharedTangibleObjectTemp
 	clientObjectCRC = 3281686452
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_hat_s04, "object/tangible/wearables/ithorian/shared_ith_hat_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_hat_s04, "object/tangible/wearables/ithorian/shared_ith_hat_s04.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s01_f.sat",
@@ -2486,6 +2532,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s01 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s01 = SharedTangibleObjectT
 	clientObjectCRC = 3410900852
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s01, "object/tangible/wearables/ithorian/shared_ith_jacket_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s01, "object/tangible/wearables/ithorian/shared_ith_jacket_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s02_f.sat",
@@ -2539,6 +2586,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s02 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s02 = SharedTangibleObjectT
 	clientObjectCRC = 274309091
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s02, "object/tangible/wearables/ithorian/shared_ith_jacket_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s02, "object/tangible/wearables/ithorian/shared_ith_jacket_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s03_f.sat",
@@ -2592,6 +2640,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s03 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s03 = SharedTangibleObjectT
 	clientObjectCRC = 1498740846
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s03, "object/tangible/wearables/ithorian/shared_ith_jacket_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s03, "object/tangible/wearables/ithorian/shared_ith_jacket_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s04_f.sat",
@@ -2645,6 +2694,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s04 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s04 = SharedTangibleObjectT
 	clientObjectCRC = 2729956218
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s04, "object/tangible/wearables/ithorian/shared_ith_jacket_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s04, "object/tangible/wearables/ithorian/shared_ith_jacket_s04.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s05_f.sat",
@@ -2698,6 +2748,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s05 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s05 = SharedTangibleObjectT
 	clientObjectCRC = 3954881783
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s05, "object/tangible/wearables/ithorian/shared_ith_jacket_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s05, "object/tangible/wearables/ithorian/shared_ith_jacket_s05.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s06_f.sat",
@@ -2751,6 +2802,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s06 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s06 = SharedTangibleObjectT
 	clientObjectCRC = 816651360
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s06, "object/tangible/wearables/ithorian/shared_ith_jacket_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s06, "object/tangible/wearables/ithorian/shared_ith_jacket_s06.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s07_f.sat",
@@ -2804,6 +2856,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s07 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s07 = SharedTangibleObjectT
 	clientObjectCRC = 2040560621
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s07, "object/tangible/wearables/ithorian/shared_ith_jacket_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s07, "object/tangible/wearables/ithorian/shared_ith_jacket_s07.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s08_f.sat",
@@ -2857,6 +2910,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s08 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s08 = SharedTangibleObjectT
 	clientObjectCRC = 3282720767
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s08, "object/tangible/wearables/ithorian/shared_ith_jacket_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s08, "object/tangible/wearables/ithorian/shared_ith_jacket_s08.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s09_f.sat",
@@ -2910,6 +2964,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s09 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s09 = SharedTangibleObjectT
 	clientObjectCRC = 2326212722
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s09, "object/tangible/wearables/ithorian/shared_ith_jacket_s09.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s09, "object/tangible/wearables/ithorian/shared_ith_jacket_s09.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s10_f.sat",
@@ -2963,6 +3018,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s10 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s10 = SharedTangibleObjectT
 	clientObjectCRC = 2573950337
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s10, "object/tangible/wearables/ithorian/shared_ith_jacket_s10.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s10, "object/tangible/wearables/ithorian/shared_ith_jacket_s10.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s11_f.sat",
@@ -3016,6 +3072,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s11 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s11 = SharedTangibleObjectT
 	clientObjectCRC = 3496360460
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s11, "object/tangible/wearables/ithorian/shared_ith_jacket_s11.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s11, "object/tangible/wearables/ithorian/shared_ith_jacket_s11.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s12_f.sat",
@@ -3069,6 +3126,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s12 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s12 = SharedTangibleObjectT
 	clientObjectCRC = 191992475
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s12, "object/tangible/wearables/ithorian/shared_ith_jacket_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s12, "object/tangible/wearables/ithorian/shared_ith_jacket_s12.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s13_f.sat",
@@ -3122,6 +3180,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s13 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s13 = SharedTangibleObjectT
 	clientObjectCRC = 1115485462
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s13, "object/tangible/wearables/ithorian/shared_ith_jacket_s13.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s13, "object/tangible/wearables/ithorian/shared_ith_jacket_s13.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s14_f.sat",
@@ -3175,6 +3234,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s14 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s14 = SharedTangibleObjectT
 	clientObjectCRC = 3114262018
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s14, "object/tangible/wearables/ithorian/shared_ith_jacket_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s14, "object/tangible/wearables/ithorian/shared_ith_jacket_s14.iff")
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s15_f.sat",
@@ -3228,6 +3288,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s15 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s15 = SharedTangibleObjectT
 	clientObjectCRC = 4036147599
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s15, "object/tangible/wearables/ithorian/shared_ith_jacket_s15.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_jacket_s15, "object/tangible/wearables/ithorian/shared_ith_jacket_s15.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s01_f.sat",
@@ -3281,6 +3342,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s01 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s01 = SharedTangibleObjec
 	clientObjectCRC = 3177176289
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s01, "object/tangible/wearables/ithorian/shared_ith_necklace_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s01, "object/tangible/wearables/ithorian/shared_ith_necklace_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s02_f.sat",
@@ -3334,6 +3396,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s02 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s02 = SharedTangibleObjec
 	clientObjectCRC = 1716024438
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s02, "object/tangible/wearables/ithorian/shared_ith_necklace_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s02, "object/tangible/wearables/ithorian/shared_ith_necklace_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s03_f.sat",
@@ -3387,6 +3450,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s03 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s03 = SharedTangibleObjec
 	clientObjectCRC = 793056251
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s03, "object/tangible/wearables/ithorian/shared_ith_necklace_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s03, "object/tangible/wearables/ithorian/shared_ith_necklace_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s04_f.sat",
@@ -3440,6 +3504,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s04 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s04 = SharedTangibleObjec
 	clientObjectCRC = 3567663343
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s04, "object/tangible/wearables/ithorian/shared_ith_necklace_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s04, "object/tangible/wearables/ithorian/shared_ith_necklace_s04.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s05_f.sat",
@@ -3493,6 +3558,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s05 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s05 = SharedTangibleObjec
 	clientObjectCRC = 2645253986
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s05, "object/tangible/wearables/ithorian/shared_ith_necklace_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s05, "object/tangible/wearables/ithorian/shared_ith_necklace_s05.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s06_f.sat",
@@ -3546,6 +3612,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s06 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s06 = SharedTangibleObjec
 	clientObjectCRC = 1186789365
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s06, "object/tangible/wearables/ithorian/shared_ith_necklace_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s06, "object/tangible/wearables/ithorian/shared_ith_necklace_s06.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s07_f.sat",
@@ -3599,6 +3666,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s07 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s07 = SharedTangibleObjec
 	clientObjectCRC = 263295096
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s07, "object/tangible/wearables/ithorian/shared_ith_necklace_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s07, "object/tangible/wearables/ithorian/shared_ith_necklace_s07.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s08_f.sat",
@@ -3652,6 +3720,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s08 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s08 = SharedTangibleObjec
 	clientObjectCRC = 3048979562
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s08, "object/tangible/wearables/ithorian/shared_ith_necklace_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s08, "object/tangible/wearables/ithorian/shared_ith_necklace_s08.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s09_f.sat",
@@ -3705,6 +3774,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s09 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s09 = SharedTangibleObjec
 	clientObjectCRC = 4239842279
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s09, "object/tangible/wearables/ithorian/shared_ith_necklace_s09.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s09, "object/tangible/wearables/ithorian/shared_ith_necklace_s09.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s10_f.sat",
@@ -3758,6 +3828,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s10 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s10 = SharedTangibleObjec
 	clientObjectCRC = 4017796628
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s10, "object/tangible/wearables/ithorian/shared_ith_necklace_s10.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s10, "object/tangible/wearables/ithorian/shared_ith_necklace_s10.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s11_f.sat",
@@ -3811,6 +3882,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s11 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s11 = SharedTangibleObjec
 	clientObjectCRC = 2792870297
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s11, "object/tangible/wearables/ithorian/shared_ith_necklace_s11.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s11, "object/tangible/wearables/ithorian/shared_ith_necklace_s11.iff")
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s12_f.sat",
@@ -3864,6 +3936,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s12 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097155,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s12 = SharedTangibleObjec
 	clientObjectCRC = 2103474446
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s12, "object/tangible/wearables/ithorian/shared_ith_necklace_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_necklace_s12, "object/tangible/wearables/ithorian/shared_ith_necklace_s12.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s01_f.sat",
@@ -3917,6 +3990,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s01 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 1130250638
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s01, "object/tangible/wearables/ithorian/shared_ith_pants_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s01, "object/tangible/wearables/ithorian/shared_ith_pants_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s02_f.sat",
@@ -3970,6 +4044,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s02 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s02 = SharedTangibleObjectTe
 	clientObjectCRC = 2554980633
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s02, "object/tangible/wearables/ithorian/shared_ith_pants_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s02, "object/tangible/wearables/ithorian/shared_ith_pants_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s03_f.sat",
@@ -4023,6 +4098,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s03 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s03 = SharedTangibleObjectTe
 	clientObjectCRC = 3510931092
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s03, "object/tangible/wearables/ithorian/shared_ith_pants_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s03, "object/tangible/wearables/ithorian/shared_ith_pants_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s04_f.sat",
@@ -4076,6 +4152,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s04 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s04 = SharedTangibleObjectTe
 	clientObjectCRC = 715629952
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s04, "object/tangible/wearables/ithorian/shared_ith_pants_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s04, "object/tangible/wearables/ithorian/shared_ith_pants_s04.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s05_f.sat",
@@ -4129,6 +4206,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s05 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s05 = SharedTangibleObjectTe
 	clientObjectCRC = 1672135181
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s05, "object/tangible/wearables/ithorian/shared_ith_pants_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s05, "object/tangible/wearables/ithorian/shared_ith_pants_s05.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s06_f.sat",
@@ -4182,6 +4260,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s06 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s06 = SharedTangibleObjectTe
 	clientObjectCRC = 3099421338
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s06, "object/tangible/wearables/ithorian/shared_ith_pants_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s06, "object/tangible/wearables/ithorian/shared_ith_pants_s06.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s07_f.sat",
@@ -4235,6 +4314,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s07 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s07 = SharedTangibleObjectTe
 	clientObjectCRC = 4054846743
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s07, "object/tangible/wearables/ithorian/shared_ith_pants_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s07, "object/tangible/wearables/ithorian/shared_ith_pants_s07.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s08_f.sat",
@@ -4288,6 +4368,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s08 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s08 = SharedTangibleObjectTe
 	clientObjectCRC = 1270489349
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s08, "object/tangible/wearables/ithorian/shared_ith_pants_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s08, "object/tangible/wearables/ithorian/shared_ith_pants_s08.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s09_f.sat",
@@ -4341,6 +4422,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s09 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s09 = SharedTangibleObjectTe
 	clientObjectCRC = 45565576
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s09, "object/tangible/wearables/ithorian/shared_ith_pants_s09.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s09, "object/tangible/wearables/ithorian/shared_ith_pants_s09.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s10_f.sat",
@@ -4394,6 +4476,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s10 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s10 = SharedTangibleObjectTe
 	clientObjectCRC = 293284731
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s10, "object/tangible/wearables/ithorian/shared_ith_pants_s10.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s10, "object/tangible/wearables/ithorian/shared_ith_pants_s10.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s11_f.sat",
@@ -4447,6 +4530,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s11 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s11 = SharedTangibleObjectTe
 	clientObjectCRC = 1484147958
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s11, "object/tangible/wearables/ithorian/shared_ith_pants_s11.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s11, "object/tangible/wearables/ithorian/shared_ith_pants_s11.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s12_f.sat",
@@ -4500,6 +4584,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s12 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s12 = SharedTangibleObjectTe
 	clientObjectCRC = 2204230753
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s12, "object/tangible/wearables/ithorian/shared_ith_pants_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s12, "object/tangible/wearables/ithorian/shared_ith_pants_s12.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s13_f.sat",
@@ -4553,6 +4638,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s13 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s13 = SharedTangibleObjectTe
 	clientObjectCRC = 3396109292
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s13, "object/tangible/wearables/ithorian/shared_ith_pants_s13.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s13, "object/tangible/wearables/ithorian/shared_ith_pants_s13.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s14_f.sat",
@@ -4606,6 +4692,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s14 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s14 = SharedTangibleObjectTe
 	clientObjectCRC = 831498488
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s14, "object/tangible/wearables/ithorian/shared_ith_pants_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s14, "object/tangible/wearables/ithorian/shared_ith_pants_s14.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s15_f.sat",
@@ -4659,6 +4746,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s15 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s15 = SharedTangibleObjectTe
 	clientObjectCRC = 2021838709
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s15, "object/tangible/wearables/ithorian/shared_ith_pants_s15.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s15, "object/tangible/wearables/ithorian/shared_ith_pants_s15.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s16_f.sat",
@@ -4712,6 +4800,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s16 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s16 = SharedTangibleObjectTe
 	clientObjectCRC = 2744477666
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s16, "object/tangible/wearables/ithorian/shared_ith_pants_s16.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s16, "object/tangible/wearables/ithorian/shared_ith_pants_s16.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s17_f.sat",
@@ -4765,6 +4854,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s17 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s17 = SharedTangibleObjectTe
 	clientObjectCRC = 3935830127
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s17, "object/tangible/wearables/ithorian/shared_ith_pants_s17.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s17, "object/tangible/wearables/ithorian/shared_ith_pants_s17.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s18_f.sat",
@@ -4818,6 +4908,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s18 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s18 = SharedTangibleObjectTe
 	clientObjectCRC = 1351756925
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s18, "object/tangible/wearables/ithorian/shared_ith_pants_s18.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s18, "object/tangible/wearables/ithorian/shared_ith_pants_s18.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s19_f.sat",
@@ -4871,6 +4962,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s19 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s19 = SharedTangibleObjectTe
 	clientObjectCRC = 429870064
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s19, "object/tangible/wearables/ithorian/shared_ith_pants_s19.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s19, "object/tangible/wearables/ithorian/shared_ith_pants_s19.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s20_f.sat",
@@ -4924,6 +5016,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s20 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s20 = SharedTangibleObjectTe
 	clientObjectCRC = 1006845171
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s20, "object/tangible/wearables/ithorian/shared_ith_pants_s20.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s20, "object/tangible/wearables/ithorian/shared_ith_pants_s20.iff")
 
 object_tangible_wearables_ithorian_shared_ith_pants_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s21_f.sat",
@@ -4977,6 +5070,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s21 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s21 = SharedTangibleObjectTe
 	clientObjectCRC = 1963875198
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s21, "object/tangible/wearables/ithorian/shared_ith_pants_s21.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_pants_s21, "object/tangible/wearables/ithorian/shared_ith_pants_s21.iff")
 
 object_tangible_wearables_ithorian_shared_ith_robe_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_robe_s02_f.sat",
@@ -5030,6 +5124,7 @@ object_tangible_wearables_ithorian_shared_ith_robe_s02 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777229,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_wearables_ithorian_shared_ith_robe_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 3329776583
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_robe_s02, "object/tangible/wearables/ithorian/shared_ith_robe_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_robe_s02, "object/tangible/wearables/ithorian/shared_ith_robe_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_robe_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_robe_s03_f.sat",
@@ -5083,6 +5178,7 @@ object_tangible_wearables_ithorian_shared_ith_robe_s03 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777229,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_wearables_ithorian_shared_ith_robe_s03 = SharedTangibleObjectTem
 	clientObjectCRC = 2406825034
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_robe_s03, "object/tangible/wearables/ithorian/shared_ith_robe_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_robe_s03, "object/tangible/wearables/ithorian/shared_ith_robe_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s01_f.sat",
@@ -5136,6 +5232,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s01 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 2052487731
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s01, "object/tangible/wearables/ithorian/shared_ith_shirt_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s01, "object/tangible/wearables/ithorian/shared_ith_shirt_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s02_f.sat",
@@ -5189,6 +5286,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s02 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s02 = SharedTangibleObjectTe
 	clientObjectCRC = 2705445540
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s02, "object/tangible/wearables/ithorian/shared_ith_shirt_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s02, "object/tangible/wearables/ithorian/shared_ith_shirt_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s03_f.sat",
@@ -5242,6 +5340,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s03 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s03 = SharedTangibleObjectTe
 	clientObjectCRC = 3897341225
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s03, "object/tangible/wearables/ithorian/shared_ith_shirt_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s03, "object/tangible/wearables/ithorian/shared_ith_shirt_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s04_f.sat",
@@ -5295,6 +5394,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s04 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s04 = SharedTangibleObjectTe
 	clientObjectCRC = 330276413
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s04, "object/tangible/wearables/ithorian/shared_ith_shirt_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s04, "object/tangible/wearables/ithorian/shared_ith_shirt_s04.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s05_f.sat",
@@ -5348,6 +5448,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s05 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s05 = SharedTangibleObjectTe
 	clientObjectCRC = 1520630192
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s05, "object/tangible/wearables/ithorian/shared_ith_shirt_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s05, "object/tangible/wearables/ithorian/shared_ith_shirt_s05.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s06_f.sat",
@@ -5401,6 +5502,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s06 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s06 = SharedTangibleObjectTe
 	clientObjectCRC = 2176143655
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s06, "object/tangible/wearables/ithorian/shared_ith_shirt_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s06, "object/tangible/wearables/ithorian/shared_ith_shirt_s06.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s07_f.sat",
@@ -5454,6 +5556,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s07 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s07 = SharedTangibleObjectTe
 	clientObjectCRC = 3367515818
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s07, "object/tangible/wearables/ithorian/shared_ith_shirt_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s07, "object/tangible/wearables/ithorian/shared_ith_shirt_s07.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s08_f.sat",
@@ -5507,6 +5610,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s08 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s08 = SharedTangibleObjectTe
 	clientObjectCRC = 1924274872
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s08, "object/tangible/wearables/ithorian/shared_ith_shirt_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s08, "object/tangible/wearables/ithorian/shared_ith_shirt_s08.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s09_f.sat",
@@ -5560,6 +5664,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s09 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s09 = SharedTangibleObjectTe
 	clientObjectCRC = 1002405173
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s09, "object/tangible/wearables/ithorian/shared_ith_shirt_s09.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s09, "object/tangible/wearables/ithorian/shared_ith_shirt_s09.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s10_f.sat",
@@ -5613,6 +5718,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s10 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s10 = SharedTangibleObjectTe
 	clientObjectCRC = 678629574
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s10, "object/tangible/wearables/ithorian/shared_ith_shirt_s10.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s10, "object/tangible/wearables/ithorian/shared_ith_shirt_s10.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s11_f.sat",
@@ -5666,6 +5772,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s11 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s11 = SharedTangibleObjectTe
 	clientObjectCRC = 1635678027
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s11, "object/tangible/wearables/ithorian/shared_ith_shirt_s11.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s11, "object/tangible/wearables/ithorian/shared_ith_shirt_s11.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s12_f.sat",
@@ -5719,6 +5826,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s12 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s12 = SharedTangibleObjectTe
 	clientObjectCRC = 3127500764
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s12, "object/tangible/wearables/ithorian/shared_ith_shirt_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s12, "object/tangible/wearables/ithorian/shared_ith_shirt_s12.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s13_f.sat",
@@ -5772,6 +5880,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s13 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s13 = SharedTangibleObjectTe
 	clientObjectCRC = 4083464273
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s13, "object/tangible/wearables/ithorian/shared_ith_shirt_s13.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s13, "object/tangible/wearables/ithorian/shared_ith_shirt_s13.iff")
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s14_f.sat",
@@ -5825,6 +5934,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s14 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s14 = SharedTangibleObjectTe
 	clientObjectCRC = 143102789
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s14, "object/tangible/wearables/ithorian/shared_ith_shirt_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_shirt_s14, "object/tangible/wearables/ithorian/shared_ith_shirt_s14.iff")
 
 object_tangible_wearables_ithorian_shared_ith_skirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_skirt_s01_f.sat",
@@ -5878,6 +5988,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s01 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777234,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 1917673273
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_skirt_s01, "object/tangible/wearables/ithorian/shared_ith_skirt_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_skirt_s01, "object/tangible/wearables/ithorian/shared_ith_skirt_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_skirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_skirt_s02_f.sat",
@@ -5931,6 +6042,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s02 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777234,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s02 = SharedTangibleObjectTe
 	clientObjectCRC = 2841311150
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_skirt_s02, "object/tangible/wearables/ithorian/shared_ith_skirt_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_skirt_s02, "object/tangible/wearables/ithorian/shared_ith_skirt_s02.iff")
 
 object_tangible_wearables_ithorian_shared_ith_skirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_skirt_s03_f.sat",
@@ -5984,6 +6096,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s03 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777234,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s03 = SharedTangibleObjectTe
 	clientObjectCRC = 3763834915
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_skirt_s03, "object/tangible/wearables/ithorian/shared_ith_skirt_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_skirt_s03, "object/tangible/wearables/ithorian/shared_ith_skirt_s03.iff")
 
 object_tangible_wearables_ithorian_shared_ith_underwear_bottom = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_underwear_bottom_f.sat",
@@ -6037,6 +6150,7 @@ object_tangible_wearables_ithorian_shared_ith_underwear_bottom = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777233,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_wearables_ithorian_shared_ith_underwear_bottom = SharedTangibleO
 	clientObjectCRC = 582349540
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_underwear_bottom, "object/tangible/wearables/ithorian/shared_ith_underwear_bottom.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_underwear_bottom, "object/tangible/wearables/ithorian/shared_ith_underwear_bottom.iff")
 
 object_tangible_wearables_ithorian_shared_ith_underwear_top = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_underwear_top_f.sat",
@@ -6090,6 +6204,7 @@ object_tangible_wearables_ithorian_shared_ith_underwear_top = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777233,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_wearables_ithorian_shared_ith_underwear_top = SharedTangibleObje
 	clientObjectCRC = 3845560407
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_underwear_top, "object/tangible/wearables/ithorian/shared_ith_underwear_top.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_underwear_top, "object/tangible/wearables/ithorian/shared_ith_underwear_top.iff")
 
 object_tangible_wearables_ithorian_shared_ith_vest_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_vest_s01_f.sat",
@@ -6143,6 +6258,7 @@ object_tangible_wearables_ithorian_shared_ith_vest_s01 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777231,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_wearables_ithorian_shared_ith_vest_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 1675163714
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_vest_s01, "object/tangible/wearables/ithorian/shared_ith_vest_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_vest_s01, "object/tangible/wearables/ithorian/shared_ith_vest_s01.iff")
 
 object_tangible_wearables_ithorian_shared_ith_vest_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_vest_s02_f.sat",
@@ -6196,6 +6312,7 @@ object_tangible_wearables_ithorian_shared_ith_vest_s02 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777231,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,4 +6357,4 @@ object_tangible_wearables_ithorian_shared_ith_vest_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 3100594389
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_vest_s02, "object/tangible/wearables/ithorian/shared_ith_vest_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_shared_ith_vest_s02, "object/tangible/wearables/ithorian/shared_ith_vest_s02.iff")

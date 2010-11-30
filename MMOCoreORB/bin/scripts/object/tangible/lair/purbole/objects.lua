@@ -48,6 +48,7 @@ object_tangible_lair_purbole_shared_lair_purbole = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_purbole_shared_lair_purbole = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1874608603
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_purbole_shared_lair_purbole, "object/tangible/lair/purbole/shared_lair_purbole.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_purbole_shared_lair_purbole, "object/tangible/lair/purbole/shared_lair_purbole.iff")
 
 object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTe
 	clientObjectCRC = 2529340012
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_purbole_shared_lair_purbole_forest, "object/tangible/lair/purbole/shared_lair_purbole_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_purbole_shared_lair_purbole_forest, "object/tangible/lair/purbole/shared_lair_purbole_forest.iff")

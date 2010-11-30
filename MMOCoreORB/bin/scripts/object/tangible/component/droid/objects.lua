@@ -48,6 +48,7 @@ object_tangible_component_droid_shared_advanced_droid_frame = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_droid_shared_advanced_droid_frame = SharedTangibleObje
 	clientObjectCRC = 3744416781
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_advanced_droid_frame, "object/tangible/component/droid/shared_advanced_droid_frame.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_advanced_droid_frame, "object/tangible/component/droid/shared_advanced_droid_frame.iff")
 
 object_tangible_component_droid_shared_armor_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -101,6 +102,7 @@ object_tangible_component_droid_shared_armor_module_1 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_droid_shared_armor_module_1 = SharedTangibleObjectTemp
 	clientObjectCRC = 1402137071
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_1, "object/tangible/component/droid/shared_armor_module_1.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_1, "object/tangible/component/droid/shared_armor_module_1.iff")
 
 object_tangible_component_droid_shared_armor_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -154,6 +156,7 @@ object_tangible_component_droid_shared_armor_module_2 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_component_droid_shared_armor_module_2 = SharedTangibleObjectTemp
 	clientObjectCRC = 2290434424
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_2, "object/tangible/component/droid/shared_armor_module_2.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_2, "object/tangible/component/droid/shared_armor_module_2.iff")
 
 object_tangible_component_droid_shared_armor_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -207,6 +210,7 @@ object_tangible_component_droid_shared_armor_module_3 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_component_droid_shared_armor_module_3 = SharedTangibleObjectTemp
 	clientObjectCRC = 3246925557
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_3, "object/tangible/component/droid/shared_armor_module_3.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_3, "object/tangible/component/droid/shared_armor_module_3.iff")
 
 object_tangible_component_droid_shared_armor_module_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -260,6 +264,7 @@ object_tangible_component_droid_shared_armor_module_4 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_component_droid_shared_armor_module_4 = SharedTangibleObjectTemp
 	clientObjectCRC = 980094433
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_4, "object/tangible/component/droid/shared_armor_module_4.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_4, "object/tangible/component/droid/shared_armor_module_4.iff")
 
 object_tangible_component_droid_shared_armor_module_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -313,6 +318,7 @@ object_tangible_component_droid_shared_armor_module_5 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_component_droid_shared_armor_module_5 = SharedTangibleObjectTemp
 	clientObjectCRC = 1936091756
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_5, "object/tangible/component/droid/shared_armor_module_5.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_5, "object/tangible/component/droid/shared_armor_module_5.iff")
 
 object_tangible_component_droid_shared_armor_module_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -366,6 +372,7 @@ object_tangible_component_droid_shared_armor_module_6 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_component_droid_shared_armor_module_6 = SharedTangibleObjectTemp
 	clientObjectCRC = 2826027771
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_6, "object/tangible/component/droid/shared_armor_module_6.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_6, "object/tangible/component/droid/shared_armor_module_6.iff")
 
 object_tangible_component_droid_shared_armor_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -419,6 +426,7 @@ object_tangible_component_droid_shared_armor_module_base = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_component_droid_shared_armor_module_base = SharedTangibleObjectT
 	clientObjectCRC = 832469141
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_base, "object/tangible/component/droid/shared_armor_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_base, "object/tangible/component/droid/shared_armor_module_base.iff")
 
 object_tangible_component_droid_shared_auto_repair_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s03.apt",
@@ -472,6 +480,7 @@ object_tangible_component_droid_shared_auto_repair_module = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_component_droid_shared_auto_repair_module = SharedTangibleObject
 	clientObjectCRC = 262408920
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_auto_repair_module, "object/tangible/component/droid/shared_auto_repair_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_auto_repair_module, "object/tangible/component/droid/shared_auto_repair_module.iff")
 
 object_tangible_component_droid_shared_binary_load_lifter_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
@@ -525,6 +534,7 @@ object_tangible_component_droid_shared_binary_load_lifter_droid_chassis = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_component_droid_shared_binary_load_lifter_droid_chassis = Shared
 	clientObjectCRC = 3300613134
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_binary_load_lifter_droid_chassis, "object/tangible/component/droid/shared_binary_load_lifter_droid_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_binary_load_lifter_droid_chassis, "object/tangible/component/droid/shared_binary_load_lifter_droid_chassis.iff")
 
 object_tangible_component_droid_shared_combat_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -578,6 +588,7 @@ object_tangible_component_droid_shared_combat_module = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_component_droid_shared_combat_module = SharedTangibleObjectTempl
 	clientObjectCRC = 3671008634
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_combat_module, "object/tangible/component/droid/shared_combat_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_combat_module, "object/tangible/component/droid/shared_combat_module.iff")
 
 object_tangible_component_droid_shared_combat_socket_bank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -631,6 +642,7 @@ object_tangible_component_droid_shared_combat_socket_bank = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_component_droid_shared_combat_socket_bank = SharedTangibleObject
 	clientObjectCRC = 181867093
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_combat_socket_bank, "object/tangible/component/droid/shared_combat_socket_bank.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_combat_socket_bank, "object/tangible/component/droid/shared_combat_socket_bank.iff")
 
 object_tangible_component_droid_shared_crafting_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -684,6 +696,7 @@ object_tangible_component_droid_shared_crafting_module_base = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_component_droid_shared_crafting_module_base = SharedTangibleObje
 	clientObjectCRC = 2404931840
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_base, "object/tangible/component/droid/shared_crafting_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_base, "object/tangible/component/droid/shared_crafting_module_base.iff")
 
 object_tangible_component_droid_shared_crafting_module_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -737,6 +750,7 @@ object_tangible_component_droid_shared_crafting_module_clothing = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_component_droid_shared_crafting_module_clothing = SharedTangible
 	clientObjectCRC = 1487860845
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_clothing, "object/tangible/component/droid/shared_crafting_module_clothing.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_clothing, "object/tangible/component/droid/shared_crafting_module_clothing.iff")
 
 object_tangible_component_droid_shared_crafting_module_food = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -790,6 +804,7 @@ object_tangible_component_droid_shared_crafting_module_food = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_component_droid_shared_crafting_module_food = SharedTangibleObje
 	clientObjectCRC = 2075775538
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_food, "object/tangible/component/droid/shared_crafting_module_food.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_food, "object/tangible/component/droid/shared_crafting_module_food.iff")
 
 object_tangible_component_droid_shared_crafting_module_space = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -843,6 +858,7 @@ object_tangible_component_droid_shared_crafting_module_space = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_component_droid_shared_crafting_module_space = SharedTangibleObj
 	clientObjectCRC = 1790293285
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_space, "object/tangible/component/droid/shared_crafting_module_space.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_space, "object/tangible/component/droid/shared_crafting_module_space.iff")
 
 object_tangible_component_droid_shared_crafting_module_structure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -896,6 +912,7 @@ object_tangible_component_droid_shared_crafting_module_structure = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_component_droid_shared_crafting_module_structure = SharedTangibl
 	clientObjectCRC = 3924145529
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_structure, "object/tangible/component/droid/shared_crafting_module_structure.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_structure, "object/tangible/component/droid/shared_crafting_module_structure.iff")
 
 object_tangible_component_droid_shared_crafting_module_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -949,6 +966,7 @@ object_tangible_component_droid_shared_crafting_module_weapon = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_component_droid_shared_crafting_module_weapon = SharedTangibleOb
 	clientObjectCRC = 226757157
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_weapon, "object/tangible/component/droid/shared_crafting_module_weapon.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_weapon, "object/tangible/component/droid/shared_crafting_module_weapon.iff")
 
 object_tangible_component_droid_shared_data_storage_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1002,6 +1020,7 @@ object_tangible_component_droid_shared_data_storage_module_1 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_component_droid_shared_data_storage_module_1 = SharedTangibleObj
 	clientObjectCRC = 1611774846
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_1, "object/tangible/component/droid/shared_data_storage_module_1.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_1, "object/tangible/component/droid/shared_data_storage_module_1.iff")
 
 object_tangible_component_droid_shared_data_storage_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1055,6 +1074,7 @@ object_tangible_component_droid_shared_data_storage_module_2 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_component_droid_shared_data_storage_module_2 = SharedTangibleObj
 	clientObjectCRC = 3137737705
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_2, "object/tangible/component/droid/shared_data_storage_module_2.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_2, "object/tangible/component/droid/shared_data_storage_module_2.iff")
 
 object_tangible_component_droid_shared_data_storage_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1108,6 +1128,7 @@ object_tangible_component_droid_shared_data_storage_module_3 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_component_droid_shared_data_storage_module_3 = SharedTangibleObj
 	clientObjectCRC = 4060836964
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_3, "object/tangible/component/droid/shared_data_storage_module_3.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_3, "object/tangible/component/droid/shared_data_storage_module_3.iff")
 
 object_tangible_component_droid_shared_data_storage_module_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1161,6 +1182,7 @@ object_tangible_component_droid_shared_data_storage_module_4 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_component_droid_shared_data_storage_module_4 = SharedTangibleObj
 	clientObjectCRC = 166223728
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_4, "object/tangible/component/droid/shared_data_storage_module_4.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_4, "object/tangible/component/droid/shared_data_storage_module_4.iff")
 
 object_tangible_component_droid_shared_data_storage_module_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1214,6 +1236,7 @@ object_tangible_component_droid_shared_data_storage_module_5 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_component_droid_shared_data_storage_module_5 = SharedTangibleObj
 	clientObjectCRC = 1088764157
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_5, "object/tangible/component/droid/shared_data_storage_module_5.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_5, "object/tangible/component/droid/shared_data_storage_module_5.iff")
 
 object_tangible_component_droid_shared_data_storage_module_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1267,6 +1290,7 @@ object_tangible_component_droid_shared_data_storage_module_6 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_component_droid_shared_data_storage_module_6 = SharedTangibleObj
 	clientObjectCRC = 2616365162
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_6, "object/tangible/component/droid/shared_data_storage_module_6.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_6, "object/tangible/component/droid/shared_data_storage_module_6.iff")
 
 object_tangible_component_droid_shared_data_storage_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1320,6 +1344,7 @@ object_tangible_component_droid_shared_data_storage_module_base = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_component_droid_shared_data_storage_module_base = SharedTangible
 	clientObjectCRC = 85639854
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_base, "object/tangible/component/droid/shared_data_storage_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_base, "object/tangible/component/droid/shared_data_storage_module_base.iff")
 
 object_tangible_component_droid_shared_defensive_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1373,6 +1398,7 @@ object_tangible_component_droid_shared_defensive_module_base = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_component_droid_shared_defensive_module_base = SharedTangibleObj
 	clientObjectCRC = 2559519879
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_defensive_module_base, "object/tangible/component/droid/shared_defensive_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_defensive_module_base, "object/tangible/component/droid/shared_defensive_module_base.iff")
 
 object_tangible_component_droid_shared_detonation_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_component_droid_shared_detonation_module = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_component_droid_shared_detonation_module = SharedTangibleObjectT
 	clientObjectCRC = 1275393519
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_detonation_module, "object/tangible/component/droid/shared_detonation_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_detonation_module, "object/tangible/component/droid/shared_detonation_module.iff")
 
 object_tangible_component_droid_shared_droid_brain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1479,6 +1506,7 @@ object_tangible_component_droid_shared_droid_brain = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_component_droid_shared_droid_brain = SharedTangibleObjectTemplat
 	clientObjectCRC = 4221279122
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_brain, "object/tangible/component/droid/shared_droid_brain.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_brain, "object/tangible/component/droid/shared_droid_brain.iff")
 
 object_tangible_component_droid_shared_droid_brain_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1532,6 +1560,7 @@ object_tangible_component_droid_shared_droid_brain_advanced = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_component_droid_shared_droid_brain_advanced = SharedTangibleObje
 	clientObjectCRC = 1341617238
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_brain_advanced, "object/tangible/component/droid/shared_droid_brain_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_brain_advanced, "object/tangible/component/droid/shared_droid_brain_advanced.iff")
 
 object_tangible_component_droid_shared_droid_combat_service_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1585,6 +1614,7 @@ object_tangible_component_droid_shared_droid_combat_service_module_base = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_component_droid_shared_droid_combat_service_module_base = Shared
 	clientObjectCRC = 3225311396
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_combat_service_module_base, "object/tangible/component/droid/shared_droid_combat_service_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_combat_service_module_base, "object/tangible/component/droid/shared_droid_combat_service_module_base.iff")
 
 object_tangible_component_droid_shared_droid_interplanetary_survey = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
@@ -1638,6 +1668,7 @@ object_tangible_component_droid_shared_droid_interplanetary_survey = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_component_droid_shared_droid_interplanetary_survey = SharedTangi
 	clientObjectCRC = 3837390071
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_interplanetary_survey, "object/tangible/component/droid/shared_droid_interplanetary_survey.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_interplanetary_survey, "object/tangible/component/droid/shared_droid_interplanetary_survey.iff")
 
 object_tangible_component_droid_shared_droid_motive_system = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -1691,6 +1722,7 @@ object_tangible_component_droid_shared_droid_motive_system = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_component_droid_shared_droid_motive_system = SharedTangibleObjec
 	clientObjectCRC = 3558171946
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_motive_system, "object/tangible/component/droid/shared_droid_motive_system.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_motive_system, "object/tangible/component/droid/shared_droid_motive_system.iff")
 
 object_tangible_component_droid_shared_droid_motive_system_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -1744,6 +1776,7 @@ object_tangible_component_droid_shared_droid_motive_system_advanced = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_component_droid_shared_droid_motive_system_advanced = SharedTang
 	clientObjectCRC = 3082446118
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_motive_system_advanced, "object/tangible/component/droid/shared_droid_motive_system_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_motive_system_advanced, "object/tangible/component/droid/shared_droid_motive_system_advanced.iff")
 
 object_tangible_component_droid_shared_droid_service_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1797,6 +1830,7 @@ object_tangible_component_droid_shared_droid_service_module_base = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_component_droid_shared_droid_service_module_base = SharedTangibl
 	clientObjectCRC = 2856991975
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_service_module_base, "object/tangible/component/droid/shared_droid_service_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_service_module_base, "object/tangible/component/droid/shared_droid_service_module_base.iff")
 
 object_tangible_component_droid_shared_droid_storage_compartment = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1850,6 +1884,7 @@ object_tangible_component_droid_shared_droid_storage_compartment = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_component_droid_shared_droid_storage_compartment = SharedTangibl
 	clientObjectCRC = 3107140233
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_storage_compartment, "object/tangible/component/droid/shared_droid_storage_compartment.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_storage_compartment, "object/tangible/component/droid/shared_droid_storage_compartment.iff")
 
 object_tangible_component_droid_shared_harvest_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -1903,6 +1938,7 @@ object_tangible_component_droid_shared_harvest_module = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_component_droid_shared_harvest_module = SharedTangibleObjectTemp
 	clientObjectCRC = 55086414
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_harvest_module, "object/tangible/component/droid/shared_harvest_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_harvest_module, "object/tangible/component/droid/shared_harvest_module.iff")
 
 object_tangible_component_droid_shared_harvest_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -1956,6 +1992,7 @@ object_tangible_component_droid_shared_harvest_module_base = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_component_droid_shared_harvest_module_base = SharedTangibleObjec
 	clientObjectCRC = 3831537892
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_harvest_module_base, "object/tangible/component/droid/shared_harvest_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_harvest_module_base, "object/tangible/component/droid/shared_harvest_module_base.iff")
 
 object_tangible_component_droid_shared_item_storage_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2009,6 +2046,7 @@ object_tangible_component_droid_shared_item_storage_module_1 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_component_droid_shared_item_storage_module_1 = SharedTangibleObj
 	clientObjectCRC = 3060963086
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_1, "object/tangible/component/droid/shared_item_storage_module_1.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_1, "object/tangible/component/droid/shared_item_storage_module_1.iff")
 
 object_tangible_component_droid_shared_item_storage_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2062,6 +2100,7 @@ object_tangible_component_droid_shared_item_storage_module_2 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_component_droid_shared_item_storage_module_2 = SharedTangibleObj
 	clientObjectCRC = 1835351961
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_2, "object/tangible/component/droid/shared_item_storage_module_2.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_2, "object/tangible/component/droid/shared_item_storage_module_2.iff")
 
 object_tangible_component_droid_shared_item_storage_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2115,6 +2154,7 @@ object_tangible_component_droid_shared_item_storage_module_3 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_component_droid_shared_item_storage_module_3 = SharedTangibleObj
 	clientObjectCRC = 610818068
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_3, "object/tangible/component/droid/shared_item_storage_module_3.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_3, "object/tangible/component/droid/shared_item_storage_module_3.iff")
 
 object_tangible_component_droid_shared_item_storage_module_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2168,6 +2208,7 @@ object_tangible_component_droid_shared_item_storage_module_4 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_component_droid_shared_item_storage_module_4 = SharedTangibleObj
 	clientObjectCRC = 3750458112
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_4, "object/tangible/component/droid/shared_item_storage_module_4.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_4, "object/tangible/component/droid/shared_item_storage_module_4.iff")
 
 object_tangible_component_droid_shared_item_storage_module_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2221,6 +2262,7 @@ object_tangible_component_droid_shared_item_storage_module_5 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_component_droid_shared_item_storage_module_5 = SharedTangibleObj
 	clientObjectCRC = 2525369485
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_5, "object/tangible/component/droid/shared_item_storage_module_5.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_5, "object/tangible/component/droid/shared_item_storage_module_5.iff")
 
 object_tangible_component_droid_shared_item_storage_module_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2274,6 +2316,7 @@ object_tangible_component_droid_shared_item_storage_module_6 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_component_droid_shared_item_storage_module_6 = SharedTangibleObj
 	clientObjectCRC = 1301396506
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_6, "object/tangible/component/droid/shared_item_storage_module_6.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_6, "object/tangible/component/droid/shared_item_storage_module_6.iff")
 
 object_tangible_component_droid_shared_item_storage_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2327,6 +2370,7 @@ object_tangible_component_droid_shared_item_storage_module_base = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_component_droid_shared_item_storage_module_base = SharedTangible
 	clientObjectCRC = 1210035121
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_base, "object/tangible/component/droid/shared_item_storage_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_base, "object/tangible/component/droid/shared_item_storage_module_base.iff")
 
 object_tangible_component_droid_shared_le_repair_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
@@ -2380,6 +2424,7 @@ object_tangible_component_droid_shared_le_repair_droid_chassis = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_component_droid_shared_le_repair_droid_chassis = SharedTangibleO
 	clientObjectCRC = 1573291172
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_le_repair_droid_chassis, "object/tangible/component/droid/shared_le_repair_droid_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_le_repair_droid_chassis, "object/tangible/component/droid/shared_le_repair_droid_chassis.iff")
 
 object_tangible_component_droid_shared_manipulator_arm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2433,6 +2478,7 @@ object_tangible_component_droid_shared_manipulator_arm = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_component_droid_shared_manipulator_arm = SharedTangibleObjectTem
 	clientObjectCRC = 1333622407
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_manipulator_arm, "object/tangible/component/droid/shared_manipulator_arm.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_manipulator_arm, "object/tangible/component/droid/shared_manipulator_arm.iff")
 
 object_tangible_component_droid_shared_manipulator_arm_package_set = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2486,6 +2532,7 @@ object_tangible_component_droid_shared_manipulator_arm_package_set = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_component_droid_shared_manipulator_arm_package_set = SharedTangi
 	clientObjectCRC = 295096971
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_manipulator_arm_package_set, "object/tangible/component/droid/shared_manipulator_arm_package_set.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_manipulator_arm_package_set, "object/tangible/component/droid/shared_manipulator_arm_package_set.iff")
 
 object_tangible_component_droid_shared_medic_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2539,6 +2586,7 @@ object_tangible_component_droid_shared_medic_module_1 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_component_droid_shared_medic_module_1 = SharedTangibleObjectTemp
 	clientObjectCRC = 3818431431
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_1, "object/tangible/component/droid/shared_medic_module_1.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_1, "object/tangible/component/droid/shared_medic_module_1.iff")
 
 object_tangible_component_droid_shared_medic_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2592,6 +2640,7 @@ object_tangible_component_droid_shared_medic_module_2 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_component_droid_shared_medic_module_2 = SharedTangibleObjectTemp
 	clientObjectCRC = 948898640
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_2, "object/tangible/component/droid/shared_medic_module_2.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_2, "object/tangible/component/droid/shared_medic_module_2.iff")
 
 object_tangible_component_droid_shared_medic_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2645,6 +2694,7 @@ object_tangible_component_droid_shared_medic_module_3 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_component_droid_shared_medic_module_3 = SharedTangibleObjectTemp
 	clientObjectCRC = 1904372957
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_3, "object/tangible/component/droid/shared_medic_module_3.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_3, "object/tangible/component/droid/shared_medic_module_3.iff")
 
 object_tangible_component_droid_shared_medic_module_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2698,6 +2748,7 @@ object_tangible_component_droid_shared_medic_module_4 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_component_droid_shared_medic_module_4 = SharedTangibleObjectTemp
 	clientObjectCRC = 2321631177
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_4, "object/tangible/component/droid/shared_medic_module_4.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_4, "object/tangible/component/droid/shared_medic_module_4.iff")
 
 object_tangible_component_droid_shared_medic_module_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2751,6 +2802,7 @@ object_tangible_component_droid_shared_medic_module_5 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_component_droid_shared_medic_module_5 = SharedTangibleObjectTemp
 	clientObjectCRC = 3278643268
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_5, "object/tangible/component/droid/shared_medic_module_5.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_5, "object/tangible/component/droid/shared_medic_module_5.iff")
 
 object_tangible_component_droid_shared_medic_module_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2804,6 +2856,7 @@ object_tangible_component_droid_shared_medic_module_6 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_component_droid_shared_medic_module_6 = SharedTangibleObjectTemp
 	clientObjectCRC = 410749139
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_6, "object/tangible/component/droid/shared_medic_module_6.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_6, "object/tangible/component/droid/shared_medic_module_6.iff")
 
 object_tangible_component_droid_shared_medic_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -2857,6 +2910,7 @@ object_tangible_component_droid_shared_medic_module_base = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_component_droid_shared_medic_module_base = SharedTangibleObjectT
 	clientObjectCRC = 3806402681
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_base, "object/tangible/component/droid/shared_medic_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_base, "object/tangible/component/droid/shared_medic_module_base.iff")
 
 object_tangible_component_droid_shared_merchant_barker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s01.apt",
@@ -2910,6 +2964,7 @@ object_tangible_component_droid_shared_merchant_barker = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_component_droid_shared_merchant_barker = SharedTangibleObjectTem
 	clientObjectCRC = 3094537787
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_merchant_barker, "object/tangible/component/droid/shared_merchant_barker.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_merchant_barker, "object/tangible/component/droid/shared_merchant_barker.iff")
 
 object_tangible_component_droid_shared_merchant_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -2963,6 +3018,7 @@ object_tangible_component_droid_shared_merchant_base = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_component_droid_shared_merchant_base = SharedTangibleObjectTempl
 	clientObjectCRC = 246819840
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_merchant_base, "object/tangible/component/droid/shared_merchant_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_merchant_base, "object/tangible/component/droid/shared_merchant_base.iff")
 
 object_tangible_component_droid_shared_p0_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
@@ -3016,6 +3072,7 @@ object_tangible_component_droid_shared_p0_droid_chassis = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_component_droid_shared_p0_droid_chassis = SharedTangibleObjectTe
 	clientObjectCRC = 2364795143
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_p0_droid_chassis, "object/tangible/component/droid/shared_p0_droid_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_p0_droid_chassis, "object/tangible/component/droid/shared_p0_droid_chassis.iff")
 
 object_tangible_component_droid_shared_performer_effects_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3069,6 +3126,7 @@ object_tangible_component_droid_shared_performer_effects_a = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_component_droid_shared_performer_effects_a = SharedTangibleObjec
 	clientObjectCRC = 2350039140
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_a, "object/tangible/component/droid/shared_performer_effects_a.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_a, "object/tangible/component/droid/shared_performer_effects_a.iff")
 
 object_tangible_component_droid_shared_performer_effects_aa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3122,6 +3180,7 @@ object_tangible_component_droid_shared_performer_effects_aa = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_component_droid_shared_performer_effects_aa = SharedTangibleObje
 	clientObjectCRC = 864794171
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_aa, "object/tangible/component/droid/shared_performer_effects_aa.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_aa, "object/tangible/component/droid/shared_performer_effects_aa.iff")
 
 object_tangible_component_droid_shared_performer_effects_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3175,6 +3234,7 @@ object_tangible_component_droid_shared_performer_effects_b = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_component_droid_shared_performer_effects_b = SharedTangibleObjec
 	clientObjectCRC = 1459972339
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_b, "object/tangible/component/droid/shared_performer_effects_b.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_b, "object/tangible/component/droid/shared_performer_effects_b.iff")
 
 object_tangible_component_droid_shared_performer_effects_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3228,6 +3288,7 @@ object_tangible_component_droid_shared_performer_effects_c = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_component_droid_shared_performer_effects_c = SharedTangibleObjec
 	clientObjectCRC = 503844734
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_c, "object/tangible/component/droid/shared_performer_effects_c.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_c, "object/tangible/component/droid/shared_performer_effects_c.iff")
 
 object_tangible_component_droid_shared_performer_effects_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3281,6 +3342,7 @@ object_tangible_component_droid_shared_performer_effects_d = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_component_droid_shared_performer_effects_d = SharedTangibleObjec
 	clientObjectCRC = 3857392746
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_d, "object/tangible/component/droid/shared_performer_effects_d.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_d, "object/tangible/component/droid/shared_performer_effects_d.iff")
 
 object_tangible_component_droid_shared_performer_effects_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3334,6 +3396,7 @@ object_tangible_component_droid_shared_performer_effects_e = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_component_droid_shared_performer_effects_e = SharedTangibleObjec
 	clientObjectCRC = 2900771815
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_e, "object/tangible/component/droid/shared_performer_effects_e.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_e, "object/tangible/component/droid/shared_performer_effects_e.iff")
 
 object_tangible_component_droid_shared_personality_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -3387,6 +3450,7 @@ object_tangible_component_droid_shared_personality_module_base = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_component_droid_shared_personality_module_base = SharedTangibleO
 	clientObjectCRC = 1069945063
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_base, "object/tangible/component/droid/shared_personality_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_base, "object/tangible/component/droid/shared_personality_module_base.iff")
 
 object_tangible_component_droid_shared_personality_module_geek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3440,6 +3504,7 @@ object_tangible_component_droid_shared_personality_module_geek = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_component_droid_shared_personality_module_geek = SharedTangibleO
 	clientObjectCRC = 671855097
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_geek, "object/tangible/component/droid/shared_personality_module_geek.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_geek, "object/tangible/component/droid/shared_personality_module_geek.iff")
 
 object_tangible_component_droid_shared_personality_module_prissy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3493,6 +3558,7 @@ object_tangible_component_droid_shared_personality_module_prissy = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_component_droid_shared_personality_module_prissy = SharedTangibl
 	clientObjectCRC = 3491692659
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_prissy, "object/tangible/component/droid/shared_personality_module_prissy.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_prissy, "object/tangible/component/droid/shared_personality_module_prissy.iff")
 
 object_tangible_component_droid_shared_personality_module_sarcastic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3546,6 +3612,7 @@ object_tangible_component_droid_shared_personality_module_sarcastic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_component_droid_shared_personality_module_sarcastic = SharedTang
 	clientObjectCRC = 1046791817
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_sarcastic, "object/tangible/component/droid/shared_personality_module_sarcastic.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_sarcastic, "object/tangible/component/droid/shared_personality_module_sarcastic.iff")
 
 object_tangible_component_droid_shared_personality_module_slang = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3599,6 +3666,7 @@ object_tangible_component_droid_shared_personality_module_slang = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_component_droid_shared_personality_module_slang = SharedTangible
 	clientObjectCRC = 1711429491
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_slang, "object/tangible/component/droid/shared_personality_module_slang.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_slang, "object/tangible/component/droid/shared_personality_module_slang.iff")
 
 object_tangible_component_droid_shared_personality_module_stupid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3652,6 +3720,7 @@ object_tangible_component_droid_shared_personality_module_stupid = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_component_droid_shared_personality_module_stupid = SharedTangibl
 	clientObjectCRC = 1083621645
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_stupid, "object/tangible/component/droid/shared_personality_module_stupid.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_stupid, "object/tangible/component/droid/shared_personality_module_stupid.iff")
 
 object_tangible_component_droid_shared_personality_module_worshipful = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3705,6 +3774,7 @@ object_tangible_component_droid_shared_personality_module_worshipful = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_component_droid_shared_personality_module_worshipful = SharedTan
 	clientObjectCRC = 3187389726
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_worshipful, "object/tangible/component/droid/shared_personality_module_worshipful.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_worshipful, "object/tangible/component/droid/shared_personality_module_worshipful.iff")
 
 object_tangible_component_droid_shared_playback_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -3758,6 +3828,7 @@ object_tangible_component_droid_shared_playback_module = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_component_droid_shared_playback_module = SharedTangibleObjectTem
 	clientObjectCRC = 2859558728
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_playback_module, "object/tangible/component/droid/shared_playback_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_playback_module, "object/tangible/component/droid/shared_playback_module.iff")
 
 object_tangible_component_droid_shared_probot_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid.sat",
@@ -3811,6 +3882,7 @@ object_tangible_component_droid_shared_probot_droid_chassis = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_component_droid_shared_probot_droid_chassis = SharedTangibleObje
 	clientObjectCRC = 498496861
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_probot_droid_chassis, "object/tangible/component/droid/shared_probot_droid_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_probot_droid_chassis, "object/tangible/component/droid/shared_probot_droid_chassis.iff")
 
 object_tangible_component_droid_shared_r2_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -3864,6 +3936,7 @@ object_tangible_component_droid_shared_r2_droid_chassis = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_component_droid_shared_r2_droid_chassis = SharedTangibleObjectTe
 	clientObjectCRC = 4039239193
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_r2_droid_chassis, "object/tangible/component/droid/shared_r2_droid_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r2_droid_chassis, "object/tangible/component/droid/shared_r2_droid_chassis.iff")
 
 object_tangible_component_droid_shared_r3_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
@@ -3917,6 +3990,7 @@ object_tangible_component_droid_shared_r3_droid_chassis = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_component_droid_shared_r3_droid_chassis = SharedTangibleObjectTe
 	clientObjectCRC = 4208619072
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_r3_droid_chassis, "object/tangible/component/droid/shared_r3_droid_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r3_droid_chassis, "object/tangible/component/droid/shared_r3_droid_chassis.iff")
 
 object_tangible_component_droid_shared_r4_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
@@ -3970,6 +4044,7 @@ object_tangible_component_droid_shared_r4_droid_chassis = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_component_droid_shared_r4_droid_chassis = SharedTangibleObjectTe
 	clientObjectCRC = 3432568783
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_r4_droid_chassis, "object/tangible/component/droid/shared_r4_droid_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r4_droid_chassis, "object/tangible/component/droid/shared_r4_droid_chassis.iff")
 
 object_tangible_component_droid_shared_repair_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -4023,6 +4098,7 @@ object_tangible_component_droid_shared_repair_module = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_component_droid_shared_repair_module = SharedTangibleObjectTempl
 	clientObjectCRC = 2786060955
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_repair_module, "object/tangible/component/droid/shared_repair_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_repair_module, "object/tangible/component/droid/shared_repair_module.iff")
 
 object_tangible_component_droid_shared_sensor_package_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4076,6 +4152,7 @@ object_tangible_component_droid_shared_sensor_package_droid = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_component_droid_shared_sensor_package_droid = SharedTangibleObje
 	clientObjectCRC = 4157404831
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_sensor_package_droid, "object/tangible/component/droid/shared_sensor_package_droid.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_sensor_package_droid, "object/tangible/component/droid/shared_sensor_package_droid.iff")
 
 object_tangible_component_droid_shared_socket_bank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4129,6 +4206,7 @@ object_tangible_component_droid_shared_socket_bank = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_component_droid_shared_socket_bank = SharedTangibleObjectTemplat
 	clientObjectCRC = 3701424953
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_socket_bank, "object/tangible/component/droid/shared_socket_bank.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_socket_bank, "object/tangible/component/droid/shared_socket_bank.iff")
 
 object_tangible_component_droid_shared_stimpack_dispensor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s02.apt",
@@ -4182,6 +4260,7 @@ object_tangible_component_droid_shared_stimpack_dispensor = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_component_droid_shared_stimpack_dispensor = SharedTangibleObject
 	clientObjectCRC = 1691889339
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_stimpack_dispensor, "object/tangible/component/droid/shared_stimpack_dispensor.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_stimpack_dispensor, "object/tangible/component/droid/shared_stimpack_dispensor.iff")
 
 object_tangible_component_droid_shared_struct_maint_module_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4235,6 +4314,7 @@ object_tangible_component_droid_shared_struct_maint_module_1 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_component_droid_shared_struct_maint_module_1 = SharedTangibleObj
 	clientObjectCRC = 1728777315
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_struct_maint_module_1, "object/tangible/component/droid/shared_struct_maint_module_1.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_1, "object/tangible/component/droid/shared_struct_maint_module_1.iff")
 
 object_tangible_component_droid_shared_struct_maint_module_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4288,6 +4368,7 @@ object_tangible_component_droid_shared_struct_maint_module_2 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_component_droid_shared_struct_maint_module_2 = SharedTangibleObj
 	clientObjectCRC = 3155993844
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_struct_maint_module_2, "object/tangible/component/droid/shared_struct_maint_module_2.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_2, "object/tangible/component/droid/shared_struct_maint_module_2.iff")
 
 object_tangible_component_droid_shared_struct_maint_module_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4341,6 +4422,7 @@ object_tangible_component_droid_shared_struct_maint_module_3 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_component_droid_shared_struct_maint_module_3 = SharedTangibleObj
 	clientObjectCRC = 4111582073
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_struct_maint_module_3, "object/tangible/component/droid/shared_struct_maint_module_3.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_3, "object/tangible/component/droid/shared_struct_maint_module_3.iff")
 
 object_tangible_component_droid_shared_struct_maint_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -4394,6 +4476,7 @@ object_tangible_component_droid_shared_struct_maint_module_base = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_component_droid_shared_struct_maint_module_base = SharedTangible
 	clientObjectCRC = 2223185422
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_struct_maint_module_base, "object/tangible/component/droid/shared_struct_maint_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_base, "object/tangible/component/droid/shared_struct_maint_module_base.iff")
 
 object_tangible_component_droid_shared_surgical_droid_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
@@ -4447,6 +4530,7 @@ object_tangible_component_droid_shared_surgical_droid_chassis = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_component_droid_shared_surgical_droid_chassis = SharedTangibleOb
 	clientObjectCRC = 2925064047
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_surgical_droid_chassis, "object/tangible/component/droid/shared_surgical_droid_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_surgical_droid_chassis, "object/tangible/component/droid/shared_surgical_droid_chassis.iff")
 
 object_tangible_component_droid_shared_trap_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -4500,6 +4584,7 @@ object_tangible_component_droid_shared_trap_module = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_component_droid_shared_trap_module = SharedTangibleObjectTemplat
 	clientObjectCRC = 3443959311
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_trap_module, "object/tangible/component/droid/shared_trap_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_trap_module, "object/tangible/component/droid/shared_trap_module.iff")
 
 object_tangible_component_droid_shared_trap_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -4553,6 +4638,7 @@ object_tangible_component_droid_shared_trap_module_base = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262148,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,4 +4683,4 @@ object_tangible_component_droid_shared_trap_module_base = SharedTangibleObjectTe
 	clientObjectCRC = 2178596494
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_trap_module_base, "object/tangible/component/droid/shared_trap_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_droid_shared_trap_module_base, "object/tangible/component/droid/shared_trap_module_base.iff")

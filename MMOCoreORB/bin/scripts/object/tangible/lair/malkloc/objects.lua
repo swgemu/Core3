@@ -48,6 +48,7 @@ object_tangible_lair_malkloc_shared_lair_malkloc = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_malkloc_shared_lair_malkloc = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1819099855
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc, "object/tangible/lair/malkloc/shared_lair_malkloc.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc, "object/tangible/lair/malkloc/shared_lair_malkloc.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTe
 	clientObjectCRC = 3825333189
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_desert, "object/tangible/lair/malkloc/shared_lair_malkloc_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_desert, "object/tangible/lair/malkloc/shared_lair_malkloc_desert.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTe
 	clientObjectCRC = 3488232768
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_forest, "object/tangible/lair/malkloc/shared_lair_malkloc_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_forest, "object/tangible/lair/malkloc/shared_lair_malkloc_forest.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObject
 	clientObjectCRC = 377228821
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_mountain, "object/tangible/lair/malkloc/shared_lair_malkloc_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_mountain, "object/tangible/lair/malkloc/shared_lair_malkloc_mountain.iff")

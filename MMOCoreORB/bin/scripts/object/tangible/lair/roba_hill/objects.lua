@@ -48,6 +48,7 @@ object_tangible_lair_roba_hill_shared_lair_roba_hill = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_roba_hill_shared_lair_roba_hill = SharedTangibleObjectTempl
 	clientObjectCRC = 2140994340
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_roba_hill_shared_lair_roba_hill, "object/tangible/lair/roba_hill/shared_lair_roba_hill.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_roba_hill_shared_lair_roba_hill, "object/tangible/lair/roba_hill/shared_lair_roba_hill.iff")

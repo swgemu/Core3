@@ -48,6 +48,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_backpack = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8213,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_backpack = SharedTang
 	clientObjectCRC = 1616221801
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_backpack, "object/tangible/wearables/armor/marine/shared_armor_marine_backpack.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_backpack, "object/tangible/wearables/armor/marine/shared_armor_marine_backpack.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_bicep_l_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangi
 	clientObjectCRC = 377642897
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_l.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_bicep_r_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangi
 	clientObjectCRC = 1716984322
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_r.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_boots_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibl
 	clientObjectCRC = 168220197
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_boots, "object/tangible/wearables/armor/marine/shared_armor_marine_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_boots, "object/tangible/wearables/armor/marine/shared_armor_marine_boots.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_chest_plate_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedT
 	clientObjectCRC = 2560891493
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_chest_plate_rebel_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = S
 	clientObjectCRC = 3425564515
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate_rebel.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate_rebel.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_helmet_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangib
 	clientObjectCRC = 412137204
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_helmet, "object/tangible/wearables/armor/marine/shared_armor_marine_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_helmet, "object/tangible/wearables/armor/marine/shared_armor_marine_helmet.iff")
 
 object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_leggings_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,4 +471,4 @@ object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTang
 	clientObjectCRC = 4090769241
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_leggings, "object/tangible/wearables/armor/marine/shared_armor_marine_leggings.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_leggings, "object/tangible/wearables/armor/marine/shared_armor_marine_leggings.iff")

@@ -49,6 +49,7 @@ object_weapon_melee_sword_shared_bestine_quest_sword = SharedWeaponObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_melee_sword_shared_bestine_quest_sword = SharedWeaponObjectTemplat
 	clientObjectCRC = 4064578026
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_bestine_quest_sword, "object/weapon/melee/sword/shared_bestine_quest_sword.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_bestine_quest_sword, "object/weapon/melee/sword/shared_bestine_quest_sword.iff")
 
 object_weapon_melee_sword_shared_sword_01 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s01.apt",
@@ -106,6 +107,7 @@ object_weapon_melee_sword_shared_sword_01 = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_melee_sword_shared_sword_01 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 2166507187
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_01, "object/weapon/melee/sword/shared_sword_01.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_01, "object/weapon/melee/sword/shared_sword_01.iff")
 
 object_weapon_melee_sword_shared_sword_01_noob = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s01.apt",
@@ -163,6 +165,7 @@ object_weapon_melee_sword_shared_sword_01_noob = SharedWeaponObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,7 +213,7 @@ object_weapon_melee_sword_shared_sword_01_noob = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 4026227863
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_01_noob, "object/weapon/melee/sword/shared_sword_01_noob.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_01_noob, "object/weapon/melee/sword/shared_sword_01_noob.iff")
 
 object_weapon_melee_sword_shared_sword_02 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s02.apt",
@@ -220,6 +223,7 @@ object_weapon_melee_sword_shared_sword_02 = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -267,7 +271,7 @@ object_weapon_melee_sword_shared_sword_02 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1513483812
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_02, "object/weapon/melee/sword/shared_sword_02.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_02, "object/weapon/melee/sword/shared_sword_02.iff")
 
 object_weapon_melee_sword_shared_sword_blade_ryyk = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_ryyk_blade.apt",
@@ -277,6 +281,7 @@ object_weapon_melee_sword_shared_sword_blade_ryyk = SharedWeaponObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -324,7 +329,7 @@ object_weapon_melee_sword_shared_sword_blade_ryyk = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 1543947481
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_blade_ryyk, "object/weapon/melee/sword/shared_sword_blade_ryyk.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_blade_ryyk, "object/weapon/melee/sword/shared_sword_blade_ryyk.iff")
 
 object_weapon_melee_sword_shared_sword_curved_nyax = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s02.apt",
@@ -334,6 +339,7 @@ object_weapon_melee_sword_shared_sword_curved_nyax = SharedWeaponObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -381,7 +387,7 @@ object_weapon_melee_sword_shared_sword_curved_nyax = SharedWeaponObjectTemplate:
 	clientObjectCRC = 686325746
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_curved_nyax, "object/weapon/melee/sword/shared_sword_curved_nyax.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_curved_nyax, "object/weapon/melee/sword/shared_sword_curved_nyax.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_anakin = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
@@ -391,6 +397,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_anakin = SharedWeaponObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_anakin.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -438,7 +445,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_anakin = SharedWeaponObjectTem
 	clientObjectCRC = 4148631342
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_anakin, "object/weapon/melee/sword/shared_sword_lightsaber_anakin.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_anakin, "object/weapon/melee/sword/shared_sword_lightsaber_anakin.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_andael = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_andael.lsb",
@@ -448,6 +455,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_andael = SharedWeaponObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -495,7 +503,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_andael = SharedWeaponObjectTem
 	clientObjectCRC = 214802309
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_andael, "object/weapon/melee/sword/shared_sword_lightsaber_andael.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_andael, "object/weapon/melee/sword/shared_sword_lightsaber_andael.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_ben = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_ben.lsb",
@@ -505,6 +513,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_ben = SharedWeaponObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -552,7 +561,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_ben = SharedWeaponObjectTempla
 	clientObjectCRC = 2309363184
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_ben, "object/weapon/melee/sword/shared_sword_lightsaber_ben.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_ben, "object/weapon/melee/sword/shared_sword_lightsaber_ben.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_dugald = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_dugald.lsb",
@@ -562,6 +571,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_dugald = SharedWeaponObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -609,7 +619,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_dugald = SharedWeaponObjectTem
 	clientObjectCRC = 1815706117
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_dugald, "object/weapon/melee/sword/shared_sword_lightsaber_dugald.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_dugald, "object/weapon/melee/sword/shared_sword_lightsaber_dugald.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_leather = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_leather.lsb",
@@ -619,6 +629,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_leather = SharedWeaponObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -666,7 +677,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_leather = SharedWeaponObjectTe
 	clientObjectCRC = 3799429195
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_leather, "object/weapon/melee/sword/shared_sword_lightsaber_leather.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_leather, "object/weapon/melee/sword/shared_sword_lightsaber_leather.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_luke = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke.lsb",
@@ -676,6 +687,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_luke = SharedWeaponObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -723,7 +735,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_luke = SharedWeaponObjectTempl
 	clientObjectCRC = 672927666
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_luke, "object/weapon/melee/sword/shared_sword_lightsaber_luke.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_luke, "object/weapon/melee/sword/shared_sword_lightsaber_luke.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke_2h_test.lsb",
@@ -733,6 +745,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test = SharedWeaponObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -780,7 +793,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test = SharedWeaponObj
 	clientObjectCRC = 3534521944
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test, "object/weapon/melee/sword/shared_sword_lightsaber_luke_2h_test.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test, "object/weapon/melee/sword/shared_sword_lightsaber_luke_2h_test.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_mace = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_mace.lsb",
@@ -790,6 +803,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_mace = SharedWeaponObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -837,7 +851,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_mace = SharedWeaponObjectTempl
 	clientObjectCRC = 1964241543
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_mace, "object/weapon/melee/sword/shared_sword_lightsaber_mace.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_mace, "object/weapon/melee/sword/shared_sword_lightsaber_mace.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_nebu = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_nebu.lsb",
@@ -847,6 +861,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_nebu = SharedWeaponObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -894,7 +909,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_nebu = SharedWeaponObjectTempl
 	clientObjectCRC = 949430622
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_nebu, "object/weapon/melee/sword/shared_sword_lightsaber_nebu.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_nebu, "object/weapon/melee/sword/shared_sword_lightsaber_nebu.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_obi = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_obi.lsb",
@@ -904,6 +919,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_obi = SharedWeaponObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -951,7 +967,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_obi = SharedWeaponObjectTempla
 	clientObjectCRC = 913289864
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_obi, "object/weapon/melee/sword/shared_sword_lightsaber_obi.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_obi, "object/weapon/melee/sword/shared_sword_lightsaber_obi.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_quigon = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_quigon.lsb",
@@ -961,6 +977,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_quigon = SharedWeaponObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1008,7 +1025,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_quigon = SharedWeaponObjectTem
 	clientObjectCRC = 2556113704
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_quigon, "object/weapon/melee/sword/shared_sword_lightsaber_quigon.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_quigon, "object/weapon/melee/sword/shared_sword_lightsaber_quigon.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_sleekblack = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleekblack.lsb",
@@ -1018,6 +1035,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_sleekblack = SharedWeaponObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1065,7 +1083,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_sleekblack = SharedWeaponObjec
 	clientObjectCRC = 2429759563
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_sleekblack, "object/weapon/melee/sword/shared_sword_lightsaber_sleekblack.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_sleekblack, "object/weapon/melee/sword/shared_sword_lightsaber_sleekblack.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleeksilver.lsb",
@@ -1075,6 +1093,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver = SharedWeaponObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1122,7 +1141,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver = SharedWeaponObje
 	clientObjectCRC = 3172079785
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver, "object/weapon/melee/sword/shared_sword_lightsaber_sleeksilver.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver, "object/weapon/melee/sword/shared_sword_lightsaber_sleeksilver.iff")
 
 object_weapon_melee_sword_shared_sword_lightsaber_vader = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_vader.lsb",
@@ -1132,6 +1151,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_vader = SharedWeaponObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1179,7 +1199,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_vader = SharedWeaponObjectTemp
 	clientObjectCRC = 2913927315
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsaber_vader, "object/weapon/melee/sword/shared_sword_lightsaber_vader.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_vader, "object/weapon/melee/sword/shared_sword_lightsaber_vader.iff")
 
 object_weapon_melee_sword_shared_sword_nyax = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s01.apt",
@@ -1189,6 +1209,7 @@ object_weapon_melee_sword_shared_sword_nyax = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1236,7 +1257,7 @@ object_weapon_melee_sword_shared_sword_nyax = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 371913339
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_nyax, "object/weapon/melee/sword/shared_sword_nyax.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_nyax, "object/weapon/melee/sword/shared_sword_nyax.iff")
 
 object_weapon_melee_sword_shared_sword_rantok = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_rantok.apt",
@@ -1246,6 +1267,7 @@ object_weapon_melee_sword_shared_sword_rantok = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131079,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1293,4 +1315,4 @@ object_weapon_melee_sword_shared_sword_rantok = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 3125045014
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_rantok, "object/weapon/melee/sword/shared_sword_rantok.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_rantok, "object/weapon/melee/sword/shared_sword_rantok.iff")

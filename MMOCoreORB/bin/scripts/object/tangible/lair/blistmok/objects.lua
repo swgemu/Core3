@@ -48,6 +48,7 @@ object_tangible_lair_blistmok_shared_lair_blistmok = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_blistmok_shared_lair_blistmok = SharedTangibleObjectTemplat
 	clientObjectCRC = 642963853
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok, "object/tangible/lair/blistmok/shared_lair_blistmok.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok, "object/tangible/lair/blistmok/shared_lair_blistmok.iff")
 
 object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObje
 	clientObjectCRC = 920509188
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_mountain, "object/tangible/lair/blistmok/shared_lair_blistmok_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_mountain, "object/tangible/lair/blistmok/shared_lair_blistmok_mountain.iff")
 
 object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObj
 	clientObjectCRC = 1298589466
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_wasteland, "object/tangible/lair/blistmok/shared_lair_blistmok_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_wasteland, "object/tangible/lair/blistmok/shared_lair_blistmok_wasteland.iff")

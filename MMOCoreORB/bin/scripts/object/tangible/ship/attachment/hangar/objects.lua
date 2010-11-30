@@ -48,6 +48,7 @@ object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar = SharedTang
 	clientObjectCRC = 1810673938
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar, "object/tangible/ship/attachment/hangar/shared_star_destroyer_hangar.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar, "object/tangible/ship/attachment/hangar/shared_star_destroyer_hangar.iff")

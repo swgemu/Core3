@@ -48,6 +48,7 @@ object_tangible_scout_camp_shared_camp_basic = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32772,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_scout_camp_shared_camp_basic = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1292354861
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_basic, "object/tangible/scout/camp/shared_camp_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_basic, "object/tangible/scout/camp/shared_camp_basic.iff")
 
 object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s4.apt",
@@ -101,6 +102,7 @@ object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32772,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3731836900
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_elite, "object/tangible/scout/camp/shared_camp_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_elite, "object/tangible/scout/camp/shared_camp_elite.iff")
 
 object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s2.apt",
@@ -154,6 +156,7 @@ object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32772,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2831120800
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_improved, "object/tangible/scout/camp/shared_camp_improved.iff")
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_improved, "object/tangible/scout/camp/shared_camp_improved.iff")
 
 object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s5.apt",
@@ -207,6 +210,7 @@ object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32772,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 1082864410
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_luxury, "object/tangible/scout/camp/shared_camp_luxury.iff")
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_luxury, "object/tangible/scout/camp/shared_camp_luxury.iff")
 
 object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s1.apt",
@@ -260,6 +264,7 @@ object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32772,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1695464329
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_multi, "object/tangible/scout/camp/shared_camp_multi.iff")
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_multi, "object/tangible/scout/camp/shared_camp_multi.iff")
 
 object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s3.apt",
@@ -313,6 +318,7 @@ object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32772,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,4 +363,4 @@ object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3484724123
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_quality, "object/tangible/scout/camp/shared_camp_quality.iff")
+ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_quality, "object/tangible/scout/camp/shared_camp_quality.iff")

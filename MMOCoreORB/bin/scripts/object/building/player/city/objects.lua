@@ -48,6 +48,7 @@ object_building_player_city_shared_bank_corellia = SharedInstallationObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_bank_player.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_building_player_city_shared_bank_corellia = SharedInstallationObjectTempl
 	clientObjectCRC = 1845141471
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_corellia, "object/building/player/city/shared_bank_corellia.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_bank_corellia, "object/building/player/city/shared_bank_corellia.iff")
 
 object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_bank_s01.apt",
@@ -101,6 +102,7 @@ object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_bank_player.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate
 	clientObjectCRC = 3868143603
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_naboo, "object/building/player/city/shared_bank_naboo.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_bank_naboo, "object/building/player/city/shared_bank_naboo.iff")
 
 object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_bank_s01.apt",
@@ -154,6 +156,7 @@ object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_bank_player.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTempl
 	clientObjectCRC = 1371143744
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_tatooine, "object/building/player/city/shared_bank_tatooine.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_bank_tatooine, "object/building/player/city/shared_bank_tatooine.iff")
 
 object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -207,6 +210,7 @@ object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -254,7 +258,7 @@ object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTempla
 	clientObjectCRC = 3739527551
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_corellia, "object/building/player/city/shared_cantina_corellia.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cantina_corellia, "object/building/player/city/shared_cantina_corellia.iff")
 
 object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -263,6 +267,7 @@ object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -310,7 +315,7 @@ object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2025646266
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_naboo, "object/building/player/city/shared_cantina_naboo.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cantina_naboo, "object/building/player/city/shared_cantina_naboo.iff")
 
 object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -319,6 +324,7 @@ object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -366,7 +372,7 @@ object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTempla
 	clientObjectCRC = 3802646752
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_tatooine, "object/building/player/city/shared_cantina_tatooine.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cantina_tatooine, "object/building/player/city/shared_cantina_tatooine.iff")
 
 object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -375,6 +381,7 @@ object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_cityhall.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -422,7 +429,7 @@ object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTempl
 	clientObjectCRC = 4031190701
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_corellia, "object/building/player/city/shared_cityhall_corellia.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cityhall_corellia, "object/building/player/city/shared_cityhall_corellia.iff")
 
 object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -431,6 +438,7 @@ object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_cityhall.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -478,7 +486,7 @@ object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate
 	clientObjectCRC = 3442426219
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_naboo, "object/building/player/city/shared_cityhall_naboo.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cityhall_naboo, "object/building/player/city/shared_cityhall_naboo.iff")
 
 object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -487,6 +495,7 @@ object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_cityhall.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -534,7 +543,7 @@ object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTempl
 	clientObjectCRC = 3422844722
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_tatooine, "object/building/player/city/shared_cityhall_tatooine.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cityhall_tatooine, "object/building/player/city/shared_cityhall_tatooine.iff")
 
 object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -543,6 +552,7 @@ object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -590,7 +600,7 @@ object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTempla
 	clientObjectCRC = 1360449531
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_corellia, "object/building/player/city/shared_cloning_corellia.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cloning_corellia, "object/building/player/city/shared_cloning_corellia.iff")
 
 object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -599,6 +609,7 @@ object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -646,7 +657,7 @@ object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2221199199
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_naboo, "object/building/player/city/shared_cloning_naboo.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cloning_naboo, "object/building/player/city/shared_cloning_naboo.iff")
 
 object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -655,6 +666,7 @@ object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -702,7 +714,7 @@ object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTempla
 	clientObjectCRC = 1834331748
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_tatooine, "object/building/player/city/shared_cloning_tatooine.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_cloning_tatooine, "object/building/player/city/shared_cloning_tatooine.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
@@ -711,6 +723,7 @@ object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_lrg_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -755,7 +768,7 @@ object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationOb
 	clientObjectCRC = 3782826017
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_01, "object/building/player/city/shared_garden_corellia_lrg_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_01, "object/building/player/city/shared_garden_corellia_lrg_01.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
@@ -764,6 +777,7 @@ object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_lrg_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -808,7 +822,7 @@ object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationOb
 	clientObjectCRC = 980349110
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_02, "object/building/player/city/shared_garden_corellia_lrg_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_02, "object/building/player/city/shared_garden_corellia_lrg_02.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
@@ -817,6 +831,7 @@ object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_lrg_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -861,7 +876,7 @@ object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationOb
 	clientObjectCRC = 1935906619
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_03, "object/building/player/city/shared_garden_corellia_lrg_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_03, "object/building/player/city/shared_garden_corellia_lrg_03.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
@@ -870,6 +885,7 @@ object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_lrg_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -914,7 +930,7 @@ object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationOb
 	clientObjectCRC = 2290138159
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_04, "object/building/player/city/shared_garden_corellia_lrg_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_04, "object/building/player/city/shared_garden_corellia_lrg_04.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
@@ -923,6 +939,7 @@ object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_lrg_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -967,7 +984,7 @@ object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationOb
 	clientObjectCRC = 3247299490
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_05, "object/building/player/city/shared_garden_corellia_lrg_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_05, "object/building/player/city/shared_garden_corellia_lrg_05.iff")
 
 object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
@@ -976,6 +993,7 @@ object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_med_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1020,7 +1038,7 @@ object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationOb
 	clientObjectCRC = 1120922265
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_01, "object/building/player/city/shared_garden_corellia_med_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_01, "object/building/player/city/shared_garden_corellia_med_01.iff")
 
 object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
@@ -1029,6 +1047,7 @@ object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_med_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1073,7 +1092,7 @@ object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationOb
 	clientObjectCRC = 2581086734
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_02, "object/building/player/city/shared_garden_corellia_med_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_02, "object/building/player/city/shared_garden_corellia_med_02.iff")
 
 object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
@@ -1082,6 +1101,7 @@ object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_med_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1126,7 +1146,7 @@ object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationOb
 	clientObjectCRC = 3503629699
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_03, "object/building/player/city/shared_garden_corellia_med_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_03, "object/building/player/city/shared_garden_corellia_med_03.iff")
 
 object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
@@ -1135,6 +1155,7 @@ object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_med_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1179,7 +1200,7 @@ object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationOb
 	clientObjectCRC = 724962967
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_04, "object/building/player/city/shared_garden_corellia_med_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_04, "object/building/player/city/shared_garden_corellia_med_04.iff")
 
 object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
@@ -1188,6 +1209,7 @@ object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_med_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1232,7 +1254,7 @@ object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationOb
 	clientObjectCRC = 1648060698
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_05, "object/building/player/city/shared_garden_corellia_med_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_05, "object/building/player/city/shared_garden_corellia_med_05.iff")
 
 object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
@@ -1241,6 +1263,7 @@ object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_sml_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1285,7 +1308,7 @@ object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationOb
 	clientObjectCRC = 782388533
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_01, "object/building/player/city/shared_garden_corellia_sml_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_01, "object/building/player/city/shared_garden_corellia_sml_01.iff")
 
 object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
@@ -1294,6 +1317,7 @@ object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_sml_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1338,7 +1362,7 @@ object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationOb
 	clientObjectCRC = 4122338722
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_02, "object/building/player/city/shared_garden_corellia_sml_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_02, "object/building/player/city/shared_garden_corellia_sml_02.iff")
 
 object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
@@ -1347,6 +1371,7 @@ object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_sml_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1391,7 +1416,7 @@ object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationOb
 	clientObjectCRC = 3166208559
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_03, "object/building/player/city/shared_garden_corellia_sml_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_03, "object/building/player/city/shared_garden_corellia_sml_03.iff")
 
 object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
@@ -1400,6 +1425,7 @@ object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_sml_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1444,7 +1470,7 @@ object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationOb
 	clientObjectCRC = 1197189435
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_04, "object/building/player/city/shared_garden_corellia_sml_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_04, "object/building/player/city/shared_garden_corellia_sml_04.iff")
 
 object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
@@ -1453,6 +1479,7 @@ object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_corl_garden_sml_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1497,7 +1524,7 @@ object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationOb
 	clientObjectCRC = 240570038
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_05, "object/building/player/city/shared_garden_corellia_sml_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_05, "object/building/player/city/shared_garden_corellia_sml_05.iff")
 
 object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
@@ -1506,6 +1533,7 @@ object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationO
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_dant_garden_lrg_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1550,7 +1578,7 @@ object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationO
 	clientObjectCRC = 2412094562
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_lrg_01, "object/building/player/city/shared_garden_dantooine_lrg_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dantooine_lrg_01, "object/building/player/city/shared_garden_dantooine_lrg_01.iff")
 
 object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
@@ -1559,6 +1587,7 @@ object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationO
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_dant_garden_med_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1603,7 +1632,7 @@ object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationO
 	clientObjectCRC = 745739994
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_med_01, "object/building/player/city/shared_garden_dantooine_med_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dantooine_med_01, "object/building/player/city/shared_garden_dantooine_med_01.iff")
 
 object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
@@ -1612,6 +1641,7 @@ object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationO
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_dant_garden_sml_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1656,7 +1686,7 @@ object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationO
 	clientObjectCRC = 1075753334
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_sml_01, "object/building/player/city/shared_garden_dantooine_sml_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dantooine_sml_01, "object/building/player/city/shared_garden_dantooine_sml_01.iff")
 
 object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
@@ -1665,6 +1695,7 @@ object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_dath_garden_lrg_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1709,7 +1740,7 @@ object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationOb
 	clientObjectCRC = 247337676
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_lrg_01, "object/building/player/city/shared_garden_dathomir_lrg_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dathomir_lrg_01, "object/building/player/city/shared_garden_dathomir_lrg_01.iff")
 
 object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
@@ -1718,6 +1749,7 @@ object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_dath_garden_med_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1762,7 +1794,7 @@ object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationOb
 	clientObjectCRC = 2903023732
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_med_01, "object/building/player/city/shared_garden_dathomir_med_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dathomir_med_01, "object/building/player/city/shared_garden_dathomir_med_01.iff")
 
 object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
@@ -1771,6 +1803,7 @@ object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_dath_garden_sml_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1815,7 +1848,7 @@ object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationOb
 	clientObjectCRC = 3244623832
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_sml_01, "object/building/player/city/shared_garden_dathomir_sml_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dathomir_sml_01, "object/building/player/city/shared_garden_dathomir_sml_01.iff")
 
 object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
@@ -1824,6 +1857,7 @@ object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_end_garden_lrg_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1868,7 +1902,7 @@ object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjec
 	clientObjectCRC = 2039109063
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_lrg_01, "object/building/player/city/shared_garden_endor_lrg_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_endor_lrg_01, "object/building/player/city/shared_garden_endor_lrg_01.iff")
 
 object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
@@ -1877,6 +1911,7 @@ object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_end_garden_med_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1921,7 +1956,7 @@ object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjec
 	clientObjectCRC = 3661424511
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_med_01, "object/building/player/city/shared_garden_endor_med_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_endor_med_01, "object/building/player/city/shared_garden_endor_med_01.iff")
 
 object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
@@ -1930,6 +1965,7 @@ object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_end_garden_sml_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1974,7 +2010,7 @@ object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjec
 	clientObjectCRC = 3058778323
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_sml_01, "object/building/player/city/shared_garden_endor_sml_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_endor_sml_01, "object/building/player/city/shared_garden_endor_sml_01.iff")
 
 object_building_player_city_shared_garden_naboo_large = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
@@ -1983,6 +2019,7 @@ object_building_player_city_shared_garden_naboo_large = SharedInstallationObject
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_naboo_garden_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2027,7 +2064,7 @@ object_building_player_city_shared_garden_naboo_large = SharedInstallationObject
 	clientObjectCRC = 2557845591
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_large, "object/building/player/city/shared_garden_naboo_large.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_large, "object/building/player/city/shared_garden_naboo_large.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
@@ -2036,6 +2073,7 @@ object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_lrg_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2080,7 +2118,7 @@ object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjec
 	clientObjectCRC = 1417631619
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_01, "object/building/player/city/shared_garden_naboo_lrg_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_01, "object/building/player/city/shared_garden_naboo_lrg_01.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
@@ -2089,6 +2127,7 @@ object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_lrg_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2133,7 +2172,7 @@ object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjec
 	clientObjectCRC = 2406022932
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_02, "object/building/player/city/shared_garden_naboo_lrg_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_02, "object/building/player/city/shared_garden_naboo_lrg_02.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
@@ -2142,6 +2181,7 @@ object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_lrg_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2186,7 +2226,7 @@ object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjec
 	clientObjectCRC = 3328546969
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_03, "object/building/player/city/shared_garden_naboo_lrg_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_03, "object/building/player/city/shared_garden_naboo_lrg_03.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
@@ -2195,6 +2235,7 @@ object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_lrg_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2239,7 +2280,7 @@ object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjec
 	clientObjectCRC = 1032237965
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_04, "object/building/player/city/shared_garden_naboo_lrg_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_04, "object/building/player/city/shared_garden_naboo_lrg_04.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
@@ -2248,6 +2289,7 @@ object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_lrg_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2292,7 +2334,7 @@ object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjec
 	clientObjectCRC = 1955320832
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_05, "object/building/player/city/shared_garden_naboo_lrg_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_05, "object/building/player/city/shared_garden_naboo_lrg_05.iff")
 
 object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
@@ -2301,6 +2343,7 @@ object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_med_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2345,7 +2388,7 @@ object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjec
 	clientObjectCRC = 4157203771
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_01, "object/building/player/city/shared_garden_naboo_med_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_01, "object/building/player/city/shared_garden_naboo_med_01.iff")
 
 object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
@@ -2354,6 +2397,7 @@ object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_med_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2398,7 +2442,7 @@ object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjec
 	clientObjectCRC = 752766380
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_02, "object/building/player/city/shared_garden_naboo_med_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_02, "object/building/player/city/shared_garden_naboo_med_02.iff")
 
 object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
@@ -2407,6 +2451,7 @@ object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_med_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2451,7 +2496,7 @@ object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjec
 	clientObjectCRC = 1708337697
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_03, "object/building/player/city/shared_garden_naboo_med_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_03, "object/building/player/city/shared_garden_naboo_med_03.iff")
 
 object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
@@ -2460,6 +2505,7 @@ object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_med_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2504,7 +2550,7 @@ object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjec
 	clientObjectCRC = 2653946165
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_04, "object/building/player/city/shared_garden_naboo_med_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_04, "object/building/player/city/shared_garden_naboo_med_04.iff")
 
 object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
@@ -2513,6 +2559,7 @@ object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_med_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2557,7 +2604,7 @@ object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjec
 	clientObjectCRC = 3611125432
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_05, "object/building/player/city/shared_garden_naboo_med_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_05, "object/building/player/city/shared_garden_naboo_med_05.iff")
 
 object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
@@ -2566,6 +2613,7 @@ object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_sml_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2610,7 +2658,7 @@ object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjec
 	clientObjectCRC = 2611233431
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_01, "object/building/player/city/shared_garden_naboo_sml_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_01, "object/building/player/city/shared_garden_naboo_sml_01.iff")
 
 object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
@@ -2619,6 +2667,7 @@ object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_sml_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2663,7 +2712,7 @@ object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjec
 	clientObjectCRC = 1085532672
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_02, "object/building/player/city/shared_garden_naboo_sml_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_02, "object/building/player/city/shared_garden_naboo_sml_02.iff")
 
 object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
@@ -2672,6 +2721,7 @@ object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_sml_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2716,7 +2766,7 @@ object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjec
 	clientObjectCRC = 163483021
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_03, "object/building/player/city/shared_garden_naboo_sml_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_03, "object/building/player/city/shared_garden_naboo_sml_03.iff")
 
 object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
@@ -2725,6 +2775,7 @@ object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_sml_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2769,7 +2820,7 @@ object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjec
 	clientObjectCRC = 4066223769
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_04, "object/building/player/city/shared_garden_naboo_sml_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_04, "object/building/player/city/shared_garden_naboo_sml_04.iff")
 
 object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
@@ -2778,6 +2829,7 @@ object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjec
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_nboo_garden_sml_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2822,7 +2874,7 @@ object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjec
 	clientObjectCRC = 3142631700
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_05, "object/building/player/city/shared_garden_naboo_sml_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_05, "object/building/player/city/shared_garden_naboo_sml_05.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
@@ -2831,6 +2883,7 @@ object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_lrg_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2875,7 +2928,7 @@ object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationOb
 	clientObjectCRC = 2152696910
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_01, "object/building/player/city/shared_garden_tatooine_lrg_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_01, "object/building/player/city/shared_garden_tatooine_lrg_01.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
@@ -2884,6 +2937,7 @@ object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_lrg_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2928,7 +2982,7 @@ object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationOb
 	clientObjectCRC = 1532503257
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_02, "object/building/player/city/shared_garden_tatooine_lrg_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_02, "object/building/player/city/shared_garden_tatooine_lrg_02.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
@@ -2937,6 +2991,7 @@ object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_lrg_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2981,7 +3036,7 @@ object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationOb
 	clientObjectCRC = 307577684
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_03, "object/building/player/city/shared_garden_tatooine_lrg_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_03, "object/building/player/city/shared_garden_tatooine_lrg_03.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
@@ -2990,6 +3045,7 @@ object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_lrg_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3034,7 +3090,7 @@ object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationOb
 	clientObjectCRC = 3921045568
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_04, "object/building/player/city/shared_garden_tatooine_lrg_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_04, "object/building/player/city/shared_garden_tatooine_lrg_04.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
@@ -3043,6 +3099,7 @@ object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_lrg_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3087,7 +3144,7 @@ object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationOb
 	clientObjectCRC = 2696613837
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_05, "object/building/player/city/shared_garden_tatooine_lrg_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_05, "object/building/player/city/shared_garden_tatooine_lrg_05.iff")
 
 object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
@@ -3096,6 +3153,7 @@ object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_med_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3140,7 +3198,7 @@ object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationOb
 	clientObjectCRC = 603537142
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_01, "object/building/player/city/shared_garden_tatooine_med_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_01, "object/building/player/city/shared_garden_tatooine_med_01.iff")
 
 object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
@@ -3149,6 +3207,7 @@ object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_med_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3193,7 +3252,7 @@ object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationOb
 	clientObjectCRC = 4176385633
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_02, "object/building/player/city/shared_garden_tatooine_med_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_02, "object/building/player/city/shared_garden_tatooine_med_02.iff")
 
 object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
@@ -3202,6 +3261,7 @@ object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_med_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3246,7 +3306,7 @@ object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationOb
 	clientObjectCRC = 2984505836
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_03, "object/building/player/city/shared_garden_tatooine_med_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_03, "object/building/player/city/shared_garden_tatooine_med_03.iff")
 
 object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
@@ -3255,6 +3315,7 @@ object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_med_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3299,7 +3360,7 @@ object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationOb
 	clientObjectCRC = 1241570040
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_04, "object/building/player/city/shared_garden_tatooine_med_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_04, "object/building/player/city/shared_garden_tatooine_med_04.iff")
 
 object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
@@ -3308,6 +3369,7 @@ object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_med_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3352,7 +3414,7 @@ object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationOb
 	clientObjectCRC = 51232117
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_05, "object/building/player/city/shared_garden_tatooine_med_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_05, "object/building/player/city/shared_garden_tatooine_med_05.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
@@ -3361,6 +3423,7 @@ object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_sml_01.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3405,7 +3468,7 @@ object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationOb
 	clientObjectCRC = 1335138650
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_01, "object/building/player/city/shared_garden_tatooine_sml_01.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_01, "object/building/player/city/shared_garden_tatooine_sml_01.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
@@ -3414,6 +3477,7 @@ object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_sml_02.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3458,7 +3522,7 @@ object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationOb
 	clientObjectCRC = 2491625933
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_02, "object/building/player/city/shared_garden_tatooine_sml_02.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_02, "object/building/player/city/shared_garden_tatooine_sml_02.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
@@ -3467,6 +3531,7 @@ object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_sml_03.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3511,7 +3576,7 @@ object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationOb
 	clientObjectCRC = 3717092928
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_03, "object/building/player/city/shared_garden_tatooine_sml_03.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_03, "object/building/player/city/shared_garden_tatooine_sml_03.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
@@ -3520,6 +3585,7 @@ object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_sml_04.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3564,7 +3630,7 @@ object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationOb
 	clientObjectCRC = 644709716
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_04, "object/building/player/city/shared_garden_tatooine_sml_04.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_04, "object/building/player/city/shared_garden_tatooine_sml_04.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
@@ -3573,6 +3639,7 @@ object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationOb
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_tato_garden_sml_05.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3617,7 +3684,7 @@ object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationOb
 	clientObjectCRC = 1868569305
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_05, "object/building/player/city/shared_garden_tatooine_sml_05.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_05, "object/building/player/city/shared_garden_tatooine_sml_05.iff")
 
 object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3626,6 +3693,7 @@ object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_hospital_player.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3673,7 +3741,7 @@ object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTempl
 	clientObjectCRC = 3101511526
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_corellia, "object/building/player/city/shared_hospital_corellia.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_hospital_corellia, "object/building/player/city/shared_hospital_corellia.iff")
 
 object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3682,6 +3750,7 @@ object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_hospital_player.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3729,7 +3798,7 @@ object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate
 	clientObjectCRC = 1387695986
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_naboo, "object/building/player/city/shared_hospital_naboo.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_hospital_naboo, "object/building/player/city/shared_hospital_naboo.iff")
 
 object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3738,6 +3807,7 @@ object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_hospital_player.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3785,7 +3855,7 @@ object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTempl
 	clientObjectCRC = 2224959225
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_tatooine, "object/building/player/city/shared_hospital_tatooine.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_hospital_tatooine, "object/building/player/city/shared_hospital_tatooine.iff")
 
 object_building_player_city_shared_shuttleport_corellia = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_shuttleport_s01.apt",
@@ -3794,6 +3864,7 @@ object_building_player_city_shared_shuttleport_corellia = SharedInstallationObje
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_shuttleport.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3838,7 +3909,7 @@ object_building_player_city_shared_shuttleport_corellia = SharedInstallationObje
 	clientObjectCRC = 3046076056
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_corellia, "object/building/player/city/shared_shuttleport_corellia.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_shuttleport_corellia, "object/building/player/city/shared_shuttleport_corellia.iff")
 
 object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_shuttleport_s01.apt",
@@ -3847,6 +3918,7 @@ object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_shuttleport.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3891,7 +3963,7 @@ object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectT
 	clientObjectCRC = 893676466
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_naboo, "object/building/player/city/shared_shuttleport_naboo.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_shuttleport_naboo, "object/building/player/city/shared_shuttleport_naboo.iff")
 
 object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_shuttleport_s01.apt",
@@ -3900,6 +3972,7 @@ object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObje
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_shuttleport.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3944,7 +4017,7 @@ object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObje
 	clientObjectCRC = 2311851783
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_tatooine, "object/building/player/city/shared_shuttleport_tatooine.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_shuttleport_tatooine, "object/building/player/city/shared_shuttleport_tatooine.iff")
 
 object_building_player_city_shared_theater_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -3953,6 +4026,7 @@ object_building_player_city_shared_theater_corellia = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4000,7 +4074,7 @@ object_building_player_city_shared_theater_corellia = SharedBuildingObjectTempla
 	clientObjectCRC = 3302987664
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_corellia, "object/building/player/city/shared_theater_corellia.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_theater_corellia, "object/building/player/city/shared_theater_corellia.iff")
 
 object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4009,6 +4083,7 @@ object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4056,7 +4131,7 @@ object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2697086195
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_naboo, "object/building/player/city/shared_theater_naboo.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_theater_naboo, "object/building/player/city/shared_theater_naboo.iff")
 
 object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -4065,6 +4140,7 @@ object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_city_medium_building.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4112,4 +4188,4 @@ object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTempla
 	clientObjectCRC = 4171036175
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_tatooine, "object/building/player/city/shared_theater_tatooine.iff")
+ObjectTemplates:addTemplate(object_building_player_city_shared_theater_tatooine, "object/building/player/city/shared_theater_tatooine.iff")

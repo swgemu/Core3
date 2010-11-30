@@ -48,6 +48,7 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_base = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_base = SharedTangibleObjec
 	clientObjectCRC = 2505702624
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_base.iff")
 
 object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base = SharedTangib
 	clientObjectCRC = 1402579310
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_female_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_female_base.iff")
 
 object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base = SharedTangible
 	clientObjectCRC = 848817616
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_male_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_male_base.iff")

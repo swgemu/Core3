@@ -48,6 +48,7 @@ object_tangible_sign_base_shared_base_sign = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_sign_base_shared_base_sign = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 675816768
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_base_shared_base_sign, "object/tangible/sign/base/shared_base_sign.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_base_shared_base_sign, "object/tangible/sign/base/shared_base_sign.iff")

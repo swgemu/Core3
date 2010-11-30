@@ -48,6 +48,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	clientObjectCRC = 2242761962
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_1.iff")
+ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_1.iff")
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
@@ -101,6 +102,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	clientObjectCRC = 1589279869
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff")
+ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff")
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
@@ -154,6 +156,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	clientObjectCRC = 1103585647
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_heavy.iff")
+ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_heavy.iff")

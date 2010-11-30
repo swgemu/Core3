@@ -48,6 +48,7 @@ object_tangible_lair_angler_shared_lair_angler = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_angler_shared_lair_angler = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1988238968
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler, "object/tangible/lair/angler/shared_lair_angler.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler, "object/tangible/lair/angler/shared_lair_angler.iff")
 
 object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 20648312
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, "object/tangible/lair/angler/shared_lair_angler_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, "object/tangible/lair/angler/shared_lair_angler_jungle.iff")
 
 object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTempl
 	clientObjectCRC = 2297908648
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, "object/tangible/lair/angler/shared_lair_angler_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, "object/tangible/lair/angler/shared_lair_angler_swamp.iff")
 
 object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObject
 	clientObjectCRC = 3099411810
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, "object/tangible/lair/angler/shared_lair_angler_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, "object/tangible/lair/angler/shared_lair_angler_underwater.iff")

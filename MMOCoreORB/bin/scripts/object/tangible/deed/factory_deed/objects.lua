@@ -48,6 +48,7 @@ object_tangible_deed_factory_deed_shared_factory_clothing_deed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_deed_factory_deed_shared_factory_clothing_deed = SharedTangibleO
 	clientObjectCRC = 1812501477
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_factory_deed_shared_factory_clothing_deed, "object/tangible/deed/factory_deed/shared_factory_clothing_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_clothing_deed, "object/tangible/deed/factory_deed/shared_factory_clothing_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_food_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -101,6 +102,7 @@ object_tangible_deed_factory_deed_shared_factory_food_deed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_deed_factory_deed_shared_factory_food_deed = SharedTangibleObjec
 	clientObjectCRC = 3488359653
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_factory_deed_shared_factory_food_deed, "object/tangible/deed/factory_deed/shared_factory_food_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_food_deed, "object/tangible/deed/factory_deed/shared_factory_food_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_item_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -154,6 +156,7 @@ object_tangible_deed_factory_deed_shared_factory_item_deed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_deed_factory_deed_shared_factory_item_deed = SharedTangibleObjec
 	clientObjectCRC = 4246665338
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_factory_deed_shared_factory_item_deed, "object/tangible/deed/factory_deed/shared_factory_item_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_item_deed, "object/tangible/deed/factory_deed/shared_factory_item_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_structure_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -207,6 +210,7 @@ object_tangible_deed_factory_deed_shared_factory_structure_deed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_deed_factory_deed_shared_factory_structure_deed = SharedTangible
 	clientObjectCRC = 2385714184
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_factory_deed_shared_factory_structure_deed, "object/tangible/deed/factory_deed/shared_factory_structure_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_structure_deed, "object/tangible/deed/factory_deed/shared_factory_structure_deed.iff")

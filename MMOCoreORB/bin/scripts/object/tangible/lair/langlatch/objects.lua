@@ -48,6 +48,7 @@ object_tangible_lair_langlatch_shared_lair_langlatch = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_langlatch_shared_lair_langlatch = SharedTangibleObjectTempl
 	clientObjectCRC = 3783483774
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch, "object/tangible/lair/langlatch/shared_lair_langlatch.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch, "object/tangible/lair/langlatch/shared_lair_langlatch.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObje
 	clientObjectCRC = 3329291401
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_forest, "object/tangible/lair/langlatch/shared_lair_langlatch_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_forest, "object/tangible/lair/langlatch/shared_lair_langlatch_forest.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleOb
 	clientObjectCRC = 2238931411
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_mountain, "object/tangible/lair/langlatch/shared_lair_langlatch_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_mountain, "object/tangible/lair/langlatch/shared_lair_langlatch_mountain.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleO
 	clientObjectCRC = 1403100093
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_wasteland, "object/tangible/lair/langlatch/shared_lair_langlatch_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_wasteland, "object/tangible/lair/langlatch/shared_lair_langlatch_wasteland.iff")

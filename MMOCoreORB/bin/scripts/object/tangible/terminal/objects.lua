@@ -48,6 +48,7 @@ object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTempla
 	clientObjectCRC = 909741262
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_ballot_box, "object/tangible/terminal/shared_terminal_ballot_box.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_ballot_box, "object/tangible/terminal/shared_terminal_ballot_box.iff")
 
 object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bank.apt",
@@ -101,6 +102,7 @@ object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_bank.cdf",
+	clientGameObjectType = 16385,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 1989986645
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bank, "object/tangible/terminal/shared_terminal_bank.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bank, "object/tangible/terminal/shared_terminal_bank.iff")
 
 object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bazaar.apt",
@@ -154,6 +156,7 @@ object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_bazaar.cdf",
+	clientGameObjectType = 16386,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3631323563
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bazaar, "object/tangible/terminal/shared_terminal_bazaar.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bazaar, "object/tangible/terminal/shared_terminal_bazaar.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -207,6 +210,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjec
 	clientObjectCRC = 234637781
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_01, "object/tangible/terminal/shared_terminal_bestine_quests_01.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_01, "object/tangible/terminal/shared_terminal_bestine_quests_01.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -260,6 +264,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjec
 	clientObjectCRC = 3605782850
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_02, "object/tangible/terminal/shared_terminal_bestine_quests_02.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_02, "object/tangible/terminal/shared_terminal_bestine_quests_02.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -313,6 +318,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjec
 	clientObjectCRC = 2682685135
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_03, "object/tangible/terminal/shared_terminal_bestine_quests_03.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_03, "object/tangible/terminal/shared_terminal_bestine_quests_03.iff")
 
 object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
@@ -366,6 +372,7 @@ object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemp
 	clientObjectCRC = 4023071175
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bounty_droid, "object/tangible/terminal/shared_terminal_bounty_droid.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bounty_droid, "object/tangible/terminal/shared_terminal_bounty_droid.iff")
 
 object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
@@ -419,6 +426,7 @@ object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjec
 	clientObjectCRC = 1444012427
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_character_builder, "object/tangible/terminal/shared_terminal_character_builder.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_character_builder, "object/tangible/terminal/shared_terminal_character_builder.iff")
 
 object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
@@ -472,6 +480,7 @@ object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 379393128
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_city, "object/tangible/terminal/shared_terminal_city.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_city, "object/tangible/terminal/shared_terminal_city.iff")
 
 object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_mun_ballot_box.apt",
@@ -525,6 +534,7 @@ object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplat
 	clientObjectCRC = 1204497275
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_city_vote, "object/tangible/terminal/shared_terminal_city_vote.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_city_vote, "object/tangible/terminal/shared_terminal_city_vote.iff")
 
 object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_cloning.apt",
@@ -578,6 +588,7 @@ object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_cloning.cdf",
+	clientGameObjectType = 16387,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3781560082
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_cloning, "object/tangible/terminal/shared_terminal_cloning.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_cloning, "object/tangible/terminal/shared_terminal_cloning.iff")
 
 object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_command_console_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_geo_bunker.cdf",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectT
 	clientObjectCRC = 245813721
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_command_console, "object/tangible/terminal/shared_terminal_command_console.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_command_console, "object/tangible/terminal/shared_terminal_command_console.iff")
 
 object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_djt_voting.apt",
@@ -684,6 +696,7 @@ object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangible
 	clientObjectCRC = 1992103782
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_dark_enclave_challenge, "object/tangible/terminal/shared_terminal_dark_enclave_challenge.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_dark_enclave_challenge, "object/tangible/terminal/shared_terminal_dark_enclave_challenge.iff")
 
 object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
@@ -737,6 +750,7 @@ object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObj
 	clientObjectCRC = 2329382269
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_dark_enclave_voting, "object/tangible/terminal/shared_terminal_dark_enclave_voting.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_dark_enclave_voting, "object/tangible/terminal/shared_terminal_dark_enclave_voting.iff")
 
 object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_updown_s02.apt",
@@ -790,6 +804,7 @@ object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate
 	clientObjectCRC = 278443635
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator, "object/tangible/terminal/shared_terminal_elevator.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator, "object/tangible/terminal/shared_terminal_elevator.iff")
 
 object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_down_s02.apt",
@@ -843,6 +858,7 @@ object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTem
 	clientObjectCRC = 3298826986
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator_down, "object/tangible/terminal/shared_terminal_elevator_down.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator_down, "object/tangible/terminal/shared_terminal_elevator_down.iff")
 
 object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_up_s02.apt",
@@ -896,6 +912,7 @@ object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTempl
 	clientObjectCRC = 115529514
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator_up, "object/tangible/terminal/shared_terminal_elevator_up.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator_up, "object/tangible/terminal/shared_terminal_elevator_up.iff")
 
 object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
@@ -949,6 +966,7 @@ object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_geo_bunker.cdf",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTempla
 	clientObjectCRC = 3878794306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_geo_bunker, "object/tangible/terminal/shared_terminal_geo_bunker.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_geo_bunker, "object/tangible/terminal/shared_terminal_geo_bunker.iff")
 
 object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
@@ -1002,6 +1020,7 @@ object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 724271921
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_guild, "object/tangible/terminal/shared_terminal_guild.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_guild, "object/tangible/terminal/shared_terminal_guild.iff")
 
 object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -1055,6 +1074,7 @@ object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 489350492
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq, "object/tangible/terminal/shared_terminal_hq.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq, "object/tangible/terminal/shared_terminal_hq.iff")
 
 object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -1108,6 +1128,7 @@ object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTempl
 	clientObjectCRC = 3161971452
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_imperial, "object/tangible/terminal/shared_terminal_hq_imperial.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_imperial, "object/tangible/terminal/shared_terminal_hq_imperial.iff")
 
 object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -1161,6 +1182,7 @@ object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate
 	clientObjectCRC = 1176471647
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_rebel, "object/tangible/terminal/shared_terminal_hq_rebel.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_rebel, "object/tangible/terminal/shared_terminal_hq_rebel.iff")
 
 object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
@@ -1214,6 +1236,7 @@ object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjec
 	clientObjectCRC = 2229698005
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_turret_control, "object/tangible/terminal/shared_terminal_hq_turret_control.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_turret_control, "object/tangible/terminal/shared_terminal_hq_turret_control.iff")
 
 object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_image_design.apt",
@@ -1267,6 +1290,7 @@ object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTempl
 	clientObjectCRC = 2511005752
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_imagedesign, "object/tangible/terminal/shared_terminal_imagedesign.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_imagedesign, "object/tangible/terminal/shared_terminal_imagedesign.iff")
 
 object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -1320,6 +1344,7 @@ object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_insurance.cdf",
+	clientGameObjectType = 16388,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplat
 	clientObjectCRC = 1029213671
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_insurance, "object/tangible/terminal/shared_terminal_insurance.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_insurance, "object/tangible/terminal/shared_terminal_insurance.iff")
 
 object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
@@ -1373,6 +1398,7 @@ object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:
 	clientObjectCRC = 249891408
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_jukebox, "object/tangible/terminal/shared_terminal_jukebox.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_jukebox, "object/tangible/terminal/shared_terminal_jukebox.iff")
 
 object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
@@ -1426,6 +1452,7 @@ object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibl
 	clientObjectCRC = 2945424908
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_light_enclave_challenge, "object/tangible/terminal/shared_terminal_light_enclave_challenge.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_light_enclave_challenge, "object/tangible/terminal/shared_terminal_light_enclave_challenge.iff")
 
 object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
@@ -1479,6 +1506,7 @@ object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleOb
 	clientObjectCRC = 1384984494
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_light_enclave_voting, "object/tangible/terminal/shared_terminal_light_enclave_voting.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_light_enclave_voting, "object/tangible/terminal/shared_terminal_light_enclave_voting.iff")
 
 object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_mission.apt",
@@ -1532,6 +1560,7 @@ object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16390,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2907007746
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission, "object/tangible/terminal/shared_terminal_mission.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission, "object/tangible/terminal/shared_terminal_mission.iff")
 
 object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -1585,6 +1614,7 @@ object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16390,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectT
 	clientObjectCRC = 3927829015
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_artisan, "object/tangible/terminal/shared_terminal_mission_artisan.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_artisan, "object/tangible/terminal/shared_terminal_mission_artisan.iff")
 
 object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -1638,6 +1668,7 @@ object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16390,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTe
 	clientObjectCRC = 3951925654
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_bounty, "object/tangible/terminal/shared_terminal_mission_bounty.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_bounty, "object/tangible/terminal/shared_terminal_mission_bounty.iff")
 
 object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
@@ -1691,6 +1722,7 @@ object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16390,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObj
 	clientObjectCRC = 2410700040
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_entertainer, "object/tangible/terminal/shared_terminal_mission_entertainer.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_entertainer, "object/tangible/terminal/shared_terminal_mission_entertainer.iff")
 
 object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
@@ -1744,6 +1776,7 @@ object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16390,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObject
 	clientObjectCRC = 4186402280
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_imperial, "object/tangible/terminal/shared_terminal_mission_imperial.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_imperial, "object/tangible/terminal/shared_terminal_mission_imperial.iff")
 
 object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_mission.apt",
@@ -1797,6 +1830,7 @@ object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTe
 	clientObjectCRC = 2666426537
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_newbie, "object/tangible/terminal/shared_terminal_mission_newbie.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_newbie, "object/tangible/terminal/shared_terminal_mission_newbie.iff")
 
 object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
@@ -1850,6 +1884,7 @@ object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16390,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTem
 	clientObjectCRC = 2082896080
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_rebel, "object/tangible/terminal/shared_terminal_mission_rebel.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_rebel, "object/tangible/terminal/shared_terminal_mission_rebel.iff")
 
 object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
@@ -1903,6 +1938,7 @@ object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16390,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTem
 	clientObjectCRC = 581658756
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_scout, "object/tangible/terminal/shared_terminal_mission_scout.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_scout, "object/tangible/terminal/shared_terminal_mission_scout.iff")
 
 object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
@@ -1956,6 +1992,7 @@ object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/terminal/client_shared_terminal_mission.cdf",
+	clientGameObjectType = 16390,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTe
 	clientObjectCRC = 4114889569
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_statue, "object/tangible/terminal/shared_terminal_mission_statue.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_statue, "object/tangible/terminal/shared_terminal_mission_statue.iff")
 
 object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2009,6 +2046,7 @@ object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectT
 	clientObjectCRC = 4290085920
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_clothing, "object/tangible/terminal/shared_terminal_newbie_clothing.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_clothing, "object/tangible/terminal/shared_terminal_newbie_clothing.iff")
 
 object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2062,6 +2100,7 @@ object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTempl
 	clientObjectCRC = 2721518483
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_food, "object/tangible/terminal/shared_terminal_newbie_food.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_food, "object/tangible/terminal/shared_terminal_newbie_food.iff")
 
 object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2115,6 +2154,7 @@ object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjec
 	clientObjectCRC = 3665675874
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_instrument, "object/tangible/terminal/shared_terminal_newbie_instrument.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_instrument, "object/tangible/terminal/shared_terminal_newbie_instrument.iff")
 
 object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2168,6 +2208,7 @@ object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectT
 	clientObjectCRC = 1668873424
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_medicine, "object/tangible/terminal/shared_terminal_newbie_medicine.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_medicine, "object/tangible/terminal/shared_terminal_newbie_medicine.iff")
 
 object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2221,6 +2262,7 @@ object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTempl
 	clientObjectCRC = 4182051530
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_tool, "object/tangible/terminal/shared_terminal_newbie_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_tool, "object/tangible/terminal/shared_terminal_newbie_tool.iff")
 
 object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -2274,6 +2316,7 @@ object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:
 	clientObjectCRC = 757402672
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newsnet, "object/tangible/terminal/shared_terminal_newsnet.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newsnet, "object/tangible/terminal/shared_terminal_newsnet.iff")
 
 object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2327,6 +2370,7 @@ object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate
 	clientObjectCRC = 3880062907
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_nym_cave, "object/tangible/terminal/shared_terminal_nym_cave.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_nym_cave, "object/tangible/terminal/shared_terminal_nym_cave.iff")
 
 object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2380,6 +2424,7 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16392,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2393,7 +2438,6 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 	detailedDescription = "@terminal_detail:terminal_player_structure",
 
 	gameObjectType = 16392,
-	maxCondition = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "@terminal_lookat:terminal_player_structure",
@@ -2425,7 +2469,7 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 	clientObjectCRC = 4023332994
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure, "object/tangible/terminal/shared_terminal_player_structure.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure, "object/tangible/terminal/shared_terminal_player_structure.iff")
 
 object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2434,6 +2478,7 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16392,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2478,7 +2523,7 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibl
 	clientObjectCRC = 437907033
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap, "object/tangible/terminal/shared_terminal_player_structure_nosnap.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap, "object/tangible/terminal/shared_terminal_player_structure_nosnap.iff")
 
 object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
@@ -2487,6 +2532,7 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16392,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2531,7 +2577,7 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTa
 	clientObjectCRC = 2775644177
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap_mini, "object/tangible/terminal/shared_terminal_player_structure_nosnap_mini.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap_mini, "object/tangible/terminal/shared_terminal_player_structure_nosnap_mini.iff")
 
 object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
@@ -2540,6 +2586,7 @@ object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2584,7 +2631,7 @@ object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTempl
 	clientObjectCRC = 1004751674
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_pm_register, "object/tangible/terminal/shared_terminal_pm_register.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_pm_register, "object/tangible/terminal/shared_terminal_pm_register.iff")
 
 object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2593,6 +2640,7 @@ object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2637,7 +2685,7 @@ object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate
 	clientObjectCRC = 3308349953
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_pob_ship, "object/tangible/terminal/shared_terminal_pob_ship.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_pob_ship, "object/tangible/terminal/shared_terminal_pob_ship.iff")
 
 object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
@@ -2646,6 +2694,7 @@ object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/newbie_tutorial/shared_debris.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2690,7 +2739,7 @@ object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangib
 	clientObjectCRC = 965433242
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_ship_interior_security_1, "object/tangible/terminal/shared_terminal_ship_interior_security_1.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_ship_interior_security_1, "object/tangible/terminal/shared_terminal_ship_interior_security_1.iff")
 
 object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -2699,6 +2748,7 @@ object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16393,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2743,7 +2793,7 @@ object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate
 	clientObjectCRC = 1225472505
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_shipping, "object/tangible/terminal/shared_terminal_shipping.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_shipping, "object/tangible/terminal/shared_terminal_shipping.iff")
 
 object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2752,6 +2802,7 @@ object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2796,7 +2847,7 @@ object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 328711509
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_skill, "object/tangible/terminal/shared_terminal_skill.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_skill, "object/tangible/terminal/shared_terminal_skill.iff")
 
 object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_spaceterminal.apt",
@@ -2805,6 +2856,7 @@ object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16395,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2849,7 +2901,7 @@ object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1701113915
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_space, "object/tangible/terminal/shared_terminal_space.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_space, "object/tangible/terminal/shared_terminal_space.iff")
 
 object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -2858,6 +2910,7 @@ object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2902,7 +2955,7 @@ object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1946349820
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_travel, "object/tangible/terminal/shared_terminal_travel.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_travel, "object/tangible/terminal/shared_terminal_travel.iff")
 
 object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -2911,6 +2964,7 @@ object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2955,7 +3009,7 @@ object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTe
 	clientObjectCRC = 4062337637
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_water_pressure, "object/tangible/terminal/shared_terminal_water_pressure.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_water_pressure, "object/tangible/terminal/shared_terminal_water_pressure.iff")
 
 object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_updown_s02.apt",
@@ -2964,6 +3018,7 @@ object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16384,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3008,4 +3063,4 @@ object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3876933537
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_test, "object/tangible/terminal/shared_test.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_shared_test, "object/tangible/terminal/shared_test.iff")

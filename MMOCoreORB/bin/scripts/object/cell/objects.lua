@@ -47,6 +47,7 @@ object_cell_shared_cell = SharedCellObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -58,7 +59,7 @@ object_cell_shared_cell = SharedCellObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 11,
+	gameObjectType = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
@@ -82,4 +83,4 @@ object_cell_shared_cell = SharedCellObjectTemplate:new {
 	clientObjectCRC = 206832110
 }
 
-ObjectTemplates:addClientTemplate(object_cell_shared_cell, "object/cell/shared_cell.iff")
+ObjectTemplates:addTemplate(object_cell_shared_cell, "object/cell/shared_cell.iff")

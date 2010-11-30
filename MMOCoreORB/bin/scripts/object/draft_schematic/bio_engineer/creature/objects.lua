@@ -47,6 +47,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_angler = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_angler = SharedDraf
 	clientObjectCRC = 2194731916
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_angler, "object/draft_schematic/bio_engineer/creature/shared_creature_angler.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_angler, "object/draft_schematic/bio_engineer/creature/shared_creature_angler.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bageraset = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bageraset = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bageraset = SharedD
 	clientObjectCRC = 4215503445
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bageraset, "object/draft_schematic/bio_engineer/creature/shared_creature_bageraset.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bageraset, "object/draft_schematic/bio_engineer/creature/shared_creature_bageraset.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bantha = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bantha = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bantha = SharedDraf
 	clientObjectCRC = 2986875366
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bantha, "object/draft_schematic/bio_engineer/creature/shared_creature_bantha.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bantha, "object/draft_schematic/bio_engineer/creature/shared_creature_bantha.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax = Share
 	clientObjectCRC = 4105804770
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax, "object/draft_schematic/bio_engineer/creature/shared_creature_bearded_jax.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax, "object/draft_schematic/bio_engineer/creature/shared_creature_bearded_jax.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_blurrg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_blurrg = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_blurrg = SharedDraf
 	clientObjectCRC = 3526408720
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_blurrg, "object/draft_schematic/bio_engineer/creature/shared_creature_blurrg.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_blurrg, "object/draft_schematic/bio_engineer/creature/shared_creature_blurrg.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf = SharedD
 	clientObjectCRC = 4013578304
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf, "object/draft_schematic/bio_engineer/creature/shared_creature_boar_wolf.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf, "object/draft_schematic/bio_engineer/creature/shared_creature_boar_wolf.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bocatt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bocatt = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bocatt = SharedDraf
 	clientObjectCRC = 2241064889
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bocatt, "object/draft_schematic/bio_engineer/creature/shared_creature_bocatt.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bocatt, "object/draft_schematic/bio_engineer/creature/shared_creature_bocatt.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bol = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bol = SharedDraftSc
 	clientObjectCRC = 194404346
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bol, "object/draft_schematic/bio_engineer/creature/shared_creature_bol.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bol, "object/draft_schematic/bio_engineer/creature/shared_creature_bol.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol = SharedD
 	clientObjectCRC = 774858939
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol, "object/draft_schematic/bio_engineer/creature/shared_creature_bolle_bol.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol, "object/draft_schematic/bio_engineer/creature/shared_creature_bolle_bol.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bolma = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bolma = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bolma = SharedDraft
 	clientObjectCRC = 3401168648
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bolma, "object/draft_schematic/bio_engineer/creature/shared_creature_bolma.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bolma, "object/draft_schematic/bio_engineer/creature/shared_creature_bolma.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bordok = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bordok = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bordok = SharedDraf
 	clientObjectCRC = 2122372411
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bordok, "object/draft_schematic/bio_engineer/creature/shared_creature_bordok.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bordok, "object/draft_schematic/bio_engineer/creature/shared_creature_bordok.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_brackaset = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_brackaset = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_brackaset = SharedD
 	clientObjectCRC = 4202172720
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_brackaset, "object/draft_schematic/bio_engineer/creature/shared_creature_brackaset.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_brackaset, "object/draft_schematic/bio_engineer/creature/shared_creature_brackaset.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat = Shar
 	clientObjectCRC = 2824161282
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat, "object/draft_schematic/bio_engineer/creature/shared_creature_carrion_spat.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat, "object/draft_schematic/bio_engineer/creature/shared_creature_carrion_spat.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_choku = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_choku = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_choku = SharedDraft
 	clientObjectCRC = 2519862275
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_choku, "object/draft_schematic/bio_engineer/creature/shared_creature_choku.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_choku, "object/draft_schematic/bio_engineer/creature/shared_creature_choku.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa = SharedDraft
 	clientObjectCRC = 294189744
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa, "object/draft_schematic/bio_engineer/creature/shared_creature_cu_pa.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa, "object/draft_schematic/bio_engineer/creature/shared_creature_cu_pa.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake = SharedDr
 	clientObjectCRC = 1742701874
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake, "object/draft_schematic/bio_engineer/creature/shared_creature_dalyrake.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake, "object/draft_schematic/bio_engineer/creature/shared_creature_dalyrake.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_dewback = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dewback = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dewback = SharedDra
 	clientObjectCRC = 458255116
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dewback, "object/draft_schematic/bio_engineer/creature/shared_creature_dewback.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dewback, "object/draft_schematic/bio_engineer/creature/shared_creature_dewback.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard = Share
 	clientObjectCRC = 1538963680
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard, "object/draft_schematic/bio_engineer/creature/shared_creature_dune_lizard.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard, "object/draft_schematic/bio_engineer/creature/shared_creature_dune_lizard.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_durni = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_durni = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_durni = SharedDraft
 	clientObjectCRC = 2143765286
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_durni, "object/draft_schematic/bio_engineer/creature/shared_creature_durni.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_durni, "object/draft_schematic/bio_engineer/creature/shared_creature_durni.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_eopie = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_eopie = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_eopie = SharedDraft
 	clientObjectCRC = 4256914670
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_eopie, "object/draft_schematic/bio_engineer/creature/shared_creature_eopie.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_eopie, "object/draft_schematic/bio_engineer/creature/shared_creature_eopie.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset = Shared
 	clientObjectCRC = 1377358713
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset, "object/draft_schematic/bio_engineer/creature/shared_creature_falumpaset.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset, "object/draft_schematic/bio_engineer/creature/shared_creature_falumpaset.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_fambaa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_fambaa = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_fambaa = SharedDraf
 	clientObjectCRC = 3590470383
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_fambaa, "object/draft_schematic/bio_engineer/creature/shared_creature_fambaa.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_fambaa, "object/draft_schematic/bio_engineer/creature/shared_creature_fambaa.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gnort = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gnort = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gnort = SharedDraft
 	clientObjectCRC = 3008536395
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gnort, "object/draft_schematic/bio_engineer/creature/shared_creature_gnort.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gnort, "object/draft_schematic/bio_engineer/creature/shared_creature_gnort.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_graul = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_graul = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_graul = SharedDraft
 	clientObjectCRC = 4155029108
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_graul, "object/draft_schematic/bio_engineer/creature/shared_creature_graul.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_graul, "object/draft_schematic/bio_engineer/creature/shared_creature_graul.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gronda = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gronda = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gronda = SharedDraf
 	clientObjectCRC = 3598263633
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gronda, "object/draft_schematic/bio_engineer/creature/shared_creature_gronda.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gronda, "object/draft_schematic/bio_engineer/creature/shared_creature_gronda.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gualama = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gualama = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gualama = SharedDra
 	clientObjectCRC = 1583894111
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gualama, "object/draft_schematic/bio_engineer/creature/shared_creature_gualama.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gualama, "object/draft_schematic/bio_engineer/creature/shared_creature_gualama.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1165,6 +1191,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg = SharedD
 	clientObjectCRC = 214864710
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg, "object/draft_schematic/bio_engineer/creature/shared_creature_guf_drolg.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg, "object/draft_schematic/bio_engineer/creature/shared_creature_guf_drolg.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1208,6 +1235,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1243,7 +1271,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset = SharedDr
 	clientObjectCRC = 2942082056
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset, "object/draft_schematic/bio_engineer/creature/shared_creature_gurnaset.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset, "object/draft_schematic/bio_engineer/creature/shared_creature_gurnaset.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1251,6 +1279,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1286,7 +1315,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat = SharedDra
 	clientObjectCRC = 836337505
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat, "object/draft_schematic/bio_engineer/creature/shared_creature_gurrcat.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat, "object/draft_schematic/bio_engineer/creature/shared_creature_gurrcat.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gurreck = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1294,6 +1323,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurreck = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1329,7 +1359,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurreck = SharedDra
 	clientObjectCRC = 2573412958
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurreck, "object/draft_schematic/bio_engineer/creature/shared_creature_gurreck.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurreck, "object/draft_schematic/bio_engineer/creature/shared_creature_gurreck.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1337,6 +1367,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider = Sha
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1372,7 +1403,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider = Sha
 	clientObjectCRC = 3982863564
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider, "object/draft_schematic/bio_engineer/creature/shared_creature_hermit_spider.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider, "object/draft_schematic/bio_engineer/creature/shared_creature_hermit_spider.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1380,6 +1411,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1415,7 +1447,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun = SharedDra
 	clientObjectCRC = 42281249
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun, "object/draft_schematic/bio_engineer/creature/shared_creature_huf_dun.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun, "object/draft_schematic/bio_engineer/creature/shared_creature_huf_dun.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_huurton = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1423,6 +1455,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_huurton = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1458,7 +1491,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_huurton = SharedDra
 	clientObjectCRC = 221814880
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_huurton, "object/draft_schematic/bio_engineer/creature/shared_creature_huurton.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_huurton, "object/draft_schematic/bio_engineer/creature/shared_creature_huurton.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_ikopi = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1466,6 +1499,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_ikopi = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1501,7 +1535,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_ikopi = SharedDraft
 	clientObjectCRC = 3034849253
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_ikopi, "object/draft_schematic/bio_engineer/creature/shared_creature_ikopi.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_ikopi, "object/draft_schematic/bio_engineer/creature/shared_creature_ikopi.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kaadu = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1509,6 +1543,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kaadu = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1544,7 +1579,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kaadu = SharedDraft
 	clientObjectCRC = 3687731549
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kaadu, "object/draft_schematic/bio_engineer/creature/shared_creature_kaadu.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kaadu, "object/draft_schematic/bio_engineer/creature/shared_creature_kaadu.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1552,6 +1587,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1587,7 +1623,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra = SharedDr
 	clientObjectCRC = 2090758476
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra, "object/draft_schematic/bio_engineer/creature/shared_creature_kahmurra.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra, "object/draft_schematic/bio_engineer/creature/shared_creature_kahmurra.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kima = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1595,6 +1631,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kima = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1630,7 +1667,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kima = SharedDraftS
 	clientObjectCRC = 4083743117
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kima, "object/draft_schematic/bio_engineer/creature/shared_creature_kima.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kima, "object/draft_schematic/bio_engineer/creature/shared_creature_kima.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kimogila = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1638,6 +1675,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kimogila = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1673,7 +1711,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kimogila = SharedDr
 	clientObjectCRC = 2952128886
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kimogila, "object/draft_schematic/bio_engineer/creature/shared_creature_kimogila.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kimogila, "object/draft_schematic/bio_engineer/creature/shared_creature_kimogila.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kliknik = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1681,6 +1719,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kliknik = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1716,7 +1755,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kliknik = SharedDra
 	clientObjectCRC = 4064324910
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kliknik, "object/draft_schematic/bio_engineer/creature/shared_creature_kliknik.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kliknik, "object/draft_schematic/bio_engineer/creature/shared_creature_kliknik.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_krahbu = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1724,6 +1763,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_krahbu = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1759,7 +1799,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_krahbu = SharedDraf
 	clientObjectCRC = 2639605564
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_krahbu, "object/draft_schematic/bio_engineer/creature/shared_creature_krahbu.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_krahbu, "object/draft_schematic/bio_engineer/creature/shared_creature_krahbu.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kusak = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1767,6 +1807,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kusak = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1802,7 +1843,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kusak = SharedDraft
 	clientObjectCRC = 1674691308
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kusak, "object/draft_schematic/bio_engineer/creature/shared_creature_kusak.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kusak, "object/draft_schematic/bio_engineer/creature/shared_creature_kusak.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kwi = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1810,6 +1851,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kwi = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1845,7 +1887,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kwi = SharedDraftSc
 	clientObjectCRC = 822086132
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kwi, "object/draft_schematic/bio_engineer/creature/shared_creature_kwi.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kwi, "object/draft_schematic/bio_engineer/creature/shared_creature_kwi.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_langlatch = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1853,6 +1895,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_langlatch = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1888,7 +1931,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_langlatch = SharedD
 	clientObjectCRC = 382639713
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_langlatch, "object/draft_schematic/bio_engineer/creature/shared_creature_langlatch.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_langlatch, "object/draft_schematic/bio_engineer/creature/shared_creature_langlatch.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_malkloc = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1896,6 +1939,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_malkloc = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1931,7 +1975,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_malkloc = SharedDra
 	clientObjectCRC = 3222156358
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_malkloc, "object/draft_schematic/bio_engineer/creature/shared_creature_malkloc.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_malkloc, "object/draft_schematic/bio_engineer/creature/shared_creature_malkloc.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_mawgax = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1939,6 +1983,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_mawgax = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1974,7 +2019,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_mawgax = SharedDraf
 	clientObjectCRC = 1998178833
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_mawgax, "object/draft_schematic/bio_engineer/creature/shared_creature_mawgax.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_mawgax, "object/draft_schematic/bio_engineer/creature/shared_creature_mawgax.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_merek = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1982,6 +2027,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_merek = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2017,7 +2063,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_merek = SharedDraft
 	clientObjectCRC = 3363831532
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_merek, "object/draft_schematic/bio_engineer/creature/shared_creature_merek.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_merek, "object/draft_schematic/bio_engineer/creature/shared_creature_merek.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_mott = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2025,6 +2071,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_mott = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2060,7 +2107,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_mott = SharedDraftS
 	clientObjectCRC = 391972314
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_mott, "object/draft_schematic/bio_engineer/creature/shared_creature_mott.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_mott, "object/draft_schematic/bio_engineer/creature/shared_creature_mott.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_narglatch = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2068,6 +2115,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_narglatch = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2103,7 +2151,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_narglatch = SharedD
 	clientObjectCRC = 1494399637
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_narglatch, "object/draft_schematic/bio_engineer/creature/shared_creature_narglatch.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_narglatch, "object/draft_schematic/bio_engineer/creature/shared_creature_narglatch.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_piket = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2111,6 +2159,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_piket = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2146,7 +2195,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_piket = SharedDraft
 	clientObjectCRC = 876066471
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_piket, "object/draft_schematic/bio_engineer/creature/shared_creature_piket.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_piket, "object/draft_schematic/bio_engineer/creature/shared_creature_piket.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2154,6 +2203,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2189,7 +2239,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss = SharedDr
 	clientObjectCRC = 3425505007
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss, "object/draft_schematic/bio_engineer/creature/shared_creature_pugoriss.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss, "object/draft_schematic/bio_engineer/creature/shared_creature_pugoriss.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_rancor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2197,6 +2247,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_rancor = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2232,7 +2283,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_rancor = SharedDraf
 	clientObjectCRC = 2315289809
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_rancor, "object/draft_schematic/bio_engineer/creature/shared_creature_rancor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_rancor, "object/draft_schematic/bio_engineer/creature/shared_creature_rancor.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_roba = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2240,6 +2291,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_roba = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2275,7 +2327,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_roba = SharedDraftS
 	clientObjectCRC = 3996613579
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_roba, "object/draft_schematic/bio_engineer/creature/shared_creature_roba.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_roba, "object/draft_schematic/bio_engineer/creature/shared_creature_roba.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_ronto = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2283,6 +2335,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_ronto = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2318,7 +2371,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_ronto = SharedDraft
 	clientObjectCRC = 3413941223
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_ronto, "object/draft_schematic/bio_engineer/creature/shared_creature_ronto.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_ronto, "object/draft_schematic/bio_engineer/creature/shared_creature_ronto.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2326,6 +2379,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2361,7 +2415,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther = Shar
 	clientObjectCRC = 1557933596
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther, "object/draft_schematic/bio_engineer/creature/shared_creature_sand_panther.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther, "object/draft_schematic/bio_engineer/creature/shared_creature_sand_panther.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2369,6 +2423,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2404,7 +2459,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff = SharedDr
 	clientObjectCRC = 1130402855
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff, "object/draft_schematic/bio_engineer/creature/shared_creature_sharnaff.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff, "object/draft_schematic/bio_engineer/creature/shared_creature_sharnaff.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2412,6 +2467,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2447,7 +2503,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite = Shared
 	clientObjectCRC = 2912736913
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite, "object/draft_schematic/bio_engineer/creature/shared_creature_shear_mite.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite, "object/draft_schematic/bio_engineer/creature/shared_creature_shear_mite.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2455,6 +2511,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2490,7 +2547,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound = Share
 	clientObjectCRC = 3198942193
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound, "object/draft_schematic/bio_engineer/creature/shared_creature_slice_hound.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound, "object/draft_schematic/bio_engineer/creature/shared_creature_slice_hound.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_snorbal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2498,6 +2555,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_snorbal = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2533,7 +2591,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_snorbal = SharedDra
 	clientObjectCRC = 3916872379
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_snorbal, "object/draft_schematic/bio_engineer/creature/shared_creature_snorbal.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_snorbal, "object/draft_schematic/bio_engineer/creature/shared_creature_snorbal.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_squall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2541,6 +2599,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_squall = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2576,7 +2635,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_squall = SharedDraf
 	clientObjectCRC = 1147183865
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_squall, "object/draft_schematic/bio_engineer/creature/shared_creature_squall.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_squall, "object/draft_schematic/bio_engineer/creature/shared_creature_squall.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2584,6 +2643,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2619,7 +2679,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong = Share
 	clientObjectCRC = 1889951794
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong, "object/draft_schematic/bio_engineer/creature/shared_creature_swirl_prong.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong, "object/draft_schematic/bio_engineer/creature/shared_creature_swirl_prong.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_thune = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2627,6 +2687,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_thune = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2662,7 +2723,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_thune = SharedDraft
 	clientObjectCRC = 2789806366
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_thune, "object/draft_schematic/bio_engineer/creature/shared_creature_thune.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_thune, "object/draft_schematic/bio_engineer/creature/shared_creature_thune.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_torton = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2670,6 +2731,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_torton = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2705,7 +2767,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_torton = SharedDraf
 	clientObjectCRC = 3492399802
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_torton, "object/draft_schematic/bio_engineer/creature/shared_creature_torton.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_torton, "object/draft_schematic/bio_engineer/creature/shared_creature_torton.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_tybis = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2713,6 +2775,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_tybis = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2748,7 +2811,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_tybis = SharedDraft
 	clientObjectCRC = 784595182
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_tybis, "object/draft_schematic/bio_engineer/creature/shared_creature_tybis.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_tybis, "object/draft_schematic/bio_engineer/creature/shared_creature_tybis.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_veermok = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2756,6 +2819,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_veermok = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2791,7 +2855,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_veermok = SharedDra
 	clientObjectCRC = 3830962018
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_veermok, "object/draft_schematic/bio_engineer/creature/shared_creature_veermok.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_veermok, "object/draft_schematic/bio_engineer/creature/shared_creature_veermok.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_verne = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2799,6 +2863,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_verne = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2834,7 +2899,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_verne = SharedDraft
 	clientObjectCRC = 1267151566
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_verne, "object/draft_schematic/bio_engineer/creature/shared_creature_verne.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_verne, "object/draft_schematic/bio_engineer/creature/shared_creature_verne.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_vesp = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2842,6 +2907,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_vesp = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2877,7 +2943,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_vesp = SharedDraftS
 	clientObjectCRC = 240128094
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_vesp, "object/draft_schematic/bio_engineer/creature/shared_creature_vesp.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_vesp, "object/draft_schematic/bio_engineer/creature/shared_creature_vesp.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2885,6 +2951,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2920,7 +2987,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur = SharedDra
 	clientObjectCRC = 454865702
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur, "object/draft_schematic/bio_engineer/creature/shared_creature_vir_vur.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur, "object/draft_schematic/bio_engineer/creature/shared_creature_vir_vur.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_woolamander = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2928,6 +2995,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_woolamander = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2963,7 +3031,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_woolamander = Share
 	clientObjectCRC = 2302146856
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_woolamander, "object/draft_schematic/bio_engineer/creature/shared_creature_woolamander.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_woolamander, "object/draft_schematic/bio_engineer/creature/shared_creature_woolamander.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2971,6 +3039,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3006,4 +3075,4 @@ object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar = Shared
 	clientObjectCRC = 2008121273
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar, "object/draft_schematic/bio_engineer/creature/shared_creature_zucca_boar.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar, "object/draft_schematic/bio_engineer/creature/shared_creature_zucca_boar.iff")

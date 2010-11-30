@@ -48,6 +48,7 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat = SharedTangibleObjectTemplat
 	clientObjectCRC = 1593900791
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat, "object/tangible/lair/tusk_cat/shared_lair_tusk_cat.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat, "object/tangible/lair/tusk_cat/shared_lair_tusk_cat.iff")
 
 object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland = SharedTangibleObj
 	clientObjectCRC = 664931344
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland, "object/tangible/lair/tusk_cat/shared_lair_tusk_cat_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland, "object/tangible/lair/tusk_cat/shared_lair_tusk_cat_grassland.iff")

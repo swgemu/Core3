@@ -48,6 +48,7 @@ object_tangible_location_base_shared_location_base = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_location_base_shared_location_base = SharedTangibleObjectTemplat
 	clientObjectCRC = 2015057562
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_location_base_shared_location_base, "object/tangible/location/base/shared_location_base.iff")
+ObjectTemplates:addTemplate(object_tangible_location_base_shared_location_base, "object/tangible/location/base/shared_location_base.iff")

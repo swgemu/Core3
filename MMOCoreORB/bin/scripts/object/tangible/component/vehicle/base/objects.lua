@@ -48,6 +48,7 @@ object_tangible_component_vehicle_base_shared_base_armor_panel = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_vehicle_base_shared_base_armor_panel = SharedTangibleO
 	clientObjectCRC = 3466579247
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_armor_panel, "object/tangible/component/vehicle/base/shared_base_armor_panel.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_armor_panel, "object/tangible/component/vehicle/base/shared_base_armor_panel.iff")
 
 object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObje
 	clientObjectCRC = 3375082309
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull, "object/tangible/component/vehicle/base/shared_base_veh_hull.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull, "object/tangible/component/vehicle/base/shared_base_veh_hull.iff")
 
 object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangible
 	clientObjectCRC = 1342686472
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull_hvy, "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull_hvy, "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff")
 
 object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -207,6 +210,7 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleOb
 	clientObjectCRC = 3126672435
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon, "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon, "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff")
 
 object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -260,6 +264,7 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangib
 	clientObjectCRC = 4158223239
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy, "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy, "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff")

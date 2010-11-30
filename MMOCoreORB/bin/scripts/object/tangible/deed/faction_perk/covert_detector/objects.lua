@@ -48,6 +48,7 @@ object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed = Sha
 	clientObjectCRC = 3347458445
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed, "object/tangible/deed/faction_perk/covert_detector/shared_detector_32m_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed, "object/tangible/deed/faction_perk/covert_detector/shared_detector_32m_deed.iff")

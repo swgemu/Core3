@@ -48,6 +48,7 @@ object_tangible_lair_mott_shared_lair_mott = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_mott_shared_lair_mott = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1868006233
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_mott_shared_lair_mott, "object/tangible/lair/mott/shared_lair_mott.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_mott_shared_lair_mott, "object/tangible/lair/mott/shared_lair_mott.iff")
 
 object_tangible_lair_mott_shared_lair_mott_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_mott_shared_lair_mott_grassland = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_mott_shared_lair_mott_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 1621695491
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_mott_shared_lair_mott_grassland, "object/tangible/lair/mott/shared_lair_mott_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_mott_shared_lair_mott_grassland, "object/tangible/lair/mott/shared_lair_mott_grassland.iff")

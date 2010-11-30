@@ -48,6 +48,7 @@ object_tangible_lair_piket_shared_lair_piket = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_piket_shared_lair_piket = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 206631052
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_piket_shared_lair_piket, "object/tangible/lair/piket/shared_lair_piket.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket, "object/tangible/lair/piket/shared_lair_piket.iff")
 
 object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 1495135397
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_piket_shared_lair_piket_grassland, "object/tangible/lair/piket/shared_lair_piket_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket_grassland, "object/tangible/lair/piket/shared_lair_piket_grassland.iff")

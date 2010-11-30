@@ -48,6 +48,7 @@ object_installation_mining_liquid_base_shared_mining_liquid_base = SharedInstall
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_mining_liquid_base_shared_mining_liquid_base = SharedInstall
 	clientObjectCRC = 2659189194
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_liquid_base_shared_mining_liquid_base, "object/installation/mining_liquid/base/shared_mining_liquid_base.iff")
+ObjectTemplates:addTemplate(object_installation_mining_liquid_base_shared_mining_liquid_base, "object/installation/mining_liquid/base/shared_mining_liquid_base.iff")

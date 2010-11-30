@@ -48,6 +48,7 @@ object_tangible_lair_kima_shared_lair_kima = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_kima_shared_lair_kima = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3165231595
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima, "object/tangible/lair/kima/shared_lair_kima.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima, "object/tangible/lair/kima/shared_lair_kima.iff")
 
 object_tangible_lair_kima_shared_lair_kima_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_kima_shared_lair_kima_grassland = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_kima_shared_lair_kima_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 2030650931
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima_grassland, "object/tangible/lair/kima/shared_lair_kima_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima_grassland, "object/tangible/lair/kima/shared_lair_kima_grassland.iff")
 
 object_tangible_lair_kima_shared_lair_kima_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_kima_shared_lair_kima_mountain = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_kima_shared_lair_kima_mountain = SharedTangibleObjectTempla
 	clientObjectCRC = 4188775446
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima_mountain, "object/tangible/lair/kima/shared_lair_kima_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima_mountain, "object/tangible/lair/kima/shared_lair_kima_mountain.iff")

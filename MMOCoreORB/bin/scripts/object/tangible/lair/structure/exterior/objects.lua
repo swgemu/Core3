@@ -48,6 +48,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul = 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul = 
 	clientObjectCRC = 3412992193
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_graul.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_graul.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila
 	clientObjectCRC = 743053980
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_kimogila.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_kimogila.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dragon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dr
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dr
 	clientObjectCRC = 449676358
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dragon, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_krayt_dragon.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dragon, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_krayt_dragon.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor =
 	clientObjectCRC = 2913519397
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_rancor.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_rancor.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_dragon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -260,6 +264,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_d
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_d
 	clientObjectCRC = 3125250632
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_dragon, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_condor_dragon.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_dragon, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_condor_dragon.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -313,6 +318,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw
 	clientObjectCRC = 455779396
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_gulginaw.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_gulginaw.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -366,6 +372,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok 
 	clientObjectCRC = 2139786863
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_kai-tok.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_kai-tok.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -419,6 +426,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek =
 	clientObjectCRC = 2915140501
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_perlek.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_perlek.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -472,6 +480,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk = 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk = 
 	clientObjectCRC = 3985013510
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_gurk.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_gurk.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -525,6 +534,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak
 	clientObjectCRC = 3103858464
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_hanadak.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_hanadak.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -578,6 +588,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien 
 	clientObjectCRC = 1771703273
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_mamien.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_mamien.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -631,6 +642,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok
 	clientObjectCRC = 3177863018
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_veermok.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_veermok.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -684,6 +696,7 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrak
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrak
 	clientObjectCRC = 599219084
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrake, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_dalyrake.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrake, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_dalyrake.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -737,6 +750,7 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik
 	clientObjectCRC = 59358224
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_kliknik.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_kliknik.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -790,6 +804,7 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,4 +849,4 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek =
 	clientObjectCRC = 2811758761
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_merek.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_merek.iff")

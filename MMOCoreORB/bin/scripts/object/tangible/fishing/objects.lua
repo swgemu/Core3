@@ -48,6 +48,7 @@ object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8214,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1813029717
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_fishing_pole, "object/tangible/fishing/shared_fishing_pole.iff")
+ObjectTemplates:addTemplate(object_tangible_fishing_shared_fishing_pole, "object/tangible/fishing/shared_fishing_pole.iff")
 
 object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_fishing_float.apt",
@@ -101,6 +102,7 @@ object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8213,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1763394438
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_marker, "object/tangible/fishing/shared_marker.iff")
+ObjectTemplates:addTemplate(object_tangible_fishing_shared_marker, "object/tangible/fishing/shared_marker.iff")
 
 object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_splash.prt",
@@ -153,6 +155,7 @@ object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -188,4 +191,4 @@ object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1084993175
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_splash, "object/tangible/fishing/shared_splash.iff")
+ObjectTemplates:addTemplate(object_tangible_fishing_shared_splash, "object/tangible/fishing/shared_splash.iff")

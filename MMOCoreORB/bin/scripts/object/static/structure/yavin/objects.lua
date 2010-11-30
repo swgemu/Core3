@@ -47,6 +47,7 @@ object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01 = SharedStaticObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/yavn_imprv_bannerpole_s01.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 1,
@@ -81,7 +82,7 @@ object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01 = SharedStaticObj
 	clientObjectCRC = 2504717915
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01, "object/static/structure/yavin/shared_yavn_imprv_bannerpole_s01.iff")
+ObjectTemplates:addTemplate(object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01, "object/static/structure/yavin/shared_yavn_imprv_bannerpole_s01.iff")
 
 object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -89,6 +90,7 @@ object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/yavn_imprv_flagpole_s01.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 1,
@@ -123,4 +125,4 @@ object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjec
 	clientObjectCRC = 1455376607
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_yavin_shared_yavn_imprv_flagpole_s01, "object/static/structure/yavin/shared_yavn_imprv_flagpole_s01.iff")
+ObjectTemplates:addTemplate(object_static_structure_yavin_shared_yavn_imprv_flagpole_s01, "object/static/structure/yavin/shared_yavn_imprv_flagpole_s01.iff")

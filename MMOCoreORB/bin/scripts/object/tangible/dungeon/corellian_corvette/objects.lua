@@ -48,6 +48,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	clientObjectCRC = 1407650214
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
@@ -101,6 +102,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	clientObjectCRC = 2297471281
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
@@ -154,6 +156,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	clientObjectCRC = 3254634172
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_03.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
@@ -207,6 +210,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -251,7 +255,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	clientObjectCRC = 1492422801
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
@@ -260,6 +264,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -304,7 +309,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	clientObjectCRC = 2212706310
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
@@ -313,6 +318,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -357,7 +363,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	clientObjectCRC = 3404619659
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_03.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s06.apt",
@@ -366,6 +372,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -410,7 +417,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	clientObjectCRC = 2560812636
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
@@ -419,6 +426,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -463,7 +471,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	clientObjectCRC = 1135955659
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
@@ -472,6 +480,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -516,7 +525,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	clientObjectCRC = 179841350
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_03.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
@@ -525,6 +534,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -569,7 +579,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	clientObjectCRC = 3272388566
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
@@ -578,6 +588,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -622,7 +633,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	clientObjectCRC = 404424513
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
@@ -631,6 +642,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -675,7 +687,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	clientObjectCRC = 1360421068
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_03.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_chest_s01.apt",
@@ -684,6 +696,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -728,7 +741,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	clientObjectCRC = 264621119
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
@@ -737,6 +750,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -781,7 +795,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	clientObjectCRC = 3570558120
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
@@ -790,6 +804,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -834,7 +849,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	clientObjectCRC = 2648638245
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_03.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
@@ -843,6 +858,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -887,7 +903,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	clientObjectCRC = 3687584342
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_bookcase_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -940,7 +957,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	clientObjectCRC = 14400193
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
@@ -949,6 +966,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -993,7 +1011,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	clientObjectCRC = 1238818124
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_03.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
@@ -1002,6 +1020,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1046,7 +1065,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	clientObjectCRC = 542981184
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_bookcase_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1099,7 +1119,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	clientObjectCRC = 4215968983
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
@@ -1108,6 +1128,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1152,7 +1173,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	clientObjectCRC = 2991059802
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_03.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
@@ -1161,6 +1182,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1205,7 +1227,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	clientObjectCRC = 645261248
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
@@ -1214,6 +1236,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1258,7 +1281,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	clientObjectCRC = 4251078487
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s06.apt",
@@ -1267,6 +1290,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1311,7 +1335,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	clientObjectCRC = 3027183834
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_03.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
@@ -1320,6 +1344,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1364,7 +1389,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	clientObjectCRC = 1089205389
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_01.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_01.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
@@ -1373,6 +1398,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1417,7 +1443,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	clientObjectCRC = 2617007130
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_02.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_02.iff")
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_chest_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1470,4 +1497,4 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	clientObjectCRC = 3539024791
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_03.iff")
+ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_03.iff")

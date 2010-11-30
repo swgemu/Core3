@@ -48,6 +48,7 @@ object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed = Share
 	clientObjectCRC = 1819939378
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed, "object/tangible/deed/faction_perk/turret/base/shared_faction_turret_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed, "object/tangible/deed/faction_perk/turret/base/shared_faction_turret_deed.iff")

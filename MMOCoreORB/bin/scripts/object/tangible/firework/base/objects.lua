@@ -48,6 +48,7 @@ object_tangible_firework_base_shared_firework_base = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_firework_base_shared_firework_base = SharedTangibleObjectTemplat
 	clientObjectCRC = 1696219911
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_firework_base_shared_firework_base, "object/tangible/firework/base/shared_firework_base.iff")
+ObjectTemplates:addTemplate(object_tangible_firework_base_shared_firework_base, "object/tangible/firework/base/shared_firework_base.iff")

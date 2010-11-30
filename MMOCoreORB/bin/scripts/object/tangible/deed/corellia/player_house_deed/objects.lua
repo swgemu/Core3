@@ -48,6 +48,7 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed
 	clientObjectCRC = 100121621
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_large_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_large_deed.iff")
 
 object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -101,6 +102,7 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_dee
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_dee
 	clientObjectCRC = 4084143770
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_medium_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_medium_deed.iff")
 
 object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -154,6 +156,7 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed
 	clientObjectCRC = 1165081270
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_small_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_small_deed.iff")

@@ -48,6 +48,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol = SharedTangible
 	clientObjectCRC = 1908855481
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol, "object/tangible/furniture/tatooine/shared_frn_tato_cafe_parasol.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol, "object/tangible/furniture/tatooine/shared_frn_tato_cafe_parasol.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01 = SharedT
 	clientObjectCRC = 2164191436
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s02.apt",
@@ -154,6 +156,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02 = SharedT
 	clientObjectCRC = 1542019163
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_02.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_fruit_stand_large_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -251,7 +255,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01 = 
 	clientObjectCRC = 3245057821
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_large_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_large_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_fruit_stand_sml_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -304,7 +309,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01 = 
 	clientObjectCRC = 3779547307
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_small_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_small_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_meat_rack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_meat_rack.apt",
@@ -313,6 +318,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_meat_rack = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -357,7 +363,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_meat_rack = SharedTangibleObj
 	clientObjectCRC = 3789730782
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_meat_rack, "object/tangible/furniture/tatooine/shared_frn_tato_meat_rack.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_meat_rack, "object/tangible/furniture/tatooine/shared_frn_tato_meat_rack.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_table_small_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -410,7 +417,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01 = Shared
 	clientObjectCRC = 507352168
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_table_small_s02.apt",
@@ -419,6 +426,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -463,7 +471,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02 = Shared
 	clientObjectCRC = 3307879679
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_02.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_table_small_s03.apt",
@@ -472,6 +480,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -516,7 +525,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03 = Shared
 	clientObjectCRC = 2351389554
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_03.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_03.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_tbl_cafe_table_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01 = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -569,7 +579,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01 = Sha
 	clientObjectCRC = 4223928616
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_tbl_cafe_table_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_tbl_cafe_table_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_vase_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -622,7 +633,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01 = SharedTangibl
 	clientObjectCRC = 2957326043
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_vase_s02.apt",
@@ -631,6 +642,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -675,7 +687,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02 = SharedTangibl
 	clientObjectCRC = 1800576588
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_02.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_droid_detector.apt",
@@ -684,6 +696,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_droid_detector.cdf",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -728,7 +741,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector = Shar
 	clientObjectCRC = 1910356061
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector, "object/tangible/furniture/tatooine/shared_frn_tatt_cantina_droid_detector.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector, "object/tangible/furniture/tatooine/shared_frn_tatt_cantina_droid_detector.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_chair_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -781,7 +795,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat = SharedTa
 	clientObjectCRC = 4257932604
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_chair_s02.apt",
@@ -790,6 +804,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -834,7 +849,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2 = Shared
 	clientObjectCRC = 2639715831
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_2.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_2.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_chair_s03.apt",
@@ -843,6 +858,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -887,7 +903,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3 = Shared
 	clientObjectCRC = 3562781306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_3.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_3.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -940,7 +957,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1 = Share
 	clientObjectCRC = 2174626788
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_1.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_1.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s02.apt",
@@ -949,6 +966,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -993,7 +1011,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2 = Share
 	clientObjectCRC = 1518961523
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_2.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_2.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s03.apt",
@@ -1002,6 +1020,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1046,4 +1065,4 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3 = Share
 	clientObjectCRC = 327476478
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_3.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_3.iff")

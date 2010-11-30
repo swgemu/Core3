@@ -48,6 +48,7 @@ object_path_waypoint_base_shared_path_waypoint_base = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_path_waypoint_base_shared_path_waypoint_base = SharedTangibleObjectTempla
 	clientObjectCRC = 3574077008
 }
 
-ObjectTemplates:addClientTemplate(object_path_waypoint_base_shared_path_waypoint_base, "object/path_waypoint/base/shared_path_waypoint_base.iff")
+ObjectTemplates:addTemplate(object_path_waypoint_base_shared_path_waypoint_base, "object/path_waypoint/base/shared_path_waypoint_base.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_quenker_shared_lair_quenker = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_quenker_shared_lair_quenker = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1829714494
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_quenker_shared_lair_quenker, "object/tangible/lair/quenker/shared_lair_quenker.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker, "object/tangible/lair/quenker/shared_lair_quenker.iff")
 
 object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjec
 	clientObjectCRC = 571906509
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, "object/tangible/lair/quenker/shared_lair_quenker_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, "object/tangible/lair/quenker/shared_lair_quenker_grassland.iff")

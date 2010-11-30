@@ -48,6 +48,7 @@ object_tangible_npc_tatooine_special_shared_sarlacc = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_sarlacc.cdf",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_npc_tatooine_special_shared_sarlacc = SharedTangibleObjectTempla
 	clientObjectCRC = 2943030476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_npc_tatooine_special_shared_sarlacc, "object/tangible/npc/tatooine_special/shared_sarlacc.iff")
+ObjectTemplates:addTemplate(object_tangible_npc_tatooine_special_shared_sarlacc, "object/tangible/npc/tatooine_special/shared_sarlacc.iff")

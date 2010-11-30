@@ -48,6 +48,7 @@ object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed = SharedTa
 	clientObjectCRC = 2280159140
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed, "object/tangible/space/veteran_reward/shared_sorosuub_space_yacht_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed, "object/tangible/space/veteran_reward/shared_sorosuub_space_yacht_deed.iff")

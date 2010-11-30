@@ -59,6 +59,8 @@ SharedObjectTemplate = Object:new {
 	 appearanceFilename = "",
 	 portalLayoutFilename = "",
 	 clientDataFile = "",
+	 
+	 clientGameObjectType = 0,
 
 	 collisionMaterialFlags = 0,
 	 collisionMaterialPassFlags = 0,

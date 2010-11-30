@@ -48,6 +48,7 @@ object_tangible_transport_base_shared_transport_base = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_transport_base_shared_transport_base = SharedTangibleObjectTempl
 	clientObjectCRC = 3243898728
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_transport_base_shared_transport_base, "object/tangible/transport/base/shared_transport_base.iff")
+ObjectTemplates:addTemplate(object_tangible_transport_base_shared_transport_base, "object/tangible/transport/base/shared_transport_base.iff")

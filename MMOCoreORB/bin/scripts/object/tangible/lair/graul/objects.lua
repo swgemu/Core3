@@ -48,6 +48,7 @@ object_tangible_lair_graul_shared_lair_graul = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_graul_shared_lair_graul = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1881708167
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_graul_shared_lair_graul, "object/tangible/lair/graul/shared_lair_graul.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_graul_shared_lair_graul, "object/tangible/lair/graul/shared_lair_graul.iff")
 
 object_tangible_lair_graul_shared_lair_graul_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_graul_shared_lair_graul_jungle = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_graul_shared_lair_graul_jungle = SharedTangibleObjectTempla
 	clientObjectCRC = 1200430930
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_graul_shared_lair_graul_jungle, "object/tangible/lair/graul/shared_lair_graul_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_graul_shared_lair_graul_jungle, "object/tangible/lair/graul/shared_lair_graul_jungle.iff")

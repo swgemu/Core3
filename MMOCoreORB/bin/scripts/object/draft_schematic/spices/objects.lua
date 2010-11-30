@@ -47,6 +47,7 @@ object_draft_schematic_spices_shared_spice_booster_blue = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_spices_shared_spice_booster_blue = SharedDraftSchematicOb
 	clientObjectCRC = 1461060097
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_booster_blue, "object/draft_schematic/spices/shared_spice_booster_blue.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_booster_blue, "object/draft_schematic/spices/shared_spice_booster_blue.iff")
 
 object_draft_schematic_spices_shared_spice_crash_n_burn = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_spices_shared_spice_crash_n_burn = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_spices_shared_spice_crash_n_burn = SharedDraftSchematicOb
 	clientObjectCRC = 3344700100
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_crash_n_burn, "object/draft_schematic/spices/shared_spice_crash_n_burn.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_crash_n_burn, "object/draft_schematic/spices/shared_spice_crash_n_burn.iff")
 
 object_draft_schematic_spices_shared_spice_droid_lube = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_spices_shared_spice_droid_lube = SharedDraftSchematicObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_spices_shared_spice_droid_lube = SharedDraftSchematicObje
 	clientObjectCRC = 3232550663
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_droid_lube, "object/draft_schematic/spices/shared_spice_droid_lube.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_droid_lube, "object/draft_schematic/spices/shared_spice_droid_lube.iff")
 
 object_draft_schematic_spices_shared_spice_giggledust = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_spices_shared_spice_giggledust = SharedDraftSchematicObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_spices_shared_spice_giggledust = SharedDraftSchematicObje
 	clientObjectCRC = 3392956409
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_giggledust, "object/draft_schematic/spices/shared_spice_giggledust.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_giggledust, "object/draft_schematic/spices/shared_spice_giggledust.iff")
 
 object_draft_schematic_spices_shared_spice_grey_gabaki = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_spices_shared_spice_grey_gabaki = SharedDraftSchematicObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_spices_shared_spice_grey_gabaki = SharedDraftSchematicObj
 	clientObjectCRC = 3344628504
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_grey_gabaki, "object/draft_schematic/spices/shared_spice_grey_gabaki.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_grey_gabaki, "object/draft_schematic/spices/shared_spice_grey_gabaki.iff")
 
 object_draft_schematic_spices_shared_spice_gunjack = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_spices_shared_spice_gunjack = SharedDraftSchematicObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_spices_shared_spice_gunjack = SharedDraftSchematicObjectT
 	clientObjectCRC = 1606899928
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_gunjack, "object/draft_schematic/spices/shared_spice_gunjack.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_gunjack, "object/draft_schematic/spices/shared_spice_gunjack.iff")
 
 object_draft_schematic_spices_shared_spice_muon_gold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_spices_shared_spice_muon_gold = SharedDraftSchematicObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_spices_shared_spice_muon_gold = SharedDraftSchematicObjec
 	clientObjectCRC = 2071554224
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_muon_gold, "object/draft_schematic/spices/shared_spice_muon_gold.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_muon_gold, "object/draft_schematic/spices/shared_spice_muon_gold.iff")
 
 object_draft_schematic_spices_shared_spice_neutron_pixey = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_spices_shared_spice_neutron_pixey = SharedDraftSchematicO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_spices_shared_spice_neutron_pixey = SharedDraftSchematicO
 	clientObjectCRC = 1790064822
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_neutron_pixey, "object/draft_schematic/spices/shared_spice_neutron_pixey.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_neutron_pixey, "object/draft_schematic/spices/shared_spice_neutron_pixey.iff")
 
 object_draft_schematic_spices_shared_spice_pyrepenol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_spices_shared_spice_pyrepenol = SharedDraftSchematicObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_spices_shared_spice_pyrepenol = SharedDraftSchematicObjec
 	clientObjectCRC = 4245288866
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_pyrepenol, "object/draft_schematic/spices/shared_spice_pyrepenol.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_pyrepenol, "object/draft_schematic/spices/shared_spice_pyrepenol.iff")
 
 object_draft_schematic_spices_shared_spice_scramjet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_spices_shared_spice_scramjet = SharedDraftSchematicObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_spices_shared_spice_scramjet = SharedDraftSchematicObject
 	clientObjectCRC = 1617885526
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_scramjet, "object/draft_schematic/spices/shared_spice_scramjet.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_scramjet, "object/draft_schematic/spices/shared_spice_scramjet.iff")
 
 object_draft_schematic_spices_shared_spice_sedative_h4b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_spices_shared_spice_sedative_h4b = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_spices_shared_spice_sedative_h4b = SharedDraftSchematicOb
 	clientObjectCRC = 811014949
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_sedative_h4b, "object/draft_schematic/spices/shared_spice_sedative_h4b.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_sedative_h4b, "object/draft_schematic/spices/shared_spice_sedative_h4b.iff")
 
 object_draft_schematic_spices_shared_spice_shadowpaw = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_spices_shared_spice_shadowpaw = SharedDraftSchematicObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_spices_shared_spice_shadowpaw = SharedDraftSchematicObjec
 	clientObjectCRC = 1734826910
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_shadowpaw, "object/draft_schematic/spices/shared_spice_shadowpaw.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_shadowpaw, "object/draft_schematic/spices/shared_spice_shadowpaw.iff")
 
 object_draft_schematic_spices_shared_spice_sweetblossom = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_spices_shared_spice_sweetblossom = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_spices_shared_spice_sweetblossom = SharedDraftSchematicOb
 	clientObjectCRC = 2224540196
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_sweetblossom, "object/draft_schematic/spices/shared_spice_sweetblossom.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_sweetblossom, "object/draft_schematic/spices/shared_spice_sweetblossom.iff")
 
 object_draft_schematic_spices_shared_spice_thruster_head = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_spices_shared_spice_thruster_head = SharedDraftSchematicO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_spices_shared_spice_thruster_head = SharedDraftSchematicO
 	clientObjectCRC = 2661232828
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_thruster_head, "object/draft_schematic/spices/shared_spice_thruster_head.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_thruster_head, "object/draft_schematic/spices/shared_spice_thruster_head.iff")
 
 object_draft_schematic_spices_shared_spice_yarrock = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_spices_shared_spice_yarrock = SharedDraftSchematicObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,4 +699,4 @@ object_draft_schematic_spices_shared_spice_yarrock = SharedDraftSchematicObjectT
 	clientObjectCRC = 3906041259
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_spices_shared_spice_yarrock, "object/draft_schematic/spices/shared_spice_yarrock.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_yarrock, "object/draft_schematic/spices/shared_spice_yarrock.iff")

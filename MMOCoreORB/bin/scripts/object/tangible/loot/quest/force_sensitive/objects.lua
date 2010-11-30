@@ -48,6 +48,7 @@ object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad = Share
 	clientObjectCRC = 535228363
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_frequency_datapad.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_frequency_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
@@ -101,6 +102,7 @@ object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleOb
 	clientObjectCRC = 2972904337
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_remote, "object/tangible/loot/quest/force_sensitive/shared_camp_remote.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_remote, "object/tangible/loot/quest/force_sensitive/shared_camp_remote.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -154,6 +156,7 @@ object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = Shared
 	clientObjectCRC = 3049740856
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_waypoint_datapad.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_waypoint_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -207,6 +210,7 @@ object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangib
 	clientObjectCRC = 3130494948
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_theater_datapad, "object/tangible/loot/quest/force_sensitive/shared_theater_datapad.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_theater_datapad, "object/tangible/loot/quest/force_sensitive/shared_theater_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_force_crystal.apt",
@@ -260,6 +264,7 @@ object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8225,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibl
 	clientObjectCRC = 2042144998
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_sharred_force_crystal, "object/tangible/loot/quest/force_sensitive/sharred_force_crystal.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_force_crystal, "object/tangible/loot/quest/force_sensitive/sharred_force_crystal.iff")
 
 object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -313,6 +318,7 @@ object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,4 +363,4 @@ object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTang
 	clientObjectCRC = 1900348707
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.iff")

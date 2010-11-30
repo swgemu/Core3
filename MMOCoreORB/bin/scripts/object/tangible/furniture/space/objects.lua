@@ -48,6 +48,7 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01 = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01 = SharedTa
 	clientObjectCRC = 2521145726
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01, "object/tangible/furniture/space/shared_frn_chair_falcon_passenger_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01, "object/tangible/furniture/space/shared_frn_chair_falcon_passenger_s01.iff")
 
 object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s02.apt",
@@ -101,6 +102,7 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTa
 	clientObjectCRC = 1297222121
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02, "object/tangible/furniture/space/shared_frn_chair_falcon_passenger_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02, "object/tangible/furniture/space/shared_frn_chair_falcon_passenger_s02.iff")
 
 object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_couch_section_corner.apt",
@@ -154,6 +156,7 @@ object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangi
 	clientObjectCRC = 3613873422
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01, "object/tangible/furniture/space/shared_frn_couch_falcon_corner_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01, "object/tangible/furniture/space/shared_frn_couch_falcon_corner_s01.iff")
 
 object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_couch_section.apt",
@@ -207,6 +210,7 @@ object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -251,4 +255,4 @@ object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTang
 	clientObjectCRC = 927756693
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_section_s01, "object/tangible/furniture/space/shared_frn_couch_falcon_section_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_section_s01, "object/tangible/furniture/space/shared_frn_couch_falcon_section_s01.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish = SharedTangibleObjec
 	clientObjectCRC = 348164560
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish, "object/tangible/lair/striped_fish/shared_lair_striped_fish.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish, "object/tangible/lair/striped_fish/shared_lair_striped_fish.iff")
 
 object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater = SharedTa
 	clientObjectCRC = 1569350634
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater, "object/tangible/lair/striped_fish/shared_lair_striped_fish_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater, "object/tangible/lair/striped_fish/shared_lair_striped_fish_underwater.iff")

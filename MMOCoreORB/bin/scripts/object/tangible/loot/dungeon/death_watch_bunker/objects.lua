@@ -48,6 +48,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate = SharedTangibl
 	clientObjectCRC = 3487250459
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate, "object/tangible/loot/dungeon/death_watch_bunker/shared_art_crate.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate, "object/tangible/loot/dungeon/death_watch_bunker/shared_art_crate.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s04.apt",
@@ -101,6 +102,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid = SharedTan
 	clientObjectCRC = 4135561605
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid, "object/tangible/loot/dungeon/death_watch_bunker/shared_binary_liquid.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid, "object/tangible/loot/dungeon/death_watch_bunker/shared_binary_liquid.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -154,6 +156,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial = SharedTangib
 	clientObjectCRC = 3164930997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial, "object/tangible/loot/dungeon/death_watch_bunker/shared_blood_vial.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial, "object/tangible/loot/dungeon/death_watch_bunker/shared_blood_vial.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
@@ -207,6 +210,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan = SharedTangib
 	clientObjectCRC = 2674191794
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan, "object/tangible/loot/dungeon/death_watch_bunker/shared_ducted_fan.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan, "object/tangible/loot/dungeon/death_watch_bunker/shared_ducted_fan.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
@@ -260,6 +264,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection = Sha
 	clientObjectCRC = 3565585514
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection, "object/tangible/loot/dungeon/death_watch_bunker/shared_emulsion_protection.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection, "object/tangible/loot/dungeon/death_watch_bunker/shared_emulsion_protection.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
@@ -313,6 +318,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit = Sh
 	clientObjectCRC = 2809463476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit, "object/tangible/loot/dungeon/death_watch_bunker/shared_fuel_dispersion_unit.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit, "object/tangible/loot/dungeon/death_watch_bunker/shared_fuel_dispersion_unit.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -366,6 +372,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank = Shar
 	clientObjectCRC = 2471910625
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank, "object/tangible/loot/dungeon/death_watch_bunker/shared_fuel_injector_tank.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank, "object/tangible/loot/dungeon/death_watch_bunker/shared_fuel_injector_tank.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_formal.apt",
@@ -419,6 +426,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base = SharedTang
 	clientObjectCRC = 4035920074
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base, "object/tangible/loot/dungeon/death_watch_bunker/shared_jetpack_base.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base, "object/tangible/loot/dungeon/death_watch_bunker/shared_jetpack_base.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_ammo_rocket.apt",
@@ -472,6 +480,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer = Shar
 	clientObjectCRC = 1405799440
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer, "object/tangible/loot/dungeon/death_watch_bunker/shared_jetpack_stabilizer.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer, "object/tangible/loot/dungeon/death_watch_bunker/shared_jetpack_stabilizer.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s4.apt",
@@ -525,6 +534,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward = Sha
 	clientObjectCRC = 3782407794
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward, "object/tangible/loot/dungeon/death_watch_bunker/shared_mining_drill_reward.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward, "object/tangible/loot/dungeon/death_watch_bunker/shared_mining_drill_reward.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel = Shar
 	clientObjectCRC = 431650444
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel, "object/tangible/loot/dungeon/death_watch_bunker/shared_pistol_de10_barrel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel, "object/tangible/loot/dungeon/death_watch_bunker/shared_pistol_de10_barrel.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -631,6 +642,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1 = SharedTan
 	clientObjectCRC = 765586613
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1, "object/tangible/loot/dungeon/death_watch_bunker/shared_viewscreen_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1, "object/tangible/loot/dungeon/death_watch_bunker/shared_viewscreen_s1.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -684,6 +696,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,4 +741,4 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2 = SharedTan
 	clientObjectCRC = 4139140130
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2, "object/tangible/loot/dungeon/death_watch_bunker/shared_viewscreen_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2, "object/tangible/loot/dungeon/death_watch_bunker/shared_viewscreen_s2.iff")

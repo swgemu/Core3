@@ -48,6 +48,7 @@ object_installation_battlefield_destructible_base_shared_base_destructible_build
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/battlefield/client_shared_base_destructible_building.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_installation_battlefield_destructible_base_shared_base_destructible_build
 	clientObjectCRC = 3062251189
 }
 
-ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_base_shared_base_destructible_building, "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff")
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_shared_base_destructible_building, "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff")
 
 object_installation_battlefield_destructible_base_shared_construction_base_destructible_building = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
@@ -101,6 +102,7 @@ object_installation_battlefield_destructible_base_shared_construction_base_destr
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/battlefield/client_shared_construction_base_destructible_building.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_installation_battlefield_destructible_base_shared_construction_base_destr
 	clientObjectCRC = 2258056519
 }
 
-ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_base_shared_construction_base_destructible_building, "object/installation/battlefield/destructible/base/shared_construction_base_destructible_building.iff")
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_shared_construction_base_destructible_building, "object/installation/battlefield/destructible/base/shared_construction_base_destructible_building.iff")

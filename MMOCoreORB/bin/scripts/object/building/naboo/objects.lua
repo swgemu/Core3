@@ -48,6 +48,7 @@ object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 35,
 	clientDataFile = "clientdata/building/shared_association_hall.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObj
 	clientObjectCRC = 4161211751
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_association_hall_civilian_naboo, "object/building/naboo/shared_association_hall_civilian_naboo.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_association_hall_civilian_naboo, "object/building/naboo/shared_association_hall_civilian_naboo.iff")
 
 object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_bank_s01.apt",
@@ -104,6 +105,7 @@ object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 35,
 	clientDataFile = "clientdata/building/shared_bank.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,7 +153,7 @@ object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3658850000
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_bank_naboo, "object/building/naboo/shared_bank_naboo.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_bank_naboo, "object/building/naboo/shared_bank_naboo.iff")
 
 object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_lrgbuba.apt",
@@ -160,6 +162,7 @@ object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -207,7 +210,7 @@ object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTe
 	clientObjectCRC = 4092578549
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_large_style_1, "object/building/naboo/shared_bubble_naboo_large_style_1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_large_style_1, "object/building/naboo/shared_bubble_naboo_large_style_1.iff")
 
 object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_meda.apt",
@@ -216,6 +219,7 @@ object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -263,7 +267,7 @@ object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectT
 	clientObjectCRC = 4060997575
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_medium_style_1, "object/building/naboo/shared_bubble_naboo_medium_style_1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_medium_style_1, "object/building/naboo/shared_bubble_naboo_medium_style_1.iff")
 
 object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_medb.apt",
@@ -272,6 +276,7 @@ object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -319,7 +324,7 @@ object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectT
 	clientObjectCRC = 689590096
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_medium_style_2, "object/building/naboo/shared_bubble_naboo_medium_style_2.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_medium_style_2, "object/building/naboo/shared_bubble_naboo_medium_style_2.iff")
 
 object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_smalla.apt",
@@ -328,6 +333,7 @@ object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -375,7 +381,7 @@ object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTe
 	clientObjectCRC = 1528349113
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_small_style_1, "object/building/naboo/shared_bubble_naboo_small_style_1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_small_style_1, "object/building/naboo/shared_bubble_naboo_small_style_1.iff")
 
 object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -384,6 +390,7 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 58,
 	clientDataFile = "clientdata/building/shared_tatooine_cantina.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -431,7 +438,7 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1964795921
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_cantina_naboo, "object/building/naboo/shared_cantina_naboo.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_cantina_naboo, "object/building/naboo/shared_cantina_naboo.iff")
 
 object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -440,6 +447,7 @@ object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 65,
 	clientDataFile = "clientdata/building/shared_capitol.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -487,7 +495,7 @@ object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2574224334
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_capitol_naboo_theed, "object/building/naboo/shared_capitol_naboo_theed.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_capitol_naboo_theed, "object/building/naboo/shared_capitol_naboo_theed.iff")
 
 object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -496,6 +504,7 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "clientdata/building/shared_cloning.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -543,7 +552,7 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 	clientObjectCRC = 1114686474
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_cloning_facility_naboo, "object/building/naboo/shared_cloning_facility_naboo.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_cloning_facility_naboo, "object/building/naboo/shared_cloning_facility_naboo.iff")
 
 object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -552,6 +561,7 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 60,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -599,7 +609,7 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 120523031
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_emperors_retreat, "object/building/naboo/shared_emperors_retreat.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_emperors_retreat, "object/building/naboo/shared_emperors_retreat.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s10.apt",
@@ -608,6 +618,7 @@ object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 32,
 	clientDataFile = "clientdata/building/shared_naboo_filler_bldg_10.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +666,7 @@ object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObje
 	clientObjectCRC = 3073450826
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_10, "object/building/naboo/shared_filler_building_naboo_style_10.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_10, "object/building/naboo/shared_filler_building_naboo_style_10.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s11.apt",
@@ -664,6 +675,7 @@ object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 32,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -711,7 +723,7 @@ object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObje
 	clientObjectCRC = 4265362631
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_11, "object/building/naboo/shared_filler_building_naboo_style_11.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_11, "object/building/naboo/shared_filler_building_naboo_style_11.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s02.apt",
@@ -720,6 +732,7 @@ object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 10,
 	clientDataFile = "clientdata/building/shared_naboo_filler_bldg_2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -767,7 +780,7 @@ object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjec
 	clientObjectCRC = 343147098
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_2, "object/building/naboo/shared_filler_building_naboo_style_2.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_2, "object/building/naboo/shared_filler_building_naboo_style_2.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s03.apt",
@@ -776,6 +789,7 @@ object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 35,
 	clientDataFile = "clientdata/building/shared_naboo_filler_bldg_3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -823,7 +837,7 @@ object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjec
 	clientObjectCRC = 1568237015
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_3, "object/building/naboo/shared_filler_building_naboo_style_3.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_3, "object/building/naboo/shared_filler_building_naboo_style_3.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s04.apt",
@@ -832,6 +846,7 @@ object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_naboo_filler_bldg_4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -879,7 +894,7 @@ object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjec
 	clientObjectCRC = 2795130563
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_4, "object/building/naboo/shared_filler_building_naboo_style_4.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_4, "object/building/naboo/shared_filler_building_naboo_style_4.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s05.apt",
@@ -888,6 +903,7 @@ object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 20,
 	clientDataFile = "clientdata/building/shared_naboo_filler_bldg_5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -935,7 +951,7 @@ object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjec
 	clientObjectCRC = 4019661134
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_5, "object/building/naboo/shared_filler_building_naboo_style_5.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_5, "object/building/naboo/shared_filler_building_naboo_style_5.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s06.apt",
@@ -944,6 +960,7 @@ object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 12,
 	clientDataFile = "clientdata/building/shared_naboo_filler_bldg_6.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -991,7 +1008,7 @@ object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjec
 	clientObjectCRC = 880837081
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_6, "object/building/naboo/shared_filler_building_naboo_style_6.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_6, "object/building/naboo/shared_filler_building_naboo_style_6.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s08.apt",
@@ -1000,6 +1017,7 @@ object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 12,
 	clientDataFile = "clientdata/building/shared_naboo_filler_bldg_8.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1047,7 +1065,7 @@ object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjec
 	clientObjectCRC = 3347565126
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_8, "object/building/naboo/shared_filler_building_naboo_style_8.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_8, "object/building/naboo/shared_filler_building_naboo_style_8.iff")
 
 object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s09.apt",
@@ -1056,6 +1074,7 @@ object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_naboo_filler_bldg_9.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1103,7 +1122,7 @@ object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjec
 	clientObjectCRC = 2391453131
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_9, "object/building/naboo/shared_filler_building_naboo_style_9.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_9, "object/building/naboo/shared_filler_building_naboo_style_9.iff")
 
 object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_32x16_s01.apt",
@@ -1112,6 +1131,7 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 20,
 	clientDataFile = "clientdata/building/shared_naboo_32x16_s01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1159,7 +1179,7 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObj
 	clientObjectCRC = 1370920904
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_01, "object/building/naboo/shared_filler_nboo_bldg_32x16_style_01.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_01, "object/building/naboo/shared_filler_nboo_bldg_32x16_style_01.iff")
 
 object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_32x16_s02.apt",
@@ -1168,6 +1188,7 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 20,
 	clientDataFile = "clientdata/building/shared_naboo_32x16_s02.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1215,7 +1236,7 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObj
 	clientObjectCRC = 2325823327
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_02, "object/building/naboo/shared_filler_nboo_bldg_32x16_style_02.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_02, "object/building/naboo/shared_filler_nboo_bldg_32x16_style_02.iff")
 
 object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_64x32_s02.apt",
@@ -1224,6 +1245,7 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "clientdata/building/shared_naboo_64x32_s02.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1293,7 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTe
 	clientObjectCRC = 2522453461
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_s02, "object/building/naboo/shared_filler_nboo_bldg_64x32_s02.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_s02, "object/building/naboo/shared_filler_nboo_bldg_64x32_s02.iff")
 
 object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_64x32_s01.apt",
@@ -1280,6 +1302,7 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "clientdata/building/shared_naboo_64x32_s01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1327,7 +1350,7 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObj
 	clientObjectCRC = 166100265
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_style_01, "object/building/naboo/shared_filler_nboo_bldg_64x32_style_01.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_style_01, "object/building/naboo/shared_filler_nboo_bldg_64x32_style_01.iff")
 
 object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1336,6 +1359,7 @@ object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 35,
 	clientDataFile = "clientdata/building/shared_guild_combat.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1383,7 +1407,7 @@ object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectT
 	clientObjectCRC = 2162092176
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_combat_naboo_style_01, "object/building/naboo/shared_guild_combat_naboo_style_01.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_guild_combat_naboo_style_01, "object/building/naboo/shared_guild_combat_naboo_style_01.iff")
 
 object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1392,6 +1416,7 @@ object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 35,
 	clientDataFile = "clientdata/building/shared_guild_commerce.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1439,7 +1464,7 @@ object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjec
 	clientObjectCRC = 754152794
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_commerce_naboo_style_01, "object/building/naboo/shared_guild_commerce_naboo_style_01.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_guild_commerce_naboo_style_01, "object/building/naboo/shared_guild_commerce_naboo_style_01.iff")
 
 object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1448,6 +1473,7 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 80,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1495,7 +1521,7 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 	clientObjectCRC = 2364526054
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_theater_naboo_s01, "object/building/naboo/shared_guild_theater_naboo_s01.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_guild_theater_naboo_s01, "object/building/naboo/shared_guild_theater_naboo_s01.iff")
 
 object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1504,6 +1530,7 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 35,
 	clientDataFile = "clientdata/building/shared_guild_university.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1551,7 +1578,7 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 	clientObjectCRC = 1500355509
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_university_naboo_style_01, "object/building/naboo/shared_guild_university_naboo_style_01.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_guild_university_naboo_style_01, "object/building/naboo/shared_guild_university_naboo_style_01.iff")
 
 object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1560,6 +1587,7 @@ object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1607,7 +1635,7 @@ object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 3224368648
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_hangar_naboo_theed, "object/building/naboo/shared_hangar_naboo_theed.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_hangar_naboo_theed, "object/building/naboo/shared_hangar_naboo_theed.iff")
 
 object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1616,6 +1644,7 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 55,
 	clientDataFile = "clientdata/building/shared_hospital.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1663,7 +1692,7 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3288048289
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_hospital_naboo, "object/building/naboo/shared_hospital_naboo.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_hospital_naboo, "object/building/naboo/shared_hospital_naboo.iff")
 
 object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1672,6 +1701,7 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_bank.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1719,7 +1749,7 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1309649332
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_hospital_naboo_s02, "object/building/naboo/shared_hospital_naboo_s02.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_hospital_naboo_s02, "object/building/naboo/shared_hospital_naboo_s02.iff")
 
 object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1728,6 +1758,7 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "clientdata/building/shared_hotel.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1775,7 +1806,7 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2256796740
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_hotel_naboo_theed, "object/building/naboo/shared_hotel_naboo_theed.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_hotel_naboo_theed, "object/building/naboo/shared_hotel_naboo_theed.iff")
 
 object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1784,6 +1815,7 @@ object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 20,
 	clientDataFile = "clientdata/building/shared_naboo_housing_s01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1831,7 +1863,7 @@ object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplat
 	clientObjectCRC = 1207237066
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_housing_naboo_style_1, "object/building/naboo/shared_housing_naboo_style_1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_housing_naboo_style_1, "object/building/naboo/shared_housing_naboo_style_1.iff")
 
 object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_house_m_s02_fp1.apt",
@@ -1840,6 +1872,7 @@ object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_naboo_housing_s03.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1887,7 +1920,7 @@ object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplat
 	clientObjectCRC = 3589158608
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_housing_naboo_style_3, "object/building/naboo/shared_housing_naboo_style_3.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_housing_naboo_style_3, "object/building/naboo/shared_housing_naboo_style_3.iff")
 
 object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1896,6 +1929,7 @@ object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1943,7 +1977,7 @@ object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTempl
 	clientObjectCRC = 3127135334
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_merchant_tent_naboo_s01, "object/building/naboo/shared_merchant_tent_naboo_s01.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_merchant_tent_naboo_s01, "object/building/naboo/shared_merchant_tent_naboo_s01.iff")
 
 object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1952,6 +1986,7 @@ object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1999,7 +2034,7 @@ object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 243325651
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_palace_naboo_theed, "object/building/naboo/shared_palace_naboo_theed.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_palace_naboo_theed, "object/building/naboo/shared_palace_naboo_theed.iff")
 
 object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_garage_s01_u01.apt",
@@ -2008,6 +2043,7 @@ object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/building/shared_garage.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2055,7 +2091,7 @@ object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObject
 	clientObjectCRC = 4129354478
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_parking_garage_naboo_style_1, "object/building/naboo/shared_parking_garage_naboo_style_1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_parking_garage_naboo_style_1, "object/building/naboo/shared_parking_garage_naboo_style_1.iff")
 
 object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2064,6 +2100,7 @@ object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/building/shared_naboo_ply_house_lg_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2111,7 +2148,7 @@ object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTem
 	clientObjectCRC = 3110745453
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_lg_s01_fp1, "object/building/naboo/shared_ply_nboo_house_lg_s01_fp1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_lg_s01_fp1, "object/building/naboo/shared_ply_nboo_house_lg_s01_fp1.iff")
 
 object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2120,6 +2157,7 @@ object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/building/shared_naboo_ply_house_lg_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2167,7 +2205,7 @@ object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemp
 	clientObjectCRC = 2671892606
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_m_s01_fp1, "object/building/naboo/shared_ply_nboo_house_m_s01_fp1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_m_s01_fp1, "object/building/naboo/shared_ply_nboo_house_m_s01_fp1.iff")
 
 object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_house_m_s02_fp1.apt",
@@ -2176,6 +2214,7 @@ object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2223,7 +2262,7 @@ object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemp
 	clientObjectCRC = 2374056803
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_m_s02_fp1, "object/building/naboo/shared_ply_nboo_house_m_s02_fp1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_m_s02_fp1, "object/building/naboo/shared_ply_nboo_house_m_s02_fp1.iff")
 
 object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2232,6 +2271,7 @@ object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2279,7 +2319,7 @@ object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemp
 	clientObjectCRC = 146028409
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_s_s01_fp1, "object/building/naboo/shared_ply_nboo_house_s_s01_fp1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_s_s01_fp1, "object/building/naboo/shared_ply_nboo_house_s_s01_fp1.iff")
 
 object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2288,6 +2328,7 @@ object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2335,7 +2376,7 @@ object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemp
 	clientObjectCRC = 443864164
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_s_s02_fp1, "object/building/naboo/shared_ply_nboo_house_s_s02_fp1.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_s_s02_fp1, "object/building/naboo/shared_ply_nboo_house_s_s02_fp1.iff")
 
 object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_power_generator.apt",
@@ -2344,6 +2385,7 @@ object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2391,7 +2433,7 @@ object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectT
 	clientObjectCRC = 2419077761
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_power_generator_naboo_theed, "object/building/naboo/shared_power_generator_naboo_theed.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_power_generator_naboo_theed, "object/building/naboo/shared_power_generator_naboo_theed.iff")
 
 object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2400,6 +2442,7 @@ object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2447,7 +2490,7 @@ object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 4115268904
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_salon_corellia, "object/building/naboo/shared_salon_corellia.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_salon_corellia, "object/building/naboo/shared_salon_corellia.iff")
 
 object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2456,6 +2499,7 @@ object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2503,7 +2547,7 @@ object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 135005575
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_salon_naboo, "object/building/naboo/shared_salon_naboo.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_salon_naboo, "object/building/naboo/shared_salon_naboo.iff")
 
 object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_shuttleport_s01.apt",
@@ -2512,6 +2556,7 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 29,
 	clientDataFile = "clientdata/building/shared_shuttleport.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2559,7 +2604,7 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3818763165
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_shuttleport_naboo, "object/building/naboo/shared_shuttleport_naboo.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_shuttleport_naboo, "object/building/naboo/shared_shuttleport_naboo.iff")
 
 object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2568,6 +2613,7 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 100,
 	clientDataFile = "clientdata/building/shared_starport.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2615,4 +2661,4 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1265259890
 }
 
-ObjectTemplates:addClientTemplate(object_building_naboo_shared_starport_naboo, "object/building/naboo/shared_starport_naboo.iff")
+ObjectTemplates:addTemplate(object_building_naboo_shared_starport_naboo, "object/building/naboo/shared_starport_naboo.iff")

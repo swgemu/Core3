@@ -48,6 +48,7 @@ object_tangible_lair_vlutore_shared_lair_vlutore = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_vlutore_shared_lair_vlutore = SharedTangibleObjectTemplate:
 	clientObjectCRC = 594764698
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore, "object/tangible/lair/vlutore/shared_lair_vlutore.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore, "object/tangible/lair/vlutore/shared_lair_vlutore.iff")
 
 object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjec
 	clientObjectCRC = 3306801185
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_grassland, "object/tangible/lair/vlutore/shared_lair_vlutore_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_grassland, "object/tangible/lair/vlutore/shared_lair_vlutore_grassland.iff")
 
 object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObject
 	clientObjectCRC = 482728149
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_mountain, "object/tangible/lair/vlutore/shared_lair_vlutore_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_mountain, "object/tangible/lair/vlutore/shared_lair_vlutore_mountain.iff")

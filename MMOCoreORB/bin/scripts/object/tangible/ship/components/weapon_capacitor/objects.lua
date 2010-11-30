@@ -48,6 +48,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	clientObjectCRC = 1410960531
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap1, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap1, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	clientObjectCRC = 3275853237
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap10, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap10.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap10, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap10.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	clientObjectCRC = 2400068612
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap2, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap2, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	clientObjectCRC = 3322102665
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap3, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap3, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	clientObjectCRC = 1961692944
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap5, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap5, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	clientObjectCRC = 368085909
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap9, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap9.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap9, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap9.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cruiser_grade_cap2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cru
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cru
 	clientObjectCRC = 2219573456
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cruiser_grade_cap2, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_deluxe_cruiser_grade_cap2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cruiser_grade_cap2, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_deluxe_cruiser_grade_cap2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite = Sh
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite = Sh
 	clientObjectCRC = 266518392
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard =
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard =
 	clientObjectCRC = 1591296526
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_standard.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_cruiser_grade_cap1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_crui
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_crui
 	clientObjectCRC = 4202667471
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_cruiser_grade_cap1, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_tuned_cruiser_grade_cap1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_cruiser_grade_cap1, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_tuned_cruiser_grade_cap1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a = Sh
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a = Sh
 	clientObjectCRC = 1734206129
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a, "object/tangible/ship/components/weapon_capacitor/shared_cap_cygnus_cygcap_a.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a, "object/tangible/ship/components/weapon_capacitor/shared_cap_cygnus_cygcap_a.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b = Sh
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b = Sh
 	clientObjectCRC = 3158985254
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b, "object/tangible/ship/components/weapon_capacitor/shared_cap_cygnus_cygcap_b.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b, "object/tangible/ship/components/weapon_capacitor/shared_cap_cygnus_cygcap_b.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2 = Shared
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2 = Shared
 	clientObjectCRC = 2897720901
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2, "object/tangible/ship/components/weapon_capacitor/shared_cap_freitek_xd2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2, "object/tangible/ship/components/weapon_capacitor/shared_cap_freitek_xd2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22 = Sha
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22 = Sha
 	clientObjectCRC = 18515388
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22, "object/tangible/ship/components/weapon_capacitor/shared_cap_gallofree_lt22.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22, "object/tangible/ship/components/weapon_capacitor/shared_cap_gallofree_lt22.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -790,6 +804,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_generic = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_generic = SharedTang
 	clientObjectCRC = 700417052
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_generic, "object/tangible/ship/components/weapon_capacitor/shared_cap_generic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_generic, "object/tangible/ship/components/weapon_capacitor/shared_cap_generic.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capac
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capac
 	clientObjectCRC = 345339930
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_haor_chall_old_capacitor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_haor_chall_old_capacitor.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old
 	clientObjectCRC = 928393821
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_huppla_pasa_tisc_old_capacitor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_huppla_pasa_tisc_old_capacitor.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825 = Share
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825 = Share
 	clientObjectCRC = 3633642593
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_bjn825.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_bjn825.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel
 	clientObjectCRC = 971147390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_improved_rebel_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_improved_rebel_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1 = Sh
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1 = Sh
 	clientObjectCRC = 1737426279
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_rebel_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_rebel_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1108,6 +1128,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825
 	clientObjectCRC = 2476449638
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_special_bjn825.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_special_bjn825.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rendili_hyperbattery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1161,6 +1182,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rend
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rend
 	clientObjectCRC = 105866207
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rendili_hyperbattery, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_rendili_hyperbattery.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rendili_hyperbattery, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_rendili_hyperbattery.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_imperial_finest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1214,6 +1236,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_
 	clientObjectCRC = 2935211611
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_imperial_finest, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_sds_imperial_finest.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_imperial_finest, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_sds_imperial_finest.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1267,6 +1290,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_
 	clientObjectCRC = 3196333805
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_sfs_array.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_sfs_array.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1320,6 +1344,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_a
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_a
 	clientObjectCRC = 2093681588
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_armek_array.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_armek_array.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwell_k33_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1373,6 +1398,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwel
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwel
 	clientObjectCRC = 1308361117
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwell_k33_prototype, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_deepwell_k33_prototype.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwell_k33_prototype, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_deepwell_k33_prototype.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hypercharger = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hy
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hy
 	clientObjectCRC = 2807586925
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hypercharger, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_taim_hypercharger.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hypercharger, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_taim_hypercharger.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1479,6 +1506,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_ligh
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_ligh
 	clientObjectCRC = 426882042
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_custom_light.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_custom_light.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1532,6 +1560,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4 
 	clientObjectCRC = 3900005351
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_deluxe_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_deluxe_mk4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1585,6 +1614,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5 =
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5 =
 	clientObjectCRC = 3764122355
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_elite_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_elite_mk5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1638,6 +1668,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_li
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_li
 	clientObjectCRC = 2209731504
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_improved_light.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_improved_light.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1691,6 +1722,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light = Sha
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light = Sha
 	clientObjectCRC = 4075122898
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_light.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_light.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1744,6 +1776,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3 = Share
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3 = Share
 	clientObjectCRC = 3401812641
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4 = Share
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4 = Share
 	clientObjectCRC = 824222133
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1850,6 +1884,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5 = Share
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5 = Share
 	clientObjectCRC = 2016265784
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1903,6 +1938,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2 = 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2 = 
 	clientObjectCRC = 3333186732
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_rare_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_rare_mk2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1956,6 +1992,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3 =
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3 =
 	clientObjectCRC = 4087524942
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_tuned_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_tuned_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2009,6 +2046,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5 = Shar
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5 = Shar
 	clientObjectCRC = 4088781034
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_elite_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_elite_mk5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2062,6 +2100,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1 = Sh
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1 = Sh
 	clientObjectCRC = 659177202
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_limited_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_limited_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2115,6 +2154,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4 = Sh
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4 = Sh
 	clientObjectCRC = 1320409852
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_limited_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_limited_mk4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2168,6 +2208,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1 = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1 = SharedTang
 	clientObjectCRC = 1641479793
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2221,6 +2262,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2 = SharedTang
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2 = SharedTang
 	clientObjectCRC = 3133232870
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2274,6 +2316,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3 = SharedTang
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3 = SharedTang
 	clientObjectCRC = 4090245483
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2327,6 +2370,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4 = SharedTang
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4 = SharedTang
 	clientObjectCRC = 137304703
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2380,6 +2424,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5 = SharedTang
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5 = SharedTang
 	clientObjectCRC = 1092779506
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2433,6 +2478,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2 
 	clientObjectCRC = 1092646081
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_performance_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_performance_mk2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2486,6 +2532,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3
 	clientObjectCRC = 2236352533
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_supercharged_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_supercharged_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powermaster_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2539,6 +2586,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powe
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powe
 	clientObjectCRC = 1062359612
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powermaster_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_improved_powermaster_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powermaster_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_improved_powermaster_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2592,6 +2640,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	clientObjectCRC = 4261155014
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2645,6 +2694,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	clientObjectCRC = 652982353
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2698,6 +2748,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	clientObjectCRC = 1877401564
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2751,6 +2802,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	clientObjectCRC = 2483418312
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2804,6 +2856,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	clientObjectCRC = 3708326725
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2857,6 +2910,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak = S
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak = S
 	clientObjectCRC = 1628218941
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powersoak.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powersoak.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2910,6 +2964,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1 =
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1 =
 	clientObjectCRC = 2499929805
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_provider_p1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_provider_p1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermaster_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -2963,6 +3018,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermas
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermas
 	clientObjectCRC = 782841496
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermaster_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_rare_powermaster_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermaster_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_rare_powermaster_mk4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_powermaster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3016,6 +3072,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_power
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_power
 	clientObjectCRC = 3992126029
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_powermaster_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_special_powermaster_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_powermaster_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_special_powermaster_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powermaster_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3069,6 +3126,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powerma
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powerma
 	clientObjectCRC = 549991474
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powermaster_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_tuned_powermaster_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powermaster_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_tuned_powermaster_mk2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imperial_rendili_k_class = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3122,6 +3180,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imper
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imper
 	clientObjectCRC = 2713051365
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imperial_rendili_k_class, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_imperial_rendili_k_class.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imperial_rendili_k_class, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_imperial_rendili_k_class.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutral_sorosuub_v1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3175,6 +3234,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutr
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutr
 	clientObjectCRC = 2617588856
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutral_sorosuub_v1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_neutral_sorosuub_v1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutral_sorosuub_v1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_neutral_sorosuub_v1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel_qualdex_battery_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3228,6 +3288,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel
 	clientObjectCRC = 1350376627
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel_qualdex_battery_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_rebel_qualdex_battery_array.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel_qualdex_battery_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_rebel_qualdex_battery_array.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3281,6 +3342,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced = Sh
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced = Sh
 	clientObjectCRC = 2145639863
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_advanced.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3334,6 +3396,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light
 	clientObjectCRC = 905494263
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_charged_light.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_charged_light.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3387,6 +3450,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite 
 	clientObjectCRC = 1276287045
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_deluxe_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_deluxe_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3440,6 +3504,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite = Share
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite = Share
 	clientObjectCRC = 3651162594
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3493,6 +3558,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_adva
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_adva
 	clientObjectCRC = 3865253340
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_advanced, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_enhanced_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_advanced, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_enhanced_advanced.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3546,6 +3612,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy = Share
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy = Share
 	clientObjectCRC = 1210621339
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_heavy.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3599,6 +3666,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light = Share
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light = Share
 	clientObjectCRC = 2305859909
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_light.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_light.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3652,6 +3720,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heav
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heav
 	clientObjectCRC = 565817686
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heavy, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_modified_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heavy, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_modified_heavy.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3705,6 +3774,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_stan
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_stan
 	clientObjectCRC = 1034330448
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_modified_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_modified_standard.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3758,6 +3828,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard = Sh
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard = Sh
 	clientObjectCRC = 1601074972
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_standard.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wampa_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3811,6 +3882,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wamp
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wamp
 	clientObjectCRC = 2122277506
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wampa_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_deluxe_wampa_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wampa_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_deluxe_wampa_s1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3864,6 +3936,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimenta
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimenta
 	clientObjectCRC = 3491064416
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_experimental.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_experimental.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental_sarlacc_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3917,6 +3990,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimenta
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimenta
 	clientObjectCRC = 1296746974
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental_sarlacc_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_experimental_sarlacc_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental_sarlacc_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_experimental_sarlacc_s1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -3970,6 +4044,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1 
 	clientObjectCRC = 2694446356
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4023,6 +4098,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2 
 	clientObjectCRC = 2072925571
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4076,6 +4152,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3 
 	clientObjectCRC = 847458830
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4129,6 +4206,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capac
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capac
 	clientObjectCRC = 1595351643
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_small_capacitor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_small_capacitor.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4182,6 +4260,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1 = 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1 = 
 	clientObjectCRC = 2833268516
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4235,6 +4314,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2 = 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2 = 
 	clientObjectCRC = 1945606067
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4288,6 +4368,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3 = 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3 = 
 	clientObjectCRC = 989524030
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4341,6 +4422,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor 
 	clientObjectCRC = 3673224579
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_prototype_capacitor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_prototype_capacitor.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4394,6 +4476,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	clientObjectCRC = 2253174399
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q3, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_q3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q3, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_q3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4447,6 +4530,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	clientObjectCRC = 2797090300
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q7, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_q7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q7, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_q7.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4500,6 +4584,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	clientObjectCRC = 3822197061
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx1, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx1, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4553,6 +4638,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	clientObjectCRC = 952480210
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx2, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx2, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4606,6 +4692,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	clientObjectCRC = 1908987487
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx3, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx3, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4659,6 +4746,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	clientObjectCRC = 2318138699
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx4, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx4, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4712,6 +4800,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	clientObjectCRC = 3274087110
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx5, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx5, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4765,6 +4854,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental
 	clientObjectCRC = 2515055959
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_experimental.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_experimental.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4818,6 +4908,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite 
 	clientObjectCRC = 3526039001
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4871,6 +4962,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light 
 	clientObjectCRC = 2197546366
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_light.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_light.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4924,6 +5016,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standa
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standa
 	clientObjectCRC = 896476191
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_standard.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -4977,6 +5070,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7 
 	clientObjectCRC = 2580709564
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7, "object/tangible/ship/components/weapon_capacitor/shared_cap_rendili_overseer_j7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7, "object/tangible/ship/components/weapon_capacitor/shared_cap_rendili_overseer_j7.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5030,6 +5124,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8 
 	clientObjectCRC = 601402542
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8, "object/tangible/ship/components/weapon_capacitor/shared_cap_rendili_overseer_j8.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8, "object/tangible/ship/components/weapon_capacitor/shared_cap_rendili_overseer_j8.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5083,6 +5178,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite 
 	clientObjectCRC = 2828974582
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_mandal_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_mandal_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5136,6 +5232,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elit
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elit
 	clientObjectCRC = 2272053445
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_novaldex_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_novaldex_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5189,6 +5286,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite
 	clientObjectCRC = 2774529918
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_qualdex_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_qualdex_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5242,6 +5340,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elit
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elit
 	clientObjectCRC = 2275626808
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_sorosuub_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_sorosuub_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5295,6 +5394,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite 
 	clientObjectCRC = 396325004
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_subpro_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_subpro_elite.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5348,6 +5448,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1 = Sha
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1 = Sha
 	clientObjectCRC = 118943742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_rss_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_rss_imperial_1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5401,6 +5502,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1 = Sha
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1 = Sha
 	clientObjectCRC = 2562369407
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_imperial_1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5454,6 +5556,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2 = Sha
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2 = Sha
 	clientObjectCRC = 1135415272
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_imperial_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_imperial_2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5507,6 +5610,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial
 	clientObjectCRC = 3112239614
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial_2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_special_imperial_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial_2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_special_imperial_2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5560,6 +5664,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1 = Sha
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1 = Sha
 	clientObjectCRC = 3072116165
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sfs_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sfs_imperial_1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5613,6 +5718,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1 
 	clientObjectCRC = 1029784328
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5666,6 +5772,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2 
 	clientObjectCRC = 3866553247
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5719,6 +5826,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3 
 	clientObjectCRC = 2944109586
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5772,6 +5880,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4 
 	clientObjectCRC = 1419290374
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dynamo_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5825,6 +5934,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dy
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dy
 	clientObjectCRC = 3213086713
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dynamo_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_enhanced_dynamo_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dynamo_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_enhanced_dynamo_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5878,6 +5988,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash = Sha
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash = Sha
 	clientObjectCRC = 4165561226
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_flash.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_flash.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dynamo_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5931,6 +6042,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dyn
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dyn
 	clientObjectCRC = 1816017894
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dynamo_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_premium_dynamo_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dynamo_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_premium_dynamo_mk2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharged_dynamo_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -5984,6 +6096,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharge
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharge
 	clientObjectCRC = 2228066878
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharged_dynamo_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_supercharged_dynamo_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharged_dynamo_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_supercharged_dynamo_mk4.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynamo_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6037,6 +6150,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynam
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynam
 	clientObjectCRC = 1077552108
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynamo_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_tuned_dynamo_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynamo_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_tuned_dynamo_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6090,6 +6204,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo = Sha
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo = Sha
 	clientObjectCRC = 1127759031
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_turbo.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_turbo.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6143,6 +6258,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3 
 	clientObjectCRC = 1229533676
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_dauntless_z3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_dauntless_z3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6196,6 +6312,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,7 +6357,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5 
 	clientObjectCRC = 4222057845
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_dauntless_z5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_dauntless_z5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6249,6 +6366,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1 = 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6293,7 +6411,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1 = 
 	clientObjectCRC = 2112122777
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6302,6 +6420,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2 = 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6346,7 +6465,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2 = 
 	clientObjectCRC = 2800994062
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6355,6 +6474,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3 = 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6399,7 +6519,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3 = 
 	clientObjectCRC = 4026441859
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6408,6 +6528,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6452,7 +6573,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental 
 	clientObjectCRC = 3850921327
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_experimental.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_experimental.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6461,6 +6582,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1 = 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6505,7 +6627,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1 = 
 	clientObjectCRC = 242825300
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_gallant_a1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_gallant_a1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_valiant_z1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6514,6 +6636,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_vali
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6558,7 +6681,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_vali
 	clientObjectCRC = 2126492799
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_valiant_z1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_improved_valiant_z1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_valiant_z1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_improved_valiant_z1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defiant_c1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6567,6 +6690,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defi
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6611,7 +6735,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defi
 	clientObjectCRC = 3037503050
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defiant_c1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_modified_defiant_c1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defiant_c1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_modified_defiant_c1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6620,6 +6744,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1 = 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6664,7 +6789,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1 = 
 	clientObjectCRC = 1976722601
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_valiant_z1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_valiant_z1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6673,6 +6798,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2 = 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6717,7 +6843,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2 = 
 	clientObjectCRC = 2932198462
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_valiant_z2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_valiant_z2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6726,6 +6852,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic = S
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6770,7 +6897,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic = S
 	clientObjectCRC = 189859741
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_basic.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6779,6 +6906,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6823,7 +6951,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1
 	clientObjectCRC = 278033573
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk1.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6832,6 +6960,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6876,7 +7005,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2
 	clientObjectCRC = 3414547506
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk2.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6885,6 +7014,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6929,7 +7059,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3
 	clientObjectCRC = 2189999039
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6938,6 +7068,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimen
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6982,7 +7113,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimen
 	clientObjectCRC = 1515496099
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_experimental.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_experimental.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -6991,6 +7122,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7035,7 +7167,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental
 	clientObjectCRC = 251613793
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_unknown_experimental.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_unknown_experimental.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -7044,6 +7176,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic = SharedTa
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7088,7 +7221,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic = SharedTa
 	clientObjectCRC = 1814952361
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_basic.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -7097,6 +7230,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experim
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7141,7 +7275,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experim
 	clientObjectCRC = 2040861908
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_experimental.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_experimental.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -7150,6 +7284,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3 = Sh
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7194,7 +7329,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3 = Sh
 	clientObjectCRC = 3065987757
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_k3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_k3.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -7203,6 +7338,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5 = Sh
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7247,7 +7383,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5 = Sh
 	clientObjectCRC = 72420916
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_k5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_k5.iff")
 
 object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -7256,6 +7392,7 @@ object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test = 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7300,4 +7437,4 @@ object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test = 
 	clientObjectCRC = 635272917
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test, "object/tangible/ship/components/weapon_capacitor/shared_weapon_capacitor_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test, "object/tangible/ship/components/weapon_capacitor/shared_weapon_capacitor_test.iff")

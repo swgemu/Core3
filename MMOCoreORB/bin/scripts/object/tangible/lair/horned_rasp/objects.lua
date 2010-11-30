@@ -48,6 +48,7 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp = SharedTangibleObjectT
 	clientObjectCRC = 4201023069
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp.iff")
 
 object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland = SharedTangi
 	clientObjectCRC = 1788421902
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_grassland.iff")
 
 object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle = SharedTangible
 	clientObjectCRC = 2453418917
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_jungle.iff")

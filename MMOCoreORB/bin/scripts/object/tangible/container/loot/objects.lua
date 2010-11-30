@@ -48,6 +48,7 @@ object_tangible_container_loot_shared_astromech_container = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_container_loot_shared_astromech_container = SharedTangibleObject
 	clientObjectCRC = 84456311
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_astromech_container, "object/tangible/container/loot/shared_astromech_container.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_astromech_container, "object/tangible/container/loot/shared_astromech_container.iff")
 
 object_tangible_container_loot_shared_computer_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
@@ -101,6 +102,7 @@ object_tangible_container_loot_shared_computer_container = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_container_loot_shared_computer_container = SharedTangibleObjectT
 	clientObjectCRC = 2996080617
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_computer_container, "object/tangible/container/loot/shared_computer_container.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_computer_container, "object/tangible/container/loot/shared_computer_container.iff")
 
 object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_gas_med.apt",
@@ -154,6 +156,7 @@ object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjec
 	clientObjectCRC = 349560727
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_gas_filter_container, "object/tangible/container/loot/shared_gas_filter_container.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_gas_filter_container, "object/tangible/container/loot/shared_gas_filter_container.iff")
 
 object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -207,6 +210,7 @@ object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1268006083
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_loot_crate, "object/tangible/container/loot/shared_loot_crate.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_loot_crate, "object/tangible/container/loot/shared_loot_crate.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
@@ -260,6 +264,7 @@ object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObject
 	clientObjectCRC = 2362384973
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate, "object/tangible/container/loot/shared_placable_loot_crate.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate, "object/tangible/container/loot/shared_placable_loot_crate.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_headandbody.apt",
@@ -313,6 +318,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = Shared
 	clientObjectCRC = 2636682415
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_bith.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_bith.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -366,6 +372,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = Share
 	clientObjectCRC = 2665565001
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_human, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_human.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_human, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_human.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_ithorian_headandbody.apt",
@@ -419,6 +426,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = Sh
 	clientObjectCRC = 2780389059
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_ithorian.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_ithorian.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedT
 	clientObjectCRC = 2410892657
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_armoire, "object/tangible/container/loot/shared_placable_loot_crate_tech_armoire.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_armoire, "object/tangible/container/loot/shared_placable_loot_crate_tech_armoire.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTan
 	clientObjectCRC = 4025920030
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_chest, "object/tangible/container/loot/shared_placable_loot_crate_tech_chest.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_chest, "object/tangible/container/loot/shared_placable_loot_crate_tech_chest.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_imprv_trash_pile_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTang
 	clientObjectCRC = 2638627675
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_trashpile, "object/tangible/container/loot/shared_placable_loot_crate_trashpile.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_trashpile, "object/tangible/container/loot/shared_placable_loot_crate_trashpile.iff")
 
 object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -631,6 +642,7 @@ object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,4 +687,4 @@ object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTe
 	clientObjectCRC = 3460646661
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_player_loot_crate, "object/tangible/container/loot/shared_player_loot_crate.iff")
+ObjectTemplates:addTemplate(object_tangible_container_loot_shared_player_loot_crate, "object/tangible/container/loot/shared_player_loot_crate.iff")

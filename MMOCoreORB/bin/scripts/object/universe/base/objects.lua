@@ -47,6 +47,7 @@ object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
 	clientObjectCRC = 2428076790
 }
 
-ObjectTemplates:addClientTemplate(object_universe_base_shared_base_universe, "object/universe/base/shared_base_universe.iff")
+ObjectTemplates:addTemplate(object_universe_base_shared_base_universe, "object/universe/base/shared_base_universe.iff")
 
 object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new 
 	clientObjectCRC = 3854968513
 }
 
-ObjectTemplates:addClientTemplate(object_universe_base_shared_universe_default, "object/universe/base/shared_universe_default.iff")
+ObjectTemplates:addTemplate(object_universe_base_shared_universe_default, "object/universe/base/shared_universe_default.iff")

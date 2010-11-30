@@ -48,6 +48,7 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer = SharedTangibl
 	clientObjectCRC = 486155425
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer.iff")
 
 object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = Sh
 	clientObjectCRC = 662717072
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer_underwater.iff")

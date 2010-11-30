@@ -48,6 +48,7 @@ object_tangible_travel_travel_ticket_base_shared_base_travel_ticket = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8210,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_travel_travel_ticket_base_shared_base_travel_ticket = SharedTang
 	clientObjectCRC = 3667975811
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_travel_travel_ticket_base_shared_base_travel_ticket, "object/tangible/travel/travel_ticket/base/shared_base_travel_ticket.iff")
+ObjectTemplates:addTemplate(object_tangible_travel_travel_ticket_base_shared_base_travel_ticket, "object/tangible/travel/travel_ticket/base/shared_base_travel_ticket.iff")

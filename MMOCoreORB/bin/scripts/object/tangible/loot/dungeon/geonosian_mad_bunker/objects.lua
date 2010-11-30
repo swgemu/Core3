@@ -48,6 +48,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad = S
 	clientObjectCRC = 1212603957
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_engineering_datapad.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_engineering_datapad.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -101,6 +102,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key = Share
 	clientObjectCRC = 3779706256
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_engineering_key.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_engineering_key.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -154,6 +156,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey = SharedTangibl
 	clientObjectCRC = 4110674252
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_passkey.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_passkey.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
@@ -207,6 +210,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab 
 	clientObjectCRC = 1953839447
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_chemical_tab.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_chemical_tab.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -260,6 +264,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab = Sh
 	clientObjectCRC = 2836503277
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_data_tab.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_data_tab.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tankard_full.apt",
@@ -313,6 +318,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe 
 	clientObjectCRC = 1253190673
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_honey_carafe.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_honey_carafe.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
@@ -366,6 +372,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit = 
 	clientObjectCRC = 395732955
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_ration_kit.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_ration_kit.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/msc_toy_ball_m.apt",
@@ -419,6 +426,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball = 
 	clientObjectCRC = 3247484355
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_small_ball.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_small_ball.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_spice_container.apt",
@@ -472,6 +480,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_contain
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_contain
 	clientObjectCRC = 2674127359
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_container, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_spice_container.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_container, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_spice_container.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
@@ -525,6 +534,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,4 +579,4 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit = Sh
 	clientObjectCRC = 1965831716
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_tech_kit.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_tech_kit.iff")

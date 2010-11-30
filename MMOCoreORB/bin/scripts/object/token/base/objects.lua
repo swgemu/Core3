@@ -47,6 +47,7 @@ object_token_base_shared_base_token = SharedTokenObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2052,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_token_base_shared_base_token = SharedTokenObjectTemplate:new {
 	clientObjectCRC = 3897855130
 }
 
-ObjectTemplates:addClientTemplate(object_token_base_shared_base_token, "object/token/base/shared_base_token.iff")
+ObjectTemplates:addTemplate(object_token_base_shared_base_token, "object/token/base/shared_base_token.iff")
 
 object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2052,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 	clientObjectCRC = 599623444
 }
 
-ObjectTemplates:addClientTemplate(object_token_base_shared_token_default, "object/token/base/shared_token_default.iff")
+ObjectTemplates:addTemplate(object_token_base_shared_token_default, "object/token/base/shared_token_default.iff")

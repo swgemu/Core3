@@ -47,6 +47,7 @@ object_draft_schematic_space_shields_shared_adv_deflector_shields = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_space_shields_shared_adv_deflector_shields = SharedDraftS
 	clientObjectCRC = 1117582132
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_adv_deflector_shields, "object/draft_schematic/space/shields/shared_adv_deflector_shields.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_adv_deflector_shields, "object/draft_schematic/space/shields/shared_adv_deflector_shields.iff")
 
 object_draft_schematic_space_shields_shared_basic_shields = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_space_shields_shared_basic_shields = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_space_shields_shared_basic_shields = SharedDraftSchematic
 	clientObjectCRC = 3884245261
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_basic_shields, "object/draft_schematic/space/shields/shared_basic_shields.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_basic_shields, "object/draft_schematic/space/shields/shared_basic_shields.iff")
 
 object_draft_schematic_space_shields_shared_deflector_shields = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_space_shields_shared_deflector_shields = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_space_shields_shared_deflector_shields = SharedDraftSchem
 	clientObjectCRC = 1694654678
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_deflector_shields, "object/draft_schematic/space/shields/shared_deflector_shields.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_deflector_shields, "object/draft_schematic/space/shields/shared_deflector_shields.iff")
 
 object_draft_schematic_space_shields_shared_exp_deflector_shields = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_space_shields_shared_exp_deflector_shields = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_space_shields_shared_exp_deflector_shields = SharedDraftS
 	clientObjectCRC = 4093345299
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_exp_deflector_shields, "object/draft_schematic/space/shields/shared_exp_deflector_shields.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_exp_deflector_shields, "object/draft_schematic/space/shields/shared_exp_deflector_shields.iff")
 
 object_draft_schematic_space_shields_shared_heavy_deflector_shields = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_space_shields_shared_heavy_deflector_shields = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_space_shields_shared_heavy_deflector_shields = SharedDraf
 	clientObjectCRC = 2667507411
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_heavy_deflector_shields, "object/draft_schematic/space/shields/shared_heavy_deflector_shields.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_heavy_deflector_shields, "object/draft_schematic/space/shields/shared_heavy_deflector_shields.iff")
 
 object_draft_schematic_space_shields_shared_light_deflector_shields = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_space_shields_shared_light_deflector_shields = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_space_shields_shared_light_deflector_shields = SharedDraf
 	clientObjectCRC = 3809979940
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_light_deflector_shields, "object/draft_schematic/space/shields/shared_light_deflector_shields.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_light_deflector_shields, "object/draft_schematic/space/shields/shared_light_deflector_shields.iff")
 
 object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1 = Shared
 	clientObjectCRC = 1723995512
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk1.iff")
 
 object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2 = Shared
 	clientObjectCRC = 3184901615
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk2.iff")
 
 object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3 = Shared
 	clientObjectCRC = 4107852386
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk3.iff")
 
 object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4 = Shared
 	clientObjectCRC = 255586678
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk4.iff")
 
 object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5 = Shared
 	clientObjectCRC = 1177982715
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk5.iff")
 
 object_draft_schematic_space_shields_shared_shield_intensifier_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk1 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk1 = SharedDraft
 	clientObjectCRC = 1539385043
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk1, "object/draft_schematic/space/shields/shared_shield_intensifier_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk1, "object/draft_schematic/space/shields/shared_shield_intensifier_mk1.iff")
 
 object_draft_schematic_space_shields_shared_shield_intensifier_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk2 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk2 = SharedDraft
 	clientObjectCRC = 2161544772
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk2, "object/draft_schematic/space/shields/shared_shield_intensifier_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk2, "object/draft_schematic/space/shields/shared_shield_intensifier_mk2.iff")
 
 object_draft_schematic_space_shields_shared_shield_intensifier_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk3 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk3 = SharedDraft
 	clientObjectCRC = 3386632649
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk3, "object/draft_schematic/space/shields/shared_shield_intensifier_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk3, "object/draft_schematic/space/shields/shared_shield_intensifier_mk3.iff")
 
 object_draft_schematic_space_shields_shared_shield_intensifier_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk4 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk4 = SharedDraft
 	clientObjectCRC = 842580701
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk4, "object/draft_schematic/space/shields/shared_shield_intensifier_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk4, "object/draft_schematic/space/shields/shared_shield_intensifier_mk4.iff")
 
 object_draft_schematic_space_shields_shared_shield_intensifier_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk5 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk5 = SharedDraft
 	clientObjectCRC = 2067113296
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk5, "object/draft_schematic/space/shields/shared_shield_intensifier_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk5, "object/draft_schematic/space/shields/shared_shield_intensifier_mk5.iff")
 
 object_draft_schematic_space_shields_shared_shield_limiter_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk1 = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk1 = SharedDraftSche
 	clientObjectCRC = 2950186363
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk1, "object/draft_schematic/space/shields/shared_shield_limiter_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk1, "object/draft_schematic/space/shields/shared_shield_limiter_mk1.iff")
 
 object_draft_schematic_space_shields_shared_shield_limiter_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk2 = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk2 = SharedDraftSche
 	clientObjectCRC = 1959783916
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk2, "object/draft_schematic/space/shields/shared_shield_limiter_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk2, "object/draft_schematic/space/shields/shared_shield_limiter_mk2.iff")
 
 object_draft_schematic_space_shields_shared_shield_limiter_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk3 = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk3 = SharedDraftSche
 	clientObjectCRC = 1036159585
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk3, "object/draft_schematic/space/shields/shared_shield_limiter_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk3, "object/draft_schematic/space/shields/shared_shield_limiter_mk3.iff")
 
 object_draft_schematic_space_shields_shared_shield_limiter_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk4 = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk4 = SharedDraftSche
 	clientObjectCRC = 3324092789
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk4, "object/draft_schematic/space/shields/shared_shield_limiter_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk4, "object/draft_schematic/space/shields/shared_shield_limiter_mk4.iff")
 
 object_draft_schematic_space_shields_shared_shield_limiter_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk5 = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk5 = SharedDraftSche
 	clientObjectCRC = 2402076408
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk5, "object/draft_schematic/space/shields/shared_shield_limiter_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk5, "object/draft_schematic/space/shields/shared_shield_limiter_mk5.iff")
 
 object_draft_schematic_space_shields_shared_shield_overcharger_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk1 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk1 = SharedDraft
 	clientObjectCRC = 759499849
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk1, "object/draft_schematic/space/shields/shared_shield_overcharger_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk1, "object/draft_schematic/space/shields/shared_shield_overcharger_mk1.iff")
 
 object_draft_schematic_space_shields_shared_shield_overcharger_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk2 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk2 = SharedDraft
 	clientObjectCRC = 4132611294
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk2, "object/draft_schematic/space/shields/shared_shield_overcharger_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk2, "object/draft_schematic/space/shields/shared_shield_overcharger_mk2.iff")
 
 object_draft_schematic_space_shields_shared_shield_overcharger_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk3 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk3 = SharedDraft
 	clientObjectCRC = 3210724179
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk3, "object/draft_schematic/space/shields/shared_shield_overcharger_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk3, "object/draft_schematic/space/shields/shared_shield_overcharger_mk3.iff")
 
 object_draft_schematic_space_shields_shared_shield_overcharger_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk4 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk4 = SharedDraft
 	clientObjectCRC = 1153230919
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk4, "object/draft_schematic/space/shields/shared_shield_overcharger_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk4, "object/draft_schematic/space/shields/shared_shield_overcharger_mk4.iff")
 
 object_draft_schematic_space_shields_shared_shield_overcharger_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk5 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,4 +1183,4 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk5 = SharedDraft
 	clientObjectCRC = 229740490
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk5, "object/draft_schematic/space/shields/shared_shield_overcharger_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk5, "object/draft_schematic/space/shields/shared_shield_overcharger_mk5.iff")

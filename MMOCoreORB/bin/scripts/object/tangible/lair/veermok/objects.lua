@@ -48,6 +48,7 @@ object_tangible_lair_veermok_shared_lair_veermok = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_veermok_shared_lair_veermok = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2070384123
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok, "object/tangible/lair/veermok/shared_lair_veermok.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok, "object/tangible/lair/veermok/shared_lair_veermok.iff")
 
 object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTe
 	clientObjectCRC = 4273060059
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, "object/tangible/lair/veermok/shared_lair_veermok_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, "object/tangible/lair/veermok/shared_lair_veermok_forest.iff")
 
 object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTem
 	clientObjectCRC = 2554849898
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, "object/tangible/lair/veermok/shared_lair_veermok_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, "object/tangible/lair/veermok/shared_lair_veermok_swamp.iff")

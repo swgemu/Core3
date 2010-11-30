@@ -47,6 +47,7 @@ object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate
 	clientObjectCRC = 2524579942
 }
 
-ObjectTemplates:addClientTemplate(object_static_firework_base_shared_firework_fx_base, "object/static/firework/base/shared_firework_fx_base.iff")
+ObjectTemplates:addTemplate(object_static_firework_base_shared_firework_fx_base, "object/static/firework/base/shared_firework_fx_base.iff")

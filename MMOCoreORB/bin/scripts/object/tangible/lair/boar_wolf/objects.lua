@@ -48,6 +48,7 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf = SharedTangibleObjectTempl
 	clientObjectCRC = 2734437911
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf.iff")
 
 object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain = SharedTangibleOb
 	clientObjectCRC = 150445531
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf_mountain.iff")

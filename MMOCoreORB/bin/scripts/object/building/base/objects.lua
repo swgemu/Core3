@@ -48,6 +48,7 @@ object_building_base_shared_base_aircar = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_base_shared_base_aircar = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 892199285
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_aircar, "object/building/base/shared_base_aircar.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_aircar, "object/building/base/shared_base_aircar.iff")
 
 object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -104,6 +105,7 @@ object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,7 +153,7 @@ object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1304404449
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_arena, "object/building/base/shared_base_arena.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_arena, "object/building/base/shared_base_arena.iff")
 
 object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -160,6 +162,7 @@ object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -207,7 +210,7 @@ object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2838642045
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_arena_large, "object/building/base/shared_base_arena_large.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_arena_large, "object/building/base/shared_base_arena_large.iff")
 
 object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -216,6 +219,7 @@ object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -263,7 +267,7 @@ object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate
 	clientObjectCRC = 2010161339
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_association_hall, "object/building/base/shared_base_association_hall.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_association_hall, "object/building/base/shared_base_association_hall.iff")
 
 object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -272,6 +276,7 @@ object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -319,7 +324,7 @@ object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 930886639
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_bank, "object/building/base/shared_base_bank.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_bank, "object/building/base/shared_base_bank.iff")
 
 object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -328,6 +333,7 @@ object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -375,7 +381,7 @@ object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3077444681
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_bubble_naboo, "object/building/base/shared_base_bubble_naboo.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_bubble_naboo, "object/building/base/shared_base_bubble_naboo.iff")
 
 object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -384,6 +390,7 @@ object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -431,7 +438,7 @@ object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 563265939
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_building, "object/building/base/shared_base_building.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_building, "object/building/base/shared_base_building.iff")
 
 object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -440,6 +447,7 @@ object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_tatooine_cantina.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -487,7 +495,7 @@ object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 2078697879
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_cantina, "object/building/base/shared_base_cantina.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_cantina, "object/building/base/shared_base_cantina.iff")
 
 object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -496,6 +504,7 @@ object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_capitol.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -543,7 +552,7 @@ object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1349240925
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_capitol, "object/building/base/shared_base_capitol.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_capitol, "object/building/base/shared_base_capitol.iff")
 
 object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -552,6 +561,7 @@ object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -599,7 +609,7 @@ object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 4040885581
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_cave, "object/building/base/shared_base_cave.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_cave, "object/building/base/shared_base_cave.iff")
 
 object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -608,6 +618,7 @@ object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_cloning.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +666,7 @@ object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate
 	clientObjectCRC = 2798966210
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_cloning_facility, "object/building/base/shared_base_cloning_facility.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_cloning_facility, "object/building/base/shared_base_cloning_facility.iff")
 
 object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -664,6 +675,7 @@ object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -711,7 +723,7 @@ object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2827665869
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_filler_building, "object/building/base/shared_base_filler_building.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_filler_building, "object/building/base/shared_base_filler_building.iff")
 
 object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -720,6 +732,7 @@ object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_guild_combat.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -767,7 +780,7 @@ object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 4220933361
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_guild, "object/building/base/shared_base_guild.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_guild, "object/building/base/shared_base_guild.iff")
 
 object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -776,6 +789,7 @@ object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -823,7 +837,7 @@ object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 116432474
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_hangar, "object/building/base/shared_base_hangar.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_hangar, "object/building/base/shared_base_hangar.iff")
 
 object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -832,6 +846,7 @@ object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_hospital.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -879,7 +894,7 @@ object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 4250674570
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_hospital, "object/building/base/shared_base_hospital.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_hospital, "object/building/base/shared_base_hospital.iff")
 
 object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -888,6 +903,7 @@ object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_hotel.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -935,7 +951,7 @@ object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 205766799
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_hotel, "object/building/base/shared_base_hotel.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_hotel, "object/building/base/shared_base_hotel.iff")
 
 object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -944,6 +960,7 @@ object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -991,7 +1008,7 @@ object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 266190245
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_housing, "object/building/base/shared_base_housing.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_housing, "object/building/base/shared_base_housing.iff")
 
 object_building_base_shared_base_military_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1000,6 +1017,7 @@ object_building_base_shared_base_military_building = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1047,7 +1065,7 @@ object_building_base_shared_base_military_building = SharedBuildingObjectTemplat
 	clientObjectCRC = 952281337
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_military_building, "object/building/base/shared_base_military_building.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_military_building, "object/building/base/shared_base_military_building.iff")
 
 object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1056,6 +1074,7 @@ object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 513,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1103,7 +1122,7 @@ object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1132404592
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_municipal, "object/building/base/shared_base_municipal.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_municipal, "object/building/base/shared_base_municipal.iff")
 
 object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1112,6 +1131,7 @@ object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1159,7 +1179,7 @@ object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1617161179
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_palace, "object/building/base/shared_base_palace.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_palace, "object/building/base/shared_base_palace.iff")
 
 object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1168,6 +1188,7 @@ object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_garage.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1215,7 +1236,7 @@ object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1335851436
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_parking_garage, "object/building/base/shared_base_parking_garage.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_parking_garage, "object/building/base/shared_base_parking_garage.iff")
 
 object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1224,6 +1245,7 @@ object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1293,7 @@ object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:
 	clientObjectCRC = 763835545
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_player_building, "object/building/base/shared_base_player_building.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_player_building, "object/building/base/shared_base_player_building.iff")
 
 object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1280,6 +1302,7 @@ object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1327,7 +1350,7 @@ object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3206316286
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_power_generator, "object/building/base/shared_base_power_generator.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_power_generator, "object/building/base/shared_base_power_generator.iff")
 
 object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1336,6 +1359,7 @@ object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1383,7 +1407,7 @@ object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1766589263
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_salon, "object/building/base/shared_base_salon.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_salon, "object/building/base/shared_base_salon.iff")
 
 object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1392,6 +1416,7 @@ object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/building/shared_shuttleport.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1439,7 +1464,7 @@ object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 4237016019
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_shuttleport, "object/building/base/shared_base_shuttleport.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_shuttleport, "object/building/base/shared_base_shuttleport.iff")
 
 object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1448,6 +1473,7 @@ object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1495,7 +1521,7 @@ object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1063888932
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_starport, "object/building/base/shared_base_starport.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_starport, "object/building/base/shared_base_starport.iff")
 
 object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1504,6 +1530,7 @@ object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1551,7 +1578,7 @@ object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3832915200
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_theater, "object/building/base/shared_base_theater.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_theater, "object/building/base/shared_base_theater.iff")
 
 object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1560,6 +1587,7 @@ object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1607,7 +1635,7 @@ object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 4264143494
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_base_tower, "object/building/base/shared_base_tower.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_base_tower, "object/building/base/shared_base_tower.iff")
 
 object_building_base_shared_building_default = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1616,6 +1644,7 @@ object_building_base_shared_building_default = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1663,4 +1692,4 @@ object_building_base_shared_building_default = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2497050652
 }
 
-ObjectTemplates:addClientTemplate(object_building_base_shared_building_default, "object/building/base/shared_building_default.iff")
+ObjectTemplates:addTemplate(object_building_base_shared_building_default, "object/building/base/shared_building_default.iff")

@@ -48,6 +48,7 @@ object_tangible_fishing_bait_shared_bait_chum = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8215,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_fishing_bait_shared_bait_chum = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 1907354318
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_chum, "object/tangible/fishing/bait/shared_bait_chum.iff")
+ObjectTemplates:addTemplate(object_tangible_fishing_bait_shared_bait_chum, "object/tangible/fishing/bait/shared_bait_chum.iff")
 
 object_tangible_fishing_bait_shared_bait_grub = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_fishing_bait_shared_bait_grub = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8215,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_fishing_bait_shared_bait_grub = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 2852582475
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_grub, "object/tangible/fishing/bait/shared_bait_grub.iff")
+ObjectTemplates:addTemplate(object_tangible_fishing_bait_shared_bait_grub, "object/tangible/fishing/bait/shared_bait_grub.iff")
 
 object_tangible_fishing_bait_shared_bait_insect = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_fishing_bait_shared_bait_insect = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8215,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_fishing_bait_shared_bait_insect = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 574609963
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_insect, "object/tangible/fishing/bait/shared_bait_insect.iff")
+ObjectTemplates:addTemplate(object_tangible_fishing_bait_shared_bait_insect, "object/tangible/fishing/bait/shared_bait_insect.iff")
 
 object_tangible_fishing_bait_shared_bait_worm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_fishing_bait_shared_bait_worm = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8215,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_fishing_bait_shared_bait_worm = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 529269810
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_worm, "object/tangible/fishing/bait/shared_bait_worm.iff")
+ObjectTemplates:addTemplate(object_tangible_fishing_bait_shared_bait_worm, "object/tangible/fishing/bait/shared_bait_worm.iff")

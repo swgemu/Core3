@@ -48,6 +48,7 @@ object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjec
 	clientObjectCRC = 1260954181
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill, "object/tangible/lair/huf_dun_hill/shared_lair_huf_dun_hill.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill, "object/tangible/lair/huf_dun_hill/shared_lair_huf_dun_hill.iff")

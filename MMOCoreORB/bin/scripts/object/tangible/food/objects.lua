@@ -48,6 +48,7 @@ object_tangible_food_shared_bread_loaf_full_s1 = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_food_shared_bread_loaf_full_s1 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 636907490
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_shared_bread_loaf_full_s1, "object/tangible/food/shared_bread_loaf_full_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_food_shared_bread_loaf_full_s1, "object/tangible/food/shared_bread_loaf_full_s1.iff")
 
 object_tangible_food_shared_fruit_melon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
@@ -101,6 +102,7 @@ object_tangible_food_shared_fruit_melon = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_food_shared_fruit_melon = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1805453686
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_shared_fruit_melon, "object/tangible/food/shared_fruit_melon.iff")
+ObjectTemplates:addTemplate(object_tangible_food_shared_fruit_melon, "object/tangible/food/shared_fruit_melon.iff")
 
 object_tangible_food_shared_meat_kabob = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
@@ -154,6 +156,7 @@ object_tangible_food_shared_meat_kabob = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_food_shared_meat_kabob = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1607939967
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_shared_meat_kabob, "object/tangible/food/shared_meat_kabob.iff")
+ObjectTemplates:addTemplate(object_tangible_food_shared_meat_kabob, "object/tangible/food/shared_meat_kabob.iff")
 
 object_tangible_food_shared_meat_object = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_all_meat_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_food_shared_meat_object = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_food_shared_meat_object = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1002178660
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_shared_meat_object, "object/tangible/food/shared_meat_object.iff")
+ObjectTemplates:addTemplate(object_tangible_food_shared_meat_object, "object/tangible/food/shared_meat_object.iff")
 
 object_tangible_food_shared_nectar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tankard_full.apt",
@@ -260,6 +264,7 @@ object_tangible_food_shared_nectar = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8216,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_food_shared_nectar = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2221635461
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_shared_nectar, "object/tangible/food/shared_nectar.iff")
+ObjectTemplates:addTemplate(object_tangible_food_shared_nectar, "object/tangible/food/shared_nectar.iff")

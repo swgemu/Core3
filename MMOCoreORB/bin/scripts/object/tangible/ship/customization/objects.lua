@@ -48,6 +48,7 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s01 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s01 = SharedTangibleObj
 	clientObjectCRC = 2278316907
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s01, "object/tangible/ship/customization/shared_xwing_cowl_neg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s01, "object/tangible/ship/customization/shared_xwing_cowl_neg_s01.iff")
 
 object_tangible_ship_customization_shared_xwing_cowl_neg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_cowl_neg_s02.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s02 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s02 = SharedTangibleObj
 	clientObjectCRC = 1557918716
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s02, "object/tangible/ship/customization/shared_xwing_cowl_neg_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s02, "object/tangible/ship/customization/shared_xwing_cowl_neg_s02.iff")
 
 object_tangible_ship_customization_shared_xwing_gun_neg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_gun_neg_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s01 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s01 = SharedTangibleObje
 	clientObjectCRC = 2209400056
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s01, "object/tangible/ship/customization/shared_xwing_gun_neg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s01, "object/tangible/ship/customization/shared_xwing_gun_neg_s01.iff")
 
 object_tangible_ship_customization_shared_xwing_gun_neg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_gun_neg_s02.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s02 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s02 = SharedTangibleObje
 	clientObjectCRC = 1487367279
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s02, "object/tangible/ship/customization/shared_xwing_gun_neg_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s02, "object/tangible/ship/customization/shared_xwing_gun_neg_s02.iff")
 
 object_tangible_ship_customization_shared_xwing_thruster_neg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_thruster_neg_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s01 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s01 = SharedTangibl
 	clientObjectCRC = 900489122
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s01, "object/tangible/ship/customization/shared_xwing_thruster_neg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s01, "object/tangible/ship/customization/shared_xwing_thruster_neg_s01.iff")
 
 object_tangible_ship_customization_shared_xwing_thruster_neg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_thruster_neg_s02.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s02 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,4 +363,4 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s02 = SharedTangibl
 	clientObjectCRC = 4005295925
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s02, "object/tangible/ship/customization/shared_xwing_thruster_neg_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s02, "object/tangible/ship/customization/shared_xwing_thruster_neg_s02.iff")

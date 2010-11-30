@@ -48,6 +48,7 @@ object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barra
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/battlefield/client_shared_base_destructible_building.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barra
 	clientObjectCRC = 529503793
 }
 
-ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barracks, "object/installation/battlefield/destructible/barracks/shared_bfield_gungan_barracks.iff")
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barracks, "object/installation/battlefield/destructible/barracks/shared_bfield_gungan_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_tent_house_s01.apt",
@@ -101,6 +102,7 @@ object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/battlefield/client_shared_base_destructible_building.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_
 	clientObjectCRC = 745421256
 }
 
-ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks, "object/installation/battlefield/destructible/barracks/shared_bfield_nightsister_barracks.iff")
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks, "object/installation/battlefield/destructible/barracks/shared_bfield_nightsister_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
@@ -154,6 +156,7 @@ object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barr
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/battlefield/client_shared_base_destructible_building.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barr
 	clientObjectCRC = 3854704940
 }
 
-ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks, "object/installation/battlefield/destructible/barracks/shared_rebel_infantry_barracks.iff")
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks, "object/installation/battlefield/destructible/barracks/shared_rebel_infantry_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
@@ -207,6 +210,7 @@ object_installation_battlefield_destructible_barracks_shared_storm_trooper_barra
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/battlefield/client_shared_base_destructible_building.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -251,4 +255,4 @@ object_installation_battlefield_destructible_barracks_shared_storm_trooper_barra
 	clientObjectCRC = 3586973666
 }
 
-ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks, "object/installation/battlefield/destructible/barracks/shared_storm_trooper_barracks.iff")
+ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks, "object/installation/battlefield/destructible/barracks/shared_storm_trooper_barracks.iff")

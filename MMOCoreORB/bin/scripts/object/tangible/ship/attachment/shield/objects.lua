@@ -48,6 +48,7 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1 = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1 = Sha
 	clientObjectCRC = 2069937842
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1, "object/tangible/ship/attachment/shield/shared_star_destroyer_shieldtower_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1, "object/tangible/ship/attachment/shield/shared_star_destroyer_shieldtower_1.iff")
 
 object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_shieldtower_2.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = Sha
 	clientObjectCRC = 2692159013
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2, "object/tangible/ship/attachment/shield/shared_star_destroyer_shieldtower_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2, "object/tangible/ship/attachment/shield/shared_star_destroyer_shieldtower_2.iff")

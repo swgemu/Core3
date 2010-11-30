@@ -48,6 +48,7 @@ object_tangible_parrot_cage_shared_parrot_cage = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_parrot_cage_shared_parrot_cage = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1639031767
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_parrot_cage_shared_parrot_cage, "object/tangible/parrot_cage/shared_parrot_cage.iff")
+ObjectTemplates:addTemplate(object_tangible_parrot_cage_shared_parrot_cage, "object/tangible/parrot_cage/shared_parrot_cage.iff")

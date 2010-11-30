@@ -48,6 +48,7 @@ object_installation_mining_organic_base_shared_mining_organic_base = SharedInsta
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_mining_organic_base_shared_mining_organic_base = SharedInsta
 	clientObjectCRC = 1780958356
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_organic_base_shared_mining_organic_base, "object/installation/mining_organic/base/shared_mining_organic_base.iff")
+ObjectTemplates:addTemplate(object_installation_mining_organic_base_shared_mining_organic_base, "object/installation/mining_organic/base/shared_mining_organic_base.iff")
