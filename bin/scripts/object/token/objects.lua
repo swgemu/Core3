@@ -47,6 +47,7 @@ object_token_shared_token = SharedTokenObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2052,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_token_shared_token = SharedTokenObjectTemplate:new {
 	clientObjectCRC = 4231471595
 }
 
-ObjectTemplates:addClientTemplate(object_token_shared_token, "object/token/shared_token.iff")
+ObjectTemplates:addTemplate(object_token_shared_token, "object/token/shared_token.iff")

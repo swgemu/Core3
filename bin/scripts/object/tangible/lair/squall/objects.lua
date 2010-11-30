@@ -48,6 +48,7 @@ object_tangible_lair_squall_shared_lair_squall = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_squall_shared_lair_squall = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 131581462
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_squall_shared_lair_squall, "object/tangible/lair/squall/shared_lair_squall.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_squall_shared_lair_squall, "object/tangible/lair/squall/shared_lair_squall.iff")
 
 object_tangible_lair_squall_shared_lair_squall_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_squall_shared_lair_squall_grassland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_squall_shared_lair_squall_grassland = SharedTangibleObjectT
 	clientObjectCRC = 3621609063
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_squall_shared_lair_squall_grassland, "object/tangible/lair/squall/shared_lair_squall_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_squall_shared_lair_squall_grassland, "object/tangible/lair/squall/shared_lair_squall_grassland.iff")

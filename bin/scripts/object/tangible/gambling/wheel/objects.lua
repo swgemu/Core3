@@ -48,6 +48,7 @@ object_tangible_gambling_wheel_shared_roulette = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,4 +93,4 @@ object_tangible_gambling_wheel_shared_roulette = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2596039133
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_gambling_wheel_shared_roulette, "object/tangible/gambling/wheel/shared_roulette.iff")
+ObjectTemplates:addTemplate(object_tangible_gambling_wheel_shared_roulette, "object/tangible/gambling/wheel/shared_roulette.iff")

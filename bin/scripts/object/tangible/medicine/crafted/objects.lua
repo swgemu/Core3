@@ -48,6 +48,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_a = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_a = SharedTangibl
 	clientObjectCRC = 2421139465
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_a, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_a, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_a.iff")
 
 object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -101,6 +102,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_b = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_b = SharedTangibl
 	clientObjectCRC = 1264058526
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_b, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_b, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_b.iff")
 
 object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -154,6 +156,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_c = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_c = SharedTangibl
 	clientObjectCRC = 39151379
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_c, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_c, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_c.iff")
 
 object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_lg_s1.apt",
@@ -207,6 +210,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_d = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_d = SharedTangibl
 	clientObjectCRC = 4189473799
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_d, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_d, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_d.iff")
 
 object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_lg_s1.apt",
@@ -260,6 +264,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_e = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_e = SharedTangibl
 	clientObjectCRC = 2965056394
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_e, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_crafted_stimpack_sm_s1_e, "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_e.iff")
 
 object_tangible_medicine_crafted_shared_medic_fire_blanket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
@@ -313,6 +318,7 @@ object_tangible_medicine_crafted_shared_medic_fire_blanket = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_medicine_crafted_shared_medic_fire_blanket = SharedTangibleObjec
 	clientObjectCRC = 3337965998
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medic_fire_blanket, "object/tangible/medicine/crafted/shared_medic_fire_blanket.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medic_fire_blanket, "object/tangible/medicine/crafted/shared_medic_fire_blanket.iff")
 
 object_tangible_medicine_crafted_shared_medpack_blinded_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -366,6 +372,7 @@ object_tangible_medicine_crafted_shared_medpack_blinded_a = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_medicine_crafted_shared_medpack_blinded_a = SharedTangibleObject
 	clientObjectCRC = 1050358641
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_blinded_a, "object/tangible/medicine/crafted/shared_medpack_blinded_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_blinded_a, "object/tangible/medicine/crafted/shared_medpack_blinded_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_blinded_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -419,6 +426,7 @@ object_tangible_medicine_crafted_shared_medpack_blinded_b = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_medicine_crafted_shared_medpack_blinded_b = SharedTangibleObject
 	clientObjectCRC = 3851197414
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_blinded_b, "object/tangible/medicine/crafted/shared_medpack_blinded_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_blinded_b, "object/tangible/medicine/crafted/shared_medpack_blinded_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_disease_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -472,6 +480,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_a = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_a = SharedTangibleO
 	clientObjectCRC = 2627802879
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_a, "object/tangible/medicine/crafted/shared_medpack_cure_disease_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_a, "object/tangible/medicine/crafted/shared_medpack_cure_disease_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_disease_area_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_cure_disease.apt",
@@ -525,6 +534,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_area_a = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_area_a = SharedTang
 	clientObjectCRC = 131829089
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_area_a, "object/tangible/medicine/crafted/shared_medpack_cure_disease_area_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_area_a, "object/tangible/medicine/crafted/shared_medpack_cure_disease_area_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_disease_area_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_cure_disease.apt",
@@ -578,6 +588,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_area_b = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_area_b = SharedTang
 	clientObjectCRC = 3704366582
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_area_b, "object/tangible/medicine/crafted/shared_medpack_cure_disease_area_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_area_b, "object/tangible/medicine/crafted/shared_medpack_cure_disease_area_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_disease_area_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_cure_disease.apt",
@@ -631,6 +642,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_area_c = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_area_c = SharedTang
 	clientObjectCRC = 2512470651
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_area_c, "object/tangible/medicine/crafted/shared_medpack_cure_disease_area_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_area_c, "object/tangible/medicine/crafted/shared_medpack_cure_disease_area_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_disease_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -684,6 +696,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_b = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_b = SharedTangibleO
 	clientObjectCRC = 1203158632
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_b, "object/tangible/medicine/crafted/shared_medpack_cure_disease_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_b, "object/tangible/medicine/crafted/shared_medpack_cure_disease_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_disease_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -737,6 +750,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_c = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_disease_c = SharedTangibleO
 	clientObjectCRC = 247192037
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_c, "object/tangible/medicine/crafted/shared_medpack_cure_disease_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_disease_c, "object/tangible/medicine/crafted/shared_medpack_cure_disease_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_poison_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -790,6 +804,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_a = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_a = SharedTangibleOb
 	clientObjectCRC = 3079774336
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_a, "object/tangible/medicine/crafted/shared_medpack_cure_poison_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_a, "object/tangible/medicine/crafted/shared_medpack_cure_poison_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_poison_area_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_cure_poison.apt",
@@ -843,6 +858,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_area_a = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_area_a = SharedTangi
 	clientObjectCRC = 2173977694
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_area_a, "object/tangible/medicine/crafted/shared_medpack_cure_poison_area_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_area_a, "object/tangible/medicine/crafted/shared_medpack_cure_poison_area_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_poison_area_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_cure_poison.apt",
@@ -896,6 +912,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_area_b = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_area_b = SharedTangi
 	clientObjectCRC = 1518595273
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_area_b, "object/tangible/medicine/crafted/shared_medpack_cure_poison_area_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_area_b, "object/tangible/medicine/crafted/shared_medpack_cure_poison_area_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_poison_area_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_cure_poison.apt",
@@ -949,6 +966,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_area_c = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_area_c = SharedTangi
 	clientObjectCRC = 328108868
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_area_c, "object/tangible/medicine/crafted/shared_medpack_cure_poison_area_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_area_c, "object/tangible/medicine/crafted/shared_medpack_cure_poison_area_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_poison_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -1002,6 +1020,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_b = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_b = SharedTangibleOb
 	clientObjectCRC = 1820723223
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_b, "object/tangible/medicine/crafted/shared_medpack_cure_poison_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_b, "object/tangible/medicine/crafted/shared_medpack_cure_poison_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_cure_poison_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -1055,6 +1074,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_c = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_medicine_crafted_shared_medpack_cure_poison_c = SharedTangibleOb
 	clientObjectCRC = 629895066
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_c, "object/tangible/medicine/crafted/shared_medpack_cure_poison_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_cure_poison_c, "object/tangible/medicine/crafted/shared_medpack_cure_poison_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_damage_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1108,6 +1128,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_a = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_a = SharedTangibleObjectT
 	clientObjectCRC = 2001848134
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_damage_a, "object/tangible/medicine/crafted/shared_medpack_damage_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_damage_a, "object/tangible/medicine/crafted/shared_medpack_damage_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_damage_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -1161,6 +1182,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_b = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_b = SharedTangibleObjectT
 	clientObjectCRC = 2890297297
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_damage_b, "object/tangible/medicine/crafted/shared_medpack_damage_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_damage_b, "object/tangible/medicine/crafted/shared_medpack_damage_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_damage_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -1214,6 +1236,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_c = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_c = SharedTangibleObjectT
 	clientObjectCRC = 3846899804
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_damage_c, "object/tangible/medicine/crafted/shared_medpack_damage_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_damage_c, "object/tangible/medicine/crafted/shared_medpack_damage_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_damage_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_lg_s1.apt",
@@ -1267,6 +1290,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_d = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_d = SharedTangibleObjectT
 	clientObjectCRC = 514335560
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_damage_d, "object/tangible/medicine/crafted/shared_medpack_damage_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_damage_d, "object/tangible/medicine/crafted/shared_medpack_damage_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_damage_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_lg_s1.apt",
@@ -1320,6 +1344,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_e = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_medicine_crafted_shared_medpack_damage_e = SharedTangibleObjectT
 	clientObjectCRC = 1470448837
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_damage_e, "object/tangible/medicine/crafted/shared_medpack_damage_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_damage_e, "object/tangible/medicine/crafted/shared_medpack_damage_e.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_action_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -1373,6 +1398,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_action_a = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_action_a = SharedTangibl
 	clientObjectCRC = 1421339093
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_action_a, "object/tangible/medicine/crafted/shared_medpack_disease_action_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_action_a, "object/tangible/medicine/crafted/shared_medpack_disease_action_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_action_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -1426,6 +1452,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_action_b = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_action_b = SharedTangibl
 	clientObjectCRC = 2409644354
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_action_b, "object/tangible/medicine/crafted/shared_medpack_disease_action_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_action_b, "object/tangible/medicine/crafted/shared_medpack_disease_action_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_action_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -1479,6 +1506,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_action_c = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_action_c = SharedTangibl
 	clientObjectCRC = 3333236431
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_action_c, "object/tangible/medicine/crafted/shared_medpack_disease_action_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_action_c, "object/tangible/medicine/crafted/shared_medpack_disease_action_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_action_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -1532,6 +1560,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_action_a = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_action_a = SharedTa
 	clientObjectCRC = 3835399412
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_action_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_action_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_action_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_action_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_action_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -1585,6 +1614,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_action_b = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_action_b = SharedTa
 	clientObjectCRC = 1066148963
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_action_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_action_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_action_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_action_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_action_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -1638,6 +1668,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_action_c = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_action_c = SharedTa
 	clientObjectCRC = 1988183022
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_action_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_action_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_action_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_action_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -1691,6 +1722,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_a = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_a = Sh
 	clientObjectCRC = 1245003913
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_constitution_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_constitution_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -1744,6 +1776,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_b = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_b = Sh
 	clientObjectCRC = 2434983966
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_constitution_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_constitution_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -1797,6 +1830,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_c = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_c = Sh
 	clientObjectCRC = 3626995603
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_constitution_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_constitution_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_constitution_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_focus_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -1850,6 +1884,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_focus_a = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_focus_a = SharedTan
 	clientObjectCRC = 4224279977
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_focus_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_focus_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_focus_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_focus_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_focus_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -1903,6 +1938,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_focus_b = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_focus_b = SharedTan
 	clientObjectCRC = 551472446
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_focus_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_focus_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_focus_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_focus_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_focus_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -1956,6 +1992,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_focus_c = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_focus_c = SharedTan
 	clientObjectCRC = 1775479475
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_focus_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_focus_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_focus_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_focus_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_health_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -2009,6 +2046,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_health_a = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_health_a = SharedTa
 	clientObjectCRC = 1629813448
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_health_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_health_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_health_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_health_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_health_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -2062,6 +2100,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_health_b = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_health_b = SharedTa
 	clientObjectCRC = 3123925599
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_health_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_health_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_health_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_health_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_health_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -2115,6 +2154,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_health_c = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_health_c = SharedTa
 	clientObjectCRC = 4080940498
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_health_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_health_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_health_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_health_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_mind_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -2168,6 +2208,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_mind_a = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_mind_a = SharedTang
 	clientObjectCRC = 3192147346
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_mind_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_mind_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_mind_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_mind_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_mind_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -2221,6 +2262,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_mind_b = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_mind_b = SharedTang
 	clientObjectCRC = 1699996933
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_mind_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_mind_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_mind_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_mind_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_mind_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -2274,6 +2316,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_mind_c = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_mind_c = SharedTang
 	clientObjectCRC = 744391304
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_mind_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_mind_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_mind_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_mind_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -2327,6 +2370,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_a = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_a = Share
 	clientObjectCRC = 1210202555
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_quickness_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_quickness_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -2380,6 +2424,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_b = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_b = Share
 	clientObjectCRC = 2469761324
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_quickness_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_quickness_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -2433,6 +2478,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_c = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_c = Share
 	clientObjectCRC = 3661166241
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_quickness_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_quickness_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_quickness_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -2486,6 +2532,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_a = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_a = SharedT
 	clientObjectCRC = 49541233
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_stamina_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_stamina_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -2539,6 +2586,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_b = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_b = SharedT
 	clientObjectCRC = 3655620838
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_stamina_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_stamina_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -2592,6 +2640,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_c = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_c = SharedT
 	clientObjectCRC = 2431205227
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_stamina_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_stamina_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_stamina_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_strength_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -2645,6 +2694,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_strength_a = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_strength_a = Shared
 	clientObjectCRC = 3592578556
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_strength_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_strength_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_strength_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_strength_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_strength_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -2698,6 +2748,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_strength_b = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_strength_b = Shared
 	clientObjectCRC = 221629803
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_strength_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_strength_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_strength_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_strength_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_strength_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -2751,6 +2802,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_strength_c = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_strength_c = Shared
 	clientObjectCRC = 1144564454
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_strength_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_strength_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_strength_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_strength_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -2804,6 +2856,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_a = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_a = Share
 	clientObjectCRC = 2580872887
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_willpower_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_a, "object/tangible/medicine/crafted/shared_medpack_disease_area_willpower_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -2857,6 +2910,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_b = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_b = Share
 	clientObjectCRC = 1120097824
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_willpower_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_b, "object/tangible/medicine/crafted/shared_medpack_disease_area_willpower_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -2910,6 +2964,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_c = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_c = Share
 	clientObjectCRC = 198062509
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_willpower_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_area_willpower_c, "object/tangible/medicine/crafted/shared_medpack_disease_area_willpower_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_constitution_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -2963,6 +3018,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_constitution_a = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_constitution_a = SharedT
 	clientObjectCRC = 4062871791
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_constitution_a, "object/tangible/medicine/crafted/shared_medpack_disease_constitution_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_constitution_a, "object/tangible/medicine/crafted/shared_medpack_disease_constitution_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_constitution_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -3016,6 +3072,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_constitution_b = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_constitution_b = SharedT
 	clientObjectCRC = 691873912
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_constitution_b, "object/tangible/medicine/crafted/shared_medpack_disease_constitution_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_constitution_b, "object/tangible/medicine/crafted/shared_medpack_disease_constitution_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_constitution_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -3069,6 +3126,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_constitution_c = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_constitution_c = SharedT
 	clientObjectCRC = 1613778933
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_constitution_c, "object/tangible/medicine/crafted/shared_medpack_disease_constitution_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_constitution_c, "object/tangible/medicine/crafted/shared_medpack_disease_constitution_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_focus_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -3122,6 +3180,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_focus_a = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_focus_a = SharedTangible
 	clientObjectCRC = 855821233
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_focus_a, "object/tangible/medicine/crafted/shared_medpack_disease_focus_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_focus_a, "object/tangible/medicine/crafted/shared_medpack_disease_focus_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_focus_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -3175,6 +3234,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_focus_b = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_focus_b = SharedTangible
 	clientObjectCRC = 3893715750
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_focus_b, "object/tangible/medicine/crafted/shared_medpack_disease_focus_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_focus_b, "object/tangible/medicine/crafted/shared_medpack_disease_focus_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_focus_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -3228,6 +3288,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_focus_c = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_focus_c = SharedTangible
 	clientObjectCRC = 2702705835
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_focus_c, "object/tangible/medicine/crafted/shared_medpack_disease_focus_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_focus_c, "object/tangible/medicine/crafted/shared_medpack_disease_focus_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_health_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -3281,6 +3342,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_health_a = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_health_a = SharedTangibl
 	clientObjectCRC = 3507003369
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_health_a, "object/tangible/medicine/crafted/shared_medpack_disease_health_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_health_a, "object/tangible/medicine/crafted/shared_medpack_disease_health_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_health_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -3334,6 +3396,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_health_b = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_health_b = SharedTangibl
 	clientObjectCRC = 169817982
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_health_b, "object/tangible/medicine/crafted/shared_medpack_disease_health_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_health_b, "object/tangible/medicine/crafted/shared_medpack_disease_health_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_health_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -3387,6 +3450,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_health_c = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_health_c = SharedTangibl
 	clientObjectCRC = 1125273843
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_health_c, "object/tangible/medicine/crafted/shared_medpack_disease_health_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_health_c, "object/tangible/medicine/crafted/shared_medpack_disease_health_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_mind_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -3440,6 +3504,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_mind_a = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_mind_a = SharedTangibleO
 	clientObjectCRC = 1432511697
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_mind_a, "object/tangible/medicine/crafted/shared_medpack_disease_mind_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_mind_a, "object/tangible/medicine/crafted/shared_medpack_disease_mind_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_mind_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -3493,6 +3558,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_mind_b = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_mind_b = SharedTangibleO
 	clientObjectCRC = 2390084678
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_mind_b, "object/tangible/medicine/crafted/shared_medpack_disease_mind_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_mind_b, "object/tangible/medicine/crafted/shared_medpack_disease_mind_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_mind_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -3546,6 +3612,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_mind_c = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_mind_c = SharedTangibleO
 	clientObjectCRC = 3346574283
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_mind_c, "object/tangible/medicine/crafted/shared_medpack_disease_mind_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_mind_c, "object/tangible/medicine/crafted/shared_medpack_disease_mind_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_quickness_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -3599,6 +3666,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_quickness_a = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_quickness_a = SharedTang
 	clientObjectCRC = 4148485002
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_quickness_a, "object/tangible/medicine/crafted/shared_medpack_disease_quickness_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_quickness_a, "object/tangible/medicine/crafted/shared_medpack_disease_quickness_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_quickness_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -3652,6 +3720,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_quickness_b = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_quickness_b = SharedTang
 	clientObjectCRC = 743666461
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_quickness_b, "object/tangible/medicine/crafted/shared_medpack_disease_quickness_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_quickness_b, "object/tangible/medicine/crafted/shared_medpack_disease_quickness_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_quickness_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -3705,6 +3774,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_quickness_c = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_quickness_c = SharedTang
 	clientObjectCRC = 1700664464
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_quickness_c, "object/tangible/medicine/crafted/shared_medpack_disease_quickness_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_quickness_c, "object/tangible/medicine/crafted/shared_medpack_disease_quickness_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_stamina_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -3758,6 +3828,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_stamina_a = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_stamina_a = SharedTangib
 	clientObjectCRC = 2477284367
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_stamina_a, "object/tangible/medicine/crafted/shared_medpack_disease_stamina_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_stamina_a, "object/tangible/medicine/crafted/shared_medpack_disease_stamina_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_stamina_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -3811,6 +3882,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_stamina_b = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_stamina_b = SharedTangib
 	clientObjectCRC = 1220539544
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_stamina_b, "object/tangible/medicine/crafted/shared_medpack_disease_stamina_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_stamina_b, "object/tangible/medicine/crafted/shared_medpack_disease_stamina_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_stamina_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -3864,6 +3936,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_stamina_c = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_stamina_c = SharedTangib
 	clientObjectCRC = 28480277
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_stamina_c, "object/tangible/medicine/crafted/shared_medpack_disease_stamina_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_stamina_c, "object/tangible/medicine/crafted/shared_medpack_disease_stamina_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_strength_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -3917,6 +3990,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_strength_a = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_strength_a = SharedTangi
 	clientObjectCRC = 2891070933
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_strength_a, "object/tangible/medicine/crafted/shared_medpack_disease_strength_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_strength_a, "object/tangible/medicine/crafted/shared_medpack_disease_strength_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_strength_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -3970,6 +4044,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_strength_b = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_strength_b = SharedTangi
 	clientObjectCRC = 2001048898
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_strength_b, "object/tangible/medicine/crafted/shared_medpack_disease_strength_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_strength_b, "object/tangible/medicine/crafted/shared_medpack_disease_strength_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_strength_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -4023,6 +4098,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_strength_c = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_strength_c = SharedTangi
 	clientObjectCRC = 1044968143
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_strength_c, "object/tangible/medicine/crafted/shared_medpack_disease_strength_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_strength_c, "object/tangible/medicine/crafted/shared_medpack_disease_strength_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_willpower_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -4076,6 +4152,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_willpower_a = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_willpower_a = SharedTang
 	clientObjectCRC = 649206918
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_willpower_a, "object/tangible/medicine/crafted/shared_medpack_disease_willpower_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_willpower_a, "object/tangible/medicine/crafted/shared_medpack_disease_willpower_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_willpower_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -4129,6 +4206,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_willpower_b = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_willpower_b = SharedTang
 	clientObjectCRC = 4255495185
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_willpower_b, "object/tangible/medicine/crafted/shared_medpack_disease_willpower_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_willpower_b, "object/tangible/medicine/crafted/shared_medpack_disease_willpower_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_disease_willpower_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -4182,6 +4260,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_willpower_c = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_medicine_crafted_shared_medpack_disease_willpower_c = SharedTang
 	clientObjectCRC = 3030963100
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_disease_willpower_c, "object/tangible/medicine/crafted/shared_medpack_disease_willpower_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_disease_willpower_c, "object/tangible/medicine/crafted/shared_medpack_disease_willpower_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_dizzy_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -4235,6 +4314,7 @@ object_tangible_medicine_crafted_shared_medpack_dizzy_a = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_medicine_crafted_shared_medpack_dizzy_a = SharedTangibleObjectTe
 	clientObjectCRC = 4286027794
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_dizzy_a, "object/tangible/medicine/crafted/shared_medpack_dizzy_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_dizzy_a, "object/tangible/medicine/crafted/shared_medpack_dizzy_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_dizzy_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -4288,6 +4368,7 @@ object_tangible_medicine_crafted_shared_medpack_dizzy_b = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_medicine_crafted_shared_medpack_dizzy_b = SharedTangibleObjectTe
 	clientObjectCRC = 610283653
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_dizzy_b, "object/tangible/medicine/crafted/shared_medpack_dizzy_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_dizzy_b, "object/tangible/medicine/crafted/shared_medpack_dizzy_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_action_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -4341,6 +4422,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_action_a = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_action_a = SharedTangibl
 	clientObjectCRC = 4040456830
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_action_a, "object/tangible/medicine/crafted/shared_medpack_enhance_action_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_action_a, "object/tangible/medicine/crafted/shared_medpack_enhance_action_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_action_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -4394,6 +4476,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_action_b = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_action_b = SharedTangibl
 	clientObjectCRC = 734253801
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_action_b, "object/tangible/medicine/crafted/shared_medpack_enhance_action_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_action_b, "object/tangible/medicine/crafted/shared_medpack_enhance_action_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_action_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -4447,6 +4530,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_action_c = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_action_c = SharedTangibl
 	clientObjectCRC = 1657714020
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_action_c, "object/tangible/medicine/crafted/shared_medpack_enhance_action_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_action_c, "object/tangible/medicine/crafted/shared_medpack_enhance_action_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_action_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -4500,6 +4584,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_action_d = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_action_d = SharedTangibl
 	clientObjectCRC = 2569903728
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_action_d, "object/tangible/medicine/crafted/shared_medpack_enhance_action_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_action_d, "object/tangible/medicine/crafted/shared_medpack_enhance_action_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_constitution_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
@@ -4553,6 +4638,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_constitution_a = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_constitution_a = SharedT
 	clientObjectCRC = 1741769826
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_constitution_a, "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_constitution_a, "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_constitution_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
@@ -4606,6 +4692,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_constitution_b = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_constitution_b = SharedT
 	clientObjectCRC = 3167151349
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_constitution_b, "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_constitution_b, "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_constitution_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
@@ -4659,6 +4746,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_constitution_c = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_constitution_c = SharedT
 	clientObjectCRC = 4123755384
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_constitution_c, "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_constitution_c, "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_constitution_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
@@ -4712,6 +4800,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_constitution_d = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_constitution_d = SharedT
 	clientObjectCRC = 237545580
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_constitution_d, "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_constitution_d, "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_disease_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_enhancement_medicine.apt",
@@ -4765,6 +4854,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_disease_a = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_disease_a = SharedTangib
 	clientObjectCRC = 3542293256
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_disease_a, "object/tangible/medicine/crafted/shared_medpack_enhance_disease_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_disease_a, "object/tangible/medicine/crafted/shared_medpack_enhance_disease_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_disease_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_enhancement_medicine.apt",
@@ -4818,6 +4908,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_disease_b = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_disease_b = SharedTangib
 	clientObjectCRC = 137671583
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_disease_b, "object/tangible/medicine/crafted/shared_medpack_enhance_disease_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_disease_b, "object/tangible/medicine/crafted/shared_medpack_enhance_disease_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_disease_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_enhancement_medicine.apt",
@@ -4871,6 +4962,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_disease_c = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_disease_c = SharedTangib
 	clientObjectCRC = 1094308882
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_disease_c, "object/tangible/medicine/crafted/shared_medpack_enhance_disease_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_disease_c, "object/tangible/medicine/crafted/shared_medpack_enhance_disease_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_health_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -4924,6 +5016,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_health_a = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_health_a = SharedTangibl
 	clientObjectCRC = 1969949762
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_health_a, "object/tangible/medicine/crafted/shared_medpack_enhance_health_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_health_a, "object/tangible/medicine/crafted/shared_medpack_enhance_health_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_health_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -4977,6 +5070,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_health_b = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_health_b = SharedTangibl
 	clientObjectCRC = 2927404245
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_health_b, "object/tangible/medicine/crafted/shared_medpack_enhance_health_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_health_b, "object/tangible/medicine/crafted/shared_medpack_enhance_health_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_health_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -5030,6 +5124,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_health_c = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_health_c = SharedTangibl
 	clientObjectCRC = 3882992472
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_health_c, "object/tangible/medicine/crafted/shared_medpack_enhance_health_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_health_c, "object/tangible/medicine/crafted/shared_medpack_enhance_health_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_health_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -5083,6 +5178,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_health_d = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_health_d = SharedTangibl
 	clientObjectCRC = 479389772
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_health_d, "object/tangible/medicine/crafted/shared_medpack_enhance_health_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_health_d, "object/tangible/medicine/crafted/shared_medpack_enhance_health_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_poison_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_dehabilitation_medicine.apt",
@@ -5136,6 +5232,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_poison_a = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_poison_a = SharedTangibl
 	clientObjectCRC = 1971989030
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_poison_a, "object/tangible/medicine/crafted/shared_medpack_enhance_poison_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_poison_a, "object/tangible/medicine/crafted/shared_medpack_enhance_poison_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_poison_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_dehabilitation_medicine.apt",
@@ -5189,6 +5286,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_poison_b = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_poison_b = SharedTangibl
 	clientObjectCRC = 2929558193
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_poison_b, "object/tangible/medicine/crafted/shared_medpack_enhance_poison_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_poison_b, "object/tangible/medicine/crafted/shared_medpack_enhance_poison_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_poison_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_dehabilitation_medicine.apt",
@@ -5242,6 +5340,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_poison_c = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_poison_c = SharedTangibl
 	clientObjectCRC = 3885032764
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_poison_c, "object/tangible/medicine/crafted/shared_medpack_enhance_poison_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_poison_c, "object/tangible/medicine/crafted/shared_medpack_enhance_poison_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_quickness_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -5295,6 +5394,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_quickness_a = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_quickness_a = SharedTang
 	clientObjectCRC = 3073745416
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_quickness_a, "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_quickness_a, "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_quickness_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -5348,6 +5448,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_quickness_b = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_quickness_b = SharedTang
 	clientObjectCRC = 1814170271
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_quickness_b, "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_quickness_b, "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_quickness_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -5401,6 +5502,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_quickness_c = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_quickness_c = SharedTang
 	clientObjectCRC = 623865106
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_quickness_c, "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_quickness_c, "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_quickness_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -5454,6 +5556,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_quickness_d = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_quickness_d = SharedTang
 	clientObjectCRC = 3737929222
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_quickness_d, "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_quickness_d, "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_stamina_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
@@ -5507,6 +5610,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_stamina_a = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_stamina_a = SharedTangib
 	clientObjectCRC = 303093725
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_stamina_a, "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_stamina_a, "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_stamina_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
@@ -5560,6 +5664,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_stamina_b = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_stamina_b = SharedTangib
 	clientObjectCRC = 3372711754
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_stamina_b, "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_stamina_b, "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_stamina_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
@@ -5613,6 +5718,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_stamina_c = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_stamina_c = SharedTangib
 	clientObjectCRC = 2148145351
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_stamina_c, "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_stamina_c, "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_stamina_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
@@ -5666,6 +5772,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_stamina_d = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_stamina_d = SharedTangib
 	clientObjectCRC = 2078880723
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_stamina_d, "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_stamina_d, "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_strength_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
@@ -5719,6 +5826,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_strength_a = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_strength_a = SharedTangi
 	clientObjectCRC = 2031358604
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_strength_a, "object/tangible/medicine/crafted/shared_medpack_enhance_strength_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_strength_a, "object/tangible/medicine/crafted/shared_medpack_enhance_strength_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_strength_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
@@ -5772,6 +5880,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_strength_b = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_strength_b = SharedTangi
 	clientObjectCRC = 2718153243
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_strength_b, "object/tangible/medicine/crafted/shared_medpack_enhance_strength_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_strength_b, "object/tangible/medicine/crafted/shared_medpack_enhance_strength_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_strength_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
@@ -5825,6 +5934,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_strength_c = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_strength_c = SharedTangi
 	clientObjectCRC = 3943619990
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_strength_c, "object/tangible/medicine/crafted/shared_medpack_enhance_strength_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_strength_c, "object/tangible/medicine/crafted/shared_medpack_enhance_strength_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_enhance_strength_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
@@ -5878,6 +5988,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_strength_d = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_medicine_crafted_shared_medpack_enhance_strength_d = SharedTangi
 	clientObjectCRC = 284030594
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_strength_d, "object/tangible/medicine/crafted/shared_medpack_enhance_strength_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_enhance_strength_d, "object/tangible/medicine/crafted/shared_medpack_enhance_strength_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_grenade_area_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_chemical.apt",
@@ -5931,6 +6042,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_area_a = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_area_a = SharedTangibleO
 	clientObjectCRC = 1566761102
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_area_a, "object/tangible/medicine/crafted/shared_medpack_grenade_area_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_area_a, "object/tangible/medicine/crafted/shared_medpack_grenade_area_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_grenade_area_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_chemical.apt",
@@ -5984,6 +6096,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_area_b = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_area_b = SharedTangibleO
 	clientObjectCRC = 2255833113
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_area_b, "object/tangible/medicine/crafted/shared_medpack_grenade_area_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_area_b, "object/tangible/medicine/crafted/shared_medpack_grenade_area_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_grenade_area_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_chemical.apt",
@@ -6037,6 +6150,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_area_c = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_area_c = SharedTangibleO
 	clientObjectCRC = 3480760212
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_area_c, "object/tangible/medicine/crafted/shared_medpack_grenade_area_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_area_c, "object/tangible/medicine/crafted/shared_medpack_grenade_area_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_grenade_damage_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -6090,6 +6204,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_a = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_a = SharedTangibl
 	clientObjectCRC = 256177215
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_a, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_a, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_grenade_damage_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -6143,6 +6258,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_b = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_b = SharedTangibl
 	clientObjectCRC = 3562233000
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_b, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_b, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_grenade_damage_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -6196,6 +6312,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_c = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,7 +6357,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_c = SharedTangibl
 	clientObjectCRC = 2640198437
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_c, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_c, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_grenade_damage_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -6249,6 +6366,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_d = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6293,7 +6411,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_d = SharedTangibl
 	clientObjectCRC = 1723666481
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_d, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_d, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_grenade_damage_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -6302,6 +6420,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_e = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6346,7 +6465,7 @@ object_tangible_medicine_crafted_shared_medpack_grenade_damage_e = SharedTangibl
 	clientObjectCRC = 800094140
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_e, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_grenade_damage_e, "object/tangible/medicine/crafted/shared_medpack_grenade_damage_e.iff")
 
 object_tangible_medicine_crafted_shared_medpack_intimidated_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -6355,6 +6474,7 @@ object_tangible_medicine_crafted_shared_medpack_intimidated_a = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6399,7 +6519,7 @@ object_tangible_medicine_crafted_shared_medpack_intimidated_a = SharedTangibleOb
 	clientObjectCRC = 3909597494
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_intimidated_a, "object/tangible/medicine/crafted/shared_medpack_intimidated_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_intimidated_a, "object/tangible/medicine/crafted/shared_medpack_intimidated_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_intimidated_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -6408,6 +6528,7 @@ object_tangible_medicine_crafted_shared_medpack_intimidated_b = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6452,7 +6573,7 @@ object_tangible_medicine_crafted_shared_medpack_intimidated_b = SharedTangibleOb
 	clientObjectCRC = 839913889
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_intimidated_b, "object/tangible/medicine/crafted/shared_medpack_intimidated_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_intimidated_b, "object/tangible/medicine/crafted/shared_medpack_intimidated_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_action_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6461,6 +6582,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_action_a = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6505,7 +6627,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_action_a = SharedTangible
 	clientObjectCRC = 1800212586
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_action_a, "object/tangible/medicine/crafted/shared_medpack_poison_action_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_action_a, "object/tangible/medicine/crafted/shared_medpack_poison_action_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_action_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6514,6 +6636,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_action_b = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6558,7 +6681,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_action_b = SharedTangible
 	clientObjectCRC = 2958735613
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_action_b, "object/tangible/medicine/crafted/shared_medpack_poison_action_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_action_b, "object/tangible/medicine/crafted/shared_medpack_poison_action_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_action_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6567,6 +6690,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_action_c = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6611,7 +6735,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_action_c = SharedTangible
 	clientObjectCRC = 4183285616
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_action_c, "object/tangible/medicine/crafted/shared_medpack_poison_action_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_action_c, "object/tangible/medicine/crafted/shared_medpack_poison_action_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_action_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6620,6 +6744,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_action_a = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6664,7 +6789,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_action_a = SharedTan
 	clientObjectCRC = 1306026854
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_action_a, "object/tangible/medicine/crafted/shared_medpack_poison_area_action_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_action_a, "object/tangible/medicine/crafted/shared_medpack_poison_area_action_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_action_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6673,6 +6798,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_action_b = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6717,7 +6843,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_action_b = SharedTan
 	clientObjectCRC = 2530200561
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_action_b, "object/tangible/medicine/crafted/shared_medpack_poison_area_action_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_action_b, "object/tangible/medicine/crafted/shared_medpack_poison_area_action_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_action_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6726,6 +6852,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_action_c = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6770,7 +6897,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_action_c = SharedTan
 	clientObjectCRC = 3754077308
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_action_c, "object/tangible/medicine/crafted/shared_medpack_poison_area_action_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_action_c, "object/tangible/medicine/crafted/shared_medpack_poison_area_action_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_health_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6779,6 +6906,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_health_a = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6823,7 +6951,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_health_a = SharedTan
 	clientObjectCRC = 3362198874
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_health_a, "object/tangible/medicine/crafted/shared_medpack_poison_area_health_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_health_a, "object/tangible/medicine/crafted/shared_medpack_poison_area_health_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_health_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6832,6 +6960,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_health_b = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6876,7 +7005,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_health_b = SharedTan
 	clientObjectCRC = 326155725
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_health_b, "object/tangible/medicine/crafted/shared_medpack_poison_area_health_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_health_b, "object/tangible/medicine/crafted/shared_medpack_poison_area_health_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_health_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6885,6 +7014,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_health_c = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6929,7 +7059,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_health_c = SharedTan
 	clientObjectCRC = 1518197312
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_health_c, "object/tangible/medicine/crafted/shared_medpack_poison_area_health_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_health_c, "object/tangible/medicine/crafted/shared_medpack_poison_area_health_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_mind_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6938,6 +7068,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_mind_a = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6982,7 +7113,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_mind_a = SharedTangi
 	clientObjectCRC = 1592196885
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_mind_a, "object/tangible/medicine/crafted/shared_medpack_poison_area_mind_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_mind_a, "object/tangible/medicine/crafted/shared_medpack_poison_area_mind_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_mind_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -6991,6 +7122,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_mind_b = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7035,7 +7167,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_mind_b = SharedTangi
 	clientObjectCRC = 2247186306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_mind_b, "object/tangible/medicine/crafted/shared_medpack_poison_area_mind_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_mind_b, "object/tangible/medicine/crafted/shared_medpack_poison_area_mind_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_area_mind_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7044,6 +7176,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_mind_c = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7088,7 +7221,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_area_mind_c = SharedTangi
 	clientObjectCRC = 3439079439
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_mind_c, "object/tangible/medicine/crafted/shared_medpack_poison_area_mind_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_area_mind_c, "object/tangible/medicine/crafted/shared_medpack_poison_area_mind_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_health_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -7097,6 +7230,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_health_a = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7141,7 +7275,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_health_a = SharedTangible
 	clientObjectCRC = 4008863318
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_health_a, "object/tangible/medicine/crafted/shared_medpack_poison_health_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_health_a, "object/tangible/medicine/crafted/shared_medpack_poison_health_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_health_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -7150,6 +7284,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_health_b = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7194,7 +7329,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_health_b = SharedTangible
 	clientObjectCRC = 904253121
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_health_b, "object/tangible/medicine/crafted/shared_medpack_poison_health_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_health_b, "object/tangible/medicine/crafted/shared_medpack_poison_health_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_health_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -7203,6 +7338,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_health_c = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7247,7 +7383,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_health_c = SharedTangible
 	clientObjectCRC = 2095622476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_health_c, "object/tangible/medicine/crafted/shared_medpack_poison_health_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_health_c, "object/tangible/medicine/crafted/shared_medpack_poison_health_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_mind_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7256,6 +7392,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_mind_a = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7300,7 +7437,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_mind_a = SharedTangibleOb
 	clientObjectCRC = 224697074
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_mind_a, "object/tangible/medicine/crafted/shared_medpack_poison_mind_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_mind_a, "object/tangible/medicine/crafted/shared_medpack_poison_mind_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_mind_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7309,6 +7446,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_mind_b = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7353,7 +7491,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_mind_b = SharedTangibleOb
 	clientObjectCRC = 3597873765
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_mind_b, "object/tangible/medicine/crafted/shared_medpack_poison_mind_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_mind_b, "object/tangible/medicine/crafted/shared_medpack_poison_mind_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_poison_mind_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7362,6 +7500,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_mind_c = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7406,7 +7545,7 @@ object_tangible_medicine_crafted_shared_medpack_poison_mind_c = SharedTangibleOb
 	clientObjectCRC = 2675856872
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_poison_mind_c, "object/tangible/medicine/crafted/shared_medpack_poison_mind_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_poison_mind_c, "object/tangible/medicine/crafted/shared_medpack_poison_mind_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_revive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -7415,6 +7554,7 @@ object_tangible_medicine_crafted_shared_medpack_revive = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7459,7 +7599,7 @@ object_tangible_medicine_crafted_shared_medpack_revive = SharedTangibleObjectTem
 	clientObjectCRC = 893587986
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_revive, "object/tangible/medicine/crafted/shared_medpack_revive.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_revive, "object/tangible/medicine/crafted/shared_medpack_revive.iff")
 
 object_tangible_medicine_crafted_shared_medpack_stunned_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -7468,6 +7608,7 @@ object_tangible_medicine_crafted_shared_medpack_stunned_a = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7512,7 +7653,7 @@ object_tangible_medicine_crafted_shared_medpack_stunned_a = SharedTangibleObject
 	clientObjectCRC = 3573174905
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_stunned_a, "object/tangible/medicine/crafted/shared_medpack_stunned_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_stunned_a, "object/tangible/medicine/crafted/shared_medpack_stunned_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_stunned_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
@@ -7521,6 +7662,7 @@ object_tangible_medicine_crafted_shared_medpack_stunned_b = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7565,7 +7707,7 @@ object_tangible_medicine_crafted_shared_medpack_stunned_b = SharedTangibleObject
 	clientObjectCRC = 267254510
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_stunned_b, "object/tangible/medicine/crafted/shared_medpack_stunned_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_stunned_b, "object/tangible/medicine/crafted/shared_medpack_stunned_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_action_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7574,6 +7716,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_a = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7618,7 +7761,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_a = SharedTangibleO
 	clientObjectCRC = 3915445448
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_a, "object/tangible/medicine/crafted/shared_medpack_wound_action_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_a, "object/tangible/medicine/crafted/shared_medpack_wound_action_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_action_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7627,6 +7770,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_b = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7671,7 +7815,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_b = SharedTangibleO
 	clientObjectCRC = 846683231
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_b, "object/tangible/medicine/crafted/shared_medpack_wound_action_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_b, "object/tangible/medicine/crafted/shared_medpack_wound_action_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_action_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7680,6 +7824,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_c = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7724,7 +7869,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_c = SharedTangibleO
 	clientObjectCRC = 2071608274
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_c, "object/tangible/medicine/crafted/shared_medpack_wound_action_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_c, "object/tangible/medicine/crafted/shared_medpack_wound_action_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_action_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7733,6 +7878,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_d = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7777,7 +7923,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_d = SharedTangibleO
 	clientObjectCRC = 2157514950
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_d, "object/tangible/medicine/crafted/shared_medpack_wound_action_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_d, "object/tangible/medicine/crafted/shared_medpack_wound_action_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_action_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7786,6 +7932,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_e = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7830,7 +7977,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_action_e = SharedTangibleO
 	clientObjectCRC = 3381950283
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_e, "object/tangible/medicine/crafted/shared_medpack_wound_action_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_action_e, "object/tangible/medicine/crafted/shared_medpack_wound_action_e.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_constitution_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -7839,6 +7986,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_a = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7883,7 +8031,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_a = SharedTan
 	clientObjectCRC = 4023802808
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_a, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_a, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_constitution_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -7892,6 +8040,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_b = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7936,7 +8085,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_b = SharedTan
 	clientObjectCRC = 885125935
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_b, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_b, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_constitution_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -7945,6 +8094,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_c = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7989,7 +8139,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_c = SharedTan
 	clientObjectCRC = 2110559394
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_c, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_c, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_constitution_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -7998,6 +8148,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_d = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8042,7 +8193,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_d = SharedTan
 	clientObjectCRC = 2251276214
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_d, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_d, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_constitution_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -8051,6 +8202,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_e = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8095,7 +8247,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_constitution_e = SharedTan
 	clientObjectCRC = 3475167291
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_e, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_constitution_e, "object/tangible/medicine/crafted/shared_medpack_wound_constitution_e.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_health_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -8104,6 +8256,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_a = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8148,7 +8301,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_a = SharedTangibleO
 	clientObjectCRC = 1826587380
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_a, "object/tangible/medicine/crafted/shared_medpack_wound_health_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_a, "object/tangible/medicine/crafted/shared_medpack_wound_health_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_health_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -8157,6 +8310,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_b = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8201,7 +8355,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_b = SharedTangibleO
 	clientObjectCRC = 3083348579
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_b, "object/tangible/medicine/crafted/shared_medpack_wound_health_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_b, "object/tangible/medicine/crafted/shared_medpack_wound_health_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_health_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -8210,6 +8364,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_c = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8254,7 +8409,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_c = SharedTangibleO
 	clientObjectCRC = 4274343406
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_c, "object/tangible/medicine/crafted/shared_medpack_wound_health_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_c, "object/tangible/medicine/crafted/shared_medpack_wound_health_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_health_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -8263,6 +8418,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_d = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8307,7 +8463,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_d = SharedTangibleO
 	clientObjectCRC = 86402810
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_d, "object/tangible/medicine/crafted/shared_medpack_wound_health_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_d, "object/tangible/medicine/crafted/shared_medpack_wound_health_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_health_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -8316,6 +8472,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_e = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8360,7 +8517,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_health_e = SharedTangibleO
 	clientObjectCRC = 1277886839
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_e, "object/tangible/medicine/crafted/shared_medpack_wound_health_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_health_e, "object/tangible/medicine/crafted/shared_medpack_wound_health_e.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_quickness_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -8369,6 +8526,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_a = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8413,7 +8571,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_a = SharedTangib
 	clientObjectCRC = 2977609255
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_a, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_a, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_quickness_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -8422,6 +8580,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_b = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8466,7 +8625,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_b = SharedTangib
 	clientObjectCRC = 1785536176
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_b, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_b, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_quickness_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -8475,6 +8634,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_c = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8519,7 +8679,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_c = SharedTangib
 	clientObjectCRC = 593525053
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_c, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_c, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_quickness_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -8528,6 +8688,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_d = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8572,7 +8733,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_d = SharedTangib
 	clientObjectCRC = 3632484905
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_d, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_d, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_quickness_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -8581,6 +8742,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_e = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8625,7 +8787,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_quickness_e = SharedTangib
 	clientObjectCRC = 2442016164
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_e, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_quickness_e, "object/tangible/medicine/crafted/shared_medpack_wound_quickness_e.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_stamina_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -8634,6 +8796,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_a = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8678,7 +8841,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_a = SharedTangible
 	clientObjectCRC = 3360049826
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_a, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_a, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_stamina_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -8687,6 +8850,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_b = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8731,7 +8895,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_b = SharedTangible
 	clientObjectCRC = 324133429
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_b, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_b, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_stamina_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -8740,6 +8904,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_c = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8784,7 +8949,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_c = SharedTangible
 	clientObjectCRC = 1516012984
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_c, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_c, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_stamina_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -8793,6 +8958,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_d = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8837,7 +9003,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_d = SharedTangible
 	clientObjectCRC = 2713693868
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_d, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_d, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_stamina_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -8846,6 +9012,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_e = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8890,7 +9057,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_stamina_e = SharedTangible
 	clientObjectCRC = 3904031009
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_e, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_stamina_e, "object/tangible/medicine/crafted/shared_medpack_wound_stamina_e.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_strength_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -8899,6 +9066,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_a = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8943,7 +9111,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_a = SharedTangibl
 	clientObjectCRC = 295235763
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_a, "object/tangible/medicine/crafted/shared_medpack_wound_strength_a.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_a, "object/tangible/medicine/crafted/shared_medpack_wound_strength_a.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_strength_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -8952,6 +9120,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_b = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8996,7 +9165,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_b = SharedTangibl
 	clientObjectCRC = 3398391844
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_b, "object/tangible/medicine/crafted/shared_medpack_wound_strength_b.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_b, "object/tangible/medicine/crafted/shared_medpack_wound_strength_b.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_strength_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -9005,6 +9174,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_c = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9049,7 +9219,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_c = SharedTangibl
 	clientObjectCRC = 2206351273
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_c, "object/tangible/medicine/crafted/shared_medpack_wound_strength_c.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_c, "object/tangible/medicine/crafted/shared_medpack_wound_strength_c.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_strength_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -9058,6 +9228,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_d = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9102,7 +9273,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_d = SharedTangibl
 	clientObjectCRC = 2019628221
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_d, "object/tangible/medicine/crafted/shared_medpack_wound_strength_d.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_d, "object/tangible/medicine/crafted/shared_medpack_wound_strength_d.iff")
 
 object_tangible_medicine_crafted_shared_medpack_wound_strength_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -9111,6 +9282,7 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_e = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9155,4 +9327,4 @@ object_tangible_medicine_crafted_shared_medpack_wound_strength_e = SharedTangibl
 	clientObjectCRC = 829190960
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_e, "object/tangible/medicine/crafted/shared_medpack_wound_strength_e.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_crafted_shared_medpack_wound_strength_e, "object/tangible/medicine/crafted/shared_medpack_wound_strength_e.iff")

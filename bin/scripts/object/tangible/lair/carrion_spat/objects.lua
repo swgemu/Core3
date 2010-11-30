@@ -48,6 +48,7 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat = SharedTangibleObjec
 	clientObjectCRC = 2989290041
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat.iff")
 
 object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTan
 	clientObjectCRC = 2377863666
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat_grassland.iff")

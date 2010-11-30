@@ -48,6 +48,7 @@ object_tangible_veteran_reward_shared_antidecay = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_veteran_reward_shared_antidecay = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3168887145
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_antidecay, "object/tangible/veteran_reward/shared_antidecay.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_antidecay, "object/tangible/veteran_reward/shared_antidecay.iff")
 
 object_tangible_veteran_reward_shared_data_terminal_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
@@ -101,6 +102,7 @@ object_tangible_veteran_reward_shared_data_terminal_s1 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_veteran_reward_shared_data_terminal_s1 = SharedTangibleObjectTem
 	clientObjectCRC = 4198944772
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_data_terminal_s1, "object/tangible/veteran_reward/shared_data_terminal_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_data_terminal_s1, "object/tangible/veteran_reward/shared_data_terminal_s1.iff")
 
 object_tangible_veteran_reward_shared_data_terminal_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
@@ -154,6 +156,7 @@ object_tangible_veteran_reward_shared_data_terminal_s2 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_veteran_reward_shared_data_terminal_s2 = SharedTangibleObjectTem
 	clientObjectCRC = 558987411
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_data_terminal_s2, "object/tangible/veteran_reward/shared_data_terminal_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_data_terminal_s2, "object/tangible/veteran_reward/shared_data_terminal_s2.iff")
 
 object_tangible_veteran_reward_shared_data_terminal_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
@@ -207,6 +210,7 @@ object_tangible_veteran_reward_shared_data_terminal_s3 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -251,7 +255,7 @@ object_tangible_veteran_reward_shared_data_terminal_s3 = SharedTangibleObjectTem
 	clientObjectCRC = 1750867742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_data_terminal_s3, "object/tangible/veteran_reward/shared_data_terminal_s3.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_data_terminal_s3, "object/tangible/veteran_reward/shared_data_terminal_s3.iff")
 
 object_tangible_veteran_reward_shared_data_terminal_s4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s4.apt",
@@ -260,6 +264,7 @@ object_tangible_veteran_reward_shared_data_terminal_s4 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -304,7 +309,7 @@ object_tangible_veteran_reward_shared_data_terminal_s4 = SharedTangibleObjectTem
 	clientObjectCRC = 2478781450
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_data_terminal_s4, "object/tangible/veteran_reward/shared_data_terminal_s4.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_data_terminal_s4, "object/tangible/veteran_reward/shared_data_terminal_s4.iff")
 
 object_tangible_veteran_reward_shared_emote_group_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -313,6 +318,7 @@ object_tangible_veteran_reward_shared_emote_group_1 = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_veteran_reward_shared_emote_group_1 = SharedTangibleObjectTempla
 	clientObjectCRC = 3623049861
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_emote_group_1, "object/tangible/veteran_reward/shared_emote_group_1.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_emote_group_1, "object/tangible/veteran_reward/shared_emote_group_1.iff")
 
 object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_couch_section_corner.apt",
@@ -366,6 +372,7 @@ object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -410,7 +417,7 @@ object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01 = SharedTangib
 	clientObjectCRC = 3759715763
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01, "object/tangible/veteran_reward/shared_frn_couch_falcon_corner_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01, "object/tangible/veteran_reward/shared_frn_couch_falcon_corner_s01.iff")
 
 object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_couch_section.apt",
@@ -419,6 +426,7 @@ object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01 = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -463,7 +471,7 @@ object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01 = SharedTangi
 	clientObjectCRC = 2195321088
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01, "object/tangible/veteran_reward/shared_frn_couch_falcon_section_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01, "object/tangible/veteran_reward/shared_frn_couch_falcon_section_s01.iff")
 
 object_tangible_veteran_reward_shared_frn_tech_console_sectional_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_a.apt",
@@ -472,6 +480,7 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_a = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -516,7 +525,7 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_a = SharedTangi
 	clientObjectCRC = 1297213500
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_a, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_a.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_a, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_a.iff")
 
 object_tangible_veteran_reward_shared_frn_tech_console_sectional_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
@@ -525,6 +534,7 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_b = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -569,7 +579,7 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_b = SharedTangi
 	clientObjectCRC = 2521186475
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_b, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_b.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_b, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_b.iff")
 
 object_tangible_veteran_reward_shared_frn_tech_console_sectional_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_c.apt",
@@ -578,6 +588,7 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_c = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -622,7 +633,7 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_c = SharedTangi
 	clientObjectCRC = 3746244390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_c, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_c.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_c, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_c.iff")
 
 object_tangible_veteran_reward_shared_frn_tech_console_sectional_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_d.apt",
@@ -631,6 +642,7 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_d = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -675,7 +687,7 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_d = SharedTangi
 	clientObjectCRC = 614992946
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_d, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_d.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_d, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_d.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_darth_vader_toy.apt",
@@ -684,6 +696,7 @@ object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -728,7 +741,7 @@ object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy = SharedTangibleOb
 	clientObjectCRC = 3960625723
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy, "object/tangible/veteran_reward/shared_frn_vet_darth_vader_toy.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy, "object/tangible/veteran_reward/shared_frn_vet_darth_vader_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_jabba_toy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_jabba_toy.apt",
@@ -737,6 +750,7 @@ object_tangible_veteran_reward_shared_frn_vet_jabba_toy = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -781,7 +795,7 @@ object_tangible_veteran_reward_shared_frn_vet_jabba_toy = SharedTangibleObjectTe
 	clientObjectCRC = 3416831363
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_jabba_toy, "object/tangible/veteran_reward/shared_frn_vet_jabba_toy.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_jabba_toy, "object/tangible/veteran_reward/shared_frn_vet_jabba_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_protocol_droid_toy.apt",
@@ -790,6 +804,7 @@ object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -834,7 +849,7 @@ object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy = SharedTangibl
 	clientObjectCRC = 2349778145
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy, "object/tangible/veteran_reward/shared_frn_vet_protocol_droid_toy.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy, "object/tangible/veteran_reward/shared_frn_vet_protocol_droid_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_r2_toy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_r2_toy.apt",
@@ -843,6 +858,7 @@ object_tangible_veteran_reward_shared_frn_vet_r2_toy = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -887,7 +903,7 @@ object_tangible_veteran_reward_shared_frn_vet_r2_toy = SharedTangibleObjectTempl
 	clientObjectCRC = 2578350384
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_r2_toy, "object/tangible/veteran_reward/shared_frn_vet_r2_toy.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_r2_toy, "object/tangible/veteran_reward/shared_frn_vet_r2_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_stormtrooper_toy.apt",
@@ -896,6 +912,7 @@ object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -940,7 +957,7 @@ object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy = SharedTangibleO
 	clientObjectCRC = 1449977976
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy, "object/tangible/veteran_reward/shared_frn_vet_stormtrooper_toy.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy, "object/tangible/veteran_reward/shared_frn_vet_stormtrooper_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_tie_fighter_toy.apt",
@@ -949,6 +966,7 @@ object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -993,7 +1011,7 @@ object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy = SharedTangibleOb
 	clientObjectCRC = 1917299992
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy, "object/tangible/veteran_reward/shared_frn_vet_tie_fighter_toy.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy, "object/tangible/veteran_reward/shared_frn_vet_tie_fighter_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_x_wing_toy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_x_wing_toy.apt",
@@ -1002,6 +1020,7 @@ object_tangible_veteran_reward_shared_frn_vet_x_wing_toy = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1046,7 +1065,7 @@ object_tangible_veteran_reward_shared_frn_vet_x_wing_toy = SharedTangibleObjectT
 	clientObjectCRC = 918916770
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_x_wing_toy, "object/tangible/veteran_reward/shared_frn_vet_x_wing_toy.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_x_wing_toy, "object/tangible/veteran_reward/shared_frn_vet_x_wing_toy.iff")
 
 object_tangible_veteran_reward_shared_harvester = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1055,6 +1074,7 @@ object_tangible_veteran_reward_shared_harvester = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_veteran_reward_shared_harvester = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 4154009202
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_harvester, "object/tangible/veteran_reward/shared_harvester.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_harvester, "object/tangible/veteran_reward/shared_harvester.iff")
 
 object_tangible_veteran_reward_shared_resource = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1108,6 +1128,7 @@ object_tangible_veteran_reward_shared_resource = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,4 +1173,4 @@ object_tangible_veteran_reward_shared_resource = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2099830307
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_resource, "object/tangible/veteran_reward/shared_resource.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_resource, "object/tangible/veteran_reward/shared_resource.iff")

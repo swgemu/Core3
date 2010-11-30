@@ -48,6 +48,7 @@ object_tangible_travel_travel_ticket_shared_dungeon_ticket = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_travel_travel_ticket_shared_dungeon_ticket = SharedTangibleObjec
 	clientObjectCRC = 1400905177
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_travel_travel_ticket_shared_dungeon_ticket, "object/tangible/travel/travel_ticket/shared_dungeon_ticket.iff")
+ObjectTemplates:addTemplate(object_tangible_travel_travel_ticket_shared_dungeon_ticket, "object/tangible/travel/travel_ticket/shared_dungeon_ticket.iff")

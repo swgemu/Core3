@@ -48,6 +48,7 @@ object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3541722217
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_pilot_chair, "object/tangible/shipcontrol/shared_pilot_chair.iff")
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_pilot_chair, "object/tangible/shipcontrol/shared_pilot_chair.iff")
 
 object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s02.apt",
@@ -101,6 +102,7 @@ object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTe
 	clientObjectCRC = 543526931
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipcontrol_corvette, "object/tangible/shipcontrol/shared_shipcontrol_corvette.iff")
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipcontrol_corvette, "object/tangible/shipcontrol/shared_shipcontrol_corvette.iff")
 
 object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemp
 	clientObjectCRC = 362033500
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipcontrol_falcon, "object/tangible/shipcontrol/shared_shipcontrol_falcon.iff")
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipcontrol_falcon, "object/tangible/shipcontrol/shared_shipcontrol_falcon.iff")
 
 object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8229,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -251,7 +255,7 @@ object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectT
 	clientObjectCRC = 752872042
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipoperations_falcon, "object/tangible/shipcontrol/shared_shipoperations_falcon.iff")
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipoperations_falcon, "object/tangible/shipcontrol/shared_shipoperations_falcon.iff")
 
 object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_ladder.apt",
@@ -260,6 +264,7 @@ object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -304,7 +309,7 @@ object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTe
 	clientObjectCRC = 3238239508
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_turretcontrol_falcon, "object/tangible/shipcontrol/shared_turretcontrol_falcon.iff")
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_turretcontrol_falcon, "object/tangible/shipcontrol/shared_turretcontrol_falcon.iff")
 
 object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_ladder.apt",
@@ -313,6 +318,7 @@ object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -357,4 +363,4 @@ object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemp
 	clientObjectCRC = 315011154
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_turretcontrol_vt49, "object/tangible/shipcontrol/shared_turretcontrol_vt49.iff")
+ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_turretcontrol_vt49, "object/tangible/shipcontrol/shared_turretcontrol_vt49.iff")

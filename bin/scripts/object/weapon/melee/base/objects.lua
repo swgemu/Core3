@@ -49,6 +49,7 @@ object_weapon_melee_base_shared_base_melee = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131073,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_melee_base_shared_base_melee = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1158062481
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_base_shared_base_melee, "object/weapon/melee/base/shared_base_melee.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_base_shared_base_melee, "object/weapon/melee/base/shared_base_melee.iff")

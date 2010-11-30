@@ -48,6 +48,7 @@ object_tangible_lair_bordok_shared_lair_bordok = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_bordok_shared_lair_bordok = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2816531423
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bordok_shared_lair_bordok, "object/tangible/lair/bordok/shared_lair_bordok.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bordok_shared_lair_bordok, "object/tangible/lair/bordok/shared_lair_bordok.iff")
 
 object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 4096042384
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bordok_shared_lair_bordok_mountain, "object/tangible/lair/bordok/shared_lair_bordok_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bordok_shared_lair_bordok_mountain, "object/tangible/lair/bordok/shared_lair_bordok_mountain.iff")

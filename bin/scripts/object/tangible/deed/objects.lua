@@ -48,6 +48,7 @@ object_tangible_deed_shared_test_deed = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_deed_shared_test_deed = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3516023581
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_shared_test_deed, "object/tangible/deed/shared_test_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_shared_test_deed, "object/tangible/deed/shared_test_deed.iff")

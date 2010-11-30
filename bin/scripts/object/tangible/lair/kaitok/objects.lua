@@ -48,6 +48,7 @@ object_tangible_lair_kaitok_shared_lair_kaitok = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_kaitok_shared_lair_kaitok = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2306923855
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok, "object/tangible/lair/kaitok/shared_lair_kaitok.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok, "object/tangible/lair/kaitok/shared_lair_kaitok.iff")
 
 object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 977615987
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_mountain, "object/tangible/lair/kaitok/shared_lair_kaitok_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_mountain, "object/tangible/lair/kaitok/shared_lair_kaitok_mountain.iff")
 
 object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectT
 	clientObjectCRC = 3767339902
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_wasteland, "object/tangible/lair/kaitok/shared_lair_kaitok_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_wasteland, "object/tangible/lair/kaitok/shared_lair_kaitok_wasteland.iff")

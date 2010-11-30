@@ -48,6 +48,7 @@ object_tangible_component_weapon_shared_acklay_bone_reinforcement_core = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_weapon_shared_acklay_bone_reinforcement_core = SharedT
 	clientObjectCRC = 4088226280
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_acklay_bone_reinforcement_core, "object/tangible/component/weapon/shared_acklay_bone_reinforcement_core.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_acklay_bone_reinforcement_core, "object/tangible/component/weapon/shared_acklay_bone_reinforcement_core.iff")
 
 object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -101,6 +102,7 @@ object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement =
 	clientObjectCRC = 3003199598
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement, "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement, "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff")
 
 object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -154,6 +156,7 @@ object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhanceme
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhanceme
 	clientObjectCRC = 2928380904
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhancement, "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhancement, "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff")
 
 object_tangible_component_weapon_shared_base_vibro_unit_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -207,6 +210,7 @@ object_tangible_component_weapon_shared_base_vibro_unit_enhancement = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_component_weapon_shared_base_vibro_unit_enhancement = SharedTang
 	clientObjectCRC = 1563728747
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_base_vibro_unit_enhancement, "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_vibro_unit_enhancement, "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01 = Shared
 	clientObjectCRC = 1710329756
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s01.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg = Sha
 	clientObjectCRC = 2092661773
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s01_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s01_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s02.apt",
@@ -366,6 +372,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02 = Shared
 	clientObjectCRC = 3202754315
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s02.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s02.apt",
@@ -419,6 +426,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg = Sha
 	clientObjectCRC = 2421758291
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s02_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s02_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s03.apt",
@@ -472,6 +480,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03 = Shared
 	clientObjectCRC = 4159389830
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s03.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s03.apt",
@@ -525,6 +534,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg = Sha
 	clientObjectCRC = 3422078361
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s03_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s03_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s04.apt",
@@ -578,6 +588,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04 = Shared
 	clientObjectCRC = 201878418
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s04.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s04.apt",
@@ -631,6 +642,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg = Sha
 	clientObjectCRC = 1297927768
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s04_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s04_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s05.apt",
@@ -684,6 +696,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05 = Shared
 	clientObjectCRC = 1157958687
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s05.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s05.apt",
@@ -737,6 +750,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg = Sha
 	clientObjectCRC = 385684114
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s05_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s05_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s06.apt",
@@ -790,6 +804,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06 = Shared
 	clientObjectCRC = 2652021896
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s06.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s06.apt",
@@ -843,6 +858,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg = Sha
 	clientObjectCRC = 4196366284
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s06_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s06_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -896,6 +912,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07 = Shared
 	clientObjectCRC = 3609182981
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s07.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -949,6 +966,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg = Sha
 	clientObjectCRC = 2713627398
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s07_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s07_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01 = SharedT
 	clientObjectCRC = 4222005055
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s01.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg = Shar
 	clientObjectCRC = 3666495250
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s01_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s01_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s02.apt",
@@ -1108,6 +1128,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02 = SharedT
 	clientObjectCRC = 548472744
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s02.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s02.apt",
@@ -1161,6 +1182,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg = Shar
 	clientObjectCRC = 912794188
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s02_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s02_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s03.apt",
@@ -1214,6 +1236,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03 = SharedT
 	clientObjectCRC = 1773953061
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s03.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s03.apt",
@@ -1267,6 +1290,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg = Shar
 	clientObjectCRC = 1841954438
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s03_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s03_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s04.apt",
@@ -1320,6 +1344,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04 = SharedT
 	clientObjectCRC = 2455718705
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s04.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s04.apt",
@@ -1373,6 +1398,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg = Shar
 	clientObjectCRC = 3949851975
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s04_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s04_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s05.apt",
@@ -1426,6 +1452,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05 = SharedT
 	clientObjectCRC = 3679595708
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s05.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s05.apt",
@@ -1479,6 +1506,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg = Shar
 	clientObjectCRC = 2966169997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s05_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s05_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s06.apt",
@@ -1532,6 +1560,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06 = SharedT
 	clientObjectCRC = 4555819
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s06.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s06.apt",
@@ -1585,6 +1614,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg = Shar
 	clientObjectCRC = 1546538195
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s06_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s06_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s07.apt",
@@ -1638,6 +1668,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07 = SharedT
 	clientObjectCRC = 1229513638
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s07.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s07.apt",
@@ -1691,6 +1722,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg = Shar
 	clientObjectCRC = 126849049
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s07_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s07_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -1744,6 +1776,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01 = Shared
 	clientObjectCRC = 3175095314
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s01.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg = Sha
 	clientObjectCRC = 867179315
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s01_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s01_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s02.apt",
@@ -1850,6 +1884,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02 = Shared
 	clientObjectCRC = 1717023877
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s02.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s02.apt",
@@ -1903,6 +1938,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg = Sha
 	clientObjectCRC = 3746725485
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s02_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s02_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -1956,6 +1992,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03 = Shared
 	clientObjectCRC = 794481416
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s03.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -2009,6 +2046,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg = Sha
 	clientObjectCRC = 2230559399
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s03_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s03_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s04.apt",
@@ -2062,6 +2100,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04 = Shared
 	clientObjectCRC = 3568957468
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s04.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s04.apt",
@@ -2115,6 +2154,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg = Sha
 	clientObjectCRC = 39299430
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s04_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s04_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s05.apt",
@@ -2168,6 +2208,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05 = Shared
 	clientObjectCRC = 2645860241
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s05.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s05.apt",
@@ -2221,6 +2262,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg = Sha
 	clientObjectCRC = 1509324204
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s05_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s05_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s06.apt",
@@ -2274,6 +2316,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06 = Shared
 	clientObjectCRC = 1185101574
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s06.apt",
@@ -2327,6 +2370,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg = Sha
 	clientObjectCRC = 3037991154
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s07.apt",
@@ -2380,6 +2424,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07 = Shared
 	clientObjectCRC = 263082123
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s07.iff")
 
 object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s07.apt",
@@ -2433,6 +2478,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg = Sha
 	clientObjectCRC = 4004891704
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s07_lg.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s07_lg.iff")
 
 object_tangible_component_weapon_shared_blaster_pistol_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -2486,6 +2532,7 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel = SharedTangibleOb
 	clientObjectCRC = 3001062270
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel, "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel, "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff")
 
 object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -2539,6 +2586,7 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced = SharedT
 	clientObjectCRC = 4250066631
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced, "object/tangible/component/weapon/shared_blaster_pistol_barrel_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced, "object/tangible/component/weapon/shared_blaster_pistol_barrel_advanced.iff")
 
 object_tangible_component_weapon_shared_blaster_pistol_barrel_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -2592,6 +2640,7 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_quest = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_quest = SharedTang
 	clientObjectCRC = 2263958541
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_quest, "object/tangible/component/weapon/shared_blaster_pistol_barrel_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_quest, "object/tangible/component/weapon/shared_blaster_pistol_barrel_quest.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2645,6 +2694,7 @@ object_tangible_component_weapon_shared_blaster_power_handler = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_component_weapon_shared_blaster_power_handler = SharedTangibleOb
 	clientObjectCRC = 3399297408
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler, "object/tangible/component/weapon/shared_blaster_power_handler.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler, "object/tangible/component/weapon/shared_blaster_power_handler.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2698,6 +2748,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_advanced = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_advanced = SharedT
 	clientObjectCRC = 1426378303
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_advanced, "object/tangible/component/weapon/shared_blaster_power_handler_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_advanced, "object/tangible/component/weapon/shared_blaster_power_handler_advanced.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durability = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2751,6 +2802,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durabi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durabi
 	clientObjectCRC = 1717492287
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durability, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_durability.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durability, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_durability.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -2804,6 +2856,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt 
 	clientObjectCRC = 3981194570
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_krayt.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_krayt.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2857,6 +2910,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_da
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_da
 	clientObjectCRC = 3285791160
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_damage, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_max_damage.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_damage, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_max_damage.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2910,6 +2964,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_da
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_da
 	clientObjectCRC = 4158958561
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_damage, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_min_damage.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_damage, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_min_damage.iff")
 
 object_tangible_component_weapon_shared_blaster_power_handler_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -2963,6 +3018,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_quest = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_component_weapon_shared_blaster_power_handler_quest = SharedTang
 	clientObjectCRC = 3074802434
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_quest, "object/tangible/component/weapon/shared_blaster_power_handler_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_quest, "object/tangible/component/weapon/shared_blaster_power_handler_quest.iff")
 
 object_tangible_component_weapon_shared_blaster_rifle_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s04.apt",
@@ -3016,6 +3072,7 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel = SharedTangibleObj
 	clientObjectCRC = 260681278
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel, "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel, "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff")
 
 object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s04.apt",
@@ -3069,6 +3126,7 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced = SharedTa
 	clientObjectCRC = 992626072
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced, "object/tangible/component/weapon/shared_blaster_rifle_barrel_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced, "object/tangible/component/weapon/shared_blaster_rifle_barrel_advanced.iff")
 
 object_tangible_component_weapon_shared_chemical_dispersion_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
@@ -3122,6 +3180,7 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism = SharedTa
 	clientObjectCRC = 1194049951
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism, "object/tangible/component/weapon/shared_chemical_dispersion_mechanism.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism, "object/tangible/component/weapon/shared_chemical_dispersion_mechanism.iff")
 
 object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
@@ -3175,6 +3234,7 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced =
 	clientObjectCRC = 1411275981
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced, "object/tangible/component/weapon/shared_chemical_dispersion_mechanism_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced, "object/tangible/component/weapon/shared_chemical_dispersion_mechanism_advanced.iff")
 
 object_tangible_component_weapon_shared_corvette_rifle_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
@@ -3228,6 +3288,7 @@ object_tangible_component_weapon_shared_corvette_rifle_barrel = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_component_weapon_shared_corvette_rifle_barrel = SharedTangibleOb
 	clientObjectCRC = 3758372574
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_corvette_rifle_barrel, "object/tangible/component/weapon/shared_corvette_rifle_barrel.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_corvette_rifle_barrel, "object/tangible/component/weapon/shared_corvette_rifle_barrel.iff")
 
 object_tangible_component_weapon_shared_energization_crystals = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3281,6 +3342,7 @@ object_tangible_component_weapon_shared_energization_crystals = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_component_weapon_shared_energization_crystals = SharedTangibleOb
 	clientObjectCRC = 491130592
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_energization_crystals, "object/tangible/component/weapon/shared_energization_crystals.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_energization_crystals, "object/tangible/component/weapon/shared_energization_crystals.iff")
 
 object_tangible_component_weapon_shared_galven_tube_circuits = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -3334,6 +3396,7 @@ object_tangible_component_weapon_shared_galven_tube_circuits = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_component_weapon_shared_galven_tube_circuits = SharedTangibleObj
 	clientObjectCRC = 4061079973
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_galven_tube_circuits, "object/tangible/component/weapon/shared_galven_tube_circuits.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_galven_tube_circuits, "object/tangible/component/weapon/shared_galven_tube_circuits.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3387,6 +3450,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube = SharedTangibleObj
 	clientObjectCRC = 2313307226
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube, "object/tangible/component/weapon/shared_geonosian_power_cube.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube, "object/tangible/component/weapon/shared_geonosian_power_cube.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3440,6 +3504,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube_base = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube_base = SharedTangib
 	clientObjectCRC = 4092441918
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_base, "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_base, "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3493,6 +3558,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube_green = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube_green = SharedTangi
 	clientObjectCRC = 2570329564
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_green, "object/tangible/component/weapon/shared_geonosian_power_cube_green.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_green, "object/tangible/component/weapon/shared_geonosian_power_cube_green.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3546,6 +3612,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube_red = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube_red = SharedTangibl
 	clientObjectCRC = 98191878
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_red, "object/tangible/component/weapon/shared_geonosian_power_cube_red.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_red, "object/tangible/component/weapon/shared_geonosian_power_cube_red.iff")
 
 object_tangible_component_weapon_shared_geonosian_power_cube_yellow = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -3599,6 +3666,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube_yellow = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_component_weapon_shared_geonosian_power_cube_yellow = SharedTang
 	clientObjectCRC = 783478248
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_yellow, "object/tangible/component/weapon/shared_geonosian_power_cube_yellow.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_yellow, "object/tangible/component/weapon/shared_geonosian_power_cube_yellow.iff")
 
 object_tangible_component_weapon_shared_geonosian_reinforcement_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -3652,6 +3720,7 @@ object_tangible_component_weapon_shared_geonosian_reinforcement_core = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_component_weapon_shared_geonosian_reinforcement_core = SharedTan
 	clientObjectCRC = 2362781931
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_reinforcement_core, "object/tangible/component/weapon/shared_geonosian_reinforcement_core.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_reinforcement_core, "object/tangible/component/weapon/shared_geonosian_reinforcement_core.iff")
 
 object_tangible_component_weapon_shared_geonosian_solidifying_agent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_adhesive.apt",
@@ -3705,6 +3774,7 @@ object_tangible_component_weapon_shared_geonosian_solidifying_agent = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_component_weapon_shared_geonosian_solidifying_agent = SharedTang
 	clientObjectCRC = 3710952248
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_solidifying_agent, "object/tangible/component/weapon/shared_geonosian_solidifying_agent.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_solidifying_agent, "object/tangible/component/weapon/shared_geonosian_solidifying_agent.iff")
 
 object_tangible_component_weapon_shared_geonosian_sword_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -3758,6 +3828,7 @@ object_tangible_component_weapon_shared_geonosian_sword_core = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_component_weapon_shared_geonosian_sword_core = SharedTangibleObj
 	clientObjectCRC = 927591163
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_sword_core, "object/tangible/component/weapon/shared_geonosian_sword_core.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_sword_core, "object/tangible/component/weapon/shared_geonosian_sword_core.iff")
 
 object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon.apt",
@@ -3811,6 +3882,7 @@ object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve = SharedTang
 	clientObjectCRC = 2251276199
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve, "object/tangible/component/weapon/shared_laser_cannon_cooling_sleeve.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve, "object/tangible/component/weapon/shared_laser_cannon_cooling_sleeve.iff")
 
 object_tangible_component_weapon_shared_laser_cannon_gun_tube = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon_gun.apt",
@@ -3864,6 +3936,7 @@ object_tangible_component_weapon_shared_laser_cannon_gun_tube = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_component_weapon_shared_laser_cannon_gun_tube = SharedTangibleOb
 	clientObjectCRC = 1385368085
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_laser_cannon_gun_tube, "object/tangible/component/weapon/shared_laser_cannon_gun_tube.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_cannon_gun_tube, "object/tangible/component/weapon/shared_laser_cannon_gun_tube.iff")
 
 object_tangible_component_weapon_shared_laser_generator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "eqp_comp_weapon_high_power_module.apt",
@@ -3917,6 +3990,7 @@ object_tangible_component_weapon_shared_laser_generator = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_component_weapon_shared_laser_generator = SharedTangibleObjectTe
 	clientObjectCRC = 695643472
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_laser_generator, "object/tangible/component/weapon/shared_laser_generator.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_generator, "object/tangible/component/weapon/shared_laser_generator.iff")
 
 object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon.apt",
@@ -3970,6 +4044,7 @@ object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor = Sha
 	clientObjectCRC = 741674762
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor, "object/tangible/component/weapon/shared_laser_magnetic_flashback_supressor.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor, "object/tangible/component/weapon/shared_laser_magnetic_flashback_supressor.iff")
 
 object_tangible_component_weapon_shared_melee_core_enhancement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -4023,6 +4098,7 @@ object_tangible_component_weapon_shared_melee_core_enhancement = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_component_weapon_shared_melee_core_enhancement = SharedTangibleO
 	clientObjectCRC = 3988462144
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_melee_core_enhancement, "object/tangible/component/weapon/shared_melee_core_enhancement.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_melee_core_enhancement, "object/tangible/component/weapon/shared_melee_core_enhancement.iff")
 
 object_tangible_component_weapon_shared_parallel_weapon_targeting_computer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
@@ -4076,6 +4152,7 @@ object_tangible_component_weapon_shared_parallel_weapon_targeting_computer = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_component_weapon_shared_parallel_weapon_targeting_computer = Sha
 	clientObjectCRC = 466802862
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_parallel_weapon_targeting_computer, "object/tangible/component/weapon/shared_parallel_weapon_targeting_computer.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_parallel_weapon_targeting_computer, "object/tangible/component/weapon/shared_parallel_weapon_targeting_computer.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4129,6 +4206,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism = SharedTangib
 	clientObjectCRC = 1361510729
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism, "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism, "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4182,6 +4260,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced = Sha
 	clientObjectCRC = 4156025153
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced, "object/tangible/component/weapon/shared_projectile_feed_mechanism_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced, "object/tangible/component/weapon/shared_projectile_feed_mechanism_advanced.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_durability = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4235,6 +4314,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_du
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_du
 	clientObjectCRC = 1517204001
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_durability, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_durability.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_durability, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_durability.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_gorax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -4288,6 +4368,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_go
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_go
 	clientObjectCRC = 255106526
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_gorax, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_gorax.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_gorax, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_gorax.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_max_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4341,6 +4422,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_ma
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_ma
 	clientObjectCRC = 4293482918
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_max_damage, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_max_damage.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_max_damage, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_max_damage.iff")
 
 object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_min_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -4394,6 +4476,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_mi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_mi
 	clientObjectCRC = 3419718655
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_min_damage, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_min_damage.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_min_damage, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_min_damage.iff")
 
 object_tangible_component_weapon_shared_projectile_pistol_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -4447,6 +4530,7 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel = SharedTangibl
 	clientObjectCRC = 1216914672
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel, "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel, "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff")
 
 object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -4500,6 +4584,7 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced = Shar
 	clientObjectCRC = 3447151631
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced, "object/tangible/component/weapon/shared_projectile_pistol_barrel_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced, "object/tangible/component/weapon/shared_projectile_pistol_barrel_advanced.iff")
 
 object_tangible_component_weapon_shared_projectile_pistol_barrel_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s03.apt",
@@ -4553,6 +4638,7 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_quest = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_quest = SharedT
 	clientObjectCRC = 1641350102
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_quest, "object/tangible/component/weapon/shared_projectile_pistol_barrel_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_quest, "object/tangible/component/weapon/shared_projectile_pistol_barrel_quest.iff")
 
 object_tangible_component_weapon_shared_projectile_rifle_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -4606,6 +4692,7 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel = SharedTangible
 	clientObjectCRC = 769812356
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel, "object/tangible/component/weapon/shared_projectile_rifle_barrel.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel, "object/tangible/component/weapon/shared_projectile_rifle_barrel.iff")
 
 object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -4659,6 +4746,7 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced = Share
 	clientObjectCRC = 594573612
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced, "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced, "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced.iff")
 
 object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_lg_s07.apt",
@@ -4712,6 +4800,7 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest =
 	clientObjectCRC = 2968083189
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest, "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest, "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced_quest.iff")
 
 object_tangible_component_weapon_shared_rancor_tooth = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -4765,6 +4854,7 @@ object_tangible_component_weapon_shared_rancor_tooth = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_component_weapon_shared_rancor_tooth = SharedTangibleObjectTempl
 	clientObjectCRC = 3366067371
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_rancor_tooth, "object/tangible/component/weapon/shared_rancor_tooth.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_rancor_tooth, "object/tangible/component/weapon/shared_rancor_tooth.iff")
 
 object_tangible_component_weapon_shared_rancor_tooth_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
@@ -4818,6 +4908,7 @@ object_tangible_component_weapon_shared_rancor_tooth_quest = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_component_weapon_shared_rancor_tooth_quest = SharedTangibleObjec
 	clientObjectCRC = 829703922
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_rancor_tooth_quest, "object/tangible/component/weapon/shared_rancor_tooth_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_rancor_tooth_quest, "object/tangible/component/weapon/shared_rancor_tooth_quest.iff")
 
 object_tangible_component_weapon_shared_reinforcement_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -4871,6 +4962,7 @@ object_tangible_component_weapon_shared_reinforcement_core = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_component_weapon_shared_reinforcement_core = SharedTangibleObjec
 	clientObjectCRC = 600823841
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_reinforcement_core, "object/tangible/component/weapon/shared_reinforcement_core.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_reinforcement_core, "object/tangible/component/weapon/shared_reinforcement_core.iff")
 
 object_tangible_component_weapon_shared_reinforcement_core_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -4924,6 +5016,7 @@ object_tangible_component_weapon_shared_reinforcement_core_advanced = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_component_weapon_shared_reinforcement_core_advanced = SharedTang
 	clientObjectCRC = 276012891
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_reinforcement_core_advanced, "object/tangible/component/weapon/shared_reinforcement_core_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_reinforcement_core_advanced, "object/tangible/component/weapon/shared_reinforcement_core_advanced.iff")
 
 object_tangible_component_weapon_shared_scope_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s03.apt",
@@ -4977,6 +5070,7 @@ object_tangible_component_weapon_shared_scope_weapon = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_component_weapon_shared_scope_weapon = SharedTangibleObjectTempl
 	clientObjectCRC = 46230492
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon, "object/tangible/component/weapon/shared_scope_weapon.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon, "object/tangible/component/weapon/shared_scope_weapon.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s03.apt",
@@ -5030,6 +5124,7 @@ object_tangible_component_weapon_shared_scope_weapon_advanced = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_component_weapon_shared_scope_weapon_advanced = SharedTangibleOb
 	clientObjectCRC = 210395856
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced, "object/tangible/component/weapon/shared_scope_weapon_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced, "object/tangible/component/weapon/shared_scope_weapon_advanced.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_advanced_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s03.apt",
@@ -5083,6 +5178,7 @@ object_tangible_component_weapon_shared_scope_weapon_advanced_quest = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_component_weapon_shared_scope_weapon_advanced_quest = SharedTang
 	clientObjectCRC = 3286610922
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced_quest, "object/tangible/component/weapon/shared_scope_weapon_advanced_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced_quest, "object/tangible/component/weapon/shared_scope_weapon_advanced_quest.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_lg_s01.apt",
@@ -5136,6 +5232,7 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s01 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s01 = SharedTangibleObje
 	clientObjectCRC = 1450202343
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s01, "object/tangible/component/weapon/shared_scope_weapon_lg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s01, "object/tangible/component/weapon/shared_scope_weapon_lg_s01.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_lg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_lg_s02.apt",
@@ -5189,6 +5286,7 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s02 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s02 = SharedTangibleObje
 	clientObjectCRC = 2372402288
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s02, "object/tangible/component/weapon/shared_scope_weapon_lg_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s02, "object/tangible/component/weapon/shared_scope_weapon_lg_s02.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_lg_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_lg_s03.apt",
@@ -5242,6 +5340,7 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s03 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s03 = SharedTangibleObje
 	clientObjectCRC = 3295321085
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s03, "object/tangible/component/weapon/shared_scope_weapon_lg_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s03, "object/tangible/component/weapon/shared_scope_weapon_lg_s03.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
@@ -5295,6 +5394,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s01 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s01 = SharedTangibleObje
 	clientObjectCRC = 2395064169
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s01, "object/tangible/component/weapon/shared_scope_weapon_sm_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s01, "object/tangible/component/weapon/shared_scope_weapon_sm_s01.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s02.apt",
@@ -5348,6 +5448,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s02 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s02 = SharedTangibleObje
 	clientObjectCRC = 1440116734
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s02, "object/tangible/component/weapon/shared_scope_weapon_sm_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s02, "object/tangible/component/weapon/shared_scope_weapon_sm_s02.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s03.apt",
@@ -5401,6 +5502,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s03 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s03 = SharedTangibleObje
 	clientObjectCRC = 484116595
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s03, "object/tangible/component/weapon/shared_scope_weapon_sm_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s03, "object/tangible/component/weapon/shared_scope_weapon_sm_s03.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s04.apt",
@@ -5454,6 +5556,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s04 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s04 = SharedTangibleObje
 	clientObjectCRC = 3879215975
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s04, "object/tangible/component/weapon/shared_scope_weapon_sm_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s04, "object/tangible/component/weapon/shared_scope_weapon_sm_s04.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s05.apt",
@@ -5507,6 +5610,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s05 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s05 = SharedTangibleObje
 	clientObjectCRC = 2922726634
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s05, "object/tangible/component/weapon/shared_scope_weapon_sm_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s05, "object/tangible/component/weapon/shared_scope_weapon_sm_s05.iff")
 
 object_tangible_component_weapon_shared_scope_weapon_sm_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s06.apt",
@@ -5560,6 +5664,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s06 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s06 = SharedTangibleObje
 	clientObjectCRC = 1965223037
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s06, "object/tangible/component/weapon/shared_scope_weapon_sm_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s06, "object/tangible/component/weapon/shared_scope_weapon_sm_s06.iff")
 
 object_tangible_component_weapon_shared_spider_spine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -5613,6 +5718,7 @@ object_tangible_component_weapon_shared_spider_spine = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_component_weapon_shared_spider_spine = SharedTangibleObjectTempl
 	clientObjectCRC = 1418250527
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_spider_spine, "object/tangible/component/weapon/shared_spider_spine.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_spider_spine, "object/tangible/component/weapon/shared_spider_spine.iff")
 
 object_tangible_component_weapon_shared_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_stock.apt",
@@ -5666,6 +5772,7 @@ object_tangible_component_weapon_shared_stock = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_component_weapon_shared_stock = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 2306652479
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_stock, "object/tangible/component/weapon/shared_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock, "object/tangible/component/weapon/shared_stock.iff")
 
 object_tangible_component_weapon_shared_stock_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_stock.apt",
@@ -5719,6 +5826,7 @@ object_tangible_component_weapon_shared_stock_advanced = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_component_weapon_shared_stock_advanced = SharedTangibleObjectTem
 	clientObjectCRC = 3440579824
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_stock_advanced, "object/tangible/component/weapon/shared_stock_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock_advanced, "object/tangible/component/weapon/shared_stock_advanced.iff")
 
 object_tangible_component_weapon_shared_stock_advanced_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_stock.apt",
@@ -5772,6 +5880,7 @@ object_tangible_component_weapon_shared_stock_advanced_quest = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_component_weapon_shared_stock_advanced_quest = SharedTangibleObj
 	clientObjectCRC = 473297139
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_stock_advanced_quest, "object/tangible/component/weapon/shared_stock_advanced_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock_advanced_quest, "object/tangible/component/weapon/shared_stock_advanced_quest.iff")
 
 object_tangible_component_weapon_shared_sword_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -5825,6 +5934,7 @@ object_tangible_component_weapon_shared_sword_core = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_component_weapon_shared_sword_core = SharedTangibleObjectTemplat
 	clientObjectCRC = 3001742780
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_sword_core, "object/tangible/component/weapon/shared_sword_core.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core, "object/tangible/component/weapon/shared_sword_core.iff")
 
 object_tangible_component_weapon_shared_sword_core_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -5878,6 +5988,7 @@ object_tangible_component_weapon_shared_sword_core_advanced = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_component_weapon_shared_sword_core_advanced = SharedTangibleObje
 	clientObjectCRC = 639496171
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_sword_core_advanced, "object/tangible/component/weapon/shared_sword_core_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core_advanced, "object/tangible/component/weapon/shared_sword_core_advanced.iff")
 
 object_tangible_component_weapon_shared_sword_core_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sword_core.apt",
@@ -5931,6 +6042,7 @@ object_tangible_component_weapon_shared_sword_core_quest = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_component_weapon_shared_sword_core_quest = SharedTangibleObjectT
 	clientObjectCRC = 937100583
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_sword_core_quest, "object/tangible/component/weapon/shared_sword_core_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core_quest, "object/tangible/component/weapon/shared_sword_core_quest.iff")
 
 object_tangible_component_weapon_shared_turbo_laser_gun_tube = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_turbo_laser.apt",
@@ -5984,6 +6096,7 @@ object_tangible_component_weapon_shared_turbo_laser_gun_tube = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_component_weapon_shared_turbo_laser_gun_tube = SharedTangibleObj
 	clientObjectCRC = 2743057273
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_turbo_laser_gun_tube, "object/tangible/component/weapon/shared_turbo_laser_gun_tube.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_turbo_laser_gun_tube, "object/tangible/component/weapon/shared_turbo_laser_gun_tube.iff")
 
 object_tangible_component_weapon_shared_vibro_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6037,6 +6150,7 @@ object_tangible_component_weapon_shared_vibro_unit = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_component_weapon_shared_vibro_unit = SharedTangibleObjectTemplat
 	clientObjectCRC = 2075249202
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit, "object/tangible/component/weapon/shared_vibro_unit.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit, "object/tangible/component/weapon/shared_vibro_unit.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6090,6 +6204,7 @@ object_tangible_component_weapon_shared_vibro_unit_advanced = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_component_weapon_shared_vibro_unit_advanced = SharedTangibleObje
 	clientObjectCRC = 1094994187
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_advanced, "object/tangible/component/weapon/shared_vibro_unit_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_advanced, "object/tangible/component/weapon/shared_vibro_unit_advanced.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_enhancement_durability = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6143,6 +6258,7 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_durability = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_durability = Shar
 	clientObjectCRC = 719270332
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_durability, "object/tangible/component/weapon/shared_vibro_unit_enhancement_durability.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_durability, "object/tangible/component/weapon/shared_vibro_unit_enhancement_durability.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6196,6 +6312,7 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,7 +6357,7 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage = Shar
 	clientObjectCRC = 2404964923
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage, "object/tangible/component/weapon/shared_vibro_unit_enhancement_max_damage.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage, "object/tangible/component/weapon/shared_vibro_unit_enhancement_max_damage.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6249,6 +6366,7 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6293,7 +6411,7 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage = Shar
 	clientObjectCRC = 3143975010
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage, "object/tangible/component/weapon/shared_vibro_unit_enhancement_min_damage.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage, "object/tangible/component/weapon/shared_vibro_unit_enhancement_min_damage.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6302,6 +6420,7 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6346,7 +6465,7 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding = Shared
 	clientObjectCRC = 1279704725
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding, "object/tangible/component/weapon/shared_vibro_unit_enhancement_wounding.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding, "object/tangible/component/weapon/shared_vibro_unit_enhancement_wounding.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_nightsister = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6355,6 +6474,7 @@ object_tangible_component_weapon_shared_vibro_unit_nightsister = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6399,7 +6519,7 @@ object_tangible_component_weapon_shared_vibro_unit_nightsister = SharedTangibleO
 	clientObjectCRC = 3670724056
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_nightsister, "object/tangible/component/weapon/shared_vibro_unit_nightsister.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_nightsister, "object/tangible/component/weapon/shared_vibro_unit_nightsister.iff")
 
 object_tangible_component_weapon_shared_vibro_unit_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -6408,6 +6528,7 @@ object_tangible_component_weapon_shared_vibro_unit_quest = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262152,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6452,7 +6573,7 @@ object_tangible_component_weapon_shared_vibro_unit_quest = SharedTangibleObjectT
 	clientObjectCRC = 2177771940
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_quest, "object/tangible/component/weapon/shared_vibro_unit_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_quest, "object/tangible/component/weapon/shared_vibro_unit_quest.iff")
 
 object_tangible_component_weapon_shared_weapon_carbine_laser_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_laser_stock.apt",
@@ -6461,6 +6582,7 @@ object_tangible_component_weapon_shared_weapon_carbine_laser_stock = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6505,7 +6627,7 @@ object_tangible_component_weapon_shared_weapon_carbine_laser_stock = SharedTangi
 	clientObjectCRC = 3845302346
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_carbine_laser_stock, "object/tangible/component/weapon/shared_weapon_carbine_laser_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_carbine_laser_stock, "object/tangible/component/weapon/shared_weapon_carbine_laser_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_dlt20_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20_stock.apt",
@@ -6514,6 +6636,7 @@ object_tangible_component_weapon_shared_weapon_dlt20_stock = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6558,7 +6681,7 @@ object_tangible_component_weapon_shared_weapon_dlt20_stock = SharedTangibleObjec
 	clientObjectCRC = 784421487
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_dlt20_stock, "object/tangible/component/weapon/shared_weapon_dlt20_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_dlt20_stock, "object/tangible/component/weapon/shared_weapon_dlt20_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_dxr6_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dxr6_stock.apt",
@@ -6567,6 +6690,7 @@ object_tangible_component_weapon_shared_weapon_dxr6_stock = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6611,7 +6735,7 @@ object_tangible_component_weapon_shared_weapon_dxr6_stock = SharedTangibleObject
 	clientObjectCRC = 3265377487
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_dxr6_stock, "object/tangible/component/weapon/shared_weapon_dxr6_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_dxr6_stock, "object/tangible/component/weapon/shared_weapon_dxr6_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_e11_stock_closed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11_stock_closed.apt",
@@ -6620,6 +6744,7 @@ object_tangible_component_weapon_shared_weapon_e11_stock_closed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6664,7 +6789,7 @@ object_tangible_component_weapon_shared_weapon_e11_stock_closed = SharedTangible
 	clientObjectCRC = 2778389108
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_closed, "object/tangible/component/weapon/shared_weapon_e11_stock_closed.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_closed, "object/tangible/component/weapon/shared_weapon_e11_stock_closed.iff")
 
 object_tangible_component_weapon_shared_weapon_e11_stock_open = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11_stock_open.apt",
@@ -6673,6 +6798,7 @@ object_tangible_component_weapon_shared_weapon_e11_stock_open = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6717,7 +6843,7 @@ object_tangible_component_weapon_shared_weapon_e11_stock_open = SharedTangibleOb
 	clientObjectCRC = 3082135386
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_open, "object/tangible/component/weapon/shared_weapon_e11_stock_open.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_open, "object/tangible/component/weapon/shared_weapon_e11_stock_open.iff")
 
 object_tangible_component_weapon_shared_weapon_ee3_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_ee3_stock.apt",
@@ -6726,6 +6852,7 @@ object_tangible_component_weapon_shared_weapon_ee3_stock = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6770,7 +6897,7 @@ object_tangible_component_weapon_shared_weapon_ee3_stock = SharedTangibleObjectT
 	clientObjectCRC = 119190783
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_ee3_stock, "object/tangible/component/weapon/shared_weapon_ee3_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_ee3_stock, "object/tangible/component/weapon/shared_weapon_ee3_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_elite_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_elite_stock.apt",
@@ -6779,6 +6906,7 @@ object_tangible_component_weapon_shared_weapon_elite_stock = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6823,7 +6951,7 @@ object_tangible_component_weapon_shared_weapon_elite_stock = SharedTangibleObjec
 	clientObjectCRC = 2199807561
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_elite_stock, "object/tangible/component/weapon/shared_weapon_elite_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_elite_stock, "object/tangible/component/weapon/shared_weapon_elite_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_mount = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_mount.apt",
@@ -6832,6 +6960,7 @@ object_tangible_component_weapon_shared_weapon_mount = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6876,7 +7005,7 @@ object_tangible_component_weapon_shared_weapon_mount = SharedTangibleObjectTempl
 	clientObjectCRC = 4368733
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_mount, "object/tangible/component/weapon/shared_weapon_mount.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_mount, "object/tangible/component/weapon/shared_weapon_mount.iff")
 
 object_tangible_component_weapon_shared_weapon_mount_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_mount.apt",
@@ -6885,6 +7014,7 @@ object_tangible_component_weapon_shared_weapon_mount_light = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6929,7 +7059,7 @@ object_tangible_component_weapon_shared_weapon_mount_light = SharedTangibleObjec
 	clientObjectCRC = 1483742937
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_mount_light, "object/tangible/component/weapon/shared_weapon_mount_light.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_mount_light, "object/tangible/component/weapon/shared_weapon_mount_light.iff")
 
 object_tangible_component_weapon_shared_weapon_rifle_laser_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_stock.apt",
@@ -6938,6 +7068,7 @@ object_tangible_component_weapon_shared_weapon_rifle_laser_stock = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6982,7 +7113,7 @@ object_tangible_component_weapon_shared_weapon_rifle_laser_stock = SharedTangibl
 	clientObjectCRC = 2098038776
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_rifle_laser_stock, "object/tangible/component/weapon/shared_weapon_rifle_laser_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_rifle_laser_stock, "object/tangible/component/weapon/shared_weapon_rifle_laser_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_t21_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_stock.apt",
@@ -6991,6 +7122,7 @@ object_tangible_component_weapon_shared_weapon_t21_stock = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7035,7 +7167,7 @@ object_tangible_component_weapon_shared_weapon_t21_stock = SharedTangibleObjectT
 	clientObjectCRC = 1060795790
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_t21_stock, "object/tangible/component/weapon/shared_weapon_t21_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_t21_stock, "object/tangible/component/weapon/shared_weapon_t21_stock.iff")
 
 object_tangible_component_weapon_shared_weapon_targeting_computer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
@@ -7044,6 +7176,7 @@ object_tangible_component_weapon_shared_weapon_targeting_computer = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7088,7 +7221,7 @@ object_tangible_component_weapon_shared_weapon_targeting_computer = SharedTangib
 	clientObjectCRC = 1015355286
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_targeting_computer, "object/tangible/component/weapon/shared_weapon_targeting_computer.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_targeting_computer, "object/tangible/component/weapon/shared_weapon_targeting_computer.iff")
 
 object_tangible_component_weapon_shared_weapon_trajectory_computer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
@@ -7097,6 +7230,7 @@ object_tangible_component_weapon_shared_weapon_trajectory_computer = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262153,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7141,4 +7275,4 @@ object_tangible_component_weapon_shared_weapon_trajectory_computer = SharedTangi
 	clientObjectCRC = 1519446623
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_trajectory_computer, "object/tangible/component/weapon/shared_weapon_trajectory_computer.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_trajectory_computer, "object/tangible/component/weapon/shared_weapon_trajectory_computer.iff")

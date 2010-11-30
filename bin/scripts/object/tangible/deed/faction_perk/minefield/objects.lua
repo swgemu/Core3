@@ -48,6 +48,7 @@ object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed = SharedTangib
 	clientObjectCRC = 1563479543
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed, "object/tangible/deed/faction_perk/minefield/shared_field_1x1_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed, "object/tangible/deed/faction_perk/minefield/shared_field_1x1_deed.iff")

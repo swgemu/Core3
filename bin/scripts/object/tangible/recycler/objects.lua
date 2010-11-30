@@ -48,6 +48,7 @@ object_tangible_recycler_shared_chemical_recycler = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_recycler_shared_chemical_recycler = SharedTangibleObjectTemplate
 	clientObjectCRC = 1627417847
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_chemical_recycler, "object/tangible/recycler/shared_chemical_recycler.iff")
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_chemical_recycler, "object/tangible/recycler/shared_chemical_recycler.iff")
 
 object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recycler_meat.apt",
@@ -101,6 +102,7 @@ object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate
 	clientObjectCRC = 2601090218
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_creature_recycler, "object/tangible/recycler/shared_creature_recycler.iff")
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_creature_recycler, "object/tangible/recycler/shared_creature_recycler.iff")
 
 object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recycler_plant.apt",
@@ -154,6 +156,7 @@ object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 372626307
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_flora_recycler, "object/tangible/recycler/shared_flora_recycler.iff")
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_flora_recycler, "object/tangible/recycler/shared_flora_recycler.iff")
 
 object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recycler_metal.apt",
@@ -207,6 +210,7 @@ object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 860237131
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_metal_recycler, "object/tangible/recycler/shared_metal_recycler.iff")
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_metal_recycler, "object/tangible/recycler/shared_metal_recycler.iff")
 
 object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recycler_ore.apt",
@@ -260,6 +264,7 @@ object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 4105541227
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_ore_recycler, "object/tangible/recycler/shared_ore_recycler.iff")
+ObjectTemplates:addTemplate(object_tangible_recycler_shared_ore_recycler, "object/tangible/recycler/shared_ore_recycler.iff")

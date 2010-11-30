@@ -48,6 +48,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_e
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_e
 	clientObjectCRC = 4005496660
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_e
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_e
 	clientObjectCRC = 3941953467
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite_2, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_elite_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite_2, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_elite_2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	clientObjectCRC = 4043998830
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s1, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s1, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_s1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	clientObjectCRC = 706555641
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s2, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s2, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_s2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	clientObjectCRC = 1662011764
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s3, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_s3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s3, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_s3.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	clientObjectCRC = 183086458
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s6, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_s6.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s6, "object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_s6.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite = Share
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite = Share
 	clientObjectCRC = 587137384
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2 
 	clientObjectCRC = 172501282
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_improved_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_improved_mk2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1 = SharedT
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1 = SharedT
 	clientObjectCRC = 2092831252
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2 = SharedT
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2 = SharedT
 	clientObjectCRC = 2812918403
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3 = SharedT
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3 = SharedT
 	clientObjectCRC = 4003781902
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk3.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4 = SharedT
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4 = SharedT
 	clientObjectCRC = 357037594
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk4.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5 = SharedT
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5 = SharedT
 	clientObjectCRC = 1548390807
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_mk5.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1 =
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1 =
 	clientObjectCRC = 491149550
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_special_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1, "object/tangible/ship/components/shield_generator/shared_shd_cygnus_special_mk1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -790,6 +804,7 @@ object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1 = 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1 = 
 	clientObjectCRC = 3651549547
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1, "object/tangible/ship/components/shield_generator/shared_shd_dual_deflector_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1, "object/tangible/ship/components/shield_generator/shared_shd_dual_deflector_s1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2 = 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2 = 
 	clientObjectCRC = 45191676
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2, "object/tangible/ship/components/shield_generator/shared_shd_dual_deflector_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2, "object/tangible/ship/components/shield_generator/shared_shd_dual_deflector_s2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2
 	clientObjectCRC = 2812483779
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2, "object/tangible/ship/components/shield_generator/shared_shd_gallofree_defender_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2, "object/tangible/ship/components/shield_generator/shared_shd_gallofree_defender_2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_e
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_e
 	clientObjectCRC = 673595337
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_elite, "object/tangible/ship/components/shield_generator/shared_shd_gallofree_defender_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_elite, "object/tangible/ship/components/shield_generator/shared_shd_gallofree_defender_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_ship_components_shield_generator_shared_shd_generic = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_ship_components_shield_generator_shared_shd_generic = SharedTang
 	clientObjectCRC = 904269427
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_generic, "object/tangible/ship/components/shield_generator/shared_shd_generic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_generic, "object/tangible/ship/components/shield_generator/shared_shd_generic.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_mark2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark2 = Shared
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark2 = Shared
 	clientObjectCRC = 92167148
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark2, "object/tangible/ship/components/shield_generator/shared_shd_incom_mark2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark2, "object/tangible/ship/components/shield_generator/shared_shd_incom_mark2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_mark5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1108,6 +1128,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark5 = Shared
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark5 = Shared
 	clientObjectCRC = 4271730936
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark5, "object/tangible/ship/components/shield_generator/shared_shd_incom_mark5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark5, "object/tangible/ship/components/shield_generator/shared_shd_incom_mark5.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_mark9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1161,6 +1182,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark9 = Shared
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark9 = Shared
 	clientObjectCRC = 2676028541
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark9, "object/tangible/ship/components/shield_generator/shared_shd_incom_mark9.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark9, "object/tangible/ship/components/shield_generator/shared_shd_incom_mark9.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1214,6 +1236,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_adva
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_adva
 	clientObjectCRC = 3501222654
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_advanced, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_advanced, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1267,6 +1290,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4 =
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4 =
 	clientObjectCRC = 328452728
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_r4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_r4.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1320,6 +1344,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7 =
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7 =
 	clientObjectCRC = 3364119279
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_r7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_r7.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1373,6 +1398,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1 =
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1 =
 	clientObjectCRC = 2507824966
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12 
 	clientObjectCRC = 1807948417
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x12.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x12.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1479,6 +1506,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2 =
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2 =
 	clientObjectCRC = 1315829713
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1532,6 +1560,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5 =
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5 =
 	clientObjectCRC = 3046038725
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x5.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1585,6 +1614,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7 =
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7 =
 	clientObjectCRC = 664015839
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x7.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1638,6 +1668,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9 =
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9 =
 	clientObjectCRC = 3566426176
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x9.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_x9.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1691,6 +1722,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1 =
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1 =
 	clientObjectCRC = 2737456566
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_z1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_z1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1744,6 +1776,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5 =
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5 =
 	clientObjectCRC = 2212415029
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_z5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_z5.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7 =
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7 =
 	clientObjectCRC = 298060079
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_z7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7, "object/tangible/ship/components/shield_generator/shared_shd_incom_rayshield_z7.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1850,6 +1884,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1 =
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1 =
 	clientObjectCRC = 2855050390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1, "object/tangible/ship/components/shield_generator/shared_shd_incom_techscreen_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1, "object/tangible/ship/components/shield_generator/shared_shd_incom_techscreen_1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1903,6 +1938,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2 =
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2 =
 	clientObjectCRC = 1899705345
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2, "object/tangible/ship/components/shield_generator/shared_shd_incom_techscreen_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2, "object/tangible/ship/components/shield_generator/shared_shd_incom_techscreen_2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -1956,6 +1992,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_eli
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_eli
 	clientObjectCRC = 754371356
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_elite, "object/tangible/ship/components/shield_generator/shared_shd_incom_techscreen_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_elite, "object/tangible/ship/components/shield_generator/shared_shd_incom_techscreen_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2009,6 +2046,7 @@ object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton 
 	clientObjectCRC = 1716616411
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton, "object/tangible/ship/components/shield_generator/shared_shd_interlaced_graviton.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton, "object/tangible/ship/components/shield_generator/shared_shd_interlaced_graviton.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygnus_experimental_system = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2062,6 +2100,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygn
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygn
 	clientObjectCRC = 980498708
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygnus_experimental_system, "object/tangible/ship/components/shield_generator/shared_shd_kessel_imperial_cygnus_experimental_system.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygnus_experimental_system, "object/tangible/ship/components/shield_generator/shared_shd_kessel_imperial_cygnus_experimental_system.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_secret_ops = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2115,6 +2154,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_
 	clientObjectCRC = 3075481852
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_secret_ops, "object/tangible/ship/components/shield_generator/shared_shd_kessel_imperial_sds_secret_ops.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_secret_ops, "object/tangible/ship/components/shield_generator/shared_shd_kessel_imperial_sds_secret_ops.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_megapolyweb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2168,6 +2208,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_
 	clientObjectCRC = 485167241
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_megapolyweb, "object/tangible/ship/components/shield_generator/shared_shd_kessel_imperial_sfs_megapolyweb.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_megapolyweb, "object/tangible/ship/components/shield_generator/shared_shd_kessel_imperial_sfs_megapolyweb.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_rayshield_overdriver = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2221,6 +2262,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_r
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_r
 	clientObjectCRC = 3631366873
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_rayshield_overdriver, "object/tangible/ship/components/shield_generator/shared_shd_kessel_rebel_incom_rayshield_overdriver.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_rayshield_overdriver, "object/tangible/ship/components/shield_generator/shared_shd_kessel_rebel_incom_rayshield_overdriver.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuub_ion_mesh_projection = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2274,6 +2316,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuu
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuu
 	clientObjectCRC = 2671377903
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuub_ion_mesh_projection, "object/tangible/ship/components/shield_generator/shared_shd_kessel_rebel_sorosuub_ion_mesh_projection.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuub_ion_mesh_projection, "object/tangible/ship/components/shield_generator/shared_shd_kessel_rebel_sorosuub_ion_mesh_projection.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown_proton_interweave_system = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2327,6 +2370,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown
 	clientObjectCRC = 3294081937
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown_proton_interweave_system, "object/tangible/ship/components/shield_generator/shared_shd_kessel_rebel_unknown_proton_interweave_system.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown_proton_interweave_system, "object/tangible/ship/components/shield_generator/shared_shd_kessel_rebel_unknown_proton_interweave_system.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2380,6 +2424,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_a
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_a
 	clientObjectCRC = 3659868328
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_advanced, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_advanced, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2433,6 +2478,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_e
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_e
 	clientObjectCRC = 4054911210
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_elite, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_elite, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2486,6 +2532,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	clientObjectCRC = 3189603642
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m1, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m1, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2539,6 +2586,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	clientObjectCRC = 1695208877
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m2, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m2, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2592,6 +2640,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	clientObjectCRC = 738701856
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m3, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m3, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m3.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2645,6 +2694,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	clientObjectCRC = 1174296110
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m6, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m6.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m6, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m6.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2698,6 +2748,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	clientObjectCRC = 3069779377
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m8, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m8.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m8, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_deflector_m8.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_deflector_m1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2751,6 +2802,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_de
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_de
 	clientObjectCRC = 2795036189
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_deflector_m1, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_improved_deflector_m1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_deflector_m1, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_improved_deflector_m1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_deflector_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2804,6 +2856,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_de
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_de
 	clientObjectCRC = 2846210589
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_deflector_advanced, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_modified_deflector_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_deflector_advanced, "object/tangible/ship/components/shield_generator/shared_shd_koensayr_modified_deflector_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2857,6 +2910,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_elite = SharedTa
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_elite = SharedTa
 	clientObjectCRC = 1176481939
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_elite, "object/tangible/ship/components/shield_generator/shared_shd_kse_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_elite, "object/tangible/ship/components/shield_generator/shared_shd_kse_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_military_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2910,6 +2964,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_militar
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_militar
 	clientObjectCRC = 3332739328
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_military_mk1, "object/tangible/ship/components/shield_generator/shared_shd_kse_enhanced_military_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_military_mk1, "object/tangible/ship/components/shield_generator/shared_shd_kse_enhanced_military_mk1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -2963,6 +3018,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1 = S
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1 = S
 	clientObjectCRC = 3352793075
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1, "object/tangible/ship/components/shield_generator/shared_shd_kse_military_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1, "object/tangible/ship/components/shield_generator/shared_shd_kse_military_mk1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3016,6 +3072,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2 = S
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2 = S
 	clientObjectCRC = 482355044
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2, "object/tangible/ship/components/shield_generator/shared_shd_kse_military_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2, "object/tangible/ship/components/shield_generator/shared_shd_kse_military_mk2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3069,6 +3126,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk3 = SharedTang
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk3 = SharedTang
 	clientObjectCRC = 4019567364
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk3, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk3, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk3.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3122,6 +3180,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk4 = SharedTang
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk4 = SharedTang
 	clientObjectCRC = 343314448
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk4, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk4, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk4.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3175,6 +3234,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk5 = SharedTang
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk5 = SharedTang
 	clientObjectCRC = 1568405405
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk5, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk5, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk5.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3228,6 +3288,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk6 = SharedTang
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk6 = SharedTang
 	clientObjectCRC = 2255249162
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk6, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk6.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk6, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk6.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3281,6 +3342,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk7 = SharedTang
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk7 = SharedTang
 	clientObjectCRC = 3479255175
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk7, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk7, "object/tangible/ship/components/shield_generator/shared_shd_kse_mk7.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protector_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3334,6 +3396,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protec
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protec
 	clientObjectCRC = 442744867
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protector_mk1, "object/tangible/ship/components/shield_generator/shared_shd_mandal_double_protector_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protector_mk1, "object/tangible/ship/components/shield_generator/shared_shd_mandal_double_protector_mk1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3387,6 +3450,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	clientObjectCRC = 2330337362
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks25, "object/tangible/ship/components/shield_generator/shared_shd_mandal_flexshield_ks25.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks25, "object/tangible/ship/components/shield_generator/shared_shd_mandal_flexshield_ks25.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3440,6 +3504,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	clientObjectCRC = 2144035461
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks5, "object/tangible/ship/components/shield_generator/shared_shd_mandal_flexshield_ks5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks5, "object/tangible/ship/components/shield_generator/shared_shd_mandal_flexshield_ks5.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3493,6 +3558,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	clientObjectCRC = 3989941663
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks7, "object/tangible/ship/components/shield_generator/shared_shd_mandal_flexshield_ks7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks7, "object/tangible/ship/components/shield_generator/shared_shd_mandal_flexshield_ks7.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3546,6 +3612,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx
 	clientObjectCRC = 2869402958
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx1, "object/tangible/ship/components/shield_generator/shared_shd_mandal_flexshield_kx1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx1, "object/tangible/ship/components/shield_generator/shared_shd_mandal_flexshield_kx1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3599,6 +3666,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1
 	clientObjectCRC = 4072962412
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1, "object/tangible/ship/components/shield_generator/shared_shd_mandal_protector_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1, "object/tangible/ship/components/shield_generator/shared_shd_mandal_protector_mk1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3652,6 +3720,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	clientObjectCRC = 2105182786
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks1, "object/tangible/ship/components/shield_generator/shared_shd_mandalor_flexshield_ks1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks1, "object/tangible/ship/components/shield_generator/shared_shd_mandalor_flexshield_ks1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3705,6 +3774,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	clientObjectCRC = 1531190620
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks18, "object/tangible/ship/components/shield_generator/shared_shd_mandalor_flexshield_ks18.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks18, "object/tangible/ship/components/shield_generator/shared_shd_mandalor_flexshield_ks18.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3758,6 +3828,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	clientObjectCRC = 4016063832
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks3, "object/tangible/ship/components/shield_generator/shared_shd_mandalor_flexshield_ks3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks3, "object/tangible/ship/components/shield_generator/shared_shd_mandalor_flexshield_ks3.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_cygnus_holoscreen = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3811,6 +3882,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imper
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imper
 	clientObjectCRC = 2343498615
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_cygnus_holoscreen, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_imperial_cygnus_holoscreen.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_cygnus_holoscreen, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_imperial_cygnus_holoscreen.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_rendili_dual_projector = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3864,6 +3936,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imper
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imper
 	clientObjectCRC = 3141363443
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_rendili_dual_projector, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_imperial_rendili_dual_projector.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_rendili_dual_projector, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_imperial_rendili_dual_projector.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_armek_plasma_web = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3917,6 +3990,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutr
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutr
 	clientObjectCRC = 868794909
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_armek_plasma_web, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_neutral_armek_plasma_web.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_armek_plasma_web, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_neutral_armek_plasma_web.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_koensayr_ds23 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -3970,6 +4044,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutr
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutr
 	clientObjectCRC = 489325202
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_koensayr_ds23, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_neutral_koensayr_ds23.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_koensayr_ds23, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_neutral_koensayr_ds23.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_incom_k77 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4023,6 +4098,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel
 	clientObjectCRC = 2160478208
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_incom_k77, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_rebel_incom_k77.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_incom_k77, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_rebel_incom_k77.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_taim_military_grade = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4076,6 +4152,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel
 	clientObjectCRC = 1836682734
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_taim_military_grade, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_rebel_taim_military_grade.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_taim_military_grade, "object/tangible/ship/components/shield_generator/shared_shd_mission_reward_rebel_taim_military_grade.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4129,6 +4206,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal = SharedTangi
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal = SharedTangi
 	clientObjectCRC = 2199200859
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal, "object/tangible/ship/components/shield_generator/shared_shd_moncal.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal, "object/tangible/ship/components/shield_generator/shared_shd_moncal.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4182,6 +4260,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb
 	clientObjectCRC = 1224559248
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_a, "object/tangible/ship/components/shield_generator/shared_shd_moncal_deluxe_ionweb_a.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_a, "object/tangible/ship/components/shield_generator/shared_shd_moncal_deluxe_ionweb_a.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4235,6 +4314,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb
 	clientObjectCRC = 2481644039
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_b, "object/tangible/ship/components/shield_generator/shared_shd_moncal_deluxe_ionweb_b.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_b, "object/tangible/ship/components/shield_generator/shared_shd_moncal_deluxe_ionweb_b.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4288,6 +4368,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a = Sh
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a = Sh
 	clientObjectCRC = 523179685
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_a.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_a.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4341,6 +4422,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanc
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanc
 	clientObjectCRC = 4163014250
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanced, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanced, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4394,6 +4476,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite 
 	clientObjectCRC = 1024099405
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4447,6 +4530,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_
 	clientObjectCRC = 1650981306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_2, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_elite_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_2, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_elite_2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4500,6 +4584,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy 
 	clientObjectCRC = 2894219316
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy, "object/tangible/ship/components/shield_generator/shared_shd_moncal_ionweb_heavy.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4553,6 +4638,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx1
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx1
 	clientObjectCRC = 3258399997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx12, "object/tangible/ship/components/shield_generator/shared_shd_phased_fullerine_fx12.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx12, "object/tangible/ship/components/shield_generator/shared_shd_phased_fullerine_fx12.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4606,6 +4692,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx2
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx2
 	clientObjectCRC = 2260127611
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx27, "object/tangible/ship/components/shield_generator/shared_shd_phased_fullerine_fx27.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx27, "object/tangible/ship/components/shield_generator/shared_shd_phased_fullerine_fx27.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx92 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4659,6 +4746,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx9
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx9
 	clientObjectCRC = 460805949
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx92, "object/tangible/ship/components/shield_generator/shared_shd_phased_fullerine_fx92.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx92, "object/tangible/ship/components/shield_generator/shared_shd_phased_fullerine_fx92.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_prototype_shield = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4712,6 +4800,7 @@ object_tangible_ship_components_shield_generator_shared_shd_prototype_shield = S
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_ship_components_shield_generator_shared_shd_prototype_shield = S
 	clientObjectCRC = 31928618
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_prototype_shield, "object/tangible/ship/components/shield_generator/shared_shd_prototype_shield.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_prototype_shield, "object/tangible/ship/components/shield_generator/shared_shd_prototype_shield.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_rendili = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -4765,6 +4854,7 @@ object_tangible_ship_components_shield_generator_shared_shd_rendili = SharedTang
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_ship_components_shield_generator_shared_shd_rendili = SharedTang
 	clientObjectCRC = 1045720054
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_rendili, "object/tangible/ship/components/shield_generator/shared_shd_rendili.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_rendili, "object/tangible/ship/components/shield_generator/shared_shd_rendili.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
@@ -4818,6 +4908,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite =
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite =
 	clientObjectCRC = 3327697307
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_armek_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_armek_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
@@ -4871,6 +4962,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite =
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite =
 	clientObjectCRC = 2029440203
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_incom_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_incom_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
@@ -4924,6 +5016,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elit
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elit
 	clientObjectCRC = 1626448404
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_mandalor_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_mandalor_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
@@ -4977,6 +5070,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite 
 	clientObjectCRC = 3113022153
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_seinar_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_seinar_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
@@ -5030,6 +5124,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite = 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite = 
 	clientObjectCRC = 1936705340
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_taim_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite, "object/tangible/ship/components/shield_generator/shared_shd_reward_taim_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_a1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5083,6 +5178,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_
 	clientObjectCRC = 2243790343
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_a1, "object/tangible/ship/components/shield_generator/shared_shd_seinar_experimental_a1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_a1, "object/tangible/ship/components/shield_generator/shared_shd_seinar_experimental_a1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5136,6 +5232,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3 = SharedT
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3 = SharedT
 	clientObjectCRC = 1330497147
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3, "object/tangible/ship/components/shield_generator/shared_shd_seinar_gx3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3, "object/tangible/ship/components/shield_generator/shared_shd_seinar_gx3.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5189,6 +5286,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7 = SharedT
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7 = SharedT
 	clientObjectCRC = 1874413048
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7, "object/tangible/ship/components/shield_generator/shared_shd_seinar_gx7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7, "object/tangible/ship/components/shield_generator/shared_shd_seinar_gx7.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5242,6 +5340,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite = Sh
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite = Sh
 	clientObjectCRC = 2098040456
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite, "object/tangible/ship/components/shield_generator/shared_shd_seinar_gx_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite, "object/tangible/ship/components/shield_generator/shared_shd_seinar_gx_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5295,6 +5394,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen
 	clientObjectCRC = 951174675
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p1, "object/tangible/ship/components/shield_generator/shared_shd_seinar_proton_screen_p1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p1, "object/tangible/ship/components/shield_generator/shared_shd_seinar_proton_screen_p1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5348,6 +5448,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen
 	clientObjectCRC = 3276991751
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p6, "object/tangible/ship/components/shield_generator/shared_shd_seinar_proton_screen_p6.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p6, "object/tangible/ship/components/shield_generator/shared_shd_seinar_proton_screen_p6.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5401,6 +5502,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_eli
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_eli
 	clientObjectCRC = 3776811256
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_elite, "object/tangible/ship/components/shield_generator/shared_shd_seinar_reflector_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_elite, "object/tangible/ship/components/shield_generator/shared_shd_seinar_reflector_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5454,6 +5556,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_sta
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_sta
 	clientObjectCRC = 2608074768
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_standard, "object/tangible/ship/components/shield_generator/shared_shd_seinar_reflector_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_standard, "object/tangible/ship/components/shield_generator/shared_shd_seinar_reflector_standard.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5507,6 +5610,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced = Share
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced = Share
 	clientObjectCRC = 204265573
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced, "object/tangible/ship/components/shield_generator/shared_shd_sfs_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced, "object/tangible/ship/components/shield_generator/shared_shd_sfs_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5560,6 +5664,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_e
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_e
 	clientObjectCRC = 4763553
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_elite, "object/tangible/ship/components/shield_generator/shared_shd_sfs_custom_polyweb_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_elite, "object/tangible/ship/components/shield_generator/shared_shd_sfs_custom_polyweb_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5613,6 +5718,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_
 	clientObjectCRC = 2062565953
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_standard, "object/tangible/ship/components/shield_generator/shared_shd_sfs_imperial_deluxe_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_standard, "object/tangible/ship/components/shield_generator/shared_shd_sfs_imperial_deluxe_standard.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5666,6 +5772,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy =
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy =
 	clientObjectCRC = 3360322809
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy, "object/tangible/ship/components/shield_generator/shared_shd_sfs_imperial_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy, "object/tangible/ship/components/shield_generator/shared_shd_sfs_imperial_heavy.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5719,6 +5826,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special
 	clientObjectCRC = 3818296715
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special_forces, "object/tangible/ship/components/shield_generator/shared_shd_sfs_imperial_special_forces.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special_forces, "object/tangible/ship/components/shield_generator/shared_shd_sfs_imperial_special_forces.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5772,6 +5880,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standar
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standar
 	clientObjectCRC = 4149159567
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standard, "object/tangible/ship/components/shield_generator/shared_shd_sfs_imperial_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standard, "object/tangible/ship/components/shield_generator/shared_shd_sfs_imperial_standard.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5825,6 +5934,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced
 	clientObjectCRC = 3598481390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced, "object/tangible/ship/components/shield_generator/shared_shd_sfs_limited_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced, "object/tangible/ship/components/shield_generator/shared_shd_sfs_limited_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5878,6 +5988,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperia
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperia
 	clientObjectCRC = 1316308873
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_heavy, "object/tangible/ship/components/shield_generator/shared_shd_sfs_modified_imperial_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_heavy, "object/tangible/ship/components/shield_generator/shared_shd_sfs_modified_imperial_heavy.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5931,6 +6042,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperia
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperia
 	clientObjectCRC = 1435911104
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_special_forces, "object/tangible/ship/components/shield_generator/shared_shd_sfs_modified_imperial_special_forces.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_special_forces, "object/tangible/ship/components/shield_generator/shared_shd_sfs_modified_imperial_special_forces.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -5984,6 +6096,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb
 	clientObjectCRC = 2004538016
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb_advanced, "object/tangible/ship/components/shield_generator/shared_shd_sfs_modified_polyweb_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb_advanced, "object/tangible/ship/components/shield_generator/shared_shd_sfs_modified_polyweb_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6037,6 +6150,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4 = Shar
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4 = Shar
 	clientObjectCRC = 610167392
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4, "object/tangible/ship/components/shield_generator/shared_shd_sfs_polyweb_4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4, "object/tangible/ship/components/shield_generator/shared_shd_sfs_polyweb_4.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6090,6 +6204,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6 = Shar
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6 = Shar
 	clientObjectCRC = 3057952122
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6, "object/tangible/ship/components/shield_generator/shared_shd_sfs_polyweb_6.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6, "object/tangible/ship/components/shield_generator/shared_shd_sfs_polyweb_6.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6143,6 +6258,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced
 	clientObjectCRC = 3475858867
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced, "object/tangible/ship/components/shield_generator/shared_shd_sfs_polyweb_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced, "object/tangible/ship/components/shield_generator/shared_shd_sfs_polyweb_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6196,6 +6312,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite = 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,7 +6357,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite = 
 	clientObjectCRC = 1384192338
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite, "object/tangible/ship/components/shield_generator/shared_shd_sfs_polyweb_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite, "object/tangible/ship/components/shield_generator/shared_shd_sfs_polyweb_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6249,6 +6366,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_advanced = Shar
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6293,7 +6411,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_advanced = Shar
 	clientObjectCRC = 549069337
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_advanced, "object/tangible/ship/components/shield_generator/shared_shd_taim_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_advanced, "object/tangible/ship/components/shield_generator/shared_shd_taim_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6302,6 +6420,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_elite = SharedT
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6346,7 +6465,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_elite = SharedT
 	clientObjectCRC = 3533183005
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_elite, "object/tangible/ship/components/shield_generator/shared_shd_taim_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_elite, "object/tangible/ship/components/shield_generator/shared_shd_taim_elite.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6355,6 +6474,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanc
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6399,7 +6519,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanc
 	clientObjectCRC = 412063730
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanced, "object/tangible/ship/components/shield_generator/shared_shd_taim_enhanced_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanced, "object/tangible/ship/components/shield_generator/shared_shd_taim_enhanced_advanced.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6408,6 +6528,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_heavy = SharedT
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6452,7 +6573,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_heavy = SharedT
 	clientObjectCRC = 1125176420
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_heavy, "object/tangible/ship/components/shield_generator/shared_shd_taim_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_heavy, "object/tangible/ship/components/shield_generator/shared_shd_taim_heavy.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6461,6 +6582,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_standard = Shar
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6505,7 +6627,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_standard = Shar
 	clientObjectCRC = 3639474
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_standard, "object/tangible/ship/components/shield_generator/shared_shd_taim_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_standard, "object/tangible/ship/components/shield_generator/shared_shd_taim_standard.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6514,6 +6636,7 @@ object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic = S
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6558,7 +6681,7 @@ object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic = S
 	clientObjectCRC = 605684779
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic, "object/tangible/ship/components/shield_generator/shared_shd_tiefighter_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic, "object/tangible/ship/components/shield_generator/shared_shd_tiefighter_basic.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6567,6 +6690,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6611,7 +6735,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1
 	clientObjectCRC = 94312606
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1, "object/tangible/ship/components/shield_generator/shared_shd_unknown_holosteel_x1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1, "object/tangible/ship/components/shield_generator/shared_shd_unknown_holosteel_x1.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6620,6 +6744,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6664,7 +6789,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2
 	clientObjectCRC = 3733499913
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2, "object/tangible/ship/components/shield_generator/shared_shd_unknown_holosteel_x2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2, "object/tangible/ship/components/shield_generator/shared_shd_unknown_holosteel_x2.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_projector = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6673,6 +6798,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_proje
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6717,7 +6843,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_proje
 	clientObjectCRC = 2554696462
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_projector, "object/tangible/ship/components/shield_generator/shared_shd_unknown_proton_projector.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_projector, "object/tangible/ship/components/shield_generator/shared_shd_unknown_proton_projector.iff")
 
 object_tangible_ship_components_shield_generator_shared_shd_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
@@ -6726,6 +6852,7 @@ object_tangible_ship_components_shield_generator_shared_shd_z95_basic = SharedTa
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741827,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6770,7 +6897,7 @@ object_tangible_ship_components_shield_generator_shared_shd_z95_basic = SharedTa
 	clientObjectCRC = 1663130441
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shd_z95_basic, "object/tangible/ship/components/shield_generator/shared_shd_z95_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_z95_basic, "object/tangible/ship/components/shield_generator/shared_shd_z95_basic.iff")
 
 object_tangible_ship_components_shield_generator_shared_shield_generator_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
@@ -6779,6 +6906,7 @@ object_tangible_ship_components_shield_generator_shared_shield_generator_test = 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6823,4 +6951,4 @@ object_tangible_ship_components_shield_generator_shared_shield_generator_test = 
 	clientObjectCRC = 2405620850
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generator_shared_shield_generator_test, "object/tangible/ship/components/shield_generator/shared_shield_generator_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shield_generator_test, "object/tangible/ship/components/shield_generator/shared_shield_generator_test.iff")

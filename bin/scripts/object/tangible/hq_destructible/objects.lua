@@ -48,6 +48,7 @@ object_tangible_hq_destructible_shared_base_destructible = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_hq_destructible_shared_base_destructible = SharedTangibleObjectT
 	clientObjectCRC = 730285201
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_base_destructible, "object/tangible/hq_destructible/shared_base_destructible.iff")
+ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_base_destructible, "object/tangible/hq_destructible/shared_base_destructible.iff")
 
 object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
@@ -101,6 +102,7 @@ object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectT
 	clientObjectCRC = 2006377548
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_override_terminal, "object/tangible/hq_destructible/shared_override_terminal.iff")
+ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_override_terminal, "object/tangible/hq_destructible/shared_override_terminal.iff")
 
 object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s4.apt",
@@ -154,6 +156,7 @@ object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTem
 	clientObjectCRC = 3447096600
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_power_regulator, "object/tangible/hq_destructible/shared_power_regulator.iff")
+ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_power_regulator, "object/tangible/hq_destructible/shared_power_regulator.iff")
 
 object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
@@ -207,6 +210,7 @@ object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectT
 	clientObjectCRC = 868384958
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_security_terminal, "object/tangible/hq_destructible/shared_security_terminal.iff")
+ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_security_terminal, "object/tangible/hq_destructible/shared_security_terminal.iff")
 
 object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
@@ -260,6 +264,7 @@ object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTem
 	clientObjectCRC = 459058175
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_uplink_terminal, "object/tangible/hq_destructible/shared_uplink_terminal.iff")
+ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_uplink_terminal, "object/tangible/hq_destructible/shared_uplink_terminal.iff")

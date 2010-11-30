@@ -47,6 +47,7 @@ object_draft_schematic_weapon_component_shared_blade_vibro_unit = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_weapon_component_shared_blade_vibro_unit = SharedDraftSch
 	clientObjectCRC = 642464593
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_blade_vibro_unit, "object/draft_schematic/weapon/component/shared_blade_vibro_unit.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blade_vibro_unit, "object/draft_schematic/weapon/component/shared_blade_vibro_unit.iff")
 
 object_draft_schematic_weapon_component_shared_blade_vibro_unit_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_weapon_component_shared_blade_vibro_unit_advanced = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_weapon_component_shared_blade_vibro_unit_advanced = Share
 	clientObjectCRC = 2591525916
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_blade_vibro_unit_advanced, "object/draft_schematic/weapon/component/shared_blade_vibro_unit_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blade_vibro_unit_advanced, "object/draft_schematic/weapon/component/shared_blade_vibro_unit_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_blaster_pistol_barrel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_weapon_component_shared_blaster_pistol_barrel = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_weapon_component_shared_blaster_pistol_barrel = SharedDra
 	clientObjectCRC = 1763890276
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_blaster_pistol_barrel, "object/draft_schematic/weapon/component/shared_blaster_pistol_barrel.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_pistol_barrel, "object/draft_schematic/weapon/component/shared_blaster_pistol_barrel.iff")
 
 object_draft_schematic_weapon_component_shared_blaster_pistol_barrel_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_weapon_component_shared_blaster_pistol_barrel_advanced = 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_weapon_component_shared_blaster_pistol_barrel_advanced = 
 	clientObjectCRC = 2411109221
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_blaster_pistol_barrel_advanced, "object/draft_schematic/weapon/component/shared_blaster_pistol_barrel_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_pistol_barrel_advanced, "object/draft_schematic/weapon/component/shared_blaster_pistol_barrel_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_blaster_power_handler = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_weapon_component_shared_blaster_power_handler = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_weapon_component_shared_blaster_power_handler = SharedDra
 	clientObjectCRC = 291466906
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_blaster_power_handler, "object/draft_schematic/weapon/component/shared_blaster_power_handler.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_power_handler, "object/draft_schematic/weapon/component/shared_blaster_power_handler.iff")
 
 object_draft_schematic_weapon_component_shared_blaster_power_handler_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_weapon_component_shared_blaster_power_handler_advanced = 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_weapon_component_shared_blaster_power_handler_advanced = 
 	clientObjectCRC = 669027229
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_blaster_power_handler_advanced, "object/draft_schematic/weapon/component/shared_blaster_power_handler_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_power_handler_advanced, "object/draft_schematic/weapon/component/shared_blaster_power_handler_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_blaster_rifle_barrel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_weapon_component_shared_blaster_rifle_barrel = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_weapon_component_shared_blaster_rifle_barrel = SharedDraf
 	clientObjectCRC = 3017432687
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_blaster_rifle_barrel, "object/draft_schematic/weapon/component/shared_blaster_rifle_barrel.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_rifle_barrel, "object/draft_schematic/weapon/component/shared_blaster_rifle_barrel.iff")
 
 object_draft_schematic_weapon_component_shared_blaster_rifle_barrel_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_weapon_component_shared_blaster_rifle_barrel_advanced = S
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_weapon_component_shared_blaster_rifle_barrel_advanced = S
 	clientObjectCRC = 2415303462
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_blaster_rifle_barrel_advanced, "object/draft_schematic/weapon/component/shared_blaster_rifle_barrel_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_rifle_barrel_advanced, "object/draft_schematic/weapon/component/shared_blaster_rifle_barrel_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism = S
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism = S
 	clientObjectCRC = 4093058849
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism, "object/draft_schematic/weapon/component/shared_chemical_dispersion_mechanism.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism, "object/draft_schematic/weapon/component/shared_chemical_dispersion_mechanism.iff")
 
 object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism_adv
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism_adv
 	clientObjectCRC = 3692236674
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism_advanced, "object/draft_schematic/weapon/component/shared_chemical_dispersion_mechanism_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism_advanced, "object/draft_schematic/weapon/component/shared_chemical_dispersion_mechanism_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_energization_crystals = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_weapon_component_shared_energization_crystals = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_weapon_component_shared_energization_crystals = SharedDra
 	clientObjectCRC = 3330558458
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_energization_crystals, "object/draft_schematic/weapon/component/shared_energization_crystals.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_energization_crystals, "object/draft_schematic/weapon/component/shared_energization_crystals.iff")
 
 object_draft_schematic_weapon_component_shared_galven_tube_circuits = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_weapon_component_shared_galven_tube_circuits = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_weapon_component_shared_galven_tube_circuits = SharedDraf
 	clientObjectCRC = 1314707956
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_galven_tube_circuits, "object/draft_schematic/weapon/component/shared_galven_tube_circuits.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_galven_tube_circuits, "object/draft_schematic/weapon/component/shared_galven_tube_circuits.iff")
 
 object_draft_schematic_weapon_component_shared_laser_cannon_cooling_sleeve = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_weapon_component_shared_laser_cannon_cooling_sleeve = Sha
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_weapon_component_shared_laser_cannon_cooling_sleeve = Sha
 	clientObjectCRC = 4113789241
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_laser_cannon_cooling_sleeve, "object/draft_schematic/weapon/component/shared_laser_cannon_cooling_sleeve.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_laser_cannon_cooling_sleeve, "object/draft_schematic/weapon/component/shared_laser_cannon_cooling_sleeve.iff")
 
 object_draft_schematic_weapon_component_shared_laser_cannon_gun_tube = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_weapon_component_shared_laser_cannon_gun_tube = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_weapon_component_shared_laser_cannon_gun_tube = SharedDra
 	clientObjectCRC = 2303806735
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_laser_cannon_gun_tube, "object/draft_schematic/weapon/component/shared_laser_cannon_gun_tube.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_laser_cannon_gun_tube, "object/draft_schematic/weapon/component/shared_laser_cannon_gun_tube.iff")
 
 object_draft_schematic_weapon_component_shared_laser_generator = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_weapon_component_shared_laser_generator = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_weapon_component_shared_laser_generator = SharedDraftSche
 	clientObjectCRC = 4238408983
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_laser_generator, "object/draft_schematic/weapon/component/shared_laser_generator.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_laser_generator, "object/draft_schematic/weapon/component/shared_laser_generator.iff")
 
 object_draft_schematic_weapon_component_shared_laser_magnetic_flashback_supressor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_weapon_component_shared_laser_magnetic_flashback_supresso
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_weapon_component_shared_laser_magnetic_flashback_supresso
 	clientObjectCRC = 3558702385
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_laser_magnetic_flashback_supressor, "object/draft_schematic/weapon/component/shared_laser_magnetic_flashback_supressor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_laser_magnetic_flashback_supressor, "object/draft_schematic/weapon/component/shared_laser_magnetic_flashback_supressor.iff")
 
 object_draft_schematic_weapon_component_shared_parallel_weapon_targeting_computer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_weapon_component_shared_parallel_weapon_targeting_compute
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_weapon_component_shared_parallel_weapon_targeting_compute
 	clientObjectCRC = 3824855701
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_parallel_weapon_targeting_computer, "object/draft_schematic/weapon/component/shared_parallel_weapon_targeting_computer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_parallel_weapon_targeting_computer, "object/draft_schematic/weapon/component/shared_parallel_weapon_targeting_computer.iff")
 
 object_draft_schematic_weapon_component_shared_projectile_feed_mechanism = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_weapon_component_shared_projectile_feed_mechanism = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_weapon_component_shared_projectile_feed_mechanism = Share
 	clientObjectCRC = 3297087256
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_projectile_feed_mechanism, "object/draft_schematic/weapon/component/shared_projectile_feed_mechanism.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_feed_mechanism, "object/draft_schematic/weapon/component/shared_projectile_feed_mechanism.iff")
 
 object_draft_schematic_weapon_component_shared_projectile_feed_mechanism_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_weapon_component_shared_projectile_feed_mechanism_advance
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_weapon_component_shared_projectile_feed_mechanism_advance
 	clientObjectCRC = 262118266
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_projectile_feed_mechanism_advanced, "object/draft_schematic/weapon/component/shared_projectile_feed_mechanism_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_feed_mechanism_advanced, "object/draft_schematic/weapon/component/shared_projectile_feed_mechanism_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_projectile_pistol_barrel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_weapon_component_shared_projectile_pistol_barrel = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_weapon_component_shared_projectile_pistol_barrel = Shared
 	clientObjectCRC = 2418709976
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_projectile_pistol_barrel, "object/draft_schematic/weapon/component/shared_projectile_pistol_barrel.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_pistol_barrel, "object/draft_schematic/weapon/component/shared_projectile_pistol_barrel.iff")
 
 object_draft_schematic_weapon_component_shared_projectile_pistol_barrel_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_weapon_component_shared_projectile_pistol_barrel_advanced
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_weapon_component_shared_projectile_pistol_barrel_advanced
 	clientObjectCRC = 3111961622
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_projectile_pistol_barrel_advanced, "object/draft_schematic/weapon/component/shared_projectile_pistol_barrel_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_pistol_barrel_advanced, "object/draft_schematic/weapon/component/shared_projectile_pistol_barrel_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_projectile_rifle_barrel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_weapon_component_shared_projectile_rifle_barrel = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_weapon_component_shared_projectile_rifle_barrel = SharedD
 	clientObjectCRC = 365494069
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_projectile_rifle_barrel, "object/draft_schematic/weapon/component/shared_projectile_rifle_barrel.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_rifle_barrel, "object/draft_schematic/weapon/component/shared_projectile_rifle_barrel.iff")
 
 object_draft_schematic_weapon_component_shared_projectile_rifle_barrel_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_weapon_component_shared_projectile_rifle_barrel_advanced 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_weapon_component_shared_projectile_rifle_barrel_advanced 
 	clientObjectCRC = 1631155967
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_projectile_rifle_barrel_advanced, "object/draft_schematic/weapon/component/shared_projectile_rifle_barrel_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_rifle_barrel_advanced, "object/draft_schematic/weapon/component/shared_projectile_rifle_barrel_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_reinforcement_core = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_weapon_component_shared_reinforcement_core = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_weapon_component_shared_reinforcement_core = SharedDraftS
 	clientObjectCRC = 2874693612
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core, "object/draft_schematic/weapon/component/shared_reinforcement_core.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core, "object/draft_schematic/weapon/component/shared_reinforcement_core.iff")
 
 object_draft_schematic_weapon_component_shared_reinforcement_core_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_weapon_component_shared_reinforcement_core_advanced = Sha
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_weapon_component_shared_reinforcement_core_advanced = Sha
 	clientObjectCRC = 1668239813
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core_advanced, "object/draft_schematic/weapon/component/shared_reinforcement_core_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core_advanced, "object/draft_schematic/weapon/component/shared_reinforcement_core_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_reinforcement_core_geo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_weapon_component_shared_reinforcement_core_geo = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_draft_schematic_weapon_component_shared_reinforcement_core_geo = SharedDr
 	clientObjectCRC = 1540459451
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core_geo, "object/draft_schematic/weapon/component/shared_reinforcement_core_geo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core_geo, "object/draft_schematic/weapon/component/shared_reinforcement_core_geo.iff")
 
 object_draft_schematic_weapon_component_shared_scope_weapon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1165,6 +1191,7 @@ object_draft_schematic_weapon_component_shared_scope_weapon = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_draft_schematic_weapon_component_shared_scope_weapon = SharedDraftSchemat
 	clientObjectCRC = 3596514252
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_scope_weapon, "object/draft_schematic/weapon/component/shared_scope_weapon.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_scope_weapon, "object/draft_schematic/weapon/component/shared_scope_weapon.iff")
 
 object_draft_schematic_weapon_component_shared_scope_weapon_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1208,6 +1235,7 @@ object_draft_schematic_weapon_component_shared_scope_weapon_advanced = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1243,7 +1271,7 @@ object_draft_schematic_weapon_component_shared_scope_weapon_advanced = SharedDra
 	clientObjectCRC = 3611829706
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_scope_weapon_advanced, "object/draft_schematic/weapon/component/shared_scope_weapon_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_scope_weapon_advanced, "object/draft_schematic/weapon/component/shared_scope_weapon_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_stock = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1251,6 +1279,7 @@ object_draft_schematic_weapon_component_shared_stock = SharedDraftSchematicObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1286,7 +1315,7 @@ object_draft_schematic_weapon_component_shared_stock = SharedDraftSchematicObjec
 	clientObjectCRC = 507005578
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_stock, "object/draft_schematic/weapon/component/shared_stock.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_stock, "object/draft_schematic/weapon/component/shared_stock.iff")
 
 object_draft_schematic_weapon_component_shared_stock_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1294,6 +1323,7 @@ object_draft_schematic_weapon_component_shared_stock_advanced = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1329,7 +1359,7 @@ object_draft_schematic_weapon_component_shared_stock_advanced = SharedDraftSchem
 	clientObjectCRC = 1592695997
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_stock_advanced, "object/draft_schematic/weapon/component/shared_stock_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_stock_advanced, "object/draft_schematic/weapon/component/shared_stock_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_sword_core = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1337,6 +1367,7 @@ object_draft_schematic_weapon_component_shared_sword_core = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1372,7 +1403,7 @@ object_draft_schematic_weapon_component_shared_sword_core = SharedDraftSchematic
 	clientObjectCRC = 4049686729
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_sword_core, "object/draft_schematic/weapon/component/shared_sword_core.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_sword_core, "object/draft_schematic/weapon/component/shared_sword_core.iff")
 
 object_draft_schematic_weapon_component_shared_sword_core_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1380,6 +1411,7 @@ object_draft_schematic_weapon_component_shared_sword_core_advanced = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1415,7 +1447,7 @@ object_draft_schematic_weapon_component_shared_sword_core_advanced = SharedDraft
 	clientObjectCRC = 4271255485
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_sword_core_advanced, "object/draft_schematic/weapon/component/shared_sword_core_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_sword_core_advanced, "object/draft_schematic/weapon/component/shared_sword_core_advanced.iff")
 
 object_draft_schematic_weapon_component_shared_sword_core_geo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1423,6 +1455,7 @@ object_draft_schematic_weapon_component_shared_sword_core_geo = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1458,7 +1491,7 @@ object_draft_schematic_weapon_component_shared_sword_core_geo = SharedDraftSchem
 	clientObjectCRC = 2844636480
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_sword_core_geo, "object/draft_schematic/weapon/component/shared_sword_core_geo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_sword_core_geo, "object/draft_schematic/weapon/component/shared_sword_core_geo.iff")
 
 object_draft_schematic_weapon_component_shared_turbo_laser_gun_tube = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1466,6 +1499,7 @@ object_draft_schematic_weapon_component_shared_turbo_laser_gun_tube = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1501,7 +1535,7 @@ object_draft_schematic_weapon_component_shared_turbo_laser_gun_tube = SharedDraf
 	clientObjectCRC = 522996520
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_turbo_laser_gun_tube, "object/draft_schematic/weapon/component/shared_turbo_laser_gun_tube.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_turbo_laser_gun_tube, "object/draft_schematic/weapon/component/shared_turbo_laser_gun_tube.iff")
 
 object_draft_schematic_weapon_component_shared_weapon_mount = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1509,6 +1543,7 @@ object_draft_schematic_weapon_component_shared_weapon_mount = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1544,7 +1579,7 @@ object_draft_schematic_weapon_component_shared_weapon_mount = SharedDraftSchemat
 	clientObjectCRC = 3571298637
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_weapon_mount, "object/draft_schematic/weapon/component/shared_weapon_mount.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_weapon_mount, "object/draft_schematic/weapon/component/shared_weapon_mount.iff")
 
 object_draft_schematic_weapon_component_shared_weapon_mount_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1552,6 +1587,7 @@ object_draft_schematic_weapon_component_shared_weapon_mount_light = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1587,7 +1623,7 @@ object_draft_schematic_weapon_component_shared_weapon_mount_light = SharedDraftS
 	clientObjectCRC = 3504836884
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_weapon_mount_light, "object/draft_schematic/weapon/component/shared_weapon_mount_light.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_weapon_mount_light, "object/draft_schematic/weapon/component/shared_weapon_mount_light.iff")
 
 object_draft_schematic_weapon_component_shared_weapon_targeting_computer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1595,6 +1631,7 @@ object_draft_schematic_weapon_component_shared_weapon_targeting_computer = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1630,7 +1667,7 @@ object_draft_schematic_weapon_component_shared_weapon_targeting_computer = Share
 	clientObjectCRC = 2837944775
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_weapon_targeting_computer, "object/draft_schematic/weapon/component/shared_weapon_targeting_computer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_weapon_targeting_computer, "object/draft_schematic/weapon/component/shared_weapon_targeting_computer.iff")
 
 object_draft_schematic_weapon_component_shared_weapon_trajectory_computer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1638,6 +1675,7 @@ object_draft_schematic_weapon_component_shared_weapon_trajectory_computer = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1673,4 +1711,4 @@ object_draft_schematic_weapon_component_shared_weapon_trajectory_computer = Shar
 	clientObjectCRC = 3402034090
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_component_shared_weapon_trajectory_computer, "object/draft_schematic/weapon/component/shared_weapon_trajectory_computer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_weapon_trajectory_computer, "object/draft_schematic/weapon/component/shared_weapon_trajectory_computer.iff")

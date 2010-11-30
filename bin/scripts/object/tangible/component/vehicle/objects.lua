@@ -48,6 +48,7 @@ object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler = SharedT
 	clientObjectCRC = 3865021906
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler, "object/tangible/component/vehicle/shared_adv_hvy_blaster_power_handler.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler, "object/tangible/component/vehicle/shared_adv_hvy_blaster_power_handler.iff")
 
 object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -101,6 +102,7 @@ object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech = SharedTa
 	clientObjectCRC = 1510776729
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech, "object/tangible/component/vehicle/shared_adv_hvy_projectile_feed_mech.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech, "object/tangible/component/vehicle/shared_adv_hvy_projectile_feed_mech.iff")
 
 object_tangible_component_vehicle_shared_adv_vehicle_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_installation_lg.apt",
@@ -154,6 +156,7 @@ object_tangible_component_vehicle_shared_adv_vehicle_module = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_component_vehicle_shared_adv_vehicle_module = SharedTangibleObje
 	clientObjectCRC = 1581441816
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_vehicle_module, "object/tangible/component/vehicle/shared_adv_vehicle_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_vehicle_module, "object/tangible/component/vehicle/shared_adv_vehicle_module.iff")
 
 object_tangible_component_vehicle_shared_adv_vehicle_structure_frame = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_structure_module.apt",
@@ -207,6 +210,7 @@ object_tangible_component_vehicle_shared_adv_vehicle_structure_frame = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_component_vehicle_shared_adv_vehicle_structure_frame = SharedTan
 	clientObjectCRC = 786572723
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_vehicle_structure_frame, "object/tangible/component/vehicle/shared_adv_vehicle_structure_frame.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_vehicle_structure_frame, "object/tangible/component/vehicle/shared_adv_vehicle_structure_frame.iff")
 
 object_tangible_component_vehicle_shared_adv_warhead_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
@@ -260,6 +264,7 @@ object_tangible_component_vehicle_shared_adv_warhead_launcher = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_component_vehicle_shared_adv_warhead_launcher = SharedTangibleOb
 	clientObjectCRC = 1382684326
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_warhead_launcher, "object/tangible/component/vehicle/shared_adv_warhead_launcher.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_warhead_launcher, "object/tangible/component/vehicle/shared_adv_warhead_launcher.iff")
 
 object_tangible_component_vehicle_shared_armor_panel_acid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -313,6 +318,7 @@ object_tangible_component_vehicle_shared_armor_panel_acid = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_component_vehicle_shared_armor_panel_acid = SharedTangibleObject
 	clientObjectCRC = 3241531623
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_acid, "object/tangible/component/vehicle/shared_armor_panel_acid.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_acid, "object/tangible/component/vehicle/shared_armor_panel_acid.iff")
 
 object_tangible_component_vehicle_shared_armor_panel_blast = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -366,6 +372,7 @@ object_tangible_component_vehicle_shared_armor_panel_blast = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_component_vehicle_shared_armor_panel_blast = SharedTangibleObjec
 	clientObjectCRC = 1069256646
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_blast, "object/tangible/component/vehicle/shared_armor_panel_blast.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_blast, "object/tangible/component/vehicle/shared_armor_panel_blast.iff")
 
 object_tangible_component_vehicle_shared_armor_panel_cold = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -419,6 +426,7 @@ object_tangible_component_vehicle_shared_armor_panel_cold = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_component_vehicle_shared_armor_panel_cold = SharedTangibleObject
 	clientObjectCRC = 1264295934
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_cold, "object/tangible/component/vehicle/shared_armor_panel_cold.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_cold, "object/tangible/component/vehicle/shared_armor_panel_cold.iff")
 
 object_tangible_component_vehicle_shared_armor_panel_electrical = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -472,6 +480,7 @@ object_tangible_component_vehicle_shared_armor_panel_electrical = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_component_vehicle_shared_armor_panel_electrical = SharedTangible
 	clientObjectCRC = 3441847905
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_electrical, "object/tangible/component/vehicle/shared_armor_panel_electrical.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_electrical, "object/tangible/component/vehicle/shared_armor_panel_electrical.iff")
 
 object_tangible_component_vehicle_shared_armor_panel_energy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -525,6 +534,7 @@ object_tangible_component_vehicle_shared_armor_panel_energy = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_component_vehicle_shared_armor_panel_energy = SharedTangibleObje
 	clientObjectCRC = 953836336
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_energy, "object/tangible/component/vehicle/shared_armor_panel_energy.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_energy, "object/tangible/component/vehicle/shared_armor_panel_energy.iff")
 
 object_tangible_component_vehicle_shared_armor_panel_heat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -578,6 +588,7 @@ object_tangible_component_vehicle_shared_armor_panel_heat = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_component_vehicle_shared_armor_panel_heat = SharedTangibleObject
 	clientObjectCRC = 3015233806
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_heat, "object/tangible/component/vehicle/shared_armor_panel_heat.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_heat, "object/tangible/component/vehicle/shared_armor_panel_heat.iff")
 
 object_tangible_component_vehicle_shared_armor_panel_kinetic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -631,6 +642,7 @@ object_tangible_component_vehicle_shared_armor_panel_kinetic = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_component_vehicle_shared_armor_panel_kinetic = SharedTangibleObj
 	clientObjectCRC = 2965773562
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_kinetic, "object/tangible/component/vehicle/shared_armor_panel_kinetic.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_kinetic, "object/tangible/component/vehicle/shared_armor_panel_kinetic.iff")
 
 object_tangible_component_vehicle_shared_armor_plating_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
@@ -684,6 +696,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk1 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk1 = SharedTangibleObjec
 	clientObjectCRC = 1681561469
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_plating_mk1, "object/tangible/component/vehicle/shared_armor_plating_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plating_mk1, "object/tangible/component/vehicle/shared_armor_plating_mk1.iff")
 
 object_tangible_component_vehicle_shared_armor_plating_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
@@ -737,6 +750,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk2 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk2 = SharedTangibleObjec
 	clientObjectCRC = 3207413738
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_plating_mk2, "object/tangible/component/vehicle/shared_armor_plating_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plating_mk2, "object/tangible/component/vehicle/shared_armor_plating_mk2.iff")
 
 object_tangible_component_vehicle_shared_armor_plating_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
@@ -790,6 +804,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk3 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk3 = SharedTangibleObjec
 	clientObjectCRC = 4129314919
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_plating_mk3, "object/tangible/component/vehicle/shared_armor_plating_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plating_mk3, "object/tangible/component/vehicle/shared_armor_plating_mk3.iff")
 
 object_tangible_component_vehicle_shared_auto_blaster_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_cannon.apt",
@@ -843,6 +858,7 @@ object_tangible_component_vehicle_shared_auto_blaster_cannon = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_component_vehicle_shared_auto_blaster_cannon = SharedTangibleObj
 	clientObjectCRC = 1669906342
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_auto_blaster_cannon, "object/tangible/component/vehicle/shared_auto_blaster_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_auto_blaster_cannon, "object/tangible/component/vehicle/shared_auto_blaster_cannon.iff")
 
 object_tangible_component_vehicle_shared_blaster_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_cannon.apt",
@@ -896,6 +912,7 @@ object_tangible_component_vehicle_shared_blaster_cannon = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_component_vehicle_shared_blaster_cannon = SharedTangibleObjectTe
 	clientObjectCRC = 3207704663
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_blaster_cannon, "object/tangible/component/vehicle/shared_blaster_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_blaster_cannon, "object/tangible/component/vehicle/shared_blaster_cannon.iff")
 
 object_tangible_component_vehicle_shared_civilian_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -948,6 +965,7 @@ object_tangible_component_vehicle_shared_civilian_a = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -990,7 +1008,7 @@ object_tangible_component_vehicle_shared_civilian_a = SharedTangibleObjectTempla
 	clientObjectCRC = 4196904136
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_a, "object/tangible/component/vehicle/shared_civilian_a.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_a, "object/tangible/component/vehicle/shared_civilian_a.iff")
 
 object_tangible_component_vehicle_shared_civilian_aa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -998,6 +1016,7 @@ object_tangible_component_vehicle_shared_civilian_aa = SharedTangibleObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1040,7 +1059,7 @@ object_tangible_component_vehicle_shared_civilian_aa = SharedTangibleObjectTempl
 	clientObjectCRC = 4241836654
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_aa, "object/tangible/component/vehicle/shared_civilian_aa.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_aa, "object/tangible/component/vehicle/shared_civilian_aa.iff")
 
 object_tangible_component_vehicle_shared_civilian_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -1048,6 +1067,7 @@ object_tangible_component_vehicle_shared_civilian_b = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1090,7 +1110,7 @@ object_tangible_component_vehicle_shared_civilian_b = SharedTangibleObjectTempla
 	clientObjectCRC = 556794975
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_b, "object/tangible/component/vehicle/shared_civilian_b.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_b, "object/tangible/component/vehicle/shared_civilian_b.iff")
 
 object_tangible_component_vehicle_shared_civilian_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -1098,6 +1118,7 @@ object_tangible_component_vehicle_shared_civilian_c = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1140,7 +1161,7 @@ object_tangible_component_vehicle_shared_civilian_c = SharedTangibleObjectTempla
 	clientObjectCRC = 1748853714
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_c, "object/tangible/component/vehicle/shared_civilian_c.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_c, "object/tangible/component/vehicle/shared_civilian_c.iff")
 
 object_tangible_component_vehicle_shared_civilian_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -1148,6 +1169,7 @@ object_tangible_component_vehicle_shared_civilian_d = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1190,7 +1212,7 @@ object_tangible_component_vehicle_shared_civilian_d = SharedTangibleObjectTempla
 	clientObjectCRC = 2480818374
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_d, "object/tangible/component/vehicle/shared_civilian_d.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_d, "object/tangible/component/vehicle/shared_civilian_d.iff")
 
 object_tangible_component_vehicle_shared_civilian_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -1198,6 +1220,7 @@ object_tangible_component_vehicle_shared_civilian_e = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1240,7 +1263,7 @@ object_tangible_component_vehicle_shared_civilian_e = SharedTangibleObjectTempla
 	clientObjectCRC = 3671273291
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_e, "object/tangible/component/vehicle/shared_civilian_e.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_e, "object/tangible/component/vehicle/shared_civilian_e.iff")
 
 object_tangible_component_vehicle_shared_command_center = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_command_console_s01.apt",
@@ -1249,6 +1272,7 @@ object_tangible_component_vehicle_shared_command_center = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1293,7 +1317,7 @@ object_tangible_component_vehicle_shared_command_center = SharedTangibleObjectTe
 	clientObjectCRC = 4011041142
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_command_center, "object/tangible/component/vehicle/shared_command_center.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_command_center, "object/tangible/component/vehicle/shared_command_center.iff")
 
 object_tangible_component_vehicle_shared_disperser = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_turbo_laser.apt",
@@ -1302,6 +1326,7 @@ object_tangible_component_vehicle_shared_disperser = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1346,7 +1371,7 @@ object_tangible_component_vehicle_shared_disperser = SharedTangibleObjectTemplat
 	clientObjectCRC = 2526466923
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_disperser, "object/tangible/component/vehicle/shared_disperser.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_disperser, "object/tangible/component/vehicle/shared_disperser.iff")
 
 object_tangible_component_vehicle_shared_dx_disruptor_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ion_cannon.apt",
@@ -1355,6 +1380,7 @@ object_tangible_component_vehicle_shared_dx_disruptor_array = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1399,7 +1425,7 @@ object_tangible_component_vehicle_shared_dx_disruptor_array = SharedTangibleObje
 	clientObjectCRC = 1758294677
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_dx_disruptor_array, "object/tangible/component/vehicle/shared_dx_disruptor_array.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_dx_disruptor_array, "object/tangible/component/vehicle/shared_dx_disruptor_array.iff")
 
 object_tangible_component_vehicle_shared_extended_fuel_tanks = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -1408,6 +1434,7 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1452,7 +1479,7 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks = SharedTangibleObj
 	clientObjectCRC = 2423684763
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_extended_fuel_tanks, "object/tangible/component/vehicle/shared_extended_fuel_tanks.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_extended_fuel_tanks, "object/tangible/component/vehicle/shared_extended_fuel_tanks.iff")
 
 object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -1461,6 +1488,7 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1505,7 +1533,7 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy = SharedTangibl
 	clientObjectCRC = 1508560129
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy, "object/tangible/component/vehicle/shared_extended_fuel_tanks_hvy.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy, "object/tangible/component/vehicle/shared_extended_fuel_tanks_hvy.iff")
 
 object_tangible_component_vehicle_shared_fuel_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -1514,6 +1542,7 @@ object_tangible_component_vehicle_shared_fuel_a = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1558,7 +1587,7 @@ object_tangible_component_vehicle_shared_fuel_a = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 875276992
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_a, "object/tangible/component/vehicle/shared_fuel_a.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_a, "object/tangible/component/vehicle/shared_fuel_a.iff")
 
 object_tangible_component_vehicle_shared_fuel_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -1567,6 +1596,7 @@ object_tangible_component_vehicle_shared_fuel_b = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1611,7 +1641,7 @@ object_tangible_component_vehicle_shared_fuel_b = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 4013687383
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_b, "object/tangible/component/vehicle/shared_fuel_b.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_b, "object/tangible/component/vehicle/shared_fuel_b.iff")
 
 object_tangible_component_vehicle_shared_fuel_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -1620,6 +1650,7 @@ object_tangible_component_vehicle_shared_fuel_c = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1664,7 +1695,7 @@ object_tangible_component_vehicle_shared_fuel_c = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2788255194
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_c, "object/tangible/component/vehicle/shared_fuel_c.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_c, "object/tangible/component/vehicle/shared_fuel_c.iff")
 
 object_tangible_component_vehicle_shared_fuel_cell_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -1673,6 +1704,7 @@ object_tangible_component_vehicle_shared_fuel_cell_a = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1717,7 +1749,7 @@ object_tangible_component_vehicle_shared_fuel_cell_a = SharedTangibleObjectTempl
 	clientObjectCRC = 2771769499
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_cell_a, "object/tangible/component/vehicle/shared_fuel_cell_a.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_a, "object/tangible/component/vehicle/shared_fuel_cell_a.iff")
 
 object_tangible_component_vehicle_shared_fuel_cell_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -1726,6 +1758,7 @@ object_tangible_component_vehicle_shared_fuel_cell_b = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1770,7 +1803,7 @@ object_tangible_component_vehicle_shared_fuel_cell_b = SharedTangibleObjectTempl
 	clientObjectCRC = 2116186124
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_cell_b, "object/tangible/component/vehicle/shared_fuel_cell_b.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_b, "object/tangible/component/vehicle/shared_fuel_cell_b.iff")
 
 object_tangible_component_vehicle_shared_fuel_cell_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -1779,6 +1812,7 @@ object_tangible_component_vehicle_shared_fuel_cell_c = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1823,7 +1857,7 @@ object_tangible_component_vehicle_shared_fuel_cell_c = SharedTangibleObjectTempl
 	clientObjectCRC = 925833089
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_cell_c, "object/tangible/component/vehicle/shared_fuel_cell_c.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_c, "object/tangible/component/vehicle/shared_fuel_cell_c.iff")
 
 object_tangible_component_vehicle_shared_hvy_blaster_power_handler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -1832,6 +1866,7 @@ object_tangible_component_vehicle_shared_hvy_blaster_power_handler = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1876,7 +1911,7 @@ object_tangible_component_vehicle_shared_hvy_blaster_power_handler = SharedTangi
 	clientObjectCRC = 1799983183
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_hvy_blaster_power_handler, "object/tangible/component/vehicle/shared_hvy_blaster_power_handler.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_hvy_blaster_power_handler, "object/tangible/component/vehicle/shared_hvy_blaster_power_handler.iff")
 
 object_tangible_component_vehicle_shared_hvy_projectile_feed_mech = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
@@ -1885,6 +1920,7 @@ object_tangible_component_vehicle_shared_hvy_projectile_feed_mech = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1929,7 +1965,7 @@ object_tangible_component_vehicle_shared_hvy_projectile_feed_mech = SharedTangib
 	clientObjectCRC = 873571042
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_hvy_projectile_feed_mech, "object/tangible/component/vehicle/shared_hvy_projectile_feed_mech.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_hvy_projectile_feed_mech, "object/tangible/component/vehicle/shared_hvy_projectile_feed_mech.iff")
 
 object_tangible_component_vehicle_shared_laser_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon.apt",
@@ -1938,6 +1974,7 @@ object_tangible_component_vehicle_shared_laser_cannon = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1982,7 +2019,7 @@ object_tangible_component_vehicle_shared_laser_cannon = SharedTangibleObjectTemp
 	clientObjectCRC = 23811175
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_laser_cannon, "object/tangible/component/vehicle/shared_laser_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_laser_cannon, "object/tangible/component/vehicle/shared_laser_cannon.iff")
 
 object_tangible_component_vehicle_shared_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_foundation_military_heavy.apt",
@@ -1991,6 +2028,7 @@ object_tangible_component_vehicle_shared_launcher = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2035,7 +2073,7 @@ object_tangible_component_vehicle_shared_launcher = SharedTangibleObjectTemplate
 	clientObjectCRC = 2036478700
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_launcher, "object/tangible/component/vehicle/shared_launcher.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_launcher, "object/tangible/component/vehicle/shared_launcher.iff")
 
 object_tangible_component_vehicle_shared_launcher_pod = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_foundation_military_heavy.apt",
@@ -2044,6 +2082,7 @@ object_tangible_component_vehicle_shared_launcher_pod = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2088,7 +2127,7 @@ object_tangible_component_vehicle_shared_launcher_pod = SharedTangibleObjectTemp
 	clientObjectCRC = 3252736157
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_launcher_pod, "object/tangible/component/vehicle/shared_launcher_pod.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_launcher_pod, "object/tangible/component/vehicle/shared_launcher_pod.iff")
 
 object_tangible_component_vehicle_shared_mass_driver = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon_gun.apt",
@@ -2097,6 +2136,7 @@ object_tangible_component_vehicle_shared_mass_driver = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2141,7 +2181,7 @@ object_tangible_component_vehicle_shared_mass_driver = SharedTangibleObjectTempl
 	clientObjectCRC = 3394427130
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_mass_driver, "object/tangible/component/vehicle/shared_mass_driver.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_mass_driver, "object/tangible/component/vehicle/shared_mass_driver.iff")
 
 object_tangible_component_vehicle_shared_military_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -2149,6 +2189,7 @@ object_tangible_component_vehicle_shared_military_a = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2191,7 +2232,7 @@ object_tangible_component_vehicle_shared_military_a = SharedTangibleObjectTempla
 	clientObjectCRC = 3996260675
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_a, "object/tangible/component/vehicle/shared_military_a.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_a, "object/tangible/component/vehicle/shared_military_a.iff")
 
 object_tangible_component_vehicle_shared_military_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -2199,6 +2240,7 @@ object_tangible_component_vehicle_shared_military_b = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2241,7 +2283,7 @@ object_tangible_component_vehicle_shared_military_b = SharedTangibleObjectTempla
 	clientObjectCRC = 891662804
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_b, "object/tangible/component/vehicle/shared_military_b.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_b, "object/tangible/component/vehicle/shared_military_b.iff")
 
 object_tangible_component_vehicle_shared_military_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -2249,6 +2291,7 @@ object_tangible_component_vehicle_shared_military_c = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2291,7 +2334,7 @@ object_tangible_component_vehicle_shared_military_c = SharedTangibleObjectTempla
 	clientObjectCRC = 2083051097
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_c, "object/tangible/component/vehicle/shared_military_c.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_c, "object/tangible/component/vehicle/shared_military_c.iff")
 
 object_tangible_component_vehicle_shared_military_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -2299,6 +2342,7 @@ object_tangible_component_vehicle_shared_military_d = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2341,7 +2385,7 @@ object_tangible_component_vehicle_shared_military_d = SharedTangibleObjectTempla
 	clientObjectCRC = 2278292813
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_d, "object/tangible/component/vehicle/shared_military_d.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_d, "object/tangible/component/vehicle/shared_military_d.iff")
 
 object_tangible_component_vehicle_shared_military_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
@@ -2349,6 +2393,7 @@ object_tangible_component_vehicle_shared_military_e = SharedTangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2391,7 +2436,7 @@ object_tangible_component_vehicle_shared_military_e = SharedTangibleObjectTempla
 	clientObjectCRC = 3469122240
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_e, "object/tangible/component/vehicle/shared_military_e.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_e, "object/tangible/component/vehicle/shared_military_e.iff")
 
 object_tangible_component_vehicle_shared_mini_launcher_pod = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_foundation_military_heavy.apt",
@@ -2400,6 +2445,7 @@ object_tangible_component_vehicle_shared_mini_launcher_pod = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2444,7 +2490,7 @@ object_tangible_component_vehicle_shared_mini_launcher_pod = SharedTangibleObjec
 	clientObjectCRC = 679614064
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_mini_launcher_pod, "object/tangible/component/vehicle/shared_mini_launcher_pod.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_mini_launcher_pod, "object/tangible/component/vehicle/shared_mini_launcher_pod.iff")
 
 object_tangible_component_vehicle_shared_proton_torpedo_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_heavy.apt",
@@ -2453,6 +2499,7 @@ object_tangible_component_vehicle_shared_proton_torpedo_array = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2497,7 +2544,7 @@ object_tangible_component_vehicle_shared_proton_torpedo_array = SharedTangibleOb
 	clientObjectCRC = 1469492977
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_proton_torpedo_array, "object/tangible/component/vehicle/shared_proton_torpedo_array.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_proton_torpedo_array, "object/tangible/component/vehicle/shared_proton_torpedo_array.iff")
 
 object_tangible_component_vehicle_shared_reactor_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -2506,6 +2553,7 @@ object_tangible_component_vehicle_shared_reactor_unit = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2550,7 +2598,7 @@ object_tangible_component_vehicle_shared_reactor_unit = SharedTangibleObjectTemp
 	clientObjectCRC = 3412711253
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_reactor_unit, "object/tangible/component/vehicle/shared_reactor_unit.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_reactor_unit, "object/tangible/component/vehicle/shared_reactor_unit.iff")
 
 object_tangible_component_vehicle_shared_storage_bay = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cloning_tube.apt",
@@ -2559,6 +2607,7 @@ object_tangible_component_vehicle_shared_storage_bay = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2603,7 +2652,7 @@ object_tangible_component_vehicle_shared_storage_bay = SharedTangibleObjectTempl
 	clientObjectCRC = 193714292
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_storage_bay, "object/tangible/component/vehicle/shared_storage_bay.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_storage_bay, "object/tangible/component/vehicle/shared_storage_bay.iff")
 
 object_tangible_component_vehicle_shared_structural_reinforcements = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_armor_sm.apt",
@@ -2612,6 +2661,7 @@ object_tangible_component_vehicle_shared_structural_reinforcements = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2656,7 +2706,7 @@ object_tangible_component_vehicle_shared_structural_reinforcements = SharedTangi
 	clientObjectCRC = 1158767213
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_structural_reinforcements, "object/tangible/component/vehicle/shared_structural_reinforcements.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_structural_reinforcements, "object/tangible/component/vehicle/shared_structural_reinforcements.iff")
 
 object_tangible_component_vehicle_shared_structural_reinforcements_hvy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_armor_lg.apt",
@@ -2665,6 +2715,7 @@ object_tangible_component_vehicle_shared_structural_reinforcements_hvy = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2709,7 +2760,7 @@ object_tangible_component_vehicle_shared_structural_reinforcements_hvy = SharedT
 	clientObjectCRC = 2107974846
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_structural_reinforcements_hvy, "object/tangible/component/vehicle/shared_structural_reinforcements_hvy.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_structural_reinforcements_hvy, "object/tangible/component/vehicle/shared_structural_reinforcements_hvy.iff")
 
 object_tangible_component_vehicle_shared_veh_power_plant_av21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
@@ -2718,6 +2769,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_av21 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2762,7 +2814,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_av21 = SharedTangibleOb
 	clientObjectCRC = 988089930
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_power_plant_av21, "object/tangible/component/vehicle/shared_veh_power_plant_av21.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_plant_av21, "object/tangible/component/vehicle/shared_veh_power_plant_av21.iff")
 
 object_tangible_component_vehicle_shared_veh_power_plant_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
@@ -2771,6 +2823,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk1 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2815,7 +2868,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk1 = SharedTangibleObj
 	clientObjectCRC = 2595754938
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk1, "object/tangible/component/vehicle/shared_veh_power_plant_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk1, "object/tangible/component/vehicle/shared_veh_power_plant_mk1.iff")
 
 object_tangible_component_vehicle_shared_veh_power_plant_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
@@ -2824,6 +2877,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk2 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2868,7 +2922,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk2 = SharedTangibleObj
 	clientObjectCRC = 1102035757
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk2, "object/tangible/component/vehicle/shared_veh_power_plant_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk2, "object/tangible/component/vehicle/shared_veh_power_plant_mk2.iff")
 
 object_tangible_component_vehicle_shared_veh_power_plant_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
@@ -2877,6 +2931,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk3 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2921,7 +2976,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk3 = SharedTangibleObj
 	clientObjectCRC = 144891040
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk3, "object/tangible/component/vehicle/shared_veh_power_plant_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk3, "object/tangible/component/vehicle/shared_veh_power_plant_mk3.iff")
 
 object_tangible_component_vehicle_shared_veh_shield_generator_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -2930,6 +2985,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk1 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2974,7 +3030,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk1 = SharedTangib
 	clientObjectCRC = 1124134870
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk1, "object/tangible/component/vehicle/shared_veh_shield_generator_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk1, "object/tangible/component/vehicle/shared_veh_shield_generator_mk1.iff")
 
 object_tangible_component_vehicle_shared_veh_shield_generator_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -2983,6 +3039,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk2 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3027,7 +3084,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk2 = SharedTangib
 	clientObjectCRC = 2551662401
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk2, "object/tangible/component/vehicle/shared_veh_shield_generator_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk2, "object/tangible/component/vehicle/shared_veh_shield_generator_mk2.iff")
 
 object_tangible_component_vehicle_shared_veh_shield_generator_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -3036,6 +3093,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk3 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3080,7 +3138,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk3 = SharedTangib
 	clientObjectCRC = 3508150476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk3, "object/tangible/component/vehicle/shared_veh_shield_generator_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk3, "object/tangible/component/vehicle/shared_veh_shield_generator_mk3.iff")
 
 object_tangible_component_vehicle_shared_vehicle_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_installation_lg.apt",
@@ -3089,6 +3147,7 @@ object_tangible_component_vehicle_shared_vehicle_module = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3133,7 +3192,7 @@ object_tangible_component_vehicle_shared_vehicle_module = SharedTangibleObjectTe
 	clientObjectCRC = 2537869251
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_vehicle_module, "object/tangible/component/vehicle/shared_vehicle_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_vehicle_module, "object/tangible/component/vehicle/shared_vehicle_module.iff")
 
 object_tangible_component_vehicle_shared_vehicle_structure_frame = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_structure_module.apt",
@@ -3142,6 +3201,7 @@ object_tangible_component_vehicle_shared_vehicle_structure_frame = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3186,7 +3246,7 @@ object_tangible_component_vehicle_shared_vehicle_structure_frame = SharedTangibl
 	clientObjectCRC = 2570010963
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_vehicle_structure_frame, "object/tangible/component/vehicle/shared_vehicle_structure_frame.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_vehicle_structure_frame, "object/tangible/component/vehicle/shared_vehicle_structure_frame.iff")
 
 object_tangible_component_vehicle_shared_warhead_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
@@ -3195,6 +3255,7 @@ object_tangible_component_vehicle_shared_warhead_launcher = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3239,7 +3300,7 @@ object_tangible_component_vehicle_shared_warhead_launcher = SharedTangibleObject
 	clientObjectCRC = 4289490254
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_warhead_launcher, "object/tangible/component/vehicle/shared_warhead_launcher.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_warhead_launcher, "object/tangible/component/vehicle/shared_warhead_launcher.iff")
 
 object_tangible_component_vehicle_shared_weapon_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_heavy_stabilization_unit.apt",
@@ -3248,6 +3309,7 @@ object_tangible_component_vehicle_shared_weapon_array = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3292,7 +3354,7 @@ object_tangible_component_vehicle_shared_weapon_array = SharedTangibleObjectTemp
 	clientObjectCRC = 4201896584
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_weapon_array, "object/tangible/component/vehicle/shared_weapon_array.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_weapon_array, "object/tangible/component/vehicle/shared_weapon_array.iff")
 
 object_tangible_component_vehicle_shared_weapon_link = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_mount.apt",
@@ -3301,6 +3363,7 @@ object_tangible_component_vehicle_shared_weapon_link = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3345,4 +3408,4 @@ object_tangible_component_vehicle_shared_weapon_link = SharedTangibleObjectTempl
 	clientObjectCRC = 1550314035
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_weapon_link, "object/tangible/component/vehicle/shared_weapon_link.iff")
+ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_weapon_link, "object/tangible/component/vehicle/shared_weapon_link.iff")

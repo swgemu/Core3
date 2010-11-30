@@ -48,6 +48,7 @@ object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8221,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3742650204
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_gem_shared_armor, "object/tangible/gem/shared_armor.iff")
+ObjectTemplates:addTemplate(object_tangible_gem_shared_armor, "object/tangible/gem/shared_armor.iff")
 
 object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -101,6 +102,7 @@ object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8221,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3237805620
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_gem_shared_clothing, "object/tangible/gem/shared_clothing.iff")
+ObjectTemplates:addTemplate(object_tangible_gem_shared_clothing, "object/tangible/gem/shared_clothing.iff")
 
 object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -154,6 +156,7 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 330070250
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_gem_shared_default, "object/tangible/gem/shared_default.iff")
+ObjectTemplates:addTemplate(object_tangible_gem_shared_default, "object/tangible/gem/shared_default.iff")

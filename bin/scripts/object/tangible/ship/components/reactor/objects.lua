@@ -48,6 +48,7 @@ object_tangible_ship_components_reactor_rct_tiefighter_basic = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_components_reactor_rct_tiefighter_basic = SharedTangibleObj
 	clientObjectCRC = 1363026125
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_rct_tiefighter_basic, "object/tangible/ship/components/reactor/rct_tiefighter_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_tiefighter_basic, "object/tangible/ship/components/reactor/rct_tiefighter_basic.iff")
 
 object_tangible_ship_components_reactor_rct_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_components_reactor_rct_z95_basic = SharedTangibleObjectTemp
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_components_reactor_rct_z95_basic = SharedTangibleObjectTemp
 	clientObjectCRC = 3484082121
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_rct_z95_basic, "object/tangible/ship/components/reactor/rct_z95_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_z95_basic, "object/tangible/ship/components/reactor/rct_z95_basic.iff")
 
 object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder = SharedT
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder = SharedT
 	clientObjectCRC = 1838799948
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder, "object/tangible/ship/components/reactor/shared_rct_armek_phase_grinder.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder, "object/tangible/ship/components/reactor/shared_rct_armek_phase_grinder.iff")
 
 object_tangible_ship_components_reactor_shared_rct_armek_super_collider = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_super_collider = Shared
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_super_collider = Shared
 	clientObjectCRC = 655443437
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_armek_super_collider, "object/tangible/ship/components/reactor/shared_rct_armek_super_collider.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_armek_super_collider, "object/tangible/ship/components/reactor/shared_rct_armek_super_collider.iff")
 
 object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider = Shared
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider = Shared
 	clientObjectCRC = 479861884
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider, "object/tangible/ship/components/reactor/shared_rct_armek_ultra_collider.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider, "object/tangible/ship/components/reactor/shared_rct_armek_ultra_collider.iff")
 
 object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3 = Shar
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3 = Shar
 	clientObjectCRC = 2144194829
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3, "object/tangible/ship/components/reactor/shared_rct_corellian_modified_bt3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3, "object/tangible/ship/components/reactor/shared_rct_corellian_modified_bt3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5 = Shar
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5 = Shar
 	clientObjectCRC = 3441663380
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5, "object/tangible/ship/components/reactor/shared_rct_corellian_modified_bt5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5, "object/tangible/ship/components/reactor/shared_rct_corellian_modified_bt5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_advanced = SharedTangi
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_advanced = SharedTangi
 	clientObjectCRC = 4106488287
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_advanced, "object/tangible/ship/components/reactor/shared_rct_cygnus_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_advanced, "object/tangible/ship/components/reactor/shared_rct_cygnus_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk1 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk1 = SharedTangibleOb
 	clientObjectCRC = 2061868907
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_mk1, "object/tangible/ship/components/reactor/shared_rct_cygnus_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_mk1, "object/tangible/ship/components/reactor/shared_rct_cygnus_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk2 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk2 = SharedTangibleOb
 	clientObjectCRC = 2717005820
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_mk2, "object/tangible/ship/components/reactor/shared_rct_cygnus_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_mk2, "object/tangible/ship/components/reactor/shared_rct_cygnus_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2 = Sha
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2 = Sha
 	clientObjectCRC = 2482451537
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2, "object/tangible/ship/components/reactor/shared_rct_cygnus_supercharged_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2, "object/tangible/ship/components/reactor/shared_rct_cygnus_supercharged_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1 = SharedTang
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1 = SharedTang
 	clientObjectCRC = 2632377171
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1, "object/tangible/ship/components/reactor/shared_rct_cygnus_tuned_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1, "object/tangible/ship/components/reactor/shared_rct_cygnus_tuned_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_m
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_m
 	clientObjectCRC = 274444164
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_mk1, "object/tangible/ship/components/reactor/shared_rct_freitek_improved_powerhouse_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_mk1, "object/tangible/ship/components/reactor/shared_rct_freitek_improved_powerhouse_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_level1 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_level1 = SharedTangib
 	clientObjectCRC = 2089644371
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_level1, "object/tangible/ship/components/reactor/shared_rct_freitek_level1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_level1, "object/tangible/ship/components/reactor/shared_rct_freitek_level1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -790,6 +804,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1 = 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1 = 
 	clientObjectCRC = 3762511133
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1, "object/tangible/ship/components/reactor/shared_rct_freitek_performance_level1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1, "object/tangible/ship/components/reactor/shared_rct_freitek_performance_level1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1 = Shar
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1 = Shar
 	clientObjectCRC = 1756278622
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2 = Shar
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2 = Shar
 	clientObjectCRC = 3015247817
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3 = Shar
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3 = Shar
 	clientObjectCRC = 4206125124
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_ship_components_reactor_shared_rct_generic = SharedTangibleObjec
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_ship_components_reactor_shared_rct_generic = SharedTangibleObjec
 	clientObjectCRC = 393073933
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_generic, "object/tangible/ship/components/reactor/shared_rct_generic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_generic, "object/tangible/ship/components/reactor/shared_rct_generic.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_advanced = SharedTangib
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_advanced = SharedTangib
 	clientObjectCRC = 469546362
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_advanced, "object/tangible/ship/components/reactor/shared_rct_incom_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_advanced, "object/tangible/ship/components/reactor/shared_rct_incom_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1108,6 +1128,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2 = SharedTa
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2 = SharedTa
 	clientObjectCRC = 273987032
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2, "object/tangible/ship/components/reactor/shared_rct_incom_custom_mark2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2, "object/tangible/ship/components/reactor/shared_rct_incom_custom_mark2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1161,6 +1182,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_elite = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_elite = SharedTangibleO
 	clientObjectCRC = 1003263168
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_elite, "object/tangible/ship/components/reactor/shared_rct_incom_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_elite, "object/tangible/ship/components/reactor/shared_rct_incom_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1214,6 +1236,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1 = Shared
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1 = Shared
 	clientObjectCRC = 3090093197
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1, "object/tangible/ship/components/reactor/shared_rct_incom_improved_mark1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1, "object/tangible/ship/components/reactor/shared_rct_incom_improved_mark1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1267,6 +1290,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark1 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark1 = SharedTangibleO
 	clientObjectCRC = 2674049481
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark1, "object/tangible/ship/components/reactor/shared_rct_incom_mark1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark1, "object/tangible/ship/components/reactor/shared_rct_incom_mark1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1320,6 +1344,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark2 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark2 = SharedTangibleO
 	clientObjectCRC = 1148545374
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark2, "object/tangible/ship/components/reactor/shared_rct_incom_mark2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark2, "object/tangible/ship/components/reactor/shared_rct_incom_mark2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1373,6 +1398,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark3 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark3 = SharedTangibleO
 	clientObjectCRC = 225971923
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark3, "object/tangible/ship/components/reactor/shared_rct_incom_mark3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark3, "object/tangible/ship/components/reactor/shared_rct_incom_mark3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark4 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark4 = SharedTangibleO
 	clientObjectCRC = 4137362887
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark4, "object/tangible/ship/components/reactor/shared_rct_incom_mark4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark4, "object/tangible/ship/components/reactor/shared_rct_incom_mark4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1479,6 +1506,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark5 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark5 = SharedTangibleO
 	clientObjectCRC = 3214295626
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark5, "object/tangible/ship/components/reactor/shared_rct_incom_mark5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark5, "object/tangible/ship/components/reactor/shared_rct_incom_mark5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1532,6 +1560,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermast
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermast
 	clientObjectCRC = 3711183726
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_kdy_powermaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_kdy_powermaster.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_ops = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1585,6 +1614,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_op
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_op
 	clientObjectCRC = 3454365984
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_ops, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_sds_secret_ops.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_ops, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_sds_secret_ops.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1638,6 +1668,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_f
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_f
 	clientObjectCRC = 159411222
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_forces, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_sfs_special_forces.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_forces, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_sfs_special_forces.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1691,6 +1722,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven
 	clientObjectCRC = 3518404345
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven_elite, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_incom_overdriven_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven_elite, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_incom_overdriven_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_gorax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1744,6 +1776,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_
 	clientObjectCRC = 110330195
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_gorax, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_mandal_modified_gorax.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_gorax, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_mandal_modified_gorax.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_output_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_outpu
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_outpu
 	clientObjectCRC = 1643853797
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_output_experimental, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_slayn_high_output_experimental.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_output_experimental, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_slayn_high_output_experimental.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1850,6 +1884,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova = 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova = 
 	clientObjectCRC = 1619443827
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova, "object/tangible/ship/components/reactor/shared_rct_koensayr_charged_supernova.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova, "object/tangible/ship/components/reactor/shared_rct_koensayr_charged_supernova.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1903,6 +1938,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_m
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_m
 	clientObjectCRC = 4212259517
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_mk2, "object/tangible/ship/components/reactor/shared_rct_koensayr_enhanced_supernova_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_mk2, "object/tangible/ship/components/reactor/shared_rct_koensayr_enhanced_supernova_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1956,6 +1992,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova = SharedTa
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova = SharedTa
 	clientObjectCRC = 2993433692
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2009,6 +2046,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced =
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced =
 	clientObjectCRC = 4233117404
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2062,6 +2100,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2 = Shar
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2 = Shar
 	clientObjectCRC = 1605967841
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2115,6 +2154,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3 = Shar
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3 = Shar
 	clientObjectCRC = 380926060
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_mk3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2168,6 +2208,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11 = SharedTangi
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11 = SharedTangi
 	clientObjectCRC = 396907608
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11, "object/tangible/ship/components/reactor/shared_rct_kse_custom_lx11.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11, "object/tangible/ship/components/reactor/shared_rct_kse_custom_lx11.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_lx11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2221,6 +2262,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx11 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx11 = SharedTangibleObje
 	clientObjectCRC = 3490595180
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_lx11, "object/tangible/ship/components/reactor/shared_rct_kse_lx11.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_lx11, "object/tangible/ship/components/reactor/shared_rct_kse_lx11.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_lx21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2274,6 +2316,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx21 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx21 = SharedTangibleObje
 	clientObjectCRC = 4252391140
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_lx21, "object/tangible/ship/components/reactor/shared_rct_kse_lx21.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_lx21, "object/tangible/ship/components/reactor/shared_rct_kse_lx21.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_rct_x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2327,6 +2370,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_x = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_x = SharedTangibleObj
 	clientObjectCRC = 379835158
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_rct_x, "object/tangible/ship/components/reactor/shared_rct_kse_rct_x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_rct_x, "object/tangible/ship/components/reactor/shared_rct_kse_rct_x.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_rct_z = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2380,6 +2424,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_z = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_z = SharedTangibleObj
 	clientObjectCRC = 2226723852
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_rct_z, "object/tangible/ship/components/reactor/shared_rct_kse_rct_z.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_rct_z, "object/tangible/ship/components/reactor/shared_rct_kse_rct_z.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_supreme = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2433,6 +2478,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_supreme = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_supreme = SharedTangibleO
 	clientObjectCRC = 3961940522
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_supreme, "object/tangible/ship/components/reactor/shared_rct_kse_supreme.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_supreme, "object/tangible/ship/components/reactor/shared_rct_kse_supreme.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2486,6 +2532,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced = SharedTa
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced = SharedTa
 	clientObjectCRC = 3433957122
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced, "object/tangible/ship/components/reactor/shared_rct_mandal_dx_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced, "object/tangible/ship/components/reactor/shared_rct_mandal_dx_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2539,6 +2586,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr = SharedTangibleOb
 	clientObjectCRC = 917671788
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2592,6 +2640,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr2 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr2 = SharedTangibleO
 	clientObjectCRC = 1602175062
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr2, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr2, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2645,6 +2694,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr3 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr3 = SharedTangibleO
 	clientObjectCRC = 376580059
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr3, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr3, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2698,6 +2748,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr4 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr4 = SharedTangibleO
 	clientObjectCRC = 3985706191
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr4, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr4, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2751,6 +2802,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr5 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr5 = SharedTangibleO
 	clientObjectCRC = 2761714498
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr5, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr5, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2804,6 +2856,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr6 = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr6 = SharedTangibleO
 	clientObjectCRC = 2139866069
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr6, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr6.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr6, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr6.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandalor_gorax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2857,6 +2910,7 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax = SharedTangib
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax = SharedTangib
 	clientObjectCRC = 2046773021
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandalor_gorax, "object/tangible/ship/components/reactor/shared_rct_mandalor_gorax.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandalor_gorax, "object/tangible/ship/components/reactor/shared_rct_mandalor_gorax.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2910,6 +2964,7 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite = Shared
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite = Shared
 	clientObjectCRC = 3008300066
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite, "object/tangible/ship/components/reactor/shared_rct_mandalor_gorax_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite, "object/tangible/ship/components/reactor/shared_rct_mandalor_gorax_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_advanced_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -2963,6 +3018,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_a
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_a
 	clientObjectCRC = 2253318306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_advanced_military, "object/tangible/ship/components/reactor/shared_rct_mission_reward_imperial_rss_advanced_military.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_advanced_military, "object/tangible/ship/components/reactor/shared_rct_mission_reward_imperial_rss_advanced_military.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_high_output = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3016,6 +3072,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_h
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_h
 	clientObjectCRC = 1448525431
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_high_output, "object/tangible/ship/components/reactor/shared_rct_mission_reward_imperial_sds_high_output.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_high_output, "object/tangible/ship/components/reactor/shared_rct_mission_reward_imperial_sds_high_output.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3069,6 +3126,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro
 	clientObjectCRC = 2954387594
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro_military, "object/tangible/ship/components/reactor/shared_rct_mission_reward_neutral_subpro_military.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro_military, "object/tangible/ship/components/reactor/shared_rct_mission_reward_neutral_subpro_military.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hypervortex = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3122,6 +3180,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hy
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hy
 	clientObjectCRC = 2609742784
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hypervortex, "object/tangible/ship/components/reactor/shared_rct_mission_reward_rebel_slayn_hypervortex.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hypervortex, "object/tangible/ship/components/reactor/shared_rct_mission_reward_rebel_slayn_hypervortex.iff")
 
 object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3175,6 +3234,7 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1 = Shared
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1 = Shared
 	clientObjectCRC = 4111600702
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1, "object/tangible/ship/components/reactor/shared_rct_moncal_overdriver_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1, "object/tangible/ship/components/reactor/shared_rct_moncal_overdriver_s1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3228,6 +3288,7 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2 = Shared
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2 = Shared
 	clientObjectCRC = 772121769
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2, "object/tangible/ship/components/reactor/shared_rct_moncal_overdriver_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2, "object/tangible/ship/components/reactor/shared_rct_moncal_overdriver_s2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_prototype_reactor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3281,6 +3342,7 @@ object_tangible_ship_components_reactor_shared_rct_prototype_reactor = SharedTan
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_ship_components_reactor_shared_rct_prototype_reactor = SharedTan
 	clientObjectCRC = 2835039376
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_prototype_reactor, "object/tangible/ship/components/reactor/shared_rct_prototype_reactor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_prototype_reactor, "object/tangible/ship/components/reactor/shared_rct_prototype_reactor.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3334,6 +3396,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type5 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type5 = SharedTangibl
 	clientObjectCRC = 2057207911
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type5, "object/tangible/ship/components/reactor/shared_rct_rendili_type5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type5, "object/tangible/ship/components/reactor/shared_rct_rendili_type5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3387,6 +3450,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type7 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type7 = SharedTangibl
 	clientObjectCRC = 3900985213
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type7, "object/tangible/ship/components/reactor/shared_rct_rendili_type7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type7, "object/tangible/ship/components/reactor/shared_rct_rendili_type7.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3440,6 +3504,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite = Shared
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite = Shared
 	clientObjectCRC = 1521298929
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite, "object/tangible/ship/components/reactor/shared_rct_rendili_type_x_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite, "object/tangible/ship/components/reactor/shared_rct_rendili_type_x_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_armek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
@@ -3493,6 +3558,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_armek_elite = SharedTa
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_armek_elite = SharedTa
 	clientObjectCRC = 4229165572
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_armek_elite, "object/tangible/ship/components/reactor/shared_rct_reward_armek_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_armek_elite, "object/tangible/ship/components/reactor/shared_rct_reward_armek_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
@@ -3546,6 +3612,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_incom_elite = SharedTa
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_incom_elite = SharedTa
 	clientObjectCRC = 1119723348
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_incom_elite, "object/tangible/ship/components/reactor/shared_rct_reward_incom_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_incom_elite, "object/tangible/ship/components/reactor/shared_rct_reward_incom_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
@@ -3599,6 +3666,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite = SharedTa
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite = SharedTa
 	clientObjectCRC = 3567473688
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite, "object/tangible/ship/components/reactor/shared_rct_reward_slayn_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite, "object/tangible/ship/components/reactor/shared_rct_reward_slayn_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
@@ -3652,6 +3720,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite = SharedT
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite = SharedT
 	clientObjectCRC = 2500440467
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite, "object/tangible/ship/components/reactor/shared_rct_reward_subpro_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite, "object/tangible/ship/components/reactor/shared_rct_reward_subpro_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_taim_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
@@ -3705,6 +3774,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_taim_elite = SharedTan
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_taim_elite = SharedTan
 	clientObjectCRC = 1252227058
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_taim_elite, "object/tangible/ship/components/reactor/shared_rct_reward_taim_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_taim_elite, "object/tangible/ship/components/reactor/shared_rct_reward_taim_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rss_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3758,6 +3828,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_advanced = SharedTangible
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_advanced = SharedTangible
 	clientObjectCRC = 1571711759
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rss_advanced, "object/tangible/ship/components/reactor/shared_rct_rss_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rss_advanced, "object/tangible/ship/components/reactor/shared_rct_rss_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rss_x12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3811,6 +3882,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_x12 = SharedTangibleObjec
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_x12 = SharedTangibleObjec
 	clientObjectCRC = 682785613
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rss_x12, "object/tangible/ship/components/reactor/shared_rct_rss_x12.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rss_x12, "object/tangible/ship/components/reactor/shared_rct_rss_x12.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rss_x8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3864,6 +3936,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_x8 = SharedTangibleObject
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_x8 = SharedTangibleObject
 	clientObjectCRC = 729478764
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rss_x8, "object/tangible/ship/components/reactor/shared_rct_rss_x8.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rss_x8, "object/tangible/ship/components/reactor/shared_rct_rss_x8.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sds_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3917,6 +3990,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_elite = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_elite = SharedTangibleObj
 	clientObjectCRC = 1687773799
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sds_elite, "object/tangible/ship/components/reactor/shared_rct_sds_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sds_elite, "object/tangible/ship/components/reactor/shared_rct_sds_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sds_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -3970,6 +4044,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_imperial_1 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_imperial_1 = SharedTangib
 	clientObjectCRC = 1892978886
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sds_imperial_1, "object/tangible/ship/components/reactor/shared_rct_sds_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sds_imperial_1, "object/tangible/ship/components/reactor/shared_rct_sds_imperial_1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4023,6 +4098,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1 = Shared
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1 = Shared
 	clientObjectCRC = 3970052034
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1, "object/tangible/ship/components/reactor/shared_rct_sds_special_forces_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1, "object/tangible/ship/components/reactor/shared_rct_sds_special_forces_1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4076,6 +4152,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1 = Shar
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1 = Shar
 	clientObjectCRC = 293975026
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1, "object/tangible/ship/components/reactor/shared_rct_seinar_enhanced_level1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1, "object/tangible/ship/components/reactor/shared_rct_seinar_enhanced_level1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4129,6 +4206,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level1 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level1 = SharedTangibl
 	clientObjectCRC = 78015690
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level1, "object/tangible/ship/components/reactor/shared_rct_seinar_level1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level1, "object/tangible/ship/components/reactor/shared_rct_seinar_level1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4182,6 +4260,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level2 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level2 = SharedTangibl
 	clientObjectCRC = 3752969309
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level2, "object/tangible/ship/components/reactor/shared_rct_seinar_level2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level2, "object/tangible/ship/components/reactor/shared_rct_seinar_level2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4235,6 +4314,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level3 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level3 = SharedTangibl
 	clientObjectCRC = 2528945104
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level3, "object/tangible/ship/components/reactor/shared_rct_seinar_level3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level3, "object/tangible/ship/components/reactor/shared_rct_seinar_level3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4288,6 +4368,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level4 = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level4 = SharedTangibl
 	clientObjectCRC = 1834977476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level4, "object/tangible/ship/components/reactor/shared_rct_seinar_level4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level4, "object/tangible/ship/components/reactor/shared_rct_seinar_level4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4341,6 +4422,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_advanced = SharedTangible
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_advanced = SharedTangible
 	clientObjectCRC = 928581541
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_advanced, "object/tangible/ship/components/reactor/shared_rct_sfs_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_advanced, "object/tangible/ship/components/reactor/shared_rct_sfs_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4394,6 +4476,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_elite = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_elite = SharedTangibleObj
 	clientObjectCRC = 1802806379
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_elite, "object/tangible/ship/components/reactor/shared_rct_sfs_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_elite, "object/tangible/ship/components/reactor/shared_rct_sfs_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4447,6 +4530,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1 = SharedTangib
 	clientObjectCRC = 1601368700
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4500,6 +4584,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2 = SharedTangib
 	clientObjectCRC = 2221234923
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4553,6 +4638,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3 = SharedTangib
 	clientObjectCRC = 3446160742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4606,6 +4692,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4 = SharedTangib
 	clientObjectCRC = 915084914
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4659,6 +4746,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5 = SharedTangib
 	clientObjectCRC = 2139517439
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4712,6 +4800,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k = SharedTa
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k = SharedTa
 	clientObjectCRC = 3699990858
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k, "object/tangible/ship/components/reactor/shared_rct_slayn_hypertron_2k.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k, "object/tangible/ship/components/reactor/shared_rct_slayn_hypertron_2k.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4765,6 +4854,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k = SharedTa
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k = SharedTa
 	clientObjectCRC = 2256096858
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k, "object/tangible/ship/components/reactor/shared_rct_slayn_hypertron_4k.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k, "object/tangible/ship/components/reactor/shared_rct_slayn_hypertron_4k.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4818,6 +4908,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1 = SharedTang
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1 = SharedTang
 	clientObjectCRC = 1273339609
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4871,6 +4962,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2 = SharedTang
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2 = SharedTang
 	clientObjectCRC = 2431792718
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4924,6 +5016,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3 = SharedTang
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3 = SharedTang
 	clientObjectCRC = 3657388483
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -4977,6 +5070,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4 = SharedTang
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4 = SharedTang
 	clientObjectCRC = 572291799
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5030,6 +5124,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1 = S
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1 = S
 	clientObjectCRC = 3916801975
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5083,6 +5178,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2 = S
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2 = S
 	clientObjectCRC = 845287200
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5136,6 +5232,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3 = S
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3 = S
 	clientObjectCRC = 2070898861
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5189,6 +5286,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3 = SharedTa
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3 = SharedTa
 	clientObjectCRC = 3299280915
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3, "object/tangible/ship/components/reactor/shared_rct_sorosuub_turbine_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3, "object/tangible/ship/components/reactor/shared_rct_sorosuub_turbine_3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5242,6 +5340,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced = S
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced = S
 	clientObjectCRC = 4221084087
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced, "object/tangible/ship/components/reactor/shared_rct_sorosuub_turbine_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced, "object/tangible/ship/components/reactor/shared_rct_sorosuub_turbine_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_aurora = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5295,6 +5394,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora = SharedTangibl
 	clientObjectCRC = 3380404850
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_aurora, "object/tangible/ship/components/reactor/shared_rct_subpro_aurora.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_aurora, "object/tangible/ship/components/reactor/shared_rct_subpro_aurora.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5348,6 +5448,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max = SharedTan
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max = SharedTan
 	clientObjectCRC = 630252106
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max, "object/tangible/ship/components/reactor/shared_rct_subpro_aurora_max.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max, "object/tangible/ship/components/reactor/shared_rct_subpro_aurora_max.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_dyna1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5401,6 +5502,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna1 = SharedTangible
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna1 = SharedTangible
 	clientObjectCRC = 3288337981
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_dyna1, "object/tangible/ship/components/reactor/shared_rct_subpro_dyna1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_dyna1, "object/tangible/ship/components/reactor/shared_rct_subpro_dyna1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_dyna2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5454,6 +5556,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna2 = SharedTangible
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna2 = SharedTangible
 	clientObjectCRC = 521643690
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_dyna2, "object/tangible/ship/components/reactor/shared_rct_subpro_dyna2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_dyna2, "object/tangible/ship/components/reactor/shared_rct_subpro_dyna2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5507,6 +5610,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2 = Shared
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2 = Shared
 	clientObjectCRC = 3847523590
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2, "object/tangible/ship/components/reactor/shared_rct_subpro_special_dyna2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2, "object/tangible/ship/components/reactor/shared_rct_subpro_special_dyna2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5560,6 +5664,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1 = Shared
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1 = Shared
 	clientObjectCRC = 1580359384
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5613,6 +5718,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2 = Shared
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2 = Shared
 	clientObjectCRC = 2233857615
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5666,6 +5772,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3 = Shared
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3 = Shared
 	clientObjectCRC = 3425210818
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5719,6 +5826,7 @@ object_tangible_ship_components_reactor_shared_rct_tiefighter_basic = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_ship_components_reactor_shared_rct_tiefighter_basic = SharedTang
 	clientObjectCRC = 3319963808
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_tiefighter_basic, "object/tangible/ship/components/reactor/shared_rct_tiefighter_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_tiefighter_basic, "object/tangible/ship/components/reactor/shared_rct_tiefighter_basic.iff")
 
 object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5772,6 +5880,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum =
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum =
 	clientObjectCRC = 951546180
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum, "object/tangible/ship/components/reactor/shared_rct_unknown_distressed_aluminum.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum, "object/tangible/ship/components/reactor/shared_rct_unknown_distressed_aluminum.iff")
 
 object_tangible_ship_components_reactor_shared_rct_unknown_multicore = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5825,6 +5934,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_multicore = SharedTan
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_multicore = SharedTan
 	clientObjectCRC = 33823730
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_multicore, "object/tangible/ship/components/reactor/shared_rct_unknown_multicore.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_multicore, "object/tangible/ship/components/reactor/shared_rct_unknown_multicore.iff")
 
 object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5878,6 +5988,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber = Shar
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber = Shar
 	clientObjectCRC = 2573145892
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber, "object/tangible/ship/components/reactor/shared_rct_unknown_proton_chamber.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber, "object/tangible/ship/components/reactor/shared_rct_unknown_proton_chamber.iff")
 
 object_tangible_ship_components_reactor_shared_rct_watto_sunray_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5931,6 +6042,7 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_2 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_2 = SharedTangib
 	clientObjectCRC = 1703778737
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_watto_sunray_2, "object/tangible/ship/components/reactor/shared_rct_watto_sunray_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_watto_sunray_2, "object/tangible/ship/components/reactor/shared_rct_watto_sunray_2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_watto_sunray_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -5984,6 +6096,7 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_3 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_3 = SharedTangib
 	clientObjectCRC = 746651196
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_watto_sunray_3, "object/tangible/ship/components/reactor/shared_rct_watto_sunray_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_watto_sunray_3, "object/tangible/ship/components/reactor/shared_rct_watto_sunray_3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -6037,6 +6150,7 @@ object_tangible_ship_components_reactor_shared_rct_z95_basic = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_ship_components_reactor_shared_rct_z95_basic = SharedTangibleObj
 	clientObjectCRC = 2051660015
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_z95_basic, "object/tangible/ship/components/reactor/shared_rct_z95_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_z95_basic, "object/tangible/ship/components/reactor/shared_rct_z95_basic.iff")
 
 object_tangible_ship_components_reactor_shared_reactor_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_cowl_neg_s02.apt",
@@ -6090,6 +6204,7 @@ object_tangible_ship_components_reactor_shared_reactor_test = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741825,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,4 +6249,4 @@ object_tangible_ship_components_reactor_shared_reactor_test = SharedTangibleObje
 	clientObjectCRC = 1943796009
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_reactor_test, "object/tangible/ship/components/reactor/shared_reactor_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_reactor_test, "object/tangible/ship/components/reactor/shared_reactor_test.iff")

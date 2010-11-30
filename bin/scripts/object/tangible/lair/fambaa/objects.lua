@@ -48,6 +48,7 @@ object_tangible_lair_fambaa_shared_lair_fambaa = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_fambaa_shared_lair_fambaa = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2348330712
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, "object/tangible/lair/fambaa/shared_lair_fambaa.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, "object/tangible/lair/fambaa/shared_lair_fambaa.iff")
 
 object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTempl
 	clientObjectCRC = 3030660529
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, "object/tangible/lair/fambaa/shared_lair_fambaa_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, "object/tangible/lair/fambaa/shared_lair_fambaa_swamp.iff")

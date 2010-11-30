@@ -48,6 +48,7 @@ object_installation_faction_perk_minefield_base_shared_minefield_base = SharedIn
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4101,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_faction_perk_minefield_base_shared_minefield_base = SharedIn
 	clientObjectCRC = 1321802406
 }
 
-ObjectTemplates:addClientTemplate(object_installation_faction_perk_minefield_base_shared_minefield_base, "object/installation/faction_perk/minefield/base/shared_minefield_base.iff")
+ObjectTemplates:addTemplate(object_installation_faction_perk_minefield_base_shared_minefield_base, "object/installation/faction_perk/minefield/base/shared_minefield_base.iff")

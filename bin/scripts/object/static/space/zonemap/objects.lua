@@ -47,6 +47,7 @@ object_static_space_zonemap_shared_ui_hyperspace = SharedStaticObjectTemplate:ne
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_static_space_zonemap_shared_ui_hyperspace = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1636783685
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_hyperspace, "object/static/space/zonemap/shared_ui_hyperspace.iff")
+ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_hyperspace, "object/static/space/zonemap/shared_ui_hyperspace.iff")
 
 object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_mission_critical.apt",
@@ -90,6 +91,7 @@ object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTempl
 	clientObjectCRC = 3111086071
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_mission_critical, "object/static/space/zonemap/shared_ui_mission_critical.iff")
+ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_mission_critical, "object/static/space/zonemap/shared_ui_mission_critical.iff")
 
 object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_poi_waypoint.apt",
@@ -133,6 +135,7 @@ object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:
 	clientObjectCRC = 68001236
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_poi_waypoint, "object/static/space/zonemap/shared_ui_poi_waypoint.iff")
+ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_poi_waypoint, "object/static/space/zonemap/shared_ui_poi_waypoint.iff")
 
 object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_spacestation.apt",
@@ -176,6 +179,7 @@ object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:
 	clientObjectCRC = 3977491959
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_spacestation, "object/static/space/zonemap/shared_ui_spacestation.iff")
+ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_spacestation, "object/static/space/zonemap/shared_ui_spacestation.iff")
 
 object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_waypoint.apt",
@@ -219,6 +223,7 @@ object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2973438501
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_waypoint, "object/static/space/zonemap/shared_ui_waypoint.iff")
+ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_waypoint, "object/static/space/zonemap/shared_ui_waypoint.iff")
 
 object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_waypoint_active.apt",
@@ -262,6 +267,7 @@ object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -297,4 +303,4 @@ object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTempla
 	clientObjectCRC = 464932918
 }
 
-ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_waypoint_active, "object/static/space/zonemap/shared_ui_waypoint_active.iff")
+ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_waypoint_active, "object/static/space/zonemap/shared_ui_waypoint_active.iff")

@@ -48,6 +48,7 @@ object_tangible_furniture_modern_shared_armoire_modern_style_01 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_tangible_furniture_modern_shared_armoire_modern_style_01 = SharedTangible
 	clientObjectCRC = 1825670087
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_armoire_modern_style_01, "object/tangible/furniture/modern/shared_armoire_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_armoire_modern_style_01, "object/tangible/furniture/modern/shared_armoire_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_bar_counter_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_counter_s1.apt",
@@ -101,6 +102,7 @@ object_tangible_furniture_modern_shared_bar_counter_s1 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_furniture_modern_shared_bar_counter_s1 = SharedTangibleObjectTem
 	clientObjectCRC = 3231704914
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_bar_counter_s1, "object/tangible/furniture/modern/shared_bar_counter_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_counter_s1, "object/tangible/furniture/modern/shared_bar_counter_s1.iff")
 
 object_tangible_furniture_modern_shared_bar_piece_curve_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_bar_piece_curve_s1.apt",
@@ -154,6 +156,7 @@ object_tangible_furniture_modern_shared_bar_piece_curve_s1 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_furniture_modern_shared_bar_piece_curve_s1 = SharedTangibleObjec
 	clientObjectCRC = 825953959
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_bar_piece_curve_s1, "object/tangible/furniture/modern/shared_bar_piece_curve_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_piece_curve_s1, "object/tangible/furniture/modern/shared_bar_piece_curve_s1.iff")
 
 object_tangible_furniture_modern_shared_bar_piece_curve_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_bar_piece_curve_s2.apt",
@@ -207,6 +210,7 @@ object_tangible_furniture_modern_shared_bar_piece_curve_s2 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -251,7 +255,7 @@ object_tangible_furniture_modern_shared_bar_piece_curve_s2 = SharedTangibleObjec
 	clientObjectCRC = 3928794672
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_bar_piece_curve_s2, "object/tangible/furniture/modern/shared_bar_piece_curve_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_piece_curve_s2, "object/tangible/furniture/modern/shared_bar_piece_curve_s2.iff")
 
 object_tangible_furniture_modern_shared_bar_piece_straight_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_bar_piece_straight_s1.apt",
@@ -260,6 +264,7 @@ object_tangible_furniture_modern_shared_bar_piece_straight_s1 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -304,7 +309,7 @@ object_tangible_furniture_modern_shared_bar_piece_straight_s1 = SharedTangibleOb
 	clientObjectCRC = 756303151
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_bar_piece_straight_s1, "object/tangible/furniture/modern/shared_bar_piece_straight_s1.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_piece_straight_s1, "object/tangible/furniture/modern/shared_bar_piece_straight_s1.iff")
 
 object_tangible_furniture_modern_shared_bar_piece_straight_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_bar_piece_straight_s2.apt",
@@ -313,6 +318,7 @@ object_tangible_furniture_modern_shared_bar_piece_straight_s2 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -357,7 +363,7 @@ object_tangible_furniture_modern_shared_bar_piece_straight_s2 = SharedTangibleOb
 	clientObjectCRC = 4127452600
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_bar_piece_straight_s2, "object/tangible/furniture/modern/shared_bar_piece_straight_s2.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_piece_straight_s2, "object/tangible/furniture/modern/shared_bar_piece_straight_s2.iff")
 
 object_tangible_furniture_modern_shared_bestine_quest_rug = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_rect_lg_s02.apt",
@@ -366,6 +372,7 @@ object_tangible_furniture_modern_shared_bestine_quest_rug = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -410,7 +417,7 @@ object_tangible_furniture_modern_shared_bestine_quest_rug = SharedTangibleObject
 	clientObjectCRC = 3582039293
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_bestine_quest_rug, "object/tangible/furniture/modern/shared_bestine_quest_rug.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bestine_quest_rug, "object/tangible/furniture/modern/shared_bestine_quest_rug.iff")
 
 object_tangible_furniture_modern_shared_bookcase_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_bookcase_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_furniture_modern_shared_bookcase_modern_style_01 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -463,7 +471,7 @@ object_tangible_furniture_modern_shared_bookcase_modern_style_01 = SharedTangibl
 	clientObjectCRC = 947776958
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_bookcase_modern_style_01, "object/tangible/furniture/modern/shared_bookcase_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bookcase_modern_style_01, "object/tangible/furniture/modern/shared_bookcase_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_cabinet_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_cabinet_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_furniture_modern_shared_cabinet_modern_style_01 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -516,7 +525,7 @@ object_tangible_furniture_modern_shared_cabinet_modern_style_01 = SharedTangible
 	clientObjectCRC = 1509992400
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_cabinet_modern_style_01, "object/tangible/furniture/modern/shared_cabinet_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_cabinet_modern_style_01, "object/tangible/furniture/modern/shared_cabinet_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_chair_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_chair_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_furniture_modern_shared_chair_modern_style_01 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -569,7 +579,7 @@ object_tangible_furniture_modern_shared_chair_modern_style_01 = SharedTangibleOb
 	clientObjectCRC = 1425220436
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_chair_modern_style_01, "object/tangible/furniture/modern/shared_chair_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_chair_modern_style_01, "object/tangible/furniture/modern/shared_chair_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_chest_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_chest_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_furniture_modern_shared_chest_modern_style_01 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -622,7 +633,7 @@ object_tangible_furniture_modern_shared_chest_modern_style_01 = SharedTangibleOb
 	clientObjectCRC = 3089584009
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_chest_modern_style_01, "object/tangible/furniture/modern/shared_chest_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_chest_modern_style_01, "object/tangible/furniture/modern/shared_chest_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_coffee_table_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_coffee_table_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_furniture_modern_shared_coffee_table_modern_style_01 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -675,7 +687,7 @@ object_tangible_furniture_modern_shared_coffee_table_modern_style_01 = SharedTan
 	clientObjectCRC = 1875811519
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_coffee_table_modern_style_01, "object/tangible/furniture/modern/shared_coffee_table_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_coffee_table_modern_style_01, "object/tangible/furniture/modern/shared_coffee_table_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_coffee_table_modern_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_coffee_table_s02.apt",
@@ -684,6 +696,7 @@ object_tangible_furniture_modern_shared_coffee_table_modern_style_02 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -728,7 +741,7 @@ object_tangible_furniture_modern_shared_coffee_table_modern_style_02 = SharedTan
 	clientObjectCRC = 3034133544
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_coffee_table_modern_style_02, "object/tangible/furniture/modern/shared_coffee_table_modern_style_02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_coffee_table_modern_style_02, "object/tangible/furniture/modern/shared_coffee_table_modern_style_02.iff")
 
 object_tangible_furniture_modern_shared_couch_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_couch_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_furniture_modern_shared_couch_modern_style_01 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -781,7 +795,7 @@ object_tangible_furniture_modern_shared_couch_modern_style_01 = SharedTangibleOb
 	clientObjectCRC = 997369378
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_couch_modern_style_01, "object/tangible/furniture/modern/shared_couch_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_couch_modern_style_01, "object/tangible/furniture/modern/shared_couch_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_couch_modern_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_couch_s02.apt",
@@ -790,6 +804,7 @@ object_tangible_furniture_modern_shared_couch_modern_style_02 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -834,7 +849,7 @@ object_tangible_furniture_modern_shared_couch_modern_style_02 = SharedTangibleOb
 	clientObjectCRC = 3764719285
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_couch_modern_style_02, "object/tangible/furniture/modern/shared_couch_modern_style_02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_couch_modern_style_02, "object/tangible/furniture/modern/shared_couch_modern_style_02.iff")
 
 object_tangible_furniture_modern_shared_dining_table_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_dining_table_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_furniture_modern_shared_dining_table_modern_style_01 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -887,7 +903,7 @@ object_tangible_furniture_modern_shared_dining_table_modern_style_01 = SharedTan
 	clientObjectCRC = 3671645095
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_dining_table_modern_style_01, "object/tangible/furniture/modern/shared_dining_table_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_dining_table_modern_style_01, "object/tangible/furniture/modern/shared_dining_table_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_end_table_large_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_end_table_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_furniture_modern_shared_end_table_large_modern_style_01 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -940,7 +957,7 @@ object_tangible_furniture_modern_shared_end_table_large_modern_style_01 = Shared
 	clientObjectCRC = 571124446
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_end_table_large_modern_style_01, "object/tangible/furniture/modern/shared_end_table_large_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_end_table_large_modern_style_01, "object/tangible/furniture/modern/shared_end_table_large_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_end_table_small_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_end_table_sml_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_furniture_modern_shared_end_table_small_modern_style_01 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -993,7 +1011,7 @@ object_tangible_furniture_modern_shared_end_table_small_modern_style_01 = Shared
 	clientObjectCRC = 1014144206
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_end_table_small_modern_style_01, "object/tangible/furniture/modern/shared_end_table_small_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_end_table_small_modern_style_01, "object/tangible/furniture/modern/shared_end_table_small_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_love_seat_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_love_seat_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_furniture_modern_shared_love_seat_modern_style_01 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1046,7 +1065,7 @@ object_tangible_furniture_modern_shared_love_seat_modern_style_01 = SharedTangib
 	clientObjectCRC = 1897101447
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_love_seat_modern_style_01, "object/tangible/furniture/modern/shared_love_seat_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_love_seat_modern_style_01, "object/tangible/furniture/modern/shared_love_seat_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_rug_oval_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_oval_lg_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_furniture_modern_shared_rug_oval_lg_s01 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1099,7 +1119,7 @@ object_tangible_furniture_modern_shared_rug_oval_lg_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 698741961
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_oval_lg_s01, "object/tangible/furniture/modern/shared_rug_oval_lg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_oval_lg_s01, "object/tangible/furniture/modern/shared_rug_oval_lg_s01.iff")
 
 object_tangible_furniture_modern_shared_rug_oval_m_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_oval_m_s02.apt",
@@ -1108,6 +1128,7 @@ object_tangible_furniture_modern_shared_rug_oval_m_s02 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1152,7 +1173,7 @@ object_tangible_furniture_modern_shared_rug_oval_m_s02 = SharedTangibleObjectTem
 	clientObjectCRC = 1443324291
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_oval_m_s02, "object/tangible/furniture/modern/shared_rug_oval_m_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_oval_m_s02, "object/tangible/furniture/modern/shared_rug_oval_m_s02.iff")
 
 object_tangible_furniture_modern_shared_rug_oval_sml_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_oval_sml_s01.apt",
@@ -1161,6 +1182,7 @@ object_tangible_furniture_modern_shared_rug_oval_sml_s01 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1205,7 +1227,7 @@ object_tangible_furniture_modern_shared_rug_oval_sml_s01 = SharedTangibleObjectT
 	clientObjectCRC = 3835781381
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_oval_sml_s01, "object/tangible/furniture/modern/shared_rug_oval_sml_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_oval_sml_s01, "object/tangible/furniture/modern/shared_rug_oval_sml_s01.iff")
 
 object_tangible_furniture_modern_shared_rug_rect_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_rect_lg_s01.apt",
@@ -1214,6 +1236,7 @@ object_tangible_furniture_modern_shared_rug_rect_lg_s01 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1258,7 +1281,7 @@ object_tangible_furniture_modern_shared_rug_rect_lg_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 2938908953
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_rect_lg_s01, "object/tangible/furniture/modern/shared_rug_rect_lg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rect_lg_s01, "object/tangible/furniture/modern/shared_rug_rect_lg_s01.iff")
 
 object_tangible_furniture_modern_shared_rug_rect_lg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_rect_lg_s02.apt",
@@ -1267,6 +1290,7 @@ object_tangible_furniture_modern_shared_rug_rect_lg_s02 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1311,7 +1335,7 @@ object_tangible_furniture_modern_shared_rug_rect_lg_s02 = SharedTangibleObjectTe
 	clientObjectCRC = 1950062990
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_rect_lg_s02, "object/tangible/furniture/modern/shared_rug_rect_lg_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rect_lg_s02, "object/tangible/furniture/modern/shared_rug_rect_lg_s02.iff")
 
 object_tangible_furniture_modern_shared_rug_rect_m_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_rect_m_s01.apt",
@@ -1320,6 +1344,7 @@ object_tangible_furniture_modern_shared_rug_rect_m_s01 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1364,7 +1389,7 @@ object_tangible_furniture_modern_shared_rug_rect_m_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 2115156746
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_rect_m_s01, "object/tangible/furniture/modern/shared_rug_rect_m_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rect_m_s01, "object/tangible/furniture/modern/shared_rug_rect_m_s01.iff")
 
 object_tangible_furniture_modern_shared_rug_rect_sml_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_rect_sml_s01.apt",
@@ -1373,6 +1398,7 @@ object_tangible_furniture_modern_shared_rug_rect_sml_s01 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1417,7 +1443,7 @@ object_tangible_furniture_modern_shared_rug_rect_sml_s01 = SharedTangibleObjectT
 	clientObjectCRC = 518921305
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_rect_sml_s01, "object/tangible/furniture/modern/shared_rug_rect_sml_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rect_sml_s01, "object/tangible/furniture/modern/shared_rug_rect_sml_s01.iff")
 
 object_tangible_furniture_modern_shared_rug_rnd_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_rnd_lg_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_furniture_modern_shared_rug_rnd_lg_s01 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1470,7 +1497,7 @@ object_tangible_furniture_modern_shared_rug_rnd_lg_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 162987896
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_rnd_lg_s01, "object/tangible/furniture/modern/shared_rug_rnd_lg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rnd_lg_s01, "object/tangible/furniture/modern/shared_rug_rnd_lg_s01.iff")
 
 object_tangible_furniture_modern_shared_rug_rnd_m_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_rnd_m_s01.apt",
@@ -1479,6 +1506,7 @@ object_tangible_furniture_modern_shared_rug_rnd_m_s01 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1523,7 +1551,7 @@ object_tangible_furniture_modern_shared_rug_rnd_m_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 1973381647
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_rnd_m_s01, "object/tangible/furniture/modern/shared_rug_rnd_m_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rnd_m_s01, "object/tangible/furniture/modern/shared_rug_rnd_m_s01.iff")
 
 object_tangible_furniture_modern_shared_rug_rnd_sml_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_rnd_sml_s01.apt",
@@ -1532,6 +1560,7 @@ object_tangible_furniture_modern_shared_rug_rnd_sml_s01 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1576,7 +1605,7 @@ object_tangible_furniture_modern_shared_rug_rnd_sml_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 1871275749
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_rnd_sml_s01, "object/tangible/furniture/modern/shared_rug_rnd_sml_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rnd_sml_s01, "object/tangible/furniture/modern/shared_rug_rnd_sml_s01.iff")
 
 object_tangible_furniture_modern_shared_rug_sqr_m_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_mdrn_rug_sqr_m_s01.apt",
@@ -1585,6 +1614,7 @@ object_tangible_furniture_modern_shared_rug_sqr_m_s01 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1629,7 +1659,7 @@ object_tangible_furniture_modern_shared_rug_sqr_m_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 1959548191
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_rug_sqr_m_s01, "object/tangible/furniture/modern/shared_rug_sqr_m_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_sqr_m_s01, "object/tangible/furniture/modern/shared_rug_sqr_m_s01.iff")
 
 object_tangible_furniture_modern_shared_searchable_desk_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_coffee_table_s01.apt",
@@ -1638,6 +1668,7 @@ object_tangible_furniture_modern_shared_searchable_desk_01 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1682,7 +1713,7 @@ object_tangible_furniture_modern_shared_searchable_desk_01 = SharedTangibleObjec
 	clientObjectCRC = 2262472670
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_searchable_desk_01, "object/tangible/furniture/modern/shared_searchable_desk_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_searchable_desk_01, "object/tangible/furniture/modern/shared_searchable_desk_01.iff")
 
 object_tangible_furniture_modern_shared_searchable_desk_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
@@ -1691,6 +1722,7 @@ object_tangible_furniture_modern_shared_searchable_desk_02 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1735,7 +1767,7 @@ object_tangible_furniture_modern_shared_searchable_desk_02 = SharedTangibleObjec
 	clientObjectCRC = 1573732169
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_searchable_desk_02, "object/tangible/furniture/modern/shared_searchable_desk_02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_searchable_desk_02, "object/tangible/furniture/modern/shared_searchable_desk_02.iff")
 
 object_tangible_furniture_modern_shared_searchable_squill_lair_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -1744,6 +1776,7 @@ object_tangible_furniture_modern_shared_searchable_squill_lair_01 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1788,7 +1821,7 @@ object_tangible_furniture_modern_shared_searchable_squill_lair_01 = SharedTangib
 	clientObjectCRC = 3001683990
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_searchable_squill_lair_01, "object/tangible/furniture/modern/shared_searchable_squill_lair_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_searchable_squill_lair_01, "object/tangible/furniture/modern/shared_searchable_squill_lair_01.iff")
 
 object_tangible_furniture_modern_shared_sofa_chair_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_sofa_chair_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_furniture_modern_shared_sofa_chair_modern_style_01 = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1841,7 +1875,7 @@ object_tangible_furniture_modern_shared_sofa_chair_modern_style_01 = SharedTangi
 	clientObjectCRC = 4052184792
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_sofa_chair_modern_style_01, "object/tangible/furniture/modern/shared_sofa_chair_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_sofa_chair_modern_style_01, "object/tangible/furniture/modern/shared_sofa_chair_modern_style_01.iff")
 
 object_tangible_furniture_modern_shared_table_modern_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_table_s01.apt",
@@ -1850,6 +1884,7 @@ object_tangible_furniture_modern_shared_table_modern_style_01 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -1894,4 +1929,4 @@ object_tangible_furniture_modern_shared_table_modern_style_01 = SharedTangibleOb
 	clientObjectCRC = 1064046324
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_modern_shared_table_modern_style_01, "object/tangible/furniture/modern/shared_table_modern_style_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_table_modern_style_01, "object/tangible/furniture/modern/shared_table_modern_style_01.iff")

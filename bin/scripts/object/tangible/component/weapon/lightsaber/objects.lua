@@ -48,6 +48,7 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module 
 	clientObjectCRC = 3404051263
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module, "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_lance_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module, "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_lance_module.iff")
 
 object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -101,6 +102,7 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module = Shar
 	clientObjectCRC = 2816851382
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module, "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module, "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -154,6 +156,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force
 	clientObjectCRC = 1896638798
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_lance_module_force_crystal.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_lance_module_force_crystal.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -207,6 +210,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed
 	clientObjectCRC = 384190732
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_attackspeed.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_attackspeed.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -260,6 +264,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color = Sha
 	clientObjectCRC = 2224509400
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_color.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_color.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -313,6 +318,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage = Sh
 	clientObjectCRC = 3690389169
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_damage.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_damage.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -366,6 +372,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_cryst
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_cryst
 	clientObjectCRC = 4273612814
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_force_crystal.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_force_crystal.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -419,6 +426,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost =
 	clientObjectCRC = 3573227590
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_forcecost.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_forcecost.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_dragon_pearl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dragon_pearl.apt",
@@ -472,6 +480,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_drago
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_drago
 	clientObjectCRC = 2322379839
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_dragon_pearl, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_krayt_dragon_pearl.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_dragon_pearl, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_krayt_dragon_pearl.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -525,6 +534,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262156,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance
 	clientObjectCRC = 1396643279
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_woundchance.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_woundchance.iff")
 
 object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -578,6 +588,7 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,4 +633,4 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pa
 	clientObjectCRC = 4078172805
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff")
+ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff")

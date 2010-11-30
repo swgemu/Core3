@@ -48,6 +48,7 @@ object_tangible_lair_chuba_shared_lair_chuba = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_chuba_shared_lair_chuba = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3941503205
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba, "object/tangible/lair/chuba/shared_lair_chuba.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba, "object/tangible/lair/chuba/shared_lair_chuba.iff")
 
 object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTempla
 	clientObjectCRC = 2016717177
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba_forest, "object/tangible/lair/chuba/shared_lair_chuba_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_forest, "object/tangible/lair/chuba/shared_lair_chuba_forest.iff")
 
 object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplat
 	clientObjectCRC = 745493888
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba_swamp, "object/tangible/lair/chuba/shared_lair_chuba_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_swamp, "object/tangible/lair/chuba/shared_lair_chuba_swamp.iff")

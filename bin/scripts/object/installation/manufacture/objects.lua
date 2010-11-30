@@ -48,6 +48,7 @@ object_installation_manufacture_shared_clothing_factory = SharedInstallationObje
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_clothing_factory.cdf",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_installation_manufacture_shared_clothing_factory = SharedInstallationObje
 	clientObjectCRC = 2037216595
 }
 
-ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_clothing_factory, "object/installation/manufacture/shared_clothing_factory.iff")
+ObjectTemplates:addTemplate(object_installation_manufacture_shared_clothing_factory, "object/installation/manufacture/shared_clothing_factory.iff")
 
 object_installation_manufacture_shared_food_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_organic.apt",
@@ -101,6 +102,7 @@ object_installation_manufacture_shared_food_factory = SharedInstallationObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_food_factory.cdf",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_installation_manufacture_shared_food_factory = SharedInstallationObjectTe
 	clientObjectCRC = 2484565682
 }
 
-ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_food_factory, "object/installation/manufacture/shared_food_factory.iff")
+ObjectTemplates:addTemplate(object_installation_manufacture_shared_food_factory, "object/installation/manufacture/shared_food_factory.iff")
 
 object_installation_manufacture_shared_structure_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_machine.apt",
@@ -154,6 +156,7 @@ object_installation_manufacture_shared_structure_factory = SharedInstallationObj
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_structure_factory.cdf",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_installation_manufacture_shared_structure_factory = SharedInstallationObj
 	clientObjectCRC = 1556571915
 }
 
-ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_structure_factory, "object/installation/manufacture/shared_structure_factory.iff")
+ObjectTemplates:addTemplate(object_installation_manufacture_shared_structure_factory, "object/installation/manufacture/shared_structure_factory.iff")
 
 object_installation_manufacture_shared_weapon_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_item.apt",
@@ -207,6 +210,7 @@ object_installation_manufacture_shared_weapon_factory = SharedInstallationObject
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_manufacture_weapon_factory.cdf",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_installation_manufacture_shared_weapon_factory = SharedInstallationObject
 	clientObjectCRC = 1304272380
 }
 
-ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_factory, "object/installation/manufacture/shared_weapon_factory.iff")
+ObjectTemplates:addTemplate(object_installation_manufacture_shared_weapon_factory, "object/installation/manufacture/shared_weapon_factory.iff")
 
 object_installation_manufacture_shared_weapon_installation = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "",
@@ -260,6 +264,7 @@ object_installation_manufacture_shared_weapon_installation = SharedInstallationO
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_installation_manufacture_shared_weapon_installation = SharedInstallationO
 	clientObjectCRC = 415547091
 }
 
-ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_installation, "object/installation/manufacture/shared_weapon_installation.iff")
+ObjectTemplates:addTemplate(object_installation_manufacture_shared_weapon_installation, "object/installation/manufacture/shared_weapon_installation.iff")

@@ -48,6 +48,7 @@ object_tangible_hair_human_base_shared_hair_human_base = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_hair_human_base_shared_hair_human_base = SharedTangibleObjectTem
 	clientObjectCRC = 1278154793
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_human_base_shared_hair_human_base, "object/tangible/hair/human/base/shared_hair_human_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_human_base_shared_hair_human_base, "object/tangible/hair/human/base/shared_hair_human_base.iff")
 
 object_tangible_hair_human_base_shared_hair_human_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_hair_human_base_shared_hair_human_female_base = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_hair_human_base_shared_hair_human_female_base = SharedTangibleOb
 	clientObjectCRC = 504761774
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_human_base_shared_hair_human_female_base, "object/tangible/hair/human/base/shared_hair_human_female_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_human_base_shared_hair_human_female_base, "object/tangible/hair/human/base/shared_hair_human_female_base.iff")
 
 object_tangible_hair_human_base_shared_hair_human_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_hair_human_base_shared_hair_human_male_base = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_hair_human_base_shared_hair_human_male_base = SharedTangibleObje
 	clientObjectCRC = 2205118344
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_human_base_shared_hair_human_male_base, "object/tangible/hair/human/base/shared_hair_human_male_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_human_base_shared_hair_human_male_base, "object/tangible/hair/human/base/shared_hair_human_male_base.iff")

@@ -48,6 +48,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 259,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt = SharedTangibl
 	clientObjectCRC = 1255925428
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_belt.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_belt.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_boots_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangib
 	clientObjectCRC = 509585055
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_boots.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_chest_plate_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = Shared
 	clientObjectCRC = 3303691594
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_chest_plate_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = 
 	clientObjectCRC = 2543046725
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate_quest.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_gloves_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangi
 	clientObjectCRC = 2822062160
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_gloves.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_gloves.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_helmet_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangi
 	clientObjectCRC = 519414104
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_helmet_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = Share
 	clientObjectCRC = 2324855644
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet_quest.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_pants_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangib
 	clientObjectCRC = 2684655133
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_pants_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,4 +525,4 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = Shared
 	clientObjectCRC = 3252715807
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants_quest.iff")

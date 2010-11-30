@@ -48,6 +48,7 @@ object_tangible_wearables_bracelet_shared_bracelet_l = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_bracelet_shared_bracelet_l = SharedTangibleObjectTempl
 	clientObjectCRC = 1474382637
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_l, "object/tangible/wearables/bracelet/shared_bracelet_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_l, "object/tangible/wearables/bracelet/shared_bracelet_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_r.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTempl
 	clientObjectCRC = 657723070
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_r, "object/tangible/wearables/bracelet/shared_bracelet_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_r, "object/tangible/wearables/bracelet/shared_bracelet_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_l.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectT
 	clientObjectCRC = 3949931361
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_l, "object/tangible/wearables/bracelet/shared_bracelet_s02_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_l, "object/tangible/wearables/bracelet/shared_bracelet_s02_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_r.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectT
 	clientObjectCRC = 2612686578
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_r, "object/tangible/wearables/bracelet/shared_bracelet_s02_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_r, "object/tangible/wearables/bracelet/shared_bracelet_s02_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s03_l.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectT
 	clientObjectCRC = 2755150704
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_l, "object/tangible/wearables/bracelet/shared_bracelet_s03_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_l, "object/tangible/wearables/bracelet/shared_bracelet_s03_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s03_r.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectT
 	clientObjectCRC = 3572303587
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_r, "object/tangible/wearables/bracelet/shared_bracelet_s03_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_r, "object/tangible/wearables/bracelet/shared_bracelet_s03_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s04_l.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectT
 	clientObjectCRC = 1281181360
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_l, "object/tangible/wearables/bracelet/shared_bracelet_s04_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_l, "object/tangible/wearables/bracelet/shared_bracelet_s04_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s04_r.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectT
 	clientObjectCRC = 1015546659
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_r, "object/tangible/wearables/bracelet/shared_bracelet_s04_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_r, "object/tangible/wearables/bracelet/shared_bracelet_s04_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s05_l.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectT
 	clientObjectCRC = 50998945
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_l, "object/tangible/wearables/bracelet/shared_bracelet_s05_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_l, "object/tangible/wearables/bracelet/shared_bracelet_s05_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s05_r.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectT
 	clientObjectCRC = 1944021810
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_r, "object/tangible/wearables/bracelet/shared_bracelet_s05_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_r, "object/tangible/wearables/bracelet/shared_bracelet_s05_r.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s06_l.sat",
@@ -578,6 +588,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectT
 	clientObjectCRC = 3539179154
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_l, "object/tangible/wearables/bracelet/shared_bracelet_s06_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_l, "object/tangible/wearables/bracelet/shared_bracelet_s06_l.iff")
 
 object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s06_r.sat",
@@ -631,6 +642,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2097154,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,4 +687,4 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectT
 	clientObjectCRC = 2720453377
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_r, "object/tangible/wearables/bracelet/shared_bracelet_s06_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_r, "object/tangible/wearables/bracelet/shared_bracelet_s06_r.iff")

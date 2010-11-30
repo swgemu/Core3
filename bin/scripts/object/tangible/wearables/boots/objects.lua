@@ -48,6 +48,7 @@ object_tangible_wearables_boots_shared_boots_corsec = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_boots_shared_boots_corsec = SharedTangibleObjectTempla
 	clientObjectCRC = 803130691
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_corsec, "object/tangible/wearables/boots/shared_boots_corsec.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_corsec, "object/tangible/wearables/boots/shared_boots_corsec.iff")
 
 object_tangible_wearables_boots_shared_boots_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s03_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_boots_shared_boots_s03 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_boots_shared_boots_s03 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1907982508
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s03, "object/tangible/wearables/boots/shared_boots_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s03, "object/tangible/wearables/boots/shared_boots_s03.iff")
 
 object_tangible_wearables_boots_shared_boots_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s04_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_boots_shared_boots_s04 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_boots_shared_boots_s04 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2321198008
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s04, "object/tangible/wearables/boots/shared_boots_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s04, "object/tangible/wearables/boots/shared_boots_s04.iff")
 
 object_tangible_wearables_boots_shared_boots_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s05_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_boots_shared_boots_s05 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_boots_shared_boots_s05 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3277311029
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s05, "object/tangible/wearables/boots/shared_boots_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s05, "object/tangible/wearables/boots/shared_boots_s05.iff")
 
 object_tangible_wearables_boots_shared_boots_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s12_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_boots_shared_boots_s12 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_boots_shared_boots_s12 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 597486169
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s12, "object/tangible/wearables/boots/shared_boots_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s12, "object/tangible/wearables/boots/shared_boots_s12.iff")
 
 object_tangible_wearables_boots_shared_boots_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s14_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_boots_shared_boots_s14 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_boots_shared_boots_s14 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2440210112
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s14, "object/tangible/wearables/boots/shared_boots_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s14, "object/tangible/wearables/boots/shared_boots_s14.iff")
 
 object_tangible_wearables_boots_shared_boots_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s15_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_boots_shared_boots_s15 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_boots_shared_boots_s15 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3632251213
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s15, "object/tangible/wearables/boots/shared_boots_s15.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s15, "object/tangible/wearables/boots/shared_boots_s15.iff")
 
 object_tangible_wearables_boots_shared_boots_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s19_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_boots_shared_boots_s19 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_boots_shared_boots_s19 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3110225352
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s19, "object/tangible/wearables/boots/shared_boots_s19.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s19, "object/tangible/wearables/boots/shared_boots_s19.iff")
 
 object_tangible_wearables_boots_shared_boots_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s21_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_boots_shared_boots_s21 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_boots_shared_boots_s21 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3589494086
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s21, "object/tangible/wearables/boots/shared_boots_s21.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s21, "object/tangible/wearables/boots/shared_boots_s21.iff")
 
 object_tangible_wearables_boots_shared_boots_s22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s22_f.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_boots_shared_boots_s22 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_wearables_boots_shared_boots_s22 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 249888209
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s22, "object/tangible/wearables/boots/shared_boots_s22.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s22, "object/tangible/wearables/boots/shared_boots_s22.iff")
 
 object_tangible_wearables_boots_shared_boots_s34 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_s34_f.sat",
@@ -578,6 +588,7 @@ object_tangible_wearables_boots_shared_boots_s34 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_wearables_boots_shared_boots_s34 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2804071472
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_s34, "object/tangible/wearables/boots/shared_boots_s34.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s34, "object/tangible/wearables/boots/shared_boots_s34.iff")
 
 object_tangible_wearables_boots_shared_boots_tusken_raider = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boots_tusken_raider_m.sat",
@@ -631,6 +642,7 @@ object_tangible_wearables_boots_shared_boots_tusken_raider = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_wearables_boots_shared_boots_tusken_raider = SharedTangibleObjec
 	clientObjectCRC = 688070269
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_boots_tusken_raider, "object/tangible/wearables/boots/shared_boots_tusken_raider.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_tusken_raider, "object/tangible/wearables/boots/shared_boots_tusken_raider.iff")
 
 object_tangible_wearables_boots_shared_nightsister_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_boots_s01.sat",
@@ -684,6 +696,7 @@ object_tangible_wearables_boots_shared_nightsister_boots = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_wearables_boots_shared_nightsister_boots = SharedTangibleObjectT
 	clientObjectCRC = 1068365842
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_nightsister_boots, "object/tangible/wearables/boots/shared_nightsister_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_nightsister_boots, "object/tangible/wearables/boots/shared_nightsister_boots.iff")
 
 object_tangible_wearables_boots_shared_singing_mountain_clan_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_boots_s01.sat",
@@ -737,6 +750,7 @@ object_tangible_wearables_boots_shared_singing_mountain_clan_boots = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,4 +795,4 @@ object_tangible_wearables_boots_shared_singing_mountain_clan_boots = SharedTangi
 	clientObjectCRC = 610961345
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_boots_shared_singing_mountain_clan_boots, "object/tangible/wearables/boots/shared_singing_mountain_clan_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_singing_mountain_clan_boots, "object/tangible/wearables/boots/shared_singing_mountain_clan_boots.iff")

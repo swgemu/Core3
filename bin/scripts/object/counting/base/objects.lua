@@ -48,6 +48,7 @@ object_counting_base_shared_base_counting = SharedCountingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8208,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_counting_base_shared_base_counting = SharedCountingObjectTemplate:new {
 	clientObjectCRC = 2904726131
 }
 
-ObjectTemplates:addClientTemplate(object_counting_base_shared_base_counting, "object/counting/base/shared_base_counting.iff")
+ObjectTemplates:addTemplate(object_counting_base_shared_base_counting, "object/counting/base/shared_base_counting.iff")
 
 object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8208,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new 
 	clientObjectCRC = 3211286444
 }
 
-ObjectTemplates:addClientTemplate(object_counting_base_shared_counting_default, "object/counting/base/shared_counting_default.iff")
+ObjectTemplates:addTemplate(object_counting_base_shared_counting_default, "object/counting/base/shared_counting_default.iff")

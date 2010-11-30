@@ -48,6 +48,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_l =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_l =
 	clientObjectCRC = 391015330
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_l, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bicep_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_l, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_bicep_r_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r =
 	clientObjectCRC = 1738223153
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bicep_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bicep_r, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_boots_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots = S
 	clientObjectCRC = 2766594033
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_boots, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_boots.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_bracer_l_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l 
 	clientObjectCRC = 3020283121
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bracer_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_l, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_bracer_r_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r 
 	clientObjectCRC = 3302005090
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bracer_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_bracer_r, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_bracer_r.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_chest_plate_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_pla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_pla
 	clientObjectCRC = 2075456355
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_plate, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_chest_plate, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_chest_plate.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_gloves_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves = 
 	clientObjectCRC = 2214098424
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_gloves.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_gloves, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_gloves.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_helmet_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet = 
 	clientObjectCRC = 892900592
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_helmet, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_helmet.iff")
 
 object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s01_leggings_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,4 +525,4 @@ object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings 
 	clientObjectCRC = 992018926
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_leggings.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_shared_ith_armor_s01_leggings, "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_leggings.iff")

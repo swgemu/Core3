@@ -48,6 +48,7 @@ object_tangible_lair_perlek_shared_lair_perlek = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_perlek_shared_lair_perlek = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 804817169
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek, "object/tangible/lair/perlek/shared_lair_perlek.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek, "object/tangible/lair/perlek/shared_lair_perlek.iff")
 
 object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectT
 	clientObjectCRC = 4089303997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek_grassland, "object/tangible/lair/perlek/shared_lair_perlek_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_grassland, "object/tangible/lair/perlek/shared_lair_perlek_grassland.iff")
 
 object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 3319913083
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek_jungle, "object/tangible/lair/perlek/shared_lair_perlek_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_jungle, "object/tangible/lair/perlek/shared_lair_perlek_jungle.iff")

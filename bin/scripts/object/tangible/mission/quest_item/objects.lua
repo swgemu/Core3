@@ -48,6 +48,7 @@ object_tangible_mission_quest_item_shared_aaph_koden_q1_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_mission_quest_item_shared_aaph_koden_q1_needed = SharedTangibleO
 	clientObjectCRC = 3951173790
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_aaph_koden_q1_needed, "object/tangible/mission/quest_item/shared_aaph_koden_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_aaph_koden_q1_needed, "object/tangible/mission/quest_item/shared_aaph_koden_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -101,6 +102,7 @@ object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed = SharedTan
 	clientObjectCRC = 378433158
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed, "object/tangible/mission/quest_item/shared_ajuva_vamasterin_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed, "object/tangible/mission/quest_item/shared_ajuva_vamasterin_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -154,6 +156,7 @@ object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed = SharedTan
 	clientObjectCRC = 513100684
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed, "object/tangible/mission/quest_item/shared_ajuva_vamasterin_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed, "object/tangible/mission/quest_item/shared_ajuva_vamasterin_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -207,6 +210,7 @@ object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed = SharedTangi
 	clientObjectCRC = 910173292
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed, "object/tangible/mission/quest_item/shared_arrek_vonsarko_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed, "object/tangible/mission/quest_item/shared_arrek_vonsarko_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_arven_wendik_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -260,6 +264,7 @@ object_tangible_mission_quest_item_shared_arven_wendik_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_mission_quest_item_shared_arven_wendik_q1_needed = SharedTangibl
 	clientObjectCRC = 3207687484
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_arven_wendik_q1_needed, "object/tangible/mission/quest_item/shared_arven_wendik_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_arven_wendik_q1_needed, "object/tangible/mission/quest_item/shared_arven_wendik_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
@@ -313,6 +318,7 @@ object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed = SharedTangibl
 	clientObjectCRC = 2808249853
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed, "object/tangible/mission/quest_item/shared_athok_dinvar_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed, "object/tangible/mission/quest_item/shared_athok_dinvar_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_attunement_grid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -366,6 +372,7 @@ object_tangible_mission_quest_item_shared_attunement_grid = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_mission_quest_item_shared_attunement_grid = SharedTangibleObject
 	clientObjectCRC = 1378666230
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_attunement_grid, "object/tangible/mission/quest_item/shared_attunement_grid.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_attunement_grid, "object/tangible/mission/quest_item/shared_attunement_grid.iff")
 
 object_tangible_mission_quest_item_shared_aujante_klee_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -419,6 +426,7 @@ object_tangible_mission_quest_item_shared_aujante_klee_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_mission_quest_item_shared_aujante_klee_q2_needed = SharedTangibl
 	clientObjectCRC = 3195313536
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_aujante_klee_q2_needed, "object/tangible/mission/quest_item/shared_aujante_klee_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_aujante_klee_q2_needed, "object/tangible/mission/quest_item/shared_aujante_klee_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -472,6 +480,7 @@ object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed = SharedTangible
 	clientObjectCRC = 947591589
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed, "object/tangible/mission/quest_item/shared_ayn_eckener_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed, "object/tangible/mission/quest_item/shared_ayn_eckener_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_bab_esrus_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
@@ -525,6 +534,7 @@ object_tangible_mission_quest_item_shared_bab_esrus_q1_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_mission_quest_item_shared_bab_esrus_q1_needed = SharedTangibleOb
 	clientObjectCRC = 3109370215
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bab_esrus_q1_needed, "object/tangible/mission/quest_item/shared_bab_esrus_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bab_esrus_q1_needed, "object/tangible/mission/quest_item/shared_bab_esrus_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_bab_esrus_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_cage_bamboo.apt",
@@ -578,6 +588,7 @@ object_tangible_mission_quest_item_shared_bab_esrus_q3_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_mission_quest_item_shared_bab_esrus_q3_needed = SharedTangibleOb
 	clientObjectCRC = 3065577323
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bab_esrus_q3_needed, "object/tangible/mission/quest_item/shared_bab_esrus_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bab_esrus_q3_needed, "object/tangible/mission/quest_item/shared_bab_esrus_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -631,6 +642,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed = SharedTangible
 	clientObjectCRC = 2260248356
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -684,6 +696,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed = SharedTangible
 	clientObjectCRC = 2393080366
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -737,6 +750,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed = SharedTangible
 	clientObjectCRC = 2304074024
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_binna_jode_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s05.apt",
@@ -790,6 +804,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q1_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q1_needed = SharedTangibleO
 	clientObjectCRC = 2763509222
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_binna_jode_q1_needed, "object/tangible/mission/quest_item/shared_binna_jode_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_binna_jode_q1_needed, "object/tangible/mission/quest_item/shared_binna_jode_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_binna_jode_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -843,6 +858,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q2_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q2_needed = SharedTangibleO
 	clientObjectCRC = 2897012972
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_binna_jode_q2_needed, "object/tangible/mission/quest_item/shared_binna_jode_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_binna_jode_q2_needed, "object/tangible/mission/quest_item/shared_binna_jode_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_binna_jode_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s08_f.sat",
@@ -896,6 +912,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q3_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q3_needed = SharedTangibleO
 	clientObjectCRC = 2874805226
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_binna_jode_q3_needed, "object/tangible/mission/quest_item/shared_binna_jode_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_binna_jode_q3_needed, "object/tangible/mission/quest_item/shared_binna_jode_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_binna_jode_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -949,6 +966,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q4_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q4_needed = SharedTangibleO
 	clientObjectCRC = 3164250872
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_binna_jode_q4_needed, "object/tangible/mission/quest_item/shared_binna_jode_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_binna_jode_q4_needed, "object/tangible/mission/quest_item/shared_binna_jode_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -1002,6 +1020,7 @@ object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed = SharedTangib
 	clientObjectCRC = 2299815222
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed, "object/tangible/mission/quest_item/shared_biribas_tarun_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed, "object/tangible/mission/quest_item/shared_biribas_tarun_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_booto_lubble_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_rank_cylinder.apt",
@@ -1055,6 +1074,7 @@ object_tangible_mission_quest_item_shared_booto_lubble_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_mission_quest_item_shared_booto_lubble_q1_needed = SharedTangibl
 	clientObjectCRC = 612933888
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_booto_lubble_q1_needed, "object/tangible/mission/quest_item/shared_booto_lubble_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_booto_lubble_q1_needed, "object/tangible/mission/quest_item/shared_booto_lubble_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_booto_lubble_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_imp_detonator.apt",
@@ -1108,6 +1128,7 @@ object_tangible_mission_quest_item_shared_booto_lubble_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_mission_quest_item_shared_booto_lubble_q2_needed = SharedTangibl
 	clientObjectCRC = 747865098
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_booto_lubble_q2_needed, "object/tangible/mission/quest_item/shared_booto_lubble_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_booto_lubble_q2_needed, "object/tangible/mission/quest_item/shared_booto_lubble_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_borvo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -1161,6 +1182,7 @@ object_tangible_mission_quest_item_shared_borvo_q1_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_mission_quest_item_shared_borvo_q1_needed = SharedTangibleObject
 	clientObjectCRC = 3403265909
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_borvo_q1_needed, "object/tangible/mission/quest_item/shared_borvo_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_borvo_q1_needed, "object/tangible/mission/quest_item/shared_borvo_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_borvo_q6_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -1214,6 +1236,7 @@ object_tangible_mission_quest_item_shared_borvo_q6_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_mission_quest_item_shared_borvo_q6_needed = SharedTangibleObject
 	clientObjectCRC = 3709410919
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_borvo_q6_needed, "object/tangible/mission/quest_item/shared_borvo_q6_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_borvo_q6_needed, "object/tangible/mission/quest_item/shared_borvo_q6_needed.iff")
 
 object_tangible_mission_quest_item_shared_boshek_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -1267,6 +1290,7 @@ object_tangible_mission_quest_item_shared_boshek_q1_needed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_mission_quest_item_shared_boshek_q1_needed = SharedTangibleObjec
 	clientObjectCRC = 4133937817
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_boshek_q1_needed, "object/tangible/mission/quest_item/shared_boshek_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_boshek_q1_needed, "object/tangible/mission/quest_item/shared_boshek_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_boshek_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_weapons_lg.apt",
@@ -1320,6 +1344,7 @@ object_tangible_mission_quest_item_shared_boshek_q2_needed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_mission_quest_item_shared_boshek_q2_needed = SharedTangibleObjec
 	clientObjectCRC = 4269655955
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_boshek_q2_needed, "object/tangible/mission/quest_item/shared_boshek_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_boshek_q2_needed, "object/tangible/mission/quest_item/shared_boshek_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sandstat.apt",
@@ -1373,6 +1398,7 @@ object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed = SharedTa
 	clientObjectCRC = 3753479454
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed, "object/tangible/mission/quest_item/shared_brantlee_spondoon_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed, "object/tangible/mission/quest_item/shared_brantlee_spondoon_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -1426,6 +1452,7 @@ object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed = SharedTa
 	clientObjectCRC = 3617761300
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed, "object/tangible/mission/quest_item/shared_brantlee_spondoon_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed, "object/tangible/mission/quest_item/shared_brantlee_spondoon_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
@@ -1479,6 +1506,7 @@ object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed = SharedTangib
 	clientObjectCRC = 1892692988
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed, "object/tangible/mission/quest_item/shared_brass_marshoo_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed, "object/tangible/mission/quest_item/shared_brass_marshoo_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_sliced.apt",
@@ -1532,6 +1560,7 @@ object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed = SharedTangib
 	clientObjectCRC = 2026575606
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed, "object/tangible/mission/quest_item/shared_brass_marshoo_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed, "object/tangible/mission/quest_item/shared_brass_marshoo_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -1585,6 +1614,7 @@ object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed = SharedTangibl
 	clientObjectCRC = 359980413
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed, "object/tangible/mission/quest_item/shared_brea_tonnika_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed, "object/tangible/mission/quest_item/shared_brea_tonnika_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_bren_kingal_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
@@ -1638,6 +1668,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q1_needed = SharedTangible
 	clientObjectCRC = 240174714
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q1_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q1_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_bren_kingal_q1_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
@@ -1691,6 +1722,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q1_reward = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q1_reward = SharedTangible
 	clientObjectCRC = 2799354182
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q1_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q1_reward.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q1_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q1_reward.iff")
 
 object_tangible_mission_quest_item_shared_bren_kingal_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
@@ -1744,6 +1776,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q2_needed = SharedTangible
 	clientObjectCRC = 105636720
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q2_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q2_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_bren_kingal_q2_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s02.apt",
@@ -1797,6 +1830,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q2_reward = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q2_reward = SharedTangible
 	clientObjectCRC = 2931942476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q2_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q2_reward.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q2_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q2_reward.iff")
 
 object_tangible_mission_quest_item_shared_bren_kingal_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -1850,6 +1884,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q3_needed = SharedTangible
 	clientObjectCRC = 29163638
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q3_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q3_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_bren_kingal_q3_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -1903,6 +1938,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q3_reward = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q3_reward = SharedTangible
 	clientObjectCRC = 2838955850
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q3_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q3_reward.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q3_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q3_reward.iff")
 
 object_tangible_mission_quest_item_shared_bren_kingal_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_atat_f.sat",
@@ -1956,6 +1992,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q4_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q4_needed = SharedTangible
 	clientObjectCRC = 377334116
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q4_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q4_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_bren_kingal_q4_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_pie_full_s1.apt",
@@ -2009,6 +2046,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q4_reward = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q4_reward = SharedTangible
 	clientObjectCRC = 3203903064
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q4_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q4_reward.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q4_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q4_reward.iff")
 
 object_tangible_mission_quest_item_shared_brennis_doore_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
@@ -2062,6 +2100,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q1_needed = SharedTangib
 	clientObjectCRC = 1705405453
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q1_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q1_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_brennis_doore_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2115,6 +2154,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q2_needed = SharedTangib
 	clientObjectCRC = 1841121543
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q2_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q2_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_brennis_doore_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2168,6 +2208,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q3_needed = SharedTangib
 	clientObjectCRC = 1783343617
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q3_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q3_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s5.apt",
@@ -2221,6 +2262,7 @@ object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed = SharedTang
 	clientObjectCRC = 3264370995
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed, "object/tangible/mission/quest_item/shared_champhra_biahin_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed, "object/tangible/mission/quest_item/shared_champhra_biahin_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -2274,6 +2316,7 @@ object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed = SharedTang
 	clientObjectCRC = 3398007865
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed, "object/tangible/mission/quest_item/shared_champhra_biahin_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed, "object/tangible/mission/quest_item/shared_champhra_biahin_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_charal_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -2327,6 +2370,7 @@ object_tangible_mission_quest_item_shared_charal_q1_needed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_mission_quest_item_shared_charal_q1_needed = SharedTangibleObjec
 	clientObjectCRC = 2397269656
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_charal_q1_needed, "object/tangible/mission/quest_item/shared_charal_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_charal_q1_needed, "object/tangible/mission/quest_item/shared_charal_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_charal_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_nboo_comlink_civilian.apt",
@@ -2380,6 +2424,7 @@ object_tangible_mission_quest_item_shared_charal_q4_needed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_mission_quest_item_shared_charal_q4_needed = SharedTangibleObjec
 	clientObjectCRC = 2530083206
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_charal_q4_needed, "object/tangible/mission/quest_item/shared_charal_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_charal_q4_needed, "object/tangible/mission/quest_item/shared_charal_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2433,6 +2478,7 @@ object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed = SharedTan
 	clientObjectCRC = 3359396583
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed, "object/tangible/mission/quest_item/shared_chertyl_ruruwoor_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed, "object/tangible/mission/quest_item/shared_chertyl_ruruwoor_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2486,6 +2532,7 @@ object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed = SharedTangib
 	clientObjectCRC = 8182933
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed, "object/tangible/mission/quest_item/shared_crev_bombaasa_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed, "object/tangible/mission/quest_item/shared_crev_bombaasa_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2539,6 +2586,7 @@ object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed = SharedTangib
 	clientObjectCRC = 141031839
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed, "object/tangible/mission/quest_item/shared_crev_bombaasa_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed, "object/tangible/mission/quest_item/shared_crev_bombaasa_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_crider_trant_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2592,6 +2640,7 @@ object_tangible_mission_quest_item_shared_crider_trant_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_mission_quest_item_shared_crider_trant_q1_needed = SharedTangibl
 	clientObjectCRC = 2176487212
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_crider_trant_q1_needed, "object/tangible/mission/quest_item/shared_crider_trant_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_crider_trant_q1_needed, "object/tangible/mission/quest_item/shared_crider_trant_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_current_alternator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -2645,6 +2694,7 @@ object_tangible_mission_quest_item_shared_current_alternator = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_mission_quest_item_shared_current_alternator = SharedTangibleObj
 	clientObjectCRC = 3995914990
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_current_alternator, "object/tangible/mission/quest_item/shared_current_alternator.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_current_alternator, "object/tangible/mission/quest_item/shared_current_alternator.iff")
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2698,6 +2748,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed = SharedTang
 	clientObjectCRC = 2245704148
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2751,6 +2802,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed = SharedTang
 	clientObjectCRC = 2378276062
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2804,6 +2856,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed = SharedTang
 	clientObjectCRC = 2318893016
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2857,6 +2910,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed = SharedTang
 	clientObjectCRC = 2650265290
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2910,6 +2964,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed = SharedTang
 	clientObjectCRC = 2451181766
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q6_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q6_needed.iff")
 
 object_tangible_mission_quest_item_shared_damalia_korde_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -2963,6 +3018,7 @@ object_tangible_mission_quest_item_shared_damalia_korde_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_mission_quest_item_shared_damalia_korde_q1_needed = SharedTangib
 	clientObjectCRC = 4183162211
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_damalia_korde_q1_needed, "object/tangible/mission/quest_item/shared_damalia_korde_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_damalia_korde_q1_needed, "object/tangible/mission/quest_item/shared_damalia_korde_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -3016,6 +3072,7 @@ object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed = SharedTangib
 	clientObjectCRC = 1675280131
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed, "object/tangible/mission/quest_item/shared_dannik_malaan_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed, "object/tangible/mission/quest_item/shared_dannik_malaan_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_dea_tore_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -3069,6 +3126,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q2_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q2_needed = SharedTangibleObj
 	clientObjectCRC = 888947205
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dea_tore_q2_needed, "object/tangible/mission/quest_item/shared_dea_tore_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dea_tore_q2_needed, "object/tangible/mission/quest_item/shared_dea_tore_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_dea_tore_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -3122,6 +3180,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q3_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q3_needed = SharedTangibleObj
 	clientObjectCRC = 856334595
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dea_tore_q3_needed, "object/tangible/mission/quest_item/shared_dea_tore_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dea_tore_q3_needed, "object/tangible/mission/quest_item/shared_dea_tore_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_dea_tore_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
@@ -3175,6 +3234,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q4_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q4_needed = SharedTangibleObj
 	clientObjectCRC = 617220113
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dea_tore_q4_needed, "object/tangible/mission/quest_item/shared_dea_tore_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dea_tore_q4_needed, "object/tangible/mission/quest_item/shared_dea_tore_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -3228,6 +3288,7 @@ object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed = SharedTan
 	clientObjectCRC = 1955273161
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed, "object/tangible/mission/quest_item/shared_denell_kelvannon_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed, "object/tangible/mission/quest_item/shared_denell_kelvannon_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_diax_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -3281,6 +3342,7 @@ object_tangible_mission_quest_item_shared_diax_q2_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_mission_quest_item_shared_diax_q2_needed = SharedTangibleObjectT
 	clientObjectCRC = 4071396946
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_diax_q2_needed, "object/tangible/mission/quest_item/shared_diax_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_diax_q2_needed, "object/tangible/mission/quest_item/shared_diax_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -3334,6 +3396,7 @@ object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed = SharedTan
 	clientObjectCRC = 3645474258
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed, "object/tangible/mission/quest_item/shared_didina_lippinoss_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed, "object/tangible/mission/quest_item/shared_didina_lippinoss_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -3387,6 +3450,7 @@ object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed = SharedTan
 	clientObjectCRC = 767298763
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed, "object/tangible/mission/quest_item/shared_dilvin_lormurojo_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed, "object/tangible/mission/quest_item/shared_dilvin_lormurojo_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_holocron_splinters.apt",
@@ -3440,6 +3504,7 @@ object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed = SharedTangibl
 	clientObjectCRC = 2124169630
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed, "object/tangible/mission/quest_item/shared_dolac_legasi_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed, "object/tangible/mission/quest_item/shared_dolac_legasi_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -3493,6 +3558,7 @@ object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed = SharedTang
 	clientObjectCRC = 813496257
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed, "object/tangible/mission/quest_item/shared_draya_korbinari_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed, "object/tangible/mission/quest_item/shared_draya_korbinari_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -3546,6 +3612,7 @@ object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed = SharedTangibl
 	clientObjectCRC = 1092729423
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed, "object/tangible/mission/quest_item/shared_drenn_zebber_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed, "object/tangible/mission/quest_item/shared_drenn_zebber_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -3599,6 +3666,7 @@ object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed = SharedTangibl
 	clientObjectCRC = 1335716161
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed, "object/tangible/mission/quest_item/shared_ebenn_baobab_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed, "object/tangible/mission/quest_item/shared_ebenn_baobab_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -3652,6 +3720,7 @@ object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed = SharedTangibl
 	clientObjectCRC = 1215007303
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed, "object/tangible/mission/quest_item/shared_ebenn_baobab_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed, "object/tangible/mission/quest_item/shared_ebenn_baobab_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_feedback_controller = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -3705,6 +3774,7 @@ object_tangible_mission_quest_item_shared_feedback_controller = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_mission_quest_item_shared_feedback_controller = SharedTangibleOb
 	clientObjectCRC = 4176227908
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_feedback_controller, "object/tangible/mission/quest_item/shared_feedback_controller.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_feedback_controller, "object/tangible/mission/quest_item/shared_feedback_controller.iff")
 
 object_tangible_mission_quest_item_shared_figrindan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -3758,6 +3828,7 @@ object_tangible_mission_quest_item_shared_figrindan_q1_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_mission_quest_item_shared_figrindan_q1_needed = SharedTangibleOb
 	clientObjectCRC = 153181486
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_figrindan_q1_needed, "object/tangible/mission/quest_item/shared_figrindan_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_figrindan_q1_needed, "object/tangible/mission/quest_item/shared_figrindan_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_figrindan_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -3811,6 +3882,7 @@ object_tangible_mission_quest_item_shared_figrindan_q2_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_mission_quest_item_shared_figrindan_q2_needed = SharedTangibleOb
 	clientObjectCRC = 20609060
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_figrindan_q2_needed, "object/tangible/mission/quest_item/shared_figrindan_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_figrindan_q2_needed, "object/tangible/mission/quest_item/shared_figrindan_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_figrindan_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -3864,6 +3936,7 @@ object_tangible_mission_quest_item_shared_figrindan_q3_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_mission_quest_item_shared_figrindan_q3_needed = SharedTangibleOb
 	clientObjectCRC = 114072354
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_figrindan_q3_needed, "object/tangible/mission/quest_item/shared_figrindan_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_figrindan_q3_needed, "object/tangible/mission/quest_item/shared_figrindan_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_fixer_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine.apt",
@@ -3917,6 +3990,7 @@ object_tangible_mission_quest_item_shared_fixer_q1_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_mission_quest_item_shared_fixer_q1_needed = SharedTangibleObject
 	clientObjectCRC = 1275277718
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_fixer_q1_needed, "object/tangible/mission/quest_item/shared_fixer_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_fixer_q1_needed, "object/tangible/mission/quest_item/shared_fixer_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_fixer_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
@@ -3970,6 +4044,7 @@ object_tangible_mission_quest_item_shared_fixer_q3_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_mission_quest_item_shared_fixer_q3_needed = SharedTangibleObject
 	clientObjectCRC = 1139734426
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_fixer_q3_needed, "object/tangible/mission/quest_item/shared_fixer_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_fixer_q3_needed, "object/tangible/mission/quest_item/shared_fixer_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4023,6 +4098,7 @@ object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed = SharedTangib
 	clientObjectCRC = 3270538959
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed, "object/tangible/mission/quest_item/shared_garm_beliblis_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed, "object/tangible/mission/quest_item/shared_garm_beliblis_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4076,6 +4152,7 @@ object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed = SharedTangi
 	clientObjectCRC = 3066980718
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed, "object/tangible/mission/quest_item/shared_gilad_pellaeon_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed, "object/tangible/mission/quest_item/shared_gilad_pellaeon_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4129,6 +4206,7 @@ object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed = SharedTangi
 	clientObjectCRC = 3201649764
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed, "object/tangible/mission/quest_item/shared_gilad_pellaeon_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed, "object/tangible/mission/quest_item/shared_gilad_pellaeon_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_gilker_budz_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4182,6 +4260,7 @@ object_tangible_mission_quest_item_shared_gilker_budz_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_mission_quest_item_shared_gilker_budz_q1_needed = SharedTangible
 	clientObjectCRC = 1062635978
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gilker_budz_q1_needed, "object/tangible/mission/quest_item/shared_gilker_budz_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gilker_budz_q1_needed, "object/tangible/mission/quest_item/shared_gilker_budz_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4235,6 +4314,7 @@ object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed = SharedTangibl
 	clientObjectCRC = 1909895567
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed, "object/tangible/mission/quest_item/shared_ging_darjeek_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed, "object/tangible/mission/quest_item/shared_ging_darjeek_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_gins_darone_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_jawa.apt",
@@ -4288,6 +4368,7 @@ object_tangible_mission_quest_item_shared_gins_darone_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_mission_quest_item_shared_gins_darone_q1_needed = SharedTangible
 	clientObjectCRC = 848766472
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gins_darone_q1_needed, "object/tangible/mission/quest_item/shared_gins_darone_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gins_darone_q1_needed, "object/tangible/mission/quest_item/shared_gins_darone_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_gins_darone_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_vibroknuckler.apt",
@@ -4341,6 +4422,7 @@ object_tangible_mission_quest_item_shared_gins_darone_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_mission_quest_item_shared_gins_darone_q2_needed = SharedTangible
 	clientObjectCRC = 982254338
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gins_darone_q2_needed, "object/tangible/mission/quest_item/shared_gins_darone_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gins_darone_q2_needed, "object/tangible/mission/quest_item/shared_gins_darone_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -4394,6 +4476,7 @@ object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed = SharedTangible
 	clientObjectCRC = 2601533339
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed, "object/tangible/mission/quest_item/shared_graf_zapalo_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed, "object/tangible/mission/quest_item/shared_graf_zapalo_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4447,6 +4530,7 @@ object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed = SharedTangible
 	clientObjectCRC = 2632375453
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed, "object/tangible/mission/quest_item/shared_graf_zapalo_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed, "object/tangible/mission/quest_item/shared_graf_zapalo_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_gravin_attal_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -4500,6 +4584,7 @@ object_tangible_mission_quest_item_shared_gravin_attal_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_mission_quest_item_shared_gravin_attal_q1_needed = SharedTangibl
 	clientObjectCRC = 3346488460
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gravin_attal_q1_needed, "object/tangible/mission/quest_item/shared_gravin_attal_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gravin_attal_q1_needed, "object/tangible/mission/quest_item/shared_gravin_attal_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_gravin_attal_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
@@ -4553,6 +4638,7 @@ object_tangible_mission_quest_item_shared_gravin_attal_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_mission_quest_item_shared_gravin_attal_q2_needed = SharedTangibl
 	clientObjectCRC = 3479992710
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gravin_attal_q2_needed, "object/tangible/mission/quest_item/shared_gravin_attal_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gravin_attal_q2_needed, "object/tangible/mission/quest_item/shared_gravin_attal_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_green_laser_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -4606,6 +4692,7 @@ object_tangible_mission_quest_item_shared_green_laser_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_mission_quest_item_shared_green_laser_q1_needed = SharedTangible
 	clientObjectCRC = 3862327670
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_green_laser_q1_needed, "object/tangible/mission/quest_item/shared_green_laser_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_green_laser_q1_needed, "object/tangible/mission/quest_item/shared_green_laser_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4659,6 +4746,7 @@ object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed = SharedTangib
 	clientObjectCRC = 1444934081
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed, "object/tangible/mission/quest_item/shared_grondorn_muse_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed, "object/tangible/mission/quest_item/shared_grondorn_muse_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -4712,6 +4800,7 @@ object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed = SharedTangible
 	clientObjectCRC = 1783655886
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed, "object/tangible/mission/quest_item/shared_hagrin_zeed_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed, "object/tangible/mission/quest_item/shared_hagrin_zeed_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -4765,6 +4854,7 @@ object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed = SharedTangible
 	clientObjectCRC = 1649100996
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed, "object/tangible/mission/quest_item/shared_hagrin_zeed_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed, "object/tangible/mission/quest_item/shared_hagrin_zeed_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_hal_horn_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4818,6 +4908,7 @@ object_tangible_mission_quest_item_shared_hal_horn_q1_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_mission_quest_item_shared_hal_horn_q1_needed = SharedTangibleObj
 	clientObjectCRC = 2483021006
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hal_horn_q1_needed, "object/tangible/mission/quest_item/shared_hal_horn_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hal_horn_q1_needed, "object/tangible/mission/quest_item/shared_hal_horn_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -4871,6 +4962,7 @@ object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed = SharedTang
 	clientObjectCRC = 135220430
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed, "object/tangible/mission/quest_item/shared_haleen_snowline_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed, "object/tangible/mission/quest_item/shared_haleen_snowline_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -4924,6 +5016,7 @@ object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed = SharedTang
 	clientObjectCRC = 1337796
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed, "object/tangible/mission/quest_item/shared_haleen_snowline_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed, "object/tangible/mission/quest_item/shared_haleen_snowline_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_hedon_istee_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -4977,6 +5070,7 @@ object_tangible_mission_quest_item_shared_hedon_istee_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_mission_quest_item_shared_hedon_istee_q3_needed = SharedTangible
 	clientObjectCRC = 3252161065
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hedon_istee_q3_needed, "object/tangible/mission/quest_item/shared_hedon_istee_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hedon_istee_q3_needed, "object/tangible/mission/quest_item/shared_hedon_istee_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -5030,6 +5124,7 @@ object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed = SharedTang
 	clientObjectCRC = 828118213
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed, "object/tangible/mission/quest_item/shared_hefsen_zindalai_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed, "object/tangible/mission/quest_item/shared_hefsen_zindalai_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ian_logo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sensor_package_unit.apt",
@@ -5083,6 +5178,7 @@ object_tangible_mission_quest_item_shared_ian_logo_q1_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_mission_quest_item_shared_ian_logo_q1_needed = SharedTangibleObj
 	clientObjectCRC = 3136963652
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ian_logo_q1_needed, "object/tangible/mission/quest_item/shared_ian_logo_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ian_logo_q1_needed, "object/tangible/mission/quest_item/shared_ian_logo_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ian_logo_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -5136,6 +5232,7 @@ object_tangible_mission_quest_item_shared_ian_logo_q3_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_mission_quest_item_shared_ian_logo_q3_needed = SharedTangibleObj
 	clientObjectCRC = 3038216776
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ian_logo_q3_needed, "object/tangible/mission/quest_item/shared_ian_logo_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ian_logo_q3_needed, "object/tangible/mission/quest_item/shared_ian_logo_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -5189,6 +5286,7 @@ object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed = SharedTangible
 	clientObjectCRC = 753804918
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed, "object/tangible/mission/quest_item/shared_igbi_freemo_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed, "object/tangible/mission/quest_item/shared_igbi_freemo_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -5242,6 +5340,7 @@ object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed = SharedTangibleO
 	clientObjectCRC = 896881297
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed, "object/tangible/mission/quest_item/shared_ikka_gesul_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed, "object/tangible/mission/quest_item/shared_ikka_gesul_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -5295,6 +5394,7 @@ object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed = Sha
 	clientObjectCRC = 104299049
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed, "object/tangible/mission/quest_item/shared_indintra_imbru_yerevan_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed, "object/tangible/mission/quest_item/shared_indintra_imbru_yerevan_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -5348,6 +5448,7 @@ object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed = Sha
 	clientObjectCRC = 237788963
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed, "object/tangible/mission/quest_item/shared_indintra_imbru_yerevan_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed, "object/tangible/mission/quest_item/shared_indintra_imbru_yerevan_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -5401,6 +5502,7 @@ object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed = SharedTangi
 	clientObjectCRC = 373666081
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed, "object/tangible/mission/quest_item/shared_jadam_questrel_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed, "object/tangible/mission/quest_item/shared_jadam_questrel_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_ronka.apt",
@@ -5454,6 +5556,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed = SharedTangi
 	clientObjectCRC = 1190917197
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -5507,6 +5610,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed = SharedTangi
 	clientObjectCRC = 1226191425
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -5560,6 +5664,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed = SharedTangi
 	clientObjectCRC = 1591122771
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -5613,6 +5718,7 @@ object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed = SharedTangib
 	clientObjectCRC = 224919357
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed, "object/tangible/mission/quest_item/shared_jatrian_lytus_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed, "object/tangible/mission/quest_item/shared_jatrian_lytus_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -5666,6 +5772,7 @@ object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed = SharedTangib
 	clientObjectCRC = 1966647565
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed, "object/tangible/mission/quest_item/shared_jazeen_thurmm_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed, "object/tangible/mission/quest_item/shared_jazeen_thurmm_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_junelle_astor_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -5719,6 +5826,7 @@ object_tangible_mission_quest_item_shared_junelle_astor_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_mission_quest_item_shared_junelle_astor_q1_needed = SharedTangib
 	clientObjectCRC = 3685390687
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_junelle_astor_q1_needed, "object/tangible/mission/quest_item/shared_junelle_astor_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_junelle_astor_q1_needed, "object/tangible/mission/quest_item/shared_junelle_astor_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_junelle_astor_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -5772,6 +5880,7 @@ object_tangible_mission_quest_item_shared_junelle_astor_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_mission_quest_item_shared_junelle_astor_q3_needed = SharedTangib
 	clientObjectCRC = 3561447251
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_junelle_astor_q3_needed, "object/tangible/mission/quest_item/shared_junelle_astor_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_junelle_astor_q3_needed, "object/tangible/mission/quest_item/shared_junelle_astor_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -5825,6 +5934,7 @@ object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed = SharedTangibl
 	clientObjectCRC = 3165505661
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed, "object/tangible/mission/quest_item/shared_jusani_zhord_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed, "object/tangible/mission/quest_item/shared_jusani_zhord_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_jyr_koble_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -5878,6 +5988,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q1_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q1_needed = SharedTangibleOb
 	clientObjectCRC = 3558096182
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q1_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q1_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_jyr_koble_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -5931,6 +6042,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q3_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q3_needed = SharedTangibleOb
 	clientObjectCRC = 3690593082
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q3_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q3_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_jyr_koble_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -5984,6 +6096,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q4_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q4_needed = SharedTangibleOb
 	clientObjectCRC = 3426308648
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q4_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q4_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6037,6 +6150,7 @@ object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed = SharedTangib
 	clientObjectCRC = 900691098
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed, "object/tangible/mission/quest_item/shared_kadil_nurugen_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed, "object/tangible/mission/quest_item/shared_kadil_nurugen_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -6090,6 +6204,7 @@ object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed = SharedTang
 	clientObjectCRC = 1452769693
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed, "object/tangible/mission/quest_item/shared_kaeline_ungasan_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed, "object/tangible/mission/quest_item/shared_kaeline_ungasan_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -6143,6 +6258,7 @@ object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed = SharedTang
 	clientObjectCRC = 1586275479
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed, "object/tangible/mission/quest_item/shared_kaeline_ungasan_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed, "object/tangible/mission/quest_item/shared_kaeline_ungasan_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_kais_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -6196,6 +6312,7 @@ object_tangible_mission_quest_item_shared_kais_q1_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,7 +6357,7 @@ object_tangible_mission_quest_item_shared_kais_q1_needed = SharedTangibleObjectT
 	clientObjectCRC = 1060398386
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kais_q1_needed, "object/tangible/mission/quest_item/shared_kais_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kais_q1_needed, "object/tangible/mission/quest_item/shared_kais_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_kais_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -6249,6 +6366,7 @@ object_tangible_mission_quest_item_shared_kais_q2_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6293,7 +6411,7 @@ object_tangible_mission_quest_item_shared_kais_q2_needed = SharedTangibleObjectT
 	clientObjectCRC = 925843512
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kais_q2_needed, "object/tangible/mission/quest_item/shared_kais_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kais_q2_needed, "object/tangible/mission/quest_item/shared_kais_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_kais_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
@@ -6302,6 +6420,7 @@ object_tangible_mission_quest_item_shared_kais_q3_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6346,7 +6465,7 @@ object_tangible_mission_quest_item_shared_kais_q3_needed = SharedTangibleObjectT
 	clientObjectCRC = 819569470
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kais_q3_needed, "object/tangible/mission/quest_item/shared_kais_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kais_q3_needed, "object/tangible/mission/quest_item/shared_kais_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_karena_keer_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6355,6 +6474,7 @@ object_tangible_mission_quest_item_shared_karena_keer_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6399,7 +6519,7 @@ object_tangible_mission_quest_item_shared_karena_keer_q1_needed = SharedTangible
 	clientObjectCRC = 2116306072
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karena_keer_q1_needed, "object/tangible/mission/quest_item/shared_karena_keer_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karena_keer_q1_needed, "object/tangible/mission/quest_item/shared_karena_keer_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_karena_keer_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
@@ -6408,6 +6528,7 @@ object_tangible_mission_quest_item_shared_karena_keer_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6452,7 +6573,7 @@ object_tangible_mission_quest_item_shared_karena_keer_q2_needed = SharedTangible
 	clientObjectCRC = 1983865234
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karena_keer_q2_needed, "object/tangible/mission/quest_item/shared_karena_keer_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karena_keer_q2_needed, "object/tangible/mission/quest_item/shared_karena_keer_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_karrek_film_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6461,6 +6582,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6505,7 +6627,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q1_needed = SharedTangible
 	clientObjectCRC = 937788468
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karrek_film_q1_needed, "object/tangible/mission/quest_item/shared_karrek_film_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karrek_film_q1_needed, "object/tangible/mission/quest_item/shared_karrek_film_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_karrek_film_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6514,6 +6636,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6558,7 +6681,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q2_needed = SharedTangible
 	clientObjectCRC = 1073652030
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karrek_film_q2_needed, "object/tangible/mission/quest_item/shared_karrek_film_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karrek_film_q2_needed, "object/tangible/mission/quest_item/shared_karrek_film_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_karrek_film_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -6567,6 +6690,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6611,7 +6735,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q3_needed = SharedTangible
 	clientObjectCRC = 940065336
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karrek_film_q3_needed, "object/tangible/mission/quest_item/shared_karrek_film_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karrek_film_q3_needed, "object/tangible/mission/quest_item/shared_karrek_film_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6620,6 +6744,7 @@ object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6664,7 +6789,7 @@ object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed = SharedTangibl
 	clientObjectCRC = 643250440
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed, "object/tangible/mission/quest_item/shared_kelvus_naria_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed, "object/tangible/mission/quest_item/shared_kelvus_naria_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6673,6 +6798,7 @@ object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6717,7 +6843,7 @@ object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed = SharedTangi
 	clientObjectCRC = 2996552062
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed, "object/tangible/mission/quest_item/shared_kirkin_liawoon_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed, "object/tangible/mission/quest_item/shared_kirkin_liawoon_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_kitster_banai_q5_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -6726,6 +6852,7 @@ object_tangible_mission_quest_item_shared_kitster_banai_q5_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6770,7 +6897,7 @@ object_tangible_mission_quest_item_shared_kitster_banai_q5_needed = SharedTangib
 	clientObjectCRC = 116404538
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kitster_banai_q5_needed, "object/tangible/mission/quest_item/shared_kitster_banai_q5_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kitster_banai_q5_needed, "object/tangible/mission/quest_item/shared_kitster_banai_q5_needed.iff")
 
 object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -6779,6 +6906,7 @@ object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6823,7 +6951,7 @@ object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed = SharedTang
 	clientObjectCRC = 1774093383
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed, "object/tangible/mission/quest_item/shared_kormund_thrylle_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed, "object/tangible/mission/quest_item/shared_kormund_thrylle_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_kritus_morven_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6832,6 +6960,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6876,7 +7005,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q1_needed = SharedTangib
 	clientObjectCRC = 3710443198
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q1_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q1_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_kritus_morven_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6885,6 +7014,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6929,7 +7059,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q2_needed = SharedTangib
 	clientObjectCRC = 3576953780
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q2_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q2_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_kritus_morven_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -6938,6 +7068,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6982,7 +7113,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q3_needed = SharedTangib
 	clientObjectCRC = 3536132274
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q3_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q3_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_kritus_morven_q5_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -6991,6 +7122,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q5_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7035,7 +7167,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q5_needed = SharedTangib
 	clientObjectCRC = 3270726310
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q5_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q5_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q5_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q5_needed.iff")
 
 object_tangible_mission_quest_item_shared_kylantha_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_kit_materials_s1.apt",
@@ -7044,6 +7176,7 @@ object_tangible_mission_quest_item_shared_kylantha_q1_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7088,7 +7221,7 @@ object_tangible_mission_quest_item_shared_kylantha_q1_needed = SharedTangibleObj
 	clientObjectCRC = 2573148736
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kylantha_q1_needed, "object/tangible/mission/quest_item/shared_kylantha_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kylantha_q1_needed, "object/tangible/mission/quest_item/shared_kylantha_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_kylantha_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7097,6 +7230,7 @@ object_tangible_mission_quest_item_shared_kylantha_q2_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7141,7 +7275,7 @@ object_tangible_mission_quest_item_shared_kylantha_q2_needed = SharedTangibleObj
 	clientObjectCRC = 2437154634
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kylantha_q2_needed, "object/tangible/mission/quest_item/shared_kylantha_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kylantha_q2_needed, "object/tangible/mission/quest_item/shared_kylantha_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7150,6 +7284,7 @@ object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7194,7 +7329,7 @@ object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed = SharedTangib
 	clientObjectCRC = 3401487746
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed, "object/tangible/mission/quest_item/shared_lasha_bindari_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed, "object/tangible/mission/quest_item/shared_lasha_bindari_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_leb_slesher_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7203,6 +7338,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7247,7 +7383,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q1_needed = SharedTangible
 	clientObjectCRC = 4147603865
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q1_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q1_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_leb_slesher_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7256,6 +7392,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7300,7 +7437,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q2_needed = SharedTangible
 	clientObjectCRC = 4281093267
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q2_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q2_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_leb_slesher_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7309,6 +7446,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7353,7 +7491,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q3_needed = SharedTangible
 	clientObjectCRC = 4175081365
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q3_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q3_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7362,6 +7500,7 @@ object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7406,7 +7545,7 @@ object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed = SharedTangibl
 	clientObjectCRC = 30504142
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed, "object/tangible/mission/quest_item/shared_lergo_brazee_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed, "object/tangible/mission/quest_item/shared_lergo_brazee_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_lian_byrne_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7415,6 +7554,7 @@ object_tangible_mission_quest_item_shared_lian_byrne_q1_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7459,7 +7599,7 @@ object_tangible_mission_quest_item_shared_lian_byrne_q1_needed = SharedTangibleO
 	clientObjectCRC = 4211658393
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lian_byrne_q1_needed, "object/tangible/mission/quest_item/shared_lian_byrne_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lian_byrne_q1_needed, "object/tangible/mission/quest_item/shared_lian_byrne_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_lian_byrne_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7468,6 +7608,7 @@ object_tangible_mission_quest_item_shared_lian_byrne_q3_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7512,7 +7653,7 @@ object_tangible_mission_quest_item_shared_lian_byrne_q3_needed = SharedTangibleO
 	clientObjectCRC = 4108650645
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lian_byrne_q3_needed, "object/tangible/mission/quest_item/shared_lian_byrne_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lian_byrne_q3_needed, "object/tangible/mission/quest_item/shared_lian_byrne_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_liane_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_mandoviol.apt",
@@ -7521,6 +7662,7 @@ object_tangible_mission_quest_item_shared_liane_q1_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7565,7 +7707,7 @@ object_tangible_mission_quest_item_shared_liane_q1_needed = SharedTangibleObject
 	clientObjectCRC = 711653844
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_liane_q1_needed, "object/tangible/mission/quest_item/shared_liane_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_liane_q1_needed, "object/tangible/mission/quest_item/shared_liane_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_liane_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7574,6 +7716,7 @@ object_tangible_mission_quest_item_shared_liane_q2_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7618,7 +7761,7 @@ object_tangible_mission_quest_item_shared_liane_q2_needed = SharedTangibleObject
 	clientObjectCRC = 577887454
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_liane_q2_needed, "object/tangible/mission/quest_item/shared_liane_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_liane_q2_needed, "object/tangible/mission/quest_item/shared_liane_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_liane_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7627,6 +7770,7 @@ object_tangible_mission_quest_item_shared_liane_q3_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7671,7 +7815,7 @@ object_tangible_mission_quest_item_shared_liane_q3_needed = SharedTangibleObject
 	clientObjectCRC = 629620696
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_liane_q3_needed, "object/tangible/mission/quest_item/shared_liane_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_liane_q3_needed, "object/tangible/mission/quest_item/shared_liane_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_tusken_raider_s02_m.sat",
@@ -7680,6 +7824,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7724,7 +7869,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed = SharedTangib
 	clientObjectCRC = 405736035
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_chest_plate_f.sat",
@@ -7733,6 +7878,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7777,7 +7923,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed = SharedTangib
 	clientObjectCRC = 271855465
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_ore.apt",
@@ -7786,6 +7932,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7830,7 +7977,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed = SharedTangib
 	clientObjectCRC = 398642287
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_all_meat_s01.apt",
@@ -7839,6 +7986,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7883,7 +8031,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed = SharedTangib
 	clientObjectCRC = 157053
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_lob_dizz_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -7892,6 +8040,7 @@ object_tangible_mission_quest_item_shared_lob_dizz_q3_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7936,7 +8085,7 @@ object_tangible_mission_quest_item_shared_lob_dizz_q3_needed = SharedTangibleObj
 	clientObjectCRC = 1696726449
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lob_dizz_q3_needed, "object/tangible/mission/quest_item/shared_lob_dizz_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lob_dizz_q3_needed, "object/tangible/mission/quest_item/shared_lob_dizz_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_holocron_splinters.apt",
@@ -7945,6 +8094,7 @@ object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7989,7 +8139,7 @@ object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed = SharedTangible
 	clientObjectCRC = 1195800723
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed, "object/tangible/mission/quest_item/shared_luthik_uwyr_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed, "object/tangible/mission/quest_item/shared_luthik_uwyr_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s16.sat",
@@ -7998,6 +8148,7 @@ object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8042,7 +8193,7 @@ object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed = SharedTangible
 	clientObjectCRC = 1085315989
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed, "object/tangible/mission/quest_item/shared_luthik_uwyr_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed, "object/tangible/mission/quest_item/shared_luthik_uwyr_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -8051,6 +8202,7 @@ object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8095,7 +8247,7 @@ object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed = SharedTangib
 	clientObjectCRC = 1189726815
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed, "object/tangible/mission/quest_item/shared_luthin_dlunar_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed, "object/tangible/mission/quest_item/shared_luthin_dlunar_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -8104,6 +8256,7 @@ object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8148,7 +8301,7 @@ object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed = SharedTangib
 	clientObjectCRC = 1324543829
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed, "object/tangible/mission/quest_item/shared_luthin_dlunar_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed, "object/tangible/mission/quest_item/shared_luthin_dlunar_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_lx466_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
@@ -8157,6 +8310,7 @@ object_tangible_mission_quest_item_shared_lx466_q2_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8201,7 +8355,7 @@ object_tangible_mission_quest_item_shared_lx466_q2_needed = SharedTangibleObject
 	clientObjectCRC = 122267561
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lx466_q2_needed, "object/tangible/mission/quest_item/shared_lx466_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lx466_q2_needed, "object/tangible/mission/quest_item/shared_lx466_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_lx466_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recording_rod.apt",
@@ -8210,6 +8364,7 @@ object_tangible_mission_quest_item_shared_lx466_q3_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8254,7 +8409,7 @@ object_tangible_mission_quest_item_shared_lx466_q3_needed = SharedTangibleObject
 	clientObjectCRC = 12534959
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lx466_q3_needed, "object/tangible/mission/quest_item/shared_lx466_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lx466_q3_needed, "object/tangible/mission/quest_item/shared_lx466_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_mal_sikander_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scout.apt",
@@ -8263,6 +8418,7 @@ object_tangible_mission_quest_item_shared_mal_sikander_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8307,7 +8463,7 @@ object_tangible_mission_quest_item_shared_mal_sikander_q1_needed = SharedTangibl
 	clientObjectCRC = 3787453530
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mal_sikander_q1_needed, "object/tangible/mission/quest_item/shared_mal_sikander_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mal_sikander_q1_needed, "object/tangible/mission/quest_item/shared_mal_sikander_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_mal_sikander_q5_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -8316,6 +8472,7 @@ object_tangible_mission_quest_item_shared_mal_sikander_q5_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8360,7 +8517,7 @@ object_tangible_mission_quest_item_shared_mal_sikander_q5_needed = SharedTangibl
 	clientObjectCRC = 4267997250
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mal_sikander_q5_needed, "object/tangible/mission/quest_item/shared_mal_sikander_q5_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mal_sikander_q5_needed, "object/tangible/mission/quest_item/shared_mal_sikander_q5_needed.iff")
 
 object_tangible_mission_quest_item_shared_mat_rags_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_all_meat_s01.apt",
@@ -8369,6 +8526,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q1_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8413,7 +8571,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q1_needed = SharedTangibleObj
 	clientObjectCRC = 2123489242
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mat_rags_q1_needed, "object/tangible/mission/quest_item/shared_mat_rags_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mat_rags_q1_needed, "object/tangible/mission/quest_item/shared_mat_rags_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_mat_rags_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -8422,6 +8580,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q2_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8466,7 +8625,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q2_needed = SharedTangibleObj
 	clientObjectCRC = 1988819664
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mat_rags_q2_needed, "object/tangible/mission/quest_item/shared_mat_rags_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mat_rags_q2_needed, "object/tangible/mission/quest_item/shared_mat_rags_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_mat_rags_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_sm_s1.apt",
@@ -8475,6 +8634,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q3_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8519,7 +8679,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q3_needed = SharedTangibleObj
 	clientObjectCRC = 1903958486
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mat_rags_q3_needed, "object/tangible/mission/quest_item/shared_mat_rags_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mat_rags_q3_needed, "object/tangible/mission/quest_item/shared_mat_rags_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_mat_rags_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -8528,6 +8688,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q4_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8572,7 +8733,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q4_needed = SharedTangibleObj
 	clientObjectCRC = 1723642052
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mat_rags_q4_needed, "object/tangible/mission/quest_item/shared_mat_rags_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mat_rags_q4_needed, "object/tangible/mission/quest_item/shared_mat_rags_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_megan_drlar_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
@@ -8581,6 +8742,7 @@ object_tangible_mission_quest_item_shared_megan_drlar_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8625,7 +8787,7 @@ object_tangible_mission_quest_item_shared_megan_drlar_q2_needed = SharedTangible
 	clientObjectCRC = 3913193492
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_megan_drlar_q2_needed, "object/tangible/mission/quest_item/shared_megan_drlar_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_megan_drlar_q2_needed, "object/tangible/mission/quest_item/shared_megan_drlar_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_melios_purl_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -8634,6 +8796,7 @@ object_tangible_mission_quest_item_shared_melios_purl_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8678,7 +8841,7 @@ object_tangible_mission_quest_item_shared_melios_purl_q2_needed = SharedTangible
 	clientObjectCRC = 1349487784
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_melios_purl_q2_needed, "object/tangible/mission/quest_item/shared_melios_purl_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_melios_purl_q2_needed, "object/tangible/mission/quest_item/shared_melios_purl_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_melios_purl_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -8687,6 +8850,7 @@ object_tangible_mission_quest_item_shared_melios_purl_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8731,7 +8895,7 @@ object_tangible_mission_quest_item_shared_melios_purl_q3_needed = SharedTangible
 	clientObjectCRC = 1469673390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_melios_purl_q3_needed, "object/tangible/mission/quest_item/shared_melios_purl_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_melios_purl_q3_needed, "object/tangible/mission/quest_item/shared_melios_purl_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_morag_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -8740,6 +8904,7 @@ object_tangible_mission_quest_item_shared_morag_q2_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8784,7 +8949,7 @@ object_tangible_mission_quest_item_shared_morag_q2_needed = SharedTangibleObject
 	clientObjectCRC = 1784339058
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_morag_q2_needed, "object/tangible/mission/quest_item/shared_morag_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_morag_q2_needed, "object/tangible/mission/quest_item/shared_morag_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s05_m.sat",
@@ -8793,6 +8958,7 @@ object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8837,7 +9003,7 @@ object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed = SharedTangible
 	clientObjectCRC = 4215350829
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed, "object/tangible/mission/quest_item/shared_mozo_bondog_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed, "object/tangible/mission/quest_item/shared_mozo_bondog_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survival_climbing_equipment_s1.apt",
@@ -8846,6 +9012,7 @@ object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8890,7 +9057,7 @@ object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed = SharedTangibl
 	clientObjectCRC = 289927562
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed, "object/tangible/mission/quest_item/shared_mullud_bombo_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed, "object/tangible/mission/quest_item/shared_mullud_bombo_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -8899,6 +9066,7 @@ object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8943,7 +9111,7 @@ object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed = SharedTangibl
 	clientObjectCRC = 425514112
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed, "object/tangible/mission/quest_item/shared_mullud_bombo_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed, "object/tangible/mission/quest_item/shared_mullud_bombo_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_nass_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -8952,6 +9120,7 @@ object_tangible_mission_quest_item_shared_nass_q1_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8996,7 +9165,7 @@ object_tangible_mission_quest_item_shared_nass_q1_needed = SharedTangibleObjectT
 	clientObjectCRC = 1722057504
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_nass_q1_needed, "object/tangible/mission/quest_item/shared_nass_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_nass_q1_needed, "object/tangible/mission/quest_item/shared_nass_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_noren_krast_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -9005,6 +9174,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9049,7 +9219,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q1_needed = SharedTangible
 	clientObjectCRC = 3767145747
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_noren_krast_q1_needed, "object/tangible/mission/quest_item/shared_noren_krast_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_noren_krast_q1_needed, "object/tangible/mission/quest_item/shared_noren_krast_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_noren_krast_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -9058,6 +9228,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9102,7 +9273,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q2_needed = SharedTangible
 	clientObjectCRC = 3901829145
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_noren_krast_q2_needed, "object/tangible/mission/quest_item/shared_noren_krast_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_noren_krast_q2_needed, "object/tangible/mission/quest_item/shared_noren_krast_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_noren_krast_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -9111,6 +9282,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9155,7 +9327,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q3_needed = SharedTangible
 	clientObjectCRC = 4016558879
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_noren_krast_q3_needed, "object/tangible/mission/quest_item/shared_noren_krast_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_noren_krast_q3_needed, "object/tangible/mission/quest_item/shared_noren_krast_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -9164,6 +9336,7 @@ object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9208,7 +9381,7 @@ object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed = SharedTang
 	clientObjectCRC = 3385151380
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed, "object/tangible/mission/quest_item/shared_nurla_slinthiss_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed, "object/tangible/mission/quest_item/shared_nurla_slinthiss_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -9217,6 +9390,7 @@ object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9261,7 +9435,7 @@ object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed = SharedTang
 	clientObjectCRC = 3324545432
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed, "object/tangible/mission/quest_item/shared_nurla_slinthiss_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed, "object/tangible/mission/quest_item/shared_nurla_slinthiss_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_oron_wintree_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -9270,6 +9444,7 @@ object_tangible_mission_quest_item_shared_oron_wintree_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9314,7 +9489,7 @@ object_tangible_mission_quest_item_shared_oron_wintree_q1_needed = SharedTangibl
 	clientObjectCRC = 2491310445
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_oron_wintree_q1_needed, "object/tangible/mission/quest_item/shared_oron_wintree_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_oron_wintree_q1_needed, "object/tangible/mission/quest_item/shared_oron_wintree_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_output_governor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -9323,6 +9498,7 @@ object_tangible_mission_quest_item_shared_output_governor = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9367,7 +9543,7 @@ object_tangible_mission_quest_item_shared_output_governor = SharedTangibleObject
 	clientObjectCRC = 2448376358
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_output_governor, "object/tangible/mission/quest_item/shared_output_governor.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_output_governor, "object/tangible/mission/quest_item/shared_output_governor.iff")
 
 object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -9376,6 +9552,7 @@ object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9420,7 +9597,7 @@ object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed = SharedTangible
 	clientObjectCRC = 1007650043
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed, "object/tangible/mission/quest_item/shared_oxil_sarban_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed, "object/tangible/mission/quest_item/shared_oxil_sarban_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_holocron_splinters.apt",
@@ -9429,6 +9606,7 @@ object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9473,7 +9651,7 @@ object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed = SharedTangible
 	clientObjectCRC = 873767409
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed, "object/tangible/mission/quest_item/shared_oxil_sarban_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed, "object/tangible/mission/quest_item/shared_oxil_sarban_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -9482,6 +9660,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9526,7 +9705,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed = SharedTangi
 	clientObjectCRC = 1961361819
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -9535,6 +9714,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9579,7 +9759,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed = SharedTangi
 	clientObjectCRC = 2096309393
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
@@ -9588,6 +9768,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9632,7 +9813,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed = SharedTangi
 	clientObjectCRC = 1798540675
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q5_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q5_needed.iff")
 
 object_tangible_mission_quest_item_shared_power_regulator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -9641,6 +9822,7 @@ object_tangible_mission_quest_item_shared_power_regulator = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9685,7 +9867,7 @@ object_tangible_mission_quest_item_shared_power_regulator = SharedTangibleObject
 	clientObjectCRC = 91462153
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_power_regulator, "object/tangible/mission/quest_item/shared_power_regulator.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_power_regulator, "object/tangible/mission/quest_item/shared_power_regulator.iff")
 
 object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_sml.apt",
@@ -9694,6 +9876,7 @@ object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9738,7 +9921,7 @@ object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed = Shar
 	clientObjectCRC = 269215799
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed, "object/tangible/mission/quest_item/shared_radanthus_mandelatara_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed, "object/tangible/mission/quest_item/shared_radanthus_mandelatara_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_armor_rpr_kit_s1.apt",
@@ -9747,6 +9930,7 @@ object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9791,7 +9975,7 @@ object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed = Shar
 	clientObjectCRC = 402459441
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed, "object/tangible/mission/quest_item/shared_radanthus_mandelatara_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed, "object/tangible/mission/quest_item/shared_radanthus_mandelatara_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -9800,6 +9984,7 @@ object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9844,7 +10029,7 @@ object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed = SharedTangi
 	clientObjectCRC = 2036787588
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed, "object/tangible/mission/quest_item/shared_radlee_mathiss_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed, "object/tangible/mission/quest_item/shared_radlee_mathiss_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_raglith_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
@@ -9853,6 +10038,7 @@ object_tangible_mission_quest_item_shared_raglith_q3_needed = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9897,7 +10083,7 @@ object_tangible_mission_quest_item_shared_raglith_q3_needed = SharedTangibleObje
 	clientObjectCRC = 2266234349
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_raglith_q3_needed, "object/tangible/mission/quest_item/shared_raglith_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_raglith_q3_needed, "object/tangible/mission/quest_item/shared_raglith_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_rakir_banai_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -9906,6 +10092,7 @@ object_tangible_mission_quest_item_shared_rakir_banai_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9950,7 +10137,7 @@ object_tangible_mission_quest_item_shared_rakir_banai_q2_needed = SharedTangible
 	clientObjectCRC = 2060219830
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_rakir_banai_q2_needed, "object/tangible/mission/quest_item/shared_rakir_banai_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_rakir_banai_q2_needed, "object/tangible/mission/quest_item/shared_rakir_banai_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_rakir_banai_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -9959,6 +10146,7 @@ object_tangible_mission_quest_item_shared_rakir_banai_q4_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10003,7 +10191,7 @@ object_tangible_mission_quest_item_shared_rakir_banai_q4_needed = SharedTangible
 	clientObjectCRC = 1794785186
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_rakir_banai_q4_needed, "object/tangible/mission/quest_item/shared_rakir_banai_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_rakir_banai_q4_needed, "object/tangible/mission/quest_item/shared_rakir_banai_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_rep_been_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10012,6 +10200,7 @@ object_tangible_mission_quest_item_shared_rep_been_q1_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10056,7 +10245,7 @@ object_tangible_mission_quest_item_shared_rep_been_q1_needed = SharedTangibleObj
 	clientObjectCRC = 1676232329
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_rep_been_q1_needed, "object/tangible/mission/quest_item/shared_rep_been_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_rep_been_q1_needed, "object/tangible/mission/quest_item/shared_rep_been_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ric_olie_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10065,6 +10254,7 @@ object_tangible_mission_quest_item_shared_ric_olie_q1_needed = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10109,7 +10299,7 @@ object_tangible_mission_quest_item_shared_ric_olie_q1_needed = SharedTangibleObj
 	clientObjectCRC = 887722995
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ric_olie_q1_needed, "object/tangible/mission/quest_item/shared_ric_olie_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ric_olie_q1_needed, "object/tangible/mission/quest_item/shared_ric_olie_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
@@ -10118,6 +10308,7 @@ object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10162,7 +10353,7 @@ object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed = SharedTangib
 	clientObjectCRC = 2473963928
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed, "object/tangible/mission/quest_item/shared_rovim_minnoni_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed, "object/tangible/mission/quest_item/shared_rovim_minnoni_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
@@ -10171,6 +10362,7 @@ object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10215,7 +10407,7 @@ object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed = SharedTangible
 	clientObjectCRC = 427703742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed, "object/tangible/mission/quest_item/shared_ruwan_tokai_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed, "object/tangible/mission/quest_item/shared_ruwan_tokai_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10224,6 +10416,7 @@ object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10268,7 +10461,7 @@ object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed = SharedTangible
 	clientObjectCRC = 291838132
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed, "object/tangible/mission/quest_item/shared_ruwan_tokai_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed, "object/tangible/mission/quest_item/shared_ruwan_tokai_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_sango_rond_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -10277,6 +10470,7 @@ object_tangible_mission_quest_item_shared_sango_rond_q1_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10321,7 +10515,7 @@ object_tangible_mission_quest_item_shared_sango_rond_q1_needed = SharedTangibleO
 	clientObjectCRC = 2151494415
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sango_rond_q1_needed, "object/tangible/mission/quest_item/shared_sango_rond_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sango_rond_q1_needed, "object/tangible/mission/quest_item/shared_sango_rond_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -10330,6 +10524,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10374,7 +10569,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed = SharedTangib
 	clientObjectCRC = 3884406312
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10383,6 +10578,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10427,7 +10623,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed = SharedTangib
 	clientObjectCRC = 4020007714
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
@@ -10436,6 +10632,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10480,7 +10677,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed = SharedTangib
 	clientObjectCRC = 3899297828
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -10489,6 +10686,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10533,7 +10731,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed = SharedTangib
 	clientObjectCRC = 2412100000
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -10542,6 +10740,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10586,7 +10785,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed = SharedTangib
 	clientObjectCRC = 2279513258
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -10595,6 +10794,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10639,7 +10839,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed = SharedTangib
 	clientObjectCRC = 2150137772
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_serena_fenner_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10648,6 +10848,7 @@ object_tangible_mission_quest_item_shared_serena_fenner_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10692,7 +10893,7 @@ object_tangible_mission_quest_item_shared_serena_fenner_q1_needed = SharedTangib
 	clientObjectCRC = 3662733402
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_serena_fenner_q1_needed, "object/tangible/mission/quest_item/shared_serena_fenner_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_serena_fenner_q1_needed, "object/tangible/mission/quest_item/shared_serena_fenner_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_serena_fenner_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10701,6 +10902,7 @@ object_tangible_mission_quest_item_shared_serena_fenner_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10745,7 +10947,7 @@ object_tangible_mission_quest_item_shared_serena_fenner_q3_needed = SharedTangib
 	clientObjectCRC = 3585943126
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_serena_fenner_q3_needed, "object/tangible/mission/quest_item/shared_serena_fenner_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_serena_fenner_q3_needed, "object/tangible/mission/quest_item/shared_serena_fenner_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10754,6 +10956,7 @@ object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10798,7 +11001,7 @@ object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed = SharedTa
 	clientObjectCRC = 1479422018
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed, "object/tangible/mission/quest_item/shared_serjix_arrogantus_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed, "object/tangible/mission/quest_item/shared_serjix_arrogantus_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -10807,6 +11010,7 @@ object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10851,7 +11055,7 @@ object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed = SharedTangi
 	clientObjectCRC = 748682048
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed, "object/tangible/mission/quest_item/shared_shaki_hamachil_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed, "object/tangible/mission/quest_item/shared_shaki_hamachil_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10860,6 +11064,7 @@ object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10904,7 +11109,7 @@ object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed = SharedTangi
 	clientObjectCRC = 612687434
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed, "object/tangible/mission/quest_item/shared_shaki_hamachil_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed, "object/tangible/mission/quest_item/shared_shaki_hamachil_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_shalera_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -10913,6 +11118,7 @@ object_tangible_mission_quest_item_shared_shalera_q1_needed = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10957,7 +11163,7 @@ object_tangible_mission_quest_item_shared_shalera_q1_needed = SharedTangibleObje
 	clientObjectCRC = 3462087162
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_shalera_q1_needed, "object/tangible/mission/quest_item/shared_shalera_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_shalera_q1_needed, "object/tangible/mission/quest_item/shared_shalera_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_shalera_q6_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -10966,6 +11172,7 @@ object_tangible_mission_quest_item_shared_shalera_q6_needed = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11010,7 +11217,7 @@ object_tangible_mission_quest_item_shared_shalera_q6_needed = SharedTangibleObje
 	clientObjectCRC = 3650873576
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_shalera_q6_needed, "object/tangible/mission/quest_item/shared_shalera_q6_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_shalera_q6_needed, "object/tangible/mission/quest_item/shared_shalera_q6_needed.iff")
 
 object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -11019,6 +11226,7 @@ object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11063,7 +11271,7 @@ object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed = SharedTangible
 	clientObjectCRC = 2665956312
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed, "object/tangible/mission/quest_item/shared_sidoras_bey_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed, "object/tangible/mission/quest_item/shared_sidoras_bey_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -11072,6 +11280,7 @@ object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11116,7 +11325,7 @@ object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed = SharedTangible
 	clientObjectCRC = 2008112320
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed, "object/tangible/mission/quest_item/shared_sigrix_slix_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed, "object/tangible/mission/quest_item/shared_sigrix_slix_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -11125,6 +11334,7 @@ object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11169,7 +11379,7 @@ object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed = SharedTangible
 	clientObjectCRC = 2141878730
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed, "object/tangible/mission/quest_item/shared_sigrix_slix_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed, "object/tangible/mission/quest_item/shared_sigrix_slix_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -11178,6 +11388,7 @@ object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11222,7 +11433,7 @@ object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed = SharedTan
 	clientObjectCRC = 1411534999
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed, "object/tangible/mission/quest_item/shared_sindra_lintikoor_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed, "object/tangible/mission/quest_item/shared_sindra_lintikoor_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -11231,6 +11442,7 @@ object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11275,7 +11487,7 @@ object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed = SharedTan
 	clientObjectCRC = 1547269533
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed, "object/tangible/mission/quest_item/shared_sindra_lintikoor_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed, "object/tangible/mission/quest_item/shared_sindra_lintikoor_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_singular_nak_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_sleekblack.apt",
@@ -11284,6 +11496,7 @@ object_tangible_mission_quest_item_shared_singular_nak_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11328,7 +11541,7 @@ object_tangible_mission_quest_item_shared_singular_nak_q1_needed = SharedTangibl
 	clientObjectCRC = 1924055018
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_singular_nak_q1_needed, "object/tangible/mission/quest_item/shared_singular_nak_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_singular_nak_q1_needed, "object/tangible/mission/quest_item/shared_singular_nak_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_singular_nak_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_sleekblack.apt",
@@ -11337,6 +11550,7 @@ object_tangible_mission_quest_item_shared_singular_nak_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11381,7 +11595,7 @@ object_tangible_mission_quest_item_shared_singular_nak_q2_needed = SharedTangibl
 	clientObjectCRC = 2058722016
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_singular_nak_q2_needed, "object/tangible/mission/quest_item/shared_singular_nak_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_singular_nak_q2_needed, "object/tangible/mission/quest_item/shared_singular_nak_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_slooni_jong_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -11390,6 +11604,7 @@ object_tangible_mission_quest_item_shared_slooni_jong_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11434,7 +11649,7 @@ object_tangible_mission_quest_item_shared_slooni_jong_q1_needed = SharedTangible
 	clientObjectCRC = 2164733898
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_slooni_jong_q1_needed, "object/tangible/mission/quest_item/shared_slooni_jong_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_slooni_jong_q1_needed, "object/tangible/mission/quest_item/shared_slooni_jong_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_stella_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -11443,6 +11658,7 @@ object_tangible_mission_quest_item_shared_stella_q1_needed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11487,7 +11703,7 @@ object_tangible_mission_quest_item_shared_stella_q1_needed = SharedTangibleObjec
 	clientObjectCRC = 528594706
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stella_q1_needed, "object/tangible/mission/quest_item/shared_stella_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stella_q1_needed, "object/tangible/mission/quest_item/shared_stella_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_stella_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -11496,6 +11712,7 @@ object_tangible_mission_quest_item_shared_stella_q2_needed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11540,7 +11757,7 @@ object_tangible_mission_quest_item_shared_stella_q2_needed = SharedTangibleObjec
 	clientObjectCRC = 396005912
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stella_q2_needed, "object/tangible/mission/quest_item/shared_stella_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stella_q2_needed, "object/tangible/mission/quest_item/shared_stella_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_stella_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -11549,6 +11766,7 @@ object_tangible_mission_quest_item_shared_stella_q3_needed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11593,7 +11811,7 @@ object_tangible_mission_quest_item_shared_stella_q3_needed = SharedTangibleObjec
 	clientObjectCRC = 275542302
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stella_q3_needed, "object/tangible/mission/quest_item/shared_stella_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stella_q3_needed, "object/tangible/mission/quest_item/shared_stella_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_stoos_olko_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -11602,6 +11820,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q1_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11646,7 +11865,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q1_needed = SharedTangibleO
 	clientObjectCRC = 2617025596
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q1_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q1_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_stoos_olko_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -11655,6 +11874,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q2_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11699,7 +11919,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q2_needed = SharedTangibleO
 	clientObjectCRC = 2481422646
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q2_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q2_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_stoos_olko_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
@@ -11708,6 +11928,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q3_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11752,7 +11973,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q3_needed = SharedTangibleO
 	clientObjectCRC = 2484167216
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q3_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q3_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -11761,6 +11982,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11805,7 +12027,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk = Sha
 	clientObjectCRC = 3849796149
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk, "object/tangible/mission/quest_item/shared_surlin_rolei_q1_recruitment_disk.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk, "object/tangible/mission/quest_item/shared_surlin_rolei_q1_recruitment_disk.iff")
 
 object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
@@ -11814,6 +12036,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11858,7 +12081,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera = SharedTangibl
 	clientObjectCRC = 1532630144
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera, "object/tangible/mission/quest_item/shared_surlin_rolei_q2_camera.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera, "object/tangible/mission/quest_item/shared_surlin_rolei_q2_camera.iff")
 
 object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -11867,6 +12090,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11911,7 +12135,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report = SharedTan
 	clientObjectCRC = 3866569269
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report, "object/tangible/mission/quest_item/shared_surlin_rolei_q6_spy_report.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report, "object/tangible/mission/quest_item/shared_surlin_rolei_q6_spy_report.iff")
 
 object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
@@ -11920,6 +12144,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11964,7 +12189,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info = SharedTa
 	clientObjectCRC = 894921043
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info, "object/tangible/mission/quest_item/shared_surlin_rolei_q6_stolen_info.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info, "object/tangible/mission/quest_item/shared_surlin_rolei_q6_stolen_info.iff")
 
 object_tangible_mission_quest_item_shared_syren1_locked_data = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
@@ -11973,6 +12198,7 @@ object_tangible_mission_quest_item_shared_syren1_locked_data = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12017,7 +12243,7 @@ object_tangible_mission_quest_item_shared_syren1_locked_data = SharedTangibleObj
 	clientObjectCRC = 1506127405
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_syren1_locked_data, "object/tangible/mission/quest_item/shared_syren1_locked_data.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_syren1_locked_data, "object/tangible/mission/quest_item/shared_syren1_locked_data.iff")
 
 object_tangible_mission_quest_item_shared_syren1_spice = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
@@ -12026,6 +12252,7 @@ object_tangible_mission_quest_item_shared_syren1_spice = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12070,7 +12297,7 @@ object_tangible_mission_quest_item_shared_syren1_spice = SharedTangibleObjectTem
 	clientObjectCRC = 4059627158
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_syren1_spice, "object/tangible/mission/quest_item/shared_syren1_spice.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_syren1_spice, "object/tangible/mission/quest_item/shared_syren1_spice.iff")
 
 object_tangible_mission_quest_item_shared_syren1_warning = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
@@ -12079,6 +12306,7 @@ object_tangible_mission_quest_item_shared_syren1_warning = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12123,7 +12351,7 @@ object_tangible_mission_quest_item_shared_syren1_warning = SharedTangibleObjectT
 	clientObjectCRC = 3531632253
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_syren1_warning, "object/tangible/mission/quest_item/shared_syren1_warning.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_syren1_warning, "object/tangible/mission/quest_item/shared_syren1_warning.iff")
 
 object_tangible_mission_quest_item_shared_syren2_blacksun_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
@@ -12132,6 +12360,7 @@ object_tangible_mission_quest_item_shared_syren2_blacksun_base = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12176,7 +12405,7 @@ object_tangible_mission_quest_item_shared_syren2_blacksun_base = SharedTangibleO
 	clientObjectCRC = 1332369757
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_syren2_blacksun_base, "object/tangible/mission/quest_item/shared_syren2_blacksun_base.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_syren2_blacksun_base, "object/tangible/mission/quest_item/shared_syren2_blacksun_base.iff")
 
 object_tangible_mission_quest_item_shared_szingo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
@@ -12185,6 +12414,7 @@ object_tangible_mission_quest_item_shared_szingo_q1_needed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12229,7 +12459,7 @@ object_tangible_mission_quest_item_shared_szingo_q1_needed = SharedTangibleObjec
 	clientObjectCRC = 1954160177
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_szingo_q1_needed, "object/tangible/mission/quest_item/shared_szingo_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_szingo_q1_needed, "object/tangible/mission/quest_item/shared_szingo_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_talon_karrde_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -12238,6 +12468,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12282,7 +12513,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q1_needed = SharedTangibl
 	clientObjectCRC = 3820828760
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q1_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q1_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_talon_karrde_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -12291,6 +12522,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q3_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12335,7 +12567,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q3_needed = SharedTangibl
 	clientObjectCRC = 3964730964
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q3_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q3_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_talon_karrde_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -12344,6 +12576,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q4_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12388,7 +12621,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q4_needed = SharedTangibl
 	clientObjectCRC = 4220540742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q4_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q4_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_tekil_barje_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -12397,6 +12630,7 @@ object_tangible_mission_quest_item_shared_tekil_barje_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12441,7 +12675,7 @@ object_tangible_mission_quest_item_shared_tekil_barje_q1_needed = SharedTangible
 	clientObjectCRC = 1607172162
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_tekil_barje_q1_needed, "object/tangible/mission/quest_item/shared_tekil_barje_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_tekil_barje_q1_needed, "object/tangible/mission/quest_item/shared_tekil_barje_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_tekil_barje_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
@@ -12450,6 +12684,7 @@ object_tangible_mission_quest_item_shared_tekil_barje_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12494,7 +12729,7 @@ object_tangible_mission_quest_item_shared_tekil_barje_q3_needed = SharedTangible
 	clientObjectCRC = 1344685646
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_tekil_barje_q3_needed, "object/tangible/mission/quest_item/shared_tekil_barje_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_tekil_barje_q3_needed, "object/tangible/mission/quest_item/shared_tekil_barje_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_terak_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_s01.apt",
@@ -12503,6 +12738,7 @@ object_tangible_mission_quest_item_shared_terak_q1_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12547,7 +12783,7 @@ object_tangible_mission_quest_item_shared_terak_q1_needed = SharedTangibleObject
 	clientObjectCRC = 210706787
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_terak_q1_needed, "object/tangible/mission/quest_item/shared_terak_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_terak_q1_needed, "object/tangible/mission/quest_item/shared_terak_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_terak_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_shields.apt",
@@ -12556,6 +12792,7 @@ object_tangible_mission_quest_item_shared_terak_q3_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12600,7 +12837,7 @@ object_tangible_mission_quest_item_shared_terak_q3_needed = SharedTangibleObject
 	clientObjectCRC = 56813423
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_terak_q3_needed, "object/tangible/mission/quest_item/shared_terak_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_terak_q3_needed, "object/tangible/mission/quest_item/shared_terak_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -12609,6 +12846,7 @@ object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12653,7 +12891,7 @@ object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed = SharedTan
 	clientObjectCRC = 2085244316
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed, "object/tangible/mission/quest_item/shared_thrackan_salsolo_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed, "object/tangible/mission/quest_item/shared_thrackan_salsolo_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -12662,6 +12900,7 @@ object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12706,7 +12945,7 @@ object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed = SharedTan
 	clientObjectCRC = 643932349
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed, "object/tangible/mission/quest_item/shared_throme_gormengal_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed, "object/tangible/mission/quest_item/shared_throme_gormengal_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -12715,6 +12954,7 @@ object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12759,7 +12999,7 @@ object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed = SharedTan
 	clientObjectCRC = 697067185
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed, "object/tangible/mission/quest_item/shared_throme_gormengal_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed, "object/tangible/mission/quest_item/shared_throme_gormengal_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_vana_sage_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -12768,6 +13008,7 @@ object_tangible_mission_quest_item_shared_vana_sage_q1_needed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12812,7 +13053,7 @@ object_tangible_mission_quest_item_shared_vana_sage_q1_needed = SharedTangibleOb
 	clientObjectCRC = 1263458770
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vana_sage_q1_needed, "object/tangible/mission/quest_item/shared_vana_sage_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vana_sage_q1_needed, "object/tangible/mission/quest_item/shared_vana_sage_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_sclpt_stuffed_bantha.apt",
@@ -12821,6 +13062,7 @@ object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12865,7 +13107,7 @@ object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed = SharedTangibl
 	clientObjectCRC = 791270203
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed, "object/tangible/mission/quest_item/shared_vardias_tyne_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed, "object/tangible/mission/quest_item/shared_vardias_tyne_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_vhaunda_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_pad_m.sat",
@@ -12874,6 +13116,7 @@ object_tangible_mission_quest_item_shared_vhaunda_q1_needed = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12918,7 +13161,7 @@ object_tangible_mission_quest_item_shared_vhaunda_q1_needed = SharedTangibleObje
 	clientObjectCRC = 751474155
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vhaunda_q1_needed, "object/tangible/mission/quest_item/shared_vhaunda_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vhaunda_q1_needed, "object/tangible/mission/quest_item/shared_vhaunda_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_village_defenses = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
@@ -12927,6 +13170,7 @@ object_tangible_mission_quest_item_shared_village_defenses = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_turret_block_small.cdf",
+	clientGameObjectType = 8224,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12971,7 +13215,7 @@ object_tangible_mission_quest_item_shared_village_defenses = SharedTangibleObjec
 	clientObjectCRC = 3678523510
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_village_defenses, "object/tangible/mission/quest_item/shared_village_defenses.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_village_defenses, "object/tangible/mission/quest_item/shared_village_defenses.iff")
 
 object_tangible_mission_quest_item_shared_village_shields = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_shield_generator.apt",
@@ -12980,6 +13224,7 @@ object_tangible_mission_quest_item_shared_village_shields = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8224,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13024,7 +13269,7 @@ object_tangible_mission_quest_item_shared_village_shields = SharedTangibleObject
 	clientObjectCRC = 2159790732
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_village_shields, "object/tangible/mission/quest_item/shared_village_shields.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_village_shields, "object/tangible/mission/quest_item/shared_village_shields.iff")
 
 object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -13033,6 +13278,7 @@ object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13077,7 +13323,7 @@ object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed = SharedTangibl
 	clientObjectCRC = 509776095
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed, "object/tangible/mission/quest_item/shared_vinya_maysor_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed, "object/tangible/mission/quest_item/shared_vinya_maysor_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -13086,6 +13332,7 @@ object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13130,7 +13377,7 @@ object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed = SharedTangib
 	clientObjectCRC = 4161049668
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed, "object/tangible/mission/quest_item/shared_vordin_sildor_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed, "object/tangible/mission/quest_item/shared_vordin_sildor_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -13139,6 +13386,7 @@ object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13183,7 +13431,7 @@ object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed = SharedTangible
 	clientObjectCRC = 1952017154
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed, "object/tangible/mission/quest_item/shared_vrir_unglan_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed, "object/tangible/mission/quest_item/shared_vrir_unglan_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -13192,6 +13440,7 @@ object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13236,7 +13485,7 @@ object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed = SharedTangible
 	clientObjectCRC = 2084720136
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed, "object/tangible/mission/quest_item/shared_vrir_unglan_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed, "object/tangible/mission/quest_item/shared_vrir_unglan_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_vurlene_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
@@ -13245,6 +13494,7 @@ object_tangible_mission_quest_item_shared_vurlene_q1_needed = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13289,7 +13539,7 @@ object_tangible_mission_quest_item_shared_vurlene_q1_needed = SharedTangibleObje
 	clientObjectCRC = 3997432132
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vurlene_q1_needed, "object/tangible/mission/quest_item/shared_vurlene_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vurlene_q1_needed, "object/tangible/mission/quest_item/shared_vurlene_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_vurlene_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -13298,6 +13548,7 @@ object_tangible_mission_quest_item_shared_vurlene_q2_needed = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13342,7 +13593,7 @@ object_tangible_mission_quest_item_shared_vurlene_q2_needed = SharedTangibleObje
 	clientObjectCRC = 3864583246
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vurlene_q2_needed, "object/tangible/mission/quest_item/shared_vurlene_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vurlene_q2_needed, "object/tangible/mission/quest_item/shared_vurlene_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_vurlene_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -13351,6 +13602,7 @@ object_tangible_mission_quest_item_shared_vurlene_q3_needed = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13395,7 +13647,7 @@ object_tangible_mission_quest_item_shared_vurlene_q3_needed = SharedTangibleObje
 	clientObjectCRC = 3786293064
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vurlene_q3_needed, "object/tangible/mission/quest_item/shared_vurlene_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vurlene_q3_needed, "object/tangible/mission/quest_item/shared_vurlene_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_wald_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -13404,6 +13656,7 @@ object_tangible_mission_quest_item_shared_wald_q1_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13448,7 +13701,7 @@ object_tangible_mission_quest_item_shared_wald_q1_needed = SharedTangibleObjectT
 	clientObjectCRC = 1905329925
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wald_q1_needed, "object/tangible/mission/quest_item/shared_wald_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wald_q1_needed, "object/tangible/mission/quest_item/shared_wald_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_wald_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -13457,6 +13710,7 @@ object_tangible_mission_quest_item_shared_wald_q2_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13501,7 +13755,7 @@ object_tangible_mission_quest_item_shared_wald_q2_needed = SharedTangibleObjectT
 	clientObjectCRC = 2039095823
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wald_q2_needed, "object/tangible/mission/quest_item/shared_wald_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wald_q2_needed, "object/tangible/mission/quest_item/shared_wald_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_wald_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -13510,6 +13764,7 @@ object_tangible_mission_quest_item_shared_wald_q3_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13554,7 +13809,7 @@ object_tangible_mission_quest_item_shared_wald_q3_needed = SharedTangibleObjectT
 	clientObjectCRC = 2122105097
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wald_q3_needed, "object/tangible/mission/quest_item/shared_wald_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wald_q3_needed, "object/tangible/mission/quest_item/shared_wald_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_wald_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
@@ -13563,6 +13818,7 @@ object_tangible_mission_quest_item_shared_wald_q4_needed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13607,7 +13863,7 @@ object_tangible_mission_quest_item_shared_wald_q4_needed = SharedTangibleObjectT
 	clientObjectCRC = 1773955099
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wald_q4_needed, "object/tangible/mission/quest_item/shared_wald_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wald_q4_needed, "object/tangible/mission/quest_item/shared_wald_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_warren_core_control_rod_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
@@ -13616,6 +13872,7 @@ object_tangible_mission_quest_item_shared_warren_core_control_rod_s01 = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13660,7 +13917,7 @@ object_tangible_mission_quest_item_shared_warren_core_control_rod_s01 = SharedTa
 	clientObjectCRC = 1875516238
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_core_control_rod_s01, "object/tangible/mission/quest_item/shared_warren_core_control_rod_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_core_control_rod_s01, "object/tangible/mission/quest_item/shared_warren_core_control_rod_s01.iff")
 
 object_tangible_mission_quest_item_shared_warren_core_control_rod_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
@@ -13669,6 +13926,7 @@ object_tangible_mission_quest_item_shared_warren_core_control_rod_s02 = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13713,7 +13971,7 @@ object_tangible_mission_quest_item_shared_warren_core_control_rod_s02 = SharedTa
 	clientObjectCRC = 3034428377
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_core_control_rod_s02, "object/tangible/mission/quest_item/shared_warren_core_control_rod_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_core_control_rod_s02, "object/tangible/mission/quest_item/shared_warren_core_control_rod_s02.iff")
 
 object_tangible_mission_quest_item_shared_warren_device_encryption_key = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -13722,6 +13980,7 @@ object_tangible_mission_quest_item_shared_warren_device_encryption_key = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13766,7 +14025,7 @@ object_tangible_mission_quest_item_shared_warren_device_encryption_key = SharedT
 	clientObjectCRC = 4073100212
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_device_encryption_key, "object/tangible/mission/quest_item/shared_warren_device_encryption_key.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_device_encryption_key, "object/tangible/mission/quest_item/shared_warren_device_encryption_key.iff")
 
 object_tangible_mission_quest_item_shared_warren_evidence_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -13775,6 +14034,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s01 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13819,7 +14079,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s01 = SharedTangibleOb
 	clientObjectCRC = 751589667
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s01, "object/tangible/mission/quest_item/shared_warren_evidence_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s01, "object/tangible/mission/quest_item/shared_warren_evidence_s01.iff")
 
 object_tangible_mission_quest_item_shared_warren_evidence_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -13828,6 +14088,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s02 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13872,7 +14133,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s02 = SharedTangibleOb
 	clientObjectCRC = 4158386612
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s02, "object/tangible/mission/quest_item/shared_warren_evidence_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s02, "object/tangible/mission/quest_item/shared_warren_evidence_s02.iff")
 
 object_tangible_mission_quest_item_shared_warren_evidence_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -13881,6 +14142,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s03 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13925,7 +14187,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s03 = SharedTangibleOb
 	clientObjectCRC = 3201734201
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s03, "object/tangible/mission/quest_item/shared_warren_evidence_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s03, "object/tangible/mission/quest_item/shared_warren_evidence_s03.iff")
 
 object_tangible_mission_quest_item_shared_warren_evidence_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -13934,6 +14196,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s04 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13978,7 +14241,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s04 = SharedTangibleOb
 	clientObjectCRC = 1161149741
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s04, "object/tangible/mission/quest_item/shared_warren_evidence_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s04, "object/tangible/mission/quest_item/shared_warren_evidence_s04.iff")
 
 object_tangible_mission_quest_item_shared_warren_farewell_letter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -13987,6 +14250,7 @@ object_tangible_mission_quest_item_shared_warren_farewell_letter = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14031,7 +14295,7 @@ object_tangible_mission_quest_item_shared_warren_farewell_letter = SharedTangibl
 	clientObjectCRC = 2348946698
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_farewell_letter, "object/tangible/mission/quest_item/shared_warren_farewell_letter.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_farewell_letter, "object/tangible/mission/quest_item/shared_warren_farewell_letter.iff")
 
 object_tangible_mission_quest_item_shared_warren_inquisitor_letter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -14040,6 +14304,7 @@ object_tangible_mission_quest_item_shared_warren_inquisitor_letter = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14084,7 +14349,7 @@ object_tangible_mission_quest_item_shared_warren_inquisitor_letter = SharedTangi
 	clientObjectCRC = 1929635907
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_inquisitor_letter, "object/tangible/mission/quest_item/shared_warren_inquisitor_letter.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_inquisitor_letter, "object/tangible/mission/quest_item/shared_warren_inquisitor_letter.iff")
 
 object_tangible_mission_quest_item_shared_warren_passkey_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -14093,6 +14358,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s01 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14137,7 +14403,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s01 = SharedTangibleObj
 	clientObjectCRC = 1731835743
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s01, "object/tangible/mission/quest_item/shared_warren_passkey_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s01, "object/tangible/mission/quest_item/shared_warren_passkey_s01.iff")
 
 object_tangible_mission_quest_item_shared_warren_passkey_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -14146,6 +14412,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s02 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14190,7 +14457,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s02 = SharedTangibleObj
 	clientObjectCRC = 3157139400
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s02, "object/tangible/mission/quest_item/shared_warren_passkey_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s02, "object/tangible/mission/quest_item/shared_warren_passkey_s02.iff")
 
 object_tangible_mission_quest_item_shared_warren_passkey_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -14199,6 +14466,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s03 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14243,7 +14511,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s03 = SharedTangibleObj
 	clientObjectCRC = 4112742469
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s03, "object/tangible/mission/quest_item/shared_warren_passkey_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s03, "object/tangible/mission/quest_item/shared_warren_passkey_s03.iff")
 
 object_tangible_mission_quest_item_shared_warren_passkey_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
@@ -14252,6 +14520,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s04 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14296,7 +14565,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s04 = SharedTangibleObj
 	clientObjectCRC = 247485265
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s04, "object/tangible/mission/quest_item/shared_warren_passkey_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s04, "object/tangible/mission/quest_item/shared_warren_passkey_s04.iff")
 
 object_tangible_mission_quest_item_shared_warren_turret_sequence = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -14305,6 +14574,7 @@ object_tangible_mission_quest_item_shared_warren_turret_sequence = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14349,7 +14619,7 @@ object_tangible_mission_quest_item_shared_warren_turret_sequence = SharedTangibl
 	clientObjectCRC = 1273506615
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_turret_sequence, "object/tangible/mission/quest_item/shared_warren_turret_sequence.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_turret_sequence, "object/tangible/mission/quest_item/shared_warren_turret_sequence.iff")
 
 object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -14358,6 +14628,7 @@ object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14402,7 +14673,7 @@ object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed = SharedTangib
 	clientObjectCRC = 961134093
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed, "object/tangible/mission/quest_item/shared_wilhalm_skrim_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed, "object/tangible/mission/quest_item/shared_wilhalm_skrim_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -14411,6 +14682,7 @@ object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14455,7 +14727,7 @@ object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed = SharedTangib
 	clientObjectCRC = 827497223
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed, "object/tangible/mission/quest_item/shared_wilhalm_skrim_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed, "object/tangible/mission/quest_item/shared_wilhalm_skrim_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_power5.apt",
@@ -14464,6 +14736,7 @@ object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14508,7 +14781,7 @@ object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed = SharedTa
 	clientObjectCRC = 3087063788
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed, "object/tangible/mission/quest_item/shared_windom_starkiller_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed, "object/tangible/mission/quest_item/shared_windom_starkiller_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_wuher_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -14517,6 +14790,7 @@ object_tangible_mission_quest_item_shared_wuher_q1_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14561,7 +14835,7 @@ object_tangible_mission_quest_item_shared_wuher_q1_needed = SharedTangibleObject
 	clientObjectCRC = 3120568606
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wuher_q1_needed, "object/tangible/mission/quest_item/shared_wuher_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wuher_q1_needed, "object/tangible/mission/quest_item/shared_wuher_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_wuher_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
@@ -14570,6 +14844,7 @@ object_tangible_mission_quest_item_shared_wuher_q2_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14614,7 +14889,7 @@ object_tangible_mission_quest_item_shared_wuher_q2_needed = SharedTangibleObject
 	clientObjectCRC = 2988129300
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wuher_q2_needed, "object/tangible/mission/quest_item/shared_wuher_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wuher_q2_needed, "object/tangible/mission/quest_item/shared_wuher_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_wuher_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_empty_s01.apt",
@@ -14623,6 +14898,7 @@ object_tangible_mission_quest_item_shared_wuher_q3_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14667,7 +14943,7 @@ object_tangible_mission_quest_item_shared_wuher_q3_needed = SharedTangibleObject
 	clientObjectCRC = 3052265234
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wuher_q3_needed, "object/tangible/mission/quest_item/shared_wuher_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wuher_q3_needed, "object/tangible/mission/quest_item/shared_wuher_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_wuher_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -14676,6 +14952,7 @@ object_tangible_mission_quest_item_shared_wuher_q4_needed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14720,7 +14997,7 @@ object_tangible_mission_quest_item_shared_wuher_q4_needed = SharedTangibleObject
 	clientObjectCRC = 2720888320
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wuher_q4_needed, "object/tangible/mission/quest_item/shared_wuher_q4_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wuher_q4_needed, "object/tangible/mission/quest_item/shared_wuher_q4_needed.iff")
 
 object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -14729,6 +15006,7 @@ object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14773,7 +15051,7 @@ object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed = SharedTangib
 	clientObjectCRC = 726645346
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed, "object/tangible/mission/quest_item/shared_xaan_talmaron_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed, "object/tangible/mission/quest_item/shared_xaan_talmaron_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -14782,6 +15060,7 @@ object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14826,7 +15105,7 @@ object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed = SharedTangib
 	clientObjectCRC = 614628462
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed, "object/tangible/mission/quest_item/shared_xaan_talmaron_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed, "object/tangible/mission/quest_item/shared_xaan_talmaron_q3_needed.iff")
 
 object_tangible_mission_quest_item_shared_xalox_guul_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -14835,6 +15114,7 @@ object_tangible_mission_quest_item_shared_xalox_guul_q2_needed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14879,7 +15159,7 @@ object_tangible_mission_quest_item_shared_xalox_guul_q2_needed = SharedTangibleO
 	clientObjectCRC = 2258907872
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xalox_guul_q2_needed, "object/tangible/mission/quest_item/shared_xalox_guul_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xalox_guul_q2_needed, "object/tangible/mission/quest_item/shared_xalox_guul_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -14888,6 +15168,7 @@ object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14932,7 +15213,7 @@ object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed = SharedTangibl
 	clientObjectCRC = 2168666592
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed, "object/tangible/mission/quest_item/shared_xarot_korlin_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed, "object/tangible/mission/quest_item/shared_xarot_korlin_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
@@ -14941,6 +15222,7 @@ object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -14985,7 +15267,7 @@ object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed = SharedTangibl
 	clientObjectCRC = 2304253162
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed, "object/tangible/mission/quest_item/shared_xarot_korlin_q2_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed, "object/tangible/mission/quest_item/shared_xarot_korlin_q2_needed.iff")
 
 object_tangible_mission_quest_item_shared_yith_seenath_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -14994,6 +15276,7 @@ object_tangible_mission_quest_item_shared_yith_seenath_q1_needed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -15038,7 +15321,7 @@ object_tangible_mission_quest_item_shared_yith_seenath_q1_needed = SharedTangibl
 	clientObjectCRC = 3276450481
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_yith_seenath_q1_needed, "object/tangible/mission/quest_item/shared_yith_seenath_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_yith_seenath_q1_needed, "object/tangible/mission/quest_item/shared_yith_seenath_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -15047,6 +15330,7 @@ object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -15091,7 +15375,7 @@ object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed = SharedTangible
 	clientObjectCRC = 3147538700
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed, "object/tangible/mission/quest_item/shared_zekka_thyne_q1_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed, "object/tangible/mission/quest_item/shared_zekka_thyne_q1_needed.iff")
 
 object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -15100,6 +15384,7 @@ object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -15144,4 +15429,4 @@ object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed = SharedTangible
 	clientObjectCRC = 1563677402
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed, "object/tangible/mission/quest_item/shared_zogor_sturm_q3_needed.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed, "object/tangible/mission/quest_item/shared_zogor_sturm_q3_needed.iff")

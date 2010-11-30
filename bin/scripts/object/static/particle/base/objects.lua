@@ -47,6 +47,7 @@ object_static_particle_base_shared_static_particle_base = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_static_particle_base_shared_static_particle_base = SharedStaticObjectTemp
 	clientObjectCRC = 208849872
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_base_shared_static_particle_base, "object/static/particle/base/shared_static_particle_base.iff")
+ObjectTemplates:addTemplate(object_static_particle_base_shared_static_particle_base, "object/static/particle/base/shared_static_particle_base.iff")

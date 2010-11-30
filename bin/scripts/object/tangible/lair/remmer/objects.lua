@@ -48,6 +48,7 @@ object_tangible_lair_remmer_shared_lair_remmer = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_remmer_shared_lair_remmer = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1568679889
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer, "object/tangible/lair/remmer/shared_lair_remmer.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer, "object/tangible/lair/remmer/shared_lair_remmer.iff")
 
 object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectT
 	clientObjectCRC = 1785284401
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer_grassland, "object/tangible/lair/remmer/shared_lair_remmer_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer_grassland, "object/tangible/lair/remmer/shared_lair_remmer_grassland.iff")
 
 object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 3159632907
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer_jungle, "object/tangible/lair/remmer/shared_lair_remmer_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer_jungle, "object/tangible/lair/remmer/shared_lair_remmer_jungle.iff")

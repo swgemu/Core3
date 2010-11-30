@@ -48,6 +48,7 @@ object_tangible_lair_stintaril_shared_lair_stintaril = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_stintaril_shared_lair_stintaril = SharedTangibleObjectTempl
 	clientObjectCRC = 3535581753
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, "object/tangible/lair/stintaril/shared_lair_stintaril.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, "object/tangible/lair/stintaril/shared_lair_stintaril.iff")
 
 object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObje
 	clientObjectCRC = 3799137931
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, "object/tangible/lair/stintaril/shared_lair_stintaril_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, "object/tangible/lair/stintaril/shared_lair_stintaril_jungle.iff")
 
 object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjec
 	clientObjectCRC = 3834490330
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, "object/tangible/lair/stintaril/shared_lair_stintaril_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, "object/tangible/lair/stintaril/shared_lair_stintaril_swamp.iff")

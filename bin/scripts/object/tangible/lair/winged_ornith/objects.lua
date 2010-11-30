@@ -48,6 +48,7 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith = SharedTangibleObj
 	clientObjectCRC = 2324552203
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith.iff")
 
 object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedT
 	clientObjectCRC = 3499819428
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_grassland.iff")
 
 object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTang
 	clientObjectCRC = 3275441058
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_jungle.iff")

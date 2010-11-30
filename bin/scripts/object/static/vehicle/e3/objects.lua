@@ -47,6 +47,7 @@ object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_e3_landspeeder.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2401779536
 }
 
-ObjectTemplates:addClientTemplate(object_static_vehicle_e3_shared_landspeeder, "object/static/vehicle/e3/shared_landspeeder.iff")
+ObjectTemplates:addTemplate(object_static_vehicle_e3_shared_landspeeder, "object/static/vehicle/e3/shared_landspeeder.iff")

@@ -48,6 +48,7 @@ object_building_yavin_shared_dark_enclave = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_yavin_shared_dark_enclave = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 2882030964
 }
 
-ObjectTemplates:addClientTemplate(object_building_yavin_shared_dark_enclave, "object/building/yavin/shared_dark_enclave.iff")
+ObjectTemplates:addTemplate(object_building_yavin_shared_dark_enclave, "object/building/yavin/shared_dark_enclave.iff")
 
 object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -104,6 +105,7 @@ object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,7 +153,7 @@ object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3550315323
 }
 
-ObjectTemplates:addClientTemplate(object_building_yavin_shared_light_enclave, "object/building/yavin/shared_light_enclave.iff")
+ObjectTemplates:addTemplate(object_building_yavin_shared_light_enclave, "object/building/yavin/shared_light_enclave.iff")
 
 object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -160,6 +162,7 @@ object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -207,7 +210,7 @@ object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 1060389087
 }
 
-ObjectTemplates:addClientTemplate(object_building_yavin_shared_temple_blueleaf, "object/building/yavin/shared_temple_blueleaf.iff")
+ObjectTemplates:addTemplate(object_building_yavin_shared_temple_blueleaf, "object/building/yavin/shared_temple_blueleaf.iff")
 
 object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -216,6 +219,7 @@ object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -263,7 +267,7 @@ object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 3687664408
 }
 
-ObjectTemplates:addClientTemplate(object_building_yavin_shared_temple_exar_kun, "object/building/yavin/shared_temple_exar_kun.iff")
+ObjectTemplates:addTemplate(object_building_yavin_shared_temple_exar_kun, "object/building/yavin/shared_temple_exar_kun.iff")
 
 object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -272,6 +276,7 @@ object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -319,7 +324,7 @@ object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2078872520
 }
 
-ObjectTemplates:addClientTemplate(object_building_yavin_shared_temple_massassi, "object/building/yavin/shared_temple_massassi.iff")
+ObjectTemplates:addTemplate(object_building_yavin_shared_temple_massassi, "object/building/yavin/shared_temple_massassi.iff")
 
 object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -328,6 +333,7 @@ object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -375,4 +381,4 @@ object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1136920717
 }
 
-ObjectTemplates:addClientTemplate(object_building_yavin_shared_temple_woolamander, "object/building/yavin/shared_temple_woolamander.iff")
+ObjectTemplates:addTemplate(object_building_yavin_shared_temple_woolamander, "object/building/yavin/shared_temple_woolamander.iff")

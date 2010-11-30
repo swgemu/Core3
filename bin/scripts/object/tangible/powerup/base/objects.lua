@@ -48,6 +48,7 @@ object_tangible_powerup_base_shared_armor_base = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1048576,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_powerup_base_shared_armor_base = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2900653287
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_armor_base, "object/tangible/powerup/base/shared_armor_base.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_armor_base, "object/tangible/powerup/base/shared_armor_base.iff")
 
 object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524288,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 486380582
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_base, "object/tangible/powerup/base/shared_base.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_base, "object/tangible/powerup/base/shared_base.iff")
 
 object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524288,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1015299597
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_weapon_base, "object/tangible/powerup/base/shared_weapon_base.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_weapon_base, "object/tangible/powerup/base/shared_weapon_base.iff")

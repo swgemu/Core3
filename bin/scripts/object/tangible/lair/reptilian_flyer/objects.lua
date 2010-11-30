@@ -48,6 +48,7 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer = SharedTangibl
 	clientObjectCRC = 1767218829
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer.iff")
 
 object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = Shared
 	clientObjectCRC = 989527915
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_forest.iff")
 
 object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = Shar
 	clientObjectCRC = 4098043121
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_mountain.iff")

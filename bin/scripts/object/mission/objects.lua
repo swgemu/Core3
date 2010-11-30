@@ -47,6 +47,7 @@ object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2051,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new 
 	clientObjectCRC = 3205608574
 }
 
-ObjectTemplates:addClientTemplate(object_mission_shared_mission_data_object, "object/mission/shared_mission_data_object.iff")
+ObjectTemplates:addTemplate(object_mission_shared_mission_data_object, "object/mission/shared_mission_data_object.iff")
 
 object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTemplate:new {
 	appearanceFilename = "appearance/ui_destroy.spr",
@@ -90,6 +91,7 @@ object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTe
 	clientObjectCRC = 2729425872
 }
 
-ObjectTemplates:addClientTemplate(object_mission_shared_mission_list_entry_object, "object/mission/shared_mission_list_entry_object.iff")
+ObjectTemplates:addTemplate(object_mission_shared_mission_list_entry_object, "object/mission/shared_mission_list_entry_object.iff")
 
 object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 	appearanceFilename = "appearance/ui_destroy.spr",
@@ -133,6 +135,7 @@ object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2051,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,4 +171,4 @@ object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 	clientObjectCRC = 3741732474
 }
 
-ObjectTemplates:addClientTemplate(object_mission_shared_mission_object, "object/mission/shared_mission_object.iff")
+ObjectTemplates:addTemplate(object_mission_shared_mission_object, "object/mission/shared_mission_object.iff")

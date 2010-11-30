@@ -48,6 +48,7 @@ object_tangible_ship_attachment_base_shared_base_ship_attachment = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_ship_attachment_base_shared_base_ship_attachment = SharedTangibl
 	clientObjectCRC = 1517850046
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_base_shared_base_ship_attachment, "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_base_shared_base_ship_attachment, "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff")

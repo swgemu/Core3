@@ -48,6 +48,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3179863902
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_mawgax_shared_lair_mawgax, "object/tangible/lair/mawgax/shared_lair_mawgax.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax, "object/tangible/lair/mawgax/shared_lair_mawgax.iff")
 
 object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectT
 	clientObjectCRC = 767243941
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_grassland, "object/tangible/lair/mawgax/shared_lair_mawgax_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_grassland, "object/tangible/lair/mawgax/shared_lair_mawgax_grassland.iff")
 
 object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 813716742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_mountain, "object/tangible/lair/mawgax/shared_lair_mawgax_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_mountain, "object/tangible/lair/mawgax/shared_lair_mawgax_mountain.iff")

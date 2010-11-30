@@ -48,6 +48,7 @@ object_tangible_component_clothing_shared_cargo_pocket = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_clothing_shared_cargo_pocket = SharedTangibleObjectTem
 	clientObjectCRC = 3621976108
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_cargo_pocket, "object/tangible/component/clothing/shared_cargo_pocket.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_cargo_pocket, "object/tangible/component/clothing/shared_cargo_pocket.iff")
 
 object_tangible_component_clothing_shared_clasp_heavy_duty = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_acc_slaving_collar.apt",
@@ -101,6 +102,7 @@ object_tangible_component_clothing_shared_clasp_heavy_duty = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_clothing_shared_clasp_heavy_duty = SharedTangibleObjec
 	clientObjectCRC = 948917712
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_clasp_heavy_duty, "object/tangible/component/clothing/shared_clasp_heavy_duty.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_clasp_heavy_duty, "object/tangible/component/clothing/shared_clasp_heavy_duty.iff")
 
 object_tangible_component_clothing_shared_clothing_treatment_crystalline = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_crystalline.apt",
@@ -154,6 +156,7 @@ object_tangible_component_clothing_shared_clothing_treatment_crystalline = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_component_clothing_shared_clothing_treatment_crystalline = Share
 	clientObjectCRC = 1281925235
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_clothing_treatment_crystalline, "object/tangible/component/clothing/shared_clothing_treatment_crystalline.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_clothing_treatment_crystalline, "object/tangible/component/clothing/shared_clothing_treatment_crystalline.iff")
 
 object_tangible_component_clothing_shared_component_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dye_generic.apt",
@@ -207,6 +210,7 @@ object_tangible_component_clothing_shared_component_base = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_component_clothing_shared_component_base = SharedTangibleObjectT
 	clientObjectCRC = 347363744
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_component_base, "object/tangible/component/clothing/shared_component_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_component_base, "object/tangible/component/clothing/shared_component_base.iff")
 
 object_tangible_component_clothing_shared_fiberplast_panel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
@@ -260,6 +264,7 @@ object_tangible_component_clothing_shared_fiberplast_panel = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_component_clothing_shared_fiberplast_panel = SharedTangibleObjec
 	clientObjectCRC = 967991397
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_fiberplast_panel, "object/tangible/component/clothing/shared_fiberplast_panel.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_fiberplast_panel, "object/tangible/component/clothing/shared_fiberplast_panel.iff")
 
 object_tangible_component_clothing_shared_jewelry_setting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_jewelry_setting.apt",
@@ -313,6 +318,7 @@ object_tangible_component_clothing_shared_jewelry_setting = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_component_clothing_shared_jewelry_setting = SharedTangibleObject
 	clientObjectCRC = 3580972841
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_jewelry_setting, "object/tangible/component/clothing/shared_jewelry_setting.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_jewelry_setting, "object/tangible/component/clothing/shared_jewelry_setting.iff")
 
 object_tangible_component_clothing_shared_leather_heavy_duty = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
@@ -366,6 +372,7 @@ object_tangible_component_clothing_shared_leather_heavy_duty = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_component_clothing_shared_leather_heavy_duty = SharedTangibleObj
 	clientObjectCRC = 2558785369
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_leather_heavy_duty, "object/tangible/component/clothing/shared_leather_heavy_duty.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_leather_heavy_duty, "object/tangible/component/clothing/shared_leather_heavy_duty.iff")
 
 object_tangible_component_clothing_shared_metal_fasteners = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sandstat.apt",
@@ -419,6 +426,7 @@ object_tangible_component_clothing_shared_metal_fasteners = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_component_clothing_shared_metal_fasteners = SharedTangibleObject
 	clientObjectCRC = 1732023387
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_metal_fasteners, "object/tangible/component/clothing/shared_metal_fasteners.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_metal_fasteners, "object/tangible/component/clothing/shared_metal_fasteners.iff")
 
 object_tangible_component_clothing_shared_padding_segment = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
@@ -472,6 +480,7 @@ object_tangible_component_clothing_shared_padding_segment = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_component_clothing_shared_padding_segment = SharedTangibleObject
 	clientObjectCRC = 449019087
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_padding_segment, "object/tangible/component/clothing/shared_padding_segment.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_padding_segment, "object/tangible/component/clothing/shared_padding_segment.iff")
 
 object_tangible_component_clothing_shared_reinforced_fiber_panels = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
@@ -525,6 +534,7 @@ object_tangible_component_clothing_shared_reinforced_fiber_panels = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_component_clothing_shared_reinforced_fiber_panels = SharedTangib
 	clientObjectCRC = 142903413
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_reinforced_fiber_panels, "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_reinforced_fiber_panels, "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff")
 
 object_tangible_component_clothing_shared_shoe_sole = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shoe_sole.apt",
@@ -578,6 +588,7 @@ object_tangible_component_clothing_shared_shoe_sole = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_component_clothing_shared_shoe_sole = SharedTangibleObjectTempla
 	clientObjectCRC = 845264699
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_shoe_sole, "object/tangible/component/clothing/shared_shoe_sole.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_shoe_sole, "object/tangible/component/clothing/shared_shoe_sole.iff")
 
 object_tangible_component_clothing_shared_synthetic_cloth = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
@@ -631,6 +642,7 @@ object_tangible_component_clothing_shared_synthetic_cloth = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_component_clothing_shared_synthetic_cloth = SharedTangibleObject
 	clientObjectCRC = 2133284732
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_synthetic_cloth, "object/tangible/component/clothing/shared_synthetic_cloth.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_synthetic_cloth, "object/tangible/component/clothing/shared_synthetic_cloth.iff")
 
 object_tangible_component_clothing_shared_trim = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -684,6 +696,7 @@ object_tangible_component_clothing_shared_trim = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,4 +741,4 @@ object_tangible_component_clothing_shared_trim = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3684307948
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_trim, "object/tangible/component/clothing/shared_trim.iff")
+ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_trim, "object/tangible/component/clothing/shared_trim.iff")

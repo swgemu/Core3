@@ -48,6 +48,7 @@ object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 3800711792
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_item_plant_shared_force_melon, "object/tangible/item/plant/shared_force_melon.iff")
+ObjectTemplates:addTemplate(object_tangible_item_plant_shared_force_melon, "object/tangible/item/plant/shared_force_melon.iff")

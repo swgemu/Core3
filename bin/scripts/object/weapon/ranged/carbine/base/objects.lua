@@ -49,6 +49,7 @@ object_weapon_ranged_carbine_base_shared_carbine_base = SharedWeaponObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_ranged_carbine_base_shared_carbine_base = SharedWeaponObjectTempla
 	clientObjectCRC = 2810105369
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_base_shared_carbine_base, "object/weapon/ranged/carbine/base/shared_carbine_base.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_base_shared_carbine_base, "object/weapon/ranged/carbine/base/shared_carbine_base.iff")

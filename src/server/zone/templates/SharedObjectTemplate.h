@@ -44,6 +44,7 @@ protected:
 	int collisionActionPassFlags;
 	int collisionActionBlockFlags;
 	int gameObjectType;
+	int clientGameObjectType;
 	bool sendToClient;
 	float scaleThresholdBeforeExtentTest;
 	float clearFloraRadius;
@@ -183,6 +184,10 @@ public:
     inline int getGameObjectType() const {
 		return gameObjectType;
 	}
+
+    inline int getClientGameObjectType() const {
+    	return clientGameObjectType;
+    }
 
     inline float getLocationReservationRadius() const {
 		return locationReservationRadius;

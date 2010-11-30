@@ -47,6 +47,7 @@ object_draft_schematic_vehicle_shared_vehicle_customization_kit = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_draft_schematic_vehicle_shared_vehicle_customization_kit = SharedDraftSch
 	clientObjectCRC = 4170918716
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_shared_vehicle_customization_kit, "object/draft_schematic/vehicle/shared_vehicle_customization_kit.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_vehicle_shared_vehicle_customization_kit, "object/draft_schematic/vehicle/shared_vehicle_customization_kit.iff")

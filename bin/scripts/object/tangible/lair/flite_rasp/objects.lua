@@ -48,6 +48,7 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp = SharedTangibleObjectTem
 	clientObjectCRC = 3680958140
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp, "object/tangible/lair/flite_rasp/shared_lair_flite_rasp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp, "object/tangible/lair/flite_rasp/shared_lair_flite_rasp.iff")
 
 object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland = SharedTangibl
 	clientObjectCRC = 3329199331
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland, "object/tangible/lair/flite_rasp/shared_lair_flite_rasp_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland, "object/tangible/lair/flite_rasp/shared_lair_flite_rasp_grassland.iff")

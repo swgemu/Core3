@@ -47,6 +47,7 @@ object_static_test_shared_test_blast = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_static_test_shared_test_blast = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 956566051
 }
 
-ObjectTemplates:addClientTemplate(object_static_test_shared_test_blast, "object/static/test/shared_test_blast.iff")
+ObjectTemplates:addTemplate(object_static_test_shared_test_blast, "object/static/test/shared_test_blast.iff")
 
 object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bolt_red.prt",
@@ -90,6 +91,7 @@ object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1262353977
 }
 
-ObjectTemplates:addClientTemplate(object_static_test_shared_test_blaster_bolt, "object/static/test/shared_test_blaster_bolt.iff")
+ObjectTemplates:addTemplate(object_static_test_shared_test_blaster_bolt, "object/static/test/shared_test_blaster_bolt.iff")
 
 object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
@@ -133,6 +135,7 @@ object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "sample/windmill.sam",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4068306658
 }
 
-ObjectTemplates:addClientTemplate(object_static_test_shared_test_sound_obelisk_1, "object/static/test/shared_test_sound_obelisk_1.iff")
+ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_1, "object/static/test/shared_test_sound_obelisk_1.iff")
 
 object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
@@ -176,6 +179,7 @@ object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "sample/tie_fighter_flyby_2.sam",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 694863477
 }
 
-ObjectTemplates:addClientTemplate(object_static_test_shared_test_sound_obelisk_2, "object/static/test/shared_test_sound_obelisk_2.iff")
+ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_2, "object/static/test/shared_test_sound_obelisk_2.iff")
 
 object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/sandcrawler.apt",
@@ -219,6 +223,7 @@ object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -254,4 +259,4 @@ object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:n
 	clientObjectCRC = 82674764
 }
 
-ObjectTemplates:addClientTemplate(object_static_test_shared_test_static_sandcrawler, "object/static/test/shared_test_static_sandcrawler.iff")
+ObjectTemplates:addTemplate(object_static_test_shared_test_static_sandcrawler, "object/static/test/shared_test_static_sandcrawler.iff")

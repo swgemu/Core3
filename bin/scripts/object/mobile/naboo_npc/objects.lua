@@ -51,6 +51,7 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/npc/client_shared_npc_dressed_thrawn.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -116,7 +117,7 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 721694525
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_naboo_npc_shared_thrawn, "object/mobile/naboo_npc/shared_thrawn.iff")
+ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_thrawn, "object/mobile/naboo_npc/shared_thrawn.iff")
 
 object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -128,6 +129,7 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/npc/client_shared_npc_dressed_imperial_colonel_veers.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -193,4 +195,4 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 548983473
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_naboo_npc_shared_veers, "object/mobile/naboo_npc/shared_veers.iff")
+ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_veers, "object/mobile/naboo_npc/shared_veers.iff")

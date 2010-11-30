@@ -47,6 +47,7 @@ object_construction_contract_base_shared_base_construction_contract = SharedCons
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_construction_contract_base_shared_base_construction_contract = SharedCons
 	clientObjectCRC = 645732506
 }
 
-ObjectTemplates:addClientTemplate(object_construction_contract_base_shared_base_construction_contract, "object/construction_contract/base/shared_base_construction_contract.iff")
+ObjectTemplates:addTemplate(object_construction_contract_base_shared_base_construction_contract, "object/construction_contract/base/shared_base_construction_contract.iff")

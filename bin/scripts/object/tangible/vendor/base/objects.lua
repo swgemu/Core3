@@ -48,6 +48,7 @@ object_tangible_vendor_base_shared_base_vendor = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 7,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_vendor_base_shared_base_vendor = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2776424308
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_vendor_base_shared_base_vendor, "object/tangible/vendor/base/shared_base_vendor.iff")
+ObjectTemplates:addTemplate(object_tangible_vendor_base_shared_base_vendor, "object/tangible/vendor/base/shared_base_vendor.iff")

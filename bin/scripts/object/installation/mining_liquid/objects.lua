@@ -48,6 +48,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_1 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_mining_liquid_harvester_style_1.cdf",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_1 = Share
 	clientObjectCRC = 2015682736
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_1, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_1.iff")
+ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_1, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_1.iff")
 
 object_installation_mining_liquid_shared_mining_liquid_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_liquid_s01_u0.apt",
@@ -101,6 +102,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_2 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_mining_liquid_harvester_style_2.cdf",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_2 = Share
 	clientObjectCRC = 2738047015
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_2, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_2.iff")
+ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_2, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_2.iff")
 
 object_installation_mining_liquid_shared_mining_liquid_harvester_style_3 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_creature_farm_s01_u0.apt",
@@ -154,6 +156,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_3 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_mining_organic_creature_farm.cdf",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_3 = Share
 	clientObjectCRC = 3929943978
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_3, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_3.iff")
+ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_3, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_3.iff")
 
 object_installation_mining_liquid_shared_mining_liquid_moisture_harvester = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_moisture_s01_u0.apt",
@@ -207,6 +210,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_mining_moisture_harvester_style_1.cdf",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester = Shar
 	clientObjectCRC = 2235626870
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester.iff")
+ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester.iff")
 
 object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_moisture_lrg.apt",
@@ -260,6 +264,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy 
 	clientObjectCRC = 1305511934
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_heavy.iff")
+ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_heavy.iff")
 
 object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_moisture_med.apt",
@@ -313,6 +318,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium
 	clientObjectCRC = 3152239258
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_medium.iff")
+ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_medium.iff")
 
 object_installation_mining_liquid_shared_resource_harvester = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/tatt_ming_hydro_evaporator.apt",
@@ -366,6 +372,7 @@ object_installation_mining_liquid_shared_resource_harvester = SharedInstallation
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,4 +417,4 @@ object_installation_mining_liquid_shared_resource_harvester = SharedInstallation
 	clientObjectCRC = 860426391
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_resource_harvester, "object/installation/mining_liquid/shared_resource_harvester.iff")
+ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_resource_harvester, "object/installation/mining_liquid/shared_resource_harvester.iff")

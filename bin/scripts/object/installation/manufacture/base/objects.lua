@@ -48,6 +48,7 @@ object_installation_manufacture_base_shared_manufacture_base = SharedInstallatio
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4097,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_manufacture_base_shared_manufacture_base = SharedInstallatio
 	clientObjectCRC = 3460199396
 }
 
-ObjectTemplates:addClientTemplate(object_installation_manufacture_base_shared_manufacture_base, "object/installation/manufacture/base/shared_manufacture_base.iff")
+ObjectTemplates:addTemplate(object_installation_manufacture_base_shared_manufacture_base, "object/installation/manufacture/base/shared_manufacture_base.iff")

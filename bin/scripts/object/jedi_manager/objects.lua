@@ -47,6 +47,7 @@ object_jedi_manager_shared_jedi_manager = SharedJediManagerTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_jedi_manager_shared_jedi_manager = SharedJediManagerTemplate:new {
 	clientObjectCRC = 4042830301
 }
 
-ObjectTemplates:addClientTemplate(object_jedi_manager_shared_jedi_manager, "object/jedi_manager/shared_jedi_manager.iff")
+ObjectTemplates:addTemplate(object_jedi_manager_shared_jedi_manager, "object/jedi_manager/shared_jedi_manager.iff")

@@ -47,6 +47,7 @@ object_guild_base_shared_base_guild = SharedGuildObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 3,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_guild_base_shared_base_guild = SharedGuildObjectTemplate:new {
 	clientObjectCRC = 2854935626
 }
 
-ObjectTemplates:addClientTemplate(object_guild_base_shared_base_guild, "object/guild/base/shared_base_guild.iff")
+ObjectTemplates:addTemplate(object_guild_base_shared_base_guild, "object/guild/base/shared_base_guild.iff")
 
 object_guild_base_shared_guild_default = SharedGuildObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_guild_base_shared_guild_default = SharedGuildObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 3,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_guild_base_shared_guild_default = SharedGuildObjectTemplate:new {
 	clientObjectCRC = 3744093888
 }
 
-ObjectTemplates:addClientTemplate(object_guild_base_shared_guild_default, "object/guild/base/shared_guild_default.iff")
+ObjectTemplates:addTemplate(object_guild_base_shared_guild_default, "object/guild/base/shared_guild_default.iff")

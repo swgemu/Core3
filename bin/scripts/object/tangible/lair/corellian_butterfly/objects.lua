@@ -48,6 +48,7 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly = Share
 	clientObjectCRC = 3008925530
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly.iff")
 
 object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest 
 	clientObjectCRC = 1882452150
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_forest.iff")
 
 object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountai
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountai
 	clientObjectCRC = 4011982198
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_mountain.iff")

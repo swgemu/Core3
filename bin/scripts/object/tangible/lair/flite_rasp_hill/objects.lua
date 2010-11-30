@@ -48,6 +48,7 @@ object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill = SharedTangibl
 	clientObjectCRC = 182559338
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill, "object/tangible/lair/flite_rasp_hill/shared_lair_flite_rasp_hill.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill, "object/tangible/lair/flite_rasp_hill/shared_lair_flite_rasp_hill.iff")

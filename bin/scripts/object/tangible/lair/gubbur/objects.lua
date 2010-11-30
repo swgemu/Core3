@@ -48,6 +48,7 @@ object_tangible_lair_gubbur_shared_lair_gubbur = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gubbur_shared_lair_gubbur = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2954623268
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gubbur_shared_lair_gubbur, "object/tangible/lair/gubbur/shared_lair_gubbur.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gubbur_shared_lair_gubbur, "object/tangible/lair/gubbur/shared_lair_gubbur.iff")
 
 object_tangible_lair_gubbur_shared_lair_gubbur_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gubbur_shared_lair_gubbur_underwater = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_gubbur_shared_lair_gubbur_underwater = SharedTangibleObject
 	clientObjectCRC = 162663967
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gubbur_shared_lair_gubbur_underwater, "object/tangible/lair/gubbur/shared_lair_gubbur_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gubbur_shared_lair_gubbur_underwater, "object/tangible/lair/gubbur/shared_lair_gubbur_underwater.iff")

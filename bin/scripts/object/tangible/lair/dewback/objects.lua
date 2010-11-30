@@ -48,6 +48,7 @@ object_tangible_lair_dewback_shared_lair_dewback = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_dewback_shared_lair_dewback = SharedTangibleObjectTemplate:
 	clientObjectCRC = 62836419
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_dewback_shared_lair_dewback, "object/tangible/lair/dewback/shared_lair_dewback.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_dewback_shared_lair_dewback, "object/tangible/lair/dewback/shared_lair_dewback.iff")
 
 object_tangible_lair_dewback_shared_lair_dewback_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_dewback_shared_lair_dewback_desert = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_dewback_shared_lair_dewback_desert = SharedTangibleObjectTe
 	clientObjectCRC = 605037773
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_dewback_shared_lair_dewback_desert, "object/tangible/lair/dewback/shared_lair_dewback_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_dewback_shared_lair_dewback_desert, "object/tangible/lair/dewback/shared_lair_dewback_desert.iff")

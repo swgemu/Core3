@@ -48,6 +48,7 @@ object_tangible_lair_shared_npc_lair = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_shared_npc_lair = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1938568983
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_shared_npc_lair, "object/tangible/lair/shared_npc_lair.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_shared_npc_lair, "object/tangible/lair/shared_npc_lair.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite = SharedTangibleObjectTem
 	clientObjectCRC = 1395090938
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite, "object/tangible/lair/shear_mite/shared_lair_shear_mite.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite, "object/tangible/lair/shear_mite/shared_lair_shear_mite.iff")
 
 object_tangible_lair_shear_mite_shared_lair_shear_mite_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_forest = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_forest = SharedTangibleOb
 	clientObjectCRC = 9878364
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_forest, "object/tangible/lair/shear_mite/shared_lair_shear_mite_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_forest, "object/tangible/lair/shear_mite/shared_lair_shear_mite_forest.iff")
 
 object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain = SharedTangible
 	clientObjectCRC = 865403242
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain, "object/tangible/lair/shear_mite/shared_lair_shear_mite_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain, "object/tangible/lair/shear_mite/shared_lair_shear_mite_mountain.iff")

@@ -47,6 +47,7 @@ object_draft_schematic_munition_shared_base_munition = SharedDraftSchematicObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_munition_shared_base_munition = SharedDraftSchematicObjec
 	clientObjectCRC = 565719631
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_base_munition, "object/draft_schematic/munition/shared_base_munition.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_base_munition, "object/draft_schematic/munition/shared_base_munition.iff")
 
 object_draft_schematic_munition_shared_base_munition_enhancer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_munition_shared_base_munition_enhancer = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_munition_shared_base_munition_enhancer = SharedDraftSchem
 	clientObjectCRC = 2705118881
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_base_munition_enhancer, "object/draft_schematic/munition/shared_base_munition_enhancer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_base_munition_enhancer, "object/draft_schematic/munition/shared_base_munition_enhancer.iff")
 
 object_draft_schematic_munition_shared_bomb_field_antigravity = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_munition_shared_bomb_field_antigravity = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_munition_shared_bomb_field_antigravity = SharedDraftSchem
 	clientObjectCRC = 4027709871
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_bomb_field_antigravity, "object/draft_schematic/munition/shared_bomb_field_antigravity.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_bomb_field_antigravity, "object/draft_schematic/munition/shared_bomb_field_antigravity.iff")
 
 object_draft_schematic_munition_shared_detonator_thermal_class_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_munition_shared_detonator_thermal_class_a = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_munition_shared_detonator_thermal_class_a = SharedDraftSc
 	clientObjectCRC = 3371484020
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_detonator_thermal_class_a, "object/draft_schematic/munition/shared_detonator_thermal_class_a.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_detonator_thermal_class_a, "object/draft_schematic/munition/shared_detonator_thermal_class_a.iff")
 
 object_draft_schematic_munition_shared_detonator_thermal_imperial_issue = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_munition_shared_detonator_thermal_imperial_issue = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_munition_shared_detonator_thermal_imperial_issue = Shared
 	clientObjectCRC = 273841684
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_detonator_thermal_imperial_issue, "object/draft_schematic/munition/shared_detonator_thermal_imperial_issue.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_detonator_thermal_imperial_issue, "object/draft_schematic/munition/shared_detonator_thermal_imperial_issue.iff")
 
 object_draft_schematic_munition_shared_grenade_cryoban_ww_41 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_munition_shared_grenade_cryoban_ww_41 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_munition_shared_grenade_cryoban_ww_41 = SharedDraftSchema
 	clientObjectCRC = 1932295981
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade_cryoban_ww_41, "object/draft_schematic/munition/shared_grenade_cryoban_ww_41.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_cryoban_ww_41, "object/draft_schematic/munition/shared_grenade_cryoban_ww_41.iff")
 
 object_draft_schematic_munition_shared_grenade_fragmentation_c_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_munition_shared_grenade_fragmentation_c_12 = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_munition_shared_grenade_fragmentation_c_12 = SharedDraftS
 	clientObjectCRC = 11395638
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade_fragmentation_c_12, "object/draft_schematic/munition/shared_grenade_fragmentation_c_12.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_fragmentation_c_12, "object/draft_schematic/munition/shared_grenade_fragmentation_c_12.iff")
 
 object_draft_schematic_munition_shared_grenade_fragmentation_c_22 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_munition_shared_grenade_fragmentation_c_22 = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_munition_shared_grenade_fragmentation_c_22 = SharedDraftS
 	clientObjectCRC = 768996798
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade_fragmentation_c_22, "object/draft_schematic/munition/shared_grenade_fragmentation_c_22.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_fragmentation_c_22, "object/draft_schematic/munition/shared_grenade_fragmentation_c_22.iff")
 
 object_draft_schematic_munition_shared_grenade_glop = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_munition_shared_grenade_glop = SharedDraftSchematicObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_munition_shared_grenade_glop = SharedDraftSchematicObject
 	clientObjectCRC = 3560497923
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade_glop, "object/draft_schematic/munition/shared_grenade_glop.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_glop, "object/draft_schematic/munition/shared_grenade_glop.iff")
 
 object_draft_schematic_munition_shared_grenade_proton = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_munition_shared_grenade_proton = SharedDraftSchematicObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_munition_shared_grenade_proton = SharedDraftSchematicObje
 	clientObjectCRC = 1913629188
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade_proton, "object/draft_schematic/munition/shared_grenade_proton.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_proton, "object/draft_schematic/munition/shared_grenade_proton.iff")
 
 object_draft_schematic_munition_shared_mine_anti_vehicle = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_munition_shared_mine_anti_vehicle = SharedDraftSchematicO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_munition_shared_mine_anti_vehicle = SharedDraftSchematicO
 	clientObjectCRC = 225539159
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_mine_anti_vehicle, "object/draft_schematic/munition/shared_mine_anti_vehicle.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_mine_anti_vehicle, "object/draft_schematic/munition/shared_mine_anti_vehicle.iff")
 
 object_draft_schematic_munition_shared_mine_dxr55 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_munition_shared_mine_dxr55 = SharedDraftSchematicObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_munition_shared_mine_dxr55 = SharedDraftSchematicObjectTe
 	clientObjectCRC = 1052443447
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_mine_dxr55, "object/draft_schematic/munition/shared_mine_dxr55.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_mine_dxr55, "object/draft_schematic/munition/shared_mine_dxr55.iff")
 
 object_draft_schematic_munition_shared_mine_xg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_munition_shared_mine_xg = SharedDraftSchematicObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,4 +611,4 @@ object_draft_schematic_munition_shared_mine_xg = SharedDraftSchematicObjectTempl
 	clientObjectCRC = 1813474007
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_mine_xg, "object/draft_schematic/munition/shared_mine_xg.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_mine_xg, "object/draft_schematic/munition/shared_mine_xg.iff")

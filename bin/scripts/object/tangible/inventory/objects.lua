@@ -48,6 +48,7 @@ object_tangible_inventory_shared_character_inventory = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_tangible_inventory_shared_character_inventory = SharedTangibleObjectTempl
 	clientObjectCRC = 963242043
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_character_inventory, "object/tangible/inventory/shared_character_inventory.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_character_inventory, "object/tangible/inventory/shared_character_inventory.iff")
 
 object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTempla
 	clientObjectCRC = 554727708
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory, "object/tangible/inventory/shared_creature_inventory.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory, "object/tangible/inventory/shared_creature_inventory.iff")
 
 object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemp
 	clientObjectCRC = 4169639267
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_1, "object/tangible/inventory/shared_creature_inventory_1.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_1, "object/tangible/inventory/shared_creature_inventory_1.iff")
 
 object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -207,6 +210,7 @@ object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -251,7 +255,7 @@ object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemp
 	clientObjectCRC = 596643316
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_2, "object/tangible/inventory/shared_creature_inventory_2.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_2, "object/tangible/inventory/shared_creature_inventory_2.iff")
 
 object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -260,6 +264,7 @@ object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -304,7 +309,7 @@ object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemp
 	clientObjectCRC = 1788701305
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_3, "object/tangible/inventory/shared_creature_inventory_3.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_3, "object/tangible/inventory/shared_creature_inventory_3.iff")
 
 object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -313,6 +318,7 @@ object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -357,7 +363,7 @@ object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemp
 	clientObjectCRC = 2440970605
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_4, "object/tangible/inventory/shared_creature_inventory_4.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_4, "object/tangible/inventory/shared_creature_inventory_4.iff")
 
 object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -366,6 +372,7 @@ object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -410,7 +417,7 @@ object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemp
 	clientObjectCRC = 3631425248
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_5, "object/tangible/inventory/shared_creature_inventory_5.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_5, "object/tangible/inventory/shared_creature_inventory_5.iff")
 
 object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -419,6 +426,7 @@ object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -463,7 +471,7 @@ object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemp
 	clientObjectCRC = 56921719
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_6, "object/tangible/inventory/shared_creature_inventory_6.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_6, "object/tangible/inventory/shared_creature_inventory_6.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -472,6 +480,7 @@ object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -516,7 +525,7 @@ object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTe
 	clientObjectCRC = 3089628208
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_1, "object/tangible/inventory/shared_lightsaber_inventory_1.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_1, "object/tangible/inventory/shared_lightsaber_inventory_1.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -525,6 +534,7 @@ object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -569,7 +579,7 @@ object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTe
 	clientObjectCRC = 1664111783
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_2, "object/tangible/inventory/shared_lightsaber_inventory_2.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_2, "object/tangible/inventory/shared_lightsaber_inventory_2.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -578,6 +588,7 @@ object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -622,7 +633,7 @@ object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTe
 	clientObjectCRC = 708653866
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_3, "object/tangible/inventory/shared_lightsaber_inventory_3.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_3, "object/tangible/inventory/shared_lightsaber_inventory_3.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -631,6 +642,7 @@ object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -675,7 +687,7 @@ object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTe
 	clientObjectCRC = 3520993342
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_4, "object/tangible/inventory/shared_lightsaber_inventory_4.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_4, "object/tangible/inventory/shared_lightsaber_inventory_4.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -684,6 +696,7 @@ object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -728,7 +741,7 @@ object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjec
 	clientObjectCRC = 1036860999
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_base, "object/tangible/inventory/shared_lightsaber_inventory_base.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_base, "object/tangible/inventory/shared_lightsaber_inventory_base.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -737,6 +750,7 @@ object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -781,7 +795,7 @@ object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleO
 	clientObjectCRC = 3030613257
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_training, "object/tangible/inventory/shared_lightsaber_inventory_training.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_training, "object/tangible/inventory/shared_lightsaber_inventory_training.iff")
 
 object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -790,6 +804,7 @@ object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -834,4 +849,4 @@ object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate
 	clientObjectCRC = 2721032514
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_vendor_inventory, "object/tangible/inventory/shared_vendor_inventory.iff")
+ObjectTemplates:addTemplate(object_tangible_inventory_shared_vendor_inventory, "object/tangible/inventory/shared_vendor_inventory.iff")

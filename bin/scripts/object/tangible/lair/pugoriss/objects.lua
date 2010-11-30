@@ -48,6 +48,7 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss = SharedTangibleObjectTemplat
 	clientObjectCRC = 1270614001
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss, "object/tangible/lair/pugoriss/shared_lair_pugoriss.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss, "object/tangible/lair/pugoriss/shared_lair_pugoriss.iff")
 
 object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObj
 	clientObjectCRC = 3218295663
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland, "object/tangible/lair/pugoriss/shared_lair_pugoriss_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland, "object/tangible/lair/pugoriss/shared_lair_pugoriss_grassland.iff")

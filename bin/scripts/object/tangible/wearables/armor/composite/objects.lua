@@ -48,6 +48,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bicep_l = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bicep_l = Share
 	clientObjectCRC = 329570833
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bicep_l, "object/tangible/wearables/armor/composite/shared_armor_composite_bicep_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bicep_l, "object/tangible/wearables/armor/composite/shared_armor_composite_bicep_l.iff")
 
 object_tangible_wearables_armor_composite_shared_armor_composite_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_bicep_r_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bicep_r = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bicep_r = Share
 	clientObjectCRC = 1668390786
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bicep_r, "object/tangible/wearables/armor/composite/shared_armor_composite_bicep_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bicep_r, "object/tangible/wearables/armor/composite/shared_armor_composite_bicep_r.iff")
 
 object_tangible_wearables_armor_composite_shared_armor_composite_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_boots_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_boots = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_boots = SharedT
 	clientObjectCRC = 3683772891
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_boots, "object/tangible/wearables/armor/composite/shared_armor_composite_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_boots, "object/tangible/wearables/armor/composite/shared_armor_composite_boots.iff")
 
 object_tangible_wearables_armor_composite_shared_armor_composite_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_bracer_l_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bracer_l = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bracer_l = Shar
 	clientObjectCRC = 1303386413
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bracer_l, "object/tangible/wearables/armor/composite/shared_armor_composite_bracer_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bracer_l, "object/tangible/wearables/armor/composite/shared_armor_composite_bracer_l.iff")
 
 object_tangible_wearables_armor_composite_shared_armor_composite_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_bracer_r_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bracer_r = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bracer_r = Shar
 	clientObjectCRC = 1030053054
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bracer_r, "object/tangible/wearables/armor/composite/shared_armor_composite_bracer_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bracer_r, "object/tangible/wearables/armor/composite/shared_armor_composite_bracer_r.iff")
 
 object_tangible_wearables_armor_composite_shared_armor_composite_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_chest_plate_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_chest_plate = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_chest_plate = S
 	clientObjectCRC = 2068279078
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_chest_plate, "object/tangible/wearables/armor/composite/shared_armor_composite_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_chest_plate, "object/tangible/wearables/armor/composite/shared_armor_composite_chest_plate.iff")
 
 object_tangible_wearables_armor_composite_shared_armor_composite_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_gloves_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_gloves = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_gloves = Shared
 	clientObjectCRC = 741736354
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_gloves, "object/tangible/wearables/armor/composite/shared_armor_composite_gloves.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_gloves, "object/tangible/wearables/armor/composite/shared_armor_composite_gloves.iff")
 
 object_tangible_wearables_armor_composite_shared_armor_composite_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_helmet_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_helmet = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_helmet = Shared
 	clientObjectCRC = 2599755434
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_helmet, "object/tangible/wearables/armor/composite/shared_armor_composite_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_helmet, "object/tangible/wearables/armor/composite/shared_armor_composite_helmet.iff")
 
 object_tangible_wearables_armor_composite_shared_armor_composite_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_leggings_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_armor_composite_shared_armor_composite_leggings = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,4 +525,4 @@ object_tangible_wearables_armor_composite_shared_armor_composite_leggings = Shar
 	clientObjectCRC = 3264529458
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_leggings, "object/tangible/wearables/armor/composite/shared_armor_composite_leggings.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_leggings, "object/tangible/wearables/armor/composite/shared_armor_composite_leggings.iff")

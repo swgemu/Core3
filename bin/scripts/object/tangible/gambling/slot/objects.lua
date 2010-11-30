@@ -48,6 +48,7 @@ object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,4 +93,4 @@ object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 1978853321
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_gambling_slot_shared_standard, "object/tangible/gambling/slot/shared_standard.iff")
+ObjectTemplates:addTemplate(object_tangible_gambling_slot_shared_standard, "object/tangible/gambling/slot/shared_standard.iff")

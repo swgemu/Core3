@@ -47,6 +47,7 @@ object_draft_schematic_armor_shared_armor_module_heavy = SharedDraftSchematicObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_armor_shared_armor_module_heavy = SharedDraftSchematicObj
 	clientObjectCRC = 908240485
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_module_heavy, "object/draft_schematic/armor/shared_armor_module_heavy.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_module_heavy, "object/draft_schematic/armor/shared_armor_module_heavy.iff")
 
 object_draft_schematic_armor_shared_armor_module_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_armor_shared_armor_module_light = SharedDraftSchematicObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_armor_shared_armor_module_light = SharedDraftSchematicObj
 	clientObjectCRC = 4152007355
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_module_light, "object/draft_schematic/armor/shared_armor_module_light.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_module_light, "object/draft_schematic/armor/shared_armor_module_light.iff")
 
 object_draft_schematic_armor_shared_armor_segment = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_armor_shared_armor_segment = SharedDraftSchematicObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_armor_shared_armor_segment = SharedDraftSchematicObjectTe
 	clientObjectCRC = 1286868407
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment, "object/draft_schematic/armor/shared_armor_segment.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment, "object/draft_schematic/armor/shared_armor_segment.iff")
 
 object_draft_schematic_armor_shared_armor_segment_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_armor_shared_armor_segment_advanced = SharedDraftSchemati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_armor_shared_armor_segment_advanced = SharedDraftSchemati
 	clientObjectCRC = 211004258
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_advanced, "object/draft_schematic/armor/shared_armor_segment_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_advanced, "object/draft_schematic/armor/shared_armor_segment_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_bone = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_armor_shared_armor_segment_bone = SharedDraftSchematicObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_armor_shared_armor_segment_bone = SharedDraftSchematicObj
 	clientObjectCRC = 1007340042
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_bone, "object/draft_schematic/armor/shared_armor_segment_bone.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_bone, "object/draft_schematic/armor/shared_armor_segment_bone.iff")
 
 object_draft_schematic_armor_shared_armor_segment_bone_acklay = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_armor_shared_armor_segment_bone_acklay = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_armor_shared_armor_segment_bone_acklay = SharedDraftSchem
 	clientObjectCRC = 2889266361
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_bone_acklay, "object/draft_schematic/armor/shared_armor_segment_bone_acklay.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_bone_acklay, "object/draft_schematic/armor/shared_armor_segment_bone_acklay.iff")
 
 object_draft_schematic_armor_shared_armor_segment_bone_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_armor_shared_armor_segment_bone_advanced = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_armor_shared_armor_segment_bone_advanced = SharedDraftSch
 	clientObjectCRC = 1129609908
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_bone_advanced, "object/draft_schematic/armor/shared_armor_segment_bone_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_bone_advanced, "object/draft_schematic/armor/shared_armor_segment_bone_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_chitin = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_armor_shared_armor_segment_chitin = SharedDraftSchematicO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_armor_shared_armor_segment_chitin = SharedDraftSchematicO
 	clientObjectCRC = 3865019752
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_chitin, "object/draft_schematic/armor/shared_armor_segment_chitin.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_chitin, "object/draft_schematic/armor/shared_armor_segment_chitin.iff")
 
 object_draft_schematic_armor_shared_armor_segment_chitin_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_armor_shared_armor_segment_chitin_advanced = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_armor_shared_armor_segment_chitin_advanced = SharedDraftS
 	clientObjectCRC = 892546099
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_chitin_advanced, "object/draft_schematic/armor/shared_armor_segment_chitin_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_chitin_advanced, "object/draft_schematic/armor/shared_armor_segment_chitin_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_composite = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_armor_shared_armor_segment_composite = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_armor_shared_armor_segment_composite = SharedDraftSchemat
 	clientObjectCRC = 1778592860
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_composite, "object/draft_schematic/armor/shared_armor_segment_composite.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_composite, "object/draft_schematic/armor/shared_armor_segment_composite.iff")
 
 object_draft_schematic_armor_shared_armor_segment_composite_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_armor_shared_armor_segment_composite_advanced = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_armor_shared_armor_segment_composite_advanced = SharedDra
 	clientObjectCRC = 2060695348
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_composite_advanced, "object/draft_schematic/armor/shared_armor_segment_composite_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_composite_advanced, "object/draft_schematic/armor/shared_armor_segment_composite_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn = Shared
 	clientObjectCRC = 168895200
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_black_mtn.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_black_mtn.iff")
 
 object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced
 	clientObjectCRC = 737525903
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_black_mtn_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_black_mtn_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial = Share
 	clientObjectCRC = 1171031092
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_ceremonial.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_ceremonial.iff")
 
 object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advance
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advance
 	clientObjectCRC = 1897422446
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_ceremonial_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_ceremonial_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting = SharedDr
 	clientObjectCRC = 4257597570
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_hunting.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_hunting.iff")
 
 object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced =
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced =
 	clientObjectCRC = 1703266289
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_hunting_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_hunting_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_padded = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_armor_shared_armor_segment_padded = SharedDraftSchematicO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_armor_shared_armor_segment_padded = SharedDraftSchematicO
 	clientObjectCRC = 1432695926
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_padded, "object/draft_schematic/armor/shared_armor_segment_padded.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_padded, "object/draft_schematic/armor/shared_armor_segment_padded.iff")
 
 object_draft_schematic_armor_shared_armor_segment_padded_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_armor_shared_armor_segment_padded_advanced = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_armor_shared_armor_segment_padded_advanced = SharedDraftS
 	clientObjectCRC = 626237841
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_padded_advanced, "object/draft_schematic/armor/shared_armor_segment_padded_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_padded_advanced, "object/draft_schematic/armor/shared_armor_segment_padded_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_ris = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_armor_shared_armor_segment_ris = SharedDraftSchematicObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_armor_shared_armor_segment_ris = SharedDraftSchematicObje
 	clientObjectCRC = 2640774670
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_ris, "object/draft_schematic/armor/shared_armor_segment_ris.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_ris, "object/draft_schematic/armor/shared_armor_segment_ris.iff")
 
 object_draft_schematic_armor_shared_armor_segment_ris_acklay = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_armor_shared_armor_segment_ris_acklay = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_armor_shared_armor_segment_ris_acklay = SharedDraftSchema
 	clientObjectCRC = 103597235
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_ris_acklay, "object/draft_schematic/armor/shared_armor_segment_ris_acklay.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_ris_acklay, "object/draft_schematic/armor/shared_armor_segment_ris_acklay.iff")
 
 object_draft_schematic_armor_shared_armor_segment_ubese = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_armor_shared_armor_segment_ubese = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_armor_shared_armor_segment_ubese = SharedDraftSchematicOb
 	clientObjectCRC = 3533039838
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_ubese, "object/draft_schematic/armor/shared_armor_segment_ubese.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_ubese, "object/draft_schematic/armor/shared_armor_segment_ubese.iff")
 
 object_draft_schematic_armor_shared_armor_segment_ubese_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_armor_shared_armor_segment_ubese_advanced = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_armor_shared_armor_segment_ubese_advanced = SharedDraftSc
 	clientObjectCRC = 83159329
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_ubese_advanced, "object/draft_schematic/armor/shared_armor_segment_ubese_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_ubese_advanced, "object/draft_schematic/armor/shared_armor_segment_ubese_advanced.iff")
 
 object_draft_schematic_armor_shared_armor_segment_zam = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_armor_shared_armor_segment_zam = SharedDraftSchematicObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_armor_shared_armor_segment_zam = SharedDraftSchematicObje
 	clientObjectCRC = 1204507579
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_zam, "object/draft_schematic/armor/shared_armor_segment_zam.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_zam, "object/draft_schematic/armor/shared_armor_segment_zam.iff")
 
 object_draft_schematic_armor_shared_armor_segment_zam_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_armor_shared_armor_segment_zam_advanced = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_armor_shared_armor_segment_zam_advanced = SharedDraftSche
 	clientObjectCRC = 2640349743
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_zam_advanced, "object/draft_schematic/armor/shared_armor_segment_zam_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_zam_advanced, "object/draft_schematic/armor/shared_armor_segment_zam_advanced.iff")
 
 object_draft_schematic_armor_shared_shield_generator_facility = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_armor_shared_shield_generator_facility = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_draft_schematic_armor_shared_shield_generator_facility = SharedDraftSchem
 	clientObjectCRC = 1522717131
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_facility, "object/draft_schematic/armor/shared_shield_generator_facility.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_facility, "object/draft_schematic/armor/shared_shield_generator_facility.iff")
 
 object_draft_schematic_armor_shared_shield_generator_personal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1165,6 +1191,7 @@ object_draft_schematic_armor_shared_shield_generator_personal = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_draft_schematic_armor_shared_shield_generator_personal = SharedDraftSchem
 	clientObjectCRC = 677114065
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_personal, "object/draft_schematic/armor/shared_shield_generator_personal.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_personal, "object/draft_schematic/armor/shared_shield_generator_personal.iff")
 
 object_draft_schematic_armor_shared_shield_generator_personal_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1208,6 +1235,7 @@ object_draft_schematic_armor_shared_shield_generator_personal_b = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1243,7 +1271,7 @@ object_draft_schematic_armor_shared_shield_generator_personal_b = SharedDraftSch
 	clientObjectCRC = 1759066430
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_personal_b, "object/draft_schematic/armor/shared_shield_generator_personal_b.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_personal_b, "object/draft_schematic/armor/shared_shield_generator_personal_b.iff")
 
 object_draft_schematic_armor_shared_shield_generator_personal_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1251,6 +1279,7 @@ object_draft_schematic_armor_shared_shield_generator_personal_c = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1286,7 +1315,7 @@ object_draft_schematic_armor_shared_shield_generator_personal_c = SharedDraftSch
 	clientObjectCRC = 567566003
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_personal_c, "object/draft_schematic/armor/shared_shield_generator_personal_c.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_personal_c, "object/draft_schematic/armor/shared_shield_generator_personal_c.iff")
 
 object_draft_schematic_armor_shared_shield_generator_personal_imperial_test = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1294,6 +1323,7 @@ object_draft_schematic_armor_shared_shield_generator_personal_imperial_test = Sh
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1329,7 +1359,7 @@ object_draft_schematic_armor_shared_shield_generator_personal_imperial_test = Sh
 	clientObjectCRC = 2086068372
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_personal_imperial_test, "object/draft_schematic/armor/shared_shield_generator_personal_imperial_test.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_personal_imperial_test, "object/draft_schematic/armor/shared_shield_generator_personal_imperial_test.iff")
 
 object_draft_schematic_armor_shared_shield_generator_vehicular = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1337,6 +1367,7 @@ object_draft_schematic_armor_shared_shield_generator_vehicular = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1372,4 +1403,4 @@ object_draft_schematic_armor_shared_shield_generator_vehicular = SharedDraftSche
 	clientObjectCRC = 1960728983
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_vehicular, "object/draft_schematic/armor/shared_shield_generator_vehicular.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_vehicular, "object/draft_schematic/armor/shared_shield_generator_vehicular.iff")

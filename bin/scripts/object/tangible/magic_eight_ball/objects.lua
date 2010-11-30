@@ -48,6 +48,7 @@ object_tangible_magic_eight_ball_shared_magic_eight_ball = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_magic_eight_ball_shared_magic_eight_ball = SharedTangibleObjectT
 	clientObjectCRC = 3259696709
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_magic_eight_ball_shared_magic_eight_ball, "object/tangible/magic_eight_ball/shared_magic_eight_ball.iff")
+ObjectTemplates:addTemplate(object_tangible_magic_eight_ball_shared_magic_eight_ball, "object/tangible/magic_eight_ball/shared_magic_eight_ball.iff")

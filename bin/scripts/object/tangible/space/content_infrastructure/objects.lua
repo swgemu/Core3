@@ -48,6 +48,7 @@ object_tangible_space_content_infrastructure_shared_basic_corridor_point = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_space_content_infrastructure_shared_basic_corridor_point = Share
 	clientObjectCRC = 1336476935
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_corridor_point, "object/tangible/space/content_infrastructure/shared_basic_corridor_point.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_corridor_point, "object/tangible/space/content_infrastructure/shared_basic_corridor_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_generic_point = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_generic.apt",
@@ -101,6 +102,7 @@ object_tangible_space_content_infrastructure_shared_basic_generic_point = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_space_content_infrastructure_shared_basic_generic_point = Shared
 	clientObjectCRC = 2123564231
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_generic_point, "object/tangible/space/content_infrastructure/shared_basic_generic_point.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_generic_point, "object/tangible/space/content_infrastructure/shared_basic_generic_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_patrol.apt",
@@ -154,6 +156,7 @@ object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedT
 	clientObjectCRC = 233417941
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_patrol_point, "object/tangible/space/content_infrastructure/shared_basic_patrol_point.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_patrol_point, "object/tangible/space/content_infrastructure/shared_basic_patrol_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_generic.apt",
@@ -207,6 +210,7 @@ object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangib
 	clientObjectCRC = 283550594
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_spawner, "object/tangible/space/content_infrastructure/shared_basic_spawner.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_spawner, "object/tangible/space/content_infrastructure/shared_basic_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_content_manager = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_corridor.apt",
@@ -260,6 +264,7 @@ object_tangible_space_content_infrastructure_shared_content_manager = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_space_content_infrastructure_shared_content_manager = SharedTang
 	clientObjectCRC = 2712609943
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_content_manager, "object/tangible/space/content_infrastructure/shared_content_manager.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_content_manager, "object/tangible/space/content_infrastructure/shared_content_manager.iff")
 
 object_tangible_space_content_infrastructure_shared_corridor_end_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_corridor_end.apt",
@@ -313,6 +318,7 @@ object_tangible_space_content_infrastructure_shared_corridor_end_spawner = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_space_content_infrastructure_shared_corridor_end_spawner = Share
 	clientObjectCRC = 2186464753
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_corridor_end_spawner, "object/tangible/space/content_infrastructure/shared_corridor_end_spawner.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_corridor_end_spawner, "object/tangible/space/content_infrastructure/shared_corridor_end_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_corridor_start_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_corridor_start.apt",
@@ -366,6 +372,7 @@ object_tangible_space_content_infrastructure_shared_corridor_start_spawner = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_space_content_infrastructure_shared_corridor_start_spawner = Sha
 	clientObjectCRC = 4139087673
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_corridor_start_spawner, "object/tangible/space/content_infrastructure/shared_corridor_start_spawner.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_corridor_start_spawner, "object/tangible/space/content_infrastructure/shared_corridor_start_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -419,6 +426,7 @@ object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTa
 	clientObjectCRC = 2261680514
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_generic_egg_small, "object/tangible/space/content_infrastructure/shared_generic_egg_small.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_generic_egg_small, "object/tangible/space/content_infrastructure/shared_generic_egg_small.iff")
 
 object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_patrol.apt",
@@ -472,6 +480,7 @@ object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangi
 	clientObjectCRC = 4256567837
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_patrol_spawner, "object/tangible/space/content_infrastructure/shared_patrol_spawner.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_patrol_spawner, "object/tangible/space/content_infrastructure/shared_patrol_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_generic.apt",
@@ -525,6 +534,7 @@ object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangib
 	clientObjectCRC = 493351489
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_quest_manager, "object/tangible/space/content_infrastructure/shared_quest_manager.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_quest_manager, "object/tangible/space/content_infrastructure/shared_quest_manager.iff")
 
 object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_waypoint_corridor.apt",
@@ -578,6 +588,7 @@ object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTang
 	clientObjectCRC = 339299356
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_quest_nav_point, "object/tangible/space/content_infrastructure/shared_quest_nav_point.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_quest_nav_point, "object/tangible/space/content_infrastructure/shared_quest_nav_point.iff")
 
 object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_space_spawn_wave.apt",
@@ -631,6 +642,7 @@ object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,4 +687,4 @@ object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibl
 	clientObjectCRC = 3763775974
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_wave_spawner, "object/tangible/space/content_infrastructure/shared_wave_spawner.iff")
+ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_wave_spawner, "object/tangible/space/content_infrastructure/shared_wave_spawner.iff")

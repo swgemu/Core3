@@ -48,6 +48,7 @@ object_tangible_furniture_jedi_shared_frn_all_banner_dark = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_tangible_furniture_jedi_shared_frn_all_banner_dark = SharedTangibleObject
 	clientObjectCRC = 1233088738
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_banner_dark, "object/tangible/furniture/jedi/shared_frn_all_banner_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_banner_dark, "object/tangible/furniture/jedi/shared_frn_all_banner_dark.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_banner_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_tapestry.apt",
@@ -101,6 +102,7 @@ object_tangible_furniture_jedi_shared_frn_all_banner_light = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_furniture_jedi_shared_frn_all_banner_light = SharedTangibleObjec
 	clientObjectCRC = 424725094
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_banner_light, "object/tangible/furniture/jedi/shared_frn_all_banner_light.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_banner_light, "object/tangible/furniture/jedi/shared_frn_all_banner_light.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_candlestick = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_tbl_s2_lit.apt",
@@ -154,6 +156,7 @@ object_tangible_furniture_jedi_shared_frn_all_candlestick = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_frn_all_candlestick.cdf",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_furniture_jedi_shared_frn_all_candlestick = SharedTangibleObject
 	clientObjectCRC = 655797183
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_candlestick, "object/tangible/furniture/jedi/shared_frn_all_candlestick.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_candlestick, "object/tangible/furniture/jedi/shared_frn_all_candlestick.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_chair_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -251,7 +255,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01 = SharedTangibleObj
 	clientObjectCRC = 3388059075
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01, "object/tangible/furniture/jedi/shared_frn_all_dark_chair_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01, "object/tangible/furniture/jedi/shared_frn_all_dark_chair_s01.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_chair_s02.apt",
@@ -260,6 +264,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -304,7 +309,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02 = SharedTangibleObj
 	clientObjectCRC = 317064532
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02, "object/tangible/furniture/jedi/shared_frn_all_dark_chair_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02, "object/tangible/furniture/jedi/shared_frn_all_dark_chair_s02.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_dark_throne = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_throne_dark.apt",
@@ -313,6 +318,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_throne = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -357,7 +363,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_throne = SharedTangibleObject
 	clientObjectCRC = 3059746437
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_throne, "object/tangible/furniture/jedi/shared_frn_all_dark_throne.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_throne, "object/tangible/furniture/jedi/shared_frn_all_dark_throne.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_light_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_chair_light_s1.apt",
@@ -366,6 +372,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_chair_s01 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -410,7 +417,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_chair_s01 = SharedTangibleOb
 	clientObjectCRC = 3078124404
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_light_chair_s01, "object/tangible/furniture/jedi/shared_frn_all_light_chair_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_chair_s01, "object/tangible/furniture/jedi/shared_frn_all_light_chair_s01.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_light_chair_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_chair_light_s2.apt",
@@ -419,6 +426,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_chair_s02 = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -463,7 +471,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_chair_s02 = SharedTangibleOb
 	clientObjectCRC = 1819270115
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_light_chair_s02, "object/tangible/furniture/jedi/shared_frn_all_light_chair_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_chair_s02, "object/tangible/furniture/jedi/shared_frn_all_light_chair_s02.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_light_throne = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_throne_light.apt",
@@ -472,6 +480,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_throne = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -516,7 +525,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_throne = SharedTangibleObjec
 	clientObjectCRC = 4291415310
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_light_throne, "object/tangible/furniture/jedi/shared_frn_all_light_throne.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_throne, "object/tangible/furniture/jedi/shared_frn_all_light_throne.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_table_dark_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_table.apt",
@@ -525,6 +534,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_dark_01 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -569,7 +579,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_dark_01 = SharedTangibleObje
 	clientObjectCRC = 4041312926
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_table_dark_01, "object/tangible/furniture/jedi/shared_frn_all_table_dark_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_dark_01, "object/tangible/furniture/jedi/shared_frn_all_table_dark_01.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_table_dark_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_table_s02.apt",
@@ -578,6 +588,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_dark_02 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -622,7 +633,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_dark_02 = SharedTangibleObje
 	clientObjectCRC = 737550857
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_table_dark_02, "object/tangible/furniture/jedi/shared_frn_all_table_dark_02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_dark_02, "object/tangible/furniture/jedi/shared_frn_all_table_dark_02.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_table_light_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_table_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_light_01 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -675,7 +687,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_light_01 = SharedTangibleObj
 	clientObjectCRC = 1906389046
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_table_light_01, "object/tangible/furniture/jedi/shared_frn_all_table_light_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_light_01, "object/tangible/furniture/jedi/shared_frn_all_table_light_01.iff")
 
 object_tangible_furniture_jedi_shared_frn_all_table_light_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_table_s02.apt",
@@ -684,6 +696,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_light_02 = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -728,4 +741,4 @@ object_tangible_furniture_jedi_shared_frn_all_table_light_02 = SharedTangibleObj
 	clientObjectCRC = 2864093345
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_jedi_shared_frn_all_table_light_02, "object/tangible/furniture/jedi/shared_frn_all_table_light_02.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_light_02, "object/tangible/furniture/jedi/shared_frn_all_table_light_02.iff")

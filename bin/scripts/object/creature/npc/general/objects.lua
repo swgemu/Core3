@@ -51,6 +51,7 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -116,4 +117,4 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	clientObjectCRC = 2389040637
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_general_shared_skill_trainer, "object/creature/npc/general/shared_skill_trainer.iff")
+ObjectTemplates:addTemplate(object_creature_npc_general_shared_skill_trainer, "object/creature/npc/general/shared_skill_trainer.iff")

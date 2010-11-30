@@ -48,6 +48,7 @@ object_tangible_skill_buff_shared_skill_buff_carbine_accuracy = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_blue.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_skill_buff_shared_skill_buff_carbine_accuracy = SharedTangibleOb
 	clientObjectCRC = 3070103050
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_accuracy, "object/tangible/skill_buff/shared_skill_buff_carbine_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_accuracy, "object/tangible/skill_buff/shared_skill_buff_carbine_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -101,6 +102,7 @@ object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_orange.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjec
 	clientObjectCRC = 2417642005
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_speed, "object/tangible/skill_buff/shared_skill_buff_carbine_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_speed, "object/tangible/skill_buff/shared_skill_buff_carbine_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -154,6 +156,7 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_blue.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangi
 	clientObjectCRC = 1148030361
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -207,6 +210,7 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_orange.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangible
 	clientObjectCRC = 2003739536
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -260,6 +264,7 @@ object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_brown.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTe
 	clientObjectCRC = 2803312333
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_mask_scent, "object/tangible/skill_buff/shared_skill_buff_mask_scent.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_mask_scent, "object/tangible/skill_buff/shared_skill_buff_mask_scent.iff")
 
 object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -313,6 +318,7 @@ object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_purple.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObje
 	clientObjectCRC = 687567212
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_melee_accuracy, "object/tangible/skill_buff/shared_skill_buff_melee_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_melee_accuracy, "object/tangible/skill_buff/shared_skill_buff_melee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -366,6 +372,7 @@ object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_darkblue.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjec
 	clientObjectCRC = 3148321230
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_melee_defense, "object/tangible/skill_buff/shared_skill_buff_melee_defense.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_melee_defense, "object/tangible/skill_buff/shared_skill_buff_melee_defense.iff")
 
 object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -419,6 +426,7 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_purple.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangi
 	clientObjectCRC = 336832987
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -472,6 +480,7 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_green.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangible
 	clientObjectCRC = 3043511880
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -525,6 +534,7 @@ object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_blue.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObj
 	clientObjectCRC = 4053673313
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_accuracy, "object/tangible/skill_buff/shared_skill_buff_pistol_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_accuracy, "object/tangible/skill_buff/shared_skill_buff_pistol_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -578,6 +588,7 @@ object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_orange.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObject
 	clientObjectCRC = 3705181543
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_speed, "object/tangible/skill_buff/shared_skill_buff_pistol_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_speed, "object/tangible/skill_buff/shared_skill_buff_pistol_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -631,6 +642,7 @@ object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_purple.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleOb
 	clientObjectCRC = 2877612542
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_accuracy, "object/tangible/skill_buff/shared_skill_buff_polearm_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_accuracy, "object/tangible/skill_buff/shared_skill_buff_polearm_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -684,6 +696,7 @@ object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_green.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjec
 	clientObjectCRC = 2574942749
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_speed, "object/tangible/skill_buff/shared_skill_buff_polearm_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_speed, "object/tangible/skill_buff/shared_skill_buff_polearm_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -737,6 +750,7 @@ object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_blue.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObj
 	clientObjectCRC = 2321374102
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_accuracy, "object/tangible/skill_buff/shared_skill_buff_ranged_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_accuracy, "object/tangible/skill_buff/shared_skill_buff_ranged_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -790,6 +804,7 @@ object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_darkblue.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObje
 	clientObjectCRC = 655697476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_defense, "object/tangible/skill_buff/shared_skill_buff_ranged_defense.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_defense, "object/tangible/skill_buff/shared_skill_buff_ranged_defense.iff")
 
 object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -843,6 +858,7 @@ object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_blue.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObje
 	clientObjectCRC = 1676691901
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_accuracy, "object/tangible/skill_buff/shared_skill_buff_rifle_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_accuracy, "object/tangible/skill_buff/shared_skill_buff_rifle_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -896,6 +912,7 @@ object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_orange.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectT
 	clientObjectCRC = 1002436514
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_speed, "object/tangible/skill_buff/shared_skill_buff_rifle_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_speed, "object/tangible/skill_buff/shared_skill_buff_rifle_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -949,6 +966,7 @@ object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_darkpurple.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObj
 	clientObjectCRC = 675038361
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_accuracy, "object/tangible/skill_buff/shared_skill_buff_thrown_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_accuracy, "object/tangible/skill_buff/shared_skill_buff_thrown_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1002,6 +1020,7 @@ object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_darkgreen.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObject
 	clientObjectCRC = 2671557576
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_speed, "object/tangible/skill_buff/shared_skill_buff_thrown_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_speed, "object/tangible/skill_buff/shared_skill_buff_thrown_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1055,6 +1074,7 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_purple.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangi
 	clientObjectCRC = 1962907578
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1108,6 +1128,7 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_green.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangible
 	clientObjectCRC = 2007596912
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1161,6 +1182,7 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_purple.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleOb
 	clientObjectCRC = 2213257613
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy, "object/tangible/skill_buff/shared_skill_buff_unarmed_accuracy.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy, "object/tangible/skill_buff/shared_skill_buff_unarmed_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -1214,6 +1236,7 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_skill_buff_green.cdf",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,4 +1281,4 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjec
 	clientObjectCRC = 2704330106
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_speed, "object/tangible/skill_buff/shared_skill_buff_unarmed_speed.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_speed, "object/tangible/skill_buff/shared_skill_buff_unarmed_speed.iff")

@@ -47,6 +47,7 @@ object_waypoint_base_shared_base_waypoint = SharedWaypointObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2053,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_waypoint_base_shared_base_waypoint = SharedWaypointObjectTemplate:new {
 	clientObjectCRC = 80681620
 }
 
-ObjectTemplates:addClientTemplate(object_waypoint_base_shared_base_waypoint, "object/waypoint/base/shared_base_waypoint.iff")
+ObjectTemplates:addTemplate(object_waypoint_base_shared_base_waypoint, "object/waypoint/base/shared_base_waypoint.iff")
 
 object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2053,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new 
 	clientObjectCRC = 2511311124
 }
 
-ObjectTemplates:addClientTemplate(object_waypoint_base_shared_waypoint_default, "object/waypoint/base/shared_waypoint_default.iff")
+ObjectTemplates:addTemplate(object_waypoint_base_shared_waypoint_default, "object/waypoint/base/shared_waypoint_default.iff")

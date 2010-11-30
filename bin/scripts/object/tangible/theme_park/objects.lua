@@ -48,6 +48,7 @@ object_tangible_theme_park_shared_invisible_object = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_theme_park_shared_invisible_object = SharedTangibleObjectTemplat
 	clientObjectCRC = 3509014052
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_theme_park_shared_invisible_object, "object/tangible/theme_park/shared_invisible_object.iff")
+ObjectTemplates:addTemplate(object_tangible_theme_park_shared_invisible_object, "object/tangible/theme_park/shared_invisible_object.iff")

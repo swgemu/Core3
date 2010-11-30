@@ -47,6 +47,7 @@ object_draft_schematic_item_component_shared_item_electronic_control_unit = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_item_component_shared_item_electronic_control_unit = Shar
 	clientObjectCRC = 989624055
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronic_control_unit, "object/draft_schematic/item/component/shared_item_electronic_control_unit.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_control_unit, "object/draft_schematic/item/component/shared_item_electronic_control_unit.iff")
 
 object_draft_schematic_item_component_shared_item_electronic_energy_distributor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_item_component_shared_item_electronic_energy_distributor 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_item_component_shared_item_electronic_energy_distributor 
 	clientObjectCRC = 1152098080
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronic_energy_distributor, "object/draft_schematic/item/component/shared_item_electronic_energy_distributor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_energy_distributor, "object/draft_schematic/item/component/shared_item_electronic_energy_distributor.iff")
 
 object_draft_schematic_item_component_shared_item_electronic_power_conditioner = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_item_component_shared_item_electronic_power_conditioner =
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_item_component_shared_item_electronic_power_conditioner =
 	clientObjectCRC = 3615264224
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronic_power_conditioner, "object/draft_schematic/item/component/shared_item_electronic_power_conditioner.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_power_conditioner, "object/draft_schematic/item/component/shared_item_electronic_power_conditioner.iff")
 
 object_draft_schematic_item_component_shared_item_electronics_gp_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_item_component_shared_item_electronics_gp_module = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_item_component_shared_item_electronics_gp_module = Shared
 	clientObjectCRC = 4228360112
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronics_gp_module, "object/draft_schematic/item/component/shared_item_electronics_gp_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronics_gp_module, "object/draft_schematic/item/component/shared_item_electronics_gp_module.iff")
 
 object_draft_schematic_item_component_shared_item_electronics_memory_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_item_component_shared_item_electronics_memory_module = Sh
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_item_component_shared_item_electronics_memory_module = Sh
 	clientObjectCRC = 2170102415
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronics_memory_module, "object/draft_schematic/item/component/shared_item_electronics_memory_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronics_memory_module, "object/draft_schematic/item/component/shared_item_electronics_memory_module.iff")
 
 object_draft_schematic_item_component_shared_item_micro_sensor_suite = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_item_component_shared_item_micro_sensor_suite = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,4 +303,4 @@ object_draft_schematic_item_component_shared_item_micro_sensor_suite = SharedDra
 	clientObjectCRC = 622519855
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_micro_sensor_suite, "object/draft_schematic/item/component/shared_item_micro_sensor_suite.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_micro_sensor_suite, "object/draft_schematic/item/component/shared_item_micro_sensor_suite.iff")

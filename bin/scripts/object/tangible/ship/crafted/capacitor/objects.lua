@@ -48,6 +48,7 @@ object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = Share
 	clientObjectCRC = 3843288645
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_advanced_capacitor_battery.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_advanced_capacitor_battery.iff")
 
 object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedT
 	clientObjectCRC = 4282694391
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module, "object/tangible/ship/crafted/capacitor/shared_advanced_recharge_module.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module, "object/tangible/ship/crafted/capacitor/shared_advanced_recharge_module.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObj
 	clientObjectCRC = 3064505654
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor, "object/tangible/ship/crafted/capacitor/shared_base_capacitor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor, "object/tangible/ship/crafted/capacitor/shared_base_capacitor.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = Shar
 	clientObjectCRC = 4258529862
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = 
 	clientObjectCRC = 1484781854
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = 
 	clientObjectCRC = 2204651913
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = 
 	clientObjectCRC = 3395630596
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = 
 	clientObjectCRC = 830872848
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = 
 	clientObjectCRC = 2022406813
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleOb
 	clientObjectCRC = 1364868080
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_basic_capacitor, "object/tangible/ship/crafted/capacitor/shared_basic_capacitor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_basic_capacitor, "object/tangible/ship/crafted/capacitor/shared_basic_capacitor.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObje
 	clientObjectCRC = 277361603
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk1, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk1, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObje
 	clientObjectCRC = 3416234836
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk2, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk2, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObje
 	clientObjectCRC = 2190671065
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk3, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk3, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObje
 	clientObjectCRC = 2037503949
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk4, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk4, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -790,6 +804,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObje
 	clientObjectCRC = 813477952
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk5, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk5, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedT
 	clientObjectCRC = 598079079
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedT
 	clientObjectCRC = 4172439280
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedT
 	clientObjectCRC = 2982099325
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedT
 	clientObjectCRC = 1247548009
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedT
 	clientObjectCRC = 55670244
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1108,6 +1128,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = Shared
 	clientObjectCRC = 1281522685
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1161,6 +1182,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = Shared
 	clientObjectCRC = 2541081450
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1214,6 +1236,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = Shared
 	clientObjectCRC = 3732452583
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1267,6 +1290,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = Shared
 	clientObjectCRC = 630956019
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1320,6 +1344,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = Shared
 	clientObjectCRC = 1821833342
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1373,6 +1398,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangible
 	clientObjectCRC = 1987626722
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangible
 	clientObjectCRC = 2909761141
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1479,6 +1506,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangible
 	clientObjectCRC = 3831630328
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1532,6 +1560,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangible
 	clientObjectCRC = 528556780
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1585,6 +1614,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangible
 	clientObjectCRC = 1452033377
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1638,6 +1668,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = Share
 	clientObjectCRC = 1831490574
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1691,6 +1722,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = Share
 	clientObjectCRC = 3057515673
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1744,6 +1776,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = Share
 	clientObjectCRC = 4281375508
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = Share
 	clientObjectCRC = 80982016
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1850,6 +1884,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = Share
 	clientObjectCRC = 1306449805
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1903,6 +1938,7 @@ object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = Share
 	clientObjectCRC = 3218110775
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_standard_capacitor_battery.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_standard_capacitor_battery.iff")
 
 object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
@@ -1956,6 +1992,7 @@ object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741830,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,4 +2037,4 @@ object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedT
 	clientObjectCRC = 4261874664
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_standard_recharge_module, "object/tangible/ship/crafted/capacitor/shared_standard_recharge_module.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standard_recharge_module, "object/tangible/ship/crafted/capacitor/shared_standard_recharge_module.iff")

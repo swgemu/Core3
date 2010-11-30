@@ -47,6 +47,7 @@ object_player_base_shared_base_player = SharedPlayerObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_player_base_shared_base_player = SharedPlayerObjectTemplate:new {
 	clientObjectCRC = 1894914263
 }
 
-ObjectTemplates:addClientTemplate(object_player_base_shared_base_player, "object/player/base/shared_base_player.iff")
+ObjectTemplates:addTemplate(object_player_base_shared_base_player, "object/player/base/shared_base_player.iff")
 
 object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 	clientObjectCRC = 1016063662
 }
 
-ObjectTemplates:addClientTemplate(object_player_base_shared_player_default, "object/player/base/shared_player_default.iff")
+ObjectTemplates:addTemplate(object_player_base_shared_player_default, "object/player/base/shared_player_default.iff")

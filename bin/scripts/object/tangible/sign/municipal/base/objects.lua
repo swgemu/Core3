@@ -48,6 +48,7 @@ object_tangible_sign_municipal_base_shared_municipal_sign_base = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8207,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_sign_municipal_base_shared_municipal_sign_base = SharedTangibleO
 	clientObjectCRC = 354971311
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_base_shared_municipal_sign_base, "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff")
+ObjectTemplates:addTemplate(object_tangible_sign_municipal_base_shared_municipal_sign_base, "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff")

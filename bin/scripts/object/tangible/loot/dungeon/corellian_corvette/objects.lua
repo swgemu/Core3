@@ -48,6 +48,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk = SharedTangible
 	clientObjectCRC = 1943652029
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk, "object/tangible/loot/dungeon/corellian_corvette/shared_bootdisk.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk, "object/tangible/loot/dungeon/corellian_corvette/shared_bootdisk.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -101,6 +102,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 	clientObjectCRC = 2778523039
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -154,6 +156,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 	clientObjectCRC = 2123058440
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -207,6 +210,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel =
 	clientObjectCRC = 1409729686
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -260,6 +264,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01
 	clientObjectCRC = 2615503998
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -313,6 +318,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02
 	clientObjectCRC = 1089651945
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -366,6 +372,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel = 
 	clientObjectCRC = 3271133983
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -419,6 +426,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01 
 	clientObjectCRC = 1429810306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -472,6 +480,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02 
 	clientObjectCRC = 2385413141
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -525,6 +534,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel = S
 	clientObjectCRC = 1800721654
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -578,6 +588,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01
 	clientObjectCRC = 1226514463
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -631,6 +642,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02
 	clientObjectCRC = 2450294920
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -684,6 +696,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel = 
 	clientObjectCRC = 2214959298
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -737,6 +750,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01 
 	clientObjectCRC = 426337632
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -790,6 +804,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02 
 	clientObjectCRC = 3263090167
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -843,6 +858,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel = S
 	clientObjectCRC = 486562997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -896,6 +912,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01 =
 	clientObjectCRC = 1207841643
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -949,6 +966,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02 =
 	clientObjectCRC = 2632555516
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1002,6 +1020,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel = Sh
 	clientObjectCRC = 2256488833
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1055,6 +1074,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01 =
 	clientObjectCRC = 3223256133
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1108,6 +1128,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02 =
 	clientObjectCRC = 453596370
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1161,6 +1182,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel = Sh
 	clientObjectCRC = 1608051965
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1214,6 +1236,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01 = 
 	clientObjectCRC = 1714985756
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1267,6 +1290,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02 = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02 = 
 	clientObjectCRC = 3173987211
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1320,6 +1344,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel = Sha
 	clientObjectCRC = 3353710684
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1373,6 +1398,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01 = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01 = S
 	clientObjectCRC = 2690288867
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_filler01.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1426,6 +1452,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02 = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02 = S
 	clientObjectCRC = 2068653172
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_filler02.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1479,6 +1506,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,4 +1551,4 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel = Shar
 	clientObjectCRC = 1454651142
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_intel.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_intel.iff")

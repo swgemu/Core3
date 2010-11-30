@@ -48,6 +48,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	clientObjectCRC = 1942668017
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_large, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_large.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_large, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_large.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	clientObjectCRC = 1814389996
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_medium, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_medium, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_medium.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	clientObjectCRC = 1204901592
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_small, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_small.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_small, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_small.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -207,6 +210,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	clientObjectCRC = 2805227646
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_large.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_large.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -260,6 +264,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	clientObjectCRC = 2417546969
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_medium, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_medium, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_medium.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -313,6 +318,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,4 +363,4 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	clientObjectCRC = 2469393495
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_small, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_small.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_small, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_small.iff")

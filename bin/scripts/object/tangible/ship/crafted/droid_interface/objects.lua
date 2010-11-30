@@ -48,6 +48,7 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness = Sha
 	clientObjectCRC = 2841202755
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_advanced_droid_harness.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_advanced_droid_harness.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry = Sh
 	clientObjectCRC = 3849212575
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry, "object/tangible/ship/crafted/droid_interface/shared_advanced_ship_circuitry.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry, "object/tangible/ship/crafted/droid_interface/shared_advanced_ship_circuitry.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -154,6 +156,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface = Share
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface = Share
 	clientObjectCRC = 1488124234
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	clientObjectCRC = 1094447812
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	clientObjectCRC = 1600874546
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	clientObjectCRC = 2222768293
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	clientObjectCRC = 3446777640
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	clientObjectCRC = 915573820
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 	clientObjectCRC = 2141186993
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -525,6 +534,7 @@ object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface = Shar
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface = Shar
 	clientObjectCRC = 3467786259
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_basic_droid_interface.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_basic_droid_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk1 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk1 = SharedTangibleObje
 	clientObjectCRC = 1368476927
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk1, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk1, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk2 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk2 = SharedTangibleObje
 	clientObjectCRC = 2324096104
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk2, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk2, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk3 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk3 = SharedTangibleObje
 	clientObjectCRC = 3280700389
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk3, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk3, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk4 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk4 = SharedTangibleObje
 	clientObjectCRC = 946383089
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk4, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk4, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -790,6 +804,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk5 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk5 = SharedTangibleObje
 	clientObjectCRC = 1902497660
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk5, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk5, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface = Shar
 	clientObjectCRC = 1290028693
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_interface.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1 = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1 = Sh
 	clientObjectCRC = 2273558131
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2 = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2 = Sh
 	clientObjectCRC = 1553209060
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3 = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3 = Sh
 	clientObjectCRC = 362377577
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4 = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4 = Sh
 	clientObjectCRC = 4000995965
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1108,6 +1128,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5 = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5 = Sh
 	clientObjectCRC = 2809609712
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_harness = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1161,6 +1182,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_harness = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_ship_crafted_droid_interface_shared_droid_harness = SharedTangib
 	clientObjectCRC = 930004332
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1214,6 +1236,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 82900645
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1267,6 +1290,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 3756482098
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1320,6 +1344,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 2531932607
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1373,6 +1398,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 1829311147
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741832,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,4 +1497,4 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 604271910
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk5.iff")

@@ -48,6 +48,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01 = SharedTangib
 	clientObjectCRC = 33998203
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s01.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s02.sat",
@@ -101,6 +102,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02 = SharedTangib
 	clientObjectCRC = 3641798124
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s02.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s03.sat",
@@ -154,6 +156,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03 = SharedTangib
 	clientObjectCRC = 2417756769
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s03.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s04.sat",
@@ -207,6 +210,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04 = SharedTangib
 	clientObjectCRC = 1811882357
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s04.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s05.sat",
@@ -260,6 +264,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05 = SharedTangib
 	clientObjectCRC = 586303224
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s05.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s06.sat",
@@ -313,6 +318,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06 = SharedTangib
 	clientObjectCRC = 4192595567
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s06.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s07.sat",
@@ -366,6 +372,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07 = SharedTangib
 	clientObjectCRC = 2968029666
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s07.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s08.sat",
@@ -419,6 +426,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08 = SharedTangib
 	clientObjectCRC = 182625776
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s08.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s09.sat",
@@ -472,6 +480,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09 = SharedTangib
 	clientObjectCRC = 1139786365
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s09.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s09.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s10.sat",
@@ -525,6 +534,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10 = SharedTangib
 	clientObjectCRC = 1344515982
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s10.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s10.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s11.sat",
@@ -578,6 +588,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11 = SharedTangib
 	clientObjectCRC = 422496259
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s11.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s11.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s12.sat",
@@ -631,6 +642,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12 = SharedTangib
 	clientObjectCRC = 3258540180
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s12.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s13.sat",
@@ -684,6 +696,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13 = SharedTangib
 	clientObjectCRC = 2335442713
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s13.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s13.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s14.sat",
@@ -737,6 +750,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14 = SharedTangib
 	clientObjectCRC = 1893149709
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14, "object/tangible/hair/trandoshan/shared_hair_trandoshan_female_s14.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s01.sat",
@@ -790,6 +804,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01 = SharedTangible
 	clientObjectCRC = 1363440697
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s01.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s02.sat",
@@ -843,6 +858,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02 = SharedTangible
 	clientObjectCRC = 2320751790
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s02.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s03.sat",
@@ -896,6 +912,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03 = SharedTangible
 	clientObjectCRC = 3277765411
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s03.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s04.sat",
@@ -949,6 +966,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04 = SharedTangible
 	clientObjectCRC = 951947319
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s04.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s05.sat",
@@ -1002,6 +1020,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05 = SharedTangible
 	clientObjectCRC = 1907423162
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s05.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s06.sat",
@@ -1055,6 +1074,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06 = SharedTangible
 	clientObjectCRC = 2863095597
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s06.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s07.sat",
@@ -1108,6 +1128,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07 = SharedTangible
 	clientObjectCRC = 3819583648
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s07.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s08.sat",
@@ -1161,6 +1182,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08 = SharedTangible
 	clientObjectCRC = 1503663282
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s08.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s09.sat",
@@ -1214,6 +1236,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09 = SharedTangible
 	clientObjectCRC = 279802687
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s09.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s09.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s10.sat",
@@ -1267,6 +1290,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10 = SharedTangible
 	clientObjectCRC = 56696524
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s10.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s10.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s11.sat",
@@ -1320,6 +1344,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11 = SharedTangible
 	clientObjectCRC = 1248622913
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s11.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s11.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s12.sat",
@@ -1373,6 +1398,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12 = SharedTangible
 	clientObjectCRC = 2440810966
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s12.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s13.sat",
@@ -1426,6 +1452,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13 = SharedTangible
 	clientObjectCRC = 3631658587
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s13.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s13.iff")
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s14.sat",
@@ -1479,6 +1506,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,4 +1551,4 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14 = SharedTangible
 	clientObjectCRC = 597007695
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14, "object/tangible/hair/trandoshan/shared_hair_trandoshan_male_s14.iff")

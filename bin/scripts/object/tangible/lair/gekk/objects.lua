@@ -48,6 +48,7 @@ object_tangible_lair_gekk_shared_lair_gekk = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gekk_shared_lair_gekk = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 451691491
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gekk_shared_lair_gekk, "object/tangible/lair/gekk/shared_lair_gekk.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gekk_shared_lair_gekk, "object/tangible/lair/gekk/shared_lair_gekk.iff")
 
 object_tangible_lair_gekk_shared_lair_gekk_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gekk_shared_lair_gekk_forest = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_gekk_shared_lair_gekk_forest = SharedTangibleObjectTemplate
 	clientObjectCRC = 1243506243
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gekk_shared_lair_gekk_forest, "object/tangible/lair/gekk/shared_lair_gekk_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gekk_shared_lair_gekk_forest, "object/tangible/lair/gekk/shared_lair_gekk_forest.iff")

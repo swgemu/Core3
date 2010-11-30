@@ -49,6 +49,7 @@ object_weapon_mine_base_shared_mine_base = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131077,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_mine_base_shared_mine_base = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 482351684
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_mine_base_shared_mine_base, "object/weapon/mine/base/shared_mine_base.iff")
+ObjectTemplates:addTemplate(object_weapon_mine_base_shared_mine_base, "object/weapon/mine/base/shared_mine_base.iff")

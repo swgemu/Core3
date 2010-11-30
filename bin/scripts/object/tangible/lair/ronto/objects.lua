@@ -48,6 +48,7 @@ object_tangible_lair_ronto_shared_lair_ronto = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_ronto_shared_lair_ronto = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2470399210
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_ronto_shared_lair_ronto, "object/tangible/lair/ronto/shared_lair_ronto.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto, "object/tangible/lair/ronto/shared_lair_ronto.iff")
 
 object_tangible_lair_ronto_shared_lair_ronto_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_ronto_shared_lair_ronto_desert = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_ronto_shared_lair_ronto_desert = SharedTangibleObjectTempla
 	clientObjectCRC = 28411685
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_ronto_shared_lair_ronto_desert, "object/tangible/lair/ronto/shared_lair_ronto_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto_desert, "object/tangible/lair/ronto/shared_lair_ronto_desert.iff")
 
 object_tangible_lair_ronto_shared_lair_ronto_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_ronto_shared_lair_ronto_dune = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_ronto_shared_lair_ronto_dune = SharedTangibleObjectTemplate
 	clientObjectCRC = 3699812531
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_ronto_shared_lair_ronto_dune, "object/tangible/lair/ronto/shared_lair_ronto_dune.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto_dune, "object/tangible/lair/ronto/shared_lair_ronto_dune.iff")

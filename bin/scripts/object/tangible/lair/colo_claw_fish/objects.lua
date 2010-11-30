@@ -48,6 +48,7 @@ object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish = SharedTangibleO
 	clientObjectCRC = 52528931
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish, "object/tangible/lair/colo_claw_fish/shared_lair_colo_claw_fish.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish, "object/tangible/lair/colo_claw_fish/shared_lair_colo_claw_fish.iff")
 
 object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish_underwater = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish_underwater = Shar
 	clientObjectCRC = 3773705041
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish_underwater, "object/tangible/lair/colo_claw_fish/shared_lair_colo_claw_fish_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish_underwater, "object/tangible/lair/colo_claw_fish/shared_lair_colo_claw_fish_underwater.iff")

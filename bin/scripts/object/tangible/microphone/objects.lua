@@ -48,6 +48,7 @@ object_tangible_microphone_shared_microphone = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_microphone_shared_microphone = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1744278717
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_microphone_shared_microphone, "object/tangible/microphone/shared_microphone.iff")
+ObjectTemplates:addTemplate(object_tangible_microphone_shared_microphone, "object/tangible/microphone/shared_microphone.iff")

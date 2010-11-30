@@ -48,6 +48,7 @@ object_tangible_lair_kliknik_shared_lair_kliknik = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_kliknik_shared_lair_kliknik = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2186183651
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kliknik_shared_lair_kliknik, "object/tangible/lair/kliknik/shared_lair_kliknik.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kliknik_shared_lair_kliknik, "object/tangible/lair/kliknik/shared_lair_kliknik.iff")
 
 object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTe
 	clientObjectCRC = 33728532
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kliknik_shared_lair_kliknik_forest, "object/tangible/lair/kliknik/shared_lair_kliknik_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kliknik_shared_lair_kliknik_forest, "object/tangible/lair/kliknik/shared_lair_kliknik_forest.iff")

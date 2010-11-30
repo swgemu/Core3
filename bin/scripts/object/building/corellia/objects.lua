@@ -48,6 +48,7 @@ object_building_corellia_shared_association_hall_civilian_corellia = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 35,
 	clientDataFile = "clientdata/building/shared_association_hall.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_corellia_shared_association_hall_civilian_corellia = SharedBuild
 	clientObjectCRC = 2742139830
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_association_hall_civilian_corellia, "object/building/corellia/shared_association_hall_civilian_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_association_hall_civilian_corellia, "object/building/corellia/shared_association_hall_civilian_corellia.iff")
 
 object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_bank_s01.apt",
@@ -104,6 +105,7 @@ object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 43,
 	clientDataFile = "clientdata/building/shared_bank.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,7 +153,7 @@ object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 925292585
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_bank_corellia, "object/building/corellia/shared_bank_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_bank_corellia, "object/building/corellia/shared_bank_corellia.iff")
 
 object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -160,6 +162,7 @@ object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 58,
 	clientDataFile = "clientdata/building/shared_tatooine_cantina.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -207,7 +210,7 @@ object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2013728951
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_cantina_corellia, "object/building/corellia/shared_cantina_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_cantina_corellia, "object/building/corellia/shared_cantina_corellia.iff")
 
 object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -216,6 +219,7 @@ object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 70,
 	clientDataFile = "clientdata/building/shared_capitol.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -263,7 +267,7 @@ object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2023346551
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_capitol_corellia, "object/building/corellia/shared_capitol_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_capitol_corellia, "object/building/corellia/shared_capitol_corellia.iff")
 
 object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -272,6 +276,7 @@ object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_cloning.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -319,7 +324,7 @@ object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4160058931
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_cloning_corellia, "object/building/corellia/shared_cloning_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_cloning_corellia, "object/building/corellia/shared_cloning_corellia.iff")
 
 object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_32x16_s01.apt",
@@ -328,6 +333,7 @@ object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 19,
 	clientDataFile = "clientdata/building/shared_corellia_filler_block_32x16.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -375,7 +381,7 @@ object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuilding
 	clientObjectCRC = 3487204259
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_block_corellia_32x16_s01, "object/building/corellia/shared_filler_block_corellia_32x16_s01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_32x16_s01, "object/building/corellia/shared_filler_block_corellia_32x16_s01.iff")
 
 object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_64x32_s01.apt",
@@ -384,6 +390,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_corellia_filler_block_64x32_style01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -431,7 +438,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuilding
 	clientObjectCRC = 1480274759
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s01, "object/building/corellia/shared_filler_block_corellia_64x32_s01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s01, "object/building/corellia/shared_filler_block_corellia_64x32_s01.iff")
 
 object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_64x32_s02.apt",
@@ -440,6 +447,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_corellia_filler_block_64x32_style02.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -487,7 +495,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuilding
 	clientObjectCRC = 2200738768
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s02, "object/building/corellia/shared_filler_block_corellia_64x32_s02.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corellia_64x32_s02, "object/building/corellia/shared_filler_block_corellia_64x32_s02.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s01.apt",
@@ -496,6 +504,7 @@ object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 50,
 	clientDataFile = "clientdata/building/shared_corellia_filler_building_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -543,7 +552,7 @@ object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildi
 	clientObjectCRC = 2891016021
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_01, "object/building/corellia/shared_filler_building_corellia_style_01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_01, "object/building/corellia/shared_filler_building_corellia_style_01.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s02.apt",
@@ -552,6 +561,7 @@ object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "clientdata/building/shared_corellia_filler_building_02.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -599,7 +609,7 @@ object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildi
 	clientObjectCRC = 2001129410
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_02, "object/building/corellia/shared_filler_building_corellia_style_02.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_02, "object/building/corellia/shared_filler_building_corellia_style_02.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s03.apt",
@@ -608,6 +618,7 @@ object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "clientdata/building/shared_corellia_filler_building_03.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +666,7 @@ object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildi
 	clientObjectCRC = 1045145679
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_03, "object/building/corellia/shared_filler_building_corellia_style_03.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_03, "object/building/corellia/shared_filler_building_corellia_style_03.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s04.apt",
@@ -664,6 +675,7 @@ object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 52,
 	clientDataFile = "clientdata/building/shared_corellia_filler_building_04.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -711,7 +723,7 @@ object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildi
 	clientObjectCRC = 3316155227
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_04, "object/building/corellia/shared_filler_building_corellia_style_04.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_04, "object/building/corellia/shared_filler_building_corellia_style_04.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s05.apt",
@@ -720,6 +732,7 @@ object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 34,
 	clientDataFile = "clientdata/building/shared_corellia_filler_building_05.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -767,7 +780,7 @@ object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildi
 	clientObjectCRC = 2359682262
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_05, "object/building/corellia/shared_filler_building_corellia_style_05.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_05, "object/building/corellia/shared_filler_building_corellia_style_05.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s06.apt",
@@ -776,6 +789,7 @@ object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 68,
 	clientDataFile = "clientdata/building/shared_corellia_filler_building_06.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -823,7 +837,7 @@ object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildi
 	clientObjectCRC = 1471302721
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_06, "object/building/corellia/shared_filler_building_corellia_style_06.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_06, "object/building/corellia/shared_filler_building_corellia_style_06.iff")
 
 object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s07.apt",
@@ -832,6 +846,7 @@ object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 50,
 	clientDataFile = "clientdata/building/shared_corellia_filler_building_07.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -879,7 +894,7 @@ object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildi
 	clientObjectCRC = 515845068
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_building_corellia_style_07, "object/building/corellia/shared_filler_building_corellia_style_07.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_corellia_style_07, "object/building/corellia/shared_filler_building_corellia_style_07.iff")
 
 object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_24x16_s01.apt",
@@ -888,6 +903,7 @@ object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_corellia_filler_slum_24x16_s01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -935,7 +951,7 @@ object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObject
 	clientObjectCRC = 2616481902
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_historic_24x16_s01, "object/building/corellia/shared_filler_historic_24x16_s01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x16_s01, "object/building/corellia/shared_filler_historic_24x16_s01.iff")
 
 object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_24x16_s02.apt",
@@ -944,6 +960,7 @@ object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_corellia_filler_slum_24x16_s02.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -991,7 +1008,7 @@ object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObject
 	clientObjectCRC = 1088680185
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_historic_24x16_s02, "object/building/corellia/shared_filler_historic_24x16_s02.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x16_s02, "object/building/corellia/shared_filler_historic_24x16_s02.iff")
 
 object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_32x16_s01.apt",
@@ -1000,6 +1017,7 @@ object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 18,
 	clientDataFile = "clientdata/building/shared_corellia_historic_filler_building_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1047,7 +1065,7 @@ object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObject
 	clientObjectCRC = 1667646591
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_historic_32x16_s01, "object/building/corellia/shared_filler_historic_32x16_s01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x16_s01, "object/building/corellia/shared_filler_historic_32x16_s01.iff")
 
 object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_32x16_s02.apt",
@@ -1056,6 +1074,7 @@ object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 18,
 	clientDataFile = "clientdata/building/shared_corellia_historic_filler_building_02.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1103,7 +1122,7 @@ object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObject
 	clientObjectCRC = 3094473960
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_historic_32x16_s02, "object/building/corellia/shared_filler_historic_32x16_s02.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x16_s02, "object/building/corellia/shared_filler_historic_32x16_s02.iff")
 
 object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x16_s01.apt",
@@ -1112,6 +1131,7 @@ object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 12,
 	clientDataFile = "clientdata/building/shared_corellia_filler_slum_16x16_s01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1159,7 +1179,7 @@ object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemp
 	clientObjectCRC = 2757381075
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_slum_16x16_s01, "object/building/corellia/shared_filler_slum_16x16_s01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x16_s01, "object/building/corellia/shared_filler_slum_16x16_s01.iff")
 
 object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x32_s01.apt",
@@ -1168,6 +1188,7 @@ object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 18,
 	clientDataFile = "clientdata/building/shared_corellia_filler_slum_16x32_s01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1215,7 +1236,7 @@ object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemp
 	clientObjectCRC = 1694210539
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_slum_16x32_s01, "object/building/corellia/shared_filler_slum_16x32_s01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s01, "object/building/corellia/shared_filler_slum_16x32_s01.iff")
 
 object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x32_s02.apt",
@@ -1224,6 +1245,7 @@ object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 18,
 	clientDataFile = "clientdata/building/shared_corellia_filler_slum_16x32_s02.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1293,7 @@ object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemp
 	clientObjectCRC = 3219927420
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_filler_slum_16x32_s02, "object/building/corellia/shared_filler_slum_16x32_s02.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s02, "object/building/corellia/shared_filler_slum_16x32_s02.iff")
 
 object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_garage_s01_u01.apt",
@@ -1280,6 +1302,7 @@ object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 24,
 	clientDataFile = "clientdata/building/shared_garage.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1327,7 +1350,7 @@ object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1140644280
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_garage_corellia, "object/building/corellia/shared_garage_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_garage_corellia, "object/building/corellia/shared_garage_corellia.iff")
 
 object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1336,6 +1359,7 @@ object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_guild_combat.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1383,7 +1407,7 @@ object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingO
 	clientObjectCRC = 1288802152
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_guild_combat_corellia_style_01, "object/building/corellia/shared_guild_combat_corellia_style_01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_guild_combat_corellia_style_01, "object/building/corellia/shared_guild_combat_corellia_style_01.iff")
 
 object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1392,6 +1416,7 @@ object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_guild_combat.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1439,7 +1464,7 @@ object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildin
 	clientObjectCRC = 2920780919
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_guild_commerce_corellia_style_01, "object/building/corellia/shared_guild_commerce_corellia_style_01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_guild_commerce_corellia_style_01, "object/building/corellia/shared_guild_commerce_corellia_style_01.iff")
 
 object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1448,6 +1473,7 @@ object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1495,7 +1521,7 @@ object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjec
 	clientObjectCRC = 3431234640
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_guild_theater_corellia_s01, "object/building/corellia/shared_guild_theater_corellia_s01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_guild_theater_corellia_s01, "object/building/corellia/shared_guild_theater_corellia_s01.iff")
 
 object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1504,6 +1530,7 @@ object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_guild_combat.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1551,7 +1578,7 @@ object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuild
 	clientObjectCRC = 3226540131
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_guild_university_corellia_style_01, "object/building/corellia/shared_guild_university_corellia_style_01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_guild_university_corellia_style_01, "object/building/corellia/shared_guild_university_corellia_style_01.iff")
 
 object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1560,6 +1587,7 @@ object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 62,
 	clientDataFile = "clientdata/building/shared_hospital.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1607,7 +1635,7 @@ object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate
 	clientObjectCRC = 2966265050
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_hospital_corellia, "object/building/corellia/shared_hospital_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia, "object/building/corellia/shared_hospital_corellia.iff")
 
 object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1616,6 +1644,7 @@ object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_bank.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1663,7 +1692,7 @@ object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemp
 	clientObjectCRC = 1414124568
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_hospital_corellia_s02, "object/building/corellia/shared_hospital_corellia_s02.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia_s02, "object/building/corellia/shared_hospital_corellia_s02.iff")
 
 object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1672,6 +1701,7 @@ object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "clientdata/building/shared_hotel.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1719,7 +1749,7 @@ object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3326447330
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_hotel_corellia, "object/building/corellia/shared_hotel_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_hotel_corellia, "object/building/corellia/shared_hotel_corellia.iff")
 
 object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1728,6 +1758,7 @@ object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1775,7 +1806,7 @@ object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjec
 	clientObjectCRC = 2032858770
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_merchant_tent_corellia_s01, "object/building/corellia/shared_merchant_tent_corellia_s01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_merchant_tent_corellia_s01, "object/building/corellia/shared_merchant_tent_corellia_s01.iff")
 
 object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1784,6 +1815,7 @@ object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1831,7 +1863,7 @@ object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObject
 	clientObjectCRC = 2468987350
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_lg_s01_fp1, "object/building/corellia/shared_ply_corl_house_lg_s01_fp1.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_lg_s01_fp1, "object/building/corellia/shared_ply_corl_house_lg_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1840,6 +1872,7 @@ object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1887,7 +1920,7 @@ object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectT
 	clientObjectCRC = 1777902906
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_m_s01_fp1, "object/building/corellia/shared_ply_corl_house_m_s01_fp1.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_m_s01_fp1, "object/building/corellia/shared_ply_corl_house_m_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1896,6 +1929,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1943,7 +1977,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectT
 	clientObjectCRC = 4262283837
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp1, "object/building/corellia/shared_ply_corl_house_s_s01_fp1.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp1, "object/building/corellia/shared_ply_corl_house_s_s01_fp1.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1952,6 +1986,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1999,7 +2034,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectT
 	clientObjectCRC = 622518954
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp2, "object/building/corellia/shared_ply_corl_house_s_s01_fp2.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01_fp2, "object/building/corellia/shared_ply_corl_house_s_s01_fp2.iff")
 
 object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2008,6 +2043,7 @@ object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2055,7 +2091,7 @@ object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectT
 	clientObjectCRC = 3972901152
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_ply_corl_house_s_s02_fp1, "object/building/corellia/shared_ply_corl_house_s_s02_fp1.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s02_fp1, "object/building/corellia/shared_ply_corl_house_s_s02_fp1.iff")
 
 object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2064,6 +2100,7 @@ object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 40,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2111,7 +2148,7 @@ object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 4015891242
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_salon_corellia, "object/building/corellia/shared_salon_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_salon_corellia, "object/building/corellia/shared_salon_corellia.iff")
 
 object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_shuttleport_s01.apt",
@@ -2120,6 +2157,7 @@ object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 29,
 	clientDataFile = "clientdata/building/shared_shuttleport.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2167,7 +2205,7 @@ object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTempl
 	clientObjectCRC = 197393539
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_shuttleport_corellia, "object/building/corellia/shared_shuttleport_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_shuttleport_corellia, "object/building/corellia/shared_shuttleport_corellia.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s01.apt",
@@ -2176,6 +2214,7 @@ object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 42,
 	clientDataFile = "clientdata/building/shared_skyscraper_corellia_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2223,7 +2262,7 @@ object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObj
 	clientObjectCRC = 2284214156
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_01, "object/building/corellia/shared_skyscraper_corellia_style_01.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_01, "object/building/corellia/shared_skyscraper_corellia_style_01.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s02.apt",
@@ -2232,6 +2271,7 @@ object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 45,
 	clientDataFile = "clientdata/building/shared_skyscraper_corellia_style_02.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2279,7 +2319,7 @@ object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObj
 	clientObjectCRC = 1395785499
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_02, "object/building/corellia/shared_skyscraper_corellia_style_02.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_02, "object/building/corellia/shared_skyscraper_corellia_style_02.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s03.apt",
@@ -2288,6 +2328,7 @@ object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 55,
 	clientDataFile = "clientdata/building/shared_skyscraper_corellia_style_03.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2335,7 +2376,7 @@ object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObj
 	clientObjectCRC = 440178838
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_03, "object/building/corellia/shared_skyscraper_corellia_style_03.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_03, "object/building/corellia/shared_skyscraper_corellia_style_03.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s04.apt",
@@ -2344,6 +2385,7 @@ object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 55,
 	clientDataFile = "clientdata/building/shared_skyscraper_corellia_style_04.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2391,7 +2433,7 @@ object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObj
 	clientObjectCRC = 3789534082
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_04, "object/building/corellia/shared_skyscraper_corellia_style_04.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_04, "object/building/corellia/shared_skyscraper_corellia_style_04.iff")
 
 object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s05.apt",
@@ -2400,6 +2442,7 @@ object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 42,
 	clientDataFile = "clientdata/building/shared_skyscraper_corellia_style_05.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2447,7 +2490,7 @@ object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObj
 	clientObjectCRC = 2832389135
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_skyscraper_corellia_style_05, "object/building/corellia/shared_skyscraper_corellia_style_05.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_style_05, "object/building/corellia/shared_skyscraper_corellia_style_05.iff")
 
 object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2456,6 +2499,7 @@ object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 96,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2503,4 +2547,4 @@ object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate
 	clientObjectCRC = 1449497657
 }
 
-ObjectTemplates:addClientTemplate(object_building_corellia_shared_starport_corellia, "object/building/corellia/shared_starport_corellia.iff")
+ObjectTemplates:addTemplate(object_building_corellia_shared_starport_corellia, "object/building/corellia/shared_starport_corellia.iff")

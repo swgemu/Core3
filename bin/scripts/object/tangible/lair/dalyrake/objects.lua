@@ -48,6 +48,7 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake = SharedTangibleObjectTemplat
 	clientObjectCRC = 1654178930
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake, "object/tangible/lair/dalyrake/shared_lair_dalyrake.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake, "object/tangible/lair/dalyrake/shared_lair_dalyrake.iff")
 
 object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObject
 	clientObjectCRC = 2587304882
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake_forest, "object/tangible/lair/dalyrake/shared_lair_dalyrake_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake_forest, "object/tangible/lair/dalyrake/shared_lair_dalyrake_forest.iff")

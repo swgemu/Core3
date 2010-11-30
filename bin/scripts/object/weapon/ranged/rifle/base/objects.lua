@@ -49,6 +49,7 @@ object_weapon_ranged_rifle_base_shared_rifle_base = SharedWeaponObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131084,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_ranged_rifle_base_shared_rifle_base = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 2730158915
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_base_shared_rifle_base, "object/weapon/ranged/rifle/base/shared_rifle_base.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_rifle_base_shared_rifle_base, "object/weapon/ranged/rifle/base/shared_rifle_base.iff")

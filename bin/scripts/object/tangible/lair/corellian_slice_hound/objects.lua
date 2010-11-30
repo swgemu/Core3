@@ -48,6 +48,7 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound = S
 	clientObjectCRC = 866782264
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound.iff")
 
 object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_for
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_for
 	clientObjectCRC = 2443001594
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_forest.iff")
 
 object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_gra
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_gra
 	clientObjectCRC = 3854748687
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_grassland.iff")

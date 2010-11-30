@@ -48,6 +48,7 @@ object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangib
 	clientObjectCRC = 918998876
 }
 
-ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_cave_wall_damprock, "object/static/destructible/shared_destructible_cave_wall_damprock.iff")
+ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_cave_wall_damprock, "object/static/destructible/shared_destructible_cave_wall_damprock.iff")
 
 object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -101,6 +102,7 @@ object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjec
 	clientObjectCRC = 4179770460
 }
 
-ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_item_barrel, "object/static/destructible/shared_destructible_item_barrel.iff")
+ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_item_barrel, "object/static/destructible/shared_destructible_item_barrel.iff")
 
 object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_rock_lrg.apt",
@@ -154,6 +156,7 @@ object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibl
 	clientObjectCRC = 2104939815
 }
 
-ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_cave_rock_lg, "object/static/destructible/shared_destructible_tato_cave_rock_lg.iff")
+ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_cave_rock_lg, "object/static/destructible/shared_destructible_tato_cave_rock_lg.iff")
 
 object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_rock_med.apt",
@@ -207,6 +210,7 @@ object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangib
 	clientObjectCRC = 3390669674
 }
 
-ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_cave_rock_med, "object/static/destructible/shared_destructible_tato_cave_rock_med.iff")
+ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_cave_rock_med, "object/static/destructible/shared_destructible_tato_cave_rock_med.iff")
 
 object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
@@ -260,6 +264,7 @@ object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjec
 	clientObjectCRC = 4003304122
 }
 
-ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_crate1, "object/static/destructible/shared_destructible_tato_crate1.iff")
+ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_crate1, "object/static/destructible/shared_destructible_tato_crate1.iff")
 
 object_static_destructible_shared_destructible_tato_drum_dented = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
@@ -313,6 +318,7 @@ object_static_destructible_shared_destructible_tato_drum_dented = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_static_destructible_shared_destructible_tato_drum_dented = SharedTangible
 	clientObjectCRC = 316155043
 }
 
-ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_drum_dented, "object/static/destructible/shared_destructible_tato_drum_dented.iff")
+ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_drum_dented, "object/static/destructible/shared_destructible_tato_drum_dented.iff")
 
 object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s05.apt",
@@ -366,6 +372,7 @@ object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangib
 	clientObjectCRC = 2157671754
 }
 
-ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_drum_storage1, "object/static/destructible/shared_destructible_tato_drum_storage1.iff")
+ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_drum_storage1, "object/static/destructible/shared_destructible_tato_drum_storage1.iff")
 
 object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
@@ -419,6 +426,7 @@ object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/battlefield/client_shared_base_destructible_building.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -463,4 +471,4 @@ object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectT
 	clientObjectCRC = 196750544
 }
 
-ObjectTemplates:addClientTemplate(object_static_destructible_shared_gungan_sacred_head, "object/static/destructible/shared_gungan_sacred_head.iff")
+ObjectTemplates:addTemplate(object_static_destructible_shared_gungan_sacred_head, "object/static/destructible/shared_gungan_sacred_head.iff")

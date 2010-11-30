@@ -48,6 +48,7 @@ object_tangible_lair_merek_shared_lair_merek = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_merek_shared_lair_merek = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 150449973
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek, "object/tangible/lair/merek/shared_lair_merek.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek, "object/tangible/lair/merek/shared_lair_merek.iff")
 
 object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTempla
 	clientObjectCRC = 1521427454
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek_jungle, "object/tangible/lair/merek/shared_lair_merek_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek_jungle, "object/tangible/lair/merek/shared_lair_merek_jungle.iff")
 
 object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplat
 	clientObjectCRC = 4083623500
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek_swamp, "object/tangible/lair/merek/shared_lair_merek_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek_swamp, "object/tangible/lair/merek/shared_lair_merek_swamp.iff")

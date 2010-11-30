@@ -48,6 +48,7 @@ object_building_poi_shared_anywhere_fs_intro_camp = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_poi_shared_anywhere_fs_intro_camp = SharedBuildingObjectTemplate
 	clientObjectCRC = 2150026524
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_fs_intro_camp, "object/building/poi/shared_anywhere_fs_intro_camp.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_fs_intro_camp, "object/building/poi/shared_anywhere_fs_intro_camp.iff")
 
 object_building_poi_shared_anywhere_imperial_base_large_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -104,6 +105,7 @@ object_building_poi_shared_anywhere_imperial_base_large_1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_imperial_base_large_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,7 +153,7 @@ object_building_poi_shared_anywhere_imperial_base_large_1 = SharedBuildingObject
 	clientObjectCRC = 3181956427
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_imperial_base_large_1, "object/building/poi/shared_anywhere_imperial_base_large_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_imperial_base_large_1, "object/building/poi/shared_anywhere_imperial_base_large_1.iff")
 
 object_building_poi_shared_anywhere_imperial_base_small_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -160,6 +162,7 @@ object_building_poi_shared_anywhere_imperial_base_small_1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_imperial_base_small_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -207,7 +210,7 @@ object_building_poi_shared_anywhere_imperial_base_small_1 = SharedBuildingObject
 	clientObjectCRC = 990728646
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_imperial_base_small_1, "object/building/poi/shared_anywhere_imperial_base_small_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_imperial_base_small_1, "object/building/poi/shared_anywhere_imperial_base_small_1.iff")
 
 object_building_poi_shared_anywhere_misc_camp_small_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -216,6 +219,7 @@ object_building_poi_shared_anywhere_misc_camp_small_1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_misc_camp_small_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -263,7 +267,7 @@ object_building_poi_shared_anywhere_misc_camp_small_1 = SharedBuildingObjectTemp
 	clientObjectCRC = 2012164314
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_misc_camp_small_1, "object/building/poi/shared_anywhere_misc_camp_small_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_misc_camp_small_1, "object/building/poi/shared_anywhere_misc_camp_small_1.iff")
 
 object_building_poi_shared_anywhere_rebel_base_large_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -272,6 +276,7 @@ object_building_poi_shared_anywhere_rebel_base_large_1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_rebel_base_large_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -319,7 +324,7 @@ object_building_poi_shared_anywhere_rebel_base_large_1 = SharedBuildingObjectTem
 	clientObjectCRC = 1530380993
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_rebel_base_large_1, "object/building/poi/shared_anywhere_rebel_base_large_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_rebel_base_large_1, "object/building/poi/shared_anywhere_rebel_base_large_1.iff")
 
 object_building_poi_shared_anywhere_rebel_camp_large_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -328,6 +333,7 @@ object_building_poi_shared_anywhere_rebel_camp_large_1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_rebel_camp_large_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -375,7 +381,7 @@ object_building_poi_shared_anywhere_rebel_camp_large_1 = SharedBuildingObjectTem
 	clientObjectCRC = 1267268082
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_rebel_camp_large_1, "object/building/poi/shared_anywhere_rebel_camp_large_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_rebel_camp_large_1, "object/building/poi/shared_anywhere_rebel_camp_large_1.iff")
 
 object_building_poi_shared_anywhere_rebel_camp_small_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -384,6 +390,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_rebel_camp_small_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -431,7 +438,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_1 = SharedBuildingObjectTem
 	clientObjectCRC = 3442304383
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_rebel_camp_small_1, "object/building/poi/shared_anywhere_rebel_camp_small_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_rebel_camp_small_1, "object/building/poi/shared_anywhere_rebel_camp_small_1.iff")
 
 object_building_poi_shared_anywhere_rebel_camp_small_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -440,6 +447,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_rebel_camp_small_2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -487,7 +495,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_2 = SharedBuildingObjectTem
 	clientObjectCRC = 372952552
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_rebel_camp_small_2, "object/building/poi/shared_anywhere_rebel_camp_small_2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_rebel_camp_small_2, "object/building/poi/shared_anywhere_rebel_camp_small_2.iff")
 
 object_building_poi_shared_anywhere_rebel_camp_small_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -496,6 +504,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_3 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_rebel_camp_small_3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -543,7 +552,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_3 = SharedBuildingObjectTem
 	clientObjectCRC = 1597483621
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_rebel_camp_small_3, "object/building/poi/shared_anywhere_rebel_camp_small_3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_rebel_camp_small_3, "object/building/poi/shared_anywhere_rebel_camp_small_3.iff")
 
 object_building_poi_shared_anywhere_uberlair_imperial_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -552,6 +561,7 @@ object_building_poi_shared_anywhere_uberlair_imperial_01 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_anywhere_uberlair_imperial_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -599,7 +609,7 @@ object_building_poi_shared_anywhere_uberlair_imperial_01 = SharedBuildingObjectT
 	clientObjectCRC = 833924651
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_anywhere_uberlair_imperial_01, "object/building/poi/shared_anywhere_uberlair_imperial_01.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_anywhere_uberlair_imperial_01, "object/building/poi/shared_anywhere_uberlair_imperial_01.iff")
 
 object_building_poi_shared_corellia_afarathu_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -608,6 +618,7 @@ object_building_poi_shared_corellia_afarathu_large1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_afarathu_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +666,7 @@ object_building_poi_shared_corellia_afarathu_large1 = SharedBuildingObjectTempla
 	clientObjectCRC = 2141413884
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_afarathu_large1, "object/building/poi/shared_corellia_afarathu_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_afarathu_large1, "object/building/poi/shared_corellia_afarathu_large1.iff")
 
 object_building_poi_shared_corellia_afarathu_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -664,6 +675,7 @@ object_building_poi_shared_corellia_afarathu_large2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_afarathu_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -711,7 +723,7 @@ object_building_poi_shared_corellia_afarathu_large2 = SharedBuildingObjectTempla
 	clientObjectCRC = 2763311467
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_afarathu_large2, "object/building/poi/shared_corellia_afarathu_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_afarathu_large2, "object/building/poi/shared_corellia_afarathu_large2.iff")
 
 object_building_poi_shared_corellia_afarathu_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -720,6 +732,7 @@ object_building_poi_shared_corellia_afarathu_large3 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_afarathu_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -767,7 +780,7 @@ object_building_poi_shared_corellia_afarathu_large3 = SharedBuildingObjectTempla
 	clientObjectCRC = 3988369126
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_afarathu_large3, "object/building/poi/shared_corellia_afarathu_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_afarathu_large3, "object/building/poi/shared_corellia_afarathu_large3.iff")
 
 object_building_poi_shared_corellia_afarathu_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -776,6 +789,7 @@ object_building_poi_shared_corellia_afarathu_medium2 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_afarathu_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -823,7 +837,7 @@ object_building_poi_shared_corellia_afarathu_medium2 = SharedBuildingObjectTempl
 	clientObjectCRC = 2880031369
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_afarathu_medium2, "object/building/poi/shared_corellia_afarathu_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_afarathu_medium2, "object/building/poi/shared_corellia_afarathu_medium2.iff")
 
 object_building_poi_shared_corellia_afarathu_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -832,6 +846,7 @@ object_building_poi_shared_corellia_afarathu_small1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_afarathu_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -879,7 +894,7 @@ object_building_poi_shared_corellia_afarathu_small1 = SharedBuildingObjectTempla
 	clientObjectCRC = 2734773168
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_afarathu_small1, "object/building/poi/shared_corellia_afarathu_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_afarathu_small1, "object/building/poi/shared_corellia_afarathu_small1.iff")
 
 object_building_poi_shared_corellia_afarathu_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -888,6 +903,7 @@ object_building_poi_shared_corellia_afarathu_small2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_afarathu_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -935,7 +951,7 @@ object_building_poi_shared_corellia_afarathu_small2 = SharedBuildingObjectTempla
 	clientObjectCRC = 2014772007
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_afarathu_small2, "object/building/poi/shared_corellia_afarathu_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_afarathu_small2, "object/building/poi/shared_corellia_afarathu_small2.iff")
 
 object_building_poi_shared_corellia_afarathu_small3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -944,6 +960,7 @@ object_building_poi_shared_corellia_afarathu_small3 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_afarathu_small3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -991,7 +1008,7 @@ object_building_poi_shared_corellia_afarathu_small3 = SharedBuildingObjectTempla
 	clientObjectCRC = 823893162
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_afarathu_small3, "object/building/poi/shared_corellia_afarathu_small3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_afarathu_small3, "object/building/poi/shared_corellia_afarathu_small3.iff")
 
 object_building_poi_shared_corellia_beldonna_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1000,6 +1017,7 @@ object_building_poi_shared_corellia_beldonna_large1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_beldonna_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1047,7 +1065,7 @@ object_building_poi_shared_corellia_beldonna_large1 = SharedBuildingObjectTempla
 	clientObjectCRC = 4189497836
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_beldonna_large1, "object/building/poi/shared_corellia_beldonna_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_beldonna_large1, "object/building/poi/shared_corellia_beldonna_large1.iff")
 
 object_building_poi_shared_corellia_beldonna_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1056,6 +1074,7 @@ object_building_poi_shared_corellia_beldonna_large2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_beldonna_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1103,7 +1122,7 @@ object_building_poi_shared_corellia_beldonna_large2 = SharedBuildingObjectTempla
 	clientObjectCRC = 580977019
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_beldonna_large2, "object/building/poi/shared_corellia_beldonna_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_beldonna_large2, "object/building/poi/shared_corellia_beldonna_large2.iff")
 
 object_building_poi_shared_corellia_beldonna_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1112,6 +1131,7 @@ object_building_poi_shared_corellia_beldonna_large3 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_beldonna_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1159,7 +1179,7 @@ object_building_poi_shared_corellia_beldonna_large3 = SharedBuildingObjectTempla
 	clientObjectCRC = 1806460662
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_beldonna_large3, "object/building/poi/shared_corellia_beldonna_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_beldonna_large3, "object/building/poi/shared_corellia_beldonna_large3.iff")
 
 object_building_poi_shared_corellia_corellia_times_investigator_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1168,6 +1188,7 @@ object_building_poi_shared_corellia_corellia_times_investigator_large1 = SharedB
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_corellia_times_investigator_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1215,7 +1236,7 @@ object_building_poi_shared_corellia_corellia_times_investigator_large1 = SharedB
 	clientObjectCRC = 3495558430
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_corellia_times_investigator_large1, "object/building/poi/shared_corellia_corellia_times_investigator_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_corellia_times_investigator_large1, "object/building/poi/shared_corellia_corellia_times_investigator_large1.iff")
 
 object_building_poi_shared_corellia_corellia_times_investigator_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1224,6 +1245,7 @@ object_building_poi_shared_corellia_corellia_times_investigator_large2 = SharedB
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_corellia_times_investigator_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1293,7 @@ object_building_poi_shared_corellia_corellia_times_investigator_large2 = SharedB
 	clientObjectCRC = 189683081
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_corellia_times_investigator_large2, "object/building/poi/shared_corellia_corellia_times_investigator_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_corellia_times_investigator_large2, "object/building/poi/shared_corellia_corellia_times_investigator_large2.iff")
 
 object_building_poi_shared_corellia_corellia_times_investigators_camp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1280,6 +1302,7 @@ object_building_poi_shared_corellia_corellia_times_investigators_camp_small1 = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_corellia_times_investigators_camp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1327,7 +1350,7 @@ object_building_poi_shared_corellia_corellia_times_investigators_camp_small1 = S
 	clientObjectCRC = 3864145072
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_corellia_times_investigators_camp_small1, "object/building/poi/shared_corellia_corellia_times_investigators_camp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_corellia_times_investigators_camp_small1, "object/building/poi/shared_corellia_corellia_times_investigators_camp_small1.iff")
 
 object_building_poi_shared_corellia_corellia_times_investigators_camp_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1336,6 +1359,7 @@ object_building_poi_shared_corellia_corellia_times_investigators_camp_small2 = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_corellia_times_investigators_camp_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1383,7 +1407,7 @@ object_building_poi_shared_corellia_corellia_times_investigators_camp_small2 = S
 	clientObjectCRC = 1027965991
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_corellia_times_investigators_camp_small2, "object/building/poi/shared_corellia_corellia_times_investigators_camp_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_corellia_times_investigators_camp_small2, "object/building/poi/shared_corellia_corellia_times_investigators_camp_small2.iff")
 
 object_building_poi_shared_corellia_corsec_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1392,6 +1416,7 @@ object_building_poi_shared_corellia_corsec_large1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_corsec_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1439,7 +1464,7 @@ object_building_poi_shared_corellia_corsec_large1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2110974936
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_corsec_large1, "object/building/poi/shared_corellia_corsec_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_corsec_large1, "object/building/poi/shared_corellia_corsec_large1.iff")
 
 object_building_poi_shared_corellia_corsec_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1448,6 +1473,7 @@ object_building_poi_shared_corellia_corsec_large2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_corsec_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1495,7 +1521,7 @@ object_building_poi_shared_corellia_corsec_large2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2797945679
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_corsec_large2, "object/building/poi/shared_corellia_corsec_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_corsec_large2, "object/building/poi/shared_corellia_corsec_large2.iff")
 
 object_building_poi_shared_corellia_corsec_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1504,6 +1530,7 @@ object_building_poi_shared_corellia_corsec_large3 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_corsec_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1551,7 +1578,7 @@ object_building_poi_shared_corellia_corsec_large3 = SharedBuildingObjectTemplate
 	clientObjectCRC = 4022871234
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_corsec_large3, "object/building/poi/shared_corellia_corsec_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_corsec_large3, "object/building/poi/shared_corellia_corsec_large3.iff")
 
 object_building_poi_shared_corellia_drall_abbot_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1560,6 +1587,7 @@ object_building_poi_shared_corellia_drall_abbot_large1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_abbot_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1607,7 +1635,7 @@ object_building_poi_shared_corellia_drall_abbot_large1 = SharedBuildingObjectTem
 	clientObjectCRC = 1754860044
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_abbot_large1, "object/building/poi/shared_corellia_drall_abbot_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_abbot_large1, "object/building/poi/shared_corellia_drall_abbot_large1.iff")
 
 object_building_poi_shared_corellia_drall_abbot_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1616,6 +1644,7 @@ object_building_poi_shared_corellia_drall_abbot_large2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_abbot_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1663,7 +1692,7 @@ object_building_poi_shared_corellia_drall_abbot_large2 = SharedBuildingObjectTem
 	clientObjectCRC = 3012469403
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_abbot_large2, "object/building/poi/shared_corellia_drall_abbot_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_abbot_large2, "object/building/poi/shared_corellia_drall_abbot_large2.iff")
 
 object_building_poi_shared_corellia_drall_abbot_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1672,6 +1701,7 @@ object_building_poi_shared_corellia_drall_abbot_large3 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_abbot_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1719,7 +1749,7 @@ object_building_poi_shared_corellia_drall_abbot_large3 = SharedBuildingObjectTem
 	clientObjectCRC = 4202939670
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_abbot_large3, "object/building/poi/shared_corellia_drall_abbot_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_abbot_large3, "object/building/poi/shared_corellia_drall_abbot_large3.iff")
 
 object_building_poi_shared_corellia_drall_abbot_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1728,6 +1758,7 @@ object_building_poi_shared_corellia_drall_abbot_medium2 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_abbot_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1775,7 +1806,7 @@ object_building_poi_shared_corellia_drall_abbot_medium2 = SharedBuildingObjectTe
 	clientObjectCRC = 3281302012
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_abbot_medium2, "object/building/poi/shared_corellia_drall_abbot_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_abbot_medium2, "object/building/poi/shared_corellia_drall_abbot_medium2.iff")
 
 object_building_poi_shared_corellia_drall_abbot_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1784,6 +1815,7 @@ object_building_poi_shared_corellia_drall_abbot_small1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_abbot_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1831,7 +1863,7 @@ object_building_poi_shared_corellia_drall_abbot_small1 = SharedBuildingObjectTem
 	clientObjectCRC = 3023779904
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_abbot_small1, "object/building/poi/shared_corellia_drall_abbot_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_abbot_small1, "object/building/poi/shared_corellia_drall_abbot_small1.iff")
 
 object_building_poi_shared_corellia_drall_abbot_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1840,6 +1872,7 @@ object_building_poi_shared_corellia_drall_abbot_small2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_abbot_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1887,7 +1920,7 @@ object_building_poi_shared_corellia_drall_abbot_small2 = SharedBuildingObjectTem
 	clientObjectCRC = 1865191639
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_abbot_small2, "object/building/poi/shared_corellia_drall_abbot_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_abbot_small2, "object/building/poi/shared_corellia_drall_abbot_small2.iff")
 
 object_building_poi_shared_corellia_drall_abbots_camp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1896,6 +1929,7 @@ object_building_poi_shared_corellia_drall_abbots_camp_small1 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_abbots_camp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1943,7 +1977,7 @@ object_building_poi_shared_corellia_drall_abbots_camp_small1 = SharedBuildingObj
 	clientObjectCRC = 657822368
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_abbots_camp_small1, "object/building/poi/shared_corellia_drall_abbots_camp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_abbots_camp_small1, "object/building/poi/shared_corellia_drall_abbots_camp_small1.iff")
 
 object_building_poi_shared_corellia_drall_patriot_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -1952,6 +1986,7 @@ object_building_poi_shared_corellia_drall_patriot_large1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_patriot_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1999,7 +2034,7 @@ object_building_poi_shared_corellia_drall_patriot_large1 = SharedBuildingObjectT
 	clientObjectCRC = 2646384537
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_patriot_large1, "object/building/poi/shared_corellia_drall_patriot_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_patriot_large1, "object/building/poi/shared_corellia_drall_patriot_large1.iff")
 
 object_building_poi_shared_corellia_drall_patriot_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2008,6 +2043,7 @@ object_building_poi_shared_corellia_drall_patriot_large2 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_patriot_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2055,7 +2091,7 @@ object_building_poi_shared_corellia_drall_patriot_large2 = SharedBuildingObjectT
 	clientObjectCRC = 1185625870
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_patriot_large2, "object/building/poi/shared_corellia_drall_patriot_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_patriot_large2, "object/building/poi/shared_corellia_drall_patriot_large2.iff")
 
 object_building_poi_shared_corellia_drall_patriot_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2064,6 +2100,7 @@ object_building_poi_shared_corellia_drall_patriot_large3 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_patriot_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2111,7 +2148,7 @@ object_building_poi_shared_corellia_drall_patriot_large3 = SharedBuildingObjectT
 	clientObjectCRC = 262557827
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_patriot_large3, "object/building/poi/shared_corellia_drall_patriot_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_patriot_large3, "object/building/poi/shared_corellia_drall_patriot_large3.iff")
 
 object_building_poi_shared_corellia_drall_patriot_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2120,6 +2157,7 @@ object_building_poi_shared_corellia_drall_patriot_medium2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_patriot_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2167,7 +2205,7 @@ object_building_poi_shared_corellia_drall_patriot_medium2 = SharedBuildingObject
 	clientObjectCRC = 2021438110
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_patriot_medium2, "object/building/poi/shared_corellia_drall_patriot_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_patriot_medium2, "object/building/poi/shared_corellia_drall_patriot_medium2.iff")
 
 object_building_poi_shared_corellia_drall_patriot_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2176,6 +2214,7 @@ object_building_poi_shared_corellia_drall_patriot_small1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_patriot_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2223,7 +2262,7 @@ object_building_poi_shared_corellia_drall_patriot_small1 = SharedBuildingObjectT
 	clientObjectCRC = 1092529621
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_patriot_small1, "object/building/poi/shared_corellia_drall_patriot_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_patriot_small1, "object/building/poi/shared_corellia_drall_patriot_small1.iff")
 
 object_building_poi_shared_corellia_drall_patriot_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2232,6 +2271,7 @@ object_building_poi_shared_corellia_drall_patriot_small2 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_drall_patriot_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2279,7 +2319,7 @@ object_building_poi_shared_corellia_drall_patriot_small2 = SharedBuildingObjectT
 	clientObjectCRC = 2584282434
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_drall_patriot_small2, "object/building/poi/shared_corellia_drall_patriot_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_drall_patriot_small2, "object/building/poi/shared_corellia_drall_patriot_small2.iff")
 
 object_building_poi_shared_corellia_flail_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2288,6 +2328,7 @@ object_building_poi_shared_corellia_flail_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_flail_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2335,7 +2376,7 @@ object_building_poi_shared_corellia_flail_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4128797230
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_flail_large1, "object/building/poi/shared_corellia_flail_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_flail_large1, "object/building/poi/shared_corellia_flail_large1.iff")
 
 object_building_poi_shared_corellia_flail_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2344,6 +2385,7 @@ object_building_poi_shared_corellia_flail_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_flail_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2391,7 +2433,7 @@ object_building_poi_shared_corellia_flail_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 756013753
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_flail_large2, "object/building/poi/shared_corellia_flail_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_flail_large2, "object/building/poi/shared_corellia_flail_large2.iff")
 
 object_building_poi_shared_corellia_greck_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2400,6 +2442,7 @@ object_building_poi_shared_corellia_greck_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_greck_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2447,7 +2490,7 @@ object_building_poi_shared_corellia_greck_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2415245494
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_greck_large1, "object/building/poi/shared_corellia_greck_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_greck_large1, "object/building/poi/shared_corellia_greck_large1.iff")
 
 object_building_poi_shared_corellia_greck_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2456,6 +2499,7 @@ object_building_poi_shared_corellia_greck_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_greck_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2503,7 +2547,7 @@ object_building_poi_shared_corellia_greck_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1424101409
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_greck_large2, "object/building/poi/shared_corellia_greck_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_greck_large2, "object/building/poi/shared_corellia_greck_large2.iff")
 
 object_building_poi_shared_corellia_hidden_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2512,6 +2556,7 @@ object_building_poi_shared_corellia_hidden_large1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_hidden_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2559,7 +2604,7 @@ object_building_poi_shared_corellia_hidden_large1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2767898088
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_hidden_large1, "object/building/poi/shared_corellia_hidden_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_hidden_large1, "object/building/poi/shared_corellia_hidden_large1.iff")
 
 object_building_poi_shared_corellia_hidden_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2568,6 +2613,7 @@ object_building_poi_shared_corellia_hidden_large2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_hidden_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2615,7 +2661,7 @@ object_building_poi_shared_corellia_hidden_large2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2146266495
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_hidden_large2, "object/building/poi/shared_corellia_hidden_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_hidden_large2, "object/building/poi/shared_corellia_hidden_large2.iff")
 
 object_building_poi_shared_corellia_meatlump_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2624,6 +2670,7 @@ object_building_poi_shared_corellia_meatlump_large1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_meatlump_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2671,7 +2718,7 @@ object_building_poi_shared_corellia_meatlump_large1 = SharedBuildingObjectTempla
 	clientObjectCRC = 804219570
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_meatlump_large1, "object/building/poi/shared_corellia_meatlump_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_meatlump_large1, "object/building/poi/shared_corellia_meatlump_large1.iff")
 
 object_building_poi_shared_corellia_meatlump_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2680,6 +2727,7 @@ object_building_poi_shared_corellia_meatlump_large2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_meatlump_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2727,7 +2775,7 @@ object_building_poi_shared_corellia_meatlump_large2 = SharedBuildingObjectTempla
 	clientObjectCRC = 4109943333
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_meatlump_large2, "object/building/poi/shared_corellia_meatlump_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_meatlump_large2, "object/building/poi/shared_corellia_meatlump_large2.iff")
 
 object_building_poi_shared_corellia_meatlump_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2736,6 +2784,7 @@ object_building_poi_shared_corellia_meatlump_large3 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_meatlump_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2783,7 +2832,7 @@ object_building_poi_shared_corellia_meatlump_large3 = SharedBuildingObjectTempla
 	clientObjectCRC = 3186992552
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_meatlump_large3, "object/building/poi/shared_corellia_meatlump_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_meatlump_large3, "object/building/poi/shared_corellia_meatlump_large3.iff")
 
 object_building_poi_shared_corellia_meatlump_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2792,6 +2841,7 @@ object_building_poi_shared_corellia_meatlump_small1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_meatlump_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2839,7 +2889,7 @@ object_building_poi_shared_corellia_meatlump_small1 = SharedBuildingObjectTempla
 	clientObjectCRC = 4081932542
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_meatlump_small1, "object/building/poi/shared_corellia_meatlump_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_meatlump_small1, "object/building/poi/shared_corellia_meatlump_small1.iff")
 
 object_building_poi_shared_corellia_meatlump_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2848,6 +2898,7 @@ object_building_poi_shared_corellia_meatlump_small2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_meatlump_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2895,7 +2946,7 @@ object_building_poi_shared_corellia_meatlump_small2 = SharedBuildingObjectTempla
 	clientObjectCRC = 677048425
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_meatlump_small2, "object/building/poi/shared_corellia_meatlump_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_meatlump_small2, "object/building/poi/shared_corellia_meatlump_small2.iff")
 
 object_building_poi_shared_corellia_meatlump_small3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2904,6 +2955,7 @@ object_building_poi_shared_corellia_meatlump_small3 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_meatlump_small3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2951,7 +3003,7 @@ object_building_poi_shared_corellia_meatlump_small3 = SharedBuildingObjectTempla
 	clientObjectCRC = 1633130468
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_meatlump_small3, "object/building/poi/shared_corellia_meatlump_small3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_meatlump_small3, "object/building/poi/shared_corellia_meatlump_small3.iff")
 
 object_building_poi_shared_corellia_monumenter_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -2960,6 +3012,7 @@ object_building_poi_shared_corellia_monumenter_large1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_monumenter_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3007,7 +3060,7 @@ object_building_poi_shared_corellia_monumenter_large1 = SharedBuildingObjectTemp
 	clientObjectCRC = 1922341284
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_monumenter_large1, "object/building/poi/shared_corellia_monumenter_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_monumenter_large1, "object/building/poi/shared_corellia_monumenter_large1.iff")
 
 object_building_poi_shared_corellia_monumenter_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3016,6 +3069,7 @@ object_building_poi_shared_corellia_monumenter_large2 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_monumenter_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3063,7 +3117,7 @@ object_building_poi_shared_corellia_monumenter_large2 = SharedBuildingObjectTemp
 	clientObjectCRC = 2843947315
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_monumenter_large2, "object/building/poi/shared_corellia_monumenter_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_monumenter_large2, "object/building/poi/shared_corellia_monumenter_large2.iff")
 
 object_building_poi_shared_corellia_monumenter_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3072,6 +3126,7 @@ object_building_poi_shared_corellia_monumenter_large3 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_monumenter_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3119,7 +3174,7 @@ object_building_poi_shared_corellia_monumenter_large3 = SharedBuildingObjectTemp
 	clientObjectCRC = 3767424702
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_monumenter_large3, "object/building/poi/shared_corellia_monumenter_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_monumenter_large3, "object/building/poi/shared_corellia_monumenter_large3.iff")
 
 object_building_poi_shared_corellia_nyax_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3128,6 +3183,7 @@ object_building_poi_shared_corellia_nyax_large1 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_nyax_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3175,7 +3231,7 @@ object_building_poi_shared_corellia_nyax_large1 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1203547217
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_nyax_large1, "object/building/poi/shared_corellia_nyax_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_nyax_large1, "object/building/poi/shared_corellia_nyax_large1.iff")
 
 object_building_poi_shared_corellia_nyax_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3184,6 +3240,7 @@ object_building_poi_shared_corellia_nyax_large2 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_nyax_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3231,7 +3288,7 @@ object_building_poi_shared_corellia_nyax_large2 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 2628453574
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_nyax_large2, "object/building/poi/shared_corellia_nyax_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_nyax_large2, "object/building/poi/shared_corellia_nyax_large2.iff")
 
 object_building_poi_shared_corellia_nyax_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3240,6 +3297,7 @@ object_building_poi_shared_corellia_nyax_large3 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_nyax_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3287,7 +3345,7 @@ object_building_poi_shared_corellia_nyax_large3 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 3584451403
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_nyax_large3, "object/building/poi/shared_corellia_nyax_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_nyax_large3, "object/building/poi/shared_corellia_nyax_large3.iff")
 
 object_building_poi_shared_corellia_selonian_rebel_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3296,6 +3354,7 @@ object_building_poi_shared_corellia_selonian_rebel_large1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_rebel_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3343,7 +3402,7 @@ object_building_poi_shared_corellia_selonian_rebel_large1 = SharedBuildingObject
 	clientObjectCRC = 3652494141
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_rebel_large1, "object/building/poi/shared_corellia_selonian_rebel_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_rebel_large1, "object/building/poi/shared_corellia_selonian_rebel_large1.iff")
 
 object_building_poi_shared_corellia_selonian_rebel_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3352,6 +3411,7 @@ object_building_poi_shared_corellia_selonian_rebel_large2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_rebel_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3399,7 +3459,7 @@ object_building_poi_shared_corellia_selonian_rebel_large2 = SharedBuildingObject
 	clientObjectCRC = 44239786
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_rebel_large2, "object/building/poi/shared_corellia_selonian_rebel_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_rebel_large2, "object/building/poi/shared_corellia_selonian_rebel_large2.iff")
 
 object_building_poi_shared_corellia_selonian_rebel_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3408,6 +3468,7 @@ object_building_poi_shared_corellia_selonian_rebel_small1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_rebel_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3455,7 +3516,7 @@ object_building_poi_shared_corellia_selonian_rebel_small1 = SharedBuildingObject
 	clientObjectCRC = 85365105
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_rebel_small1, "object/building/poi/shared_corellia_selonian_rebel_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_rebel_small1, "object/building/poi/shared_corellia_selonian_rebel_small1.iff")
 
 object_building_poi_shared_corellia_selonian_rebel_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3464,6 +3525,7 @@ object_building_poi_shared_corellia_selonian_rebel_small2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_rebel_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3511,7 +3573,7 @@ object_building_poi_shared_corellia_selonian_rebel_small2 = SharedBuildingObject
 	clientObjectCRC = 3724622310
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_rebel_small2, "object/building/poi/shared_corellia_selonian_rebel_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_rebel_small2, "object/building/poi/shared_corellia_selonian_rebel_small2.iff")
 
 object_building_poi_shared_corellia_selonian_rebel_small3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3520,6 +3582,7 @@ object_building_poi_shared_corellia_selonian_rebel_small3 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_rebel_small3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3567,7 +3630,7 @@ object_building_poi_shared_corellia_selonian_rebel_small3 = SharedBuildingObject
 	clientObjectCRC = 2534170219
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_rebel_small3, "object/building/poi/shared_corellia_selonian_rebel_small3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_rebel_small3, "object/building/poi/shared_corellia_selonian_rebel_small3.iff")
 
 object_building_poi_shared_corellia_selonian_separatists_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3576,6 +3639,7 @@ object_building_poi_shared_corellia_selonian_separatists_large1 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_separatists_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3623,7 +3687,7 @@ object_building_poi_shared_corellia_selonian_separatists_large1 = SharedBuilding
 	clientObjectCRC = 1047558952
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_separatists_large1, "object/building/poi/shared_corellia_selonian_separatists_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_separatists_large1, "object/building/poi/shared_corellia_selonian_separatists_large1.iff")
 
 object_building_poi_shared_corellia_selonian_separatists_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3632,6 +3696,7 @@ object_building_poi_shared_corellia_selonian_separatists_large2 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_separatists_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3679,7 +3744,7 @@ object_building_poi_shared_corellia_selonian_separatists_large2 = SharedBuilding
 	clientObjectCRC = 3848786879
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_separatists_large2, "object/building/poi/shared_corellia_selonian_separatists_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_separatists_large2, "object/building/poi/shared_corellia_selonian_separatists_large2.iff")
 
 object_building_poi_shared_corellia_selonian_separatists_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3688,6 +3753,7 @@ object_building_poi_shared_corellia_selonian_separatists_small1 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_separatists_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3735,7 +3801,7 @@ object_building_poi_shared_corellia_selonian_separatists_small1 = SharedBuilding
 	clientObjectCRC = 3805432164
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_separatists_small1, "object/building/poi/shared_corellia_selonian_separatists_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_separatists_small1, "object/building/poi/shared_corellia_selonian_separatists_small1.iff")
 
 object_building_poi_shared_corellia_selonian_separatists_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3744,6 +3810,7 @@ object_building_poi_shared_corellia_selonian_separatists_small2 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_selonian_separatists_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3791,7 +3858,7 @@ object_building_poi_shared_corellia_selonian_separatists_small2 = SharedBuilding
 	clientObjectCRC = 969269747
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_selonian_separatists_small2, "object/building/poi/shared_corellia_selonian_separatists_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_selonian_separatists_small2, "object/building/poi/shared_corellia_selonian_separatists_small2.iff")
 
 object_building_poi_shared_corellia_smashball_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3800,6 +3867,7 @@ object_building_poi_shared_corellia_smashball_large1 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_smashball_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3847,7 +3915,7 @@ object_building_poi_shared_corellia_smashball_large1 = SharedBuildingObjectTempl
 	clientObjectCRC = 23761660
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_smashball_large1, "object/building/poi/shared_corellia_smashball_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_smashball_large1, "object/building/poi/shared_corellia_smashball_large1.iff")
 
 object_building_poi_shared_corellia_smashball_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3856,6 +3924,7 @@ object_building_poi_shared_corellia_smashball_large2 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_smashball_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3903,7 +3972,7 @@ object_building_poi_shared_corellia_smashball_large2 = SharedBuildingObjectTempl
 	clientObjectCRC = 3665640043
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_smashball_large2, "object/building/poi/shared_corellia_smashball_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_smashball_large2, "object/building/poi/shared_corellia_smashball_large2.iff")
 
 object_building_poi_shared_corellia_smashball_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3912,6 +3981,7 @@ object_building_poi_shared_corellia_smashball_large3 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_smashball_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3959,7 +4029,7 @@ object_building_poi_shared_corellia_smashball_large3 = SharedBuildingObjectTempl
 	clientObjectCRC = 2473614822
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_smashball_large3, "object/building/poi/shared_corellia_smashball_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_smashball_large3, "object/building/poi/shared_corellia_smashball_large3.iff")
 
 object_building_poi_shared_corellia_smashball_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -3968,6 +4038,7 @@ object_building_poi_shared_corellia_smashball_small1 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_smashball_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4015,7 +4086,7 @@ object_building_poi_shared_corellia_smashball_small1 = SharedBuildingObjectTempl
 	clientObjectCRC = 3720913072
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_smashball_small1, "object/building/poi/shared_corellia_smashball_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_smashball_small1, "object/building/poi/shared_corellia_smashball_small1.iff")
 
 object_building_poi_shared_corellia_smashball_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4024,6 +4095,7 @@ object_building_poi_shared_corellia_smashball_small2 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_smashball_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4071,7 +4143,7 @@ object_building_poi_shared_corellia_smashball_small2 = SharedBuildingObjectTempl
 	clientObjectCRC = 115279911
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_smashball_small2, "object/building/poi/shared_corellia_smashball_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_smashball_small2, "object/building/poi/shared_corellia_smashball_small2.iff")
 
 object_building_poi_shared_corellia_solitude_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4080,6 +4152,7 @@ object_building_poi_shared_corellia_solitude_large1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_solitude_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4127,7 +4200,7 @@ object_building_poi_shared_corellia_solitude_large1 = SharedBuildingObjectTempla
 	clientObjectCRC = 3611608872
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_solitude_large1, "object/building/poi/shared_corellia_solitude_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_solitude_large1, "object/building/poi/shared_corellia_solitude_large1.iff")
 
 object_building_poi_shared_corellia_solitude_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4136,6 +4209,7 @@ object_building_poi_shared_corellia_solitude_large2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_solitude_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4183,7 +4257,7 @@ object_building_poi_shared_corellia_solitude_large2 = SharedBuildingObjectTempla
 	clientObjectCRC = 206794687
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_solitude_large2, "object/building/poi/shared_corellia_solitude_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_solitude_large2, "object/building/poi/shared_corellia_solitude_large2.iff")
 
 object_building_poi_shared_corellia_solitude_medium3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4192,6 +4266,7 @@ object_building_poi_shared_corellia_solitude_medium3 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_solitude_medium3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4239,7 +4314,7 @@ object_building_poi_shared_corellia_solitude_medium3 = SharedBuildingObjectTempl
 	clientObjectCRC = 3525690034
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_solitude_medium3, "object/building/poi/shared_corellia_solitude_medium3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_solitude_medium3, "object/building/poi/shared_corellia_solitude_medium3.iff")
 
 object_building_poi_shared_corellia_solitude_small4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4248,6 +4323,7 @@ object_building_poi_shared_corellia_solitude_small4 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_solitude_small4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4295,7 +4371,7 @@ object_building_poi_shared_corellia_solitude_small4 = SharedBuildingObjectTempla
 	clientObjectCRC = 1646203242
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_solitude_small4, "object/building/poi/shared_corellia_solitude_small4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_solitude_small4, "object/building/poi/shared_corellia_solitude_small4.iff")
 
 object_building_poi_shared_corellia_swoop_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4304,6 +4380,7 @@ object_building_poi_shared_corellia_swoop_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_swoop_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4351,7 +4428,7 @@ object_building_poi_shared_corellia_swoop_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1644662189
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_swoop_large1, "object/building/poi/shared_corellia_swoop_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_swoop_large1, "object/building/poi/shared_corellia_swoop_large1.iff")
 
 object_building_poi_shared_corellia_swoop_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4360,6 +4437,7 @@ object_building_poi_shared_corellia_swoop_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_swoop_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4407,7 +4485,7 @@ object_building_poi_shared_corellia_swoop_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3104843066
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_swoop_large2, "object/building/poi/shared_corellia_swoop_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_swoop_large2, "object/building/poi/shared_corellia_swoop_large2.iff")
 
 object_building_poi_shared_corellia_swoop_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4416,6 +4494,7 @@ object_building_poi_shared_corellia_swoop_large3 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_corellia_swoop_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4463,7 +4542,7 @@ object_building_poi_shared_corellia_swoop_large3 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4028449463
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_corellia_swoop_large3, "object/building/poi/shared_corellia_swoop_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_corellia_swoop_large3, "object/building/poi/shared_corellia_swoop_large3.iff")
 
 object_building_poi_shared_creature_lair_baz_nitch = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4472,6 +4551,7 @@ object_building_poi_shared_creature_lair_baz_nitch = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_baz_nitch.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4519,7 +4599,7 @@ object_building_poi_shared_creature_lair_baz_nitch = SharedBuildingObjectTemplat
 	clientObjectCRC = 1132882531
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_baz_nitch, "object/building/poi/shared_creature_lair_baz_nitch.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_baz_nitch, "object/building/poi/shared_creature_lair_baz_nitch.iff")
 
 object_building_poi_shared_creature_lair_boar_wolf = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4528,6 +4608,7 @@ object_building_poi_shared_creature_lair_boar_wolf = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_boar_wolf.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4575,7 +4656,7 @@ object_building_poi_shared_creature_lair_boar_wolf = SharedBuildingObjectTemplat
 	clientObjectCRC = 2163254490
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_boar_wolf, "object/building/poi/shared_creature_lair_boar_wolf.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_boar_wolf, "object/building/poi/shared_creature_lair_boar_wolf.iff")
 
 object_building_poi_shared_creature_lair_bocat = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4584,6 +4665,7 @@ object_building_poi_shared_creature_lair_bocat = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_bocat.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4631,7 +4713,7 @@ object_building_poi_shared_creature_lair_bocat = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2699861572
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_bocat, "object/building/poi/shared_creature_lair_bocat.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_bocat, "object/building/poi/shared_creature_lair_bocat.iff")
 
 object_building_poi_shared_creature_lair_bolma = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4640,6 +4722,7 @@ object_building_poi_shared_creature_lair_bolma = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_bolma.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4687,7 +4770,7 @@ object_building_poi_shared_creature_lair_bolma = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1685804096
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_bolma, "object/building/poi/shared_creature_lair_bolma.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_bolma, "object/building/poi/shared_creature_lair_bolma.iff")
 
 object_building_poi_shared_creature_lair_brackaset = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4696,6 +4779,7 @@ object_building_poi_shared_creature_lair_brackaset = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_brackaset.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4743,7 +4827,7 @@ object_building_poi_shared_creature_lair_brackaset = SharedBuildingObjectTemplat
 	clientObjectCRC = 2511531434
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_brackaset, "object/building/poi/shared_creature_lair_brackaset.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_brackaset, "object/building/poi/shared_creature_lair_brackaset.iff")
 
 object_building_poi_shared_creature_lair_brokensandcrawler_herb_camp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4752,6 +4836,7 @@ object_building_poi_shared_creature_lair_brokensandcrawler_herb_camp = SharedBui
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_brokensandcrawler_herb_camp.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4799,7 +4884,7 @@ object_building_poi_shared_creature_lair_brokensandcrawler_herb_camp = SharedBui
 	clientObjectCRC = 3260213168
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_brokensandcrawler_herb_camp, "object/building/poi/shared_creature_lair_brokensandcrawler_herb_camp.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_brokensandcrawler_herb_camp, "object/building/poi/shared_creature_lair_brokensandcrawler_herb_camp.iff")
 
 object_building_poi_shared_creature_lair_condor_dragon = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4808,6 +4893,7 @@ object_building_poi_shared_creature_lair_condor_dragon = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_condor_dragon.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4855,7 +4941,7 @@ object_building_poi_shared_creature_lair_condor_dragon = SharedBuildingObjectTem
 	clientObjectCRC = 168468441
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_condor_dragon, "object/building/poi/shared_creature_lair_condor_dragon.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_condor_dragon, "object/building/poi/shared_creature_lair_condor_dragon.iff")
 
 object_building_poi_shared_creature_lair_deathstarruins_junktown = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4864,6 +4950,7 @@ object_building_poi_shared_creature_lair_deathstarruins_junktown = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_deathstarruins_junktown.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4911,7 +4998,7 @@ object_building_poi_shared_creature_lair_deathstarruins_junktown = SharedBuildin
 	clientObjectCRC = 2536553904
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_deathstarruins_junktown, "object/building/poi/shared_creature_lair_deathstarruins_junktown.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_deathstarruins_junktown, "object/building/poi/shared_creature_lair_deathstarruins_junktown.iff")
 
 object_building_poi_shared_creature_lair_deathstarruinsoldcamp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4920,6 +5007,7 @@ object_building_poi_shared_creature_lair_deathstarruinsoldcamp = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_deathstarruinsoldcamp.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4967,7 +5055,7 @@ object_building_poi_shared_creature_lair_deathstarruinsoldcamp = SharedBuildingO
 	clientObjectCRC = 2155178725
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_deathstarruinsoldcamp, "object/building/poi/shared_creature_lair_deathstarruinsoldcamp.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_deathstarruinsoldcamp, "object/building/poi/shared_creature_lair_deathstarruinsoldcamp.iff")
 
 object_building_poi_shared_creature_lair_exploding_homestead = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -4976,6 +5064,7 @@ object_building_poi_shared_creature_lair_exploding_homestead = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_exploding_homestead.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5023,7 +5112,7 @@ object_building_poi_shared_creature_lair_exploding_homestead = SharedBuildingObj
 	clientObjectCRC = 2933459627
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_exploding_homestead, "object/building/poi/shared_creature_lair_exploding_homestead.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_exploding_homestead, "object/building/poi/shared_creature_lair_exploding_homestead.iff")
 
 object_building_poi_shared_creature_lair_forest_bloom_herbivore = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5032,6 +5121,7 @@ object_building_poi_shared_creature_lair_forest_bloom_herbivore = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_forest_bloom_herbivore.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5079,7 +5169,7 @@ object_building_poi_shared_creature_lair_forest_bloom_herbivore = SharedBuilding
 	clientObjectCRC = 2864892154
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_forest_bloom_herbivore, "object/building/poi/shared_creature_lair_forest_bloom_herbivore.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_forest_bloom_herbivore, "object/building/poi/shared_creature_lair_forest_bloom_herbivore.iff")
 
 object_building_poi_shared_creature_lair_forest_camp_remains = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5088,6 +5178,7 @@ object_building_poi_shared_creature_lair_forest_camp_remains = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_forest_camp_remains.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5135,7 +5226,7 @@ object_building_poi_shared_creature_lair_forest_camp_remains = SharedBuildingObj
 	clientObjectCRC = 312069736
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_forest_camp_remains, "object/building/poi/shared_creature_lair_forest_camp_remains.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_forest_camp_remains, "object/building/poi/shared_creature_lair_forest_camp_remains.iff")
 
 object_building_poi_shared_creature_lair_forest_sacrifice_beast = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5144,6 +5235,7 @@ object_building_poi_shared_creature_lair_forest_sacrifice_beast = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_forest_sacrifice_beast.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5191,7 +5283,7 @@ object_building_poi_shared_creature_lair_forest_sacrifice_beast = SharedBuilding
 	clientObjectCRC = 1499753343
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_forest_sacrifice_beast, "object/building/poi/shared_creature_lair_forest_sacrifice_beast.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_forest_sacrifice_beast, "object/building/poi/shared_creature_lair_forest_sacrifice_beast.iff")
 
 object_building_poi_shared_creature_lair_gaping_spider = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5200,6 +5292,7 @@ object_building_poi_shared_creature_lair_gaping_spider = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_gaping_spider.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5247,7 +5340,7 @@ object_building_poi_shared_creature_lair_gaping_spider = SharedBuildingObjectTem
 	clientObjectCRC = 3037282369
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_gaping_spider, "object/building/poi/shared_creature_lair_gaping_spider.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_gaping_spider, "object/building/poi/shared_creature_lair_gaping_spider.iff")
 
 object_building_poi_shared_creature_lair_graul = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5256,6 +5349,7 @@ object_building_poi_shared_creature_lair_graul = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_graul.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5303,7 +5397,7 @@ object_building_poi_shared_creature_lair_graul = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1500140860
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_graul, "object/building/poi/shared_creature_lair_graul.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_graul, "object/building/poi/shared_creature_lair_graul.iff")
 
 object_building_poi_shared_creature_lair_gronda = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5312,6 +5406,7 @@ object_building_poi_shared_creature_lair_gronda = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_gronda.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5359,7 +5454,7 @@ object_building_poi_shared_creature_lair_gronda = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 3644562261
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_gronda, "object/building/poi/shared_creature_lair_gronda.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_gronda, "object/building/poi/shared_creature_lair_gronda.iff")
 
 object_building_poi_shared_creature_lair_guardian_rancor = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5368,6 +5463,7 @@ object_building_poi_shared_creature_lair_guardian_rancor = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_guardian_rancor.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5415,7 +5511,7 @@ object_building_poi_shared_creature_lair_guardian_rancor = SharedBuildingObjectT
 	clientObjectCRC = 4133313486
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_guardian_rancor, "object/building/poi/shared_creature_lair_guardian_rancor.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_guardian_rancor, "object/building/poi/shared_creature_lair_guardian_rancor.iff")
 
 object_building_poi_shared_creature_lair_gubbur = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5424,6 +5520,7 @@ object_building_poi_shared_creature_lair_gubbur = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_gubbur.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5471,7 +5568,7 @@ object_building_poi_shared_creature_lair_gubbur = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1423458211
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_gubbur, "object/building/poi/shared_creature_lair_gubbur.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_gubbur, "object/building/poi/shared_creature_lair_gubbur.iff")
 
 object_building_poi_shared_creature_lair_imperial_destroy = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5480,6 +5577,7 @@ object_building_poi_shared_creature_lair_imperial_destroy = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_imperial_destroy.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5527,7 +5625,7 @@ object_building_poi_shared_creature_lair_imperial_destroy = SharedBuildingObject
 	clientObjectCRC = 833511658
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_imperial_destroy, "object/building/poi/shared_creature_lair_imperial_destroy.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_imperial_destroy, "object/building/poi/shared_creature_lair_imperial_destroy.iff")
 
 object_building_poi_shared_creature_lair_kusak = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5536,6 +5634,7 @@ object_building_poi_shared_creature_lair_kusak = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_kusak.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5583,7 +5682,7 @@ object_building_poi_shared_creature_lair_kusak = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3440583076
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_kusak, "object/building/poi/shared_creature_lair_kusak.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_kusak, "object/building/poi/shared_creature_lair_kusak.iff")
 
 object_building_poi_shared_creature_lair_kwi = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5592,6 +5691,7 @@ object_building_poi_shared_creature_lair_kwi = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_kwi.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5639,7 +5739,7 @@ object_building_poi_shared_creature_lair_kwi = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2439742199
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_kwi, "object/building/poi/shared_creature_lair_kwi.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_kwi, "object/building/poi/shared_creature_lair_kwi.iff")
 
 object_building_poi_shared_creature_lair_langlatch = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5648,6 +5748,7 @@ object_building_poi_shared_creature_lair_langlatch = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_langlatch.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5695,7 +5796,7 @@ object_building_poi_shared_creature_lair_langlatch = SharedBuildingObjectTemplat
 	clientObjectCRC = 2030330619
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_langlatch, "object/building/poi/shared_creature_lair_langlatch.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_langlatch, "object/building/poi/shared_creature_lair_langlatch.iff")
 
 object_building_poi_shared_creature_lair_malkloc = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5704,6 +5805,7 @@ object_building_poi_shared_creature_lair_malkloc = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_malkloc.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5751,7 +5853,7 @@ object_building_poi_shared_creature_lair_malkloc = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3137310203
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_malkloc, "object/building/poi/shared_creature_lair_malkloc.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_malkloc, "object/building/poi/shared_creature_lair_malkloc.iff")
 
 object_building_poi_shared_creature_lair_purbole = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5760,6 +5862,7 @@ object_building_poi_shared_creature_lair_purbole = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_purbole.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5807,7 +5910,7 @@ object_building_poi_shared_creature_lair_purbole = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2399203938
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_purbole, "object/building/poi/shared_creature_lair_purbole.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_purbole, "object/building/poi/shared_creature_lair_purbole.iff")
 
 object_building_poi_shared_creature_lair_remer = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5816,6 +5919,7 @@ object_building_poi_shared_creature_lair_remer = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_remer.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5863,7 +5967,7 @@ object_building_poi_shared_creature_lair_remer = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3508768381
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_remer, "object/building/poi/shared_creature_lair_remer.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_remer, "object/building/poi/shared_creature_lair_remer.iff")
 
 object_building_poi_shared_creature_lair_reptilian_flyer = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5872,6 +5976,7 @@ object_building_poi_shared_creature_lair_reptilian_flyer = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_reptilian_flyer.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5919,7 +6024,7 @@ object_building_poi_shared_creature_lair_reptilian_flyer = SharedBuildingObjectT
 	clientObjectCRC = 4009911486
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_reptilian_flyer, "object/building/poi/shared_creature_lair_reptilian_flyer.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_reptilian_flyer, "object/building/poi/shared_creature_lair_reptilian_flyer.iff")
 
 object_building_poi_shared_creature_lair_sand_panther = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5928,6 +6033,7 @@ object_building_poi_shared_creature_lair_sand_panther = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_sand_panther.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -5975,7 +6081,7 @@ object_building_poi_shared_creature_lair_sand_panther = SharedBuildingObjectTemp
 	clientObjectCRC = 3588797301
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_sand_panther, "object/building/poi/shared_creature_lair_sand_panther.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_sand_panther, "object/building/poi/shared_creature_lair_sand_panther.iff")
 
 object_building_poi_shared_creature_lair_shear_mite = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -5984,6 +6090,7 @@ object_building_poi_shared_creature_lair_shear_mite = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_shear_mite.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6031,7 +6138,7 @@ object_building_poi_shared_creature_lair_shear_mite = SharedBuildingObjectTempla
 	clientObjectCRC = 4085921723
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_shear_mite, "object/building/poi/shared_creature_lair_shear_mite.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_shear_mite, "object/building/poi/shared_creature_lair_shear_mite.iff")
 
 object_building_poi_shared_creature_lair_swampy_lair = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6040,6 +6147,7 @@ object_building_poi_shared_creature_lair_swampy_lair = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_swampy_lair.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6087,7 +6195,7 @@ object_building_poi_shared_creature_lair_swampy_lair = SharedBuildingObjectTempl
 	clientObjectCRC = 1454550642
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_swampy_lair, "object/building/poi/shared_creature_lair_swampy_lair.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_swampy_lair, "object/building/poi/shared_creature_lair_swampy_lair.iff")
 
 object_building_poi_shared_creature_lair_verne = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6096,6 +6204,7 @@ object_building_poi_shared_creature_lair_verne = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_creature_lair_verne.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6143,7 +6252,7 @@ object_building_poi_shared_creature_lair_verne = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3846558086
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_creature_lair_verne, "object/building/poi/shared_creature_lair_verne.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_creature_lair_verne, "object/building/poi/shared_creature_lair_verne.iff")
 
 object_building_poi_shared_dantooine_janta_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6152,6 +6261,7 @@ object_building_poi_shared_dantooine_janta_large1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_janta_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6199,7 +6309,7 @@ object_building_poi_shared_dantooine_janta_large1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2789761722
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_janta_large1, "object/building/poi/shared_dantooine_janta_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_janta_large1, "object/building/poi/shared_dantooine_janta_large1.iff")
 
 object_building_poi_shared_dantooine_janta_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6208,6 +6318,7 @@ object_building_poi_shared_dantooine_janta_large2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_janta_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6255,7 +6366,7 @@ object_building_poi_shared_dantooine_janta_large2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2103429677
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_janta_large2, "object/building/poi/shared_dantooine_janta_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_janta_large2, "object/building/poi/shared_dantooine_janta_large2.iff")
 
 object_building_poi_shared_dantooine_janta_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6264,6 +6375,7 @@ object_building_poi_shared_dantooine_janta_medium1 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_janta_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6311,7 +6423,7 @@ object_building_poi_shared_dantooine_janta_medium1 = SharedBuildingObjectTemplat
 	clientObjectCRC = 2834276344
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_janta_medium1, "object/building/poi/shared_dantooine_janta_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_janta_medium1, "object/building/poi/shared_dantooine_janta_medium1.iff")
 
 object_building_poi_shared_dantooine_janta_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6320,6 +6432,7 @@ object_building_poi_shared_dantooine_janta_medium2 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_janta_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6367,7 +6480,7 @@ object_building_poi_shared_dantooine_janta_medium2 = SharedBuildingObjectTemplat
 	clientObjectCRC = 1945646959
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_janta_medium2, "object/building/poi/shared_dantooine_janta_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_janta_medium2, "object/building/poi/shared_dantooine_janta_medium2.iff")
 
 object_building_poi_shared_dantooine_janta_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6376,6 +6489,7 @@ object_building_poi_shared_dantooine_janta_small1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_janta_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6423,7 +6537,7 @@ object_building_poi_shared_dantooine_janta_small1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2062176502
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_janta_small1, "object/building/poi/shared_dantooine_janta_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_janta_small1, "object/building/poi/shared_dantooine_janta_small1.iff")
 
 object_building_poi_shared_dantooine_janta_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6432,6 +6546,7 @@ object_building_poi_shared_dantooine_janta_small2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_janta_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6479,7 +6594,7 @@ object_building_poi_shared_dantooine_janta_small2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2717775969
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_janta_small2, "object/building/poi/shared_dantooine_janta_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_janta_small2, "object/building/poi/shared_dantooine_janta_small2.iff")
 
 object_building_poi_shared_dantooine_kunga_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6488,6 +6603,7 @@ object_building_poi_shared_dantooine_kunga_large1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_kunga_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6535,7 +6651,7 @@ object_building_poi_shared_dantooine_kunga_large1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2589378688
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_kunga_large1, "object/building/poi/shared_dantooine_kunga_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_kunga_large1, "object/building/poi/shared_dantooine_kunga_large1.iff")
 
 object_building_poi_shared_dantooine_kunga_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6544,6 +6660,7 @@ object_building_poi_shared_dantooine_kunga_large2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_kunga_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6591,7 +6708,7 @@ object_building_poi_shared_dantooine_kunga_large2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 1094803479
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_kunga_large2, "object/building/poi/shared_dantooine_kunga_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_kunga_large2, "object/building/poi/shared_dantooine_kunga_large2.iff")
 
 object_building_poi_shared_dantooine_kunga_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6600,6 +6717,7 @@ object_building_poi_shared_dantooine_kunga_medium1 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_kunga_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6647,7 +6765,7 @@ object_building_poi_shared_dantooine_kunga_medium1 = SharedBuildingObjectTemplat
 	clientObjectCRC = 1467699980
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_kunga_medium1, "object/building/poi/shared_dantooine_kunga_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_kunga_medium1, "object/building/poi/shared_dantooine_kunga_medium1.iff")
 
 object_building_poi_shared_dantooine_kunga_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6656,6 +6774,7 @@ object_building_poi_shared_dantooine_kunga_medium2 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_kunga_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6703,7 +6822,7 @@ object_building_poi_shared_dantooine_kunga_medium2 = SharedBuildingObjectTemplat
 	clientObjectCRC = 2355952539
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_kunga_medium2, "object/building/poi/shared_dantooine_kunga_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_kunga_medium2, "object/building/poi/shared_dantooine_kunga_medium2.iff")
 
 object_building_poi_shared_dantooine_kunga_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6712,6 +6831,7 @@ object_building_poi_shared_dantooine_kunga_small1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_kunga_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6759,7 +6879,7 @@ object_building_poi_shared_dantooine_kunga_small1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 1190460108
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_kunga_small1, "object/building/poi/shared_dantooine_kunga_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_kunga_small1, "object/building/poi/shared_dantooine_kunga_small1.iff")
 
 object_building_poi_shared_dantooine_kunga_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6768,6 +6888,7 @@ object_building_poi_shared_dantooine_kunga_small2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_kunga_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6815,7 +6936,7 @@ object_building_poi_shared_dantooine_kunga_small2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2648920667
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_kunga_small2, "object/building/poi/shared_dantooine_kunga_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_kunga_small2, "object/building/poi/shared_dantooine_kunga_small2.iff")
 
 object_building_poi_shared_dantooine_mokk_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6824,6 +6945,7 @@ object_building_poi_shared_dantooine_mokk_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_mokk_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6871,7 +6993,7 @@ object_building_poi_shared_dantooine_mokk_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 175414071
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_mokk_large1, "object/building/poi/shared_dantooine_mokk_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_mokk_large1, "object/building/poi/shared_dantooine_mokk_large1.iff")
 
 object_building_poi_shared_dantooine_mokk_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6880,6 +7002,7 @@ object_building_poi_shared_dantooine_mokk_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_mokk_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6927,7 +7050,7 @@ object_building_poi_shared_dantooine_mokk_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3512939424
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_mokk_large2, "object/building/poi/shared_dantooine_mokk_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_mokk_large2, "object/building/poi/shared_dantooine_mokk_large2.iff")
 
 object_building_poi_shared_dantooine_mokk_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6936,6 +7059,7 @@ object_building_poi_shared_dantooine_mokk_medium1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_mokk_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -6983,7 +7107,7 @@ object_building_poi_shared_dantooine_mokk_medium1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 1345707922
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_mokk_medium1, "object/building/poi/shared_dantooine_mokk_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_mokk_medium1, "object/building/poi/shared_dantooine_mokk_medium1.iff")
 
 object_building_poi_shared_dantooine_mokk_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -6992,6 +7116,7 @@ object_building_poi_shared_dantooine_mokk_medium2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_mokk_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7039,7 +7164,7 @@ object_building_poi_shared_dantooine_mokk_medium2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2334291717
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_mokk_medium2, "object/building/poi/shared_dantooine_mokk_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_mokk_medium2, "object/building/poi/shared_dantooine_mokk_medium2.iff")
 
 object_building_poi_shared_dantooine_mokk_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7048,6 +7173,7 @@ object_building_poi_shared_dantooine_mokk_small1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_mokk_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7095,7 +7221,7 @@ object_building_poi_shared_dantooine_mokk_small1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3604392315
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_mokk_small1, "object/building/poi/shared_dantooine_mokk_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_mokk_small1, "object/building/poi/shared_dantooine_mokk_small1.iff")
 
 object_building_poi_shared_dantooine_mokk_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7104,6 +7230,7 @@ object_building_poi_shared_dantooine_mokk_small2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dantooine_mokk_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7151,7 +7278,7 @@ object_building_poi_shared_dantooine_mokk_small2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 230752748
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dantooine_mokk_small2, "object/building/poi/shared_dantooine_mokk_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dantooine_mokk_small2, "object/building/poi/shared_dantooine_mokk_small2.iff")
 
 object_building_poi_shared_dathomir_freedprisonercamp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7160,6 +7287,7 @@ object_building_poi_shared_dathomir_freedprisonercamp_small1 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_freedprisonercamp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7207,7 +7335,7 @@ object_building_poi_shared_dathomir_freedprisonercamp_small1 = SharedBuildingObj
 	clientObjectCRC = 1611276352
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_freedprisonercamp_small1, "object/building/poi/shared_dathomir_freedprisonercamp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_freedprisonercamp_small1, "object/building/poi/shared_dathomir_freedprisonercamp_small1.iff")
 
 object_building_poi_shared_dathomir_freedprisonercamp_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7216,6 +7344,7 @@ object_building_poi_shared_dathomir_freedprisonercamp_small2 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_freedprisonercamp_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7263,7 +7392,7 @@ object_building_poi_shared_dathomir_freedprisonercamp_small2 = SharedBuildingObj
 	clientObjectCRC = 3139274967
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_freedprisonercamp_small2, "object/building/poi/shared_dathomir_freedprisonercamp_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_freedprisonercamp_small2, "object/building/poi/shared_dathomir_freedprisonercamp_small2.iff")
 
 object_building_poi_shared_dathomir_freedprisonerscamp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7272,6 +7401,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_large1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_freedprisonerscamp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7319,7 +7449,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_large1 = SharedBuildingOb
 	clientObjectCRC = 3067701329
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_freedprisonerscamp_large1, "object/building/poi/shared_dathomir_freedprisonerscamp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_freedprisonerscamp_large1, "object/building/poi/shared_dathomir_freedprisonerscamp_large1.iff")
 
 object_building_poi_shared_dathomir_freedprisonerscamp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7328,6 +7458,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_large2 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_freedprisonerscamp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7375,7 +7506,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_large2 = SharedBuildingOb
 	clientObjectCRC = 1842266310
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_freedprisonerscamp_large2, "object/building/poi/shared_dathomir_freedprisonerscamp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_freedprisonerscamp_large2, "object/building/poi/shared_dathomir_freedprisonerscamp_large2.iff")
 
 object_building_poi_shared_dathomir_freedprisonerscamp_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7384,6 +7515,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_medium1 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_freedprisonerscamp_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7431,7 +7563,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_medium1 = SharedBuildingO
 	clientObjectCRC = 1978969992
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_freedprisonerscamp_medium1, "object/building/poi/shared_dathomir_freedprisonerscamp_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_freedprisonerscamp_medium1, "object/building/poi/shared_dathomir_freedprisonerscamp_medium1.iff")
 
 object_building_poi_shared_dathomir_freedprisonerscamp_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7440,6 +7572,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_medium2 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_freedprisonerscamp_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7487,7 +7620,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_medium2 = SharedBuildingO
 	clientObjectCRC = 2934114079
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_freedprisonerscamp_medium2, "object/building/poi/shared_dathomir_freedprisonerscamp_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_freedprisonerscamp_medium2, "object/building/poi/shared_dathomir_freedprisonerscamp_medium2.iff")
 
 object_building_poi_shared_dathomir_imperialprisonpatrol_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7496,6 +7629,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_large1 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_imperialprisonpatrol_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7543,7 +7677,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_large1 = SharedBuilding
 	clientObjectCRC = 2603789484
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_imperialprisonpatrol_large1, "object/building/poi/shared_dathomir_imperialprisonpatrol_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_imperialprisonpatrol_large1, "object/building/poi/shared_dathomir_imperialprisonpatrol_large1.iff")
 
 object_building_poi_shared_dathomir_imperialprisonpatrol_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7552,6 +7686,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_large2 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_imperialprisonpatrol_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7599,7 +7734,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_large2 = SharedBuilding
 	clientObjectCRC = 1076167739
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_imperialprisonpatrol_large2, "object/building/poi/shared_dathomir_imperialprisonpatrol_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_imperialprisonpatrol_large2, "object/building/poi/shared_dathomir_imperialprisonpatrol_large2.iff")
 
 object_building_poi_shared_dathomir_imperialprisonpatrol_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7608,6 +7743,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_medium1 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_imperialprisonpatrol_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7655,7 +7791,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_medium1 = SharedBuildin
 	clientObjectCRC = 937321147
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_imperialprisonpatrol_medium1, "object/building/poi/shared_dathomir_imperialprisonpatrol_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_imperialprisonpatrol_medium1, "object/building/poi/shared_dathomir_imperialprisonpatrol_medium1.iff")
 
 object_building_poi_shared_dathomir_imperialprisonscout_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7664,6 +7800,7 @@ object_building_poi_shared_dathomir_imperialprisonscout_small1 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_imperialprisonscout_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7711,7 +7848,7 @@ object_building_poi_shared_dathomir_imperialprisonscout_small1 = SharedBuildingO
 	clientObjectCRC = 1927414722
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_imperialprisonscout_small1, "object/building/poi/shared_dathomir_imperialprisonscout_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_imperialprisonscout_small1, "object/building/poi/shared_dathomir_imperialprisonscout_small1.iff")
 
 object_building_poi_shared_dathomir_imperialprisonscout_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7720,6 +7857,7 @@ object_building_poi_shared_dathomir_imperialprisonscout_small2 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_imperialprisonscout_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7767,7 +7905,7 @@ object_building_poi_shared_dathomir_imperialprisonscout_small2 = SharedBuildingO
 	clientObjectCRC = 2851449685
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_imperialprisonscout_small2, "object/building/poi/shared_dathomir_imperialprisonscout_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_imperialprisonscout_small2, "object/building/poi/shared_dathomir_imperialprisonscout_small2.iff")
 
 object_building_poi_shared_dathomir_nightsister_medium3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7776,6 +7914,7 @@ object_building_poi_shared_dathomir_nightsister_medium3 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsister_medium3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7823,7 +7962,7 @@ object_building_poi_shared_dathomir_nightsister_medium3 = SharedBuildingObjectTe
 	clientObjectCRC = 255101489
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsister_medium3, "object/building/poi/shared_dathomir_nightsister_medium3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsister_medium3, "object/building/poi/shared_dathomir_nightsister_medium3.iff")
 
 object_building_poi_shared_dathomir_nightsister_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7832,6 +7971,7 @@ object_building_poi_shared_dathomir_nightsister_small1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsister_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7879,7 +8019,7 @@ object_building_poi_shared_dathomir_nightsister_small1 = SharedBuildingObjectTem
 	clientObjectCRC = 2012109994
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsister_small1, "object/building/poi/shared_dathomir_nightsister_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsister_small1, "object/building/poi/shared_dathomir_nightsister_small1.iff")
 
 object_building_poi_shared_dathomir_nightsister_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7888,6 +8028,7 @@ object_building_poi_shared_dathomir_nightsister_small2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsister_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7935,7 +8076,7 @@ object_building_poi_shared_dathomir_nightsister_small2 = SharedBuildingObjectTem
 	clientObjectCRC = 2902062141
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsister_small2, "object/building/poi/shared_dathomir_nightsister_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsister_small2, "object/building/poi/shared_dathomir_nightsister_small2.iff")
 
 object_building_poi_shared_dathomir_nightsister_small3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -7944,6 +8085,7 @@ object_building_poi_shared_dathomir_nightsister_small3 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsister_small3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -7991,7 +8133,7 @@ object_building_poi_shared_dathomir_nightsister_small3 = SharedBuildingObjectTem
 	clientObjectCRC = 3858011056
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsister_small3, "object/building/poi/shared_dathomir_nightsister_small3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsister_small3, "object/building/poi/shared_dathomir_nightsister_small3.iff")
 
 object_building_poi_shared_dathomir_nightsister_small4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8000,6 +8142,7 @@ object_building_poi_shared_dathomir_nightsister_small4 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsister_small4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8047,7 +8190,7 @@ object_building_poi_shared_dathomir_nightsister_small4 = SharedBuildingObjectTem
 	clientObjectCRC = 504871076
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsister_small4, "object/building/poi/shared_dathomir_nightsister_small4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsister_small4, "object/building/poi/shared_dathomir_nightsister_small4.iff")
 
 object_building_poi_shared_dathomir_nightsister_small5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8056,6 +8199,7 @@ object_building_poi_shared_dathomir_nightsister_small5 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsister_small5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8103,7 +8247,7 @@ object_building_poi_shared_dathomir_nightsister_small5 = SharedBuildingObjectTem
 	clientObjectCRC = 1461378857
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsister_small5, "object/building/poi/shared_dathomir_nightsister_small5.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsister_small5, "object/building/poi/shared_dathomir_nightsister_small5.iff")
 
 object_building_poi_shared_dathomir_nightsister_small6 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8112,6 +8256,7 @@ object_building_poi_shared_dathomir_nightsister_small6 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsister_small6.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8159,7 +8304,7 @@ object_building_poi_shared_dathomir_nightsister_small6 = SharedBuildingObjectTem
 	clientObjectCRC = 2349692862
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsister_small6, "object/building/poi/shared_dathomir_nightsister_small6.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsister_small6, "object/building/poi/shared_dathomir_nightsister_small6.iff")
 
 object_building_poi_shared_dathomir_nightsisterpatrol_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8168,6 +8313,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_large1 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsisterpatrol_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8215,7 +8361,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_large1 = SharedBuildingObj
 	clientObjectCRC = 3485566354
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsisterpatrol_large1, "object/building/poi/shared_dathomir_nightsisterpatrol_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsisterpatrol_large1, "object/building/poi/shared_dathomir_nightsisterpatrol_large1.iff")
 
 object_building_poi_shared_dathomir_nightsisterpatrol_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8224,6 +8370,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_large2 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsisterpatrol_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8271,7 +8418,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_large2 = SharedBuildingObj
 	clientObjectCRC = 349580549
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsisterpatrol_large2, "object/building/poi/shared_dathomir_nightsisterpatrol_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsisterpatrol_large2, "object/building/poi/shared_dathomir_nightsisterpatrol_large2.iff")
 
 object_building_poi_shared_dathomir_nightsisterpatrol_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8280,6 +8427,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_medium1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_nightsisterpatrol_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8327,7 +8475,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_medium1 = SharedBuildingOb
 	clientObjectCRC = 2942599520
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_nightsisterpatrol_medium1, "object/building/poi/shared_dathomir_nightsisterpatrol_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_nightsisterpatrol_medium1, "object/building/poi/shared_dathomir_nightsisterpatrol_medium1.iff")
 
 object_building_poi_shared_dathomir_singingmtnclan_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8336,6 +8484,7 @@ object_building_poi_shared_dathomir_singingmtnclan_small1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_singingmtnclan_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8383,7 +8532,7 @@ object_building_poi_shared_dathomir_singingmtnclan_small1 = SharedBuildingObject
 	clientObjectCRC = 3095836244
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_singingmtnclan_small1, "object/building/poi/shared_dathomir_singingmtnclan_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_singingmtnclan_small1, "object/building/poi/shared_dathomir_singingmtnclan_small1.iff")
 
 object_building_poi_shared_dathomir_singingmtnclan_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8392,6 +8541,7 @@ object_building_poi_shared_dathomir_singingmtnclan_small2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_singingmtnclan_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8439,7 +8589,7 @@ object_building_poi_shared_dathomir_singingmtnclan_small2 = SharedBuildingObject
 	clientObjectCRC = 1670454979
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_singingmtnclan_small2, "object/building/poi/shared_dathomir_singingmtnclan_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_singingmtnclan_small2, "object/building/poi/shared_dathomir_singingmtnclan_small2.iff")
 
 object_building_poi_shared_dathomir_singingmtnclanpatrol_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8448,6 +8598,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_large1 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_singingmtnclanpatrol_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8495,7 +8646,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_large1 = SharedBuilding
 	clientObjectCRC = 139005500
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_singingmtnclanpatrol_large1, "object/building/poi/shared_dathomir_singingmtnclanpatrol_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_singingmtnclanpatrol_large1, "object/building/poi/shared_dathomir_singingmtnclanpatrol_large1.iff")
 
 object_building_poi_shared_dathomir_singingmtnclanpatrol_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8504,6 +8655,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_large2 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_singingmtnclanpatrol_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8551,7 +8703,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_large2 = SharedBuilding
 	clientObjectCRC = 3546195627
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_singingmtnclanpatrol_large2, "object/building/poi/shared_dathomir_singingmtnclanpatrol_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_singingmtnclanpatrol_large2, "object/building/poi/shared_dathomir_singingmtnclanpatrol_large2.iff")
 
 object_building_poi_shared_dathomir_singingmtnclanpatrol_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8560,6 +8712,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_medium1 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_dathomir_singingmtnclanpatrol_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8607,7 +8760,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_medium1 = SharedBuildin
 	clientObjectCRC = 1680011260
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_dathomir_singingmtnclanpatrol_medium1, "object/building/poi/shared_dathomir_singingmtnclanpatrol_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_dathomir_singingmtnclanpatrol_medium1, "object/building/poi/shared_dathomir_singingmtnclanpatrol_medium1.iff")
 
 object_building_poi_shared_destroyed_moisture_farm_theater = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8616,6 +8769,7 @@ object_building_poi_shared_destroyed_moisture_farm_theater = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_destroyed_moisture_farm_theater.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8663,7 +8817,7 @@ object_building_poi_shared_destroyed_moisture_farm_theater = SharedBuildingObjec
 	clientObjectCRC = 4201619574
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_destroyed_moisture_farm_theater, "object/building/poi/shared_destroyed_moisture_farm_theater.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_destroyed_moisture_farm_theater, "object/building/poi/shared_destroyed_moisture_farm_theater.iff")
 
 object_building_poi_shared_destroyed_sandcrawler_theater = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8672,6 +8826,7 @@ object_building_poi_shared_destroyed_sandcrawler_theater = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_destroyed_sandcrawler_theater.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8719,7 +8874,7 @@ object_building_poi_shared_destroyed_sandcrawler_theater = SharedBuildingObjectT
 	clientObjectCRC = 3909453160
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_destroyed_sandcrawler_theater, "object/building/poi/shared_destroyed_sandcrawler_theater.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_destroyed_sandcrawler_theater, "object/building/poi/shared_destroyed_sandcrawler_theater.iff")
 
 object_building_poi_shared_endor_dulok_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8728,6 +8883,7 @@ object_building_poi_shared_endor_dulok_large1 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8775,7 +8931,7 @@ object_building_poi_shared_endor_dulok_large1 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 1489412304
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_large1, "object/building/poi/shared_endor_dulok_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_large1, "object/building/poi/shared_endor_dulok_large1.iff")
 
 object_building_poi_shared_endor_dulok_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8784,6 +8940,7 @@ object_building_poi_shared_endor_dulok_large2 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8831,7 +8988,7 @@ object_building_poi_shared_endor_dulok_large2 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 2211514439
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_large2, "object/building/poi/shared_endor_dulok_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_large2, "object/building/poi/shared_endor_dulok_large2.iff")
 
 object_building_poi_shared_endor_dulok_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8840,6 +8997,7 @@ object_building_poi_shared_endor_dulok_large3 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8887,7 +9045,7 @@ object_building_poi_shared_endor_dulok_large3 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3403444170
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_large3, "object/building/poi/shared_endor_dulok_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_large3, "object/building/poi/shared_endor_dulok_large3.iff")
 
 object_building_poi_shared_endor_dulok_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8896,6 +9054,7 @@ object_building_poi_shared_endor_dulok_medium = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8943,7 +9102,7 @@ object_building_poi_shared_endor_dulok_medium = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3951405793
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_medium, "object/building/poi/shared_endor_dulok_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_medium, "object/building/poi/shared_endor_dulok_medium.iff")
 
 object_building_poi_shared_endor_dulok_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -8952,6 +9111,7 @@ object_building_poi_shared_endor_dulok_medium2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -8999,7 +9159,7 @@ object_building_poi_shared_endor_dulok_medium2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1208746092
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_medium2, "object/building/poi/shared_endor_dulok_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_medium2, "object/building/poi/shared_endor_dulok_medium2.iff")
 
 object_building_poi_shared_endor_dulok_medium7 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9008,6 +9168,7 @@ object_building_poi_shared_endor_dulok_medium7 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_medium7.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9055,7 +9216,7 @@ object_building_poi_shared_endor_dulok_medium7 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 569762914
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_medium7, "object/building/poi/shared_endor_dulok_medium7.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_medium7, "object/building/poi/shared_endor_dulok_medium7.iff")
 
 object_building_poi_shared_endor_dulok_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9064,6 +9225,7 @@ object_building_poi_shared_endor_dulok_small1 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9111,7 +9273,7 @@ object_building_poi_shared_endor_dulok_small1 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 2221183644
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_small1, "object/building/poi/shared_endor_dulok_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_small1, "object/building/poi/shared_endor_dulok_small1.iff")
 
 object_building_poi_shared_endor_dulok_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9120,6 +9282,7 @@ object_building_poi_shared_endor_dulok_small2 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9167,7 +9330,7 @@ object_building_poi_shared_endor_dulok_small2 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 1601387019
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_small2, "object/building/poi/shared_endor_dulok_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_small2, "object/building/poi/shared_endor_dulok_small2.iff")
 
 object_building_poi_shared_endor_dulok_small3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9176,6 +9339,7 @@ object_building_poi_shared_endor_dulok_small3 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_small3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9223,7 +9387,7 @@ object_building_poi_shared_endor_dulok_small3 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 377380230
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_small3, "object/building/poi/shared_endor_dulok_small3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_small3, "object/building/poi/shared_endor_dulok_small3.iff")
 
 object_building_poi_shared_endor_dulok_small5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9232,6 +9396,7 @@ object_building_poi_shared_endor_dulok_small5 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_small5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9279,7 +9444,7 @@ object_building_poi_shared_endor_dulok_small5 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 2760904991
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_small5, "object/building/poi/shared_endor_dulok_small5.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_small5, "object/building/poi/shared_endor_dulok_small5.iff")
 
 object_building_poi_shared_endor_dulok_small6 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9288,6 +9453,7 @@ object_building_poi_shared_endor_dulok_small6 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_small6.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9335,7 +9501,7 @@ object_building_poi_shared_endor_dulok_small6 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 2139601288
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_small6, "object/building/poi/shared_endor_dulok_small6.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_small6, "object/building/poi/shared_endor_dulok_small6.iff")
 
 object_building_poi_shared_endor_dulok_small7 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9344,6 +9510,7 @@ object_building_poi_shared_endor_dulok_small7 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_dulok_small7.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9391,7 +9558,7 @@ object_building_poi_shared_endor_dulok_small7 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 915070469
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_dulok_small7, "object/building/poi/shared_endor_dulok_small7.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_dulok_small7, "object/building/poi/shared_endor_dulok_small7.iff")
 
 object_building_poi_shared_endor_ewok_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9400,6 +9567,7 @@ object_building_poi_shared_endor_ewok_large1 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9447,7 +9615,7 @@ object_building_poi_shared_endor_ewok_large1 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 1525456539
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_large1, "object/building/poi/shared_endor_ewok_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_large1, "object/building/poi/shared_endor_ewok_large1.iff")
 
 object_building_poi_shared_endor_ewok_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9456,6 +9624,7 @@ object_building_poi_shared_endor_ewok_large2 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9503,7 +9672,7 @@ object_building_poi_shared_endor_ewok_large2 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2180724236
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_large2, "object/building/poi/shared_endor_ewok_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_large2, "object/building/poi/shared_endor_ewok_large2.iff")
 
 object_building_poi_shared_endor_ewok_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9512,6 +9681,7 @@ object_building_poi_shared_endor_ewok_large3 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9559,7 +9729,7 @@ object_building_poi_shared_endor_ewok_large3 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 3371585921
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_large3, "object/building/poi/shared_endor_ewok_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_large3, "object/building/poi/shared_endor_ewok_large3.iff")
 
 object_building_poi_shared_endor_ewok_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9568,6 +9738,7 @@ object_building_poi_shared_endor_ewok_large4 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9615,7 +9786,7 @@ object_building_poi_shared_endor_ewok_large4 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 857045653
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_large4, "object/building/poi/shared_endor_ewok_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_large4, "object/building/poi/shared_endor_ewok_large4.iff")
 
 object_building_poi_shared_endor_ewok_large5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9624,6 +9795,7 @@ object_building_poi_shared_endor_ewok_large5 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_large5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9671,7 +9843,7 @@ object_building_poi_shared_endor_ewok_large5 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2048400664
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_large5, "object/building/poi/shared_endor_ewok_large5.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_large5, "object/building/poi/shared_endor_ewok_large5.iff")
 
 object_building_poi_shared_endor_ewok_large6 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9680,6 +9852,7 @@ object_building_poi_shared_endor_ewok_large6 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_large6.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9727,7 +9900,7 @@ object_building_poi_shared_endor_ewok_large6 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2702161295
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_large6, "object/building/poi/shared_endor_ewok_large6.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_large6, "object/building/poi/shared_endor_ewok_large6.iff")
 
 object_building_poi_shared_endor_ewok_large7 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9736,6 +9909,7 @@ object_building_poi_shared_endor_ewok_large7 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_large7.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9783,7 +9957,7 @@ object_building_poi_shared_endor_ewok_large7 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 3892498946
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_large7, "object/building/poi/shared_endor_ewok_large7.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_large7, "object/building/poi/shared_endor_ewok_large7.iff")
 
 object_building_poi_shared_endor_ewok_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9792,6 +9966,7 @@ object_building_poi_shared_endor_ewok_medium = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9839,7 +10014,7 @@ object_building_poi_shared_endor_ewok_medium = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 3920598186
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_medium, "object/building/poi/shared_endor_ewok_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_medium, "object/building/poi/shared_endor_ewok_medium.iff")
 
 object_building_poi_shared_endor_ewok_medium3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9848,6 +10023,7 @@ object_building_poi_shared_endor_ewok_medium3 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_medium3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9895,7 +10071,7 @@ object_building_poi_shared_endor_ewok_medium3 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 582817679
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_medium3, "object/building/poi/shared_endor_ewok_medium3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_medium3, "object/building/poi/shared_endor_ewok_medium3.iff")
 
 object_building_poi_shared_endor_ewok_medium4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9904,6 +10080,7 @@ object_building_poi_shared_endor_ewok_medium4 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_medium4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -9951,7 +10128,7 @@ object_building_poi_shared_endor_ewok_medium4 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3646831771
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_medium4, "object/building/poi/shared_endor_ewok_medium4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_medium4, "object/building/poi/shared_endor_ewok_medium4.iff")
 
 object_building_poi_shared_endor_ewok_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -9960,6 +10137,7 @@ object_building_poi_shared_endor_ewok_small1 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10007,7 +10185,7 @@ object_building_poi_shared_endor_ewok_small1 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 2253302999
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_small1, "object/building/poi/shared_endor_ewok_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_small1, "object/building/poi/shared_endor_ewok_small1.iff")
 
 object_building_poi_shared_endor_ewok_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10016,6 +10194,7 @@ object_building_poi_shared_endor_ewok_small2 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10063,7 +10242,7 @@ object_building_poi_shared_endor_ewok_small2 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 1566114880
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_small2, "object/building/poi/shared_endor_ewok_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_small2, "object/building/poi/shared_endor_ewok_small2.iff")
 
 object_building_poi_shared_endor_ewok_small3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10072,6 +10251,7 @@ object_building_poi_shared_endor_ewok_small3 = SharedBuildingObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_ewok_small3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10119,7 +10299,7 @@ object_building_poi_shared_endor_ewok_small3 = SharedBuildingObjectTemplate:new 
 	clientObjectCRC = 341074893
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_ewok_small3, "object/building/poi/shared_endor_ewok_small3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_ewok_small3, "object/building/poi/shared_endor_ewok_small3.iff")
 
 object_building_poi_shared_endor_marauder_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10128,6 +10308,7 @@ object_building_poi_shared_endor_marauder_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10175,7 +10356,7 @@ object_building_poi_shared_endor_marauder_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2271972307
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_large1, "object/building/poi/shared_endor_marauder_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_large1, "object/building/poi/shared_endor_marauder_large1.iff")
 
 object_building_poi_shared_endor_marauder_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10184,6 +10365,7 @@ object_building_poi_shared_endor_marauder_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10231,7 +10413,7 @@ object_building_poi_shared_endor_marauder_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1551639364
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_large2, "object/building/poi/shared_endor_marauder_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_large2, "object/building/poi/shared_endor_marauder_large2.iff")
 
 object_building_poi_shared_endor_marauder_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10240,6 +10422,7 @@ object_building_poi_shared_endor_marauder_large3 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10287,7 +10470,7 @@ object_building_poi_shared_endor_marauder_large3 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 359744713
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_large3, "object/building/poi/shared_endor_marauder_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_large3, "object/building/poi/shared_endor_marauder_large3.iff")
 
 object_building_poi_shared_endor_marauder_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10296,6 +10479,7 @@ object_building_poi_shared_endor_marauder_large4 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10343,7 +10527,7 @@ object_building_poi_shared_endor_marauder_large4 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4002574301
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_large4, "object/building/poi/shared_endor_marauder_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_large4, "object/building/poi/shared_endor_marauder_large4.iff")
 
 object_building_poi_shared_endor_marauder_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10352,6 +10536,7 @@ object_building_poi_shared_endor_marauder_medium = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10399,7 +10584,7 @@ object_building_poi_shared_endor_marauder_medium = SharedBuildingObjectTemplate:
 	clientObjectCRC = 875069922
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_medium, "object/building/poi/shared_endor_marauder_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_medium, "object/building/poi/shared_endor_marauder_medium.iff")
 
 object_building_poi_shared_endor_marauder_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10408,6 +10593,7 @@ object_building_poi_shared_endor_marauder_medium2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10455,7 +10641,7 @@ object_building_poi_shared_endor_marauder_medium2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 3438540088
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_medium2, "object/building/poi/shared_endor_marauder_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_medium2, "object/building/poi/shared_endor_marauder_medium2.iff")
 
 object_building_poi_shared_endor_marauder_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10464,6 +10650,7 @@ object_building_poi_shared_endor_marauder_small1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10511,7 +10698,7 @@ object_building_poi_shared_endor_marauder_small1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1539946911
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_small1, "object/building/poi/shared_endor_marauder_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_small1, "object/building/poi/shared_endor_marauder_small1.iff")
 
 object_building_poi_shared_endor_marauder_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10520,6 +10707,7 @@ object_building_poi_shared_endor_marauder_small2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10567,7 +10755,7 @@ object_building_poi_shared_endor_marauder_small2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2162037000
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_small2, "object/building/poi/shared_endor_marauder_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_small2, "object/building/poi/shared_endor_marauder_small2.iff")
 
 object_building_poi_shared_endor_marauder_small3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10576,6 +10764,7 @@ object_building_poi_shared_endor_marauder_small3 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_small3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10623,7 +10812,7 @@ object_building_poi_shared_endor_marauder_small3 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3386078853
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_small3, "object/building/poi/shared_endor_marauder_small3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_small3, "object/building/poi/shared_endor_marauder_small3.iff")
 
 object_building_poi_shared_endor_marauder_small4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10632,6 +10821,7 @@ object_building_poi_shared_endor_marauder_small4 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_endor_marauder_small4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10679,7 +10869,7 @@ object_building_poi_shared_endor_marauder_small4 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 842030481
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_endor_marauder_small4, "object/building/poi/shared_endor_marauder_small4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_endor_marauder_small4, "object/building/poi/shared_endor_marauder_small4.iff")
 
 object_building_poi_shared_imperial_listening_post = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10688,6 +10878,7 @@ object_building_poi_shared_imperial_listening_post = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_imperial_listening_post.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10735,7 +10926,7 @@ object_building_poi_shared_imperial_listening_post = SharedBuildingObjectTemplat
 	clientObjectCRC = 3267290153
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_imperial_listening_post, "object/building/poi/shared_imperial_listening_post.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_imperial_listening_post, "object/building/poi/shared_imperial_listening_post.iff")
 
 object_building_poi_shared_lincbarnes_testcamp_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10744,6 +10935,7 @@ object_building_poi_shared_lincbarnes_testcamp_medium = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lincbarnes_testcamp_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10791,7 +10983,7 @@ object_building_poi_shared_lincbarnes_testcamp_medium = SharedBuildingObjectTemp
 	clientObjectCRC = 2644566900
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lincbarnes_testcamp_medium, "object/building/poi/shared_lincbarnes_testcamp_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lincbarnes_testcamp_medium, "object/building/poi/shared_lincbarnes_testcamp_medium.iff")
 
 object_building_poi_shared_lok_imperial_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10800,6 +10992,7 @@ object_building_poi_shared_lok_imperial_large1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10847,7 +11040,7 @@ object_building_poi_shared_lok_imperial_large1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1325908803
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_large1, "object/building/poi/shared_lok_imperial_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_large1, "object/building/poi/shared_lok_imperial_large1.iff")
 
 object_building_poi_shared_lok_imperial_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10856,6 +11049,7 @@ object_building_poi_shared_lok_imperial_large2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10903,7 +11097,7 @@ object_building_poi_shared_lok_imperial_large2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2484104148
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_large2, "object/building/poi/shared_lok_imperial_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_large2, "object/building/poi/shared_lok_imperial_large2.iff")
 
 object_building_poi_shared_lok_imperial_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10912,6 +11106,7 @@ object_building_poi_shared_lok_imperial_large3 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -10959,7 +11154,7 @@ object_building_poi_shared_lok_imperial_large3 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3709668441
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_large3, "object/building/poi/shared_lok_imperial_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_large3, "object/building/poi/shared_lok_imperial_large3.iff")
 
 object_building_poi_shared_lok_imperial_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -10968,6 +11163,7 @@ object_building_poi_shared_lok_imperial_large4 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11015,7 +11211,7 @@ object_building_poi_shared_lok_imperial_large4 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 654190413
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_large4, "object/building/poi/shared_lok_imperial_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_large4, "object/building/poi/shared_lok_imperial_large4.iff")
 
 object_building_poi_shared_lok_imperial_large5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11024,6 +11220,7 @@ object_building_poi_shared_lok_imperial_large5 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_large5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11071,7 +11268,7 @@ object_building_poi_shared_lok_imperial_large5 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1878212800
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_large5, "object/building/poi/shared_lok_imperial_large5.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_large5, "object/building/poi/shared_lok_imperial_large5.iff")
 
 object_building_poi_shared_lok_imperial_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11080,6 +11277,7 @@ object_building_poi_shared_lok_imperial_medium = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11127,7 +11325,7 @@ object_building_poi_shared_lok_imperial_medium = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 4232366450
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_medium, "object/building/poi/shared_lok_imperial_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_medium, "object/building/poi/shared_lok_imperial_medium.iff")
 
 object_building_poi_shared_lok_imperial_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11136,6 +11334,7 @@ object_building_poi_shared_lok_imperial_medium2 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11183,7 +11382,7 @@ object_building_poi_shared_lok_imperial_medium2 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 3677952025
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_medium2, "object/building/poi/shared_lok_imperial_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_medium2, "object/building/poi/shared_lok_imperial_medium2.iff")
 
 object_building_poi_shared_lok_imperial_medium4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11192,6 +11391,7 @@ object_building_poi_shared_lok_imperial_medium4 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_medium4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11239,7 +11439,7 @@ object_building_poi_shared_lok_imperial_medium4 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1775719552
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_medium4, "object/building/poi/shared_lok_imperial_medium4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_medium4, "object/building/poi/shared_lok_imperial_medium4.iff")
 
 object_building_poi_shared_lok_imperial_medium5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11248,6 +11448,7 @@ object_building_poi_shared_lok_imperial_medium5 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_medium5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11295,7 +11496,7 @@ object_building_poi_shared_lok_imperial_medium5 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 551170829
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_medium5, "object/building/poi/shared_lok_imperial_medium5.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_medium5, "object/building/poi/shared_lok_imperial_medium5.iff")
 
 object_building_poi_shared_lok_imperial_medium6 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11304,6 +11505,7 @@ object_building_poi_shared_lok_imperial_medium6 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_medium6.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11351,7 +11553,7 @@ object_building_poi_shared_lok_imperial_medium6 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 4224555930
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_medium6, "object/building/poi/shared_lok_imperial_medium6.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_medium6, "object/building/poi/shared_lok_imperial_medium6.iff")
 
 object_building_poi_shared_lok_imperial_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11360,6 +11562,7 @@ object_building_poi_shared_lok_imperial_small1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11407,7 +11610,7 @@ object_building_poi_shared_lok_imperial_small1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2477125903
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_small1, "object/building/poi/shared_lok_imperial_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_small1, "object/building/poi/shared_lok_imperial_small1.iff")
 
 object_building_poi_shared_lok_imperial_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11416,6 +11619,7 @@ object_building_poi_shared_lok_imperial_small2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_imperial_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11463,7 +11667,7 @@ object_building_poi_shared_lok_imperial_small2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1219647896
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_imperial_small2, "object/building/poi/shared_lok_imperial_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_imperial_small2, "object/building/poi/shared_lok_imperial_small2.iff")
 
 object_building_poi_shared_lok_nymshenchman_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11472,6 +11676,7 @@ object_building_poi_shared_lok_nymshenchman_large = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_large.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11519,7 +11724,7 @@ object_building_poi_shared_lok_nymshenchman_large = SharedBuildingObjectTemplate
 	clientObjectCRC = 2468275837
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_large, "object/building/poi/shared_lok_nymshenchman_large.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_large, "object/building/poi/shared_lok_nymshenchman_large.iff")
 
 object_building_poi_shared_lok_nymshenchman_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11528,6 +11733,7 @@ object_building_poi_shared_lok_nymshenchman_large2 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11575,7 +11781,7 @@ object_building_poi_shared_lok_nymshenchman_large2 = SharedBuildingObjectTemplat
 	clientObjectCRC = 368864307
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_large2, "object/building/poi/shared_lok_nymshenchman_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_large2, "object/building/poi/shared_lok_nymshenchman_large2.iff")
 
 object_building_poi_shared_lok_nymshenchman_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11584,6 +11790,7 @@ object_building_poi_shared_lok_nymshenchman_large3 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11631,7 +11838,7 @@ object_building_poi_shared_lok_nymshenchman_large3 = SharedBuildingObjectTemplat
 	clientObjectCRC = 1559301054
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_large3, "object/building/poi/shared_lok_nymshenchman_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_large3, "object/building/poi/shared_lok_nymshenchman_large3.iff")
 
 object_building_poi_shared_lok_nymshenchman_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11640,6 +11847,7 @@ object_building_poi_shared_lok_nymshenchman_large4 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11687,7 +11895,7 @@ object_building_poi_shared_lok_nymshenchman_large4 = SharedBuildingObjectTemplat
 	clientObjectCRC = 2802983082
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_large4, "object/building/poi/shared_lok_nymshenchman_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_large4, "object/building/poi/shared_lok_nymshenchman_large4.iff")
 
 object_building_poi_shared_lok_nymshenchman_large5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11696,6 +11904,7 @@ object_building_poi_shared_lok_nymshenchman_large5 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_large5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11743,7 +11952,7 @@ object_building_poi_shared_lok_nymshenchman_large5 = SharedBuildingObjectTemplat
 	clientObjectCRC = 3995027239
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_large5, "object/building/poi/shared_lok_nymshenchman_large5.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_large5, "object/building/poi/shared_lok_nymshenchman_large5.iff")
 
 object_building_poi_shared_lok_nymshenchman_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11752,6 +11961,7 @@ object_building_poi_shared_lok_nymshenchman_medium = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11799,7 +12009,7 @@ object_building_poi_shared_lok_nymshenchman_medium = SharedBuildingObjectTemplat
 	clientObjectCRC = 2108214933
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_medium, "object/building/poi/shared_lok_nymshenchman_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_medium, "object/building/poi/shared_lok_nymshenchman_medium.iff")
 
 object_building_poi_shared_lok_nymshenchman_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11808,6 +12018,7 @@ object_building_poi_shared_lok_nymshenchman_medium2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11855,7 +12066,7 @@ object_building_poi_shared_lok_nymshenchman_medium2 = SharedBuildingObjectTempla
 	clientObjectCRC = 1525875264
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_medium2, "object/building/poi/shared_lok_nymshenchman_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_medium2, "object/building/poi/shared_lok_nymshenchman_medium2.iff")
 
 object_building_poi_shared_lok_nymshenchman_medium3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11864,6 +12075,7 @@ object_building_poi_shared_lok_nymshenchman_medium3 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_medium3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11911,7 +12123,7 @@ object_building_poi_shared_lok_nymshenchman_medium3 = SharedBuildingObjectTempla
 	clientObjectCRC = 335439309
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_medium3, "object/building/poi/shared_lok_nymshenchman_medium3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_medium3, "object/building/poi/shared_lok_nymshenchman_medium3.iff")
 
 object_building_poi_shared_lok_nymshenchman_medium4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11920,6 +12132,7 @@ object_building_poi_shared_lok_nymshenchman_medium4 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_medium4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -11967,7 +12180,7 @@ object_building_poi_shared_lok_nymshenchman_medium4 = SharedBuildingObjectTempla
 	clientObjectCRC = 3894234841
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_medium4, "object/building/poi/shared_lok_nymshenchman_medium4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_medium4, "object/building/poi/shared_lok_nymshenchman_medium4.iff")
 
 object_building_poi_shared_lok_nymshenchman_small3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -11976,6 +12189,7 @@ object_building_poi_shared_lok_nymshenchman_small3 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_small3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12023,7 +12237,7 @@ object_building_poi_shared_lok_nymshenchman_small3 = SharedBuildingObjectTemplat
 	clientObjectCRC = 2152937970
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_small3, "object/building/poi/shared_lok_nymshenchman_small3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_small3, "object/building/poi/shared_lok_nymshenchman_small3.iff")
 
 object_building_poi_shared_lok_nymshenchman_small4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12032,6 +12246,7 @@ object_building_poi_shared_lok_nymshenchman_small4 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_lok_nymshenchman_small4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12079,7 +12294,7 @@ object_building_poi_shared_lok_nymshenchman_small4 = SharedBuildingObjectTemplat
 	clientObjectCRC = 2075136742
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_lok_nymshenchman_small4, "object/building/poi/shared_lok_nymshenchman_small4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_lok_nymshenchman_small4, "object/building/poi/shared_lok_nymshenchman_small4.iff")
 
 object_building_poi_shared_naboo_abbots_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12088,6 +12303,7 @@ object_building_poi_shared_naboo_abbots_camp_large1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_abbots_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12135,7 +12351,7 @@ object_building_poi_shared_naboo_abbots_camp_large1 = SharedBuildingObjectTempla
 	clientObjectCRC = 616378301
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_abbots_camp_large1, "object/building/poi/shared_naboo_abbots_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_abbots_camp_large1, "object/building/poi/shared_naboo_abbots_camp_large1.iff")
 
 object_building_poi_shared_naboo_afcitexplor_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12144,6 +12360,7 @@ object_building_poi_shared_naboo_afcitexplor_large1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_afcitexplor_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12191,7 +12408,7 @@ object_building_poi_shared_naboo_afcitexplor_large1 = SharedBuildingObjectTempla
 	clientObjectCRC = 591257863
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_afcitexplor_large1, "object/building/poi/shared_naboo_afcitexplor_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_afcitexplor_large1, "object/building/poi/shared_naboo_afcitexplor_large1.iff")
 
 object_building_poi_shared_naboo_afcitexplor_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12200,6 +12417,7 @@ object_building_poi_shared_naboo_afcitexplor_large2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_afcitexplor_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12247,7 +12465,7 @@ object_building_poi_shared_naboo_afcitexplor_large2 = SharedBuildingObjectTempla
 	clientObjectCRC = 4163520912
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_afcitexplor_large2, "object/building/poi/shared_naboo_afcitexplor_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_afcitexplor_large2, "object/building/poi/shared_naboo_afcitexplor_large2.iff")
 
 object_building_poi_shared_naboo_afcitexplor_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12256,6 +12474,7 @@ object_building_poi_shared_naboo_afcitexplor_medium = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_afcitexplor_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12303,7 +12522,7 @@ object_building_poi_shared_naboo_afcitexplor_medium = SharedBuildingObjectTempla
 	clientObjectCRC = 2424236854
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_afcitexplor_medium, "object/building/poi/shared_naboo_afcitexplor_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_afcitexplor_medium, "object/building/poi/shared_naboo_afcitexplor_medium.iff")
 
 object_building_poi_shared_naboo_borvos_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12312,6 +12531,7 @@ object_building_poi_shared_naboo_borvos_large1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_borvos_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12359,7 +12579,7 @@ object_building_poi_shared_naboo_borvos_large1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 568758617
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_borvos_large1, "object/building/poi/shared_naboo_borvos_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_borvos_large1, "object/building/poi/shared_naboo_borvos_large1.iff")
 
 object_building_poi_shared_naboo_borvos_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12368,6 +12588,7 @@ object_building_poi_shared_naboo_borvos_large2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_borvos_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12415,7 +12636,7 @@ object_building_poi_shared_naboo_borvos_large2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 4210112974
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_borvos_large2, "object/building/poi/shared_naboo_borvos_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_borvos_large2, "object/building/poi/shared_naboo_borvos_large2.iff")
 
 object_building_poi_shared_naboo_borvos_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12424,6 +12645,7 @@ object_building_poi_shared_naboo_borvos_large3 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_borvos_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12471,7 +12693,7 @@ object_building_poi_shared_naboo_borvos_large3 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3019660867
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_borvos_large3, "object/building/poi/shared_naboo_borvos_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_borvos_large3, "object/building/poi/shared_naboo_borvos_large3.iff")
 
 object_building_poi_shared_naboo_borvos_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12480,6 +12702,7 @@ object_building_poi_shared_naboo_borvos_medium = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_borvos_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12527,7 +12750,7 @@ object_building_poi_shared_naboo_borvos_medium = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2460326760
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_borvos_medium, "object/building/poi/shared_naboo_borvos_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_borvos_medium, "object/building/poi/shared_naboo_borvos_medium.iff")
 
 object_building_poi_shared_naboo_farm_medium_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12536,6 +12759,7 @@ object_building_poi_shared_naboo_farm_medium_1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_farm_medium_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12583,7 +12807,7 @@ object_building_poi_shared_naboo_farm_medium_1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 4283975782
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_farm_medium_1, "object/building/poi/shared_naboo_farm_medium_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_farm_medium_1, "object/building/poi/shared_naboo_farm_medium_1.iff")
 
 object_building_poi_shared_naboo_farm_medium_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12592,6 +12816,7 @@ object_building_poi_shared_naboo_farm_medium_2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_farm_medium_2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12639,7 +12864,7 @@ object_building_poi_shared_naboo_farm_medium_2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 609214705
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_farm_medium_2, "object/building/poi/shared_naboo_farm_medium_2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_farm_medium_2, "object/building/poi/shared_naboo_farm_medium_2.iff")
 
 object_building_poi_shared_naboo_gungawar_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12648,6 +12873,7 @@ object_building_poi_shared_naboo_gungawar_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungawar_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12695,7 +12921,7 @@ object_building_poi_shared_naboo_gungawar_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3123585066
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungawar_large1, "object/building/poi/shared_naboo_gungawar_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungawar_large1, "object/building/poi/shared_naboo_gungawar_large1.iff")
 
 object_building_poi_shared_naboo_gungawar_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12704,6 +12930,7 @@ object_building_poi_shared_naboo_gungawar_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungawar_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12751,7 +12978,7 @@ object_building_poi_shared_naboo_gungawar_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1631160509
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungawar_large2, "object/building/poi/shared_naboo_gungawar_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungawar_large2, "object/building/poi/shared_naboo_gungawar_large2.iff")
 
 object_building_poi_shared_naboo_gungtrad_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12760,6 +12987,7 @@ object_building_poi_shared_naboo_gungtrad_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungtrad_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12807,7 +13035,7 @@ object_building_poi_shared_naboo_gungtrad_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3437191612
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungtrad_large1, "object/building/poi/shared_naboo_gungtrad_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungtrad_large1, "object/building/poi/shared_naboo_gungtrad_large1.iff")
 
 object_building_poi_shared_naboo_gungtrad_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12816,6 +13044,7 @@ object_building_poi_shared_naboo_gungtrad_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungtrad_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12863,7 +13092,7 @@ object_building_poi_shared_naboo_gungtrad_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 399034667
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungtrad_large2, "object/building/poi/shared_naboo_gungtrad_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungtrad_large2, "object/building/poi/shared_naboo_gungtrad_large2.iff")
 
 object_building_poi_shared_naboo_gungtrad_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12872,6 +13101,7 @@ object_building_poi_shared_naboo_gungtrad_medium = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungtrad_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12919,7 +13149,7 @@ object_building_poi_shared_naboo_gungtrad_medium = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2140957581
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungtrad_medium, "object/building/poi/shared_naboo_gungtrad_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungtrad_medium, "object/building/poi/shared_naboo_gungtrad_medium.iff")
 
 object_building_poi_shared_naboo_gungtrad_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12928,6 +13158,7 @@ object_building_poi_shared_naboo_gungtrad_medium2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungtrad_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -12975,7 +13206,7 @@ object_building_poi_shared_naboo_gungtrad_medium2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 1741955374
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungtrad_medium2, "object/building/poi/shared_naboo_gungtrad_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungtrad_medium2, "object/building/poi/shared_naboo_gungtrad_medium2.iff")
 
 object_building_poi_shared_naboo_gungwar_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -12984,6 +13215,7 @@ object_building_poi_shared_naboo_gungwar_large1 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungwar_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13031,7 +13263,7 @@ object_building_poi_shared_naboo_gungwar_large1 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 2104254608
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungwar_large1, "object/building/poi/shared_naboo_gungwar_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungwar_large1, "object/building/poi/shared_naboo_gungwar_large1.iff")
 
 object_building_poi_shared_naboo_gungwar_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13040,6 +13272,7 @@ object_building_poi_shared_naboo_gungwar_large2 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungwar_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13087,7 +13320,7 @@ object_building_poi_shared_naboo_gungwar_large2 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 2793129991
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungwar_large2, "object/building/poi/shared_naboo_gungwar_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungwar_large2, "object/building/poi/shared_naboo_gungwar_large2.iff")
 
 object_building_poi_shared_naboo_gungwar_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13096,6 +13329,7 @@ object_building_poi_shared_naboo_gungwar_medium = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gungwar_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13143,7 +13377,7 @@ object_building_poi_shared_naboo_gungwar_medium = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 3459213985
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gungwar_medium, "object/building/poi/shared_naboo_gungwar_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gungwar_medium, "object/building/poi/shared_naboo_gungwar_medium.iff")
 
 object_building_poi_shared_naboo_gunrunners_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13152,6 +13386,7 @@ object_building_poi_shared_naboo_gunrunners_large1 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gunrunners_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13199,7 +13434,7 @@ object_building_poi_shared_naboo_gunrunners_large1 = SharedBuildingObjectTemplat
 	clientObjectCRC = 2566973772
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gunrunners_large1, "object/building/poi/shared_naboo_gunrunners_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gunrunners_large1, "object/building/poi/shared_naboo_gunrunners_large1.iff")
 
 object_building_poi_shared_naboo_gunrunners_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13208,6 +13443,7 @@ object_building_poi_shared_naboo_gunrunners_large2 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gunrunners_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13255,7 +13491,7 @@ object_building_poi_shared_naboo_gunrunners_large2 = SharedBuildingObjectTemplat
 	clientObjectCRC = 1108820443
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gunrunners_large2, "object/building/poi/shared_naboo_gunrunners_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gunrunners_large2, "object/building/poi/shared_naboo_gunrunners_large2.iff")
 
 object_building_poi_shared_naboo_gunrunners_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13264,6 +13500,7 @@ object_building_poi_shared_naboo_gunrunners_medium = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gunrunners_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13311,7 +13548,7 @@ object_building_poi_shared_naboo_gunrunners_medium = SharedBuildingObjectTemplat
 	clientObjectCRC = 709092221
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gunrunners_medium, "object/building/poi/shared_naboo_gunrunners_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gunrunners_medium, "object/building/poi/shared_naboo_gunrunners_medium.iff")
 
 object_building_poi_shared_naboo_gunrunners_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13320,6 +13557,7 @@ object_building_poi_shared_naboo_gunrunners_small1 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gunrunners_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13367,7 +13605,7 @@ object_building_poi_shared_naboo_gunrunners_small1 = SharedBuildingObjectTemplat
 	clientObjectCRC = 1168300800
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gunrunners_small1, "object/building/poi/shared_naboo_gunrunners_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gunrunners_small1, "object/building/poi/shared_naboo_gunrunners_small1.iff")
 
 object_building_poi_shared_naboo_gunrunners_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13376,6 +13614,7 @@ object_building_poi_shared_naboo_gunrunners_small2 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_gunrunners_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13423,7 +13662,7 @@ object_building_poi_shared_naboo_gunrunners_small2 = SharedBuildingObjectTemplat
 	clientObjectCRC = 2662691735
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_gunrunners_small2, "object/building/poi/shared_naboo_gunrunners_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_gunrunners_small2, "object/building/poi/shared_naboo_gunrunners_small2.iff")
 
 object_building_poi_shared_naboo_imperial_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13432,6 +13671,7 @@ object_building_poi_shared_naboo_imperial_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_imperial_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13479,7 +13719,7 @@ object_building_poi_shared_naboo_imperial_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 179496592
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_imperial_large1, "object/building/poi/shared_naboo_imperial_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_imperial_large1, "object/building/poi/shared_naboo_imperial_large1.iff")
 
 object_building_poi_shared_naboo_imperial_scout_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13488,6 +13728,7 @@ object_building_poi_shared_naboo_imperial_scout_large1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_imperial_scout_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13535,7 +13776,7 @@ object_building_poi_shared_naboo_imperial_scout_large1 = SharedBuildingObjectTem
 	clientObjectCRC = 1761246693
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_imperial_scout_large1, "object/building/poi/shared_naboo_imperial_scout_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_imperial_scout_large1, "object/building/poi/shared_naboo_imperial_scout_large1.iff")
 
 object_building_poi_shared_naboo_impext_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13544,6 +13785,7 @@ object_building_poi_shared_naboo_impext_large1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_impext_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13591,7 +13833,7 @@ object_building_poi_shared_naboo_impext_large1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3509571779
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_impext_large1, "object/building/poi/shared_naboo_impext_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_impext_large1, "object/building/poi/shared_naboo_impext_large1.iff")
 
 object_building_poi_shared_naboo_impext_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13600,6 +13842,7 @@ object_building_poi_shared_naboo_impext_large2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_impext_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13647,7 +13890,7 @@ object_building_poi_shared_naboo_impext_large2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 171472980
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_impext_large2, "object/building/poi/shared_naboo_impext_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_impext_large2, "object/building/poi/shared_naboo_impext_large2.iff")
 
 object_building_poi_shared_naboo_impext_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13656,6 +13899,7 @@ object_building_poi_shared_naboo_impext_large3 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_impext_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13703,7 +13947,7 @@ object_building_poi_shared_naboo_impext_large3 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1127555033
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_impext_large3, "object/building/poi/shared_naboo_impext_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_impext_large3, "object/building/poi/shared_naboo_impext_large3.iff")
 
 object_building_poi_shared_naboo_impext_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13712,6 +13956,7 @@ object_building_poi_shared_naboo_impext_medium = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_impext_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13759,7 +14004,7 @@ object_building_poi_shared_naboo_impext_medium = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1651301106
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_impext_medium, "object/building/poi/shared_naboo_impext_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_impext_medium, "object/building/poi/shared_naboo_impext_medium.iff")
 
 object_building_poi_shared_naboo_impswamp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13768,6 +14013,7 @@ object_building_poi_shared_naboo_impswamp_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_impswamp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13815,7 +14061,7 @@ object_building_poi_shared_naboo_impswamp_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 536910191
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_impswamp_large1, "object/building/poi/shared_naboo_impswamp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_impswamp_large1, "object/building/poi/shared_naboo_impswamp_large1.iff")
 
 object_building_poi_shared_naboo_impswamp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13824,6 +14070,7 @@ object_building_poi_shared_naboo_impswamp_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_impswamp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13871,7 +14118,7 @@ object_building_poi_shared_naboo_impswamp_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4212601336
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_impswamp_large2, "object/building/poi/shared_naboo_impswamp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_impswamp_large2, "object/building/poi/shared_naboo_impswamp_large2.iff")
 
 object_building_poi_shared_naboo_impswamp_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13880,6 +14127,7 @@ object_building_poi_shared_naboo_impswamp_medium = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_impswamp_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13927,7 +14175,7 @@ object_building_poi_shared_naboo_impswamp_medium = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2470679390
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_impswamp_medium, "object/building/poi/shared_naboo_impswamp_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_impswamp_medium, "object/building/poi/shared_naboo_impswamp_medium.iff")
 
 object_building_poi_shared_naboo_mauler_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13936,6 +14184,7 @@ object_building_poi_shared_naboo_mauler_large1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_mauler_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -13983,7 +14232,7 @@ object_building_poi_shared_naboo_mauler_large1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 647466583
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_mauler_large1, "object/building/poi/shared_naboo_mauler_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_mauler_large1, "object/building/poi/shared_naboo_mauler_large1.iff")
 
 object_building_poi_shared_naboo_mauler_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -13992,6 +14241,7 @@ object_building_poi_shared_naboo_mauler_large2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_mauler_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14039,7 +14289,7 @@ object_building_poi_shared_naboo_mauler_large2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 4253034176
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_mauler_large2, "object/building/poi/shared_naboo_mauler_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_mauler_large2, "object/building/poi/shared_naboo_mauler_large2.iff")
 
 object_building_poi_shared_naboo_mauler_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14048,6 +14298,7 @@ object_building_poi_shared_naboo_mauler_medium = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_mauler_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14095,7 +14346,7 @@ object_building_poi_shared_naboo_mauler_medium = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2513732710
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_mauler_medium, "object/building/poi/shared_naboo_mauler_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_mauler_medium, "object/building/poi/shared_naboo_mauler_medium.iff")
 
 object_building_poi_shared_naboo_mvillager_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14104,6 +14355,7 @@ object_building_poi_shared_naboo_mvillager_large1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_mvillager_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14151,7 +14403,7 @@ object_building_poi_shared_naboo_mvillager_large1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 1333273055
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_mvillager_large1, "object/building/poi/shared_naboo_mvillager_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_mvillager_large1, "object/building/poi/shared_naboo_mvillager_large1.iff")
 
 object_building_poi_shared_naboo_mvillager_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14160,6 +14412,7 @@ object_building_poi_shared_naboo_mvillager_large2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_mvillager_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14207,7 +14460,7 @@ object_building_poi_shared_naboo_mvillager_large2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2490337608
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_mvillager_large2, "object/building/poi/shared_naboo_mvillager_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_mvillager_large2, "object/building/poi/shared_naboo_mvillager_large2.iff")
 
 object_building_poi_shared_naboo_mvillager_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14216,6 +14469,7 @@ object_building_poi_shared_naboo_mvillager_medium = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_mvillager_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14263,7 +14517,7 @@ object_building_poi_shared_naboo_mvillager_medium = SharedBuildingObjectTemplate
 	clientObjectCRC = 4231736302
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_mvillager_medium, "object/building/poi/shared_naboo_mvillager_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_mvillager_medium, "object/building/poi/shared_naboo_mvillager_medium.iff")
 
 object_building_poi_shared_naboo_police_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14272,6 +14526,7 @@ object_building_poi_shared_naboo_police_large1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_police_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14319,7 +14574,7 @@ object_building_poi_shared_naboo_police_large1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2977371865
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_police_large1, "object/building/poi/shared_naboo_police_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_police_large1, "object/building/poi/shared_naboo_police_large1.iff")
 
 object_building_poi_shared_naboo_police_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14328,6 +14583,7 @@ object_building_poi_shared_naboo_police_large2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_police_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14375,7 +14631,7 @@ object_building_poi_shared_naboo_police_large2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1784725070
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_police_large2, "object/building/poi/shared_naboo_police_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_police_large2, "object/building/poi/shared_naboo_police_large2.iff")
 
 object_building_poi_shared_naboo_police_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14384,6 +14640,7 @@ object_building_poi_shared_naboo_police_medium = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_police_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14431,7 +14688,7 @@ object_building_poi_shared_naboo_police_medium = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 36969704
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_police_medium, "object/building/poi/shared_naboo_police_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_police_medium, "object/building/poi/shared_naboo_police_medium.iff")
 
 object_building_poi_shared_naboo_politic_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14440,6 +14697,7 @@ object_building_poi_shared_naboo_politic_large1 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_politic_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14487,7 +14745,7 @@ object_building_poi_shared_naboo_politic_large1 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 2943429571
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_politic_large1, "object/building/poi/shared_naboo_politic_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_politic_large1, "object/building/poi/shared_naboo_politic_large1.iff")
 
 object_building_poi_shared_naboo_politic_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14496,6 +14754,7 @@ object_building_poi_shared_naboo_politic_large2 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_politic_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14543,7 +14802,7 @@ object_building_poi_shared_naboo_politic_large2 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1952875348
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_politic_large2, "object/building/poi/shared_naboo_politic_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_politic_large2, "object/building/poi/shared_naboo_politic_large2.iff")
 
 object_building_poi_shared_naboo_politic_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14552,6 +14811,7 @@ object_building_poi_shared_naboo_politic_medium = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_politic_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14599,7 +14859,7 @@ object_building_poi_shared_naboo_politic_medium = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 473047538
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_politic_medium, "object/building/poi/shared_naboo_politic_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_politic_medium, "object/building/poi/shared_naboo_politic_medium.iff")
 
 object_building_poi_shared_naboo_ruins_large_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14608,6 +14868,7 @@ object_building_poi_shared_naboo_ruins_large_1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_ruins_large_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14655,7 +14916,7 @@ object_building_poi_shared_naboo_ruins_large_1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1925640941
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_ruins_large_1, "object/building/poi/shared_naboo_ruins_large_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_ruins_large_1, "object/building/poi/shared_naboo_ruins_large_1.iff")
 
 object_building_poi_shared_naboo_ruins_medium_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14664,6 +14925,7 @@ object_building_poi_shared_naboo_ruins_medium_1 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_ruins_medium_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14711,7 +14973,7 @@ object_building_poi_shared_naboo_ruins_medium_1 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 2535903472
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_ruins_medium_1, "object/building/poi/shared_naboo_ruins_medium_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_ruins_medium_1, "object/building/poi/shared_naboo_ruins_medium_1.iff")
 
 object_building_poi_shared_naboo_ruins_medium_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14720,6 +14982,7 @@ object_building_poi_shared_naboo_ruins_medium_3 = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_ruins_medium_3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14767,7 +15030,7 @@ object_building_poi_shared_naboo_ruins_medium_3 = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 87826410
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_ruins_medium_3, "object/building/poi/shared_naboo_ruins_medium_3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_ruins_medium_3, "object/building/poi/shared_naboo_ruins_medium_3.iff")
 
 object_building_poi_shared_naboo_ruins_small_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14776,6 +15039,7 @@ object_building_poi_shared_naboo_ruins_small_1 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_ruins_small_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14823,7 +15087,7 @@ object_building_poi_shared_naboo_ruins_small_1 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 4100157024
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_ruins_small_1, "object/building/poi/shared_naboo_ruins_small_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_ruins_small_1, "object/building/poi/shared_naboo_ruins_small_1.iff")
 
 object_building_poi_shared_naboo_ruins_small_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14832,6 +15096,7 @@ object_building_poi_shared_naboo_ruins_small_2 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_ruins_small_2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14879,7 +15144,7 @@ object_building_poi_shared_naboo_ruins_small_2 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 796182263
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_ruins_small_2, "object/building/poi/shared_naboo_ruins_small_2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_ruins_small_2, "object/building/poi/shared_naboo_ruins_small_2.iff")
 
 object_building_poi_shared_naboo_ruins_small_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14888,6 +15153,7 @@ object_building_poi_shared_naboo_ruins_small_3 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_ruins_small_3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14935,7 +15201,7 @@ object_building_poi_shared_naboo_ruins_small_3 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1719247226
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_ruins_small_3, "object/building/poi/shared_naboo_ruins_small_3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_ruins_small_3, "object/building/poi/shared_naboo_ruins_small_3.iff")
 
 object_building_poi_shared_naboo_ruins_small_4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -14944,6 +15210,7 @@ object_building_poi_shared_naboo_ruins_small_4 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_ruins_small_4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -14991,7 +15258,7 @@ object_building_poi_shared_naboo_ruins_small_4 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 2644150894
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_ruins_small_4, "object/building/poi/shared_naboo_ruins_small_4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_ruins_small_4, "object/building/poi/shared_naboo_ruins_small_4.iff")
 
 object_building_poi_shared_naboo_ruins_small_5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15000,6 +15267,7 @@ object_building_poi_shared_naboo_ruins_small_5 = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_ruins_small_5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15047,7 +15315,7 @@ object_building_poi_shared_naboo_ruins_small_5 = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 3566726627
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_ruins_small_5, "object/building/poi/shared_naboo_ruins_small_5.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_ruins_small_5, "object/building/poi/shared_naboo_ruins_small_5.iff")
 
 object_building_poi_shared_naboo_swamhunt_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15056,6 +15324,7 @@ object_building_poi_shared_naboo_swamhunt_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_swamhunt_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15103,7 +15372,7 @@ object_building_poi_shared_naboo_swamhunt_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3018898037
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_swamhunt_large1, "object/building/poi/shared_naboo_swamhunt_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_swamhunt_large1, "object/building/poi/shared_naboo_swamhunt_large1.iff")
 
 object_building_poi_shared_naboo_swamhunt_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15112,6 +15381,7 @@ object_building_poi_shared_naboo_swamhunt_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_swamhunt_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15159,7 +15429,7 @@ object_building_poi_shared_naboo_swamhunt_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1759974114
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_swamhunt_large2, "object/building/poi/shared_naboo_swamhunt_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_swamhunt_large2, "object/building/poi/shared_naboo_swamhunt_large2.iff")
 
 object_building_poi_shared_naboo_swamhunt_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15168,6 +15438,7 @@ object_building_poi_shared_naboo_swamhunt_medium = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_swamhunt_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15215,7 +15486,7 @@ object_building_poi_shared_naboo_swamhunt_medium = SharedBuildingObjectTemplate:
 	clientObjectCRC = 11776068
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_swamhunt_medium, "object/building/poi/shared_naboo_swamhunt_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_swamhunt_medium, "object/building/poi/shared_naboo_swamhunt_medium.iff")
 
 object_building_poi_shared_naboo_swamp_rat_gang_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15224,6 +15495,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_large1 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_swamp_rat_gang_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15271,7 +15543,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_large1 = SharedBuildingObje
 	clientObjectCRC = 1168819895
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_swamp_rat_gang_camp_large1, "object/building/poi/shared_naboo_swamp_rat_gang_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_swamp_rat_gang_camp_large1, "object/building/poi/shared_naboo_swamp_rat_gang_camp_large1.iff")
 
 object_building_poi_shared_naboo_swamp_rat_gang_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15280,6 +15552,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_large2 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_swamp_rat_gang_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15327,7 +15600,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_large2 = SharedBuildingObje
 	clientObjectCRC = 2663214624
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_swamp_rat_gang_camp_large2, "object/building/poi/shared_naboo_swamp_rat_gang_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_swamp_rat_gang_camp_large2, "object/building/poi/shared_naboo_swamp_rat_gang_camp_large2.iff")
 
 object_building_poi_shared_naboo_swamp_rat_gang_camp_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15336,6 +15609,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_medium = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_swamp_rat_gang_camp_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15383,7 +15657,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_medium = SharedBuildingObje
 	clientObjectCRC = 4142517382
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_swamp_rat_gang_camp_medium, "object/building/poi/shared_naboo_swamp_rat_gang_camp_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_swamp_rat_gang_camp_medium, "object/building/poi/shared_naboo_swamp_rat_gang_camp_medium.iff")
 
 object_building_poi_shared_naboo_tradefederationloyalist_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15392,6 +15666,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_large1 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_tradefederationloyalist_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15439,7 +15714,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_large1 = SharedBuilding
 	clientObjectCRC = 665275923
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_tradefederationloyalist_large1, "object/building/poi/shared_naboo_tradefederationloyalist_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_tradefederationloyalist_large1, "object/building/poi/shared_naboo_tradefederationloyalist_large1.iff")
 
 object_building_poi_shared_naboo_tradefederationloyalist_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15448,6 +15723,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_large2 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_tradefederationloyalist_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15495,7 +15771,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_large2 = SharedBuilding
 	clientObjectCRC = 4239451780
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_tradefederationloyalist_large2, "object/building/poi/shared_naboo_tradefederationloyalist_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_tradefederationloyalist_large2, "object/building/poi/shared_naboo_tradefederationloyalist_large2.iff")
 
 object_building_poi_shared_naboo_tradefederationloyalist_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15504,6 +15780,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_medium = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_tradefederationloyalist_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15551,7 +15828,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_medium = SharedBuilding
 	clientObjectCRC = 2497987618
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_tradefederationloyalist_medium, "object/building/poi/shared_naboo_tradefederationloyalist_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_tradefederationloyalist_medium, "object/building/poi/shared_naboo_tradefederationloyalist_medium.iff")
 
 object_building_poi_shared_naboo_tradefederationloyalist_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15560,6 +15837,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_small1 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_tradefederationloyalist_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15607,7 +15885,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_small1 = SharedBuilding
 	clientObjectCRC = 4211440735
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_tradefederationloyalist_small1, "object/building/poi/shared_naboo_tradefederationloyalist_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_tradefederationloyalist_small1, "object/building/poi/shared_naboo_tradefederationloyalist_small1.iff")
 
 object_building_poi_shared_naboo_tradefederationloyalist_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15616,6 +15894,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_small2 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_tradefederationloyalist_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15663,7 +15942,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_small2 = SharedBuilding
 	clientObjectCRC = 538105032
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_tradefederationloyalist_small2, "object/building/poi/shared_naboo_tradefederationloyalist_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_tradefederationloyalist_small2, "object/building/poi/shared_naboo_tradefederationloyalist_small2.iff")
 
 object_building_poi_shared_naboo_tuskcattam_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15672,6 +15951,7 @@ object_building_poi_shared_naboo_tuskcattam_large1 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_tuskcattam_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15719,7 +15999,7 @@ object_building_poi_shared_naboo_tuskcattam_large1 = SharedBuildingObjectTemplat
 	clientObjectCRC = 609383494
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_tuskcattam_large1, "object/building/poi/shared_naboo_tuskcattam_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_tuskcattam_large1, "object/building/poi/shared_naboo_tuskcattam_large1.iff")
 
 object_building_poi_shared_naboo_tuskcattam_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15728,6 +16008,7 @@ object_building_poi_shared_naboo_tuskcattam_large2 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_tuskcattam_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15775,7 +16056,7 @@ object_building_poi_shared_naboo_tuskcattam_large2 = SharedBuildingObjectTemplat
 	clientObjectCRC = 4282768593
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_tuskcattam_large2, "object/building/poi/shared_naboo_tuskcattam_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_tuskcattam_large2, "object/building/poi/shared_naboo_tuskcattam_large2.iff")
 
 object_building_poi_shared_naboo_tuskcattam_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15784,6 +16065,7 @@ object_building_poi_shared_naboo_tuskcattam_medium = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_tuskcattam_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15831,7 +16113,7 @@ object_building_poi_shared_naboo_tuskcattam_medium = SharedBuildingObjectTemplat
 	clientObjectCRC = 2534506103
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_tuskcattam_medium, "object/building/poi/shared_naboo_tuskcattam_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_tuskcattam_medium, "object/building/poi/shared_naboo_tuskcattam_medium.iff")
 
 object_building_poi_shared_naboo_village_large_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15840,6 +16122,7 @@ object_building_poi_shared_naboo_village_large_1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_naboo_village_large_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15887,7 +16170,7 @@ object_building_poi_shared_naboo_village_large_1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1100618175
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_naboo_village_large_1, "object/building/poi/shared_naboo_village_large_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_naboo_village_large_1, "object/building/poi/shared_naboo_village_large_1.iff")
 
 object_building_poi_shared_rebel_listening_post = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15896,6 +16179,7 @@ object_building_poi_shared_rebel_listening_post = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_rebel_listening_post.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15943,7 +16227,7 @@ object_building_poi_shared_rebel_listening_post = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 2924073718
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_rebel_listening_post, "object/building/poi/shared_rebel_listening_post.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_rebel_listening_post, "object/building/poi/shared_rebel_listening_post.iff")
 
 object_building_poi_shared_rebel_scavenger_camp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -15952,6 +16236,7 @@ object_building_poi_shared_rebel_scavenger_camp = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_rebel_scavenger_camp.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -15999,7 +16284,7 @@ object_building_poi_shared_rebel_scavenger_camp = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 1509267724
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_rebel_scavenger_camp, "object/building/poi/shared_rebel_scavenger_camp.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_rebel_scavenger_camp, "object/building/poi/shared_rebel_scavenger_camp.iff")
 
 object_building_poi_shared_scout_camp_s0 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16008,6 +16293,7 @@ object_building_poi_shared_scout_camp_s0 = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_scout_camp_s0.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16055,7 +16341,7 @@ object_building_poi_shared_scout_camp_s0 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 144155712
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_scout_camp_s0, "object/building/poi/shared_scout_camp_s0.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_scout_camp_s0, "object/building/poi/shared_scout_camp_s0.iff")
 
 object_building_poi_shared_scout_camp_s1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16064,6 +16350,7 @@ object_building_poi_shared_scout_camp_s1 = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_scout_camp_s1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16111,7 +16398,7 @@ object_building_poi_shared_scout_camp_s1 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1100661709
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_scout_camp_s1, "object/building/poi/shared_scout_camp_s1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_scout_camp_s1, "object/building/poi/shared_scout_camp_s1.iff")
 
 object_building_poi_shared_scout_camp_s2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16120,6 +16407,7 @@ object_building_poi_shared_scout_camp_s2 = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_scout_camp_s2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16167,7 +16455,7 @@ object_building_poi_shared_scout_camp_s2 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 2592959322
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_scout_camp_s2, "object/building/poi/shared_scout_camp_s2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_scout_camp_s2, "object/building/poi/shared_scout_camp_s2.iff")
 
 object_building_poi_shared_scout_camp_s3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16176,6 +16464,7 @@ object_building_poi_shared_scout_camp_s3 = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_scout_camp_s3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16223,7 +16512,7 @@ object_building_poi_shared_scout_camp_s3 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 3548384471
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_scout_camp_s3, "object/building/poi/shared_scout_camp_s3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_scout_camp_s3, "object/building/poi/shared_scout_camp_s3.iff")
 
 object_building_poi_shared_scout_camp_s4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16232,6 +16521,7 @@ object_building_poi_shared_scout_camp_s4 = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_scout_camp_s4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16279,7 +16569,7 @@ object_building_poi_shared_scout_camp_s4 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 677586883
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_scout_camp_s4, "object/building/poi/shared_scout_camp_s4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_scout_camp_s4, "object/building/poi/shared_scout_camp_s4.iff")
 
 object_building_poi_shared_scout_camp_s5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16288,6 +16578,7 @@ object_building_poi_shared_scout_camp_s5 = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_scout_camp_s5.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16335,7 +16626,7 @@ object_building_poi_shared_scout_camp_s5 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 1634615374
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_scout_camp_s5, "object/building/poi/shared_scout_camp_s5.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_scout_camp_s5, "object/building/poi/shared_scout_camp_s5.iff")
 
 object_building_poi_shared_slavegirl_medium_camp_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16344,6 +16635,7 @@ object_building_poi_shared_slavegirl_medium_camp_1 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_slavegirl_medium_camp_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16391,7 +16683,7 @@ object_building_poi_shared_slavegirl_medium_camp_1 = SharedBuildingObjectTemplat
 	clientObjectCRC = 301257872
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_slavegirl_medium_camp_1, "object/building/poi/shared_slavegirl_medium_camp_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_slavegirl_medium_camp_1, "object/building/poi/shared_slavegirl_medium_camp_1.iff")
 
 object_building_poi_shared_slavegirl_medium_camp_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16400,6 +16692,7 @@ object_building_poi_shared_slavegirl_medium_camp_2 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_slavegirl_medium_camp_2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16447,7 +16740,7 @@ object_building_poi_shared_slavegirl_medium_camp_2 = SharedBuildingObjectTemplat
 	clientObjectCRC = 3403906055
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_slavegirl_medium_camp_2, "object/building/poi/shared_slavegirl_medium_camp_2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_slavegirl_medium_camp_2, "object/building/poi/shared_slavegirl_medium_camp_2.iff")
 
 object_building_poi_shared_slavegirl_small_camp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16456,6 +16749,7 @@ object_building_poi_shared_slavegirl_small_camp = SharedBuildingObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_slavegirl_small_camp.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16503,7 +16797,7 @@ object_building_poi_shared_slavegirl_small_camp = SharedBuildingObjectTemplate:n
 	clientObjectCRC = 2704439988
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_slavegirl_small_camp, "object/building/poi/shared_slavegirl_small_camp.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_slavegirl_small_camp, "object/building/poi/shared_slavegirl_small_camp.iff")
 
 object_building_poi_shared_small_imperial_tie_bomber_base = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16512,6 +16806,7 @@ object_building_poi_shared_small_imperial_tie_bomber_base = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_small_imperial_tie_bomber_base.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16559,7 +16854,7 @@ object_building_poi_shared_small_imperial_tie_bomber_base = SharedBuildingObject
 	clientObjectCRC = 2957252267
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_small_imperial_tie_bomber_base, "object/building/poi/shared_small_imperial_tie_bomber_base.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_small_imperial_tie_bomber_base, "object/building/poi/shared_small_imperial_tie_bomber_base.iff")
 
 object_building_poi_shared_small_imperial_tie_bomber_base_v2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16568,6 +16863,7 @@ object_building_poi_shared_small_imperial_tie_bomber_base_v2 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_small_imperial_tie_bomber_base_v2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16615,7 +16911,7 @@ object_building_poi_shared_small_imperial_tie_bomber_base_v2 = SharedBuildingObj
 	clientObjectCRC = 1574028468
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_small_imperial_tie_bomber_base_v2, "object/building/poi/shared_small_imperial_tie_bomber_base_v2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_small_imperial_tie_bomber_base_v2, "object/building/poi/shared_small_imperial_tie_bomber_base_v2.iff")
 
 object_building_poi_shared_tatooine_alkahara_bandits_camp_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16624,6 +16920,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_medium = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_alkahara_bandits_camp_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16671,7 +16968,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_medium = SharedBuildin
 	clientObjectCRC = 622598573
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_alkahara_bandits_camp_medium, "object/building/poi/shared_tatooine_alkahara_bandits_camp_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_alkahara_bandits_camp_medium, "object/building/poi/shared_tatooine_alkahara_bandits_camp_medium.iff")
 
 object_building_poi_shared_tatooine_alkahara_bandits_camp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16680,6 +16977,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_small1 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_alkahara_bandits_camp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16727,7 +17025,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_small1 = SharedBuildin
 	clientObjectCRC = 1258103248
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_alkahara_bandits_camp_small1, "object/building/poi/shared_tatooine_alkahara_bandits_camp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_alkahara_bandits_camp_small1, "object/building/poi/shared_tatooine_alkahara_bandits_camp_small1.iff")
 
 object_building_poi_shared_tatooine_alkahara_bandits_camp_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16736,6 +17034,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_small2 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_alkahara_bandits_camp_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16783,7 +17082,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_small2 = SharedBuildin
 	clientObjectCRC = 2448066887
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_alkahara_bandits_camp_small2, "object/building/poi/shared_tatooine_alkahara_bandits_camp_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_alkahara_bandits_camp_small2, "object/building/poi/shared_tatooine_alkahara_bandits_camp_small2.iff")
 
 object_building_poi_shared_tatooine_alkahara_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16792,6 +17091,7 @@ object_building_poi_shared_tatooine_alkahara_large1 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_alkahara_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16839,7 +17139,7 @@ object_building_poi_shared_tatooine_alkahara_large1 = SharedBuildingObjectTempla
 	clientObjectCRC = 4289090146
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_alkahara_large1, "object/building/poi/shared_tatooine_alkahara_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_alkahara_large1, "object/building/poi/shared_tatooine_alkahara_large1.iff")
 
 object_building_poi_shared_tatooine_alkahara_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16848,6 +17148,7 @@ object_building_poi_shared_tatooine_alkahara_large2 = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_alkahara_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16895,7 +17196,7 @@ object_building_poi_shared_tatooine_alkahara_large2 = SharedBuildingObjectTempla
 	clientObjectCRC = 615643893
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_alkahara_large2, "object/building/poi/shared_tatooine_alkahara_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_alkahara_large2, "object/building/poi/shared_tatooine_alkahara_large2.iff")
 
 object_building_poi_shared_tatooine_burning_sandcrawler = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16904,6 +17205,7 @@ object_building_poi_shared_tatooine_burning_sandcrawler = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_burning_sandcrawler.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -16951,7 +17253,7 @@ object_building_poi_shared_tatooine_burning_sandcrawler = SharedBuildingObjectTe
 	clientObjectCRC = 2841070881
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_burning_sandcrawler, "object/building/poi/shared_tatooine_burning_sandcrawler.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_burning_sandcrawler, "object/building/poi/shared_tatooine_burning_sandcrawler.iff")
 
 object_building_poi_shared_tatooine_dervishcamp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -16960,6 +17262,7 @@ object_building_poi_shared_tatooine_dervishcamp_large1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dervishcamp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17007,7 +17310,7 @@ object_building_poi_shared_tatooine_dervishcamp_large1 = SharedBuildingObjectTem
 	clientObjectCRC = 2792167870
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dervishcamp_large1, "object/building/poi/shared_tatooine_dervishcamp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dervishcamp_large1, "object/building/poi/shared_tatooine_dervishcamp_large1.iff")
 
 object_building_poi_shared_tatooine_dervishcamp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17016,6 +17319,7 @@ object_building_poi_shared_tatooine_dervishcamp_large2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dervishcamp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17063,7 +17367,7 @@ object_building_poi_shared_tatooine_dervishcamp_large2 = SharedBuildingObjectTem
 	clientObjectCRC = 2105192745
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dervishcamp_large2, "object/building/poi/shared_tatooine_dervishcamp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dervishcamp_large2, "object/building/poi/shared_tatooine_dervishcamp_large2.iff")
 
 object_building_poi_shared_tatooine_dervishcamp_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17072,6 +17376,7 @@ object_building_poi_shared_tatooine_dervishcamp_medium = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dervishcamp_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17119,7 +17424,7 @@ object_building_poi_shared_tatooine_dervishcamp_medium = SharedBuildingObjectTem
 	clientObjectCRC = 355341199
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dervishcamp_medium, "object/building/poi/shared_tatooine_dervishcamp_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dervishcamp_medium, "object/building/poi/shared_tatooine_dervishcamp_medium.iff")
 
 object_building_poi_shared_tatooine_dervishcamp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17128,6 +17433,7 @@ object_building_poi_shared_tatooine_dervishcamp_small1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dervishcamp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17175,7 +17481,7 @@ object_building_poi_shared_tatooine_dervishcamp_small1 = SharedBuildingObjectTem
 	clientObjectCRC = 2060397554
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dervishcamp_small1, "object/building/poi/shared_tatooine_dervishcamp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dervishcamp_small1, "object/building/poi/shared_tatooine_dervishcamp_small1.iff")
 
 object_building_poi_shared_tatooine_dervishcamp_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17184,6 +17490,7 @@ object_building_poi_shared_tatooine_dervishcamp_small2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dervishcamp_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17231,7 +17538,7 @@ object_building_poi_shared_tatooine_dervishcamp_small2 = SharedBuildingObjectTem
 	clientObjectCRC = 2715321189
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dervishcamp_small2, "object/building/poi/shared_tatooine_dervishcamp_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dervishcamp_small2, "object/building/poi/shared_tatooine_dervishcamp_small2.iff")
 
 object_building_poi_shared_tatooine_desert_demons_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17240,6 +17547,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_large1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_desert_demons_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17287,7 +17595,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_large1 = SharedBuildingOb
 	clientObjectCRC = 3587580084
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_desert_demons_camp_large1, "object/building/poi/shared_tatooine_desert_demons_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_desert_demons_camp_large1, "object/building/poi/shared_tatooine_desert_demons_camp_large1.iff")
 
 object_building_poi_shared_tatooine_desert_demons_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17296,6 +17604,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_large2 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_desert_demons_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17343,7 +17652,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_large2 = SharedBuildingOb
 	clientObjectCRC = 247564323
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_desert_demons_camp_large2, "object/building/poi/shared_tatooine_desert_demons_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_desert_demons_camp_large2, "object/building/poi/shared_tatooine_desert_demons_camp_large2.iff")
 
 object_building_poi_shared_tatooine_desert_demons_camp_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17352,6 +17661,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_medium = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_desert_demons_camp_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17399,7 +17709,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_medium = SharedBuildingOb
 	clientObjectCRC = 1721051781
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_desert_demons_camp_medium, "object/building/poi/shared_tatooine_desert_demons_camp_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_desert_demons_camp_medium, "object/building/poi/shared_tatooine_desert_demons_camp_medium.iff")
 
 object_building_poi_shared_tatooine_dim_u_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17408,6 +17718,7 @@ object_building_poi_shared_tatooine_dim_u_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dim_u_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17455,7 +17766,7 @@ object_building_poi_shared_tatooine_dim_u_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3919443673
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dim_u_large1, "object/building/poi/shared_tatooine_dim_u_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dim_u_large1, "object/building/poi/shared_tatooine_dim_u_large1.iff")
 
 object_building_poi_shared_tatooine_dim_u_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17464,6 +17775,7 @@ object_building_poi_shared_tatooine_dim_u_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dim_u_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17511,7 +17823,7 @@ object_building_poi_shared_tatooine_dim_u_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 847928910
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dim_u_large2, "object/building/poi/shared_tatooine_dim_u_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dim_u_large2, "object/building/poi/shared_tatooine_dim_u_large2.iff")
 
 object_building_poi_shared_tatooine_dim_u_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17520,6 +17832,7 @@ object_building_poi_shared_tatooine_dim_u_medium = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dim_u_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17567,7 +17880,7 @@ object_building_poi_shared_tatooine_dim_u_medium = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1524563176
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dim_u_medium, "object/building/poi/shared_tatooine_dim_u_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dim_u_medium, "object/building/poi/shared_tatooine_dim_u_medium.iff")
 
 object_building_poi_shared_tatooine_dunestalkers_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17576,6 +17889,7 @@ object_building_poi_shared_tatooine_dunestalkers_large1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dunestalkers_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17623,7 +17937,7 @@ object_building_poi_shared_tatooine_dunestalkers_large1 = SharedBuildingObjectTe
 	clientObjectCRC = 1602134381
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dunestalkers_large1, "object/building/poi/shared_tatooine_dunestalkers_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dunestalkers_large1, "object/building/poi/shared_tatooine_dunestalkers_large1.iff")
 
 object_building_poi_shared_tatooine_dunestalkers_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17632,6 +17946,7 @@ object_building_poi_shared_tatooine_dunestalkers_large2 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dunestalkers_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17679,7 +17994,7 @@ object_building_poi_shared_tatooine_dunestalkers_large2 = SharedBuildingObjectTe
 	clientObjectCRC = 2221476346
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dunestalkers_large2, "object/building/poi/shared_tatooine_dunestalkers_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dunestalkers_large2, "object/building/poi/shared_tatooine_dunestalkers_large2.iff")
 
 object_building_poi_shared_tatooine_dunestalkers_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17688,6 +18003,7 @@ object_building_poi_shared_tatooine_dunestalkers_medium = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dunestalkers_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17735,7 +18051,7 @@ object_building_poi_shared_tatooine_dunestalkers_medium = SharedBuildingObjectTe
 	clientObjectCRC = 3963464540
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dunestalkers_medium, "object/building/poi/shared_tatooine_dunestalkers_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dunestalkers_medium, "object/building/poi/shared_tatooine_dunestalkers_medium.iff")
 
 object_building_poi_shared_tatooine_dunestalkers_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17744,6 +18060,7 @@ object_building_poi_shared_tatooine_dunestalkers_small1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dunestalkers_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17791,7 +18108,7 @@ object_building_poi_shared_tatooine_dunestalkers_small1 = SharedBuildingObjectTe
 	clientObjectCRC = 2212270881
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dunestalkers_small1, "object/building/poi/shared_tatooine_dunestalkers_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dunestalkers_small1, "object/building/poi/shared_tatooine_dunestalkers_small1.iff")
 
 object_building_poi_shared_tatooine_dunestalkers_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17800,6 +18117,7 @@ object_building_poi_shared_tatooine_dunestalkers_small2 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_dunestalkers_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17847,7 +18165,7 @@ object_building_poi_shared_tatooine_dunestalkers_small2 = SharedBuildingObjectTe
 	clientObjectCRC = 1489714102
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_dunestalkers_small2, "object/building/poi/shared_tatooine_dunestalkers_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_dunestalkers_small2, "object/building/poi/shared_tatooine_dunestalkers_small2.iff")
 
 object_building_poi_shared_tatooine_evil_hermit_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17856,6 +18174,7 @@ object_building_poi_shared_tatooine_evil_hermit_large1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_hermit_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17903,7 +18222,7 @@ object_building_poi_shared_tatooine_evil_hermit_large1 = SharedBuildingObjectTem
 	clientObjectCRC = 3440346918
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_hermit_large1, "object/building/poi/shared_tatooine_evil_hermit_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_hermit_large1, "object/building/poi/shared_tatooine_evil_hermit_large1.iff")
 
 object_building_poi_shared_tatooine_evil_hermit_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17912,6 +18231,7 @@ object_building_poi_shared_tatooine_evil_hermit_large2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_hermit_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -17959,7 +18279,7 @@ object_building_poi_shared_tatooine_evil_hermit_large2 = SharedBuildingObjectTem
 	clientObjectCRC = 370683825
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_hermit_large2, "object/building/poi/shared_tatooine_evil_hermit_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_hermit_large2, "object/building/poi/shared_tatooine_evil_hermit_large2.iff")
 
 object_building_poi_shared_tatooine_evil_hermit_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -17968,6 +18288,7 @@ object_building_poi_shared_tatooine_evil_hermit_medium1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_hermit_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18015,7 +18336,7 @@ object_building_poi_shared_tatooine_evil_hermit_medium1 = SharedBuildingObjectTe
 	clientObjectCRC = 1759776270
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_hermit_medium1, "object/building/poi/shared_tatooine_evil_hermit_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_hermit_medium1, "object/building/poi/shared_tatooine_evil_hermit_medium1.iff")
 
 object_building_poi_shared_tatooine_evil_hermit_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18024,6 +18345,7 @@ object_building_poi_shared_tatooine_evil_hermit_medium2 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_hermit_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18071,7 +18393,7 @@ object_building_poi_shared_tatooine_evil_hermit_medium2 = SharedBuildingObjectTe
 	clientObjectCRC = 3019089561
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_hermit_medium2, "object/building/poi/shared_tatooine_evil_hermit_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_hermit_medium2, "object/building/poi/shared_tatooine_evil_hermit_medium2.iff")
 
 object_building_poi_shared_tatooine_evil_hermit_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18080,6 +18402,7 @@ object_building_poi_shared_tatooine_evil_hermit_small1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_hermit_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18127,7 +18450,7 @@ object_building_poi_shared_tatooine_evil_hermit_small1 = SharedBuildingObjectTem
 	clientObjectCRC = 296596842
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_hermit_small1, "object/building/poi/shared_tatooine_evil_hermit_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_hermit_small1, "object/building/poi/shared_tatooine_evil_hermit_small1.iff")
 
 object_building_poi_shared_tatooine_evil_hermit_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18136,6 +18459,7 @@ object_building_poi_shared_tatooine_evil_hermit_small2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_hermit_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18183,7 +18507,7 @@ object_building_poi_shared_tatooine_evil_hermit_small2 = SharedBuildingObjectTem
 	clientObjectCRC = 3401195005
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_hermit_small2, "object/building/poi/shared_tatooine_evil_hermit_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_hermit_small2, "object/building/poi/shared_tatooine_evil_hermit_small2.iff")
 
 object_building_poi_shared_tatooine_evil_nomad_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18192,6 +18516,7 @@ object_building_poi_shared_tatooine_evil_nomad_large1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_nomad_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18239,7 +18564,7 @@ object_building_poi_shared_tatooine_evil_nomad_large1 = SharedBuildingObjectTemp
 	clientObjectCRC = 577830484
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_nomad_large1, "object/building/poi/shared_tatooine_evil_nomad_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_nomad_large1, "object/building/poi/shared_tatooine_evil_nomad_large1.iff")
 
 object_building_poi_shared_tatooine_evil_nomad_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18248,6 +18573,7 @@ object_building_poi_shared_tatooine_evil_nomad_large2 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_nomad_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18295,7 +18621,7 @@ object_building_poi_shared_tatooine_evil_nomad_large2 = SharedBuildingObjectTemp
 	clientObjectCRC = 4184299203
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_nomad_large2, "object/building/poi/shared_tatooine_evil_nomad_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_nomad_large2, "object/building/poi/shared_tatooine_evil_nomad_large2.iff")
 
 object_building_poi_shared_tatooine_evil_nomad_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18304,6 +18630,7 @@ object_building_poi_shared_tatooine_evil_nomad_large3 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_nomad_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18351,7 +18678,7 @@ object_building_poi_shared_tatooine_evil_nomad_large3 = SharedBuildingObjectTemp
 	clientObjectCRC = 2959749454
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_nomad_large3, "object/building/poi/shared_tatooine_evil_nomad_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_nomad_large3, "object/building/poi/shared_tatooine_evil_nomad_large3.iff")
 
 object_building_poi_shared_tatooine_evil_nomad_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18360,6 +18687,7 @@ object_building_poi_shared_tatooine_evil_nomad_medium1 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_nomad_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18407,7 +18735,7 @@ object_building_poi_shared_tatooine_evil_nomad_medium1 = SharedBuildingObjectTem
 	clientObjectCRC = 3933988810
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_nomad_medium1, "object/building/poi/shared_tatooine_evil_nomad_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_nomad_medium1, "object/building/poi/shared_tatooine_evil_nomad_medium1.iff")
 
 object_building_poi_shared_tatooine_evil_nomad_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18416,6 +18744,7 @@ object_building_poi_shared_tatooine_evil_nomad_medium2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_nomad_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18463,7 +18792,7 @@ object_building_poi_shared_tatooine_evil_nomad_medium2 = SharedBuildingObjectTem
 	clientObjectCRC = 829181789
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_nomad_medium2, "object/building/poi/shared_tatooine_evil_nomad_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_nomad_medium2, "object/building/poi/shared_tatooine_evil_nomad_medium2.iff")
 
 object_building_poi_shared_tatooine_evil_nomad_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18472,6 +18801,7 @@ object_building_poi_shared_tatooine_evil_nomad_small1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_nomad_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18519,7 +18849,7 @@ object_building_poi_shared_tatooine_evil_nomad_small1 = SharedBuildingObjectTemp
 	clientObjectCRC = 4275227672
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_nomad_small1, "object/building/poi/shared_tatooine_evil_nomad_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_nomad_small1, "object/building/poi/shared_tatooine_evil_nomad_small1.iff")
 
 object_building_poi_shared_tatooine_evil_nomad_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18528,6 +18858,7 @@ object_building_poi_shared_tatooine_evil_nomad_small2 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_nomad_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18575,7 +18906,7 @@ object_building_poi_shared_tatooine_evil_nomad_small2 = SharedBuildingObjectTemp
 	clientObjectCRC = 633693327
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_nomad_small2, "object/building/poi/shared_tatooine_evil_nomad_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_nomad_small2, "object/building/poi/shared_tatooine_evil_nomad_small2.iff")
 
 object_building_poi_shared_tatooine_evil_settlers_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18584,6 +18915,7 @@ object_building_poi_shared_tatooine_evil_settlers_large1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_settlers_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18631,7 +18963,7 @@ object_building_poi_shared_tatooine_evil_settlers_large1 = SharedBuildingObjectT
 	clientObjectCRC = 944821265
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_settlers_large1, "object/building/poi/shared_tatooine_evil_settlers_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_settlers_large1, "object/building/poi/shared_tatooine_evil_settlers_large1.iff")
 
 object_building_poi_shared_tatooine_evil_settlers_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18640,6 +18972,7 @@ object_building_poi_shared_tatooine_evil_settlers_large2 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_settlers_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18687,7 +19020,7 @@ object_building_poi_shared_tatooine_evil_settlers_large2 = SharedBuildingObjectT
 	clientObjectCRC = 3813112966
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_settlers_large2, "object/building/poi/shared_tatooine_evil_settlers_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_settlers_large2, "object/building/poi/shared_tatooine_evil_settlers_large2.iff")
 
 object_building_poi_shared_tatooine_evil_settlers_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18696,6 +19029,7 @@ object_building_poi_shared_tatooine_evil_settlers_large3 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_settlers_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18743,7 +19077,7 @@ object_building_poi_shared_tatooine_evil_settlers_large3 = SharedBuildingObjectT
 	clientObjectCRC = 2856983307
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_settlers_large3, "object/building/poi/shared_tatooine_evil_settlers_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_settlers_large3, "object/building/poi/shared_tatooine_evil_settlers_large3.iff")
 
 object_building_poi_shared_tatooine_evil_settlers_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18752,6 +19086,7 @@ object_building_poi_shared_tatooine_evil_settlers_medium = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_settlers_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18799,7 +19134,7 @@ object_building_poi_shared_tatooine_evil_settlers_medium = SharedBuildingObjectT
 	clientObjectCRC = 2333335072
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_settlers_medium, "object/building/poi/shared_tatooine_evil_settlers_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_settlers_medium, "object/building/poi/shared_tatooine_evil_settlers_medium.iff")
 
 object_building_poi_shared_tatooine_evil_settlers_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18808,6 +19143,7 @@ object_building_poi_shared_tatooine_evil_settlers_medium2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_settlers_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18855,7 +19191,7 @@ object_building_poi_shared_tatooine_evil_settlers_medium2 = SharedBuildingObject
 	clientObjectCRC = 1927088123
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_settlers_medium2, "object/building/poi/shared_tatooine_evil_settlers_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_settlers_medium2, "object/building/poi/shared_tatooine_evil_settlers_medium2.iff")
 
 object_building_poi_shared_tatooine_evil_settlers_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18864,6 +19200,7 @@ object_building_poi_shared_tatooine_evil_settlers_small1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_settlers_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18911,7 +19248,7 @@ object_building_poi_shared_tatooine_evil_settlers_small1 = SharedBuildingObjectT
 	clientObjectCRC = 3841123933
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_settlers_small1, "object/building/poi/shared_tatooine_evil_settlers_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_settlers_small1, "object/building/poi/shared_tatooine_evil_settlers_small1.iff")
 
 object_building_poi_shared_tatooine_evil_settlers_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18920,6 +19257,7 @@ object_building_poi_shared_tatooine_evil_settlers_small2 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_evil_settlers_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -18967,7 +19305,7 @@ object_building_poi_shared_tatooine_evil_settlers_small2 = SharedBuildingObjectT
 	clientObjectCRC = 1071992522
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_evil_settlers_small2, "object/building/poi/shared_tatooine_evil_settlers_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_evil_settlers_small2, "object/building/poi/shared_tatooine_evil_settlers_small2.iff")
 
 object_building_poi_shared_tatooine_factory_liberation = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -18976,6 +19314,7 @@ object_building_poi_shared_tatooine_factory_liberation = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_factory_liberation.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19023,7 +19362,7 @@ object_building_poi_shared_tatooine_factory_liberation = SharedBuildingObjectTem
 	clientObjectCRC = 3256091414
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_factory_liberation, "object/building/poi/shared_tatooine_factory_liberation.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_factory_liberation, "object/building/poi/shared_tatooine_factory_liberation.iff")
 
 object_building_poi_shared_tatooine_farm_medium_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19032,6 +19371,7 @@ object_building_poi_shared_tatooine_farm_medium_2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_farm_medium_2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19079,7 +19419,7 @@ object_building_poi_shared_tatooine_farm_medium_2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 589370670
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_farm_medium_2, "object/building/poi/shared_tatooine_farm_medium_2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_farm_medium_2, "object/building/poi/shared_tatooine_farm_medium_2.iff")
 
 object_building_poi_shared_tatooine_fugitive_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19088,6 +19428,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_fugitive_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19135,7 +19476,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large1 = SharedBuildingObjectT
 	clientObjectCRC = 2269855089
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_fugitive_camp_large1, "object/building/poi/shared_tatooine_fugitive_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_fugitive_camp_large1, "object/building/poi/shared_tatooine_fugitive_camp_large1.iff")
 
 object_building_poi_shared_tatooine_fugitive_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19144,6 +19485,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large2 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_fugitive_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19191,7 +19533,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large2 = SharedBuildingObjectT
 	clientObjectCRC = 1549571558
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_fugitive_camp_large2, "object/building/poi/shared_tatooine_fugitive_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_fugitive_camp_large2, "object/building/poi/shared_tatooine_fugitive_camp_large2.iff")
 
 object_building_poi_shared_tatooine_fugitive_camp_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19200,6 +19542,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large3 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_fugitive_camp_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19247,7 +19590,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large3 = SharedBuildingObjectT
 	clientObjectCRC = 357692011
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_fugitive_camp_large3, "object/building/poi/shared_tatooine_fugitive_camp_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_fugitive_camp_large3, "object/building/poi/shared_tatooine_fugitive_camp_large3.iff")
 
 object_building_poi_shared_tatooine_fugitive_camp_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19256,6 +19599,7 @@ object_building_poi_shared_tatooine_fugitive_camp_medium = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_fugitive_camp_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19303,7 +19647,7 @@ object_building_poi_shared_tatooine_fugitive_camp_medium = SharedBuildingObjectT
 	clientObjectCRC = 872953664
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_fugitive_camp_medium, "object/building/poi/shared_tatooine_fugitive_camp_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_fugitive_camp_medium, "object/building/poi/shared_tatooine_fugitive_camp_medium.iff")
 
 object_building_poi_shared_tatooine_gunrunners_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19312,6 +19656,7 @@ object_building_poi_shared_tatooine_gunrunners_large1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_gunrunners_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19359,7 +19704,7 @@ object_building_poi_shared_tatooine_gunrunners_large1 = SharedBuildingObjectTemp
 	clientObjectCRC = 2407212781
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_gunrunners_large1, "object/building/poi/shared_tatooine_gunrunners_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_gunrunners_large1, "object/building/poi/shared_tatooine_gunrunners_large1.iff")
 
 object_building_poi_shared_tatooine_gunrunners_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19368,6 +19713,7 @@ object_building_poi_shared_tatooine_gunrunners_large2 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_gunrunners_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19415,7 +19761,7 @@ object_building_poi_shared_tatooine_gunrunners_large2 = SharedBuildingObjectTemp
 	clientObjectCRC = 1416400506
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_gunrunners_large2, "object/building/poi/shared_tatooine_gunrunners_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_gunrunners_large2, "object/building/poi/shared_tatooine_gunrunners_large2.iff")
 
 object_building_poi_shared_tatooine_gunrunners_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19424,6 +19770,7 @@ object_building_poi_shared_tatooine_gunrunners_medium = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_gunrunners_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19471,7 +19818,7 @@ object_building_poi_shared_tatooine_gunrunners_medium = SharedBuildingObjectTemp
 	clientObjectCRC = 1010314460
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_gunrunners_medium, "object/building/poi/shared_tatooine_gunrunners_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_gunrunners_medium, "object/building/poi/shared_tatooine_gunrunners_medium.iff")
 
 object_building_poi_shared_tatooine_hutt_assassin_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19480,6 +19827,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_assassin_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19527,7 +19875,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large1 = SharedBuildingOb
 	clientObjectCRC = 3403597906
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_large1, "object/building/poi/shared_tatooine_hutt_assassin_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_large1, "object/building/poi/shared_tatooine_hutt_assassin_camp_large1.iff")
 
 object_building_poi_shared_tatooine_hutt_assassin_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19536,6 +19884,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large2 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_assassin_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19583,7 +19932,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large2 = SharedBuildingOb
 	clientObjectCRC = 298410181
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_large2, "object/building/poi/shared_tatooine_hutt_assassin_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_large2, "object/building/poi/shared_tatooine_hutt_assassin_camp_large2.iff")
 
 object_building_poi_shared_tatooine_hutt_assassin_camp_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19592,6 +19941,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large3 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_assassin_camp_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19639,7 +19989,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large3 = SharedBuildingOb
 	clientObjectCRC = 1489241928
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_large3, "object/building/poi/shared_tatooine_hutt_assassin_camp_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_large3, "object/building/poi/shared_tatooine_hutt_assassin_camp_large3.iff")
 
 object_building_poi_shared_tatooine_hutt_assassin_camp_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19648,6 +19998,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large4 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_assassin_camp_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19695,7 +20046,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large4 = SharedBuildingOb
 	clientObjectCRC = 2737253468
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_large4, "object/building/poi/shared_tatooine_hutt_assassin_camp_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_large4, "object/building/poi/shared_tatooine_hutt_assassin_camp_large4.iff")
 
 object_building_poi_shared_tatooine_hutt_assassin_camp_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19704,6 +20055,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_medium1 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_assassin_camp_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19751,7 +20103,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_medium1 = SharedBuildingO
 	clientObjectCRC = 2817272331
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_medium1, "object/building/poi/shared_tatooine_hutt_assassin_camp_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_medium1, "object/building/poi/shared_tatooine_hutt_assassin_camp_medium1.iff")
 
 object_building_poi_shared_tatooine_hutt_assassin_camp_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19760,6 +20112,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_medium2 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_assassin_camp_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19807,7 +20160,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_medium2 = SharedBuildingO
 	clientObjectCRC = 2096857756
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_medium2, "object/building/poi/shared_tatooine_hutt_assassin_camp_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_medium2, "object/building/poi/shared_tatooine_hutt_assassin_camp_medium2.iff")
 
 object_building_poi_shared_tatooine_hutt_assassin_camp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19816,6 +20169,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_small1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_assassin_camp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19863,7 +20217,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_small1 = SharedBuildingOb
 	clientObjectCRC = 377289246
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_small1, "object/building/poi/shared_tatooine_hutt_assassin_camp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_small1, "object/building/poi/shared_tatooine_hutt_assassin_camp_small1.iff")
 
 object_building_poi_shared_tatooine_hutt_assassin_camp_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19872,6 +20226,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_small2 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_assassin_camp_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19919,7 +20274,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_small2 = SharedBuildingOb
 	clientObjectCRC = 3446362761
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_small2, "object/building/poi/shared_tatooine_hutt_assassin_camp_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_assassin_camp_small2, "object/building/poi/shared_tatooine_hutt_assassin_camp_small2.iff")
 
 object_building_poi_shared_tatooine_hutt_businessmen_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19928,6 +20283,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large1 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_businessmen_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -19975,7 +20331,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large1 = SharedBuildin
 	clientObjectCRC = 2763131686
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_large1, "object/building/poi/shared_tatooine_hutt_businessmen_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_large1, "object/building/poi/shared_tatooine_hutt_businessmen_camp_large1.iff")
 
 object_building_poi_shared_tatooine_hutt_businessmen_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -19984,6 +20340,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large2 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_businessmen_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20031,7 +20388,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large2 = SharedBuildin
 	clientObjectCRC = 2141561777
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_large2, "object/building/poi/shared_tatooine_hutt_businessmen_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_large2, "object/building/poi/shared_tatooine_hutt_businessmen_camp_large2.iff")
 
 object_building_poi_shared_tatooine_hutt_businessmen_camp_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20040,6 +20397,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large3 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_businessmen_camp_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20087,7 +20445,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large3 = SharedBuildin
 	clientObjectCRC = 917029948
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_large3, "object/building/poi/shared_tatooine_hutt_businessmen_camp_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_large3, "object/building/poi/shared_tatooine_hutt_businessmen_camp_large3.iff")
 
 object_building_poi_shared_tatooine_hutt_businessmen_camp_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20096,6 +20454,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large4 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_businessmen_camp_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20143,7 +20502,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large4 = SharedBuildin
 	clientObjectCRC = 3444305704
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_large4, "object/building/poi/shared_tatooine_hutt_businessmen_camp_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_large4, "object/building/poi/shared_tatooine_hutt_businessmen_camp_large4.iff")
 
 object_building_poi_shared_tatooine_hutt_businessmen_camp_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20152,6 +20511,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_medium = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_businessmen_camp_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20199,7 +20559,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_medium = SharedBuildin
 	clientObjectCRC = 401670423
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_medium, "object/building/poi/shared_tatooine_hutt_businessmen_camp_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_medium, "object/building/poi/shared_tatooine_hutt_businessmen_camp_medium.iff")
 
 object_building_poi_shared_tatooine_hutt_businessmen_camp_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20208,6 +20568,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_medium2 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_businessmen_camp_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20255,7 +20616,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_medium2 = SharedBuildi
 	clientObjectCRC = 2148765697
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_medium2, "object/building/poi/shared_tatooine_hutt_businessmen_camp_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_medium2, "object/building/poi/shared_tatooine_hutt_businessmen_camp_medium2.iff")
 
 object_building_poi_shared_tatooine_hutt_businessmen_camp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20264,6 +20625,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_small1 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_businessmen_camp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20311,7 +20673,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_small1 = SharedBuildin
 	clientObjectCRC = 2014329194
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_small1, "object/building/poi/shared_tatooine_hutt_businessmen_camp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_small1, "object/building/poi/shared_tatooine_hutt_businessmen_camp_small1.iff")
 
 object_building_poi_shared_tatooine_hutt_businessmen_camp_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20320,6 +20682,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_small2 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_hutt_businessmen_camp_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20367,7 +20730,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_small2 = SharedBuildin
 	clientObjectCRC = 2735182333
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_small2, "object/building/poi/shared_tatooine_hutt_businessmen_camp_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_hutt_businessmen_camp_small2, "object/building/poi/shared_tatooine_hutt_businessmen_camp_small2.iff")
 
 object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20376,6 +20739,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large1 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_jawa_droid_thieves_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20423,7 +20787,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large1 = SharedBuild
 	clientObjectCRC = 1785735227
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large1, "object/building/poi/shared_tatooine_jawa_droid_thieves_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large1, "object/building/poi/shared_tatooine_jawa_droid_thieves_camp_large1.iff")
 
 object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20432,6 +20796,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large2 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_jawa_droid_thieves_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20479,7 +20844,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large2 = SharedBuild
 	clientObjectCRC = 2976350380
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large2, "object/building/poi/shared_tatooine_jawa_droid_thieves_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large2, "object/building/poi/shared_tatooine_jawa_droid_thieves_camp_large2.iff")
 
 object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20488,6 +20853,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large3 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_jawa_droid_thieves_camp_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20535,7 +20901,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large3 = SharedBuild
 	clientObjectCRC = 4167755553
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large3, "object/building/poi/shared_tatooine_jawa_droid_thieves_camp_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large3, "object/building/poi/shared_tatooine_jawa_droid_thieves_camp_large3.iff")
 
 object_building_poi_shared_tatooine_jawa_droid_thieves_camp_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20544,6 +20910,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_medium1 = SharedBuil
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_jawa_droid_thieves_camp_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20591,7 +20958,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_medium1 = SharedBuil
 	clientObjectCRC = 4163048709
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_jawa_droid_thieves_camp_medium1, "object/building/poi/shared_tatooine_jawa_droid_thieves_camp_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_jawa_droid_thieves_camp_medium1, "object/building/poi/shared_tatooine_jawa_droid_thieves_camp_medium1.iff")
 
 object_building_poi_shared_tatooine_jawa_large_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20600,6 +20967,7 @@ object_building_poi_shared_tatooine_jawa_large_1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_jawa_large_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20647,7 +21015,7 @@ object_building_poi_shared_tatooine_jawa_large_1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 780991958
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_jawa_large_1, "object/building/poi/shared_tatooine_jawa_large_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_jawa_large_1, "object/building/poi/shared_tatooine_jawa_large_1.iff")
 
 object_building_poi_shared_tatooine_jawa_tradesmen_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20656,6 +21024,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_large1 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_jawa_tradesmen_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20703,7 +21072,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_large1 = SharedBuildingO
 	clientObjectCRC = 230353567
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_jawa_tradesmen_camp_large1, "object/building/poi/shared_tatooine_jawa_tradesmen_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_jawa_tradesmen_camp_large1, "object/building/poi/shared_tatooine_jawa_tradesmen_camp_large1.iff")
 
 object_building_poi_shared_tatooine_jawa_tradesmen_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20712,6 +21081,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_large2 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_jawa_tradesmen_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20759,7 +21129,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_large2 = SharedBuildingO
 	clientObjectCRC = 3601678856
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_jawa_tradesmen_camp_large2, "object/building/poi/shared_tatooine_jawa_tradesmen_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_jawa_tradesmen_camp_large2, "object/building/poi/shared_tatooine_jawa_tradesmen_camp_large2.iff")
 
 object_building_poi_shared_tatooine_jawa_tradesmen_camp_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20768,6 +21138,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_medium1 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_jawa_tradesmen_camp_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20815,7 +21186,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_medium1 = SharedBuilding
 	clientObjectCRC = 2147690391
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_jawa_tradesmen_camp_medium1, "object/building/poi/shared_tatooine_jawa_tradesmen_camp_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_jawa_tradesmen_camp_medium1, "object/building/poi/shared_tatooine_jawa_tradesmen_camp_medium1.iff")
 
 object_building_poi_shared_tatooine_mineral_farmer_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20824,6 +21195,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_mineral_farmer_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20871,7 +21243,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large1 = SharedBuildingObject
 	clientObjectCRC = 886252581
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_mineral_farmer_large1, "object/building/poi/shared_tatooine_mineral_farmer_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_mineral_farmer_large1, "object/building/poi/shared_tatooine_mineral_farmer_large1.iff")
 
 object_building_poi_shared_tatooine_mineral_farmer_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20880,6 +21252,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_mineral_farmer_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20927,7 +21300,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large2 = SharedBuildingObject
 	clientObjectCRC = 4022635698
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_mineral_farmer_large2, "object/building/poi/shared_tatooine_mineral_farmer_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_mineral_farmer_large2, "object/building/poi/shared_tatooine_mineral_farmer_large2.iff")
 
 object_building_poi_shared_tatooine_mineral_farmer_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20936,6 +21309,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large3 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_mineral_farmer_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -20983,7 +21357,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large3 = SharedBuildingObject
 	clientObjectCRC = 2798250815
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_mineral_farmer_large3, "object/building/poi/shared_tatooine_mineral_farmer_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_mineral_farmer_large3, "object/building/poi/shared_tatooine_mineral_farmer_large3.iff")
 
 object_building_poi_shared_tatooine_mineral_farmer_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -20992,6 +21366,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large4 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_mineral_farmer_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21039,7 +21414,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large4 = SharedBuildingObject
 	clientObjectCRC = 1563082795
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_mineral_farmer_large4, "object/building/poi/shared_tatooine_mineral_farmer_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_mineral_farmer_large4, "object/building/poi/shared_tatooine_mineral_farmer_large4.iff")
 
 object_building_poi_shared_tatooine_mineral_farmer_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21048,6 +21423,7 @@ object_building_poi_shared_tatooine_mineral_farmer_medium1 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_mineral_farmer_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21095,7 +21471,7 @@ object_building_poi_shared_tatooine_mineral_farmer_medium1 = SharedBuildingObjec
 	clientObjectCRC = 523632648
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_mineral_farmer_medium1, "object/building/poi/shared_tatooine_mineral_farmer_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_mineral_farmer_medium1, "object/building/poi/shared_tatooine_mineral_farmer_medium1.iff")
 
 object_building_poi_shared_tatooine_mineral_farmer_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21104,6 +21480,7 @@ object_building_poi_shared_tatooine_mineral_farmer_medium2 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_mineral_farmer_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21151,7 +21528,7 @@ object_building_poi_shared_tatooine_mineral_farmer_medium2 = SharedBuildingObjec
 	clientObjectCRC = 3290540191
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_mineral_farmer_medium2, "object/building/poi/shared_tatooine_mineral_farmer_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_mineral_farmer_medium2, "object/building/poi/shared_tatooine_mineral_farmer_medium2.iff")
 
 object_building_poi_shared_tatooine_moisture_farmer_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21160,6 +21537,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large1 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_moisture_farmer_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21207,7 +21585,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large1 = SharedBuildingObjec
 	clientObjectCRC = 2815056351
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_moisture_farmer_large1, "object/building/poi/shared_tatooine_moisture_farmer_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_moisture_farmer_large1, "object/building/poi/shared_tatooine_moisture_farmer_large1.iff")
 
 object_building_poi_shared_tatooine_moisture_farmer_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21216,6 +21594,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large2 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_moisture_farmer_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21263,7 +21642,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large2 = SharedBuildingObjec
 	clientObjectCRC = 2094920008
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_moisture_farmer_large2, "object/building/poi/shared_tatooine_moisture_farmer_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_moisture_farmer_large2, "object/building/poi/shared_tatooine_moisture_farmer_large2.iff")
 
 object_building_poi_shared_tatooine_moisture_farmer_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21272,6 +21651,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large3 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_moisture_farmer_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21319,7 +21699,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large3 = SharedBuildingObjec
 	clientObjectCRC = 902862533
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_moisture_farmer_large3, "object/building/poi/shared_tatooine_moisture_farmer_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_moisture_farmer_large3, "object/building/poi/shared_tatooine_moisture_farmer_large3.iff")
 
 object_building_poi_shared_tatooine_moisture_farmer_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21328,6 +21708,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large4 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_moisture_farmer_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21375,7 +21756,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large4 = SharedBuildingObjec
 	clientObjectCRC = 3459497425
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_moisture_farmer_large4, "object/building/poi/shared_tatooine_moisture_farmer_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_moisture_farmer_large4, "object/building/poi/shared_tatooine_moisture_farmer_large4.iff")
 
 object_building_poi_shared_tatooine_moisture_farmer_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21384,6 +21765,7 @@ object_building_poi_shared_tatooine_moisture_farmer_medium1 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_moisture_farmer_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21431,7 +21813,7 @@ object_building_poi_shared_tatooine_moisture_farmer_medium1 = SharedBuildingObje
 	clientObjectCRC = 773187407
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_moisture_farmer_medium1, "object/building/poi/shared_tatooine_moisture_farmer_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_moisture_farmer_medium1, "object/building/poi/shared_tatooine_moisture_farmer_medium1.iff")
 
 object_building_poi_shared_tatooine_moisture_farmer_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21440,6 +21822,7 @@ object_building_poi_shared_tatooine_moisture_farmer_medium2 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_moisture_farmer_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21487,7 +21870,7 @@ object_building_poi_shared_tatooine_moisture_farmer_medium2 = SharedBuildingObje
 	clientObjectCRC = 4110569432
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_moisture_farmer_medium2, "object/building/poi/shared_tatooine_moisture_farmer_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_moisture_farmer_medium2, "object/building/poi/shared_tatooine_moisture_farmer_medium2.iff")
 
 object_building_poi_shared_tatooine_nomad_squatter_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21496,6 +21879,7 @@ object_building_poi_shared_tatooine_nomad_squatter_large1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_nomad_squatter_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21543,7 +21927,7 @@ object_building_poi_shared_tatooine_nomad_squatter_large1 = SharedBuildingObject
 	clientObjectCRC = 1135190096
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_nomad_squatter_large1, "object/building/poi/shared_tatooine_nomad_squatter_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_nomad_squatter_large1, "object/building/poi/shared_tatooine_nomad_squatter_large1.iff")
 
 object_building_poi_shared_tatooine_nomad_squatter_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21552,6 +21936,7 @@ object_building_poi_shared_tatooine_nomad_squatter_large2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_nomad_squatter_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21599,7 +21984,7 @@ object_building_poi_shared_tatooine_nomad_squatter_large2 = SharedBuildingObject
 	clientObjectCRC = 2562590919
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_nomad_squatter_large2, "object/building/poi/shared_tatooine_nomad_squatter_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_nomad_squatter_large2, "object/building/poi/shared_tatooine_nomad_squatter_large2.iff")
 
 object_building_poi_shared_tatooine_nomad_squatter_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21608,6 +21993,7 @@ object_building_poi_shared_tatooine_nomad_squatter_medium1 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_nomad_squatter_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21655,7 +22041,7 @@ object_building_poi_shared_tatooine_nomad_squatter_medium1 = SharedBuildingObjec
 	clientObjectCRC = 2604742890
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_nomad_squatter_medium1, "object/building/poi/shared_tatooine_nomad_squatter_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_nomad_squatter_medium1, "object/building/poi/shared_tatooine_nomad_squatter_medium1.iff")
 
 object_building_poi_shared_tatooine_plaguevictim_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21664,6 +22050,7 @@ object_building_poi_shared_tatooine_plaguevictim_large1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_plaguevictim_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21711,7 +22098,7 @@ object_building_poi_shared_tatooine_plaguevictim_large1 = SharedBuildingObjectTe
 	clientObjectCRC = 103376874
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_plaguevictim_large1, "object/building/poi/shared_tatooine_plaguevictim_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_plaguevictim_large1, "object/building/poi/shared_tatooine_plaguevictim_large1.iff")
 
 object_building_poi_shared_tatooine_plaguevictim_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21720,6 +22107,7 @@ object_building_poi_shared_tatooine_plaguevictim_large2 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_plaguevictim_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21767,7 +22155,7 @@ object_building_poi_shared_tatooine_plaguevictim_large2 = SharedBuildingObjectTe
 	clientObjectCRC = 3711881085
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_plaguevictim_large2, "object/building/poi/shared_tatooine_plaguevictim_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_plaguevictim_large2, "object/building/poi/shared_tatooine_plaguevictim_large2.iff")
 
 object_building_poi_shared_tatooine_plaguevictim_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21776,6 +22164,7 @@ object_building_poi_shared_tatooine_plaguevictim_medium = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_plaguevictim_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21823,7 +22212,7 @@ object_building_poi_shared_tatooine_plaguevictim_medium = SharedBuildingObjectTe
 	clientObjectCRC = 3043651035
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_plaguevictim_medium, "object/building/poi/shared_tatooine_plaguevictim_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_plaguevictim_medium, "object/building/poi/shared_tatooine_plaguevictim_medium.iff")
 
 object_building_poi_shared_tatooine_prison_break = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21832,6 +22221,7 @@ object_building_poi_shared_tatooine_prison_break = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_prison_break.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21879,7 +22269,7 @@ object_building_poi_shared_tatooine_prison_break = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1155349866
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_prison_break, "object/building/poi/shared_tatooine_prison_break.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_prison_break, "object/building/poi/shared_tatooine_prison_break.iff")
 
 object_building_poi_shared_tatooine_rodianhunter_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21888,6 +22278,7 @@ object_building_poi_shared_tatooine_rodianhunter_large1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_rodianhunter_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21935,7 +22326,7 @@ object_building_poi_shared_tatooine_rodianhunter_large1 = SharedBuildingObjectTe
 	clientObjectCRC = 3108734198
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_rodianhunter_large1, "object/building/poi/shared_tatooine_rodianhunter_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_rodianhunter_large1, "object/building/poi/shared_tatooine_rodianhunter_large1.iff")
 
 object_building_poi_shared_tatooine_rodianhunter_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -21944,6 +22335,7 @@ object_building_poi_shared_tatooine_rodianhunter_large2 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_rodianhunter_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -21991,7 +22383,7 @@ object_building_poi_shared_tatooine_rodianhunter_large2 = SharedBuildingObjectTe
 	clientObjectCRC = 1650207841
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_rodianhunter_large2, "object/building/poi/shared_tatooine_rodianhunter_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_rodianhunter_large2, "object/building/poi/shared_tatooine_rodianhunter_large2.iff")
 
 object_building_poi_shared_tatooine_rodianhunter_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22000,6 +22392,7 @@ object_building_poi_shared_tatooine_rodianhunter_medium = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_rodianhunter_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22047,7 +22440,7 @@ object_building_poi_shared_tatooine_rodianhunter_medium = SharedBuildingObjectTe
 	clientObjectCRC = 168332999
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_rodianhunter_medium, "object/building/poi/shared_tatooine_rodianhunter_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_rodianhunter_medium, "object/building/poi/shared_tatooine_rodianhunter_medium.iff")
 
 object_building_poi_shared_tatooine_slaver_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22056,6 +22449,7 @@ object_building_poi_shared_tatooine_slaver_large1 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_slaver_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22103,7 +22497,7 @@ object_building_poi_shared_tatooine_slaver_large1 = SharedBuildingObjectTemplate
 	clientObjectCRC = 864649654
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_slaver_large1, "object/building/poi/shared_tatooine_slaver_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_slaver_large1, "object/building/poi/shared_tatooine_slaver_large1.iff")
 
 object_building_poi_shared_tatooine_slaver_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22112,6 +22506,7 @@ object_building_poi_shared_tatooine_slaver_large2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_slaver_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22159,7 +22554,7 @@ object_building_poi_shared_tatooine_slaver_large2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 3902679329
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_slaver_large2, "object/building/poi/shared_tatooine_slaver_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_slaver_large2, "object/building/poi/shared_tatooine_slaver_large2.iff")
 
 object_building_poi_shared_tatooine_slaver_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22168,6 +22563,7 @@ object_building_poi_shared_tatooine_slaver_large3 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_slaver_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22215,7 +22611,7 @@ object_building_poi_shared_tatooine_slaver_large3 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2710785708
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_slaver_large3, "object/building/poi/shared_tatooine_slaver_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_slaver_large3, "object/building/poi/shared_tatooine_slaver_large3.iff")
 
 object_building_poi_shared_tatooine_slaver_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22224,6 +22620,7 @@ object_building_poi_shared_tatooine_slaver_large4 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_slaver_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22271,7 +22668,7 @@ object_building_poi_shared_tatooine_slaver_large4 = SharedBuildingObjectTemplate
 	clientObjectCRC = 1517315512
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_slaver_large4, "object/building/poi/shared_tatooine_slaver_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_slaver_large4, "object/building/poi/shared_tatooine_slaver_large4.iff")
 
 object_building_poi_shared_tatooine_slaver_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22280,6 +22677,7 @@ object_building_poi_shared_tatooine_slaver_medium = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_slaver_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22327,7 +22725,7 @@ object_building_poi_shared_tatooine_slaver_medium = SharedBuildingObjectTemplate
 	clientObjectCRC = 2160757639
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_slaver_medium, "object/building/poi/shared_tatooine_slaver_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_slaver_medium, "object/building/poi/shared_tatooine_slaver_medium.iff")
 
 object_building_poi_shared_tatooine_slaver_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22336,6 +22734,7 @@ object_building_poi_shared_tatooine_slaver_medium2 = SharedBuildingObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_slaver_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22383,7 +22782,7 @@ object_building_poi_shared_tatooine_slaver_medium2 = SharedBuildingObjectTemplat
 	clientObjectCRC = 2160290714
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_slaver_medium2, "object/building/poi/shared_tatooine_slaver_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_slaver_medium2, "object/building/poi/shared_tatooine_slaver_medium2.iff")
 
 object_building_poi_shared_tatooine_spicefiend_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22392,6 +22791,7 @@ object_building_poi_shared_tatooine_spicefiend_large1 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_spicefiend_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22439,7 +22839,7 @@ object_building_poi_shared_tatooine_spicefiend_large1 = SharedBuildingObjectTemp
 	clientObjectCRC = 2850462148
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_spicefiend_large1, "object/building/poi/shared_tatooine_spicefiend_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_spicefiend_large1, "object/building/poi/shared_tatooine_spicefiend_large1.iff")
 
 object_building_poi_shared_tatooine_spicefiend_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22448,6 +22848,7 @@ object_building_poi_shared_tatooine_spicefiend_large2 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_spicefiend_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22495,7 +22896,7 @@ object_building_poi_shared_tatooine_spicefiend_large2 = SharedBuildingObjectTemp
 	clientObjectCRC = 1928409427
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_spicefiend_large2, "object/building/poi/shared_tatooine_spicefiend_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_spicefiend_large2, "object/building/poi/shared_tatooine_spicefiend_large2.iff")
 
 object_building_poi_shared_tatooine_spicefiend_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22504,6 +22905,7 @@ object_building_poi_shared_tatooine_spicefiend_large3 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_spicefiend_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22551,7 +22953,7 @@ object_building_poi_shared_tatooine_spicefiend_large3 = SharedBuildingObjectTemp
 	clientObjectCRC = 1006393054
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_spicefiend_large3, "object/building/poi/shared_tatooine_spicefiend_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_spicefiend_large3, "object/building/poi/shared_tatooine_spicefiend_large3.iff")
 
 object_building_poi_shared_tatooine_spicefiend_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22560,6 +22962,7 @@ object_building_poi_shared_tatooine_spicefiend_large4 = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_spicefiend_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22607,7 +23010,7 @@ object_building_poi_shared_tatooine_spicefiend_large4 = SharedBuildingObjectTemp
 	clientObjectCRC = 3223289290
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_spicefiend_large4, "object/building/poi/shared_tatooine_spicefiend_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_spicefiend_large4, "object/building/poi/shared_tatooine_spicefiend_large4.iff")
 
 object_building_poi_shared_tatooine_spicefiend_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22616,6 +23019,7 @@ object_building_poi_shared_tatooine_spicefiend_medium = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_spicefiend_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22663,7 +23067,7 @@ object_building_poi_shared_tatooine_spicefiend_medium = SharedBuildingObjectTemp
 	clientObjectCRC = 447058933
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_spicefiend_medium, "object/building/poi/shared_tatooine_spicefiend_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_spicefiend_medium, "object/building/poi/shared_tatooine_spicefiend_medium.iff")
 
 object_building_poi_shared_tatooine_spicefiend_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22672,6 +23076,7 @@ object_building_poi_shared_tatooine_spicefiend_medium2 = SharedBuildingObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_spicefiend_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22719,7 +23124,7 @@ object_building_poi_shared_tatooine_spicefiend_medium2 = SharedBuildingObjectTem
 	clientObjectCRC = 3847025874
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_spicefiend_medium2, "object/building/poi/shared_tatooine_spicefiend_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_spicefiend_medium2, "object/building/poi/shared_tatooine_spicefiend_medium2.iff")
 
 object_building_poi_shared_tatooine_swoop_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22728,6 +23133,7 @@ object_building_poi_shared_tatooine_swoop_large1 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_swoop_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22775,7 +23181,7 @@ object_building_poi_shared_tatooine_swoop_large1 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 1230309351
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_swoop_large1, "object/building/poi/shared_tatooine_swoop_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_swoop_large1, "object/building/poi/shared_tatooine_swoop_large1.iff")
 
 object_building_poi_shared_tatooine_swoop_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22784,6 +23190,7 @@ object_building_poi_shared_tatooine_swoop_large2 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_swoop_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22831,7 +23238,7 @@ object_building_poi_shared_tatooine_swoop_large2 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2453843824
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_swoop_large2, "object/building/poi/shared_tatooine_swoop_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_swoop_large2, "object/building/poi/shared_tatooine_swoop_large2.iff")
 
 object_building_poi_shared_tatooine_swoop_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22840,6 +23247,7 @@ object_building_poi_shared_tatooine_swoop_large3 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_swoop_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22887,7 +23295,7 @@ object_building_poi_shared_tatooine_swoop_large3 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 3679439101
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_swoop_large3, "object/building/poi/shared_tatooine_swoop_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_swoop_large3, "object/building/poi/shared_tatooine_swoop_large3.iff")
 
 object_building_poi_shared_tatooine_swoop_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22896,6 +23304,7 @@ object_building_poi_shared_tatooine_swoop_large4 = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_swoop_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22943,7 +23352,7 @@ object_building_poi_shared_tatooine_swoop_large4 = SharedBuildingObjectTemplate:
 	clientObjectCRC = 548201449
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_swoop_large4, "object/building/poi/shared_tatooine_swoop_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_swoop_large4, "object/building/poi/shared_tatooine_swoop_large4.iff")
 
 object_building_poi_shared_tatooine_swoop_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -22952,6 +23361,7 @@ object_building_poi_shared_tatooine_swoop_medium = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_swoop_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -22999,7 +23409,7 @@ object_building_poi_shared_tatooine_swoop_medium = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4195749334
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_swoop_medium, "object/building/poi/shared_tatooine_swoop_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_swoop_medium, "object/building/poi/shared_tatooine_swoop_medium.iff")
 
 object_building_poi_shared_tatooine_swoop_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23008,6 +23418,7 @@ object_building_poi_shared_tatooine_swoop_medium2 = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_swoop_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23055,7 +23466,7 @@ object_building_poi_shared_tatooine_swoop_medium2 = SharedBuildingObjectTemplate
 	clientObjectCRC = 2474373547
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_swoop_medium2, "object/building/poi/shared_tatooine_swoop_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_swoop_medium2, "object/building/poi/shared_tatooine_swoop_medium2.iff")
 
 object_building_poi_shared_tatooine_tuskenbantha_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23064,6 +23475,7 @@ object_building_poi_shared_tatooine_tuskenbantha_large1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_tuskenbantha_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23111,7 +23523,7 @@ object_building_poi_shared_tatooine_tuskenbantha_large1 = SharedBuildingObjectTe
 	clientObjectCRC = 70977104
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_tuskenbantha_large1, "object/building/poi/shared_tatooine_tuskenbantha_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_tuskenbantha_large1, "object/building/poi/shared_tatooine_tuskenbantha_large1.iff")
 
 object_building_poi_shared_tatooine_tuskenbantha_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23120,6 +23532,7 @@ object_building_poi_shared_tatooine_tuskenbantha_large2 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_tuskenbantha_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23167,7 +23580,7 @@ object_building_poi_shared_tatooine_tuskenbantha_large2 = SharedBuildingObjectTe
 	clientObjectCRC = 3744247495
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_tuskenbantha_large2, "object/building/poi/shared_tatooine_tuskenbantha_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_tuskenbantha_large2, "object/building/poi/shared_tatooine_tuskenbantha_large2.iff")
 
 object_building_poi_shared_tatooine_tuskenbantha_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23176,6 +23589,7 @@ object_building_poi_shared_tatooine_tuskenbantha_medium = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_tuskenbantha_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23223,7 +23637,7 @@ object_building_poi_shared_tatooine_tuskenbantha_medium = SharedBuildingObjectTe
 	clientObjectCRC = 3078098017
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_tuskenbantha_medium, "object/building/poi/shared_tatooine_tuskenbantha_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_tuskenbantha_medium, "object/building/poi/shared_tatooine_tuskenbantha_medium.iff")
 
 object_building_poi_shared_tatooine_tuskenwar_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23232,6 +23646,7 @@ object_building_poi_shared_tatooine_tuskenwar_large1 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_tuskenwar_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23279,7 +23694,7 @@ object_building_poi_shared_tatooine_tuskenwar_large1 = SharedBuildingObjectTempl
 	clientObjectCRC = 4071159081
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_tuskenwar_large1, "object/building/poi/shared_tatooine_tuskenwar_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_tuskenwar_large1, "object/building/poi/shared_tatooine_tuskenwar_large1.iff")
 
 object_building_poi_shared_tatooine_tuskenwar_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23288,6 +23703,7 @@ object_building_poi_shared_tatooine_tuskenwar_large2 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_tuskenwar_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23335,7 +23751,7 @@ object_building_poi_shared_tatooine_tuskenwar_large2 = SharedBuildingObjectTempl
 	clientObjectCRC = 700407230
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_tuskenwar_large2, "object/building/poi/shared_tatooine_tuskenwar_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_tuskenwar_large2, "object/building/poi/shared_tatooine_tuskenwar_large2.iff")
 
 object_building_poi_shared_tatooine_tuskenwar_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23344,6 +23760,7 @@ object_building_poi_shared_tatooine_tuskenwar_large3 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_tuskenwar_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23391,7 +23808,7 @@ object_building_poi_shared_tatooine_tuskenwar_large3 = SharedBuildingObjectTempl
 	clientObjectCRC = 1622293043
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_tuskenwar_large3, "object/building/poi/shared_tatooine_tuskenwar_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_tuskenwar_large3, "object/building/poi/shared_tatooine_tuskenwar_large3.iff")
 
 object_building_poi_shared_tatooine_tuskenwar_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23400,6 +23817,7 @@ object_building_poi_shared_tatooine_tuskenwar_medium = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_tuskenwar_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23447,7 +23865,7 @@ object_building_poi_shared_tatooine_tuskenwar_medium = SharedBuildingObjectTempl
 	clientObjectCRC = 1105985304
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_tuskenwar_medium, "object/building/poi/shared_tatooine_tuskenwar_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_tuskenwar_medium, "object/building/poi/shared_tatooine_tuskenwar_medium.iff")
 
 object_building_poi_shared_tatooine_valariangang_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23456,6 +23874,7 @@ object_building_poi_shared_tatooine_valariangang_large1 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_valariangang_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23503,7 +23922,7 @@ object_building_poi_shared_tatooine_valariangang_large1 = SharedBuildingObjectTe
 	clientObjectCRC = 3919757322
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_valariangang_large1, "object/building/poi/shared_tatooine_valariangang_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_valariangang_large1, "object/building/poi/shared_tatooine_valariangang_large1.iff")
 
 object_building_poi_shared_tatooine_valariangang_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23512,6 +23931,7 @@ object_building_poi_shared_tatooine_valariangang_large2 = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_valariangang_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23559,7 +23979,7 @@ object_building_poi_shared_tatooine_valariangang_large2 = SharedBuildingObjectTe
 	clientObjectCRC = 850749597
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_valariangang_large2, "object/building/poi/shared_tatooine_valariangang_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_valariangang_large2, "object/building/poi/shared_tatooine_valariangang_large2.iff")
 
 object_building_poi_shared_tatooine_valariangang_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23568,6 +23988,7 @@ object_building_poi_shared_tatooine_valariangang_medium = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_valariangang_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23615,7 +24036,7 @@ object_building_poi_shared_tatooine_valariangang_medium = SharedBuildingObjectTe
 	clientObjectCRC = 1524746811
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_valariangang_medium, "object/building/poi/shared_tatooine_valariangang_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_valariangang_medium, "object/building/poi/shared_tatooine_valariangang_medium.iff")
 
 object_building_poi_shared_tatooine_valariantrader_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23624,6 +24045,7 @@ object_building_poi_shared_tatooine_valariantrader_large1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_valariantrader_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23671,7 +24093,7 @@ object_building_poi_shared_tatooine_valariantrader_large1 = SharedBuildingObject
 	clientObjectCRC = 2925334203
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_valariantrader_large1, "object/building/poi/shared_tatooine_valariantrader_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_valariantrader_large1, "object/building/poi/shared_tatooine_valariantrader_large1.iff")
 
 object_building_poi_shared_tatooine_valariantrader_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23680,6 +24102,7 @@ object_building_poi_shared_tatooine_valariantrader_large2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_valariantrader_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23727,7 +24150,7 @@ object_building_poi_shared_tatooine_valariantrader_large2 = SharedBuildingObject
 	clientObjectCRC = 1967826476
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_valariantrader_large2, "object/building/poi/shared_tatooine_valariantrader_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_valariantrader_large2, "object/building/poi/shared_tatooine_valariantrader_large2.iff")
 
 object_building_poi_shared_tatooine_valariantrader_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23736,6 +24159,7 @@ object_building_poi_shared_tatooine_valariantrader_medium = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_valariantrader_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23783,7 +24207,7 @@ object_building_poi_shared_tatooine_valariantrader_medium = SharedBuildingObject
 	clientObjectCRC = 488506506
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_valariantrader_medium, "object/building/poi/shared_tatooine_valariantrader_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_valariantrader_medium, "object/building/poi/shared_tatooine_valariantrader_medium.iff")
 
 object_building_poi_shared_tatooine_village_medium_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23792,6 +24216,7 @@ object_building_poi_shared_tatooine_village_medium_1 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_village_medium_1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23839,7 +24264,7 @@ object_building_poi_shared_tatooine_village_medium_1 = SharedBuildingObjectTempl
 	clientObjectCRC = 1488043728
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_village_medium_1, "object/building/poi/shared_tatooine_village_medium_1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_village_medium_1, "object/building/poi/shared_tatooine_village_medium_1.iff")
 
 object_building_poi_shared_tatooine_village_medium_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23848,6 +24273,7 @@ object_building_poi_shared_tatooine_village_medium_3 = SharedBuildingObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_village_medium_3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23895,7 +24321,7 @@ object_building_poi_shared_tatooine_village_medium_3 = SharedBuildingObjectTempl
 	clientObjectCRC = 3400233418
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_village_medium_3, "object/building/poi/shared_tatooine_village_medium_3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_village_medium_3, "object/building/poi/shared_tatooine_village_medium_3.iff")
 
 object_building_poi_shared_tatooine_weequayzealots_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23904,6 +24330,7 @@ object_building_poi_shared_tatooine_weequayzealots_large1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_weequayzealots_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -23951,7 +24378,7 @@ object_building_poi_shared_tatooine_weequayzealots_large1 = SharedBuildingObject
 	clientObjectCRC = 749133500
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_weequayzealots_large1, "object/building/poi/shared_tatooine_weequayzealots_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_weequayzealots_large1, "object/building/poi/shared_tatooine_weequayzealots_large1.iff")
 
 object_building_poi_shared_tatooine_weequayzealots_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -23960,6 +24387,7 @@ object_building_poi_shared_tatooine_weequayzealots_large2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_weequayzealots_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24007,7 +24435,7 @@ object_building_poi_shared_tatooine_weequayzealots_large2 = SharedBuildingObject
 	clientObjectCRC = 4155602475
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_weequayzealots_large2, "object/building/poi/shared_tatooine_weequayzealots_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_weequayzealots_large2, "object/building/poi/shared_tatooine_weequayzealots_large2.iff")
 
 object_building_poi_shared_tatooine_weequayzealots_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24016,6 +24444,7 @@ object_building_poi_shared_tatooine_weequayzealots_medium = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_weequayzealots_medium.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24063,7 +24492,7 @@ object_building_poi_shared_tatooine_weequayzealots_medium = SharedBuildingObject
 	clientObjectCRC = 2682639501
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_weequayzealots_medium, "object/building/poi/shared_tatooine_weequayzealots_medium.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_weequayzealots_medium, "object/building/poi/shared_tatooine_weequayzealots_medium.iff")
 
 object_building_poi_shared_tatooine_weequayzealots_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24072,6 +24501,7 @@ object_building_poi_shared_tatooine_weequayzealots_medium2 = SharedBuildingObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_tatooine_weequayzealots_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24119,7 +24549,7 @@ object_building_poi_shared_tatooine_weequayzealots_medium2 = SharedBuildingObjec
 	clientObjectCRC = 3686926167
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_tatooine_weequayzealots_medium2, "object/building/poi/shared_tatooine_weequayzealots_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_tatooine_weequayzealots_medium2, "object/building/poi/shared_tatooine_weequayzealots_medium2.iff")
 
 object_building_poi_shared_yavin4_abandoned_rebel_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24128,6 +24558,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_abandoned_rebel_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24175,7 +24606,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large1 = SharedBuildingOb
 	clientObjectCRC = 3922111839
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_large1, "object/building/poi/shared_yavin4_abandoned_rebel_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_large1, "object/building/poi/shared_yavin4_abandoned_rebel_camp_large1.iff")
 
 object_building_poi_shared_yavin4_abandoned_rebel_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24184,6 +24615,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large2 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_abandoned_rebel_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24231,7 +24663,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large2 = SharedBuildingOb
 	clientObjectCRC = 852559304
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_large2, "object/building/poi/shared_yavin4_abandoned_rebel_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_large2, "object/building/poi/shared_yavin4_abandoned_rebel_camp_large2.iff")
 
 object_building_poi_shared_yavin4_abandoned_rebel_camp_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24240,6 +24672,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large3 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_abandoned_rebel_camp_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24287,7 +24720,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large3 = SharedBuildingOb
 	clientObjectCRC = 2078040645
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_large3, "object/building/poi/shared_yavin4_abandoned_rebel_camp_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_large3, "object/building/poi/shared_yavin4_abandoned_rebel_camp_large3.iff")
 
 object_building_poi_shared_yavin4_abandoned_rebel_camp_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24296,6 +24729,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_medium1 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_abandoned_rebel_camp_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24343,7 +24777,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_medium1 = SharedBuildingO
 	clientObjectCRC = 719959858
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_medium1, "object/building/poi/shared_yavin4_abandoned_rebel_camp_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_medium1, "object/building/poi/shared_yavin4_abandoned_rebel_camp_medium1.iff")
 
 object_building_poi_shared_yavin4_abandoned_rebel_camp_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24352,6 +24786,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_medium2 = SharedBuildingO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_abandoned_rebel_camp_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24399,7 +24834,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_medium2 = SharedBuildingO
 	clientObjectCRC = 4059963301
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_medium2, "object/building/poi/shared_yavin4_abandoned_rebel_camp_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_medium2, "object/building/poi/shared_yavin4_abandoned_rebel_camp_medium2.iff")
 
 object_building_poi_shared_yavin4_abandoned_rebel_camp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24408,6 +24843,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_small1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_abandoned_rebel_camp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24455,7 +24891,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_small1 = SharedBuildingOb
 	clientObjectCRC = 895786771
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_small1, "object/building/poi/shared_yavin4_abandoned_rebel_camp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_small1, "object/building/poi/shared_yavin4_abandoned_rebel_camp_small1.iff")
 
 object_building_poi_shared_yavin4_abandoned_rebel_camp_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24464,6 +24900,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_small2 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_abandoned_rebel_camp_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24511,7 +24948,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_small2 = SharedBuildingOb
 	clientObjectCRC = 4000528260
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_small2, "object/building/poi/shared_yavin4_abandoned_rebel_camp_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_abandoned_rebel_camp_small2, "object/building/poi/shared_yavin4_abandoned_rebel_camp_small2.iff")
 
 object_building_poi_shared_yavin4_hutt_scavenger_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24520,6 +24957,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_large1 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_hutt_scavenger_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24567,7 +25005,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_large1 = SharedBuildingObj
 	clientObjectCRC = 1405724823
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_large1, "object/building/poi/shared_yavin4_hutt_scavenger_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_large1, "object/building/poi/shared_yavin4_hutt_scavenger_camp_large1.iff")
 
 object_building_poi_shared_yavin4_hutt_scavenger_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24576,6 +25014,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_large2 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_hutt_scavenger_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24623,7 +25062,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_large2 = SharedBuildingObj
 	clientObjectCRC = 2296250368
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_large2, "object/building/poi/shared_yavin4_hutt_scavenger_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_large2, "object/building/poi/shared_yavin4_hutt_scavenger_camp_large2.iff")
 
 object_building_poi_shared_yavin4_hutt_scavenger_camp_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24632,6 +25071,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_medium1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_hutt_scavenger_camp_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24679,7 +25119,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_medium1 = SharedBuildingOb
 	clientObjectCRC = 3076007066
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_medium1, "object/building/poi/shared_yavin4_hutt_scavenger_camp_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_medium1, "object/building/poi/shared_yavin4_hutt_scavenger_camp_medium1.iff")
 
 object_building_poi_shared_yavin4_hutt_scavenger_camp_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24688,6 +25128,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_medium2 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_hutt_scavenger_camp_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24735,7 +25176,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_medium2 = SharedBuildingOb
 	clientObjectCRC = 1817152525
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_medium2, "object/building/poi/shared_yavin4_hutt_scavenger_camp_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_medium2, "object/building/poi/shared_yavin4_hutt_scavenger_camp_medium2.iff")
 
 object_building_poi_shared_yavin4_hutt_scavenger_camp_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24744,6 +25185,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_small1 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_hutt_scavenger_camp_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24791,7 +25233,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_small1 = SharedBuildingObj
 	clientObjectCRC = 2406193883
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_small1, "object/building/poi/shared_yavin4_hutt_scavenger_camp_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_small1, "object/building/poi/shared_yavin4_hutt_scavenger_camp_small1.iff")
 
 object_building_poi_shared_yavin4_hutt_scavenger_camp_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24800,6 +25242,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_small2 = SharedBuildingObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_hutt_scavenger_camp_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24847,7 +25290,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_small2 = SharedBuildingObj
 	clientObjectCRC = 1417425484
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_small2, "object/building/poi/shared_yavin4_hutt_scavenger_camp_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_hutt_scavenger_camp_small2, "object/building/poi/shared_yavin4_hutt_scavenger_camp_small2.iff")
 
 object_building_poi_shared_yavin4_imperial_patrol_camp_large1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24856,6 +25299,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large1 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_imperial_patrol_camp_large1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24903,7 +25347,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large1 = SharedBuildingOb
 	clientObjectCRC = 1421675238
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_imperial_patrol_camp_large1, "object/building/poi/shared_yavin4_imperial_patrol_camp_large1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_imperial_patrol_camp_large1, "object/building/poi/shared_yavin4_imperial_patrol_camp_large1.iff")
 
 object_building_poi_shared_yavin4_imperial_patrol_camp_large2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24912,6 +25356,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large2 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_imperial_patrol_camp_large2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -24959,7 +25404,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large2 = SharedBuildingOb
 	clientObjectCRC = 2410324593
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_imperial_patrol_camp_large2, "object/building/poi/shared_yavin4_imperial_patrol_camp_large2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_imperial_patrol_camp_large2, "object/building/poi/shared_yavin4_imperial_patrol_camp_large2.iff")
 
 object_building_poi_shared_yavin4_imperial_patrol_camp_large3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -24968,6 +25413,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large3 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_imperial_patrol_camp_large3.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -25015,7 +25461,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large3 = SharedBuildingOb
 	clientObjectCRC = 3332883964
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_imperial_patrol_camp_large3, "object/building/poi/shared_yavin4_imperial_patrol_camp_large3.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_imperial_patrol_camp_large3, "object/building/poi/shared_yavin4_imperial_patrol_camp_large3.iff")
 
 object_building_poi_shared_yavin4_imperial_patrol_camp_large4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -25024,6 +25470,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large4 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_imperial_patrol_camp_large4.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -25071,7 +25518,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large4 = SharedBuildingOb
 	clientObjectCRC = 1027927784
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_imperial_patrol_camp_large4, "object/building/poi/shared_yavin4_imperial_patrol_camp_large4.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_imperial_patrol_camp_large4, "object/building/poi/shared_yavin4_imperial_patrol_camp_large4.iff")
 
 object_building_poi_shared_yavin4_imperial_patrol_medium1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -25080,6 +25527,7 @@ object_building_poi_shared_yavin4_imperial_patrol_medium1 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_imperial_patrol_medium1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -25127,7 +25575,7 @@ object_building_poi_shared_yavin4_imperial_patrol_medium1 = SharedBuildingObject
 	clientObjectCRC = 989401762
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_imperial_patrol_medium1, "object/building/poi/shared_yavin4_imperial_patrol_medium1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_imperial_patrol_medium1, "object/building/poi/shared_yavin4_imperial_patrol_medium1.iff")
 
 object_building_poi_shared_yavin4_imperial_patrol_medium2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -25136,6 +25584,7 @@ object_building_poi_shared_yavin4_imperial_patrol_medium2 = SharedBuildingObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_imperial_patrol_medium2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -25183,7 +25632,7 @@ object_building_poi_shared_yavin4_imperial_patrol_medium2 = SharedBuildingObject
 	clientObjectCRC = 3790518837
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_imperial_patrol_medium2, "object/building/poi/shared_yavin4_imperial_patrol_medium2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_imperial_patrol_medium2, "object/building/poi/shared_yavin4_imperial_patrol_medium2.iff")
 
 object_building_poi_shared_yavin4_imperial_patrol_small1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -25192,6 +25641,7 @@ object_building_poi_shared_yavin4_imperial_patrol_small1 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_imperial_patrol_small1.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -25239,7 +25689,7 @@ object_building_poi_shared_yavin4_imperial_patrol_small1 = SharedBuildingObjectT
 	clientObjectCRC = 94420443
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_imperial_patrol_small1, "object/building/poi/shared_yavin4_imperial_patrol_small1.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_imperial_patrol_small1, "object/building/poi/shared_yavin4_imperial_patrol_small1.iff")
 
 object_building_poi_shared_yavin4_imperial_patrol_small2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
@@ -25248,6 +25698,7 @@ object_building_poi_shared_yavin4_imperial_patrol_small2 = SharedBuildingObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/poi/shared_yavin4_imperial_patrol_small2.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -25295,4 +25746,4 @@ object_building_poi_shared_yavin4_imperial_patrol_small2 = SharedBuildingObjectT
 	clientObjectCRC = 3736540492
 }
 
-ObjectTemplates:addClientTemplate(object_building_poi_shared_yavin4_imperial_patrol_small2, "object/building/poi/shared_yavin4_imperial_patrol_small2.iff")
+ObjectTemplates:addTemplate(object_building_poi_shared_yavin4_imperial_patrol_small2, "object/building/poi/shared_yavin4_imperial_patrol_small2.iff")

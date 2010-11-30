@@ -48,6 +48,7 @@ object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc = SharedTangibleO
 	clientObjectCRC = 2371032814
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc, "object/tangible/lair/stormtrooper/shared_lair_stormtrooper_npc.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc, "object/tangible/lair/stormtrooper/shared_lair_stormtrooper_npc.iff")

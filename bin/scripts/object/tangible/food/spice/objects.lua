@@ -48,6 +48,7 @@ object_tangible_food_spice_shared_spice_base = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_food_spice_shared_spice_base = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2073269551
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_base, "object/tangible/food/spice/shared_spice_base.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_base, "object/tangible/food/spice/shared_spice_base.iff")
 
 object_tangible_food_spice_shared_spice_booster_blue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_poison_chemical.apt",
@@ -101,6 +102,7 @@ object_tangible_food_spice_shared_spice_booster_blue = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_food_spice_shared_spice_booster_blue = SharedTangibleObjectTempl
 	clientObjectCRC = 2516008025
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_booster_blue, "object/tangible/food/spice/shared_spice_booster_blue.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_booster_blue, "object/tangible/food/spice/shared_spice_booster_blue.iff")
 
 object_tangible_food_spice_shared_spice_crash_n_burn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_antidote_chemical.apt",
@@ -154,6 +156,7 @@ object_tangible_food_spice_shared_spice_crash_n_burn = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_food_spice_shared_spice_crash_n_burn = SharedTangibleObjectTempl
 	clientObjectCRC = 96283804
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_crash_n_burn, "object/tangible/food/spice/shared_spice_crash_n_burn.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_crash_n_burn, "object/tangible/food/spice/shared_spice_crash_n_burn.iff")
 
 object_tangible_food_spice_shared_spice_droid_lube = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
@@ -207,6 +210,7 @@ object_tangible_food_spice_shared_spice_droid_lube = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_food_spice_shared_spice_droid_lube = SharedTangibleObjectTemplat
 	clientObjectCRC = 1700944368
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_droid_lube, "object/tangible/food/spice/shared_spice_droid_lube.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_droid_lube, "object/tangible/food/spice/shared_spice_droid_lube.iff")
 
 object_tangible_food_spice_shared_spice_giggledust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
@@ -260,6 +264,7 @@ object_tangible_food_spice_shared_spice_giggledust = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_food_spice_shared_spice_giggledust = SharedTangibleObjectTemplat
 	clientObjectCRC = 1878192398
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_giggledust, "object/tangible/food/spice/shared_spice_giggledust.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_giggledust, "object/tangible/food/spice/shared_spice_giggledust.iff")
 
 object_tangible_food_spice_shared_spice_grey_gabaki = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_spice_container.apt",
@@ -313,6 +318,7 @@ object_tangible_food_spice_shared_spice_grey_gabaki = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_food_spice_shared_spice_grey_gabaki = SharedTangibleObjectTempla
 	clientObjectCRC = 4012257661
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_grey_gabaki, "object/tangible/food/spice/shared_spice_grey_gabaki.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_grey_gabaki, "object/tangible/food/spice/shared_spice_grey_gabaki.iff")
 
 object_tangible_food_spice_shared_spice_gunjack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
@@ -366,6 +372,7 @@ object_tangible_food_spice_shared_spice_gunjack = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_food_spice_shared_spice_gunjack = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3162646760
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_gunjack, "object/tangible/food/spice/shared_spice_gunjack.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_gunjack, "object/tangible/food/spice/shared_spice_gunjack.iff")
 
 object_tangible_food_spice_shared_spice_kliknik_boost = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
@@ -419,6 +426,7 @@ object_tangible_food_spice_shared_spice_kliknik_boost = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_food_spice_shared_spice_kliknik_boost = SharedTangibleObjectTemp
 	clientObjectCRC = 2365942016
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_kliknik_boost, "object/tangible/food/spice/shared_spice_kliknik_boost.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_kliknik_boost, "object/tangible/food/spice/shared_spice_kliknik_boost.iff")
 
 object_tangible_food_spice_shared_spice_kwi_boost = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
@@ -472,6 +480,7 @@ object_tangible_food_spice_shared_spice_kwi_boost = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_food_spice_shared_spice_kwi_boost = SharedTangibleObjectTemplate
 	clientObjectCRC = 3381348892
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_kwi_boost, "object/tangible/food/spice/shared_spice_kwi_boost.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_kwi_boost, "object/tangible/food/spice/shared_spice_kwi_boost.iff")
 
 object_tangible_food_spice_shared_spice_muon_gold = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -525,6 +534,7 @@ object_tangible_food_spice_shared_spice_muon_gold = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_food_spice_shared_spice_muon_gold = SharedTangibleObjectTemplate
 	clientObjectCRC = 3112742541
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_muon_gold, "object/tangible/food/spice/shared_spice_muon_gold.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_muon_gold, "object/tangible/food/spice/shared_spice_muon_gold.iff")
 
 object_tangible_food_spice_shared_spice_neutron_pixey = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -578,6 +588,7 @@ object_tangible_food_spice_shared_spice_neutron_pixey = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_food_spice_shared_spice_neutron_pixey = SharedTangibleObjectTemp
 	clientObjectCRC = 3750021953
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_neutron_pixey, "object/tangible/food/spice/shared_spice_neutron_pixey.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_neutron_pixey, "object/tangible/food/spice/shared_spice_neutron_pixey.iff")
 
 object_tangible_food_spice_shared_spice_pyrepenol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -631,6 +642,7 @@ object_tangible_food_spice_shared_spice_pyrepenol = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_food_spice_shared_spice_pyrepenol = SharedTangibleObjectTemplate
 	clientObjectCRC = 1073230239
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_pyrepenol, "object/tangible/food/spice/shared_spice_pyrepenol.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_pyrepenol, "object/tangible/food/spice/shared_spice_pyrepenol.iff")
 
 object_tangible_food_spice_shared_spice_scramjet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_chemicals_sm.apt",
@@ -684,6 +696,7 @@ object_tangible_food_spice_shared_spice_scramjet = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_food_spice_shared_spice_scramjet = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3992242678
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_scramjet, "object/tangible/food/spice/shared_spice_scramjet.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_scramjet, "object/tangible/food/spice/shared_spice_scramjet.iff")
 
 object_tangible_food_spice_shared_spice_sedative_h4b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
@@ -737,6 +750,7 @@ object_tangible_food_spice_shared_spice_sedative_h4b = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_food_spice_shared_spice_sedative_h4b = SharedTangibleObjectTempl
 	clientObjectCRC = 4072023421
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_sedative_h4b, "object/tangible/food/spice/shared_spice_sedative_h4b.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_sedative_h4b, "object/tangible/food/spice/shared_spice_sedative_h4b.iff")
 
 object_tangible_food_spice_shared_spice_shadowpaw = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
@@ -790,6 +804,7 @@ object_tangible_food_spice_shared_spice_shadowpaw = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_food_spice_shared_spice_shadowpaw = SharedTangibleObjectTemplate
 	clientObjectCRC = 2778111395
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_shadowpaw, "object/tangible/food/spice/shared_spice_shadowpaw.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_shadowpaw, "object/tangible/food/spice/shared_spice_shadowpaw.iff")
 
 object_tangible_food_spice_shared_spice_sweetblossom = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_food_spice_shared_spice_sweetblossom = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_food_spice_shared_spice_sweetblossom = SharedTangibleObjectTempl
 	clientObjectCRC = 1182200956
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_sweetblossom, "object/tangible/food/spice/shared_spice_sweetblossom.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_sweetblossom, "object/tangible/food/spice/shared_spice_sweetblossom.iff")
 
 object_tangible_food_spice_shared_spice_thruster_head = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_chemical.apt",
@@ -896,6 +912,7 @@ object_tangible_food_spice_shared_spice_thruster_head = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_food_spice_shared_spice_thruster_head = SharedTangibleObjectTemp
 	clientObjectCRC = 732545867
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_thruster_head, "object/tangible/food/spice/shared_spice_thruster_head.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_thruster_head, "object/tangible/food/spice/shared_spice_thruster_head.iff")
 
 object_tangible_food_spice_shared_spice_yarrock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s5.apt",
@@ -949,6 +966,7 @@ object_tangible_food_spice_shared_spice_yarrock = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,4 +1011,4 @@ object_tangible_food_spice_shared_spice_yarrock = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 194250139
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_yarrock, "object/tangible/food/spice/shared_spice_yarrock.iff")
+ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_yarrock, "object/tangible/food/spice/shared_spice_yarrock.iff")

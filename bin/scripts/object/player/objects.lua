@@ -47,6 +47,7 @@ object_player_shared_player = SharedPlayerObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_player_shared_player = SharedPlayerObjectTemplate:new {
 	clientObjectCRC = 1637592609
 }
 
-ObjectTemplates:addClientTemplate(object_player_shared_player, "object/player/shared_player.iff")
+ObjectTemplates:addTemplate(object_player_shared_player, "object/player/shared_player.iff")

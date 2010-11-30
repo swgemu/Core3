@@ -47,6 +47,7 @@ object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder = S
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder = S
 	clientObjectCRC = 1649870245
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder, "object/draft_schematic/item/theme_park/alderaan/act2/shared_dead_eye_decoder.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder, "object/draft_schematic/item/theme_park/alderaan/act2/shared_dead_eye_decoder.iff")

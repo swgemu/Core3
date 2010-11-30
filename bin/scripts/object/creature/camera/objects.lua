@@ -51,6 +51,7 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -116,7 +117,7 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2217042692
 }
 
-ObjectTemplates:addClientTemplate(object_creature_camera_shared_intro_camera, "object/creature/camera/shared_intro_camera.iff")
+ObjectTemplates:addTemplate(object_creature_camera_shared_intro_camera, "object/creature/camera/shared_intro_camera.iff")
 
 object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -128,6 +129,7 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_intro_controller.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -193,4 +195,4 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 1416223243
 }
 
-ObjectTemplates:addClientTemplate(object_creature_camera_shared_intro_controller, "object/creature/camera/shared_intro_controller.iff")
+ObjectTemplates:addTemplate(object_creature_camera_shared_intro_controller, "object/creature/camera/shared_intro_controller.iff")

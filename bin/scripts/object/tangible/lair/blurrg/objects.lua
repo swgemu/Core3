@@ -48,6 +48,7 @@ object_tangible_lair_blurrg_shared_lair_blurrg = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_blurrg_shared_lair_blurrg = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3631991415
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_blurrg_shared_lair_blurrg, "object/tangible/lair/blurrg/shared_lair_blurrg.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_blurrg_shared_lair_blurrg, "object/tangible/lair/blurrg/shared_lair_blurrg.iff")
 
 object_tangible_lair_blurrg_shared_lair_blurrg_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_blurrg_shared_lair_blurrg_forest = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_blurrg_shared_lair_blurrg_forest = SharedTangibleObjectTemp
 	clientObjectCRC = 399329773
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_blurrg_shared_lair_blurrg_forest, "object/tangible/lair/blurrg/shared_lair_blurrg_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_blurrg_shared_lair_blurrg_forest, "object/tangible/lair/blurrg/shared_lair_blurrg_forest.iff")
 
 object_tangible_lair_blurrg_shared_lair_blurrg_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_blurrg_shared_lair_blurrg_mountain = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_blurrg_shared_lair_blurrg_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 3043394661
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_blurrg_shared_lair_blurrg_mountain, "object/tangible/lair/blurrg/shared_lair_blurrg_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_blurrg_shared_lair_blurrg_mountain, "object/tangible/lair/blurrg/shared_lair_blurrg_mountain.iff")

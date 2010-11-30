@@ -47,6 +47,7 @@ object_static_structure_endor_shared_endor_cap = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_static_structure_endor_shared_endor_cap = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1412682900
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endor_cap, "object/static/structure/endor/shared_endor_cap.iff")
+ObjectTemplates:addTemplate(object_static_structure_endor_shared_endor_cap, "object/static/structure/endor/shared_endor_cap.iff")
 
 object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_s01.apt",
@@ -90,6 +91,7 @@ object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:
 	clientObjectCRC = 2834035953
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endor_catwalk, "object/static/structure/endor/shared_endor_catwalk.iff")
+ObjectTemplates:addTemplate(object_static_structure_endor_shared_endor_catwalk, "object/static/structure/endor/shared_endor_catwalk.iff")
 
 object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
@@ -133,6 +135,7 @@ object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObj
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/endr_imprv_bannerpole_s01.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 1,
@@ -167,7 +170,7 @@ object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObj
 	clientObjectCRC = 2166795982
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endr_imprv_bannerpole_s01, "object/static/structure/endor/shared_endr_imprv_bannerpole_s01.iff")
+ObjectTemplates:addTemplate(object_static_structure_endor_shared_endr_imprv_bannerpole_s01, "object/static/structure/endor/shared_endr_imprv_bannerpole_s01.iff")
 
 object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -175,6 +178,7 @@ object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/endr_imprv_flagpole_s01.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 1,
@@ -209,4 +213,4 @@ object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjec
 	clientObjectCRC = 4084104443
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endr_imprv_flagpole_s01, "object/static/structure/endor/shared_endr_imprv_flagpole_s01.iff")
+ObjectTemplates:addTemplate(object_static_structure_endor_shared_endr_imprv_flagpole_s01, "object/static/structure/endor/shared_endr_imprv_flagpole_s01.iff")

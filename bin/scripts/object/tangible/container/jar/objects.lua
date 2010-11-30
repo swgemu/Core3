@@ -48,6 +48,7 @@ object_tangible_container_jar_shared_jar_berries_s01 = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_container_jar_shared_jar_berries_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 4139801999
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_berries_s01, "object/tangible/container/jar/shared_jar_berries_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_berries_s01, "object/tangible/container/jar/shared_jar_berries_s01.iff")
 
 object_tangible_container_jar_shared_jar_bugs_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_container_jar_shared_jar_bugs_s01 = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_container_jar_shared_jar_bugs_s01 = SharedTangibleObjectTemplate
 	clientObjectCRC = 835828013
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_bugs_s01, "object/tangible/container/jar/shared_jar_bugs_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_bugs_s01, "object/tangible/container/jar/shared_jar_bugs_s01.iff")
 
 object_tangible_container_jar_shared_jar_empty_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_empty_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_container_jar_shared_jar_empty_s01 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_container_jar_shared_jar_empty_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1210399766
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_empty_s01, "object/tangible/container/jar/shared_jar_empty_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_empty_s01, "object/tangible/container/jar/shared_jar_empty_s01.iff")
 
 object_tangible_container_jar_shared_jar_funk_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_container_jar_shared_jar_funk_s01 = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_container_jar_shared_jar_funk_s01 = SharedTangibleObjectTemplate
 	clientObjectCRC = 790427742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_funk_s01, "object/tangible/container/jar/shared_jar_funk_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_funk_s01, "object/tangible/container/jar/shared_jar_funk_s01.iff")
 
 object_tangible_container_jar_shared_jar_guts_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_container_jar_shared_jar_guts_s01 = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_container_jar_shared_jar_guts_s01 = SharedTangibleObjectTemplate
 	clientObjectCRC = 2207170789
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_guts_s01, "object/tangible/container/jar/shared_jar_guts_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_guts_s01, "object/tangible/container/jar/shared_jar_guts_s01.iff")
 
 object_tangible_container_jar_shared_jar_spice_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_container_jar_shared_jar_spice_s01 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_container_jar_shared_jar_spice_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2797429817
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_spice_s01, "object/tangible/container/jar/shared_jar_spice_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s01, "object/tangible/container/jar/shared_jar_spice_s01.iff")
 
 object_tangible_container_jar_shared_jar_spice_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
@@ -366,6 +372,7 @@ object_tangible_container_jar_shared_jar_spice_s02 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_container_jar_shared_jar_spice_s02 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2108345518
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_spice_s02, "object/tangible/container/jar/shared_jar_spice_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s02, "object/tangible/container/jar/shared_jar_spice_s02.iff")
 
 object_tangible_container_jar_shared_jar_spice_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
@@ -419,6 +426,7 @@ object_tangible_container_jar_shared_jar_spice_s03 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,4 +471,4 @@ object_tangible_container_jar_shared_jar_spice_s03 = SharedTangibleObjectTemplat
 	clientObjectCRC = 883403555
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_spice_s03, "object/tangible/container/jar/shared_jar_spice_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_container_jar_shared_jar_spice_s03, "object/tangible/container/jar/shared_jar_spice_s03.iff")

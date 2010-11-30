@@ -48,6 +48,7 @@ object_tangible_furniture_base_shared_furniture_base = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,4 +93,4 @@ object_tangible_furniture_base_shared_furniture_base = SharedTangibleObjectTempl
 	clientObjectCRC = 3515230028
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_base_shared_furniture_base, "object/tangible/furniture/base/shared_furniture_base.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_base_shared_furniture_base, "object/tangible/furniture/base/shared_furniture_base.iff")

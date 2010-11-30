@@ -48,6 +48,7 @@ object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleO
 	clientObjectCRC = 1578605257
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_mission_objects_shared_palace_access_doc, "object/tangible/space/mission_objects/shared_palace_access_doc.iff")
+ObjectTemplates:addTemplate(object_tangible_space_mission_objects_shared_palace_access_doc, "object/tangible/space/mission_objects/shared_palace_access_doc.iff")
 
 object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_droid_program_disk.apt",
@@ -101,6 +102,7 @@ object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjec
 	clientObjectCRC = 1004695364
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_mission_objects_shared_transfer_auth, "object/tangible/space/mission_objects/shared_transfer_auth.iff")
+ObjectTemplates:addTemplate(object_tangible_space_mission_objects_shared_transfer_auth, "object/tangible/space/mission_objects/shared_transfer_auth.iff")

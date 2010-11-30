@@ -48,6 +48,7 @@ object_tangible_wearables_jacket_shared_jacket_ace_imperial = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_jacket_shared_jacket_ace_imperial = SharedTangibleObje
 	clientObjectCRC = 4035495678
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_ace_imperial, "object/tangible/wearables/jacket/shared_jacket_ace_imperial.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_ace_imperial, "object/tangible/wearables/jacket/shared_jacket_ace_imperial.iff")
 
 object_tangible_wearables_jacket_shared_jacket_ace_privateer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s39_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_jacket_shared_jacket_ace_privateer = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_jacket_shared_jacket_ace_privateer = SharedTangibleObj
 	clientObjectCRC = 3982175528
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_ace_privateer, "object/tangible/wearables/jacket/shared_jacket_ace_privateer.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_ace_privateer, "object/tangible/wearables/jacket/shared_jacket_ace_privateer.iff")
 
 object_tangible_wearables_jacket_shared_jacket_ace_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_ace_rebel_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_jacket_shared_jacket_ace_rebel = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_jacket_shared_jacket_ace_rebel = SharedTangibleObjectT
 	clientObjectCRC = 3256170327
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_ace_rebel, "object/tangible/wearables/jacket/shared_jacket_ace_rebel.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_ace_rebel, "object/tangible/wearables/jacket/shared_jacket_ace_rebel.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s02_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_jacket_shared_jacket_s02 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_jacket_shared_jacket_s02 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1288064520
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s02, "object/tangible/wearables/jacket/shared_jacket_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s02, "object/tangible/wearables/jacket/shared_jacket_s02.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s03_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_jacket_shared_jacket_s03 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_jacket_shared_jacket_s03 = SharedTangibleObjectTemplat
 	clientObjectCRC = 97200517
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s03, "object/tangible/wearables/jacket/shared_jacket_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s03, "object/tangible/wearables/jacket/shared_jacket_s03.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s05_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_jacket_shared_jacket_s05 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_jacket_shared_jacket_s05 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3072681244
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s05, "object/tangible/wearables/jacket/shared_jacket_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s05, "object/tangible/wearables/jacket/shared_jacket_s05.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s06_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_jacket_shared_jacket_s06 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_jacket_shared_jacket_s06 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1815268747
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s06, "object/tangible/wearables/jacket/shared_jacket_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s06, "object/tangible/wearables/jacket/shared_jacket_s06.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s07_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_jacket_shared_jacket_s07 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_jacket_shared_jacket_s07 = SharedTangibleObjectTemplat
 	clientObjectCRC = 624929286
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s07, "object/tangible/wearables/jacket/shared_jacket_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s07, "object/tangible/wearables/jacket/shared_jacket_s07.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s08_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_jacket_shared_jacket_s08 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_jacket_shared_jacket_s08 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2671085076
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s08, "object/tangible/wearables/jacket/shared_jacket_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s08, "object/tangible/wearables/jacket/shared_jacket_s08.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s10_f.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_jacket_shared_jacket_s10 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_wearables_jacket_shared_jacket_s10 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3321138282
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s10, "object/tangible/wearables/jacket/shared_jacket_s10.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s10, "object/tangible/wearables/jacket/shared_jacket_s10.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s11_f.sat",
@@ -578,6 +588,7 @@ object_tangible_wearables_jacket_shared_jacket_s11 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_wearables_jacket_shared_jacket_s11 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2365189095
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s11, "object/tangible/wearables/jacket/shared_jacket_s11.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s11, "object/tangible/wearables/jacket/shared_jacket_s11.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s12_f.sat",
@@ -631,6 +642,7 @@ object_tangible_wearables_jacket_shared_jacket_s12 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_wearables_jacket_shared_jacket_s12 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1475232624
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s12, "object/tangible/wearables/jacket/shared_jacket_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s12, "object/tangible/wearables/jacket/shared_jacket_s12.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s13_f.sat",
@@ -684,6 +696,7 @@ object_tangible_wearables_jacket_shared_jacket_s13 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_wearables_jacket_shared_jacket_s13 = SharedTangibleObjectTemplat
 	clientObjectCRC = 518202621
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s13, "object/tangible/wearables/jacket/shared_jacket_s13.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s13, "object/tangible/wearables/jacket/shared_jacket_s13.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s14_f.sat",
@@ -737,6 +750,7 @@ object_tangible_wearables_jacket_shared_jacket_s14 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_wearables_jacket_shared_jacket_s14 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3841986537
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s14, "object/tangible/wearables/jacket/shared_jacket_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s14, "object/tangible/wearables/jacket/shared_jacket_s14.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s15_f.sat",
@@ -790,6 +804,7 @@ object_tangible_wearables_jacket_shared_jacket_s15 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_wearables_jacket_shared_jacket_s15 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2886559844
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s15, "object/tangible/wearables/jacket/shared_jacket_s15.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s15, "object/tangible/wearables/jacket/shared_jacket_s15.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s16_f.sat",
@@ -843,6 +858,7 @@ object_tangible_wearables_jacket_shared_jacket_s16 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_wearables_jacket_shared_jacket_s16 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1998242035
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s16, "object/tangible/wearables/jacket/shared_jacket_s16.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s16, "object/tangible/wearables/jacket/shared_jacket_s16.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s17_f.sat",
@@ -896,6 +912,7 @@ object_tangible_wearables_jacket_shared_jacket_s17 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_wearables_jacket_shared_jacket_s17 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1041737598
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s17, "object/tangible/wearables/jacket/shared_jacket_s17.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s17, "object/tangible/wearables/jacket/shared_jacket_s17.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s18_f.sat",
@@ -949,6 +966,7 @@ object_tangible_wearables_jacket_shared_jacket_s18 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_wearables_jacket_shared_jacket_s18 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2216528748
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s18, "object/tangible/wearables/jacket/shared_jacket_s18.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s18, "object/tangible/wearables/jacket/shared_jacket_s18.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s19_f.sat",
@@ -1002,6 +1020,7 @@ object_tangible_wearables_jacket_shared_jacket_s19 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_wearables_jacket_shared_jacket_s19 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3440438497
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s19, "object/tangible/wearables/jacket/shared_jacket_s19.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s19, "object/tangible/wearables/jacket/shared_jacket_s19.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s21_f.sat",
@@ -1055,6 +1074,7 @@ object_tangible_wearables_jacket_shared_jacket_s21 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_wearables_jacket_shared_jacket_s21 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2709650543
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s21, "object/tangible/wearables/jacket/shared_jacket_s21.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s21, "object/tangible/wearables/jacket/shared_jacket_s21.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s22_f.sat",
@@ -1108,6 +1128,7 @@ object_tangible_wearables_jacket_shared_jacket_s22 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_wearables_jacket_shared_jacket_s22 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2056672504
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s22, "object/tangible/wearables/jacket/shared_jacket_s22.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s22, "object/tangible/wearables/jacket/shared_jacket_s22.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s24 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s24_f.sat",
@@ -1161,6 +1182,7 @@ object_tangible_wearables_jacket_shared_jacket_s24 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_wearables_jacket_shared_jacket_s24 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3363313761
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s24, "object/tangible/wearables/jacket/shared_jacket_s24.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s24, "object/tangible/wearables/jacket/shared_jacket_s24.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s25_f.sat",
@@ -1214,6 +1236,7 @@ object_tangible_wearables_jacket_shared_jacket_s25 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_wearables_jacket_shared_jacket_s25 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2171961324
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s25, "object/tangible/wearables/jacket/shared_jacket_s25.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s25, "object/tangible/wearables/jacket/shared_jacket_s25.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s26 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s26_f.sat",
@@ -1267,6 +1290,7 @@ object_tangible_wearables_jacket_shared_jacket_s26 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_wearables_jacket_shared_jacket_s26 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1516427131
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s26, "object/tangible/wearables/jacket/shared_jacket_s26.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s26, "object/tangible/wearables/jacket/shared_jacket_s26.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s35 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s35_f.sat",
@@ -1320,6 +1344,7 @@ object_tangible_wearables_jacket_shared_jacket_s35 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_wearables_jacket_shared_jacket_s35 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2589815444
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s35, "object/tangible/wearables/jacket/shared_jacket_s35.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s35, "object/tangible/wearables/jacket/shared_jacket_s35.iff")
 
 object_tangible_wearables_jacket_shared_jacket_s36 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jacket_s36_f.sat",
@@ -1373,6 +1398,7 @@ object_tangible_wearables_jacket_shared_jacket_s36 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,4 +1443,4 @@ object_tangible_wearables_jacket_shared_jacket_s36 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1095424515
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_jacket_shared_jacket_s36, "object/tangible/wearables/jacket/shared_jacket_s36.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_jacket_shared_jacket_s36, "object/tangible/wearables/jacket/shared_jacket_s36.iff")

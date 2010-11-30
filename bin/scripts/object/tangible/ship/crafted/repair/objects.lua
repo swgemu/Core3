@@ -48,6 +48,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_armor = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_armor = SharedTangibleObje
 	clientObjectCRC = 4170937873
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_armor, "object/tangible/ship/crafted/repair/shared_repair_kit_armor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_armor, "object/tangible/ship/crafted/repair/shared_repair_kit_armor.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_lightsaber_crafting_kit.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjec
 	clientObjectCRC = 1229310280
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_base, "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_base, "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleOb
 	clientObjectCRC = 1003395918
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_booster, "object/tangible/ship/crafted/repair/shared_repair_kit_booster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_booster, "object/tangible/ship/crafted/repair/shared_repair_kit_booster.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleOb
 	clientObjectCRC = 4086932014
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_chassis, "object/tangible/ship/crafted/repair/shared_repair_kit_chassis.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_chassis, "object/tangible/ship/crafted/repair/shared_repair_kit_chassis.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTa
 	clientObjectCRC = 3855703758
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface, "object/tangible/ship/crafted/repair/shared_repair_kit_droid_interface.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface, "object/tangible/ship/crafted/repair/shared_repair_kit_droid_interface.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObj
 	clientObjectCRC = 4137917364
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_engine, "object/tangible/ship/crafted/repair/shared_repair_kit_engine.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_engine, "object/tangible/ship/crafted/repair/shared_repair_kit_engine.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjec
 	clientObjectCRC = 3545826505
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_hull, "object/tangible/ship/crafted/repair/shared_repair_kit_hull.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_hull, "object/tangible/ship/crafted/repair/shared_repair_kit_hull.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTan
 	clientObjectCRC = 3287770531
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit, "object/tangible/ship/crafted/repair/shared_repair_kit_plasma_conduit.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit, "object/tangible/ship/crafted/repair/shared_repair_kit_plasma_conduit.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleOb
 	clientObjectCRC = 1646486394
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_reactor, "object/tangible/ship/crafted/repair/shared_repair_kit_reactor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_reactor, "object/tangible/ship/crafted/repair/shared_repair_kit_reactor.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -525,6 +534,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedT
 	clientObjectCRC = 2366222507
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator, "object/tangible/ship/crafted/repair/shared_repair_kit_shield_generator.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator, "object/tangible/ship/crafted/repair/shared_repair_kit_shield_generator.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjec
 	clientObjectCRC = 807989435
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_ship, "object/tangible/ship/crafted/repair/shared_repair_kit_ship.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_ship, "object/tangible/ship/crafted/repair/shared_repair_kit_ship.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObj
 	clientObjectCRC = 3322698996
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32773,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,4 +741,4 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedT
 	clientObjectCRC = 3536823939
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon_capacitor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon_capacitor.iff")

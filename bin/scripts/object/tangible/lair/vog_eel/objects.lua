@@ -48,6 +48,7 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1441198347
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel, "object/tangible/lair/vog_eel/shared_lair_vog_eel.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel, "object/tangible/lair/vog_eel/shared_lair_vog_eel.iff")
 
 object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObje
 	clientObjectCRC = 1951814673
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater, "object/tangible/lair/vog_eel/shared_lair_vog_eel_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater, "object/tangible/lair/vog_eel/shared_lair_vog_eel_underwater.iff")

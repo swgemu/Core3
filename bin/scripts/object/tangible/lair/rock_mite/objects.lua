@@ -48,6 +48,7 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite = SharedTangibleObjectTempl
 	clientObjectCRC = 3536993046
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite, "object/tangible/lair/rock_mite/shared_lair_rock_mite.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite, "object/tangible/lair/rock_mite/shared_lair_rock_mite.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObje
 	clientObjectCRC = 4213428417
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_desert, "object/tangible/lair/rock_mite/shared_lair_rock_mite_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_desert, "object/tangible/lair/rock_mite/shared_lair_rock_mite_desert.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleOb
 	clientObjectCRC = 151987616
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain, "object/tangible/lair/rock_mite/shared_lair_rock_mite_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain, "object/tangible/lair/rock_mite/shared_lair_rock_mite_mountain.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleO
 	clientObjectCRC = 1944425271
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland, "object/tangible/lair/rock_mite/shared_lair_rock_mite_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland, "object/tangible/lair/rock_mite/shared_lair_rock_mite_wasteland.iff")

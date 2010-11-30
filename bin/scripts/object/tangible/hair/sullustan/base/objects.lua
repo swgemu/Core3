@@ -48,6 +48,7 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_base = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_base = SharedTangibleO
 	clientObjectCRC = 801531223
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff")
 
 object_tangible_hair_sullustan_base_shared_hair_sullustan_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_female_base = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_female_base = SharedTa
 	clientObjectCRC = 396464255
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_female_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_female_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff")
 
 object_tangible_hair_sullustan_base_shared_hair_sullustan_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_male_base = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_male_base = SharedTang
 	clientObjectCRC = 2746028692
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_male_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_male_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff")

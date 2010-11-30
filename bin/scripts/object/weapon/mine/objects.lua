@@ -49,6 +49,7 @@ object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_large_01.cdf",
+	clientGameObjectType = 131077,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new 
 	clientObjectCRC = 1109205423
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_anti_vehicle, "object/weapon/mine/shared_wp_mine_anti_vehicle.iff")
+ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_anti_vehicle, "object/weapon/mine/shared_wp_mine_anti_vehicle.iff")
 
 object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mine_drx55.apt",
@@ -106,6 +107,7 @@ object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_fragmentation.cdf",
+	clientGameObjectType = 131077,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1308699589
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_drx55, "object/weapon/mine/shared_wp_mine_drx55.iff")
+ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_drx55, "object/weapon/mine/shared_wp_mine_drx55.iff")
 
 object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mine_xg.apt",
@@ -163,6 +165,7 @@ object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_large_02.cdf",
+	clientGameObjectType = 131077,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,4 +213,4 @@ object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 350273897
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_xg, "object/weapon/mine/shared_wp_mine_xg.iff")
+ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_xg, "object/weapon/mine/shared_wp_mine_xg.iff")

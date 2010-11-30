@@ -48,6 +48,7 @@ object_tangible_mission_bag_shared_mission_bag = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_mission_bag_shared_mission_bag = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1031761823
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_mission_bag_shared_mission_bag, "object/tangible/mission_bag/shared_mission_bag.iff")
+ObjectTemplates:addTemplate(object_tangible_mission_bag_shared_mission_bag, "object/tangible/mission_bag/shared_mission_bag.iff")

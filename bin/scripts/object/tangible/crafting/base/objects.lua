@@ -48,6 +48,7 @@ object_tangible_crafting_base_shared_base_public_station = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_crafting_base_shared_base_public_station = SharedTangibleObjectT
 	clientObjectCRC = 405889283
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_public_station, "object/tangible/crafting/base/shared_base_public_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_base_shared_base_public_station, "object/tangible/crafting/base/shared_base_public_station.iff")
 
 object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32771,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:
 	clientObjectCRC = 4267815739
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_repair, "object/tangible/crafting/base/shared_base_repair.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_base_shared_base_repair, "object/tangible/crafting/base/shared_base_repair.iff")
 
 object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8198,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate
 	clientObjectCRC = 722014891
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_station, "object/tangible/crafting/base/shared_base_station.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_base_shared_base_station, "object/tangible/crafting/base/shared_base_station.iff")
 
 object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -207,6 +210,7 @@ object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32769,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 589813491
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_tool, "object/tangible/crafting/base/shared_base_tool.iff")
+ObjectTemplates:addTemplate(object_tangible_crafting_base_shared_base_tool, "object/tangible/crafting/base/shared_base_tool.iff")

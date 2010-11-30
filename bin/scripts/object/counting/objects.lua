@@ -48,6 +48,7 @@ object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8208,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
 	clientObjectCRC = 3842659589
 }
 
-ObjectTemplates:addClientTemplate(object_counting_shared_default_battery, "object/counting/shared_default_battery.iff")
+ObjectTemplates:addTemplate(object_counting_shared_default_battery, "object/counting/shared_default_battery.iff")

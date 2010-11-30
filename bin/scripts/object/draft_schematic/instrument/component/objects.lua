@@ -47,6 +47,7 @@ object_draft_schematic_instrument_component_shared_dual_wave_synthesizer = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_draft_schematic_instrument_component_shared_dual_wave_synthesizer = Share
 	clientObjectCRC = 658217892
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, "object/draft_schematic/instrument/component/shared_dual_wave_synthesizer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, "object/draft_schematic/instrument/component/shared_dual_wave_synthesizer.iff")

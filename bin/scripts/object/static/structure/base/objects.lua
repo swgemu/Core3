@@ -47,6 +47,7 @@ object_static_structure_base_shared_static_structure_base = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_static_structure_base_shared_static_structure_base = SharedStaticObjectTe
 	clientObjectCRC = 161765900
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_base_shared_static_structure_base, "object/static/structure/base/shared_static_structure_base.iff")
+ObjectTemplates:addTemplate(object_static_structure_base_shared_static_structure_base, "object/static/structure/base/shared_static_structure_base.iff")

@@ -48,6 +48,7 @@ object_tangible_loot_loot_schematic_shared_agitator_motor_schematic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_loot_loot_schematic_shared_agitator_motor_schematic = SharedTang
 	clientObjectCRC = 3973368814
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_agitator_motor_schematic, "object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_agitator_motor_schematic, "object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -101,6 +102,7 @@ object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTang
 	clientObjectCRC = 33357504
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic, "object/tangible/loot/loot_schematic/shared_assorted_fruit_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic, "object/tangible/loot/loot_schematic/shared_assorted_fruit_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -154,6 +156,7 @@ object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangible
 	clientObjectCRC = 2176567440
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bacta_tank_schematic, "object/tangible/loot/loot_schematic/shared_bacta_tank_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bacta_tank_schematic, "object/tangible/loot/loot_schematic/shared_bacta_tank_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -207,6 +210,7 @@ object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangi
 	clientObjectCRC = 275009907
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_basket_closed_schematic, "object/tangible/loot/loot_schematic/shared_basket_closed_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_basket_closed_schematic, "object/tangible/loot/loot_schematic/shared_basket_closed_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -260,6 +264,7 @@ object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangible
 	clientObjectCRC = 2981833750
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_fat_schematic, "object/tangible/loot/loot_schematic/shared_bottle_fat_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_fat_schematic, "object/tangible/loot/loot_schematic/shared_bottle_fat_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -313,6 +318,7 @@ object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibl
 	clientObjectCRC = 49511220
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_pear_schematic, "object/tangible/loot/loot_schematic/shared_bottle_pear_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_pear_schematic, "object/tangible/loot/loot_schematic/shared_bottle_pear_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -366,6 +372,7 @@ object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibl
 	clientObjectCRC = 1843384540
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_tall_schematic, "object/tangible/loot/loot_schematic/shared_bottle_tall_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_tall_schematic, "object/tangible/loot/loot_schematic/shared_bottle_tall_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -419,6 +426,7 @@ object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibl
 	clientObjectCRC = 2666433962
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bowl_carved_schematic, "object/tangible/loot/loot_schematic/shared_bowl_carved_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bowl_carved_schematic, "object/tangible/loot/loot_schematic/shared_bowl_carved_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -472,6 +480,7 @@ object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangible
 	clientObjectCRC = 2499138491
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bowl_plain_schematic, "object/tangible/loot/loot_schematic/shared_bowl_plain_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bowl_plain_schematic, "object/tangible/loot/loot_schematic/shared_bowl_plain_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -525,6 +534,7 @@ object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibl
 	clientObjectCRC = 352538230
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bubble_tank_schematic, "object/tangible/loot/loot_schematic/shared_bubble_tank_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bubble_tank_schematic, "object/tangible/loot/loot_schematic/shared_bubble_tank_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -578,6 +588,7 @@ object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleOb
 	clientObjectCRC = 2177174238
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_campfire_schematic, "object/tangible/loot/loot_schematic/shared_campfire_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_campfire_schematic, "object/tangible/loot/loot_schematic/shared_campfire_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -631,6 +642,7 @@ object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangi
 	clientObjectCRC = 1817381441
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_cantina_chair_schematic, "object/tangible/loot/loot_schematic/shared_cantina_chair_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_cantina_chair_schematic, "object/tangible/loot/loot_schematic/shared_cantina_chair_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -684,6 +696,7 @@ object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangible
 	clientObjectCRC = 1634921548
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_chair_cafe_schematic, "object/tangible/loot/loot_schematic/shared_chair_cafe_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_chair_cafe_schematic, "object/tangible/loot/loot_schematic/shared_chair_cafe_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -737,6 +750,7 @@ object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedT
 	clientObjectCRC = 3816949248
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic, "object/tangible/loot/loot_schematic/shared_chemical_recycler_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic, "object/tangible/loot/loot_schematic/shared_chemical_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -790,6 +804,7 @@ object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTan
 	clientObjectCRC = 1441840530
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_command_console_schematic, "object/tangible/loot/loot_schematic/shared_command_console_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_command_console_schematic, "object/tangible/loot/loot_schematic/shared_command_console_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -843,6 +858,7 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_s
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_s
 	clientObjectCRC = 2788504736
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_landspeeder_av21_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_landspeeder_av21_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -896,6 +912,7 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_sc
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_sc
 	clientObjectCRC = 2378673848
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_rifle_berserker_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_rifle_berserker_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -949,6 +966,7 @@ object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = Shared
 	clientObjectCRC = 3464694105
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic, "object/tangible/loot/loot_schematic/shared_corellian_flagpole_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic, "object/tangible/loot/loot_schematic/shared_corellian_flagpole_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -1002,6 +1020,7 @@ object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangible
 	clientObjectCRC = 2109385771
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_couch_blue_schematic, "object/tangible/loot/loot_schematic/shared_couch_blue_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_couch_blue_schematic, "object/tangible/loot/loot_schematic/shared_couch_blue_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -1055,6 +1074,7 @@ object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedT
 	clientObjectCRC = 3869986987
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_creature_recycler_schematic, "object/tangible/loot/loot_schematic/shared_creature_recycler_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_creature_recycler_schematic, "object/tangible/loot/loot_schematic/shared_creature_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1108,6 +1128,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schema
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schema
 	clientObjectCRC = 3186214418
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_belt_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_belt_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1161,6 +1182,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_sch
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_sch
 	clientObjectCRC = 4262840848
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_l_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1214,6 +1236,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_sch
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_sch
 	clientObjectCRC = 712860035
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_r_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1267,6 +1290,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schem
 	clientObjectCRC = 2564896139
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_boots_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_boots_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1320,6 +1344,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_sc
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_sc
 	clientObjectCRC = 4001355238
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_l_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1373,6 +1398,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_sc
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_sc
 	clientObjectCRC = 974618229
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_r_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1426,6 +1452,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate
 	clientObjectCRC = 3084811322
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_chest_plate_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_chest_plate_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1479,6 +1506,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_sche
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_sche
 	clientObjectCRC = 4286535235
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_gloves_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_gloves_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1532,6 +1560,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_sche
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_sche
 	clientObjectCRC = 4021975943
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_helmet_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_helmet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1585,6 +1614,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_sc
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_sc
 	clientObjectCRC = 204385497
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_leggings_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_leggings_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1638,6 +1668,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_sc
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_sc
 	clientObjectCRC = 818256163
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_drink_mandalorian_wine_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_drink_mandalorian_wine_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -1691,6 +1722,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schemat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schemat
 	clientObjectCRC = 2390933673
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_executioners_hack_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_executioners_hack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1744,6 +1776,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schemati
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schemati
 	clientObjectCRC = 3163168550
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_belt_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_belt_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1797,6 +1830,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schem
 	clientObjectCRC = 3952203976
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_l_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1850,6 +1884,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schem
 	clientObjectCRC = 1073312603
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_r_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1903,6 +1938,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schemat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schemat
 	clientObjectCRC = 4294515772
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_boots_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_boots_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -1956,6 +1992,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_sche
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_sche
 	clientObjectCRC = 834256381
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_l_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2009,6 +2046,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_sche
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_sche
 	clientObjectCRC = 3855685230
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_r_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2062,6 +2100,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_s
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_s
 	clientObjectCRC = 2354501114
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_chest_plate_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_chest_plate_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2115,6 +2154,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schema
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schema
 	clientObjectCRC = 1437890513
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_gloves_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_gloves_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2168,6 +2208,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schema
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schema
 	clientObjectCRC = 1165056533
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_helmet_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_helmet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -2221,6 +2262,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schem
 	clientObjectCRC = 571889949
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_jetpack_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_jetpack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -2274,6 +2316,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_sche
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_sche
 	clientObjectCRC = 3555247298
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_leggings_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_leggings_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2327,6 +2370,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = S
 	clientObjectCRC = 44057344
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_pistol_de10_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_pistol_de10_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2380,6 +2424,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic 
 	clientObjectCRC = 56986758
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_razor_knuckler_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_razor_knuckler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2433,6 +2478,7 @@ object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedT
 	clientObjectCRC = 74183997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic, "object/tangible/loot/loot_schematic/shared_diagnostic_screen_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic, "object/tangible/loot/loot_schematic/shared_diagnostic_screen_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2486,6 +2532,7 @@ object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangible
 	clientObjectCRC = 3014709176
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_droid_body_schematic, "object/tangible/loot/loot_schematic/shared_droid_body_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_droid_body_schematic, "object/tangible/loot/loot_schematic/shared_droid_body_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2539,6 +2586,7 @@ object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangible
 	clientObjectCRC = 443254179
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_droid_head_schematic, "object/tangible/loot/loot_schematic/shared_droid_head_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_droid_head_schematic, "object/tangible/loot/loot_schematic/shared_droid_head_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2592,6 +2640,7 @@ object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTan
 	clientObjectCRC = 1275187305
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic, "object/tangible/loot/loot_schematic/shared_elegant_cabinet_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic, "object/tangible/loot/loot_schematic/shared_elegant_cabinet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2645,6 +2694,7 @@ object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTang
 	clientObjectCRC = 1892700204
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_flora_recycler_schematic, "object/tangible/loot/loot_schematic/shared_flora_recycler_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_flora_recycler_schematic, "object/tangible/loot/loot_schematic/shared_flora_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2698,6 +2748,7 @@ object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleOb
 	clientObjectCRC = 4233888471
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_foodcart_schematic, "object/tangible/loot/loot_schematic/shared_foodcart_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_foodcart_schematic, "object/tangible/loot/loot_schematic/shared_foodcart_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -2751,6 +2802,7 @@ object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTang
 	clientObjectCRC = 131416383
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_gambling_table_schematic, "object/tangible/loot/loot_schematic/shared_gambling_table_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_gambling_table_schematic, "object/tangible/loot/loot_schematic/shared_gambling_table_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2804,6 +2856,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic
 	clientObjectCRC = 3869697913
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_bone_armor_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_bone_armor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
@@ -2857,6 +2910,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schemat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schemat
 	clientObjectCRC = 1435106538
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_muscle_armor_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_muscle_armor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -2910,6 +2964,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schemati
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schemati
 	clientObjectCRC = 2842219763
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_reinforcement_core_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_reinforcement_core_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -2963,6 +3018,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = S
 	clientObjectCRC = 3191519467
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sonic_blaster_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sonic_blaster_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3016,6 +3072,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = Shar
 	clientObjectCRC = 2133560437
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sword_core_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sword_core_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -3069,6 +3126,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = Sh
 	clientObjectCRC = 910955791
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_tenloss_dxr6_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_tenloss_dxr6_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3122,6 +3180,7 @@ object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTan
 	clientObjectCRC = 1451271511
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_hanging_planter_schematic, "object/tangible/loot/loot_schematic/shared_hanging_planter_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_hanging_planter_schematic, "object/tangible/loot/loot_schematic/shared_hanging_planter_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3175,6 +3234,7 @@ object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTang
 	clientObjectCRC = 138305507
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_metal_recycler_schematic, "object/tangible/loot/loot_schematic/shared_metal_recycler_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_metal_recycler_schematic, "object/tangible/loot/loot_schematic/shared_metal_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3228,6 +3288,7 @@ object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTang
 	clientObjectCRC = 620571036
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_microphone_s01_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s01_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_microphone_s01_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3281,6 +3342,7 @@ object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTang
 	clientObjectCRC = 1194071997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_microphone_s02_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s02_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_microphone_s02_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3334,6 +3396,7 @@ object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangib
 	clientObjectCRC = 2736953476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_ore_recycler_schematic, "object/tangible/loot/loot_schematic/shared_ore_recycler_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_ore_recycler_schematic, "object/tangible/loot/loot_schematic/shared_ore_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3387,6 +3450,7 @@ object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangible
 	clientObjectCRC = 385386900
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_park_bench_schematic, "object/tangible/loot/loot_schematic/shared_park_bench_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_park_bench_schematic, "object/tangible/loot/loot_schematic/shared_park_bench_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3440,6 +3504,7 @@ object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangib
 	clientObjectCRC = 4049237306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_pitcher_full_schematic, "object/tangible/loot/loot_schematic/shared_pitcher_full_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_pitcher_full_schematic, "object/tangible/loot/loot_schematic/shared_pitcher_full_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3493,6 +3558,7 @@ object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTan
 	clientObjectCRC = 2780825325
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_professors_desk_schematic, "object/tangible/loot/loot_schematic/shared_professors_desk_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_professors_desk_schematic, "object/tangible/loot/loot_schematic/shared_professors_desk_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3546,6 +3612,7 @@ object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangib
 	clientObjectCRC = 1601376740
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_radar_screen_schematic, "object/tangible/loot/loot_schematic/shared_radar_screen_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_radar_screen_schematic, "object/tangible/loot/loot_schematic/shared_radar_screen_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3599,6 +3666,7 @@ object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjec
 	clientObjectCRC = 4283977315
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_radio_schematic, "object/tangible/loot/loot_schematic/shared_radio_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_radio_schematic, "object/tangible/loot/loot_schematic/shared_radio_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3652,6 +3720,7 @@ object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjec
 	clientObjectCRC = 2074723143
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_shisa_schematic, "object/tangible/loot/loot_schematic/shared_shisa_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_shisa_schematic, "object/tangible/loot/loot_schematic/shared_shisa_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3705,6 +3774,7 @@ object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangi
 	clientObjectCRC = 4016619674
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_slave_brazier_schematic, "object/tangible/loot/loot_schematic/shared_slave_brazier_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_slave_brazier_schematic, "object/tangible/loot/loot_schematic/shared_slave_brazier_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3758,6 +3828,7 @@ object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangible
 	clientObjectCRC = 2882303083
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_spear_rack_schematic, "object/tangible/loot/loot_schematic/shared_spear_rack_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_spear_rack_schematic, "object/tangible/loot/loot_schematic/shared_spear_rack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3811,6 +3882,7 @@ object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjec
 	clientObjectCRC = 3338971500
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_stove_schematic, "object/tangible/loot/loot_schematic/shared_stove_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_stove_schematic, "object/tangible/loot/loot_schematic/shared_stove_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3864,6 +3936,7 @@ object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangible
 	clientObjectCRC = 2023724464
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_streetlamp_schematic, "object/tangible/loot/loot_schematic/shared_streetlamp_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_streetlamp_schematic, "object/tangible/loot/loot_schematic/shared_streetlamp_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3917,6 +3990,7 @@ object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangib
 	clientObjectCRC = 46984344
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic, "object/tangible/loot/loot_schematic/shared_stuffed_fish_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic, "object/tangible/loot/loot_schematic/shared_stuffed_fish_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -3970,6 +4044,7 @@ object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = Share
 	clientObjectCRC = 1657163664
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic, "object/tangible/loot/loot_schematic/shared_table_coffee_modern_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic, "object/tangible/loot/loot_schematic/shared_table_coffee_modern_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4023,6 +4098,7 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTa
 	clientObjectCRC = 189791805
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s01_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4076,6 +4152,7 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTa
 	clientObjectCRC = 1755234332
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s02_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4129,6 +4206,7 @@ object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedT
 	clientObjectCRC = 1445555733
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic, "object/tangible/loot/loot_schematic/shared_tatooine_tapestry_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic, "object/tangible/loot/loot_schematic/shared_tatooine_tapestry_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4182,6 +4260,7 @@ object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = Sha
 	clientObjectCRC = 911123298
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s01_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4235,6 +4314,7 @@ object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = Sha
 	clientObjectCRC = 1436523843
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s02_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4288,6 +4368,7 @@ object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibl
 	clientObjectCRC = 3095520200
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_throwpillow_schematic, "object/tangible/loot/loot_schematic/shared_throwpillow_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_throwpillow_schematic, "object/tangible/loot/loot_schematic/shared_throwpillow_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4341,6 +4422,7 @@ object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTang
 	clientObjectCRC = 2145052130
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tumble_blender_schematic, "object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tumble_blender_schematic, "object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -4394,6 +4476,7 @@ object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,4 +4521,4 @@ object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleOb
 	clientObjectCRC = 2313370154
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_utensils_schematic, "object/tangible/loot/loot_schematic/shared_utensils_schematic.iff")
+ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_utensils_schematic, "object/tangible/loot/loot_schematic/shared_utensils_schematic.iff")

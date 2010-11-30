@@ -48,6 +48,7 @@ object_tangible_lair_blackfish_shared_lair_blackfish = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_blackfish_shared_lair_blackfish = SharedTangibleObjectTempl
 	clientObjectCRC = 4281161854
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_blackfish_shared_lair_blackfish, "object/tangible/lair/blackfish/shared_lair_blackfish.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_blackfish_shared_lair_blackfish, "object/tangible/lair/blackfish/shared_lair_blackfish.iff")
 
 object_tangible_lair_blackfish_shared_lair_blackfish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_blackfish_shared_lair_blackfish_underwater = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_blackfish_shared_lair_blackfish_underwater = SharedTangible
 	clientObjectCRC = 3015378000
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_blackfish_shared_lair_blackfish_underwater, "object/tangible/lair/blackfish/shared_lair_blackfish_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_blackfish_shared_lair_blackfish_underwater, "object/tangible/lair/blackfish/shared_lair_blackfish_underwater.iff")

@@ -48,6 +48,7 @@ object_tangible_skill_buff_base_shared_skill_buff_base = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_skill_buff_base_shared_skill_buff_base = SharedTangibleObjectTem
 	clientObjectCRC = 150738371
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_skill_buff_base_shared_skill_buff_base, "object/tangible/skill_buff/base/shared_skill_buff_base.iff")
+ObjectTemplates:addTemplate(object_tangible_skill_buff_base_shared_skill_buff_base, "object/tangible/skill_buff/base/shared_skill_buff_base.iff")

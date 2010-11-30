@@ -48,6 +48,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s01 = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_blacksun_heavy_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s01 = SharedTang
 	clientObjectCRC = 4014332398
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_heavy_wing_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_heavy_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_struct_s02.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s02 = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_blacksun_heavy_s02.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s02 = SharedTang
 	clientObjectCRC = 877818233
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_heavy_wing_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_heavy_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_struct_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s01 = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_blacksun_light_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s01 = SharedTang
 	clientObjectCRC = 1568766163
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_light_wing_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_light_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_struct_s02.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s02 = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_blacksun_light_s02.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s02 = SharedTang
 	clientObjectCRC = 2258030660
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_light_wing_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_light_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_struct_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s01 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_blacksun_medium_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s01 = SharedTan
 	clientObjectCRC = 3598757540
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_medium_wing_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_medium_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_struct_s02.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s02 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_blacksun_medium_s02.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s02 = SharedTan
 	clientObjectCRC = 228001331
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_medium_wing_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_medium_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_bwing_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_body.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_attachment_wing_shared_bwing_body = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_bwing_body.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_attachment_wing_shared_bwing_body = SharedTangibleObjectTem
 	clientObjectCRC = 1161389128
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_bwing_body, "object/tangible/ship/attachment/wing/shared_bwing_body.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_bwing_body, "object/tangible/ship/attachment/wing/shared_bwing_body.iff")
 
 object_tangible_ship_attachment_wing_shared_bwing_wing_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_wing_l.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_attachment_wing_shared_bwing_wing_l = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_bwing.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_attachment_wing_shared_bwing_wing_l = SharedTangibleObjectT
 	clientObjectCRC = 110478371
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_bwing_wing_l, "object/tangible/ship/attachment/wing/shared_bwing_wing_l.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_bwing_wing_l, "object/tangible/ship/attachment/wing/shared_bwing_wing_l.iff")
 
 object_tangible_ship_attachment_wing_shared_bwing_wing_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_wing_r.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_attachment_wing_shared_bwing_wing_r = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_bwing.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_attachment_wing_shared_bwing_wing_r = SharedTangibleObjectT
 	clientObjectCRC = 1983938992
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_bwing_wing_r, "object/tangible/ship/attachment/wing/shared_bwing_wing_r.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_bwing_wing_r, "object/tangible/ship/attachment/wing/shared_bwing_wing_r.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_struct_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s01 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_hutt_heavy_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s01 = SharedTangible
 	clientObjectCRC = 2822483285
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_heavy_wing_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_heavy_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_struct_s02.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s02 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_hutt_heavy_s02.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s02 = SharedTangible
 	clientObjectCRC = 1932264898
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_heavy_wing_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_heavy_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_light_wing_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_attachment_wing_shared_hutt_light_wing_s01 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_hutt_light_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_attachment_wing_shared_hutt_light_wing_s01 = SharedTangible
 	clientObjectCRC = 452922472
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_light_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_light_wing_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_hutt_light_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_light_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_light_wing_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s02.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_attachment_wing_shared_hutt_light_wing_s02 = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_hutt_light_s02.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_ship_attachment_wing_shared_hutt_light_wing_s02 = SharedTangible
 	clientObjectCRC = 3253249279
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_light_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_light_wing_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_hutt_light_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_light_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_struct_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s01 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_hutt_medium_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s01 = SharedTangibl
 	clientObjectCRC = 2184525270
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_medium_wing_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_medium_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_struct_s02.apt",
@@ -790,6 +804,7 @@ object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s02 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_hutt_medium_s02.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s02 = SharedTangibl
 	clientObjectCRC = 1495440705
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_medium_wing_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_medium_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_struct_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s01 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_kse_firespray_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s01 = SharedTan
 	clientObjectCRC = 3713063710
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s01, "object/tangible/ship/attachment/wing/shared_kse_firespray_struct_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s01, "object/tangible/ship/attachment/wing/shared_kse_firespray_struct_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_struct_s02.apt",
@@ -896,6 +912,7 @@ object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s02 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_kse_firespray_s02.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s02 = SharedTan
 	clientObjectCRC = 105345929
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s02, "object/tangible/ship/attachment/wing/shared_kse_firespray_struct_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s02, "object/tangible/ship/attachment/wing/shared_kse_firespray_struct_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_lambda_wing_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_wing_left.apt",
@@ -949,6 +966,7 @@ object_tangible_ship_attachment_wing_shared_lambda_wing_l = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_ship_attachment_wing_shared_lambda_wing_l = SharedTangibleObject
 	clientObjectCRC = 2459214995
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_lambda_wing_l, "object/tangible/ship/attachment/wing/shared_lambda_wing_l.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_lambda_wing_l, "object/tangible/ship/attachment/wing/shared_lambda_wing_l.iff")
 
 object_tangible_ship_attachment_wing_shared_lambda_wing_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_wing_right.apt",
@@ -1002,6 +1020,7 @@ object_tangible_ship_attachment_wing_shared_lambda_wing_r = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_ship_attachment_wing_shared_lambda_wing_r = SharedTangibleObject
 	clientObjectCRC = 3795968256
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_lambda_wing_r, "object/tangible/ship/attachment/wing/shared_lambda_wing_r.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_lambda_wing_r, "object/tangible/ship/attachment/wing/shared_lambda_wing_r.iff")
 
 object_tangible_ship_attachment_wing_shared_xwing_wing_neg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_neg.apt",
@@ -1055,6 +1074,7 @@ object_tangible_ship_attachment_wing_shared_xwing_wing_neg_s01 = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_xwing_neg_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_ship_attachment_wing_shared_xwing_wing_neg_s01 = SharedTangibleO
 	clientObjectCRC = 12581699
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_xwing_wing_neg_s01, "object/tangible/ship/attachment/wing/shared_xwing_wing_neg_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_xwing_wing_neg_s01, "object/tangible/ship/attachment/wing/shared_xwing_wing_neg_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_xwing_wing_pos_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
@@ -1108,6 +1128,7 @@ object_tangible_ship_attachment_wing_shared_xwing_wing_pos_s01 = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/component/wing_xwing_pos_s01.cdf",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,4 +1173,4 @@ object_tangible_ship_attachment_wing_shared_xwing_wing_pos_s01 = SharedTangibleO
 	clientObjectCRC = 2719465568
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_xwing_wing_pos_s01, "object/tangible/ship/attachment/wing/shared_xwing_wing_pos_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_wing_shared_xwing_wing_pos_s01, "object/tangible/ship/attachment/wing/shared_xwing_wing_pos_s01.iff")

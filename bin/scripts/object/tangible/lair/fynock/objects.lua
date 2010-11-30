@@ -48,6 +48,7 @@ object_tangible_lair_fynock_shared_lair_fynock = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_fynock_shared_lair_fynock = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2394100347
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_fynock_shared_lair_fynock, "object/tangible/lair/fynock/shared_lair_fynock.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_fynock_shared_lair_fynock, "object/tangible/lair/fynock/shared_lair_fynock.iff")
 
 object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemp
 	clientObjectCRC = 577876063
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_fynock_shared_lair_fynock_forest, "object/tangible/lair/fynock/shared_lair_fynock_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_fynock_shared_lair_fynock_forest, "object/tangible/lair/fynock/shared_lair_fynock_forest.iff")

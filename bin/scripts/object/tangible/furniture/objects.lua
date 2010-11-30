@@ -48,6 +48,7 @@ object_tangible_furniture_shared_furniture_base = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_furniture_shared_furniture_base = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 408550317
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_shared_furniture_base, "object/tangible/furniture/shared_furniture_base.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_shared_furniture_base, "object/tangible/furniture/shared_furniture_base.iff")
 
 object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tatt_chair_cantina_seat.apt",
@@ -101,6 +102,7 @@ object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01 = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01 = SharedTang
 	clientObjectCRC = 3326667567
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01, "object/tangible/furniture/shared_furniture_tatooine_cantina_seat_01.iff")
+ObjectTemplates:addTemplate(object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01, "object/tangible/furniture/shared_furniture_tatooine_cantina_seat_01.iff")

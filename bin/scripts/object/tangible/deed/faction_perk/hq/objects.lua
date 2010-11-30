@@ -48,6 +48,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_deed_base = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_deed_base = SharedTangibleObjectT
 	clientObjectCRC = 2279437035
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_deed_base, "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_deed_base, "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -101,6 +102,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s01 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 814071482
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s01, "object/tangible/deed/faction_perk/hq/shared_hq_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s01, "object/tangible/deed/faction_perk/hq/shared_hq_s01.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -154,6 +156,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp = SharedTangibleObjectTem
 	clientObjectCRC = 1776913046
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s01_pvp.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s01_pvp.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -207,6 +210,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s02 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s02 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3952219693
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s02, "object/tangible/deed/faction_perk/hq/shared_hq_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s02, "object/tangible/deed/faction_perk/hq/shared_hq_s02.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -260,6 +264,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp = SharedTangibleObjectTem
 	clientObjectCRC = 2066311563
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s02_pvp.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s02_pvp.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -313,6 +318,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s03 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s03 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2728358304
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s03, "object/tangible/deed/faction_perk/hq/shared_hq_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s03, "object/tangible/deed/faction_perk/hq/shared_hq_s03.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -366,6 +372,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp = SharedTangibleObjectTem
 	clientObjectCRC = 2301215725
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s03_pvp.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s03_pvp.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -419,6 +426,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s04 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s04 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1501321908
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s04, "object/tangible/deed/faction_perk/hq/shared_hq_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s04, "object/tangible/deed/faction_perk/hq/shared_hq_s04.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -472,6 +480,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp = SharedTangibleObjectTem
 	clientObjectCRC = 1588113329
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s04_pvp.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s04_pvp.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -525,6 +534,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s05 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s05 = SharedTangibleObjectTemplat
 	clientObjectCRC = 275856697
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s05, "object/tangible/deed/faction_perk/hq/shared_hq_s05.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s05, "object/tangible/deed/faction_perk/hq/shared_hq_s05.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -578,6 +588,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,4 +633,4 @@ object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp = SharedTangibleObjectTem
 	clientObjectCRC = 2896692695
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s05_pvp.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s05_pvp.iff")

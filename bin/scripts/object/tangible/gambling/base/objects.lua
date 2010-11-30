@@ -48,6 +48,7 @@ object_tangible_gambling_base_shared_gambling_station = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,4 +93,4 @@ object_tangible_gambling_base_shared_gambling_station = SharedTangibleObjectTemp
 	clientObjectCRC = 3509750456
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_gambling_base_shared_gambling_station, "object/tangible/gambling/base/shared_gambling_station.iff")
+ObjectTemplates:addTemplate(object_tangible_gambling_base_shared_gambling_station, "object/tangible/gambling/base/shared_gambling_station.iff")

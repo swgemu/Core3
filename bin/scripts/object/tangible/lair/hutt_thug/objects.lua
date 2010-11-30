@@ -48,6 +48,7 @@ object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc = SharedTangibleObjectT
 	clientObjectCRC = 2374143434
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc, "object/tangible/lair/hutt_thug/shared_lair_hutt_thug_npc.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc, "object/tangible/lair/hutt_thug/shared_lair_hutt_thug_npc.iff")

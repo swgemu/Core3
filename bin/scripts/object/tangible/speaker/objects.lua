@@ -48,6 +48,7 @@ object_tangible_speaker_shared_speaker = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_speaker_shared_speaker = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1991875875
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_speaker_shared_speaker, "object/tangible/speaker/shared_speaker.iff")
+ObjectTemplates:addTemplate(object_tangible_speaker_shared_speaker, "object/tangible/speaker/shared_speaker.iff")

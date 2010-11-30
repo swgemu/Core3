@@ -47,6 +47,7 @@ object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:ne
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2056,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:ne
 	clientObjectCRC = 2096609656
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_jetpack_pcd, "object/intangible/vehicle/shared_jetpack_pcd.iff")
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_jetpack_pcd, "object/intangible/vehicle/shared_jetpack_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_av21.apt",
@@ -90,6 +91,7 @@ object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2056,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTe
 	clientObjectCRC = 3762629621
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_av21_pcd, "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff")
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_av21_pcd, "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_luke.apt",
@@ -133,6 +135,7 @@ object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2056,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTem
 	clientObjectCRC = 3148893162
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_x31_pcd, "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff")
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_x31_pcd, "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_luke.apt",
@@ -176,6 +179,7 @@ object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2056,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTem
 	clientObjectCRC = 2364632781
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_x34_pcd, "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff")
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_x34_pcd, "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/flash_speeder.apt",
@@ -219,6 +223,7 @@ object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2056,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectT
 	clientObjectCRC = 1448247515
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_flash_pcd, "object/intangible/vehicle/shared_speederbike_flash_pcd.iff")
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_flash_pcd, "object/intangible/vehicle/shared_speederbike_flash_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/speeder_bike.apt",
@@ -262,6 +267,7 @@ object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2056,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplat
 	clientObjectCRC = 3659586517
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_pcd, "object/intangible/vehicle/shared_speederbike_pcd.iff")
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_pcd, "object/intangible/vehicle/shared_speederbike_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/swoop_bike.apt",
@@ -305,6 +311,7 @@ object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2056,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectT
 	clientObjectCRC = 2233671002
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_swoop_pcd, "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff")
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_swoop_pcd, "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff")
 
 object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
@@ -348,6 +355,7 @@ object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2056,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,4 +391,4 @@ object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTempla
 	clientObjectCRC = 2853503513
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_vehicle_pcd_base, "object/intangible/vehicle/shared_vehicle_pcd_base.iff")
+ObjectTemplates:addTemplate(object_intangible_vehicle_shared_vehicle_pcd_base, "object/intangible/vehicle/shared_vehicle_pcd_base.iff")

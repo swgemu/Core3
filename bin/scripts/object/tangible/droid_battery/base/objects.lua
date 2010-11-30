@@ -48,6 +48,7 @@ object_tangible_droid_battery_base_shared_base_battery = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8192,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_droid_battery_base_shared_base_battery = SharedTangibleObjectTem
 	clientObjectCRC = 4005418239
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_battery_base_shared_base_battery, "object/tangible/droid_battery/base/shared_base_battery.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_battery_base_shared_base_battery, "object/tangible/droid_battery/base/shared_base_battery.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna = SharedTangibleObjectTem
 	clientObjectCRC = 2758659354
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna.iff")
 
 object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleOb
 	clientObjectCRC = 2456561117
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_forest.iff")
 
 object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObj
 	clientObjectCRC = 1635796730
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_swamp.iff")

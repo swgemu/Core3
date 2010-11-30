@@ -48,6 +48,7 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset = SharedTangibleObjectTem
 	clientObjectCRC = 4013916432
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset, "object/tangible/lair/falumpaset/shared_lair_falumpaset.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset, "object/tangible/lair/falumpaset/shared_lair_falumpaset.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleOb
 	clientObjectCRC = 3600280476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_forest, "object/tangible/lair/falumpaset/shared_lair_falumpaset_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_forest, "object/tangible/lair/falumpaset/shared_lair_falumpaset_forest.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibl
 	clientObjectCRC = 3691403141
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland, "object/tangible/lair/falumpaset/shared_lair_falumpaset_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland, "object/tangible/lair/falumpaset/shared_lair_falumpaset_grassland.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObj
 	clientObjectCRC = 189239844
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp, "object/tangible/lair/falumpaset/shared_lair_falumpaset_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp, "object/tangible/lair/falumpaset/shared_lair_falumpaset_swamp.iff")

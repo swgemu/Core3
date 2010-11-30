@@ -49,6 +49,7 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131072,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 	clientObjectCRC = 2110842690
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_creature_shared_creature_default_weapon, "object/weapon/creature/shared_creature_default_weapon.iff")
+ObjectTemplates:addTemplate(object_weapon_creature_shared_creature_default_weapon, "object/weapon/creature/shared_creature_default_weapon.iff")

@@ -47,6 +47,7 @@ object_group_shared_group_object = SharedGroupObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_group_shared_group_object = SharedGroupObjectTemplate:new {
 	clientObjectCRC = 2022504856
 }
 
-ObjectTemplates:addClientTemplate(object_group_shared_group_object, "object/group/shared_group_object.iff")
+ObjectTemplates:addTemplate(object_group_shared_group_object, "object/group/shared_group_object.iff")

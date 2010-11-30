@@ -48,6 +48,7 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	clientObjectCRC = 107997252
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_l, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_l, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_l.iff")
 
 object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_ceremonial_bracer_r_wke_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	clientObjectCRC = 1991945687
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_r, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_r, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_r.iff")
 
 object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_ceremonial_chest_plate_wke_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	clientObjectCRC = 2342857990
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_chest_plate, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_chest_plate, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_chest_plate.iff")
 
 object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_ceremonial_leggings_wke_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 	clientObjectCRC = 2303407451
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_leggings, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_leggings.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_leggings, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_leggings.iff")
