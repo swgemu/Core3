@@ -48,6 +48,7 @@ object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741824,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTang
 	clientObjectCRC = 1389700188
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge, "object/tangible/ship/attachment/bridge/shared_star_destroyer_bridge.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge, "object/tangible/ship/attachment/bridge/shared_star_destroyer_bridge.iff")

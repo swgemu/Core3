@@ -47,6 +47,7 @@ object_static_structure_talus_shared_talus_imprv_bannerpole_s01 = SharedStaticOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/talus_imprv_bannerpole_s01.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 1,
@@ -81,7 +82,7 @@ object_static_structure_talus_shared_talus_imprv_bannerpole_s01 = SharedStaticOb
 	clientObjectCRC = 181836729
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_talus_shared_talus_imprv_bannerpole_s01, "object/static/structure/talus/shared_talus_imprv_bannerpole_s01.iff")
+ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_bannerpole_s01, "object/static/structure/talus/shared_talus_imprv_bannerpole_s01.iff")
 
 object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -89,6 +90,7 @@ object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/talus_imprv_flagpole_s01.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 1,
@@ -123,4 +125,4 @@ object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObje
 	clientObjectCRC = 929058155
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_talus_shared_talus_imprv_flagpole_s01, "object/static/structure/talus/shared_talus_imprv_flagpole_s01.iff")
+ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_flagpole_s01, "object/static/structure/talus/shared_talus_imprv_flagpole_s01.iff")

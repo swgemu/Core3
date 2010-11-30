@@ -48,6 +48,7 @@ object_installation_faction_perk_turret_base_shared_faction_turret_base = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_block_large.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_faction_perk_turret_base_shared_faction_turret_base = Shared
 	clientObjectCRC = 1860325711
 }
 
-ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_base_shared_faction_turret_base, "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff")
+ObjectTemplates:addTemplate(object_installation_faction_perk_turret_base_shared_faction_turret_base, "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_ikopi_shared_lair_ikopi = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_ikopi_shared_lair_ikopi = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1653632566
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_ikopi_shared_lair_ikopi, "object/tangible/lair/ikopi/shared_lair_ikopi.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_ikopi_shared_lair_ikopi, "object/tangible/lair/ikopi/shared_lair_ikopi.iff")
 
 object_tangible_lair_ikopi_shared_lair_ikopi_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_ikopi_shared_lair_ikopi_grassland = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_ikopi_shared_lair_ikopi_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 852367209
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_ikopi_shared_lair_ikopi_grassland, "object/tangible/lair/ikopi/shared_lair_ikopi_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_ikopi_shared_lair_ikopi_grassland, "object/tangible/lair/ikopi/shared_lair_ikopi_grassland.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong = SharedTangibleObjectT
 	clientObjectCRC = 4003634872
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong.iff")
 
 object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangi
 	clientObjectCRC = 1455751773
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong_grassland.iff")

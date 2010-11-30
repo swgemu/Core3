@@ -48,6 +48,7 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw = SharedTangibleObjectTemplat
 	clientObjectCRC = 129775004
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw, "object/tangible/lair/gulginaw/shared_lair_gulginaw.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw, "object/tangible/lair/gulginaw/shared_lair_gulginaw.iff")
 
 object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObject
 	clientObjectCRC = 3528407820
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw_forest, "object/tangible/lair/gulginaw/shared_lair_gulginaw_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw_forest, "object/tangible/lair/gulginaw/shared_lair_gulginaw_forest.iff")

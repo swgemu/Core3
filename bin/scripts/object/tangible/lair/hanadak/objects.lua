@@ -48,6 +48,7 @@ object_tangible_lair_hanadak_shared_lair_hanadak = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_hanadak_shared_lair_hanadak = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2197561822
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_hanadak_shared_lair_hanadak, "object/tangible/lair/hanadak/shared_lair_hanadak.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_hanadak_shared_lair_hanadak, "object/tangible/lair/hanadak/shared_lair_hanadak.iff")
 
 object_tangible_lair_hanadak_shared_lair_hanadak_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_hanadak_shared_lair_hanadak_mountain = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_hanadak_shared_lair_hanadak_mountain = SharedTangibleObject
 	clientObjectCRC = 2169247668
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_hanadak_shared_lair_hanadak_mountain, "object/tangible/lair/hanadak/shared_lair_hanadak_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_hanadak_shared_lair_hanadak_mountain, "object/tangible/lair/hanadak/shared_lair_hanadak_mountain.iff")

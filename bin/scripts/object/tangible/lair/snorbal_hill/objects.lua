@@ -48,6 +48,7 @@ object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill = SharedTangibleObjec
 	clientObjectCRC = 80246849
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill, "object/tangible/lair/snorbal_hill/shared_lair_snorbal_hill.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill, "object/tangible/lair/snorbal_hill/shared_lair_snorbal_hill.iff")

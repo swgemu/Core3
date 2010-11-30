@@ -48,6 +48,7 @@ object_tangible_lair_rancor_shared_lair_rancor = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_rancor_shared_lair_rancor = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2318276825
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor, "object/tangible/lair/rancor/shared_lair_rancor.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor, "object/tangible/lair/rancor/shared_lair_rancor.iff")
 
 object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemp
 	clientObjectCRC = 2929914812
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor_desert, "object/tangible/lair/rancor/shared_lair_rancor_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor_desert, "object/tangible/lair/rancor/shared_lair_rancor_desert.iff")
 
 object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 2174078931
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor_mountain, "object/tangible/lair/rancor/shared_lair_rancor_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor_mountain, "object/tangible/lair/rancor/shared_lair_rancor_mountain.iff")

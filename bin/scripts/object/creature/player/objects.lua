@@ -51,6 +51,7 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_human_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -116,7 +117,7 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 491942670
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_bothan_female, "object/creature/player/shared_bothan_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_bothan_female, "object/creature/player/shared_bothan_female.iff")
 
 object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -128,6 +129,7 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_human_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -193,7 +195,7 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1542946611
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_bothan_male, "object/creature/player/shared_bothan_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_bothan_male, "object/creature/player/shared_bothan_male.iff")
 
 object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -205,6 +207,7 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_human_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -270,7 +273,7 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4294949865
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_human_female, "object/creature/player/shared_human_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_human_female, "object/creature/player/shared_human_female.iff")
 
 object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -282,6 +285,7 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_human_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -347,7 +351,7 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2937962913
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_human_male, "object/creature/player/shared_human_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_human_male, "object/creature/player/shared_human_male.iff")
 
 object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -359,6 +363,7 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_ithorian_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -424,7 +429,7 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 3017834515
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_ithorian_female, "object/creature/player/shared_ithorian_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_female, "object/creature/player/shared_ithorian_female.iff")
 
 object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -436,6 +441,7 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_ithorian_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -501,7 +507,7 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 951764932
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_ithorian_male, "object/creature/player/shared_ithorian_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_male, "object/creature/player/shared_ithorian_male.iff")
 
 object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -513,6 +519,7 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_moncal_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -578,7 +585,7 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2553266142
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_moncal_female, "object/creature/player/shared_moncal_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_moncal_female, "object/creature/player/shared_moncal_female.iff")
 
 object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -590,6 +597,7 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_moncal_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +663,7 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3116914088
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_moncal_male, "object/creature/player/shared_moncal_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_moncal_male, "object/creature/player/shared_moncal_male.iff")
 
 object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -667,6 +675,7 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_rodian_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -732,7 +741,7 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3261342811
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_rodian_female, "object/creature/player/shared_rodian_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_rodian_female, "object/creature/player/shared_rodian_female.iff")
 
 object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -744,6 +753,7 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_rodian_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -809,7 +819,7 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 200920476
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_rodian_male, "object/creature/player/shared_rodian_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_rodian_male, "object/creature/player/shared_rodian_male.iff")
 
 object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -821,6 +831,7 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_sullustan_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -886,7 +897,7 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 359871514
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_sullustan_female, "object/creature/player/shared_sullustan_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_female, "object/creature/player/shared_sullustan_female.iff")
 
 object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -898,6 +909,7 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_sullustan_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -963,7 +975,7 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 194222500
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_sullustan_male, "object/creature/player/shared_sullustan_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_male, "object/creature/player/shared_sullustan_male.iff")
 
 object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -975,6 +987,7 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_trandoshan_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1040,7 +1053,7 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 406594758
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_trandoshan_female, "object/creature/player/shared_trandoshan_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_female, "object/creature/player/shared_trandoshan_female.iff")
 
 object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1052,6 +1065,7 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_trandoshan_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1117,7 +1131,7 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 1355045775
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_trandoshan_male, "object/creature/player/shared_trandoshan_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_male, "object/creature/player/shared_trandoshan_male.iff")
 
 object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1129,6 +1143,7 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_twilek_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1194,7 +1209,7 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2224509660
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_twilek_female, "object/creature/player/shared_twilek_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_twilek_female, "object/creature/player/shared_twilek_female.iff")
 
 object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1206,6 +1221,7 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_twilek_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1287,7 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4068532859
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_twilek_male, "object/creature/player/shared_twilek_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_twilek_male, "object/creature/player/shared_twilek_male.iff")
 
 object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1283,6 +1299,7 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_wookiee_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1348,7 +1365,7 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 229336546
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_wookiee_female, "object/creature/player/shared_wookiee_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_female, "object/creature/player/shared_wookiee_female.iff")
 
 object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1360,6 +1377,7 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_wookiee_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1425,7 +1443,7 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 90470685
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_wookiee_male, "object/creature/player/shared_wookiee_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_male, "object/creature/player/shared_wookiee_male.iff")
 
 object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1437,6 +1455,7 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_zabrak_f.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1502,7 +1521,7 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2850250749
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_zabrak_female, "object/creature/player/shared_zabrak_female.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_female, "object/creature/player/shared_zabrak_female.iff")
 
 object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1514,6 +1533,7 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_zabrak_m.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1579,4 +1599,4 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3791955286
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_shared_zabrak_male, "object/creature/player/shared_zabrak_male.iff")
+ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_male, "object/creature/player/shared_zabrak_male.iff")

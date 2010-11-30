@@ -48,6 +48,7 @@ object_tangible_ship_components_weapon_shared_weapon_incom_disruptor = SharedTan
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_ship_components_weapon_shared_weapon_incom_disruptor = SharedTan
 	clientObjectCRC = 1416211325
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_weapon_incom_disruptor, "object/tangible/ship/components/weapon/shared_weapon_incom_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_weapon_incom_disruptor, "object/tangible/ship/components/weapon/shared_weapon_incom_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_weapon_slayn_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
@@ -101,6 +102,7 @@ object_tangible_ship_components_weapon_shared_weapon_slayn_ioncannon = SharedTan
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_ship_components_weapon_shared_weapon_slayn_ioncannon = SharedTan
 	clientObjectCRC = 3090870041
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_weapon_slayn_ioncannon, "object/tangible/ship/components/weapon/shared_weapon_slayn_ioncannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_weapon_slayn_ioncannon, "object/tangible/ship/components/weapon/shared_weapon_slayn_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_weapon_subpro_tripleblaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s04.apt",
@@ -154,6 +156,7 @@ object_tangible_ship_components_weapon_shared_weapon_subpro_tripleblaster = Shar
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_ship_components_weapon_shared_weapon_subpro_tripleblaster = Shar
 	clientObjectCRC = 1718453703
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_weapon_subpro_tripleblaster, "object/tangible/ship/components/weapon/shared_weapon_subpro_tripleblaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_weapon_subpro_tripleblaster, "object/tangible/ship/components/weapon/shared_weapon_subpro_tripleblaster.iff")
 
 object_tangible_ship_components_weapon_shared_weapon_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_gun_neg_s02.apt",
@@ -207,6 +210,7 @@ object_tangible_ship_components_weapon_shared_weapon_test = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_ship_components_weapon_shared_weapon_test = SharedTangibleObject
 	clientObjectCRC = 583355334
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_weapon_test, "object/tangible/ship/components/weapon/shared_weapon_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_weapon_test, "object/tangible/ship/components/weapon/shared_weapon_test.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_advanced = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_advanced = SharedTangibl
 	clientObjectCRC = 3432873939
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_advanced, "object/tangible/ship/components/weapon/shared_wpn_armek_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_advanced, "object/tangible/ship/components/weapon/shared_wpn_armek_advanced.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_elite = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_elite = SharedTangibleOb
 	clientObjectCRC = 2927442761
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_elite, "object/tangible/ship/components/weapon/shared_wpn_armek_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_elite, "object/tangible/ship/components/weapon/shared_wpn_armek_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_sw4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw4 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw4 = SharedTangibleObje
 	clientObjectCRC = 3078564587
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw4, "object/tangible/ship/components/weapon/shared_wpn_armek_sw4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw4, "object/tangible/ship/components/weapon/shared_wpn_armek_sw4.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_sw6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw6 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw6 = SharedTangibleObje
 	clientObjectCRC = 627434993
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw6, "object/tangible/ship/components/weapon/shared_wpn_armek_sw6.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw6, "object/tangible/ship/components/weapon/shared_wpn_armek_sw6.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_sw7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw7 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw7 = SharedTangibleObje
 	clientObjectCRC = 1818788476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw7, "object/tangible/ship/components/weapon/shared_wpn_armek_sw7.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw7, "object/tangible/ship/components/weapon/shared_wpn_armek_sw7.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_sw8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw8 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw8 = SharedTangibleObje
 	clientObjectCRC = 3596791406
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw8, "object/tangible/ship/components/weapon/shared_wpn_armek_sw8.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw8, "object/tangible/ship/components/weapon/shared_wpn_armek_sw8.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_awing_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_ship_components_weapon_shared_wpn_awing_blaster = SharedTangible
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_ship_components_weapon_shared_wpn_awing_blaster = SharedTangible
 	clientObjectCRC = 1392493131
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_awing_blaster, "object/tangible/ship/components/weapon/shared_wpn_awing_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_awing_blaster, "object/tangible/ship/components/weapon/shared_wpn_awing_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_borstel_rg9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -631,6 +642,7 @@ object_tangible_ship_components_weapon_shared_wpn_borstel_rg9 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_ship_components_weapon_shared_wpn_borstel_rg9 = SharedTangibleOb
 	clientObjectCRC = 1971958873
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_borstel_rg9, "object/tangible/ship/components/weapon/shared_wpn_borstel_rg9.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_borstel_rg9, "object/tangible/ship/components/weapon/shared_wpn_borstel_rg9.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_bwing_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -684,6 +696,7 @@ object_tangible_ship_components_weapon_shared_wpn_bwing_blaster = SharedTangible
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_ship_components_weapon_shared_wpn_bwing_blaster = SharedTangible
 	clientObjectCRC = 1787466156
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_bwing_blaster, "object/tangible/ship/components/weapon/shared_wpn_bwing_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_bwing_blaster, "object/tangible/ship/components/weapon/shared_wpn_bwing_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_capitalship_turret_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -737,6 +750,7 @@ object_tangible_ship_components_weapon_shared_wpn_capitalship_turret_test = Shar
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_ship_components_weapon_shared_wpn_capitalship_turret_test = Shar
 	clientObjectCRC = 3311096308
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_capitalship_turret_test, "object/tangible/ship/components/weapon/shared_wpn_capitalship_turret_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_capitalship_turret_test, "object/tangible/ship/components/weapon/shared_wpn_capitalship_turret_test.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corellian_1d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -790,6 +804,7 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_1d = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_1d = SharedTangibleO
 	clientObjectCRC = 2087182522
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_1d, "object/tangible/ship/components/weapon/shared_wpn_corellian_1d.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_1d, "object/tangible/ship/components/weapon/shared_wpn_corellian_1d.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser = SharedT
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser = SharedT
 	clientObjectCRC = 3460040348
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser, "object/tangible/ship/components/weapon/shared_wpn_corellian_ag1g_laser.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser, "object/tangible/ship/components/weapon/shared_wpn_corellian_ag1g_laser.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -896,6 +912,7 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser = Sh
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser = Sh
 	clientObjectCRC = 2989343947
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser, "object/tangible/ship/components/weapon/shared_wpn_corellian_ag2g_quad_laser.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser, "object/tangible/ship/components/weapon/shared_wpn_corellian_ag2g_quad_laser.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaste
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaste
 	clientObjectCRC = 2213766317
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaster_mk1, "object/tangible/ship/components/weapon/shared_wpn_corellian_cruiser_grade_blaster_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaster_mk1, "object/tangible/ship/components/weapon/shared_wpn_corellian_cruiser_grade_blaster_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corvette_turret_sm_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_ship_components_weapon_shared_wpn_corvette_turret_sm_s01 = Share
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_ship_components_weapon_shared_wpn_corvette_turret_sm_s01 = Share
 	clientObjectCRC = 1361242261
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corvette_turret_sm_s01, "object/tangible/ship/components/weapon/shared_wpn_corvette_turret_sm_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_corvette_turret_sm_s01, "object/tangible/ship/components/weapon/shared_wpn_corvette_turret_sm_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1055,6 +1074,7 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk1 = SharedT
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk1 = SharedT
 	clientObjectCRC = 4229372390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk1, "object/tangible/ship/components/weapon/shared_wpn_cygnus_destroyer_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk1, "object/tangible/ship/components/weapon/shared_wpn_cygnus_destroyer_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1108,6 +1128,7 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2 = SharedT
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2 = SharedT
 	clientObjectCRC = 654356849
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2, "object/tangible/ship/components/weapon/shared_wpn_cygnus_destroyer_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2, "object/tangible/ship/components/weapon/shared_wpn_cygnus_destroyer_mk2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_cygnus_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1161,6 +1182,7 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_elite = SharedTangibleO
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_elite = SharedTangibleO
 	clientObjectCRC = 3038804521
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_elite, "object/tangible/ship/components/weapon/shared_wpn_cygnus_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_elite, "object/tangible/ship/components/weapon/shared_wpn_cygnus_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1214,6 +1236,7 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1 = SharedTa
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1 = SharedTa
 	clientObjectCRC = 526650114
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1, "object/tangible/ship/components/weapon/shared_wpn_cygnus_eradicator_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1, "object/tangible/ship/components/weapon/shared_wpn_cygnus_eradicator_1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1267,6 +1290,7 @@ object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1 = Shared
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1 = Shared
 	clientObjectCRC = 373679875
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1, "object/tangible/ship/components/weapon/shared_wpn_freitek_cannoneer_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1, "object/tangible/ship/components/weapon/shared_wpn_freitek_cannoneer_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1320,6 +1344,7 @@ object_tangible_ship_components_weapon_shared_wpn_generic = SharedTangibleObject
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_ship_components_weapon_shared_wpn_generic = SharedTangibleObject
 	clientObjectCRC = 1333192542
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_generic, "object/tangible/ship/components/weapon/shared_wpn_generic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_generic, "object/tangible/ship/components/weapon/shared_wpn_generic.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1373,6 +1398,7 @@ object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster = SharedTa
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster = SharedTa
 	clientObjectCRC = 90081547
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster, "object/tangible/ship/components/weapon/shared_wpn_gyrhil_auto_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster, "object/tangible/ship/components/weapon/shared_wpn_gyrhil_auto_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1426,6 +1452,7 @@ object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x = SharedTangibleObj
 	clientObjectCRC = 1218898024
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x, "object/tangible/ship/components/weapon/shared_wpn_gyrhil_r9x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x, "object/tangible/ship/components/weapon/shared_wpn_gyrhil_r9x.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1479,6 +1506,7 @@ object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster = Shar
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster = Shar
 	clientObjectCRC = 762044667
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster, "object/tangible/ship/components/weapon/shared_wpn_haor_chall_speedblaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster, "object/tangible/ship/components/weapon/shared_wpn_haor_chall_speedblaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1532,6 +1560,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite = S
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite = S
 	clientObjectCRC = 2957562610
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite, "object/tangible/ship/components/weapon/shared_wpn_hk_modified_scorcher_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite, "object/tangible/ship/components/weapon/shared_wpn_hk_modified_scorcher_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1585,6 +1614,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher = SharedTangibleOb
 	clientObjectCRC = 1555262455
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1638,6 +1668,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_2 = SharedTangible
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_2 = SharedTangible
 	clientObjectCRC = 2715164541
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_2, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_2, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1691,6 +1722,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3 = SharedTangible
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3 = SharedTangible
 	clientObjectCRC = 3906697456
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_3.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1744,6 +1776,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_advanced = SharedT
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_advanced = SharedT
 	clientObjectCRC = 3110719195
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_advanced, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_advanced, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_advanced.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_elite = SharedTang
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_elite = SharedTang
 	clientObjectCRC = 146304976
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_elite, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_elite, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1850,6 +1884,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_heavy = SharedTang
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_heavy = SharedTang
 	clientObjectCRC = 2570101673
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_heavy, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_heavy, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_heavy.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_advanced_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1903,6 +1938,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_advanced_blaster = Share
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_advanced_blaster = Share
 	clientObjectCRC = 939423053
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_advanced_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_advanced_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_advanced_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_advanced_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -1956,6 +1992,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_blaster = SharedTangible
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_blaster = SharedTangible
 	clientObjectCRC = 3446201616
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2009,6 +2046,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_disruptor = SharedTangib
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_disruptor = SharedTangib
 	clientObjectCRC = 3407371780
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_disruptor, "object/tangible/ship/components/weapon/shared_wpn_incom_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_disruptor, "object/tangible/ship/components/weapon/shared_wpn_incom_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2062,6 +2100,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster = Sha
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster = Sha
 	clientObjectCRC = 655771385
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_elite_quad_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_elite_quad_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2115,6 +2154,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster = SharedTa
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster = SharedTa
 	clientObjectCRC = 2709580640
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_heavy_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_heavy_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2168,6 +2208,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster = Sha
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster = Sha
 	clientObjectCRC = 4090385282
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_heavy_quad_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_heavy_quad_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2221,6 +2262,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster = SharedTa
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster = SharedTa
 	clientObjectCRC = 745205415
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_light_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_light_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_proton_missile_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
@@ -2274,6 +2316,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_proton_missile_s01 = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_proton_missile_s01 = Sha
 	clientObjectCRC = 2585546139
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_proton_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_incom_proton_missile_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_proton_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_incom_proton_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_quad_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2327,6 +2370,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_quad_blaster = SharedTan
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_quad_blaster = SharedTan
 	clientObjectCRC = 2691880126
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_quad_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_quad_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_seismic_missile_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
@@ -2380,6 +2424,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_seismic_missile_s01 = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_seismic_missile_s01 = Sh
 	clientObjectCRC = 134787828
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_seismic_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_incom_seismic_missile_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_seismic_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_incom_seismic_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_shredder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2433,6 +2478,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_shredder = SharedTangibl
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_shredder = SharedTangibl
 	clientObjectCRC = 819793875
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_shredder, "object/tangible/ship/components/weapon/shared_wpn_incom_shredder.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_shredder, "object/tangible/ship/components/weapon/shared_wpn_incom_shredder.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_tt13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2486,6 +2532,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_tt13 = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_tt13 = SharedTangibleObj
 	clientObjectCRC = 3885305221
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_tt13, "object/tangible/ship/components/weapon/shared_wpn_incom_tt13.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_tt13, "object/tangible/ship/components/weapon/shared_wpn_incom_tt13.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_tt8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2539,6 +2586,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_tt8 = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_ship_components_weapon_shared_wpn_incom_tt8 = SharedTangibleObje
 	clientObjectCRC = 4021441179
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_tt8, "object/tangible/ship/components/weapon/shared_wpn_incom_tt8.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_tt8, "object/tangible/ship/components/weapon/shared_wpn_incom_tt8.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2592,6 +2640,7 @@ object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1 = SharedTangib
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1 = SharedTangib
 	clientObjectCRC = 667601641
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1, "object/tangible/ship/components/weapon/shared_wpn_kdy_pounder_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1, "object/tangible/ship/components/weapon/shared_wpn_kdy_pounder_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_prototype_x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2645,6 +2694,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_protot
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_protot
 	clientObjectCRC = 1429969329
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_prototype_x, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_rendili_prototype_x.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_prototype_x, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_rendili_prototype_x.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experimental_secret_ops = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2698,6 +2748,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experiment
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experiment
 	clientObjectCRC = 3083127705
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experimental_secret_ops, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_sds_experimental_secret_ops.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experimental_secret_ops, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_sds_experimental_secret_ops.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2751,6 +2802,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops 
 	clientObjectCRC = 4028755301
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_sfs_elite_ops.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_sfs_elite_ops.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_flashcannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2804,6 +2856,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_fl
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_fl
 	clientObjectCRC = 2645130727
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_flashcannon, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_incom_dualcore_flashcannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_flashcannon, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_incom_dualcore_flashcannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slammer_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2857,6 +2910,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slam
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slam
 	clientObjectCRC = 89824351
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slammer_cannon, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_riiz_combine_slammer_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slammer_cannon, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_riiz_combine_slammer_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinger = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2910,6 +2964,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinge
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinge
 	clientObjectCRC = 953073966
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinger, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_unknown_rayslinger.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinger, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_unknown_rayslinger.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_deluxe_ion_accelerator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -2963,6 +3018,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_deluxe_ion_accelerato
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_deluxe_ion_accelerato
 	clientObjectCRC = 3911315270
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_deluxe_ion_accelerator, "object/tangible/ship/components/weapon/shared_wpn_koensayr_deluxe_ion_accelerator.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_deluxe_ion_accelerator, "object/tangible/ship/components/weapon/shared_wpn_koensayr_deluxe_ion_accelerator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3016,6 +3072,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator = Sha
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator = Sha
 	clientObjectCRC = 2517260475
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3069,6 +3126,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2 = S
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2 = S
 	clientObjectCRC = 3827108741
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3122,6 +3180,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_3 = S
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_3 = S
 	clientObjectCRC = 2903534600
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_3, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_3, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_3.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3175,6 +3234,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_advan
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_advan
 	clientObjectCRC = 3935855718
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_advanced, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_advanced, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_advanced.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_light_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3228,6 +3288,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_light_disruptor = Sha
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_light_disruptor = Sha
 	clientObjectCRC = 2964865390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_koensayr_light_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_koensayr_light_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3281,6 +3342,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor
 	clientObjectCRC = 2324723441
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_koensayr_tuned_light_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_koensayr_tuned_light_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3334,6 +3396,7 @@ object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster = SharedTan
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster = SharedTan
 	clientObjectCRC = 1309584223
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster, "object/tangible/ship/components/weapon/shared_wpn_kse_double_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster, "object/tangible/ship/components/weapon/shared_wpn_kse_double_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3387,6 +3450,7 @@ object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor = SharedTa
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor = SharedTa
 	clientObjectCRC = 1496618540
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_kse_light_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_kse_light_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_advanced_annihilator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3440,6 +3504,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_advanced_annihilator = 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_advanced_annihilator = 
 	clientObjectCRC = 1864468167
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_advanced_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_advanced_annihilator.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_advanced_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_advanced_annihilator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_annihilator_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3493,6 +3558,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_annihilator_mk2 = Share
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_annihilator_mk2 = Share
 	clientObjectCRC = 2171243660
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_annihilator_mk2, "object/tangible/ship/components/weapon/shared_wpn_mandal_annihilator_mk2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_annihilator_mk2, "object/tangible/ship/components/weapon/shared_wpn_mandal_annihilator_mk2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3546,6 +3612,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1 = Shared
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1 = Shared
 	clientObjectCRC = 3043215801
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_annilhator_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_annilhator_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_elite_annihilator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3599,6 +3666,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_elite_annihilator = Sha
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_elite_annihilator = Sha
 	clientObjectCRC = 1203586695
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_elite_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_elite_annihilator.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_elite_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_elite_annihilator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_enhanced_mangler_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3652,6 +3720,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_enhanced_mangler_mk1 = 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_enhanced_mangler_mk1 = 
 	clientObjectCRC = 945058875
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_enhanced_mangler_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_enhanced_mangler_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_enhanced_mangler_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_enhanced_mangler_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3705,6 +3774,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator = Sha
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator = Sha
 	clientObjectCRC = 4039829327
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_heavy_annihilator.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_heavy_annihilator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3758,6 +3828,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1 = SharedTan
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1 = SharedTan
 	clientObjectCRC = 3229356354
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_mangler_mk1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_mangler_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3811,6 +3882,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor = SharedT
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor = SharedT
 	clientObjectCRC = 2181339101
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mandal_qv3_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mandal_qv3_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3864,6 +3936,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor = SharedT
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor = SharedT
 	clientObjectCRC = 1168567199
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mandal_qv5_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mandal_qv5_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_super_mangler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3917,6 +3990,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_super_mangler = SharedT
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_super_mangler = SharedT
 	clientObjectCRC = 1966553634
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_super_mangler, "object/tangible/ship/components/weapon/shared_wpn_mandal_super_mangler.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_super_mangler, "object/tangible/ship/components/weapon/shared_wpn_mandal_super_mangler.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus_starblaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -3970,6 +4044,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus
 	clientObjectCRC = 2216406766
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus_starblaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_imperial_cygnus_starblaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus_starblaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_imperial_cygnus_starblaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_boltdriver = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4023,6 +4098,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_bo
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_bo
 	clientObjectCRC = 1584266196
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_boltdriver, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_imperial_sds_boltdriver.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_boltdriver, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_imperial_sds_boltdriver.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4076,6 +4152,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel
 	clientObjectCRC = 1515757719
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_borstel_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_borstel_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_military_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4129,6 +4206,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_mili
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_mili
 	clientObjectCRC = 2865416858
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_military_blaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_hk_military_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_military_blaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_hk_military_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_light_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4182,6 +4260,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_
 	clientObjectCRC = 4071002762
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_mandal_light_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_mandal_light_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tricannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4235,6 +4314,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tri
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tri
 	clientObjectCRC = 3498715160
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tricannon, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_rebel_incom_tricannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tricannon, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_rebel_incom_tricannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_driver = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4288,6 +4368,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_
 	clientObjectCRC = 219326346
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_driver, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_rebel_taim_ion_driver.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_driver, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_rebel_taim_ion_driver.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4341,6 +4422,7 @@ object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster = SharedT
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster = SharedT
 	clientObjectCRC = 3697933765
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_moncal_light_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_moncal_light_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_prototype_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4394,6 +4476,7 @@ object_tangible_ship_components_weapon_shared_wpn_prototype_weapon = SharedTangi
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_ship_components_weapon_shared_wpn_prototype_weapon = SharedTangi
 	clientObjectCRC = 1904433726
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_prototype_weapon, "object/tangible/ship/components/weapon/shared_wpn_prototype_weapon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_prototype_weapon, "object/tangible/ship/components/weapon/shared_wpn_prototype_weapon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_prototype_weapon_tie = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4447,6 +4530,7 @@ object_tangible_ship_components_weapon_shared_wpn_prototype_weapon_tie = SharedT
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_ship_components_weapon_shared_wpn_prototype_weapon_tie = SharedT
 	clientObjectCRC = 1097828961
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_prototype_weapon_tie, "object/tangible/ship/components/weapon/shared_wpn_prototype_weapon_tie.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_prototype_weapon_tie, "object/tangible/ship/components/weapon/shared_wpn_prototype_weapon_tie.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4500,6 +4584,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_advanced = SharedTangi
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_advanced = SharedTangi
 	clientObjectCRC = 1966255607
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_advanced, "object/tangible/ship/components/weapon/shared_wpn_rendili_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_advanced, "object/tangible/ship/components/weapon/shared_wpn_rendili_advanced.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_fr13_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4553,6 +4638,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_fr13_disruptor = Share
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_fr13_disruptor = Share
 	clientObjectCRC = 459008853
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_fr13_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_fr13_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_fr13_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_fr13_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4606,6 +4692,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor = Shared
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor = Shared
 	clientObjectCRC = 100362336
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_fr9_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_fr9_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4659,6 +4746,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor = Shared
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor = Shared
 	clientObjectCRC = 2784983723
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_sc3_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_sc3_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -4712,6 +4800,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor = Shared
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor = Shared
 	clientObjectCRC = 886506152
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_sc8_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_sc8_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -4765,6 +4854,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_incom_elite = SharedTan
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_incom_elite = SharedTan
 	clientObjectCRC = 983721375
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_incom_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_incom_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_incom_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_incom_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_seinar_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -4818,6 +4908,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_seinar_elite = SharedTa
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_seinar_elite = SharedTa
 	clientObjectCRC = 3491884496
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_seinar_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_seinar_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_seinar_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_seinar_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_slayn_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -4871,6 +4962,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_slayn_elite = SharedTan
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_slayn_elite = SharedTan
 	clientObjectCRC = 2898046675
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_slayn_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_slayn_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_slayn_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_slayn_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_subpro_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -4924,6 +5016,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_subpro_elite = SharedTa
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_subpro_elite = SharedTa
 	clientObjectCRC = 1280281292
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_subpro_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_subpro_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_subpro_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_subpro_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_taim_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
@@ -4977,6 +5070,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_taim_elite = SharedTang
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_ship_components_weapon_shared_wpn_reward_taim_elite = SharedTang
 	clientObjectCRC = 2885961571
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_taim_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_taim_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_taim_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_taim_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5030,6 +5124,7 @@ object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon = SharedTa
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon = SharedTa
 	clientObjectCRC = 3583705980
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon, "object/tangible/ship/components/weapon/shared_wpn_rss_imperial_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon, "object/tangible/ship/components/weapon/shared_wpn_rss_imperial_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5083,6 +5178,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_elite = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_elite = SharedTangibleObje
 	clientObjectCRC = 3939485307
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_elite, "object/tangible/ship/components/weapon/shared_wpn_sds_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_elite, "object/tangible/ship/components/weapon/shared_wpn_sds_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5136,6 +5232,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_
 	clientObjectCRC = 1624083757
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_cannon, "object/tangible/ship/components/weapon/shared_wpn_sds_heavy_imperial_spc_forces_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_cannon, "object/tangible/ship/components/weapon/shared_wpn_sds_heavy_imperial_spc_forces_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5189,6 +5286,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1 = Share
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1 = Share
 	clientObjectCRC = 3660124331
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_blaster_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_blaster_1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5242,6 +5340,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_2 = Share
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_2 = Share
 	clientObjectCRC = 20887612
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_blaster_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_blaster_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_imperial_special_forces_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5295,6 +5394,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_special_forces_ca
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_special_forces_ca
 	clientObjectCRC = 326500083
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_special_forces_cannon, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_special_forces_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_special_forces_cannon, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_special_forces_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5348,6 +5448,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite = SharedTan
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite = SharedTan
 	clientObjectCRC = 3416463612
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite, "object/tangible/ship/components/weapon/shared_wpn_sds_modified_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite, "object/tangible/ship/components/weapon/shared_wpn_sds_modified_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_concussion_missile_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
@@ -5401,6 +5502,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_concussion_missile_s01 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_concussion_missile_s01 
 	clientObjectCRC = 1499653630
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_concussion_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_seinar_concussion_missile_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_concussion_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_seinar_concussion_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5454,6 +5556,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor = SharedTangi
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor = SharedTangi
 	clientObjectCRC = 3046767372
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor, "object/tangible/ship/components/weapon/shared_wpn_seinar_disruptor.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor, "object/tangible/ship/components/weapon/shared_wpn_seinar_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_heatseeker_missile_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
@@ -5507,6 +5610,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_heatseeker_missile_s01 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_heatseeker_missile_s01 
 	clientObjectCRC = 1500305519
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_heatseeker_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_seinar_heatseeker_missile_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_heatseeker_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_seinar_heatseeker_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5560,6 +5664,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon = SharedTang
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon = SharedTang
 	clientObjectCRC = 1847953292
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon, "object/tangible/ship/components/weapon/shared_wpn_seinar_ion_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon, "object/tangible/ship/components/weapon/shared_wpn_seinar_ion_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5613,6 +5718,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon = SharedT
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon = SharedT
 	clientObjectCRC = 3708108391
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon, "object/tangible/ship/components/weapon/shared_wpn_seinar_linked_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon, "object/tangible/ship/components/weapon/shared_wpn_seinar_linked_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_ls1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5666,6 +5772,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ls1 = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ls1 = SharedTangibleObj
 	clientObjectCRC = 2396153703
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ls1, "object/tangible/ship/components/weapon/shared_wpn_seinar_ls1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ls1, "object/tangible/ship/components/weapon/shared_wpn_seinar_ls1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_ls72 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5719,6 +5826,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ls72 = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ls72 = SharedTangibleOb
 	clientObjectCRC = 4266722432
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ls72, "object/tangible/ship/components/weapon/shared_wpn_seinar_ls72.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ls72, "object/tangible/ship/components/weapon/shared_wpn_seinar_ls72.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5772,6 +5880,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_elite = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_elite = SharedTangibleObje
 	clientObjectCRC = 3844210807
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_elite, "object/tangible/ship/components/weapon/shared_wpn_sfs_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_elite, "object/tangible/ship/components/weapon/shared_wpn_sfs_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5825,6 +5934,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_1 = Share
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_1 = Share
 	clientObjectCRC = 1173398646
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_1, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_1.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_1, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5878,6 +5988,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_2 = Share
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_2 = Share
 	clientObjectCRC = 2665942241
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5931,6 +6042,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_3 = Share
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_3 = Share
 	clientObjectCRC = 3622464364
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_3, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_3, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_3.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -5984,6 +6096,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_4 = Share
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_4 = Share
 	clientObjectCRC = 738803832
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_4, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_4, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_4.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_special_forces_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6037,6 +6150,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_special_forces_bl
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_special_forces_bl
 	clientObjectCRC = 994450521
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_special_forces_blaster, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_special_forces_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_special_forces_blaster, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_special_forces_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_improved_imperial_blaster_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6090,6 +6204,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_improved_imperial_blaster_
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_improved_imperial_blaster_
 	clientObjectCRC = 3810806571
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_improved_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sfs_improved_imperial_blaster_2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_improved_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sfs_improved_imperial_blaster_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6143,6 +6258,7 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon =
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon =
 	clientObjectCRC = 674088640
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_deluxe_light_ioncannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_deluxe_light_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_slayn_imagerec_missile_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
@@ -6196,6 +6312,7 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_imagerec_missile_s01 = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,7 +6357,7 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_imagerec_missile_s01 = S
 	clientObjectCRC = 3037690567
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_imagerec_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_slayn_imagerec_missile_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_imagerec_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_slayn_imagerec_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6249,6 +6366,7 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon = SharedTangib
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6293,7 +6411,7 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon = SharedTangib
 	clientObjectCRC = 659233376
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_ioncannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_slayn_light_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6302,6 +6420,7 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_light_ioncannon = Shared
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6346,7 +6465,7 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_light_ioncannon = Shared
 	clientObjectCRC = 1606284757
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_light_ioncannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_light_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6355,6 +6474,7 @@ object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s01 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6399,7 +6519,7 @@ object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s01 
 	clientObjectCRC = 2455152329
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s01, "object/tangible/ship/components/weapon/shared_wpn_spacestation_rebel_turret_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s01, "object/tangible/ship/components/weapon/shared_wpn_spacestation_rebel_turret_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6408,6 +6528,7 @@ object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s02 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6452,7 +6573,7 @@ object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s02 
 	clientObjectCRC = 1229000286
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s02, "object/tangible/ship/components/weapon/shared_wpn_spacestation_rebel_turret_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s02, "object/tangible/ship/components/weapon/shared_wpn_spacestation_rebel_turret_s02.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_dome = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6461,6 +6582,7 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_dome = S
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6505,7 +6627,7 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_dome = S
 	clientObjectCRC = 3564769891
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_dome, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_dome.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_dome, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_dome.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_med = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6514,6 +6636,7 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_med = Sh
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6558,7 +6681,7 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_med = Sh
 	clientObjectCRC = 52712658
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_med, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_med.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_med, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_med.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_square = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6567,6 +6690,7 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_square =
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6611,7 +6735,7 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_square =
 	clientObjectCRC = 1162390806
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_square, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_square.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_square, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_square.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_std_countermeasure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6620,6 +6744,7 @@ object_tangible_ship_components_weapon_shared_wpn_std_countermeasure = SharedTan
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6664,7 +6789,7 @@ object_tangible_ship_components_weapon_shared_wpn_std_countermeasure = SharedTan
 	clientObjectCRC = 1265550250
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_std_countermeasure, "object/tangible/ship/components/weapon/shared_wpn_std_countermeasure.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_std_countermeasure, "object/tangible/ship/components/weapon/shared_wpn_std_countermeasure.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6673,6 +6798,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon = Share
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6717,7 +6843,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon = Share
 	clientObjectCRC = 4160278616
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_advanced_cannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_advanced_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_improved_light_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6726,6 +6852,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_improved_light_ioncanno
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6770,7 +6897,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_improved_light_ioncanno
 	clientObjectCRC = 2401708828
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_improved_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_improved_light_ioncannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_improved_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_improved_light_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6779,6 +6906,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon = Share
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6823,7 +6951,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon = Share
 	clientObjectCRC = 3317340182
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_light_ioncannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_light_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6832,6 +6960,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon = Sh
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6876,7 +7005,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon = Sh
 	clientObjectCRC = 1471920679
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_modified_tricannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_modified_tricannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_tricannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6885,6 +7014,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tricannon = SharedTangi
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6929,7 +7059,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tricannon = SharedTangi
 	clientObjectCRC = 1320399548
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tricannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_tricannon.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tricannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_tricannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6938,6 +7068,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster = SharedT
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6982,7 +7113,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster = SharedT
 	clientObjectCRC = 3508512617
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -6991,6 +7122,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark2 = S
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7035,7 +7167,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark2 = S
 	clientObjectCRC = 449709518
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark2, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster_mark2.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark2, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster_mark2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7044,6 +7176,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark3 = S
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7088,7 +7221,7 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark3 = S
 	clientObjectCRC = 1405313603
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark3, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster_mark3.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark3, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster_mark3.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7097,6 +7230,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_elite = SharedTangibleObj
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7141,7 +7275,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_elite = SharedTangibleObj
 	clientObjectCRC = 3622160774
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_elite, "object/tangible/ship/components/weapon/shared_wpn_taim_elite.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_elite, "object/tangible/ship/components/weapon/shared_wpn_taim_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7150,6 +7284,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser = SharedTangi
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7194,7 +7329,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser = SharedTangi
 	clientObjectCRC = 1640800907
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser, "object/tangible/ship/components/weapon/shared_wpn_taim_heavy_laser.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser, "object/tangible/ship/components/weapon/shared_wpn_taim_heavy_laser.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_ix4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7203,6 +7338,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_ix4 = SharedTangibleObjec
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7247,7 +7383,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_ix4 = SharedTangibleObjec
 	clientObjectCRC = 2408591552
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_ix4, "object/tangible/ship/components/weapon/shared_wpn_taim_ix4.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_ix4, "object/tangible/ship/components/weapon/shared_wpn_taim_ix4.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_ix5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7256,6 +7392,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_ix5 = SharedTangibleObjec
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7300,7 +7437,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_ix5 = SharedTangibleObjec
 	clientObjectCRC = 3332200269
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_ix5, "object/tangible/ship/components/weapon/shared_wpn_taim_ix5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_ix5, "object/tangible/ship/components/weapon/shared_wpn_taim_ix5.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_kx5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7309,6 +7446,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx5 = SharedTangibleObjec
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7353,7 +7491,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx5 = SharedTangibleObjec
 	clientObjectCRC = 1479772015
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx5, "object/tangible/ship/components/weapon/shared_wpn_taim_kx5.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx5, "object/tangible/ship/components/weapon/shared_wpn_taim_kx5.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_kx8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7362,6 +7500,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx8 = SharedTangibleObjec
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7406,7 +7545,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx8 = SharedTangibleObjec
 	clientObjectCRC = 1881367655
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx8, "object/tangible/ship/components/weapon/shared_wpn_taim_kx8.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx8, "object/tangible/ship/components/weapon/shared_wpn_taim_kx8.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_kx9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7415,6 +7554,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx9 = SharedTangibleObjec
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7459,7 +7599,7 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx9 = SharedTangibleObjec
 	clientObjectCRC = 959316970
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx9, "object/tangible/ship/components/weapon/shared_wpn_taim_kx9.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx9, "object/tangible/ship/components/weapon/shared_wpn_taim_kx9.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7468,6 +7608,7 @@ object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster = SharedTa
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7512,7 +7653,7 @@ object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster = SharedTa
 	clientObjectCRC = 6623562
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster, "object/tangible/ship/components/weapon/shared_wpn_tieadvanced_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster, "object/tangible/ship/components/weapon/shared_wpn_tieadvanced_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7521,6 +7662,7 @@ object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic = SharedTangi
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7565,7 +7707,7 @@ object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic = SharedTangi
 	clientObjectCRC = 1543754587
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic, "object/tangible/ship/components/weapon/shared_wpn_tiefighter_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic, "object/tangible/ship/components/weapon/shared_wpn_tiefighter_basic.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7574,6 +7716,7 @@ object_tangible_ship_components_weapon_shared_wpn_z95_basic = SharedTangibleObje
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7618,7 +7761,7 @@ object_tangible_ship_components_weapon_shared_wpn_z95_basic = SharedTangibleObje
 	clientObjectCRC = 4095704307
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_z95_basic, "object/tangible/ship/components/weapon/shared_wpn_z95_basic.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_z95_basic, "object/tangible/ship/components/weapon/shared_wpn_z95_basic.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_z95_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
@@ -7627,6 +7770,7 @@ object_tangible_ship_components_weapon_shared_wpn_z95_blaster = SharedTangibleOb
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7671,7 +7815,7 @@ object_tangible_ship_components_weapon_shared_wpn_z95_blaster = SharedTangibleOb
 	clientObjectCRC = 3374006977
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_z95_blaster, "object/tangible/ship/components/weapon/shared_wpn_z95_blaster.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_wpn_z95_blaster, "object/tangible/ship/components/weapon/shared_wpn_z95_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_xwing_weapon_s01_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
@@ -7680,6 +7824,7 @@ object_tangible_ship_components_weapon_shared_xwing_weapon_s01_test = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7724,7 +7869,7 @@ object_tangible_ship_components_weapon_shared_xwing_weapon_s01_test = SharedTang
 	clientObjectCRC = 4194726205
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_xwing_weapon_s01_test, "object/tangible/ship/components/weapon/shared_xwing_weapon_s01_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_xwing_weapon_s01_test, "object/tangible/ship/components/weapon/shared_xwing_weapon_s01_test.iff")
 
 object_tangible_ship_components_weapon_shared_xwing_weapon_s02_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
@@ -7733,6 +7878,7 @@ object_tangible_ship_components_weapon_shared_xwing_weapon_s02_test = SharedTang
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1073741829,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7777,4 +7923,4 @@ object_tangible_ship_components_weapon_shared_xwing_weapon_s02_test = SharedTang
 	clientObjectCRC = 2138475555
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_xwing_weapon_s02_test, "object/tangible/ship/components/weapon/shared_xwing_weapon_s02_test.iff")
+ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_shared_xwing_weapon_s02_test, "object/tangible/ship/components/weapon/shared_xwing_weapon_s02_test.iff")

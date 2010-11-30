@@ -51,6 +51,7 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_transport.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -116,7 +117,7 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 	clientObjectCRC = 1686537229
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_event_transport, "object/creature/npc/theme_park/shared_event_transport.iff")
+ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_event_transport, "object/creature/npc/theme_park/shared_event_transport.iff")
 
 object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -128,6 +129,7 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_transport.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -193,7 +195,7 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 	clientObjectCRC = 3010351388
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_event_transport_theed_hangar, "object/creature/npc/theme_park/shared_event_transport_theed_hangar.iff")
+ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_event_transport_theed_hangar, "object/creature/npc/theme_park/shared_event_transport_theed_hangar.iff")
 
 object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -205,6 +207,7 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_lambda_shuttle.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -270,7 +273,7 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 	clientObjectCRC = 3752954766
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_lambda_shuttle, "object/creature/npc/theme_park/shared_lambda_shuttle.iff")
+ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_lambda_shuttle, "object/creature/npc/theme_park/shared_lambda_shuttle.iff")
 
 object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -282,6 +285,7 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_lambda_shuttle.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -347,7 +351,7 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 	clientObjectCRC = 3655546204
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk, "object/creature/npc/theme_park/shared_lambda_shuttle_faction_perk.iff")
+ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk, "object/creature/npc/theme_park/shared_lambda_shuttle_faction_perk.iff")
 
 object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -359,6 +363,7 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_shuttle.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -424,7 +429,7 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 	clientObjectCRC = 1984806965
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_shuttle, "object/creature/npc/theme_park/shared_player_shuttle.iff")
+ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_shuttle, "object/creature/npc/theme_park/shared_player_shuttle.iff")
 
 object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -436,6 +441,7 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_transport.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -501,7 +507,7 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 	clientObjectCRC = 1196401137
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_transport, "object/creature/npc/theme_park/shared_player_transport.iff")
+ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_transport, "object/creature/npc/theme_park/shared_player_transport.iff")
 
 object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -513,6 +519,7 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_transport.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -578,4 +585,4 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 	clientObjectCRC = 773296996
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_transport_theed_hangar, "object/creature/npc/theme_park/shared_player_transport_theed_hangar.iff")
+ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_transport_theed_hangar, "object/creature/npc/theme_park/shared_player_transport_theed_hangar.iff")

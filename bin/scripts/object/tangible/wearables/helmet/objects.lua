@@ -48,6 +48,7 @@ object_tangible_wearables_helmet_shared_helmet_atat = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_helmet_shared_helmet_atat = SharedTangibleObjectTempla
 	clientObjectCRC = 4140396271
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_atat, "object/tangible/wearables/helmet/shared_helmet_atat.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_atat, "object/tangible/wearables/helmet/shared_helmet_atat.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_fighter_blacksun_m.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTang
 	clientObjectCRC = 430117123
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_blacksun_ace.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_blacksun_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_fighter_imperial_ace_m.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTang
 	clientObjectCRC = 2580358001
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_imperial_ace.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_imperial_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_fighter_hutt_m.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTan
 	clientObjectCRC = 1909608537
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_privateer_ace.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_privateer_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_fighter_rebel_ace_m.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibl
 	clientObjectCRC = 4143277653
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_rebel_ace.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_rebel_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_s06_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1007682682
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_s06, "object/tangible/wearables/helmet/shared_helmet_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_s06, "object/tangible/wearables/helmet/shared_helmet_s06.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_tie_fighter_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjec
 	clientObjectCRC = 49314199
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tie_fighter, "object/tangible/wearables/helmet/shared_helmet_tie_fighter.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tie_fighter, "object/tangible/wearables/helmet/shared_helmet_tie_fighter.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_tusken_raider_s01_m.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibl
 	clientObjectCRC = 4156063051
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s01.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_tusken_raider_s02_m.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,4 +525,4 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibl
 	clientObjectCRC = 749721052
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s02.iff")

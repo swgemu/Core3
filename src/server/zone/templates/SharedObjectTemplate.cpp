@@ -50,6 +50,7 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	collisionActionPassFlags = templateData->getIntField("collisionActionPassFlags");
 	collisionActionBlockFlags = templateData->getIntField("collisionActionBlockFlags");
 	gameObjectType = templateData->getIntField("gameObjectType");
+	clientGameObjectType = templateData->getIntField("clientGameObjectType");
 
 	sendToClient = templateData->getByteField("sendToClient");
 	scaleThresholdBeforeExtentTest = templateData->getFloatField("scaleThresholdBeforeExtentTest");

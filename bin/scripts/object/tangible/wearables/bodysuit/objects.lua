@@ -48,6 +48,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTe
 	clientObjectCRC = 2562125101
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat, "object/tangible/wearables/bodysuit/shared_bodysuit_atat.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat, "object/tangible/wearables/bodysuit/shared_bodysuit_atat.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_atat_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleOb
 	clientObjectCRC = 2859919047
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_atat_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_atat_quest.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_bwing_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectT
 	clientObjectCRC = 2920765612
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_bwing_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleO
 	clientObjectCRC = 2675213661
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing_quest.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s01_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 3519793019
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s01, "object/tangible/wearables/bodysuit/shared_bodysuit_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s01, "object/tangible/wearables/bodysuit/shared_bodysuit_s01.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s06_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTem
 	clientObjectCRC = 707325039
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s06, "object/tangible/wearables/bodysuit/shared_bodysuit_s06.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s06, "object/tangible/wearables/bodysuit/shared_bodysuit_s06.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s07_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTem
 	clientObjectCRC = 1663405026
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s07, "object/tangible/wearables/bodysuit/shared_bodysuit_s07.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s07, "object/tangible/wearables/bodysuit/shared_bodysuit_s07.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s08_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTem
 	clientObjectCRC = 3643779056
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s08, "object/tangible/wearables/bodysuit/shared_bodysuit_s08.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s08, "object/tangible/wearables/bodysuit/shared_bodysuit_s08.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s12_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTem
 	clientObjectCRC = 301228692
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s12, "object/tangible/wearables/bodysuit/shared_bodysuit_s12.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s12, "object/tangible/wearables/bodysuit/shared_bodysuit_s12.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s13_f.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTem
 	clientObjectCRC = 1492714777
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s13, "object/tangible/wearables/bodysuit/shared_bodysuit_s13.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s13, "object/tangible/wearables/bodysuit/shared_bodysuit_s13.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s14_f.sat",
@@ -578,6 +588,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTem
 	clientObjectCRC = 2736401933
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s14, "object/tangible/wearables/bodysuit/shared_bodysuit_s14.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s14, "object/tangible/wearables/bodysuit/shared_bodysuit_s14.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s15_f.sat",
@@ -631,6 +642,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTem
 	clientObjectCRC = 3927394688
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s15, "object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s15, "object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s16_f.sat",
@@ -684,6 +696,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTem
 	clientObjectCRC = 822141207
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s16, "object/tangible/wearables/bodysuit/shared_bodysuit_s16.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s16, "object/tangible/wearables/bodysuit/shared_bodysuit_s16.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s13_f.sat",
@@ -737,6 +750,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTang
 	clientObjectCRC = 2416523857
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall, "object/tangible/wearables/bodysuit/shared_bodysuit_sarlacc_coverall.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall, "object/tangible/wearables/bodysuit/shared_bodysuit_sarlacc_coverall.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_tie_fighter_f.sat",
@@ -790,6 +804,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleO
 	clientObjectCRC = 19224104
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_tie_fighter_f.sat",
@@ -843,6 +858,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777219,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,4 +903,4 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTan
 	clientObjectCRC = 184136204
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter_quest.iff")

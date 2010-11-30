@@ -47,6 +47,7 @@ object_static_structure_lok_shared_lok_imprv_bannerpole_s01 = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/lok_imprv_bannerpole_s01.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 1,
@@ -81,7 +82,7 @@ object_static_structure_lok_shared_lok_imprv_bannerpole_s01 = SharedStaticObject
 	clientObjectCRC = 3199681465
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_lok_shared_lok_imprv_bannerpole_s01, "object/static/structure/lok/shared_lok_imprv_bannerpole_s01.iff")
+ObjectTemplates:addTemplate(object_static_structure_lok_shared_lok_imprv_bannerpole_s01, "object/static/structure/lok/shared_lok_imprv_bannerpole_s01.iff")
 
 object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -89,6 +90,7 @@ object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/lok_imprv_flagpole_s01.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 1,
@@ -123,4 +125,4 @@ object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTe
 	clientObjectCRC = 2646498442
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_lok_shared_lok_imprv_flagpole_s01, "object/static/structure/lok/shared_lok_imprv_flagpole_s01.iff")
+ObjectTemplates:addTemplate(object_static_structure_lok_shared_lok_imprv_flagpole_s01, "object/static/structure/lok/shared_lok_imprv_flagpole_s01.iff")

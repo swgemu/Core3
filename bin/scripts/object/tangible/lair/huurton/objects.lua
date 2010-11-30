@@ -48,6 +48,7 @@ object_tangible_lair_huurton_shared_lair_huurton = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_huurton_shared_lair_huurton = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1349396449
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_huurton_shared_lair_huurton, "object/tangible/lair/huurton/shared_lair_huurton.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton, "object/tangible/lair/huurton/shared_lair_huurton.iff")
 
 object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjec
 	clientObjectCRC = 3768282762
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, "object/tangible/lair/huurton/shared_lair_huurton_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, "object/tangible/lair/huurton/shared_lair_huurton_grassland.iff")

@@ -47,6 +47,7 @@ object_static_particle_shared_particle_bactatank_bubbles = SharedStaticObjectTem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_static_particle_shared_particle_bactatank_bubbles = SharedStaticObjectTem
 	clientObjectCRC = 1473993018
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_bactatank_bubbles, "object/static/particle/shared_particle_bactatank_bubbles.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_bactatank_bubbles, "object/static/particle/shared_particle_bactatank_bubbles.iff")
 
 object_static_particle_shared_particle_campfire_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_campfire_s01.prt",
@@ -90,6 +91,7 @@ object_static_particle_shared_particle_campfire_style_1 = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_static_particle_shared_particle_campfire_style_1 = SharedStaticObjectTemp
 	clientObjectCRC = 2524188092
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_campfire_style_1, "object/static/particle/shared_particle_campfire_style_1.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_campfire_style_1, "object/static/particle/shared_particle_campfire_style_1.iff")
 
 object_static_particle_shared_particle_distant_ships = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_distant_ships.prt",
@@ -133,6 +135,7 @@ object_static_particle_shared_particle_distant_ships = SharedStaticObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_static_particle_shared_particle_distant_ships = SharedStaticObjectTemplat
 	clientObjectCRC = 2407390404
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships, "object/static/particle/shared_particle_distant_ships.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships, "object/static/particle/shared_particle_distant_ships.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_vs_xwing.prt",
@@ -176,6 +179,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x = SharedSta
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x = SharedSta
 	clientObjectCRC = 169978190
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x, "object/static/particle/shared_particle_distant_ships_dogfight_t_vs_x.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x, "object/static/particle/shared_particle_distant_ships_dogfight_t_vs_x.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_vs_xwing_2.prt",
@@ -219,6 +223,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_2 = SharedS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_2 = SharedS
 	clientObjectCRC = 4214314868
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_2, "object/static/particle/shared_particle_distant_ships_dogfight_t_vs_x_2.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_2, "object/static/particle/shared_particle_distant_ships_dogfight_t_vs_x_2.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_vs_xwing_3.prt",
@@ -262,6 +267,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_3 = SharedS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_3 = SharedS
 	clientObjectCRC = 2990289145
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_3, "object/static/particle/shared_particle_distant_ships_dogfight_t_vs_x_3.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_3, "object/static/particle/shared_particle_distant_ships_dogfight_t_vs_x_3.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_bomber_vs_bwing.prt",
@@ -305,6 +311,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw = SharedS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw = SharedS
 	clientObjectCRC = 4182775907
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw, "object/static/particle/shared_particle_distant_ships_dogfight_tb_vs_bw.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw, "object/static/particle/shared_particle_distant_ships_dogfight_tb_vs_bw.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_bomber_vs_bwing_2.prt",
@@ -348,6 +355,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_2 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_2 = Share
 	clientObjectCRC = 800723222
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_2, "object/static/particle/shared_particle_distant_ships_dogfight_tb_vs_bw_2.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_2, "object/static/particle/shared_particle_distant_ships_dogfight_tb_vs_bw_2.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_bomber_vs_bwing_3.prt",
@@ -391,6 +399,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_3 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_3 = Share
 	clientObjectCRC = 1723299483
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_3, "object/static/particle/shared_particle_distant_ships_dogfight_tb_vs_bw_3.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_3, "object/static/particle/shared_particle_distant_ships_dogfight_tb_vs_bw_3.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_interceptor_vs_awing.prt",
@@ -434,6 +443,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw = SharedS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw = SharedS
 	clientObjectCRC = 155186459
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw, "object/static/particle/shared_particle_distant_ships_dogfight_ti_vs_aw.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw, "object/static/particle/shared_particle_distant_ships_dogfight_ti_vs_aw.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_interceptor_vs_awing_2.prt",
@@ -477,6 +487,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_2 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_2 = Share
 	clientObjectCRC = 2769318877
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_2, "object/static/particle/shared_particle_distant_ships_dogfight_ti_vs_aw_2.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_2, "object/static/particle/shared_particle_distant_ships_dogfight_ti_vs_aw_2.iff")
 
 object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_interceptor_vs_awing_3.prt",
@@ -520,6 +531,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_3 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_3 = Share
 	clientObjectCRC = 3961328720
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_3, "object/static/particle/shared_particle_distant_ships_dogfight_ti_vs_aw_3.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_3, "object/static/particle/shared_particle_distant_ships_dogfight_ti_vs_aw_3.iff")
 
 object_static_particle_shared_particle_distant_ships_imperial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_distant_ships_imperial.prt",
@@ -563,6 +575,7 @@ object_static_particle_shared_particle_distant_ships_imperial = SharedStaticObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_static_particle_shared_particle_distant_ships_imperial = SharedStaticObje
 	clientObjectCRC = 3417625546
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_imperial, "object/static/particle/shared_particle_distant_ships_imperial.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_imperial, "object/static/particle/shared_particle_distant_ships_imperial.iff")
 
 object_static_particle_shared_particle_distant_ships_rebel = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_distant_ships_rebel.prt",
@@ -606,6 +619,7 @@ object_static_particle_shared_particle_distant_ships_rebel = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_static_particle_shared_particle_distant_ships_rebel = SharedStaticObjectT
 	clientObjectCRC = 3663577642
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant_ships_rebel, "object/static/particle/shared_particle_distant_ships_rebel.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_distant_ships_rebel, "object/static/particle/shared_particle_distant_ships_rebel.iff")
 
 object_static_particle_shared_particle_geyser_01_l0 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_01_l0.prt",
@@ -649,6 +663,7 @@ object_static_particle_shared_particle_geyser_01_l0 = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_static_particle_shared_particle_geyser_01_l0 = SharedStaticObjectTemplate
 	clientObjectCRC = 1932156871
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_01_l0, "object/static/particle/shared_particle_geyser_01_l0.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_geyser_01_l0, "object/static/particle/shared_particle_geyser_01_l0.iff")
 
 object_static_particle_shared_particle_geyser_01_l1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_01_l1.prt",
@@ -692,6 +707,7 @@ object_static_particle_shared_particle_geyser_01_l1 = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_static_particle_shared_particle_geyser_01_l1 = SharedStaticObjectTemplate
 	clientObjectCRC = 975648842
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_01_l1, "object/static/particle/shared_particle_geyser_01_l1.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_geyser_01_l1, "object/static/particle/shared_particle_geyser_01_l1.iff")
 
 object_static_particle_shared_particle_geyser_01_l2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_01_l2.prt",
@@ -735,6 +751,7 @@ object_static_particle_shared_particle_geyser_01_l2 = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_static_particle_shared_particle_geyser_01_l2 = SharedStaticObjectTemplate
 	clientObjectCRC = 3778056413
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_01_l2, "object/static/particle/shared_particle_geyser_01_l2.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_geyser_01_l2, "object/static/particle/shared_particle_geyser_01_l2.iff")
 
 object_static_particle_shared_particle_geyser_01_l3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_01_l3.prt",
@@ -778,6 +795,7 @@ object_static_particle_shared_particle_geyser_01_l3 = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_static_particle_shared_particle_geyser_01_l3 = SharedStaticObjectTemplate
 	clientObjectCRC = 2822633296
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_01_l3, "object/static/particle/shared_particle_geyser_01_l3.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_geyser_01_l3, "object/static/particle/shared_particle_geyser_01_l3.iff")
 
 object_static_particle_shared_particle_geyser_center = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_center.prt",
@@ -821,6 +839,7 @@ object_static_particle_shared_particle_geyser_center = SharedStaticObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_static_particle_shared_particle_geyser_center = SharedStaticObjectTemplat
 	clientObjectCRC = 1698821405
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_center, "object/static/particle/shared_particle_geyser_center.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_geyser_center, "object/static/particle/shared_particle_geyser_center.iff")
 
 object_static_particle_shared_particle_lg_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lg_explosion.prt",
@@ -864,6 +883,7 @@ object_static_particle_shared_particle_lg_explosion = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_static_particle_shared_particle_lg_explosion = SharedStaticObjectTemplate
 	clientObjectCRC = 3840511804
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_lg_explosion, "object/static/particle/shared_particle_lg_explosion.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_lg_explosion, "object/static/particle/shared_particle_lg_explosion.iff")
 
 object_static_particle_shared_particle_magic_sparks = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_magic_sparks.prt",
@@ -907,6 +927,7 @@ object_static_particle_shared_particle_magic_sparks = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_static_particle_shared_particle_magic_sparks = SharedStaticObjectTemplate
 	clientObjectCRC = 736770694
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_magic_sparks, "object/static/particle/shared_particle_magic_sparks.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_magic_sparks, "object/static/particle/shared_particle_magic_sparks.iff")
 
 object_static_particle_shared_particle_md_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_md_explosion.prt",
@@ -950,6 +971,7 @@ object_static_particle_shared_particle_md_explosion = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_static_particle_shared_particle_md_explosion = SharedStaticObjectTemplate
 	clientObjectCRC = 2827947559
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_md_explosion, "object/static/particle/shared_particle_md_explosion.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_md_explosion, "object/static/particle/shared_particle_md_explosion.iff")
 
 object_static_particle_shared_particle_mine_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_mine_explosion.prt",
@@ -993,6 +1015,7 @@ object_static_particle_shared_particle_mine_explosion = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_static_particle_shared_particle_mine_explosion = SharedStaticObjectTempla
 	clientObjectCRC = 84116728
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_mine_explosion, "object/static/particle/shared_particle_mine_explosion.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_mine_explosion, "object/static/particle/shared_particle_mine_explosion.iff")
 
 object_static_particle_shared_particle_mine_warning = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_mine_warning.prt",
@@ -1036,6 +1059,7 @@ object_static_particle_shared_particle_mine_warning = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_static_particle_shared_particle_mine_warning = SharedStaticObjectTemplate
 	clientObjectCRC = 1732966696
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_mine_warning, "object/static/particle/shared_particle_mine_warning.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_mine_warning, "object/static/particle/shared_particle_mine_warning.iff")
 
 object_static_particle_shared_particle_newbie_airport_sign = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_airport_sign.prt",
@@ -1079,6 +1103,7 @@ object_static_particle_shared_particle_newbie_airport_sign = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_static_particle_shared_particle_newbie_airport_sign = SharedStaticObjectT
 	clientObjectCRC = 2597597224
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_airport_sign, "object/static/particle/shared_particle_newbie_airport_sign.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_airport_sign, "object/static/particle/shared_particle_newbie_airport_sign.iff")
 
 object_static_particle_shared_particle_newbie_arrow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_arrow.prt",
@@ -1122,6 +1147,7 @@ object_static_particle_shared_particle_newbie_arrow = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_static_particle_shared_particle_newbie_arrow = SharedStaticObjectTemplate
 	clientObjectCRC = 2059002681
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_arrow, "object/static/particle/shared_particle_newbie_arrow.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_arrow, "object/static/particle/shared_particle_newbie_arrow.iff")
 
 object_static_particle_shared_particle_newbie_bomb_debris = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_bombed_spot.prt",
@@ -1165,6 +1191,7 @@ object_static_particle_shared_particle_newbie_bomb_debris = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_static_particle_shared_particle_newbie_bomb_debris = SharedStaticObjectTe
 	clientObjectCRC = 247210913
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_bomb_debris, "object/static/particle/shared_particle_newbie_bomb_debris.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_bomb_debris, "object/static/particle/shared_particle_newbie_bomb_debris.iff")
 
 object_static_particle_shared_particle_newbie_bombed_spot = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_bombed_spot.prt",
@@ -1208,6 +1235,7 @@ object_static_particle_shared_particle_newbie_bombed_spot = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1243,7 +1271,7 @@ object_static_particle_shared_particle_newbie_bombed_spot = SharedStaticObjectTe
 	clientObjectCRC = 1187500001
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_bombed_spot, "object/static/particle/shared_particle_newbie_bombed_spot.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_bombed_spot, "object/static/particle/shared_particle_newbie_bombed_spot.iff")
 
 object_static_particle_shared_particle_newbie_hanging_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_hanging_smoke.prt",
@@ -1251,6 +1279,7 @@ object_static_particle_shared_particle_newbie_hanging_smoke = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1286,7 +1315,7 @@ object_static_particle_shared_particle_newbie_hanging_smoke = SharedStaticObject
 	clientObjectCRC = 1643854677
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_hanging_smoke, "object/static/particle/shared_particle_newbie_hanging_smoke.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_hanging_smoke, "object/static/particle/shared_particle_newbie_hanging_smoke.iff")
 
 object_static_particle_shared_particle_newbie_refrigerator_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_refrigerator_steam.prt",
@@ -1294,6 +1323,7 @@ object_static_particle_shared_particle_newbie_refrigerator_steam = SharedStaticO
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1329,7 +1359,7 @@ object_static_particle_shared_particle_newbie_refrigerator_steam = SharedStaticO
 	clientObjectCRC = 1272311156
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_refrigerator_steam, "object/static/particle/shared_particle_newbie_refrigerator_steam.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_refrigerator_steam, "object/static/particle/shared_particle_newbie_refrigerator_steam.iff")
 
 object_static_particle_shared_particle_newbie_siren = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_siren.prt",
@@ -1337,6 +1367,7 @@ object_static_particle_shared_particle_newbie_siren = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1372,7 +1403,7 @@ object_static_particle_shared_particle_newbie_siren = SharedStaticObjectTemplate
 	clientObjectCRC = 1940697475
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_siren, "object/static/particle/shared_particle_newbie_siren.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_siren, "object/static/particle/shared_particle_newbie_siren.iff")
 
 object_static_particle_shared_particle_newbie_spotlight = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_spotlight.prt",
@@ -1380,6 +1411,7 @@ object_static_particle_shared_particle_newbie_spotlight = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1415,7 +1447,7 @@ object_static_particle_shared_particle_newbie_spotlight = SharedStaticObjectTemp
 	clientObjectCRC = 4173485801
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_spotlight, "object/static/particle/shared_particle_newbie_spotlight.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_spotlight, "object/static/particle/shared_particle_newbie_spotlight.iff")
 
 object_static_particle_shared_particle_newbie_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_steam.prt",
@@ -1423,6 +1455,7 @@ object_static_particle_shared_particle_newbie_steam = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1458,7 +1491,7 @@ object_static_particle_shared_particle_newbie_steam = SharedStaticObjectTemplate
 	clientObjectCRC = 2193561176
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_steam, "object/static/particle/shared_particle_newbie_steam.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_steam, "object/static/particle/shared_particle_newbie_steam.iff")
 
 object_static_particle_shared_particle_newbie_wall_mech_lights_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_wall_mech_lights_blue.prt",
@@ -1466,6 +1499,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_blue = SharedStat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1501,7 +1535,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_blue = SharedStat
 	clientObjectCRC = 2655971520
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_wall_mech_lights_blue, "object/static/particle/shared_particle_newbie_wall_mech_lights_blue.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_wall_mech_lights_blue, "object/static/particle/shared_particle_newbie_wall_mech_lights_blue.iff")
 
 object_static_particle_shared_particle_newbie_wall_mech_lights_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_wall_mech_lights_red.prt",
@@ -1509,6 +1543,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_red = SharedStati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1544,7 +1579,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_red = SharedStati
 	clientObjectCRC = 726419148
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_wall_mech_lights_red, "object/static/particle/shared_particle_newbie_wall_mech_lights_red.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_wall_mech_lights_red, "object/static/particle/shared_particle_newbie_wall_mech_lights_red.iff")
 
 object_static_particle_shared_particle_newbie_wall_mech_lights_yellow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_wall_mech_lights_yellow.prt",
@@ -1552,6 +1587,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_yellow = SharedSt
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1587,7 +1623,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_yellow = SharedSt
 	clientObjectCRC = 2545325419
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_wall_mech_lights_yellow, "object/static/particle/shared_particle_newbie_wall_mech_lights_yellow.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_newbie_wall_mech_lights_yellow, "object/static/particle/shared_particle_newbie_wall_mech_lights_yellow.iff")
 
 object_static_particle_shared_particle_seagulls_flock = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_birds_flock.prt",
@@ -1595,6 +1631,7 @@ object_static_particle_shared_particle_seagulls_flock = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1630,7 +1667,7 @@ object_static_particle_shared_particle_seagulls_flock = SharedStaticObjectTempla
 	clientObjectCRC = 2141382138
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_seagulls_flock, "object/static/particle/shared_particle_seagulls_flock.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_seagulls_flock, "object/static/particle/shared_particle_seagulls_flock.iff")
 
 object_static_particle_shared_particle_sm_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sm_explosion.prt",
@@ -1638,6 +1675,7 @@ object_static_particle_shared_particle_sm_explosion = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1673,7 +1711,7 @@ object_static_particle_shared_particle_sm_explosion = SharedStaticObjectTemplate
 	clientObjectCRC = 3981248322
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_sm_explosion, "object/static/particle/shared_particle_sm_explosion.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_sm_explosion, "object/static/particle/shared_particle_sm_explosion.iff")
 
 object_static_particle_shared_particle_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke.prt",
@@ -1681,6 +1719,7 @@ object_static_particle_shared_particle_smoke = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1716,7 +1755,7 @@ object_static_particle_shared_particle_smoke = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3175786729
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_smoke, "object/static/particle/shared_particle_smoke.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_smoke, "object/static/particle/shared_particle_smoke.iff")
 
 object_static_particle_shared_particle_test_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/unshaded_geyser_test.prt",
@@ -1724,6 +1763,7 @@ object_static_particle_shared_particle_test_1 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1759,7 +1799,7 @@ object_static_particle_shared_particle_test_1 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1641393609
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_1, "object/static/particle/shared_particle_test_1.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_1, "object/static/particle/shared_particle_test_1.iff")
 
 object_static_particle_shared_particle_test_10 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_10.prt",
@@ -1767,6 +1807,7 @@ object_static_particle_shared_particle_test_10 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1802,7 +1843,7 @@ object_static_particle_shared_particle_test_10 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3432501582
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_10, "object/static/particle/shared_particle_test_10.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_10, "object/static/particle/shared_particle_test_10.iff")
 
 object_static_particle_shared_particle_test_100 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_100.prt",
@@ -1810,6 +1851,7 @@ object_static_particle_shared_particle_test_100 = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1845,7 +1887,7 @@ object_static_particle_shared_particle_test_100 = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1309247123
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_100, "object/static/particle/shared_particle_test_100.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_100, "object/static/particle/shared_particle_test_100.iff")
 
 object_static_particle_shared_particle_test_11 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_11.prt",
@@ -1853,6 +1895,7 @@ object_static_particle_shared_particle_test_11 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1888,7 +1931,7 @@ object_static_particle_shared_particle_test_11 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2241509059
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_11, "object/static/particle/shared_particle_test_11.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_11, "object/static/particle/shared_particle_test_11.iff")
 
 object_static_particle_shared_particle_test_12 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_12.prt",
@@ -1896,6 +1939,7 @@ object_static_particle_shared_particle_test_12 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1931,7 +1975,7 @@ object_static_particle_shared_particle_test_12 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1586306644
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_12, "object/static/particle/shared_particle_test_12.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_12, "object/static/particle/shared_particle_test_12.iff")
 
 object_static_particle_shared_particle_test_13 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_13.prt",
@@ -1939,6 +1983,7 @@ object_static_particle_shared_particle_test_13 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -1974,7 +2019,7 @@ object_static_particle_shared_particle_test_13 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 394295769
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_13, "object/static/particle/shared_particle_test_13.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_13, "object/static/particle/shared_particle_test_13.iff")
 
 object_static_particle_shared_particle_test_14 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_14.prt",
@@ -1982,6 +2027,7 @@ object_static_particle_shared_particle_test_14 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2017,7 +2063,7 @@ object_static_particle_shared_particle_test_14 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3965932237
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_14, "object/static/particle/shared_particle_test_14.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_14, "object/static/particle/shared_particle_test_14.iff")
 
 object_static_particle_shared_particle_test_15 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_15.prt",
@@ -2025,6 +2071,7 @@ object_static_particle_shared_particle_test_15 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2060,7 +2107,7 @@ object_static_particle_shared_particle_test_15 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2775463232
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_15, "object/static/particle/shared_particle_test_15.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_15, "object/static/particle/shared_particle_test_15.iff")
 
 object_static_particle_shared_particle_test_16 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_16.prt",
@@ -2068,6 +2115,7 @@ object_static_particle_shared_particle_test_16 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2103,7 +2151,7 @@ object_static_particle_shared_particle_test_16 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2121899479
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_16, "object/static/particle/shared_particle_test_16.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_16, "object/static/particle/shared_particle_test_16.iff")
 
 object_static_particle_shared_particle_test_17 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_17.prt",
@@ -2111,6 +2159,7 @@ object_static_particle_shared_particle_test_17 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2146,7 +2195,7 @@ object_static_particle_shared_particle_test_17 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 930413146
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_17, "object/static/particle/shared_particle_test_17.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_17, "object/static/particle/shared_particle_test_17.iff")
 
 object_static_particle_shared_particle_test_18 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_18.prt",
@@ -2154,6 +2203,7 @@ object_static_particle_shared_particle_test_18 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2189,7 +2239,7 @@ object_static_particle_shared_particle_test_18 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2373899848
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_18, "object/static/particle/shared_particle_test_18.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_18, "object/static/particle/shared_particle_test_18.iff")
 
 object_static_particle_shared_particle_test_19 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_19.prt",
@@ -2197,6 +2247,7 @@ object_static_particle_shared_particle_test_19 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2232,7 +2283,7 @@ object_static_particle_shared_particle_test_19 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3295916485
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_19, "object/static/particle/shared_particle_test_19.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_19, "object/static/particle/shared_particle_test_19.iff")
 
 object_static_particle_shared_particle_test_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_2.prt",
@@ -2240,6 +2291,7 @@ object_static_particle_shared_particle_test_2 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "sample/amb_waterfall_large_lp.sam",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2275,7 +2327,7 @@ object_static_particle_shared_particle_test_2 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3133277534
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_2, "object/static/particle/shared_particle_test_2.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_2, "object/static/particle/shared_particle_test_2.iff")
 
 object_static_particle_shared_particle_test_20 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_20.prt",
@@ -2283,6 +2335,7 @@ object_static_particle_shared_particle_test_20 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2318,7 +2371,7 @@ object_static_particle_shared_particle_test_20 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3790587590
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_20, "object/static/particle/shared_particle_test_20.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_20, "object/static/particle/shared_particle_test_20.iff")
 
 object_static_particle_shared_particle_test_21 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_21.prt",
@@ -2326,6 +2379,7 @@ object_static_particle_shared_particle_test_21 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2361,7 +2415,7 @@ object_static_particle_shared_particle_test_21 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2833424715
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_21, "object/static/particle/shared_particle_test_21.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_21, "object/static/particle/shared_particle_test_21.iff")
 
 object_static_particle_shared_particle_test_22 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_22.prt",
@@ -2369,6 +2423,7 @@ object_static_particle_shared_particle_test_22 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2404,7 +2459,7 @@ object_static_particle_shared_particle_test_22 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1945438684
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_22, "object/static/particle/shared_particle_test_22.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_22, "object/static/particle/shared_particle_test_22.iff")
 
 object_static_particle_shared_particle_test_23 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_23.prt",
@@ -2412,6 +2467,7 @@ object_static_particle_shared_particle_test_23 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2447,7 +2503,7 @@ object_static_particle_shared_particle_test_23 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 989359697
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_23, "object/static/particle/shared_particle_test_23.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_23, "object/static/particle/shared_particle_test_23.iff")
 
 object_static_particle_shared_particle_test_24 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_24.prt",
@@ -2455,6 +2511,7 @@ object_static_particle_shared_particle_test_24 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2490,7 +2547,7 @@ object_static_particle_shared_particle_test_24 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3239789893
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_24, "object/static/particle/shared_particle_test_24.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_24, "object/static/particle/shared_particle_test_24.iff")
 
 object_static_particle_shared_particle_test_25 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_25.prt",
@@ -2498,6 +2555,7 @@ object_static_particle_shared_particle_test_25 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2533,7 +2591,7 @@ object_static_particle_shared_particle_test_25 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2283152072
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_25, "object/static/particle/shared_particle_test_25.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_25, "object/static/particle/shared_particle_test_25.iff")
 
 object_static_particle_shared_particle_test_26 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_26.prt",
@@ -2541,6 +2599,7 @@ object_static_particle_shared_particle_test_26 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2576,7 +2635,7 @@ object_static_particle_shared_particle_test_26 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1392609887
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_26, "object/static/particle/shared_particle_test_26.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_26, "object/static/particle/shared_particle_test_26.iff")
 
 object_static_particle_shared_particle_test_27 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_27.prt",
@@ -2584,6 +2643,7 @@ object_static_particle_shared_particle_test_27 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2619,7 +2679,7 @@ object_static_particle_shared_particle_test_27 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 437054930
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_27, "object/static/particle/shared_particle_test_27.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_27, "object/static/particle/shared_particle_test_27.iff")
 
 object_static_particle_shared_particle_test_28 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_28.prt",
@@ -2627,6 +2687,7 @@ object_static_particle_shared_particle_test_28 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2662,7 +2723,7 @@ object_static_particle_shared_particle_test_28 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2684797376
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_28, "object/static/particle/shared_particle_test_28.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_28, "object/static/particle/shared_particle_test_28.iff")
 
 object_static_particle_shared_particle_test_29 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_29.prt",
@@ -2670,6 +2731,7 @@ object_static_particle_shared_particle_test_29 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2705,7 +2767,7 @@ object_static_particle_shared_particle_test_29 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3909854797
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_29, "object/static/particle/shared_particle_test_29.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_29, "object/static/particle/shared_particle_test_29.iff")
 
 object_static_particle_shared_particle_test_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
@@ -2713,6 +2775,7 @@ object_static_particle_shared_particle_test_3 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2748,7 +2811,7 @@ object_static_particle_shared_particle_test_3 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4090454739
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_3, "object/static/particle/shared_particle_test_3.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_3, "object/static/particle/shared_particle_test_3.iff")
 
 object_static_particle_shared_particle_test_30 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_30.prt",
@@ -2756,6 +2819,7 @@ object_static_particle_shared_particle_test_30 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2791,7 +2855,7 @@ object_static_particle_shared_particle_test_30 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4207397822
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_30, "object/static/particle/shared_particle_test_30.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_30, "object/static/particle/shared_particle_test_30.iff")
 
 object_static_particle_shared_particle_test_31 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_31.prt",
@@ -2799,6 +2863,7 @@ object_static_particle_shared_particle_test_31 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2834,7 +2899,7 @@ object_static_particle_shared_particle_test_31 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3016404019
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_31, "object/static/particle/shared_particle_test_31.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_31, "object/static/particle/shared_particle_test_31.iff")
 
 object_static_particle_shared_particle_test_32 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_32.prt",
@@ -2842,6 +2907,7 @@ object_static_particle_shared_particle_test_32 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2877,7 +2943,7 @@ object_static_particle_shared_particle_test_32 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1759315108
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_32, "object/static/particle/shared_particle_test_32.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_32, "object/static/particle/shared_particle_test_32.iff")
 
 object_static_particle_shared_particle_test_33 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_33.prt",
@@ -2885,6 +2951,7 @@ object_static_particle_shared_particle_test_33 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2920,7 +2987,7 @@ object_static_particle_shared_particle_test_33 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 567305001
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_33, "object/static/particle/shared_particle_test_33.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_33, "object/static/particle/shared_particle_test_33.iff")
 
 object_static_particle_shared_particle_test_34 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_34.prt",
@@ -2928,6 +2995,7 @@ object_static_particle_shared_particle_test_34 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -2963,7 +3031,7 @@ object_static_particle_shared_particle_test_34 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3660793917
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_34, "object/static/particle/shared_particle_test_34.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_34, "object/static/particle/shared_particle_test_34.iff")
 
 object_static_particle_shared_particle_test_35 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_35.prt",
@@ -2971,6 +3039,7 @@ object_static_particle_shared_particle_test_35 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3006,7 +3075,7 @@ object_static_particle_shared_particle_test_35 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2470326192
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_35, "object/static/particle/shared_particle_test_35.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_35, "object/static/particle/shared_particle_test_35.iff")
 
 object_static_particle_shared_particle_test_36 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_36.prt",
@@ -3014,6 +3083,7 @@ object_static_particle_shared_particle_test_36 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3049,7 +3119,7 @@ object_static_particle_shared_particle_test_36 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1210681127
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_36, "object/static/particle/shared_particle_test_36.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_36, "object/static/particle/shared_particle_test_36.iff")
 
 object_static_particle_shared_particle_test_37 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_37.prt",
@@ -3057,6 +3127,7 @@ object_static_particle_shared_particle_test_37 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3092,7 +3163,7 @@ object_static_particle_shared_particle_test_37 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 19194026
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_37, "object/static/particle/shared_particle_test_37.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_37, "object/static/particle/shared_particle_test_37.iff")
 
 object_static_particle_shared_particle_test_38 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_38.prt",
@@ -3100,6 +3171,7 @@ object_static_particle_shared_particle_test_38 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3135,7 +3207,7 @@ object_static_particle_shared_particle_test_38 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3140406456
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_38, "object/static/particle/shared_particle_test_38.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_38, "object/static/particle/shared_particle_test_38.iff")
 
 object_static_particle_shared_particle_test_39 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_39.prt",
@@ -3143,6 +3215,7 @@ object_static_particle_shared_particle_test_39 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3178,7 +3251,7 @@ object_static_particle_shared_particle_test_39 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4062423861
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_39, "object/static/particle/shared_particle_test_39.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_39, "object/static/particle/shared_particle_test_39.iff")
 
 object_static_particle_shared_particle_test_4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
@@ -3186,6 +3259,7 @@ object_static_particle_shared_particle_test_4 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3221,7 +3295,7 @@ object_static_particle_shared_particle_test_4 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 137120199
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_4, "object/static/particle/shared_particle_test_4.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_4, "object/static/particle/shared_particle_test_4.iff")
 
 object_static_particle_shared_particle_test_40 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_40.prt",
@@ -3229,6 +3303,7 @@ object_static_particle_shared_particle_test_40 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3264,7 +3339,7 @@ object_static_particle_shared_particle_test_40 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3139430870
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_40, "object/static/particle/shared_particle_test_40.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_40, "object/static/particle/shared_particle_test_40.iff")
 
 object_static_particle_shared_particle_test_41 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_41.prt",
@@ -3272,6 +3347,7 @@ object_static_particle_shared_particle_test_41 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3307,7 +3383,7 @@ object_static_particle_shared_particle_test_41 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4061302363
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_41, "object/static/particle/shared_particle_test_41.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_41, "object/static/particle/shared_particle_test_41.iff")
 
 object_static_particle_shared_particle_test_42 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_42.prt",
@@ -3315,6 +3391,7 @@ object_static_particle_shared_particle_test_42 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3350,7 +3427,7 @@ object_static_particle_shared_particle_test_42 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 688203468
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_42, "object/static/particle/shared_particle_test_42.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_42, "object/static/particle/shared_particle_test_42.iff")
 
 object_static_particle_shared_particle_test_43 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_43.prt",
@@ -3358,6 +3435,7 @@ object_static_particle_shared_particle_test_43 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3393,7 +3471,7 @@ object_static_particle_shared_particle_test_43 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1611153729
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_43, "object/static/particle/shared_particle_test_43.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_43, "object/static/particle/shared_particle_test_43.iff")
 
 object_static_particle_shared_particle_test_44 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_44.prt",
@@ -3401,6 +3479,7 @@ object_static_particle_shared_particle_test_44 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3436,7 +3515,7 @@ object_static_particle_shared_particle_test_44 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2615896661
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_44, "object/static/particle/shared_particle_test_44.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_44, "object/static/particle/shared_particle_test_44.iff")
 
 object_static_particle_shared_particle_test_45 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_45.prt",
@@ -3444,6 +3523,7 @@ object_static_particle_shared_particle_test_45 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3479,7 +3559,7 @@ object_static_particle_shared_particle_test_45 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3538292184
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_45, "object/static/particle/shared_particle_test_45.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_45, "object/static/particle/shared_particle_test_45.iff")
 
 object_static_particle_shared_particle_test_46 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_46.prt",
@@ -3487,6 +3567,7 @@ object_static_particle_shared_particle_test_46 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3522,7 +3603,7 @@ object_static_particle_shared_particle_test_46 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 166831439
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_46, "object/static/particle/shared_particle_test_46.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_46, "object/static/particle/shared_particle_test_46.iff")
 
 object_static_particle_shared_particle_test_47 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_47.prt",
@@ -3530,6 +3611,7 @@ object_static_particle_shared_particle_test_47 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3565,7 +3647,7 @@ object_static_particle_shared_particle_test_47 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1090306754
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_47, "object/static/particle/shared_particle_test_47.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_47, "object/static/particle/shared_particle_test_47.iff")
 
 object_static_particle_shared_particle_test_48 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_48.prt",
@@ -3573,6 +3655,7 @@ object_static_particle_shared_particle_test_48 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3608,7 +3691,7 @@ object_static_particle_shared_particle_test_48 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4210486992
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_48, "object/static/particle/shared_particle_test_48.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_48, "object/static/particle/shared_particle_test_48.iff")
 
 object_static_particle_shared_particle_test_49 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_49.prt",
@@ -3616,6 +3699,7 @@ object_static_particle_shared_particle_test_49 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3651,7 +3735,7 @@ object_static_particle_shared_particle_test_49 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3019606365
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_49, "object/static/particle/shared_particle_test_49.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_49, "object/static/particle/shared_particle_test_49.iff")
 
 object_static_particle_shared_particle_test_5 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
@@ -3659,6 +3743,7 @@ object_static_particle_shared_particle_test_5 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3694,7 +3779,7 @@ object_static_particle_shared_particle_test_5 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1092693578
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_5, "object/static/particle/shared_particle_test_5.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_5, "object/static/particle/shared_particle_test_5.iff")
 
 object_static_particle_shared_particle_test_50 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_50.prt",
@@ -3702,6 +3787,7 @@ object_static_particle_shared_particle_test_50 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3737,7 +3823,7 @@ object_static_particle_shared_particle_test_50 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2688017582
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_50, "object/static/particle/shared_particle_test_50.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_50, "object/static/particle/shared_particle_test_50.iff")
 
 object_static_particle_shared_particle_test_51 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_51.prt",
@@ -3745,6 +3831,7 @@ object_static_particle_shared_particle_test_51 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3780,7 +3867,7 @@ object_static_particle_shared_particle_test_51 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3912925987
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_51, "object/static/particle/shared_particle_test_51.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_51, "object/static/particle/shared_particle_test_51.iff")
 
 object_static_particle_shared_particle_test_52 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_52.prt",
@@ -3788,6 +3875,7 @@ object_static_particle_shared_particle_test_52 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3823,7 +3911,7 @@ object_static_particle_shared_particle_test_52 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 841821108
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_52, "object/static/particle/shared_particle_test_52.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_52, "object/static/particle/shared_particle_test_52.iff")
 
 object_static_particle_shared_particle_test_53 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_53.prt",
@@ -3831,6 +3919,7 @@ object_static_particle_shared_particle_test_53 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3866,7 +3955,7 @@ object_static_particle_shared_particle_test_53 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2065714233
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_53, "object/static/particle/shared_particle_test_53.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_53, "object/static/particle/shared_particle_test_53.iff")
 
 object_static_particle_shared_particle_test_54 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_54.prt",
@@ -3874,6 +3963,7 @@ object_static_particle_shared_particle_test_54 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3909,7 +3999,7 @@ object_static_particle_shared_particle_test_54 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2160289581
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_54, "object/static/particle/shared_particle_test_54.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_54, "object/static/particle/shared_particle_test_54.iff")
 
 object_static_particle_shared_particle_test_55 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_55.prt",
@@ -3917,6 +4007,7 @@ object_static_particle_shared_particle_test_55 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3952,7 +4043,7 @@ object_static_particle_shared_particle_test_55 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3385720992
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_55, "object/static/particle/shared_particle_test_55.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_55, "object/static/particle/shared_particle_test_55.iff")
 
 object_static_particle_shared_particle_test_56 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_56.prt",
@@ -3960,6 +4051,7 @@ object_static_particle_shared_particle_test_56 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -3995,7 +4087,7 @@ object_static_particle_shared_particle_test_56 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 316254263
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_56, "object/static/particle/shared_particle_test_56.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_56, "object/static/particle/shared_particle_test_56.iff")
 
 object_static_particle_shared_particle_test_57 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_57.prt",
@@ -4003,6 +4095,7 @@ object_static_particle_shared_particle_test_57 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4038,7 +4131,7 @@ object_static_particle_shared_particle_test_57 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1540673466
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_57, "object/static/particle/shared_particle_test_57.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_57, "object/static/particle/shared_particle_test_57.iff")
 
 object_static_particle_shared_particle_test_58 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_58.prt",
@@ -4046,6 +4139,7 @@ object_static_particle_shared_particle_test_58 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4081,7 +4175,7 @@ object_static_particle_shared_particle_test_58 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3789480872
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_58, "object/static/particle/shared_particle_test_58.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_58, "object/static/particle/shared_particle_test_58.iff")
 
 object_static_particle_shared_particle_test_59 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_59.prt",
@@ -4089,6 +4183,7 @@ object_static_particle_shared_particle_test_59 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4124,7 +4219,7 @@ object_static_particle_shared_particle_test_59 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2832434213
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_59, "object/static/particle/shared_particle_test_59.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_59, "object/static/particle/shared_particle_test_59.iff")
 
 object_static_particle_shared_particle_test_6 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_6.prt",
@@ -4132,6 +4227,7 @@ object_static_particle_shared_particle_test_6 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4167,7 +4263,7 @@ object_static_particle_shared_particle_test_6 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2587264733
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_6, "object/static/particle/shared_particle_test_6.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_6, "object/static/particle/shared_particle_test_6.iff")
 
 object_static_particle_shared_particle_test_60 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_60.prt",
@@ -4175,6 +4271,7 @@ object_static_particle_shared_particle_test_60 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4210,7 +4307,7 @@ object_static_particle_shared_particle_test_60 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2370827046
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_60, "object/static/particle/shared_particle_test_60.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_60, "object/static/particle/shared_particle_test_60.iff")
 
 object_static_particle_shared_particle_test_61 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_61.prt",
@@ -4218,6 +4315,7 @@ object_static_particle_shared_particle_test_61 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4253,7 +4351,7 @@ object_static_particle_shared_particle_test_61 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3292697771
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_61, "object/static/particle/shared_particle_test_61.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_61, "object/static/particle/shared_particle_test_61.iff")
 
 object_static_particle_shared_particle_test_62 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_62.prt",
@@ -4261,6 +4359,7 @@ object_static_particle_shared_particle_test_62 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4296,7 +4395,7 @@ object_static_particle_shared_particle_test_62 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 525679676
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_62, "object/static/particle/shared_particle_test_62.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_62, "object/static/particle/shared_particle_test_62.iff")
 
 object_static_particle_shared_particle_test_63 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_63.prt",
@@ -4304,6 +4403,7 @@ object_static_particle_shared_particle_test_63 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4339,7 +4439,7 @@ object_static_particle_shared_particle_test_63 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1448631217
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_63, "object/static/particle/shared_particle_test_63.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_63, "object/static/particle/shared_particle_test_63.iff")
 
 object_static_particle_shared_particle_test_64 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_64.prt",
@@ -4347,6 +4447,7 @@ object_static_particle_shared_particle_test_64 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4382,7 +4483,7 @@ object_static_particle_shared_particle_test_64 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2914742437
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_64, "object/static/particle/shared_particle_test_64.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_64, "object/static/particle/shared_particle_test_64.iff")
 
 object_static_particle_shared_particle_test_65 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_65.prt",
@@ -4390,6 +4491,7 @@ object_static_particle_shared_particle_test_65 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4425,7 +4527,7 @@ object_static_particle_shared_particle_test_65 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3837138728
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_65, "object/static/particle/shared_particle_test_65.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_65, "object/static/particle/shared_particle_test_65.iff")
 
 object_static_particle_shared_particle_test_66 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_66.prt",
@@ -4433,6 +4535,7 @@ object_static_particle_shared_particle_test_66 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4468,7 +4571,7 @@ object_static_particle_shared_particle_test_66 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1067564991
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_66, "object/static/particle/shared_particle_test_66.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_66, "object/static/particle/shared_particle_test_66.iff")
 
 object_static_particle_shared_particle_test_67 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_67.prt",
@@ -4476,6 +4579,7 @@ object_static_particle_shared_particle_test_67 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4511,7 +4615,7 @@ object_static_particle_shared_particle_test_67 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1991039026
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_67, "object/static/particle/shared_particle_test_67.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_67, "object/static/particle/shared_particle_test_67.iff")
 
 object_static_particle_shared_particle_test_68 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_68.prt",
@@ -4519,6 +4623,7 @@ object_static_particle_shared_particle_test_68 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4554,7 +4659,7 @@ object_static_particle_shared_particle_test_68 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3433493536
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_68, "object/static/particle/shared_particle_test_68.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_68, "object/static/particle/shared_particle_test_68.iff")
 
 object_static_particle_shared_particle_test_69 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_69.prt",
@@ -4562,6 +4667,7 @@ object_static_particle_shared_particle_test_69 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4597,7 +4703,7 @@ object_static_particle_shared_particle_test_69 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2242614189
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_69, "object/static/particle/shared_particle_test_69.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_69, "object/static/particle/shared_particle_test_69.iff")
 
 object_static_particle_shared_particle_test_7 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_7.prt",
@@ -4605,6 +4711,7 @@ object_static_particle_shared_particle_test_7 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4640,7 +4747,7 @@ object_static_particle_shared_particle_test_7 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3543916880
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_7, "object/static/particle/shared_particle_test_7.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_7, "object/static/particle/shared_particle_test_7.iff")
 
 object_static_particle_shared_particle_test_70 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_70.prt",
@@ -4648,6 +4755,7 @@ object_static_particle_shared_particle_test_70 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4683,7 +4791,7 @@ object_static_particle_shared_particle_test_70 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2523397726
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_70, "object/static/particle/shared_particle_test_70.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_70, "object/static/particle/shared_particle_test_70.iff")
 
 object_static_particle_shared_particle_test_71 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_71.prt",
@@ -4691,6 +4799,7 @@ object_static_particle_shared_particle_test_71 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4726,7 +4835,7 @@ object_static_particle_shared_particle_test_71 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3748305363
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_71, "object/static/particle/shared_particle_test_71.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_71, "object/static/particle/shared_particle_test_71.iff")
 
 object_static_particle_shared_particle_test_72 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_72.prt",
@@ -4734,6 +4843,7 @@ object_static_particle_shared_particle_test_72 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4769,7 +4879,7 @@ object_static_particle_shared_particle_test_72 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 75313476
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_72, "object/static/particle/shared_particle_test_72.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_72, "object/static/particle/shared_particle_test_72.iff")
 
 object_static_particle_shared_particle_test_73 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_73.prt",
@@ -4777,6 +4887,7 @@ object_static_particle_shared_particle_test_73 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4812,7 +4923,7 @@ object_static_particle_shared_particle_test_73 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1299207881
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_73, "object/static/particle/shared_particle_test_73.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_73, "object/static/particle/shared_particle_test_73.iff")
 
 object_static_particle_shared_particle_test_74 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_74.prt",
@@ -4820,6 +4931,7 @@ object_static_particle_shared_particle_test_74 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4855,7 +4967,7 @@ object_static_particle_shared_particle_test_74 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3063119325
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_74, "object/static/particle/shared_particle_test_74.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_74, "object/static/particle/shared_particle_test_74.iff")
 
 object_static_particle_shared_particle_test_75 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_75.prt",
@@ -4863,6 +4975,7 @@ object_static_particle_shared_particle_test_75 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4898,7 +5011,7 @@ object_static_particle_shared_particle_test_75 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4288551504
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_75, "object/static/particle/shared_particle_test_75.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_75, "object/static/particle/shared_particle_test_75.iff")
 
 object_static_particle_shared_particle_test_76 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_76.prt",
@@ -4906,6 +5019,7 @@ object_static_particle_shared_particle_test_76 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4941,7 +5055,7 @@ object_static_particle_shared_particle_test_76 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 613003975
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_76, "object/static/particle/shared_particle_test_76.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_76, "object/static/particle/shared_particle_test_76.iff")
 
 object_static_particle_shared_particle_test_77 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_77.prt",
@@ -4949,6 +5063,7 @@ object_static_particle_shared_particle_test_77 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -4984,7 +5099,7 @@ object_static_particle_shared_particle_test_77 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1837421898
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_77, "object/static/particle/shared_particle_test_77.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_77, "object/static/particle/shared_particle_test_77.iff")
 
 object_static_particle_shared_particle_test_78 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_78.prt",
@@ -4992,6 +5107,7 @@ object_static_particle_shared_particle_test_78 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5027,7 +5143,7 @@ object_static_particle_shared_particle_test_78 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3616471384
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_78, "object/static/particle/shared_particle_test_78.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_78, "object/static/particle/shared_particle_test_78.iff")
 
 object_static_particle_shared_particle_test_79 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_79.prt",
@@ -5035,6 +5151,7 @@ object_static_particle_shared_particle_test_79 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5070,7 +5187,7 @@ object_static_particle_shared_particle_test_79 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2659426005
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_79, "object/static/particle/shared_particle_test_79.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_79, "object/static/particle/shared_particle_test_79.iff")
 
 object_static_particle_shared_particle_test_8 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_8.prt",
@@ -5078,6 +5195,7 @@ object_static_particle_shared_particle_test_8 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5113,7 +5231,7 @@ object_static_particle_shared_particle_test_8 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1764871490
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_8, "object/static/particle/shared_particle_test_8.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_8, "object/static/particle/shared_particle_test_8.iff")
 
 object_static_particle_shared_particle_test_80 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_80.prt",
@@ -5121,6 +5239,7 @@ object_static_particle_shared_particle_test_80 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5156,7 +5275,7 @@ object_static_particle_shared_particle_test_80 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 251639798
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_80, "object/static/particle/shared_particle_test_80.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_80, "object/static/particle/shared_particle_test_80.iff")
 
 object_static_particle_shared_particle_test_81 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_81.prt",
@@ -5164,6 +5283,7 @@ object_static_particle_shared_particle_test_81 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5199,7 +5319,7 @@ object_static_particle_shared_particle_test_81 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1207095419
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_81, "object/static/particle/shared_particle_test_81.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_81, "object/static/particle/shared_particle_test_81.iff")
 
 object_static_particle_shared_particle_test_82 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_82.prt",
@@ -5207,6 +5327,7 @@ object_static_particle_shared_particle_test_82 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5242,7 +5363,7 @@ object_static_particle_shared_particle_test_82 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2632284396
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_82, "object/static/particle/shared_particle_test_82.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_82, "object/static/particle/shared_particle_test_82.iff")
 
 object_static_particle_shared_particle_test_83 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_83.prt",
@@ -5250,6 +5371,7 @@ object_static_particle_shared_particle_test_83 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5285,7 +5407,7 @@ object_static_particle_shared_particle_test_83 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3588759393
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_83, "object/static/particle/shared_particle_test_83.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_83, "object/static/particle/shared_particle_test_83.iff")
 
 object_static_particle_shared_particle_test_84 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_84.prt",
@@ -5293,6 +5415,7 @@ object_static_particle_shared_particle_test_84 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5328,7 +5451,7 @@ object_static_particle_shared_particle_test_84 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 772486261
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_84, "object/static/particle/shared_particle_test_84.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_84, "object/static/particle/shared_particle_test_84.iff")
 
 object_static_particle_shared_particle_test_85 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_85.prt",
@@ -5336,6 +5459,7 @@ object_static_particle_shared_particle_test_85 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5371,7 +5495,7 @@ object_static_particle_shared_particle_test_85 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1728467960
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_85, "object/static/particle/shared_particle_test_85.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_85, "object/static/particle/shared_particle_test_85.iff")
 
 object_static_particle_shared_particle_test_86 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_86.prt",
@@ -5379,6 +5503,7 @@ object_static_particle_shared_particle_test_86 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5414,7 +5539,7 @@ object_static_particle_shared_particle_test_86 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3155295087
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_86, "object/static/particle/shared_particle_test_86.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_86, "object/static/particle/shared_particle_test_86.iff")
 
 object_static_particle_shared_particle_test_87 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_87.prt",
@@ -5422,6 +5547,7 @@ object_static_particle_shared_particle_test_87 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5457,7 +5583,7 @@ object_static_particle_shared_particle_test_87 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4112293090
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_87, "object/static/particle/shared_particle_test_87.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_87, "object/static/particle/shared_particle_test_87.iff")
 
 object_static_particle_shared_particle_test_88 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_88.prt",
@@ -5465,6 +5591,7 @@ object_static_particle_shared_particle_test_88 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5500,7 +5627,7 @@ object_static_particle_shared_particle_test_88 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1326887152
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_88, "object/static/particle/shared_particle_test_88.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_88, "object/static/particle/shared_particle_test_88.iff")
 
 object_static_particle_shared_particle_test_89 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_89.prt",
@@ -5508,6 +5635,7 @@ object_static_particle_shared_particle_test_89 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5543,7 +5671,7 @@ object_static_particle_shared_particle_test_89 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 102487933
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_89, "object/static/particle/shared_particle_test_89.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_89, "object/static/particle/shared_particle_test_89.iff")
 
 object_static_particle_shared_particle_test_9 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_9.prt",
@@ -5551,6 +5679,7 @@ object_static_particle_shared_particle_test_9 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5586,7 +5715,7 @@ object_static_particle_shared_particle_test_9 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 540846799
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_9, "object/static/particle/shared_particle_test_9.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_9, "object/static/particle/shared_particle_test_9.iff")
 
 object_static_particle_shared_particle_test_90 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_90.prt",
@@ -5594,6 +5723,7 @@ object_static_particle_shared_particle_test_90 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5629,7 +5759,7 @@ object_static_particle_shared_particle_test_90 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 366459534
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_90, "object/static/particle/shared_particle_test_90.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_90, "object/static/particle/shared_particle_test_90.iff")
 
 object_static_particle_shared_particle_test_91 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_91.prt",
@@ -5637,6 +5767,7 @@ object_static_particle_shared_particle_test_91 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5672,7 +5803,7 @@ object_static_particle_shared_particle_test_91 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1557847299
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_91, "object/static/particle/shared_particle_test_91.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_91, "object/static/particle/shared_particle_test_91.iff")
 
 object_static_particle_shared_particle_test_92 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_92.prt",
@@ -5680,6 +5811,7 @@ object_static_particle_shared_particle_test_92 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5715,7 +5847,7 @@ object_static_particle_shared_particle_test_92 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2278389140
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_92, "object/static/particle/shared_particle_test_92.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_92, "object/static/particle/shared_particle_test_92.iff")
 
 object_static_particle_shared_particle_test_93 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_93.prt",
@@ -5723,6 +5855,7 @@ object_static_particle_shared_particle_test_93 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5758,7 +5891,7 @@ object_static_particle_shared_particle_test_93 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3468694041
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_93, "object/static/particle/shared_particle_test_93.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_93, "object/static/particle/shared_particle_test_93.iff")
 
 object_static_particle_shared_particle_test_94 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_94.prt",
@@ -5766,6 +5899,7 @@ object_static_particle_shared_particle_test_94 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5801,7 +5935,7 @@ object_static_particle_shared_particle_test_94 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 891500813
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_94, "object/static/particle/shared_particle_test_94.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_94, "object/static/particle/shared_particle_test_94.iff")
 
 object_static_particle_shared_particle_test_95 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_95.prt",
@@ -5809,6 +5943,7 @@ object_static_particle_shared_particle_test_95 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5844,7 +5979,7 @@ object_static_particle_shared_particle_test_95 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2083413632
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_95, "object/static/particle/shared_particle_test_95.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_95, "object/static/particle/shared_particle_test_95.iff")
 
 object_static_particle_shared_particle_test_96 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_96.prt",
@@ -5852,6 +5987,7 @@ object_static_particle_shared_particle_test_96 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5887,7 +6023,7 @@ object_static_particle_shared_particle_test_96 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2805593623
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_96, "object/static/particle/shared_particle_test_96.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_96, "object/static/particle/shared_particle_test_96.iff")
 
 object_static_particle_shared_particle_test_97 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_97.prt",
@@ -5895,6 +6031,7 @@ object_static_particle_shared_particle_test_97 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5930,7 +6067,7 @@ object_static_particle_shared_particle_test_97 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3996422554
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_97, "object/static/particle/shared_particle_test_97.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_97, "object/static/particle/shared_particle_test_97.iff")
 
 object_static_particle_shared_particle_test_98 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_98.prt",
@@ -5938,6 +6075,7 @@ object_static_particle_shared_particle_test_98 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -5973,7 +6111,7 @@ object_static_particle_shared_particle_test_98 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1413397896
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_98, "object/static/particle/shared_particle_test_98.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_98, "object/static/particle/shared_particle_test_98.iff")
 
 object_static_particle_shared_particle_test_99 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_99.prt",
@@ -5981,6 +6119,7 @@ object_static_particle_shared_particle_test_99 = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6016,7 +6155,7 @@ object_static_particle_shared_particle_test_99 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 489937413
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_99, "object/static/particle/shared_particle_test_99.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_test_99, "object/static/particle/shared_particle_test_99.iff")
 
 object_static_particle_shared_particle_volcano_glow_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_lava_bubblingareaprt.prt",
@@ -6024,6 +6163,7 @@ object_static_particle_shared_particle_volcano_glow_1 = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_volcano_glow_on.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6059,7 +6199,7 @@ object_static_particle_shared_particle_volcano_glow_1 = SharedStaticObjectTempla
 	clientObjectCRC = 1841523220
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_volcano_glow_1, "object/static/particle/shared_particle_volcano_glow_1.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_volcano_glow_1, "object/static/particle/shared_particle_volcano_glow_1.iff")
 
 object_static_particle_shared_particle_waterfall_whitewater_s02_l0 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l0.prt",
@@ -6067,6 +6207,7 @@ object_static_particle_shared_particle_waterfall_whitewater_s02_l0 = SharedStati
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6102,7 +6243,7 @@ object_static_particle_shared_particle_waterfall_whitewater_s02_l0 = SharedStati
 	clientObjectCRC = 2270635651
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_waterfall_whitewater_s02_l0, "object/static/particle/shared_particle_waterfall_whitewater_s02_l0.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_waterfall_whitewater_s02_l0, "object/static/particle/shared_particle_waterfall_whitewater_s02_l0.iff")
 
 object_static_particle_shared_particle_waterfall_whitewater_s02_l1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l1.prt",
@@ -6110,6 +6251,7 @@ object_static_particle_shared_particle_waterfall_whitewater_s02_l1 = SharedStati
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6145,7 +6287,7 @@ object_static_particle_shared_particle_waterfall_whitewater_s02_l1 = SharedStati
 	clientObjectCRC = 3462021390
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_waterfall_whitewater_s02_l1, "object/static/particle/shared_particle_waterfall_whitewater_s02_l1.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_particle_waterfall_whitewater_s02_l1, "object/static/particle/shared_particle_waterfall_whitewater_s02_l1.iff")
 
 object_static_particle_shared_pt_airport_race_light = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_airport_race_light.prt",
@@ -6153,6 +6295,7 @@ object_static_particle_shared_pt_airport_race_light = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6188,7 +6331,7 @@ object_static_particle_shared_pt_airport_race_light = SharedStaticObjectTemplate
 	clientObjectCRC = 2832359220
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_airport_race_light, "object/static/particle/shared_pt_airport_race_light.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_airport_race_light, "object/static/particle/shared_pt_airport_race_light.iff")
 
 object_static_particle_shared_pt_airport_race_light_group = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_airport_race_light_group.prt",
@@ -6196,6 +6339,7 @@ object_static_particle_shared_pt_airport_race_light_group = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6231,7 +6375,7 @@ object_static_particle_shared_pt_airport_race_light_group = SharedStaticObjectTe
 	clientObjectCRC = 1749781363
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_airport_race_light_group, "object/static/particle/shared_pt_airport_race_light_group.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_airport_race_light_group, "object/static/particle/shared_pt_airport_race_light_group.iff")
 
 object_static_particle_shared_pt_birds_flock = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_birds_flock.prt",
@@ -6239,6 +6383,7 @@ object_static_particle_shared_pt_birds_flock = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6274,7 +6419,7 @@ object_static_particle_shared_pt_birds_flock = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 574961375
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_birds_flock, "object/static/particle/shared_pt_birds_flock.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_birds_flock, "object/static/particle/shared_pt_birds_flock.iff")
 
 object_static_particle_shared_pt_birds_flock_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_birds_flock_02.prt",
@@ -6282,6 +6427,7 @@ object_static_particle_shared_pt_birds_flock_02 = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6317,7 +6463,7 @@ object_static_particle_shared_pt_birds_flock_02 = SharedStaticObjectTemplate:new
 	clientObjectCRC = 468934100
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_birds_flock_02, "object/static/particle/shared_pt_birds_flock_02.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_birds_flock_02, "object/static/particle/shared_pt_birds_flock_02.iff")
 
 object_static_particle_shared_pt_bunker_allum_mine_car_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bunker_allum_mine_car_01.prt",
@@ -6325,6 +6471,7 @@ object_static_particle_shared_pt_bunker_allum_mine_car_01 = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6360,7 +6507,7 @@ object_static_particle_shared_pt_bunker_allum_mine_car_01 = SharedStaticObjectTe
 	clientObjectCRC = 3451183105
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_bunker_allum_mine_car_01, "object/static/particle/shared_pt_bunker_allum_mine_car_01.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_bunker_allum_mine_car_01, "object/static/particle/shared_pt_bunker_allum_mine_car_01.iff")
 
 object_static_particle_shared_pt_bunker_allum_mine_hallway_vent_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bunker_allum_mine_hallway_vent_steam.prt",
@@ -6368,6 +6515,7 @@ object_static_particle_shared_pt_bunker_allum_mine_hallway_vent_steam = SharedSt
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6403,7 +6551,7 @@ object_static_particle_shared_pt_bunker_allum_mine_hallway_vent_steam = SharedSt
 	clientObjectCRC = 3389820098
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_bunker_allum_mine_hallway_vent_steam, "object/static/particle/shared_pt_bunker_allum_mine_hallway_vent_steam.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_bunker_allum_mine_hallway_vent_steam, "object/static/particle/shared_pt_bunker_allum_mine_hallway_vent_steam.iff")
 
 object_static_particle_shared_pt_bunker_allum_mine_large_steam_gravity = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bunker_allum_mine_large_steam_gravity.prt",
@@ -6411,6 +6559,7 @@ object_static_particle_shared_pt_bunker_allum_mine_large_steam_gravity = SharedS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6446,7 +6595,7 @@ object_static_particle_shared_pt_bunker_allum_mine_large_steam_gravity = SharedS
 	clientObjectCRC = 3610533575
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_bunker_allum_mine_large_steam_gravity, "object/static/particle/shared_pt_bunker_allum_mine_large_steam_gravity.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_bunker_allum_mine_large_steam_gravity, "object/static/particle/shared_pt_bunker_allum_mine_large_steam_gravity.iff")
 
 object_static_particle_shared_pt_bunker_allum_mine_lift_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bunker_allum_mine_lift_01.prt",
@@ -6454,6 +6603,7 @@ object_static_particle_shared_pt_bunker_allum_mine_lift_01 = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6489,7 +6639,7 @@ object_static_particle_shared_pt_bunker_allum_mine_lift_01 = SharedStaticObjectT
 	clientObjectCRC = 1733362585
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_bunker_allum_mine_lift_01, "object/static/particle/shared_pt_bunker_allum_mine_lift_01.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_bunker_allum_mine_lift_01, "object/static/particle/shared_pt_bunker_allum_mine_lift_01.iff")
 
 object_static_particle_shared_pt_burning_smokeandembers_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_burning_smokeandembers_large.prt",
@@ -6497,6 +6647,7 @@ object_static_particle_shared_pt_burning_smokeandembers_large = SharedStaticObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6532,7 +6683,7 @@ object_static_particle_shared_pt_burning_smokeandembers_large = SharedStaticObje
 	clientObjectCRC = 4112463342
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_burning_smokeandembers_large, "object/static/particle/shared_pt_burning_smokeandembers_large.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_burning_smokeandembers_large, "object/static/particle/shared_pt_burning_smokeandembers_large.iff")
 
 object_static_particle_shared_pt_burning_smokeandembers_md = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_burning_smokeandembers_md.prt",
@@ -6540,6 +6691,7 @@ object_static_particle_shared_pt_burning_smokeandembers_md = SharedStaticObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6575,7 +6727,7 @@ object_static_particle_shared_pt_burning_smokeandembers_md = SharedStaticObjectT
 	clientObjectCRC = 3309131413
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_burning_smokeandembers_md, "object/static/particle/shared_pt_burning_smokeandembers_md.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_burning_smokeandembers_md, "object/static/particle/shared_pt_burning_smokeandembers_md.iff")
 
 object_static_particle_shared_pt_buzzing_insects_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_buzzing_insects_large.prt",
@@ -6583,6 +6735,7 @@ object_static_particle_shared_pt_buzzing_insects_large = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6618,7 +6771,7 @@ object_static_particle_shared_pt_buzzing_insects_large = SharedStaticObjectTempl
 	clientObjectCRC = 1507296935
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_buzzing_insects_large, "object/static/particle/shared_pt_buzzing_insects_large.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_buzzing_insects_large, "object/static/particle/shared_pt_buzzing_insects_large.iff")
 
 object_static_particle_shared_pt_buzzing_insects_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_buzzing_insects_small.prt",
@@ -6626,6 +6779,7 @@ object_static_particle_shared_pt_buzzing_insects_small = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6661,7 +6815,7 @@ object_static_particle_shared_pt_buzzing_insects_small = SharedStaticObjectTempl
 	clientObjectCRC = 1842090638
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_buzzing_insects_small, "object/static/particle/shared_pt_buzzing_insects_small.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_buzzing_insects_small, "object/static/particle/shared_pt_buzzing_insects_small.iff")
 
 object_static_particle_shared_pt_campfire_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_campfire_s01.prt",
@@ -6669,6 +6823,7 @@ object_static_particle_shared_pt_campfire_s01 = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6704,7 +6859,7 @@ object_static_particle_shared_pt_campfire_s01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 655646750
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_campfire_s01, "object/static/particle/shared_pt_campfire_s01.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_campfire_s01, "object/static/particle/shared_pt_campfire_s01.iff")
 
 object_static_particle_shared_pt_detector = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_detector.prt",
@@ -6712,6 +6867,7 @@ object_static_particle_shared_pt_detector = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6747,7 +6903,7 @@ object_static_particle_shared_pt_detector = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4138320669
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_detector, "object/static/particle/shared_pt_detector.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_detector, "object/static/particle/shared_pt_detector.iff")
 
 object_static_particle_shared_pt_falling_dirt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dirt.prt",
@@ -6755,6 +6911,7 @@ object_static_particle_shared_pt_falling_dirt = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6790,7 +6947,7 @@ object_static_particle_shared_pt_falling_dirt = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3567175317
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dirt, "object/static/particle/shared_pt_falling_dirt.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_falling_dirt, "object/static/particle/shared_pt_falling_dirt.iff")
 
 object_static_particle_shared_pt_falling_dirt_all = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dirt_all.prt",
@@ -6798,6 +6955,7 @@ object_static_particle_shared_pt_falling_dirt_all = SharedStaticObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6833,7 +6991,7 @@ object_static_particle_shared_pt_falling_dirt_all = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3490534350
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dirt_all, "object/static/particle/shared_pt_falling_dirt_all.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_falling_dirt_all, "object/static/particle/shared_pt_falling_dirt_all.iff")
 
 object_static_particle_shared_pt_falling_dirt_all_loop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dirt_all_loop.prt",
@@ -6841,6 +6999,7 @@ object_static_particle_shared_pt_falling_dirt_all_loop = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6876,7 +7035,7 @@ object_static_particle_shared_pt_falling_dirt_all_loop = SharedStaticObjectTempl
 	clientObjectCRC = 4246067951
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dirt_all_loop, "object/static/particle/shared_pt_falling_dirt_all_loop.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_falling_dirt_all_loop, "object/static/particle/shared_pt_falling_dirt_all_loop.iff")
 
 object_static_particle_shared_pt_falling_dirt_loop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dirt_loop.prt",
@@ -6884,6 +7043,7 @@ object_static_particle_shared_pt_falling_dirt_loop = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6919,7 +7079,7 @@ object_static_particle_shared_pt_falling_dirt_loop = SharedStaticObjectTemplate:
 	clientObjectCRC = 2998306057
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dirt_loop, "object/static/particle/shared_pt_falling_dirt_loop.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_falling_dirt_loop, "object/static/particle/shared_pt_falling_dirt_loop.iff")
 
 object_static_particle_shared_pt_falling_dust = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dust.prt",
@@ -6927,6 +7087,7 @@ object_static_particle_shared_pt_falling_dust = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -6962,7 +7123,7 @@ object_static_particle_shared_pt_falling_dust = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1667365428
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dust, "object/static/particle/shared_pt_falling_dust.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_falling_dust, "object/static/particle/shared_pt_falling_dust.iff")
 
 object_static_particle_shared_pt_falling_dust_loop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dust_loop.prt",
@@ -6970,6 +7131,7 @@ object_static_particle_shared_pt_falling_dust_loop = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7005,7 +7167,7 @@ object_static_particle_shared_pt_falling_dust_loop = SharedStaticObjectTemplate:
 	clientObjectCRC = 337159855
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dust_loop, "object/static/particle/shared_pt_falling_dust_loop.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_falling_dust_loop, "object/static/particle/shared_pt_falling_dust_loop.iff")
 
 object_static_particle_shared_pt_falling_rock = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_rock.prt",
@@ -7013,6 +7175,7 @@ object_static_particle_shared_pt_falling_rock = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7048,7 +7211,7 @@ object_static_particle_shared_pt_falling_rock = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2545958613
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_rock, "object/static/particle/shared_pt_falling_rock.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_falling_rock, "object/static/particle/shared_pt_falling_rock.iff")
 
 object_static_particle_shared_pt_falling_rock_loop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_rock_loop.prt",
@@ -7056,6 +7219,7 @@ object_static_particle_shared_pt_falling_rock_loop = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7091,7 +7255,7 @@ object_static_particle_shared_pt_falling_rock_loop = SharedStaticObjectTemplate:
 	clientObjectCRC = 2198363460
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_rock_loop, "object/static/particle/shared_pt_falling_rock_loop.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_falling_rock_loop, "object/static/particle/shared_pt_falling_rock_loop.iff")
 
 object_static_particle_shared_pt_flocking_bees = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_bees.prt",
@@ -7099,6 +7263,7 @@ object_static_particle_shared_pt_flocking_bees = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7134,7 +7299,7 @@ object_static_particle_shared_pt_flocking_bees = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1060739444
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_bees, "object/static/particle/shared_pt_flocking_bees.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_bees, "object/static/particle/shared_pt_flocking_bees.iff")
 
 object_static_particle_shared_pt_flocking_bluefish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_bluefish.prt",
@@ -7142,6 +7307,7 @@ object_static_particle_shared_pt_flocking_bluefish = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7177,7 +7343,7 @@ object_static_particle_shared_pt_flocking_bluefish = SharedStaticObjectTemplate:
 	clientObjectCRC = 333751823
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_bluefish, "object/static/particle/shared_pt_flocking_bluefish.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_bluefish, "object/static/particle/shared_pt_flocking_bluefish.iff")
 
 object_static_particle_shared_pt_flocking_butterflies = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_butterflies.prt",
@@ -7185,6 +7351,7 @@ object_static_particle_shared_pt_flocking_butterflies = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7220,7 +7387,7 @@ object_static_particle_shared_pt_flocking_butterflies = SharedStaticObjectTempla
 	clientObjectCRC = 360344089
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_butterflies, "object/static/particle/shared_pt_flocking_butterflies.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_butterflies, "object/static/particle/shared_pt_flocking_butterflies.iff")
 
 object_static_particle_shared_pt_flocking_butterflies_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_butterflies_s1.prt",
@@ -7228,6 +7395,7 @@ object_static_particle_shared_pt_flocking_butterflies_s1 = SharedStaticObjectTem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7263,7 +7431,7 @@ object_static_particle_shared_pt_flocking_butterflies_s1 = SharedStaticObjectTem
 	clientObjectCRC = 409161218
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_butterflies_s1, "object/static/particle/shared_pt_flocking_butterflies_s1.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_butterflies_s1, "object/static/particle/shared_pt_flocking_butterflies_s1.iff")
 
 object_static_particle_shared_pt_flocking_centipede = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_centipede.prt",
@@ -7271,6 +7439,7 @@ object_static_particle_shared_pt_flocking_centipede = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7306,7 +7475,7 @@ object_static_particle_shared_pt_flocking_centipede = SharedStaticObjectTemplate
 	clientObjectCRC = 2000292545
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_centipede, "object/static/particle/shared_pt_flocking_centipede.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_centipede, "object/static/particle/shared_pt_flocking_centipede.iff")
 
 object_static_particle_shared_pt_flocking_cricket = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_cricket.prt",
@@ -7314,6 +7483,7 @@ object_static_particle_shared_pt_flocking_cricket = SharedStaticObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7349,7 +7519,7 @@ object_static_particle_shared_pt_flocking_cricket = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3738808713
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_cricket, "object/static/particle/shared_pt_flocking_cricket.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_cricket, "object/static/particle/shared_pt_flocking_cricket.iff")
 
 object_static_particle_shared_pt_flocking_frog = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_frog.prt",
@@ -7357,6 +7527,7 @@ object_static_particle_shared_pt_flocking_frog = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7392,7 +7563,7 @@ object_static_particle_shared_pt_flocking_frog = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 392100184
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_frog, "object/static/particle/shared_pt_flocking_frog.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_frog, "object/static/particle/shared_pt_flocking_frog.iff")
 
 object_static_particle_shared_pt_flocking_frog_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_frog_s1.prt",
@@ -7400,6 +7571,7 @@ object_static_particle_shared_pt_flocking_frog_s1 = SharedStaticObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7435,7 +7607,7 @@ object_static_particle_shared_pt_flocking_frog_s1 = SharedStaticObjectTemplate:n
 	clientObjectCRC = 386604484
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_frog_s1, "object/static/particle/shared_pt_flocking_frog_s1.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_frog_s1, "object/static/particle/shared_pt_flocking_frog_s1.iff")
 
 object_static_particle_shared_pt_flocking_glowzees = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_glowzees.prt",
@@ -7443,6 +7615,7 @@ object_static_particle_shared_pt_flocking_glowzees = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7478,7 +7651,7 @@ object_static_particle_shared_pt_flocking_glowzees = SharedStaticObjectTemplate:
 	clientObjectCRC = 1644547623
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_glowzees, "object/static/particle/shared_pt_flocking_glowzees.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_flocking_glowzees, "object/static/particle/shared_pt_flocking_glowzees.iff")
 
 object_static_particle_shared_pt_frn_all_glowing_light_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_frn_all_glowing_light_s3.prt",
@@ -7486,6 +7659,7 @@ object_static_particle_shared_pt_frn_all_glowing_light_s3 = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7521,7 +7695,7 @@ object_static_particle_shared_pt_frn_all_glowing_light_s3 = SharedStaticObjectTe
 	clientObjectCRC = 3478976599
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_frn_all_glowing_light_s3, "object/static/particle/shared_pt_frn_all_glowing_light_s3.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_frn_all_glowing_light_s3, "object/static/particle/shared_pt_frn_all_glowing_light_s3.iff")
 
 object_static_particle_shared_pt_geonosian_aquarium_fish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_fish_2x4cage.prt",
@@ -7529,6 +7703,7 @@ object_static_particle_shared_pt_geonosian_aquarium_fish = SharedStaticObjectTem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7564,7 +7739,7 @@ object_static_particle_shared_pt_geonosian_aquarium_fish = SharedStaticObjectTem
 	clientObjectCRC = 951222437
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_geonosian_aquarium_fish, "object/static/particle/shared_pt_geonosian_aquarium_fish.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_geonosian_aquarium_fish, "object/static/particle/shared_pt_geonosian_aquarium_fish.iff")
 
 object_static_particle_shared_pt_green_gunk_spurt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_green_gunk_spurt.prt",
@@ -7572,6 +7747,7 @@ object_static_particle_shared_pt_green_gunk_spurt = SharedStaticObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7607,7 +7783,7 @@ object_static_particle_shared_pt_green_gunk_spurt = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1329694676
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_green_gunk_spurt, "object/static/particle/shared_pt_green_gunk_spurt.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_green_gunk_spurt, "object/static/particle/shared_pt_green_gunk_spurt.iff")
 
 object_static_particle_shared_pt_green_hanging_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_green_hanging_smoke.prt",
@@ -7615,6 +7791,7 @@ object_static_particle_shared_pt_green_hanging_smoke = SharedStaticObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7650,7 +7827,7 @@ object_static_particle_shared_pt_green_hanging_smoke = SharedStaticObjectTemplat
 	clientObjectCRC = 4118588253
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_green_hanging_smoke, "object/static/particle/shared_pt_green_hanging_smoke.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_green_hanging_smoke, "object/static/particle/shared_pt_green_hanging_smoke.iff")
 
 object_static_particle_shared_pt_green_refrigerator_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_green_refrigerator_steam.prt",
@@ -7658,6 +7835,7 @@ object_static_particle_shared_pt_green_refrigerator_steam = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7693,7 +7871,7 @@ object_static_particle_shared_pt_green_refrigerator_steam = SharedStaticObjectTe
 	clientObjectCRC = 613903763
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_green_refrigerator_steam, "object/static/particle/shared_pt_green_refrigerator_steam.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_green_refrigerator_steam, "object/static/particle/shared_pt_green_refrigerator_steam.iff")
 
 object_static_particle_shared_pt_green_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_green_steam.prt",
@@ -7701,6 +7879,7 @@ object_static_particle_shared_pt_green_steam = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7736,7 +7915,7 @@ object_static_particle_shared_pt_green_steam = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1797841273
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_green_steam, "object/static/particle/shared_pt_green_steam.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_green_steam, "object/static/particle/shared_pt_green_steam.iff")
 
 object_static_particle_shared_pt_lair_evil_fire_large_green = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_evil_fire_large_green.prt",
@@ -7744,6 +7923,7 @@ object_static_particle_shared_pt_lair_evil_fire_large_green = SharedStaticObject
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7779,7 +7959,7 @@ object_static_particle_shared_pt_lair_evil_fire_large_green = SharedStaticObject
 	clientObjectCRC = 2919624693
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_evil_fire_large_green, "object/static/particle/shared_pt_lair_evil_fire_large_green.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lair_evil_fire_large_green, "object/static/particle/shared_pt_lair_evil_fire_large_green.iff")
 
 object_static_particle_shared_pt_lair_evil_fire_large_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_evil_fire_large_red.prt",
@@ -7787,6 +7967,7 @@ object_static_particle_shared_pt_lair_evil_fire_large_red = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7822,7 +8003,7 @@ object_static_particle_shared_pt_lair_evil_fire_large_red = SharedStaticObjectTe
 	clientObjectCRC = 1476527814
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_evil_fire_large_red, "object/static/particle/shared_pt_lair_evil_fire_large_red.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lair_evil_fire_large_red, "object/static/particle/shared_pt_lair_evil_fire_large_red.iff")
 
 object_static_particle_shared_pt_lair_evil_fire_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_evil_fire_small.prt",
@@ -7830,6 +8011,7 @@ object_static_particle_shared_pt_lair_evil_fire_small = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7865,7 +8047,7 @@ object_static_particle_shared_pt_lair_evil_fire_small = SharedStaticObjectTempla
 	clientObjectCRC = 153148481
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_evil_fire_small, "object/static/particle/shared_pt_lair_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lair_evil_fire_small, "object/static/particle/shared_pt_lair_evil_fire_small.iff")
 
 object_static_particle_shared_pt_lair_med_burn = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_med_burn.prt",
@@ -7873,6 +8055,7 @@ object_static_particle_shared_pt_lair_med_burn = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7908,7 +8091,7 @@ object_static_particle_shared_pt_lair_med_burn = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 669295657
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_med_burn, "object/static/particle/shared_pt_lair_med_burn.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lair_med_burn, "object/static/particle/shared_pt_lair_med_burn.iff")
 
 object_static_particle_shared_pt_lair_med_damage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_med_damage.prt",
@@ -7916,6 +8099,7 @@ object_static_particle_shared_pt_lair_med_damage = SharedStaticObjectTemplate:ne
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7951,7 +8135,7 @@ object_static_particle_shared_pt_lair_med_damage = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1342131178
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_med_damage, "object/static/particle/shared_pt_lair_med_damage.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lair_med_damage, "object/static/particle/shared_pt_lair_med_damage.iff")
 
 object_static_particle_shared_pt_light_blink_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_blink_blue.prt",
@@ -7959,6 +8143,7 @@ object_static_particle_shared_pt_light_blink_blue = SharedStaticObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -7994,7 +8179,7 @@ object_static_particle_shared_pt_light_blink_blue = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1787409199
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_blink_blue, "object/static/particle/shared_pt_light_blink_blue.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_light_blink_blue, "object/static/particle/shared_pt_light_blink_blue.iff")
 
 object_static_particle_shared_pt_light_blink_green = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_blink_green.prt",
@@ -8002,6 +8187,7 @@ object_static_particle_shared_pt_light_blink_green = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8037,7 +8223,7 @@ object_static_particle_shared_pt_light_blink_green = SharedStaticObjectTemplate:
 	clientObjectCRC = 3099575799
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_blink_green, "object/static/particle/shared_pt_light_blink_green.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_light_blink_green, "object/static/particle/shared_pt_light_blink_green.iff")
 
 object_static_particle_shared_pt_light_blink_orange = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_blink_orange.prt",
@@ -8045,6 +8231,7 @@ object_static_particle_shared_pt_light_blink_orange = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8080,7 +8267,7 @@ object_static_particle_shared_pt_light_blink_orange = SharedStaticObjectTemplate
 	clientObjectCRC = 1680016354
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_blink_orange, "object/static/particle/shared_pt_light_blink_orange.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_light_blink_orange, "object/static/particle/shared_pt_light_blink_orange.iff")
 
 object_static_particle_shared_pt_light_constant_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_constant_blue.prt",
@@ -8088,6 +8275,7 @@ object_static_particle_shared_pt_light_constant_blue = SharedStaticObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8123,7 +8311,7 @@ object_static_particle_shared_pt_light_constant_blue = SharedStaticObjectTemplat
 	clientObjectCRC = 3049235018
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_constant_blue, "object/static/particle/shared_pt_light_constant_blue.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_light_constant_blue, "object/static/particle/shared_pt_light_constant_blue.iff")
 
 object_static_particle_shared_pt_light_streetlamp_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_streetlamp_blue.prt",
@@ -8131,6 +8319,7 @@ object_static_particle_shared_pt_light_streetlamp_blue = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8166,7 +8355,7 @@ object_static_particle_shared_pt_light_streetlamp_blue = SharedStaticObjectTempl
 	clientObjectCRC = 927898294
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_streetlamp_blue, "object/static/particle/shared_pt_light_streetlamp_blue.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_light_streetlamp_blue, "object/static/particle/shared_pt_light_streetlamp_blue.iff")
 
 object_static_particle_shared_pt_light_streetlamp_gold = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_streetlamp_gold.prt",
@@ -8174,6 +8363,7 @@ object_static_particle_shared_pt_light_streetlamp_gold = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8209,7 +8399,7 @@ object_static_particle_shared_pt_light_streetlamp_gold = SharedStaticObjectTempl
 	clientObjectCRC = 3933494226
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_streetlamp_gold, "object/static/particle/shared_pt_light_streetlamp_gold.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_light_streetlamp_gold, "object/static/particle/shared_pt_light_streetlamp_gold.iff")
 
 object_static_particle_shared_pt_light_streetlamp_green = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_streetlamp_green.prt",
@@ -8217,6 +8407,7 @@ object_static_particle_shared_pt_light_streetlamp_green = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8252,7 +8443,7 @@ object_static_particle_shared_pt_light_streetlamp_green = SharedStaticObjectTemp
 	clientObjectCRC = 919367971
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_streetlamp_green, "object/static/particle/shared_pt_light_streetlamp_green.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_light_streetlamp_green, "object/static/particle/shared_pt_light_streetlamp_green.iff")
 
 object_static_particle_shared_pt_light_streetlamp_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_streetlamp_red.prt",
@@ -8260,6 +8451,7 @@ object_static_particle_shared_pt_light_streetlamp_red = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8295,7 +8487,7 @@ object_static_particle_shared_pt_light_streetlamp_red = SharedStaticObjectTempla
 	clientObjectCRC = 3254920808
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_streetlamp_red, "object/static/particle/shared_pt_light_streetlamp_red.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_light_streetlamp_red, "object/static/particle/shared_pt_light_streetlamp_red.iff")
 
 object_static_particle_shared_pt_lok_lava_bubblingareaprt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_lava_bubblingareaprt.prt",
@@ -8303,6 +8495,7 @@ object_static_particle_shared_pt_lok_lava_bubblingareaprt = SharedStaticObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8338,7 +8531,7 @@ object_static_particle_shared_pt_lok_lava_bubblingareaprt = SharedStaticObjectTe
 	clientObjectCRC = 3373071606
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_lava_bubblingareaprt, "object/static/particle/shared_pt_lok_lava_bubblingareaprt.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lok_lava_bubblingareaprt, "object/static/particle/shared_pt_lok_lava_bubblingareaprt.iff")
 
 object_static_particle_shared_pt_lok_lava_drop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_lava_drop.prt",
@@ -8346,6 +8539,7 @@ object_static_particle_shared_pt_lok_lava_drop = SharedStaticObjectTemplate:new 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8381,7 +8575,7 @@ object_static_particle_shared_pt_lok_lava_drop = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 198238654
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_lava_drop, "object/static/particle/shared_pt_lok_lava_drop.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lok_lava_drop, "object/static/particle/shared_pt_lok_lava_drop.iff")
 
 object_static_particle_shared_pt_lok_lava_spirt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_lava_spirt.prt",
@@ -8389,6 +8583,7 @@ object_static_particle_shared_pt_lok_lava_spirt = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8424,7 +8619,7 @@ object_static_particle_shared_pt_lok_lava_spirt = SharedStaticObjectTemplate:new
 	clientObjectCRC = 2234486758
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_lava_spirt, "object/static/particle/shared_pt_lok_lava_spirt.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lok_lava_spirt, "object/static/particle/shared_pt_lok_lava_spirt.iff")
 
 object_static_particle_shared_pt_lok_volcano = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_volcano.prt",
@@ -8432,6 +8627,7 @@ object_static_particle_shared_pt_lok_volcano = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8467,7 +8663,7 @@ object_static_particle_shared_pt_lok_volcano = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 893154540
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_volcano, "object/static/particle/shared_pt_lok_volcano.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lok_volcano, "object/static/particle/shared_pt_lok_volcano.iff")
 
 object_static_particle_shared_pt_lok_volcano_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_volcano_smoke.prt",
@@ -8475,6 +8671,7 @@ object_static_particle_shared_pt_lok_volcano_smoke = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8510,7 +8707,7 @@ object_static_particle_shared_pt_lok_volcano_smoke = SharedStaticObjectTemplate:
 	clientObjectCRC = 693978317
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_volcano_smoke, "object/static/particle/shared_pt_lok_volcano_smoke.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lok_volcano_smoke, "object/static/particle/shared_pt_lok_volcano_smoke.iff")
 
 object_static_particle_shared_pt_lok_volcano_smoke_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_volcano_smoke_sm.prt",
@@ -8518,6 +8715,7 @@ object_static_particle_shared_pt_lok_volcano_smoke_sm = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8553,7 +8751,7 @@ object_static_particle_shared_pt_lok_volcano_smoke_sm = SharedStaticObjectTempla
 	clientObjectCRC = 3030325207
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_volcano_smoke_sm, "object/static/particle/shared_pt_lok_volcano_smoke_sm.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_lok_volcano_smoke_sm, "object/static/particle/shared_pt_lok_volcano_smoke_sm.iff")
 
 object_static_particle_shared_pt_magic_sparks = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_magic_sparks.prt",
@@ -8561,6 +8759,7 @@ object_static_particle_shared_pt_magic_sparks = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8596,7 +8795,7 @@ object_static_particle_shared_pt_magic_sparks = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4190362861
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_magic_sparks, "object/static/particle/shared_pt_magic_sparks.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_magic_sparks, "object/static/particle/shared_pt_magic_sparks.iff")
 
 object_static_particle_shared_pt_miasma_of_fog_gray = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_gray.prt",
@@ -8604,6 +8803,7 @@ object_static_particle_shared_pt_miasma_of_fog_gray = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8639,7 +8839,7 @@ object_static_particle_shared_pt_miasma_of_fog_gray = SharedStaticObjectTemplate
 	clientObjectCRC = 4103176691
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog_gray, "object/static/particle/shared_pt_miasma_of_fog_gray.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_miasma_of_fog_gray, "object/static/particle/shared_pt_miasma_of_fog_gray.iff")
 
 object_static_particle_shared_pt_miasma_of_fog_greenish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_greenish.prt",
@@ -8647,6 +8847,7 @@ object_static_particle_shared_pt_miasma_of_fog_greenish = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8682,7 +8883,7 @@ object_static_particle_shared_pt_miasma_of_fog_greenish = SharedStaticObjectTemp
 	clientObjectCRC = 2098974720
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog_greenish, "object/static/particle/shared_pt_miasma_of_fog_greenish.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_miasma_of_fog_greenish, "object/static/particle/shared_pt_miasma_of_fog_greenish.iff")
 
 object_static_particle_shared_pt_miasma_of_fog_mustard = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_mustard.prt",
@@ -8690,6 +8891,7 @@ object_static_particle_shared_pt_miasma_of_fog_mustard = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8725,7 +8927,7 @@ object_static_particle_shared_pt_miasma_of_fog_mustard = SharedStaticObjectTempl
 	clientObjectCRC = 495620993
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog_mustard, "object/static/particle/shared_pt_miasma_of_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_miasma_of_fog_mustard, "object/static/particle/shared_pt_miasma_of_fog_mustard.iff")
 
 object_static_particle_shared_pt_miasma_of_fog_orange = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_orange.prt",
@@ -8733,6 +8935,7 @@ object_static_particle_shared_pt_miasma_of_fog_orange = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8768,7 +8971,7 @@ object_static_particle_shared_pt_miasma_of_fog_orange = SharedStaticObjectTempla
 	clientObjectCRC = 2453321375
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog_orange, "object/static/particle/shared_pt_miasma_of_fog_orange.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_miasma_of_fog_orange, "object/static/particle/shared_pt_miasma_of_fog_orange.iff")
 
 object_static_particle_shared_pt_miasma_of_fog_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_red.prt",
@@ -8776,6 +8979,7 @@ object_static_particle_shared_pt_miasma_of_fog_red = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8811,7 +9015,7 @@ object_static_particle_shared_pt_miasma_of_fog_red = SharedStaticObjectTemplate:
 	clientObjectCRC = 2493012147
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog_red, "object/static/particle/shared_pt_miasma_of_fog_red.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_miasma_of_fog_red, "object/static/particle/shared_pt_miasma_of_fog_red.iff")
 
 object_static_particle_shared_pt_poi_broken_electronics = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_poi_broken_electronics.prt",
@@ -8819,6 +9023,7 @@ object_static_particle_shared_pt_poi_broken_electronics = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8854,7 +9059,7 @@ object_static_particle_shared_pt_poi_broken_electronics = SharedStaticObjectTemp
 	clientObjectCRC = 2630854860
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_poi_broken_electronics, "object/static/particle/shared_pt_poi_broken_electronics.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_poi_broken_electronics, "object/static/particle/shared_pt_poi_broken_electronics.iff")
 
 object_static_particle_shared_pt_poi_droid_weld_sparks = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_poi_droid_weld_sparks.prt",
@@ -8862,6 +9067,7 @@ object_static_particle_shared_pt_poi_droid_weld_sparks = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8897,7 +9103,7 @@ object_static_particle_shared_pt_poi_droid_weld_sparks = SharedStaticObjectTempl
 	clientObjectCRC = 718197252
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_poi_droid_weld_sparks, "object/static/particle/shared_pt_poi_droid_weld_sparks.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_poi_droid_weld_sparks, "object/static/particle/shared_pt_poi_droid_weld_sparks.iff")
 
 object_static_particle_shared_pt_poi_electricity_2x2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_poi_electricity_2x2.prt",
@@ -8905,6 +9111,7 @@ object_static_particle_shared_pt_poi_electricity_2x2 = SharedStaticObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8940,7 +9147,7 @@ object_static_particle_shared_pt_poi_electricity_2x2 = SharedStaticObjectTemplat
 	clientObjectCRC = 927712692
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_poi_electricity_2x2, "object/static/particle/shared_pt_poi_electricity_2x2.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_poi_electricity_2x2, "object/static/particle/shared_pt_poi_electricity_2x2.iff")
 
 object_static_particle_shared_pt_sm_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sm_explosion.prt",
@@ -8948,6 +9155,7 @@ object_static_particle_shared_pt_sm_explosion = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -8983,7 +9191,7 @@ object_static_particle_shared_pt_sm_explosion = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1063575849
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sm_explosion, "object/static/particle/shared_pt_sm_explosion.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_sm_explosion, "object/static/particle/shared_pt_sm_explosion.iff")
 
 object_static_particle_shared_pt_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke.prt",
@@ -8991,6 +9199,7 @@ object_static_particle_shared_pt_smoke = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9026,7 +9235,7 @@ object_static_particle_shared_pt_smoke = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1921352658
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_smoke, "object/static/particle/shared_pt_smoke.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_smoke, "object/static/particle/shared_pt_smoke.iff")
 
 object_static_particle_shared_pt_smoke_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke_large.prt",
@@ -9034,6 +9243,7 @@ object_static_particle_shared_pt_smoke_large = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9069,7 +9279,7 @@ object_static_particle_shared_pt_smoke_large = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3471324085
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_smoke_large, "object/static/particle/shared_pt_smoke_large.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_smoke_large, "object/static/particle/shared_pt_smoke_large.iff")
 
 object_static_particle_shared_pt_smoke_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke_small.prt",
@@ -9077,6 +9287,7 @@ object_static_particle_shared_pt_smoke_small = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9112,7 +9323,7 @@ object_static_particle_shared_pt_smoke_small = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4210272156
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_smoke_small, "object/static/particle/shared_pt_smoke_small.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_smoke_small, "object/static/particle/shared_pt_smoke_small.iff")
 
 object_static_particle_shared_pt_smoke_tr = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke_tr.prt",
@@ -9120,6 +9331,7 @@ object_static_particle_shared_pt_smoke_tr = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9155,7 +9367,7 @@ object_static_particle_shared_pt_smoke_tr = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2928460713
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_smoke_tr, "object/static/particle/shared_pt_smoke_tr.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_smoke_tr, "object/static/particle/shared_pt_smoke_tr.iff")
 
 object_static_particle_shared_pt_sonic_pulse = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sonic_pulse.prt",
@@ -9163,6 +9375,7 @@ object_static_particle_shared_pt_sonic_pulse = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9198,7 +9411,7 @@ object_static_particle_shared_pt_sonic_pulse = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3328660965
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sonic_pulse, "object/static/particle/shared_pt_sonic_pulse.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_sonic_pulse, "object/static/particle/shared_pt_sonic_pulse.iff")
 
 object_static_particle_shared_pt_sound_location = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
@@ -9206,6 +9419,7 @@ object_static_particle_shared_pt_sound_location = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9241,7 +9455,7 @@ object_static_particle_shared_pt_sound_location = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1232478276
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sound_location, "object/static/particle/shared_pt_sound_location.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_sound_location, "object/static/particle/shared_pt_sound_location.iff")
 
 object_static_particle_shared_pt_sparking_blast_md = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sparking_blast_md.prt",
@@ -9249,6 +9463,7 @@ object_static_particle_shared_pt_sparking_blast_md = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9284,7 +9499,7 @@ object_static_particle_shared_pt_sparking_blast_md = SharedStaticObjectTemplate:
 	clientObjectCRC = 2573168569
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sparking_blast_md, "object/static/particle/shared_pt_sparking_blast_md.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_sparking_blast_md, "object/static/particle/shared_pt_sparking_blast_md.iff")
 
 object_static_particle_shared_pt_sparks_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sparks_large.prt",
@@ -9292,6 +9507,7 @@ object_static_particle_shared_pt_sparks_large = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9327,7 +9543,7 @@ object_static_particle_shared_pt_sparks_large = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 952907796
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sparks_large, "object/static/particle/shared_pt_sparks_large.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_sparks_large, "object/static/particle/shared_pt_sparks_large.iff")
 
 object_static_particle_shared_pt_sparks_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sparks_small.prt",
@@ -9335,6 +9551,7 @@ object_static_particle_shared_pt_sparks_small = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9370,7 +9587,7 @@ object_static_particle_shared_pt_sparks_small = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 215460925
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sparks_small, "object/static/particle/shared_pt_sparks_small.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_sparks_small, "object/static/particle/shared_pt_sparks_small.iff")
 
 object_static_particle_shared_pt_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_steam.prt",
@@ -9378,6 +9595,7 @@ object_static_particle_shared_pt_steam = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9413,7 +9631,7 @@ object_static_particle_shared_pt_steam = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 320796703
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_steam, "object/static/particle/shared_pt_steam.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_steam, "object/static/particle/shared_pt_steam.iff")
 
 object_static_particle_shared_pt_steam_rise = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_steam_rise.prt",
@@ -9421,6 +9639,7 @@ object_static_particle_shared_pt_steam_rise = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9456,7 +9675,7 @@ object_static_particle_shared_pt_steam_rise = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2327575207
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_steam_rise, "object/static/particle/shared_pt_steam_rise.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_steam_rise, "object/static/particle/shared_pt_steam_rise.iff")
 
 object_static_particle_shared_pt_steam_rise_2x2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_steam_rise_2x2.prt",
@@ -9464,6 +9683,7 @@ object_static_particle_shared_pt_steam_rise_2x2 = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9499,7 +9719,7 @@ object_static_particle_shared_pt_steam_rise_2x2 = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3748858537
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_steam_rise_2x2, "object/static/particle/shared_pt_steam_rise_2x2.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_steam_rise_2x2, "object/static/particle/shared_pt_steam_rise_2x2.iff")
 
 object_static_particle_shared_pt_stunned_player = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_stunned_player.prt",
@@ -9507,6 +9727,7 @@ object_static_particle_shared_pt_stunned_player = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9542,7 +9763,7 @@ object_static_particle_shared_pt_stunned_player = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3872867406
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_stunned_player, "object/static/particle/shared_pt_stunned_player.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_stunned_player, "object/static/particle/shared_pt_stunned_player.iff")
 
 object_static_particle_shared_pt_survey = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey.prt",
@@ -9550,6 +9771,7 @@ object_static_particle_shared_pt_survey = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9585,7 +9807,7 @@ object_static_particle_shared_pt_survey = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4008828338
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey, "object/static/particle/shared_pt_survey.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey, "object/static/particle/shared_pt_survey.iff")
 
 object_static_particle_shared_pt_survey_gas_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_gas_sample.prt",
@@ -9593,6 +9815,7 @@ object_static_particle_shared_pt_survey_gas_sample = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9628,7 +9851,7 @@ object_static_particle_shared_pt_survey_gas_sample = SharedStaticObjectTemplate:
 	clientObjectCRC = 2454176685
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_gas_sample, "object/static/particle/shared_pt_survey_gas_sample.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_gas_sample, "object/static/particle/shared_pt_survey_gas_sample.iff")
 
 object_static_particle_shared_pt_survey_liquid_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_liquid_sample.prt",
@@ -9636,6 +9859,7 @@ object_static_particle_shared_pt_survey_liquid_sample = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9671,7 +9895,7 @@ object_static_particle_shared_pt_survey_liquid_sample = SharedStaticObjectTempla
 	clientObjectCRC = 2673530585
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_liquid_sample, "object/static/particle/shared_pt_survey_liquid_sample.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_liquid_sample, "object/static/particle/shared_pt_survey_liquid_sample.iff")
 
 object_static_particle_shared_pt_survey_lumber_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_lumber_sample.prt",
@@ -9679,6 +9903,7 @@ object_static_particle_shared_pt_survey_lumber_sample = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9714,7 +9939,7 @@ object_static_particle_shared_pt_survey_lumber_sample = SharedStaticObjectTempla
 	clientObjectCRC = 3827726832
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_lumber_sample, "object/static/particle/shared_pt_survey_lumber_sample.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_lumber_sample, "object/static/particle/shared_pt_survey_lumber_sample.iff")
 
 object_static_particle_shared_pt_survey_mineral_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_mineral_sample.prt",
@@ -9722,6 +9947,7 @@ object_static_particle_shared_pt_survey_mineral_sample = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9757,7 +9983,7 @@ object_static_particle_shared_pt_survey_mineral_sample = SharedStaticObjectTempl
 	clientObjectCRC = 1570673166
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_mineral_sample, "object/static/particle/shared_pt_survey_mineral_sample.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_mineral_sample, "object/static/particle/shared_pt_survey_mineral_sample.iff")
 
 object_static_particle_shared_pt_survey_moisture_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_moisture_sample.prt",
@@ -9765,6 +9991,7 @@ object_static_particle_shared_pt_survey_moisture_sample = SharedStaticObjectTemp
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9800,7 +10027,7 @@ object_static_particle_shared_pt_survey_moisture_sample = SharedStaticObjectTemp
 	clientObjectCRC = 1547554683
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_moisture_sample, "object/static/particle/shared_pt_survey_moisture_sample.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_moisture_sample, "object/static/particle/shared_pt_survey_moisture_sample.iff")
 
 object_static_particle_shared_pt_survey_tool_liquid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_tool_liquid.prt",
@@ -9808,6 +10035,7 @@ object_static_particle_shared_pt_survey_tool_liquid = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9843,7 +10071,7 @@ object_static_particle_shared_pt_survey_tool_liquid = SharedStaticObjectTemplate
 	clientObjectCRC = 2160449826
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_tool_liquid, "object/static/particle/shared_pt_survey_tool_liquid.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_tool_liquid, "object/static/particle/shared_pt_survey_tool_liquid.iff")
 
 object_static_particle_shared_pt_survey_tool_lumber = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_tool_lumber.prt",
@@ -9851,6 +10079,7 @@ object_static_particle_shared_pt_survey_tool_lumber = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9886,7 +10115,7 @@ object_static_particle_shared_pt_survey_tool_lumber = SharedStaticObjectTemplate
 	clientObjectCRC = 1247458392
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_tool_lumber, "object/static/particle/shared_pt_survey_tool_lumber.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_tool_lumber, "object/static/particle/shared_pt_survey_tool_lumber.iff")
 
 object_static_particle_shared_pt_survey_tool_mineral = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_tool_mineral.prt",
@@ -9894,6 +10123,7 @@ object_static_particle_shared_pt_survey_tool_mineral = SharedStaticObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9929,7 +10159,7 @@ object_static_particle_shared_pt_survey_tool_mineral = SharedStaticObjectTemplat
 	clientObjectCRC = 3745960007
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_tool_mineral, "object/static/particle/shared_pt_survey_tool_mineral.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_tool_mineral, "object/static/particle/shared_pt_survey_tool_mineral.iff")
 
 object_static_particle_shared_pt_survey_tool_moisture = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_tool_moisture.prt",
@@ -9937,6 +10167,7 @@ object_static_particle_shared_pt_survey_tool_moisture = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -9972,7 +10203,7 @@ object_static_particle_shared_pt_survey_tool_moisture = SharedStaticObjectTempla
 	clientObjectCRC = 2864462260
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_tool_moisture, "object/static/particle/shared_pt_survey_tool_moisture.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_survey_tool_moisture, "object/static/particle/shared_pt_survey_tool_moisture.iff")
 
 object_static_particle_shared_pt_trailing_falling_dust = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_trailing_falling_dust.prt",
@@ -9980,6 +10211,7 @@ object_static_particle_shared_pt_trailing_falling_dust = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10015,7 +10247,7 @@ object_static_particle_shared_pt_trailing_falling_dust = SharedStaticObjectTempl
 	clientObjectCRC = 1930955215
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_trailing_falling_dust, "object/static/particle/shared_pt_trailing_falling_dust.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_trailing_falling_dust, "object/static/particle/shared_pt_trailing_falling_dust.iff")
 
 object_static_particle_shared_pt_trailing_falling_dust_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_trailing_falling_dust_2.prt",
@@ -10023,6 +10255,7 @@ object_static_particle_shared_pt_trailing_falling_dust_2 = SharedStaticObjectTem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10058,7 +10291,7 @@ object_static_particle_shared_pt_trailing_falling_dust_2 = SharedStaticObjectTem
 	clientObjectCRC = 2226030876
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_trailing_falling_dust_2, "object/static/particle/shared_pt_trailing_falling_dust_2.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_trailing_falling_dust_2, "object/static/particle/shared_pt_trailing_falling_dust_2.iff")
 
 object_static_particle_shared_pt_waterfall_crest = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_crest.prt",
@@ -10066,6 +10299,7 @@ object_static_particle_shared_pt_waterfall_crest = SharedStaticObjectTemplate:ne
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10101,7 +10335,7 @@ object_static_particle_shared_pt_waterfall_crest = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3586703298
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_crest, "object/static/particle/shared_pt_waterfall_crest.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfall_crest, "object/static/particle/shared_pt_waterfall_crest.iff")
 
 object_static_particle_shared_pt_waterfall_mist = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_mist.prt",
@@ -10109,6 +10343,7 @@ object_static_particle_shared_pt_waterfall_mist = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10144,7 +10379,7 @@ object_static_particle_shared_pt_waterfall_mist = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3820269470
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_mist, "object/static/particle/shared_pt_waterfall_mist.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfall_mist, "object/static/particle/shared_pt_waterfall_mist.iff")
 
 object_static_particle_shared_pt_waterfall_mist_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_mist_med.prt",
@@ -10152,6 +10387,7 @@ object_static_particle_shared_pt_waterfall_mist_med = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10187,7 +10423,7 @@ object_static_particle_shared_pt_waterfall_mist_med = SharedStaticObjectTemplate
 	clientObjectCRC = 1019797263
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_mist_med, "object/static/particle/shared_pt_waterfall_mist_med.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfall_mist_med, "object/static/particle/shared_pt_waterfall_mist_med.iff")
 
 object_static_particle_shared_pt_waterfall_mist_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_mist_small.prt",
@@ -10195,6 +10431,7 @@ object_static_particle_shared_pt_waterfall_mist_small = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10230,7 +10467,7 @@ object_static_particle_shared_pt_waterfall_mist_small = SharedStaticObjectTempla
 	clientObjectCRC = 730945332
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_mist_small, "object/static/particle/shared_pt_waterfall_mist_small.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfall_mist_small, "object/static/particle/shared_pt_waterfall_mist_small.iff")
 
 object_static_particle_shared_pt_waterfall_spray = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_spray.prt",
@@ -10238,6 +10475,7 @@ object_static_particle_shared_pt_waterfall_spray = SharedStaticObjectTemplate:ne
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10273,7 +10511,7 @@ object_static_particle_shared_pt_waterfall_spray = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3705199688
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_spray, "object/static/particle/shared_pt_waterfall_spray.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfall_spray, "object/static/particle/shared_pt_waterfall_spray.iff")
 
 object_static_particle_shared_pt_waterfall_spray_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_spray_small.prt",
@@ -10281,6 +10519,7 @@ object_static_particle_shared_pt_waterfall_spray_small = SharedStaticObjectTempl
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10316,7 +10555,7 @@ object_static_particle_shared_pt_waterfall_spray_small = SharedStaticObjectTempl
 	clientObjectCRC = 637915981
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_spray_small, "object/static/particle/shared_pt_waterfall_spray_small.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfall_spray_small, "object/static/particle/shared_pt_waterfall_spray_small.iff")
 
 object_static_particle_shared_pt_waterfall_whitewater_s02_l0 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l0.prt",
@@ -10324,6 +10563,7 @@ object_static_particle_shared_pt_waterfall_whitewater_s02_l0 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10359,7 +10599,7 @@ object_static_particle_shared_pt_waterfall_whitewater_s02_l0 = SharedStaticObjec
 	clientObjectCRC = 3219447959
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_whitewater_s02_l0, "object/static/particle/shared_pt_waterfall_whitewater_s02_l0.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfall_whitewater_s02_l0, "object/static/particle/shared_pt_waterfall_whitewater_s02_l0.iff")
 
 object_static_particle_shared_pt_waterfall_whitewater_s02_l1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l1.prt",
@@ -10367,6 +10607,7 @@ object_static_particle_shared_pt_waterfall_whitewater_s02_l1 = SharedStaticObjec
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10402,7 +10643,7 @@ object_static_particle_shared_pt_waterfall_whitewater_s02_l1 = SharedStaticObjec
 	clientObjectCRC = 4142499610
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_whitewater_s02_l1, "object/static/particle/shared_pt_waterfall_whitewater_s02_l1.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfall_whitewater_s02_l1, "object/static/particle/shared_pt_waterfall_whitewater_s02_l1.iff")
 
 object_static_particle_shared_pt_waterfalling_200m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfalling_200m.prt",
@@ -10410,6 +10651,7 @@ object_static_particle_shared_pt_waterfalling_200m = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10445,7 +10687,7 @@ object_static_particle_shared_pt_waterfalling_200m = SharedStaticObjectTemplate:
 	clientObjectCRC = 2168193478
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfalling_200m, "object/static/particle/shared_pt_waterfalling_200m.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfalling_200m, "object/static/particle/shared_pt_waterfalling_200m.iff")
 
 object_static_particle_shared_pt_waterfalling_slow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfalling_slow.prt",
@@ -10453,6 +10695,7 @@ object_static_particle_shared_pt_waterfalling_slow = SharedStaticObjectTemplate:
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10488,7 +10731,7 @@ object_static_particle_shared_pt_waterfalling_slow = SharedStaticObjectTemplate:
 	clientObjectCRC = 4066371395
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfalling_slow, "object/static/particle/shared_pt_waterfalling_slow.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_waterfalling_slow, "object/static/particle/shared_pt_waterfalling_slow.iff")
 
 object_static_particle_shared_pt_webber = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_webber.prt",
@@ -10496,6 +10739,7 @@ object_static_particle_shared_pt_webber = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -10531,4 +10775,4 @@ object_static_particle_shared_pt_webber = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 364658424
 }
 
-ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_webber, "object/static/particle/shared_pt_webber.iff")
+ObjectTemplates:addTemplate(object_static_particle_shared_pt_webber, "object/static/particle/shared_pt_webber.iff")

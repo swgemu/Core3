@@ -49,6 +49,7 @@ object_weapon_ranged_creature_base_shared_creature_base = SharedWeaponObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_ranged_creature_base_shared_creature_base = SharedWeaponObjectTemp
 	clientObjectCRC = 2748406341
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_base_shared_creature_base, "object/weapon/ranged/creature/base/shared_creature_base.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_base_shared_creature_base, "object/weapon/ranged/creature/base/shared_creature_base.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_durni_shared_lair_durni = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_durni_shared_lair_durni = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3048400862
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni, "object/tangible/lair/durni/shared_lair_durni.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni, "object/tangible/lair/durni/shared_lair_durni.iff")
 
 object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 2005132249
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni_grassland, "object/tangible/lair/durni/shared_lair_durni_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni_grassland, "object/tangible/lair/durni/shared_lair_durni_grassland.iff")
 
 object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemp
 	clientObjectCRC = 3607200677
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni_mountain, "object/tangible/lair/durni/shared_lair_durni_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni_mountain, "object/tangible/lair/durni/shared_lair_durni_mountain.iff")

@@ -49,6 +49,7 @@ object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWe
 	clientObjectCRC = 4081145715
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base, "object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base, "object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff")
 
 object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -106,6 +107,7 @@ object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObje
 	clientObjectCRC = 1355297704
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_base_shared_lance_lightsaber_base, "object/weapon/melee/polearm/base/shared_lance_lightsaber_base.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_lance_lightsaber_base, "object/weapon/melee/polearm/base/shared_lance_lightsaber_base.iff")
 
 object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -163,6 +165,7 @@ object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131081,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,4 +213,4 @@ object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplat
 	clientObjectCRC = 4212036933
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_base_shared_polearm_base, "object/weapon/melee/polearm/base/shared_polearm_base.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_polearm_base, "object/weapon/melee/polearm/base/shared_polearm_base.iff")

@@ -48,6 +48,7 @@ object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate
 	clientObjectCRC = 1191572337
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_loadbeacon_shared_loadbeacon_base, "object/tangible/loadbeacon/shared_loadbeacon_base.iff")
+ObjectTemplates:addTemplate(object_tangible_loadbeacon_shared_loadbeacon_base, "object/tangible/loadbeacon/shared_loadbeacon_base.iff")

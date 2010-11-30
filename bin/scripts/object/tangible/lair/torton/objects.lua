@@ -48,6 +48,7 @@ object_tangible_lair_torton_shared_lair_torton = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_torton_shared_lair_torton = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1086986057
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_torton_shared_lair_torton, "object/tangible/lair/torton/shared_lair_torton.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton, "object/tangible/lair/torton/shared_lair_torton.iff")
 
 object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectT
 	clientObjectCRC = 2619306263
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_torton_shared_lair_torton_grassland, "object/tangible/lair/torton/shared_lair_torton_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton_grassland, "object/tangible/lair/torton/shared_lair_torton_grassland.iff")

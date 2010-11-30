@@ -49,6 +49,7 @@ object_weapon_ranged_grenade_shared_grenade_bug_bomb = SharedWeaponObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_bug_bomb.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_ranged_grenade_shared_grenade_bug_bomb = SharedWeaponObjectTemplat
 	clientObjectCRC = 4031568609
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_bug_bomb, "object/weapon/ranged/grenade/shared_grenade_bug_bomb.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_bug_bomb, "object/weapon/ranged/grenade/shared_grenade_bug_bomb.iff")
 
 object_weapon_ranged_grenade_shared_grenade_cryoban = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_ww41.apt",
@@ -106,6 +107,7 @@ object_weapon_ranged_grenade_shared_grenade_cryoban = SharedWeaponObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_cryoban.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_ranged_grenade_shared_grenade_cryoban = SharedWeaponObjectTemplate
 	clientObjectCRC = 2139866976
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_cryoban, "object/weapon/ranged/grenade/shared_grenade_cryoban.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_cryoban, "object/weapon/ranged/grenade/shared_grenade_cryoban.iff")
 
 object_weapon_ranged_grenade_shared_grenade_fallback = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
@@ -163,6 +165,7 @@ object_weapon_ranged_grenade_shared_grenade_fallback = SharedWeaponObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_small_01.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,7 +213,7 @@ object_weapon_ranged_grenade_shared_grenade_fallback = SharedWeaponObjectTemplat
 	clientObjectCRC = 1363204393
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_fallback, "object/weapon/ranged/grenade/shared_grenade_fallback.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fallback, "object/weapon/ranged/grenade/shared_grenade_fallback.iff")
 
 object_weapon_ranged_grenade_shared_grenade_fragmentation = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
@@ -220,6 +223,7 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation = SharedWeaponObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_fragmentation.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -267,7 +271,7 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation = SharedWeaponObjectTe
 	clientObjectCRC = 2723525196
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_fragmentation, "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fragmentation, "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff")
 
 object_weapon_ranged_grenade_shared_grenade_fragmentation_light = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
@@ -277,6 +281,7 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation_light = SharedWeaponOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_fragmentation.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -324,7 +329,7 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation_light = SharedWeaponOb
 	clientObjectCRC = 2839802123
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_fragmentation_light, "object/weapon/ranged/grenade/shared_grenade_fragmentation_light.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fragmentation_light, "object/weapon/ranged/grenade/shared_grenade_fragmentation_light.iff")
 
 object_weapon_ranged_grenade_shared_grenade_glop = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_glop.apt",
@@ -334,6 +339,7 @@ object_weapon_ranged_grenade_shared_grenade_glop = SharedWeaponObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_glop.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -381,7 +387,7 @@ object_weapon_ranged_grenade_shared_grenade_glop = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 595784365
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_glop, "object/weapon/ranged/grenade/shared_grenade_glop.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_glop, "object/weapon/ranged/grenade/shared_grenade_glop.iff")
 
 object_weapon_ranged_grenade_shared_grenade_imperial_detonator = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_imp_detonator.apt",
@@ -391,6 +397,7 @@ object_weapon_ranged_grenade_shared_grenade_imperial_detonator = SharedWeaponObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_imp_detonator.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -438,7 +445,7 @@ object_weapon_ranged_grenade_shared_grenade_imperial_detonator = SharedWeaponObj
 	clientObjectCRC = 4036235024
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_imperial_detonator, "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_imperial_detonator, "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff")
 
 object_weapon_ranged_grenade_shared_grenade_poison = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
@@ -448,6 +455,7 @@ object_weapon_ranged_grenade_shared_grenade_poison = SharedWeaponObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_small_01.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -495,7 +503,7 @@ object_weapon_ranged_grenade_shared_grenade_poison = SharedWeaponObjectTemplate:
 	clientObjectCRC = 2714007859
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_poison, "object/weapon/ranged/grenade/shared_grenade_poison.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_poison, "object/weapon/ranged/grenade/shared_grenade_poison.iff")
 
 object_weapon_ranged_grenade_shared_grenade_proton = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_7prg.apt",
@@ -505,6 +513,7 @@ object_weapon_ranged_grenade_shared_grenade_proton = SharedWeaponObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_proton.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -552,7 +561,7 @@ object_weapon_ranged_grenade_shared_grenade_proton = SharedWeaponObjectTemplate:
 	clientObjectCRC = 904042039
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_proton, "object/weapon/ranged/grenade/shared_grenade_proton.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_proton, "object/weapon/ranged/grenade/shared_grenade_proton.iff")
 
 object_weapon_ranged_grenade_shared_grenade_thermal_detonator = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
@@ -562,6 +571,7 @@ object_weapon_ranged_grenade_shared_grenade_thermal_detonator = SharedWeaponObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_grenade_large_02.cdf",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -609,4 +619,4 @@ object_weapon_ranged_grenade_shared_grenade_thermal_detonator = SharedWeaponObje
 	clientObjectCRC = 4094720749
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_thermal_detonator, "object/weapon/ranged/grenade/shared_grenade_thermal_detonator.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_thermal_detonator, "object/weapon/ranged/grenade/shared_grenade_thermal_detonator.iff")

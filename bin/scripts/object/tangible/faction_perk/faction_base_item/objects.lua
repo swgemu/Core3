@@ -48,6 +48,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/interior_siren.cdf",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct = SharedTan
 	clientObjectCRC = 1099269046
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct.iff")
+ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -101,6 +102,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/interior_alarm_no_sound.cdf",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = 
 	clientObjectCRC = 3561123970
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct_no_sound.iff")
+ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct_no_sound.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -154,6 +156,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/interior_alarm.cdf",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibl
 	clientObjectCRC = 3749452237
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack.iff")
+ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -207,6 +210,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/interior_alarm_no_sound.cdf",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = Shar
 	clientObjectCRC = 3271748526
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack_no_sound.iff")
+ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack_no_sound.iff")

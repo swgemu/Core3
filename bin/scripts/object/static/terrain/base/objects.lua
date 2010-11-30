@@ -47,6 +47,7 @@ object_static_terrain_base_shared_static_terrain_base = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_static_terrain_base_shared_static_terrain_base = SharedStaticObjectTempla
 	clientObjectCRC = 2890795531
 }
 
-ObjectTemplates:addClientTemplate(object_static_terrain_base_shared_static_terrain_base, "object/static/terrain/base/shared_static_terrain_base.iff")
+ObjectTemplates:addTemplate(object_static_terrain_base_shared_static_terrain_base, "object/static/terrain/base/shared_static_terrain_base.iff")

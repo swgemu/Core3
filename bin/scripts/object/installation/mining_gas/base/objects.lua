@@ -48,6 +48,7 @@ object_installation_mining_gas_base_shared_mining_gas_base = SharedInstallationO
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_mining_gas_base_shared_mining_gas_base = SharedInstallationO
 	clientObjectCRC = 1518209965
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_gas_base_shared_mining_gas_base, "object/installation/mining_gas/base/shared_mining_gas_base.iff")
+ObjectTemplates:addTemplate(object_installation_mining_gas_base_shared_mining_gas_base, "object/installation/mining_gas/base/shared_mining_gas_base.iff")

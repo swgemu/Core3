@@ -48,6 +48,7 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax = SharedTangibleObjectT
 	clientObjectCRC = 2902384723
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax, "object/tangible/lair/bearded_jax/shared_lair_bearded_jax.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax, "object/tangible/lair/bearded_jax/shared_lair_bearded_jax.iff")
 
 object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland = SharedTangi
 	clientObjectCRC = 1258386738
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland, "object/tangible/lair/bearded_jax/shared_lair_bearded_jax_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland, "object/tangible/lair/bearded_jax/shared_lair_bearded_jax_grassland.iff")

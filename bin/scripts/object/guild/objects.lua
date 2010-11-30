@@ -47,6 +47,7 @@ object_guild_shared_guild_object = SharedGuildObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 3,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_guild_shared_guild_object = SharedGuildObjectTemplate:new {
 	clientObjectCRC = 2101404390
 }
 
-ObjectTemplates:addClientTemplate(object_guild_shared_guild_object, "object/guild/shared_guild_object.iff")
+ObjectTemplates:addTemplate(object_guild_shared_guild_object, "object/guild/shared_guild_object.iff")

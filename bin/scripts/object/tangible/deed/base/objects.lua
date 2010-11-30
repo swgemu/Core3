@@ -48,6 +48,7 @@ object_tangible_deed_base_shared_deed_base = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_deed_base_shared_deed_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3216787509
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_base, "object/tangible/deed/base/shared_deed_base.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_base, "object/tangible/deed/base/shared_deed_base.iff")
 
 object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -101,6 +102,7 @@ object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTempla
 	clientObjectCRC = 2878588829
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_building_base, "object/tangible/deed/base/shared_deed_building_base.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_building_base, "object/tangible/deed/base/shared_deed_building_base.iff")
 
 object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -154,6 +156,7 @@ object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTe
 	clientObjectCRC = 3225611811
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_installation_base, "object/tangible/deed/base/shared_deed_installation_base.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_installation_base, "object/tangible/deed/base/shared_deed_installation_base.iff")
 
 object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -207,6 +210,7 @@ object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388611,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2503565638
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_pet_deed_base, "object/tangible/deed/base/shared_pet_deed_base.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_pet_deed_base, "object/tangible/deed/base/shared_pet_deed_base.iff")
 
 object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -260,6 +264,7 @@ object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388612,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTempl
 	clientObjectCRC = 4079953693
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_pet_droid_deed_base, "object/tangible/deed/base/shared_pet_droid_deed_base.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_base_shared_pet_droid_deed_base, "object/tangible/deed/base/shared_pet_droid_deed_base.iff")

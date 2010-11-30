@@ -49,6 +49,7 @@ object_weapon_ranged_carbine_shared_carbine_cdef = SharedWeaponObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_ranged_carbine_shared_carbine_cdef = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 583942574
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_cdef, "object/weapon/ranged/carbine/shared_carbine_cdef.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_cdef, "object/weapon/ranged/carbine/shared_carbine_cdef.iff")
 
 object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
@@ -106,6 +107,7 @@ object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemp
 	clientObjectCRC = 227072559
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_cdef_corsec, "object/weapon/ranged/carbine/shared_carbine_cdef_corsec.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_cdef_corsec, "object/weapon/ranged/carbine/shared_carbine_cdef_corsec.iff")
 
 object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
@@ -163,6 +165,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,7 +213,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 683543232
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17, "object/weapon/ranged/carbine/shared_carbine_dh17.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17, "object/weapon/ranged/carbine/shared_carbine_dh17.iff")
 
 object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17_black.apt",
@@ -220,6 +223,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -267,7 +271,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTempl
 	clientObjectCRC = 648744456
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_black, "object/weapon/ranged/carbine/shared_carbine_dh17_black.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_black, "object/weapon/ranged/carbine/shared_carbine_dh17_black.iff")
 
 object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17_snubnose.apt",
@@ -277,6 +281,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -324,7 +329,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTe
 	clientObjectCRC = 1881783933
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_snubnose, "object/weapon/ranged/carbine/shared_carbine_dh17_snubnose.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_snubnose, "object/weapon/ranged/carbine/shared_carbine_dh17_snubnose.iff")
 
 object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dxr6.apt",
@@ -334,6 +339,7 @@ object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -381,7 +387,7 @@ object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 2050793147
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dxr6, "object/weapon/ranged/carbine/shared_carbine_dxr6.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dxr6, "object/weapon/ranged/carbine/shared_carbine_dxr6.iff")
 
 object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
@@ -391,6 +397,7 @@ object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -438,7 +445,7 @@ object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new
 	clientObjectCRC = 3034123480
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11, "object/weapon/ranged/carbine/shared_carbine_e11.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11, "object/weapon/ranged/carbine/shared_carbine_e11.iff")
 
 object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
@@ -448,6 +455,7 @@ object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -495,7 +503,7 @@ object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTempla
 	clientObjectCRC = 861424280
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11_quest, "object/weapon/ranged/carbine/shared_carbine_e11_quest.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11_quest, "object/weapon/ranged/carbine/shared_carbine_e11_quest.iff")
 
 object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
@@ -505,6 +513,7 @@ object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -552,7 +561,7 @@ object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjec
 	clientObjectCRC = 1297312489
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11_victor_quest, "object/weapon/ranged/carbine/shared_carbine_e11_victor_quest.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11_victor_quest, "object/weapon/ranged/carbine/shared_carbine_e11_victor_quest.iff")
 
 object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_ee3.apt",
@@ -562,6 +571,7 @@ object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -609,7 +619,7 @@ object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new
 	clientObjectCRC = 749154215
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_ee3, "object/weapon/ranged/carbine/shared_carbine_ee3.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_ee3, "object/weapon/ranged/carbine/shared_carbine_ee3.iff")
 
 object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_elite.apt",
@@ -619,6 +629,7 @@ object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -666,7 +677,7 @@ object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 971375722
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_elite, "object/weapon/ranged/carbine/shared_carbine_elite.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_elite, "object/weapon/ranged/carbine/shared_carbine_elite.iff")
 
 object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_laser.apt",
@@ -676,6 +687,7 @@ object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -723,7 +735,7 @@ object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 2121432077
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_laser, "object/weapon/ranged/carbine/shared_carbine_laser.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_laser, "object/weapon/ranged/carbine/shared_carbine_laser.iff")
 
 object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_slug_carbine_s01.apt",
@@ -733,6 +745,7 @@ object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131083,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -780,4 +793,4 @@ object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObject
 	clientObjectCRC = 1757923070
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_nym_slugthrower, "object/weapon/ranged/carbine/shared_carbine_nym_slugthrower.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_nym_slugthrower, "object/weapon/ranged/carbine/shared_carbine_nym_slugthrower.iff")

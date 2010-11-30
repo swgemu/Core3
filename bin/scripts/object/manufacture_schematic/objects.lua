@@ -47,6 +47,7 @@ object_manufacture_schematic_shared_generic_schematic = SharedManufactureSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2050,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_manufacture_schematic_shared_generic_schematic = SharedManufactureSchemat
 	clientObjectCRC = 941212681
 }
 
-ObjectTemplates:addClientTemplate(object_manufacture_schematic_shared_generic_schematic, "object/manufacture_schematic/shared_generic_schematic.iff")
+ObjectTemplates:addTemplate(object_manufacture_schematic_shared_generic_schematic, "object/manufacture_schematic/shared_generic_schematic.iff")

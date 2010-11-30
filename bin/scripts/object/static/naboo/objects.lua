@@ -47,6 +47,7 @@ object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_6meter.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2421347186
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_200m, "object/static/naboo/shared_waterfall_200m.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_200m, "object/static/naboo/shared_waterfall_200m.iff")
 
 object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_all_waterfall_thin_forked.apt",
@@ -90,6 +91,7 @@ object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplat
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_tall_forked.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplat
 	clientObjectCRC = 2586864352
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_all_thin_forked, "object/static/naboo/shared_waterfall_all_thin_forked.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_all_thin_forked, "object/static/naboo/shared_waterfall_all_thin_forked.iff")
 
 object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_all_waterfall_wide_short.apt",
@@ -133,6 +135,7 @@ object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_wide_short.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate
 	clientObjectCRC = 1454317490
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_all_wide_short, "object/static/naboo/shared_waterfall_all_wide_short.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_all_wide_short, "object/static/naboo/shared_waterfall_all_wide_short.iff")
 
 object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
@@ -176,6 +179,7 @@ object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_mist_lg.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4151923875
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_mist_lg, "object/static/naboo/shared_waterfall_mist_lg.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_mist_lg, "object/static/naboo/shared_waterfall_mist_lg.iff")
 
 object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
@@ -219,6 +223,7 @@ object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_mist_small.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3240630762
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_mist_small, "object/static/naboo/shared_waterfall_mist_small.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_mist_small, "object/static/naboo/shared_waterfall_mist_small.iff")
 
 object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l0.prt",
@@ -262,6 +267,7 @@ object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate
 	clientObjectCRC = 4101701818
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_crest_01, "object/static/naboo/shared_waterfall_naboo_crest_01.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_crest_01, "object/static/naboo/shared_waterfall_naboo_crest_01.iff")
 
 object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l1.prt",
@@ -305,6 +311,7 @@ object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate
 	clientObjectCRC = 282497930
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_falls_01, "object/static/naboo/shared_waterfall_naboo_falls_01.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_falls_01, "object/static/naboo/shared_waterfall_naboo_falls_01.iff")
 
 object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_nboo_thed_waterfall_hangar.apt",
@@ -348,6 +355,7 @@ object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_6meter.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:n
 	clientObjectCRC = 370991757
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_hangar, "object/static/naboo/shared_waterfall_naboo_hangar.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_hangar, "object/static/naboo/shared_waterfall_naboo_hangar.iff")
 
 object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_nboo_waterfall_moenia.apt",
@@ -391,6 +399,7 @@ object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:ne
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_keren.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3951584767
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_keren, "object/static/naboo/shared_waterfall_naboo_keren.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_keren, "object/static/naboo/shared_waterfall_naboo_keren.iff")
 
 object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
@@ -434,6 +443,7 @@ object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTempla
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTempla
 	clientObjectCRC = 4195612510
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_theed_base, "object/static/naboo/shared_waterfall_naboo_theed_base.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_theed_base, "object/static/naboo/shared_waterfall_naboo_theed_base.iff")
 
 object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
@@ -477,6 +487,7 @@ object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTem
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTem
 	clientObjectCRC = 3625221420
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_theed_style_1, "object/static/naboo/shared_waterfall_naboo_theed_style_1.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_theed_style_1, "object/static/naboo/shared_waterfall_naboo_theed_style_1.iff")
 
 object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_whitewater_6m.apt",
@@ -520,6 +531,7 @@ object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_6m.cdf",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -555,4 +567,4 @@ object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4015665582
 }
 
-ObjectTemplates:addClientTemplate(object_static_naboo_shared_whitewater_6meter, "object/static/naboo/shared_whitewater_6meter.iff")
+ObjectTemplates:addTemplate(object_static_naboo_shared_whitewater_6meter, "object/static/naboo/shared_whitewater_6meter.iff")

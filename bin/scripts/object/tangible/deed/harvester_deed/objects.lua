@@ -48,6 +48,7 @@ object_tangible_deed_harvester_deed_shared_harvester_creature_deed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_deed_harvester_deed_shared_harvester_creature_deed = SharedTangi
 	clientObjectCRC = 3801540743
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_creature_deed, "object/tangible/deed/harvester_deed/shared_harvester_creature_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_creature_deed, "object/tangible/deed/harvester_deed/shared_harvester_creature_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_flora_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -101,6 +102,7 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed = SharedTangible
 	clientObjectCRC = 2840949012
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -154,6 +156,7 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy = SharedTa
 	clientObjectCRC = 4005897011
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_heavy.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -207,6 +210,7 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium = SharedT
 	clientObjectCRC = 1378608973
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_medium.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_gas_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -260,6 +264,7 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed = SharedTangibleOb
 	clientObjectCRC = 2231503385
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -313,6 +318,7 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy = SharedTang
 	clientObjectCRC = 277903692
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_heavy.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -366,6 +372,7 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium = SharedTan
 	clientObjectCRC = 2991048014
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_medium.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_liquid_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -419,6 +426,7 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed = SharedTangibl
 	clientObjectCRC = 3335458434
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -472,6 +480,7 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy = SharedT
 	clientObjectCRC = 1336331736
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_heavy.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -525,6 +534,7 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium = Shared
 	clientObjectCRC = 3291170804
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_medium.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_moisture_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -578,6 +588,7 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed = SharedTangi
 	clientObjectCRC = 1578846375
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -631,6 +642,7 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy = Share
 	clientObjectCRC = 21472355
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_heavy.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -684,6 +696,7 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium = Shar
 	clientObjectCRC = 759835785
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_medium.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -737,6 +750,7 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed = SharedTang
 	clientObjectCRC = 3224287923
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_heavy_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_heavy_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -790,6 +804,7 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed = SharedTangibl
 	clientObjectCRC = 2126009375
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff")
 
 object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -843,6 +858,7 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,4 +903,4 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed = SharedTangibl
 	clientObjectCRC = 4224231681
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_s2_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_s2_deed.iff")

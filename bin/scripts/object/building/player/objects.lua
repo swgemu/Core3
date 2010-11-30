@@ -48,6 +48,7 @@ object_building_player_shared_construction_structure = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_building_player_shared_construction_structure = SharedTangibleObjectTempl
 	clientObjectCRC = 4003827328
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_construction_structure, "object/building/player/shared_construction_structure.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_construction_structure, "object/building/player/shared_construction_structure.iff")
 
 object_building_player_shared_player_garage_corellia_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garage_s01.apt",
@@ -101,6 +102,7 @@ object_building_player_shared_player_garage_corellia_style_01 = SharedInstallati
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_garage.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_building_player_shared_player_garage_corellia_style_01 = SharedInstallati
 	clientObjectCRC = 3533693421
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_corellia_style_01, "object/building/player/shared_player_garage_corellia_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_garage_corellia_style_01, "object/building/player/shared_player_garage_corellia_style_01.iff")
 
 object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garage_s01.apt",
@@ -154,6 +156,7 @@ object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationO
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_garage.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationO
 	clientObjectCRC = 2162635930
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_naboo_style_01, "object/building/player/shared_player_garage_naboo_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_garage_naboo_style_01, "object/building/player/shared_player_garage_naboo_style_01.iff")
 
 object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garage_s01.apt",
@@ -207,6 +210,7 @@ object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallati
 	certificationsRequired = {},
 	clearFloraRadius = 30,
 	clientDataFile = "clientdata/building/shared_garage.cdf",
+	clientGameObjectType = 4096,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallati
 	clientObjectCRC = 2075679353
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_tatooine_style_01, "object/building/player/shared_player_garage_tatooine_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_garage_tatooine_style_01, "object/building/player/shared_player_garage_tatooine_style_01.iff")
 
 object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -260,6 +264,7 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_association_hall.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -307,7 +312,7 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 	clientObjectCRC = 1038468412
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_corellia_style_01, "object/building/player/shared_player_guildhall_corellia_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_corellia_style_01, "object/building/player/shared_player_guildhall_corellia_style_01.iff")
 
 object_building_player_shared_player_guildhall_generic_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -316,6 +321,7 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_large_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -363,7 +369,7 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 	clientObjectCRC = 1861851362
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_generic_style_01, "object/building/player/shared_player_guildhall_generic_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_generic_style_01, "object/building/player/shared_player_guildhall_generic_style_01.iff")
 
 object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -372,6 +378,7 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_association_hall.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -419,7 +426,7 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 	clientObjectCRC = 3197026082
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_naboo_style_01, "object/building/player/shared_player_guildhall_naboo_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_naboo_style_01, "object/building/player/shared_player_guildhall_naboo_style_01.iff")
 
 object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -428,6 +435,7 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -475,7 +483,7 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 	clientObjectCRC = 2495774376
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_tatooine_style_01, "object/building/player/shared_player_guildhall_tatooine_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_tatooine_style_01, "object/building/player/shared_player_guildhall_tatooine_style_01.iff")
 
 object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -484,6 +492,7 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_large_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -531,7 +540,7 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 	clientObjectCRC = 1339414079
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_tatooine_style_02, "object/building/player/shared_player_guildhall_tatooine_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_tatooine_style_02, "object/building/player/shared_player_guildhall_tatooine_style_02.iff")
 
 object_building_player_shared_player_house_corellia_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -540,6 +549,7 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_large_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -587,7 +597,7 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 	clientObjectCRC = 2427663942
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_large_style_01, "object/building/player/shared_player_house_corellia_large_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_large_style_01, "object/building/player/shared_player_house_corellia_large_style_01.iff")
 
 object_building_player_shared_player_house_corellia_large_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -596,6 +606,7 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_large_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -643,7 +654,7 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 	clientObjectCRC = 1269079761
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_large_style_02, "object/building/player/shared_player_house_corellia_large_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_large_style_02, "object/building/player/shared_player_house_corellia_large_style_02.iff")
 
 object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -652,6 +663,7 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_medium_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -699,7 +711,7 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 	clientObjectCRC = 4245590836
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_medium_style_01, "object/building/player/shared_player_house_corellia_medium_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_medium_style_01, "object/building/player/shared_player_house_corellia_medium_style_01.iff")
 
 object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -708,6 +720,7 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_medium_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -755,7 +768,7 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 	clientObjectCRC = 639187875
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_medium_style_02, "object/building/player/shared_player_house_corellia_medium_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_medium_style_02, "object/building/player/shared_player_house_corellia_medium_style_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -764,6 +777,7 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -811,7 +825,7 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 	clientObjectCRC = 2963259888
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_01, "object/building/player/shared_player_house_corellia_small_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_01, "object/building/player/shared_player_house_corellia_small_style_01.iff")
 
 object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -820,6 +834,7 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -867,7 +882,7 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 	clientObjectCRC = 4102677864
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_01_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_01_floorplan_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_01_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_01_floorplan_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -876,6 +891,7 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -923,7 +939,7 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 	clientObjectCRC = 1804101991
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_02, "object/building/player/shared_player_house_corellia_small_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_02, "object/building/player/shared_player_house_corellia_small_style_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -932,6 +948,7 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -979,7 +996,7 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 	clientObjectCRC = 1944093248
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_02_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_02_floorplan_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_02_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_02_floorplan_02.iff")
 
 object_building_player_shared_player_house_generic_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -988,6 +1005,7 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_large_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1035,7 +1053,7 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 	clientObjectCRC = 2966981875
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_large_style_01, "object/building/player/shared_player_house_generic_large_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_large_style_01, "object/building/player/shared_player_house_generic_large_style_01.iff")
 
 object_building_player_shared_player_house_generic_large_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1044,6 +1062,7 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_large_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1091,7 +1110,7 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 	clientObjectCRC = 1808737380
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_large_style_02, "object/building/player/shared_player_house_generic_large_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_large_style_02, "object/building/player/shared_player_house_generic_large_style_02.iff")
 
 object_building_player_shared_player_house_generic_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1100,6 +1119,7 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_medium_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1147,7 +1167,7 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 	clientObjectCRC = 244814036
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_medium_style_01, "object/building/player/shared_player_house_generic_medium_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_medium_style_01, "object/building/player/shared_player_house_generic_medium_style_01.iff")
 
 object_building_player_shared_player_house_generic_medium_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1156,6 +1176,7 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_medium_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1203,7 +1224,7 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 	clientObjectCRC = 3581950019
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_medium_style_02, "object/building/player/shared_player_house_generic_medium_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_medium_style_02, "object/building/player/shared_player_house_generic_medium_style_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1212,6 +1233,7 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1259,7 +1281,7 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 	clientObjectCRC = 2431941445
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_01, "object/building/player/shared_player_house_generic_small_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_01, "object/building/player/shared_player_house_generic_small_style_01.iff")
 
 object_building_player_shared_player_house_generic_small_style_01_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1268,6 +1290,7 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1315,7 +1338,7 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 	clientObjectCRC = 4015966289
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_01_floorplan_02, "object/building/player/shared_player_house_generic_small_style_01_floorplan_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_01_floorplan_02, "object/building/player/shared_player_house_generic_small_style_01_floorplan_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1324,6 +1347,7 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1371,7 +1395,7 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 	clientObjectCRC = 1273222098
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_02, "object/building/player/shared_player_house_generic_small_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_02, "object/building/player/shared_player_house_generic_small_style_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_02_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1380,6 +1404,7 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 	certificationsRequired = {},
 	clearFloraRadius = 38,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1427,7 +1452,7 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 	clientObjectCRC = 1748479865
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_02_floorplan_02, "object/building/player/shared_player_house_generic_small_style_02_floorplan_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_02_floorplan_02, "object/building/player/shared_player_house_generic_small_style_02_floorplan_02.iff")
 
 object_building_player_shared_player_house_naboo_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1436,6 +1461,7 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_large_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1483,7 +1509,7 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 	clientObjectCRC = 1926074883
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_large_style_01, "object/building/player/shared_player_house_naboo_large_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_large_style_01, "object/building/player/shared_player_house_naboo_large_style_01.iff")
 
 object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1492,6 +1518,7 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_medium_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1539,7 +1566,7 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 	clientObjectCRC = 1333906211
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_medium_style_01, "object/building/player/shared_player_house_naboo_medium_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_medium_style_01, "object/building/player/shared_player_house_naboo_medium_style_01.iff")
 
 object_building_player_shared_player_house_naboo_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1548,6 +1575,7 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1595,7 +1623,7 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 	clientObjectCRC = 1390503349
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_small_style_01, "object/building/player/shared_player_house_naboo_small_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_small_style_01, "object/building/player/shared_player_house_naboo_small_style_01.iff")
 
 object_building_player_shared_player_house_naboo_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1604,6 +1632,7 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1651,7 +1680,7 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 	clientObjectCRC = 2314652962
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_small_style_02, "object/building/player/shared_player_house_naboo_small_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_small_style_02, "object/building/player/shared_player_house_naboo_small_style_02.iff")
 
 object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1660,6 +1689,7 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_large_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1707,7 +1737,7 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 	clientObjectCRC = 3018624136
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_large_style_01, "object/building/player/shared_player_house_tatooine_large_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_large_style_01, "object/building/player/shared_player_house_tatooine_large_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1716,6 +1746,7 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_medium_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1763,7 +1794,7 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 	clientObjectCRC = 936693005
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_medium_style_01, "object/building/player/shared_player_house_tatooine_medium_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_medium_style_01, "object/building/player/shared_player_house_tatooine_medium_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1772,6 +1803,7 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1819,7 +1851,7 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 	clientObjectCRC = 2478865214
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_small_style_01, "object/building/player/shared_player_house_tatooine_small_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_small_style_01, "object/building/player/shared_player_house_tatooine_small_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1828,6 +1860,7 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "clientdata/building/shared_player_house_tatooine_small_style_01.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1869,16 +1902,13 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 3,
-	lotSize = 2,
-	baseMaintenanceRate = 16,
-	allowedZones = {1,4,8},
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1222103977
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_small_style_02, "object/building/player/shared_player_house_tatooine_small_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_small_style_02, "object/building/player/shared_player_house_tatooine_small_style_02.iff")
 
 object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1887,6 +1917,7 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1934,7 +1965,7 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 	clientObjectCRC = 2671747310
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_01, "object/building/player/shared_player_merchant_tent_style_01.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_01, "object/building/player/shared_player_merchant_tent_style_01.iff")
 
 object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1943,6 +1974,7 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1984,16 +2016,13 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 1,
-	lotSize = 1,
-	baseMaintenanceRate = 10,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 1143474297
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_02, "object/building/player/shared_player_merchant_tent_style_02.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_02, "object/building/player/shared_player_merchant_tent_style_02.iff")
 
 object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -2002,6 +2031,7 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 	certificationsRequired = {},
 	clearFloraRadius = 36,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2043,13 +2073,10 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 	totalCellNumber = 1,
-	lotSize = 1,
-	baseMaintenanceRate = 10,
-	allowedZones = {0,1,4,5,6,7,8},
 
 	useStructureFootprintOutline = 0,
 
 	clientObjectCRC = 220557300
 }
 
-ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_03, "object/building/player/shared_player_merchant_tent_style_03.iff")
+ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_03, "object/building/player/shared_player_merchant_tent_style_03.iff")

@@ -48,6 +48,7 @@ object_tangible_container_food_shared_lunchbox_base = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_container_food_shared_lunchbox_base = SharedTangibleObjectTempla
 	clientObjectCRC = 1773382797
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_food_shared_lunchbox_base, "object/tangible/container/food/shared_lunchbox_base.iff")
+ObjectTemplates:addTemplate(object_tangible_container_food_shared_lunchbox_base, "object/tangible/container/food/shared_lunchbox_base.iff")

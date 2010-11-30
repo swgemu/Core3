@@ -48,6 +48,7 @@ object_tangible_deed_generator_deed_shared_generator_fusion_deed = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_deed_generator_deed_shared_generator_fusion_deed = SharedTangibl
 	clientObjectCRC = 3852530581
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_generator_deed_shared_generator_fusion_deed, "object/tangible/deed/generator_deed/shared_generator_fusion_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_shared_generator_fusion_deed, "object/tangible/deed/generator_deed/shared_generator_fusion_deed.iff")
 
 object_tangible_deed_generator_deed_shared_generator_photo_bio_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -101,6 +102,7 @@ object_tangible_deed_generator_deed_shared_generator_photo_bio_deed = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_deed_generator_deed_shared_generator_photo_bio_deed = SharedTang
 	clientObjectCRC = 651572803
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_generator_deed_shared_generator_photo_bio_deed, "object/tangible/deed/generator_deed/shared_generator_photo_bio_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_shared_generator_photo_bio_deed, "object/tangible/deed/generator_deed/shared_generator_photo_bio_deed.iff")
 
 object_tangible_deed_generator_deed_shared_generator_solar_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -154,6 +156,7 @@ object_tangible_deed_generator_deed_shared_generator_solar_deed = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_deed_generator_deed_shared_generator_solar_deed = SharedTangible
 	clientObjectCRC = 1181332776
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_generator_deed_shared_generator_solar_deed, "object/tangible/deed/generator_deed/shared_generator_solar_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_shared_generator_solar_deed, "object/tangible/deed/generator_deed/shared_generator_solar_deed.iff")
 
 object_tangible_deed_generator_deed_shared_generator_wind_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -207,6 +210,7 @@ object_tangible_deed_generator_deed_shared_generator_wind_deed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388610,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_deed_generator_deed_shared_generator_wind_deed = SharedTangibleO
 	clientObjectCRC = 3871805863
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_generator_deed_shared_generator_wind_deed, "object/tangible/deed/generator_deed/shared_generator_wind_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_shared_generator_wind_deed, "object/tangible/deed/generator_deed/shared_generator_wind_deed.iff")

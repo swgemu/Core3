@@ -48,6 +48,7 @@ object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3825894482
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_base, "object/tangible/base/shared_tangible_base.iff")
+ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_base, "object/tangible/base/shared_tangible_base.iff")
 
 object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1525014593
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_craftable, "object/tangible/base/shared_tangible_craftable.iff")
+ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_craftable, "object/tangible/base/shared_tangible_craftable.iff")
 
 object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1350067174
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_default, "object/tangible/base/shared_tangible_default.iff")
+ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_default, "object/tangible/base/shared_tangible_default.iff")

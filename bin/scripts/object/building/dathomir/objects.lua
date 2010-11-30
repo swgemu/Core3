@@ -48,6 +48,7 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 	clientObjectCRC = 3733495054
 }
 
-ObjectTemplates:addClientTemplate(object_building_dathomir_shared_mtn_clan_stronghold, "object/building/dathomir/shared_mtn_clan_stronghold.iff")
+ObjectTemplates:addTemplate(object_building_dathomir_shared_mtn_clan_stronghold, "object/building/dathomir/shared_mtn_clan_stronghold.iff")
 
 object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -104,6 +105,7 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,4 +153,4 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 	clientObjectCRC = 1104863563
 }
 
-ObjectTemplates:addClientTemplate(object_building_dathomir_shared_night_sister_stronghold, "object/building/dathomir/shared_night_sister_stronghold.iff")
+ObjectTemplates:addTemplate(object_building_dathomir_shared_night_sister_stronghold, "object/building/dathomir/shared_night_sister_stronghold.iff")

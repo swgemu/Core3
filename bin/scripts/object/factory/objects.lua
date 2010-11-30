@@ -48,6 +48,7 @@ object_factory_shared_factory_crate_armor = SharedFactoryObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_factory_shared_factory_crate_armor = SharedFactoryObjectTemplate:new {
 	clientObjectCRC = 1598099833
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_armor, "object/factory/shared_factory_crate_armor.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_armor, "object/factory/shared_factory_crate_armor.iff")
 
 object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_chemicals_sm.apt",
@@ -101,6 +102,7 @@ object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new 
 	clientObjectCRC = 3401438151
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_chemicals, "object/factory/shared_factory_crate_chemicals.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_chemicals, "object/factory/shared_factory_crate_chemicals.iff")
 
 object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_clothing_sm.apt",
@@ -154,6 +156,7 @@ object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
 	clientObjectCRC = 2342101395
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_clothing, "object/factory/shared_factory_crate_clothing.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_clothing, "object/factory/shared_factory_crate_clothing.iff")
 
 object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_electronics_sm.apt",
@@ -207,6 +210,7 @@ object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:ne
 	clientObjectCRC = 1584679689
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_electronics, "object/factory/shared_factory_crate_electronics.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_electronics, "object/factory/shared_factory_crate_electronics.iff")
 
 object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_food_sm.apt",
@@ -260,6 +264,7 @@ object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
 	clientObjectCRC = 1184983851
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_food, "object/factory/shared_factory_crate_food.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_food, "object/factory/shared_factory_crate_food.iff")
 
 object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
@@ -313,6 +318,7 @@ object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new 
 	clientObjectCRC = 3880912033
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_furniture, "object/factory/shared_factory_crate_furniture.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_furniture, "object/factory/shared_factory_crate_furniture.iff")
 
 object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -366,6 +372,7 @@ object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:
 	clientObjectCRC = 685226208
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_generic_items, "object/factory/shared_factory_crate_generic_items.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_generic_items, "object/factory/shared_factory_crate_generic_items.iff")
 
 object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_installation_sm.apt",
@@ -419,6 +426,7 @@ object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:n
 	clientObjectCRC = 577406456
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_installation, "object/factory/shared_factory_crate_installation.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_installation, "object/factory/shared_factory_crate_installation.iff")
 
 object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_weapons_sm.apt",
@@ -472,6 +480,7 @@ object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8209,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,4 +525,4 @@ object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
 	clientObjectCRC = 4077073151
 }
 
-ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_weapon, "object/factory/shared_factory_crate_weapon.iff")
+ObjectTemplates:addTemplate(object_factory_shared_factory_crate_weapon, "object/factory/shared_factory_crate_weapon.iff")

@@ -49,6 +49,7 @@ object_weapon_ranged_creature_shared_creature_spit_heavy_flame = SharedWeaponObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_ranged_creature_shared_creature_spit_heavy_flame = SharedWeaponObj
 	clientObjectCRC = 3638052260
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_heavy_flame, "object/weapon/ranged/creature/shared_creature_spit_heavy_flame.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_heavy_flame, "object/weapon/ranged/creature/shared_creature_spit_heavy_flame.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_large_green = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -106,6 +107,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_green = SharedWeaponObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_green = SharedWeaponObj
 	clientObjectCRC = 4293058545
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_large_green, "object/weapon/ranged/creature/shared_creature_spit_large_green.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_large_green, "object/weapon/ranged/creature/shared_creature_spit_large_green.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_large_red = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -163,6 +165,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_red = SharedWeaponObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,7 +213,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_red = SharedWeaponObjec
 	clientObjectCRC = 3761745120
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_large_red, "object/weapon/ranged/creature/shared_creature_spit_large_red.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_large_red, "object/weapon/ranged/creature/shared_creature_spit_large_red.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -220,6 +223,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen = SharedWeap
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -267,7 +271,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen = SharedWeap
 	clientObjectCRC = 3595296227
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_large_toxicgreen.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_large_toxicgreen.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_large_yellow = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -277,6 +281,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_yellow = SharedWeaponOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -324,7 +329,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_yellow = SharedWeaponOb
 	clientObjectCRC = 1314081741
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_large_yellow, "object/weapon/ranged/creature/shared_creature_spit_large_yellow.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_large_yellow, "object/weapon/ranged/creature/shared_creature_spit_large_yellow.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_lightning_ball = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -334,6 +339,7 @@ object_weapon_ranged_creature_shared_creature_spit_lightning_ball = SharedWeapon
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -381,7 +387,7 @@ object_weapon_ranged_creature_shared_creature_spit_lightning_ball = SharedWeapon
 	clientObjectCRC = 4140159842
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_lightning_ball, "object/weapon/ranged/creature/shared_creature_spit_lightning_ball.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_lightning_ball, "object/weapon/ranged/creature/shared_creature_spit_lightning_ball.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_particle_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +397,7 @@ object_weapon_ranged_creature_shared_creature_spit_particle_beam = SharedWeaponO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -438,7 +445,7 @@ object_weapon_ranged_creature_shared_creature_spit_particle_beam = SharedWeaponO
 	clientObjectCRC = 2889945643
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_particle_beam, "object/weapon/ranged/creature/shared_creature_spit_particle_beam.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_particle_beam, "object/weapon/ranged/creature/shared_creature_spit_particle_beam.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_small_green = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -448,6 +455,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_green = SharedWeaponObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -495,7 +503,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_green = SharedWeaponObj
 	clientObjectCRC = 1298271366
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_small_green, "object/weapon/ranged/creature/shared_creature_spit_small_green.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_small_green, "object/weapon/ranged/creature/shared_creature_spit_small_green.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_small_red = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -505,6 +513,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_red = SharedWeaponObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -552,7 +561,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_red = SharedWeaponObjec
 	clientObjectCRC = 4245354171
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_small_red, "object/weapon/ranged/creature/shared_creature_spit_small_red.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_small_red, "object/weapon/ranged/creature/shared_creature_spit_small_red.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -562,6 +571,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen = SharedWeap
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -609,7 +619,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen = SharedWeap
 	clientObjectCRC = 2893137473
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_small_toxicgreen.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_small_toxicgreen.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_small_yellow = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -619,6 +629,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_yellow = SharedWeaponOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -666,7 +677,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_yellow = SharedWeaponOb
 	clientObjectCRC = 2050788061
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_small_yellow, "object/weapon/ranged/creature/shared_creature_spit_small_yellow.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_small_yellow, "object/weapon/ranged/creature/shared_creature_spit_small_yellow.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_spray_green = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -676,6 +687,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_green = SharedWeaponObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -723,7 +735,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_green = SharedWeaponObj
 	clientObjectCRC = 1466506816
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_green, "object/weapon/ranged/creature/shared_creature_spit_spray_green.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_green, "object/weapon/ranged/creature/shared_creature_spit_spray_green.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_spray_red = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -733,6 +745,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_red = SharedWeaponObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -780,7 +793,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_red = SharedWeaponObjec
 	clientObjectCRC = 3130570406
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_red, "object/weapon/ranged/creature/shared_creature_spit_spray_red.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_red, "object/weapon/ranged/creature/shared_creature_spit_spray_red.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -790,6 +803,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen = SharedWeap
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -837,7 +851,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen = SharedWeap
 	clientObjectCRC = 1575661625
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_spray_toxicgreen.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_spray_toxicgreen.iff")
 
 object_weapon_ranged_creature_shared_creature_spit_spray_yellow = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -847,6 +861,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_yellow = SharedWeaponOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -894,4 +909,4 @@ object_weapon_ranged_creature_shared_creature_spit_spray_yellow = SharedWeaponOb
 	clientObjectCRC = 313868667
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_yellow, "object/weapon/ranged/creature/shared_creature_spit_spray_yellow.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_yellow, "object/weapon/ranged/creature/shared_creature_spit_spray_yellow.iff")

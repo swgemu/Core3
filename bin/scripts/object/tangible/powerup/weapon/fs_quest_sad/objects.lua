@@ -48,6 +48,7 @@ object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524289,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest = SharedTan
 	clientObjectCRC = 3511795045
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest, "object/tangible/powerup/weapon/fs_quest_sad/shared_melee_speed_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest, "object/tangible/powerup/weapon/fs_quest_sad/shared_melee_speed_quest.iff")

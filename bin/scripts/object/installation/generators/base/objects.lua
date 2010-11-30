@@ -48,6 +48,7 @@ object_installation_generators_base_shared_power_generator_base = SharedInstalla
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4098,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_generators_base_shared_power_generator_base = SharedInstalla
 	clientObjectCRC = 3676361903
 }
 
-ObjectTemplates:addClientTemplate(object_installation_generators_base_shared_power_generator_base, "object/installation/generators/base/shared_power_generator_base.iff")
+ObjectTemplates:addTemplate(object_installation_generators_base_shared_power_generator_base, "object/installation/generators/base/shared_power_generator_base.iff")

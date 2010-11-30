@@ -48,6 +48,7 @@ object_tangible_lair_choku_shared_lair_choku = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_choku_shared_lair_choku = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 320002597
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_choku_shared_lair_choku, "object/tangible/lair/choku/shared_lair_choku.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_choku_shared_lair_choku, "object/tangible/lair/choku/shared_lair_choku.iff")
 
 object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTempla
 	clientObjectCRC = 1812548247
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_choku_shared_lair_choku_jungle, "object/tangible/lair/choku/shared_lair_choku_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_choku_shared_lair_choku_jungle, "object/tangible/lair/choku/shared_lair_choku_jungle.iff")

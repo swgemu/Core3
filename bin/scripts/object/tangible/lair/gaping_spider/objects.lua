@@ -48,6 +48,7 @@ object_tangible_lair_gaping_spider_shared_lair_gaping_spider = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gaping_spider_shared_lair_gaping_spider = SharedTangibleObj
 	clientObjectCRC = 3319780027
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gaping_spider_shared_lair_gaping_spider, "object/tangible/lair/gaping_spider/shared_lair_gaping_spider.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gaping_spider_shared_lair_gaping_spider, "object/tangible/lair/gaping_spider/shared_lair_gaping_spider.iff")
 
 object_tangible_lair_gaping_spider_shared_lair_gaping_spider_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gaping_spider_shared_lair_gaping_spider_forest = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_gaping_spider_shared_lair_gaping_spider_forest = SharedTang
 	clientObjectCRC = 1706419842
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gaping_spider_shared_lair_gaping_spider_forest, "object/tangible/lair/gaping_spider/shared_lair_gaping_spider_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gaping_spider_shared_lair_gaping_spider_forest, "object/tangible/lair/gaping_spider/shared_lair_gaping_spider_forest.iff")

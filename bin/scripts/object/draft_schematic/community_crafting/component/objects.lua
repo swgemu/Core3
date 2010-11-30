@@ -47,6 +47,7 @@ object_draft_schematic_community_crafting_component_shared_connections = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_community_crafting_component_shared_connections = SharedD
 	clientObjectCRC = 4055607250
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_connections, "object/draft_schematic/community_crafting/component/shared_connections.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_connections, "object/draft_schematic/community_crafting/component/shared_connections.iff")
 
 object_draft_schematic_community_crafting_component_shared_endrost = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_community_crafting_component_shared_endrost = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_community_crafting_component_shared_endrost = SharedDraft
 	clientObjectCRC = 2475941003
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_endrost, "object/draft_schematic/community_crafting/component/shared_endrost.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_endrost, "object/draft_schematic/community_crafting/component/shared_endrost.iff")
 
 object_draft_schematic_community_crafting_component_shared_lightweight_turret = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret = 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret = 
 	clientObjectCRC = 2447534688
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret, "object/draft_schematic/community_crafting/component/shared_lightweight_turret.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret, "object/draft_schematic/community_crafting/component/shared_lightweight_turret.iff")
 
 object_draft_schematic_community_crafting_component_shared_lightweight_turret_electronics = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret_el
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret_el
 	clientObjectCRC = 3176161507
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_electronics, "object/draft_schematic/community_crafting/component/shared_lightweight_turret_electronics.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_electronics, "object/draft_schematic/community_crafting/component/shared_lightweight_turret_electronics.iff")
 
 object_draft_schematic_community_crafting_component_shared_lightweight_turret_hardware = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret_ha
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret_ha
 	clientObjectCRC = 3801620264
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_hardware, "object/draft_schematic/community_crafting/component/shared_lightweight_turret_hardware.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_hardware, "object/draft_schematic/community_crafting/component/shared_lightweight_turret_hardware.iff")
 
 object_draft_schematic_community_crafting_component_shared_power_supply = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_community_crafting_component_shared_power_supply = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_community_crafting_component_shared_power_supply = Shared
 	clientObjectCRC = 4259828056
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_power_supply, "object/draft_schematic/community_crafting/component/shared_power_supply.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_power_supply, "object/draft_schematic/community_crafting/component/shared_power_supply.iff")
 
 object_draft_schematic_community_crafting_component_shared_primary_computer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_community_crafting_component_shared_primary_computer = Sh
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_community_crafting_component_shared_primary_computer = Sh
 	clientObjectCRC = 165554499
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_primary_computer, "object/draft_schematic/community_crafting/component/shared_primary_computer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_primary_computer, "object/draft_schematic/community_crafting/component/shared_primary_computer.iff")
 
 object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii =
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii =
 	clientObjectCRC = 1988740242
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii, "object/draft_schematic/community_crafting/component/shared_refined_ardanium_ii.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii, "object/draft_schematic/community_crafting/component/shared_refined_ardanium_ii.iff")
 
 object_draft_schematic_community_crafting_component_shared_refined_endrine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_community_crafting_component_shared_refined_endrine = Sha
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_community_crafting_component_shared_refined_endrine = Sha
 	clientObjectCRC = 3315144456
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_refined_endrine, "object/draft_schematic/community_crafting/component/shared_refined_endrine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_endrine, "object/draft_schematic/community_crafting/component/shared_refined_endrine.iff")
 
 object_draft_schematic_community_crafting_component_shared_refined_rudic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_community_crafting_component_shared_refined_rudic = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_community_crafting_component_shared_refined_rudic = Share
 	clientObjectCRC = 1152625889
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_refined_rudic, "object/draft_schematic/community_crafting/component/shared_refined_rudic.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_rudic, "object/draft_schematic/community_crafting/component/shared_refined_rudic.iff")
 
 object_draft_schematic_community_crafting_component_shared_regulator = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_community_crafting_component_shared_regulator = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_community_crafting_component_shared_regulator = SharedDra
 	clientObjectCRC = 3007982575
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_regulator, "object/draft_schematic/community_crafting/component/shared_regulator.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_regulator, "object/draft_schematic/community_crafting/component/shared_regulator.iff")
 
 object_draft_schematic_community_crafting_component_shared_reinforced_wall_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_community_crafting_component_shared_reinforced_wall_modul
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_community_crafting_component_shared_reinforced_wall_modul
 	clientObjectCRC = 426210556
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_reinforced_wall_module, "object/draft_schematic/community_crafting/component/shared_reinforced_wall_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_reinforced_wall_module, "object/draft_schematic/community_crafting/component/shared_reinforced_wall_module.iff")
 
 object_draft_schematic_community_crafting_component_shared_shield_housing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_community_crafting_component_shared_shield_housing = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_community_crafting_component_shared_shield_housing = Shar
 	clientObjectCRC = 4054564743
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_shield_housing, "object/draft_schematic/community_crafting/component/shared_shield_housing.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_shield_housing, "object/draft_schematic/community_crafting/component/shared_shield_housing.iff")
 
 object_draft_schematic_community_crafting_component_shared_unit_computer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_community_crafting_component_shared_unit_computer = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,4 +655,4 @@ object_draft_schematic_community_crafting_component_shared_unit_computer = Share
 	clientObjectCRC = 866494494
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_component_shared_unit_computer, "object/draft_schematic/community_crafting/component/shared_unit_computer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_unit_computer, "object/draft_schematic/community_crafting/component/shared_unit_computer.iff")

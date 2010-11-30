@@ -48,6 +48,7 @@ object_tangible_lair_flewt_shared_lair_flewt = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_flewt_shared_lair_flewt = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2542789035
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt, "object/tangible/lair/flewt/shared_lair_flewt.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt, "object/tangible/lair/flewt/shared_lair_flewt.iff")
 
 object_tangible_lair_flewt_shared_lair_flewt_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_flewt_shared_lair_flewt_forest = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_flewt_shared_lair_flewt_forest = SharedTangibleObjectTempla
 	clientObjectCRC = 1133603735
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt_forest, "object/tangible/lair/flewt/shared_lair_flewt_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt_forest, "object/tangible/lair/flewt/shared_lair_flewt_forest.iff")
 
 object_tangible_lair_flewt_shared_lair_flewt_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_flewt_shared_lair_flewt_grassland = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_flewt_shared_lair_flewt_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 2897911206
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt_grassland, "object/tangible/lair/flewt/shared_lair_flewt_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt_grassland, "object/tangible/lair/flewt/shared_lair_flewt_grassland.iff")

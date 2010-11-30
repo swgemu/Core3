@@ -49,6 +49,7 @@ object_weapon_ranged_grenade_base_shared_grenade_base = SharedWeaponObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131075,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_ranged_grenade_base_shared_grenade_base = SharedWeaponObjectTempla
 	clientObjectCRC = 3903774700
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_base_shared_grenade_base, "object/weapon/ranged/grenade/base/shared_grenade_base.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_grenade_base_shared_grenade_base, "object/weapon/ranged/grenade/base/shared_grenade_base.iff")

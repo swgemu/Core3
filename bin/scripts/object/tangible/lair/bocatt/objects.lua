@@ -48,6 +48,7 @@ object_tangible_lair_bocatt_shared_lair_bocatt = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_bocatt_shared_lair_bocatt = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 465155974
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt, "object/tangible/lair/bocatt/shared_lair_bocatt.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt, "object/tangible/lair/bocatt/shared_lair_bocatt.iff")
 
 object_tangible_lair_bocatt_shared_lair_bocatt_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_bocatt_shared_lair_bocatt_grassland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_bocatt_shared_lair_bocatt_grassland = SharedTangibleObjectT
 	clientObjectCRC = 3263722419
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_grassland, "object/tangible/lair/bocatt/shared_lair_bocatt_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_grassland, "object/tangible/lair/bocatt/shared_lair_bocatt_grassland.iff")
 
 object_tangible_lair_bocatt_shared_lair_bocatt_hills = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_bocatt_shared_lair_bocatt_hills = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_bocatt_shared_lair_bocatt_hills = SharedTangibleObjectTempl
 	clientObjectCRC = 3197548002
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_hills, "object/tangible/lair/bocatt/shared_lair_bocatt_hills.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_hills, "object/tangible/lair/bocatt/shared_lair_bocatt_hills.iff")

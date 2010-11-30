@@ -48,6 +48,7 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite = SharedTangibleObjectTempl
 	clientObjectCRC = 382017471
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite, "object/tangible/lair/bark_mite/shared_lair_bark_mite.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite, "object/tangible/lair/bark_mite/shared_lair_bark_mite.iff")
 
 object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland = SharedTangibleO
 	clientObjectCRC = 3158646685
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland, "object/tangible/lair/bark_mite/shared_lair_bark_mite_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland, "object/tangible/lair/bark_mite/shared_lair_bark_mite_grassland.iff")
 
 object_tangible_lair_bark_mite_shared_lair_bark_mite_hills = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_hills = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_hills = SharedTangibleObjec
 	clientObjectCRC = 1801002251
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_hills, "object/tangible/lair/bark_mite/shared_lair_bark_mite_hills.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_hills, "object/tangible/lair/bark_mite/shared_lair_bark_mite_hills.iff")

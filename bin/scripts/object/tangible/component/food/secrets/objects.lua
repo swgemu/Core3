@@ -48,6 +48,7 @@ object_tangible_component_food_secrets_shared_secret_base = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_food_secrets_shared_secret_base = SharedTangibleObject
 	clientObjectCRC = 4005001840
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_base, "object/tangible/component/food/secrets/shared_secret_base.iff")
+ObjectTemplates:addTemplate(object_tangible_component_food_secrets_shared_secret_base, "object/tangible/component/food/secrets/shared_secret_base.iff")
 
 object_tangible_component_food_secrets_shared_secret_imperial_biochem = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -101,6 +102,7 @@ object_tangible_component_food_secrets_shared_secret_imperial_biochem = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_food_secrets_shared_secret_imperial_biochem = SharedTa
 	clientObjectCRC = 2542399223
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_imperial_biochem, "object/tangible/component/food/secrets/shared_secret_imperial_biochem.iff")
+ObjectTemplates:addTemplate(object_tangible_component_food_secrets_shared_secret_imperial_biochem, "object/tangible/component/food/secrets/shared_secret_imperial_biochem.iff")
 
 object_tangible_component_food_secrets_shared_secret_rebel_biochem = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -154,6 +156,7 @@ object_tangible_component_food_secrets_shared_secret_rebel_biochem = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_component_food_secrets_shared_secret_rebel_biochem = SharedTangi
 	clientObjectCRC = 1836800845
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_rebel_biochem, "object/tangible/component/food/secrets/shared_secret_rebel_biochem.iff")
+ObjectTemplates:addTemplate(object_tangible_component_food_secrets_shared_secret_rebel_biochem, "object/tangible/component/food/secrets/shared_secret_rebel_biochem.iff")

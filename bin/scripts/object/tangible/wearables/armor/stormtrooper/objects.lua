@@ -48,6 +48,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l =
 	clientObjectCRC = 1002440220
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_l.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_bicep_r_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r =
 	clientObjectCRC = 1259684751
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_r.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_boots_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = S
 	clientObjectCRC = 2016668118
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_boots.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_bracer_l_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l 
 	clientObjectCRC = 2538033013
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_l.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_bracer_r_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r 
 	clientObjectCRC = 3885107942
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_r.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 	clientObjectCRC = 253917454
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 	clientObjectCRC = 1122862762
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate_quest.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_gloves_m.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = 
 	clientObjectCRC = 1918468725
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_gloves.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_gloves.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_helmet_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = 
 	clientObjectCRC = 3298386813
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_helmet_f.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_qu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_qu
 	clientObjectCRC = 880764068
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet_quest.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_leggings_f.sat",
@@ -578,6 +588,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings 
 	clientObjectCRC = 409178730
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_leggings_f.sat",
@@ -631,6 +642,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_
 	clientObjectCRC = 3027159239
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings_quest.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_utility_belt_m.sat",
@@ -684,6 +696,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_b
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 259,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,4 +741,4 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_b
 	clientObjectCRC = 1212660794
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_utility_belt.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_utility_belt.iff")

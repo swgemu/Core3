@@ -48,6 +48,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_large_deed = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_large_deed = Shared
 	clientObjectCRC = 2929915649
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_large_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_large_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_large_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_large_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -101,6 +102,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed
 	clientObjectCRC = 235215989
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_large_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_large_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -154,6 +156,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed = Share
 	clientObjectCRC = 2084610037
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_medium_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_medium_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -207,6 +210,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_dee
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -217,7 +221,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_dee
 	containerVolumeLimit = 1,
 	customizationVariableMapping = {},
 
-	detailedDescription = "@deed_detail:corellia_house_medium_deed",
+	detailedDescription = "@deed_detail:corellia_house_medium_style_2_deed",
 
 	gameObjectType = 8388609,
 
@@ -251,7 +255,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_dee
 	clientObjectCRC = 2451032772
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_medium_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_medium_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_corellia_house_small_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -260,6 +264,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_deed = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_deed = Shared
 	clientObjectCRC = 3995398562
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -313,6 +318,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed
 	clientObjectCRC = 4236382032
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_floor_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_floor_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -366,6 +372,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed
 	clientObjectCRC = 2362914922
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floor_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -419,6 +426,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floo
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floo
 	clientObjectCRC = 3176020474
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floor_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_floor_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floor_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_floor_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_generic_house_large_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -472,6 +480,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_large_deed = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_large_deed = SharedT
 	clientObjectCRC = 1741240035
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_large_deed, "object/tangible/deed/player_house_deed/shared_generic_house_large_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_large_deed, "object/tangible/deed/player_house_deed/shared_generic_house_large_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -525,6 +534,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed 
 	clientObjectCRC = 3587608428
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_large_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_large_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_generic_house_medium_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -578,6 +588,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_medium_deed = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_medium_deed = Shared
 	clientObjectCRC = 1757551971
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_medium_deed, "object/tangible/deed/player_house_deed/shared_generic_house_medium_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_medium_deed, "object/tangible/deed/player_house_deed/shared_generic_house_medium_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -631,6 +642,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed
 	clientObjectCRC = 2069123916
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_medium_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_medium_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_generic_house_small_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -684,6 +696,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_deed = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_deed = SharedT
 	clientObjectCRC = 659501120
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -737,6 +750,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed 
 	clientObjectCRC = 659659849
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_floor_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_floor_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -790,6 +804,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed 
 	clientObjectCRC = 1459923827
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -843,6 +858,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor
 	clientObjectCRC = 1914522978
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_style_02_floor_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_style_02_floor_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -896,6 +912,7 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed = Shar
 	clientObjectCRC = 2826097149
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_01_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_01_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -949,6 +966,7 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed = Shar
 	clientObjectCRC = 755117283
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1002,6 +1020,7 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388608,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed = Shar
 	clientObjectCRC = 2912062596
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_03_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_03_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_naboo_house_large_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1055,6 +1074,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_large_deed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_large_deed = SharedTan
 	clientObjectCRC = 2425408276
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_large_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_large_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_large_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_large_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1108,6 +1128,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed = SharedTa
 	clientObjectCRC = 2797619055
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_medium_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_medium_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1161,6 +1182,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed =
 	clientObjectCRC = 3999622538
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_medium_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_medium_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_naboo_house_small_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1214,6 +1236,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_small_deed = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_small_deed = SharedTan
 	clientObjectCRC = 3491155383
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_small_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_small_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_small_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_small_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1267,6 +1290,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed = 
 	clientObjectCRC = 4010454053
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_small_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_small_style_02_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1320,6 +1344,7 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed = Shared
 	clientObjectCRC = 117213262
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_large_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_large_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1373,6 +1398,7 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed = Share
 	clientObjectCRC = 4112018243
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_medium_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_medium_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1426,6 +1452,7 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed = Shared
 	clientObjectCRC = 1182437101
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_small_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_small_deed.iff")
 
 object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -1479,6 +1506,7 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,4 +1551,4 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed
 	clientObjectCRC = 2199454599
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_small_style_02_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_small_style_02_deed.iff")

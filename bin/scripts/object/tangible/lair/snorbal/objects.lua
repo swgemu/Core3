@@ -48,6 +48,7 @@ object_tangible_lair_snorbal_shared_lair_snorbal = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_snorbal_shared_lair_snorbal = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3190753462
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, "object/tangible/lair/snorbal/shared_lair_snorbal.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, "object/tangible/lair/snorbal/shared_lair_snorbal.iff")
 
 object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjec
 	clientObjectCRC = 1664191883
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, "object/tangible/lair/snorbal/shared_lair_snorbal_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, "object/tangible/lair/snorbal/shared_lair_snorbal_grassland.iff")

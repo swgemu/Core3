@@ -49,6 +49,7 @@ object_weapon_melee_2h_sword_base_shared_2h_sword_base = SharedWeaponObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_sword_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_melee_2h_sword_base_shared_2h_sword_base = SharedWeaponObjectTempl
 	clientObjectCRC = 3231039364
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_base_shared_2h_sword_base, "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_base_shared_2h_sword_base, "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff")
 
 object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -106,6 +107,7 @@ object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,4 +155,4 @@ object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponO
 	clientObjectCRC = 3974479430
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base, "object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base, "object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff")

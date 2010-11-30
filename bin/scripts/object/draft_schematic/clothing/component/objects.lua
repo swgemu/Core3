@@ -47,6 +47,7 @@ object_draft_schematic_clothing_component_shared_clothing_cargo_pocket = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_clothing_component_shared_clothing_cargo_pocket = SharedD
 	clientObjectCRC = 217803170
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_cargo_pocket, "object/draft_schematic/clothing/component/shared_clothing_cargo_pocket.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_cargo_pocket, "object/draft_schematic/clothing/component/shared_clothing_cargo_pocket.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_component = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_clothing_component_shared_clothing_component = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_clothing_component_shared_clothing_component = SharedDraf
 	clientObjectCRC = 2902252643
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_component, "object/draft_schematic/clothing/component/shared_clothing_component.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_component, "object/draft_schematic/clothing/component/shared_clothing_component.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_component_base = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_clothing_component_shared_clothing_component_base = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_clothing_component_shared_clothing_component_base = Share
 	clientObjectCRC = 3235529113
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_component_base, "object/draft_schematic/clothing/component/shared_clothing_component_base.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_component_base, "object/draft_schematic/clothing/component/shared_clothing_component_base.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = Sha
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = Sha
 	clientObjectCRC = 656345238
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel, "object/draft_schematic/clothing/component/shared_clothing_fiberplast_panel.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel, "object/draft_schematic/clothing/component/shared_clothing_fiberplast_panel.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = Shar
 	clientObjectCRC = 3119926044
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_jewelry_setting, "object/draft_schematic/clothing/component/shared_clothing_jewelry_setting.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_jewelry_setting, "object/draft_schematic/clothing/component/shared_clothing_jewelry_setting.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = Shar
 	clientObjectCRC = 196841582
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_metal_fasteners, "object/draft_schematic/clothing/component/shared_clothing_metal_fasteners.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_metal_fasteners, "object/draft_schematic/clothing/component/shared_clothing_metal_fasteners.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_padding_segment = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_clothing_component_shared_clothing_padding_segment = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_clothing_component_shared_clothing_padding_segment = Shar
 	clientObjectCRC = 1984198906
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_padding_segment, "object/draft_schematic/clothing/component/shared_clothing_padding_segment.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_padding_segment, "object/draft_schematic/clothing/component/shared_clothing_padding_segment.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panel
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panel
 	clientObjectCRC = 394655839
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels, "object/draft_schematic/clothing/component/shared_clothing_reinforced_fiber_panels.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels, "object/draft_schematic/clothing/component/shared_clothing_reinforced_fiber_panels.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraf
 	clientObjectCRC = 794389103
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_shoe_sole, "object/draft_schematic/clothing/component/shared_clothing_shoe_sole.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_shoe_sole, "object/draft_schematic/clothing/component/shared_clothing_shoe_sole.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = Shar
 	clientObjectCRC = 329274185
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth, "object/draft_schematic/clothing/component/shared_clothing_synthetic_cloth.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth, "object/draft_schematic/clothing/component/shared_clothing_synthetic_cloth.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,4 +523,4 @@ object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSche
 	clientObjectCRC = 3996452682
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_trim, "object/draft_schematic/clothing/component/shared_clothing_trim.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_trim, "object/draft_schematic/clothing/component/shared_clothing_trim.iff")

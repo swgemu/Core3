@@ -48,6 +48,7 @@ object_tangible_destructible_wreckage_shared_wreck_starship_small_01 = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/newbie_tutorial/shared_debris.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_destructible_wreckage_shared_wreck_starship_small_01 = SharedTan
 	clientObjectCRC = 551874414
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_destructible_wreckage_shared_wreck_starship_small_01, "object/tangible/destructible/wreckage/shared_wreck_starship_small_01.iff")
+ObjectTemplates:addTemplate(object_tangible_destructible_wreckage_shared_wreck_starship_small_01, "object/tangible/destructible/wreckage/shared_wreck_starship_small_01.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset = SharedTangibleObjectTemplat
 	clientObjectCRC = 3508293768
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset, "object/tangible/lair/gurnaset/shared_lair_gurnaset.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset, "object/tangible/lair/gurnaset/shared_lair_gurnaset.iff")
 
 object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland = SharedTangibleObj
 	clientObjectCRC = 535348522
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland, "object/tangible/lair/gurnaset/shared_lair_gurnaset_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland, "object/tangible/lair/gurnaset/shared_lair_gurnaset_grassland.iff")
 
 object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain = SharedTangibleObje
 	clientObjectCRC = 3153084894
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain, "object/tangible/lair/gurnaset/shared_lair_gurnaset_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain, "object/tangible/lair/gurnaset/shared_lair_gurnaset_mountain.iff")

@@ -48,6 +48,7 @@ object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777228,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObje
 	clientObjectCRC = 389872487
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_leggings_s01, "object/tangible/wearables/bikini/shared_bikini_leggings_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_leggings_s01, "object/tangible/wearables/bikini/shared_bikini_leggings_s01.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s01_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 798815144
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s01, "object/tangible/wearables/bikini/shared_bikini_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s01, "object/tangible/wearables/bikini/shared_bikini_s01.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s02_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplat
 	clientObjectCRC = 4102773567
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s02, "object/tangible/wearables/bikini/shared_bikini_s02.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s02, "object/tangible/wearables/bikini/shared_bikini_s02.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s03_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3179691186
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s03, "object/tangible/wearables/bikini/shared_bikini_s03.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s03, "object/tangible/wearables/bikini/shared_bikini_s03.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s04_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1181030310
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s04, "object/tangible/wearables/bikini/shared_bikini_s04.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s04, "object/tangible/wearables/bikini/shared_bikini_s04.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg = SharedTangibleObjectTempl
 	clientObjectCRC = 2875084691
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg.iff")
 
 object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleO
 	clientObjectCRC = 4195556845
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_grassland.iff")
 
 object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObje
 	clientObjectCRC = 3851962696
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_jungle.iff")

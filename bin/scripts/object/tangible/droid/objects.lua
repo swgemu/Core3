@@ -48,6 +48,7 @@ object_tangible_droid_shared_droid_space_memory_module_1 = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8226,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_droid_shared_droid_space_memory_module_1 = SharedTangibleObjectT
 	clientObjectCRC = 240821599
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_droid_space_memory_module_1, "object/tangible/droid/shared_droid_space_memory_module_1.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_droid_space_memory_module_1, "object/tangible/droid/shared_droid_space_memory_module_1.iff")
 
 object_tangible_droid_shared_droid_space_memory_module_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_droid_shared_droid_space_memory_module_base = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8226,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_droid_shared_droid_space_memory_module_base = SharedTangibleObje
 	clientObjectCRC = 2856908563
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_droid_space_memory_module_base, "object/tangible/droid/shared_droid_space_memory_module_base.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_droid_space_memory_module_base, "object/tangible/droid/shared_droid_space_memory_module_base.iff")
 
 object_tangible_droid_shared_navicomputer_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_droid_shared_navicomputer_1 = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {"cert_droid_astromech_1"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388612,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_droid_shared_navicomputer_1 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1883811803
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_1, "object/tangible/droid/shared_navicomputer_1.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_1, "object/tangible/droid/shared_navicomputer_1.iff")
 
 object_tangible_droid_shared_navicomputer_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_droid_shared_navicomputer_2 = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {"cert_droid_astromech_2"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388612,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_droid_shared_navicomputer_2 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2875131724
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_2, "object/tangible/droid/shared_navicomputer_2.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_2, "object/tangible/droid/shared_navicomputer_2.iff")
 
 object_tangible_droid_shared_navicomputer_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_droid_shared_navicomputer_3 = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {"cert_droid_astromech_3"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388612,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_droid_shared_navicomputer_3 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3797049537
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_3, "object/tangible/droid/shared_navicomputer_3.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_3, "object/tangible/droid/shared_navicomputer_3.iff")
 
 object_tangible_droid_shared_navicomputer_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_droid_shared_navicomputer_4 = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {"cert_droid_astromech_4"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388612,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_droid_shared_navicomputer_4 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 431049685
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_4, "object/tangible/droid/shared_navicomputer_4.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_4, "object/tangible/droid/shared_navicomputer_4.iff")
 
 object_tangible_droid_shared_navicomputer_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_droid_shared_navicomputer_5 = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {"cert_droid_astromech_5"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388612,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_droid_shared_navicomputer_5 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1354509400
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_5, "object/tangible/droid/shared_navicomputer_5.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_5, "object/tangible/droid/shared_navicomputer_5.iff")
 
 object_tangible_droid_shared_navicomputer_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_droid_shared_navicomputer_6 = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {"cert_droid_astromech_6"},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388612,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_droid_shared_navicomputer_6 = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2343273679
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_6, "object/tangible/droid/shared_navicomputer_6.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_6, "object/tangible/droid/shared_navicomputer_6.iff")
 
 object_tangible_droid_shared_navicomputer_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -472,6 +480,7 @@ object_tangible_droid_shared_navicomputer_base = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388612,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,4 +525,4 @@ object_tangible_droid_shared_navicomputer_base = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3955479203
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_base, "object/tangible/droid/shared_navicomputer_base.iff")
+ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_base, "object/tangible/droid/shared_navicomputer_base.iff")

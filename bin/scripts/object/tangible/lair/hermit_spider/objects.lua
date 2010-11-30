@@ -48,6 +48,7 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider = SharedTangibleObj
 	clientObjectCRC = 3720772749
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider.iff")
 
 object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTa
 	clientObjectCRC = 202240792
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_mountain.iff")
 
 object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedT
 	clientObjectCRC = 1727414364
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_wasteland.iff")

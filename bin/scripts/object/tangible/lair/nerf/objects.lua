@@ -48,6 +48,7 @@ object_tangible_lair_nerf_shared_lair_nerf = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_nerf_shared_lair_nerf = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2431052313
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_nerf_shared_lair_nerf, "object/tangible/lair/nerf/shared_lair_nerf.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf, "object/tangible/lair/nerf/shared_lair_nerf.iff")
 
 object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 2861606931
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_nerf_shared_lair_nerf_grassland, "object/tangible/lair/nerf/shared_lair_nerf_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf_grassland, "object/tangible/lair/nerf/shared_lair_nerf_grassland.iff")

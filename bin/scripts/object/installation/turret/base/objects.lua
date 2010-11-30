@@ -48,6 +48,7 @@ object_installation_turret_base_shared_turret_base = SharedInstallationObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_block_large.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_turret_base_shared_turret_base = SharedInstallationObjectTem
 	clientObjectCRC = 646823895
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_base_shared_turret_base, "object/installation/turret/base/shared_turret_base.iff")
+ObjectTemplates:addTemplate(object_installation_turret_base_shared_turret_base, "object/installation/turret/base/shared_turret_base.iff")

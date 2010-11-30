@@ -47,6 +47,7 @@ object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:n
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:n
 	clientObjectCRC = 2322781790
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_theater_shared_base_theater, "object/intangible/theater/shared_base_theater.iff")
+ObjectTemplates:addTemplate(object_intangible_theater_shared_base_theater, "object/intangible/theater/shared_base_theater.iff")

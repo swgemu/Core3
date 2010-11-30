@@ -47,6 +47,7 @@ object_draft_schematic_structure_city_shared_bank_corellia = SharedDraftSchemati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_structure_city_shared_bank_corellia = SharedDraftSchemati
 	clientObjectCRC = 1957527431
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_bank_corellia, "object/draft_schematic/structure/city/shared_bank_corellia.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_corellia, "object/draft_schematic/structure/city/shared_bank_corellia.iff")
 
 object_draft_schematic_structure_city_shared_bank_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_structure_city_shared_bank_naboo = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_structure_city_shared_bank_naboo = SharedDraftSchematicOb
 	clientObjectCRC = 1356737706
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_bank_naboo, "object/draft_schematic/structure/city/shared_bank_naboo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_naboo, "object/draft_schematic/structure/city/shared_bank_naboo.iff")
 
 object_draft_schematic_structure_city_shared_bank_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_structure_city_shared_bank_tatooine = SharedDraftSchemati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_structure_city_shared_bank_tatooine = SharedDraftSchemati
 	clientObjectCRC = 1223564824
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_bank_tatooine, "object/draft_schematic/structure/city/shared_bank_tatooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_tatooine, "object/draft_schematic/structure/city/shared_bank_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_cantina_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_structure_city_shared_cantina_corellia = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_structure_city_shared_cantina_corellia = SharedDraftSchem
 	clientObjectCRC = 922879724
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cantina_corellia, "object/draft_schematic/structure/city/shared_cantina_corellia.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_corellia, "object/draft_schematic/structure/city/shared_cantina_corellia.iff")
 
 object_draft_schematic_structure_city_shared_cantina_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_structure_city_shared_cantina_naboo = SharedDraftSchemati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_structure_city_shared_cantina_naboo = SharedDraftSchemati
 	clientObjectCRC = 1642793186
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cantina_naboo, "object/draft_schematic/structure/city/shared_cantina_naboo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_naboo, "object/draft_schematic/structure/city/shared_cantina_naboo.iff")
 
 object_draft_schematic_structure_city_shared_cantina_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_structure_city_shared_cantina_tatooine = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_structure_city_shared_cantina_tatooine = SharedDraftSchem
 	clientObjectCRC = 188835699
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cantina_tatooine, "object/draft_schematic/structure/city/shared_cantina_tatooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_tatooine, "object/draft_schematic/structure/city/shared_cantina_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_cityhall_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_structure_city_shared_cityhall_corellia = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_structure_city_shared_cityhall_corellia = SharedDraftSche
 	clientObjectCRC = 4052243419
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cityhall_corellia, "object/draft_schematic/structure/city/shared_cityhall_corellia.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_corellia, "object/draft_schematic/structure/city/shared_cityhall_corellia.iff")
 
 object_draft_schematic_structure_city_shared_cityhall_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_structure_city_shared_cityhall_naboo = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_structure_city_shared_cityhall_naboo = SharedDraftSchemat
 	clientObjectCRC = 4095160852
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cityhall_naboo, "object/draft_schematic/structure/city/shared_cityhall_naboo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_naboo, "object/draft_schematic/structure/city/shared_cityhall_naboo.iff")
 
 object_draft_schematic_structure_city_shared_cityhall_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_structure_city_shared_cityhall_tatooine = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_structure_city_shared_cityhall_tatooine = SharedDraftSche
 	clientObjectCRC = 3452645956
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cityhall_tatooine, "object/draft_schematic/structure/city/shared_cityhall_tatooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_tatooine, "object/draft_schematic/structure/city/shared_cityhall_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_cloning_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_structure_city_shared_cloning_corellia = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_structure_city_shared_cloning_corellia = SharedDraftSchem
 	clientObjectCRC = 3102761064
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cloning_corellia, "object/draft_schematic/structure/city/shared_cloning_corellia.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_corellia, "object/draft_schematic/structure/city/shared_cloning_corellia.iff")
 
 object_draft_schematic_structure_city_shared_cloning_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_structure_city_shared_cloning_naboo = SharedDraftSchemati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_structure_city_shared_cloning_naboo = SharedDraftSchemati
 	clientObjectCRC = 2637377287
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cloning_naboo, "object/draft_schematic/structure/city/shared_cloning_naboo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_naboo, "object/draft_schematic/structure/city/shared_cloning_naboo.iff")
 
 object_draft_schematic_structure_city_shared_cloning_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_structure_city_shared_cloning_tatooine = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_structure_city_shared_cloning_tatooine = SharedDraftSchem
 	clientObjectCRC = 2226323959
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cloning_tatooine, "object/draft_schematic/structure/city/shared_cloning_tatooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_tatooine, "object/draft_schematic/structure/city/shared_cloning_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_garage_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_structure_city_shared_garage_corellia = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_structure_city_shared_garage_corellia = SharedDraftSchema
 	clientObjectCRC = 2511913384
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garage_corellia, "object/draft_schematic/structure/city/shared_garage_corellia.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_corellia, "object/draft_schematic/structure/city/shared_garage_corellia.iff")
 
 object_draft_schematic_structure_city_shared_garage_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_structure_city_shared_garage_naboo = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_structure_city_shared_garage_naboo = SharedDraftSchematic
 	clientObjectCRC = 3583461183
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garage_naboo, "object/draft_schematic/structure/city/shared_garage_naboo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_naboo, "object/draft_schematic/structure/city/shared_garage_naboo.iff")
 
 object_draft_schematic_structure_city_shared_garage_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_structure_city_shared_garage_tatooine = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_structure_city_shared_garage_tatooine = SharedDraftSchema
 	clientObjectCRC = 2851840055
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garage_tatooine, "object/draft_schematic/structure/city/shared_garage_tatooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_tatooine, "object/draft_schematic/structure/city/shared_garage_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_garden_exotic_dantooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_structure_city_shared_garden_exotic_dantooine = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_structure_city_shared_garden_exotic_dantooine = SharedDra
 	clientObjectCRC = 191116922
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dantooine, "object/draft_schematic/structure/city/shared_garden_exotic_dantooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dantooine, "object/draft_schematic/structure/city/shared_garden_exotic_dantooine.iff")
 
 object_draft_schematic_structure_city_shared_garden_exotic_dathomir = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_structure_city_shared_garden_exotic_dathomir = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_structure_city_shared_garden_exotic_dathomir = SharedDraf
 	clientObjectCRC = 2283291302
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dathomir, "object/draft_schematic/structure/city/shared_garden_exotic_dathomir.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dathomir, "object/draft_schematic/structure/city/shared_garden_exotic_dathomir.iff")
 
 object_draft_schematic_structure_city_shared_garden_exotic_endor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_structure_city_shared_garden_exotic_endor = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_structure_city_shared_garden_exotic_endor = SharedDraftSc
 	clientObjectCRC = 197575835
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_exotic_endor, "object/draft_schematic/structure/city/shared_garden_exotic_endor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_endor, "object/draft_schematic/structure/city/shared_garden_exotic_endor.iff")
 
 object_draft_schematic_structure_city_shared_garden_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_structure_city_shared_garden_large = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_structure_city_shared_garden_large = SharedDraftSchematic
 	clientObjectCRC = 1276792416
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_large, "object/draft_schematic/structure/city/shared_garden_large.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_large, "object/draft_schematic/structure/city/shared_garden_large.iff")
 
 object_draft_schematic_structure_city_shared_garden_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_structure_city_shared_garden_medium = SharedDraftSchemati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_structure_city_shared_garden_medium = SharedDraftSchemati
 	clientObjectCRC = 1356080577
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_medium, "object/draft_schematic/structure/city/shared_garden_medium.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_medium, "object/draft_schematic/structure/city/shared_garden_medium.iff")
 
 object_draft_schematic_structure_city_shared_garden_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_structure_city_shared_garden_small = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_structure_city_shared_garden_small = SharedDraftSchematic
 	clientObjectCRC = 2013387337
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_small, "object/draft_schematic/structure/city/shared_garden_small.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_small, "object/draft_schematic/structure/city/shared_garden_small.iff")
 
 object_draft_schematic_structure_city_shared_hospital_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_structure_city_shared_hospital_corellia = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_structure_city_shared_hospital_corellia = SharedDraftSche
 	clientObjectCRC = 3104967184
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_hospital_corellia, "object/draft_schematic/structure/city/shared_hospital_corellia.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_corellia, "object/draft_schematic/structure/city/shared_hospital_corellia.iff")
 
 object_draft_schematic_structure_city_shared_hospital_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_structure_city_shared_hospital_naboo = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_structure_city_shared_hospital_naboo = SharedDraftSchemat
 	clientObjectCRC = 1804532749
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_hospital_naboo, "object/draft_schematic/structure/city/shared_hospital_naboo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_naboo, "object/draft_schematic/structure/city/shared_hospital_naboo.iff")
 
 object_draft_schematic_structure_city_shared_hospital_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_structure_city_shared_hospital_tatooine = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_structure_city_shared_hospital_tatooine = SharedDraftSche
 	clientObjectCRC = 2236705679
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_hospital_tatooine, "object/draft_schematic/structure/city/shared_hospital_tatooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_tatooine, "object/draft_schematic/structure/city/shared_hospital_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_shuttleport_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_structure_city_shared_shuttleport_corellia = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_structure_city_shared_shuttleport_corellia = SharedDraftS
 	clientObjectCRC = 2673430783
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_shuttleport_corellia, "object/draft_schematic/structure/city/shared_shuttleport_corellia.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_corellia, "object/draft_schematic/structure/city/shared_shuttleport_corellia.iff")
 
 object_draft_schematic_structure_city_shared_shuttleport_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_structure_city_shared_shuttleport_naboo = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_draft_schematic_structure_city_shared_shuttleport_naboo = SharedDraftSche
 	clientObjectCRC = 881536708
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_shuttleport_naboo, "object/draft_schematic/structure/city/shared_shuttleport_naboo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_naboo, "object/draft_schematic/structure/city/shared_shuttleport_naboo.iff")
 
 object_draft_schematic_structure_city_shared_shuttleport_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1165,6 +1191,7 @@ object_draft_schematic_structure_city_shared_shuttleport_tatooine = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_draft_schematic_structure_city_shared_shuttleport_tatooine = SharedDraftS
 	clientObjectCRC = 2736402784
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_shuttleport_tatooine, "object/draft_schematic/structure/city/shared_shuttleport_tatooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_tatooine, "object/draft_schematic/structure/city/shared_shuttleport_tatooine.iff")
 
 object_draft_schematic_structure_city_shared_theater_corellia = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1208,6 +1235,7 @@ object_draft_schematic_structure_city_shared_theater_corellia = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1243,7 +1271,7 @@ object_draft_schematic_structure_city_shared_theater_corellia = SharedDraftSchem
 	clientObjectCRC = 758724611
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_theater_corellia, "object/draft_schematic/structure/city/shared_theater_corellia.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_corellia, "object/draft_schematic/structure/city/shared_theater_corellia.iff")
 
 object_draft_schematic_structure_city_shared_theater_naboo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1251,6 +1279,7 @@ object_draft_schematic_structure_city_shared_theater_naboo = SharedDraftSchemati
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1286,7 +1315,7 @@ object_draft_schematic_structure_city_shared_theater_naboo = SharedDraftSchemati
 	clientObjectCRC = 3113591979
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_theater_naboo, "object/draft_schematic/structure/city/shared_theater_naboo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_naboo, "object/draft_schematic/structure/city/shared_theater_naboo.iff")
 
 object_draft_schematic_structure_city_shared_theater_tatooine = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1294,6 +1323,7 @@ object_draft_schematic_structure_city_shared_theater_tatooine = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1329,4 +1359,4 @@ object_draft_schematic_structure_city_shared_theater_tatooine = SharedDraftSchem
 	clientObjectCRC = 293231004
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_theater_tatooine, "object/draft_schematic/structure/city/shared_theater_tatooine.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_tatooine, "object/draft_schematic/structure/city/shared_theater_tatooine.iff")

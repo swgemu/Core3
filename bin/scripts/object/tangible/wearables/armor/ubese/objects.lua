@@ -48,6 +48,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777217,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier = SharedTangi
 	clientObjectCRC = 3989520572
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bandolier.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bandolier.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_boots_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_boots = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_boots = SharedTangibleO
 	clientObjectCRC = 1207105731
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_boots, "object/tangible/wearables/armor/ubese/shared_armor_ubese_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_boots, "object/tangible/wearables/armor/ubese/shared_armor_ubese_boots.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_bracer_l_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l = SharedTangib
 	clientObjectCRC = 4128606087
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_l.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_bracer_r_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r = SharedTangib
 	clientObjectCRC = 2260779540
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r, "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_r.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_gloves_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves = SharedTangible
 	clientObjectCRC = 1597327192
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves, "object/tangible/wearables/armor/ubese/shared_armor_ubese_gloves.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves, "object/tangible/wearables/armor/ubese/shared_armor_ubese_gloves.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_helmet_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet = SharedTangible
 	clientObjectCRC = 3925190224
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet, "object/tangible/wearables/armor/ubese/shared_armor_ubese_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet, "object/tangible/wearables/armor/ubese/shared_armor_ubese_helmet.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_helmet_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest = SharedTa
 	clientObjectCRC = 1916840424
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_helmet_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_helmet_quest.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_jacket_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket = SharedTangible
 	clientObjectCRC = 3696152390
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket, "object/tangible/wearables/armor/ubese/shared_armor_ubese_jacket.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket, "object/tangible/wearables/armor/ubese/shared_armor_ubese_jacket.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_jacket_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest = SharedTa
 	clientObjectCRC = 3409085291
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_jacket_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_jacket_quest.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_pants = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_pants_f.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants = SharedTangibleO
 	clientObjectCRC = 4188653633
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants, "object/tangible/wearables/armor/ubese/shared_armor_ubese_pants.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants, "object/tangible/wearables/armor/ubese/shared_armor_ubese_pants.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_pants_f.sat",
@@ -578,6 +588,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest = SharedTan
 	clientObjectCRC = 1051305101
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_pants_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest, "object/tangible/wearables/armor/ubese/shared_armor_ubese_pants_quest.iff")
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_shirt_f.sat",
@@ -631,6 +642,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777230,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,4 +687,4 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt = SharedTangibleO
 	clientObjectCRC = 758262636
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt, "object/tangible/wearables/armor/ubese/shared_armor_ubese_shirt.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt, "object/tangible/wearables/armor/ubese/shared_armor_ubese_shirt.iff")

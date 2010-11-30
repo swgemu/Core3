@@ -48,6 +48,7 @@ object_tangible_lair_base_shared_antpile_dark = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_base_shared_antpile_dark = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 326994159
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_antpile_dark, "object/tangible/lair/base/shared_antpile_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_antpile_dark, "object/tangible/lair/base/shared_antpile_dark.iff")
 
 object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1286978231
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_antpile_light, "object/tangible/lair/base/shared_antpile_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_antpile_light, "object/tangible/lair/base/shared_antpile_light.iff")
 
 object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 2767616602
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_bramble_dark, "object/tangible/lair/base/shared_bramble_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_bramble_dark, "object/tangible/lair/base/shared_bramble_dark.iff")
 
 object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1681838796
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_bramble_light, "object/tangible/lair/base/shared_bramble_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_bramble_light, "object/tangible/lair/base/shared_bramble_light.iff")
 
 object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
@@ -260,6 +264,7 @@ object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1710583853
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_cave_small_dark, "object/tangible/lair/base/shared_cave_small_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_cave_small_dark, "object/tangible/lair/base/shared_cave_small_dark.iff")
 
 object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -313,6 +318,7 @@ object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate
 	clientObjectCRC = 1048520930
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_cave_small_light, "object/tangible/lair/base/shared_cave_small_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_cave_small_light, "object/tangible/lair/base/shared_cave_small_light.iff")
 
 object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -366,6 +372,7 @@ object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2097596216
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_earthmound_dark, "object/tangible/lair/base/shared_earthmound_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_earthmound_dark, "object/tangible/lair/base/shared_earthmound_dark.iff")
 
 object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
@@ -419,6 +426,7 @@ object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate
 	clientObjectCRC = 2815494954
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_earthmound_light, "object/tangible/lair/base/shared_earthmound_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_earthmound_light, "object/tangible/lair/base/shared_earthmound_light.iff")
 
 object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -472,6 +480,7 @@ object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3530316477
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base, "object/tangible/lair/base/shared_lair_base.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base, "object/tangible/lair/base/shared_lair_base.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -525,6 +534,7 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObj
 	clientObjectCRC = 3488597328
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_dark, "object/tangible/lair/base/shared_lair_base_cave_griffon_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_dark, "object/tangible/lair/base/shared_lair_base_cave_griffon_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -578,6 +588,7 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleOb
 	clientObjectCRC = 4201633082
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_light, "object/tangible/lair/base/shared_lair_base_cave_griffon_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_light, "object/tangible/lair/base/shared_lair_base_cave_griffon_light.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -631,6 +642,7 @@ object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObject
 	clientObjectCRC = 552648551
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_dark, "object/tangible/lair/base/shared_lair_base_cave_lion_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_dark, "object/tangible/lair/base/shared_lair_base_cave_lion_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -684,6 +696,7 @@ object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjec
 	clientObjectCRC = 418609662
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_light, "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_light, "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff")
 
 object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -737,6 +750,7 @@ object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTe
 	clientObjectCRC = 3148303792
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_crevice_dark, "object/tangible/lair/base/shared_lair_base_crevice_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_crevice_dark, "object/tangible/lair/base/shared_lair_base_crevice_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -790,6 +804,7 @@ object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectT
 	clientObjectCRC = 1096244737
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_crevice_light, "object/tangible/lair/base/shared_lair_base_crevice_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_crevice_light, "object/tangible/lair/base/shared_lair_base_crevice_light.iff")
 
 object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -843,6 +858,7 @@ object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObje
 	clientObjectCRC = 3561390098
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_dark, "object/tangible/lair/base/shared_lair_base_den_earthen_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_dark, "object/tangible/lair/base/shared_lair_base_den_earthen_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
@@ -896,6 +912,7 @@ object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObj
 	clientObjectCRC = 879789867
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_light, "object/tangible/lair/base/shared_lair_base_den_earthen_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_light, "object/tangible/lair/base/shared_lair_base_den_earthen_light.iff")
 
 object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_sandstone_hovel_s01.apt",
@@ -949,6 +966,7 @@ object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:
 	clientObjectCRC = 734574174
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_hovel, "object/tangible/lair/base/shared_lair_base_hovel.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_hovel, "object/tangible/lair/base/shared_lair_base_hovel.iff")
 
 object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
@@ -1002,6 +1020,7 @@ object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObject
 	clientObjectCRC = 3776501697
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_imperial_guard, "object/tangible/lair/base/shared_lair_base_imperial_guard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_imperial_guard, "object/tangible/lair/base/shared_lair_base_imperial_guard.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -1055,6 +1074,7 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleOb
 	clientObjectCRC = 2387382663
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_dark, "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_dark, "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_tatt.apt",
@@ -1108,6 +1128,7 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleO
 	clientObjectCRC = 1769762810
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_light, "object/tangible/lair/base/shared_lair_base_mound_bramble_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_light, "object/tangible/lair/base/shared_lair_base_mound_bramble_light.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -1161,6 +1182,7 @@ object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObj
 	clientObjectCRC = 3360926461
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_dark, "object/tangible/lair/base/shared_lair_base_mound_insect_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_dark, "object/tangible/lair/base/shared_lair_base_mound_insect_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -1214,6 +1236,7 @@ object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleOb
 	clientObjectCRC = 1481058367
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_light, "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_light, "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
@@ -1267,6 +1290,7 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleO
 	clientObjectCRC = 1671618921
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark, "object/tangible/lair/base/shared_lair_base_nest_ground_lg_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark, "object/tangible/lair/base/shared_lair_base_nest_ground_lg_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -1320,6 +1344,7 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangible
 	clientObjectCRC = 1936204112
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_light, "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_light, "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
@@ -1373,6 +1398,7 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObj
 	clientObjectCRC = 3610220706
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark, "object/tangible/lair/base/shared_lair_base_nest_tree_lg_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark, "object/tangible/lair/base/shared_lair_base_nest_tree_lg_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
@@ -1426,6 +1452,7 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleOb
 	clientObjectCRC = 1344999922
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_light, "object/tangible/lair/base/shared_lair_base_nest_tree_lg_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_light, "object/tangible/lair/base/shared_lair_base_nest_tree_lg_light.iff")
 
 object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -1479,6 +1506,7 @@ object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTem
 	clientObjectCRC = 738621096
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_rancor_dark, "object/tangible/lair/base/shared_lair_base_rancor_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_rancor_dark, "object/tangible/lair/base/shared_lair_base_rancor_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -1532,6 +1560,7 @@ object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTe
 	clientObjectCRC = 3677760922
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_rancor_light, "object/tangible/lair/base/shared_lair_base_rancor_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_rancor_light, "object/tangible/lair/base/shared_lair_base_rancor_light.iff")
 
 object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -1585,6 +1614,7 @@ object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemp
 	clientObjectCRC = 960523007
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_trash_dark, "object/tangible/lair/base/shared_lair_base_trash_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_trash_dark, "object/tangible/lair/base/shared_lair_base_trash_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -1638,6 +1668,7 @@ object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTem
 	clientObjectCRC = 3338586753
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_trash_light, "object/tangible/lair/base/shared_lair_base_trash_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_trash_light, "object/tangible/lair/base/shared_lair_base_trash_light.iff")
 
 object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -1691,6 +1722,7 @@ object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1002824904
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_nest_tree, "object/tangible/lair/base/shared_nest_tree.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_nest_tree, "object/tangible/lair/base/shared_nest_tree.iff")
 
 object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_banner_govt_tall.apt",
@@ -1744,6 +1776,7 @@ object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_standing_banner.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjec
 	clientObjectCRC = 1575829275
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_corellia, "object/tangible/lair/base/shared_objective_banner_corellia.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_corellia, "object/tangible/lair/base/shared_objective_banner_corellia.iff")
 
 object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s01.apt",
@@ -1797,6 +1830,7 @@ object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_standing_banner.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObje
 	clientObjectCRC = 1806591986
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_generic_1, "object/tangible/lair/base/shared_objective_banner_generic_1.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_generic_1, "object/tangible/lair/base/shared_objective_banner_generic_1.iff")
 
 object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s02.apt",
@@ -1850,6 +1884,7 @@ object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_standing_banner.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObje
 	clientObjectCRC = 2964967269
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_generic_2, "object/tangible/lair/base/shared_objective_banner_generic_2.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_generic_2, "object/tangible/lair/base/shared_objective_banner_generic_2.iff")
 
 object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
@@ -1903,6 +1938,7 @@ object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_standing_banner.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjec
 	clientObjectCRC = 3154468577
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_imperial, "object/tangible/lair/base/shared_objective_banner_imperial.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_imperial, "object/tangible/lair/base/shared_objective_banner_imperial.iff")
 
 object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
@@ -1956,6 +1992,7 @@ object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_standing_banner.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTe
 	clientObjectCRC = 3574902738
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_rebel, "object/tangible/lair/base/shared_objective_banner_rebel.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_rebel, "object/tangible/lair/base/shared_objective_banner_rebel.iff")
 
 object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_tato_banner_freestand_s01.apt",
@@ -2009,6 +2046,7 @@ object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_standing_banner.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjec
 	clientObjectCRC = 1638817412
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_tatooine, "object/tangible/lair/base/shared_objective_banner_tatooine.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_tatooine, "object/tangible/lair/base/shared_objective_banner_tatooine.iff")
 
 object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
@@ -2062,6 +2100,7 @@ object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObje
 	clientObjectCRC = 1367098929
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_dantari_fire_pit, "object/tangible/lair/base/shared_objective_dantari_fire_pit.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_dantari_fire_pit, "object/tangible/lair/base/shared_objective_dantari_fire_pit.iff")
 
 object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_totem_pole.apt",
@@ -2115,6 +2154,7 @@ object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_mts_clan_monolith.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObje
 	clientObjectCRC = 426269176
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_dantari_monolith, "object/tangible/lair/base/shared_objective_dantari_monolith.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_dantari_monolith, "object/tangible/lair/base/shared_objective_dantari_monolith.iff")
 
 object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -2168,6 +2208,7 @@ object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_data_terminal.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectT
 	clientObjectCRC = 1140811690
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_data_terminal, "object/tangible/lair/base/shared_objective_data_terminal.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_data_terminal, "object/tangible/lair/base/shared_objective_data_terminal.iff")
 
 object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
@@ -2221,6 +2262,7 @@ object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_gungan_statue.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectT
 	clientObjectCRC = 2446722637
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_gungan_statue, "object/tangible/lair/base/shared_objective_gungan_statue.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_gungan_statue, "object/tangible/lair/base/shared_objective_gungan_statue.iff")
 
 object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
@@ -2274,6 +2316,7 @@ object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_data_terminal.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectT
 	clientObjectCRC = 3090575675
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_main_terminal, "object/tangible/lair/base/shared_objective_main_terminal.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_main_terminal, "object/tangible/lair/base/shared_objective_main_terminal.iff")
 
 object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_pillar_s01.apt",
@@ -2327,6 +2370,7 @@ object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_mts_clan_monolith.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObj
 	clientObjectCRC = 4290984139
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_mts_clan_monolith, "object/tangible/lair/base/shared_objective_mts_clan_monolith.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_mts_clan_monolith, "object/tangible/lair/base/shared_objective_mts_clan_monolith.iff")
 
 object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
@@ -2380,6 +2424,7 @@ object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_power_generator.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjec
 	clientObjectCRC = 468482047
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_power_generator, "object/tangible/lair/base/shared_objective_power_generator.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_generator, "object/tangible/lair/base/shared_objective_power_generator.iff")
 
 object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
@@ -2433,6 +2478,7 @@ object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_power_generator.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,7 +2523,7 @@ object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemp
 	clientObjectCRC = 2086368006
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_power_node, "object/tangible/lair/base/shared_objective_power_node.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_node, "object/tangible/lair/base/shared_objective_power_node.iff")
 
 object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
@@ -2486,6 +2532,7 @@ object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_objective_power_generator.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2530,7 +2577,7 @@ object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObj
 	clientObjectCRC = 3115996224
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_power_transformer, "object/tangible/lair/base/shared_objective_power_transformer.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_transformer, "object/tangible/lair/base/shared_objective_power_transformer.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2539,6 +2586,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2583,7 +2631,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTempla
 	clientObjectCRC = 3142299424
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones, "object/tangible/lair/base/shared_poi_all_lair_bones.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones, "object/tangible/lair/base/shared_poi_all_lair_bones.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2592,6 +2640,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2636,7 +2685,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTang
 	clientObjectCRC = 2845871690
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2645,6 +2694,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2689,7 +2739,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangib
 	clientObjectCRC = 1770695820
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2698,6 +2748,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2742,7 +2793,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTang
 	clientObjectCRC = 3803873203
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2751,6 +2802,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2795,7 +2847,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObj
 	clientObjectCRC = 430580141
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2804,6 +2856,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2848,7 +2901,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleOb
 	clientObjectCRC = 965028408
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_green, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_green, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2857,6 +2910,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2901,7 +2955,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangible
 	clientObjectCRC = 3554933816
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
@@ -2910,6 +2964,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2954,7 +3009,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObje
 	clientObjectCRC = 1163934021
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_red, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_red, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -2963,6 +3018,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3007,7 +3063,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObject
 	clientObjectCRC = 1362281265
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large, "object/tangible/lair/base/shared_poi_all_lair_bones_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large, "object/tangible/lair/base/shared_poi_all_lair_bones_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3016,6 +3072,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3060,7 +3117,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = Shar
 	clientObjectCRC = 3202178196
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3069,6 +3126,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3113,7 +3171,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = Shared
 	clientObjectCRC = 287273685
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3122,6 +3180,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3166,7 +3225,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = Shar
 	clientObjectCRC = 4123503981
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3175,6 +3234,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3219,7 +3279,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangi
 	clientObjectCRC = 2627450629
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3228,6 +3288,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3272,7 +3333,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTang
 	clientObjectCRC = 1994000829
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3281,6 +3342,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3325,7 +3387,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTa
 	clientObjectCRC = 1283439590
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
@@ -3334,6 +3396,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3378,7 +3441,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangib
 	clientObjectCRC = 4286037128
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3387,6 +3450,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_brambles_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3431,7 +3495,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObj
 	clientObjectCRC = 2971623955
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large, "object/tangible/lair/base/shared_poi_all_lair_brambles_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large, "object/tangible/lair/base/shared_poi_all_lair_brambles_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3440,6 +3504,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3484,7 +3549,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = S
 	clientObjectCRC = 3450920549
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3493,6 +3558,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3537,7 +3603,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = Sha
 	clientObjectCRC = 3728817132
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3546,6 +3612,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3590,7 +3657,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = S
 	clientObjectCRC = 2259300252
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3599,6 +3666,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3643,7 +3711,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibl
 	clientObjectCRC = 1837327181
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3652,6 +3720,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3696,7 +3765,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTa
 	clientObjectCRC = 1099426587
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3705,6 +3774,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3749,7 +3819,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedT
 	clientObjectCRC = 1255201415
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3758,6 +3828,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3802,7 +3873,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = Share
 	clientObjectCRC = 1330750206
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
@@ -3811,6 +3882,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3855,7 +3927,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTan
 	clientObjectCRC = 3991876404
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -3864,6 +3936,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_brambles_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3908,7 +3981,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObj
 	clientObjectCRC = 2231694906
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -3917,6 +3990,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -3961,7 +4035,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = S
 	clientObjectCRC = 3553159285
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -3970,6 +4044,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4014,7 +4089,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = Sha
 	clientObjectCRC = 1553145843
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4023,6 +4098,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4067,7 +4143,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = S
 	clientObjectCRC = 2563905932
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4076,6 +4152,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4120,7 +4197,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTa
 	clientObjectCRC = 1638603949
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4129,6 +4206,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4173,7 +4251,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedT
 	clientObjectCRC = 4261730919
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4182,6 +4260,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4226,7 +4305,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = Share
 	clientObjectCRC = 3128216527
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
@@ -4235,6 +4314,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4279,7 +4359,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTan
 	clientObjectCRC = 1159215224
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4288,6 +4368,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_dead_log_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4332,7 +4413,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObj
 	clientObjectCRC = 759277072
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4341,6 +4422,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4385,7 +4467,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = S
 	clientObjectCRC = 3507525090
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4394,6 +4476,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4438,7 +4521,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = Sha
 	clientObjectCRC = 2858454846
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4447,6 +4530,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4491,7 +4575,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = S
 	clientObjectCRC = 2584372251
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4500,6 +4584,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4544,7 +4629,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTa
 	clientObjectCRC = 1743001105
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4553,6 +4638,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4597,7 +4683,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedT
 	clientObjectCRC = 2877828053
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4606,6 +4692,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4650,7 +4737,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = Share
 	clientObjectCRC = 3521947503
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
@@ -4659,6 +4746,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4703,7 +4791,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTan
 	clientObjectCRC = 3824541289
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4712,6 +4800,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_dead_log_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4756,7 +4845,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObj
 	clientObjectCRC = 425341497
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4765,6 +4854,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4809,7 +4899,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = S
 	clientObjectCRC = 3479741426
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4818,6 +4908,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4862,7 +4953,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = Sha
 	clientObjectCRC = 682797857
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4871,6 +4962,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4915,7 +5007,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = S
 	clientObjectCRC = 2222084619
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4924,6 +5016,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -4968,7 +5061,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTa
 	clientObjectCRC = 1204347303
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -4977,6 +5070,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5021,7 +5115,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedT
 	clientObjectCRC = 526134069
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -5030,6 +5124,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5074,7 +5169,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = Share
 	clientObjectCRC = 617205342
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
@@ -5083,6 +5178,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5127,7 +5223,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTan
 	clientObjectCRC = 1258476837
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5136,6 +5232,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_garbage_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5180,7 +5277,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObje
 	clientObjectCRC = 2517129351
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large, "object/tangible/lair/base/shared_poi_all_lair_garbage_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large, "object/tangible/lair/base/shared_poi_all_lair_garbage_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5189,6 +5286,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5233,7 +5331,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = Sh
 	clientObjectCRC = 2898447287
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5242,6 +5340,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5286,7 +5385,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = Shar
 	clientObjectCRC = 182921096
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5295,6 +5394,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5339,7 +5439,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = Sh
 	clientObjectCRC = 3889707598
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5348,6 +5448,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5392,7 +5493,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTan
 	clientObjectCRC = 823883732
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5401,6 +5502,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5445,7 +5547,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTa
 	clientObjectCRC = 922224736
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5454,6 +5556,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5498,7 +5601,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = Shared
 	clientObjectCRC = 2638567972
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
@@ -5507,6 +5610,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5551,7 +5655,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTang
 	clientObjectCRC = 2777489717
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5560,6 +5664,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_garbage_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5604,7 +5709,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObje
 	clientObjectCRC = 2719206574
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5613,6 +5718,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5657,7 +5763,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = Sh
 	clientObjectCRC = 2998599079
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5666,6 +5772,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5710,7 +5817,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = Shar
 	clientObjectCRC = 2285175703
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5719,6 +5826,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5763,7 +5871,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = Sh
 	clientObjectCRC = 4188015710
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5772,6 +5880,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5816,7 +5925,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTan
 	clientObjectCRC = 288850018
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5825,6 +5934,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5869,7 +5979,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTa
 	clientObjectCRC = 2183923840
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5878,6 +5988,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5922,7 +6033,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = Shared
 	clientObjectCRC = 1751134997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
@@ -5931,6 +6042,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -5975,7 +6087,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTang
 	clientObjectCRC = 226110073
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -5984,6 +6096,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_insecthill_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6028,7 +6141,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleO
 	clientObjectCRC = 2912626123
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6037,6 +6150,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_insecthill_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6081,7 +6195,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green =
 	clientObjectCRC = 1861288469
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6090,6 +6204,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6134,7 +6249,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = S
 	clientObjectCRC = 2385068823
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6143,6 +6258,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6187,7 +6303,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small =
 	clientObjectCRC = 636220396
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6196,6 +6312,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6240,7 +6357,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = Shared
 	clientObjectCRC = 1730491297
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6249,6 +6366,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6293,7 +6411,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = Share
 	clientObjectCRC = 1789762517
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6302,6 +6420,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6346,7 +6465,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = Sha
 	clientObjectCRC = 4292415468
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
@@ -6355,6 +6474,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6399,7 +6519,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedT
 	clientObjectCRC = 2995341818
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6408,6 +6528,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_insecthill_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6452,7 +6573,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleO
 	clientObjectCRC = 2575348194
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6461,6 +6582,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6505,7 +6627,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green =
 	clientObjectCRC = 1888039941
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6514,6 +6636,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6558,7 +6681,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = S
 	clientObjectCRC = 217802504
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6567,6 +6690,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6611,7 +6735,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small =
 	clientObjectCRC = 999540220
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6620,6 +6744,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6664,7 +6789,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = Shared
 	clientObjectCRC = 1191822359
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6673,6 +6798,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6717,7 +6843,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = Share
 	clientObjectCRC = 3732511541
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6726,6 +6852,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6770,7 +6897,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = Sha
 	clientObjectCRC = 184313565
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
@@ -6779,6 +6906,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6823,7 +6951,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedT
 	clientObjectCRC = 444482230
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6832,6 +6960,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_leaf_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6876,7 +7005,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectT
 	clientObjectCRC = 228848137
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large, "object/tangible/lair/base/shared_poi_all_lair_leaf_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large, "object/tangible/lair/base/shared_poi_all_lair_leaf_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6885,6 +7014,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6929,7 +7059,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = Share
 	clientObjectCRC = 289667785
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6938,6 +7068,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -6982,7 +7113,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedT
 	clientObjectCRC = 2898038316
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -6991,6 +7122,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7035,7 +7167,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = Share
 	clientObjectCRC = 1515785008
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -7044,6 +7176,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7088,7 +7221,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangib
 	clientObjectCRC = 1207051318
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -7097,6 +7230,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7141,7 +7275,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangi
 	clientObjectCRC = 630831669
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -7150,6 +7284,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7194,7 +7329,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTan
 	clientObjectCRC = 3855500740
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
@@ -7203,6 +7338,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7247,7 +7383,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibl
 	clientObjectCRC = 3523558187
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7256,6 +7392,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_leaf_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7300,7 +7437,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObject
 	clientObjectCRC = 3643744513
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_medium, "object/tangible/lair/base/shared_poi_all_lair_leaf_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_medium, "object/tangible/lair/base/shared_poi_all_lair_leaf_medium.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7309,6 +7446,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_leaf_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7353,7 +7491,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectT
 	clientObjectCRC = 968386080
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7362,6 +7500,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7406,7 +7545,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = Share
 	clientObjectCRC = 255577305
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7415,6 +7554,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7459,7 +7599,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedT
 	clientObjectCRC = 779004467
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7468,6 +7608,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7512,7 +7653,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = Share
 	clientObjectCRC = 1143029024
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7521,6 +7662,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7565,7 +7707,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangib
 	clientObjectCRC = 1742656384
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7574,6 +7716,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7618,7 +7761,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangi
 	clientObjectCRC = 2437790421
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7627,6 +7770,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7671,7 +7815,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTan
 	clientObjectCRC = 283847925
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
@@ -7680,6 +7824,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7724,7 +7869,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibl
 	clientObjectCRC = 2062692455
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7733,6 +7878,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_mound_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7777,7 +7923,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObject
 	clientObjectCRC = 420187503
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large, "object/tangible/lair/base/shared_poi_all_lair_mound_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large, "object/tangible/lair/base/shared_poi_all_lair_mound_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7786,6 +7932,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7830,7 +7977,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = Shar
 	clientObjectCRC = 1540415537
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7839,6 +7986,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7883,7 +8031,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = Shared
 	clientObjectCRC = 3337919854
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7892,6 +8040,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7936,7 +8085,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = Shar
 	clientObjectCRC = 281678280
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7945,6 +8094,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -7989,7 +8139,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangi
 	clientObjectCRC = 2881445329
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -7998,6 +8148,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8042,7 +8193,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTang
 	clientObjectCRC = 2554716200
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -8051,6 +8202,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8095,7 +8247,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTa
 	clientObjectCRC = 877609923
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
@@ -8104,6 +8256,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8148,7 +8301,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangib
 	clientObjectCRC = 2718548559
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8157,6 +8310,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_mound_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8201,7 +8355,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObject
 	clientObjectCRC = 756029766
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small, "object/tangible/lair/base/shared_poi_all_lair_mound_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small, "object/tangible/lair/base/shared_poi_all_lair_mound_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8210,6 +8364,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8254,7 +8409,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = Shar
 	clientObjectCRC = 1168692769
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8263,6 +8418,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8307,7 +8463,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = Shared
 	clientObjectCRC = 1143388529
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8316,6 +8472,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8360,7 +8517,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = Shar
 	clientObjectCRC = 246556632
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8369,6 +8526,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8413,7 +8571,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangi
 	clientObjectCRC = 2341710439
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8422,6 +8580,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8466,7 +8625,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTang
 	clientObjectCRC = 747757768
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8475,6 +8634,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8519,7 +8679,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTa
 	clientObjectCRC = 3244960498
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
@@ -8528,6 +8688,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8572,7 +8733,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangib
 	clientObjectCRC = 184469763
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8581,6 +8742,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_nest_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8625,7 +8787,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectT
 	clientObjectCRC = 2815445201
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large, "object/tangible/lair/base/shared_poi_all_lair_nest_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large, "object/tangible/lair/base/shared_poi_all_lair_nest_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8634,6 +8796,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8678,7 +8841,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = Share
 	clientObjectCRC = 1869084369
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8687,6 +8850,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8731,7 +8895,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedT
 	clientObjectCRC = 622648314
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8740,6 +8904,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8784,7 +8949,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = Share
 	clientObjectCRC = 612173608
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8793,6 +8958,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8837,7 +9003,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangib
 	clientObjectCRC = 2401663752
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8846,6 +9012,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8890,7 +9057,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangi
 	clientObjectCRC = 2319776020
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8899,6 +9066,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8943,7 +9111,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTan
 	clientObjectCRC = 2568051560
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
@@ -8952,6 +9120,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -8996,7 +9165,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibl
 	clientObjectCRC = 2703235151
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9005,6 +9174,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_nest_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9049,7 +9219,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectT
 	clientObjectCRC = 2479611128
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small, "object/tangible/lair/base/shared_poi_all_lair_nest_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small, "object/tangible/lair/base/shared_poi_all_lair_nest_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9058,6 +9228,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9102,7 +9273,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = Share
 	clientObjectCRC = 1897906369
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9111,6 +9282,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9155,7 +9327,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedT
 	clientObjectCRC = 2815360997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9164,6 +9336,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9208,7 +9381,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = Share
 	clientObjectCRC = 973418808
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9217,6 +9390,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9261,7 +9435,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangib
 	clientObjectCRC = 2936704190
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9270,6 +9444,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9314,7 +9489,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangi
 	clientObjectCRC = 1049688564
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9323,6 +9498,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9367,7 +9543,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTan
 	clientObjectCRC = 1815360089
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
@@ -9376,6 +9552,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9420,7 +9597,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibl
 	clientObjectCRC = 165090051
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9429,6 +9606,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_rock_shelter_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9473,7 +9651,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibl
 	clientObjectCRC = 4005767247
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9482,6 +9660,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9526,7 +9705,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green
 	clientObjectCRC = 643219996
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9535,6 +9714,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9579,7 +9759,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red =
 	clientObjectCRC = 58803054
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9588,6 +9768,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9632,7 +9813,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small
 	clientObjectCRC = 1833710565
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9641,6 +9822,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9685,7 +9867,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = Shar
 	clientObjectCRC = 534560840
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9694,6 +9876,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9738,7 +9921,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = Sha
 	clientObjectCRC = 1440907914
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9747,6 +9930,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9791,7 +9975,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = S
 	clientObjectCRC = 1731875387
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
@@ -9800,6 +9984,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9844,7 +10029,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = Share
 	clientObjectCRC = 1658858306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9853,6 +10038,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_rock_shelter_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9897,7 +10083,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibl
 	clientObjectCRC = 3671637094
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9906,6 +10092,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -9950,7 +10137,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green
 	clientObjectCRC = 942601228
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -9959,6 +10146,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10003,7 +10191,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red =
 	clientObjectCRC = 2169726833
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -10012,6 +10200,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10056,7 +10245,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small
 	clientObjectCRC = 1932789237
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -10065,6 +10254,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10109,7 +10299,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = Shar
 	clientObjectCRC = 1072707582
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -10118,6 +10308,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10162,7 +10353,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = Sha
 	clientObjectCRC = 3778445930
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -10171,6 +10362,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10215,7 +10407,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = S
 	clientObjectCRC = 2451520266
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
@@ -10224,6 +10416,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10268,7 +10461,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = Share
 	clientObjectCRC = 3390513166
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10277,6 +10470,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_rocks_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10321,7 +10515,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObject
 	clientObjectCRC = 2207500291
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large, "object/tangible/lair/base/shared_poi_all_lair_rocks_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large, "object/tangible/lair/base/shared_poi_all_lair_rocks_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10330,6 +10524,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10374,7 +10569,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = Shar
 	clientObjectCRC = 2753825733
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10383,6 +10578,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10427,7 +10623,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = Shared
 	clientObjectCRC = 708322841
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10436,6 +10632,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10480,7 +10677,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = Shar
 	clientObjectCRC = 4013881916
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10489,6 +10686,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10533,7 +10731,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangi
 	clientObjectCRC = 4032828716
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10542,6 +10740,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10586,7 +10785,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTang
 	clientObjectCRC = 349273422
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10595,6 +10794,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10639,7 +10839,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTa
 	clientObjectCRC = 3536893154
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
@@ -10648,6 +10848,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10692,7 +10893,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangib
 	clientObjectCRC = 1849334540
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10701,6 +10902,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_rocks_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10745,7 +10947,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObject
 	clientObjectCRC = 3079167018
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10754,6 +10956,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10798,7 +11001,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = Shar
 	clientObjectCRC = 3126607317
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10807,6 +11010,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10851,7 +11055,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = Shared
 	clientObjectCRC = 2833908230
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10860,6 +11064,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10904,7 +11109,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = Shar
 	clientObjectCRC = 4047948844
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10913,6 +11118,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -10957,7 +11163,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangi
 	clientObjectCRC = 3494699674
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -10966,6 +11172,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11010,7 +11217,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTang
 	clientObjectCRC = 2684714414
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -11019,6 +11226,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11063,7 +11271,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTa
 	clientObjectCRC = 670424531
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
@@ -11072,6 +11280,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11116,7 +11325,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangib
 	clientObjectCRC = 3335360576
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11125,6 +11334,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_thicket_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11169,7 +11379,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObje
 	clientObjectCRC = 1820503108
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large, "object/tangible/lair/base/shared_poi_all_lair_thicket_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large, "object/tangible/lair/base/shared_poi_all_lair_thicket_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11178,6 +11388,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11222,7 +11433,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = Sha
 	clientObjectCRC = 3034883500
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11231,6 +11442,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11275,7 +11487,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = Sh
 	clientObjectCRC = 3085171685
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11284,6 +11496,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11328,7 +11541,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = Shar
 	clientObjectCRC = 3961426279
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11337,6 +11550,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11381,7 +11595,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = Sh
 	clientObjectCRC = 4244179484
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11390,6 +11604,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11434,7 +11649,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTan
 	clientObjectCRC = 939589773
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11443,6 +11658,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11487,7 +11703,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTa
 	clientObjectCRC = 239509871
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11496,6 +11712,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11540,7 +11757,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = Shared
 	clientObjectCRC = 255891767
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
@@ -11549,6 +11766,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11593,7 +11811,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTang
 	clientObjectCRC = 619312831
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11602,6 +11820,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_ticket_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11646,7 +11865,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObje
 	clientObjectCRC = 1486436461
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11655,6 +11874,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11699,7 +11919,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = Sh
 	clientObjectCRC = 2845560309
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11708,6 +11928,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11752,7 +11973,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = Shar
 	clientObjectCRC = 1858909560
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11761,6 +11982,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11805,7 +12027,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = Sh
 	clientObjectCRC = 3800120332
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11814,6 +12036,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11858,7 +12081,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTan
 	clientObjectCRC = 405665595
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11867,6 +12090,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11911,7 +12135,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTa
 	clientObjectCRC = 3130171791
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11920,6 +12144,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -11964,7 +12189,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = Shared
 	clientObjectCRC = 4200984582
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
@@ -11973,6 +12198,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12017,7 +12243,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTang
 	clientObjectCRC = 2350841331
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12026,6 +12252,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_warren_large.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12070,7 +12297,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjec
 	clientObjectCRC = 4287958045
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large, "object/tangible/lair/base/shared_poi_all_lair_warren_large.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large, "object/tangible/lair/base/shared_poi_all_lair_warren_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12079,6 +12306,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12123,7 +12351,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = Sha
 	clientObjectCRC = 637821318
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12132,6 +12360,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12176,7 +12405,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = Share
 	clientObjectCRC = 28715451
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12185,6 +12414,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12229,7 +12459,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = Sha
 	clientObjectCRC = 1830719615
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12238,6 +12468,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12282,7 +12513,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTang
 	clientObjectCRC = 2592614872
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12291,6 +12522,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12335,7 +12567,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTan
 	clientObjectCRC = 2143459599
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12344,6 +12576,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12388,7 +12621,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedT
 	clientObjectCRC = 4001697696
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
@@ -12397,6 +12630,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12441,7 +12675,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangi
 	clientObjectCRC = 1387351494
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12450,6 +12684,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_warren_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12494,7 +12729,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjec
 	clientObjectCRC = 3415119924
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small, "object/tangible/lair/base/shared_poi_all_lair_warren_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small, "object/tangible/lair/base/shared_poi_all_lair_warren_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12503,6 +12738,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12547,7 +12783,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = Sha
 	clientObjectCRC = 947672982
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12556,6 +12792,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12600,7 +12837,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = Share
 	clientObjectCRC = 2204372388
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12609,6 +12846,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12653,7 +12891,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = Sha
 	clientObjectCRC = 1936107119
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12662,6 +12900,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12706,7 +12945,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTang
 	clientObjectCRC = 3131367022
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12715,6 +12954,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12759,7 +12999,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTan
 	clientObjectCRC = 3407256047
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12768,6 +13008,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12812,7 +13053,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedT
 	clientObjectCRC = 463496849
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
@@ -12821,6 +13062,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12865,7 +13107,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangi
 	clientObjectCRC = 4198909578
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -12874,6 +13116,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_wooden.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12918,7 +13161,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTempl
 	clientObjectCRC = 1183728413
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden, "object/tangible/lair/base/shared_poi_all_lair_wooden.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden, "object/tangible/lair/base/shared_poi_all_lair_wooden.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -12927,6 +13170,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_wooden_destroyed.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -12971,7 +13215,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleO
 	clientObjectCRC = 4124016419
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -12980,6 +13224,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13024,7 +13269,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green =
 	clientObjectCRC = 329214614
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -13033,6 +13278,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = S
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13077,7 +13323,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = S
 	clientObjectCRC = 238872353
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -13086,6 +13332,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small =
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13130,7 +13377,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small =
 	clientObjectCRC = 1485151087
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -13139,6 +13386,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13183,7 +13431,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = Shared
 	clientObjectCRC = 2993244082
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -13192,6 +13440,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = Share
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13236,7 +13485,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = Share
 	clientObjectCRC = 545761367
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -13245,6 +13494,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13289,7 +13539,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = Sha
 	clientObjectCRC = 269409995
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
@@ -13298,6 +13548,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13342,7 +13593,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedT
 	clientObjectCRC = 4267544421
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13351,6 +13602,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13395,7 +13647,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTan
 	clientObjectCRC = 3398422442
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13404,6 +13656,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13448,7 +13701,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangi
 	clientObjectCRC = 2885574443
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13457,6 +13710,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_evil_fire_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13501,7 +13755,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTan
 	clientObjectCRC = 2174041683
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_small.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13510,6 +13764,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_gray.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13554,7 +13809,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleOb
 	clientObjectCRC = 2521819744
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_gray.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13563,6 +13818,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13607,7 +13863,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleO
 	clientObjectCRC = 2366487147
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_green.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13616,6 +13872,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_mustard.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13660,7 +13917,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibl
 	clientObjectCRC = 4226721130
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_mustard.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
@@ -13669,6 +13926,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13713,7 +13971,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObj
 	clientObjectCRC = 1520141032
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_red.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_red.iff")
 
 object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -13722,6 +13980,7 @@ object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13766,7 +14025,7 @@ object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2089078932
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_rancor_dark, "object/tangible/lair/base/shared_rancor_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_rancor_dark, "object/tangible/lair/base/shared_rancor_dark.iff")
 
 object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -13775,6 +14034,7 @@ object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13819,7 +14079,7 @@ object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 554154653
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_rancor_light, "object/tangible/lair/base/shared_rancor_light.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_rancor_light, "object/tangible/lair/base/shared_rancor_light.iff")
 
 object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -13828,6 +14088,7 @@ object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -13872,4 +14133,4 @@ object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 496750489
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_trash_dark, "object/tangible/lair/base/shared_trash_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_base_shared_trash_dark, "object/tangible/lair/base/shared_trash_dark.iff")

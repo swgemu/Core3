@@ -48,6 +48,7 @@ object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2330152069
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_transport_shared_door, "object/tangible/transport/shared_door.iff")
+ObjectTemplates:addTemplate(object_tangible_transport_shared_door, "object/tangible/transport/shared_door.iff")
 
 object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_a.apt",
@@ -101,6 +102,7 @@ object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3646229980
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_a, "object/tangible/transport/shared_strut_a.iff")
+ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_a, "object/tangible/transport/shared_strut_a.iff")
 
 object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_b.apt",
@@ -154,6 +156,7 @@ object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 37922123
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_b, "object/tangible/transport/shared_strut_b.iff")
+ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_b, "object/tangible/transport/shared_strut_b.iff")
 
 object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_c.apt",
@@ -207,6 +210,7 @@ object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1263518406
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_c, "object/tangible/transport/shared_strut_c.iff")
+ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_c, "object/tangible/transport/shared_strut_c.iff")
 
 object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/transport.apt",
@@ -260,6 +264,7 @@ object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3801530659
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_transport_shared_transport, "object/tangible/transport/shared_transport.iff")
+ObjectTemplates:addTemplate(object_tangible_transport_shared_transport, "object/tangible/transport/shared_transport.iff")

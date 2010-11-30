@@ -48,6 +48,7 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake = SharedTangibleObjec
 	clientObjectCRC = 2281325742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, "object/tangible/lair/spined_snake/shared_lair_spined_snake.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, "object/tangible/lair/spined_snake/shared_lair_spined_snake.iff")
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTang
 	clientObjectCRC = 1340697568
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, "object/tangible/lair/spined_snake/shared_lair_spined_snake_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, "object/tangible/lair/spined_snake/shared_lair_spined_snake_mountain.iff")
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTan
 	clientObjectCRC = 3148607218
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, "object/tangible/lair/spined_snake/shared_lair_spined_snake_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, "object/tangible/lair/spined_snake/shared_lair_spined_snake_wasteland.iff")

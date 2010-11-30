@@ -51,6 +51,7 @@ object_mobile_skeleton_shared_acklay = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -116,7 +117,7 @@ object_mobile_skeleton_shared_acklay = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3915581743
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_acklay, "object/mobile/skeleton/shared_acklay.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_acklay, "object/mobile/skeleton/shared_acklay.iff")
 
 object_mobile_skeleton_shared_astromech = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -128,6 +129,7 @@ object_mobile_skeleton_shared_astromech = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -193,7 +195,7 @@ object_mobile_skeleton_shared_astromech = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 994908092
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_astromech, "object/mobile/skeleton/shared_astromech.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_astromech, "object/mobile/skeleton/shared_astromech.iff")
 
 object_mobile_skeleton_shared_base_insect_moth = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -205,6 +207,7 @@ object_mobile_skeleton_shared_base_insect_moth = SharedCreatureObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -270,7 +273,7 @@ object_mobile_skeleton_shared_base_insect_moth = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 1820074321
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_base_insect_moth, "object/mobile/skeleton/shared_base_insect_moth.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_base_insect_moth, "object/mobile/skeleton/shared_base_insect_moth.iff")
 
 object_mobile_skeleton_shared_bat = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -282,6 +285,7 @@ object_mobile_skeleton_shared_bat = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -347,7 +351,7 @@ object_mobile_skeleton_shared_bat = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2504466576
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_bat, "object/mobile/skeleton/shared_bat.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_bat, "object/mobile/skeleton/shared_bat.iff")
 
 object_mobile_skeleton_shared_bird_finch = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -359,6 +363,7 @@ object_mobile_skeleton_shared_bird_finch = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -424,7 +429,7 @@ object_mobile_skeleton_shared_bird_finch = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1000541852
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_bird_finch, "object/mobile/skeleton/shared_bird_finch.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_bird_finch, "object/mobile/skeleton/shared_bird_finch.iff")
 
 object_mobile_skeleton_shared_bird_giant = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -436,6 +441,7 @@ object_mobile_skeleton_shared_bird_giant = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -501,7 +507,7 @@ object_mobile_skeleton_shared_bird_giant = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 519570189
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_bird_giant, "object/mobile/skeleton/shared_bird_giant.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_bird_giant, "object/mobile/skeleton/shared_bird_giant.iff")
 
 object_mobile_skeleton_shared_bird_turkey = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -513,6 +519,7 @@ object_mobile_skeleton_shared_bird_turkey = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -578,7 +585,7 @@ object_mobile_skeleton_shared_bird_turkey = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1413515142
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_bird_turkey, "object/mobile/skeleton/shared_bird_turkey.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_bird_turkey, "object/mobile/skeleton/shared_bird_turkey.iff")
 
 object_mobile_skeleton_shared_camel = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -590,6 +597,7 @@ object_mobile_skeleton_shared_camel = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +663,7 @@ object_mobile_skeleton_shared_camel = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2223413436
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_camel, "object/mobile/skeleton/shared_camel.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_camel, "object/mobile/skeleton/shared_camel.iff")
 
 object_mobile_skeleton_shared_canine = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -667,6 +675,7 @@ object_mobile_skeleton_shared_canine = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -732,7 +741,7 @@ object_mobile_skeleton_shared_canine = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 825801147
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_canine, "object/mobile/skeleton/shared_canine.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_canine, "object/mobile/skeleton/shared_canine.iff")
 
 object_mobile_skeleton_shared_cat_domestic = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -744,6 +753,7 @@ object_mobile_skeleton_shared_cat_domestic = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -809,7 +819,7 @@ object_mobile_skeleton_shared_cat_domestic = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1826010896
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_cat_domestic, "object/mobile/skeleton/shared_cat_domestic.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_cat_domestic, "object/mobile/skeleton/shared_cat_domestic.iff")
 
 object_mobile_skeleton_shared_cat_predatory = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -821,6 +831,7 @@ object_mobile_skeleton_shared_cat_predatory = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -886,7 +897,7 @@ object_mobile_skeleton_shared_cat_predatory = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 284042171
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_cat_predatory, "object/mobile/skeleton/shared_cat_predatory.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_cat_predatory, "object/mobile/skeleton/shared_cat_predatory.iff")
 
 object_mobile_skeleton_shared_cll8 = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -898,6 +909,7 @@ object_mobile_skeleton_shared_cll8 = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -963,7 +975,7 @@ object_mobile_skeleton_shared_cll8 = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3021854628
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_cll8, "object/mobile/skeleton/shared_cll8.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_cll8, "object/mobile/skeleton/shared_cll8.iff")
 
 object_mobile_skeleton_shared_dewback = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -975,6 +987,7 @@ object_mobile_skeleton_shared_dewback = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1040,7 +1053,7 @@ object_mobile_skeleton_shared_dewback = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 892528452
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_dewback, "object/mobile/skeleton/shared_dewback.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_dewback, "object/mobile/skeleton/shared_dewback.iff")
 
 object_mobile_skeleton_shared_droid_2 = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1052,6 +1065,7 @@ object_mobile_skeleton_shared_droid_2 = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1117,7 +1131,7 @@ object_mobile_skeleton_shared_droid_2 = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2856144413
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_droid_2, "object/mobile/skeleton/shared_droid_2.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_droid_2, "object/mobile/skeleton/shared_droid_2.iff")
 
 object_mobile_skeleton_shared_droideka = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1129,6 +1143,7 @@ object_mobile_skeleton_shared_droideka = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1194,7 +1209,7 @@ object_mobile_skeleton_shared_droideka = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4190971251
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_droideka, "object/mobile/skeleton/shared_droideka.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_droideka, "object/mobile/skeleton/shared_droideka.iff")
 
 object_mobile_skeleton_shared_dz70 = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1206,6 +1221,7 @@ object_mobile_skeleton_shared_dz70 = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1287,7 @@ object_mobile_skeleton_shared_dz70 = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2699879603
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_dz70, "object/mobile/skeleton/shared_dz70.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_dz70, "object/mobile/skeleton/shared_dz70.iff")
 
 object_mobile_skeleton_shared_eg6 = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1283,6 +1299,7 @@ object_mobile_skeleton_shared_eg6 = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1348,7 +1365,7 @@ object_mobile_skeleton_shared_eg6 = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3003303428
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_eg6, "object/mobile/skeleton/shared_eg6.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_eg6, "object/mobile/skeleton/shared_eg6.iff")
 
 object_mobile_skeleton_shared_elephant = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -1360,6 +1377,7 @@ object_mobile_skeleton_shared_elephant = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1425,7 +1443,7 @@ object_mobile_skeleton_shared_elephant = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4284811148
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_elephant, "object/mobile/skeleton/shared_elephant.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_elephant, "object/mobile/skeleton/shared_elephant.iff")
 
 object_mobile_skeleton_shared_elephant_bantha = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -1437,6 +1455,7 @@ object_mobile_skeleton_shared_elephant_bantha = SharedCreatureObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1502,7 +1521,7 @@ object_mobile_skeleton_shared_elephant_bantha = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 1623233094
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_elephant_bantha, "object/mobile/skeleton/shared_elephant_bantha.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_elephant_bantha, "object/mobile/skeleton/shared_elephant_bantha.iff")
 
 object_mobile_skeleton_shared_fambaa = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -1514,6 +1533,7 @@ object_mobile_skeleton_shared_fambaa = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1579,7 +1599,7 @@ object_mobile_skeleton_shared_fambaa = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1277611918
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_fambaa, "object/mobile/skeleton/shared_fambaa.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_fambaa, "object/mobile/skeleton/shared_fambaa.iff")
 
 object_mobile_skeleton_shared_frog = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -1591,6 +1611,7 @@ object_mobile_skeleton_shared_frog = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1656,7 +1677,7 @@ object_mobile_skeleton_shared_frog = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2783556290
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_frog, "object/mobile/skeleton/shared_frog.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_frog, "object/mobile/skeleton/shared_frog.iff")
 
 object_mobile_skeleton_shared_giraffe = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -1668,6 +1689,7 @@ object_mobile_skeleton_shared_giraffe = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1733,7 +1755,7 @@ object_mobile_skeleton_shared_giraffe = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2416872297
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_giraffe, "object/mobile/skeleton/shared_giraffe.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_giraffe, "object/mobile/skeleton/shared_giraffe.iff")
 
 object_mobile_skeleton_shared_goat = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -1745,6 +1767,7 @@ object_mobile_skeleton_shared_goat = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1810,7 +1833,7 @@ object_mobile_skeleton_shared_goat = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3334329739
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_goat, "object/mobile/skeleton/shared_goat.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_goat, "object/mobile/skeleton/shared_goat.iff")
 
 object_mobile_skeleton_shared_griffon = SharedCreatureObjectTemplate:new {
 	acceleration = {3.7,2},
@@ -1822,6 +1845,7 @@ object_mobile_skeleton_shared_griffon = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1887,7 +1911,7 @@ object_mobile_skeleton_shared_griffon = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1997066566
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_griffon, "object/mobile/skeleton/shared_griffon.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_griffon, "object/mobile/skeleton/shared_griffon.iff")
 
 object_mobile_skeleton_shared_horse = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -1899,6 +1923,7 @@ object_mobile_skeleton_shared_horse = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1964,7 +1989,7 @@ object_mobile_skeleton_shared_horse = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2297855719
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_horse, "object/mobile/skeleton/shared_horse.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_horse, "object/mobile/skeleton/shared_horse.iff")
 
 object_mobile_skeleton_shared_humanoid = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1976,6 +2001,7 @@ object_mobile_skeleton_shared_humanoid = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2041,7 +2067,7 @@ object_mobile_skeleton_shared_humanoid = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1714909795
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_humanoid, "object/mobile/skeleton/shared_humanoid.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_humanoid, "object/mobile/skeleton/shared_humanoid.iff")
 
 object_mobile_skeleton_shared_insect_basic = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2053,6 +2079,7 @@ object_mobile_skeleton_shared_insect_basic = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2118,7 +2145,7 @@ object_mobile_skeleton_shared_insect_basic = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 422447477
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_insect_basic, "object/mobile/skeleton/shared_insect_basic.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_insect_basic, "object/mobile/skeleton/shared_insect_basic.iff")
 
 object_mobile_skeleton_shared_insect_mantis = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -2130,6 +2157,7 @@ object_mobile_skeleton_shared_insect_mantis = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2195,7 +2223,7 @@ object_mobile_skeleton_shared_insect_mantis = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4047561864
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_insect_mantis, "object/mobile/skeleton/shared_insect_mantis.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_insect_mantis, "object/mobile/skeleton/shared_insect_mantis.iff")
 
 object_mobile_skeleton_shared_insect_moth = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -2207,6 +2235,7 @@ object_mobile_skeleton_shared_insect_moth = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2272,7 +2301,7 @@ object_mobile_skeleton_shared_insect_moth = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3715444431
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_insect_moth, "object/mobile/skeleton/shared_insect_moth.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_insect_moth, "object/mobile/skeleton/shared_insect_moth.iff")
 
 object_mobile_skeleton_shared_ito = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2284,6 +2313,7 @@ object_mobile_skeleton_shared_ito = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2349,7 +2379,7 @@ object_mobile_skeleton_shared_ito = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4016222327
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_ito, "object/mobile/skeleton/shared_ito.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_ito, "object/mobile/skeleton/shared_ito.iff")
 
 object_mobile_skeleton_shared_kaadu = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -2361,6 +2391,7 @@ object_mobile_skeleton_shared_kaadu = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2426,7 +2457,7 @@ object_mobile_skeleton_shared_kaadu = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3497999971
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_kaadu, "object/mobile/skeleton/shared_kaadu.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_kaadu, "object/mobile/skeleton/shared_kaadu.iff")
 
 object_mobile_skeleton_shared_lin_demolition = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2438,6 +2469,7 @@ object_mobile_skeleton_shared_lin_demolition = SharedCreatureObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2503,7 +2535,7 @@ object_mobile_skeleton_shared_lin_demolition = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 765355707
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_lin_demolition, "object/mobile/skeleton/shared_lin_demolition.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_lin_demolition, "object/mobile/skeleton/shared_lin_demolition.iff")
 
 object_mobile_skeleton_shared_lizard_basic = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -2515,6 +2547,7 @@ object_mobile_skeleton_shared_lizard_basic = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2580,7 +2613,7 @@ object_mobile_skeleton_shared_lizard_basic = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2532063942
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_lizard_basic, "object/mobile/skeleton/shared_lizard_basic.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_lizard_basic, "object/mobile/skeleton/shared_lizard_basic.iff")
 
 object_mobile_skeleton_shared_lizard_giant = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -2592,6 +2625,7 @@ object_mobile_skeleton_shared_lizard_giant = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2657,7 +2691,7 @@ object_mobile_skeleton_shared_lizard_giant = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 873783873
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_lizard_giant, "object/mobile/skeleton/shared_lizard_giant.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_lizard_giant, "object/mobile/skeleton/shared_lizard_giant.iff")
 
 object_mobile_skeleton_shared_mouse_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2669,6 +2703,7 @@ object_mobile_skeleton_shared_mouse_droid = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2734,7 +2769,7 @@ object_mobile_skeleton_shared_mouse_droid = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 340337386
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_mouse_droid, "object/mobile/skeleton/shared_mouse_droid.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_mouse_droid, "object/mobile/skeleton/shared_mouse_droid.iff")
 
 object_mobile_skeleton_shared_mynock = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -2746,6 +2781,7 @@ object_mobile_skeleton_shared_mynock = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2811,7 +2847,7 @@ object_mobile_skeleton_shared_mynock = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1147356714
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_mynock, "object/mobile/skeleton/shared_mynock.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_mynock, "object/mobile/skeleton/shared_mynock.iff")
 
 object_mobile_skeleton_shared_orb = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2823,6 +2859,7 @@ object_mobile_skeleton_shared_orb = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2888,7 +2925,7 @@ object_mobile_skeleton_shared_orb = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 984617406
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_orb, "object/mobile/skeleton/shared_orb.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_orb, "object/mobile/skeleton/shared_orb.iff")
 
 object_mobile_skeleton_shared_pig = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -2900,6 +2937,7 @@ object_mobile_skeleton_shared_pig = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2965,7 +3003,7 @@ object_mobile_skeleton_shared_pig = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1813957157
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_pig, "object/mobile/skeleton/shared_pig.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_pig, "object/mobile/skeleton/shared_pig.iff")
 
 object_mobile_skeleton_shared_probe_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2977,6 +3015,7 @@ object_mobile_skeleton_shared_probe_droid = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3042,7 +3081,7 @@ object_mobile_skeleton_shared_probe_droid = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3856845356
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_probe_droid, "object/mobile/skeleton/shared_probe_droid.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_probe_droid, "object/mobile/skeleton/shared_probe_droid.iff")
 
 object_mobile_skeleton_shared_protocol_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3054,6 +3093,7 @@ object_mobile_skeleton_shared_protocol_droid = SharedCreatureObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3119,7 +3159,7 @@ object_mobile_skeleton_shared_protocol_droid = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 3037551555
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_protocol_droid, "object/mobile/skeleton/shared_protocol_droid.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_protocol_droid, "object/mobile/skeleton/shared_protocol_droid.iff")
 
 object_mobile_skeleton_shared_rabbit = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -3131,6 +3171,7 @@ object_mobile_skeleton_shared_rabbit = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3196,7 +3237,7 @@ object_mobile_skeleton_shared_rabbit = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 161991049
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_rabbit, "object/mobile/skeleton/shared_rabbit.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_rabbit, "object/mobile/skeleton/shared_rabbit.iff")
 
 object_mobile_skeleton_shared_rancor = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -3208,6 +3249,7 @@ object_mobile_skeleton_shared_rancor = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3273,7 +3315,7 @@ object_mobile_skeleton_shared_rancor = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 270823856
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_rancor, "object/mobile/skeleton/shared_rancor.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_rancor, "object/mobile/skeleton/shared_rancor.iff")
 
 object_mobile_skeleton_shared_rat = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -3285,6 +3327,7 @@ object_mobile_skeleton_shared_rat = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3350,7 +3393,7 @@ object_mobile_skeleton_shared_rat = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1932908380
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_rat, "object/mobile/skeleton/shared_rat.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_rat, "object/mobile/skeleton/shared_rat.iff")
 
 object_mobile_skeleton_shared_robo_bartender = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3362,6 +3405,7 @@ object_mobile_skeleton_shared_robo_bartender = SharedCreatureObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3427,7 +3471,7 @@ object_mobile_skeleton_shared_robo_bartender = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 2976038956
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_robo_bartender, "object/mobile/skeleton/shared_robo_bartender.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_robo_bartender, "object/mobile/skeleton/shared_robo_bartender.iff")
 
 object_mobile_skeleton_shared_simian_ape = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -3439,6 +3483,7 @@ object_mobile_skeleton_shared_simian_ape = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3504,7 +3549,7 @@ object_mobile_skeleton_shared_simian_ape = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1735902555
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_simian_ape, "object/mobile/skeleton/shared_simian_ape.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_simian_ape, "object/mobile/skeleton/shared_simian_ape.iff")
 
 object_mobile_skeleton_shared_simian_monkey = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -3516,6 +3561,7 @@ object_mobile_skeleton_shared_simian_monkey = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3581,7 +3627,7 @@ object_mobile_skeleton_shared_simian_monkey = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 75660389
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_simian_monkey, "object/mobile/skeleton/shared_simian_monkey.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_simian_monkey, "object/mobile/skeleton/shared_simian_monkey.iff")
 
 object_mobile_skeleton_shared_snake = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -3593,6 +3639,7 @@ object_mobile_skeleton_shared_snake = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3658,7 +3705,7 @@ object_mobile_skeleton_shared_snake = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 253409232
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_snake, "object/mobile/skeleton/shared_snake.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_snake, "object/mobile/skeleton/shared_snake.iff")
 
 object_mobile_skeleton_shared_spider = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -3670,6 +3717,7 @@ object_mobile_skeleton_shared_spider = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3735,7 +3783,7 @@ object_mobile_skeleton_shared_spider = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4213186397
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_spider, "object/mobile/skeleton/shared_spider.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_spider, "object/mobile/skeleton/shared_spider.iff")
 
 object_mobile_skeleton_shared_spider_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3747,6 +3795,7 @@ object_mobile_skeleton_shared_spider_droid = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3812,7 +3861,7 @@ object_mobile_skeleton_shared_spider_droid = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 460559210
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_spider_droid, "object/mobile/skeleton/shared_spider_droid.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_spider_droid, "object/mobile/skeleton/shared_spider_droid.iff")
 
 object_mobile_skeleton_shared_tauntaun = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -3824,6 +3873,7 @@ object_mobile_skeleton_shared_tauntaun = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3889,7 +3939,7 @@ object_mobile_skeleton_shared_tauntaun = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3679278095
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_tauntaun, "object/mobile/skeleton/shared_tauntaun.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_tauntaun, "object/mobile/skeleton/shared_tauntaun.iff")
 
 object_mobile_skeleton_shared_tt8l = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3901,6 +3951,7 @@ object_mobile_skeleton_shared_tt8l = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3966,7 +4017,7 @@ object_mobile_skeleton_shared_tt8l = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2778895664
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_tt8l, "object/mobile/skeleton/shared_tt8l.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_tt8l, "object/mobile/skeleton/shared_tt8l.iff")
 
 object_mobile_skeleton_shared_tt8l_y7 = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3978,6 +4029,7 @@ object_mobile_skeleton_shared_tt8l_y7 = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4043,7 +4095,7 @@ object_mobile_skeleton_shared_tt8l_y7 = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1315980442
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_tt8l_y7, "object/mobile/skeleton/shared_tt8l_y7.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_tt8l_y7, "object/mobile/skeleton/shared_tt8l_y7.iff")
 
 object_mobile_skeleton_shared_wed_treadwell = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -4055,6 +4107,7 @@ object_mobile_skeleton_shared_wed_treadwell = SharedCreatureObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1024,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4120,4 +4173,4 @@ object_mobile_skeleton_shared_wed_treadwell = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2765187251
 }
 
-ObjectTemplates:addClientTemplate(object_mobile_skeleton_shared_wed_treadwell, "object/mobile/skeleton/shared_wed_treadwell.iff")
+ObjectTemplates:addTemplate(object_mobile_skeleton_shared_wed_treadwell, "object/mobile/skeleton/shared_wed_treadwell.iff")

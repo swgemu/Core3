@@ -48,6 +48,7 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat = SharedTangibleObjectTem
 	clientObjectCRC = 3668255923
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat.iff")
 
 object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle = SharedTangibleOb
 	clientObjectCRC = 987504645
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_jungle.iff")
 
 object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp = SharedTangibleObj
 	clientObjectCRC = 3334775369
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_swamp.iff")

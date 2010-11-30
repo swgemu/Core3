@@ -47,6 +47,7 @@ object_draft_schematic_space_booster_shared_advanced_fuel_ignition = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_space_booster_shared_advanced_fuel_ignition = SharedDraft
 	clientObjectCRC = 216548376
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_advanced_fuel_ignition, "object/draft_schematic/space/booster/shared_advanced_fuel_ignition.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_advanced_fuel_ignition, "object/draft_schematic/space/booster/shared_advanced_fuel_ignition.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_space_booster_shared_booster_mk1 = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_space_booster_shared_booster_mk1 = SharedDraftSchematicOb
 	clientObjectCRC = 1157928076
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk1, "object/draft_schematic/space/booster/shared_booster_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk1, "object/draft_schematic/space/booster/shared_booster_mk1.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_space_booster_shared_booster_mk2 = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_space_booster_shared_booster_mk2 = SharedDraftSchematicOb
 	clientObjectCRC = 2652060699
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk2, "object/draft_schematic/space/booster/shared_booster_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk2, "object/draft_schematic/space/booster/shared_booster_mk2.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_space_booster_shared_booster_mk3 = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_space_booster_shared_booster_mk3 = SharedDraftSchematicOb
 	clientObjectCRC = 3609090966
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk3, "object/draft_schematic/space/booster/shared_booster_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk3, "object/draft_schematic/space/booster/shared_booster_mk3.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_space_booster_shared_booster_mk4 = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_space_booster_shared_booster_mk4 = SharedDraftSchematicOb
 	clientObjectCRC = 754806914
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk4, "object/draft_schematic/space/booster/shared_booster_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk4, "object/draft_schematic/space/booster/shared_booster_mk4.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_space_booster_shared_booster_mk5 = SharedDraftSchematicOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_space_booster_shared_booster_mk5 = SharedDraftSchematicOb
 	clientObjectCRC = 1710233359
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk5, "object/draft_schematic/space/booster/shared_booster_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk5, "object/draft_schematic/space/booster/shared_booster_mk5.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk1 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk1 = SharedDraft
 	clientObjectCRC = 1287538938
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk1, "object/draft_schematic/space/booster/shared_booster_overdriver_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk1, "object/draft_schematic/space/booster/shared_booster_overdriver_mk1.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk2 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk2 = SharedDraft
 	clientObjectCRC = 2544492653
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk2, "object/draft_schematic/space/booster/shared_booster_overdriver_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk2, "object/draft_schematic/space/booster/shared_booster_overdriver_mk2.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk3 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk3 = SharedDraft
 	clientObjectCRC = 3735324640
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk3, "object/draft_schematic/space/booster/shared_booster_overdriver_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk3, "object/draft_schematic/space/booster/shared_booster_overdriver_mk3.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk4 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk4 = SharedDraft
 	clientObjectCRC = 625454324
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk4, "object/draft_schematic/space/booster/shared_booster_overdriver_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk4, "object/draft_schematic/space/booster/shared_booster_overdriver_mk4.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk5 = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk5 = SharedDraft
 	clientObjectCRC = 1816841081
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk5, "object/draft_schematic/space/booster/shared_booster_overdriver_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk5, "object/draft_schematic/space/booster/shared_booster_overdriver_mk5.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1 = Shared
 	clientObjectCRC = 1033968628
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2 = Shared
 	clientObjectCRC = 3870733155
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3 = Shared
 	clientObjectCRC = 2948322542
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4 = Shared
 	clientObjectCRC = 1415118842
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5 = Shared
 	clientObjectCRC = 492148855
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1 = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1 = SharedDr
 	clientObjectCRC = 2613161095
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2 = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2 = SharedDr
 	clientObjectCRC = 1087767568
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3 = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3 = SharedDr
 	clientObjectCRC = 165372829
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4 = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4 = SharedDr
 	clientObjectCRC = 4063774857
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5 = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5 = SharedDr
 	clientObjectCRC = 3140824836
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1 = SharedDraftSch
 	clientObjectCRC = 3915024240
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2 = SharedDraftSch
 	clientObjectCRC = 843919335
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3 = SharedDraftSch
 	clientObjectCRC = 2067810410
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4 = SharedDraftSch
 	clientObjectCRC = 2158191486
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5 = SharedDraftSch
 	clientObjectCRC = 3383624947
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_xwing_booster_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1165,6 +1191,7 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk1 = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk1 = SharedDraftSchem
 	clientObjectCRC = 1520819528
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk1, "object/draft_schematic/space/booster/shared_xwing_booster_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk1, "object/draft_schematic/space/booster/shared_xwing_booster_mk1.iff")
 
 object_draft_schematic_space_booster_shared_xwing_booster_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1208,6 +1235,7 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk2 = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1243,4 +1271,4 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk2 = SharedDraftSchem
 	clientObjectCRC = 2175956447
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk2, "object/draft_schematic/space/booster/shared_xwing_booster_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk2, "object/draft_schematic/space/booster/shared_xwing_booster_mk2.iff")

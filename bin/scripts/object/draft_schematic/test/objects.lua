@@ -47,6 +47,7 @@ object_draft_schematic_test_shared_dan_test_component = SharedDraftSchematicObje
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_test_shared_dan_test_component = SharedDraftSchematicObje
 	clientObjectCRC = 945497402
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_test_shared_dan_test_component, "object/draft_schematic/test/shared_dan_test_component.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_test_shared_dan_test_component, "object/draft_schematic/test/shared_dan_test_component.iff")
 
 object_draft_schematic_test_shared_dan_test_pistol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_test_shared_dan_test_pistol = SharedDraftSchematicObjectT
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_draft_schematic_test_shared_dan_test_pistol = SharedDraftSchematicObjectT
 	clientObjectCRC = 1485880165
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_test_shared_dan_test_pistol, "object/draft_schematic/test/shared_dan_test_pistol.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_test_shared_dan_test_pistol, "object/draft_schematic/test/shared_dan_test_pistol.iff")

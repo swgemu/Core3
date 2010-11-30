@@ -48,6 +48,7 @@ object_tangible_food_crafted_additive_shared_additive_base = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_food_crafted_additive_shared_additive_base = SharedTangibleObjec
 	clientObjectCRC = 4284585922
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_base, "object/tangible/food/crafted/additive/shared_additive_base.iff")
+ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_base, "object/tangible/food/crafted/additive/shared_additive_base.iff")
 
 object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -101,6 +102,7 @@ object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObje
 	clientObjectCRC = 2284977295
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_heavy, "object/tangible/food/crafted/additive/shared_additive_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_heavy, "object/tangible/food/crafted/additive/shared_additive_heavy.iff")
 
 object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -154,6 +156,7 @@ object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObje
 	clientObjectCRC = 1231667281
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_light, "object/tangible/food/crafted/additive/shared_additive_light.iff")
+ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_light, "object/tangible/food/crafted/additive/shared_additive_light.iff")
 
 object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -207,6 +210,7 @@ object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262144,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObj
 	clientObjectCRC = 282579048
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_medium, "object/tangible/food/crafted/additive/shared_additive_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_medium, "object/tangible/food/crafted/additive/shared_additive_medium.iff")

@@ -48,6 +48,7 @@ object_tangible_component_chemistry_shared_biologic_effect_controller = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_chemistry_shared_biologic_effect_controller = SharedTa
 	clientObjectCRC = 3704098001
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller, "object/tangible/component/chemistry/shared_biologic_effect_controller.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller, "object/tangible/component/chemistry/shared_biologic_effect_controller.iff")
 
 object_tangible_component_chemistry_shared_biologic_effect_controller_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -101,6 +102,7 @@ object_tangible_component_chemistry_shared_biologic_effect_controller_advanced =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_chemistry_shared_biologic_effect_controller_advanced =
 	clientObjectCRC = 2300334388
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller_advanced, "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller_advanced, "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff")
 
 object_tangible_component_chemistry_shared_chemistry_component = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
@@ -154,6 +156,7 @@ object_tangible_component_chemistry_shared_chemistry_component = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_component_chemistry_shared_chemistry_component = SharedTangibleO
 	clientObjectCRC = 1107717367
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_chemistry_component, "object/tangible/component/chemistry/shared_chemistry_component.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_chemistry_component, "object/tangible/component/chemistry/shared_chemistry_component.iff")
 
 object_tangible_component_chemistry_shared_dispersal_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -207,6 +210,7 @@ object_tangible_component_chemistry_shared_dispersal_mechanism = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_component_chemistry_shared_dispersal_mechanism = SharedTangibleO
 	clientObjectCRC = 2561274877
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism, "object/tangible/component/chemistry/shared_dispersal_mechanism.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism, "object/tangible/component/chemistry/shared_dispersal_mechanism.iff")
 
 object_tangible_component_chemistry_shared_dispersal_mechanism_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -260,6 +264,7 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_advanced = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_advanced = Shared
 	clientObjectCRC = 1183326232
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_advanced, "object/tangible/component/chemistry/shared_dispersal_mechanism_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_advanced, "object/tangible/component/chemistry/shared_dispersal_mechanism_advanced.iff")
 
 object_tangible_component_chemistry_shared_dispersal_mechanism_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -313,6 +318,7 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_quest = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_quest = SharedTan
 	clientObjectCRC = 3662200732
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_quest, "object/tangible/component/chemistry/shared_dispersal_mechanism_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_quest, "object/tangible/component/chemistry/shared_dispersal_mechanism_quest.iff")
 
 object_tangible_component_chemistry_shared_endrost = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
@@ -366,6 +372,7 @@ object_tangible_component_chemistry_shared_endrost = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 4194316,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_component_chemistry_shared_endrost = SharedTangibleObjectTemplat
 	clientObjectCRC = 1566810278
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_endrost, "object/tangible/component/chemistry/shared_endrost.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_endrost, "object/tangible/component/chemistry/shared_endrost.iff")
 
 object_tangible_component_chemistry_shared_infection_amplifier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -419,6 +426,7 @@ object_tangible_component_chemistry_shared_infection_amplifier = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_component_chemistry_shared_infection_amplifier = SharedTangibleO
 	clientObjectCRC = 1679113487
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier, "object/tangible/component/chemistry/shared_infection_amplifier.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_infection_amplifier, "object/tangible/component/chemistry/shared_infection_amplifier.iff")
 
 object_tangible_component_chemistry_shared_infection_amplifier_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -472,6 +480,7 @@ object_tangible_component_chemistry_shared_infection_amplifier_advanced = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_component_chemistry_shared_infection_amplifier_advanced = Shared
 	clientObjectCRC = 1129599787
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier_advanced, "object/tangible/component/chemistry/shared_infection_amplifier_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_infection_amplifier_advanced, "object/tangible/component/chemistry/shared_infection_amplifier_advanced.iff")
 
 object_tangible_component_chemistry_shared_infection_amplifier_donkuwah = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -525,6 +534,7 @@ object_tangible_component_chemistry_shared_infection_amplifier_donkuwah = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_component_chemistry_shared_infection_amplifier_donkuwah = Shared
 	clientObjectCRC = 2542466646
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier_donkuwah, "object/tangible/component/chemistry/shared_infection_amplifier_donkuwah.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_infection_amplifier_donkuwah, "object/tangible/component/chemistry/shared_infection_amplifier_donkuwah.iff")
 
 object_tangible_component_chemistry_shared_janta_blood = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -578,6 +588,7 @@ object_tangible_component_chemistry_shared_janta_blood = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_component_chemistry_shared_janta_blood = SharedTangibleObjectTem
 	clientObjectCRC = 1058893195
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_janta_blood, "object/tangible/component/chemistry/shared_janta_blood.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_janta_blood, "object/tangible/component/chemistry/shared_janta_blood.iff")
 
 object_tangible_component_chemistry_shared_liquid_delivery_suspension = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -631,6 +642,7 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension = SharedTa
 	clientObjectCRC = 3358009919
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension, "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension, "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff")
 
 object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -684,6 +696,7 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced =
 	clientObjectCRC = 1862978449
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced, "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced, "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff")
 
 object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -737,6 +750,7 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest = Sh
 	clientObjectCRC = 2125828642
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest, "object/tangible/component/chemistry/shared_liquid_delivery_suspension_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest, "object/tangible/component/chemistry/shared_liquid_delivery_suspension_quest.iff")
 
 object_tangible_component_chemistry_shared_quest_stimpack_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -790,6 +804,7 @@ object_tangible_component_chemistry_shared_quest_stimpack_a = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_component_chemistry_shared_quest_stimpack_a = SharedTangibleObje
 	clientObjectCRC = 478044743
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_quest_stimpack_a, "object/tangible/component/chemistry/shared_quest_stimpack_a.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_quest_stimpack_a, "object/tangible/component/chemistry/shared_quest_stimpack_a.iff")
 
 object_tangible_component_chemistry_shared_rancor_bile = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -843,6 +858,7 @@ object_tangible_component_chemistry_shared_rancor_bile = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_tangible_component_chemistry_shared_rancor_bile = SharedTangibleObjectTem
 	clientObjectCRC = 317047330
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_rancor_bile, "object/tangible/component/chemistry/shared_rancor_bile.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_rancor_bile, "object/tangible/component/chemistry/shared_rancor_bile.iff")
 
 object_tangible_component_chemistry_shared_release_mechanism_duration = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
@@ -896,6 +912,7 @@ object_tangible_component_chemistry_shared_release_mechanism_duration = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_tangible_component_chemistry_shared_release_mechanism_duration = SharedTa
 	clientObjectCRC = 1870489005
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration, "object/tangible/component/chemistry/shared_release_mechanism_duration.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration, "object/tangible/component/chemistry/shared_release_mechanism_duration.iff")
 
 object_tangible_component_chemistry_shared_release_mechanism_duration_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
@@ -949,6 +966,7 @@ object_tangible_component_chemistry_shared_release_mechanism_duration_advanced =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_tangible_component_chemistry_shared_release_mechanism_duration_advanced =
 	clientObjectCRC = 282084455
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration_advanced, "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration_advanced, "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff")
 
 object_tangible_component_chemistry_shared_resilience_compound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -1002,6 +1020,7 @@ object_tangible_component_chemistry_shared_resilience_compound = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_tangible_component_chemistry_shared_resilience_compound = SharedTangibleO
 	clientObjectCRC = 2132263971
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_resilience_compound, "object/tangible/component/chemistry/shared_resilience_compound.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_resilience_compound, "object/tangible/component/chemistry/shared_resilience_compound.iff")
 
 object_tangible_component_chemistry_shared_resilience_compound_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
@@ -1055,6 +1074,7 @@ object_tangible_component_chemistry_shared_resilience_compound_advanced = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_tangible_component_chemistry_shared_resilience_compound_advanced = Shared
 	clientObjectCRC = 101893931
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_resilience_compound_advanced, "object/tangible/component/chemistry/shared_resilience_compound_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_resilience_compound_advanced, "object/tangible/component/chemistry/shared_resilience_compound_advanced.iff")
 
 object_tangible_component_chemistry_shared_solid_delivery_shell = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
@@ -1108,6 +1128,7 @@ object_tangible_component_chemistry_shared_solid_delivery_shell = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_tangible_component_chemistry_shared_solid_delivery_shell = SharedTangible
 	clientObjectCRC = 2203679790
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell, "object/tangible/component/chemistry/shared_solid_delivery_shell.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell, "object/tangible/component/chemistry/shared_solid_delivery_shell.iff")
 
 object_tangible_component_chemistry_shared_solid_delivery_shell_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
@@ -1161,6 +1182,7 @@ object_tangible_component_chemistry_shared_solid_delivery_shell_advanced = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_tangible_component_chemistry_shared_solid_delivery_shell_advanced = Share
 	clientObjectCRC = 2952575979
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell_advanced, "object/tangible/component/chemistry/shared_solid_delivery_shell_advanced.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell_advanced, "object/tangible/component/chemistry/shared_solid_delivery_shell_advanced.iff")
 
 object_tangible_component_chemistry_shared_spider_venom = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -1214,6 +1236,7 @@ object_tangible_component_chemistry_shared_spider_venom = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262146,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,4 +1281,4 @@ object_tangible_component_chemistry_shared_spider_venom = SharedTangibleObjectTe
 	clientObjectCRC = 3428815879
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_spider_venom, "object/tangible/component/chemistry/shared_spider_venom.iff")
+ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_spider_venom, "object/tangible/component/chemistry/shared_spider_venom.iff")

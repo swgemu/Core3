@@ -48,6 +48,7 @@ object_tangible_bank_shared_character_bank = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_bank_shared_character_bank = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1895633812
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bank_shared_character_bank, "object/tangible/bank/shared_character_bank.iff")
+ObjectTemplates:addTemplate(object_tangible_bank_shared_character_bank, "object/tangible/bank/shared_character_bank.iff")

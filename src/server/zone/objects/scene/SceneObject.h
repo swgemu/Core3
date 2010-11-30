@@ -876,6 +876,8 @@ public:
 
 	unsigned int getGameObjectType();
 
+	unsigned int getClientGameObjectType();
+
 	unsigned int getContainmentType();
 
 	Zone* getZone();
@@ -1131,6 +1133,8 @@ protected:
 	unsigned int containerVolumeLimit;
 
 	unsigned int gameObjectType;
+
+	unsigned int clientGameObjectType;
 
 	unsigned int containmentType;
 
@@ -1815,6 +1819,8 @@ public:
 
 	unsigned int getGameObjectType();
 
+	unsigned int getClientGameObjectType();
+
 	unsigned int getContainmentType();
 
 	Zone* getZone();
@@ -2215,6 +2221,8 @@ public:
 	ZoneClientSession* getClient();
 
 	unsigned int getGameObjectType();
+
+	unsigned int getClientGameObjectType();
 
 	unsigned int getContainmentType();
 

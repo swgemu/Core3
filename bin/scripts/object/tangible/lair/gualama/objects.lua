@@ -48,6 +48,7 @@ object_tangible_lair_gualama_shared_lair_gualama = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gualama_shared_lair_gualama = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1781219126
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gualama_shared_lair_gualama, "object/tangible/lair/gualama/shared_lair_gualama.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gualama_shared_lair_gualama, "object/tangible/lair/gualama/shared_lair_gualama.iff")
 
 object_tangible_lair_gualama_shared_lair_gualama_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gualama_shared_lair_gualama_grassland = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_gualama_shared_lair_gualama_grassland = SharedTangibleObjec
 	clientObjectCRC = 464760681
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gualama_shared_lair_gualama_grassland, "object/tangible/lair/gualama/shared_lair_gualama_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gualama_shared_lair_gualama_grassland, "object/tangible/lair/gualama/shared_lair_gualama_grassland.iff")

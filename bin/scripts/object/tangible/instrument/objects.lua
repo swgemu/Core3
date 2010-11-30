@@ -48,6 +48,7 @@ object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 838757271
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_bandfill, "object/tangible/instrument/shared_bandfill.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_bandfill, "object/tangible/instrument/shared_bandfill.iff")
 
 object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_fanfar.apt",
@@ -101,6 +102,7 @@ object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2024043623
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_fanfar, "object/tangible/instrument/shared_fanfar.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_fanfar, "object/tangible/instrument/shared_fanfar.iff")
 
 object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_fizz.apt",
@@ -154,6 +156,7 @@ object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 197364379
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_fizz, "object/tangible/instrument/shared_fizz.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_fizz, "object/tangible/instrument/shared_fizz.iff")
 
 object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_flute_droopy.apt",
@@ -207,6 +210,7 @@ object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1186559398
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_flute_droopy, "object/tangible/instrument/shared_flute_droopy.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_flute_droopy, "object/tangible/instrument/shared_flute_droopy.iff")
 
 object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rebos_organ.apt",
@@ -260,6 +264,7 @@ object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_instrument_organ_figrin_dan.cdf",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleOb
 	clientObjectCRC = 2221793724
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_instrument_organ_figrin_dan, "object/tangible/instrument/shared_instrument_organ_figrin_dan.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_instrument_organ_figrin_dan, "object/tangible/instrument/shared_instrument_organ_figrin_dan.iff")
 
 object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -313,6 +318,7 @@ object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_instrument_organ_max_rebo.cdf",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObje
 	clientObjectCRC = 3369165758
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_instrument_organ_max_rebo, "object/tangible/instrument/shared_instrument_organ_max_rebo.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_instrument_organ_max_rebo, "object/tangible/instrument/shared_instrument_organ_max_rebo.iff")
 
 object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_kloo_horn.apt",
@@ -366,6 +372,7 @@ object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 4261135292
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_kloo_horn, "object/tangible/instrument/shared_kloo_horn.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_kloo_horn, "object/tangible/instrument/shared_kloo_horn.iff")
 
 object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_mandoviol.apt",
@@ -419,6 +426,7 @@ object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1784205003
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_mandoviol, "object/tangible/instrument/shared_mandoviol.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_mandoviol, "object/tangible/instrument/shared_mandoviol.iff")
 
 object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -472,6 +480,7 @@ object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "object/client_shared_instrument_organ_max_rebo.iff",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2412019728
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_nalargon, "object/tangible/instrument/shared_nalargon.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_nalargon, "object/tangible/instrument/shared_nalargon.iff")
 
 object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_ommni_box.apt",
@@ -525,6 +534,7 @@ object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2010287603
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_ommni_box, "object/tangible/instrument/shared_ommni_box.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_ommni_box, "object/tangible/instrument/shared_ommni_box.iff")
 
 object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -578,6 +588,7 @@ object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_instrument_organ_max_rebo.cdf",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1225824678
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_organ_max_rebo, "object/tangible/instrument/shared_organ_max_rebo.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_organ_max_rebo, "object/tangible/instrument/shared_organ_max_rebo.iff")
 
 object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_slitherhorn.apt",
@@ -631,6 +642,7 @@ object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 3533891079
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_slitherhorn, "object/tangible/instrument/shared_slitherhorn.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_slitherhorn, "object/tangible/instrument/shared_slitherhorn.iff")
 
 object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_traz.apt",
@@ -684,6 +696,7 @@ object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8204,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,4 +741,4 @@ object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 395515554
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_traz, "object/tangible/instrument/shared_traz.iff")
+ObjectTemplates:addTemplate(object_tangible_instrument_shared_traz, "object/tangible/instrument/shared_traz.iff")

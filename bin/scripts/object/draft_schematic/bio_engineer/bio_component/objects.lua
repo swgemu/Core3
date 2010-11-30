@@ -47,6 +47,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 2925842
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 3961130234
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 768952240
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 2552206589
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 1589090972
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 3813406638
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 1620152707
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 899505469
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 2024699150
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 2809419089
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 2665358309
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 395605474
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 1070501512
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 2262729200
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 3361810650
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 756747736
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 2635065111
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 3034020975
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 1421353901
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 1217369934
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 1549050933
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 	clientObjectCRC = 3053086977
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 	clientObjectCRC = 295650264
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_filling.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 	clientObjectCRC = 4077000315
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_flavor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 	clientObjectCRC = 463434519
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_nutrition.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 	clientObjectCRC = 3722871954
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_quantity.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_quantity.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1165,6 +1191,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 	clientObjectCRC = 2624931359
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_filling.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1208,6 +1235,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1243,7 +1271,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 	clientObjectCRC = 3804703928
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_flavor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1251,6 +1279,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1286,7 +1315,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 	clientObjectCRC = 1803745287
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_nutrition.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1294,6 +1323,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1329,7 +1359,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 	clientObjectCRC = 1864508847
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_quantity.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_quantity.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1337,6 +1367,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1372,7 +1403,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 	clientObjectCRC = 903570077
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_filling.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1380,6 +1411,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1415,7 +1447,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 	clientObjectCRC = 929619132
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_flavor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1423,6 +1455,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1458,7 +1491,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 	clientObjectCRC = 2027905587
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_nutrition.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1466,6 +1499,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1501,4 +1535,4 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 	clientObjectCRC = 316670382
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_quantity.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_quantity.iff")

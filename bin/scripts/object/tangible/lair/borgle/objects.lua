@@ -48,6 +48,7 @@ object_tangible_lair_borgle_shared_lair_borgle = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_borgle_shared_lair_borgle = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2434310431
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_borgle_shared_lair_borgle, "object/tangible/lair/borgle/shared_lair_borgle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_borgle_shared_lair_borgle, "object/tangible/lair/borgle/shared_lair_borgle.iff")
 
 object_tangible_lair_borgle_shared_lair_borgle_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_borgle_shared_lair_borgle_jungle = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_borgle_shared_lair_borgle_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 1961458957
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_borgle_shared_lair_borgle_jungle, "object/tangible/lair/borgle/shared_lair_borgle_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_borgle_shared_lair_borgle_jungle, "object/tangible/lair/borgle/shared_lair_borgle_jungle.iff")

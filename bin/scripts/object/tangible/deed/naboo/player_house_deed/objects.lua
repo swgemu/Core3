@@ -48,6 +48,7 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_large_deed = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_large_deed = Sha
 	clientObjectCRC = 63835392
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_large_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_large_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_large_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_large_deed.iff")
 
 object_tangible_deed_naboo_player_house_deed_shared_naboo_house_medium_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -101,6 +102,7 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_medium_deed = Sh
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_medium_deed = Sh
 	clientObjectCRC = 3495448104
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_medium_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_medium_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_medium_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_medium_deed.iff")
 
 object_tangible_deed_naboo_player_house_deed_shared_naboo_house_small_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -154,6 +156,7 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_small_deed = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8388609,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_small_deed = Sha
 	clientObjectCRC = 1128795043
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_small_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_small_deed.iff")
+ObjectTemplates:addTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_small_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_small_deed.iff")

@@ -49,6 +49,7 @@ object_weapon_ranged_vehicle_shared_vehicle_atst_ranged = SharedWeaponObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131074,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_ranged_vehicle_shared_vehicle_atst_ranged = SharedWeaponObjectTemp
 	clientObjectCRC = 2231868029
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_vehicle_shared_vehicle_atst_ranged, "object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_vehicle_shared_vehicle_atst_ranged, "object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff")

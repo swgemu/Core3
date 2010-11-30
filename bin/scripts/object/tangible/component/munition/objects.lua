@@ -48,6 +48,7 @@ object_tangible_component_munition_shared_acklay_venom = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_component_munition_shared_acklay_venom = SharedTangibleObjectTem
 	clientObjectCRC = 3684259216
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_acklay_venom, "object/tangible/component/munition/shared_acklay_venom.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_acklay_venom, "object/tangible/component/munition/shared_acklay_venom.iff")
 
 object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile.apt",
@@ -101,6 +102,7 @@ object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObject
 	clientObjectCRC = 4029895422
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_ammo_projectile, "object/tangible/component/munition/shared_ammo_projectile.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_ammo_projectile, "object/tangible/component/munition/shared_ammo_projectile.iff")
 
 object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile_entanglement.apt",
@@ -154,6 +156,7 @@ object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedT
 	clientObjectCRC = 1717162905
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_ammo_projectile_entanglement, "object/tangible/component/munition/shared_ammo_projectile_entanglement.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_ammo_projectile_entanglement, "object/tangible/component/munition/shared_ammo_projectile_entanglement.iff")
 
 object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -207,6 +210,7 @@ object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibl
 	clientObjectCRC = 1098837027
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_base_munition_enhancer, "object/tangible/component/munition/shared_base_munition_enhancer.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_base_munition_enhancer, "object/tangible/component/munition/shared_base_munition_enhancer.iff")
 
 object_tangible_component_munition_shared_enhanced_charge_composition = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -260,6 +264,7 @@ object_tangible_component_munition_shared_enhanced_charge_composition = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_component_munition_shared_enhanced_charge_composition = SharedTa
 	clientObjectCRC = 1739187546
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_charge_composition, "object/tangible/component/munition/shared_enhanced_charge_composition.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_charge_composition, "object/tangible/component/munition/shared_enhanced_charge_composition.iff")
 
 object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -313,6 +318,7 @@ object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangib
 	clientObjectCRC = 411019932
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_charge_shaping, "object/tangible/component/munition/shared_enhanced_charge_shaping.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_charge_shaping, "object/tangible/component/munition/shared_enhanced_charge_shaping.iff")
 
 object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -366,6 +372,7 @@ object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling 
 	clientObjectCRC = 3545355156
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling, "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling, "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff")
 
 object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -419,6 +426,7 @@ object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = Shared
 	clientObjectCRC = 628465189
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_fragmentation_sleeve, "object/tangible/component/munition/shared_enhanced_fragmentation_sleeve.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_fragmentation_sleeve, "object/tangible/component/munition/shared_enhanced_fragmentation_sleeve.iff")
 
 object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -472,6 +480,7 @@ object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectT
 	clientObjectCRC = 3311758812
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_kliknick_gland, "object/tangible/component/munition/shared_kliknick_gland.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_kliknick_gland, "object/tangible/component/munition/shared_kliknick_gland.iff")
 
 object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_chemical.apt",
@@ -525,6 +534,7 @@ object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjec
 	clientObjectCRC = 3966888720
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_chemical, "object/tangible/component/munition/shared_warhead_chemical.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_chemical, "object/tangible/component/munition/shared_warhead_chemical.iff")
 
 object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -578,6 +588,7 @@ object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangi
 	clientObjectCRC = 896289962
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_fusing_mechanism, "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_fusing_mechanism, "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff")
 
 object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_heavy.apt",
@@ -631,6 +642,7 @@ object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTe
 	clientObjectCRC = 2416425450
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_heavy, "object/tangible/component/munition/shared_warhead_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_heavy, "object/tangible/component/munition/shared_warhead_heavy.iff")
 
 object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
@@ -684,6 +696,7 @@ object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTe
 	clientObjectCRC = 1365214516
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_light, "object/tangible/component/munition/shared_warhead_light.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_light, "object/tangible/component/munition/shared_warhead_light.iff")
 
 object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_medium.apt",
@@ -737,6 +750,7 @@ object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectT
 	clientObjectCRC = 1284211616
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_medium, "object/tangible/component/munition/shared_warhead_medium.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_medium, "object/tangible/component/munition/shared_warhead_medium.iff")
 
 object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -790,6 +804,7 @@ object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262150,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,4 +849,4 @@ object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObj
 	clientObjectCRC = 1000887058
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_stabilizer, "object/tangible/component/munition/shared_warhead_stabilizer.iff")
+ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_stabilizer, "object/tangible/component/munition/shared_warhead_stabilizer.iff")

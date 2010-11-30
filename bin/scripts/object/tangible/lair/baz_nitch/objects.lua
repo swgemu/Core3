@@ -48,6 +48,7 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch = SharedTangibleObjectTempl
 	clientObjectCRC = 66686181
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch.iff")
 
 object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest = SharedTangibleObje
 	clientObjectCRC = 544226811
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_forest.iff")
 
 object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain = SharedTangibleOb
 	clientObjectCRC = 1253989511
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_mountain.iff")

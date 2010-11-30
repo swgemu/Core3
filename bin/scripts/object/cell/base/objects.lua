@@ -47,6 +47,7 @@ object_cell_base_shared_base_cell = SharedCellObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -58,7 +59,7 @@ object_cell_base_shared_base_cell = SharedCellObjectTemplate:new {
 
 	detailedDescription = "string_id_table",
 
-	gameObjectType = 11,
+	gameObjectType = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
@@ -82,7 +83,7 @@ object_cell_base_shared_base_cell = SharedCellObjectTemplate:new {
 	clientObjectCRC = 3381216749
 }
 
-ObjectTemplates:addClientTemplate(object_cell_base_shared_base_cell, "object/cell/base/shared_base_cell.iff")
+ObjectTemplates:addTemplate(object_cell_base_shared_base_cell, "object/cell/base/shared_base_cell.iff")
 
 object_cell_base_shared_cell_default = SharedCellObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_cell_base_shared_cell_default = SharedCellObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 0,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_cell_base_shared_cell_default = SharedCellObjectTemplate:new {
 	clientObjectCRC = 632406981
 }
 
-ObjectTemplates:addClientTemplate(object_cell_base_shared_cell_default, "object/cell/base/shared_cell_default.iff")
+ObjectTemplates:addTemplate(object_cell_base_shared_cell_default, "object/cell/base/shared_cell_default.iff")

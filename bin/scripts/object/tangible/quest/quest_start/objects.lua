@@ -48,6 +48,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter = Sha
 	clientObjectCRC = 186615068
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter, "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter.iff")
+ObjectTemplates:addTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter, "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter.iff")
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_headandbody.apt",
@@ -101,6 +102,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_conta
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_conta
 	clientObjectCRC = 2168280310
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_container, "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter_container.iff")
+ObjectTemplates:addTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_container, "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter_container.iff")
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTa
 	clientObjectCRC = 3381934181
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap, "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap.iff")
+ObjectTemplates:addTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap, "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap.iff")
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s1.apt",
@@ -207,6 +210,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container 
 	clientObjectCRC = 4074372055
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container, "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap_container.iff")
+ObjectTemplates:addTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container, "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap_container.iff")

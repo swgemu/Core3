@@ -48,6 +48,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots = Shared
 	clientObjectCRC = 917083893
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_boots.iff")
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_boots_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest = 
 	clientObjectCRC = 30813288
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_boots_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_boots_quest.iff")
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_chest_plate_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate = 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate = 
 	clientObjectCRC = 290985679
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_chest_plate.iff")
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_chest_plate_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_qu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_qu
 	clientObjectCRC = 1738912430
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_chest_plate_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_chest_plate_quest.iff")
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_helmet_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet = Share
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet = Share
 	clientObjectCRC = 1458475008
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet.iff")
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_helmet_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,4 +363,4 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest =
 	clientObjectCRC = 1049616094
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet_quest.iff")

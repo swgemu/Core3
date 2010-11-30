@@ -48,6 +48,7 @@ object_tangible_powerup_weapon_shared_heavy = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524292,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_powerup_weapon_shared_heavy = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 717357125
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_heavy, "object/tangible/powerup/weapon/shared_heavy.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_heavy, "object/tangible/powerup/weapon/shared_heavy.iff")
 
 object_tangible_powerup_weapon_shared_melee = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
@@ -101,6 +102,7 @@ object_tangible_powerup_weapon_shared_melee = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524289,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_powerup_weapon_shared_melee = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1636293712
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_melee, "object/tangible/powerup/weapon/shared_melee.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee, "object/tangible/powerup/weapon/shared_melee.iff")
 
 object_tangible_powerup_weapon_shared_melee_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon.apt",
@@ -154,6 +156,7 @@ object_tangible_powerup_weapon_shared_melee_generic = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524289,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_powerup_weapon_shared_melee_generic = SharedTangibleObjectTempla
 	clientObjectCRC = 1375892401
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_melee_generic, "object/tangible/powerup/weapon/shared_melee_generic.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_generic, "object/tangible/powerup/weapon/shared_melee_generic.iff")
 
 object_tangible_powerup_weapon_shared_melee_lightsaber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon_lightsaber.apt",
@@ -207,6 +210,7 @@ object_tangible_powerup_weapon_shared_melee_lightsaber = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524289,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_powerup_weapon_shared_melee_lightsaber = SharedTangibleObjectTem
 	clientObjectCRC = 1890042255
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_melee_lightsaber, "object/tangible/powerup/weapon/shared_melee_lightsaber.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_lightsaber, "object/tangible/powerup/weapon/shared_melee_lightsaber.iff")
 
 object_tangible_powerup_weapon_shared_mine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sensor_package_unit.apt",
@@ -260,6 +264,7 @@ object_tangible_powerup_weapon_shared_mine = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524293,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_powerup_weapon_shared_mine = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2304219525
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_mine, "object/tangible/powerup/weapon/shared_mine.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine, "object/tangible/powerup/weapon/shared_mine.iff")
 
 object_tangible_powerup_weapon_shared_mine_explosive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -313,6 +318,7 @@ object_tangible_powerup_weapon_shared_mine_explosive = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524293,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_powerup_weapon_shared_mine_explosive = SharedTangibleObjectTempl
 	clientObjectCRC = 3665923080
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_mine_explosive, "object/tangible/powerup/weapon/shared_mine_explosive.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine_explosive, "object/tangible/powerup/weapon/shared_mine_explosive.iff")
 
 object_tangible_powerup_weapon_shared_ranged = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -366,6 +372,7 @@ object_tangible_powerup_weapon_shared_ranged = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524290,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_powerup_weapon_shared_ranged = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1637218728
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_ranged, "object/tangible/powerup/weapon/shared_ranged.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged, "object/tangible/powerup/weapon/shared_ranged.iff")
 
 object_tangible_powerup_weapon_shared_ranged_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_rifle_barrel.apt",
@@ -419,6 +426,7 @@ object_tangible_powerup_weapon_shared_ranged_barrel = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524290,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_powerup_weapon_shared_ranged_barrel = SharedTangibleObjectTempla
 	clientObjectCRC = 137262486
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_ranged_barrel, "object/tangible/powerup/weapon/shared_ranged_barrel.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_barrel, "object/tangible/powerup/weapon/shared_ranged_barrel.iff")
 
 object_tangible_powerup_weapon_shared_ranged_grip = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -472,6 +480,7 @@ object_tangible_powerup_weapon_shared_ranged_grip = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524290,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_powerup_weapon_shared_ranged_grip = SharedTangibleObjectTemplate
 	clientObjectCRC = 1312422379
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_ranged_grip, "object/tangible/powerup/weapon/shared_ranged_grip.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_grip, "object/tangible/powerup/weapon/shared_ranged_grip.iff")
 
 object_tangible_powerup_weapon_shared_ranged_muzzle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s06.apt",
@@ -525,6 +534,7 @@ object_tangible_powerup_weapon_shared_ranged_muzzle = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524290,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_tangible_powerup_weapon_shared_ranged_muzzle = SharedTangibleObjectTempla
 	clientObjectCRC = 555906025
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_ranged_muzzle, "object/tangible/powerup/weapon/shared_ranged_muzzle.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_muzzle, "object/tangible/powerup/weapon/shared_ranged_muzzle.iff")
 
 object_tangible_powerup_weapon_shared_ranged_power = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
@@ -578,6 +588,7 @@ object_tangible_powerup_weapon_shared_ranged_power = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524290,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_tangible_powerup_weapon_shared_ranged_power = SharedTangibleObjectTemplat
 	clientObjectCRC = 1622710306
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_ranged_power, "object/tangible/powerup/weapon/shared_ranged_power.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_power, "object/tangible/powerup/weapon/shared_ranged_power.iff")
 
 object_tangible_powerup_weapon_shared_ranged_scope = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s04.apt",
@@ -631,6 +642,7 @@ object_tangible_powerup_weapon_shared_ranged_scope = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524290,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_tangible_powerup_weapon_shared_ranged_scope = SharedTangibleObjectTemplat
 	clientObjectCRC = 3758199555
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_ranged_scope, "object/tangible/powerup/weapon/shared_ranged_scope.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_scope, "object/tangible/powerup/weapon/shared_ranged_scope.iff")
 
 object_tangible_powerup_weapon_shared_ranged_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_stock.apt",
@@ -684,6 +696,7 @@ object_tangible_powerup_weapon_shared_ranged_stock = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524290,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_tangible_powerup_weapon_shared_ranged_stock = SharedTangibleObjectTemplat
 	clientObjectCRC = 2739120425
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_ranged_stock, "object/tangible/powerup/weapon/shared_ranged_stock.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_stock, "object/tangible/powerup/weapon/shared_ranged_stock.iff")
 
 object_tangible_powerup_weapon_shared_thrown = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile.apt",
@@ -737,6 +750,7 @@ object_tangible_powerup_weapon_shared_thrown = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524291,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_tangible_powerup_weapon_shared_thrown = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 540983335
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_thrown, "object/tangible/powerup/weapon/shared_thrown.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown, "object/tangible/powerup/weapon/shared_thrown.iff")
 
 object_tangible_powerup_weapon_shared_thrown_explosive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
@@ -790,6 +804,7 @@ object_tangible_powerup_weapon_shared_thrown_explosive = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524291,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_tangible_powerup_weapon_shared_thrown_explosive = SharedTangibleObjectTem
 	clientObjectCRC = 2781934180
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_thrown_explosive, "object/tangible/powerup/weapon/shared_thrown_explosive.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_explosive, "object/tangible/powerup/weapon/shared_thrown_explosive.iff")
 
 object_tangible_powerup_weapon_shared_thrown_wiring = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
@@ -843,6 +858,7 @@ object_tangible_powerup_weapon_shared_thrown_wiring = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 524291,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,4 +903,4 @@ object_tangible_powerup_weapon_shared_thrown_wiring = SharedTangibleObjectTempla
 	clientObjectCRC = 569969360
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_shared_thrown_wiring, "object/tangible/powerup/weapon/shared_thrown_wiring.iff")
+ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_wiring, "object/tangible/powerup/weapon/shared_thrown_wiring.iff")

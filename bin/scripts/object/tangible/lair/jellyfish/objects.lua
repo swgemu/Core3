@@ -48,6 +48,7 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish = SharedTangibleObjectTempl
 	clientObjectCRC = 1244300952
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish, "object/tangible/lair/jellyfish/shared_lair_jellyfish.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish, "object/tangible/lair/jellyfish/shared_lair_jellyfish.iff")
 
 object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangible
 	clientObjectCRC = 2597048309
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater, "object/tangible/lair/jellyfish/shared_lair_jellyfish_underwater.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater, "object/tangible/lair/jellyfish/shared_lair_jellyfish_underwater.iff")

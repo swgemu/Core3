@@ -48,6 +48,7 @@ object_tangible_lair_rebel_shared_lair_rebel_npc = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_rebel_shared_lair_rebel_npc = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3833889530
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_rebel_shared_lair_rebel_npc, "object/tangible/lair/rebel/shared_lair_rebel_npc.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_rebel_shared_lair_rebel_npc, "object/tangible/lair/rebel/shared_lair_rebel_npc.iff")

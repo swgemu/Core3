@@ -47,6 +47,7 @@ object_mission_base_shared_base_mission = SharedMissionObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2051,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_mission_base_shared_base_mission = SharedMissionObjectTemplate:new {
 	clientObjectCRC = 3240843527
 }
 
-ObjectTemplates:addClientTemplate(object_mission_base_shared_base_mission, "object/mission/base/shared_base_mission.iff")
+ObjectTemplates:addTemplate(object_mission_base_shared_base_mission, "object/mission/base/shared_base_mission.iff")
 
 object_mission_base_shared_mission_default = SharedMissionObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -90,6 +91,7 @@ object_mission_base_shared_mission_default = SharedMissionObjectTemplate:new {
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2051,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,4 +127,4 @@ object_mission_base_shared_mission_default = SharedMissionObjectTemplate:new {
 	clientObjectCRC = 2210569821
 }
 
-ObjectTemplates:addClientTemplate(object_mission_base_shared_mission_default, "object/mission/base/shared_mission_default.iff")
+ObjectTemplates:addTemplate(object_mission_base_shared_mission_default, "object/mission/base/shared_mission_default.iff")

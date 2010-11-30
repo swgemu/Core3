@@ -48,6 +48,7 @@ object_installation_mining_ore_base_shared_mining_ore_base = SharedInstallationO
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "",
+	clientGameObjectType = 4099,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_mining_ore_base_shared_mining_ore_base = SharedInstallationO
 	clientObjectCRC = 1937734566
 }
 
-ObjectTemplates:addClientTemplate(object_installation_mining_ore_base_shared_mining_ore_base, "object/installation/mining_ore/base/shared_mining_ore_base.iff")
+ObjectTemplates:addTemplate(object_installation_mining_ore_base_shared_mining_ore_base, "object/installation/mining_ore/base/shared_mining_ore_base.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_kimogila_shared_lair_kimogila = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_kimogila_shared_lair_kimogila = SharedTangibleObjectTemplat
 	clientObjectCRC = 1897213420
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila, "object/tangible/lair/kimogila/shared_lair_kimogila.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kimogila_shared_lair_kimogila, "object/tangible/lair/kimogila/shared_lair_kimogila.iff")
 
 object_tangible_lair_kimogila_shared_lair_kimogila_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_kimogila_shared_lair_kimogila_grassland = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_kimogila_shared_lair_kimogila_grassland = SharedTangibleObj
 	clientObjectCRC = 2372563176
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_grassland, "object/tangible/lair/kimogila/shared_lair_kimogila_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_grassland, "object/tangible/lair/kimogila/shared_lair_kimogila_grassland.iff")
 
 object_tangible_lair_kimogila_shared_lair_kimogila_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_kimogila_shared_lair_kimogila_mountain = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_kimogila_shared_lair_kimogila_mountain = SharedTangibleObje
 	clientObjectCRC = 2905887997
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_mountain, "object/tangible/lair/kimogila/shared_lair_kimogila_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_mountain, "object/tangible/lair/kimogila/shared_lair_kimogila_mountain.iff")

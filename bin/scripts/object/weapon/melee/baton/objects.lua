@@ -49,6 +49,7 @@ object_weapon_melee_baton_shared_baton_gaderiffi = SharedWeaponObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_baton.cdf",
+	clientGameObjectType = 131073,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_melee_baton_shared_baton_gaderiffi = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 1521219232
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_baton_gaderiffi, "object/weapon/melee/baton/shared_baton_gaderiffi.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_baton_gaderiffi, "object/weapon/melee/baton/shared_baton_gaderiffi.iff")
 
 object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_baton_stun.apt",
@@ -106,6 +107,7 @@ object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_baton.cdf",
+	clientGameObjectType = 131073,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 2740869510
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_baton_stun, "object/weapon/melee/baton/shared_baton_stun.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_baton_stun, "object/weapon/melee/baton/shared_baton_stun.iff")
 
 object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_baton_gaderiffi.apt",
@@ -163,6 +165,7 @@ object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_baton.cdf",
+	clientGameObjectType = 131073,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,4 +213,4 @@ object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemp
 	clientObjectCRC = 926540761
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_victor_baton_gaderiffi, "object/weapon/melee/baton/shared_victor_baton_gaderiffi.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_victor_baton_gaderiffi, "object/weapon/melee/baton/shared_victor_baton_gaderiffi.iff")

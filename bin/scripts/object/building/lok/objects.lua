@@ -48,6 +48,7 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 	clientObjectCRC = 1658229769
 }
 
-ObjectTemplates:addClientTemplate(object_building_lok_shared_cave_03_nym_pirates, "object/building/lok/shared_cave_03_nym_pirates.iff")
+ObjectTemplates:addTemplate(object_building_lok_shared_cave_03_nym_pirates, "object/building/lok/shared_cave_03_nym_pirates.iff")
 
 object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -104,6 +105,7 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,7 +153,7 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 223465819
 }
 
-ObjectTemplates:addClientTemplate(object_building_lok_shared_mining_cave_01, "object/building/lok/shared_mining_cave_01.iff")
+ObjectTemplates:addTemplate(object_building_lok_shared_mining_cave_01, "object/building/lok/shared_mining_cave_01.iff")
 
 object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -160,6 +162,7 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 65,
 	clientDataFile = "clientdata/building/shared_capitol.cdf",
+	clientGameObjectType = 512,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -207,4 +210,4 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	clientObjectCRC = 2289463992
 }
 
-ObjectTemplates:addClientTemplate(object_building_lok_shared_nym_stronghold, "object/building/lok/shared_nym_stronghold.iff")
+ObjectTemplates:addTemplate(object_building_lok_shared_nym_stronghold, "object/building/lok/shared_nym_stronghold.iff")

@@ -48,6 +48,7 @@ object_ship_player_shared_player_awing = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_awing"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/client_shared_awing.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_ship_player_shared_player_awing = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2823165423
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_awing, "object/ship/player/shared_player_awing.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_awing, "object/ship/player/shared_player_awing.iff")
 
 object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -101,6 +102,7 @@ object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new
 	certificationsRequired = {"cert_starships_lighthuttfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_light_s01.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new
 	clientObjectCRC = 770455739
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_hutt_light, "object/ship/player/shared_player_basic_hutt_light.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_hutt_light, "object/ship/player/shared_player_basic_hutt_light.iff")
 
 object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -154,6 +156,7 @@ object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new
 	certificationsRequired = {"cert_starships_tiefighterlight"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tiefighter.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new
 	clientObjectCRC = 2430870087
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_tiefighter, "object/ship/player/shared_player_basic_tiefighter.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_tiefighter, "object/ship/player/shared_player_basic_tiefighter.iff")
 
 object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -207,6 +210,7 @@ object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_z95headhunter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_z95.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 960125460
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_z95, "object/ship/player/shared_player_basic_z95.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_z95, "object/ship/player/shared_player_basic_z95.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -260,6 +264,7 @@ object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:n
 	certificationsRequired = {"cert_starships_heavyblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_heavy_s01.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:n
 	clientObjectCRC = 2406012699
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heavy_s01, "object/ship/player/shared_player_blacksun_heavy_s01.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s01, "object/ship/player/shared_player_blacksun_heavy_s01.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
@@ -313,6 +318,7 @@ object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:n
 	certificationsRequired = {"cert_starships_heavyblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_heavy_s02.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:n
 	clientObjectCRC = 1417641868
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heavy_s02, "object/ship/player/shared_player_blacksun_heavy_s02.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s02, "object/ship/player/shared_player_blacksun_heavy_s02.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -366,6 +372,7 @@ object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:n
 	certificationsRequired = {"cert_starships_heavyblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_heavy_s03.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:n
 	clientObjectCRC = 494016513
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heavy_s03, "object/ship/player/shared_player_blacksun_heavy_s03.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s03, "object/ship/player/shared_player_blacksun_heavy_s03.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
@@ -419,6 +426,7 @@ object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:n
 	certificationsRequired = {"cert_starships_heavyblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_heavy_s04.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:n
 	clientObjectCRC = 3868275477
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heavy_s04, "object/ship/player/shared_player_blacksun_heavy_s04.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s04, "object/ship/player/shared_player_blacksun_heavy_s04.iff")
 
 object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -472,6 +480,7 @@ object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:n
 	certificationsRequired = {"cert_starships_lightblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_light_s01.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:n
 	clientObjectCRC = 2468301121
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_light_s01, "object/ship/player/shared_player_blacksun_light_s01.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s01, "object/ship/player/shared_player_blacksun_light_s01.iff")
 
 object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
@@ -525,6 +534,7 @@ object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:n
 	certificationsRequired = {"cert_starships_lightblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_light_s02.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -569,7 +579,7 @@ object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:n
 	clientObjectCRC = 1208541654
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_light_s02, "object/ship/player/shared_player_blacksun_light_s02.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s02, "object/ship/player/shared_player_blacksun_light_s02.iff")
 
 object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -578,6 +588,7 @@ object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:n
 	certificationsRequired = {"cert_starships_lightblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_light_s03.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -622,7 +633,7 @@ object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:n
 	clientObjectCRC = 17139291
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_light_s03, "object/ship/player/shared_player_blacksun_light_s03.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s03, "object/ship/player/shared_player_blacksun_light_s03.iff")
 
 object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
@@ -631,6 +642,7 @@ object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:n
 	certificationsRequired = {"cert_starships_lightblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_light_s04.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -675,7 +687,7 @@ object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:n
 	clientObjectCRC = 4209421647
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_light_s04, "object/ship/player/shared_player_blacksun_light_s04.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s04, "object/ship/player/shared_player_blacksun_light_s04.iff")
 
 object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -684,6 +696,7 @@ object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:
 	certificationsRequired = {"cert_starships_mediumblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_medium_s01.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -728,7 +741,7 @@ object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:
 	clientObjectCRC = 2060411448
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medium_s01, "object/ship/player/shared_player_blacksun_medium_s01.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s01, "object/ship/player/shared_player_blacksun_medium_s01.iff")
 
 object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
@@ -737,6 +750,7 @@ object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:
 	certificationsRequired = {"cert_starships_mediumblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_medium_s02.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -781,7 +795,7 @@ object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:
 	clientObjectCRC = 2715339439
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medium_s02, "object/ship/player/shared_player_blacksun_medium_s02.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s02, "object/ship/player/shared_player_blacksun_medium_s02.iff")
 
 object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -790,6 +804,7 @@ object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:
 	certificationsRequired = {"cert_starships_mediumblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_medium_s03.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -834,7 +849,7 @@ object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:
 	clientObjectCRC = 3906317602
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medium_s03, "object/ship/player/shared_player_blacksun_medium_s03.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s03, "object/ship/player/shared_player_blacksun_medium_s03.iff")
 
 object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
@@ -843,6 +858,7 @@ object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:
 	certificationsRequired = {"cert_starships_mediumblacksunfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_blacksun_medium_s04.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -887,7 +903,7 @@ object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:
 	clientObjectCRC = 322340406
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medium_s04, "object/ship/player/shared_player_blacksun_medium_s04.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s04, "object/ship/player/shared_player_blacksun_medium_s04.iff")
 
 object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
@@ -896,6 +912,7 @@ object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_bwing"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/client_shared_bwing.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -940,7 +957,7 @@ object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3129407218
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_bwing, "object/ship/player/shared_player_bwing.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_bwing, "object/ship/player/shared_player_bwing.iff")
 
 object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -949,6 +966,7 @@ object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/client_shared_yt1300.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -993,7 +1011,7 @@ object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1738437900
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_corvette, "object/ship/player/shared_player_corvette.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_corvette, "object/ship/player/shared_player_corvette.iff")
 
 object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -1002,6 +1020,7 @@ object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_decimator"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/client_shared_decimator.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1046,7 +1065,7 @@ object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3150522393
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_decimator, "object/ship/player/shared_player_decimator.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_decimator, "object/ship/player/shared_player_decimator.iff")
 
 object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
@@ -1055,6 +1074,7 @@ object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_firespray"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_firespray.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1099,7 +1119,7 @@ object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4073039210
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_firespray, "object/ship/player/shared_player_firespray.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_firespray, "object/ship/player/shared_player_firespray.iff")
 
 object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
@@ -1108,6 +1128,7 @@ object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_heavyhuttfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_heavy_s01.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1152,7 +1173,7 @@ object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 354676203
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_heavy_s01, "object/ship/player/shared_player_hutt_heavy_s01.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_heavy_s01, "object/ship/player/shared_player_hutt_heavy_s01.iff")
 
 object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
@@ -1161,6 +1182,7 @@ object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_heavyhuttfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_heavy_s02.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1205,7 +1227,7 @@ object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3459532156
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_heavy_s02, "object/ship/player/shared_player_hutt_heavy_s02.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_heavy_s02, "object/ship/player/shared_player_hutt_heavy_s02.iff")
 
 object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -1214,6 +1236,7 @@ object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_lighthuttfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_light_s01.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1258,7 +1281,7 @@ object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 156529585
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_light_s01, "object/ship/player/shared_player_hutt_light_s01.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_light_s01, "object/ship/player/shared_player_hutt_light_s01.iff")
 
 object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
@@ -1267,6 +1290,7 @@ object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_lighthuttfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_light_s02.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1311,7 +1335,7 @@ object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3527662374
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_light_s02, "object/ship/player/shared_player_hutt_light_s02.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_light_s02, "object/ship/player/shared_player_hutt_light_s02.iff")
 
 object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
@@ -1320,6 +1344,7 @@ object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new 
 	certificationsRequired = {"cert_starships_mediumhuttfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_medium_s01.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1364,7 +1389,7 @@ object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new 
 	clientObjectCRC = 996310896
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_medium_s01, "object/ship/player/shared_player_hutt_medium_s01.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_medium_s01, "object/ship/player/shared_player_hutt_medium_s01.iff")
 
 object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
@@ -1373,6 +1398,7 @@ object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new 
 	certificationsRequired = {"cert_starships_mediumhuttfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_medium_s02.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1417,7 +1443,7 @@ object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new 
 	clientObjectCRC = 3765819367
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_medium_s02, "object/ship/player/shared_player_hutt_medium_s02.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_medium_s02, "object/ship/player/shared_player_hutt_medium_s02.iff")
 
 object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
@@ -1426,6 +1452,7 @@ object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new
 	certificationsRequired = {"cert_starships_hutt_turret_ship"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_turret_ship.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1470,7 +1497,7 @@ object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new
 	clientObjectCRC = 2830008910
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_turret_ship, "object/ship/player/shared_player_hutt_turret_ship.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_turret_ship, "object/ship/player/shared_player_hutt_turret_ship.iff")
 
 object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
@@ -1479,6 +1506,7 @@ object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate
 	certificationsRequired = {"cert_starships_lighthuttfighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_light_s01.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1523,7 +1551,7 @@ object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate
 	clientObjectCRC = 1541926498
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_hutt_light, "object/ship/player/shared_player_prototype_hutt_light.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_hutt_light, "object/ship/player/shared_player_prototype_hutt_light.iff")
 
 object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1532,6 +1560,7 @@ object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate
 	certificationsRequired = {"cert_starships_tiefighterlight"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tiefighter.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1576,7 +1605,7 @@ object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate
 	clientObjectCRC = 3874485406
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_tiefighter, "object/ship/player/shared_player_prototype_tiefighter.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_tiefighter, "object/ship/player/shared_player_prototype_tiefighter.iff")
 
 object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -1585,6 +1614,7 @@ object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_z95headhunter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_z95.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1629,7 +1659,7 @@ object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4125787031
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_z95, "object/ship/player/shared_player_prototype_z95.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_z95, "object/ship/player/shared_player_prototype_z95.iff")
 
 object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -1638,6 +1668,7 @@ object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/client_shared_sorosuub_space_yacht.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1682,7 +1713,7 @@ object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate
 	clientObjectCRC = 4077746601
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_sorosuub_space_yacht, "object/ship/player/shared_player_sorosuub_space_yacht.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_sorosuub_space_yacht, "object/ship/player/shared_player_sorosuub_space_yacht.iff")
 
 object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_in.apt",
@@ -1691,6 +1722,7 @@ object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_tiefighterin"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tiefighter.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1735,7 +1767,7 @@ object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 	clientObjectCRC = 500982809
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tie_in, "object/ship/player/shared_player_tie_in.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tie_in, "object/ship/player/shared_player_tie_in.iff")
 
 object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1744,6 +1776,7 @@ object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_tiefighterlight"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tiefighter.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1788,7 +1821,7 @@ object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 	clientObjectCRC = 349740221
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tie_light_duty, "object/ship/player/shared_player_tie_light_duty.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tie_light_duty, "object/ship/player/shared_player_tie_light_duty.iff")
 
 object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
@@ -1797,6 +1830,7 @@ object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_tieadvanced"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tieadvanced.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1841,7 +1875,7 @@ object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 	clientObjectCRC = 537219045
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieadvanced, "object/ship/player/shared_player_tieadvanced.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tieadvanced, "object/ship/player/shared_player_tieadvanced.iff")
 
 object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
@@ -1850,6 +1884,7 @@ object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_tieadvanced"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tieaggressor.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1894,7 +1929,7 @@ object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3313666579
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieaggressor, "object/ship/player/shared_player_tieaggressor.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tieaggressor, "object/ship/player/shared_player_tieaggressor.iff")
 
 object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
@@ -1903,6 +1938,7 @@ object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_tiebomber"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/client_shared_tiebomber.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -1947,7 +1983,7 @@ object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1403833964
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tiebomber, "object/ship/player/shared_player_tiebomber.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tiebomber, "object/ship/player/shared_player_tiebomber.iff")
 
 object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
@@ -1956,6 +1992,7 @@ object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_tiefighter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tiefighter.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2000,7 +2037,7 @@ object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1253337464
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tiefighter, "object/ship/player/shared_player_tiefighter.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tiefighter, "object/ship/player/shared_player_tiefighter.iff")
 
 object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
@@ -2009,6 +2046,7 @@ object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_tieinterceptor"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tieinterceptor.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2053,7 +2091,7 @@ object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4021866633
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieinterceptor, "object/ship/player/shared_player_tieinterceptor.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tieinterceptor, "object/ship/player/shared_player_tieinterceptor.iff")
 
 object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
@@ -2062,6 +2100,7 @@ object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_tieoppressor"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_tieoppressor.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2106,7 +2145,7 @@ object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3411039109
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieoppressor, "object/ship/player/shared_player_tieoppressor.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_tieoppressor, "object/ship/player/shared_player_tieoppressor.iff")
 
 object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
@@ -2115,6 +2154,7 @@ object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_xwing"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_xwing.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2159,7 +2199,7 @@ object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3426854753
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_xwing, "object/ship/player/shared_player_xwing.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_xwing, "object/ship/player/shared_player_xwing.iff")
 
 object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -2168,6 +2208,7 @@ object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_ykl37r"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_ykl37r.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2212,7 +2253,7 @@ object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4283603432
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ykl37r, "object/ship/player/shared_player_ykl37r.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_ykl37r, "object/ship/player/shared_player_ykl37r.iff")
 
 object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -2221,6 +2262,7 @@ object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_yt1300"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/client_shared_yt1300.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2265,7 +2307,7 @@ object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2643423122
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_yt1300, "object/ship/player/shared_player_yt1300.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_yt1300, "object/ship/player/shared_player_yt1300.iff")
 
 object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -2274,6 +2316,7 @@ object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:
 	certificationsRequired = {"cert_starships_yt1300"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/ship/client_shared_yt1300.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2318,7 +2361,7 @@ object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:
 	clientObjectCRC = 3619233988
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_yt1300_decorated_01, "object/ship/player/shared_player_yt1300_decorated_01.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_yt1300_decorated_01, "object/ship/player/shared_player_yt1300_decorated_01.iff")
 
 object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -2327,6 +2370,7 @@ object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_ywing"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_ywing.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2371,7 +2415,7 @@ object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1044450567
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ywing, "object/ship/player/shared_player_ywing.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_ywing, "object/ship/player/shared_player_ywing.iff")
 
 object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
@@ -2380,6 +2424,7 @@ object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new 
 	certificationsRequired = {"cert_starships_ywinglongprobe"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_ywing.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2424,7 +2469,7 @@ object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new 
 	clientObjectCRC = 711184758
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ywing_longprobe, "object/ship/player/shared_player_ywing_longprobe.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_ywing_longprobe, "object/ship/player/shared_player_ywing_longprobe.iff")
 
 object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
@@ -2433,6 +2478,7 @@ object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 	certificationsRequired = {"cert_starships_z95headhunter"},
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_z95.cdf",
+	clientGameObjectType = 536870913,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -2477,4 +2523,4 @@ object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3298750759
 }
 
-ObjectTemplates:addClientTemplate(object_ship_player_shared_player_z95, "object/ship/player/shared_player_z95.iff")
+ObjectTemplates:addTemplate(object_ship_player_shared_player_z95, "object/ship/player/shared_player_z95.iff")

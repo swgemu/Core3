@@ -49,6 +49,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen1 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen1 =
 	clientObjectCRC = 3485705147
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen1, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen1.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen1, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen1.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -106,6 +107,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,7 +155,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2 =
 	clientObjectCRC = 349440812
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen2.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen2.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -163,6 +165,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -210,7 +213,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3 =
 	clientObjectCRC = 1574530209
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen3.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen3.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -220,6 +223,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -267,7 +271,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4 =
 	clientObjectCRC = 2788837301
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen4.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen4.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -277,6 +281,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5 =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -324,7 +329,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5 =
 	clientObjectCRC = 4013367352
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen5.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen5.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -334,6 +339,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1 = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -381,7 +387,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1 = S
 	clientObjectCRC = 3840733128
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -391,6 +397,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -438,7 +445,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	clientObjectCRC = 3146329948
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen1, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen1.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen1, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen1.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -448,6 +455,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -495,7 +503,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	clientObjectCRC = 1621002187
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen2, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen2.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen2, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen2.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -505,6 +513,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -552,7 +561,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	clientObjectCRC = 697557062
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen3, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen3.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen3, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen3.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
@@ -562,6 +571,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -609,7 +619,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	clientObjectCRC = 3530607442
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen4, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen4.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen4, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen4.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
@@ -619,6 +629,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2 = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -666,7 +677,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2 = S
 	clientObjectCRC = 1073432415
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
@@ -676,6 +687,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -723,7 +735,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	clientObjectCRC = 1056559682
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen1, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen1.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen1, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen1.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
@@ -733,6 +745,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -780,7 +793,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	clientObjectCRC = 3857611477
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen2, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen2.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen2, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen2.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
@@ -790,6 +803,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -837,7 +851,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	clientObjectCRC = 2900565336
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen3, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen3.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen3, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen3.iff")
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
@@ -847,6 +861,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_lightsaber_basic.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -894,4 +909,4 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	clientObjectCRC = 1459631692
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen4, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen4, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff")

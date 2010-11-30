@@ -48,6 +48,7 @@ object_tangible_lair_mynock_shared_lair_mynock = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_lair_mynock_shared_lair_mynock = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 573653561
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_mynock_shared_lair_mynock, "object/tangible/lair/mynock/shared_lair_mynock.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_mynock_shared_lair_mynock, "object/tangible/lair/mynock/shared_lair_mynock.iff")

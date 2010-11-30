@@ -49,6 +49,7 @@ object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131072,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:
 	clientObjectCRC = 1334573707
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_default, "object/weapon/melee/unarmed/shared_unarmed_default.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_unarmed_shared_unarmed_default, "object/weapon/melee/unarmed/shared_unarmed_default.iff")
 
 object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -106,6 +107,7 @@ object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131072,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,4 +155,4 @@ object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTe
 	clientObjectCRC = 1891079953
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_default_player, "object/weapon/melee/unarmed/shared_unarmed_default_player.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_unarmed_shared_unarmed_default_player, "object/weapon/melee/unarmed/shared_unarmed_default_player.iff")

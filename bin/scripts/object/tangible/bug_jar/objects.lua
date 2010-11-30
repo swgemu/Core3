@@ -48,6 +48,7 @@ object_tangible_bug_jar_shared_craftable_bug_habitat = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_bug_jar_shared_craftable_bug_habitat = SharedTangibleObjectTempl
 	clientObjectCRC = 3865262015
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_craftable_bug_habitat, "object/tangible/bug_jar/shared_craftable_bug_habitat.iff")
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_craftable_bug_habitat, "object/tangible/bug_jar/shared_craftable_bug_habitat.iff")
 
 object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -101,6 +102,7 @@ object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 649283460
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bats, "object/tangible/bug_jar/shared_sample_bats.iff")
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bats, "object/tangible/bug_jar/shared_sample_bats.iff")
 
 object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
@@ -154,6 +156,7 @@ object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2990947640
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bees, "object/tangible/bug_jar/shared_sample_bees.iff")
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bees, "object/tangible/bug_jar/shared_sample_bees.iff")
 
 object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -207,6 +210,7 @@ object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1650774020
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bugs, "object/tangible/bug_jar/shared_sample_bugs.iff")
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bugs, "object/tangible/bug_jar/shared_sample_bugs.iff")
 
 object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -260,6 +264,7 @@ object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate
 	clientObjectCRC = 3511677766
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_butterflies, "object/tangible/bug_jar/shared_sample_butterflies.iff")
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_butterflies, "object/tangible/bug_jar/shared_sample_butterflies.iff")
 
 object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -313,6 +318,7 @@ object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1920617264
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_flies, "object/tangible/bug_jar/shared_sample_flies.iff")
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_flies, "object/tangible/bug_jar/shared_sample_flies.iff")
 
 object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -366,6 +372,7 @@ object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 543867771
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_glowzees, "object/tangible/bug_jar/shared_sample_glowzees.iff")
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_glowzees, "object/tangible/bug_jar/shared_sample_glowzees.iff")
 
 object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -419,6 +426,7 @@ object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8222,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,4 +471,4 @@ object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1330824406
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_moths, "object/tangible/bug_jar/shared_sample_moths.iff")
+ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_moths, "object/tangible/bug_jar/shared_sample_moths.iff")

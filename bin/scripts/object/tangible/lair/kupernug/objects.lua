@@ -48,6 +48,7 @@ object_tangible_lair_kupernug_shared_lair_kupernug = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_kupernug_shared_lair_kupernug = SharedTangibleObjectTemplat
 	clientObjectCRC = 2658633620
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug, "object/tangible/lair/kupernug/shared_lair_kupernug.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug, "object/tangible/lair/kupernug/shared_lair_kupernug.iff")
 
 object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObje
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObje
 	clientObjectCRC = 3996614231
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_mountain, "object/tangible/lair/kupernug/shared_lair_kupernug_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_mountain, "object/tangible/lair/kupernug/shared_lair_kupernug_mountain.iff")
 
 object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObj
 	clientObjectCRC = 2421166667
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_wasteland, "object/tangible/lair/kupernug/shared_lair_kupernug_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_wasteland, "object/tangible/lair/kupernug/shared_lair_kupernug_wasteland.iff")

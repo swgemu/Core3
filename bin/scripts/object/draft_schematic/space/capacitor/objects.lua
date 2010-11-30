@@ -47,6 +47,7 @@ object_draft_schematic_space_capacitor_shared_basic_capacitor = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_space_capacitor_shared_basic_capacitor = SharedDraftSchem
 	clientObjectCRC = 1279300072
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_basic_capacitor, "object/draft_schematic/space/capacitor/shared_basic_capacitor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_basic_capacitor, "object/draft_schematic/space/capacitor/shared_basic_capacitor.iff")
 
 object_draft_schematic_space_capacitor_shared_capacitor_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk1 = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk1 = SharedDraftSchemat
 	clientObjectCRC = 2202770982
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk1, "object/draft_schematic/space/capacitor/shared_capacitor_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk1, "object/draft_schematic/space/capacitor/shared_capacitor_mk1.iff")
 
 object_draft_schematic_space_capacitor_shared_capacitor_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk2 = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk2 = SharedDraftSchemat
 	clientObjectCRC = 1482438321
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk2, "object/draft_schematic/space/capacitor/shared_capacitor_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk2, "object/draft_schematic/space/capacitor/shared_capacitor_mk2.iff")
 
 object_draft_schematic_space_capacitor_shared_capacitor_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk3 = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk3 = SharedDraftSchemat
 	clientObjectCRC = 290541884
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk3, "object/draft_schematic/space/capacitor/shared_capacitor_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk3, "object/draft_schematic/space/capacitor/shared_capacitor_mk3.iff")
 
 object_draft_schematic_space_capacitor_shared_capacitor_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk4 = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk4 = SharedDraftSchemat
 	clientObjectCRC = 3937565224
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk4, "object/draft_schematic/space/capacitor/shared_capacitor_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk4, "object/draft_schematic/space/capacitor/shared_capacitor_mk4.iff")
 
 object_draft_schematic_space_capacitor_shared_capacitor_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk5 = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk5 = SharedDraftSchemat
 	clientObjectCRC = 2747211173
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk5, "object/draft_schematic/space/capacitor/shared_capacitor_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk5, "object/draft_schematic/space/capacitor/shared_capacitor_mk5.iff")
 
 object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1 = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1 = SharedD
 	clientObjectCRC = 731258544
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk1.iff")
 
 object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2 = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2 = SharedD
 	clientObjectCRC = 4035032615
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk2.iff")
 
 object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3 = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3 = SharedD
 	clientObjectCRC = 3113013674
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk3.iff")
 
 object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4 = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4 = SharedD
 	clientObjectCRC = 1114634942
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk4.iff")
 
 object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5 = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5 = SharedD
 	clientObjectCRC = 191012147
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk5.iff")
 
 object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1 = Shared
 	clientObjectCRC = 1501708613
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk1.iff")
 
 object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2 = Shared
 	clientObjectCRC = 2190862802
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk2.iff")
 
 object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3 = Shared
 	clientObjectCRC = 3415772767
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk3.iff")
 
 object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4 = Shared
 	clientObjectCRC = 813409611
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk4.iff")
 
 object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5 = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5 = Shared
 	clientObjectCRC = 2037826246
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk5.iff")
 
 object_draft_schematic_space_capacitor_shared_heavy_battery_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk1 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk1 = SharedDraftSch
 	clientObjectCRC = 3001021296
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk1, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk1, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk1.iff")
 
 object_draft_schematic_space_capacitor_shared_heavy_battery_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk2 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk2 = SharedDraftSch
 	clientObjectCRC = 1774738407
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk2, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk2, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk2.iff")
 
 object_draft_schematic_space_capacitor_shared_heavy_battery_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk3 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk3 = SharedDraftSch
 	clientObjectCRC = 549796970
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk3, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk3, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk3.iff")
 
 object_draft_schematic_space_capacitor_shared_heavy_battery_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk4 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk4 = SharedDraftSch
 	clientObjectCRC = 3676706686
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk4, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk4, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk4.iff")
 
 object_draft_schematic_space_capacitor_shared_heavy_battery_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk5 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk5 = SharedDraftSch
 	clientObjectCRC = 2452320499
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk5, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk5, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk5.iff")
 
 object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1 = Share
 	clientObjectCRC = 3603192853
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk1.iff")
 
 object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2 = Share
 	clientObjectCRC = 231994498
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk2.iff")
 
 object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3 = Share
 	clientObjectCRC = 1155437327
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk3.iff")
 
 object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4 = Share
 	clientObjectCRC = 3208493083
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk4.iff")
 
 object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5 = Share
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,4 +1183,4 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5 = Share
 	clientObjectCRC = 4130398102
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk5.iff")

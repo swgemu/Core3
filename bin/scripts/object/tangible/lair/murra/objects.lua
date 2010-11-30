@@ -48,6 +48,7 @@ object_tangible_lair_murra_shared_lair_murra = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_murra_shared_lair_murra = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1522261205
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra, "object/tangible/lair/murra/shared_lair_murra.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra, "object/tangible/lair/murra/shared_lair_murra.iff")
 
 object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 1680788890
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra_grassland, "object/tangible/lair/murra/shared_lair_murra_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_grassland, "object/tangible/lair/murra/shared_lair_murra_grassland.iff")
 
 object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemp
 	clientObjectCRC = 3942109536
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra_mountain, "object/tangible/lair/murra/shared_lair_murra_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_mountain, "object/tangible/lair/murra/shared_lair_murra_mountain.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap = SharedTangi
 	clientObjectCRC = 772926850
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap, "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap, "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap.iff")
 
 object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest = Shar
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest = Shar
 	clientObjectCRC = 1110501147
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest, "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest, "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap_forest.iff")

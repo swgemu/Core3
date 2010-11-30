@@ -48,6 +48,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShip
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShip
 	clientObjectCRC = 3055118687
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_01, "object/tangible/space/spacestations/shared_spacestation_imperial_01.iff")
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_01, "object/tangible/space/spacestations/shared_spacestation_imperial_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
@@ -101,6 +102,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_con
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_con
 	clientObjectCRC = 2372198483
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_control.iff")
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_control.iff")
 
 object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
@@ -154,6 +156,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_ent
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_ent
 	clientObjectCRC = 3537441951
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_entry.iff")
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_entry.iff")
 
 object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
@@ -207,6 +210,7 @@ object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipO
 	clientObjectCRC = 2417244262
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_neutral_01, "object/tangible/space/spacestations/shared_spacestation_neutral_01.iff")
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_neutral_01, "object/tangible/space/spacestations/shared_spacestation_neutral_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
@@ -260,6 +264,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObj
 	clientObjectCRC = 2407802973
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_01, "object/tangible/space/spacestations/shared_spacestation_rebel_01.iff")
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_01, "object/tangible/space/spacestations/shared_spacestation_rebel_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
@@ -313,6 +318,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_contro
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_contro
 	clientObjectCRC = 3861915556
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_control.iff")
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_control.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
@@ -366,6 +372,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 536870915,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,4 +417,4 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry 
 	clientObjectCRC = 2272557315
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_entry.iff")
+ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_entry.iff")

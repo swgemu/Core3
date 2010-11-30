@@ -47,6 +47,7 @@ object_draft_schematic_droid_component_shared_advanced_droid_frame = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,7 +83,7 @@ object_draft_schematic_droid_component_shared_advanced_droid_frame = SharedDraft
 	clientObjectCRC = 3707409451
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_advanced_droid_frame, "object/draft_schematic/droid/component/shared_advanced_droid_frame.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_advanced_droid_frame, "object/draft_schematic/droid/component/shared_advanced_droid_frame.iff")
 
 object_draft_schematic_droid_component_shared_armor_module_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -90,6 +91,7 @@ object_draft_schematic_droid_component_shared_armor_module_1 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -125,7 +127,7 @@ object_draft_schematic_droid_component_shared_armor_module_1 = SharedDraftSchema
 	clientObjectCRC = 495603709
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_armor_module_1, "object/draft_schematic/droid/component/shared_armor_module_1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_armor_module_1, "object/draft_schematic/droid/component/shared_armor_module_1.iff")
 
 object_draft_schematic_droid_component_shared_armor_module_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -133,6 +135,7 @@ object_draft_schematic_droid_component_shared_armor_module_2 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -168,7 +171,7 @@ object_draft_schematic_droid_component_shared_armor_module_2 = SharedDraftSchema
 	clientObjectCRC = 3332237162
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_armor_module_2, "object/draft_schematic/droid/component/shared_armor_module_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_armor_module_2, "object/draft_schematic/droid/component/shared_armor_module_2.iff")
 
 object_draft_schematic_droid_component_shared_armor_module_3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -176,6 +179,7 @@ object_draft_schematic_droid_component_shared_armor_module_3 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -211,7 +215,7 @@ object_draft_schematic_droid_component_shared_armor_module_3 = SharedDraftSchema
 	clientObjectCRC = 2408612071
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_armor_module_3, "object/draft_schematic/droid/component/shared_armor_module_3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_armor_module_3, "object/draft_schematic/droid/component/shared_armor_module_3.iff")
 
 object_draft_schematic_droid_component_shared_armor_module_4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -219,6 +223,7 @@ object_draft_schematic_droid_component_shared_armor_module_4 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -254,7 +259,7 @@ object_draft_schematic_droid_component_shared_armor_module_4 = SharedDraftSchema
 	clientObjectCRC = 1953737715
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_armor_module_4, "object/draft_schematic/droid/component/shared_armor_module_4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_armor_module_4, "object/draft_schematic/droid/component/shared_armor_module_4.iff")
 
 object_draft_schematic_droid_component_shared_armor_module_5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -262,6 +267,7 @@ object_draft_schematic_droid_component_shared_armor_module_5 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -297,7 +303,7 @@ object_draft_schematic_droid_component_shared_armor_module_5 = SharedDraftSchema
 	clientObjectCRC = 1031720062
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_armor_module_5, "object/draft_schematic/droid/component/shared_armor_module_5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_armor_module_5, "object/draft_schematic/droid/component/shared_armor_module_5.iff")
 
 object_draft_schematic_droid_component_shared_armor_module_6 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -305,6 +311,7 @@ object_draft_schematic_droid_component_shared_armor_module_6 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -340,7 +347,7 @@ object_draft_schematic_droid_component_shared_armor_module_6 = SharedDraftSchema
 	clientObjectCRC = 3865666793
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_armor_module_6, "object/draft_schematic/droid/component/shared_armor_module_6.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_armor_module_6, "object/draft_schematic/droid/component/shared_armor_module_6.iff")
 
 object_draft_schematic_droid_component_shared_auto_repair_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -348,6 +355,7 @@ object_draft_schematic_droid_component_shared_auto_repair_module = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -383,7 +391,7 @@ object_draft_schematic_droid_component_shared_auto_repair_module = SharedDraftSc
 	clientObjectCRC = 4137122581
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_auto_repair_module, "object/draft_schematic/droid/component/shared_auto_repair_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_auto_repair_module, "object/draft_schematic/droid/component/shared_auto_repair_module.iff")
 
 object_draft_schematic_droid_component_shared_capacitor_high_discharge = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,6 +399,7 @@ object_draft_schematic_droid_component_shared_capacitor_high_discharge = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -426,7 +435,7 @@ object_draft_schematic_droid_component_shared_capacitor_high_discharge = SharedD
 	clientObjectCRC = 3093618278
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_capacitor_high_discharge, "object/draft_schematic/droid/component/shared_capacitor_high_discharge.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_capacitor_high_discharge, "object/draft_schematic/droid/component/shared_capacitor_high_discharge.iff")
 
 object_draft_schematic_droid_component_shared_capacitor_low_discharge = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -434,6 +443,7 @@ object_draft_schematic_droid_component_shared_capacitor_low_discharge = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -469,7 +479,7 @@ object_draft_schematic_droid_component_shared_capacitor_low_discharge = SharedDr
 	clientObjectCRC = 2802575426
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_capacitor_low_discharge, "object/draft_schematic/droid/component/shared_capacitor_low_discharge.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_capacitor_low_discharge, "object/draft_schematic/droid/component/shared_capacitor_low_discharge.iff")
 
 object_draft_schematic_droid_component_shared_chassis_droid_3p0 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -477,6 +487,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_3p0 = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -512,7 +523,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_3p0 = SharedDraftSch
 	clientObjectCRC = 1917062474
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_chassis_droid_3p0, "object/draft_schematic/droid/component/shared_chassis_droid_3p0.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_chassis_droid_3p0, "object/draft_schematic/droid/component/shared_chassis_droid_3p0.iff")
 
 object_draft_schematic_droid_component_shared_chassis_droid_binary_load_lifter = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -520,6 +531,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_binary_load_lifter =
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -555,7 +567,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_binary_load_lifter =
 	clientObjectCRC = 627202236
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_chassis_droid_binary_load_lifter, "object/draft_schematic/droid/component/shared_chassis_droid_binary_load_lifter.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_chassis_droid_binary_load_lifter, "object/draft_schematic/droid/component/shared_chassis_droid_binary_load_lifter.iff")
 
 object_draft_schematic_droid_component_shared_chassis_droid_le_repair = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -563,6 +575,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_le_repair = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -598,7 +611,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_le_repair = SharedDr
 	clientObjectCRC = 1454279073
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_chassis_droid_le_repair, "object/draft_schematic/droid/component/shared_chassis_droid_le_repair.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_chassis_droid_le_repair, "object/draft_schematic/droid/component/shared_chassis_droid_le_repair.iff")
 
 object_draft_schematic_droid_component_shared_chassis_droid_probot = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -606,6 +619,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_probot = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -641,7 +655,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_probot = SharedDraft
 	clientObjectCRC = 826632567
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_chassis_droid_probot, "object/draft_schematic/droid/component/shared_chassis_droid_probot.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_chassis_droid_probot, "object/draft_schematic/droid/component/shared_chassis_droid_probot.iff")
 
 object_draft_schematic_droid_component_shared_chassis_droid_r2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -649,6 +663,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_r2 = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -684,7 +699,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_r2 = SharedDraftSche
 	clientObjectCRC = 2430274925
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_chassis_droid_r2, "object/draft_schematic/droid/component/shared_chassis_droid_r2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_chassis_droid_r2, "object/draft_schematic/droid/component/shared_chassis_droid_r2.iff")
 
 object_draft_schematic_droid_component_shared_chassis_droid_r3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -692,6 +707,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_r3 = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -727,7 +743,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_r3 = SharedDraftSche
 	clientObjectCRC = 3654707936
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_chassis_droid_r3, "object/draft_schematic/droid/component/shared_chassis_droid_r3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_chassis_droid_r3, "object/draft_schematic/droid/component/shared_chassis_droid_r3.iff")
 
 object_draft_schematic_droid_component_shared_chassis_droid_r4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -735,6 +751,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_r4 = SharedDraftSche
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -770,7 +787,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_r4 = SharedDraftSche
 	clientObjectCRC = 573915636
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_chassis_droid_r4, "object/draft_schematic/droid/component/shared_chassis_droid_r4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_chassis_droid_r4, "object/draft_schematic/droid/component/shared_chassis_droid_r4.iff")
 
 object_draft_schematic_droid_component_shared_chassis_droid_surgical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -778,6 +795,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_surgical = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -813,7 +831,7 @@ object_draft_schematic_droid_component_shared_chassis_droid_surgical = SharedDra
 	clientObjectCRC = 3708426767
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_chassis_droid_surgical, "object/draft_schematic/droid/component/shared_chassis_droid_surgical.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_chassis_droid_surgical, "object/draft_schematic/droid/component/shared_chassis_droid_surgical.iff")
 
 object_draft_schematic_droid_component_shared_combat_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -821,6 +839,7 @@ object_draft_schematic_droid_component_shared_combat_module = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -856,7 +875,7 @@ object_draft_schematic_droid_component_shared_combat_module = SharedDraftSchemat
 	clientObjectCRC = 1062424977
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_combat_module, "object/draft_schematic/droid/component/shared_combat_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_combat_module, "object/draft_schematic/droid/component/shared_combat_module.iff")
 
 object_draft_schematic_droid_component_shared_combat_socket_bank = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -864,6 +883,7 @@ object_draft_schematic_droid_component_shared_combat_socket_bank = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -899,7 +919,7 @@ object_draft_schematic_droid_component_shared_combat_socket_bank = SharedDraftSc
 	clientObjectCRC = 4091831192
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_combat_socket_bank, "object/draft_schematic/droid/component/shared_combat_socket_bank.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_combat_socket_bank, "object/draft_schematic/droid/component/shared_combat_socket_bank.iff")
 
 object_draft_schematic_droid_component_shared_crafting_module_clothing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -907,6 +927,7 @@ object_draft_schematic_droid_component_shared_crafting_module_clothing = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -942,7 +963,7 @@ object_draft_schematic_droid_component_shared_crafting_module_clothing = SharedD
 	clientObjectCRC = 3903465021
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_crafting_module_clothing, "object/draft_schematic/droid/component/shared_crafting_module_clothing.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_crafting_module_clothing, "object/draft_schematic/droid/component/shared_crafting_module_clothing.iff")
 
 object_draft_schematic_droid_component_shared_crafting_module_food = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -950,6 +971,7 @@ object_draft_schematic_droid_component_shared_crafting_module_food = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -985,7 +1007,7 @@ object_draft_schematic_droid_component_shared_crafting_module_food = SharedDraft
 	clientObjectCRC = 2020344340
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_crafting_module_food, "object/draft_schematic/droid/component/shared_crafting_module_food.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_crafting_module_food, "object/draft_schematic/droid/component/shared_crafting_module_food.iff")
 
 object_draft_schematic_droid_component_shared_crafting_module_space = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -993,6 +1015,7 @@ object_draft_schematic_droid_component_shared_crafting_module_space = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1028,7 +1051,7 @@ object_draft_schematic_droid_component_shared_crafting_module_space = SharedDraf
 	clientObjectCRC = 2988881404
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_crafting_module_space, "object/draft_schematic/droid/component/shared_crafting_module_space.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_crafting_module_space, "object/draft_schematic/droid/component/shared_crafting_module_space.iff")
 
 object_draft_schematic_droid_component_shared_crafting_module_structure = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1036,6 +1059,7 @@ object_draft_schematic_droid_component_shared_crafting_module_structure = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1071,7 +1095,7 @@ object_draft_schematic_droid_component_shared_crafting_module_structure = Shared
 	clientObjectCRC = 1342793735
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_crafting_module_structure, "object/draft_schematic/droid/component/shared_crafting_module_structure.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_crafting_module_structure, "object/draft_schematic/droid/component/shared_crafting_module_structure.iff")
 
 object_draft_schematic_droid_component_shared_crafting_module_weapon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1079,6 +1103,7 @@ object_draft_schematic_droid_component_shared_crafting_module_weapon = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1114,7 +1139,7 @@ object_draft_schematic_droid_component_shared_crafting_module_weapon = SharedDra
 	clientObjectCRC = 2836886900
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_crafting_module_weapon, "object/draft_schematic/droid/component/shared_crafting_module_weapon.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_crafting_module_weapon, "object/draft_schematic/droid/component/shared_crafting_module_weapon.iff")
 
 object_draft_schematic_droid_component_shared_data_storage_module_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1122,6 +1147,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_1 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1157,7 +1183,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_1 = SharedDraf
 	clientObjectCRC = 3095575463
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_data_storage_module_1, "object/draft_schematic/droid/component/shared_data_storage_module_1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_data_storage_module_1, "object/draft_schematic/droid/component/shared_data_storage_module_1.iff")
 
 object_draft_schematic_droid_component_shared_data_storage_module_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1165,6 +1191,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_2 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1200,7 +1227,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_2 = SharedDraf
 	clientObjectCRC = 1670714160
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_data_storage_module_2, "object/draft_schematic/droid/component/shared_data_storage_module_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_data_storage_module_2, "object/draft_schematic/droid/component/shared_data_storage_module_2.iff")
 
 object_draft_schematic_droid_component_shared_data_storage_module_3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1208,6 +1235,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_3 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1243,7 +1271,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_3 = SharedDraf
 	clientObjectCRC = 714634429
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_data_storage_module_3, "object/draft_schematic/droid/component/shared_data_storage_module_3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_data_storage_module_3, "object/draft_schematic/droid/component/shared_data_storage_module_3.iff")
 
 object_draft_schematic_droid_component_shared_data_storage_module_4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1251,6 +1279,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_4 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1286,7 +1315,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_4 = SharedDraf
 	clientObjectCRC = 3514523561
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_data_storage_module_4, "object/draft_schematic/droid/component/shared_data_storage_module_4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_data_storage_module_4, "object/draft_schematic/droid/component/shared_data_storage_module_4.iff")
 
 object_draft_schematic_droid_component_shared_data_storage_module_5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1294,6 +1323,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_5 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1329,7 +1359,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_5 = SharedDraf
 	clientObjectCRC = 2557884452
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_data_storage_module_5, "object/draft_schematic/droid/component/shared_data_storage_module_5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_data_storage_module_5, "object/draft_schematic/droid/component/shared_data_storage_module_5.iff")
 
 object_draft_schematic_droid_component_shared_data_storage_module_6 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1337,6 +1367,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_6 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1372,7 +1403,7 @@ object_draft_schematic_droid_component_shared_data_storage_module_6 = SharedDraf
 	clientObjectCRC = 1130467507
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_data_storage_module_6, "object/draft_schematic/droid/component/shared_data_storage_module_6.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_data_storage_module_6, "object/draft_schematic/droid/component/shared_data_storage_module_6.iff")
 
 object_draft_schematic_droid_component_shared_detonation_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1380,6 +1411,7 @@ object_draft_schematic_droid_component_shared_detonation_module = SharedDraftSch
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1415,7 +1447,7 @@ object_draft_schematic_droid_component_shared_detonation_module = SharedDraftSch
 	clientObjectCRC = 1401526520
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_detonation_module, "object/draft_schematic/droid/component/shared_detonation_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_detonation_module, "object/draft_schematic/droid/component/shared_detonation_module.iff")
 
 object_draft_schematic_droid_component_shared_diagnostic_circuit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1423,6 +1455,7 @@ object_draft_schematic_droid_component_shared_diagnostic_circuit = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1458,7 +1491,7 @@ object_draft_schematic_droid_component_shared_diagnostic_circuit = SharedDraftSc
 	clientObjectCRC = 1658743175
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_diagnostic_circuit, "object/draft_schematic/droid/component/shared_diagnostic_circuit.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_diagnostic_circuit, "object/draft_schematic/droid/component/shared_diagnostic_circuit.iff")
 
 object_draft_schematic_droid_component_shared_diagnostic_circuit_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1466,6 +1499,7 @@ object_draft_schematic_droid_component_shared_diagnostic_circuit_advanced = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1501,7 +1535,7 @@ object_draft_schematic_droid_component_shared_diagnostic_circuit_advanced = Shar
 	clientObjectCRC = 2931179205
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_diagnostic_circuit_advanced, "object/draft_schematic/droid/component/shared_diagnostic_circuit_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_diagnostic_circuit_advanced, "object/draft_schematic/droid/component/shared_diagnostic_circuit_advanced.iff")
 
 object_draft_schematic_droid_component_shared_droid_brain = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1509,6 +1543,7 @@ object_draft_schematic_droid_component_shared_droid_brain = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1544,7 +1579,7 @@ object_draft_schematic_droid_component_shared_droid_brain = SharedDraftSchematic
 	clientObjectCRC = 350351326
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_droid_brain, "object/draft_schematic/droid/component/shared_droid_brain.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_droid_brain, "object/draft_schematic/droid/component/shared_droid_brain.iff")
 
 object_draft_schematic_droid_component_shared_droid_brain_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1552,6 +1587,7 @@ object_draft_schematic_droid_component_shared_droid_brain_advanced = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1587,7 +1623,7 @@ object_draft_schematic_droid_component_shared_droid_brain_advanced = SharedDraft
 	clientObjectCRC = 1277338736
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_droid_brain_advanced, "object/draft_schematic/droid/component/shared_droid_brain_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_droid_brain_advanced, "object/draft_schematic/droid/component/shared_droid_brain_advanced.iff")
 
 object_draft_schematic_droid_component_shared_droid_motive_system = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1595,6 +1631,7 @@ object_draft_schematic_droid_component_shared_droid_motive_system = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1630,7 +1667,7 @@ object_draft_schematic_droid_component_shared_droid_motive_system = SharedDraftS
 	clientObjectCRC = 1276486956
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_droid_motive_system, "object/draft_schematic/droid/component/shared_droid_motive_system.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_droid_motive_system, "object/draft_schematic/droid/component/shared_droid_motive_system.iff")
 
 object_draft_schematic_droid_component_shared_droid_motive_system_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1638,6 +1675,7 @@ object_draft_schematic_droid_component_shared_droid_motive_system_advanced = Sha
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1673,7 +1711,7 @@ object_draft_schematic_droid_component_shared_droid_motive_system_advanced = Sha
 	clientObjectCRC = 4037562
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_droid_motive_system_advanced, "object/draft_schematic/droid/component/shared_droid_motive_system_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_droid_motive_system_advanced, "object/draft_schematic/droid/component/shared_droid_motive_system_advanced.iff")
 
 object_draft_schematic_droid_component_shared_droid_space_memory_module_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1681,6 +1719,7 @@ object_draft_schematic_droid_component_shared_droid_space_memory_module_1 = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1716,7 +1755,7 @@ object_draft_schematic_droid_component_shared_droid_space_memory_module_1 = Shar
 	clientObjectCRC = 4097812653
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_droid_space_memory_module_1, "object/draft_schematic/droid/component/shared_droid_space_memory_module_1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_droid_space_memory_module_1, "object/draft_schematic/droid/component/shared_droid_space_memory_module_1.iff")
 
 object_draft_schematic_droid_component_shared_droid_storage_compartment = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1724,6 +1763,7 @@ object_draft_schematic_droid_component_shared_droid_storage_compartment = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1759,7 +1799,7 @@ object_draft_schematic_droid_component_shared_droid_storage_compartment = Shared
 	clientObjectCRC = 14675959
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_droid_storage_compartment, "object/draft_schematic/droid/component/shared_droid_storage_compartment.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_droid_storage_compartment, "object/draft_schematic/droid/component/shared_droid_storage_compartment.iff")
 
 object_draft_schematic_droid_component_shared_harvest_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1767,6 +1807,7 @@ object_draft_schematic_droid_component_shared_harvest_module = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1802,7 +1843,7 @@ object_draft_schematic_droid_component_shared_harvest_module = SharedDraftSchema
 	clientObjectCRC = 1297099612
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_harvest_module, "object/draft_schematic/droid/component/shared_harvest_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_harvest_module, "object/draft_schematic/droid/component/shared_harvest_module.iff")
 
 object_draft_schematic_droid_component_shared_item_storage_module_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1810,6 +1851,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_1 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1845,7 +1887,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_1 = SharedDraf
 	clientObjectCRC = 1860278231
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_item_storage_module_1, "object/draft_schematic/droid/component/shared_item_storage_module_1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_item_storage_module_1, "object/draft_schematic/droid/component/shared_item_storage_module_1.iff")
 
 object_draft_schematic_droid_component_shared_item_storage_module_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1853,6 +1895,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_2 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1888,7 +1931,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_2 = SharedDraf
 	clientObjectCRC = 3052814144
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_item_storage_module_2, "object/draft_schematic/droid/component/shared_item_storage_module_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_item_storage_module_2, "object/draft_schematic/droid/component/shared_item_storage_module_2.iff")
 
 object_draft_schematic_droid_component_shared_item_storage_module_3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1896,6 +1939,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_3 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1931,7 +1975,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_3 = SharedDraf
 	clientObjectCRC = 4244330701
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_item_storage_module_3, "object/draft_schematic/droid/component/shared_item_storage_module_3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_item_storage_module_3, "object/draft_schematic/droid/component/shared_item_storage_module_3.iff")
 
 object_draft_schematic_droid_component_shared_item_storage_module_4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1939,6 +1983,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_4 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -1974,7 +2019,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_4 = SharedDraf
 	clientObjectCRC = 119043033
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_item_storage_module_4, "object/draft_schematic/droid/component/shared_item_storage_module_4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_item_storage_module_4, "object/draft_schematic/droid/component/shared_item_storage_module_4.iff")
 
 object_draft_schematic_droid_component_shared_item_storage_module_5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1982,6 +2027,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_5 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2017,7 +2063,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_5 = SharedDraf
 	clientObjectCRC = 1310004308
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_item_storage_module_5, "object/draft_schematic/droid/component/shared_item_storage_module_5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_item_storage_module_5, "object/draft_schematic/droid/component/shared_item_storage_module_5.iff")
 
 object_draft_schematic_droid_component_shared_item_storage_module_6 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2025,6 +2071,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_6 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2060,7 +2107,7 @@ object_draft_schematic_droid_component_shared_item_storage_module_6 = SharedDraf
 	clientObjectCRC = 2499984579
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_item_storage_module_6, "object/draft_schematic/droid/component/shared_item_storage_module_6.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_item_storage_module_6, "object/draft_schematic/droid/component/shared_item_storage_module_6.iff")
 
 object_draft_schematic_droid_component_shared_manipulator_arm = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2068,6 +2115,7 @@ object_draft_schematic_droid_component_shared_manipulator_arm = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2103,7 +2151,7 @@ object_draft_schematic_droid_component_shared_manipulator_arm = SharedDraftSchem
 	clientObjectCRC = 1607709946
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_manipulator_arm, "object/draft_schematic/droid/component/shared_manipulator_arm.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_manipulator_arm, "object/draft_schematic/droid/component/shared_manipulator_arm.iff")
 
 object_draft_schematic_droid_component_shared_manipulator_arm_package_set = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2111,6 +2159,7 @@ object_draft_schematic_droid_component_shared_manipulator_arm_package_set = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2146,7 +2195,7 @@ object_draft_schematic_droid_component_shared_manipulator_arm_package_set = Shar
 	clientObjectCRC = 3596785845
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_manipulator_arm_package_set, "object/draft_schematic/droid/component/shared_manipulator_arm_package_set.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_manipulator_arm_package_set, "object/draft_schematic/droid/component/shared_manipulator_arm_package_set.iff")
 
 object_draft_schematic_droid_component_shared_medic_module_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2154,6 +2203,7 @@ object_draft_schematic_droid_component_shared_medic_module_1 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2189,7 +2239,7 @@ object_draft_schematic_droid_component_shared_medic_module_1 = SharedDraftSchema
 	clientObjectCRC = 2910848469
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_medic_module_1, "object/draft_schematic/droid/component/shared_medic_module_1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_medic_module_1, "object/draft_schematic/droid/component/shared_medic_module_1.iff")
 
 object_draft_schematic_droid_component_shared_medic_module_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2197,6 +2247,7 @@ object_draft_schematic_droid_component_shared_medic_module_2 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2232,7 +2283,7 @@ object_draft_schematic_droid_component_shared_medic_module_2 = SharedDraftSchema
 	clientObjectCRC = 1989651778
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_medic_module_2, "object/draft_schematic/droid/component/shared_medic_module_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_medic_module_2, "object/draft_schematic/droid/component/shared_medic_module_2.iff")
 
 object_draft_schematic_droid_component_shared_medic_module_3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2240,6 +2291,7 @@ object_draft_schematic_droid_component_shared_medic_module_3 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2275,7 +2327,7 @@ object_draft_schematic_droid_component_shared_medic_module_3 = SharedDraftSchema
 	clientObjectCRC = 1067109071
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_medic_module_3, "object/draft_schematic/droid/component/shared_medic_module_3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_medic_module_3, "object/draft_schematic/droid/component/shared_medic_module_3.iff")
 
 object_draft_schematic_droid_component_shared_medic_module_4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2283,6 +2335,7 @@ object_draft_schematic_droid_component_shared_medic_module_4 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2318,7 +2371,7 @@ object_draft_schematic_droid_component_shared_medic_module_4 = SharedDraftSchema
 	clientObjectCRC = 3296322011
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_medic_module_4, "object/draft_schematic/droid/component/shared_medic_module_4.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_medic_module_4, "object/draft_schematic/droid/component/shared_medic_module_4.iff")
 
 object_draft_schematic_droid_component_shared_medic_module_5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2326,6 +2379,7 @@ object_draft_schematic_droid_component_shared_medic_module_5 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2361,7 +2415,7 @@ object_draft_schematic_droid_component_shared_medic_module_5 = SharedDraftSchema
 	clientObjectCRC = 2373224022
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_medic_module_5, "object/draft_schematic/droid/component/shared_medic_module_5.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_medic_module_5, "object/draft_schematic/droid/component/shared_medic_module_5.iff")
 
 object_draft_schematic_droid_component_shared_medic_module_6 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2369,6 +2423,7 @@ object_draft_schematic_droid_component_shared_medic_module_6 = SharedDraftSchema
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2404,7 +2459,7 @@ object_draft_schematic_droid_component_shared_medic_module_6 = SharedDraftSchema
 	clientObjectCRC = 1449340609
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_medic_module_6, "object/draft_schematic/droid/component/shared_medic_module_6.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_medic_module_6, "object/draft_schematic/droid/component/shared_medic_module_6.iff")
 
 object_draft_schematic_droid_component_shared_merchant_barker = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2412,6 +2467,7 @@ object_draft_schematic_droid_component_shared_merchant_barker = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2447,7 +2503,7 @@ object_draft_schematic_droid_component_shared_merchant_barker = SharedDraftSchem
 	clientObjectCRC = 2832999494
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_merchant_barker, "object/draft_schematic/droid/component/shared_merchant_barker.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_merchant_barker, "object/draft_schematic/droid/component/shared_merchant_barker.iff")
 
 object_draft_schematic_droid_component_shared_module_socket_bank = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2455,6 +2511,7 @@ object_draft_schematic_droid_component_shared_module_socket_bank = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2490,7 +2547,7 @@ object_draft_schematic_droid_component_shared_module_socket_bank = SharedDraftSc
 	clientObjectCRC = 2910297856
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_module_socket_bank, "object/draft_schematic/droid/component/shared_module_socket_bank.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_module_socket_bank, "object/draft_schematic/droid/component/shared_module_socket_bank.iff")
 
 object_draft_schematic_droid_component_shared_performer_effects_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2498,6 +2555,7 @@ object_draft_schematic_droid_component_shared_performer_effects_a = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2533,7 +2591,7 @@ object_draft_schematic_droid_component_shared_performer_effects_a = SharedDraftS
 	clientObjectCRC = 336724066
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_performer_effects_a, "object/draft_schematic/droid/component/shared_performer_effects_a.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_performer_effects_a, "object/draft_schematic/droid/component/shared_performer_effects_a.iff")
 
 object_draft_schematic_droid_component_shared_performer_effects_aa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2541,6 +2599,7 @@ object_draft_schematic_droid_component_shared_performer_effects_aa = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2576,7 +2635,7 @@ object_draft_schematic_droid_component_shared_performer_effects_aa = SharedDraft
 	clientObjectCRC = 811492893
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_performer_effects_aa, "object/draft_schematic/droid/component/shared_performer_effects_aa.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_performer_effects_aa, "object/draft_schematic/droid/component/shared_performer_effects_aa.iff")
 
 object_draft_schematic_droid_component_shared_performer_effects_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2584,6 +2643,7 @@ object_draft_schematic_droid_component_shared_performer_effects_b = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2619,7 +2679,7 @@ object_draft_schematic_droid_component_shared_performer_effects_b = SharedDraftS
 	clientObjectCRC = 3473254645
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_performer_effects_b, "object/draft_schematic/droid/component/shared_performer_effects_b.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_performer_effects_b, "object/draft_schematic/droid/component/shared_performer_effects_b.iff")
 
 object_draft_schematic_droid_component_shared_performer_effects_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2627,6 +2687,7 @@ object_draft_schematic_droid_component_shared_performer_effects_c = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2662,7 +2723,7 @@ object_draft_schematic_droid_component_shared_performer_effects_c = SharedDraftS
 	clientObjectCRC = 2248724344
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_performer_effects_c, "object/draft_schematic/droid/component/shared_performer_effects_c.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_performer_effects_c, "object/draft_schematic/droid/component/shared_performer_effects_c.iff")
 
 object_draft_schematic_droid_component_shared_performer_effects_d = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2670,6 +2731,7 @@ object_draft_schematic_droid_component_shared_performer_effects_d = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2705,7 +2767,7 @@ object_draft_schematic_droid_component_shared_performer_effects_d = SharedDraftS
 	clientObjectCRC = 2112611436
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_performer_effects_d, "object/draft_schematic/droid/component/shared_performer_effects_d.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_performer_effects_d, "object/draft_schematic/droid/component/shared_performer_effects_d.iff")
 
 object_draft_schematic_droid_component_shared_performer_effects_e = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2713,6 +2775,7 @@ object_draft_schematic_droid_component_shared_performer_effects_e = SharedDraftS
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2748,7 +2811,7 @@ object_draft_schematic_droid_component_shared_performer_effects_e = SharedDraftS
 	clientObjectCRC = 887522273
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_performer_effects_e, "object/draft_schematic/droid/component/shared_performer_effects_e.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_performer_effects_e, "object/draft_schematic/droid/component/shared_performer_effects_e.iff")
 
 object_draft_schematic_droid_component_shared_personality_module_geek = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2756,6 +2819,7 @@ object_draft_schematic_droid_component_shared_personality_module_geek = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2791,7 +2855,7 @@ object_draft_schematic_droid_component_shared_personality_module_geek = SharedDr
 	clientObjectCRC = 1499447339
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_personality_module_geek, "object/draft_schematic/droid/component/shared_personality_module_geek.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_personality_module_geek, "object/draft_schematic/droid/component/shared_personality_module_geek.iff")
 
 object_draft_schematic_droid_component_shared_personality_module_prissy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2799,6 +2863,7 @@ object_draft_schematic_droid_component_shared_personality_module_prissy = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2834,7 +2899,7 @@ object_draft_schematic_droid_component_shared_personality_module_prissy = Shared
 	clientObjectCRC = 1777589517
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_personality_module_prissy, "object/draft_schematic/droid/component/shared_personality_module_prissy.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_personality_module_prissy, "object/draft_schematic/droid/component/shared_personality_module_prissy.iff")
 
 object_draft_schematic_droid_component_shared_personality_module_sarcastic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2842,6 +2907,7 @@ object_draft_schematic_droid_component_shared_personality_module_sarcastic = Sha
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2877,7 +2943,7 @@ object_draft_schematic_droid_component_shared_personality_module_sarcastic = Sha
 	clientObjectCRC = 2313369621
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_personality_module_sarcastic, "object/draft_schematic/droid/component/shared_personality_module_sarcastic.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_personality_module_sarcastic, "object/draft_schematic/droid/component/shared_personality_module_sarcastic.iff")
 
 object_draft_schematic_droid_component_shared_personality_module_slang = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2885,6 +2951,7 @@ object_draft_schematic_droid_component_shared_personality_module_slang = SharedD
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2920,7 +2987,7 @@ object_draft_schematic_droid_component_shared_personality_module_slang = SharedD
 	clientObjectCRC = 3590751523
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_personality_module_slang, "object/draft_schematic/droid/component/shared_personality_module_slang.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_personality_module_slang, "object/draft_schematic/droid/component/shared_personality_module_slang.iff")
 
 object_draft_schematic_droid_component_shared_personality_module_stupid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2928,6 +2995,7 @@ object_draft_schematic_droid_component_shared_personality_module_stupid = Shared
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -2963,7 +3031,7 @@ object_draft_schematic_droid_component_shared_personality_module_stupid = Shared
 	clientObjectCRC = 4185529459
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_personality_module_stupid, "object/draft_schematic/droid/component/shared_personality_module_stupid.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_personality_module_stupid, "object/draft_schematic/droid/component/shared_personality_module_stupid.iff")
 
 object_draft_schematic_droid_component_shared_personality_module_worshipful = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2971,6 +3039,7 @@ object_draft_schematic_droid_component_shared_personality_module_worshipful = Sh
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3006,7 +3075,7 @@ object_draft_schematic_droid_component_shared_personality_module_worshipful = Sh
 	clientObjectCRC = 2575103077
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_personality_module_worshipful, "object/draft_schematic/droid/component/shared_personality_module_worshipful.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_personality_module_worshipful, "object/draft_schematic/droid/component/shared_personality_module_worshipful.iff")
 
 object_draft_schematic_droid_component_shared_playback_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3014,6 +3083,7 @@ object_draft_schematic_droid_component_shared_playback_module = SharedDraftSchem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3049,7 +3119,7 @@ object_draft_schematic_droid_component_shared_playback_module = SharedDraftSchem
 	clientObjectCRC = 3135218997
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_playback_module, "object/draft_schematic/droid/component/shared_playback_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_playback_module, "object/draft_schematic/droid/component/shared_playback_module.iff")
 
 object_draft_schematic_droid_component_shared_power_supply_redundant = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3057,6 +3127,7 @@ object_draft_schematic_droid_component_shared_power_supply_redundant = SharedDra
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3092,7 +3163,7 @@ object_draft_schematic_droid_component_shared_power_supply_redundant = SharedDra
 	clientObjectCRC = 3746549117
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_power_supply_redundant, "object/draft_schematic/droid/component/shared_power_supply_redundant.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_power_supply_redundant, "object/draft_schematic/droid/component/shared_power_supply_redundant.iff")
 
 object_draft_schematic_droid_component_shared_power_supply_redundant_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3100,6 +3171,7 @@ object_draft_schematic_droid_component_shared_power_supply_redundant_advanced = 
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3135,7 +3207,7 @@ object_draft_schematic_droid_component_shared_power_supply_redundant_advanced = 
 	clientObjectCRC = 3927866988
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_power_supply_redundant_advanced, "object/draft_schematic/droid/component/shared_power_supply_redundant_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_power_supply_redundant_advanced, "object/draft_schematic/droid/component/shared_power_supply_redundant_advanced.iff")
 
 object_draft_schematic_droid_component_shared_repair_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3143,6 +3215,7 @@ object_draft_schematic_droid_component_shared_repair_module = SharedDraftSchemat
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3178,7 +3251,7 @@ object_draft_schematic_droid_component_shared_repair_module = SharedDraftSchemat
 	clientObjectCRC = 1133747824
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_repair_module, "object/draft_schematic/droid/component/shared_repair_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_repair_module, "object/draft_schematic/droid/component/shared_repair_module.iff")
 
 object_draft_schematic_droid_component_shared_repair_unit_casing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3186,6 +3259,7 @@ object_draft_schematic_droid_component_shared_repair_unit_casing = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3221,7 +3295,7 @@ object_draft_schematic_droid_component_shared_repair_unit_casing = SharedDraftSc
 	clientObjectCRC = 2600714842
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_repair_unit_casing, "object/draft_schematic/droid/component/shared_repair_unit_casing.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_repair_unit_casing, "object/draft_schematic/droid/component/shared_repair_unit_casing.iff")
 
 object_draft_schematic_droid_component_shared_repair_unit_casing_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3229,6 +3303,7 @@ object_draft_schematic_droid_component_shared_repair_unit_casing_advanced = Shar
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3264,7 +3339,7 @@ object_draft_schematic_droid_component_shared_repair_unit_casing_advanced = Shar
 	clientObjectCRC = 4238826541
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_repair_unit_casing_advanced, "object/draft_schematic/droid/component/shared_repair_unit_casing_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_repair_unit_casing_advanced, "object/draft_schematic/droid/component/shared_repair_unit_casing_advanced.iff")
 
 object_draft_schematic_droid_component_shared_sensor_package_droid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3272,6 +3347,7 @@ object_draft_schematic_droid_component_shared_sensor_package_droid = SharedDraft
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3307,7 +3383,7 @@ object_draft_schematic_droid_component_shared_sensor_package_droid = SharedDraft
 	clientObjectCRC = 4095289017
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_sensor_package_droid, "object/draft_schematic/droid/component/shared_sensor_package_droid.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_sensor_package_droid, "object/draft_schematic/droid/component/shared_sensor_package_droid.iff")
 
 object_draft_schematic_droid_component_shared_stimpack_dispensor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3315,6 +3391,7 @@ object_draft_schematic_droid_component_shared_stimpack_dispensor = SharedDraftSc
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3350,7 +3427,7 @@ object_draft_schematic_droid_component_shared_stimpack_dispensor = SharedDraftSc
 	clientObjectCRC = 2649448310
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_stimpack_dispensor, "object/draft_schematic/droid/component/shared_stimpack_dispensor.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_stimpack_dispensor, "object/draft_schematic/droid/component/shared_stimpack_dispensor.iff")
 
 object_draft_schematic_droid_component_shared_struct_maint_module_1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3358,6 +3435,7 @@ object_draft_schematic_droid_component_shared_struct_maint_module_1 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3393,7 +3471,7 @@ object_draft_schematic_droid_component_shared_struct_maint_module_1 = SharedDraf
 	clientObjectCRC = 3214412986
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_struct_maint_module_1, "object/draft_schematic/droid/component/shared_struct_maint_module_1.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_struct_maint_module_1, "object/draft_schematic/droid/component/shared_struct_maint_module_1.iff")
 
 object_draft_schematic_droid_component_shared_struct_maint_module_2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3401,6 +3479,7 @@ object_draft_schematic_droid_component_shared_struct_maint_module_2 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3436,7 +3515,7 @@ object_draft_schematic_droid_component_shared_struct_maint_module_2 = SharedDraf
 	clientObjectCRC = 1687135277
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_struct_maint_module_2, "object/draft_schematic/droid/component/shared_struct_maint_module_2.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_struct_maint_module_2, "object/draft_schematic/droid/component/shared_struct_maint_module_2.iff")
 
 object_draft_schematic_droid_component_shared_struct_maint_module_3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3444,6 +3523,7 @@ object_draft_schematic_droid_component_shared_struct_maint_module_3 = SharedDraf
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3479,7 +3559,7 @@ object_draft_schematic_droid_component_shared_struct_maint_module_3 = SharedDraf
 	clientObjectCRC = 763544480
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_struct_maint_module_3, "object/draft_schematic/droid/component/shared_struct_maint_module_3.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_struct_maint_module_3, "object/draft_schematic/droid/component/shared_struct_maint_module_3.iff")
 
 object_draft_schematic_droid_component_shared_trap_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3487,6 +3567,7 @@ object_draft_schematic_droid_component_shared_trap_module = SharedDraftSchematic
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3522,7 +3603,7 @@ object_draft_schematic_droid_component_shared_trap_module = SharedDraftSchematic
 	clientObjectCRC = 574411331
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_trap_module, "object/draft_schematic/droid/component/shared_trap_module.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_trap_module, "object/draft_schematic/droid/component/shared_trap_module.iff")
 
 object_draft_schematic_droid_component_shared_unit_delivery_cartridge = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3530,6 +3611,7 @@ object_draft_schematic_droid_component_shared_unit_delivery_cartridge = SharedDr
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3565,7 +3647,7 @@ object_draft_schematic_droid_component_shared_unit_delivery_cartridge = SharedDr
 	clientObjectCRC = 3662626430
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_unit_delivery_cartridge, "object/draft_schematic/droid/component/shared_unit_delivery_cartridge.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_unit_delivery_cartridge, "object/draft_schematic/droid/component/shared_unit_delivery_cartridge.iff")
 
 object_draft_schematic_droid_component_shared_unit_delivery_cartridge_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -3573,6 +3655,7 @@ object_draft_schematic_droid_component_shared_unit_delivery_cartridge_advanced =
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2049,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -3608,4 +3691,4 @@ object_draft_schematic_droid_component_shared_unit_delivery_cartridge_advanced =
 	clientObjectCRC = 3067143839
 }
 
-ObjectTemplates:addClientTemplate(object_draft_schematic_droid_component_shared_unit_delivery_cartridge_advanced, "object/draft_schematic/droid/component/shared_unit_delivery_cartridge_advanced.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_droid_component_shared_unit_delivery_cartridge_advanced, "object/draft_schematic/droid/component/shared_unit_delivery_cartridge_advanced.iff")

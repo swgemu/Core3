@@ -48,6 +48,7 @@ object_tangible_lair_gnort_shared_lair_gnort = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_gnort_shared_lair_gnort = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3151166549
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort, "object/tangible/lair/gnort/shared_lair_gnort.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort, "object/tangible/lair/gnort/shared_lair_gnort.iff")
 
 object_tangible_lair_gnort_shared_lair_gnort_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_gnort_shared_lair_gnort_grassland = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_gnort_shared_lair_gnort_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 622467939
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort_grassland, "object/tangible/lair/gnort/shared_lair_gnort_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort_grassland, "object/tangible/lair/gnort/shared_lair_gnort_grassland.iff")
 
 object_tangible_lair_gnort_shared_lair_gnort_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_gnort_shared_lair_gnort_mountain = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_gnort_shared_lair_gnort_mountain = SharedTangibleObjectTemp
 	clientObjectCRC = 2282996299
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort_mountain, "object/tangible/lair/gnort/shared_lair_gnort_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort_mountain, "object/tangible/lair/gnort/shared_lair_gnort_mountain.iff")

@@ -47,6 +47,7 @@ object_static_structure_nobuild_base_shared_nobuild_base = SharedStaticObjectTem
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_static_structure_nobuild_base_shared_nobuild_base = SharedStaticObjectTem
 	clientObjectCRC = 2977184644
 }
 
-ObjectTemplates:addClientTemplate(object_static_structure_nobuild_base_shared_nobuild_base, "object/static/structure/nobuild/base/shared_nobuild_base.iff")
+ObjectTemplates:addTemplate(object_static_structure_nobuild_base_shared_nobuild_base, "object/static/structure/nobuild/base/shared_nobuild_base.iff")

@@ -48,6 +48,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_l = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_l = SharedTangi
 	clientObjectCRC = 2085871516
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_l, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bicep_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_l, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bicep_r_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_r = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_r = SharedTangi
 	clientObjectCRC = 210147855
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_r, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bicep_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_r, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_bone_s01_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_boots_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_boots = SharedTangibl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 263,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_boots = SharedTangibl
 	clientObjectCRC = 802627120
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_boots, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_boots.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_boots, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_boots.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bracer_l_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_l = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_l = SharedTang
 	clientObjectCRC = 778039047
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_l, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bracer_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_l, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bracer_r_f.sat",
@@ -260,6 +264,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_r = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_r = SharedTang
 	clientObjectCRC = 1586145940
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_r, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bracer_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_r, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bracer_r.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_bone_s01_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_chest_plate_f.sat",
@@ -313,6 +318,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_chest_plate = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_chest_plate = SharedT
 	clientObjectCRC = 3552584942
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_chest_plate, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_chest_plate, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_chest_plate.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_bone_s01_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_gloves_f.sat",
@@ -366,6 +372,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_gloves = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 262,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_gloves = SharedTangib
 	clientObjectCRC = 4034830199
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_gloves, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_gloves.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_gloves, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_gloves.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_bone_s01_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_helmet_f.sat",
@@ -419,6 +426,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_helmet = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 258,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,7 +471,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_helmet = SharedTangib
 	clientObjectCRC = 1186889343
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_helmet, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_helmet.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_helmet, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_helmet.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_bone_s01_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_leggings_f.sat",
@@ -472,6 +480,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_leggings = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -516,7 +525,7 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_leggings = SharedTang
 	clientObjectCRC = 2709205528
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_leggings, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_leggings.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_leggings, "object/tangible/wearables/armor/bone/shared_armor_bone_s01_leggings.iff")
 
 object_tangible_wearables_armor_bone_shared_armor_smc_s01_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bicep_l_s01.sat",
@@ -525,6 +534,7 @@ object_tangible_wearables_armor_bone_shared_armor_smc_s01_bicep_l = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 256,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -570,4 +580,4 @@ object_tangible_wearables_armor_bone_shared_armor_smc_s01_bicep_l = SharedTangib
 	clientObjectCRC = 3237390515
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bone_shared_armor_smc_s01_bicep_l, "object/tangible/wearables/armor/bone/shared_armor_smc_s01_bicep_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_smc_s01_bicep_l, "object/tangible/wearables/armor/bone/shared_armor_smc_s01_bicep_l.iff")

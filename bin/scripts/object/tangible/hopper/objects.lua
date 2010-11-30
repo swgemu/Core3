@@ -48,6 +48,7 @@ object_tangible_hopper_shared_crafting_station_ingredient_hopper_1 = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_hopper_shared_crafting_station_ingredient_hopper_1 = SharedTangi
 	clientObjectCRC = 2116612555
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_crafting_station_ingredient_hopper_1, "object/tangible/hopper/shared_crafting_station_ingredient_hopper_1.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_shared_crafting_station_ingredient_hopper_1, "object/tangible/hopper/shared_crafting_station_ingredient_hopper_1.iff")
 
 object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = Sha
 	clientObjectCRC = 4266502475
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1, "object/tangible/hopper/shared_manufacture_installation_ingredient_hopper_1.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1, "object/tangible/hopper/shared_manufacture_installation_ingredient_hopper_1.iff")
 
 object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedT
 	clientObjectCRC = 3765113149
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_manufacture_installation_output_hopper_1, "object/tangible/hopper/shared_manufacture_installation_output_hopper_1.iff")
+ObjectTemplates:addTemplate(object_tangible_hopper_shared_manufacture_installation_output_hopper_1, "object/tangible/hopper/shared_manufacture_installation_output_hopper_1.iff")

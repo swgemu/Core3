@@ -48,6 +48,7 @@ object_tangible_lair_tybis_shared_lair_tybis = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_tybis_shared_lair_tybis = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 880238924
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_tybis_shared_lair_tybis, "object/tangible/lair/tybis/shared_lair_tybis.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_tybis_shared_lair_tybis, "object/tangible/lair/tybis/shared_lair_tybis.iff")
 
 object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTem
 	clientObjectCRC = 4004634433
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_tybis_shared_lair_tybis_grassland, "object/tangible/lair/tybis/shared_lair_tybis_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_tybis_shared_lair_tybis_grassland, "object/tangible/lair/tybis/shared_lair_tybis_grassland.iff")

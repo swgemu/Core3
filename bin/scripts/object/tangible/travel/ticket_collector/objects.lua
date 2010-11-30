@@ -48,6 +48,7 @@ object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16396,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangible
 	clientObjectCRC = 4243633165
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_travel_ticket_collector_shared_ticket_collector, "object/tangible/travel/ticket_collector/shared_ticket_collector.iff")
+ObjectTemplates:addTemplate(object_tangible_travel_ticket_collector_shared_ticket_collector, "object/tangible/travel/ticket_collector/shared_ticket_collector.iff")

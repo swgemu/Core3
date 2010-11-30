@@ -48,6 +48,7 @@ object_tangible_lair_squill_shared_lair_squill = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_squill_shared_lair_squill = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1781856165
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_squill_shared_lair_squill, "object/tangible/lair/squill/shared_lair_squill.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_squill_shared_lair_squill, "object/tangible/lair/squill/shared_lair_squill.iff")
 
 object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemp
 	clientObjectCRC = 2102372943
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_squill_shared_lair_squill_desert, "object/tangible/lair/squill/shared_lair_squill_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_squill_shared_lair_squill_desert, "object/tangible/lair/squill/shared_lair_squill_desert.iff")

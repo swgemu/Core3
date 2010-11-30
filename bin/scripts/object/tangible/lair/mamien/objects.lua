@@ -48,6 +48,7 @@ object_tangible_lair_mamien_shared_lair_mamien = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_mamien_shared_lair_mamien = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1262287323
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_mamien_shared_lair_mamien, "object/tangible/lair/mamien/shared_lair_mamien.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_mamien_shared_lair_mamien, "object/tangible/lair/mamien/shared_lair_mamien.iff")
 
 object_tangible_lair_mamien_shared_lair_mamien_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_mamien_shared_lair_mamien_jungle = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_mamien_shared_lair_mamien_jungle = SharedTangibleObjectTemp
 	clientObjectCRC = 222781865
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_mamien_shared_lair_mamien_jungle, "object/tangible/lair/mamien/shared_lair_mamien_jungle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_mamien_shared_lair_mamien_jungle, "object/tangible/lair/mamien/shared_lair_mamien_jungle.iff")

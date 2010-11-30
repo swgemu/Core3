@@ -48,6 +48,7 @@ object_tangible_lair_roba_shared_lair_roba = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_roba_shared_lair_roba = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 636662941
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_roba_shared_lair_roba, "object/tangible/lair/roba/shared_lair_roba.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_roba_shared_lair_roba, "object/tangible/lair/roba/shared_lair_roba.iff")
 
 object_tangible_lair_roba_shared_lair_roba_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_roba_shared_lair_roba_grassland = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_roba_shared_lair_roba_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 4293395359
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_roba_shared_lair_roba_grassland, "object/tangible/lair/roba/shared_lair_roba_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_roba_shared_lair_roba_grassland, "object/tangible/lair/roba/shared_lair_roba_grassland.iff")

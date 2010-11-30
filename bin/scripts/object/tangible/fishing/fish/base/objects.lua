@@ -48,6 +48,7 @@ object_tangible_fishing_fish_base_shared_fish_base = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8192,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_fishing_fish_base_shared_fish_base = SharedTangibleObjectTemplat
 	clientObjectCRC = 3666883788
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_base_shared_fish_base, "object/tangible/fishing/fish/base/shared_fish_base.iff")
+ObjectTemplates:addTemplate(object_tangible_fishing_fish_base_shared_fish_base, "object/tangible/fishing/fish/base/shared_fish_base.iff")

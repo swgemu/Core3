@@ -48,6 +48,7 @@ object_tangible_jedi_shared_force_shrine_stone = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_jedi_shared_force_shrine_stone = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3757784174
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_force_shrine_stone, "object/tangible/jedi/shared_force_shrine_stone.iff")
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_force_shrine_stone, "object/tangible/jedi/shared_force_shrine_stone.iff")
 
 object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_sith_holocron_s1.apt",
@@ -101,6 +102,7 @@ object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2292501440
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_jedi_holocron_dark, "object/tangible/jedi/shared_jedi_holocron_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_jedi_holocron_dark, "object/tangible/jedi/shared_jedi_holocron_dark.iff")
 
 object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_holocron_s1.apt",
@@ -154,6 +156,7 @@ object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:n
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 2610980168
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_jedi_holocron_light, "object/tangible/jedi/shared_jedi_holocron_light.iff")
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_jedi_holocron_light, "object/tangible/jedi/shared_jedi_holocron_light.iff")
 
 object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_sith_holocron_s1.apt",
@@ -207,6 +210,7 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTem
 	clientObjectCRC = 2325658238
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_dark, "object/tangible/jedi/shared_no_drop_jedi_holocron_dark.iff")
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_dark, "object/tangible/jedi/shared_no_drop_jedi_holocron_dark.iff")
 
 object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_jedi_holocron_s1.apt",
@@ -260,6 +264,7 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8218,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTe
 	clientObjectCRC = 2824069158
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_light, "object/tangible/jedi/shared_no_drop_jedi_holocron_light.iff")
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_light, "object/tangible/jedi/shared_no_drop_jedi_holocron_light.iff")
 
 object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -313,6 +318,7 @@ object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -357,7 +363,7 @@ object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTempla
 	clientObjectCRC = 3447451409
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_padawan_trials_skeleton, "object/tangible/jedi/shared_padawan_trials_skeleton.iff")
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_padawan_trials_skeleton, "object/tangible/jedi/shared_padawan_trials_skeleton.iff")
 
 object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
@@ -366,6 +372,7 @@ object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_green.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2994720477
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_power_shrine, "object/tangible/jedi/shared_power_shrine.iff")
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_power_shrine, "object/tangible/jedi/shared_power_shrine.iff")
 
 object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
@@ -419,6 +426,7 @@ object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_lair_fog_red.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,4 +471,4 @@ object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 2808368973
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_power_shrine_red, "object/tangible/jedi/shared_power_shrine_red.iff")
+ObjectTemplates:addTemplate(object_tangible_jedi_shared_power_shrine_red, "object/tangible/jedi/shared_power_shrine_red.iff")

@@ -48,6 +48,7 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut = SharedTangibleObjectTemplat
 	clientObjectCRC = 56634783
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, "object/tangible/lair/shaupaut/shared_lair_shaupaut.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, "object/tangible/lair/shaupaut/shared_lair_shaupaut.iff")
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObject
 	clientObjectCRC = 1064337645
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, "object/tangible/lair/shaupaut/shared_lair_shaupaut_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, "object/tangible/lair/shaupaut/shared_lair_shaupaut_forest.iff")
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectT
 	clientObjectCRC = 2989589042
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, "object/tangible/lair/shaupaut/shared_lair_shaupaut_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, "object/tangible/lair/shaupaut/shared_lair_shaupaut_swamp.iff")

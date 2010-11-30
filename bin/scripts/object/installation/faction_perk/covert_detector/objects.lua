@@ -48,6 +48,7 @@ object_installation_faction_perk_covert_detector_shared_detector_base = SharedIn
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_detector_base.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_installation_faction_perk_covert_detector_shared_detector_base = SharedIn
 	clientObjectCRC = 2218940295
 }
 
-ObjectTemplates:addClientTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, "object/installation/faction_perk/covert_detector/shared_detector_base.iff")
+ObjectTemplates:addTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, "object/installation/faction_perk/covert_detector/shared_detector_base.iff")

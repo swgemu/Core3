@@ -48,6 +48,7 @@ object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice = SharedTan
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8197,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice = SharedTan
 	clientObjectCRC = 3357840333
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice, "object/tangible/container/quest/hero_of_tatooine/shared_rock_crevice.iff")
+ObjectTemplates:addTemplate(object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice, "object/tangible/container/quest/hero_of_tatooine/shared_rock_crevice.iff")

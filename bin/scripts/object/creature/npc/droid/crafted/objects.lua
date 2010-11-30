@@ -51,6 +51,7 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid = SharedCreatureObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -116,7 +117,7 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid = SharedCreatureObj
 	clientObjectCRC = 2915843418
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_2_1b_surgical_droid, "object/creature/npc/droid/crafted/shared_2_1b_surgical_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_2_1b_surgical_droid, "object/creature/npc/droid/crafted/shared_2_1b_surgical_droid.iff")
 
 object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -128,6 +129,7 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced = SharedCr
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -193,7 +195,7 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced = SharedCr
 	clientObjectCRC = 1752432055
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced, "object/creature/npc/droid/crafted/shared_2_1b_surgical_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced, "object/creature/npc/droid/crafted/shared_2_1b_surgical_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_3po_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -205,6 +207,7 @@ object_creature_npc_droid_crafted_shared_3po_droid = SharedCreatureObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -270,7 +273,7 @@ object_creature_npc_droid_crafted_shared_3po_droid = SharedCreatureObjectTemplat
 	clientObjectCRC = 2764227037
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_3po_droid, "object/creature/npc/droid/crafted/shared_3po_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_3po_droid, "object/creature/npc/droid/crafted/shared_3po_droid.iff")
 
 object_creature_npc_droid_crafted_shared_3po_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -282,6 +285,7 @@ object_creature_npc_droid_crafted_shared_3po_droid_advanced = SharedCreatureObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -347,7 +351,7 @@ object_creature_npc_droid_crafted_shared_3po_droid_advanced = SharedCreatureObje
 	clientObjectCRC = 604017168
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_3po_droid_advanced, "object/creature/npc/droid/crafted/shared_3po_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_3po_droid_advanced, "object/creature/npc/droid/crafted/shared_3po_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -359,6 +363,7 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid = SharedCreatu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -424,7 +429,7 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid = SharedCreatu
 	clientObjectCRC = 3172589023
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid, "object/creature/npc/droid/crafted/shared_bomarr_monk_spider_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid, "object/creature/npc/droid/crafted/shared_bomarr_monk_spider_droid.iff")
 
 object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -436,6 +441,7 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -501,7 +507,7 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced = Sha
 	clientObjectCRC = 2295784813
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced, "object/creature/npc/droid/crafted/shared_bomarr_monk_spider_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced, "object/creature/npc/droid/crafted/shared_bomarr_monk_spider_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -513,6 +519,7 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter = SharedCreatu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -578,7 +585,7 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter = SharedCreatu
 	clientObjectCRC = 1144214850
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter, "object/creature/npc/droid/crafted/shared_cll_8_binary_load_lifter.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter, "object/creature/npc/droid/crafted/shared_cll_8_binary_load_lifter.iff")
 
 object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -590,6 +597,7 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced = Sha
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +663,7 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced = Sha
 	clientObjectCRC = 2691944817
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced, "object/creature/npc/droid/crafted/shared_cll_8_binary_load_lifter_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced, "object/creature/npc/droid/crafted/shared_cll_8_binary_load_lifter_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -667,6 +675,7 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii = SharedCreatureO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -732,7 +741,7 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii = SharedCreatureO
 	clientObjectCRC = 3813952229
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii, "object/creature/npc/droid/crafted/shared_dark_trooper_phase_ii.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii, "object/creature/npc/droid/crafted/shared_dark_trooper_phase_ii.iff")
 
 object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -744,6 +753,7 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -809,7 +819,7 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced = Shared
 	clientObjectCRC = 320581973
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced, "object/creature/npc/droid/crafted/shared_dark_trooper_phase_ii_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced, "object/creature/npc/droid/crafted/shared_dark_trooper_phase_ii_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_droideka = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -821,6 +831,7 @@ object_creature_npc_droid_crafted_shared_droideka = SharedCreatureObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -886,7 +897,7 @@ object_creature_npc_droid_crafted_shared_droideka = SharedCreatureObjectTemplate
 	clientObjectCRC = 3178328195
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_droideka, "object/creature/npc/droid/crafted/shared_droideka.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_droideka, "object/creature/npc/droid/crafted/shared_droideka.iff")
 
 object_creature_npc_droid_crafted_shared_droideka_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -898,6 +909,7 @@ object_creature_npc_droid_crafted_shared_droideka_advanced = SharedCreatureObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -963,7 +975,7 @@ object_creature_npc_droid_crafted_shared_droideka_advanced = SharedCreatureObjec
 	clientObjectCRC = 2397633499
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_droideka_advanced, "object/creature/npc/droid/crafted/shared_droideka_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_droideka_advanced, "object/creature/npc/droid/crafted/shared_droideka_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -975,6 +987,7 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid = SharedCr
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1040,7 +1053,7 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid = SharedCr
 	clientObjectCRC = 3709391789
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid, "object/creature/npc/droid/crafted/shared_dz_70_fugitive_tracker_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid, "object/creature/npc/droid/crafted/shared_dz_70_fugitive_tracker_droid.iff")
 
 object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1052,6 +1065,7 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced =
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1117,7 +1131,7 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced =
 	clientObjectCRC = 1848917490
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced, "object/creature/npc/droid/crafted/shared_dz_70_fugitive_tracker_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced, "object/creature/npc/droid/crafted/shared_dz_70_fugitive_tracker_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_eg_6_power_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1129,6 +1143,7 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid = SharedCreatureObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/droid/client_shared_dro_gonk.cdf",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1194,7 +1209,7 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid = SharedCreatureObject
 	clientObjectCRC = 2388417509
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_eg_6_power_droid, "object/creature/npc/droid/crafted/shared_eg_6_power_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_eg_6_power_droid, "object/creature/npc/droid/crafted/shared_eg_6_power_droid.iff")
 
 object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1206,6 +1221,7 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced = SharedCreat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/droid/client_shared_dro_gonk.cdf",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1287,7 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced = SharedCreat
 	clientObjectCRC = 2251263338
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced, "object/creature/npc/droid/crafted/shared_eg_6_power_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced, "object/creature/npc/droid/crafted/shared_eg_6_power_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_ig_assassin_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1283,6 +1299,7 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid = SharedCreatureObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1348,7 +1365,7 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid = SharedCreatureObjec
 	clientObjectCRC = 103856343
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_ig_assassin_droid, "object/creature/npc/droid/crafted/shared_ig_assassin_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_ig_assassin_droid, "object/creature/npc/droid/crafted/shared_ig_assassin_droid.iff")
 
 object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1360,6 +1377,7 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced = SharedCrea
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1425,7 +1443,7 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced = SharedCrea
 	clientObjectCRC = 3720942075
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced, "object/creature/npc/droid/crafted/shared_ig_assassin_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced, "object/creature/npc/droid/crafted/shared_ig_assassin_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_imperial_probot = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1437,6 +1455,7 @@ object_creature_npc_droid_crafted_shared_imperial_probot = SharedCreatureObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1027,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1502,7 +1521,7 @@ object_creature_npc_droid_crafted_shared_imperial_probot = SharedCreatureObjectT
 	clientObjectCRC = 2904803500
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_imperial_probot, "object/creature/npc/droid/crafted/shared_imperial_probot.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_imperial_probot, "object/creature/npc/droid/crafted/shared_imperial_probot.iff")
 
 object_creature_npc_droid_crafted_shared_imperial_probot_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1514,6 +1533,7 @@ object_creature_npc_droid_crafted_shared_imperial_probot_advanced = SharedCreatu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1027,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1579,7 +1599,7 @@ object_creature_npc_droid_crafted_shared_imperial_probot_advanced = SharedCreatu
 	clientObjectCRC = 2998077962
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_imperial_probot_advanced, "object/creature/npc/droid/crafted/shared_imperial_probot_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_imperial_probot_advanced, "object/creature/npc/droid/crafted/shared_imperial_probot_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_it_o_interrogator = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1591,6 +1611,7 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator = SharedCreatureObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1656,7 +1677,7 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator = SharedCreatureObjec
 	clientObjectCRC = 3950548383
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_it_o_interrogator, "object/creature/npc/droid/crafted/shared_it_o_interrogator.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_it_o_interrogator, "object/creature/npc/droid/crafted/shared_it_o_interrogator.iff")
 
 object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1668,6 +1689,7 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced = SharedCrea
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1733,7 +1755,7 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced = SharedCrea
 	clientObjectCRC = 1493429482
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced, "object/creature/npc/droid/crafted/shared_it_o_interrogator_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced, "object/creature/npc/droid/crafted/shared_it_o_interrogator_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_jedi_training_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1745,6 +1767,7 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid = SharedCreatureObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1810,7 +1833,7 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid = SharedCreatureObj
 	clientObjectCRC = 150852356
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_jedi_training_droid, "object/creature/npc/droid/crafted/shared_jedi_training_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_jedi_training_droid, "object/creature/npc/droid/crafted/shared_jedi_training_droid.iff")
 
 object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1822,6 +1845,7 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced = SharedCr
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1887,7 +1911,7 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced = SharedCr
 	clientObjectCRC = 1150973475
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced, "object/creature/npc/droid/crafted/shared_jedi_training_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced, "object/creature/npc/droid/crafted/shared_jedi_training_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_le_repair_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1899,6 +1923,7 @@ object_creature_npc_droid_crafted_shared_le_repair_droid = SharedCreatureObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1964,7 +1989,7 @@ object_creature_npc_droid_crafted_shared_le_repair_droid = SharedCreatureObjectT
 	clientObjectCRC = 2448691902
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_le_repair_droid, "object/creature/npc/droid/crafted/shared_le_repair_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_le_repair_droid, "object/creature/npc/droid/crafted/shared_le_repair_droid.iff")
 
 object_creature_npc_droid_crafted_shared_le_repair_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -1976,6 +2001,7 @@ object_creature_npc_droid_crafted_shared_le_repair_droid_advanced = SharedCreatu
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2041,7 +2067,7 @@ object_creature_npc_droid_crafted_shared_le_repair_droid_advanced = SharedCreatu
 	clientObjectCRC = 256863265
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_le_repair_droid_advanced, "object/creature/npc/droid/crafted/shared_le_repair_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_le_repair_droid_advanced, "object/creature/npc/droid/crafted/shared_le_repair_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_lin_demolitionmech = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2053,6 +2079,7 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech = SharedCreatureObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2118,7 +2145,7 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech = SharedCreatureObje
 	clientObjectCRC = 4276460545
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_lin_demolitionmech, "object/creature/npc/droid/crafted/shared_lin_demolitionmech.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_lin_demolitionmech, "object/creature/npc/droid/crafted/shared_lin_demolitionmech.iff")
 
 object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2130,6 +2157,7 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced = SharedCre
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2195,7 +2223,7 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced = SharedCre
 	clientObjectCRC = 3957385280
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced, "object/creature/npc/droid/crafted/shared_lin_demolitionmech_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced, "object/creature/npc/droid/crafted/shared_lin_demolitionmech_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_mse_6_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2207,6 +2235,7 @@ object_creature_npc_droid_crafted_shared_mse_6_droid = SharedCreatureObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2272,7 +2301,7 @@ object_creature_npc_droid_crafted_shared_mse_6_droid = SharedCreatureObjectTempl
 	clientObjectCRC = 2169488229
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_mse_6_droid, "object/creature/npc/droid/crafted/shared_mse_6_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_mse_6_droid, "object/creature/npc/droid/crafted/shared_mse_6_droid.iff")
 
 object_creature_npc_droid_crafted_shared_mse_6_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2284,6 +2313,7 @@ object_creature_npc_droid_crafted_shared_mse_6_droid_advanced = SharedCreatureOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2349,7 +2379,7 @@ object_creature_npc_droid_crafted_shared_mse_6_droid_advanced = SharedCreatureOb
 	clientObjectCRC = 2206627850
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_mse_6_droid_advanced, "object/creature/npc/droid/crafted/shared_mse_6_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_mse_6_droid_advanced, "object/creature/npc/droid/crafted/shared_mse_6_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_probe_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2361,6 +2391,7 @@ object_creature_npc_droid_crafted_shared_probe_droid = SharedCreatureObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2426,7 +2457,7 @@ object_creature_npc_droid_crafted_shared_probe_droid = SharedCreatureObjectTempl
 	clientObjectCRC = 1995149002
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_probe_droid, "object/creature/npc/droid/crafted/shared_probe_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_probe_droid, "object/creature/npc/droid/crafted/shared_probe_droid.iff")
 
 object_creature_npc_droid_crafted_shared_probe_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2438,6 +2469,7 @@ object_creature_npc_droid_crafted_shared_probe_droid_advanced = SharedCreatureOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2503,7 +2535,7 @@ object_creature_npc_droid_crafted_shared_probe_droid_advanced = SharedCreatureOb
 	clientObjectCRC = 1470713199
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_probe_droid_advanced, "object/creature/npc/droid/crafted/shared_probe_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_probe_droid_advanced, "object/creature/npc/droid/crafted/shared_probe_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_r2_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2515,6 +2547,7 @@ object_creature_npc_droid_crafted_shared_r2_droid = SharedCreatureObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2580,7 +2613,7 @@ object_creature_npc_droid_crafted_shared_r2_droid = SharedCreatureObjectTemplate
 	clientObjectCRC = 1532167005
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_r2_droid, "object/creature/npc/droid/crafted/shared_r2_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r2_droid, "object/creature/npc/droid/crafted/shared_r2_droid.iff")
 
 object_creature_npc_droid_crafted_shared_r2_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2592,6 +2625,7 @@ object_creature_npc_droid_crafted_shared_r2_droid_advanced = SharedCreatureObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2657,7 +2691,7 @@ object_creature_npc_droid_crafted_shared_r2_droid_advanced = SharedCreatureObjec
 	clientObjectCRC = 4218729421
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_r2_droid_advanced, "object/creature/npc/droid/crafted/shared_r2_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r2_droid_advanced, "object/creature/npc/droid/crafted/shared_r2_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_r3_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2669,6 +2703,7 @@ object_creature_npc_droid_crafted_shared_r3_droid = SharedCreatureObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2734,7 +2769,7 @@ object_creature_npc_droid_crafted_shared_r3_droid = SharedCreatureObjectTemplate
 	clientObjectCRC = 2734654643
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_r3_droid, "object/creature/npc/droid/crafted/shared_r3_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r3_droid, "object/creature/npc/droid/crafted/shared_r3_droid.iff")
 
 object_creature_npc_droid_crafted_shared_r3_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2746,6 +2781,7 @@ object_creature_npc_droid_crafted_shared_r3_droid_advanced = SharedCreatureObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2811,7 +2847,7 @@ object_creature_npc_droid_crafted_shared_r3_droid_advanced = SharedCreatureObjec
 	clientObjectCRC = 3480632347
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_r3_droid_advanced, "object/creature/npc/droid/crafted/shared_r3_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r3_droid_advanced, "object/creature/npc/droid/crafted/shared_r3_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_r4_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2823,6 +2859,7 @@ object_creature_npc_droid_crafted_shared_r4_droid = SharedCreatureObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2888,7 +2925,7 @@ object_creature_npc_droid_crafted_shared_r4_droid = SharedCreatureObjectTemplate
 	clientObjectCRC = 1194993751
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_r4_droid, "object/creature/npc/droid/crafted/shared_r4_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r4_droid, "object/creature/npc/droid/crafted/shared_r4_droid.iff")
 
 object_creature_npc_droid_crafted_shared_r4_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2900,6 +2937,7 @@ object_creature_npc_droid_crafted_shared_r4_droid_advanced = SharedCreatureObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -2965,7 +3003,7 @@ object_creature_npc_droid_crafted_shared_r4_droid_advanced = SharedCreatureObjec
 	clientObjectCRC = 1132172089
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_r4_droid_advanced, "object/creature/npc/droid/crafted/shared_r4_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r4_droid_advanced, "object/creature/npc/droid/crafted/shared_r4_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_r5_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -2977,6 +3015,7 @@ object_creature_npc_droid_crafted_shared_r5_droid = SharedCreatureObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3042,7 +3081,7 @@ object_creature_npc_droid_crafted_shared_r5_droid = SharedCreatureObjectTemplate
 	clientObjectCRC = 3197546425
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_r5_droid, "object/creature/npc/droid/crafted/shared_r5_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r5_droid, "object/creature/npc/droid/crafted/shared_r5_droid.iff")
 
 object_creature_npc_droid_crafted_shared_r5_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3054,6 +3093,7 @@ object_creature_npc_droid_crafted_shared_r5_droid_advanced = SharedCreatureObjec
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3119,7 +3159,7 @@ object_creature_npc_droid_crafted_shared_r5_droid_advanced = SharedCreatureObjec
 	clientObjectCRC = 2004425967
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_r5_droid_advanced, "object/creature/npc/droid/crafted/shared_r5_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r5_droid_advanced, "object/creature/npc/droid/crafted/shared_r5_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_ra7_bug_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3131,6 +3171,7 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid = SharedCreatureObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3196,7 +3237,7 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid = SharedCreatureObjectTem
 	clientObjectCRC = 1905884809
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_ra7_bug_droid, "object/creature/npc/droid/crafted/shared_ra7_bug_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_ra7_bug_droid, "object/creature/npc/droid/crafted/shared_ra7_bug_droid.iff")
 
 object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3208,6 +3249,7 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced = SharedCreature
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3273,7 +3315,7 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced = SharedCreature
 	clientObjectCRC = 298901338
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced, "object/creature/npc/droid/crafted/shared_ra7_bug_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced, "object/creature/npc/droid/crafted/shared_ra7_bug_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_red_protocol_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3285,6 +3327,7 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid = SharedCreatureObje
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3350,7 +3393,7 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid = SharedCreatureObje
 	clientObjectCRC = 774994860
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_red_protocol_droid, "object/creature/npc/droid/crafted/shared_red_protocol_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_red_protocol_droid, "object/creature/npc/droid/crafted/shared_red_protocol_droid.iff")
 
 object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3362,6 +3405,7 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced = SharedCre
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3427,7 +3471,7 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced = SharedCre
 	clientObjectCRC = 2864675349
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced, "object/creature/npc/droid/crafted/shared_red_protocol_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced, "object/creature/npc/droid/crafted/shared_red_protocol_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_robo_bartender_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3439,6 +3483,7 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid = SharedCreatureOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 7,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3504,7 +3549,7 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid = SharedCreatureOb
 	clientObjectCRC = 700179103
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_robo_bartender_droid, "object/creature/npc/droid/crafted/shared_robo_bartender_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_robo_bartender_droid, "object/creature/npc/droid/crafted/shared_robo_bartender_droid.iff")
 
 object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3516,6 +3561,7 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced = SharedC
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 7,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3581,7 +3627,7 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced = SharedC
 	clientObjectCRC = 1665563112
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced, "object/creature/npc/droid/crafted/shared_robo_bartender_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced, "object/creature/npc/droid/crafted/shared_robo_bartender_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_silver_protocol_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3593,6 +3639,7 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid = SharedCreatureO
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3658,7 +3705,7 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid = SharedCreatureO
 	clientObjectCRC = 3802774389
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_silver_protocol_droid, "object/creature/npc/droid/crafted/shared_silver_protocol_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_silver_protocol_droid, "object/creature/npc/droid/crafted/shared_silver_protocol_droid.iff")
 
 object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3670,6 +3717,7 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced = Shared
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3735,7 +3783,7 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced = Shared
 	clientObjectCRC = 4209769049
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced, "object/creature/npc/droid/crafted/shared_silver_protocol_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced, "object/creature/npc/droid/crafted/shared_silver_protocol_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_tt_8l_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3747,6 +3795,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid = SharedCreatureObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3812,7 +3861,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid = SharedCreatureObjectTempl
 	clientObjectCRC = 3627618627
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_tt_8l_droid, "object/creature/npc/droid/crafted/shared_tt_8l_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_tt_8l_droid, "object/creature/npc/droid/crafted/shared_tt_8l_droid.iff")
 
 object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3824,6 +3873,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced = SharedCreatureOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3889,7 +3939,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced = SharedCreatureOb
 	clientObjectCRC = 3840849400
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced, "object/creature/npc/droid/crafted/shared_tt_8l_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced, "object/creature/npc/droid/crafted/shared_tt_8l_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_tt_8l_y7_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3901,6 +3951,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid = SharedCreatureObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -3966,7 +4017,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid = SharedCreatureObjectTe
 	clientObjectCRC = 3258466577
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_tt_8l_y7_droid, "object/creature/npc/droid/crafted/shared_tt_8l_y7_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_tt_8l_y7_droid, "object/creature/npc/droid/crafted/shared_tt_8l_y7_droid.iff")
 
 object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -3978,6 +4029,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced = SharedCreatur
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4043,7 +4095,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced = SharedCreatur
 	clientObjectCRC = 3957782001
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced, "object/creature/npc/droid/crafted/shared_tt_8l_y7_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced, "object/creature/npc/droid/crafted/shared_tt_8l_y7_droid_advanced.iff")
 
 object_creature_npc_droid_crafted_shared_wed_treadwell_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -4055,6 +4107,7 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid = SharedCreatureObj
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4120,7 +4173,7 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid = SharedCreatureObj
 	clientObjectCRC = 1585315002
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_wed_treadwell_droid, "object/creature/npc/droid/crafted/shared_wed_treadwell_droid.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_wed_treadwell_droid, "object/creature/npc/droid/crafted/shared_wed_treadwell_droid.iff")
 
 object_creature_npc_droid_crafted_shared_wed_treadwell_droid_advanced = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -4132,6 +4185,7 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid_advanced = SharedCr
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 1026,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -4197,4 +4251,4 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid_advanced = SharedCr
 	clientObjectCRC = 3393855591
 }
 
-ObjectTemplates:addClientTemplate(object_creature_npc_droid_crafted_shared_wed_treadwell_droid_advanced, "object/creature/npc/droid/crafted/shared_wed_treadwell_droid_advanced.iff")
+ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_wed_treadwell_droid_advanced, "object/creature/npc/droid/crafted/shared_wed_treadwell_droid_advanced.iff")

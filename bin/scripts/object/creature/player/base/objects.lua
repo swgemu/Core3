@@ -51,6 +51,7 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_base_player.cdf",
+	clientGameObjectType = 1025,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -116,4 +117,4 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 957124474
 }
 
-ObjectTemplates:addClientTemplate(object_creature_player_base_shared_base_player, "object/creature/player/base/shared_base_player.iff")
+ObjectTemplates:addTemplate(object_creature_player_base_shared_base_player, "object/creature/player/base/shared_base_player.iff")

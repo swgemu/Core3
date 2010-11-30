@@ -47,6 +47,7 @@ object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 5,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 1,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1100063237
 }
 
-ObjectTemplates:addClientTemplate(object_soundobject_base_shared_soundobject_base, "object/soundobject/base/shared_soundobject_base.iff")
+ObjectTemplates:addTemplate(object_soundobject_base_shared_soundobject_base, "object/soundobject/base/shared_soundobject_base.iff")

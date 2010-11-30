@@ -48,6 +48,7 @@ object_tangible_slicing_shared_slicing_armor_upgrade_kit = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32768,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_slicing_shared_slicing_armor_upgrade_kit = SharedTangibleObjectT
 	clientObjectCRC = 2423629000
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_armor_upgrade_kit, "object/tangible/slicing/shared_slicing_armor_upgrade_kit.iff")
+ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_armor_upgrade_kit, "object/tangible/slicing/shared_slicing_armor_upgrade_kit.iff")
 
 object_tangible_slicing_shared_slicing_flow_analyzer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -101,6 +102,7 @@ object_tangible_slicing_shared_slicing_flow_analyzer = SharedTangibleObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32768,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_slicing_shared_slicing_flow_analyzer = SharedTangibleObjectTempl
 	clientObjectCRC = 352400896
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_flow_analyzer, "object/tangible/slicing/shared_slicing_flow_analyzer.iff")
+ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_flow_analyzer, "object/tangible/slicing/shared_slicing_flow_analyzer.iff")
 
 object_tangible_slicing_shared_slicing_laser_knife = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_rifle_barrel.apt",
@@ -154,6 +156,7 @@ object_tangible_slicing_shared_slicing_laser_knife = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32768,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_slicing_shared_slicing_laser_knife = SharedTangibleObjectTemplat
 	clientObjectCRC = 3905355100
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_laser_knife, "object/tangible/slicing/shared_slicing_laser_knife.iff")
+ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_laser_knife, "object/tangible/slicing/shared_slicing_laser_knife.iff")
 
 object_tangible_slicing_shared_slicing_molecular_clamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_meds_extraction_device.apt",
@@ -207,6 +210,7 @@ object_tangible_slicing_shared_slicing_molecular_clamp = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32768,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_tangible_slicing_shared_slicing_molecular_clamp = SharedTangibleObjectTem
 	clientObjectCRC = 2663745100
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_molecular_clamp, "object/tangible/slicing/shared_slicing_molecular_clamp.iff")
+ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_molecular_clamp, "object/tangible/slicing/shared_slicing_molecular_clamp.iff")
 
 object_tangible_slicing_shared_slicing_weapon_upgrade_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
@@ -260,6 +264,7 @@ object_tangible_slicing_shared_slicing_weapon_upgrade_kit = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 32768,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,4 +309,4 @@ object_tangible_slicing_shared_slicing_weapon_upgrade_kit = SharedTangibleObject
 	clientObjectCRC = 3282826133
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_weapon_upgrade_kit, "object/tangible/slicing/shared_slicing_weapon_upgrade_kit.iff")
+ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_weapon_upgrade_kit, "object/tangible/slicing/shared_slicing_weapon_upgrade_kit.iff")

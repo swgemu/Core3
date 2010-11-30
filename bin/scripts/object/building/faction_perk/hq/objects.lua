@@ -48,6 +48,7 @@ object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -95,7 +96,7 @@ object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 4204337141
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01, "object/building/faction_perk/hq/shared_hq_s01.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01, "object/building/faction_perk/hq/shared_hq_s01.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -104,6 +105,7 @@ object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -151,7 +153,7 @@ object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2419085158
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_fp, "object/building/faction_perk/hq/shared_hq_s01_fp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_fp, "object/building/faction_perk/hq/shared_hq_s01_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -160,6 +162,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s01_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -207,7 +210,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 554924775
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_imp, "object/building/faction_perk/hq/shared_hq_s01_imp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_imp, "object/building/faction_perk/hq/shared_hq_s01_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -216,6 +219,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s01_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -263,7 +267,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 2016142793
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_imp_pvp, "object/building/faction_perk/hq/shared_hq_s01_imp_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_imp_pvp, "object/building/faction_perk/hq/shared_hq_s01_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -272,6 +276,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s01_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -319,7 +324,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 1119051291
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel, "object/building/faction_perk/hq/shared_hq_s01_rebel.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel, "object/building/faction_perk/hq/shared_hq_s01_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -328,6 +333,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s01_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -375,7 +381,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 769008513
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s01_rebel_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s01_rebel_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -384,6 +390,7 @@ object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -431,7 +438,7 @@ object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 563003234
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02, "object/building/faction_perk/hq/shared_hq_s02.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02, "object/building/faction_perk/hq/shared_hq_s02.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -440,6 +447,7 @@ object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -487,7 +495,7 @@ object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2094148152
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_fp, "object/building/faction_perk/hq/shared_hq_s02_fp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_fp, "object/building/faction_perk/hq/shared_hq_s02_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -496,6 +504,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s02_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -543,7 +552,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 869505530
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_imp, "object/building/faction_perk/hq/shared_hq_s02_imp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_imp, "object/building/faction_perk/hq/shared_hq_s02_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -552,6 +561,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s02_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -599,7 +609,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 1158021745
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_imp_pvp, "object/building/faction_perk/hq/shared_hq_s02_imp_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_imp_pvp, "object/building/faction_perk/hq/shared_hq_s02_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -608,6 +618,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s02_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -655,7 +666,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 1283967902
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel, "object/building/faction_perk/hq/shared_hq_s02_rebel.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel, "object/building/faction_perk/hq/shared_hq_s02_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -664,6 +675,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s02_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -711,7 +723,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 1309089184
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s02_rebel_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s02_rebel_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -720,6 +732,7 @@ object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -767,7 +780,7 @@ object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 1753471215
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03, "object/building/faction_perk/hq/shared_hq_s03.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03, "object/building/faction_perk/hq/shared_hq_s03.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -776,6 +789,7 @@ object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -823,7 +837,7 @@ object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 661911282
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_fp, "object/building/faction_perk/hq/shared_hq_s03_fp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_fp, "object/building/faction_perk/hq/shared_hq_s03_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -832,6 +846,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s03_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -879,7 +894,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 3251843996
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_imp, "object/building/faction_perk/hq/shared_hq_s03_imp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_imp, "object/building/faction_perk/hq/shared_hq_s03_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -888,6 +903,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s03_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -935,7 +951,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 2913096820
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_imp_pvp, "object/building/faction_perk/hq/shared_hq_s03_imp_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_imp_pvp, "object/building/faction_perk/hq/shared_hq_s03_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -944,6 +960,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s03_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -991,7 +1008,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 3039513712
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel, "object/building/faction_perk/hq/shared_hq_s03_rebel.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel, "object/building/faction_perk/hq/shared_hq_s03_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1000,6 +1017,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s03_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1047,7 +1065,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 2466839762
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s03_rebel_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s03_rebel_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1056,6 +1074,7 @@ object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1103,7 +1122,7 @@ object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 2472604667
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04, "object/building/faction_perk/hq/shared_hq_s04.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04, "object/building/faction_perk/hq/shared_hq_s04.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1112,6 +1131,7 @@ object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1159,7 +1179,7 @@ object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 2715286835
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_fp, "object/building/faction_perk/hq/shared_hq_s04_fp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_fp, "object/building/faction_perk/hq/shared_hq_s04_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1168,6 +1188,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s04_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1215,7 +1236,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 374497216
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_imp, "object/building/faction_perk/hq/shared_hq_s04_imp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_imp, "object/building/faction_perk/hq/shared_hq_s04_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1224,6 +1245,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s04_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1271,7 +1293,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 1063111937
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_imp_pvp, "object/building/faction_perk/hq/shared_hq_s04_imp_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_imp_pvp, "object/building/faction_perk/hq/shared_hq_s04_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1280,6 +1302,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s04_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1327,7 +1350,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 1357832340
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel, "object/building/faction_perk/hq/shared_hq_s04_rebel.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel, "object/building/faction_perk/hq/shared_hq_s04_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1336,6 +1359,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s04_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1383,7 +1407,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 2309317090
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s04_rebel_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s04_rebel_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1392,6 +1416,7 @@ object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new
 	certificationsRequired = {},
 	clearFloraRadius = 64,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1439,7 +1464,7 @@ object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new
 	clientObjectCRC = 3664614518
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05, "object/building/faction_perk/hq/shared_hq_s05.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05, "object/building/faction_perk/hq/shared_hq_s05.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1448,6 +1473,7 @@ object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 64,
 	clientDataFile = "",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1495,7 +1521,7 @@ object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:
 	clientObjectCRC = 4202045945
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_fp, "object/building/faction_perk/hq/shared_hq_s05_fp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_fp, "object/building/faction_perk/hq/shared_hq_s05_fp.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1504,6 +1530,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate
 	certificationsRequired = {},
 	clearFloraRadius = 64,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s05_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1551,7 +1578,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate
 	clientObjectCRC = 3830642086
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_imp, "object/building/faction_perk/hq/shared_hq_s05_imp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_imp, "object/building/faction_perk/hq/shared_hq_s05_imp.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1560,6 +1587,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 64,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s05_imp.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1607,7 +1635,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemp
 	clientObjectCRC = 3623459588
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_imp_pvp, "object/building/faction_perk/hq/shared_hq_s05_imp_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_imp_pvp, "object/building/faction_perk/hq/shared_hq_s05_imp_pvp.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1616,6 +1644,7 @@ object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 64,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s05_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1663,7 +1692,7 @@ object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTempla
 	clientObjectCRC = 2839701370
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel, "object/building/faction_perk/hq/shared_hq_s05_rebel.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel, "object/building/faction_perk/hq/shared_hq_s05_rebel.iff")
 
 object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
@@ -1672,6 +1701,7 @@ object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 64,
 	clientDataFile = "clientdata/faction_perk/hq/client_hq_s05_rebel.cdf",
+	clientGameObjectType = 515,
 	collisionActionBlockFlags = 255,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
@@ -1719,4 +1749,4 @@ object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTe
 	clientObjectCRC = 1420460176
 }
 
-ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s05_rebel_pvp.iff")
+ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s05_rebel_pvp.iff")

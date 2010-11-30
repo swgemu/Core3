@@ -48,6 +48,7 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock = SharedTangibleObjectT
 	clientObjectCRC = 2598164093
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock.iff")
 
 object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangib
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangib
 	clientObjectCRC = 3617713744
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_mountain.iff")
 
 object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangi
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangi
 	clientObjectCRC = 4030433492
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_wasteland.iff")

@@ -48,6 +48,7 @@ object_tangible_weather_object_shared_weather_object_base = SharedTangibleObject
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_weather_object_shared_weather_object_base = SharedTangibleObject
 	clientObjectCRC = 638400460
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_weather_object_shared_weather_object_base, "object/tangible/weather_object/shared_weather_object_base.iff")
+ObjectTemplates:addTemplate(object_tangible_weather_object_shared_weather_object_base, "object/tangible/weather_object/shared_weather_object_base.iff")

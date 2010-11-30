@@ -48,6 +48,7 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	clientObjectCRC = 2400154328
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_l, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_l.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_l, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_l.iff")
 
 object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_black_mountain_bracer_r_wke_f.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 261,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	clientObjectCRC = 4292491083
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_r, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_r.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_r, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_r.iff")
 
 object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_black_mountain_chest_plate_wke_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 257,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	clientObjectCRC = 2677805339
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_chest_plate, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_chest_plate.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_chest_plate, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_chest_plate.iff")
 
 object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_black_mountain_leggings_wke_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 260,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 	clientObjectCRC = 2863047
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_leggings, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_leggings.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_leggings, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_leggings.iff")

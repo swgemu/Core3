@@ -48,6 +48,7 @@ object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost = S
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost = S
 	clientObjectCRC = 2415963091
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost, "object/tangible/food/creature_bio_effects/shared_bio_kliknik_fortitude_boost.iff")
+ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost, "object/tangible/food/creature_bio_effects/shared_bio_kliknik_fortitude_boost.iff")
 
 object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
@@ -101,6 +102,7 @@ object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8202,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedT
 	clientObjectCRC = 1615742669
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost, "object/tangible/food/creature_bio_effects/shared_bio_kwi_adrenal_boost.iff")
+ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost, "object/tangible/food/creature_bio_effects/shared_bio_kwi_adrenal_boost.iff")

@@ -47,6 +47,7 @@ object_intangible_ship_base_shared_ship_control_device_base = SharedIntangibleOb
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2058,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_intangible_ship_base_shared_ship_control_device_base = SharedIntangibleOb
 	clientObjectCRC = 1318932514
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_ship_base_shared_ship_control_device_base, "object/intangible/ship/base/shared_ship_control_device_base.iff")
+ObjectTemplates:addTemplate(object_intangible_ship_base_shared_ship_control_device_base, "object/intangible/ship/base/shared_ship_control_device_base.iff")

@@ -48,6 +48,7 @@ object_installation_turret_shared_turret_block_large = SharedInstallationObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_block_large.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_installation_turret_shared_turret_block_large = SharedInstallationObjectT
 	clientObjectCRC = 3901317905
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block_large, "object/installation/turret/shared_turret_block_large.iff")
+ObjectTemplates:addTemplate(object_installation_turret_shared_turret_block_large, "object/installation/turret/shared_turret_block_large.iff")
 
 object_installation_turret_shared_turret_block_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_m_s01.apt",
@@ -101,6 +102,7 @@ object_installation_turret_shared_turret_block_med = SharedInstallationObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_block_med.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_installation_turret_shared_turret_block_med = SharedInstallationObjectTem
 	clientObjectCRC = 1652270840
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block_med, "object/installation/turret/shared_turret_block_med.iff")
+ObjectTemplates:addTemplate(object_installation_turret_shared_turret_block_med, "object/installation/turret/shared_turret_block_med.iff")
 
 object_installation_turret_shared_turret_block_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
@@ -154,6 +156,7 @@ object_installation_turret_shared_turret_block_sm = SharedInstallationObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_block_small.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_installation_turret_shared_turret_block_sm = SharedInstallationObjectTemp
 	clientObjectCRC = 3880132119
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block_sm, "object/installation/turret/shared_turret_block_sm.iff")
+ObjectTemplates:addTemplate(object_installation_turret_shared_turret_block_sm, "object/installation/turret/shared_turret_block_sm.iff")
 
 object_installation_turret_shared_turret_dish_large = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s03.apt",
@@ -207,6 +210,7 @@ object_installation_turret_shared_turret_dish_large = SharedInstallationObjectTe
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_dish_large.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,7 +255,7 @@ object_installation_turret_shared_turret_dish_large = SharedInstallationObjectTe
 	clientObjectCRC = 264371583
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_dish_large, "object/installation/turret/shared_turret_dish_large.iff")
+ObjectTemplates:addTemplate(object_installation_turret_shared_turret_dish_large, "object/installation/turret/shared_turret_dish_large.iff")
 
 object_installation_turret_shared_turret_dish_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s03.apt",
@@ -260,6 +264,7 @@ object_installation_turret_shared_turret_dish_sm = SharedInstallationObjectTempl
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_dish_small.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -304,7 +309,7 @@ object_installation_turret_shared_turret_dish_sm = SharedInstallationObjectTempl
 	clientObjectCRC = 3645535897
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_dish_sm, "object/installation/turret/shared_turret_dish_sm.iff")
+ObjectTemplates:addTemplate(object_installation_turret_shared_turret_dish_sm, "object/installation/turret/shared_turret_dish_sm.iff")
 
 object_installation_turret_shared_turret_tower_large = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s02.apt",
@@ -313,6 +318,7 @@ object_installation_turret_shared_turret_tower_large = SharedInstallationObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_tower_large.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -357,7 +363,7 @@ object_installation_turret_shared_turret_tower_large = SharedInstallationObjectT
 	clientObjectCRC = 1938857030
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_tower_large, "object/installation/turret/shared_turret_tower_large.iff")
+ObjectTemplates:addTemplate(object_installation_turret_shared_turret_tower_large, "object/installation/turret/shared_turret_tower_large.iff")
 
 object_installation_turret_shared_turret_tower_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_m_s02.apt",
@@ -366,6 +372,7 @@ object_installation_turret_shared_turret_tower_med = SharedInstallationObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_tower_med.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -410,7 +417,7 @@ object_installation_turret_shared_turret_tower_med = SharedInstallationObjectTem
 	clientObjectCRC = 3178460661
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_tower_med, "object/installation/turret/shared_turret_tower_med.iff")
+ObjectTemplates:addTemplate(object_installation_turret_shared_turret_tower_med, "object/installation/turret/shared_turret_tower_med.iff")
 
 object_installation_turret_shared_turret_tower_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02.apt",
@@ -419,6 +426,7 @@ object_installation_turret_shared_turret_tower_sm = SharedInstallationObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/installation/client_shared_turret_tower_small.cdf",
+	clientGameObjectType = 4100,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -463,4 +471,4 @@ object_installation_turret_shared_turret_tower_sm = SharedInstallationObjectTemp
 	clientObjectCRC = 3118272463
 }
 
-ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_tower_sm, "object/installation/turret/shared_turret_tower_sm.iff")
+ObjectTemplates:addTemplate(object_installation_turret_shared_turret_tower_sm, "object/installation/turret/shared_turret_tower_sm.iff")

@@ -49,6 +49,7 @@ object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_axe.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,7 +97,7 @@ object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 3808952162
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_heavy_duty, "object/weapon/melee/axe/shared_axe_heavy_duty.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_axe_shared_axe_heavy_duty, "object/weapon/melee/axe/shared_axe_heavy_duty.iff")
 
 object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_vibroax.apt",
@@ -106,6 +107,7 @@ object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/weapon/client_melee_vibro_axe.cdf",
+	clientGameObjectType = 131080,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -153,4 +155,4 @@ object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1835485114
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_vibroaxe, "object/weapon/melee/axe/shared_axe_vibroaxe.iff")
+ObjectTemplates:addTemplate(object_weapon_melee_axe_shared_axe_vibroaxe, "object/weapon/melee/axe/shared_axe_vibroaxe.iff")

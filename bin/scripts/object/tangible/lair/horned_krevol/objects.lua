@@ -48,6 +48,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol = SharedTangibleObj
 	clientObjectCRC = 3995926996
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTang
 	clientObjectCRC = 883847742
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_desert.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTang
 	clientObjectCRC = 524661947
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_forest.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTa
 	clientObjectCRC = 2373765729
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_mountain.iff")

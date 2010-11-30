@@ -48,6 +48,7 @@ object_tangible_gem_base_shared_gem_base = SharedTangibleObjectTemplate:new {
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_gem_base_shared_gem_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1086540149
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_gem_base_shared_gem_base, "object/tangible/gem/base/shared_gem_base.iff")
+ObjectTemplates:addTemplate(object_tangible_gem_base_shared_gem_base, "object/tangible/gem/base/shared_gem_base.iff")

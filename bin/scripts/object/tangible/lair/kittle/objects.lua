@@ -48,6 +48,7 @@ object_tangible_lair_kittle_shared_lair_kittle = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_kittle_shared_lair_kittle = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 4291838693
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle, "object/tangible/lair/kittle/shared_lair_kittle.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle, "object/tangible/lair/kittle/shared_lair_kittle.iff")
 
 object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemp
 	clientObjectCRC = 2947041437
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle_forest, "object/tangible/lair/kittle/shared_lair_kittle_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle_forest, "object/tangible/lair/kittle/shared_lair_kittle_forest.iff")
 
 object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectT
 	clientObjectCRC = 4088792736
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle_grassland, "object/tangible/lair/kittle/shared_lair_kittle_grassland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle_grassland, "object/tangible/lair/kittle/shared_lair_kittle_grassland.iff")

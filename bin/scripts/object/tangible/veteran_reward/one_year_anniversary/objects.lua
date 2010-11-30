@@ -48,6 +48,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_01 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -92,7 +93,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_01 = SharedT
 	clientObjectCRC = 3479300551
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_01, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_01.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_01, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_01.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s02.apt",
@@ -101,6 +102,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -145,7 +147,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedT
 	clientObjectCRC = 343294288
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_02, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_02.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_02, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_02.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s03.apt",
@@ -154,6 +156,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -198,7 +201,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedT
 	clientObjectCRC = 1568351965
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_03, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_03.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_03, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_03.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s04.apt",
@@ -207,6 +210,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -251,7 +255,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedT
 	clientObjectCRC = 2794982857
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_04, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_04.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_04, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_04.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s05.apt",
@@ -260,6 +264,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -304,7 +309,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedT
 	clientObjectCRC = 4019546692
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_05, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_05.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_05, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_05.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s06.apt",
@@ -313,6 +318,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -357,7 +363,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedT
 	clientObjectCRC = 880984787
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_06, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_06.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_06, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_06.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s07.apt",
@@ -366,6 +372,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -410,7 +417,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedT
 	clientObjectCRC = 2106565982
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_07, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_07.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_07, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_07.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s08.apt",
@@ -419,6 +426,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -463,7 +471,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedT
 	clientObjectCRC = 3347417420
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_08, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_08.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_08, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_08.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s09.apt",
@@ -472,6 +480,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8203,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 0,
@@ -516,4 +525,4 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedT
 	clientObjectCRC = 2391338689
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_09, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_09.iff")
+ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_09, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_09.iff")

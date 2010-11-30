@@ -48,6 +48,7 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl = SharedTangibleObjectT
 	clientObjectCRC = 3965462331
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl, "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl, "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl.iff")
 
 object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp = SharedTangibleO
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,4 +147,4 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp = SharedTangibleO
 	clientObjectCRC = 1138635179
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp, "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl_swamp.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp, "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl_swamp.iff")

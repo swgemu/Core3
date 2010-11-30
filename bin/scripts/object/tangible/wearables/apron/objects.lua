@@ -48,6 +48,7 @@ object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777227,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemp
 	clientObjectCRC = 1238323119
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_chef_s01, "object/tangible/wearables/apron/shared_apron_chef_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_chef_s01, "object/tangible/wearables/apron/shared_apron_chef_s01.iff")
 
 object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_porcellus_m.sat",
@@ -101,6 +102,7 @@ object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777231,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTem
 	clientObjectCRC = 3631236476
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_porcellus, "object/tangible/wearables/apron/shared_apron_porcellus.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_porcellus, "object/tangible/wearables/apron/shared_apron_porcellus.iff")
 
 object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_s01_f.sat",
@@ -154,6 +156,7 @@ object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777231,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 129788759
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_s01, "object/tangible/wearables/apron/shared_apron_s01.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_s01, "object/tangible/wearables/apron/shared_apron_s01.iff")
 
 object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_s01_f.sat",
@@ -207,6 +210,7 @@ object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 16777231,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTem
 	clientObjectCRC = 3378416176
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_s01_quest, "object/tangible/wearables/apron/shared_apron_s01_quest.iff")
+ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_s01_quest, "object/tangible/wearables/apron/shared_apron_s01_quest.iff")

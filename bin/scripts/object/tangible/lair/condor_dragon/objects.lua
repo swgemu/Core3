@@ -48,6 +48,7 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon = SharedTangibleObj
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon = SharedTangibleObj
 	clientObjectCRC = 1027555264
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon.iff")
 
 object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTang
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTang
 	clientObjectCRC = 3923122581
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_forest.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_forest.iff")
 
 object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTa
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/client_shared_lair_small.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTa
 	clientObjectCRC = 518156641
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_mountain.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_mountain.iff")

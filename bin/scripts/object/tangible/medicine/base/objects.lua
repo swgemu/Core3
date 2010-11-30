@@ -48,6 +48,7 @@ object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplat
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8205,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,4 +93,4 @@ object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplat
 	clientObjectCRC = 832067310
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_medicine_base_shared_base_medicine, "object/tangible/medicine/base/shared_base_medicine.iff")
+ObjectTemplates:addTemplate(object_tangible_medicine_base_shared_base_medicine, "object/tangible/medicine/base/shared_base_medicine.iff")

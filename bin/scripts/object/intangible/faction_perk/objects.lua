@@ -47,6 +47,7 @@ object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTe
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 2048,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 0,
 	collisionActionPassFlags = 0,
@@ -82,4 +83,4 @@ object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTe
 	clientObjectCRC = 2608329477
 }
 
-ObjectTemplates:addClientTemplate(object_intangible_faction_perk_shared_shuttle_extract, "object/intangible/faction_perk/shared_shuttle_extract.iff")
+ObjectTemplates:addTemplate(object_intangible_faction_perk_shared_shuttle_extract, "object/intangible/faction_perk/shared_shuttle_extract.iff")

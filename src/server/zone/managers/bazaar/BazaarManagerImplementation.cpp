@@ -586,7 +586,7 @@ AuctionItem* BazaarManagerImplementation::createAuctionItem(PlayerCreature* play
 	item->setOwnerName(playername);
 	item->setItemName(name);
 	item->setItemDescription(description.toString());
-	item->setItemType(objectToSell->getGameObjectType());
+	item->setItemType(objectToSell->getClientGameObjectType());
 	item->setPrice(price);
 	item->setAuction(auction);
 	item->setSold(false);

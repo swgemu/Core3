@@ -48,6 +48,7 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_base = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_base = SharedTangibleObjectT
 	clientObjectCRC = 1840322274
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_base.iff")
 
 object_tangible_hair_zabrak_base_shared_hair_zabrak_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -101,6 +102,7 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_female_base = SharedTangible
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_female_base = SharedTangible
 	clientObjectCRC = 338751255
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_female_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_female_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_female_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_female_base.iff")
 
 object_tangible_hair_zabrak_base_shared_hair_zabrak_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -154,6 +156,7 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_male_base = SharedTangibleOb
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 8211,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,4 +201,4 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_male_base = SharedTangibleOb
 	clientObjectCRC = 2425340605
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_male_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_male_base.iff")
+ObjectTemplates:addTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_male_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_male_base.iff")

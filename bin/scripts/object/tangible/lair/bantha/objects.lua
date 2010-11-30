@@ -48,6 +48,7 @@ object_tangible_lair_bantha_shared_lair_bantha = SharedTangibleObjectTemplate:ne
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -92,7 +93,7 @@ object_tangible_lair_bantha_shared_lair_bantha = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2351102801
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha, "object/tangible/lair/bantha/shared_lair_bantha.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha, "object/tangible/lair/bantha/shared_lair_bantha.iff")
 
 object_tangible_lair_bantha_shared_lair_bantha_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -101,6 +102,7 @@ object_tangible_lair_bantha_shared_lair_bantha_desert = SharedTangibleObjectTemp
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -145,7 +147,7 @@ object_tangible_lair_bantha_shared_lair_bantha_desert = SharedTangibleObjectTemp
 	clientObjectCRC = 810600832
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_desert, "object/tangible/lair/bantha/shared_lair_bantha_desert.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_desert, "object/tangible/lair/bantha/shared_lair_bantha_desert.iff")
 
 object_tangible_lair_bantha_shared_lair_bantha_dune = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -154,6 +156,7 @@ object_tangible_lair_bantha_shared_lair_bantha_dune = SharedTangibleObjectTempla
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -198,7 +201,7 @@ object_tangible_lair_bantha_shared_lair_bantha_dune = SharedTangibleObjectTempla
 	clientObjectCRC = 3458718751
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_dune, "object/tangible/lair/bantha/shared_lair_bantha_dune.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_dune, "object/tangible/lair/bantha/shared_lair_bantha_dune.iff")
 
 object_tangible_lair_bantha_shared_lair_bantha_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -207,6 +210,7 @@ object_tangible_lair_bantha_shared_lair_bantha_wasteland = SharedTangibleObjectT
 	certificationsRequired = {},
 	clearFloraRadius = 25,
 	clientDataFile = "clientdata/lair/shared_poi_all_lair_bones.cdf",
+	clientGameObjectType = 4,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -251,4 +255,4 @@ object_tangible_lair_bantha_shared_lair_bantha_wasteland = SharedTangibleObjectT
 	clientObjectCRC = 3384005907
 }
 
-ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_wasteland, "object/tangible/lair/bantha/shared_lair_bantha_wasteland.iff")
+ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_wasteland, "object/tangible/lair/bantha/shared_lair_bantha_wasteland.iff")

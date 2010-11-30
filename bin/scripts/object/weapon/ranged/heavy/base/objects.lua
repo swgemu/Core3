@@ -49,6 +49,7 @@ object_weapon_ranged_heavy_base_shared_heavy_weapon_base = SharedWeaponObjectTem
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
+	clientGameObjectType = 131076,
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 51,
 	collisionActionPassFlags = 1,
@@ -96,4 +97,4 @@ object_weapon_ranged_heavy_base_shared_heavy_weapon_base = SharedWeaponObjectTem
 	clientObjectCRC = 2361541818
 }
 
-ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_base_shared_heavy_weapon_base, "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff")
+ObjectTemplates:addTemplate(object_weapon_ranged_heavy_base_shared_heavy_weapon_base, "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff")
