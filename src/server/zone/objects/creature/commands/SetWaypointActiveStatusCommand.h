@@ -63,6 +63,15 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<SceneObject*> wp = server->getZoneServer()->getObject(target);
+
+		if (wp == NULL || !wp->isWaypointObject())
+			return INVALIDPARAMETERS;
+
+		WaypointObject* waypoint = (WaypointObject*) wp.get();
+
+		waypoint->toggleStatus();
+
 		return SUCCESS;
 	}
 

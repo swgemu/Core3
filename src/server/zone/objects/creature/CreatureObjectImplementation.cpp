@@ -662,8 +662,9 @@ void CreatureObjectImplementation::setWounds(int type, int value, bool notifyCli
 
 	if (getHAM(type) > maxHamValue) {
 		setHAM(type, maxHamValue, notifyClient);
+	} else if (type % 3 != 0) { //update secondary stats to the max
+		setHAM(type, maxHamValue, notifyClient);
 	}
-
 }
 
 int CreatureObjectImplementation::addWounds(int type, int value, bool notifyClient) {
