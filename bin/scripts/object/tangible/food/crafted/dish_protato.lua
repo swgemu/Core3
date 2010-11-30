@@ -42,28 +42,7 @@
 
 
 object_tangible_food_crafted_dish_protato = object_tangible_food_crafted_shared_dish_protato:new {
-	templateType = CONSUMABLE,
-	
-	duration = 0,
-	filling = 10,
-	nutrition = 10,
-
-	effectType = 0,
-
-	fillingMin = 17,
-	fillingMax = 10,
-	flavorMin = 1200,
-	flavorMax = 2400,
-	nutritionMin = 10,
-	nutritionMax = 20,
-	quantityMin = 6,
-	quantityMax = 10,
-
-	modifiers = { },
-
-	buffName = "",
-	buffCRC = 0,
-	speciesRestriction = ""
+	gameObjectType = 262144
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_protato, "object/tangible/food/crafted/dish_protato.iff")
