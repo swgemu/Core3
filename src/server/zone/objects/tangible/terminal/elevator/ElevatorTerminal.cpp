@@ -31,13 +31,13 @@ ElevatorTerminal::~ElevatorTerminal() {
 }
 
 
-void ElevatorTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
+void ElevatorTerminal::notifyInsert(QuadTreeEntry* obj) {
 	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->loadTemplateData(templateData);
+		_implementation->notifyInsert(obj);
 }
 
 void ElevatorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
@@ -68,6 +68,19 @@ int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+bool ElevatorTerminal::isElevatorTerminal() {
+	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isElevatorTerminal();
 }
 
 DistributedObjectServant* ElevatorTerminal::_getImplementation() {
@@ -147,25 +160,23 @@ void ElevatorTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("ElevatorTerminal");
 
-	addSerializableVariable("deltaZ", &deltaZ);
+	addSerializableVariable("elevatorUp", &elevatorUp);
+	addSerializableVariable("elevatorDown", &elevatorDown);
 }
 
 ElevatorTerminalImplementation::ElevatorTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(60):  		Logger.setLoggingName("Elevator Terminal");
-	Logger::setLoggingName("Elevator Terminal");
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(61):  		deltaZ = 0;
-	deltaZ = 0;
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(61):  		Logger.setLoggingName("ElevatorTerminal");
+	Logger::setLoggingName("ElevatorTerminal");
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(63):  		elevatorUp = null;
+	elevatorUp = NULL;
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(64):  		elevatorDown = null;
+	elevatorDown = NULL;
 }
 
-void ElevatorTerminalImplementation::setDeltaZ(float dz) {
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(82):  		deltaZ = dz;
-	deltaZ = dz;
-}
-
-float ElevatorTerminalImplementation::getDeltaZ() {
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(90):  		return deltaZ;
-	return deltaZ;
+bool ElevatorTerminalImplementation::isElevatorTerminal() {
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(82):  		return true;
+	return true;
 }
 
 /*
@@ -185,6 +196,9 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case 7:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
+	case 8:
+		resp->insertBoolean(isElevatorTerminal());
+		break;
 	default:
 		return NULL;
 	}
@@ -198,6 +212,10 @@ void ElevatorTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 
 int ElevatorTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((ElevatorTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+bool ElevatorTerminalAdapter::isElevatorTerminal() {
+	return ((ElevatorTerminalImplementation*) impl)->isElevatorTerminal();
 }
 
 /*

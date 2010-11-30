@@ -79,4 +79,8 @@ class Terminal extends TangibleObject {
 	public SceneObject getControlledObject() {
 		return controlledObject;
 	}
+	
+	public abstract boolean isElevatorTerminal() {
+		return false;
+	}
 }

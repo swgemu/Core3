@@ -315,6 +315,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/structure/StructureTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/cloning/CloningTerminalImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \

@@ -14,6 +14,20 @@
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -92,6 +106,8 @@ class CloningTerminal : public Terminal {
 public:
 	CloningTerminal();
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -126,6 +142,8 @@ public:
 	CloningTerminalImplementation();
 
 	CloningTerminalImplementation(DummyConstructorParameter* param);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	CloningTerminal* _this;
 
@@ -165,6 +183,8 @@ public:
 	CloningTerminalAdapter(CloningTerminalImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 };
 
