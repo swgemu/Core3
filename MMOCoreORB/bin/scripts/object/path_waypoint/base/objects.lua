@@ -93,4 +93,4 @@ object_path_waypoint_base_shared_path_waypoint_base = SharedTangibleObjectTempla
 	clientObjectCRC = 3574077008
 }
 
-ObjectTemplates:addTemplate(object_path_waypoint_base_shared_path_waypoint_base, "object/path_waypoint/base/shared_path_waypoint_base.iff")
+ObjectTemplates:addClientTemplate(object_path_waypoint_base_shared_path_waypoint_base, "object/path_waypoint/base/shared_path_waypoint_base.iff")

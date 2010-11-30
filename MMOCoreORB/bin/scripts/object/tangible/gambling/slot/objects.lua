@@ -93,4 +93,4 @@ object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 1978853321
 }
 
-ObjectTemplates:addTemplate(object_tangible_gambling_slot_shared_standard, "object/tangible/gambling/slot/shared_standard.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gambling_slot_shared_standard, "object/tangible/gambling/slot/shared_standard.iff")

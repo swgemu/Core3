@@ -97,7 +97,7 @@ object_weapon_melee_knife_shared_knife_dagger = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 4040009714
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_dagger, "object/weapon/melee/knife/shared_knife_dagger.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_dagger, "object/weapon/melee/knife/shared_knife_dagger.iff")
 
 object_weapon_melee_knife_shared_knife_donkuwah = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
@@ -155,7 +155,7 @@ object_weapon_melee_knife_shared_knife_donkuwah = SharedWeaponObjectTemplate:new
 	clientObjectCRC = 532251396
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_donkuwah, "object/weapon/melee/knife/shared_knife_donkuwah.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_donkuwah, "object/weapon/melee/knife/shared_knife_donkuwah.iff")
 
 object_weapon_melee_knife_shared_knife_janta = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
@@ -213,7 +213,7 @@ object_weapon_melee_knife_shared_knife_janta = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 2255187692
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_janta, "object/weapon/melee/knife/shared_knife_janta.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_janta, "object/weapon/melee/knife/shared_knife_janta.iff")
 
 object_weapon_melee_knife_shared_knife_stone = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
@@ -271,7 +271,7 @@ object_weapon_melee_knife_shared_knife_stone = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1218550121
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_stone, "object/weapon/melee/knife/shared_knife_stone.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_stone, "object/weapon/melee/knife/shared_knife_stone.iff")
 
 object_weapon_melee_knife_shared_knife_stone_noob = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
@@ -329,7 +329,7 @@ object_weapon_melee_knife_shared_knife_stone_noob = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 1606995338
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_stone_noob, "object/weapon/melee/knife/shared_knife_stone_noob.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_stone_noob, "object/weapon/melee/knife/shared_knife_stone_noob.iff")
 
 object_weapon_melee_knife_shared_knife_survival = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_survival.apt",
@@ -387,7 +387,7 @@ object_weapon_melee_knife_shared_knife_survival = SharedWeaponObjectTemplate:new
 	clientObjectCRC = 530531036
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_survival, "object/weapon/melee/knife/shared_knife_survival.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_survival, "object/weapon/melee/knife/shared_knife_survival.iff")
 
 object_weapon_melee_knife_shared_knife_vibroblade = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_vibroblade.apt",
@@ -445,7 +445,7 @@ object_weapon_melee_knife_shared_knife_vibroblade = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 4211610935
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_vibroblade, "object/weapon/melee/knife/shared_knife_vibroblade.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_vibroblade, "object/weapon/melee/knife/shared_knife_vibroblade.iff")
 
 object_weapon_melee_knife_shared_knife_vibroblade_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_vibroblade.apt",
@@ -503,4 +503,4 @@ object_weapon_melee_knife_shared_knife_vibroblade_quest = SharedWeaponObjectTemp
 	clientObjectCRC = 3270607602
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_vibroblade_quest, "object/weapon/melee/knife/shared_knife_vibroblade_quest.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_vibroblade_quest, "object/weapon/melee/knife/shared_knife_vibroblade_quest.iff")

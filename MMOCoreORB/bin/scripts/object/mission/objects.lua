@@ -83,7 +83,7 @@ object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new 
 	clientObjectCRC = 3205608574
 }
 
-ObjectTemplates:addTemplate(object_mission_shared_mission_data_object, "object/mission/shared_mission_data_object.iff")
+ObjectTemplates:addClientTemplate(object_mission_shared_mission_data_object, "object/mission/shared_mission_data_object.iff")
 
 object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTemplate:new {
 	appearanceFilename = "appearance/ui_destroy.spr",
@@ -127,7 +127,7 @@ object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTe
 	clientObjectCRC = 2729425872
 }
 
-ObjectTemplates:addTemplate(object_mission_shared_mission_list_entry_object, "object/mission/shared_mission_list_entry_object.iff")
+ObjectTemplates:addClientTemplate(object_mission_shared_mission_list_entry_object, "object/mission/shared_mission_list_entry_object.iff")
 
 object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 	appearanceFilename = "appearance/ui_destroy.spr",
@@ -171,4 +171,4 @@ object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 	clientObjectCRC = 3741732474
 }
 
-ObjectTemplates:addTemplate(object_mission_shared_mission_object, "object/mission/shared_mission_object.iff")
+ObjectTemplates:addClientTemplate(object_mission_shared_mission_object, "object/mission/shared_mission_object.iff")

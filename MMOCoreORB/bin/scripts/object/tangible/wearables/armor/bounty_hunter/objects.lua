@@ -93,7 +93,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt = 
 	clientObjectCRC = 148447404
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_belt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_belt.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_bicep_l_f.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l
 	clientObjectCRC = 3816261065
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bicep_l.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_bicep_r_f.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r
 	clientObjectCRC = 2476916826
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bicep_r.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_boots_f.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots =
 	clientObjectCRC = 564000134
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_boots.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_boots.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_bracer_l_f.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_
 	clientObjectCRC = 391592996
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_l, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_l, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bracer_l.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_bracer_r_f.sat",
@@ -363,7 +363,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_
 	clientObjectCRC = 1736604087
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_r, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_r, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bracer_r.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_chest_plate_f.sat",
@@ -417,7 +417,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_p
 	clientObjectCRC = 1339202211
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_plate, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_plate, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_gloves_f.sat",
@@ -471,7 +471,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves 
 	clientObjectCRC = 2249951613
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_gloves.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_gloves.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_helmet_f.sat",
@@ -525,7 +525,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet 
 	clientObjectCRC = 819685493
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_helmet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_helmet.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_leggings_f.sat",
@@ -579,4 +579,4 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_legging
 	clientObjectCRC = 2557731131
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_leggings, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_leggings.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_leggings, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_leggings.iff")

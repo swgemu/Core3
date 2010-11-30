@@ -93,7 +93,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l =
 	clientObjectCRC = 1211170670
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bicep_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bicep_l.iff")
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_bicep_r_f.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r =
 	clientObjectCRC = 954579709
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bicep_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bicep_r.iff")
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_boots_f.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots = S
 	clientObjectCRC = 2071589825
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_boots.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_boots.iff")
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_bracer_l_f.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l 
 	clientObjectCRC = 2320041547
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bracer_l.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bracer_l.iff")
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_bracer_r_f.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r 
 	clientObjectCRC = 4204544984
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bracer_r.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bracer_r.iff")
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_chest_plate_f.sat",
@@ -363,7 +363,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_pla
 	clientObjectCRC = 1560721233
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_plate, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_chest_plate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_plate, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_chest_plate.iff")
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_gloves_f.sat",
@@ -417,7 +417,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves = 
 	clientObjectCRC = 889238444
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_gloves.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_gloves.iff")
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_helmet_f.sat",
@@ -471,7 +471,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet = 
 	clientObjectCRC = 2210419364
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_helmet.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_helmet.iff")
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_leggings_f.sat",
@@ -525,4 +525,4 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings 
 	clientObjectCRC = 91085652
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_leggings.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_leggings.iff")

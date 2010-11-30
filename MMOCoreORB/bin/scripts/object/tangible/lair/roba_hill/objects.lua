@@ -93,4 +93,4 @@ object_tangible_lair_roba_hill_shared_lair_roba_hill = SharedTangibleObjectTempl
 	clientObjectCRC = 2140994340
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_roba_hill_shared_lair_roba_hill, "object/tangible/lair/roba_hill/shared_lair_roba_hill.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_roba_hill_shared_lair_roba_hill, "object/tangible/lair/roba_hill/shared_lair_roba_hill.iff")

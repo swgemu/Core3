@@ -83,7 +83,7 @@ object_draft_schematic_structure_shared_corellia_house_guild_hall = SharedDraftS
 	clientObjectCRC = 3665444927
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_guild_hall, "object/draft_schematic/structure/shared_corellia_house_guild_hall.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_guild_hall, "object/draft_schematic/structure/shared_corellia_house_guild_hall.iff")
 
 object_draft_schematic_structure_shared_corellia_house_player_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_structure_shared_corellia_house_player_large = SharedDraf
 	clientObjectCRC = 3370388037
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_large, "object/draft_schematic/structure/shared_corellia_house_player_large.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_large, "object/draft_schematic/structure/shared_corellia_house_player_large.iff")
 
 object_draft_schematic_structure_shared_corellia_house_player_large_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,7 +171,7 @@ object_draft_schematic_structure_shared_corellia_house_player_large_style_02 = S
 	clientObjectCRC = 3853219478
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_large_style_02, "object/draft_schematic/structure/shared_corellia_house_player_large_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_large_style_02, "object/draft_schematic/structure/shared_corellia_house_player_large_style_02.iff")
 
 object_draft_schematic_structure_shared_corellia_house_player_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -215,7 +215,7 @@ object_draft_schematic_structure_shared_corellia_house_player_medium = SharedDra
 	clientObjectCRC = 3566769907
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_medium, "object/draft_schematic/structure/shared_corellia_house_player_medium.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_medium, "object/draft_schematic/structure/shared_corellia_house_player_medium.iff")
 
 object_draft_schematic_structure_shared_corellia_house_player_medium_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -259,7 +259,7 @@ object_draft_schematic_structure_shared_corellia_house_player_medium_style_02 = 
 	clientObjectCRC = 3830483623
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_medium_style_02, "object/draft_schematic/structure/shared_corellia_house_player_medium_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_medium_style_02, "object/draft_schematic/structure/shared_corellia_house_player_medium_style_02.iff")
 
 object_draft_schematic_structure_shared_corellia_house_player_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -303,7 +303,7 @@ object_draft_schematic_structure_shared_corellia_house_player_small = SharedDraf
 	clientObjectCRC = 4244610668
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_small, "object/draft_schematic/structure/shared_corellia_house_player_small.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_small, "object/draft_schematic/structure/shared_corellia_house_player_small.iff")
 
 object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -347,7 +347,7 @@ object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02
 	clientObjectCRC = 2371857542
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02, "object/draft_schematic/structure/shared_corellia_house_player_small_floorplan_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02, "object/draft_schematic/structure/shared_corellia_house_player_small_floorplan_02.iff")
 
 object_draft_schematic_structure_shared_corellia_house_player_small_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,7 +391,7 @@ object_draft_schematic_structure_shared_corellia_house_player_small_style_02 = S
 	clientObjectCRC = 3313991968
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_style_02, "object/draft_schematic/structure/shared_corellia_house_player_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_style_02, "object/draft_schematic/structure/shared_corellia_house_player_small_style_02.iff")
 
 object_draft_schematic_structure_shared_corellia_house_player_small_style_02_floorplan_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -435,7 +435,7 @@ object_draft_schematic_structure_shared_corellia_house_player_small_style_02_flo
 	clientObjectCRC = 2455024554
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_style_02_floorplan_02, "object/draft_schematic/structure/shared_corellia_house_player_small_style_02_floorplan_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_style_02_floorplan_02, "object/draft_schematic/structure/shared_corellia_house_player_small_style_02_floorplan_02.iff")
 
 object_draft_schematic_structure_shared_generic_house_guild_hall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -479,7 +479,7 @@ object_draft_schematic_structure_shared_generic_house_guild_hall = SharedDraftSc
 	clientObjectCRC = 745024084
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_guild_hall, "object/draft_schematic/structure/shared_generic_house_guild_hall.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_guild_hall, "object/draft_schematic/structure/shared_generic_house_guild_hall.iff")
 
 object_draft_schematic_structure_shared_generic_house_player_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -523,7 +523,7 @@ object_draft_schematic_structure_shared_generic_house_player_large = SharedDraft
 	clientObjectCRC = 4059188252
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_large, "object/draft_schematic/structure/shared_generic_house_player_large.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_large, "object/draft_schematic/structure/shared_generic_house_player_large.iff")
 
 object_draft_schematic_structure_shared_generic_house_player_large_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -567,7 +567,7 @@ object_draft_schematic_structure_shared_generic_house_player_large_style_02 = Sh
 	clientObjectCRC = 1458415719
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_large_style_02, "object/draft_schematic/structure/shared_generic_house_player_large_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_large_style_02, "object/draft_schematic/structure/shared_generic_house_player_large_style_02.iff")
 
 object_draft_schematic_structure_shared_generic_house_player_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -611,7 +611,7 @@ object_draft_schematic_structure_shared_generic_house_player_medium = SharedDraf
 	clientObjectCRC = 874861164
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_medium, "object/draft_schematic/structure/shared_generic_house_player_medium.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_medium, "object/draft_schematic/structure/shared_generic_house_player_medium.iff")
 
 object_draft_schematic_structure_shared_generic_house_player_medium_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -655,7 +655,7 @@ object_draft_schematic_structure_shared_generic_house_player_medium_style_02 = S
 	clientObjectCRC = 317968384
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_medium_style_02, "object/draft_schematic/structure/shared_generic_house_player_medium_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_medium_style_02, "object/draft_schematic/structure/shared_generic_house_player_medium_style_02.iff")
 
 object_draft_schematic_structure_shared_generic_house_player_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -699,7 +699,7 @@ object_draft_schematic_structure_shared_generic_house_player_small = SharedDraft
 	clientObjectCRC = 3320436789
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_small, "object/draft_schematic/structure/shared_generic_house_player_small.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_small, "object/draft_schematic/structure/shared_generic_house_player_small.iff")
 
 object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -743,7 +743,7 @@ object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02 
 	clientObjectCRC = 364360184
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02, "object/draft_schematic/structure/shared_generic_house_player_small_floorplan_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02, "object/draft_schematic/structure/shared_generic_house_player_small_floorplan_02.iff")
 
 object_draft_schematic_structure_shared_generic_house_player_small_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -787,7 +787,7 @@ object_draft_schematic_structure_shared_generic_house_player_small_style_02 = Sh
 	clientObjectCRC = 1992384465
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_small_style_02, "object/draft_schematic/structure/shared_generic_house_player_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_small_style_02, "object/draft_schematic/structure/shared_generic_house_player_small_style_02.iff")
 
 object_draft_schematic_structure_shared_generic_house_player_small_style_02_floorplan_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -831,7 +831,7 @@ object_draft_schematic_structure_shared_generic_house_player_small_style_02_floo
 	clientObjectCRC = 3838920320
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_small_style_02_floorplan_02, "object/draft_schematic/structure/shared_generic_house_player_small_style_02_floorplan_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_small_style_02_floorplan_02, "object/draft_schematic/structure/shared_generic_house_player_small_style_02_floorplan_02.iff")
 
 object_draft_schematic_structure_shared_house_guild_hall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -875,7 +875,7 @@ object_draft_schematic_structure_shared_house_guild_hall = SharedDraftSchematicO
 	clientObjectCRC = 40573621
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_guild_hall, "object/draft_schematic/structure/shared_house_guild_hall.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_guild_hall, "object/draft_schematic/structure/shared_house_guild_hall.iff")
 
 object_draft_schematic_structure_shared_house_player_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -919,7 +919,7 @@ object_draft_schematic_structure_shared_house_player_large = SharedDraftSchemati
 	clientObjectCRC = 2204999703
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_player_large, "object/draft_schematic/structure/shared_house_player_large.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_player_large, "object/draft_schematic/structure/shared_house_player_large.iff")
 
 object_draft_schematic_structure_shared_house_player_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -963,7 +963,7 @@ object_draft_schematic_structure_shared_house_player_medium = SharedDraftSchemat
 	clientObjectCRC = 1124040677
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_player_medium, "object/draft_schematic/structure/shared_house_player_medium.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_player_medium, "object/draft_schematic/structure/shared_house_player_medium.iff")
 
 object_draft_schematic_structure_shared_house_player_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1007,7 +1007,7 @@ object_draft_schematic_structure_shared_house_player_small = SharedDraftSchemati
 	clientObjectCRC = 3077977150
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_player_small, "object/draft_schematic/structure/shared_house_player_small.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_player_small, "object/draft_schematic/structure/shared_house_player_small.iff")
 
 object_draft_schematic_structure_shared_house_player_small_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1051,7 +1051,7 @@ object_draft_schematic_structure_shared_house_player_small_style_02 = SharedDraf
 	clientObjectCRC = 2529898048
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_player_small_style_02, "object/draft_schematic/structure/shared_house_player_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_player_small_style_02, "object/draft_schematic/structure/shared_house_player_small_style_02.iff")
 
 object_draft_schematic_structure_shared_installation_factory_clothing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1095,7 +1095,7 @@ object_draft_schematic_structure_shared_installation_factory_clothing = SharedDr
 	clientObjectCRC = 3925546520
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_factory_clothing, "object/draft_schematic/structure/shared_installation_factory_clothing.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_factory_clothing, "object/draft_schematic/structure/shared_installation_factory_clothing.iff")
 
 object_draft_schematic_structure_shared_installation_factory_food = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1139,7 +1139,7 @@ object_draft_schematic_structure_shared_installation_factory_food = SharedDraftS
 	clientObjectCRC = 3287078704
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_factory_food, "object/draft_schematic/structure/shared_installation_factory_food.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_factory_food, "object/draft_schematic/structure/shared_installation_factory_food.iff")
 
 object_draft_schematic_structure_shared_installation_factory_structure = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1183,7 +1183,7 @@ object_draft_schematic_structure_shared_installation_factory_structure = SharedD
 	clientObjectCRC = 100159664
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_factory_structure, "object/draft_schematic/structure/shared_installation_factory_structure.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_factory_structure, "object/draft_schematic/structure/shared_installation_factory_structure.iff")
 
 object_draft_schematic_structure_shared_installation_factory_weapon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1227,7 +1227,7 @@ object_draft_schematic_structure_shared_installation_factory_weapon = SharedDraf
 	clientObjectCRC = 1608711350
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_factory_weapon, "object/draft_schematic/structure/shared_installation_factory_weapon.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_factory_weapon, "object/draft_schematic/structure/shared_installation_factory_weapon.iff")
 
 object_draft_schematic_structure_shared_installation_generator_fusion = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1271,7 +1271,7 @@ object_draft_schematic_structure_shared_installation_generator_fusion = SharedDr
 	clientObjectCRC = 1430182849
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_generator_fusion, "object/draft_schematic/structure/shared_installation_generator_fusion.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_generator_fusion, "object/draft_schematic/structure/shared_installation_generator_fusion.iff")
 
 object_draft_schematic_structure_shared_installation_generator_solar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1315,7 +1315,7 @@ object_draft_schematic_structure_shared_installation_generator_solar = SharedDra
 	clientObjectCRC = 464777341
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_generator_solar, "object/draft_schematic/structure/shared_installation_generator_solar.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_generator_solar, "object/draft_schematic/structure/shared_installation_generator_solar.iff")
 
 object_draft_schematic_structure_shared_installation_generator_wind = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1359,7 +1359,7 @@ object_draft_schematic_structure_shared_installation_generator_wind = SharedDraf
 	clientObjectCRC = 3011453668
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_generator_wind, "object/draft_schematic/structure/shared_installation_generator_wind.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_generator_wind, "object/draft_schematic/structure/shared_installation_generator_wind.iff")
 
 object_draft_schematic_structure_shared_installation_mining_gas = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1403,7 +1403,7 @@ object_draft_schematic_structure_shared_installation_mining_gas = SharedDraftSch
 	clientObjectCRC = 189297844
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_gas, "object/draft_schematic/structure/shared_installation_mining_gas.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_gas, "object/draft_schematic/structure/shared_installation_mining_gas.iff")
 
 object_draft_schematic_structure_shared_installation_mining_gas_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1447,7 +1447,7 @@ object_draft_schematic_structure_shared_installation_mining_gas_heavy = SharedDr
 	clientObjectCRC = 3372573215
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_gas_heavy, "object/draft_schematic/structure/shared_installation_mining_gas_heavy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_gas_heavy, "object/draft_schematic/structure/shared_installation_mining_gas_heavy.iff")
 
 object_draft_schematic_structure_shared_installation_mining_gas_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1491,7 +1491,7 @@ object_draft_schematic_structure_shared_installation_mining_gas_light = SharedDr
 	clientObjectCRC = 140336833
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_gas_light, "object/draft_schematic/structure/shared_installation_mining_gas_light.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_gas_light, "object/draft_schematic/structure/shared_installation_mining_gas_light.iff")
 
 object_draft_schematic_structure_shared_installation_mining_liquid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1535,7 +1535,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid = SharedDraft
 	clientObjectCRC = 2039707891
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid, "object/draft_schematic/structure/shared_installation_mining_liquid.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid, "object/draft_schematic/structure/shared_installation_mining_liquid.iff")
 
 object_draft_schematic_structure_shared_installation_mining_liquid_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1579,7 +1579,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_heavy = Share
 	clientObjectCRC = 362692246
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_heavy, "object/draft_schematic/structure/shared_installation_mining_liquid_heavy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_heavy, "object/draft_schematic/structure/shared_installation_mining_liquid_heavy.iff")
 
 object_draft_schematic_structure_shared_installation_mining_liquid_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1623,7 +1623,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_light = Share
 	clientObjectCRC = 3569746504
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_light, "object/draft_schematic/structure/shared_installation_mining_liquid_light.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_light, "object/draft_schematic/structure/shared_installation_mining_liquid_light.iff")
 
 object_draft_schematic_structure_shared_installation_mining_liquid_vapor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1667,7 +1667,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor = Share
 	clientObjectCRC = 2343309848
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor.iff")
 
 object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1711,7 +1711,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy =
 	clientObjectCRC = 1643145278
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor_heavy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor_heavy.iff")
 
 object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1755,7 +1755,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light =
 	clientObjectCRC = 2695386336
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor_light.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor_light.iff")
 
 object_draft_schematic_structure_shared_installation_mining_ore = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1799,7 +1799,7 @@ object_draft_schematic_structure_shared_installation_mining_ore = SharedDraftSch
 	clientObjectCRC = 3530854520
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_ore, "object/draft_schematic/structure/shared_installation_mining_ore.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_ore, "object/draft_schematic/structure/shared_installation_mining_ore.iff")
 
 object_draft_schematic_structure_shared_installation_mining_ore_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1843,7 +1843,7 @@ object_draft_schematic_structure_shared_installation_mining_ore_heavy = SharedDr
 	clientObjectCRC = 1543208719
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_ore_heavy, "object/draft_schematic/structure/shared_installation_mining_ore_heavy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_ore_heavy, "object/draft_schematic/structure/shared_installation_mining_ore_heavy.iff")
 
 object_draft_schematic_structure_shared_installation_mining_ore_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1887,7 +1887,7 @@ object_draft_schematic_structure_shared_installation_mining_ore_light = SharedDr
 	clientObjectCRC = 2594390993
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_ore_light, "object/draft_schematic/structure/shared_installation_mining_ore_light.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_ore_light, "object/draft_schematic/structure/shared_installation_mining_ore_light.iff")
 
 object_draft_schematic_structure_shared_installation_mining_organic_creature = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1931,7 +1931,7 @@ object_draft_schematic_structure_shared_installation_mining_organic_creature = S
 	clientObjectCRC = 3915458084
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_organic_creature, "object/draft_schematic/structure/shared_installation_mining_organic_creature.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_organic_creature, "object/draft_schematic/structure/shared_installation_mining_organic_creature.iff")
 
 object_draft_schematic_structure_shared_installation_mining_organic_flora = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1975,7 +1975,7 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora = Shar
 	clientObjectCRC = 1656287178
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora, "object/draft_schematic/structure/shared_installation_mining_organic_flora.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora, "object/draft_schematic/structure/shared_installation_mining_organic_flora.iff")
 
 object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2019,7 +2019,7 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy 
 	clientObjectCRC = 2861455405
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy, "object/draft_schematic/structure/shared_installation_mining_organic_flora_heavy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy, "object/draft_schematic/structure/shared_installation_mining_organic_flora_heavy.iff")
 
 object_draft_schematic_structure_shared_installation_mining_organic_flora_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2063,7 +2063,7 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora_light 
 	clientObjectCRC = 1809212659
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora_light, "object/draft_schematic/structure/shared_installation_mining_organic_flora_light.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora_light, "object/draft_schematic/structure/shared_installation_mining_organic_flora_light.iff")
 
 object_draft_schematic_structure_shared_merchant_tent = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2107,7 +2107,7 @@ object_draft_schematic_structure_shared_merchant_tent = SharedDraftSchematicObje
 	clientObjectCRC = 2724074378
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_merchant_tent, "object/draft_schematic/structure/shared_merchant_tent.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_merchant_tent, "object/draft_schematic/structure/shared_merchant_tent.iff")
 
 object_draft_schematic_structure_shared_naboo_house_guild_hall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2151,7 +2151,7 @@ object_draft_schematic_structure_shared_naboo_house_guild_hall = SharedDraftSche
 	clientObjectCRC = 1974589873
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_guild_hall, "object/draft_schematic/structure/shared_naboo_house_guild_hall.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_guild_hall, "object/draft_schematic/structure/shared_naboo_house_guild_hall.iff")
 
 object_draft_schematic_structure_shared_naboo_house_player_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2195,7 +2195,7 @@ object_draft_schematic_structure_shared_naboo_house_player_large = SharedDraftSc
 	clientObjectCRC = 939754027
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_player_large, "object/draft_schematic/structure/shared_naboo_house_player_large.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_player_large, "object/draft_schematic/structure/shared_naboo_house_player_large.iff")
 
 object_draft_schematic_structure_shared_naboo_house_player_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2239,7 +2239,7 @@ object_draft_schematic_structure_shared_naboo_house_player_medium = SharedDraftS
 	clientObjectCRC = 3131573754
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_player_medium, "object/draft_schematic/structure/shared_naboo_house_player_medium.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_player_medium, "object/draft_schematic/structure/shared_naboo_house_player_medium.iff")
 
 object_draft_schematic_structure_shared_naboo_house_player_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2283,7 +2283,7 @@ object_draft_schematic_structure_shared_naboo_house_player_small = SharedDraftSc
 	clientObjectCRC = 202905090
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_player_small, "object/draft_schematic/structure/shared_naboo_house_player_small.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_player_small, "object/draft_schematic/structure/shared_naboo_house_player_small.iff")
 
 object_draft_schematic_structure_shared_naboo_house_player_small_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2327,7 +2327,7 @@ object_draft_schematic_structure_shared_naboo_house_player_small_style_02 = Shar
 	clientObjectCRC = 903806834
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_player_small_style_02, "object/draft_schematic/structure/shared_naboo_house_player_small_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_player_small_style_02, "object/draft_schematic/structure/shared_naboo_house_player_small_style_02.iff")
 
 object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2371,4 +2371,4 @@ object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02 = Sha
 	clientObjectCRC = 1463325777
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02, "object/draft_schematic/structure/shared_tatooine_house_guild_hall_style_02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02, "object/draft_schematic/structure/shared_tatooine_house_guild_hall_style_02.iff")

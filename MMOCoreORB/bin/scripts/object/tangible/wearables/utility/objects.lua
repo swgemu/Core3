@@ -93,4 +93,4 @@ object_tangible_wearables_utility_shared_utility_belt_tusken_raider = SharedTang
 	clientObjectCRC = 34828875
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_utility_shared_utility_belt_tusken_raider, "object/tangible/wearables/utility/shared_utility_belt_tusken_raider.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_utility_shared_utility_belt_tusken_raider, "object/tangible/wearables/utility/shared_utility_belt_tusken_raider.iff")

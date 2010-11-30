@@ -93,4 +93,4 @@ object_installation_generators_base_shared_power_generator_base = SharedInstalla
 	clientObjectCRC = 3676361903
 }
 
-ObjectTemplates:addTemplate(object_installation_generators_base_shared_power_generator_base, "object/installation/generators/base/shared_power_generator_base.iff")
+ObjectTemplates:addClientTemplate(object_installation_generators_base_shared_power_generator_base, "object/installation/generators/base/shared_power_generator_base.iff")

@@ -93,4 +93,4 @@ object_tangible_speaker_shared_speaker = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1991875875
 }
 
-ObjectTemplates:addTemplate(object_tangible_speaker_shared_speaker, "object/tangible/speaker/shared_speaker.iff")
+ObjectTemplates:addClientTemplate(object_tangible_speaker_shared_speaker, "object/tangible/speaker/shared_speaker.iff")

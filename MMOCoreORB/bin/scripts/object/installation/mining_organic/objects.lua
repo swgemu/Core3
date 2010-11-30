@@ -93,7 +93,7 @@ object_installation_mining_organic_shared_mining_organic_creature_farm = SharedI
 	clientObjectCRC = 3544083954
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_creature_farm, "object/installation/mining_organic/shared_mining_organic_creature_farm.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_organic_shared_mining_organic_creature_farm, "object/installation/mining_organic/shared_mining_organic_creature_farm.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_flora_small.apt",
@@ -147,7 +147,7 @@ object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInst
 	clientObjectCRC = 3438944708
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm, "object/installation/mining_organic/shared_mining_organic_flora_farm.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm, "object/installation/mining_organic/shared_mining_organic_flora_farm.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_photo_bio_u0.apt",
@@ -201,7 +201,7 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = Shar
 	clientObjectCRC = 880917767
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_heavy, "object/installation/mining_organic/shared_mining_organic_flora_farm_heavy.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_heavy, "object/installation/mining_organic/shared_mining_organic_flora_farm_heavy.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm_medium = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_flora_farm_base_s01_u0.apt",
@@ -255,4 +255,4 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_medium = Sha
 	clientObjectCRC = 681856626
 }
 
-ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_medium, "object/installation/mining_organic/shared_mining_organic_flora_farm_medium.iff")
+ObjectTemplates:addClientTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_medium, "object/installation/mining_organic/shared_mining_organic_flora_farm_medium.iff")

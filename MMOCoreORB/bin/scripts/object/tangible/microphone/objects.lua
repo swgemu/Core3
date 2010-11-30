@@ -93,4 +93,4 @@ object_tangible_microphone_shared_microphone = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1744278717
 }
 
-ObjectTemplates:addTemplate(object_tangible_microphone_shared_microphone, "object/tangible/microphone/shared_microphone.iff")
+ObjectTemplates:addClientTemplate(object_tangible_microphone_shared_microphone, "object/tangible/microphone/shared_microphone.iff")

@@ -93,7 +93,7 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon = SharedTangibleObjec
 	clientObjectCRC = 131974925
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon.iff")
 
 object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert = SharedTangib
 	clientObjectCRC = 3458672072
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_desert.iff")
 
 object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland = SharedTan
 	clientObjectCRC = 2174313207
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_wasteland.iff")

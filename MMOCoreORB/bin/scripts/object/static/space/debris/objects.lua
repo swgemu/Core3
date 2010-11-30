@@ -83,7 +83,7 @@ object_static_space_debris_shared_cargo_destroyed_large_a = SharedStaticObjectTe
 	clientObjectCRC = 2590979892
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_destroyed_large_a, "object/static/space/debris/shared_cargo_destroyed_large_a.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_destroyed_large_a, "object/static/space/debris/shared_cargo_destroyed_large_a.iff")
 
 object_static_space_debris_shared_cargo_destroyed_small_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_debris_chunk_s01.apt",
@@ -127,7 +127,7 @@ object_static_space_debris_shared_cargo_destroyed_small_a = SharedStaticObjectTe
 	clientObjectCRC = 483044281
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_destroyed_small_a, "object/static/space/debris/shared_cargo_destroyed_small_a.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_destroyed_small_a, "object/static/space/debris/shared_cargo_destroyed_small_a.iff")
 
 object_static_space_debris_shared_cargo_pristine_large_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_debris_crate_s01.apt",
@@ -171,7 +171,7 @@ object_static_space_debris_shared_cargo_pristine_large_a = SharedStaticObjectTem
 	clientObjectCRC = 3524446459
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_pristine_large_a, "object/static/space/debris/shared_cargo_pristine_large_a.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_pristine_large_a, "object/static/space/debris/shared_cargo_pristine_large_a.iff")
 
 object_static_space_debris_shared_death_star_debris_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_chunksmalla.apt",
@@ -215,7 +215,7 @@ object_static_space_debris_shared_death_star_debris_a = SharedStaticObjectTempla
 	clientObjectCRC = 2077093717
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_a, "object/static/space/debris/shared_death_star_debris_a.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_a, "object/static/space/debris/shared_death_star_debris_a.iff")
 
 object_static_space_debris_shared_death_star_debris_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s02.apt",
@@ -259,7 +259,7 @@ object_static_space_debris_shared_death_star_debris_b = SharedStaticObjectTempla
 	clientObjectCRC = 2698659778
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_b, "object/static/space/debris/shared_death_star_debris_b.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_b, "object/static/space/debris/shared_death_star_debris_b.iff")
 
 object_static_space_debris_shared_death_star_debris_c = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s01.apt",
@@ -303,7 +303,7 @@ object_static_space_debris_shared_death_star_debris_c = SharedStaticObjectTempla
 	clientObjectCRC = 3923189839
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_c, "object/static/space/debris/shared_death_star_debris_c.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_c, "object/static/space/debris/shared_death_star_debris_c.iff")
 
 object_static_space_debris_shared_death_star_debris_d = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s03.apt",
@@ -347,7 +347,7 @@ object_static_space_debris_shared_death_star_debris_d = SharedStaticObjectTempla
 	clientObjectCRC = 305400667
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_d, "object/static/space/debris/shared_death_star_debris_d.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_d, "object/static/space/debris/shared_death_star_debris_d.iff")
 
 object_static_space_debris_shared_death_star_debris_e = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_tubesmall.apt",
@@ -391,7 +391,7 @@ object_static_space_debris_shared_death_star_debris_e = SharedStaticObjectTempla
 	clientObjectCRC = 1530490070
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_e, "object/static/space/debris/shared_death_star_debris_e.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_e, "object/static/space/debris/shared_death_star_debris_e.iff")
 
 object_static_space_debris_shared_death_star_debris_f = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_tube.apt",
@@ -435,7 +435,7 @@ object_static_space_debris_shared_death_star_debris_f = SharedStaticObjectTempla
 	clientObjectCRC = 2150548545
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_f, "object/static/space/debris/shared_death_star_debris_f.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_f, "object/static/space/debris/shared_death_star_debris_f.iff")
 
 object_static_space_debris_shared_death_star_debris_g = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_conduit.apt",
@@ -479,7 +479,7 @@ object_static_space_debris_shared_death_star_debris_g = SharedStaticObjectTempla
 	clientObjectCRC = 3374556108
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_g, "object/static/space/debris/shared_death_star_debris_g.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_g, "object/static/space/debris/shared_death_star_debris_g.iff")
 
 object_static_space_debris_shared_death_star_debris_h = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s5.apt",
@@ -523,7 +523,7 @@ object_static_space_debris_shared_death_star_debris_h = SharedStaticObjectTempla
 	clientObjectCRC = 1932103646
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_h, "object/static/space/debris/shared_death_star_debris_h.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_h, "object/static/space/debris/shared_death_star_debris_h.iff")
 
 object_static_space_debris_shared_death_star_debris_i = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s6.apt",
@@ -567,7 +567,7 @@ object_static_space_debris_shared_death_star_debris_i = SharedStaticObjectTempla
 	clientObjectCRC = 975497299
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_i, "object/static/space/debris/shared_death_star_debris_i.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_i, "object/static/space/debris/shared_death_star_debris_i.iff")
 
 object_static_space_debris_shared_droid_fighter_debris_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter_debris_s01.apt",
@@ -611,7 +611,7 @@ object_static_space_debris_shared_droid_fighter_debris_s01 = SharedStaticObjectT
 	clientObjectCRC = 3253175573
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debris_s01, "object/static/space/debris/shared_droid_fighter_debris_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s01, "object/static/space/debris/shared_droid_fighter_debris_s01.iff")
 
 object_static_space_debris_shared_droid_fighter_debris_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter_debris_s02.apt",
@@ -655,7 +655,7 @@ object_static_space_debris_shared_droid_fighter_debris_s02 = SharedStaticObjectT
 	clientObjectCRC = 451947906
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debris_s02, "object/static/space/debris/shared_droid_fighter_debris_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s02, "object/static/space/debris/shared_droid_fighter_debris_s02.iff")
 
 object_static_space_debris_shared_droid_fighter_debris_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter_debris_s03.apt",
@@ -699,7 +699,7 @@ object_static_space_debris_shared_droid_fighter_debris_s03 = SharedStaticObjectT
 	clientObjectCRC = 1409108495
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debris_s03, "object/static/space/debris/shared_droid_fighter_debris_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s03, "object/static/space/debris/shared_droid_fighter_debris_s03.iff")
 
 object_static_space_debris_shared_droid_fighter_debris_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter_debris_s04.apt",
@@ -743,7 +743,7 @@ object_static_space_debris_shared_droid_fighter_debris_s04 = SharedStaticObjectT
 	clientObjectCRC = 2820563227
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debris_s04, "object/static/space/debris/shared_droid_fighter_debris_s04.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s04, "object/static/space/debris/shared_droid_fighter_debris_s04.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_a.apt",
@@ -787,7 +787,7 @@ object_static_space_debris_shared_tie_fighter_debris_a = SharedStaticObjectTempl
 	clientObjectCRC = 3891582202
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_a, "object/static/space/debris/shared_tie_fighter_debris_a.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_a, "object/static/space/debris/shared_tie_fighter_debris_a.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_b.apt",
@@ -831,7 +831,7 @@ object_static_space_debris_shared_tie_fighter_debris_b = SharedStaticObjectTempl
 	clientObjectCRC = 1021541485
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_b, "object/static/space/debris/shared_tie_fighter_debris_b.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_b, "object/static/space/debris/shared_tie_fighter_debris_b.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_c = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_c.apt",
@@ -875,7 +875,7 @@ object_static_space_debris_shared_tie_fighter_debris_c = SharedStaticObjectTempl
 	clientObjectCRC = 1978538976
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_c, "object/static/space/debris/shared_tie_fighter_debris_c.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_c, "object/static/space/debris/shared_tie_fighter_debris_c.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_d = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_d.apt",
@@ -919,7 +919,7 @@ object_static_space_debris_shared_tie_fighter_debris_d = SharedStaticObjectTempl
 	clientObjectCRC = 2383229172
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_d, "object/static/space/debris/shared_tie_fighter_debris_d.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_d, "object/static/space/debris/shared_tie_fighter_debris_d.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_e = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_e.apt",
@@ -963,7 +963,7 @@ object_static_space_debris_shared_tie_fighter_debris_e = SharedStaticObjectTempl
 	clientObjectCRC = 3338688377
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_e, "object/static/space/debris/shared_tie_fighter_debris_e.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_e, "object/static/space/debris/shared_tie_fighter_debris_e.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_f = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_f.apt",
@@ -1007,7 +1007,7 @@ object_static_space_debris_shared_tie_fighter_debris_f = SharedStaticObjectTempl
 	clientObjectCRC = 471334894
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_f, "object/static/space/debris/shared_tie_fighter_debris_f.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_f, "object/static/space/debris/shared_tie_fighter_debris_f.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_g = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_tie_bomber_debris_s01.apt",
@@ -1051,7 +1051,7 @@ object_static_space_debris_shared_tie_fighter_debris_g = SharedStaticObjectTempl
 	clientObjectCRC = 1427806307
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_g, "object/static/space/debris/shared_tie_fighter_debris_g.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_g, "object/static/space/debris/shared_tie_fighter_debris_g.iff")
 
 object_static_space_debris_shared_tradefed_hulk_debris_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s01.apt",
@@ -1095,7 +1095,7 @@ object_static_space_debris_shared_tradefed_hulk_debris_s01 = SharedStaticObjectT
 	clientObjectCRC = 3363541547
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s01, "object/static/space/debris/shared_tradefed_hulk_debris_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s01, "object/static/space/debris/shared_tradefed_hulk_debris_s01.iff")
 
 object_static_space_debris_shared_tradefed_hulk_debris_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s02.apt",
@@ -1139,7 +1139,7 @@ object_static_space_debris_shared_tradefed_hulk_debris_s02 = SharedStaticObjectT
 	clientObjectCRC = 325860028
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s02, "object/static/space/debris/shared_tradefed_hulk_debris_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s02, "object/static/space/debris/shared_tradefed_hulk_debris_s02.iff")
 
 object_static_space_debris_shared_tradefed_hulk_debris_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s03.apt",
@@ -1183,7 +1183,7 @@ object_static_space_debris_shared_tradefed_hulk_debris_s03 = SharedStaticObjectT
 	clientObjectCRC = 1516330289
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s03, "object/static/space/debris/shared_tradefed_hulk_debris_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s03, "object/static/space/debris/shared_tradefed_hulk_debris_s03.iff")
 
 object_static_space_debris_shared_tradefed_hulk_debris_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s04.apt",
@@ -1227,7 +1227,7 @@ object_static_space_debris_shared_tradefed_hulk_debris_s04 = SharedStaticObjectT
 	clientObjectCRC = 2709681701
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s04, "object/static/space/debris/shared_tradefed_hulk_debris_s04.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s04, "object/static/space/debris/shared_tradefed_hulk_debris_s04.iff")
 
 object_static_space_debris_shared_xwing_debris_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_a.apt",
@@ -1271,7 +1271,7 @@ object_static_space_debris_shared_xwing_debris_a = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3548707546
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_a, "object/static/space/debris/shared_xwing_debris_a.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_a, "object/static/space/debris/shared_xwing_debris_a.iff")
 
 object_static_space_debris_shared_xwing_debris_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_b.apt",
@@ -1315,7 +1315,7 @@ object_static_space_debris_shared_xwing_debris_b = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 143872589
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_b, "object/static/space/debris/shared_xwing_debris_b.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_b, "object/static/space/debris/shared_xwing_debris_b.iff")
 
 object_static_space_debris_shared_xwing_debris_c = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_c.apt",
@@ -1359,7 +1359,7 @@ object_static_space_debris_shared_xwing_debris_c = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1100887488
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_c, "object/static/space/debris/shared_xwing_debris_c.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_c, "object/static/space/debris/shared_xwing_debris_c.iff")
 
 object_static_space_debris_shared_xwing_debris_d = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_d.apt",
@@ -1403,7 +1403,7 @@ object_static_space_debris_shared_xwing_debris_d = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3128762068
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_d, "object/static/space/debris/shared_xwing_debris_d.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_d, "object/static/space/debris/shared_xwing_debris_d.iff")
 
 object_static_space_debris_shared_xwing_debris_e = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_e.apt",
@@ -1447,7 +1447,7 @@ object_static_space_debris_shared_xwing_debris_e = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 4084234585
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_e, "object/static/space/debris/shared_xwing_debris_e.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_e, "object/static/space/debris/shared_xwing_debris_e.iff")
 
 object_static_space_debris_shared_xwing_debris_f = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_f.apt",
@@ -1491,7 +1491,7 @@ object_static_space_debris_shared_xwing_debris_f = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 677892558
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_f, "object/static/space/debris/shared_xwing_debris_f.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_f, "object/static/space/debris/shared_xwing_debris_f.iff")
 
 object_static_space_debris_shared_xwing_debris_g = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_g.apt",
@@ -1535,4 +1535,4 @@ object_static_space_debris_shared_xwing_debris_g = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1634383427
 }
 
-ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_g, "object/static/space/debris/shared_xwing_debris_g.iff")
+ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_g, "object/static/space/debris/shared_xwing_debris_g.iff")

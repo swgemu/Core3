@@ -97,4 +97,4 @@ object_weapon_ranged_turret_base_shared_turret_base = SharedWeaponObjectTemplate
 	clientObjectCRC = 1234241813
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_turret_base_shared_turret_base, "object/weapon/ranged/turret/base/shared_turret_base.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_turret_base_shared_turret_base, "object/weapon/ranged/turret/base/shared_turret_base.iff")

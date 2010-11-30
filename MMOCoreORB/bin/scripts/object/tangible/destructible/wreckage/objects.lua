@@ -93,4 +93,4 @@ object_tangible_destructible_wreckage_shared_wreck_starship_small_01 = SharedTan
 	clientObjectCRC = 551874414
 }
 
-ObjectTemplates:addTemplate(object_tangible_destructible_wreckage_shared_wreck_starship_small_01, "object/tangible/destructible/wreckage/shared_wreck_starship_small_01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_destructible_wreckage_shared_wreck_starship_small_01, "object/tangible/destructible/wreckage/shared_wreck_starship_small_01.iff")

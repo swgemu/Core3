@@ -93,4 +93,4 @@ object_tangible_weather_object_shared_weather_object_base = SharedTangibleObject
 	clientObjectCRC = 638400460
 }
 
-ObjectTemplates:addTemplate(object_tangible_weather_object_shared_weather_object_base, "object/tangible/weather_object/shared_weather_object_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_weather_object_shared_weather_object_base, "object/tangible/weather_object/shared_weather_object_base.iff")

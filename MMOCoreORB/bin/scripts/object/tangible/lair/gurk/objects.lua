@@ -93,7 +93,7 @@ object_tangible_lair_gurk_shared_lair_gurk = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2774815419
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk, "object/tangible/lair/gurk/shared_lair_gurk.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gurk_shared_lair_gurk, "object/tangible/lair/gurk/shared_lair_gurk.iff")
 
 object_tangible_lair_gurk_shared_lair_gurk_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_gurk_shared_lair_gurk_mountain = SharedTangibleObjectTempla
 	clientObjectCRC = 3262874974
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk_mountain, "object/tangible/lair/gurk/shared_lair_gurk_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gurk_shared_lair_gurk_mountain, "object/tangible/lair/gurk/shared_lair_gurk_mountain.iff")
 
 object_tangible_lair_gurk_shared_lair_gurk_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_gurk_shared_lair_gurk_wasteland = SharedTangibleObjectTempl
 	clientObjectCRC = 1904490191
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk_wasteland, "object/tangible/lair/gurk/shared_lair_gurk_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gurk_shared_lair_gurk_wasteland, "object/tangible/lair/gurk/shared_lair_gurk_wasteland.iff")

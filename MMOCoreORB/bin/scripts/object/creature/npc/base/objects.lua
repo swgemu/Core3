@@ -117,7 +117,7 @@ object_creature_npc_base_shared_aqualish_base_female = SharedCreatureObjectTempl
 	clientObjectCRC = 2762844902
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_base_female, "object/creature/npc/base/shared_aqualish_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_base_female, "object/creature/npc/base/shared_aqualish_base_female.iff")
 
 object_creature_npc_base_shared_aqualish_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -195,7 +195,7 @@ object_creature_npc_base_shared_aqualish_base_male = SharedCreatureObjectTemplat
 	clientObjectCRC = 643792170
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_base_male, "object/creature/npc/base/shared_aqualish_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_base_male, "object/creature/npc/base/shared_aqualish_base_male.iff")
 
 object_creature_npc_base_shared_aqualish_s02_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -273,7 +273,7 @@ object_creature_npc_base_shared_aqualish_s02_base_female = SharedCreatureObjectT
 	clientObjectCRC = 1130200645
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_s02_base_female, "object/creature/npc/base/shared_aqualish_s02_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s02_base_female, "object/creature/npc/base/shared_aqualish_s02_base_female.iff")
 
 object_creature_npc_base_shared_aqualish_s02_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -351,7 +351,7 @@ object_creature_npc_base_shared_aqualish_s02_base_male = SharedCreatureObjectTem
 	clientObjectCRC = 1420546336
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_s02_base_male, "object/creature/npc/base/shared_aqualish_s02_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s02_base_male, "object/creature/npc/base/shared_aqualish_s02_base_male.iff")
 
 object_creature_npc_base_shared_aqualish_s03_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -429,7 +429,7 @@ object_creature_npc_base_shared_aqualish_s03_base_female = SharedCreatureObjectT
 	clientObjectCRC = 1418612504
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_s03_base_female, "object/creature/npc/base/shared_aqualish_s03_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s03_base_female, "object/creature/npc/base/shared_aqualish_s03_base_female.iff")
 
 object_creature_npc_base_shared_aqualish_s03_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -507,7 +507,7 @@ object_creature_npc_base_shared_aqualish_s03_base_male = SharedCreatureObjectTem
 	clientObjectCRC = 2309238866
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_s03_base_male, "object/creature/npc/base/shared_aqualish_s03_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s03_base_male, "object/creature/npc/base/shared_aqualish_s03_base_male.iff")
 
 object_creature_npc_base_shared_base_droid = SharedCreatureObjectTemplate:new {
 	acceleration = {4,2},
@@ -585,7 +585,7 @@ object_creature_npc_base_shared_base_droid = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3496555527
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_base_droid, "object/creature/npc/base/shared_base_droid.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_droid, "object/creature/npc/base/shared_base_droid.iff")
 
 object_creature_npc_base_shared_base_npc = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -663,7 +663,7 @@ object_creature_npc_base_shared_base_npc = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 636692298
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_base_npc, "object/creature/npc/base/shared_base_npc.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_npc, "object/creature/npc/base/shared_base_npc.iff")
 
 object_creature_npc_base_shared_base_npc_theme_park = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -741,7 +741,7 @@ object_creature_npc_base_shared_base_npc_theme_park = SharedCreatureObjectTempla
 	clientObjectCRC = 654644587
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_base_npc_theme_park, "object/creature/npc/base/shared_base_npc_theme_park.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_npc_theme_park, "object/creature/npc/base/shared_base_npc_theme_park.iff")
 
 object_creature_npc_base_shared_bith_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -819,7 +819,7 @@ object_creature_npc_base_shared_bith_base_female = SharedCreatureObjectTemplate:
 	clientObjectCRC = 2412520178
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_bith_base_female, "object/creature/npc/base/shared_bith_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bith_base_female, "object/creature/npc/base/shared_bith_base_female.iff")
 
 object_creature_npc_base_shared_bith_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -897,7 +897,7 @@ object_creature_npc_base_shared_bith_base_male = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 1042888288
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_bith_base_male, "object/creature/npc/base/shared_bith_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bith_base_male, "object/creature/npc/base/shared_bith_base_male.iff")
 
 object_creature_npc_base_shared_bothan_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -975,7 +975,7 @@ object_creature_npc_base_shared_bothan_base_female = SharedCreatureObjectTemplat
 	clientObjectCRC = 3759013611
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_bothan_base_female, "object/creature/npc/base/shared_bothan_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bothan_base_female, "object/creature/npc/base/shared_bothan_base_female.iff")
 
 object_creature_npc_base_shared_bothan_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1053,7 +1053,7 @@ object_creature_npc_base_shared_bothan_base_male = SharedCreatureObjectTemplate:
 	clientObjectCRC = 1590149475
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_bothan_base_male, "object/creature/npc/base/shared_bothan_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bothan_base_male, "object/creature/npc/base/shared_bothan_base_male.iff")
 
 object_creature_npc_base_shared_chadra_fan_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1131,7 +1131,7 @@ object_creature_npc_base_shared_chadra_fan_base_female = SharedCreatureObjectTem
 	clientObjectCRC = 896393245
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_chadra_fan_base_female, "object/creature/npc/base/shared_chadra_fan_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_chadra_fan_base_female, "object/creature/npc/base/shared_chadra_fan_base_female.iff")
 
 object_creature_npc_base_shared_chadra_fan_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1209,7 +1209,7 @@ object_creature_npc_base_shared_chadra_fan_base_male = SharedCreatureObjectTempl
 	clientObjectCRC = 313334022
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_chadra_fan_base_male, "object/creature/npc/base/shared_chadra_fan_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_chadra_fan_base_male, "object/creature/npc/base/shared_chadra_fan_base_male.iff")
 
 object_creature_npc_base_shared_dantari_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1287,7 +1287,7 @@ object_creature_npc_base_shared_dantari_base_male = SharedCreatureObjectTemplate
 	clientObjectCRC = 3185808736
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_dantari_base_male, "object/creature/npc/base/shared_dantari_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dantari_base_male, "object/creature/npc/base/shared_dantari_base_male.iff")
 
 object_creature_npc_base_shared_devaronian_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1365,7 +1365,7 @@ object_creature_npc_base_shared_devaronian_base_male = SharedCreatureObjectTempl
 	clientObjectCRC = 4086632991
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_devaronian_base_male, "object/creature/npc/base/shared_devaronian_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_devaronian_base_male, "object/creature/npc/base/shared_devaronian_base_male.iff")
 
 object_creature_npc_base_shared_drall_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1443,7 +1443,7 @@ object_creature_npc_base_shared_drall_base_female = SharedCreatureObjectTemplate
 	clientObjectCRC = 1636192846
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_drall_base_female, "object/creature/npc/base/shared_drall_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_drall_base_female, "object/creature/npc/base/shared_drall_base_female.iff")
 
 object_creature_npc_base_shared_drall_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1521,7 +1521,7 @@ object_creature_npc_base_shared_drall_base_male = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 999880424
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_drall_base_male, "object/creature/npc/base/shared_drall_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_drall_base_male, "object/creature/npc/base/shared_drall_base_male.iff")
 
 object_creature_npc_base_shared_dulok_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1599,7 +1599,7 @@ object_creature_npc_base_shared_dulok_base_female = SharedCreatureObjectTemplate
 	clientObjectCRC = 2138236706
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_dulok_base_female, "object/creature/npc/base/shared_dulok_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dulok_base_female, "object/creature/npc/base/shared_dulok_base_female.iff")
 
 object_creature_npc_base_shared_dulok_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1677,7 +1677,7 @@ object_creature_npc_base_shared_dulok_base_male = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 748671429
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_dulok_base_male, "object/creature/npc/base/shared_dulok_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dulok_base_male, "object/creature/npc/base/shared_dulok_base_male.iff")
 
 object_creature_npc_base_shared_ewok_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1755,7 +1755,7 @@ object_creature_npc_base_shared_ewok_base_female = SharedCreatureObjectTemplate:
 	clientObjectCRC = 1504641037
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_ewok_base_female, "object/creature/npc/base/shared_ewok_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ewok_base_female, "object/creature/npc/base/shared_ewok_base_female.iff")
 
 object_creature_npc_base_shared_ewok_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1833,7 +1833,7 @@ object_creature_npc_base_shared_ewok_base_male = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 2588984693
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_ewok_base_male, "object/creature/npc/base/shared_ewok_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ewok_base_male, "object/creature/npc/base/shared_ewok_base_male.iff")
 
 object_creature_npc_base_shared_gamorrean_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1911,7 +1911,7 @@ object_creature_npc_base_shared_gamorrean_base_male = SharedCreatureObjectTempla
 	clientObjectCRC = 3906894721
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_gamorrean_base_male, "object/creature/npc/base/shared_gamorrean_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gamorrean_base_male, "object/creature/npc/base/shared_gamorrean_base_male.iff")
 
 object_creature_npc_base_shared_geonosian_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -1989,7 +1989,7 @@ object_creature_npc_base_shared_geonosian_base_male = SharedCreatureObjectTempla
 	clientObjectCRC = 595885541
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_geonosian_base_male, "object/creature/npc/base/shared_geonosian_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_geonosian_base_male, "object/creature/npc/base/shared_geonosian_base_male.iff")
 
 object_creature_npc_base_shared_gorax_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2067,7 +2067,7 @@ object_creature_npc_base_shared_gorax_base_male = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 2975619975
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_gorax_base_male, "object/creature/npc/base/shared_gorax_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gorax_base_male, "object/creature/npc/base/shared_gorax_base_male.iff")
 
 object_creature_npc_base_shared_gran_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2145,7 +2145,7 @@ object_creature_npc_base_shared_gran_base_male = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 3900679321
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_gran_base_male, "object/creature/npc/base/shared_gran_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gran_base_male, "object/creature/npc/base/shared_gran_base_male.iff")
 
 object_creature_npc_base_shared_gungan_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2223,7 +2223,7 @@ object_creature_npc_base_shared_gungan_base_male = SharedCreatureObjectTemplate:
 	clientObjectCRC = 2826781885
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_gungan_base_male, "object/creature/npc/base/shared_gungan_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gungan_base_male, "object/creature/npc/base/shared_gungan_base_male.iff")
 
 object_creature_npc_base_shared_human_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2301,7 +2301,7 @@ object_creature_npc_base_shared_human_base_female = SharedCreatureObjectTemplate
 	clientObjectCRC = 53721594
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_human_base_female, "object/creature/npc/base/shared_human_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_human_base_female, "object/creature/npc/base/shared_human_base_female.iff")
 
 object_creature_npc_base_shared_human_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2379,7 +2379,7 @@ object_creature_npc_base_shared_human_base_male = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 2134943660
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_human_base_male, "object/creature/npc/base/shared_human_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_human_base_male, "object/creature/npc/base/shared_human_base_male.iff")
 
 object_creature_npc_base_shared_hutt_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2457,7 +2457,7 @@ object_creature_npc_base_shared_hutt_base_female = SharedCreatureObjectTemplate:
 	clientObjectCRC = 36831134
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_hutt_base_female, "object/creature/npc/base/shared_hutt_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_hutt_base_female, "object/creature/npc/base/shared_hutt_base_female.iff")
 
 object_creature_npc_base_shared_hutt_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2535,7 +2535,7 @@ object_creature_npc_base_shared_hutt_base_male = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 3532419442
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_hutt_base_male, "object/creature/npc/base/shared_hutt_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_hutt_base_male, "object/creature/npc/base/shared_hutt_base_male.iff")
 
 object_creature_npc_base_shared_ishi_tib_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2613,7 +2613,7 @@ object_creature_npc_base_shared_ishi_tib_base_male = SharedCreatureObjectTemplat
 	clientObjectCRC = 3055229554
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_ishi_tib_base_male, "object/creature/npc/base/shared_ishi_tib_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ishi_tib_base_male, "object/creature/npc/base/shared_ishi_tib_base_male.iff")
 
 object_creature_npc_base_shared_ithorian_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2691,7 +2691,7 @@ object_creature_npc_base_shared_ithorian_base_male = SharedCreatureObjectTemplat
 	clientObjectCRC = 1397449143
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_ithorian_base_male, "object/creature/npc/base/shared_ithorian_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ithorian_base_male, "object/creature/npc/base/shared_ithorian_base_male.iff")
 
 object_creature_npc_base_shared_jawa_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2769,7 +2769,7 @@ object_creature_npc_base_shared_jawa_base_male = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 3349422050
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_jawa_base_male, "object/creature/npc/base/shared_jawa_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jawa_base_male, "object/creature/npc/base/shared_jawa_base_male.iff")
 
 object_creature_npc_base_shared_jinda_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2847,7 +2847,7 @@ object_creature_npc_base_shared_jinda_base_female = SharedCreatureObjectTemplate
 	clientObjectCRC = 4291004780
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_jinda_base_female, "object/creature/npc/base/shared_jinda_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jinda_base_female, "object/creature/npc/base/shared_jinda_base_female.iff")
 
 object_creature_npc_base_shared_jinda_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -2925,7 +2925,7 @@ object_creature_npc_base_shared_jinda_base_male = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 242045215
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_jinda_base_male, "object/creature/npc/base/shared_jinda_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jinda_base_male, "object/creature/npc/base/shared_jinda_base_male.iff")
 
 object_creature_npc_base_shared_klatooinian_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3003,7 +3003,7 @@ object_creature_npc_base_shared_klatooinian_base_male = SharedCreatureObjectTemp
 	clientObjectCRC = 3370318767
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_klatooinian_base_male, "object/creature/npc/base/shared_klatooinian_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_klatooinian_base_male, "object/creature/npc/base/shared_klatooinian_base_male.iff")
 
 object_creature_npc_base_shared_marauder_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3081,7 +3081,7 @@ object_creature_npc_base_shared_marauder_base_female = SharedCreatureObjectTempl
 	clientObjectCRC = 2355090288
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_marauder_base_female, "object/creature/npc/base/shared_marauder_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_marauder_base_female, "object/creature/npc/base/shared_marauder_base_female.iff")
 
 object_creature_npc_base_shared_marauder_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3159,7 +3159,7 @@ object_creature_npc_base_shared_marauder_base_male = SharedCreatureObjectTemplat
 	clientObjectCRC = 1688940240
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_marauder_base_male, "object/creature/npc/base/shared_marauder_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_marauder_base_male, "object/creature/npc/base/shared_marauder_base_male.iff")
 
 object_creature_npc_base_shared_moncal_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3237,7 +3237,7 @@ object_creature_npc_base_shared_moncal_base_female = SharedCreatureObjectTemplat
 	clientObjectCRC = 1371353669
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_moncal_base_female, "object/creature/npc/base/shared_moncal_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_moncal_base_female, "object/creature/npc/base/shared_moncal_base_female.iff")
 
 object_creature_npc_base_shared_moncal_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3315,7 +3315,7 @@ object_creature_npc_base_shared_moncal_base_male = SharedCreatureObjectTemplate:
 	clientObjectCRC = 1617753563
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_moncal_base_male, "object/creature/npc/base/shared_moncal_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_moncal_base_male, "object/creature/npc/base/shared_moncal_base_male.iff")
 
 object_creature_npc_base_shared_nikto_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3393,7 +3393,7 @@ object_creature_npc_base_shared_nikto_base_male = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 2839443196
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_nikto_base_male, "object/creature/npc/base/shared_nikto_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_nikto_base_male, "object/creature/npc/base/shared_nikto_base_male.iff")
 
 object_creature_npc_base_shared_quarren_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3471,7 +3471,7 @@ object_creature_npc_base_shared_quarren_base_male = SharedCreatureObjectTemplate
 	clientObjectCRC = 2606234616
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_quarren_base_male, "object/creature/npc/base/shared_quarren_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_quarren_base_male, "object/creature/npc/base/shared_quarren_base_male.iff")
 
 object_creature_npc_base_shared_rodian_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3549,7 +3549,7 @@ object_creature_npc_base_shared_rodian_base_female = SharedCreatureObjectTemplat
 	clientObjectCRC = 2803462038
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_rodian_base_female, "object/creature/npc/base/shared_rodian_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_rodian_base_female, "object/creature/npc/base/shared_rodian_base_female.iff")
 
 object_creature_npc_base_shared_rodian_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3627,7 +3627,7 @@ object_creature_npc_base_shared_rodian_base_male = SharedCreatureObjectTemplate:
 	clientObjectCRC = 873111919
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_rodian_base_male, "object/creature/npc/base/shared_rodian_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_rodian_base_male, "object/creature/npc/base/shared_rodian_base_male.iff")
 
 object_creature_npc_base_shared_selonian_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3705,7 +3705,7 @@ object_creature_npc_base_shared_selonian_base_female = SharedCreatureObjectTempl
 	clientObjectCRC = 4114788784
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_selonian_base_female, "object/creature/npc/base/shared_selonian_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_selonian_base_female, "object/creature/npc/base/shared_selonian_base_female.iff")
 
 object_creature_npc_base_shared_selonian_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3783,7 +3783,7 @@ object_creature_npc_base_shared_selonian_base_male = SharedCreatureObjectTemplat
 	clientObjectCRC = 1841868410
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_selonian_base_male, "object/creature/npc/base/shared_selonian_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_selonian_base_male, "object/creature/npc/base/shared_selonian_base_male.iff")
 
 object_creature_npc_base_shared_sullustan_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3861,7 +3861,7 @@ object_creature_npc_base_shared_sullustan_base_male = SharedCreatureObjectTempla
 	clientObjectCRC = 381383099
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_sullustan_base_male, "object/creature/npc/base/shared_sullustan_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_sullustan_base_male, "object/creature/npc/base/shared_sullustan_base_male.iff")
 
 object_creature_npc_base_shared_trandoshan_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -3939,7 +3939,7 @@ object_creature_npc_base_shared_trandoshan_base_female = SharedCreatureObjectTem
 	clientObjectCRC = 2585187332
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_trandoshan_base_female, "object/creature/npc/base/shared_trandoshan_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_trandoshan_base_female, "object/creature/npc/base/shared_trandoshan_base_female.iff")
 
 object_creature_npc_base_shared_trandoshan_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4017,7 +4017,7 @@ object_creature_npc_base_shared_trandoshan_base_male = SharedCreatureObjectTempl
 	clientObjectCRC = 193024850
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_trandoshan_base_male, "object/creature/npc/base/shared_trandoshan_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_trandoshan_base_male, "object/creature/npc/base/shared_trandoshan_base_male.iff")
 
 object_creature_npc_base_shared_tusken_raider_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4095,7 +4095,7 @@ object_creature_npc_base_shared_tusken_raider_base_male = SharedCreatureObjectTe
 	clientObjectCRC = 344809642
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_tusken_raider_base_male, "object/creature/npc/base/shared_tusken_raider_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_tusken_raider_base_male, "object/creature/npc/base/shared_tusken_raider_base_male.iff")
 
 object_creature_npc_base_shared_twilek_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4173,7 +4173,7 @@ object_creature_npc_base_shared_twilek_base_female = SharedCreatureObjectTemplat
 	clientObjectCRC = 4167458949
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_twilek_base_female, "object/creature/npc/base/shared_twilek_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_twilek_base_female, "object/creature/npc/base/shared_twilek_base_female.iff")
 
 object_creature_npc_base_shared_twilek_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4251,7 +4251,7 @@ object_creature_npc_base_shared_twilek_base_male = SharedCreatureObjectTemplate:
 	clientObjectCRC = 3121839578
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_twilek_base_male, "object/creature/npc/base/shared_twilek_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_twilek_base_male, "object/creature/npc/base/shared_twilek_base_male.iff")
 
 object_creature_npc_base_shared_weequay_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4329,7 +4329,7 @@ object_creature_npc_base_shared_weequay_base_male = SharedCreatureObjectTemplate
 	clientObjectCRC = 3478426739
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_weequay_base_male, "object/creature/npc/base/shared_weequay_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_weequay_base_male, "object/creature/npc/base/shared_weequay_base_male.iff")
 
 object_creature_npc_base_shared_whiphid_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4407,7 +4407,7 @@ object_creature_npc_base_shared_whiphid_base_female = SharedCreatureObjectTempla
 	clientObjectCRC = 858760919
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_whiphid_base_female, "object/creature/npc/base/shared_whiphid_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_whiphid_base_female, "object/creature/npc/base/shared_whiphid_base_female.iff")
 
 object_creature_npc_base_shared_whiphid_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4485,7 +4485,7 @@ object_creature_npc_base_shared_whiphid_base_male = SharedCreatureObjectTemplate
 	clientObjectCRC = 929953104
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_whiphid_base_male, "object/creature/npc/base/shared_whiphid_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_whiphid_base_male, "object/creature/npc/base/shared_whiphid_base_male.iff")
 
 object_creature_npc_base_shared_wookiee_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4563,7 +4563,7 @@ object_creature_npc_base_shared_wookiee_base_female = SharedCreatureObjectTempla
 	clientObjectCRC = 3361749167
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_wookiee_base_female, "object/creature/npc/base/shared_wookiee_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_wookiee_base_female, "object/creature/npc/base/shared_wookiee_base_female.iff")
 
 object_creature_npc_base_shared_wookiee_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4641,7 +4641,7 @@ object_creature_npc_base_shared_wookiee_base_male = SharedCreatureObjectTemplate
 	clientObjectCRC = 627149744
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_wookiee_base_male, "object/creature/npc/base/shared_wookiee_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_wookiee_base_male, "object/creature/npc/base/shared_wookiee_base_male.iff")
 
 object_creature_npc_base_shared_zabrak_base_female = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4719,7 +4719,7 @@ object_creature_npc_base_shared_zabrak_base_female = SharedCreatureObjectTemplat
 	clientObjectCRC = 2580396153
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_zabrak_base_female, "object/creature/npc/base/shared_zabrak_base_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_zabrak_base_female, "object/creature/npc/base/shared_zabrak_base_female.iff")
 
 object_creature_npc_base_shared_zabrak_base_male = SharedCreatureObjectTemplate:new {
 	acceleration = {6,2},
@@ -4797,4 +4797,4 @@ object_creature_npc_base_shared_zabrak_base_male = SharedCreatureObjectTemplate:
 	clientObjectCRC = 2904879514
 }
 
-ObjectTemplates:addTemplate(object_creature_npc_base_shared_zabrak_base_male, "object/creature/npc/base/shared_zabrak_base_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_zabrak_base_male, "object/creature/npc/base/shared_zabrak_base_male.iff")

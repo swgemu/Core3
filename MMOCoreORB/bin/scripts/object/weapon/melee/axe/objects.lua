@@ -97,7 +97,7 @@ object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 3808952162
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_axe_shared_axe_heavy_duty, "object/weapon/melee/axe/shared_axe_heavy_duty.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_heavy_duty, "object/weapon/melee/axe/shared_axe_heavy_duty.iff")
 
 object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_vibroax.apt",
@@ -155,4 +155,4 @@ object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1835485114
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_axe_shared_axe_vibroaxe, "object/weapon/melee/axe/shared_axe_vibroaxe.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_vibroaxe, "object/weapon/melee/axe/shared_axe_vibroaxe.iff")

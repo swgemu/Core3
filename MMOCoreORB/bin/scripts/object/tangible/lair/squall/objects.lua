@@ -93,7 +93,7 @@ object_tangible_lair_squall_shared_lair_squall = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 131581462
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_squall_shared_lair_squall, "object/tangible/lair/squall/shared_lair_squall.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_squall_shared_lair_squall, "object/tangible/lair/squall/shared_lair_squall.iff")
 
 object_tangible_lair_squall_shared_lair_squall_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_squall_shared_lair_squall_grassland = SharedTangibleObjectT
 	clientObjectCRC = 3621609063
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_squall_shared_lair_squall_grassland, "object/tangible/lair/squall/shared_lair_squall_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_squall_shared_lair_squall_grassland, "object/tangible/lair/squall/shared_lair_squall_grassland.iff")

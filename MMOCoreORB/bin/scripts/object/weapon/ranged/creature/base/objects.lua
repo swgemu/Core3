@@ -97,4 +97,4 @@ object_weapon_ranged_creature_base_shared_creature_base = SharedWeaponObjectTemp
 	clientObjectCRC = 2748406341
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_creature_base_shared_creature_base, "object/weapon/ranged/creature/base/shared_creature_base.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_base_shared_creature_base, "object/weapon/ranged/creature/base/shared_creature_base.iff")

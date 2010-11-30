@@ -93,7 +93,7 @@ object_tangible_lair_kima_shared_lair_kima = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3165231595
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima, "object/tangible/lair/kima/shared_lair_kima.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima, "object/tangible/lair/kima/shared_lair_kima.iff")
 
 object_tangible_lair_kima_shared_lair_kima_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_kima_shared_lair_kima_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 2030650931
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima_grassland, "object/tangible/lair/kima/shared_lair_kima_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima_grassland, "object/tangible/lair/kima/shared_lair_kima_grassland.iff")
 
 object_tangible_lair_kima_shared_lair_kima_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_kima_shared_lair_kima_mountain = SharedTangibleObjectTempla
 	clientObjectCRC = 4188775446
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima_mountain, "object/tangible/lair/kima/shared_lair_kima_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima_mountain, "object/tangible/lair/kima/shared_lair_kima_mountain.iff")

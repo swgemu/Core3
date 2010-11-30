@@ -93,4 +93,4 @@ object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed = Sha
 	clientObjectCRC = 3347458445
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed, "object/tangible/deed/faction_perk/covert_detector/shared_detector_32m_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed, "object/tangible/deed/faction_perk/covert_detector/shared_detector_32m_deed.iff")

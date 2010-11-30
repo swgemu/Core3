@@ -93,7 +93,7 @@ object_tangible_component_item_shared_electronic_control_unit = SharedTangibleOb
 	clientObjectCRC = 814846904
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronic_control_unit, "object/tangible/component/item/shared_electronic_control_unit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_control_unit, "object/tangible/component/item/shared_electronic_control_unit.iff")
 
 object_tangible_component_item_shared_electronic_energy_distributor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -147,7 +147,7 @@ object_tangible_component_item_shared_electronic_energy_distributor = SharedTang
 	clientObjectCRC = 3328520335
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronic_energy_distributor, "object/tangible/component/item/shared_electronic_energy_distributor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_energy_distributor, "object/tangible/component/item/shared_electronic_energy_distributor.iff")
 
 object_tangible_component_item_shared_electronic_power_conditioner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -201,7 +201,7 @@ object_tangible_component_item_shared_electronic_power_conditioner = SharedTangi
 	clientObjectCRC = 1024745663
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronic_power_conditioner, "object/tangible/component/item/shared_electronic_power_conditioner.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_power_conditioner, "object/tangible/component/item/shared_electronic_power_conditioner.iff")
 
 object_tangible_component_item_shared_electronics_gp_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -255,7 +255,7 @@ object_tangible_component_item_shared_electronics_gp_module = SharedTangibleObje
 	clientObjectCRC = 3786408832
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronics_gp_module, "object/tangible/component/item/shared_electronics_gp_module.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronics_gp_module, "object/tangible/component/item/shared_electronics_gp_module.iff")
 
 object_tangible_component_item_shared_electronics_memory_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -309,7 +309,7 @@ object_tangible_component_item_shared_electronics_memory_module = SharedTangible
 	clientObjectCRC = 3552886678
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronics_memory_module, "object/tangible/component/item/shared_electronics_memory_module.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronics_memory_module, "object/tangible/component/item/shared_electronics_memory_module.iff")
 
 object_tangible_component_item_shared_large_sensor_package = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -363,7 +363,7 @@ object_tangible_component_item_shared_large_sensor_package = SharedTangibleObjec
 	clientObjectCRC = 366580459
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_shared_large_sensor_package, "object/tangible/component/item/shared_large_sensor_package.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_large_sensor_package, "object/tangible/component/item/shared_large_sensor_package.iff")
 
 object_tangible_component_item_shared_micro_sensor_suite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
@@ -417,4 +417,4 @@ object_tangible_component_item_shared_micro_sensor_suite = SharedTangibleObjectT
 	clientObjectCRC = 3198540321
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_item_shared_micro_sensor_suite, "object/tangible/component/item/shared_micro_sensor_suite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_micro_sensor_suite, "object/tangible/component/item/shared_micro_sensor_suite.iff")

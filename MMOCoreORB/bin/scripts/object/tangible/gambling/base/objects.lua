@@ -93,4 +93,4 @@ object_tangible_gambling_base_shared_gambling_station = SharedTangibleObjectTemp
 	clientObjectCRC = 3509750456
 }
 
-ObjectTemplates:addTemplate(object_tangible_gambling_base_shared_gambling_station, "object/tangible/gambling/base/shared_gambling_station.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gambling_base_shared_gambling_station, "object/tangible/gambling/base/shared_gambling_station.iff")

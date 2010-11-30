@@ -96,4 +96,4 @@ object_building_faction_perk_base_shared_factional_building_base = SharedBuildin
 	clientObjectCRC = 275299294
 }
 
-ObjectTemplates:addTemplate(object_building_faction_perk_base_shared_factional_building_base, "object/building/faction_perk/base/shared_factional_building_base.iff")
+ObjectTemplates:addClientTemplate(object_building_faction_perk_base_shared_factional_building_base, "object/building/faction_perk/base/shared_factional_building_base.iff")

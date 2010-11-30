@@ -93,7 +93,7 @@ object_tangible_wearables_vest_shared_vest_hutt_gang_s01 = SharedTangibleObjectT
 	clientObjectCRC = 589794232
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_hutt_gang_s01, "object/tangible/wearables/vest/shared_vest_hutt_gang_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_hutt_gang_s01, "object/tangible/wearables/vest/shared_vest_hutt_gang_s01.iff")
 
 object_tangible_wearables_vest_shared_vest_hutt_gang_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_hutt_gang_s02_f.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_vest_shared_vest_hutt_gang_s02 = SharedTangibleObjectT
 	clientObjectCRC = 4163904303
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_hutt_gang_s02, "object/tangible/wearables/vest/shared_vest_hutt_gang_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_hutt_gang_s02, "object/tangible/wearables/vest/shared_vest_hutt_gang_s02.iff")
 
 object_tangible_wearables_vest_shared_vest_hutt_gang_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_hutt_gang_s03_f.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_vest_shared_vest_hutt_gang_s03 = SharedTangibleObjectT
 	clientObjectCRC = 2973582498
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_hutt_gang_s03, "object/tangible/wearables/vest/shared_vest_hutt_gang_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_hutt_gang_s03, "object/tangible/wearables/vest/shared_vest_hutt_gang_s03.iff")
 
 object_tangible_wearables_vest_shared_vest_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s01_f.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_vest_shared_vest_s01 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 815018384
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s01, "object/tangible/wearables/vest/shared_vest_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s01, "object/tangible/wearables/vest/shared_vest_s01.iff")
 
 object_tangible_wearables_vest_shared_vest_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s02_f.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_vest_shared_vest_s02 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3951270151
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s02, "object/tangible/wearables/vest/shared_vest_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s02, "object/tangible/wearables/vest/shared_vest_s02.iff")
 
 object_tangible_wearables_vest_shared_vest_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s03_f.sat",
@@ -363,7 +363,7 @@ object_tangible_wearables_vest_shared_vest_s03 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2727280266
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s03, "object/tangible/wearables/vest/shared_vest_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s03, "object/tangible/wearables/vest/shared_vest_s03.iff")
 
 object_tangible_wearables_vest_shared_vest_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s04_f.sat",
@@ -417,7 +417,7 @@ object_tangible_wearables_vest_shared_vest_s04 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1500370334
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s04, "object/tangible/wearables/vest/shared_vest_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s04, "object/tangible/wearables/vest/shared_vest_s04.iff")
 
 object_tangible_wearables_vest_shared_vest_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s05_f.sat",
@@ -471,7 +471,7 @@ object_tangible_wearables_vest_shared_vest_s05 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 274772499
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s05, "object/tangible/wearables/vest/shared_vest_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s05, "object/tangible/wearables/vest/shared_vest_s05.iff")
 
 object_tangible_wearables_vest_shared_vest_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s06_f.sat",
@@ -525,7 +525,7 @@ object_tangible_wearables_vest_shared_vest_s06 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3413580420
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s06, "object/tangible/wearables/vest/shared_vest_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s06, "object/tangible/wearables/vest/shared_vest_s06.iff")
 
 object_tangible_wearables_vest_shared_vest_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s09_f.sat",
@@ -579,7 +579,7 @@ object_tangible_wearables_vest_shared_vest_s09 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1904031382
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s09, "object/tangible/wearables/vest/shared_vest_s09.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s09, "object/tangible/wearables/vest/shared_vest_s09.iff")
 
 object_tangible_wearables_vest_shared_vest_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s10_f.sat",
@@ -633,7 +633,7 @@ object_tangible_wearables_vest_shared_vest_s10 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1655790437
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s10, "object/tangible/wearables/vest/shared_vest_s10.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s10, "object/tangible/wearables/vest/shared_vest_s10.iff")
 
 object_tangible_wearables_vest_shared_vest_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s11_f.sat",
@@ -687,7 +687,7 @@ object_tangible_wearables_vest_shared_vest_s11 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 733756648
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s11, "object/tangible/wearables/vest/shared_vest_s11.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s11, "object/tangible/wearables/vest/shared_vest_s11.iff")
 
 object_tangible_wearables_vest_shared_vest_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vest_s15_f.sat",
@@ -741,4 +741,4 @@ object_tangible_wearables_vest_shared_vest_s15 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 189316971
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_vest_shared_vest_s15, "object/tangible/wearables/vest/shared_vest_s15.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_vest_shared_vest_s15, "object/tangible/wearables/vest/shared_vest_s15.iff")

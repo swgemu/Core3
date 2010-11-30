@@ -93,4 +93,4 @@ object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTem
 	clientObjectCRC = 2963077221
 }
 
-ObjectTemplates:addTemplate(object_tangible_instrument_base_shared_instrument_base, "object/tangible/instrument/base/shared_instrument_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_instrument_base_shared_instrument_base, "object/tangible/instrument/base/shared_instrument_base.iff")

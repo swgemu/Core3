@@ -93,4 +93,4 @@ object_tangible_component_food_base_shared_drink_container_base = SharedTangible
 	clientObjectCRC = 1975147691
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_base_shared_drink_container_base, "object/tangible/component/food/base/shared_drink_container_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_base_shared_drink_container_base, "object/tangible/component/food/base/shared_drink_container_base.iff")

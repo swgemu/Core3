@@ -97,7 +97,7 @@ object_weapon_melee_2h_sword_base_shared_2h_sword_base = SharedWeaponObjectTempl
 	clientObjectCRC = 3231039364
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_base_shared_2h_sword_base, "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_base_shared_2h_sword_base, "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff")
 
 object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
@@ -155,4 +155,4 @@ object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponO
 	clientObjectCRC = 3974479430
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base, "object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base, "object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff")

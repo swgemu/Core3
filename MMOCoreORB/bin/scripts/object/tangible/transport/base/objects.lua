@@ -93,4 +93,4 @@ object_tangible_transport_base_shared_transport_base = SharedTangibleObjectTempl
 	clientObjectCRC = 3243898728
 }
 
-ObjectTemplates:addTemplate(object_tangible_transport_base_shared_transport_base, "object/tangible/transport/base/shared_transport_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_transport_base_shared_transport_base, "object/tangible/transport/base/shared_transport_base.iff")

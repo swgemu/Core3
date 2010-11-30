@@ -93,7 +93,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s01 = SharedTangibleObjectT
 	clientObjectCRC = 2100666153
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s01, "object/tangible/wearables/bandolier/shared_bandolier_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s01, "object/tangible/wearables/bandolier/shared_bandolier_s01.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s02 = SharedTangibleObjectT
 	clientObjectCRC = 2787260350
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02, "object/tangible/wearables/bandolier/shared_bandolier_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02, "object/tangible/wearables/bandolier/shared_bandolier_s02.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s02_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s02_quest = SharedTangibleO
 	clientObjectCRC = 1876108427
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02_quest, "object/tangible/wearables/bandolier/shared_bandolier_s02_quest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02_quest, "object/tangible/wearables/bandolier/shared_bandolier_s02_quest.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s03_f.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s03 = SharedTangibleObjectT
 	clientObjectCRC = 4012855347
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s03, "object/tangible/wearables/bandolier/shared_bandolier_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s03, "object/tangible/wearables/bandolier/shared_bandolier_s03.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s04 = SharedTangibleObjectT
 	clientObjectCRC = 348945191
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04, "object/tangible/wearables/bandolier/shared_bandolier_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04, "object/tangible/wearables/bandolier/shared_bandolier_s04.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s04_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
@@ -363,7 +363,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s04_quest = SharedTangibleO
 	clientObjectCRC = 1941573505
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04_quest, "object/tangible/wearables/bandolier/shared_bandolier_s04_quest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04_quest, "object/tangible/wearables/bandolier/shared_bandolier_s04_quest.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s05_f.sat",
@@ -417,7 +417,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s05 = SharedTangibleObjectT
 	clientObjectCRC = 1572936874
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s05, "object/tangible/wearables/bandolier/shared_bandolier_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s05, "object/tangible/wearables/bandolier/shared_bandolier_s05.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s06_f.sat",
@@ -471,7 +471,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s06 = SharedTangibleObjectT
 	clientObjectCRC = 2262217789
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s06, "object/tangible/wearables/bandolier/shared_bandolier_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s06, "object/tangible/wearables/bandolier/shared_bandolier_s06.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s07_f.sat",
@@ -525,7 +525,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s07 = SharedTangibleObjectT
 	clientObjectCRC = 3487290288
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s07, "object/tangible/wearables/bandolier/shared_bandolier_s07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s07, "object/tangible/wearables/bandolier/shared_bandolier_s07.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s08_f.sat",
@@ -579,7 +579,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s08 = SharedTangibleObjectT
 	clientObjectCRC = 1976696738
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s08, "object/tangible/wearables/bandolier/shared_bandolier_s08.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s08, "object/tangible/wearables/bandolier/shared_bandolier_s08.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s09_wke_f.sat",
@@ -633,7 +633,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s09 = SharedTangibleObjectT
 	clientObjectCRC = 1021089839
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s09, "object/tangible/wearables/bandolier/shared_bandolier_s09.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s09, "object/tangible/wearables/bandolier/shared_bandolier_s09.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_tusken_raider_s01_m.sat",
@@ -687,7 +687,7 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01 = SharedT
 	clientObjectCRC = 2362441992
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s01.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_tusken_raider_s02_m.sat",
@@ -741,7 +741,7 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02 = SharedT
 	clientObjectCRC = 1472702879
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s02.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_tusken_raider_s03_m.sat",
@@ -795,7 +795,7 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03 = SharedT
 	clientObjectCRC = 516607506
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s03.iff")
 
 object_tangible_wearables_bandolier_shared_double_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s03_f.sat",
@@ -849,7 +849,7 @@ object_tangible_wearables_bandolier_shared_double_bandolier = SharedTangibleObje
 	clientObjectCRC = 1293966476
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_double_bandolier, "object/tangible/wearables/bandolier/shared_double_bandolier.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_double_bandolier, "object/tangible/wearables/bandolier/shared_double_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_ith_double_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s03_f.sat",
@@ -903,7 +903,7 @@ object_tangible_wearables_bandolier_shared_ith_double_bandolier = SharedTangible
 	clientObjectCRC = 1065147216
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_ith_double_bandolier, "object/tangible/wearables/bandolier/shared_ith_double_bandolier.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_double_bandolier, "object/tangible/wearables/bandolier/shared_ith_double_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s02_f.sat",
@@ -957,7 +957,7 @@ object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier = SharedTangi
 	clientObjectCRC = 3570000539
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier, "object/tangible/wearables/bandolier/shared_ith_mercenary_bandolier.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier, "object/tangible/wearables/bandolier/shared_ith_mercenary_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s04_f.sat",
@@ -1011,7 +1011,7 @@ object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier = SharedTan
 	clientObjectCRC = 721380424
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier, "object/tangible/wearables/bandolier/shared_ith_multipocket_bandolier.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier, "object/tangible/wearables/bandolier/shared_ith_multipocket_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_mercenary_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
@@ -1065,7 +1065,7 @@ object_tangible_wearables_bandolier_shared_mercenary_bandolier = SharedTangibleO
 	clientObjectCRC = 3002918794
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_mercenary_bandolier, "object/tangible/wearables/bandolier/shared_mercenary_bandolier.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_mercenary_bandolier, "object/tangible/wearables/bandolier/shared_mercenary_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_multipocket_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
@@ -1119,4 +1119,4 @@ object_tangible_wearables_bandolier_shared_multipocket_bandolier = SharedTangibl
 	clientObjectCRC = 1747617663
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_multipocket_bandolier, "object/tangible/wearables/bandolier/shared_multipocket_bandolier.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_multipocket_bandolier, "object/tangible/wearables/bandolier/shared_multipocket_bandolier.iff")

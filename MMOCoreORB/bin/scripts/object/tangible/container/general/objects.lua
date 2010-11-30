@@ -93,7 +93,7 @@ object_tangible_container_general_shared_cargo_pocket = SharedTangibleObjectTemp
 	clientObjectCRC = 3378300955
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_general_shared_cargo_pocket, "object/tangible/container/general/shared_cargo_pocket.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_cargo_pocket, "object/tangible/container/general/shared_cargo_pocket.iff")
 
 object_tangible_container_general_shared_satchel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bag_ingredients_sm_s1.apt",
@@ -147,7 +147,7 @@ object_tangible_container_general_shared_satchel = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2917538
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_general_shared_satchel, "object/tangible/container/general/shared_satchel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_satchel, "object/tangible/container/general/shared_satchel.iff")
 
 object_tangible_container_general_shared_tech_armoire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
@@ -201,7 +201,7 @@ object_tangible_container_general_shared_tech_armoire = SharedTangibleObjectTemp
 	clientObjectCRC = 997788135
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_general_shared_tech_armoire, "object/tangible/container/general/shared_tech_armoire.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_armoire, "object/tangible/container/general/shared_tech_armoire.iff")
 
 object_tangible_container_general_shared_tech_bookcase = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_bookcase_s01.apt",
@@ -255,7 +255,7 @@ object_tangible_container_general_shared_tech_bookcase = SharedTangibleObjectTem
 	clientObjectCRC = 3363389476
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_general_shared_tech_bookcase, "object/tangible/container/general/shared_tech_bookcase.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_bookcase, "object/tangible/container/general/shared_tech_bookcase.iff")
 
 object_tangible_container_general_shared_tech_chest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
@@ -309,4 +309,4 @@ object_tangible_container_general_shared_tech_chest = SharedTangibleObjectTempla
 	clientObjectCRC = 542811322
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_general_shared_tech_chest, "object/tangible/container/general/shared_tech_chest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_chest, "object/tangible/container/general/shared_tech_chest.iff")

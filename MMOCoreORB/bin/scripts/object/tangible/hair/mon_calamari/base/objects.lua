@@ -93,7 +93,7 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_base = SharedTan
 	clientObjectCRC = 2992922029
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_base.iff")
 
 object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -147,7 +147,7 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_female_base = Sh
 	clientObjectCRC = 3431919684
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_female_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_female_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_female_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_female_base.iff")
 
 object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -201,4 +201,4 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_male_base = Shar
 	clientObjectCRC = 70668813
 }
 
-ObjectTemplates:addTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_male_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_male_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_male_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_male_base.iff")

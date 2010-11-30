@@ -93,7 +93,7 @@ object_tangible_lair_roba_shared_lair_roba = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 636662941
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_roba_shared_lair_roba, "object/tangible/lair/roba/shared_lair_roba.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_roba_shared_lair_roba, "object/tangible/lair/roba/shared_lair_roba.iff")
 
 object_tangible_lair_roba_shared_lair_roba_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_roba_shared_lair_roba_grassland = SharedTangibleObjectTempl
 	clientObjectCRC = 4293395359
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_roba_shared_lair_roba_grassland, "object/tangible/lair/roba/shared_lair_roba_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_roba_shared_lair_roba_grassland, "object/tangible/lair/roba/shared_lair_roba_grassland.iff")

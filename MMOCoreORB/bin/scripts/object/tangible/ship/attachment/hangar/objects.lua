@@ -93,4 +93,4 @@ object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar = SharedTang
 	clientObjectCRC = 1810673938
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar, "object/tangible/ship/attachment/hangar/shared_star_destroyer_hangar.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar, "object/tangible/ship/attachment/hangar/shared_star_destroyer_hangar.iff")

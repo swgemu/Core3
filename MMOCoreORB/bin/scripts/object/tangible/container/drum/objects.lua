@@ -93,7 +93,7 @@ object_tangible_container_drum_shared_large_plain_crate_s01 = SharedTangibleObje
 	clientObjectCRC = 1685311950
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_large_plain_crate_s01, "object/tangible/container/drum/shared_large_plain_crate_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_large_plain_crate_s01, "object/tangible/container/drum/shared_large_plain_crate_s01.iff")
 
 object_tangible_container_drum_shared_large_plain_crate_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s2.apt",
@@ -147,7 +147,7 @@ object_tangible_container_drum_shared_large_plain_crate_s02 = SharedTangibleObje
 	clientObjectCRC = 3211032921
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_large_plain_crate_s02, "object/tangible/container/drum/shared_large_plain_crate_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_large_plain_crate_s02, "object/tangible/container/drum/shared_large_plain_crate_s02.iff")
 
 object_tangible_container_drum_shared_large_plain_crate_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -201,7 +201,7 @@ object_tangible_container_drum_shared_large_plain_crate_s03 = SharedTangibleObje
 	clientObjectCRC = 4134084308
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_large_plain_crate_s03, "object/tangible/container/drum/shared_large_plain_crate_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_large_plain_crate_s03, "object/tangible/container/drum/shared_large_plain_crate_s03.iff")
 
 object_tangible_container_drum_shared_large_plain_crate_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s4.apt",
@@ -255,7 +255,7 @@ object_tangible_container_drum_shared_large_plain_crate_s04 = SharedTangibleObje
 	clientObjectCRC = 227161536
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_large_plain_crate_s04, "object/tangible/container/drum/shared_large_plain_crate_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_large_plain_crate_s04, "object/tangible/container/drum/shared_large_plain_crate_s04.iff")
 
 object_tangible_container_drum_shared_pob_ship_loot_box = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
@@ -309,7 +309,7 @@ object_tangible_container_drum_shared_pob_ship_loot_box = SharedTangibleObjectTe
 	clientObjectCRC = 1962311443
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_pob_ship_loot_box, "object/tangible/container/drum/shared_pob_ship_loot_box.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_pob_ship_loot_box, "object/tangible/container/drum/shared_pob_ship_loot_box.iff")
 
 object_tangible_container_drum_shared_poi_prize_box_off = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
@@ -363,7 +363,7 @@ object_tangible_container_drum_shared_poi_prize_box_off = SharedTangibleObjectTe
 	clientObjectCRC = 2325798188
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_poi_prize_box_off, "object/tangible/container/drum/shared_poi_prize_box_off.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_poi_prize_box_off, "object/tangible/container/drum/shared_poi_prize_box_off.iff")
 
 object_tangible_container_drum_shared_poi_prize_box_on = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
@@ -417,7 +417,7 @@ object_tangible_container_drum_shared_poi_prize_box_on = SharedTangibleObjectTem
 	clientObjectCRC = 856439167
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_poi_prize_box_on, "object/tangible/container/drum/shared_poi_prize_box_on.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_poi_prize_box_on, "object/tangible/container/drum/shared_poi_prize_box_on.iff")
 
 object_tangible_container_drum_shared_tatt_drum_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s05.apt",
@@ -471,7 +471,7 @@ object_tangible_container_drum_shared_tatt_drum_1 = SharedTangibleObjectTemplate
 	clientObjectCRC = 3342593323
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_tatt_drum_1, "object/tangible/container/drum/shared_tatt_drum_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_tatt_drum_1, "object/tangible/container/drum/shared_tatt_drum_1.iff")
 
 object_tangible_container_drum_shared_treasure_drum = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
@@ -525,7 +525,7 @@ object_tangible_container_drum_shared_treasure_drum = SharedTangibleObjectTempla
 	clientObjectCRC = 3112160566
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_treasure_drum, "object/tangible/container/drum/shared_treasure_drum.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_treasure_drum, "object/tangible/container/drum/shared_treasure_drum.iff")
 
 object_tangible_container_drum_shared_warren_core_rod_storage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -579,7 +579,7 @@ object_tangible_container_drum_shared_warren_core_rod_storage = SharedTangibleOb
 	clientObjectCRC = 3188177313
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_core_rod_storage, "object/tangible/container/drum/shared_warren_core_rod_storage.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_core_rod_storage, "object/tangible/container/drum/shared_warren_core_rod_storage.iff")
 
 object_tangible_container_drum_shared_warren_drum_loot = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
@@ -633,7 +633,7 @@ object_tangible_container_drum_shared_warren_drum_loot = SharedTangibleObjectTem
 	clientObjectCRC = 3257388271
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_drum_loot, "object/tangible/container/drum/shared_warren_drum_loot.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_drum_loot, "object/tangible/container/drum/shared_warren_drum_loot.iff")
 
 object_tangible_container_drum_shared_warren_drum_skeleton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
@@ -687,7 +687,7 @@ object_tangible_container_drum_shared_warren_drum_skeleton = SharedTangibleObjec
 	clientObjectCRC = 1100233944
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_drum_skeleton, "object/tangible/container/drum/shared_warren_drum_skeleton.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_drum_skeleton, "object/tangible/container/drum/shared_warren_drum_skeleton.iff")
 
 object_tangible_container_drum_shared_warren_drum_tech_armoire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
@@ -741,7 +741,7 @@ object_tangible_container_drum_shared_warren_drum_tech_armoire = SharedTangibleO
 	clientObjectCRC = 738307164
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_drum_tech_armoire, "object/tangible/container/drum/shared_warren_drum_tech_armoire.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_drum_tech_armoire, "object/tangible/container/drum/shared_warren_drum_tech_armoire.iff")
 
 object_tangible_container_drum_shared_warren_drum_tech_chest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
@@ -795,7 +795,7 @@ object_tangible_container_drum_shared_warren_drum_tech_chest = SharedTangibleObj
 	clientObjectCRC = 2500254490
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_drum_tech_chest, "object/tangible/container/drum/shared_warren_drum_tech_chest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_drum_tech_chest, "object/tangible/container/drum/shared_warren_drum_tech_chest.iff")
 
 object_tangible_container_drum_shared_warren_reactor_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -849,4 +849,4 @@ object_tangible_container_drum_shared_warren_reactor_core = SharedTangibleObject
 	clientObjectCRC = 2456580913
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_reactor_core, "object/tangible/container/drum/shared_warren_reactor_core.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_reactor_core, "object/tangible/container/drum/shared_warren_reactor_core.iff")

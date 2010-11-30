@@ -93,7 +93,7 @@ object_tangible_component_droid_repair_shared_capacitor_high_discharge = SharedT
 	clientObjectCRC = 475400384
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_capacitor_high_discharge, "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_capacitor_high_discharge, "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff")
 
 object_tangible_component_droid_repair_shared_capacitor_low_discharge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_jewelry_setting.apt",
@@ -147,7 +147,7 @@ object_tangible_component_droid_repair_shared_capacitor_low_discharge = SharedTa
 	clientObjectCRC = 3184279961
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_capacitor_low_discharge, "object/tangible/component/droid/repair/shared_capacitor_low_discharge.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_capacitor_low_discharge, "object/tangible/component/droid/repair/shared_capacitor_low_discharge.iff")
 
 object_tangible_component_droid_repair_shared_diagnostic_circuit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -201,7 +201,7 @@ object_tangible_component_droid_repair_shared_diagnostic_circuit = SharedTangibl
 	clientObjectCRC = 1770332803
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit, "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit, "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff")
 
 object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -255,7 +255,7 @@ object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced = Shar
 	clientObjectCRC = 1133144792
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced, "object/tangible/component/droid/repair/shared_diagnostic_circuit_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced, "object/tangible/component/droid/repair/shared_diagnostic_circuit_advanced.iff")
 
 object_tangible_component_droid_repair_shared_power_supply_redundant = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
@@ -309,7 +309,7 @@ object_tangible_component_droid_repair_shared_power_supply_redundant = SharedTan
 	clientObjectCRC = 2336135433
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant, "object/tangible/component/droid/repair/shared_power_supply_redundant.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant, "object/tangible/component/droid/repair/shared_power_supply_redundant.iff")
 
 object_tangible_component_droid_repair_shared_power_supply_redundant_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s2.apt",
@@ -363,7 +363,7 @@ object_tangible_component_droid_repair_shared_power_supply_redundant_advanced = 
 	clientObjectCRC = 1755831948
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant_advanced, "object/tangible/component/droid/repair/shared_power_supply_redundant_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant_advanced, "object/tangible/component/droid/repair/shared_power_supply_redundant_advanced.iff")
 
 object_tangible_component_droid_repair_shared_repair_unit_casing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
@@ -417,7 +417,7 @@ object_tangible_component_droid_repair_shared_repair_unit_casing = SharedTangibl
 	clientObjectCRC = 2421721438
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing, "object/tangible/component/droid/repair/shared_repair_unit_casing.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing, "object/tangible/component/droid/repair/shared_repair_unit_casing.iff")
 
 object_tangible_component_droid_repair_shared_repair_unit_casing_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
@@ -471,7 +471,7 @@ object_tangible_component_droid_repair_shared_repair_unit_casing_advanced = Shar
 	clientObjectCRC = 295372848
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing_advanced, "object/tangible/component/droid/repair/shared_repair_unit_casing_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing_advanced, "object/tangible/component/droid/repair/shared_repair_unit_casing_advanced.iff")
 
 object_tangible_component_droid_repair_shared_unit_delivery_cartridge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -525,7 +525,7 @@ object_tangible_component_droid_repair_shared_unit_delivery_cartridge = SharedTa
 	clientObjectCRC = 3230177189
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge, "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge, "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff")
 
 object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
@@ -579,4 +579,4 @@ object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced =
 	clientObjectCRC = 1878973727
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced, "object/tangible/component/droid/repair/shared_unit_delivery_cartridge_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced, "object/tangible/component/droid/repair/shared_unit_delivery_cartridge_advanced.iff")

@@ -97,4 +97,4 @@ object_weapon_melee_base_shared_base_melee = SharedWeaponObjectTemplate:new {
 	clientObjectCRC = 1158062481
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_base_shared_base_melee, "object/weapon/melee/base/shared_base_melee.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_base_shared_base_melee, "object/weapon/melee/base/shared_base_melee.iff")

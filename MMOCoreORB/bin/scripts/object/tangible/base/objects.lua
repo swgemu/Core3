@@ -93,7 +93,7 @@ object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3825894482
 }
 
-ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_base, "object/tangible/base/shared_tangible_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_base, "object/tangible/base/shared_tangible_base.iff")
 
 object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -147,7 +147,7 @@ object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1525014593
 }
 
-ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_craftable, "object/tangible/base/shared_tangible_craftable.iff")
+ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_craftable, "object/tangible/base/shared_tangible_craftable.iff")
 
 object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -201,4 +201,4 @@ object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1350067174
 }
 
-ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_default, "object/tangible/base/shared_tangible_default.iff")
+ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_default, "object/tangible/base/shared_tangible_default.iff")

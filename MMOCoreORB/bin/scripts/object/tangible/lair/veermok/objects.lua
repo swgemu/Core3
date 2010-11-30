@@ -93,7 +93,7 @@ object_tangible_lair_veermok_shared_lair_veermok = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2070384123
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok, "object/tangible/lair/veermok/shared_lair_veermok.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok, "object/tangible/lair/veermok/shared_lair_veermok.iff")
 
 object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTe
 	clientObjectCRC = 4273060059
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, "object/tangible/lair/veermok/shared_lair_veermok_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, "object/tangible/lair/veermok/shared_lair_veermok_forest.iff")
 
 object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTem
 	clientObjectCRC = 2554849898
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, "object/tangible/lair/veermok/shared_lair_veermok_swamp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, "object/tangible/lair/veermok/shared_lair_veermok_swamp.iff")

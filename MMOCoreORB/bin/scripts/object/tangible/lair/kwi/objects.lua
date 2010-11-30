@@ -93,7 +93,7 @@ object_tangible_lair_kwi_shared_lair_kwi = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2075620240
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi, "object/tangible/lair/kwi/shared_lair_kwi.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi, "object/tangible/lair/kwi/shared_lair_kwi.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_kwi_shared_lair_kwi_desert = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3436978198
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_desert, "object/tangible/lair/kwi/shared_lair_kwi_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_desert, "object/tangible/lair/kwi/shared_lair_kwi_desert.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -201,7 +201,7 @@ object_tangible_lair_kwi_shared_lair_kwi_forest = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3879200403
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_forest, "object/tangible/lair/kwi/shared_lair_kwi_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_forest, "object/tangible/lair/kwi/shared_lair_kwi_forest.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
@@ -255,4 +255,4 @@ object_tangible_lair_kwi_shared_lair_kwi_mountain = SharedTangibleObjectTemplate
 	clientObjectCRC = 1326626395
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_mountain, "object/tangible/lair/kwi/shared_lair_kwi_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_mountain, "object/tangible/lair/kwi/shared_lair_kwi_mountain.iff")

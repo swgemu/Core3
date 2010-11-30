@@ -93,7 +93,7 @@ object_tangible_lair_bluefish_shared_lair_bluefish = SharedTangibleObjectTemplat
 	clientObjectCRC = 1606267256
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bluefish_shared_lair_bluefish, "object/tangible/lair/bluefish/shared_lair_bluefish.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bluefish_shared_lair_bluefish, "object/tangible/lair/bluefish/shared_lair_bluefish.iff")
 
 object_tangible_lair_bluefish_shared_lair_bluefish_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_bluefish_shared_lair_bluefish_underwater = SharedTangibleOb
 	clientObjectCRC = 2427174559
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bluefish_shared_lair_bluefish_underwater, "object/tangible/lair/bluefish/shared_lair_bluefish_underwater.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bluefish_shared_lair_bluefish_underwater, "object/tangible/lair/bluefish/shared_lair_bluefish_underwater.iff")

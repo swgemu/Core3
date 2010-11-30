@@ -83,7 +83,7 @@ object_static_item_shared_armor_bone_bicep_left = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1899025413
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_bicep_left, "object/static/item/shared_armor_bone_bicep_left.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_bicep_left, "object/static/item/shared_armor_bone_bicep_left.iff")
 
 object_static_item_shared_armor_bone_bicep_right = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bicep_r_m.sat",
@@ -127,7 +127,7 @@ object_static_item_shared_armor_bone_bicep_right = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 41670550
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_bicep_right, "object/static/item/shared_armor_bone_bicep_right.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_bicep_right, "object/static/item/shared_armor_bone_bicep_right.iff")
 
 object_static_item_shared_armor_bone_boots = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_boots_m.sat",
@@ -171,7 +171,7 @@ object_static_item_shared_armor_bone_boots = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 382834978
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_boots, "object/static/item/shared_armor_bone_boots.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_boots, "object/static/item/shared_armor_bone_boots.iff")
 
 object_static_item_shared_armor_bone_bracer_left = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bracer_l_m.sat",
@@ -215,7 +215,7 @@ object_static_item_shared_armor_bone_bracer_left = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 2196134634
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_bracer_left, "object/static/item/shared_armor_bone_bracer_left.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_bracer_left, "object/static/item/shared_armor_bone_bracer_left.iff")
 
 object_static_item_shared_armor_bone_bracer_right = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bracer_r_m.sat",
@@ -259,7 +259,7 @@ object_static_item_shared_armor_bone_bracer_right = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1343152966
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_bracer_right, "object/static/item/shared_armor_bone_bracer_right.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_bracer_right, "object/static/item/shared_armor_bone_bracer_right.iff")
 
 object_static_item_shared_armor_bone_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_chest_plate_m.sat",
@@ -303,7 +303,7 @@ object_static_item_shared_armor_bone_chestplate = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1633683478
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_chestplate, "object/static/item/shared_armor_bone_chestplate.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_chestplate, "object/static/item/shared_armor_bone_chestplate.iff")
 
 object_static_item_shared_armor_bone_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_helmet_m.sat",
@@ -347,7 +347,7 @@ object_static_item_shared_armor_bone_helmet = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3066229216
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_helmet, "object/static/item/shared_armor_bone_helmet.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_helmet, "object/static/item/shared_armor_bone_helmet.iff")
 
 object_static_item_shared_armor_bone_leggings = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_leggings_m.sat",
@@ -391,7 +391,7 @@ object_static_item_shared_armor_bone_leggings = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 140815738
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_leggings, "object/static/item/shared_armor_bone_leggings.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_leggings, "object/static/item/shared_armor_bone_leggings.iff")
 
 object_static_item_shared_armor_chitin_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_chest_plate_f.sat",
@@ -435,7 +435,7 @@ object_static_item_shared_armor_chitin_chestplate = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1343017016
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_chitin_chestplate, "object/static/item/shared_armor_chitin_chestplate.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_chitin_chestplate, "object/static/item/shared_armor_chitin_chestplate.iff")
 
 object_static_item_shared_armor_chitin_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_helmet_m.sat",
@@ -479,7 +479,7 @@ object_static_item_shared_armor_chitin_helmet = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3642120486
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_chitin_helmet, "object/static/item/shared_armor_chitin_helmet.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_chitin_helmet, "object/static/item/shared_armor_chitin_helmet.iff")
 
 object_static_item_shared_armor_composite_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_chest_plate_m.sat",
@@ -523,7 +523,7 @@ object_static_item_shared_armor_composite_chestplate = SharedStaticObjectTemplat
 	clientObjectCRC = 94582139
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_composite_chestplate, "object/static/item/shared_armor_composite_chestplate.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_composite_chestplate, "object/static/item/shared_armor_composite_chestplate.iff")
 
 object_static_item_shared_armor_composite_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_helmet_m.sat",
@@ -567,7 +567,7 @@ object_static_item_shared_armor_composite_helmet = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3193810957
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_composite_helmet, "object/static/item/shared_armor_composite_helmet.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_composite_helmet, "object/static/item/shared_armor_composite_helmet.iff")
 
 object_static_item_shared_armor_imp_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_f.sat",
@@ -611,7 +611,7 @@ object_static_item_shared_armor_imp_chestplate = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1320875919
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_imp_chestplate, "object/static/item/shared_armor_imp_chestplate.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_imp_chestplate, "object/static/item/shared_armor_imp_chestplate.iff")
 
 object_static_item_shared_armor_imp_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_helmet_f.sat",
@@ -655,7 +655,7 @@ object_static_item_shared_armor_imp_helmet = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2794536831
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_imp_helmet, "object/static/item/shared_armor_imp_helmet.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_imp_helmet, "object/static/item/shared_armor_imp_helmet.iff")
 
 object_static_item_shared_armor_imp_leggings = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_leggings_f.sat",
@@ -699,7 +699,7 @@ object_static_item_shared_armor_imp_leggings = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2742991799
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_imp_leggings, "object/static/item/shared_armor_imp_leggings.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_imp_leggings, "object/static/item/shared_armor_imp_leggings.iff")
 
 object_static_item_shared_armor_padded_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_chest_plate_f.sat",
@@ -743,7 +743,7 @@ object_static_item_shared_armor_padded_chestplate = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1633324476
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_padded_chestplate, "object/static/item/shared_armor_padded_chestplate.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_padded_chestplate, "object/static/item/shared_armor_padded_chestplate.iff")
 
 object_static_item_shared_armor_padded_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_helmet_f.sat",
@@ -787,7 +787,7 @@ object_static_item_shared_armor_padded_helmet = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 809863082
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_armor_padded_helmet, "object/static/item/shared_armor_padded_helmet.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_armor_padded_helmet, "object/static/item/shared_armor_padded_helmet.iff")
 
 object_static_item_shared_item_ammo_rocket = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_ammo_rocket.apt",
@@ -831,7 +831,7 @@ object_static_item_shared_item_ammo_rocket = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4170506744
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_ammo_rocket, "object/static/item/shared_item_ammo_rocket.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_ammo_rocket, "object/static/item/shared_item_ammo_rocket.iff")
 
 object_static_item_shared_item_atat_lifesupport_pack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_acc_imp_atat_pilot_life_support_pack.apt",
@@ -875,7 +875,7 @@ object_static_item_shared_item_atat_lifesupport_pack = SharedStaticObjectTemplat
 	clientObjectCRC = 570042739
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_atat_lifesupport_pack, "object/static/item/shared_item_atat_lifesupport_pack.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_atat_lifesupport_pack, "object/static/item/shared_item_atat_lifesupport_pack.iff")
 
 object_static_item_shared_item_axe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_vibroax.apt",
@@ -919,7 +919,7 @@ object_static_item_shared_item_axe = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 109834402
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_axe, "object/static/item/shared_item_axe.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_axe, "object/static/item/shared_item_axe.iff")
 
 object_static_item_shared_item_bacta_ampules = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
@@ -963,7 +963,7 @@ object_static_item_shared_item_bacta_ampules = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 568915597
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_bacta_ampules, "object/static/item/shared_item_bacta_ampules.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_bacta_ampules, "object/static/item/shared_item_bacta_ampules.iff")
 
 object_static_item_shared_item_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
@@ -1007,7 +1007,7 @@ object_static_item_shared_item_base = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 377921986
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_base, "object/static/item/shared_item_base.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_base, "object/static/item/shared_item_base.iff")
 
 object_static_item_shared_item_basket_closed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s01.apt",
@@ -1051,7 +1051,7 @@ object_static_item_shared_item_basket_closed = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2195165289
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_basket_closed, "object/static/item/shared_item_basket_closed.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_basket_closed, "object/static/item/shared_item_basket_closed.iff")
 
 object_static_item_shared_item_basket_frame = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s02.apt",
@@ -1095,7 +1095,7 @@ object_static_item_shared_item_basket_frame = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2018770690
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_basket_frame, "object/static/item/shared_item_basket_frame.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_basket_frame, "object/static/item/shared_item_basket_frame.iff")
 
 object_static_item_shared_item_basket_shallow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s03.apt",
@@ -1139,7 +1139,7 @@ object_static_item_shared_item_basket_shallow = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3461086095
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_basket_shallow, "object/static/item/shared_item_basket_shallow.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_basket_shallow, "object/static/item/shared_item_basket_shallow.iff")
 
 object_static_item_shared_item_binoculars = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_electrobinoculars_s1.apt",
@@ -1183,7 +1183,7 @@ object_static_item_shared_item_binoculars = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2258606562
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_binoculars, "object/static/item/shared_item_binoculars.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_binoculars, "object/static/item/shared_item_binoculars.iff")
 
 object_static_item_shared_item_bottle_fat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s01.apt",
@@ -1227,7 +1227,7 @@ object_static_item_shared_item_bottle_fat = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3689007977
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_bottle_fat, "object/static/item/shared_item_bottle_fat.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_bottle_fat, "object/static/item/shared_item_bottle_fat.iff")
 
 object_static_item_shared_item_bottle_pear = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s04.apt",
@@ -1271,7 +1271,7 @@ object_static_item_shared_item_bottle_pear = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1981667646
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_bottle_pear, "object/static/item/shared_item_bottle_pear.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_bottle_pear, "object/static/item/shared_item_bottle_pear.iff")
 
 object_static_item_shared_item_bottle_tall = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s02.apt",
@@ -1315,7 +1315,7 @@ object_static_item_shared_item_bottle_tall = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4225375385
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_bottle_tall, "object/static/item/shared_item_bottle_tall.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_bottle_tall, "object/static/item/shared_item_bottle_tall.iff")
 
 object_static_item_shared_item_bowl_carved = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s03.apt",
@@ -1359,7 +1359,7 @@ object_static_item_shared_item_bowl_carved = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3068941566
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_bowl_carved, "object/static/item/shared_item_bowl_carved.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_bowl_carved, "object/static/item/shared_item_bowl_carved.iff")
 
 object_static_item_shared_item_bowl_plain = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s01.apt",
@@ -1403,7 +1403,7 @@ object_static_item_shared_item_bowl_plain = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 107185491
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_bowl_plain, "object/static/item/shared_item_bowl_plain.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_bowl_plain, "object/static/item/shared_item_bowl_plain.iff")
 
 object_static_item_shared_item_bowl_shallow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s02.apt",
@@ -1447,7 +1447,7 @@ object_static_item_shared_item_bowl_shallow = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1053398824
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_bowl_shallow, "object/static/item/shared_item_bowl_shallow.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_bowl_shallow, "object/static/item/shared_item_bowl_shallow.iff")
 
 object_static_item_shared_item_bread_loaf = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
@@ -1491,7 +1491,7 @@ object_static_item_shared_item_bread_loaf = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3680189690
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_bread_loaf, "object/static/item/shared_item_bread_loaf.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_bread_loaf, "object/static/item/shared_item_bread_loaf.iff")
 
 object_static_item_shared_item_briefcase = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
@@ -1535,7 +1535,7 @@ object_static_item_shared_item_briefcase = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3247183112
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_briefcase, "object/static/item/shared_item_briefcase.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_briefcase, "object/static/item/shared_item_briefcase.iff")
 
 object_static_item_shared_item_cage_bamboo = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_cage_bamboo.apt",
@@ -1579,7 +1579,7 @@ object_static_item_shared_item_cage_bamboo = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2462334330
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_cage_bamboo, "object/static/item/shared_item_cage_bamboo.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_cage_bamboo, "object/static/item/shared_item_cage_bamboo.iff")
 
 object_static_item_shared_item_camera = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
@@ -1623,7 +1623,7 @@ object_static_item_shared_item_camera = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2142034506
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_camera, "object/static/item/shared_item_camera.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_camera, "object/static/item/shared_item_camera.iff")
 
 object_static_item_shared_item_carbine_dh17 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17_combined.apt",
@@ -1667,7 +1667,7 @@ object_static_item_shared_item_carbine_dh17 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3137119633
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_carbine_dh17, "object/static/item/shared_item_carbine_dh17.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_carbine_dh17, "object/static/item/shared_item_carbine_dh17.iff")
 
 object_static_item_shared_item_carbine_elite = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_elite_combined.apt",
@@ -1711,7 +1711,7 @@ object_static_item_shared_item_carbine_elite = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1473664410
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_carbine_elite, "object/static/item/shared_item_carbine_elite.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_carbine_elite, "object/static/item/shared_item_carbine_elite.iff")
 
 object_static_item_shared_item_carbine_imperial_e11 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11_combined.apt",
@@ -1755,7 +1755,7 @@ object_static_item_shared_item_carbine_imperial_e11 = SharedStaticObjectTemplate
 	clientObjectCRC = 1397773079
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_carbine_imperial_e11, "object/static/item/shared_item_carbine_imperial_e11.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_carbine_imperial_e11, "object/static/item/shared_item_carbine_imperial_e11.iff")
 
 object_static_item_shared_item_carbine_laser = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_laser_combined.apt",
@@ -1799,7 +1799,7 @@ object_static_item_shared_item_carbine_laser = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 272772605
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_carbine_laser, "object/static/item/shared_item_carbine_laser.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_carbine_laser, "object/static/item/shared_item_carbine_laser.iff")
 
 object_static_item_shared_item_chair_cafe_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_cafe_s01.apt",
@@ -1843,7 +1843,7 @@ object_static_item_shared_item_chair_cafe_s01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1148404776
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_cafe_s01, "object/static/item/shared_item_chair_cafe_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_cafe_s01, "object/static/item/shared_item_chair_cafe_s01.iff")
 
 object_static_item_shared_item_chair_cafe_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_cafe_s02.apt",
@@ -1887,7 +1887,7 @@ object_static_item_shared_item_chair_cafe_s02 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2674191551
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_cafe_s02, "object/static/item/shared_item_chair_cafe_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_cafe_s02, "object/static/item/shared_item_chair_cafe_s02.iff")
 
 object_static_item_shared_item_chair_futon_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_futon_s1.apt",
@@ -1931,7 +1931,7 @@ object_static_item_shared_item_chair_futon_s1 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2268935381
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_futon_s1, "object/static/item/shared_item_chair_futon_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_futon_s1, "object/static/item/shared_item_chair_futon_s1.iff")
 
 object_static_item_shared_item_chair_metal_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_metal_s1.apt",
@@ -1975,7 +1975,7 @@ object_static_item_shared_item_chair_metal_s1 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 244758057
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_metal_s1, "object/static/item/shared_item_chair_metal_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_metal_s1, "object/static/item/shared_item_chair_metal_s1.iff")
 
 object_static_item_shared_item_chair_metal_wheeled_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_metal_wheeled_s1.apt",
@@ -2019,7 +2019,7 @@ object_static_item_shared_item_chair_metal_wheeled_01 = SharedStaticObjectTempla
 	clientObjectCRC = 894596562
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_metal_wheeled_01, "object/static/item/shared_item_chair_metal_wheeled_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_metal_wheeled_01, "object/static/item/shared_item_chair_metal_wheeled_01.iff")
 
 object_static_item_shared_item_chair_modern_loveseat_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_love_seat_s01.apt",
@@ -2063,7 +2063,7 @@ object_static_item_shared_item_chair_modern_loveseat_s01 = SharedStaticObjectTem
 	clientObjectCRC = 2420924532
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_modern_loveseat_s01, "object/static/item/shared_item_chair_modern_loveseat_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_modern_loveseat_s01, "object/static/item/shared_item_chair_modern_loveseat_s01.iff")
 
 object_static_item_shared_item_chair_recliner_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_recliner_s1.apt",
@@ -2107,7 +2107,7 @@ object_static_item_shared_item_chair_recliner_s1 = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3071442412
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_recliner_s1, "object/static/item/shared_item_chair_recliner_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_recliner_s1, "object/static/item/shared_item_chair_recliner_s1.iff")
 
 object_static_item_shared_item_chair_tato_cafe_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s01.apt",
@@ -2151,7 +2151,7 @@ object_static_item_shared_item_chair_tato_cafe_s01 = SharedStaticObjectTemplate:
 	clientObjectCRC = 3215824507
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_tato_cafe_s01, "object/static/item/shared_item_chair_tato_cafe_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_tato_cafe_s01, "object/static/item/shared_item_chair_tato_cafe_s01.iff")
 
 object_static_item_shared_item_chair_tato_cafe_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s02.apt",
@@ -2195,7 +2195,7 @@ object_static_item_shared_item_chair_tato_cafe_s02 = SharedStaticObjectTemplate:
 	clientObjectCRC = 1689927404
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chair_tato_cafe_s02, "object/static/item/shared_item_chair_tato_cafe_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_tato_cafe_s02, "object/static/item/shared_item_chair_tato_cafe_s02.iff")
 
 object_static_item_shared_item_cheap_cabinet_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_cabinet_s01.apt",
@@ -2239,7 +2239,7 @@ object_static_item_shared_item_cheap_cabinet_01 = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3898799663
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_cheap_cabinet_01, "object/static/item/shared_item_cheap_cabinet_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_cheap_cabinet_01, "object/static/item/shared_item_cheap_cabinet_01.iff")
 
 object_static_item_shared_item_cheese_wheel_s1_partial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cheese_wheel_s1_partial.apt",
@@ -2283,7 +2283,7 @@ object_static_item_shared_item_cheese_wheel_s1_partial = SharedStaticObjectTempl
 	clientObjectCRC = 1128245228
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_cheese_wheel_s1_partial, "object/static/item/shared_item_cheese_wheel_s1_partial.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_cheese_wheel_s1_partial, "object/static/item/shared_item_cheese_wheel_s1_partial.iff")
 
 object_static_item_shared_item_chemical_container_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_chemicals_lg.apt",
@@ -2327,7 +2327,7 @@ object_static_item_shared_item_chemical_container_lg = SharedStaticObjectTemplat
 	clientObjectCRC = 2995492937
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chemical_container_lg, "object/static/item/shared_item_chemical_container_lg.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chemical_container_lg, "object/static/item/shared_item_chemical_container_lg.iff")
 
 object_static_item_shared_item_chemical_container_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_chemicals_sm.apt",
@@ -2371,7 +2371,7 @@ object_static_item_shared_item_chemical_container_sm = SharedStaticObjectTemplat
 	clientObjectCRC = 1336005578
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_chemical_container_sm, "object/static/item/shared_item_chemical_container_sm.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_chemical_container_sm, "object/static/item/shared_item_chemical_container_sm.iff")
 
 object_static_item_shared_item_cloth_patches = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_structural.apt",
@@ -2415,7 +2415,7 @@ object_static_item_shared_item_cloth_patches = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 755038889
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_cloth_patches, "object/static/item/shared_item_cloth_patches.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_cloth_patches, "object/static/item/shared_item_cloth_patches.iff")
 
 object_static_item_shared_item_comp_blaster_cannon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_cannon.apt",
@@ -2459,7 +2459,7 @@ object_static_item_shared_item_comp_blaster_cannon = SharedStaticObjectTemplate:
 	clientObjectCRC = 3801331454
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_comp_blaster_cannon, "object/static/item/shared_item_comp_blaster_cannon.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_comp_blaster_cannon, "object/static/item/shared_item_comp_blaster_cannon.iff")
 
 object_static_item_shared_item_comp_ion_cannon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ion_cannon.apt",
@@ -2503,7 +2503,7 @@ object_static_item_shared_item_comp_ion_cannon = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2119991533
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_comp_ion_cannon, "object/static/item/shared_item_comp_ion_cannon.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_comp_ion_cannon, "object/static/item/shared_item_comp_ion_cannon.iff")
 
 object_static_item_shared_item_comp_stabilization_unit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_heavy_stabilization_unit.apt",
@@ -2547,7 +2547,7 @@ object_static_item_shared_item_comp_stabilization_unit = SharedStaticObjectTempl
 	clientObjectCRC = 3210817338
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_comp_stabilization_unit, "object/static/item/shared_item_comp_stabilization_unit.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_comp_stabilization_unit, "object/static/item/shared_item_comp_stabilization_unit.iff")
 
 object_static_item_shared_item_comp_turret_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_foundation_military_heavy.apt",
@@ -2591,7 +2591,7 @@ object_static_item_shared_item_comp_turret_base = SharedStaticObjectTemplate:new
 	clientObjectCRC = 881953982
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_comp_turret_base, "object/static/item/shared_item_comp_turret_base.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_comp_turret_base, "object/static/item/shared_item_comp_turret_base.iff")
 
 object_static_item_shared_item_con_bag_ingredients_lg_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bag_ingredients_lg_s1.apt",
@@ -2635,7 +2635,7 @@ object_static_item_shared_item_con_bag_ingredients_lg_s1 = SharedStaticObjectTem
 	clientObjectCRC = 3696942882
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_bag_ingredients_lg_s1, "object/static/item/shared_item_con_bag_ingredients_lg_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_bag_ingredients_lg_s1, "object/static/item/shared_item_con_bag_ingredients_lg_s1.iff")
 
 object_static_item_shared_item_con_bag_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bag_ingredients_sm_s1.apt",
@@ -2679,7 +2679,7 @@ object_static_item_shared_item_con_bag_sm = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2887784359
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_bag_sm, "object/static/item/shared_item_con_bag_sm.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_bag_sm, "object/static/item/shared_item_con_bag_sm.iff")
 
 object_static_item_shared_item_con_barrel_lg_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
@@ -2723,7 +2723,7 @@ object_static_item_shared_item_con_barrel_lg_s1 = SharedStaticObjectTemplate:new
 	clientObjectCRC = 782789818
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_barrel_lg_s1, "object/static/item/shared_item_con_barrel_lg_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_barrel_lg_s1, "object/static/item/shared_item_con_barrel_lg_s1.iff")
 
 object_static_item_shared_item_con_basket = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_basket.apt",
@@ -2767,7 +2767,7 @@ object_static_item_shared_item_con_basket = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 468970819
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_basket, "object/static/item/shared_item_con_basket.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_basket, "object/static/item/shared_item_con_basket.iff")
 
 object_static_item_shared_item_con_bowl_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_full.apt",
@@ -2811,7 +2811,7 @@ object_static_item_shared_item_con_bowl_full = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1435978532
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_bowl_full, "object/static/item/shared_item_con_bowl_full.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_bowl_full, "object/static/item/shared_item_con_bowl_full.iff")
 
 object_static_item_shared_item_con_bowl_serving_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_serving_full.apt",
@@ -2855,7 +2855,7 @@ object_static_item_shared_item_con_bowl_serving_full = SharedStaticObjectTemplat
 	clientObjectCRC = 22411271
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_bowl_serving_full, "object/static/item/shared_item_con_bowl_serving_full.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_bowl_serving_full, "object/static/item/shared_item_con_bowl_serving_full.iff")
 
 object_static_item_shared_item_con_drink_flask = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
@@ -2899,7 +2899,7 @@ object_static_item_shared_item_con_drink_flask = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3135460176
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_drink_flask, "object/static/item/shared_item_con_drink_flask.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_drink_flask, "object/static/item/shared_item_con_drink_flask.iff")
 
 object_static_item_shared_item_con_glass_beaker = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
@@ -2943,7 +2943,7 @@ object_static_item_shared_item_con_glass_beaker = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1302190221
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_glass_beaker, "object/static/item/shared_item_con_glass_beaker.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_glass_beaker, "object/static/item/shared_item_con_glass_beaker.iff")
 
 object_static_item_shared_item_con_glass_full_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s2_full.apt",
@@ -2987,7 +2987,7 @@ object_static_item_shared_item_con_glass_full_s2 = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 2557094901
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_glass_full_s2, "object/static/item/shared_item_con_glass_full_s2.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_glass_full_s2, "object/static/item/shared_item_con_glass_full_s2.iff")
 
 object_static_item_shared_item_con_pitcher_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_pitcher_s1_full.apt",
@@ -3031,7 +3031,7 @@ object_static_item_shared_item_con_pitcher_full = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3008672134
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_pitcher_full, "object/static/item/shared_item_con_pitcher_full.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_pitcher_full, "object/static/item/shared_item_con_pitcher_full.iff")
 
 object_static_item_shared_item_con_plate_casserole = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
@@ -3075,7 +3075,7 @@ object_static_item_shared_item_con_plate_casserole = SharedStaticObjectTemplate:
 	clientObjectCRC = 3388012720
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_plate_casserole, "object/static/item/shared_item_con_plate_casserole.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_plate_casserole, "object/static/item/shared_item_con_plate_casserole.iff")
 
 object_static_item_shared_item_con_plate_s1_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_plate_s1_full.apt",
@@ -3119,7 +3119,7 @@ object_static_item_shared_item_con_plate_s1_full = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3130233010
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_plate_s1_full, "object/static/item/shared_item_con_plate_s1_full.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_plate_s1_full, "object/static/item/shared_item_con_plate_s1_full.iff")
 
 object_static_item_shared_item_con_ration_kit_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
@@ -3163,7 +3163,7 @@ object_static_item_shared_item_con_ration_kit_lg = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1720318167
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_ration_kit_lg, "object/static/item/shared_item_con_ration_kit_lg.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_ration_kit_lg, "object/static/item/shared_item_con_ration_kit_lg.iff")
 
 object_static_item_shared_item_con_ration_kit_m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
@@ -3207,7 +3207,7 @@ object_static_item_shared_item_con_ration_kit_m = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3534364000
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_ration_kit_m, "object/static/item/shared_item_con_ration_kit_m.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_ration_kit_m, "object/static/item/shared_item_con_ration_kit_m.iff")
 
 object_static_item_shared_item_con_tankard_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tankard_full.apt",
@@ -3251,7 +3251,7 @@ object_static_item_shared_item_con_tankard_full = SharedStaticObjectTemplate:new
 	clientObjectCRC = 798767493
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_tankard_full, "object/static/item/shared_item_con_tankard_full.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tankard_full, "object/static/item/shared_item_con_tankard_full.iff")
 
 object_static_item_shared_item_con_tato_bowl_full_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
@@ -3295,7 +3295,7 @@ object_static_item_shared_item_con_tato_bowl_full_s01 = SharedStaticObjectTempla
 	clientObjectCRC = 2519863183
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_tato_bowl_full_s01, "object/static/item/shared_item_con_tato_bowl_full_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tato_bowl_full_s01, "object/static/item/shared_item_con_tato_bowl_full_s01.iff")
 
 object_static_item_shared_item_con_tato_bowl_full_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s02.apt",
@@ -3339,7 +3339,7 @@ object_static_item_shared_item_con_tato_bowl_full_s02 = SharedStaticObjectTempla
 	clientObjectCRC = 1294313240
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_tato_bowl_full_s02, "object/static/item/shared_item_con_tato_bowl_full_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tato_bowl_full_s02, "object/static/item/shared_item_con_tato_bowl_full_s02.iff")
 
 object_static_item_shared_item_con_tato_cup_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s1.apt",
@@ -3383,7 +3383,7 @@ object_static_item_shared_item_con_tato_cup_s2 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1498865741
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_tato_cup_s2, "object/static/item/shared_item_con_tato_cup_s2.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tato_cup_s2, "object/static/item/shared_item_con_tato_cup_s2.iff")
 
 object_static_item_shared_item_con_tato_cup_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s3.apt",
@@ -3427,7 +3427,7 @@ object_static_item_shared_item_con_tato_cup_s3 = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 274433984
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_tato_cup_s3, "object/static/item/shared_item_con_tato_cup_s3.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tato_cup_s3, "object/static/item/shared_item_con_tato_cup_s3.iff")
 
 object_static_item_shared_item_con_water = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_water.apt",
@@ -3471,7 +3471,7 @@ object_static_item_shared_item_con_water = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2923451996
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_water, "object/static/item/shared_item_con_water.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_water, "object/static/item/shared_item_con_water.iff")
 
 object_static_item_shared_item_con_winebottle_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s05.apt",
@@ -3515,7 +3515,7 @@ object_static_item_shared_item_con_winebottle_01 = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3283714136
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_01, "object/static/item/shared_item_con_winebottle_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_01, "object/static/item/shared_item_con_winebottle_01.iff")
 
 object_static_item_shared_item_con_winebottle_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s04.apt",
@@ -3559,7 +3559,7 @@ object_static_item_shared_item_con_winebottle_02 = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 414066895
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_02, "object/static/item/shared_item_con_winebottle_02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_02, "object/static/item/shared_item_con_winebottle_02.iff")
 
 object_static_item_shared_item_con_winebottle_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
@@ -3603,7 +3603,7 @@ object_static_item_shared_item_con_winebottle_03 = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1369657154
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_03, "object/static/item/shared_item_con_winebottle_03.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_03, "object/static/item/shared_item_con_winebottle_03.iff")
 
 object_static_item_shared_item_con_winebottle_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
@@ -3647,7 +3647,7 @@ object_static_item_shared_item_con_winebottle_04 = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 2856346710
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_04, "object/static/item/shared_item_con_winebottle_04.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_04, "object/static/item/shared_item_con_winebottle_04.iff")
 
 object_static_item_shared_item_con_winebottle_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s01.apt",
@@ -3691,7 +3691,7 @@ object_static_item_shared_item_con_winebottle_05 = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3813475291
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_05, "object/static/item/shared_item_con_winebottle_05.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_05, "object/static/item/shared_item_con_winebottle_05.iff")
 
 object_static_item_shared_item_container_armor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_armor_lg.apt",
@@ -3735,7 +3735,7 @@ object_static_item_shared_item_container_armor = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 4175646326
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_armor, "object/static/item/shared_item_container_armor.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_armor, "object/static/item/shared_item_container_armor.iff")
 
 object_static_item_shared_item_container_electronics = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_electronics_lg.apt",
@@ -3779,7 +3779,7 @@ object_static_item_shared_item_container_electronics = SharedStaticObjectTemplat
 	clientObjectCRC = 2255481432
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_electronics, "object/static/item/shared_item_container_electronics.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_electronics, "object/static/item/shared_item_container_electronics.iff")
 
 object_static_item_shared_item_container_energy_gas = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_gas.apt",
@@ -3823,7 +3823,7 @@ object_static_item_shared_item_container_energy_gas = SharedStaticObjectTemplate
 	clientObjectCRC = 3085056595
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_energy_gas, "object/static/item/shared_item_container_energy_gas.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_energy_gas, "object/static/item/shared_item_container_energy_gas.iff")
 
 object_static_item_shared_item_container_energy_liquid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_liquid.apt",
@@ -3867,7 +3867,7 @@ object_static_item_shared_item_container_energy_liquid = SharedStaticObjectTempl
 	clientObjectCRC = 3714078297
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_energy_liquid, "object/static/item/shared_item_container_energy_liquid.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_energy_liquid, "object/static/item/shared_item_container_energy_liquid.iff")
 
 object_static_item_shared_item_container_energy_radioactive = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_radioactive_lg.apt",
@@ -3911,7 +3911,7 @@ object_static_item_shared_item_container_energy_radioactive = SharedStaticObject
 	clientObjectCRC = 3965708443
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_energy_radioactive, "object/static/item/shared_item_container_energy_radioactive.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_energy_radioactive, "object/static/item/shared_item_container_energy_radioactive.iff")
 
 object_static_item_shared_item_container_energy_solid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_solid.apt",
@@ -3955,7 +3955,7 @@ object_static_item_shared_item_container_energy_solid = SharedStaticObjectTempla
 	clientObjectCRC = 2370309576
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_energy_solid, "object/static/item/shared_item_container_energy_solid.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_energy_solid, "object/static/item/shared_item_container_energy_solid.iff")
 
 object_static_item_shared_item_container_inorganic_chemicals = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_chemicals.apt",
@@ -3999,7 +3999,7 @@ object_static_item_shared_item_container_inorganic_chemicals = SharedStaticObjec
 	clientObjectCRC = 2404088951
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_inorganic_chemicals, "object/static/item/shared_item_container_inorganic_chemicals.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_inorganic_chemicals, "object/static/item/shared_item_container_inorganic_chemicals.iff")
 
 object_static_item_shared_item_container_inorganic_gas = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
@@ -4043,7 +4043,7 @@ object_static_item_shared_item_container_inorganic_gas = SharedStaticObjectTempl
 	clientObjectCRC = 1076369059
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_inorganic_gas, "object/static/item/shared_item_container_inorganic_gas.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_inorganic_gas, "object/static/item/shared_item_container_inorganic_gas.iff")
 
 object_static_item_shared_item_container_inorganic_minerals = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals.apt",
@@ -4087,7 +4087,7 @@ object_static_item_shared_item_container_inorganic_minerals = SharedStaticObject
 	clientObjectCRC = 2784088837
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_inorganic_minerals, "object/static/item/shared_item_container_inorganic_minerals.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_inorganic_minerals, "object/static/item/shared_item_container_inorganic_minerals.iff")
 
 object_static_item_shared_item_container_inorganic_water = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_water.apt",
@@ -4131,7 +4131,7 @@ object_static_item_shared_item_container_inorganic_water = SharedStaticObjectTem
 	clientObjectCRC = 3390061047
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_inorganic_water, "object/static/item/shared_item_container_inorganic_water.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_inorganic_water, "object/static/item/shared_item_container_inorganic_water.iff")
 
 object_static_item_shared_item_container_installation = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_installation_lg.apt",
@@ -4175,7 +4175,7 @@ object_static_item_shared_item_container_installation = SharedStaticObjectTempla
 	clientObjectCRC = 240677545
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_installation, "object/static/item/shared_item_container_installation.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_installation, "object/static/item/shared_item_container_installation.iff")
 
 object_static_item_shared_item_container_organic_food = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_food.apt",
@@ -4219,7 +4219,7 @@ object_static_item_shared_item_container_organic_food = SharedStaticObjectTempla
 	clientObjectCRC = 1305067335
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_organic_food, "object/static/item/shared_item_container_organic_food.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_organic_food, "object/static/item/shared_item_container_organic_food.iff")
 
 object_static_item_shared_item_container_organic_hide = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
@@ -4263,7 +4263,7 @@ object_static_item_shared_item_container_organic_hide = SharedStaticObjectTempla
 	clientObjectCRC = 1581761382
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_organic_hide, "object/static/item/shared_item_container_organic_hide.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_organic_hide, "object/static/item/shared_item_container_organic_hide.iff")
 
 object_static_item_shared_item_container_organic_structure = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_structure.apt",
@@ -4307,7 +4307,7 @@ object_static_item_shared_item_container_organic_structure = SharedStaticObjectT
 	clientObjectCRC = 3030050763
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_organic_structure, "object/static/item/shared_item_container_organic_structure.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_organic_structure, "object/static/item/shared_item_container_organic_structure.iff")
 
 object_static_item_shared_item_container_plain_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s1.apt",
@@ -4351,7 +4351,7 @@ object_static_item_shared_item_container_plain_s01 = SharedStaticObjectTemplate:
 	clientObjectCRC = 1255851413
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_plain_s01, "object/static/item/shared_item_container_plain_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_plain_s01, "object/static/item/shared_item_container_plain_s01.iff")
 
 object_static_item_shared_item_container_plain_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s2.apt",
@@ -4395,7 +4395,7 @@ object_static_item_shared_item_container_plain_s02 = SharedStaticObjectTemplate:
 	clientObjectCRC = 2446159106
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_plain_s02, "object/static/item/shared_item_container_plain_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_plain_s02, "object/static/item/shared_item_container_plain_s02.iff")
 
 object_static_item_shared_item_container_plain_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
@@ -4439,7 +4439,7 @@ object_static_item_shared_item_container_plain_s03 = SharedStaticObjectTemplate:
 	clientObjectCRC = 3636464271
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_plain_s03, "object/static/item/shared_item_container_plain_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_plain_s03, "object/static/item/shared_item_container_plain_s03.iff")
 
 object_static_item_shared_item_container_plain_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s4.apt",
@@ -4483,7 +4483,7 @@ object_static_item_shared_item_container_plain_s04 = SharedStaticObjectTemplate:
 	clientObjectCRC = 589504923
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_plain_s04, "object/static/item/shared_item_container_plain_s04.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_plain_s04, "object/static/item/shared_item_container_plain_s04.iff")
 
 object_static_item_shared_item_container_weapons = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_weapons_lg.apt",
@@ -4527,7 +4527,7 @@ object_static_item_shared_item_container_weapons = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3641225683
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_container_weapons, "object/static/item/shared_item_container_weapons.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_weapons, "object/static/item/shared_item_container_weapons.iff")
 
 object_static_item_shared_item_cook_frying_pan = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_frying_pan.apt",
@@ -4571,7 +4571,7 @@ object_static_item_shared_item_cook_frying_pan = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3546018033
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_cook_frying_pan, "object/static/item/shared_item_cook_frying_pan.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_cook_frying_pan, "object/static/item/shared_item_cook_frying_pan.iff")
 
 object_static_item_shared_item_cook_pot_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_pot_lg.apt",
@@ -4615,7 +4615,7 @@ object_static_item_shared_item_cook_pot_lg = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2685147084
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_cook_pot_lg, "object/static/item/shared_item_cook_pot_lg.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_cook_pot_lg, "object/static/item/shared_item_cook_pot_lg.iff")
 
 object_static_item_shared_item_cook_pot_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_pot_sm.apt",
@@ -4659,7 +4659,7 @@ object_static_item_shared_item_cook_pot_sm = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1562795087
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_cook_pot_sm, "object/static/item/shared_item_cook_pot_sm.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_cook_pot_sm, "object/static/item/shared_item_cook_pot_sm.iff")
 
 object_static_item_shared_item_crate_clothing_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_clothing_sm.apt",
@@ -4703,7 +4703,7 @@ object_static_item_shared_item_crate_clothing_small = SharedStaticObjectTemplate
 	clientObjectCRC = 3603096922
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_crate_clothing_small, "object/static/item/shared_item_crate_clothing_small.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_crate_clothing_small, "object/static/item/shared_item_crate_clothing_small.iff")
 
 object_static_item_shared_item_crate_spice = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
@@ -4747,7 +4747,7 @@ object_static_item_shared_item_crate_spice = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1789284715
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_crate_spice, "object/static/item/shared_item_crate_spice.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_crate_spice, "object/static/item/shared_item_crate_spice.iff")
 
 object_static_item_shared_item_data_disk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -4791,7 +4791,7 @@ object_static_item_shared_item_data_disk = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4136425931
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_data_disk, "object/static/item/shared_item_data_disk.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_data_disk, "object/static/item/shared_item_data_disk.iff")
 
 object_static_item_shared_item_datapad_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
@@ -4835,7 +4835,7 @@ object_static_item_shared_item_datapad_s1 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 522904897
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_datapad_s1, "object/static/item/shared_item_datapad_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_datapad_s1, "object/static/item/shared_item_datapad_s1.iff")
 
 object_static_item_shared_item_datapad_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -4879,7 +4879,7 @@ object_static_item_shared_item_datapad_s2 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3292351958
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_datapad_s2, "object/static/item/shared_item_datapad_s2.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_datapad_s2, "object/static/item/shared_item_datapad_s2.iff")
 
 object_static_item_shared_item_decryptor_imperial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_decryptor_imperial.apt",
@@ -4923,7 +4923,7 @@ object_static_item_shared_item_decryptor_imperial = SharedStaticObjectTemplate:n
 	clientObjectCRC = 980291180
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_decryptor_imperial, "object/static/item/shared_item_decryptor_imperial.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_decryptor_imperial, "object/static/item/shared_item_decryptor_imperial.iff")
 
 object_static_item_shared_item_diagnostic_screen = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
@@ -4967,7 +4967,7 @@ object_static_item_shared_item_diagnostic_screen = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1651617897
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_diagnostic_screen, "object/static/item/shared_item_diagnostic_screen.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_diagnostic_screen, "object/static/item/shared_item_diagnostic_screen.iff")
 
 object_static_item_shared_item_document = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -5011,7 +5011,7 @@ object_static_item_shared_item_document = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1483782412
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_document, "object/static/item/shared_item_document.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_document, "object/static/item/shared_item_document.iff")
 
 object_static_item_shared_item_door_impl_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/impl_door_s01.apt",
@@ -5055,7 +5055,7 @@ object_static_item_shared_item_door_impl_s01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2782320182
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_door_impl_s01, "object/static/item/shared_item_door_impl_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_door_impl_s01, "object/static/item/shared_item_door_impl_s01.iff")
 
 object_static_item_shared_item_drall_medicine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_drall_medicine.apt",
@@ -5099,7 +5099,7 @@ object_static_item_shared_item_drall_medicine = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3229629688
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_drall_medicine, "object/static/item/shared_item_drall_medicine.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_drall_medicine, "object/static/item/shared_item_drall_medicine.iff")
 
 object_static_item_shared_item_droid_magnet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_droid_magnet.apt",
@@ -5143,7 +5143,7 @@ object_static_item_shared_item_droid_magnet = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2741400727
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_droid_magnet, "object/static/item/shared_item_droid_magnet.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_droid_magnet, "object/static/item/shared_item_droid_magnet.iff")
 
 object_static_item_shared_item_dye_kit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dye_generic.apt",
@@ -5187,7 +5187,7 @@ object_static_item_shared_item_dye_kit = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 578717359
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_dye_kit, "object/static/item/shared_item_dye_kit.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_dye_kit, "object/static/item/shared_item_dye_kit.iff")
 
 object_static_item_shared_item_edb_con_tato_cup_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s2.apt",
@@ -5231,7 +5231,7 @@ object_static_item_shared_item_edb_con_tato_cup_s2 = SharedStaticObjectTemplate:
 	clientObjectCRC = 3452623710
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_edb_con_tato_cup_s2, "object/static/item/shared_item_edb_con_tato_cup_s2.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_edb_con_tato_cup_s2, "object/static/item/shared_item_edb_con_tato_cup_s2.iff")
 
 object_static_item_shared_item_edb_con_tato_cup_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s3.apt",
@@ -5275,7 +5275,7 @@ object_static_item_shared_item_edb_con_tato_cup_s3 = SharedStaticObjectTemplate:
 	clientObjectCRC = 2227682515
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_edb_con_tato_cup_s3, "object/static/item/shared_item_edb_con_tato_cup_s3.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_edb_con_tato_cup_s3, "object/static/item/shared_item_edb_con_tato_cup_s3.iff")
 
 object_static_item_shared_item_eyes_of_mesra = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_eyes_of_mesra.apt",
@@ -5319,7 +5319,7 @@ object_static_item_shared_item_eyes_of_mesra = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2686619843
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_eyes_of_mesra, "object/static/item/shared_item_eyes_of_mesra.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_eyes_of_mesra, "object/static/item/shared_item_eyes_of_mesra.iff")
 
 object_static_item_shared_item_food_assorted_fruit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_fruit_item.apt",
@@ -5363,7 +5363,7 @@ object_static_item_shared_item_food_assorted_fruit = SharedStaticObjectTemplate:
 	clientObjectCRC = 1962912307
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_assorted_fruit, "object/static/item/shared_item_food_assorted_fruit.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_assorted_fruit, "object/static/item/shared_item_food_assorted_fruit.iff")
 
 object_static_item_shared_item_food_cake = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
@@ -5407,7 +5407,7 @@ object_static_item_shared_item_food_cake = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2447344421
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_cake, "object/static/item/shared_item_food_cake.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_cake, "object/static/item/shared_item_food_cake.iff")
 
 object_static_item_shared_item_food_dish_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_bivoli_tempari.apt",
@@ -5451,7 +5451,7 @@ object_static_item_shared_item_food_dish_01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1643171226
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_01, "object/static/item/shared_item_food_dish_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_01, "object/static/item/shared_item_food_dish_01.iff")
 
 object_static_item_shared_item_food_dish_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_dustcrepe.apt",
@@ -5495,7 +5495,7 @@ object_static_item_shared_item_food_dish_02 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3135726861
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_02, "object/static/item/shared_item_food_dish_02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_02, "object/static/item/shared_item_food_dish_02.iff")
 
 object_static_item_shared_item_food_dish_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_kanali_wafers.apt",
@@ -5539,7 +5539,7 @@ object_static_item_shared_item_food_dish_03 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4092199552
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_03, "object/static/item/shared_item_food_dish_03.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_03, "object/static/item/shared_item_food_dish_03.iff")
 
 object_static_item_shared_item_food_dish_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_terratta.apt",
@@ -5583,7 +5583,7 @@ object_static_item_shared_item_food_dish_04 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 134818196
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_04, "object/static/item/shared_item_food_dish_04.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_04, "object/static/item/shared_item_food_dish_04.iff")
 
 object_static_item_shared_item_food_dish_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_trimpian.apt",
@@ -5627,7 +5627,7 @@ object_static_item_shared_item_food_dish_05 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1090801177
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_05, "object/static/item/shared_item_food_dish_05.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_05, "object/static/item/shared_item_food_dish_05.iff")
 
 object_static_item_shared_item_food_dish_06 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_crispic.apt",
@@ -5671,7 +5671,7 @@ object_static_item_shared_item_food_dish_06 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2584995470
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_06, "object/static/item/shared_item_food_dish_06.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_06, "object/static/item/shared_item_food_dish_06.iff")
 
 object_static_item_shared_item_food_fish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
@@ -5715,7 +5715,7 @@ object_static_item_shared_item_food_fish = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2484078697
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_fish, "object/static/item/shared_item_food_fish.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_fish, "object/static/item/shared_item_food_fish.iff")
 
 object_static_item_shared_item_food_fruit_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s2.apt",
@@ -5759,7 +5759,7 @@ object_static_item_shared_item_food_fruit_s01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4237678042
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_fruit_s01, "object/static/item/shared_item_food_fruit_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_fruit_s01, "object/static/item/shared_item_food_fruit_s01.iff")
 
 object_static_item_shared_item_food_fruit_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
@@ -5803,7 +5803,7 @@ object_static_item_shared_item_food_fruit_s02 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 662863181
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_fruit_s02, "object/static/item/shared_item_food_fruit_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_fruit_s02, "object/static/item/shared_item_food_fruit_s02.iff")
 
 object_static_item_shared_item_food_fruit_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
@@ -5847,7 +5847,7 @@ object_static_item_shared_item_food_fruit_s03 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1854872256
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_fruit_s03, "object/static/item/shared_item_food_fruit_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_fruit_s03, "object/static/item/shared_item_food_fruit_s03.iff")
 
 object_static_item_shared_item_food_links = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_sausage_links.apt",
@@ -5891,7 +5891,7 @@ object_static_item_shared_item_food_links = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3941091563
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_links, "object/static/item/shared_item_food_links.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_links, "object/static/item/shared_item_food_links.iff")
 
 object_static_item_shared_item_food_meat_loaf = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
@@ -5935,7 +5935,7 @@ object_static_item_shared_item_food_meat_loaf = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 357872124
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_meat_loaf, "object/static/item/shared_item_food_meat_loaf.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_meat_loaf, "object/static/item/shared_item_food_meat_loaf.iff")
 
 object_static_item_shared_item_food_meat_roast = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_roast_s1.apt",
@@ -5979,7 +5979,7 @@ object_static_item_shared_item_food_meat_roast = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3930727381
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_meat_roast, "object/static/item/shared_item_food_meat_roast.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_meat_roast, "object/static/item/shared_item_food_meat_roast.iff")
 
 object_static_item_shared_item_food_muffins = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
@@ -6023,7 +6023,7 @@ object_static_item_shared_item_food_muffins = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2792426547
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_muffins, "object/static/item/shared_item_food_muffins.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_muffins, "object/static/item/shared_item_food_muffins.iff")
 
 object_static_item_shared_item_food_nutricake = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dessert_parwan_nutricake.apt",
@@ -6067,7 +6067,7 @@ object_static_item_shared_item_food_nutricake = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1451691855
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_nutricake, "object/static/item/shared_item_food_nutricake.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_nutricake, "object/static/item/shared_item_food_nutricake.iff")
 
 object_static_item_shared_item_food_pie = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_pie_full_s1.apt",
@@ -6111,7 +6111,7 @@ object_static_item_shared_item_food_pie = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4291568660
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_pie, "object/static/item/shared_item_food_pie.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_pie, "object/static/item/shared_item_food_pie.iff")
 
 object_static_item_shared_item_food_pie_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dessert_pikatta_pie.apt",
@@ -6155,7 +6155,7 @@ object_static_item_shared_item_food_pie_02 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3224713039
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_pie_02, "object/static/item/shared_item_food_pie_02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_pie_02, "object/static/item/shared_item_food_pie_02.iff")
 
 object_static_item_shared_item_food_sandwich = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_sandwich_s1.apt",
@@ -6199,7 +6199,7 @@ object_static_item_shared_item_food_sandwich = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4222035816
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_sandwich, "object/static/item/shared_item_food_sandwich.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_sandwich, "object/static/item/shared_item_food_sandwich.iff")
 
 object_static_item_shared_item_food_sausage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_sausage_lg_s1.apt",
@@ -6243,7 +6243,7 @@ object_static_item_shared_item_food_sausage = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4188629182
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_sausage, "object/static/item/shared_item_food_sausage.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_sausage, "object/static/item/shared_item_food_sausage.iff")
 
 object_static_item_shared_item_food_skewer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_skewer.apt",
@@ -6287,7 +6287,7 @@ object_static_item_shared_item_food_skewer = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 153020576
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_skewer, "object/static/item/shared_item_food_skewer.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_skewer, "object/static/item/shared_item_food_skewer.iff")
 
 object_static_item_shared_item_food_spices = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
@@ -6331,7 +6331,7 @@ object_static_item_shared_item_food_spices = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2784005446
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_spices, "object/static/item/shared_item_food_spices.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_spices, "object/static/item/shared_item_food_spices.iff")
 
 object_static_item_shared_item_food_vegetable_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s5.apt",
@@ -6375,7 +6375,7 @@ object_static_item_shared_item_food_vegetable_s01 = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1453569476
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_vegetable_s01, "object/static/item/shared_item_food_vegetable_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_vegetable_s01, "object/static/item/shared_item_food_vegetable_s01.iff")
 
 object_static_item_shared_item_food_vegetable_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s2.apt",
@@ -6419,7 +6419,7 @@ object_static_item_shared_item_food_vegetable_s02 = SharedStaticObjectTemplate:n
 	clientObjectCRC = 2377391443
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_vegetable_s02, "object/static/item/shared_item_food_vegetable_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_vegetable_s02, "object/static/item/shared_item_food_vegetable_s02.iff")
 
 object_static_item_shared_item_food_vegetable_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s3.apt",
@@ -6463,7 +6463,7 @@ object_static_item_shared_item_food_vegetable_s03 = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3300489950
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_food_vegetable_s03, "object/static/item/shared_item_food_vegetable_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_vegetable_s03, "object/static/item/shared_item_food_vegetable_s03.iff")
 
 object_static_item_shared_item_fruit_melon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
@@ -6507,7 +6507,7 @@ object_static_item_shared_item_fruit_melon = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2726248829
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_fruit_melon, "object/static/item/shared_item_fruit_melon.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_fruit_melon, "object/static/item/shared_item_fruit_melon.iff")
 
 object_static_item_shared_item_game_dejarik_gameboard = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_game_dejarik_gameboard.apt",
@@ -6551,7 +6551,7 @@ object_static_item_shared_item_game_dejarik_gameboard = SharedStaticObjectTempla
 	clientObjectCRC = 608112100
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_game_dejarik_gameboard, "object/static/item/shared_item_game_dejarik_gameboard.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_game_dejarik_gameboard, "object/static/item/shared_item_game_dejarik_gameboard.iff")
 
 object_static_item_shared_item_glass_bluemilk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s5.apt",
@@ -6595,7 +6595,7 @@ object_static_item_shared_item_glass_bluemilk = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1526354706
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_glass_bluemilk, "object/static/item/shared_item_glass_bluemilk.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_bluemilk, "object/static/item/shared_item_glass_bluemilk.iff")
 
 object_static_item_shared_item_glass_empty = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
@@ -6639,7 +6639,7 @@ object_static_item_shared_item_glass_empty = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3464252430
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_glass_empty, "object/static/item/shared_item_glass_empty.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_empty, "object/static/item/shared_item_glass_empty.iff")
 
 object_static_item_shared_item_glass_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
@@ -6683,7 +6683,7 @@ object_static_item_shared_item_glass_full = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3995101539
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_glass_full, "object/static/item/shared_item_glass_full.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_full, "object/static/item/shared_item_glass_full.iff")
 
 object_static_item_shared_item_glass_metal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
@@ -6727,7 +6727,7 @@ object_static_item_shared_item_glass_metal = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2261530459
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_glass_metal, "object/static/item/shared_item_glass_metal.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_metal, "object/static/item/shared_item_glass_metal.iff")
 
 object_static_item_shared_item_glass_white = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s2.apt",
@@ -6771,7 +6771,7 @@ object_static_item_shared_item_glass_white = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1070449231
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_glass_white, "object/static/item/shared_item_glass_white.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_white, "object/static/item/shared_item_glass_white.iff")
 
 object_static_item_shared_item_hair_dye_kit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_hairdressing_hair_dye_kit.apt",
@@ -6815,7 +6815,7 @@ object_static_item_shared_item_hair_dye_kit = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 781716835
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_hair_dye_kit, "object/static/item/shared_item_hair_dye_kit.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_hair_dye_kit, "object/static/item/shared_item_hair_dye_kit.iff")
 
 object_static_item_shared_item_imperial_lifesupport_pack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_acc_imp_life_support_pack.apt",
@@ -6859,7 +6859,7 @@ object_static_item_shared_item_imperial_lifesupport_pack = SharedStaticObjectTem
 	clientObjectCRC = 3281791142
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_imperial_lifesupport_pack, "object/static/item/shared_item_imperial_lifesupport_pack.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_imperial_lifesupport_pack, "object/static/item/shared_item_imperial_lifesupport_pack.iff")
 
 object_static_item_shared_item_items_container_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_lg.apt",
@@ -6903,7 +6903,7 @@ object_static_item_shared_item_items_container_lg = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1166760359
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_items_container_lg, "object/static/item/shared_item_items_container_lg.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_items_container_lg, "object/static/item/shared_item_items_container_lg.iff")
 
 object_static_item_shared_item_items_container_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
@@ -6947,7 +6947,7 @@ object_static_item_shared_item_items_container_sm = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3097563684
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_items_container_sm, "object/static/item/shared_item_items_container_sm.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_items_container_sm, "object/static/item/shared_item_items_container_sm.iff")
 
 object_static_item_shared_item_jacket_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_lining.apt",
@@ -6991,7 +6991,7 @@ object_static_item_shared_item_jacket_01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1266080022
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jacket_01, "object/static/item/shared_item_jacket_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jacket_01, "object/static/item/shared_item_jacket_01.iff")
 
 object_static_item_shared_item_jar_berries = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
@@ -7035,7 +7035,7 @@ object_static_item_shared_item_jar_berries = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 193627130
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jar_berries, "object/static/item/shared_item_jar_berries.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_berries, "object/static/item/shared_item_jar_berries.iff")
 
 object_static_item_shared_item_jar_bugs = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
@@ -7079,7 +7079,7 @@ object_static_item_shared_item_jar_bugs = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3304125843
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jar_bugs, "object/static/item/shared_item_jar_bugs.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_bugs, "object/static/item/shared_item_jar_bugs.iff")
 
 object_static_item_shared_item_jar_empty = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_empty_s01.apt",
@@ -7123,7 +7123,7 @@ object_static_item_shared_item_jar_empty = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3759215411
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jar_empty, "object/static/item/shared_item_jar_empty.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_empty, "object/static/item/shared_item_jar_empty.iff")
 
 object_static_item_shared_item_jar_funk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
@@ -7167,7 +7167,7 @@ object_static_item_shared_item_jar_funk = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2934305982
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jar_funk, "object/static/item/shared_item_jar_funk.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_funk, "object/static/item/shared_item_jar_funk.iff")
 
 object_static_item_shared_item_jar_guts = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
@@ -7211,7 +7211,7 @@ object_static_item_shared_item_jar_guts = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1848547961
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jar_guts, "object/static/item/shared_item_jar_guts.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_guts, "object/static/item/shared_item_jar_guts.iff")
 
 object_static_item_shared_item_jar_spice_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
@@ -7255,7 +7255,7 @@ object_static_item_shared_item_jar_spice_blue = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2646277526
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jar_spice_blue, "object/static/item/shared_item_jar_spice_blue.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_spice_blue, "object/static/item/shared_item_jar_spice_blue.iff")
 
 object_static_item_shared_item_jar_spice_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
@@ -7299,7 +7299,7 @@ object_static_item_shared_item_jar_spice_red = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2734733012
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jar_spice_red, "object/static/item/shared_item_jar_spice_red.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_spice_red, "object/static/item/shared_item_jar_spice_red.iff")
 
 object_static_item_shared_item_jar_spice_white = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s01.apt",
@@ -7343,7 +7343,7 @@ object_static_item_shared_item_jar_spice_white = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 3077482380
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_jar_spice_white, "object/static/item/shared_item_jar_spice_white.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_spice_white, "object/static/item/shared_item_jar_spice_white.iff")
 
 object_static_item_shared_item_katana = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s02.apt",
@@ -7387,7 +7387,7 @@ object_static_item_shared_item_katana = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1894064245
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_katana, "object/static/item/shared_item_katana.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_katana, "object/static/item/shared_item_katana.iff")
 
 object_static_item_shared_item_keepsakes = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_vehicle_toolkit.apt",
@@ -7431,7 +7431,7 @@ object_static_item_shared_item_keepsakes = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 775820803
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_keepsakes, "object/static/item/shared_item_keepsakes.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_keepsakes, "object/static/item/shared_item_keepsakes.iff")
 
 object_static_item_shared_item_key_electronic = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_key_electronic.apt",
@@ -7475,7 +7475,7 @@ object_static_item_shared_item_key_electronic = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1010638097
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_key_electronic, "object/static/item/shared_item_key_electronic.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_key_electronic, "object/static/item/shared_item_key_electronic.iff")
 
 object_static_item_shared_item_kiosk_statue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
@@ -7519,7 +7519,7 @@ object_static_item_shared_item_kiosk_statue = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3347975078
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_kiosk_statue, "object/static/item/shared_item_kiosk_statue.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_kiosk_statue, "object/static/item/shared_item_kiosk_statue.iff")
 
 object_static_item_shared_item_kitchen_chair_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_kitchen_s2.apt",
@@ -7563,7 +7563,7 @@ object_static_item_shared_item_kitchen_chair_01 = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1563747235
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_chair_01, "object/static/item/shared_item_kitchen_chair_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_chair_01, "object/static/item/shared_item_kitchen_chair_01.iff")
 
 object_static_item_shared_item_kitchen_cook_set_lg_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_kitchen_set_lg_s1.apt",
@@ -7607,7 +7607,7 @@ object_static_item_shared_item_kitchen_cook_set_lg_s1 = SharedStaticObjectTempla
 	clientObjectCRC = 2655114123
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_cook_set_lg_s1, "object/static/item/shared_item_kitchen_cook_set_lg_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_cook_set_lg_s1, "object/static/item/shared_item_kitchen_cook_set_lg_s1.iff")
 
 object_static_item_shared_item_kitchen_portable_stove_sm_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_portable_stove_sm_s1.apt",
@@ -7651,7 +7651,7 @@ object_static_item_shared_item_kitchen_portable_stove_sm_s1 = SharedStaticObject
 	clientObjectCRC = 1226902722
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_portable_stove_sm_s1, "object/static/item/shared_item_kitchen_portable_stove_sm_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_portable_stove_sm_s1, "object/static/item/shared_item_kitchen_portable_stove_sm_s1.iff")
 
 object_static_item_shared_item_kitchen_pot_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_pot_empty_s01.apt",
@@ -7695,7 +7695,7 @@ object_static_item_shared_item_kitchen_pot_style_01 = SharedStaticObjectTemplate
 	clientObjectCRC = 2564506086
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_pot_style_01, "object/static/item/shared_item_kitchen_pot_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_pot_style_01, "object/static/item/shared_item_kitchen_pot_style_01.iff")
 
 object_static_item_shared_item_kitchen_pot_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_pot_empty_s02.apt",
@@ -7739,7 +7739,7 @@ object_static_item_shared_item_kitchen_pot_style_02 = SharedStaticObjectTemplate
 	clientObjectCRC = 1137502577
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_pot_style_02, "object/static/item/shared_item_kitchen_pot_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_pot_style_02, "object/static/item/shared_item_kitchen_pot_style_02.iff")
 
 object_static_item_shared_item_kitchen_pot_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_pot_empty_s03.apt",
@@ -7783,7 +7783,7 @@ object_static_item_shared_item_kitchen_pot_style_03 = SharedStaticObjectTemplate
 	clientObjectCRC = 180457212
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_pot_style_03, "object/static/item/shared_item_kitchen_pot_style_03.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_pot_style_03, "object/static/item/shared_item_kitchen_pot_style_03.iff")
 
 object_static_item_shared_item_makeup = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_kit_materials_s1.apt",
@@ -7827,7 +7827,7 @@ object_static_item_shared_item_makeup = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 806343879
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_makeup, "object/static/item/shared_item_makeup.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_makeup, "object/static/item/shared_item_makeup.iff")
 
 object_static_item_shared_item_meat_hunk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_all_meat_s01.apt",
@@ -7871,7 +7871,7 @@ object_static_item_shared_item_meat_hunk = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1149924451
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_meat_hunk, "object/static/item/shared_item_meat_hunk.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_meat_hunk, "object/static/item/shared_item_meat_hunk.iff")
 
 object_static_item_shared_item_meat_kabob = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
@@ -7915,7 +7915,7 @@ object_static_item_shared_item_meat_kabob = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 4176592177
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_meat_kabob, "object/static/item/shared_item_meat_kabob.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_meat_kabob, "object/static/item/shared_item_meat_kabob.iff")
 
 object_static_item_shared_item_medic_bacta_tank = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
@@ -7959,7 +7959,7 @@ object_static_item_shared_item_medic_bacta_tank = SharedStaticObjectTemplate:new
 	clientObjectCRC = 2391288762
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medic_bacta_tank, "object/static/item/shared_item_medic_bacta_tank.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_bacta_tank, "object/static/item/shared_item_medic_bacta_tank.iff")
 
 object_static_item_shared_item_medic_bacta_tank_advanced = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
@@ -8003,7 +8003,7 @@ object_static_item_shared_item_medic_bacta_tank_advanced = SharedStaticObjectTem
 	clientObjectCRC = 3268663656
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medic_bacta_tank_advanced, "object/static/item/shared_item_medic_bacta_tank_advanced.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_bacta_tank_advanced, "object/static/item/shared_item_medic_bacta_tank_advanced.iff")
 
 object_static_item_shared_item_medic_bacta_tank_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_bacta_tank_lg.apt",
@@ -8047,7 +8047,7 @@ object_static_item_shared_item_medic_bacta_tank_large = SharedStaticObjectTempla
 	clientObjectCRC = 239850220
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medic_bacta_tank_large, "object/static/item/shared_item_medic_bacta_tank_large.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_bacta_tank_large, "object/static/item/shared_item_medic_bacta_tank_large.iff")
 
 object_static_item_shared_item_medic_bag = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
@@ -8091,7 +8091,7 @@ object_static_item_shared_item_medic_bag = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 89534284
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medic_bag, "object/static/item/shared_item_medic_bag.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_bag, "object/static/item/shared_item_medic_bag.iff")
 
 object_static_item_shared_item_medic_hormone_enhancements = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_hormone_enhancements.apt",
@@ -8135,7 +8135,7 @@ object_static_item_shared_item_medic_hormone_enhancements = SharedStaticObjectTe
 	clientObjectCRC = 761234502
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medic_hormone_enhancements, "object/static/item/shared_item_medic_hormone_enhancements.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_hormone_enhancements, "object/static/item/shared_item_medic_hormone_enhancements.iff")
 
 object_static_item_shared_item_medic_medpack_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
@@ -8179,7 +8179,7 @@ object_static_item_shared_item_medic_medpack_lg = SharedStaticObjectTemplate:new
 	clientObjectCRC = 159228180
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medic_medpack_lg, "object/static/item/shared_item_medic_medpack_lg.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_medpack_lg, "object/static/item/shared_item_medic_medpack_lg.iff")
 
 object_static_item_shared_item_medic_radical_enhancements = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_radical_enhancements.apt",
@@ -8223,7 +8223,7 @@ object_static_item_shared_item_medic_radical_enhancements = SharedStaticObjectTe
 	clientObjectCRC = 3596258776
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medic_radical_enhancements, "object/static/item/shared_item_medic_radical_enhancements.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_radical_enhancements, "object/static/item/shared_item_medic_radical_enhancements.iff")
 
 object_static_item_shared_item_medic_stimpack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
@@ -8267,7 +8267,7 @@ object_static_item_shared_item_medic_stimpack = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2863591257
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medic_stimpack, "object/static/item/shared_item_medic_stimpack.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_stimpack, "object/static/item/shared_item_medic_stimpack.iff")
 
 object_static_item_shared_item_medical_console = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
@@ -8311,7 +8311,7 @@ object_static_item_shared_item_medical_console = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 246106758
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_medical_console, "object/static/item/shared_item_medical_console.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_medical_console, "object/static/item/shared_item_medical_console.iff")
 
 object_static_item_shared_item_metal_armor_layer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
@@ -8355,7 +8355,7 @@ object_static_item_shared_item_metal_armor_layer = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 2170258452
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_metal_armor_layer, "object/static/item/shared_item_metal_armor_layer.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_metal_armor_layer, "object/static/item/shared_item_metal_armor_layer.iff")
 
 object_static_item_shared_item_metal_armor_module = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
@@ -8399,7 +8399,7 @@ object_static_item_shared_item_metal_armor_module = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3683981192
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_metal_armor_module, "object/static/item/shared_item_metal_armor_module.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_metal_armor_module, "object/static/item/shared_item_metal_armor_module.iff")
 
 object_static_item_shared_item_metal_armor_segment = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
@@ -8443,7 +8443,7 @@ object_static_item_shared_item_metal_armor_segment = SharedStaticObjectTemplate:
 	clientObjectCRC = 3838382803
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_metal_armor_segment, "object/static/item/shared_item_metal_armor_segment.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_metal_armor_segment, "object/static/item/shared_item_metal_armor_segment.iff")
 
 object_static_item_shared_item_metal_staff = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_controller.apt",
@@ -8487,7 +8487,7 @@ object_static_item_shared_item_metal_staff = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3910295094
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_metal_staff, "object/static/item/shared_item_metal_staff.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_metal_staff, "object/static/item/shared_item_metal_staff.iff")
 
 object_static_item_shared_item_mockup_bank_terminal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bank.apt",
@@ -8531,7 +8531,7 @@ object_static_item_shared_item_mockup_bank_terminal = SharedStaticObjectTemplate
 	clientObjectCRC = 332671055
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_mockup_bank_terminal, "object/static/item/shared_item_mockup_bank_terminal.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_mockup_bank_terminal, "object/static/item/shared_item_mockup_bank_terminal.iff")
 
 object_static_item_shared_item_mun_ballot_box = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_mun_ballot_box.apt",
@@ -8575,7 +8575,7 @@ object_static_item_shared_item_mun_ballot_box = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3509759537
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_mun_ballot_box, "object/static/item/shared_item_mun_ballot_box.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_mun_ballot_box, "object/static/item/shared_item_mun_ballot_box.iff")
 
 object_static_item_shared_item_music_drum = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_drum.apt",
@@ -8619,7 +8619,7 @@ object_static_item_shared_item_music_drum = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3913685828
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_music_drum, "object/static/item/shared_item_music_drum.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_drum, "object/static/item/shared_item_music_drum.iff")
 
 object_static_item_shared_item_music_gong_stick = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_giant_gong_stick_s2.apt",
@@ -8663,7 +8663,7 @@ object_static_item_shared_item_music_gong_stick = SharedStaticObjectTemplate:new
 	clientObjectCRC = 2886859470
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_music_gong_stick, "object/static/item/shared_item_music_gong_stick.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_gong_stick, "object/static/item/shared_item_music_gong_stick.iff")
 
 object_static_item_shared_item_music_microphone_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_microphone_s1.apt",
@@ -8707,7 +8707,7 @@ object_static_item_shared_item_music_microphone_s1 = SharedStaticObjectTemplate:
 	clientObjectCRC = 1392564831
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_music_microphone_s1, "object/static/item/shared_item_music_microphone_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_microphone_s1, "object/static/item/shared_item_music_microphone_s1.iff")
 
 object_static_item_shared_item_music_microphone_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_microphone_s2.apt",
@@ -8751,7 +8751,7 @@ object_static_item_shared_item_music_microphone_s2 = SharedStaticObjectTemplate:
 	clientObjectCRC = 2283238088
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_music_microphone_s2, "object/static/item/shared_item_music_microphone_s2.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_microphone_s2, "object/static/item/shared_item_music_microphone_s2.iff")
 
 object_static_item_shared_item_music_omni_box = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_ommni_box.apt",
@@ -8795,7 +8795,7 @@ object_static_item_shared_item_music_omni_box = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1121751331
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_music_omni_box, "object/static/item/shared_item_music_omni_box.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_omni_box, "object/static/item/shared_item_music_omni_box.iff")
 
 object_static_item_shared_item_music_red_ball_jet_organ = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
@@ -8839,7 +8839,7 @@ object_static_item_shared_item_music_red_ball_jet_organ = SharedStaticObjectTemp
 	clientObjectCRC = 2858477001
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_music_red_ball_jet_organ, "object/static/item/shared_item_music_red_ball_jet_organ.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_red_ball_jet_organ, "object/static/item/shared_item_music_red_ball_jet_organ.iff")
 
 object_static_item_shared_item_nemodian_bird_cage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_nemoidian_bird_cage.apt",
@@ -8883,7 +8883,7 @@ object_static_item_shared_item_nemodian_bird_cage = SharedStaticObjectTemplate:n
 	clientObjectCRC = 254927168
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_nemodian_bird_cage, "object/static/item/shared_item_nemodian_bird_cage.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_nemodian_bird_cage, "object/static/item/shared_item_nemodian_bird_cage.iff")
 
 object_static_item_shared_item_newbie_crate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_newbie_crate.apt",
@@ -8927,7 +8927,7 @@ object_static_item_shared_item_newbie_crate = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1451068724
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_newbie_crate, "object/static/item/shared_item_newbie_crate.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_newbie_crate, "object/static/item/shared_item_newbie_crate.iff")
 
 object_static_item_shared_item_organic_container = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_structure.apt",
@@ -8971,7 +8971,7 @@ object_static_item_shared_item_organic_container = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 3040505241
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_organic_container, "object/static/item/shared_item_organic_container.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_organic_container, "object/static/item/shared_item_organic_container.iff")
 
 object_static_item_shared_item_organichem_stores = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_app_organichem_stores.apt",
@@ -9015,7 +9015,7 @@ object_static_item_shared_item_organichem_stores = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 613259702
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_organichem_stores, "object/static/item/shared_item_organichem_stores.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_organichem_stores, "object/static/item/shared_item_organichem_stores.iff")
 
 object_static_item_shared_item_painting_agrilat_swamp_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_agrilat_lg.apt",
@@ -9059,7 +9059,7 @@ object_static_item_shared_item_painting_agrilat_swamp_style_01 = SharedStaticObj
 	clientObjectCRC = 3722569308
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_agrilat_swamp_style_01, "object/static/item/shared_item_painting_agrilat_swamp_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_agrilat_swamp_style_01, "object/static/item/shared_item_painting_agrilat_swamp_style_01.iff")
 
 object_static_item_shared_item_painting_agrilat_swamp_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_agrilat_sml.apt",
@@ -9103,7 +9103,7 @@ object_static_item_shared_item_painting_agrilat_swamp_style_02 = SharedStaticObj
 	clientObjectCRC = 116805323
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_agrilat_swamp_style_02, "object/static/item/shared_item_painting_agrilat_swamp_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_agrilat_swamp_style_02, "object/static/item/shared_item_painting_agrilat_swamp_style_02.iff")
 
 object_static_item_shared_item_painting_bothan_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_bothan.apt",
@@ -9147,7 +9147,7 @@ object_static_item_shared_item_painting_bothan_style_01 = SharedStaticObjectTemp
 	clientObjectCRC = 319085241
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_bothan_style_01, "object/static/item/shared_item_painting_bothan_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_bothan_style_01, "object/static/item/shared_item_painting_bothan_style_01.iff")
 
 object_static_item_shared_item_painting_corellia_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_corl_s01.apt",
@@ -9191,7 +9191,7 @@ object_static_item_shared_item_painting_corellia_style_01 = SharedStaticObjectTe
 	clientObjectCRC = 2681544199
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_corellia_style_01, "object/static/item/shared_item_painting_corellia_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_corellia_style_01, "object/static/item/shared_item_painting_corellia_style_01.iff")
 
 object_static_item_shared_item_painting_corellia_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_corl_s02.apt",
@@ -9235,7 +9235,7 @@ object_static_item_shared_item_painting_corellia_style_02 = SharedStaticObjectTe
 	clientObjectCRC = 1153611408
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_corellia_style_02, "object/static/item/shared_item_painting_corellia_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_corellia_style_02, "object/static/item/shared_item_painting_corellia_style_02.iff")
 
 object_static_item_shared_item_painting_endor_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_endor_s01.apt",
@@ -9279,7 +9279,7 @@ object_static_item_shared_item_painting_endor_style_01 = SharedStaticObjectTempl
 	clientObjectCRC = 898047270
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_endor_style_01, "object/static/item/shared_item_painting_endor_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_endor_style_01, "object/static/item/shared_item_painting_endor_style_01.iff")
 
 object_static_item_shared_item_painting_naboo_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_naboo_s01.apt",
@@ -9323,7 +9323,7 @@ object_static_item_shared_item_painting_naboo_style_01 = SharedStaticObjectTempl
 	clientObjectCRC = 2489851461
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_naboo_style_01, "object/static/item/shared_item_painting_naboo_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_naboo_style_01, "object/static/item/shared_item_painting_naboo_style_01.iff")
 
 object_static_item_shared_item_painting_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tato_s01.apt",
@@ -9367,7 +9367,7 @@ object_static_item_shared_item_painting_tatooine_style_01 = SharedStaticObjectTe
 	clientObjectCRC = 921871763
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_tatooine_style_01, "object/static/item/shared_item_painting_tatooine_style_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_tatooine_style_01, "object/static/item/shared_item_painting_tatooine_style_01.iff")
 
 object_static_item_shared_item_painting_tatooine_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tato_s02.apt",
@@ -9411,7 +9411,7 @@ object_static_item_shared_item_painting_tatooine_style_02 = SharedStaticObjectTe
 	clientObjectCRC = 3991211268
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_painting_tatooine_style_02, "object/static/item/shared_item_painting_tatooine_style_02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_tatooine_style_02, "object/static/item/shared_item_painting_tatooine_style_02.iff")
 
 object_static_item_shared_item_pistol = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dl44_combined.apt",
@@ -9455,7 +9455,7 @@ object_static_item_shared_item_pistol = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1718716397
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_pistol, "object/static/item/shared_item_pistol.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_pistol, "object/static/item/shared_item_pistol.iff")
 
 object_static_item_shared_item_pistol_imperial_scout = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scout_combined.apt",
@@ -9499,7 +9499,7 @@ object_static_item_shared_item_pistol_imperial_scout = SharedStaticObjectTemplat
 	clientObjectCRC = 1252414061
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_pistol_imperial_scout, "object/static/item/shared_item_pistol_imperial_scout.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_pistol_imperial_scout, "object/static/item/shared_item_pistol_imperial_scout.iff")
 
 object_static_item_shared_item_place_setting_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_place_setting.apt",
@@ -9543,7 +9543,7 @@ object_static_item_shared_item_place_setting_01 = SharedStaticObjectTemplate:new
 	clientObjectCRC = 222887447
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_place_setting_01, "object/static/item/shared_item_place_setting_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_place_setting_01, "object/static/item/shared_item_place_setting_01.iff")
 
 object_static_item_shared_item_raw_cloth = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
@@ -9587,7 +9587,7 @@ object_static_item_shared_item_raw_cloth = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3593697104
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_raw_cloth, "object/static/item/shared_item_raw_cloth.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_raw_cloth, "object/static/item/shared_item_raw_cloth.iff")
 
 object_static_item_shared_item_repair_melee_kit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon.apt",
@@ -9631,7 +9631,7 @@ object_static_item_shared_item_repair_melee_kit = SharedStaticObjectTemplate:new
 	clientObjectCRC = 730337579
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_repair_melee_kit, "object/static/item/shared_item_repair_melee_kit.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_repair_melee_kit, "object/static/item/shared_item_repair_melee_kit.iff")
 
 object_static_item_shared_item_ribbon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
@@ -9675,7 +9675,7 @@ object_static_item_shared_item_ribbon = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1186133138
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_ribbon, "object/static/item/shared_item_ribbon.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_ribbon, "object/static/item/shared_item_ribbon.iff")
 
 object_static_item_shared_item_rifle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_combined.apt",
@@ -9719,7 +9719,7 @@ object_static_item_shared_item_rifle = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 328334469
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_rifle, "object/static/item/shared_item_rifle.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_rifle, "object/static/item/shared_item_rifle.iff")
 
 object_static_item_shared_item_rifle_t21 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_combined.apt",
@@ -9763,7 +9763,7 @@ object_static_item_shared_item_rifle_t21 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1042864505
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_rifle_t21, "object/static/item/shared_item_rifle_t21.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_rifle_t21, "object/static/item/shared_item_rifle_t21.iff")
 
 object_static_item_shared_item_rocket_launcher = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
@@ -9807,7 +9807,7 @@ object_static_item_shared_item_rocket_launcher = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1188714941
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_rocket_launcher, "object/static/item/shared_item_rocket_launcher.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_rocket_launcher, "object/static/item/shared_item_rocket_launcher.iff")
 
 object_static_item_shared_item_ryyk_blade = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_ryyk_blade.apt",
@@ -9851,7 +9851,7 @@ object_static_item_shared_item_ryyk_blade = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2692497434
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_ryyk_blade, "object/static/item/shared_item_ryyk_blade.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_ryyk_blade, "object/static/item/shared_item_ryyk_blade.iff")
 
 object_static_item_shared_item_sclpt_stuffed_bantha = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_sclpt_stuffed_bantha.apt",
@@ -9895,7 +9895,7 @@ object_static_item_shared_item_sclpt_stuffed_bantha = SharedStaticObjectTemplate
 	clientObjectCRC = 516883090
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_sclpt_stuffed_bantha, "object/static/item/shared_item_sclpt_stuffed_bantha.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_sclpt_stuffed_bantha, "object/static/item/shared_item_sclpt_stuffed_bantha.iff")
 
 object_static_item_shared_item_scrolling_screen = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_monitorscreen_text_s01.apt",
@@ -9939,7 +9939,7 @@ object_static_item_shared_item_scrolling_screen = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3726137889
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_scrolling_screen, "object/static/item/shared_item_scrolling_screen.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_scrolling_screen, "object/static/item/shared_item_scrolling_screen.iff")
 
 object_static_item_shared_item_security_scanner = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_security_scanner.apt",
@@ -9983,7 +9983,7 @@ object_static_item_shared_item_security_scanner = SharedStaticObjectTemplate:new
 	clientObjectCRC = 210118642
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_security_scanner, "object/static/item/shared_item_security_scanner.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_security_scanner, "object/static/item/shared_item_security_scanner.iff")
 
 object_static_item_shared_item_sewing_utensils = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_plain.apt",
@@ -10027,7 +10027,7 @@ object_static_item_shared_item_sewing_utensils = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2943431813
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_sewing_utensils, "object/static/item/shared_item_sewing_utensils.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_sewing_utensils, "object/static/item/shared_item_sewing_utensils.iff")
 
 object_static_item_shared_item_sewing_utensils_lg_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_formal.apt",
@@ -10071,7 +10071,7 @@ object_static_item_shared_item_sewing_utensils_lg_01 = SharedStaticObjectTemplat
 	clientObjectCRC = 1394799204
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_sewing_utensils_lg_01, "object/static/item/shared_item_sewing_utensils_lg_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_sewing_utensils_lg_01, "object/static/item/shared_item_sewing_utensils_lg_01.iff")
 
 object_static_item_shared_item_sewing_utensils_lg_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_reinforced.apt",
@@ -10115,7 +10115,7 @@ object_static_item_shared_item_sewing_utensils_lg_02 = SharedStaticObjectTemplat
 	clientObjectCRC = 2285198067
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_sewing_utensils_lg_02, "object/static/item/shared_item_sewing_utensils_lg_02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_sewing_utensils_lg_02, "object/static/item/shared_item_sewing_utensils_lg_02.iff")
 
 object_static_item_shared_item_shisha = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_shisha.apt",
@@ -10159,7 +10159,7 @@ object_static_item_shared_item_shisha = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1589368660
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_shisha, "object/static/item/shared_item_shisha.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_shisha, "object/static/item/shared_item_shisha.iff")
 
 object_static_item_shared_item_slave_brazier = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_slave_brazier.apt",
@@ -10203,7 +10203,7 @@ object_static_item_shared_item_slave_brazier = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 110349680
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_slave_brazier, "object/static/item/shared_item_slave_brazier.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_slave_brazier, "object/static/item/shared_item_slave_brazier.iff")
 
 object_static_item_shared_item_speaker = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_speaker.apt",
@@ -10247,7 +10247,7 @@ object_static_item_shared_item_speaker = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 235065843
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_speaker, "object/static/item/shared_item_speaker.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_speaker, "object/static/item/shared_item_speaker.iff")
 
 object_static_item_shared_item_storage_cabinet_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
@@ -10291,7 +10291,7 @@ object_static_item_shared_item_storage_cabinet_01 = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1107032483
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_storage_cabinet_01, "object/static/item/shared_item_storage_cabinet_01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_storage_cabinet_01, "object/static/item/shared_item_storage_cabinet_01.iff")
 
 object_static_item_shared_item_structure_module = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_structure_module.apt",
@@ -10335,7 +10335,7 @@ object_static_item_shared_item_structure_module = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3134020162
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_structure_module, "object/static/item/shared_item_structure_module.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_structure_module, "object/static/item/shared_item_structure_module.iff")
 
 object_static_item_shared_item_substance_analyzer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_app_substance_analyzer.apt",
@@ -10379,7 +10379,7 @@ object_static_item_shared_item_substance_analyzer = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1396654236
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_substance_analyzer, "object/static/item/shared_item_substance_analyzer.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_substance_analyzer, "object/static/item/shared_item_substance_analyzer.iff")
 
 object_static_item_shared_item_tank_bubble = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_bubble.apt",
@@ -10423,7 +10423,7 @@ object_static_item_shared_item_tank_bubble = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2226997314
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tank_bubble, "object/static/item/shared_item_tank_bubble.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tank_bubble, "object/static/item/shared_item_tank_bubble.iff")
 
 object_static_item_shared_item_tank_gas = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
@@ -10467,7 +10467,7 @@ object_static_item_shared_item_tank_gas = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2134737488
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tank_gas, "object/static/item/shared_item_tank_gas.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tank_gas, "object/static/item/shared_item_tank_gas.iff")
 
 object_static_item_shared_item_tapestry_imperial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tapestry_impl.apt",
@@ -10511,7 +10511,7 @@ object_static_item_shared_item_tapestry_imperial = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1397358236
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tapestry_imperial, "object/static/item/shared_item_tapestry_imperial.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tapestry_imperial, "object/static/item/shared_item_tapestry_imperial.iff")
 
 object_static_item_shared_item_tapestry_rebel = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tapestry_rebl.apt",
@@ -10555,7 +10555,7 @@ object_static_item_shared_item_tapestry_rebel = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3975304889
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tapestry_rebel, "object/static/item/shared_item_tapestry_rebel.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tapestry_rebel, "object/static/item/shared_item_tapestry_rebel.iff")
 
 object_static_item_shared_item_tapestry_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_tapestry_tato.apt",
@@ -10599,7 +10599,7 @@ object_static_item_shared_item_tapestry_tatooine = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 2397241081
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tapestry_tatooine, "object/static/item/shared_item_tapestry_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tapestry_tatooine, "object/static/item/shared_item_tapestry_tatooine.iff")
 
 object_static_item_shared_item_tech_console_sectional_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_a.apt",
@@ -10643,7 +10643,7 @@ object_static_item_shared_item_tech_console_sectional_a = SharedStaticObjectTemp
 	clientObjectCRC = 410220122
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tech_console_sectional_a, "object/static/item/shared_item_tech_console_sectional_a.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tech_console_sectional_a, "object/static/item/shared_item_tech_console_sectional_a.iff")
 
 object_static_item_shared_item_tech_console_sectional_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
@@ -10687,7 +10687,7 @@ object_static_item_shared_item_tech_console_sectional_b = SharedStaticObjectTemp
 	clientObjectCRC = 3278167757
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tech_console_sectional_b, "object/static/item/shared_item_tech_console_sectional_b.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tech_console_sectional_b, "object/static/item/shared_item_tech_console_sectional_b.iff")
 
 object_static_item_shared_item_tech_console_sectional_c = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_c.apt",
@@ -10731,7 +10731,7 @@ object_static_item_shared_item_tech_console_sectional_c = SharedStaticObjectTemp
 	clientObjectCRC = 2322184512
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tech_console_sectional_c, "object/static/item/shared_item_tech_console_sectional_c.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tech_console_sectional_c, "object/static/item/shared_item_tech_console_sectional_c.iff")
 
 object_static_item_shared_item_tech_console_sectional_d = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_d.apt",
@@ -10775,7 +10775,7 @@ object_static_item_shared_item_tech_console_sectional_d = SharedStaticObjectTemp
 	clientObjectCRC = 1904906836
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tech_console_sectional_d, "object/static/item/shared_item_tech_console_sectional_d.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tech_console_sectional_d, "object/static/item/shared_item_tech_console_sectional_d.iff")
 
 object_static_item_shared_item_tool_aeromagnifier = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_aeromagnifier.apt",
@@ -10819,7 +10819,7 @@ object_static_item_shared_item_tool_aeromagnifier = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3837927792
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_aeromagnifier, "object/static/item/shared_item_tool_aeromagnifier.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_aeromagnifier, "object/static/item/shared_item_tool_aeromagnifier.iff")
 
 object_static_item_shared_item_tool_computer_toolkit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
@@ -10863,7 +10863,7 @@ object_static_item_shared_item_tool_computer_toolkit = SharedStaticObjectTemplat
 	clientObjectCRC = 3870512519
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_computer_toolkit, "object/static/item/shared_item_tool_computer_toolkit.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_computer_toolkit, "object/static/item/shared_item_tool_computer_toolkit.iff")
 
 object_static_item_shared_item_tool_demagnetizer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_demagnetizer.apt",
@@ -10907,7 +10907,7 @@ object_static_item_shared_item_tool_demagnetizer = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1385243389
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_demagnetizer, "object/static/item/shared_item_tool_demagnetizer.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_demagnetizer, "object/static/item/shared_item_tool_demagnetizer.iff")
 
 object_static_item_shared_item_tool_droid_toolkit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_droid_toolkit.apt",
@@ -10951,7 +10951,7 @@ object_static_item_shared_item_tool_droid_toolkit = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1574251690
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_droid_toolkit, "object/static/item/shared_item_tool_droid_toolkit.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_droid_toolkit, "object/static/item/shared_item_tool_droid_toolkit.iff")
 
 object_static_item_shared_item_tool_engineering_datapad = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -10995,7 +10995,7 @@ object_static_item_shared_item_tool_engineering_datapad = SharedStaticObjectTemp
 	clientObjectCRC = 3200271339
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_engineering_datapad, "object/static/item/shared_item_tool_engineering_datapad.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_engineering_datapad, "object/static/item/shared_item_tool_engineering_datapad.iff")
 
 object_static_item_shared_item_tool_handheld_viewscreen_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -11039,7 +11039,7 @@ object_static_item_shared_item_tool_handheld_viewscreen_s1 = SharedStaticObjectT
 	clientObjectCRC = 4196956120
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_handheld_viewscreen_s1, "object/static/item/shared_item_tool_handheld_viewscreen_s1.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_handheld_viewscreen_s1, "object/static/item/shared_item_tool_handheld_viewscreen_s1.iff")
 
 object_static_item_shared_item_tool_handheld_viewscreen_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
@@ -11083,7 +11083,7 @@ object_static_item_shared_item_tool_handheld_viewscreen_s2 = SharedStaticObjectT
 	clientObjectCRC = 557834063
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_handheld_viewscreen_s2, "object/static/item/shared_item_tool_handheld_viewscreen_s2.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_handheld_viewscreen_s2, "object/static/item/shared_item_tool_handheld_viewscreen_s2.iff")
 
 object_static_item_shared_item_tool_hydrospanner = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_hydrospanner.apt",
@@ -11127,7 +11127,7 @@ object_static_item_shared_item_tool_hydrospanner = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 2348445241
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_hydrospanner, "object/static/item/shared_item_tool_hydrospanner.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_hydrospanner, "object/static/item/shared_item_tool_hydrospanner.iff")
 
 object_static_item_shared_item_tool_instrument_calibrator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
@@ -11171,7 +11171,7 @@ object_static_item_shared_item_tool_instrument_calibrator = SharedStaticObjectTe
 	clientObjectCRC = 3875485569
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_instrument_calibrator, "object/static/item/shared_item_tool_instrument_calibrator.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_instrument_calibrator, "object/static/item/shared_item_tool_instrument_calibrator.iff")
 
 object_static_item_shared_item_tool_magnetite_cleaner = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_talking_magnetite_cleaner.apt",
@@ -11215,7 +11215,7 @@ object_static_item_shared_item_tool_magnetite_cleaner = SharedStaticObjectTempla
 	clientObjectCRC = 2304998957
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_magnetite_cleaner, "object/static/item/shared_item_tool_magnetite_cleaner.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_magnetite_cleaner, "object/static/item/shared_item_tool_magnetite_cleaner.iff")
 
 object_static_item_shared_item_tool_meson_taloscope = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_meson_taloscope.apt",
@@ -11259,7 +11259,7 @@ object_static_item_shared_item_tool_meson_taloscope = SharedStaticObjectTemplate
 	clientObjectCRC = 3445151914
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_meson_taloscope, "object/static/item/shared_item_tool_meson_taloscope.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_meson_taloscope, "object/static/item/shared_item_tool_meson_taloscope.iff")
 
 object_static_item_shared_item_tool_ore_mining_unit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
@@ -11303,7 +11303,7 @@ object_static_item_shared_item_tool_ore_mining_unit = SharedStaticObjectTemplate
 	clientObjectCRC = 644353550
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_ore_mining_unit, "object/static/item/shared_item_tool_ore_mining_unit.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_ore_mining_unit, "object/static/item/shared_item_tool_ore_mining_unit.iff")
 
 object_static_item_shared_item_tool_power_output_analyzer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_power_output_analyzer.apt",
@@ -11347,7 +11347,7 @@ object_static_item_shared_item_tool_power_output_analyzer = SharedStaticObjectTe
 	clientObjectCRC = 1439401525
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_power_output_analyzer, "object/static/item/shared_item_tool_power_output_analyzer.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_power_output_analyzer, "object/static/item/shared_item_tool_power_output_analyzer.iff")
 
 object_static_item_shared_item_tool_radio = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
@@ -11391,7 +11391,7 @@ object_static_item_shared_item_tool_radio = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2220759169
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_radio, "object/static/item/shared_item_tool_radio.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_radio, "object/static/item/shared_item_tool_radio.iff")
 
 object_static_item_shared_item_tool_ranged_wp_repair = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_heavy.apt",
@@ -11435,7 +11435,7 @@ object_static_item_shared_item_tool_ranged_wp_repair = SharedStaticObjectTemplat
 	clientObjectCRC = 3897755824
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_ranged_wp_repair, "object/static/item/shared_item_tool_ranged_wp_repair.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_ranged_wp_repair, "object/static/item/shared_item_tool_ranged_wp_repair.iff")
 
 object_static_item_shared_item_tool_recording_rod = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recording_rod.apt",
@@ -11479,7 +11479,7 @@ object_static_item_shared_item_tool_recording_rod = SharedStaticObjectTemplate:n
 	clientObjectCRC = 2107092671
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_recording_rod, "object/static/item/shared_item_tool_recording_rod.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_recording_rod, "object/static/item/shared_item_tool_recording_rod.iff")
 
 object_static_item_shared_item_tool_sandstat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sandstat.apt",
@@ -11523,7 +11523,7 @@ object_static_item_shared_item_tool_sandstat = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3331762173
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_sandstat, "object/static/item/shared_item_tool_sandstat.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_sandstat, "object/static/item/shared_item_tool_sandstat.iff")
 
 object_static_item_shared_item_tool_sensor_beacon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sensor_beacon.apt",
@@ -11567,7 +11567,7 @@ object_static_item_shared_item_tool_sensor_beacon = SharedStaticObjectTemplate:n
 	clientObjectCRC = 977421656
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_sensor_beacon, "object/static/item/shared_item_tool_sensor_beacon.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_sensor_beacon, "object/static/item/shared_item_tool_sensor_beacon.iff")
 
 object_static_item_shared_item_tool_sensor_frequency_jammer_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sensor_frequency_jammer_s2.apt",
@@ -11611,7 +11611,7 @@ object_static_item_shared_item_tool_sensor_frequency_jammer_s2 = SharedStaticObj
 	clientObjectCRC = 3660166964
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_sensor_frequency_jammer_s2, "object/static/item/shared_item_tool_sensor_frequency_jammer_s2.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_sensor_frequency_jammer_s2, "object/static/item/shared_item_tool_sensor_frequency_jammer_s2.iff")
 
 object_static_item_shared_item_tool_stasis_field = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_app_stasis_field.apt",
@@ -11655,7 +11655,7 @@ object_static_item_shared_item_tool_stasis_field = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1171461633
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_stasis_field, "object/static/item/shared_item_tool_stasis_field.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_stasis_field, "object/static/item/shared_item_tool_stasis_field.iff")
 
 object_static_item_shared_item_tool_tools = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
@@ -11699,7 +11699,7 @@ object_static_item_shared_item_tool_tools = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2681316682
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_tools, "object/static/item/shared_item_tool_tools.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_tools, "object/static/item/shared_item_tool_tools.iff")
 
 object_static_item_shared_item_tool_turbine_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
@@ -11743,7 +11743,7 @@ object_static_item_shared_item_tool_turbine_generator = SharedStaticObjectTempla
 	clientObjectCRC = 2665023163
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_turbine_generator, "object/static/item/shared_item_tool_turbine_generator.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_turbine_generator, "object/static/item/shared_item_tool_turbine_generator.iff")
 
 object_static_item_shared_item_tool_worklight = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_worklight.apt",
@@ -11787,7 +11787,7 @@ object_static_item_shared_item_tool_worklight = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1750773218
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_tool_worklight, "object/static/item/shared_item_tool_worklight.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_worklight, "object/static/item/shared_item_tool_worklight.iff")
 
 object_static_item_shared_item_turbine_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
@@ -11831,7 +11831,7 @@ object_static_item_shared_item_turbine_generator = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1245421508
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_turbine_generator, "object/static/item/shared_item_turbine_generator.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_turbine_generator, "object/static/item/shared_item_turbine_generator.iff")
 
 object_static_item_shared_item_vibroaxe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibroaxe.apt",
@@ -11875,7 +11875,7 @@ object_static_item_shared_item_vibroaxe = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3409584272
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_vibroaxe, "object/static/item/shared_item_vibroaxe.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_vibroaxe, "object/static/item/shared_item_vibroaxe.iff")
 
 object_static_item_shared_item_vibroknuckles = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_vibroknuckler.apt",
@@ -11919,7 +11919,7 @@ object_static_item_shared_item_vibroknuckles = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 674397916
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_vibroknuckles, "object/static/item/shared_item_vibroknuckles.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_vibroknuckles, "object/static/item/shared_item_vibroknuckles.iff")
 
 object_static_item_shared_item_vibrolance = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibrolance.apt",
@@ -11963,7 +11963,7 @@ object_static_item_shared_item_vibrolance = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 675826205
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_vibrolance, "object/static/item/shared_item_vibrolance.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_vibrolance, "object/static/item/shared_item_vibrolance.iff")
 
 object_static_item_shared_item_wood_staff = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s02.apt",
@@ -12007,7 +12007,7 @@ object_static_item_shared_item_wood_staff = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 401434510
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_item_wood_staff, "object/static/item/shared_item_wood_staff.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_item_wood_staff, "object/static/item/shared_item_wood_staff.iff")
 
 object_static_item_shared_wp_carbine_dh17_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17_combined.apt",
@@ -12051,7 +12051,7 @@ object_static_item_shared_wp_carbine_dh17_combined = SharedStaticObjectTemplate:
 	clientObjectCRC = 250888359
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_dh17_combined, "object/static/item/shared_wp_carbine_dh17_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_dh17_combined, "object/static/item/shared_wp_carbine_dh17_combined.iff")
 
 object_static_item_shared_wp_carbine_e11_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11_combined.apt",
@@ -12095,7 +12095,7 @@ object_static_item_shared_wp_carbine_e11_combined = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3414429101
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_e11_combined, "object/static/item/shared_wp_carbine_e11_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_e11_combined, "object/static/item/shared_wp_carbine_e11_combined.iff")
 
 object_static_item_shared_wp_carbine_ee3_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_ee3_combined.apt",
@@ -12139,7 +12139,7 @@ object_static_item_shared_wp_carbine_ee3_combined = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1437189080
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_ee3_combined, "object/static/item/shared_wp_carbine_ee3_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_ee3_combined, "object/static/item/shared_wp_carbine_ee3_combined.iff")
 
 object_static_item_shared_wp_carbine_elite_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_elite_combined.apt",
@@ -12183,7 +12183,7 @@ object_static_item_shared_wp_carbine_elite_combined = SharedStaticObjectTemplate
 	clientObjectCRC = 1850802894
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_elite_combined, "object/static/item/shared_wp_carbine_elite_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_elite_combined, "object/static/item/shared_wp_carbine_elite_combined.iff")
 
 object_static_item_shared_wp_carbine_laser_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_laser_combined.apt",
@@ -12227,7 +12227,7 @@ object_static_item_shared_wp_carbine_laser_combined = SharedStaticObjectTemplate
 	clientObjectCRC = 1453498990
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_laser_combined, "object/static/item/shared_wp_carbine_laser_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_laser_combined, "object/static/item/shared_wp_carbine_laser_combined.iff")
 
 object_static_item_shared_wp_mle_2h_sword_axe_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
@@ -12271,7 +12271,7 @@ object_static_item_shared_wp_mle_2h_sword_axe_s01 = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3699781446
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_axe_s01, "object/static/item/shared_wp_mle_2h_sword_axe_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_axe_s01, "object/static/item/shared_wp_mle_2h_sword_axe_s01.iff")
 
 object_static_item_shared_wp_mle_2h_sword_lightsaber_luke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_lightsaber_luke.apt",
@@ -12315,7 +12315,7 @@ object_static_item_shared_wp_mle_2h_sword_lightsaber_luke = SharedStaticObjectTe
 	clientObjectCRC = 1065633828
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_lightsaber_luke, "object/static/item/shared_wp_mle_2h_sword_lightsaber_luke.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_lightsaber_luke, "object/static/item/shared_wp_mle_2h_sword_lightsaber_luke.iff")
 
 object_static_item_shared_wp_mle_2h_sword_lightsaber_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_lightsaber_s01.apt",
@@ -12359,7 +12359,7 @@ object_static_item_shared_wp_mle_2h_sword_lightsaber_s01 = SharedStaticObjectTem
 	clientObjectCRC = 3350565207
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_lightsaber_s01, "object/static/item/shared_wp_mle_2h_sword_lightsaber_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_lightsaber_s01, "object/static/item/shared_wp_mle_2h_sword_lightsaber_s01.iff")
 
 object_static_item_shared_wp_mle_2h_sword_maul_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_maul_s01.apt",
@@ -12403,7 +12403,7 @@ object_static_item_shared_wp_mle_2h_sword_maul_s01 = SharedStaticObjectTemplate:
 	clientObjectCRC = 1482753040
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_maul_s01, "object/static/item/shared_wp_mle_2h_sword_maul_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_maul_s01, "object/static/item/shared_wp_mle_2h_sword_maul_s01.iff")
 
 object_static_item_shared_wp_mle_2h_sword_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s01.apt",
@@ -12447,7 +12447,7 @@ object_static_item_shared_wp_mle_2h_sword_s01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 521257310
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_s01, "object/static/item/shared_wp_mle_2h_sword_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_s01, "object/static/item/shared_wp_mle_2h_sword_s01.iff")
 
 object_static_item_shared_wp_mle_2h_sword_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s02.apt",
@@ -12491,7 +12491,7 @@ object_static_item_shared_wp_mle_2h_sword_s02 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3288754633
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_s02, "object/static/item/shared_wp_mle_2h_sword_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_s02, "object/static/item/shared_wp_mle_2h_sword_s02.iff")
 
 object_static_item_shared_wp_mle_2h_sword_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s03.apt",
@@ -12535,7 +12535,7 @@ object_static_item_shared_wp_mle_2h_sword_s03 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2366312004
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_s03, "object/static/item/shared_wp_mle_2h_sword_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_s03, "object/static/item/shared_wp_mle_2h_sword_s03.iff")
 
 object_static_item_shared_wp_mle_axe_heavy_duty = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_heavy_duty.apt",
@@ -12579,7 +12579,7 @@ object_static_item_shared_wp_mle_axe_heavy_duty = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1844463104
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_axe_heavy_duty, "object/static/item/shared_wp_mle_axe_heavy_duty.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_axe_heavy_duty, "object/static/item/shared_wp_mle_axe_heavy_duty.iff")
 
 object_static_item_shared_wp_mle_axe_vibroax = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_vibroax.apt",
@@ -12623,7 +12623,7 @@ object_static_item_shared_wp_mle_axe_vibroax = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2440657910
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_axe_vibroax, "object/static/item/shared_wp_mle_axe_vibroax.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_axe_vibroax, "object/static/item/shared_wp_mle_axe_vibroax.iff")
 
 object_static_item_shared_wp_mle_baton_gaderiffi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_baton_gaderiffi.apt",
@@ -12667,7 +12667,7 @@ object_static_item_shared_wp_mle_baton_gaderiffi = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 992193600
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_baton_gaderiffi, "object/static/item/shared_wp_mle_baton_gaderiffi.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_baton_gaderiffi, "object/static/item/shared_wp_mle_baton_gaderiffi.iff")
 
 object_static_item_shared_wp_mle_baton_stun = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_baton_stun.apt",
@@ -12711,7 +12711,7 @@ object_static_item_shared_wp_mle_baton_stun = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 2420709474
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_baton_stun, "object/static/item/shared_wp_mle_baton_stun.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_baton_stun, "object/static/item/shared_wp_mle_baton_stun.iff")
 
 object_static_item_shared_wp_mle_battleaxe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
@@ -12755,7 +12755,7 @@ object_static_item_shared_wp_mle_battleaxe = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1779328413
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_battleaxe, "object/static/item/shared_wp_mle_battleaxe.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_battleaxe, "object/static/item/shared_wp_mle_battleaxe.iff")
 
 object_static_item_shared_wp_mle_blacksun_hack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_blacksun_hack.apt",
@@ -12799,7 +12799,7 @@ object_static_item_shared_wp_mle_blacksun_hack = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 2212584107
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_blacksun_hack, "object/static/item/shared_wp_mle_blacksun_hack.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_blacksun_hack, "object/static/item/shared_wp_mle_blacksun_hack.iff")
 
 object_static_item_shared_wp_mle_blacksun_razor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_blacksun_knuckler.apt",
@@ -12843,7 +12843,7 @@ object_static_item_shared_wp_mle_blacksun_razor = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1625350741
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_blacksun_razor, "object/static/item/shared_wp_mle_blacksun_razor.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_blacksun_razor, "object/static/item/shared_wp_mle_blacksun_razor.iff")
 
 object_static_item_shared_wp_mle_knife_dagger = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_dagger.apt",
@@ -12887,7 +12887,7 @@ object_static_item_shared_wp_mle_knife_dagger = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3675420926
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_knife_dagger, "object/static/item/shared_wp_mle_knife_dagger.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_knife_dagger, "object/static/item/shared_wp_mle_knife_dagger.iff")
 
 object_static_item_shared_wp_mle_knife_stone = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
@@ -12931,7 +12931,7 @@ object_static_item_shared_wp_mle_knife_stone = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3206396187
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_knife_stone, "object/static/item/shared_wp_mle_knife_stone.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_knife_stone, "object/static/item/shared_wp_mle_knife_stone.iff")
 
 object_static_item_shared_wp_mle_knife_survival = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_survival.apt",
@@ -12975,7 +12975,7 @@ object_static_item_shared_wp_mle_knife_survival = SharedStaticObjectTemplate:new
 	clientObjectCRC = 826777135
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_knife_survival, "object/static/item/shared_wp_mle_knife_survival.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_knife_survival, "object/static/item/shared_wp_mle_knife_survival.iff")
 
 object_static_item_shared_wp_mle_knife_vibroblade = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_vibroblade.apt",
@@ -13019,7 +13019,7 @@ object_static_item_shared_wp_mle_knife_vibroblade = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1599437236
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_knife_vibroblade, "object/static/item/shared_wp_mle_knife_vibroblade.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_knife_vibroblade, "object/static/item/shared_wp_mle_knife_vibroblade.iff")
 
 object_static_item_shared_wp_mle_lance_controller = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_controller.apt",
@@ -13063,7 +13063,7 @@ object_static_item_shared_wp_mle_lance_controller = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1826224713
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_controller, "object/static/item/shared_wp_mle_lance_controller.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_controller, "object/static/item/shared_wp_mle_lance_controller.iff")
 
 object_static_item_shared_wp_mle_lance_lightsaber_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_s01.apt",
@@ -13107,7 +13107,7 @@ object_static_item_shared_wp_mle_lance_lightsaber_s01 = SharedStaticObjectTempla
 	clientObjectCRC = 3718329571
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_lightsaber_s01, "object/static/item/shared_wp_mle_lance_lightsaber_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_lightsaber_s01, "object/static/item/shared_wp_mle_lance_lightsaber_s01.iff")
 
 object_static_item_shared_wp_mle_lance_lightsaber_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_s02.apt",
@@ -13151,7 +13151,7 @@ object_static_item_shared_wp_mle_lance_lightsaber_s02 = SharedStaticObjectTempla
 	clientObjectCRC = 112630900
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_lightsaber_s02, "object/static/item/shared_wp_mle_lance_lightsaber_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_lightsaber_s02, "object/static/item/shared_wp_mle_lance_lightsaber_s02.iff")
 
 object_static_item_shared_wp_mle_lance_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_s01.apt",
@@ -13195,7 +13195,7 @@ object_static_item_shared_wp_mle_lance_s01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 1433317881
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_s01, "object/static/item/shared_wp_mle_lance_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_s01, "object/static/item/shared_wp_mle_lance_s01.iff")
 
 object_static_item_shared_wp_mle_lance_staff_metal_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_metal_s01.apt",
@@ -13239,7 +13239,7 @@ object_static_item_shared_wp_mle_lance_staff_metal_s01 = SharedStaticObjectTempl
 	clientObjectCRC = 3472480586
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_staff_metal_s01, "object/static/item/shared_wp_mle_lance_staff_metal_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_staff_metal_s01, "object/static/item/shared_wp_mle_lance_staff_metal_s01.iff")
 
 object_static_item_shared_wp_mle_lance_staff_wood_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s01.apt",
@@ -13283,7 +13283,7 @@ object_static_item_shared_wp_mle_lance_staff_wood_s01 = SharedStaticObjectTempla
 	clientObjectCRC = 3664898798
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_staff_wood_s01, "object/static/item/shared_wp_mle_lance_staff_wood_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_staff_wood_s01, "object/static/item/shared_wp_mle_lance_staff_wood_s01.iff")
 
 object_static_item_shared_wp_mle_lance_staff_wood_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s02.apt",
@@ -13327,7 +13327,7 @@ object_static_item_shared_wp_mle_lance_staff_wood_s02 = SharedStaticObjectTempla
 	clientObjectCRC = 23478905
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_staff_wood_s02, "object/static/item/shared_wp_mle_lance_staff_wood_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_staff_wood_s02, "object/static/item/shared_wp_mle_lance_staff_wood_s02.iff")
 
 object_static_item_shared_wp_mle_lance_vibroaxe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibroaxe.apt",
@@ -13371,7 +13371,7 @@ object_static_item_shared_wp_mle_lance_vibroaxe = SharedStaticObjectTemplate:new
 	clientObjectCRC = 3456274398
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_vibroaxe, "object/static/item/shared_wp_mle_lance_vibroaxe.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_vibroaxe, "object/static/item/shared_wp_mle_lance_vibroaxe.iff")
 
 object_static_item_shared_wp_mle_lance_vibrolance = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibrolance.apt",
@@ -13415,7 +13415,7 @@ object_static_item_shared_wp_mle_lance_vibrolance = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3791727168
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_vibrolance, "object/static/item/shared_wp_mle_lance_vibrolance.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_vibrolance, "object/static/item/shared_wp_mle_lance_vibrolance.iff")
 
 object_static_item_shared_wp_mle_nightsister_lance = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_nightsister.apt",
@@ -13459,7 +13459,7 @@ object_static_item_shared_wp_mle_nightsister_lance = SharedStaticObjectTemplate:
 	clientObjectCRC = 1839817431
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_nightsister_lance, "object/static/item/shared_wp_mle_nightsister_lance.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_nightsister_lance, "object/static/item/shared_wp_mle_nightsister_lance.iff")
 
 object_static_item_shared_wp_mle_scythe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s03.apt",
@@ -13503,7 +13503,7 @@ object_static_item_shared_wp_mle_scythe = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3502273014
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_scythe, "object/static/item/shared_wp_mle_scythe.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_scythe, "object/static/item/shared_wp_mle_scythe.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_anakin = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_anakin.apt",
@@ -13547,7 +13547,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_anakin = SharedStaticObjectTem
 	clientObjectCRC = 3342611236
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_anakin, "object/static/item/shared_wp_mle_sword_lightsaber_anakin.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_anakin, "object/static/item/shared_wp_mle_sword_lightsaber_anakin.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_andael = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_andael.apt",
@@ -13591,7 +13591,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_andael = SharedStaticObjectTem
 	clientObjectCRC = 1018608527
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_andael, "object/static/item/shared_wp_mle_sword_lightsaber_andael.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_andael, "object/static/item/shared_wp_mle_sword_lightsaber_andael.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_ben = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_ben.apt",
@@ -13635,7 +13635,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_ben = SharedStaticObjectTempla
 	clientObjectCRC = 592712531
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_ben, "object/static/item/shared_wp_mle_sword_lightsaber_ben.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_ben, "object/static/item/shared_wp_mle_sword_lightsaber_ben.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_dugald = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_dugald.apt",
@@ -13679,7 +13679,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_dugald = SharedStaticObjectTem
 	clientObjectCRC = 1547853327
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_dugald, "object/static/item/shared_wp_mle_sword_lightsaber_dugald.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_dugald, "object/static/item/shared_wp_mle_sword_lightsaber_dugald.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_leather = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_leather.apt",
@@ -13723,7 +13723,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_leather = SharedStaticObjectTe
 	clientObjectCRC = 1298192347
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_leather, "object/static/item/shared_wp_mle_sword_lightsaber_leather.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_leather, "object/static/item/shared_wp_mle_sword_lightsaber_leather.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_luke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_luke.apt",
@@ -13767,7 +13767,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_luke = SharedStaticObjectTempl
 	clientObjectCRC = 79637610
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_luke, "object/static/item/shared_wp_mle_sword_lightsaber_luke.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_luke, "object/static/item/shared_wp_mle_sword_lightsaber_luke.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_luke_2h = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_luke_2h.apt",
@@ -13811,7 +13811,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_luke_2h = SharedStaticObjectTe
 	clientObjectCRC = 1268199554
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_luke_2h, "object/static/item/shared_wp_mle_sword_lightsaber_luke_2h.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_luke_2h, "object/static/item/shared_wp_mle_sword_lightsaber_luke_2h.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_mace = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_mace.apt",
@@ -13855,7 +13855,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_mace = SharedStaticObjectTempl
 	clientObjectCRC = 1504760159
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_mace, "object/static/item/shared_wp_mle_sword_lightsaber_mace.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_mace, "object/static/item/shared_wp_mle_sword_lightsaber_mace.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_nebu = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_nebu.apt",
@@ -13899,7 +13899,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_nebu = SharedStaticObjectTempl
 	clientObjectCRC = 338954886
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_nebu, "object/static/item/shared_wp_mle_sword_lightsaber_nebu.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_nebu, "object/static/item/shared_wp_mle_sword_lightsaber_nebu.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_obi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_obi.apt",
@@ -13943,7 +13943,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_obi = SharedStaticObjectTempla
 	clientObjectCRC = 2627580971
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_obi, "object/static/item/shared_wp_mle_sword_lightsaber_obi.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_obi, "object/static/item/shared_wp_mle_sword_lightsaber_obi.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_quigon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_quigon.apt",
@@ -13987,7 +13987,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_quigon = SharedStaticObjectTem
 	clientObjectCRC = 2820675362
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_quigon, "object/static/item/shared_wp_mle_sword_lightsaber_quigon.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_quigon, "object/static/item/shared_wp_mle_sword_lightsaber_quigon.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_sleekblack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_sleekblack.apt",
@@ -14031,7 +14031,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_sleekblack = SharedStaticObjec
 	clientObjectCRC = 2604364449
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_sleekblack, "object/static/item/shared_wp_mle_sword_lightsaber_sleekblack.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_sleekblack, "object/static/item/shared_wp_mle_sword_lightsaber_sleekblack.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_sleeksilver = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_sleeksilver.apt",
@@ -14075,7 +14075,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_sleeksilver = SharedStaticObje
 	clientObjectCRC = 2115713480
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_sleeksilver, "object/static/item/shared_wp_mle_sword_lightsaber_sleeksilver.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_sleeksilver, "object/static/item/shared_wp_mle_sword_lightsaber_sleeksilver.iff")
 
 object_static_item_shared_wp_mle_sword_lightsaber_vader = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_vader.apt",
@@ -14119,7 +14119,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_vader = SharedStaticObjectTemp
 	clientObjectCRC = 2745431319
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_vader, "object/static/item/shared_wp_mle_sword_lightsaber_vader.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_vader, "object/static/item/shared_wp_mle_sword_lightsaber_vader.iff")
 
 object_static_item_shared_wp_mle_sword_rantok = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_rantok.apt",
@@ -14163,7 +14163,7 @@ object_static_item_shared_wp_mle_sword_rantok = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3924744619
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_rantok, "object/static/item/shared_wp_mle_sword_rantok.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_rantok, "object/static/item/shared_wp_mle_sword_rantok.iff")
 
 object_static_item_shared_wp_mle_sword_ryyk_blade = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_ryyk_blade.apt",
@@ -14207,7 +14207,7 @@ object_static_item_shared_wp_mle_sword_ryyk_blade = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1385616360
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_ryyk_blade, "object/static/item/shared_wp_mle_sword_ryyk_blade.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_ryyk_blade, "object/static/item/shared_wp_mle_sword_ryyk_blade.iff")
 
 object_static_item_shared_wp_mle_sword_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s01.apt",
@@ -14251,7 +14251,7 @@ object_static_item_shared_wp_mle_sword_s01 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 3780711592
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_s01, "object/static/item/shared_wp_mle_sword_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_s01, "object/static/item/shared_wp_mle_sword_s01.iff")
 
 object_static_item_shared_wp_mle_sword_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s02.apt",
@@ -14295,7 +14295,7 @@ object_static_item_shared_wp_mle_sword_s02 = SharedStaticObjectTemplate:new {
 	clientObjectCRC = 978238527
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_s02, "object/static/item/shared_wp_mle_sword_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_s02, "object/static/item/shared_wp_mle_sword_s02.iff")
 
 object_static_item_shared_wp_mle_sword_vibroblade = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_vibroblade.apt",
@@ -14339,7 +14339,7 @@ object_static_item_shared_wp_mle_sword_vibroblade = SharedStaticObjectTemplate:n
 	clientObjectCRC = 1317941189
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_vibroblade, "object/static/item/shared_wp_mle_sword_vibroblade.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_vibroblade, "object/static/item/shared_wp_mle_sword_vibroblade.iff")
 
 object_static_item_shared_wp_pistol_cdef_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_cdef_combined.apt",
@@ -14383,7 +14383,7 @@ object_static_item_shared_wp_pistol_cdef_combined = SharedStaticObjectTemplate:n
 	clientObjectCRC = 3411329076
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_cdef_combined, "object/static/item/shared_wp_pistol_cdef_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_cdef_combined, "object/static/item/shared_wp_pistol_cdef_combined.iff")
 
 object_static_item_shared_wp_pistol_d18_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_d18_combined.apt",
@@ -14427,7 +14427,7 @@ object_static_item_shared_wp_pistol_d18_combined = SharedStaticObjectTemplate:ne
 	clientObjectCRC = 1347955636
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_d18_combined, "object/static/item/shared_wp_pistol_d18_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_d18_combined, "object/static/item/shared_wp_pistol_d18_combined.iff")
 
 object_static_item_shared_wp_pistol_dl44_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dl44_combined.apt",
@@ -14471,7 +14471,7 @@ object_static_item_shared_wp_pistol_dl44_combined = SharedStaticObjectTemplate:n
 	clientObjectCRC = 907334301
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_dl44_combined, "object/static/item/shared_wp_pistol_dl44_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_dl44_combined, "object/static/item/shared_wp_pistol_dl44_combined.iff")
 
 object_static_item_shared_wp_pistol_dl44_metal_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dl44_metal_combined.apt",
@@ -14515,7 +14515,7 @@ object_static_item_shared_wp_pistol_dl44_metal_combined = SharedStaticObjectTemp
 	clientObjectCRC = 137325307
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_dl44_metal_combined, "object/static/item/shared_wp_pistol_dl44_metal_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_dl44_metal_combined, "object/static/item/shared_wp_pistol_dl44_metal_combined.iff")
 
 object_static_item_shared_wp_pistol_scout_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scout_combined.apt",
@@ -14559,7 +14559,7 @@ object_static_item_shared_wp_pistol_scout_combined = SharedStaticObjectTemplate:
 	clientObjectCRC = 637170422
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_scout_combined, "object/static/item/shared_wp_pistol_scout_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_scout_combined, "object/static/item/shared_wp_pistol_scout_combined.iff")
 
 object_static_item_shared_wp_pistol_srcombat_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_srcombat_combined.apt",
@@ -14603,7 +14603,7 @@ object_static_item_shared_wp_pistol_srcombat_combined = SharedStaticObjectTempla
 	clientObjectCRC = 3596059056
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_srcombat_combined, "object/static/item/shared_wp_pistol_srcombat_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_srcombat_combined, "object/static/item/shared_wp_pistol_srcombat_combined.iff")
 
 object_static_item_shared_wp_rifle_bowcaster_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_bowcaster_combined.apt",
@@ -14647,7 +14647,7 @@ object_static_item_shared_wp_rifle_bowcaster_combined = SharedStaticObjectTempla
 	clientObjectCRC = 3861751731
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_rifle_bowcaster_combined, "object/static/item/shared_wp_rifle_bowcaster_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_rifle_bowcaster_combined, "object/static/item/shared_wp_rifle_bowcaster_combined.iff")
 
 object_static_item_shared_wp_rifle_laser_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_combined.apt",
@@ -14691,7 +14691,7 @@ object_static_item_shared_wp_rifle_laser_combined = SharedStaticObjectTemplate:n
 	clientObjectCRC = 2285943714
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_rifle_laser_combined, "object/static/item/shared_wp_rifle_laser_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_rifle_laser_combined, "object/static/item/shared_wp_rifle_laser_combined.iff")
 
 object_static_item_shared_wp_rifle_t21_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_combined.apt",
@@ -14735,7 +14735,7 @@ object_static_item_shared_wp_rifle_t21_combined = SharedStaticObjectTemplate:new
 	clientObjectCRC = 1990229508
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_rifle_t21_combined, "object/static/item/shared_wp_rifle_t21_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_rifle_t21_combined, "object/static/item/shared_wp_rifle_t21_combined.iff")
 
 object_static_item_shared_wp_rifle_tusken_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_tusken_s01.apt",
@@ -14779,4 +14779,4 @@ object_static_item_shared_wp_rifle_tusken_combined = SharedStaticObjectTemplate:
 	clientObjectCRC = 2148373752
 }
 
-ObjectTemplates:addTemplate(object_static_item_shared_wp_rifle_tusken_combined, "object/static/item/shared_wp_rifle_tusken_combined.iff")
+ObjectTemplates:addClientTemplate(object_static_item_shared_wp_rifle_tusken_combined, "object/static/item/shared_wp_rifle_tusken_combined.iff")

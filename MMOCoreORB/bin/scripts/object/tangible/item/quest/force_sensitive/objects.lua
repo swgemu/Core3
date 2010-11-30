@@ -93,7 +93,7 @@ object_tangible_item_quest_force_sensitive_shared_bacta_tank = SharedTangibleObj
 	clientObjectCRC = 910140533
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_bacta_tank, "object/tangible/item/quest/force_sensitive/shared_bacta_tank.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_bacta_tank, "object/tangible/item/quest/force_sensitive/shared_bacta_tank.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_buff_item = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/atf_sith_s01.apt",
@@ -147,7 +147,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_buff_item = SharedTangibleO
 	clientObjectCRC = 940923132
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_buff_item, "object/tangible/item/quest/force_sensitive/shared_fs_buff_item.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_buff_item, "object/tangible/item/quest/force_sensitive/shared_fs_buff_item.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_demagnetizer.apt",
@@ -201,7 +201,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer = Sha
 	clientObjectCRC = 486918968
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_analyzer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_analyzer.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
@@ -255,7 +255,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator = S
 	clientObjectCRC = 1614838947
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_calibrator.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_calibrator.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_processor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sensor_package_unit.apt",
@@ -309,7 +309,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_process
 	clientObjectCRC = 1790922527
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_processor, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_config_processor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_processor, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_config_processor.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chip = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_droid_module_s01.apt",
@@ -363,7 +363,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chi
 	clientObjectCRC = 704474859
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chip, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_decryption_chip.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chip, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_decryption_chip.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_shields.apt",
@@ -417,7 +417,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver 
 	clientObjectCRC = 2604518454
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_gyro_receiver.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_gyro_receiver.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_meson_taloscope.apt",
@@ -471,7 +471,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp = S
 	clientObjectCRC = 2081471563
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_signal_amp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_signal_amp.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_deflector_shield.apt",
@@ -525,7 +525,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_ar
 	clientObjectCRC = 3351448820
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_array, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_solid_state_array.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_array, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_solid_state_array.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
@@ -579,7 +579,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal = Sha
 	clientObjectCRC = 2439008129
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_terminal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_terminal.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_deflector_shield.apt",
@@ -633,7 +633,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core = S
 	clientObjectCRC = 821838739
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core, "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_computer_core.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core, "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_computer_core.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_app_organichem_stores.apt",
@@ -687,7 +687,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite 
 	clientObjectCRC = 997112719
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite, "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_downed_satellite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite, "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_downed_satellite.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
@@ -741,7 +741,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack = Sh
 	clientObjectCRC = 2568094988
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack, "object/tangible/item/quest/force_sensitive/shared_fs_medic_puzzle_heal_pack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack, "object/tangible/item/quest/force_sensitive/shared_fs_medic_puzzle_heal_pack.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_arm_r_m.sat",
@@ -795,7 +795,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm = Shar
 	clientObjectCRC = 2794758303
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm, "object/tangible/item/quest/force_sensitive/shared_fs_mellichae_cyborg_arm.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm, "object/tangible/item/quest/force_sensitive/shared_fs_mellichae_cyborg_arm.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals.apt",
@@ -849,7 +849,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate = Share
 	clientObjectCRC = 622337164
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate, "object/tangible/item/quest/force_sensitive/shared_fs_reflex_supply_crate.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate, "object/tangible/item/quest/force_sensitive/shared_fs_reflex_supply_crate.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_fs_sculpture_1.apt",
@@ -903,7 +903,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1 = SharedTangibl
 	clientObjectCRC = 2534792856
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_1.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_fs_sculpture_2.apt",
@@ -957,7 +957,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2 = SharedTangibl
 	clientObjectCRC = 1275229711
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_2.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_fs_sculpture_3.apt",
@@ -1011,7 +1011,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3 = SharedTangibl
 	clientObjectCRC = 84873602
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_3.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_fs_sculpture_4.apt",
@@ -1065,7 +1065,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4 = SharedTangibl
 	clientObjectCRC = 4276894358
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_4.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
@@ -1119,4 +1119,4 @@ object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01 = Sh
 	clientObjectCRC = 392556278
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01, "object/tangible/item/quest/force_sensitive/shared_fs_village_bannerpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01, "object/tangible/item/quest/force_sensitive/shared_fs_village_bannerpole_s01.iff")

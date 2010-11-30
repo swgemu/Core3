@@ -93,7 +93,7 @@ object_resource_container_base_shared_base_resource_container = SharedResourceCo
 	clientObjectCRC = 1272540468
 }
 
-ObjectTemplates:addTemplate(object_resource_container_base_shared_base_resource_container, "object/resource_container/base/shared_base_resource_container.iff")
+ObjectTemplates:addClientTemplate(object_resource_container_base_shared_base_resource_container, "object/resource_container/base/shared_base_resource_container.iff")
 
 object_resource_container_base_shared_resource_container_default = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "",
@@ -147,4 +147,4 @@ object_resource_container_base_shared_resource_container_default = SharedResourc
 	clientObjectCRC = 741847407
 }
 
-ObjectTemplates:addTemplate(object_resource_container_base_shared_resource_container_default, "object/resource_container/base/shared_resource_container_default.iff")
+ObjectTemplates:addClientTemplate(object_resource_container_base_shared_resource_container_default, "object/resource_container/base/shared_resource_container_default.iff")

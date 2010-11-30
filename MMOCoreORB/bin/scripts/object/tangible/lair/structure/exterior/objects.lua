@@ -93,7 +93,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul = 
 	clientObjectCRC = 3412992193
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_graul.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_graul.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila
 	clientObjectCRC = 743053980
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_kimogila.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_kimogila.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dragon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -201,7 +201,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dr
 	clientObjectCRC = 449676358
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dragon, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_krayt_dragon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dragon, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_krayt_dragon.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -255,7 +255,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor =
 	clientObjectCRC = 2913519397
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_rancor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor, "object/tangible/lair/structure/exterior/shared_lair_cave_giant_exterior_rancor.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_dragon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -309,7 +309,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_d
 	clientObjectCRC = 3125250632
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_dragon, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_condor_dragon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_dragon, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_condor_dragon.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -363,7 +363,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw
 	clientObjectCRC = 455779396
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_gulginaw.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_gulginaw.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -417,7 +417,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok 
 	clientObjectCRC = 2139786863
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_kai-tok.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_kai-tok.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -471,7 +471,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek =
 	clientObjectCRC = 2915140501
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_perlek.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek, "object/tangible/lair/structure/exterior/shared_lair_cave_large_exterior_perlek.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -525,7 +525,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk = 
 	clientObjectCRC = 3985013510
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_gurk.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_gurk.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -579,7 +579,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak
 	clientObjectCRC = 3103858464
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_hanadak.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_hanadak.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -633,7 +633,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien 
 	clientObjectCRC = 1771703273
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_mamien.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_mamien.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -687,7 +687,7 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok
 	clientObjectCRC = 3177863018
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_veermok.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok, "object/tangible/lair/structure/exterior/shared_lair_cave_medium_exterior_veermok.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -741,7 +741,7 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrak
 	clientObjectCRC = 599219084
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrake, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_dalyrake.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrake, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_dalyrake.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -795,7 +795,7 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik
 	clientObjectCRC = 59358224
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_kliknik.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_kliknik.iff")
 
 object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -849,4 +849,4 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek =
 	clientObjectCRC = 2811758761
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_merek.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek, "object/tangible/lair/structure/exterior/shared_lair_hive_medium_exterior_merek.iff")

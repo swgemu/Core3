@@ -117,7 +117,7 @@ object_mobile_vehicle_shared_jetpack = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1613040434
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_jetpack, "object/mobile/vehicle/shared_jetpack.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_jetpack, "object/mobile/vehicle/shared_jetpack.iff")
 
 object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new {
 	acceleration = {10,3},
@@ -195,7 +195,7 @@ object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 2842025402
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_av21, "object/mobile/vehicle/shared_landspeeder_av21.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_av21, "object/mobile/vehicle/shared_landspeeder_av21.iff")
 
 object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new {
 	acceleration = {2,2},
@@ -273,7 +273,7 @@ object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 634510067
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_base, "object/mobile/vehicle/shared_landspeeder_base.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_base, "object/mobile/vehicle/shared_landspeeder_base.iff")
 
 object_mobile_vehicle_shared_landspeeder_x31 = SharedCreatureObjectTemplate:new {
 	acceleration = {7,2},
@@ -351,7 +351,7 @@ object_mobile_vehicle_shared_landspeeder_x31 = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 658152450
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_x31, "object/mobile/vehicle/shared_landspeeder_x31.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_x31, "object/mobile/vehicle/shared_landspeeder_x31.iff")
 
 object_mobile_vehicle_shared_landspeeder_x34 = SharedCreatureObjectTemplate:new {
 	acceleration = {8,3},
@@ -429,7 +429,7 @@ object_mobile_vehicle_shared_landspeeder_x34 = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 1321433100
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_x34, "object/mobile/vehicle/shared_landspeeder_x34.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_x34, "object/mobile/vehicle/shared_landspeeder_x34.iff")
 
 object_mobile_vehicle_shared_landspeeder_xp38 = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -507,7 +507,7 @@ object_mobile_vehicle_shared_landspeeder_xp38 = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 1064205223
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_xp38, "object/mobile/vehicle/shared_landspeeder_xp38.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_xp38, "object/mobile/vehicle/shared_landspeeder_xp38.iff")
 
 object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
 	acceleration = {9,3},
@@ -585,7 +585,7 @@ object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1922373615
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike, "object/mobile/vehicle/shared_speederbike.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_speederbike, "object/mobile/vehicle/shared_speederbike.iff")
 
 object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new {
 	acceleration = {2,2},
@@ -663,7 +663,7 @@ object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 2115869795
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_base, "object/mobile/vehicle/shared_speederbike_base.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_speederbike_base, "object/mobile/vehicle/shared_speederbike_base.iff")
 
 object_mobile_vehicle_shared_speederbike_flash = SharedCreatureObjectTemplate:new {
 	acceleration = {10,3},
@@ -741,7 +741,7 @@ object_mobile_vehicle_shared_speederbike_flash = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 5125428
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_flash, "object/mobile/vehicle/shared_speederbike_flash.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_speederbike_flash, "object/mobile/vehicle/shared_speederbike_flash.iff")
 
 object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:new {
 	acceleration = {10,3},
@@ -819,7 +819,7 @@ object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 2943197007
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_swoop, "object/mobile/vehicle/shared_speederbike_swoop.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_speederbike_swoop, "object/mobile/vehicle/shared_speederbike_swoop.iff")
 
 object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
 	acceleration = {2,2},
@@ -897,4 +897,4 @@ object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1605130582
 }
 
-ObjectTemplates:addTemplate(object_mobile_vehicle_shared_vehicle_base, "object/mobile/vehicle/shared_vehicle_base.iff")
+ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_vehicle_base, "object/mobile/vehicle/shared_vehicle_base.iff")

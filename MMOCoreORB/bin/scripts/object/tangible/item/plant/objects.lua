@@ -93,4 +93,4 @@ object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 3800711792
 }
 
-ObjectTemplates:addTemplate(object_tangible_item_plant_shared_force_melon, "object/tangible/item/plant/shared_force_melon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_item_plant_shared_force_melon, "object/tangible/item/plant/shared_force_melon.iff")

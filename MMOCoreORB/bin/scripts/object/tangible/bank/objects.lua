@@ -93,4 +93,4 @@ object_tangible_bank_shared_character_bank = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1895633812
 }
 
-ObjectTemplates:addTemplate(object_tangible_bank_shared_character_bank, "object/tangible/bank/shared_character_bank.iff")
+ObjectTemplates:addClientTemplate(object_tangible_bank_shared_character_bank, "object/tangible/bank/shared_character_bank.iff")

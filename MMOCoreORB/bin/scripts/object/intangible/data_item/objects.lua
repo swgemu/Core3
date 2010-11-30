@@ -83,7 +83,7 @@ object_intangible_data_item_shared_data_geiger_counter = SharedIntangibleObjectT
 	clientObjectCRC = 1638993826
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_geiger_counter, "object/intangible/data_item/shared_data_geiger_counter.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_geiger_counter, "object/intangible/data_item/shared_data_geiger_counter.iff")
 
 object_intangible_data_item_shared_data_imperial = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -127,7 +127,7 @@ object_intangible_data_item_shared_data_imperial = SharedIntangibleObjectTemplat
 	clientObjectCRC = 228023073
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_imperial, "object/intangible/data_item/shared_data_imperial.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_imperial, "object/intangible/data_item/shared_data_imperial.iff")
 
 object_intangible_data_item_shared_data_item = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -171,7 +171,7 @@ object_intangible_data_item_shared_data_item = SharedIntangibleObjectTemplate:ne
 	clientObjectCRC = 4189484016
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_item, "object/intangible/data_item/shared_data_item.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_item, "object/intangible/data_item/shared_data_item.iff")
 
 object_intangible_data_item_shared_data_rebel = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
@@ -215,7 +215,7 @@ object_intangible_data_item_shared_data_rebel = SharedIntangibleObjectTemplate:n
 	clientObjectCRC = 197286219
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_rebel, "object/intangible/data_item/shared_data_rebel.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_rebel, "object/intangible/data_item/shared_data_rebel.iff")
 
 object_intangible_data_item_shared_droid_command = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
@@ -259,7 +259,7 @@ object_intangible_data_item_shared_droid_command = SharedIntangibleObjectTemplat
 	clientObjectCRC = 1128492217
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_droid_command, "object/intangible/data_item/shared_droid_command.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_droid_command, "object/intangible/data_item/shared_droid_command.iff")
 
 object_intangible_data_item_shared_warren_encryption_key = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -303,7 +303,7 @@ object_intangible_data_item_shared_warren_encryption_key = SharedIntangibleObjec
 	clientObjectCRC = 994574621
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_encryption_key, "object/intangible/data_item/shared_warren_encryption_key.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_encryption_key, "object/intangible/data_item/shared_warren_encryption_key.iff")
 
 object_intangible_data_item_shared_warren_evidence_01 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -347,7 +347,7 @@ object_intangible_data_item_shared_warren_evidence_01 = SharedIntangibleObjectTe
 	clientObjectCRC = 3760892474
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_01, "object/intangible/data_item/shared_warren_evidence_01.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_01, "object/intangible/data_item/shared_warren_evidence_01.iff")
 
 object_intangible_data_item_shared_warren_evidence_02 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -391,7 +391,7 @@ object_intangible_data_item_shared_warren_evidence_02 = SharedIntangibleObjectTe
 	clientObjectCRC = 993854125
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_02, "object/intangible/data_item/shared_warren_evidence_02.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_02, "object/intangible/data_item/shared_warren_evidence_02.iff")
 
 object_intangible_data_item_shared_warren_evidence_03 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -435,7 +435,7 @@ object_intangible_data_item_shared_warren_evidence_03 = SharedIntangibleObjectTe
 	clientObjectCRC = 1915774240
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_03, "object/intangible/data_item/shared_warren_evidence_03.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_03, "object/intangible/data_item/shared_warren_evidence_03.iff")
 
 object_intangible_data_item_shared_warren_evidence_04 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -479,4 +479,4 @@ object_intangible_data_item_shared_warren_evidence_04 = SharedIntangibleObjectTe
 	clientObjectCRC = 2312326708
 }
 
-ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_04, "object/intangible/data_item/shared_warren_evidence_04.iff")
+ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_04, "object/intangible/data_item/shared_warren_evidence_04.iff")

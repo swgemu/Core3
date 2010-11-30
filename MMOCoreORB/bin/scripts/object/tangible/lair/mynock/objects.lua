@@ -93,4 +93,4 @@ object_tangible_lair_mynock_shared_lair_mynock = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 573653561
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_mynock_shared_lair_mynock, "object/tangible/lair/mynock/shared_lair_mynock.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_mynock_shared_lair_mynock, "object/tangible/lair/mynock/shared_lair_mynock.iff")

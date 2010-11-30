@@ -93,4 +93,4 @@ object_tangible_fishing_bait_base_shared_bait_base = SharedTangibleObjectTemplat
 	clientObjectCRC = 3482306960
 }
 
-ObjectTemplates:addTemplate(object_tangible_fishing_bait_base_shared_bait_base, "object/tangible/fishing/bait/base/shared_bait_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_base_shared_bait_base, "object/tangible/fishing/bait/base/shared_bait_base.iff")

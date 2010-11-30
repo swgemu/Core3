@@ -83,7 +83,7 @@ object_draft_schematic_space_reverse_engineering_shared_analysis_tool = SharedDr
 	clientObjectCRC = 4256991250
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool = Sh
 	clientObjectCRC = 3368050000
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_armor_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_armor_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,7 +171,7 @@ object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool = 
 	clientObjectCRC = 1558712471
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_booster_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_booster_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -215,7 +215,7 @@ object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool 
 	clientObjectCRC = 4158784961
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_capacitor_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_capacitor_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis_tool = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -259,7 +259,7 @@ object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis
 	clientObjectCRC = 1820998508
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_droid_interface_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_droid_interface_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -303,7 +303,7 @@ object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool = S
 	clientObjectCRC = 3400518634
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_engine_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_engine_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -347,7 +347,7 @@ object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool = 
 	clientObjectCRC = 1274882415
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_reactor_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_reactor_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_retrofit_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,7 +391,7 @@ object_draft_schematic_space_reverse_engineering_shared_retrofit_kit = SharedDra
 	clientObjectCRC = 3323192675
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_retrofit_kit, "object/draft_schematic/space/reverse_engineering/shared_retrofit_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_retrofit_kit, "object/draft_schematic/space/reverse_engineering/shared_retrofit_kit.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -435,7 +435,7 @@ object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool = 
 	clientObjectCRC = 2342685561
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_shields_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_shields_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -479,4 +479,4 @@ object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool = S
 	clientObjectCRC = 3831959480
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_weapon_analysis_tool.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_weapon_analysis_tool.iff")

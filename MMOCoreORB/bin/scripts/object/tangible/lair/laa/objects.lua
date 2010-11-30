@@ -93,7 +93,7 @@ object_tangible_lair_laa_shared_lair_laa = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 986654540
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_laa_shared_lair_laa, "object/tangible/lair/laa/shared_lair_laa.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_laa_shared_lair_laa, "object/tangible/lair/laa/shared_lair_laa.iff")
 
 object_tangible_lair_laa_shared_lair_laa_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_laa_shared_lair_laa_underwater = SharedTangibleObjectTempla
 	clientObjectCRC = 4014734204
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_laa_shared_lair_laa_underwater, "object/tangible/lair/laa/shared_lair_laa_underwater.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_laa_shared_lair_laa_underwater, "object/tangible/lair/laa/shared_lair_laa_underwater.iff")

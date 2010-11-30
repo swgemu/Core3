@@ -93,7 +93,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_
 	clientObjectCRC = 2255500676
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_armek_military_grade_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_armek_military_grade_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
@@ -147,7 +147,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_
 	clientObjectCRC = 1567071507
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_armek_military_grade_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_armek_military_grade_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -201,7 +201,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di6 = SharedTa
 	clientObjectCRC = 1554428652
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di6, "object/tangible/ship/components/droid_interface/shared_ddi_cygnus_di6.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di6, "object/tangible/ship/components/droid_interface/shared_ddi_cygnus_di6.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -255,7 +255,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8 = SharedTa
 	clientObjectCRC = 2946627955
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8, "object/tangible/ship/components/droid_interface/shared_ddi_cygnus_di8.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8, "object/tangible/ship/components/droid_interface/shared_ddi_cygnus_di8.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -309,7 +309,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 	clientObjectCRC = 382961907
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_droid_commander_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_droid_commander_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -363,7 +363,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 	clientObjectCRC = 3452182628
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_droid_commander_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_droid_commander_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -417,7 +417,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 	clientObjectCRC = 2227783657
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_droid_commander_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_droid_commander_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -471,7 +471,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite = Share
 	clientObjectCRC = 2848252301
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droid_commander_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -525,7 +525,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droi
 	clientObjectCRC = 1303344441
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droid_commander_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_modified_droid_commander_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droid_commander_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_freitek_modified_droid_commander_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -579,7 +579,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1 = Sh
 	clientObjectCRC = 2130320343
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1, "object/tangible/ship/components/droid_interface/shared_ddi_gallofree_level1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1, "object/tangible/ship/components/droid_interface/shared_ddi_gallofree_level1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -633,7 +633,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_generic = SharedTangi
 	clientObjectCRC = 3733721392
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_generic, "object/tangible/ship/components/droid_interface/shared_ddi_generic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_generic, "object/tangible/ship/components/droid_interface/shared_ddi_generic.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -687,7 +687,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech =
 	clientObjectCRC = 1006845389
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech, "object/tangible/ship/components/droid_interface/shared_ddi_haor_chall_old_tech.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech, "object/tangible/ship/components/droid_interface/shared_ddi_haor_chall_old_tech.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_vintage_piece = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -741,7 +741,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_vintage_pi
 	clientObjectCRC = 1151995556
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_vintage_piece, "object/tangible/ship/components/droid_interface/shared_ddi_haor_chall_vintage_piece.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_vintage_piece, "object/tangible/ship/components/droid_interface/shared_ddi_haor_chall_vintage_piece.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -795,7 +795,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_advanced = SharedT
 	clientObjectCRC = 3073922282
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_advanced, "object/tangible/ship/components/droid_interface/shared_ddi_hk_advanced.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_advanced, "object/tangible/ship/components/droid_interface/shared_ddi_hk_advanced.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -849,7 +849,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_elite = SharedTang
 	clientObjectCRC = 3118062866
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_elite, "object/tangible/ship/components/droid_interface/shared_ddi_hk_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_elite, "object/tangible/ship/components/droid_interface/shared_ddi_hk_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -903,7 +903,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1 = SharedTangib
 	clientObjectCRC = 3473966086
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_hk_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_hk_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -957,7 +957,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2 = SharedTangib
 	clientObjectCRC = 336014481
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_hk_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_hk_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1011,7 +1011,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk3 = SharedTangib
 	clientObjectCRC = 1560955676
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_hk_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_hk_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1065,7 +1065,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk4 = SharedTangib
 	clientObjectCRC = 2800312328
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_hk_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_hk_mk4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_advanced_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1119,7 +1119,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_advanced_droid_
 	clientObjectCRC = 70249391
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_advanced_droid_interface, "object/tangible/ship/components/droid_interface/shared_ddi_incom_advanced_droid_interface.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_advanced_droid_interface, "object/tangible/ship/components/droid_interface/shared_ddi_incom_advanced_droid_interface.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_deluxe_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1173,7 +1173,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_deluxe_droid_in
 	clientObjectCRC = 2164595319
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_deluxe_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_incom_deluxe_droid_interface_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_deluxe_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_incom_deluxe_droid_interface_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1227,7 +1227,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 	clientObjectCRC = 1507715114
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_incom_droid_interface_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_incom_droid_interface_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1281,7 +1281,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 	clientObjectCRC = 2194292925
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_incom_droid_interface_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_incom_droid_interface_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1335,7 +1335,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 	clientObjectCRC = 3418826544
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_incom_droid_interface_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_incom_droid_interface_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1389,7 +1389,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 	clientObjectCRC = 807668772
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_incom_droid_interface_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_incom_droid_interface_mk4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1443,7 +1443,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_elite = SharedT
 	clientObjectCRC = 2854165292
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_elite, "object/tangible/ship/components/droid_interface/shared_ddi_incom_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_elite, "object/tangible/ship/components/droid_interface/shared_ddi_incom_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_enhanced_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1497,7 +1497,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_enhanced_droid_
 	clientObjectCRC = 3762048650
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_enhanced_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_incom_enhanced_droid_interface_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_enhanced_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_incom_enhanced_droid_interface_mk4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_fast_droid_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1551,7 +1551,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_fast_droid_inte
 	clientObjectCRC = 1562019403
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_fast_droid_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_incom_fast_droid_interface_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_fast_droid_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_incom_fast_droid_interface_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1605,7 +1605,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk1 = Sh
 	clientObjectCRC = 2495157622
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_kde_governor_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_kde_governor_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1659,7 +1659,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk2 = Sh
 	clientObjectCRC = 1336851937
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_kde_governor_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_kde_governor_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnus_dp44 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1713,7 +1713,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnu
 	clientObjectCRC = 4052563476
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnus_dp44, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_imperial_cygnus_dp44.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnus_dp44, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_imperial_cygnus_dp44.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_unknown_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1767,7 +1767,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_u
 	clientObjectCRC = 925674650
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_unknown_prototype, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_imperial_sds_unknown_prototype.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_unknown_prototype, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_imperial_sds_unknown_prototype.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_imperial_finest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1821,7 +1821,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_i
 	clientObjectCRC = 818987742
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_imperial_finest, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_imperial_sfs_imperial_finest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_imperial_finest, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_imperial_sfs_imperial_finest.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_dx61 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1875,7 +1875,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_dx
 	clientObjectCRC = 2292572439
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_dx61, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_rebel_incom_dx61.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_dx61, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_rebel_incom_dx61.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_supreme_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1929,7 +1929,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_su
 	clientObjectCRC = 3674415260
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_supreme_interface, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_rebel_incom_supreme_interface.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_supreme_interface, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_rebel_incom_supreme_interface.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_integrated_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -1983,7 +1983,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_
 	clientObjectCRC = 3713293708
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_integrated_array, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_rebel_qualdex_integrated_array.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_integrated_array, "object/tangible/ship/components/droid_interface/shared_ddi_kessel_rebel_qualdex_integrated_array.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_koensayr_simple_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2037,7 +2037,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_koensayr_simple_droid
 	clientObjectCRC = 2763794124
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_koensayr_simple_droid_interface, "object/tangible/ship/components/droid_interface/shared_ddi_koensayr_simple_droid_interface.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_koensayr_simple_droid_interface, "object/tangible/ship/components/droid_interface/shared_ddi_koensayr_simple_droid_interface.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2091,7 +2091,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_dro
 	clientObjectCRC = 2549539607
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_droid_interface, "object/tangible/ship/components/droid_interface/shared_ddi_koensayr_standard_droid_interface.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_droid_interface, "object/tangible/ship/components/droid_interface/shared_ddi_koensayr_standard_droid_interface.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_advanced_manager = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2145,7 +2145,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_advanced_manager 
 	clientObjectCRC = 1119916671
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_advanced_manager, "object/tangible/ship/components/droid_interface/shared_ddi_kse_advanced_manager.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_advanced_manager, "object/tangible/ship/components/droid_interface/shared_ddi_kse_advanced_manager.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2199,7 +2199,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk
 	clientObjectCRC = 3418100037
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_kse_custom_manager_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_kse_custom_manager_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2253,7 +2253,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1 =
 	clientObjectCRC = 1085256606
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1, "object/tangible/ship/components/droid_interface/shared_ddi_kse_elite_manager_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1, "object/tangible/ship/components/droid_interface/shared_ddi_kse_elite_manager_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2307,7 +2307,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_2 =
 	clientObjectCRC = 2612534025
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_2, "object/tangible/ship/components/droid_interface/shared_ddi_kse_elite_manager_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_2, "object/tangible/ship/components/droid_interface/shared_ddi_kse_elite_manager_2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_enhanced_manager_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2361,7 +2361,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_enhanced_manager_
 	clientObjectCRC = 686125639
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_enhanced_manager_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_kse_enhanced_manager_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_enhanced_manager_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_kse_enhanced_manager_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_improved_manager_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2415,7 +2415,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_improved_manager_
 	clientObjectCRC = 1137242392
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_improved_manager_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_kse_improved_manager_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_improved_manager_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_kse_improved_manager_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2469,7 +2469,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk1 = Sha
 	clientObjectCRC = 363665805
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_kse_manager_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_kse_manager_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2523,7 +2523,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk2 = Sha
 	clientObjectCRC = 3468341530
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_kse_manager_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_kse_manager_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2577,7 +2577,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk3 = Sha
 	clientObjectCRC = 2276972183
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_kse_manager_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_kse_manager_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
@@ -2631,7 +2631,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade
 	clientObjectCRC = 1391406113
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_mandal_military_grade_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_mandal_military_grade_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
@@ -2685,7 +2685,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade
 	clientObjectCRC = 2314765494
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_mandal_military_grade_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_mandal_military_grade_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperial_sfs_military_grade = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2739,7 +2739,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperi
 	clientObjectCRC = 1458928562
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperial_sfs_military_grade, "object/tangible/ship/components/droid_interface/shared_ddi_mission_reward_imperial_sfs_military_grade.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperial_sfs_military_grade, "object/tangible/ship/components/droid_interface/shared_ddi_mission_reward_imperial_sfs_military_grade.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutral_sorosuub_w19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2793,7 +2793,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutra
 	clientObjectCRC = 2653382104
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutral_sorosuub_w19, "object/tangible/ship/components/droid_interface/shared_ddi_mission_reward_neutral_sorosuub_w19.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutral_sorosuub_w19, "object/tangible/ship/components/droid_interface/shared_ddi_mission_reward_neutral_sorosuub_w19.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_moncal_d22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2847,7 +2847,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_
 	clientObjectCRC = 1715402318
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_moncal_d22, "object/tangible/ship/components/droid_interface/shared_ddi_mission_reward_rebel_moncal_d22.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_moncal_d22, "object/tangible/ship/components/droid_interface/shared_ddi_mission_reward_rebel_moncal_d22.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_novaldex_low_latency = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2901,7 +2901,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_
 	clientObjectCRC = 4246752822
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_novaldex_low_latency, "object/tangible/ship/components/droid_interface/shared_ddi_mission_reward_rebel_novaldex_low_latency.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_novaldex_low_latency, "object/tangible/ship/components/droid_interface/shared_ddi_mission_reward_rebel_novaldex_low_latency.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_advanced_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -2955,7 +2955,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_advanced_inter
 	clientObjectCRC = 3456992776
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_advanced_interface, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_advanced_interface.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_advanced_interface, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_advanced_interface.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_custom_dk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3009,7 +3009,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_custom_dk2 = S
 	clientObjectCRC = 779250230
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_custom_dk2, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_custom_dk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_custom_dk2, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_custom_dk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3063,7 +3063,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1 = SharedTa
 	clientObjectCRC = 1664316727
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_dk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_dk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3117,7 +3117,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk2 = SharedTa
 	clientObjectCRC = 3089423776
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk2, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_dk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk2, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_dk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3171,7 +3171,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk3 = SharedTa
 	clientObjectCRC = 4046043693
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk3, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_dk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk3, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_dk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3225,7 +3225,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk4 = SharedTa
 	clientObjectCRC = 181047609
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk4, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_dk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk4, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_dk4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3279,7 +3279,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_elite = Shared
 	clientObjectCRC = 3431557181
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_elite, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_elite, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_special_dk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3333,7 +3333,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_special_dk1 = 
 	clientObjectCRC = 4167158823
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_special_dk1, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_special_dk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_special_dk1, "object/tangible/ship/components/droid_interface/shared_ddi_moncal_special_dk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3387,7 +3387,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_dro
 	clientObjectCRC = 3255531720
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_droid_interface, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_advanced_droid_interface.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_droid_interface, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_advanced_droid_interface.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_custom_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3441,7 +3441,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_custom_droid
 	clientObjectCRC = 1177380841
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_custom_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_custom_droid_interface_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_custom_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_custom_droid_interface_mk4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
@@ -3495,7 +3495,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 	clientObjectCRC = 1309787365
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_droid_interface_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_droid_interface_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
@@ -3549,7 +3549,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 	clientObjectCRC = 2500226162
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_droid_interface_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_droid_interface_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
@@ -3603,7 +3603,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 	clientObjectCRC = 3691711487
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_droid_interface_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_droid_interface_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
@@ -3657,7 +3657,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 	clientObjectCRC = 669524203
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_droid_interface_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_droid_interface_mk4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3711,7 +3711,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_elite = Shar
 	clientObjectCRC = 4109273189
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_elite, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_elite, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_special_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3765,7 +3765,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_special_droi
 	clientObjectCRC = 1478874794
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_special_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_special_droid_interface_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_special_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_novaldex_special_droid_interface_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3819,7 +3819,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 	clientObjectCRC = 29344223
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_droid_interface_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_droid_interface_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3873,7 +3873,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 	clientObjectCRC = 3668470088
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_droid_interface_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_droid_interface_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3927,7 +3927,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 	clientObjectCRC = 2477067973
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_droid_interface_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_droid_interface_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -3981,7 +3981,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 	clientObjectCRC = 1749427665
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_droid_interface_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_droid_interface_mk4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4035,7 +4035,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_elite = Share
 	clientObjectCRC = 1189388094
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_elite, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_elite, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_enhanced_droid_interface_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4089,7 +4089,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_enhanced_droi
 	clientObjectCRC = 545170083
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_enhanced_droid_interface_mk5, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_enhanced_droid_interface_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_enhanced_droid_interface_mk5, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_enhanced_droid_interface_mk5.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droid_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4143,7 +4143,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droi
 	clientObjectCRC = 3983562485
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droid_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_modified_droid_interface_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droid_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_qualdex_modified_droid_interface_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4197,7 +4197,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperat
 	clientObjectCRC = 1075566151
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperator, "object/tangible/ship/components/droid_interface/shared_ddi_rendili_elite_imperator.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperator, "object/tangible/ship/components/droid_interface/shared_ddi_rendili_elite_imperator.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4251,7 +4251,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1 =
 	clientObjectCRC = 73360089
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1, "object/tangible/ship/components/droid_interface/shared_ddi_rendili_imperator_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1, "object/tangible/ship/components/droid_interface/shared_ddi_rendili_imperator_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4305,7 +4305,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_2 =
 	clientObjectCRC = 3746089550
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_2, "object/tangible/ship/components/droid_interface/shared_ddi_rendili_imperator_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_2, "object/tangible/ship/components/droid_interface/shared_ddi_rendili_imperator_2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_rss_deluxe_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4359,7 +4359,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_deluxe_imperial_2
 	clientObjectCRC = 149106
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_deluxe_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_rss_deluxe_imperial_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_deluxe_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_rss_deluxe_imperial_2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4413,7 +4413,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial
 	clientObjectCRC = 785562391
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_rss_enhanced_imperial_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_rss_enhanced_imperial_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4467,7 +4467,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_1 = Shar
 	clientObjectCRC = 55562871
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_rss_imperial_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_rss_imperial_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4521,7 +4521,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_2 = Shar
 	clientObjectCRC = 3629677280
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_rss_imperial_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_rss_imperial_2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4575,7 +4575,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_elite = SharedTan
 	clientObjectCRC = 4200034291
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_elite, "object/tangible/ship/components/droid_interface/shared_ddi_sds_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_elite, "object/tangible/ship/components/droid_interface/shared_ddi_sds_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_enhanced_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4629,7 +4629,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_enhanced_imperial
 	clientObjectCRC = 3078863051
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_enhanced_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_sds_enhanced_imperial_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_enhanced_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_sds_enhanced_imperial_2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4683,7 +4683,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_1 = Shar
 	clientObjectCRC = 2632162038
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4737,7 +4737,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_2 = Shar
 	clientObjectCRC = 1207186017
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4791,7 +4791,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_3 = Shar
 	clientObjectCRC = 251221484
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_3, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_3, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4845,7 +4845,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4 = Shar
 	clientObjectCRC = 4112154360
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4899,7 +4899,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_5 = Shar
 	clientObjectCRC = 3155630453
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_5, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_5, "object/tangible/ship/components/droid_interface/shared_ddi_sds_imperial_5.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_special_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -4953,7 +4953,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_special_imperial_
 	clientObjectCRC = 872393893
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_special_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_sds_special_imperial_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_special_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_sds_special_imperial_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5007,7 +5007,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk1 
 	clientObjectCRC = 2015516233
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_seinar_interface_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_seinar_interface_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5061,7 +5061,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk2 
 	clientObjectCRC = 2738224862
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_seinar_interface_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_seinar_interface_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5115,7 +5115,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3 
 	clientObjectCRC = 3929577811
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_seinar_interface_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_seinar_interface_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5169,7 +5169,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk4 
 	clientObjectCRC = 299610695
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_seinar_interface_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk4, "object/tangible/ship/components/droid_interface/shared_ddi_seinar_interface_mk4.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5223,7 +5223,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite = SharedTan
 	clientObjectCRC = 4122651135
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_enhanced_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5277,7 +5277,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_enhanced_imperial
 	clientObjectCRC = 2826062719
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_enhanced_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_enhanced_imperial_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_enhanced_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_enhanced_imperial_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5331,7 +5331,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_1 = Shar
 	clientObjectCRC = 3007707212
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_imperial_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_1, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_imperial_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5385,7 +5385,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2 = Shar
 	clientObjectCRC = 1750225115
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_imperial_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_imperial_2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5439,7 +5439,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_3 = Shar
 	clientObjectCRC = 559888214
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_3, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_imperial_3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_3, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_imperial_3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5493,7 +5493,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5 = Sh
 	clientObjectCRC = 2393015606
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_imperial_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5, "object/tangible/ship/components/droid_interface/shared_ddi_sfs_imperial_mk5.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5547,7 +5547,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1 = 
 	clientObjectCRC = 1681488075
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_echelon_1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_echelon_1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5601,7 +5601,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_2 = 
 	clientObjectCRC = 3207516252
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_2, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_echelon_2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_2, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_echelon_2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5655,7 +5655,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_elite = Shar
 	clientObjectCRC = 4095807384
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_elite, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_elite.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_elite, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_elite.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_enhanced_rad_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5709,7 +5709,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_enhanced_rad
 	clientObjectCRC = 1414454205
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_enhanced_rad_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_enhanced_rad_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_enhanced_rad_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_enhanced_rad_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_modified_rad_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5763,7 +5763,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_modified_rad
 	clientObjectCRC = 3195193412
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_modified_rad_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_modified_rad_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_modified_rad_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_modified_rad_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5817,7 +5817,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk1 = Sh
 	clientObjectCRC = 3728923525
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_rad_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk1, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_rad_mk1.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5871,7 +5871,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk2 = Sh
 	clientObjectCRC = 89486098
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_rad_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk2, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_rad_mk2.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5925,7 +5925,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3 = Sh
 	clientObjectCRC = 1280840863
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_rad_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3, "object/tangible/ship/components/droid_interface/shared_ddi_sorosuub_rad_mk3.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_subpro_improved_jrd33 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -5979,7 +5979,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_subpro_improved_jrd33
 	clientObjectCRC = 1508215157
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_subpro_improved_jrd33, "object/tangible/ship/components/droid_interface/shared_ddi_subpro_improved_jrd33.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_subpro_improved_jrd33, "object/tangible/ship/components/droid_interface/shared_ddi_subpro_improved_jrd33.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -6033,7 +6033,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33 = Shared
 	clientObjectCRC = 2330402512
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33, "object/tangible/ship/components/droid_interface/shared_ddi_subpro_jrd33.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33, "object/tangible/ship/components/droid_interface/shared_ddi_subpro_jrd33.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -6087,7 +6087,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic = Sh
 	clientObjectCRC = 698514748
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic, "object/tangible/ship/components/droid_interface/shared_ddi_tiefighter_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic, "object/tangible/ship/components/droid_interface/shared_ddi_tiefighter_basic.iff")
 
 object_tangible_ship_components_droid_interface_shared_ddi_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
@@ -6141,7 +6141,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_z95_basic = SharedTan
 	clientObjectCRC = 3834107259
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_z95_basic, "object/tangible/ship/components/droid_interface/shared_ddi_z95_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_ddi_z95_basic, "object/tangible/ship/components/droid_interface/shared_ddi_z95_basic.iff")
 
 object_tangible_ship_components_droid_interface_shared_droid_interface_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
@@ -6195,4 +6195,4 @@ object_tangible_ship_components_droid_interface_shared_droid_interface_test = Sh
 	clientObjectCRC = 989447066
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_droid_interface_test, "object/tangible/ship/components/droid_interface/shared_droid_interface_test.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interface_shared_droid_interface_test, "object/tangible/ship/components/droid_interface/shared_droid_interface_test.iff")

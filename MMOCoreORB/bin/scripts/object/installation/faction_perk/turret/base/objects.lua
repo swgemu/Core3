@@ -93,4 +93,4 @@ object_installation_faction_perk_turret_base_shared_faction_turret_base = Shared
 	clientObjectCRC = 1860325711
 }
 
-ObjectTemplates:addTemplate(object_installation_faction_perk_turret_base_shared_faction_turret_base, "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff")
+ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_base_shared_faction_turret_base, "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff")
