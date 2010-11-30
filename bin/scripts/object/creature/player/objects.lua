@@ -117,7 +117,7 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 491942670
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_bothan_female, "object/creature/player/shared_bothan_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_bothan_female, "object/creature/player/shared_bothan_female.iff")
 
 object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -195,7 +195,7 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 1542946611
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_bothan_male, "object/creature/player/shared_bothan_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_bothan_male, "object/creature/player/shared_bothan_male.iff")
 
 object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -273,7 +273,7 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4294949865
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_human_female, "object/creature/player/shared_human_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_human_female, "object/creature/player/shared_human_female.iff")
 
 object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -351,7 +351,7 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2937962913
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_human_male, "object/creature/player/shared_human_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_human_male, "object/creature/player/shared_human_male.iff")
 
 object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -429,7 +429,7 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 3017834515
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_female, "object/creature/player/shared_ithorian_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_ithorian_female, "object/creature/player/shared_ithorian_female.iff")
 
 object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -507,7 +507,7 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 951764932
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_male, "object/creature/player/shared_ithorian_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_ithorian_male, "object/creature/player/shared_ithorian_male.iff")
 
 object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -585,7 +585,7 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2553266142
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_moncal_female, "object/creature/player/shared_moncal_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_moncal_female, "object/creature/player/shared_moncal_female.iff")
 
 object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -663,7 +663,7 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3116914088
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_moncal_male, "object/creature/player/shared_moncal_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_moncal_male, "object/creature/player/shared_moncal_male.iff")
 
 object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -741,7 +741,7 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3261342811
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_rodian_female, "object/creature/player/shared_rodian_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_rodian_female, "object/creature/player/shared_rodian_female.iff")
 
 object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -819,7 +819,7 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 200920476
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_rodian_male, "object/creature/player/shared_rodian_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_rodian_male, "object/creature/player/shared_rodian_male.iff")
 
 object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -897,7 +897,7 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 	clientObjectCRC = 359871514
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_female, "object/creature/player/shared_sullustan_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_sullustan_female, "object/creature/player/shared_sullustan_female.iff")
 
 object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -975,7 +975,7 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 194222500
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_male, "object/creature/player/shared_sullustan_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_sullustan_male, "object/creature/player/shared_sullustan_male.iff")
 
 object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1053,7 +1053,7 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 	clientObjectCRC = 406594758
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_female, "object/creature/player/shared_trandoshan_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_trandoshan_female, "object/creature/player/shared_trandoshan_female.iff")
 
 object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1131,7 +1131,7 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 	clientObjectCRC = 1355045775
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_male, "object/creature/player/shared_trandoshan_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_trandoshan_male, "object/creature/player/shared_trandoshan_male.iff")
 
 object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1209,7 +1209,7 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2224509660
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_twilek_female, "object/creature/player/shared_twilek_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_twilek_female, "object/creature/player/shared_twilek_female.iff")
 
 object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1287,7 +1287,7 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 4068532859
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_twilek_male, "object/creature/player/shared_twilek_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_twilek_male, "object/creature/player/shared_twilek_male.iff")
 
 object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1365,7 +1365,7 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 	clientObjectCRC = 229336546
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_female, "object/creature/player/shared_wookiee_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_wookiee_female, "object/creature/player/shared_wookiee_female.iff")
 
 object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1443,7 +1443,7 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 90470685
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_male, "object/creature/player/shared_wookiee_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_wookiee_male, "object/creature/player/shared_wookiee_male.iff")
 
 object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1521,7 +1521,7 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 2850250749
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_female, "object/creature/player/shared_zabrak_female.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_zabrak_female, "object/creature/player/shared_zabrak_female.iff")
 
 object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	acceleration = {36,12},
@@ -1599,4 +1599,4 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	clientObjectCRC = 3791955286
 }
 
-ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_male, "object/creature/player/shared_zabrak_male.iff")
+ObjectTemplates:addClientTemplate(object_creature_player_shared_zabrak_male, "object/creature/player/shared_zabrak_male.iff")

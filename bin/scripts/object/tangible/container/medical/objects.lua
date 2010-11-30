@@ -93,4 +93,4 @@ object_tangible_container_medical_shared_medbag_base = SharedTangibleObjectTempl
 	clientObjectCRC = 1834451270
 }
 
-ObjectTemplates:addTemplate(object_tangible_container_medical_shared_medbag_base, "object/tangible/container/medical/shared_medbag_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_container_medical_shared_medbag_base, "object/tangible/container/medical/shared_medbag_base.iff")

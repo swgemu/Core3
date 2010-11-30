@@ -93,7 +93,7 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw = SharedTangibleObjectTemplat
 	clientObjectCRC = 129775004
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw, "object/tangible/lair/gulginaw/shared_lair_gulginaw.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw, "object/tangible/lair/gulginaw/shared_lair_gulginaw.iff")
 
 object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObject
 	clientObjectCRC = 3528407820
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw_forest, "object/tangible/lair/gulginaw/shared_lair_gulginaw_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw_forest, "object/tangible/lair/gulginaw/shared_lair_gulginaw_forest.iff")

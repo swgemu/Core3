@@ -93,4 +93,4 @@ object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill = SharedTangibl
 	clientObjectCRC = 182559338
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill, "object/tangible/lair/flite_rasp_hill/shared_lair_flite_rasp_hill.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill, "object/tangible/lair/flite_rasp_hill/shared_lair_flite_rasp_hill.iff")

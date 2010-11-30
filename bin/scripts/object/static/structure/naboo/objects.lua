@@ -83,7 +83,7 @@ object_static_structure_naboo_shared_arbor_corner_45_s01 = SharedStaticObjectTem
 	clientObjectCRC = 4135100937
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arbor_corner_45_s01, "object/static/structure/naboo/shared_arbor_corner_45_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_corner_45_s01, "object/static/structure/naboo/shared_arbor_corner_45_s01.iff")
 
 object_static_structure_naboo_shared_arbor_corner_90_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_corner_90_s01.apt",
@@ -127,7 +127,7 @@ object_static_structure_naboo_shared_arbor_corner_90_s01 = SharedStaticObjectTem
 	clientObjectCRC = 1575544927
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arbor_corner_90_s01, "object/static/structure/naboo/shared_arbor_corner_90_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_corner_90_s01, "object/static/structure/naboo/shared_arbor_corner_90_s01.iff")
 
 object_static_structure_naboo_shared_arbor_long_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_long_s01.apt",
@@ -171,7 +171,7 @@ object_static_structure_naboo_shared_arbor_long_s01 = SharedStaticObjectTemplate
 	clientObjectCRC = 4146113855
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arbor_long_s01, "object/static/structure/naboo/shared_arbor_long_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_long_s01, "object/static/structure/naboo/shared_arbor_long_s01.iff")
 
 object_static_structure_naboo_shared_arbor_long_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_long_s02.apt",
@@ -215,7 +215,7 @@ object_static_structure_naboo_shared_arbor_long_s02 = SharedStaticObjectTemplate
 	clientObjectCRC = 741803432
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arbor_long_s02, "object/static/structure/naboo/shared_arbor_long_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_long_s02, "object/static/structure/naboo/shared_arbor_long_s02.iff")
 
 object_static_structure_naboo_shared_arbor_pillar_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_pillar_s01.apt",
@@ -259,7 +259,7 @@ object_static_structure_naboo_shared_arbor_pillar_s01 = SharedStaticObjectTempla
 	clientObjectCRC = 608666818
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arbor_pillar_s01, "object/static/structure/naboo/shared_arbor_pillar_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_pillar_s01, "object/static/structure/naboo/shared_arbor_pillar_s01.iff")
 
 object_static_structure_naboo_shared_arbor_short_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_short_s01.apt",
@@ -303,7 +303,7 @@ object_static_structure_naboo_shared_arbor_short_s01 = SharedStaticObjectTemplat
 	clientObjectCRC = 1770334972
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arbor_short_s01, "object/static/structure/naboo/shared_arbor_short_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_short_s01, "object/static/structure/naboo/shared_arbor_short_s01.iff")
 
 object_static_structure_naboo_shared_arbor_short_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_short_s02.apt",
@@ -347,7 +347,7 @@ object_static_structure_naboo_shared_arbor_short_s02 = SharedStaticObjectTemplat
 	clientObjectCRC = 2995946091
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arbor_short_s02, "object/static/structure/naboo/shared_arbor_short_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_short_s02, "object/static/structure/naboo/shared_arbor_short_s02.iff")
 
 object_static_structure_naboo_shared_arch_bronze_naboo_theed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_bronze_arch.apt",
@@ -391,7 +391,7 @@ object_static_structure_naboo_shared_arch_bronze_naboo_theed = SharedStaticObjec
 	clientObjectCRC = 528159500
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arch_bronze_naboo_theed, "object/static/structure/naboo/shared_arch_bronze_naboo_theed.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arch_bronze_naboo_theed, "object/static/structure/naboo/shared_arch_bronze_naboo_theed.iff")
 
 object_static_structure_naboo_shared_arch_triumph_naboo_theed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_triumval_arch.apt",
@@ -435,7 +435,7 @@ object_static_structure_naboo_shared_arch_triumph_naboo_theed = SharedStaticObje
 	clientObjectCRC = 242956153
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_arch_triumph_naboo_theed, "object/static/structure/naboo/shared_arch_triumph_naboo_theed.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arch_triumph_naboo_theed, "object/static/structure/naboo/shared_arch_triumph_naboo_theed.iff")
 
 object_static_structure_naboo_shared_archway_narrow_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_archway_narrow_s01.apt",
@@ -479,7 +479,7 @@ object_static_structure_naboo_shared_archway_narrow_s01 = SharedStaticObjectTemp
 	clientObjectCRC = 1075423280
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_archway_narrow_s01, "object/static/structure/naboo/shared_archway_narrow_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_archway_narrow_s01, "object/static/structure/naboo/shared_archway_narrow_s01.iff")
 
 object_static_structure_naboo_shared_archway_narrow_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_archway_narrow_s02.apt",
@@ -523,7 +523,7 @@ object_static_structure_naboo_shared_archway_narrow_s02 = SharedStaticObjectTemp
 	clientObjectCRC = 2601386151
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_archway_narrow_s02, "object/static/structure/naboo/shared_archway_narrow_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_archway_narrow_s02, "object/static/structure/naboo/shared_archway_narrow_s02.iff")
 
 object_static_structure_naboo_shared_archway_wide_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_archway_wide_s01.apt",
@@ -567,7 +567,7 @@ object_static_structure_naboo_shared_archway_wide_s01 = SharedStaticObjectTempla
 	clientObjectCRC = 2344148347
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_archway_wide_s01, "object/static/structure/naboo/shared_archway_wide_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_archway_wide_s01, "object/static/structure/naboo/shared_archway_wide_s01.iff")
 
 object_static_structure_naboo_shared_archway_wide_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_archway_wide_s02.apt",
@@ -611,7 +611,7 @@ object_static_structure_naboo_shared_archway_wide_s02 = SharedStaticObjectTempla
 	clientObjectCRC = 1353676268
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_archway_wide_s02, "object/static/structure/naboo/shared_archway_wide_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_archway_wide_s02, "object/static/structure/naboo/shared_archway_wide_s02.iff")
 
 object_static_structure_naboo_shared_bridge_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_bridge_s01.apt",
@@ -655,7 +655,7 @@ object_static_structure_naboo_shared_bridge_naboo_theed_style_1 = SharedStaticOb
 	clientObjectCRC = 1827069441
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_bridge_naboo_theed_style_1, "object/static/structure/naboo/shared_bridge_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_bridge_naboo_theed_style_1, "object/static/structure/naboo/shared_bridge_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_bridge_stairs_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_bridge_stairs_s01.apt",
@@ -699,7 +699,7 @@ object_static_structure_naboo_shared_bridge_stairs_s01 = SharedStaticObjectTempl
 	clientObjectCRC = 2378774480
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_bridge_stairs_s01, "object/static/structure/naboo/shared_bridge_stairs_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_bridge_stairs_s01, "object/static/structure/naboo/shared_bridge_stairs_s01.iff")
 
 object_static_structure_naboo_shared_bridge_stairs_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_bridge_stairs_s02.apt",
@@ -743,7 +743,7 @@ object_static_structure_naboo_shared_bridge_stairs_s02 = SharedStaticObjectTempl
 	clientObjectCRC = 1457430343
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_bridge_stairs_s02, "object/static/structure/naboo/shared_bridge_stairs_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_bridge_stairs_s02, "object/static/structure/naboo/shared_bridge_stairs_s02.iff")
 
 object_static_structure_naboo_shared_bridge_stairs_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_bridge_stairs_s03.apt",
@@ -787,7 +787,7 @@ object_static_structure_naboo_shared_bridge_stairs_s03 = SharedStaticObjectTempl
 	clientObjectCRC = 533985482
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_bridge_stairs_s03, "object/static/structure/naboo/shared_bridge_stairs_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_bridge_stairs_s03, "object/static/structure/naboo/shared_bridge_stairs_s03.iff")
 
 object_static_structure_naboo_shared_elevated_walkway_cap_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_cap_s01.apt",
@@ -831,7 +831,7 @@ object_static_structure_naboo_shared_elevated_walkway_cap_s01 = SharedStaticObje
 	clientObjectCRC = 3142068500
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_elevated_walkway_cap_s01, "object/static/structure/naboo/shared_elevated_walkway_cap_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_walkway_cap_s01, "object/static/structure/naboo/shared_elevated_walkway_cap_s01.iff")
 
 object_static_structure_naboo_shared_elevated_walkway_corner_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_corner_s01.apt",
@@ -875,7 +875,7 @@ object_static_structure_naboo_shared_elevated_walkway_corner_s01 = SharedStaticO
 	clientObjectCRC = 1649846057
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_elevated_walkway_corner_s01, "object/static/structure/naboo/shared_elevated_walkway_corner_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_walkway_corner_s01, "object/static/structure/naboo/shared_elevated_walkway_corner_s01.iff")
 
 object_static_structure_naboo_shared_elevated_walkway_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_s01.apt",
@@ -919,7 +919,7 @@ object_static_structure_naboo_shared_elevated_walkway_s01 = SharedStaticObjectTe
 	clientObjectCRC = 3220065348
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_elevated_walkway_s01, "object/static/structure/naboo/shared_elevated_walkway_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_walkway_s01, "object/static/structure/naboo/shared_elevated_walkway_s01.iff")
 
 object_static_structure_naboo_shared_elevated_walkway_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_s02.apt",
@@ -963,7 +963,7 @@ object_static_structure_naboo_shared_elevated_walkway_s02 = SharedStaticObjectTe
 	clientObjectCRC = 1694098643
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_elevated_walkway_s02, "object/static/structure/naboo/shared_elevated_walkway_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_walkway_s02, "object/static/structure/naboo/shared_elevated_walkway_s02.iff")
 
 object_static_structure_naboo_shared_elevated_walkway_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_s03.apt",
@@ -1007,7 +1007,7 @@ object_static_structure_naboo_shared_elevated_walkway_s03 = SharedStaticObjectTe
 	clientObjectCRC = 770999134
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_elevated_walkway_s03, "object/static/structure/naboo/shared_elevated_walkway_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_walkway_s03, "object/static/structure/naboo/shared_elevated_walkway_s03.iff")
 
 object_static_structure_naboo_shared_enclosed_walkway_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_enclosed_walkway_s01.apt",
@@ -1051,7 +1051,7 @@ object_static_structure_naboo_shared_enclosed_walkway_s01 = SharedStaticObjectTe
 	clientObjectCRC = 1862893955
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_enclosed_walkway_s01, "object/static/structure/naboo/shared_enclosed_walkway_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_enclosed_walkway_s01, "object/static/structure/naboo/shared_enclosed_walkway_s01.iff")
 
 object_static_structure_naboo_shared_enclosed_walkway_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_enclosed_walkway_s02.apt",
@@ -1095,7 +1095,7 @@ object_static_structure_naboo_shared_enclosed_walkway_s02 = SharedStaticObjectTe
 	clientObjectCRC = 3021875476
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_enclosed_walkway_s02, "object/static/structure/naboo/shared_enclosed_walkway_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_enclosed_walkway_s02, "object/static/structure/naboo/shared_enclosed_walkway_s02.iff")
 
 object_static_structure_naboo_shared_fountain_naboo_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_fountain_sm_s01.apt",
@@ -1139,7 +1139,7 @@ object_static_structure_naboo_shared_fountain_naboo_style_1 = SharedStaticObject
 	clientObjectCRC = 3048917433
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_fountain_naboo_style_1, "object/static/structure/naboo/shared_fountain_naboo_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_fountain_naboo_style_1, "object/static/structure/naboo/shared_fountain_naboo_style_1.iff")
 
 object_static_structure_naboo_shared_garden_gazebo_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_garden_gazebo_lg_s01.apt",
@@ -1183,7 +1183,7 @@ object_static_structure_naboo_shared_garden_gazebo_lg_s01 = SharedStaticObjectTe
 	clientObjectCRC = 195966880
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_garden_gazebo_lg_s01, "object/static/structure/naboo/shared_garden_gazebo_lg_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_garden_gazebo_lg_s01, "object/static/structure/naboo/shared_garden_gazebo_lg_s01.iff")
 
 object_static_structure_naboo_shared_garden_gazebo_sml_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_garden_gazebo_sml_s01.apt",
@@ -1227,7 +1227,7 @@ object_static_structure_naboo_shared_garden_gazebo_sml_s01 = SharedStaticObjectT
 	clientObjectCRC = 2126742923
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_garden_gazebo_sml_s01, "object/static/structure/naboo/shared_garden_gazebo_sml_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_garden_gazebo_sml_s01, "object/static/structure/naboo/shared_garden_gazebo_sml_s01.iff")
 
 object_static_structure_naboo_shared_gate_narrow_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_narrow_gate_s01.apt",
@@ -1271,7 +1271,7 @@ object_static_structure_naboo_shared_gate_narrow_s01 = SharedStaticObjectTemplat
 	clientObjectCRC = 1074098797
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gate_narrow_s01, "object/static/structure/naboo/shared_gate_narrow_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gate_narrow_s01, "object/static/structure/naboo/shared_gate_narrow_s01.iff")
 
 object_static_structure_naboo_shared_gate_narrow_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_narrow_gate_s02.apt",
@@ -1315,7 +1315,7 @@ object_static_structure_naboo_shared_gate_narrow_s02 = SharedStaticObjectTemplat
 	clientObjectCRC = 2601704186
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gate_narrow_s02, "object/static/structure/naboo/shared_gate_narrow_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gate_narrow_s02, "object/static/structure/naboo/shared_gate_narrow_s02.iff")
 
 object_static_structure_naboo_shared_gate_wide_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_wide_gate_s01.apt",
@@ -1359,7 +1359,7 @@ object_static_structure_naboo_shared_gate_wide_s01 = SharedStaticObjectTemplate:
 	clientObjectCRC = 3519045750
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gate_wide_s01, "object/static/structure/naboo/shared_gate_wide_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gate_wide_s01, "object/static/structure/naboo/shared_gate_wide_s01.iff")
 
 object_static_structure_naboo_shared_gate_wide_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_wide_gate_s02.apt",
@@ -1403,7 +1403,7 @@ object_static_structure_naboo_shared_gate_wide_s02 = SharedStaticObjectTemplate:
 	clientObjectCRC = 181913825
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gate_wide_s02, "object/static/structure/naboo/shared_gate_wide_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gate_wide_s02, "object/static/structure/naboo/shared_gate_wide_s02.iff")
 
 object_static_structure_naboo_shared_gungan_cleft_wall_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_cleft_wall_lg_s01.apt",
@@ -1447,7 +1447,7 @@ object_static_structure_naboo_shared_gungan_cleft_wall_lg_s01 = SharedStaticObje
 	clientObjectCRC = 3414113435
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_cleft_wall_lg_s01, "object/static/structure/naboo/shared_gungan_cleft_wall_lg_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_cleft_wall_lg_s01, "object/static/structure/naboo/shared_gungan_cleft_wall_lg_s01.iff")
 
 object_static_structure_naboo_shared_gungan_damaged_narrow_arch_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_narrow_arch_s01.apt",
@@ -1491,7 +1491,7 @@ object_static_structure_naboo_shared_gungan_damaged_narrow_arch_s01 = SharedStat
 	clientObjectCRC = 2657146801
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_damaged_narrow_arch_s01, "object/static/structure/naboo/shared_gungan_damaged_narrow_arch_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_damaged_narrow_arch_s01, "object/static/structure/naboo/shared_gungan_damaged_narrow_arch_s01.iff")
 
 object_static_structure_naboo_shared_gungan_damaged_wall_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wall_lg_s01.apt",
@@ -1535,7 +1535,7 @@ object_static_structure_naboo_shared_gungan_damaged_wall_lg_s01 = SharedStaticOb
 	clientObjectCRC = 3105404106
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_damaged_wall_lg_s01, "object/static/structure/naboo/shared_gungan_damaged_wall_lg_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_damaged_wall_lg_s01, "object/static/structure/naboo/shared_gungan_damaged_wall_lg_s01.iff")
 
 object_static_structure_naboo_shared_gungan_damaged_wide_arch_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wide_arch_s01.apt",
@@ -1579,7 +1579,7 @@ object_static_structure_naboo_shared_gungan_damaged_wide_arch_s01 = SharedStatic
 	clientObjectCRC = 377663795
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_damaged_wide_arch_s01, "object/static/structure/naboo/shared_gungan_damaged_wide_arch_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_damaged_wide_arch_s01, "object/static/structure/naboo/shared_gungan_damaged_wide_arch_s01.iff")
 
 object_static_structure_naboo_shared_gungan_filler_building_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_imprv_building_s01.apt",
@@ -1623,7 +1623,7 @@ object_static_structure_naboo_shared_gungan_filler_building_s01 = SharedStaticOb
 	clientObjectCRC = 2805010210
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_filler_building_s01, "object/static/structure/naboo/shared_gungan_filler_building_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_filler_building_s01, "object/static/structure/naboo/shared_gungan_filler_building_s01.iff")
 
 object_static_structure_naboo_shared_gungan_filler_building_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_imprv_building_s02.apt",
@@ -1667,7 +1667,7 @@ object_static_structure_naboo_shared_gungan_filler_building_s02 = SharedStaticOb
 	clientObjectCRC = 2082908085
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_filler_building_s02, "object/static/structure/naboo/shared_gungan_filler_building_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_filler_building_s02, "object/static/structure/naboo/shared_gungan_filler_building_s02.iff")
 
 object_static_structure_naboo_shared_gungan_pillar_damaged_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_damaged_s01.apt",
@@ -1711,7 +1711,7 @@ object_static_structure_naboo_shared_gungan_pillar_damaged_s01 = SharedStaticObj
 	clientObjectCRC = 2422623839
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_pillar_damaged_s01, "object/static/structure/naboo/shared_gungan_pillar_damaged_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_pillar_damaged_s01, "object/static/structure/naboo/shared_gungan_pillar_damaged_s01.iff")
 
 object_static_structure_naboo_shared_gungan_pillar_ruined_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_ruined_s01.apt",
@@ -1755,7 +1755,7 @@ object_static_structure_naboo_shared_gungan_pillar_ruined_s01 = SharedStaticObje
 	clientObjectCRC = 1702469898
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_pillar_ruined_s01, "object/static/structure/naboo/shared_gungan_pillar_ruined_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_pillar_ruined_s01, "object/static/structure/naboo/shared_gungan_pillar_ruined_s01.iff")
 
 object_static_structure_naboo_shared_gungan_relic_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s01.apt",
@@ -1799,7 +1799,7 @@ object_static_structure_naboo_shared_gungan_relic_s01 = SharedStaticObjectTempla
 	clientObjectCRC = 1354924647
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_relic_s01, "object/static/structure/naboo/shared_gungan_relic_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_relic_s01, "object/static/structure/naboo/shared_gungan_relic_s01.iff")
 
 object_static_structure_naboo_shared_gungan_relic_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s02.apt",
@@ -1843,7 +1843,7 @@ object_static_structure_naboo_shared_gungan_relic_s02 = SharedStaticObjectTempla
 	clientObjectCRC = 2346003184
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_relic_s02, "object/static/structure/naboo/shared_gungan_relic_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_relic_s02, "object/static/structure/naboo/shared_gungan_relic_s02.iff")
 
 object_static_structure_naboo_shared_gungan_sacred_head_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
@@ -1887,7 +1887,7 @@ object_static_structure_naboo_shared_gungan_sacred_head_s01 = SharedStaticObject
 	clientObjectCRC = 3941709300
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_sacred_head_s01, "object/static/structure/naboo/shared_gungan_sacred_head_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_sacred_head_s01, "object/static/structure/naboo/shared_gungan_sacred_head_s01.iff")
 
 object_static_structure_naboo_shared_gungan_shield_gen_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_shield_gen_s01.apt",
@@ -1931,7 +1931,7 @@ object_static_structure_naboo_shared_gungan_shield_gen_s01 = SharedStaticObjectT
 	clientObjectCRC = 1950388529
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_shield_gen_s01, "object/static/structure/naboo/shared_gungan_shield_gen_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_shield_gen_s01, "object/static/structure/naboo/shared_gungan_shield_gen_s01.iff")
 
 object_static_structure_naboo_shared_gungan_shield_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_shield_s01.apt",
@@ -1975,7 +1975,7 @@ object_static_structure_naboo_shared_gungan_shield_s01 = SharedStaticObjectTempl
 	clientObjectCRC = 2881619119
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_shield_s01, "object/static/structure/naboo/shared_gungan_shield_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_shield_s01, "object/static/structure/naboo/shared_gungan_shield_s01.iff")
 
 object_static_structure_naboo_shared_gungan_statue_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s01.apt",
@@ -2019,7 +2019,7 @@ object_static_structure_naboo_shared_gungan_statue_s01 = SharedStaticObjectTempl
 	clientObjectCRC = 3341914811
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_statue_s01, "object/static/structure/naboo/shared_gungan_statue_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_statue_s01, "object/static/structure/naboo/shared_gungan_statue_s01.iff")
 
 object_static_structure_naboo_shared_gungan_statue_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s02.apt",
@@ -2063,7 +2063,7 @@ object_static_structure_naboo_shared_gungan_statue_s02 = SharedStaticObjectTempl
 	clientObjectCRC = 472267308
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_statue_s02, "object/static/structure/naboo/shared_gungan_statue_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_statue_s02, "object/static/structure/naboo/shared_gungan_statue_s02.iff")
 
 object_static_structure_naboo_shared_gungan_statue_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
@@ -2107,7 +2107,7 @@ object_static_structure_naboo_shared_gungan_statue_s03 = SharedStaticObjectTempl
 	clientObjectCRC = 1428905377
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_statue_s03, "object/static/structure/naboo/shared_gungan_statue_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_statue_s03, "object/static/structure/naboo/shared_gungan_statue_s03.iff")
 
 object_static_structure_naboo_shared_gungan_statue_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s04.apt",
@@ -2151,7 +2151,7 @@ object_static_structure_naboo_shared_gungan_statue_s04 = SharedStaticObjectTempl
 	clientObjectCRC = 2932373173
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_statue_s04, "object/static/structure/naboo/shared_gungan_statue_s04.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_statue_s04, "object/static/structure/naboo/shared_gungan_statue_s04.iff")
 
 object_static_structure_naboo_shared_gungan_wall_ruined_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s01.apt",
@@ -2195,7 +2195,7 @@ object_static_structure_naboo_shared_gungan_wall_ruined_lg_s01 = SharedStaticObj
 	clientObjectCRC = 3035920625
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_wall_ruined_lg_s01, "object/static/structure/naboo/shared_gungan_wall_ruined_lg_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_wall_ruined_lg_s01, "object/static/structure/naboo/shared_gungan_wall_ruined_lg_s01.iff")
 
 object_static_structure_naboo_shared_gungan_wall_ruined_lg_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s02.apt",
@@ -2239,7 +2239,7 @@ object_static_structure_naboo_shared_gungan_wall_ruined_lg_s02 = SharedStaticObj
 	clientObjectCRC = 1877200998
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_wall_ruined_lg_s02, "object/static/structure/naboo/shared_gungan_wall_ruined_lg_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_wall_ruined_lg_s02, "object/static/structure/naboo/shared_gungan_wall_ruined_lg_s02.iff")
 
 object_static_structure_naboo_shared_gungan_wall_ruined_sm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s01.apt",
@@ -2283,7 +2283,7 @@ object_static_structure_naboo_shared_gungan_wall_ruined_sm_s01 = SharedStaticObj
 	clientObjectCRC = 1816521599
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_wall_ruined_sm_s01, "object/static/structure/naboo/shared_gungan_wall_ruined_sm_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_wall_ruined_sm_s01, "object/static/structure/naboo/shared_gungan_wall_ruined_sm_s01.iff")
 
 object_static_structure_naboo_shared_gungan_wall_ruined_sm_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s02.apt",
@@ -2327,7 +2327,7 @@ object_static_structure_naboo_shared_gungan_wall_ruined_sm_s02 = SharedStaticObj
 	clientObjectCRC = 3075621864
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_gungan_wall_ruined_sm_s02, "object/static/structure/naboo/shared_gungan_wall_ruined_sm_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_wall_ruined_sm_s02, "object/static/structure/naboo/shared_gungan_wall_ruined_sm_s02.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
@@ -2370,7 +2370,7 @@ object_static_structure_naboo_shared_nboo_imprv_bannerpole_s01 = SharedStaticObj
 	clientObjectCRC = 241189910
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_bannerpole_s01, "object/static/structure/naboo/shared_nboo_imprv_bannerpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_bannerpole_s01, "object/static/structure/naboo/shared_nboo_imprv_bannerpole_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -2413,7 +2413,7 @@ object_static_structure_naboo_shared_nboo_imprv_flagpole_s01 = SharedStaticObjec
 	clientObjectCRC = 1593839317
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_flagpole_s01, "object/static/structure/naboo/shared_nboo_imprv_flagpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_flagpole_s01, "object/static/structure/naboo/shared_nboo_imprv_flagpole_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_lattice_wall_long_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_lattice_wall_long_s01.apt",
@@ -2457,7 +2457,7 @@ object_static_structure_naboo_shared_nboo_imprv_lattice_wall_long_s01 = SharedSt
 	clientObjectCRC = 2546820738
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_lattice_wall_long_s01, "object/static/structure/naboo/shared_nboo_imprv_lattice_wall_long_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_lattice_wall_long_s01, "object/static/structure/naboo/shared_nboo_imprv_lattice_wall_long_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_lattice_wall_short_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_lattice_wall_short_s01.apt",
@@ -2501,7 +2501,7 @@ object_static_structure_naboo_shared_nboo_imprv_lattice_wall_short_s01 = SharedS
 	clientObjectCRC = 686510443
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_lattice_wall_short_s01, "object/static/structure/naboo/shared_nboo_imprv_lattice_wall_short_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_lattice_wall_short_s01, "object/static/structure/naboo/shared_nboo_imprv_lattice_wall_short_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_metal_fence_wall_lg_s01.apt",
@@ -2545,7 +2545,7 @@ object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s01 = Shared
 	clientObjectCRC = 1780163094
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s01, "object/static/structure/naboo/shared_nboo_imprv_metal_fence_wall_lg_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s01, "object/static/structure/naboo/shared_nboo_imprv_metal_fence_wall_lg_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_metal_fence_wall_lg_s02.apt",
@@ -2589,7 +2589,7 @@ object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s02 = Shared
 	clientObjectCRC = 2970389121
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s02, "object/static/structure/naboo/shared_nboo_imprv_metal_fence_wall_lg_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s02, "object/static/structure/naboo/shared_nboo_imprv_metal_fence_wall_lg_s02.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_metal_fence_wall_sml_s01.apt",
@@ -2633,7 +2633,7 @@ object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s01 = Share
 	clientObjectCRC = 1672669355
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s01, "object/static/structure/naboo/shared_nboo_imprv_metal_fence_wall_sml_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s01, "object/static/structure/naboo/shared_nboo_imprv_metal_fence_wall_sml_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_metal_fence_wall_sml_s02.apt",
@@ -2677,7 +2677,7 @@ object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s02 = Share
 	clientObjectCRC = 3097837628
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s02, "object/static/structure/naboo/shared_nboo_imprv_metal_fence_wall_sml_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s02, "object/static/structure/naboo/shared_nboo_imprv_metal_fence_wall_sml_s02.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_lattice_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_lattice_pillar_s01.apt",
@@ -2721,7 +2721,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_lattice_s01 = SharedStati
 	clientObjectCRC = 2749897506
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_lattice_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_lattice_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_lattice_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_lattice_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s01.apt",
@@ -2765,7 +2765,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s01 = SharedStatic
 	clientObjectCRC = 2569571754
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s02.apt",
@@ -2809,7 +2809,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s02 = SharedStatic
 	clientObjectCRC = 1111434557
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s02, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s02, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s02.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s03.apt",
@@ -2853,7 +2853,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s03 = SharedStatic
 	clientObjectCRC = 187843248
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s03, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s03, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s03.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s07 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s07.apt",
@@ -2897,7 +2897,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s07 = SharedStatic
 	clientObjectCRC = 734445875
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s07, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s07.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s07, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s07.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s08 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s08.apt",
@@ -2941,7 +2941,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s08 = SharedStatic
 	clientObjectCRC = 2446126369
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s08, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s08.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s08, "object/static/structure/naboo/shared_nboo_imprv_pillar_pillar_s08.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_wall_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_wall_large_s01.apt",
@@ -2985,7 +2985,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_wall_large_s01 = SharedSt
 	clientObjectCRC = 2272581416
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_wall_large_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_wall_large_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_wall_large_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_wall_large_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_wall_ornate_large_s01.apt",
@@ -3029,7 +3029,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_large_s01 = S
 	clientObjectCRC = 3953865310
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_large_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_wall_ornate_large_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_large_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_wall_ornate_large_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_wall_ornate_small_s01.apt",
@@ -3073,7 +3073,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_small_s01 = S
 	clientObjectCRC = 4137052165
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_small_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_wall_ornate_small_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_small_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_wall_ornate_small_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_wall_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_wall_small_s01.apt",
@@ -3117,7 +3117,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_wall_small_s01 = SharedSt
 	clientObjectCRC = 2588511603
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_wall_small_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_wall_small_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pillar_wall_small_s01, "object/static/structure/naboo/shared_nboo_imprv_pillar_wall_small_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pristine_wall_lg_s01.apt",
@@ -3161,7 +3161,7 @@ object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s01 = Shared
 	clientObjectCRC = 630334767
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s01, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_large_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s01, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_large_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pristine_wall_lg_s02.apt",
@@ -3205,7 +3205,7 @@ object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s02 = Shared
 	clientObjectCRC = 4270165432
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s02, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_large_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s02, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_large_s02.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pristine_wall_sml_s03.apt",
@@ -3249,7 +3249,7 @@ object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s03 = SharedSt
 	clientObjectCRC = 316340941
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s03, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_sml_s03.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s03, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_sml_s03.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_short_curved_wall_large_s01.apt",
@@ -3293,7 +3293,7 @@ object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_large_s01 = Sh
 	clientObjectCRC = 3039994617
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_large_s01, "object/static/structure/naboo/shared_nboo_imprv_short_curved_wall_large_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_large_s01, "object/static/structure/naboo/shared_nboo_imprv_short_curved_wall_large_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_short_curved_wall_small_s01.apt",
@@ -3337,7 +3337,7 @@ object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_small_s01 = Sh
 	clientObjectCRC = 2819618978
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_small_s01, "object/static/structure/naboo/shared_nboo_imprv_short_curved_wall_small_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_small_s01, "object/static/structure/naboo/shared_nboo_imprv_short_curved_wall_small_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_spill_gate_cap_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_spill_gate_cap_s01.apt",
@@ -3381,7 +3381,7 @@ object_static_structure_naboo_shared_nboo_imprv_spill_gate_cap_s01 = SharedStati
 	clientObjectCRC = 3465140166
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_spill_gate_cap_s01, "object/static/structure/naboo/shared_nboo_imprv_spill_gate_cap_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_spill_gate_cap_s01, "object/static/structure/naboo/shared_nboo_imprv_spill_gate_cap_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_spill_gate_pillar_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_spill_gate_pillar_s01.apt",
@@ -3425,7 +3425,7 @@ object_static_structure_naboo_shared_nboo_imprv_spill_gate_pillar_s01 = SharedSt
 	clientObjectCRC = 808527051
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_spill_gate_pillar_s01, "object/static/structure/naboo/shared_nboo_imprv_spill_gate_pillar_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_spill_gate_pillar_s01, "object/static/structure/naboo/shared_nboo_imprv_spill_gate_pillar_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_spill_gate_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_spill_gate_s01.apt",
@@ -3469,7 +3469,7 @@ object_static_structure_naboo_shared_nboo_imprv_spill_gate_s01 = SharedStaticObj
 	clientObjectCRC = 979523108
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_spill_gate_s01, "object/static/structure/naboo/shared_nboo_imprv_spill_gate_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_spill_gate_s01, "object/static/structure/naboo/shared_nboo_imprv_spill_gate_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_tall_curved_wall_large_s01.apt",
@@ -3513,7 +3513,7 @@ object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_large_s01 = Sha
 	clientObjectCRC = 550850554
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_large_s01, "object/static/structure/naboo/shared_nboo_imprv_tall_curved_wall_large_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_large_s01, "object/static/structure/naboo/shared_nboo_imprv_tall_curved_wall_large_s01.iff")
 
 object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_tall_curved_wall_small_s01.apt",
@@ -3557,7 +3557,7 @@ object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_small_s01 = Sha
 	clientObjectCRC = 1038620065
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_small_s01, "object/static/structure/naboo/shared_nboo_imprv_tall_curved_wall_small_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_small_s01, "object/static/structure/naboo/shared_nboo_imprv_tall_curved_wall_small_s01.iff")
 
 object_static_structure_naboo_shared_obelisk_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
@@ -3601,7 +3601,7 @@ object_static_structure_naboo_shared_obelisk_naboo_theed_style_1 = SharedStaticO
 	clientObjectCRC = 2590175363
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_obelisk_naboo_theed_style_1, "object/static/structure/naboo/shared_obelisk_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_obelisk_naboo_theed_style_1, "object/static/structure/naboo/shared_obelisk_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_obelisk_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s02.apt",
@@ -3645,7 +3645,7 @@ object_static_structure_naboo_shared_obelisk_naboo_theed_style_2 = SharedStaticO
 	clientObjectCRC = 1098209300
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_obelisk_naboo_theed_style_2, "object/static/structure/naboo/shared_obelisk_naboo_theed_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_obelisk_naboo_theed_style_2, "object/static/structure/naboo/shared_obelisk_naboo_theed_style_2.iff")
 
 object_static_structure_naboo_shared_obelisk_naboo_theed_style_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s03.apt",
@@ -3689,7 +3689,7 @@ object_static_structure_naboo_shared_obelisk_naboo_theed_style_3 = SharedStaticO
 	clientObjectCRC = 142098329
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_obelisk_naboo_theed_style_3, "object/static/structure/naboo/shared_obelisk_naboo_theed_style_3.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_obelisk_naboo_theed_style_3, "object/static/structure/naboo/shared_obelisk_naboo_theed_style_3.iff")
 
 object_static_structure_naboo_shared_planter_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_planter_s01.apt",
@@ -3733,7 +3733,7 @@ object_static_structure_naboo_shared_planter_naboo_theed_style_1 = SharedStaticO
 	clientObjectCRC = 531406240
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_planter_naboo_theed_style_1, "object/static/structure/naboo/shared_planter_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_planter_naboo_theed_style_1, "object/static/structure/naboo/shared_planter_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_planter_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_planter_s02.apt",
@@ -3777,7 +3777,7 @@ object_static_structure_naboo_shared_planter_naboo_theed_style_2 = SharedStaticO
 	clientObjectCRC = 3300603191
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_planter_naboo_theed_style_2, "object/static/structure/naboo/shared_planter_naboo_theed_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_planter_naboo_theed_style_2, "object/static/structure/naboo/shared_planter_naboo_theed_style_2.iff")
 
 object_static_structure_naboo_shared_poi_nboo_tent_hut_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_tent_hut_s01.apt",
@@ -3821,7 +3821,7 @@ object_static_structure_naboo_shared_poi_nboo_tent_hut_s01 = SharedStaticObjectT
 	clientObjectCRC = 2089723078
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_poi_nboo_tent_hut_s01, "object/static/structure/naboo/shared_poi_nboo_tent_hut_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_poi_nboo_tent_hut_s01, "object/static/structure/naboo/shared_poi_nboo_tent_hut_s01.iff")
 
 object_static_structure_naboo_shared_poi_nboo_tent_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_tent_large.apt",
@@ -3865,7 +3865,7 @@ object_static_structure_naboo_shared_poi_nboo_tent_large = SharedStaticObjectTem
 	clientObjectCRC = 3032697252
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_poi_nboo_tent_large, "object/static/structure/naboo/shared_poi_nboo_tent_large.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_poi_nboo_tent_large, "object/static/structure/naboo/shared_poi_nboo_tent_large.iff")
 
 object_static_structure_naboo_shared_poi_nboo_tent_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_tent_med.apt",
@@ -3909,7 +3909,7 @@ object_static_structure_naboo_shared_poi_nboo_tent_med = SharedStaticObjectTempl
 	clientObjectCRC = 3565822051
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_poi_nboo_tent_med, "object/static/structure/naboo/shared_poi_nboo_tent_med.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_poi_nboo_tent_med, "object/static/structure/naboo/shared_poi_nboo_tent_med.iff")
 
 object_static_structure_naboo_shared_poi_nboo_tent_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_tent_small.apt",
@@ -3953,7 +3953,7 @@ object_static_structure_naboo_shared_poi_nboo_tent_small = SharedStaticObjectTem
 	clientObjectCRC = 2161696141
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_poi_nboo_tent_small, "object/static/structure/naboo/shared_poi_nboo_tent_small.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_poi_nboo_tent_small, "object/static/structure/naboo/shared_poi_nboo_tent_small.iff")
 
 object_static_structure_naboo_shared_seawall_base_naboo_theed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "",
@@ -3997,7 +3997,7 @@ object_static_structure_naboo_shared_seawall_base_naboo_theed = SharedStaticObje
 	clientObjectCRC = 2216877395
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_base_naboo_theed, "object/static/structure/naboo/shared_seawall_base_naboo_theed.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_base_naboo_theed, "object/static/structure/naboo/shared_seawall_base_naboo_theed.iff")
 
 object_static_structure_naboo_shared_seawall_block = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_block_s01.apt",
@@ -4041,7 +4041,7 @@ object_static_structure_naboo_shared_seawall_block = SharedStaticObjectTemplate:
 	clientObjectCRC = 3505796690
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_block, "object/static/structure/naboo/shared_seawall_block.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_block, "object/static/structure/naboo/shared_seawall_block.iff")
 
 object_static_structure_naboo_shared_seawall_corner = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_corner_s01.apt",
@@ -4085,7 +4085,7 @@ object_static_structure_naboo_shared_seawall_corner = SharedStaticObjectTemplate
 	clientObjectCRC = 2659350477
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_corner, "object/static/structure/naboo/shared_seawall_corner.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_corner, "object/static/structure/naboo/shared_seawall_corner.iff")
 
 object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_intersection_s01.apt",
@@ -4129,7 +4129,7 @@ object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_1 = Sha
 	clientObjectCRC = 2996812721
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_1, "object/static/structure/naboo/shared_seawall_intersect_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_1, "object/static/structure/naboo/shared_seawall_intersect_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_intersection_s02.apt",
@@ -4173,7 +4173,7 @@ object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_2 = Sha
 	clientObjectCRC = 1770525478
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_2, "object/static/structure/naboo/shared_seawall_intersect_naboo_theed_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_2, "object/static/structure/naboo/shared_seawall_intersect_naboo_theed_style_2.iff")
 
 object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_rocks_s01.apt",
@@ -4217,7 +4217,7 @@ object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_1 = SharedS
 	clientObjectCRC = 4075734257
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_1, "object/static/structure/naboo/shared_seawall_rocks_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_1, "object/static/structure/naboo/shared_seawall_rocks_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_wall_rocks_s01.apt",
@@ -4261,7 +4261,7 @@ object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_2 = SharedS
 	clientObjectCRC = 704212070
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_2, "object/static/structure/naboo/shared_seawall_rocks_naboo_theed_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_2, "object/static/structure/naboo/shared_seawall_rocks_naboo_theed_style_2.iff")
 
 object_static_structure_naboo_shared_seawall_stair_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_stair_s01.apt",
@@ -4305,7 +4305,7 @@ object_static_structure_naboo_shared_seawall_stair_naboo_theed_style_1 = SharedS
 	clientObjectCRC = 971032080
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_stair_naboo_theed_style_1, "object/static/structure/naboo/shared_seawall_stair_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_stair_naboo_theed_style_1, "object/static/structure/naboo/shared_seawall_stair_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_straight_s01.apt",
@@ -4349,7 +4349,7 @@ object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_1 = Shar
 	clientObjectCRC = 346200597
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_1, "object/static/structure/naboo/shared_seawall_straight_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_1, "object/static/structure/naboo/shared_seawall_straight_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_straight_s01_2seg.apt",
@@ -4393,7 +4393,7 @@ object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_2 = Shar
 	clientObjectCRC = 3484758658
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_2, "object/static/structure/naboo/shared_seawall_straight_naboo_theed_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_2, "object/static/structure/naboo/shared_seawall_straight_naboo_theed_style_2.iff")
 
 object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_straight_s01_3seg.apt",
@@ -4437,7 +4437,7 @@ object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_3 = Shar
 	clientObjectCRC = 2260227343
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_3, "object/static/structure/naboo/shared_seawall_straight_naboo_theed_style_3.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_3, "object/static/structure/naboo/shared_seawall_straight_naboo_theed_style_3.iff")
 
 object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_straight_s01_4seg.apt",
@@ -4481,7 +4481,7 @@ object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_4 = Shar
 	clientObjectCRC = 2103148059
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_4, "object/static/structure/naboo/shared_seawall_straight_naboo_theed_style_4.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_4, "object/static/structure/naboo/shared_seawall_straight_naboo_theed_style_4.iff")
 
 object_static_structure_naboo_shared_street_bridge_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_street_bridge_s01.apt",
@@ -4525,7 +4525,7 @@ object_static_structure_naboo_shared_street_bridge_s01 = SharedStaticObjectTempl
 	clientObjectCRC = 883128137
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_street_bridge_s01, "object/static/structure/naboo/shared_street_bridge_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_street_bridge_s01, "object/static/structure/naboo/shared_street_bridge_s01.iff")
 
 object_static_structure_naboo_shared_street_bridge_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_street_bridge_s02.apt",
@@ -4569,7 +4569,7 @@ object_static_structure_naboo_shared_street_bridge_s02 = SharedStaticObjectTempl
 	clientObjectCRC = 4021608414
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_street_bridge_s02, "object/static/structure/naboo/shared_street_bridge_s02.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_street_bridge_s02, "object/static/structure/naboo/shared_street_bridge_s02.iff")
 
 object_static_structure_naboo_shared_streetlamp_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_streetlamp_s01.apt",
@@ -4613,7 +4613,7 @@ object_static_structure_naboo_shared_streetlamp_naboo_theed_style_1 = SharedStat
 	clientObjectCRC = 3791525150
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_streetlamp_naboo_theed_style_1, "object/static/structure/naboo/shared_streetlamp_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_streetlamp_naboo_theed_style_1, "object/static/structure/naboo/shared_streetlamp_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_wall_a1_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_wall_s01_a1.apt",
@@ -4657,7 +4657,7 @@ object_static_structure_naboo_shared_wall_a1_naboo_theed_style_1 = SharedStaticO
 	clientObjectCRC = 3290878358
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_wall_a1_naboo_theed_style_1, "object/static/structure/naboo/shared_wall_a1_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_wall_a1_naboo_theed_style_1, "object/static/structure/naboo/shared_wall_a1_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_wall_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_wall_s01.apt",
@@ -4701,7 +4701,7 @@ object_static_structure_naboo_shared_wall_naboo_theed_style_1 = SharedStaticObje
 	clientObjectCRC = 2164222563
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_wall_naboo_theed_style_1, "object/static/structure/naboo/shared_wall_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_wall_naboo_theed_style_1, "object/static/structure/naboo/shared_wall_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_wallend_a1_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_wallendpiece_s01_a1.apt",
@@ -4745,7 +4745,7 @@ object_static_structure_naboo_shared_wallend_a1_naboo_theed_style_1 = SharedStat
 	clientObjectCRC = 2826816525
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_wallend_a1_naboo_theed_style_1, "object/static/structure/naboo/shared_wallend_a1_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_wallend_a1_naboo_theed_style_1, "object/static/structure/naboo/shared_wallend_a1_naboo_theed_style_1.iff")
 
 object_static_structure_naboo_shared_wallend_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_wallendpiece_s01.apt",
@@ -4789,4 +4789,4 @@ object_static_structure_naboo_shared_wallend_naboo_theed_style_1 = SharedStaticO
 	clientObjectCRC = 602568228
 }
 
-ObjectTemplates:addTemplate(object_static_structure_naboo_shared_wallend_naboo_theed_style_1, "object/static/structure/naboo/shared_wallend_naboo_theed_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_wallend_naboo_theed_style_1, "object/static/structure/naboo/shared_wallend_naboo_theed_style_1.iff")

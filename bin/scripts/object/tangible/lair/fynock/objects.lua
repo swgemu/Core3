@@ -93,7 +93,7 @@ object_tangible_lair_fynock_shared_lair_fynock = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2394100347
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_fynock_shared_lair_fynock, "object/tangible/lair/fynock/shared_lair_fynock.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_fynock_shared_lair_fynock, "object/tangible/lair/fynock/shared_lair_fynock.iff")
 
 object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemp
 	clientObjectCRC = 577876063
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_fynock_shared_lair_fynock_forest, "object/tangible/lair/fynock/shared_lair_fynock_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_fynock_shared_lair_fynock_forest, "object/tangible/lair/fynock/shared_lair_fynock_forest.iff")

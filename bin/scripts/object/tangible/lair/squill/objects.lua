@@ -93,7 +93,7 @@ object_tangible_lair_squill_shared_lair_squill = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1781856165
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_squill_shared_lair_squill, "object/tangible/lair/squill/shared_lair_squill.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_squill_shared_lair_squill, "object/tangible/lair/squill/shared_lair_squill.iff")
 
 object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemp
 	clientObjectCRC = 2102372943
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_squill_shared_lair_squill_desert, "object/tangible/lair/squill/shared_lair_squill_desert.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_squill_shared_lair_squill_desert, "object/tangible/lair/squill/shared_lair_squill_desert.iff")

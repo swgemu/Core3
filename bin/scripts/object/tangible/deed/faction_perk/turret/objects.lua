@@ -93,7 +93,7 @@ object_tangible_deed_faction_perk_turret_shared_block_lg_deed = SharedTangibleOb
 	clientObjectCRC = 629647552
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_block_lg_deed, "object/tangible/deed/faction_perk/turret/shared_block_lg_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_block_lg_deed, "object/tangible/deed/faction_perk/turret/shared_block_lg_deed.iff")
 
 object_tangible_deed_faction_perk_turret_shared_block_med_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -147,7 +147,7 @@ object_tangible_deed_faction_perk_turret_shared_block_med_deed = SharedTangibleO
 	clientObjectCRC = 4221569030
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_block_med_deed, "object/tangible/deed/faction_perk/turret/shared_block_med_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_block_med_deed, "object/tangible/deed/faction_perk/turret/shared_block_med_deed.iff")
 
 object_tangible_deed_faction_perk_turret_shared_block_sm_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -201,7 +201,7 @@ object_tangible_deed_faction_perk_turret_shared_block_sm_deed = SharedTangibleOb
 	clientObjectCRC = 2743566481
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_block_sm_deed, "object/tangible/deed/faction_perk/turret/shared_block_sm_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_block_sm_deed, "object/tangible/deed/faction_perk/turret/shared_block_sm_deed.iff")
 
 object_tangible_deed_faction_perk_turret_shared_dish_lg_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -255,7 +255,7 @@ object_tangible_deed_faction_perk_turret_shared_dish_lg_deed = SharedTangibleObj
 	clientObjectCRC = 4034604910
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_dish_lg_deed, "object/tangible/deed/faction_perk/turret/shared_dish_lg_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_dish_lg_deed, "object/tangible/deed/faction_perk/turret/shared_dish_lg_deed.iff")
 
 object_tangible_deed_faction_perk_turret_shared_dish_sm_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -309,7 +309,7 @@ object_tangible_deed_faction_perk_turret_shared_dish_sm_deed = SharedTangibleObj
 	clientObjectCRC = 1987774271
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_dish_sm_deed, "object/tangible/deed/faction_perk/turret/shared_dish_sm_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_dish_sm_deed, "object/tangible/deed/faction_perk/turret/shared_dish_sm_deed.iff")
 
 object_tangible_deed_faction_perk_turret_shared_tower_lg_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -363,7 +363,7 @@ object_tangible_deed_faction_perk_turret_shared_tower_lg_deed = SharedTangibleOb
 	clientObjectCRC = 3732331701
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_tower_lg_deed, "object/tangible/deed/faction_perk/turret/shared_tower_lg_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_tower_lg_deed, "object/tangible/deed/faction_perk/turret/shared_tower_lg_deed.iff")
 
 object_tangible_deed_faction_perk_turret_shared_tower_med_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -417,7 +417,7 @@ object_tangible_deed_faction_perk_turret_shared_tower_med_deed = SharedTangibleO
 	clientObjectCRC = 2821147502
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_tower_med_deed, "object/tangible/deed/faction_perk/turret/shared_tower_med_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_tower_med_deed, "object/tangible/deed/faction_perk/turret/shared_tower_med_deed.iff")
 
 object_tangible_deed_faction_perk_turret_shared_tower_sm_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -471,4 +471,4 @@ object_tangible_deed_faction_perk_turret_shared_tower_sm_deed = SharedTangibleOb
 	clientObjectCRC = 1484190948
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_tower_sm_deed, "object/tangible/deed/faction_perk/turret/shared_tower_sm_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_tower_sm_deed, "object/tangible/deed/faction_perk/turret/shared_tower_sm_deed.iff")

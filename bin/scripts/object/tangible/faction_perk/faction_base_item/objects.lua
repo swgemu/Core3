@@ -93,7 +93,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct = SharedTan
 	clientObjectCRC = 1099269046
 }
 
-ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct.iff")
+ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -147,7 +147,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = 
 	clientObjectCRC = 3561123970
 }
 
-ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct_no_sound.iff")
+ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct_no_sound.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -201,7 +201,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibl
 	clientObjectCRC = 3749452237
 }
 
-ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack.iff")
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
@@ -255,4 +255,4 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = Shar
 	clientObjectCRC = 3271748526
 }
 
-ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack_no_sound.iff")
+ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack_no_sound.iff")

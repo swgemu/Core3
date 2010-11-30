@@ -93,7 +93,7 @@ object_tangible_component_food_secrets_shared_secret_base = SharedTangibleObject
 	clientObjectCRC = 4005001840
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_secrets_shared_secret_base, "object/tangible/component/food/secrets/shared_secret_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_base, "object/tangible/component/food/secrets/shared_secret_base.iff")
 
 object_tangible_component_food_secrets_shared_secret_imperial_biochem = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -147,7 +147,7 @@ object_tangible_component_food_secrets_shared_secret_imperial_biochem = SharedTa
 	clientObjectCRC = 2542399223
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_secrets_shared_secret_imperial_biochem, "object/tangible/component/food/secrets/shared_secret_imperial_biochem.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_imperial_biochem, "object/tangible/component/food/secrets/shared_secret_imperial_biochem.iff")
 
 object_tangible_component_food_secrets_shared_secret_rebel_biochem = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -201,4 +201,4 @@ object_tangible_component_food_secrets_shared_secret_rebel_biochem = SharedTangi
 	clientObjectCRC = 1836800845
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_food_secrets_shared_secret_rebel_biochem, "object/tangible/component/food/secrets/shared_secret_rebel_biochem.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_rebel_biochem, "object/tangible/component/food/secrets/shared_secret_rebel_biochem.iff")

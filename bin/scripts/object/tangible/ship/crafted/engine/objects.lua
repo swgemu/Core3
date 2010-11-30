@@ -93,7 +93,7 @@ object_tangible_ship_crafted_engine_shared_adv_exhaust = SharedTangibleObjectTem
 	clientObjectCRC = 2846440032
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_adv_exhaust, "object/tangible/ship/crafted/engine/shared_adv_exhaust.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_adv_exhaust, "object/tangible/ship/crafted/engine/shared_adv_exhaust.iff")
 
 object_tangible_ship_crafted_engine_shared_adv_fuel_regulation = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -147,7 +147,7 @@ object_tangible_ship_crafted_engine_shared_adv_fuel_regulation = SharedTangibleO
 	clientObjectCRC = 2039436347
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_adv_fuel_regulation, "object/tangible/ship/crafted/engine/shared_adv_fuel_regulation.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_adv_fuel_regulation, "object/tangible/ship/crafted/engine/shared_adv_fuel_regulation.iff")
 
 object_tangible_ship_crafted_engine_shared_base_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
@@ -201,7 +201,7 @@ object_tangible_ship_crafted_engine_shared_base_engine = SharedTangibleObjectTem
 	clientObjectCRC = 2452306838
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engine, "object/tangible/ship/crafted/engine/shared_base_engine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_base_engine, "object/tangible/ship/crafted/engine/shared_base_engine.iff")
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -255,7 +255,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent = SharedTang
 	clientObjectCRC = 2308703133
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent.iff")
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -309,7 +309,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk1 = Shared
 	clientObjectCRC = 2017675952
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk1, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk1, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -363,7 +363,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk2 = Shared
 	clientObjectCRC = 2740249127
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk2, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk2, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -417,7 +417,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk3 = Shared
 	clientObjectCRC = 3931735466
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk3, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk3, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -471,7 +471,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk4 = Shared
 	clientObjectCRC = 297447102
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk4, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk4, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -525,7 +525,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk5 = Shared
 	clientObjectCRC = 1488439603
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk5, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk5, "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_engine_shared_basic_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
@@ -579,7 +579,7 @@ object_tangible_ship_crafted_engine_shared_basic_engine = SharedTangibleObjectTe
 	clientObjectCRC = 870814192
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_basic_engine, "object/tangible/ship/crafted/engine/shared_basic_engine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_basic_engine, "object/tangible/ship/crafted/engine/shared_basic_engine.iff")
 
 object_tangible_ship_crafted_engine_shared_eng_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -633,7 +633,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk1 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1052168697
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk1, "object/tangible/ship/crafted/engine/shared_eng_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_eng_mk1, "object/tangible/ship/crafted/engine/shared_eng_mk1.iff")
 
 object_tangible_ship_crafted_engine_shared_eng_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -687,7 +687,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk2 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3852564846
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk2, "object/tangible/ship/crafted/engine/shared_eng_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_eng_mk2, "object/tangible/ship/crafted/engine/shared_eng_mk2.iff")
 
 object_tangible_ship_crafted_engine_shared_eng_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -741,7 +741,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk3 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2896961251
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk3, "object/tangible/ship/crafted/engine/shared_eng_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_eng_mk3, "object/tangible/ship/crafted/engine/shared_eng_mk3.iff")
 
 object_tangible_ship_crafted_engine_shared_eng_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -795,7 +795,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk4 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1464808951
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk4, "object/tangible/ship/crafted/engine/shared_eng_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_eng_mk4, "object/tangible/ship/crafted/engine/shared_eng_mk4.iff")
 
 object_tangible_ship_crafted_engine_shared_eng_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -849,7 +849,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk5 = SharedTangibleObjectTemplat
 	clientObjectCRC = 507662970
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk5, "object/tangible/ship/crafted/engine/shared_eng_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_eng_mk5, "object/tangible/ship/crafted/engine/shared_eng_mk5.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_incom_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
@@ -903,7 +903,7 @@ object_tangible_ship_crafted_engine_shared_engine_incom_fusialthrust = SharedTan
 	clientObjectCRC = 309168025
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_incom_fusialthrust, "object/tangible/ship/crafted/engine/shared_engine_incom_fusialthrust.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_incom_fusialthrust, "object/tangible/ship/crafted/engine/shared_engine_incom_fusialthrust.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -957,7 +957,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk1 = SharedTangibleOb
 	clientObjectCRC = 3416982276
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk1, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk1, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk1.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1011,7 +1011,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk2 = SharedTangibleOb
 	clientObjectCRC = 280800147
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk2, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk2, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk2.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1065,7 +1065,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk3 = SharedTangibleOb
 	clientObjectCRC = 1504824350
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk3, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk3, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk3.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1119,7 +1119,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk4 = SharedTangibleOb
 	clientObjectCRC = 2723342090
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk4, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk4, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk4.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1173,7 +1173,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk5 = SharedTangibleOb
 	clientObjectCRC = 3948904583
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk5, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_limiter_mk5, "object/tangible/ship/crafted/engine/shared_engine_limiter_mk5.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_novaldex_eventhorizon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
@@ -1227,7 +1227,7 @@ object_tangible_ship_crafted_engine_shared_engine_novaldex_eventhorizon = Shared
 	clientObjectCRC = 1922300191
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_novaldex_eventhorizon, "object/tangible/ship/crafted/engine/shared_engine_novaldex_eventhorizon.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_novaldex_eventhorizon, "object/tangible/ship/crafted/engine/shared_engine_novaldex_eventhorizon.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1281,7 +1281,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk1 = SharedTangibl
 	clientObjectCRC = 110706461
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk1, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk1, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk1.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1335,7 +1335,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk2 = SharedTangibl
 	clientObjectCRC = 3717109642
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk2, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk2, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk2.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1389,7 +1389,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk3 = SharedTangibl
 	clientObjectCRC = 2491674631
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk3, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk3, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk3.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1443,7 +1443,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk4 = SharedTangibl
 	clientObjectCRC = 1868618515
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk4, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk4, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk4.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1497,7 +1497,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk5 = SharedTangibl
 	clientObjectCRC = 644725918
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk5, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_overdriver_mk5, "object/tangible/ship/crafted/engine/shared_engine_overdriver_mk5.iff")
 
 object_tangible_ship_crafted_engine_shared_engine_qualdex_kyromaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
@@ -1551,7 +1551,7 @@ object_tangible_ship_crafted_engine_shared_engine_qualdex_kyromaster = SharedTan
 	clientObjectCRC = 2354509902
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_qualdex_kyromaster, "object/tangible/ship/crafted/engine/shared_engine_qualdex_kyromaster.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_engine_qualdex_kyromaster, "object/tangible/ship/crafted/engine/shared_engine_qualdex_kyromaster.iff")
 
 object_tangible_ship_crafted_engine_shared_hyperdrive_class1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1605,7 +1605,7 @@ object_tangible_ship_crafted_engine_shared_hyperdrive_class1 = SharedTangibleObj
 	clientObjectCRC = 1660885565
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_hyperdrive_class1, "object/tangible/ship/crafted/engine/shared_hyperdrive_class1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_hyperdrive_class1, "object/tangible/ship/crafted/engine/shared_hyperdrive_class1.iff")
 
 object_tangible_ship_crafted_engine_shared_hyperdrive_class2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1659,7 +1659,7 @@ object_tangible_ship_crafted_engine_shared_hyperdrive_class2 = SharedTangibleObj
 	clientObjectCRC = 3119035050
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_hyperdrive_class2, "object/tangible/ship/crafted/engine/shared_hyperdrive_class2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_hyperdrive_class2, "object/tangible/ship/crafted/engine/shared_hyperdrive_class2.iff")
 
 object_tangible_ship_crafted_engine_shared_hyperdrive_class3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1713,7 +1713,7 @@ object_tangible_ship_crafted_engine_shared_hyperdrive_class3 = SharedTangibleObj
 	clientObjectCRC = 4041594151
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_hyperdrive_class3, "object/tangible/ship/crafted/engine/shared_hyperdrive_class3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_hyperdrive_class3, "object/tangible/ship/crafted/engine/shared_hyperdrive_class3.iff")
 
 object_tangible_ship_crafted_engine_shared_std_exhaust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1767,7 +1767,7 @@ object_tangible_ship_crafted_engine_shared_std_exhaust = SharedTangibleObjectTem
 	clientObjectCRC = 4185825259
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_std_exhaust, "object/tangible/ship/crafted/engine/shared_std_exhaust.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_std_exhaust, "object/tangible/ship/crafted/engine/shared_std_exhaust.iff")
 
 object_tangible_ship_crafted_engine_shared_std_fuel_regulation = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
@@ -1821,4 +1821,4 @@ object_tangible_ship_crafted_engine_shared_std_fuel_regulation = SharedTangibleO
 	clientObjectCRC = 4036202637
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_std_fuel_regulation, "object/tangible/ship/crafted/engine/shared_std_fuel_regulation.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_engine_shared_std_fuel_regulation, "object/tangible/ship/crafted/engine/shared_std_fuel_regulation.iff")

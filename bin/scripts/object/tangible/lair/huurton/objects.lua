@@ -93,7 +93,7 @@ object_tangible_lair_huurton_shared_lair_huurton = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1349396449
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton, "object/tangible/lair/huurton/shared_lair_huurton.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_huurton_shared_lair_huurton, "object/tangible/lair/huurton/shared_lair_huurton.iff")
 
 object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjec
 	clientObjectCRC = 3768282762
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, "object/tangible/lair/huurton/shared_lair_huurton_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, "object/tangible/lair/huurton/shared_lair_huurton_grassland.iff")

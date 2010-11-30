@@ -83,4 +83,4 @@ object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTe
 	clientObjectCRC = 2608329477
 }
 
-ObjectTemplates:addTemplate(object_intangible_faction_perk_shared_shuttle_extract, "object/intangible/faction_perk/shared_shuttle_extract.iff")
+ObjectTemplates:addClientTemplate(object_intangible_faction_perk_shared_shuttle_extract, "object/intangible/faction_perk/shared_shuttle_extract.iff")

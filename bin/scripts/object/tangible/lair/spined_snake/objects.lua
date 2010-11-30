@@ -93,7 +93,7 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake = SharedTangibleObjec
 	clientObjectCRC = 2281325742
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, "object/tangible/lair/spined_snake/shared_lair_spined_snake.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, "object/tangible/lair/spined_snake/shared_lair_spined_snake.iff")
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTang
 	clientObjectCRC = 1340697568
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, "object/tangible/lair/spined_snake/shared_lair_spined_snake_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, "object/tangible/lair/spined_snake/shared_lair_spined_snake_mountain.iff")
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTan
 	clientObjectCRC = 3148607218
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, "object/tangible/lair/spined_snake/shared_lair_spined_snake_wasteland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, "object/tangible/lair/spined_snake/shared_lair_spined_snake_wasteland.iff")

@@ -93,7 +93,7 @@ object_tangible_theme_park_alderaan_act3_shared_alderaan_flora = SharedTangibleO
 	clientObjectCRC = 4208054945
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_alderaan_flora, "object/tangible/theme_park/alderaan/act3/shared_alderaan_flora.iff")
+ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_alderaan_flora, "object/tangible/theme_park/alderaan/act3/shared_alderaan_flora.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -147,7 +147,7 @@ object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit = SharedTangibl
 	clientObjectCRC = 1332386213
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit, "object/tangible/theme_park/alderaan/act3/shared_broken_grav_unit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit, "object/tangible/theme_park/alderaan/act3/shared_broken_grav_unit.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_hormone_enhancements.apt",
@@ -201,7 +201,7 @@ object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype = SharedTangi
 	clientObjectCRC = 2963865200
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype, "object/tangible/theme_park/alderaan/act3/shared_dead_eye_prototype.iff")
+ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype, "object/tangible/theme_park/alderaan/act3/shared_dead_eye_prototype.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
@@ -255,7 +255,7 @@ object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk = SharedTangib
 	clientObjectCRC = 3516039098
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk, "object/tangible/theme_park/alderaan/act3/shared_encoded_data_disk.iff")
+ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk, "object/tangible/theme_park/alderaan/act3/shared_encoded_data_disk.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
@@ -309,7 +309,7 @@ object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit = SharedTan
 	clientObjectCRC = 3076162697
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit, "object/tangible/theme_park/alderaan/act3/shared_grav_unit_repair_kit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit, "object/tangible/theme_park/alderaan/act3/shared_grav_unit_repair_kit.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
@@ -363,7 +363,7 @@ object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit = SharedTangi
 	clientObjectCRC = 1247686243
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit, "object/tangible/theme_park/alderaan/act3/shared_repaired_grav_unit.iff")
+ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit, "object/tangible/theme_park/alderaan/act3/shared_repaired_grav_unit.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_research_facility = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_machine.apt",
@@ -407,4 +407,4 @@ object_tangible_theme_park_alderaan_act3_shared_research_facility = SharedStatic
 	clientObjectCRC = 843852525
 }
 
-ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_research_facility, "object/tangible/theme_park/alderaan/act3/shared_research_facility.iff")
+ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_research_facility, "object/tangible/theme_park/alderaan/act3/shared_research_facility.iff")

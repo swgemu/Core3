@@ -93,7 +93,7 @@ object_tangible_furniture_technical_shared_armoire_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 2668054876
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_armoire_s01, "object/tangible/furniture/technical/shared_armoire_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_armoire_s01, "object/tangible/furniture/technical/shared_armoire_s01.iff")
 
 object_tangible_furniture_technical_shared_bookcase_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_bookcase_s01.apt",
@@ -147,7 +147,7 @@ object_tangible_furniture_technical_shared_bookcase_s01 = SharedTangibleObjectTe
 	clientObjectCRC = 1097959135
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_bookcase_s01, "object/tangible/furniture/technical/shared_bookcase_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_bookcase_s01, "object/tangible/furniture/technical/shared_bookcase_s01.iff")
 
 object_tangible_furniture_technical_shared_cabinet_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_cabinet_s01.apt",
@@ -201,7 +201,7 @@ object_tangible_furniture_technical_shared_cabinet_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 4062698935
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_cabinet_s01, "object/tangible/furniture/technical/shared_cabinet_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_cabinet_s01, "object/tangible/furniture/technical/shared_cabinet_s01.iff")
 
 object_tangible_furniture_technical_shared_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_chair_s01.apt",
@@ -255,7 +255,7 @@ object_tangible_furniture_technical_shared_chair_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 563858030
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_chair_s01, "object/tangible/furniture/technical/shared_chair_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_chair_s01, "object/tangible/furniture/technical/shared_chair_s01.iff")
 
 object_tangible_furniture_technical_shared_chest_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
@@ -309,7 +309,7 @@ object_tangible_furniture_technical_shared_chest_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 3532191328
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_chest_s01, "object/tangible/furniture/technical/shared_chest_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_chest_s01, "object/tangible/furniture/technical/shared_chest_s01.iff")
 
 object_tangible_furniture_technical_shared_coffee_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_coffee_table_s01.apt",
@@ -363,7 +363,7 @@ object_tangible_furniture_technical_shared_coffee_table_s01 = SharedTangibleObje
 	clientObjectCRC = 2031353243
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_coffee_table_s01, "object/tangible/furniture/technical/shared_coffee_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_coffee_table_s01, "object/tangible/furniture/technical/shared_coffee_table_s01.iff")
 
 object_tangible_furniture_technical_shared_couch_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_couch_s01.apt",
@@ -417,7 +417,7 @@ object_tangible_furniture_technical_shared_couch_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 462151758
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_couch_s01, "object/tangible/furniture/technical/shared_couch_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_couch_s01, "object/tangible/furniture/technical/shared_couch_s01.iff")
 
 object_tangible_furniture_technical_shared_end_table_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_end_table_s01.apt",
@@ -471,4 +471,4 @@ object_tangible_furniture_technical_shared_end_table_s01 = SharedTangibleObjectT
 	clientObjectCRC = 3724791162
 }
 
-ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_end_table_s01, "object/tangible/furniture/technical/shared_end_table_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_end_table_s01, "object/tangible/furniture/technical/shared_end_table_s01.iff")

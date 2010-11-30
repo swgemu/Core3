@@ -93,7 +93,7 @@ object_tangible_ship_attachment_booster_shared_awing_booster_s01 = SharedTangibl
 	clientObjectCRC = 3697647717
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_awing_booster_s01, "object/tangible/ship/attachment/booster/shared_awing_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_awing_booster_s01, "object/tangible/ship/attachment/booster/shared_awing_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_awing_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_booster_s02.apt",
@@ -147,7 +147,7 @@ object_tangible_ship_attachment_booster_shared_awing_booster_s02 = SharedTangibl
 	clientObjectCRC = 124913906
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_awing_booster_s02, "object/tangible/ship/attachment/booster/shared_awing_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_awing_booster_s02, "object/tangible/ship/attachment/booster/shared_awing_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_booster_s01.apt",
@@ -201,7 +201,7 @@ object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s01 = Shar
 	clientObjectCRC = 4140859891
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s01, "object/tangible/ship/attachment/booster/shared_blacksun_heavy_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s01, "object/tangible/ship/attachment/booster/shared_blacksun_heavy_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_booster_s02.apt",
@@ -255,7 +255,7 @@ object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s02 = Shar
 	clientObjectCRC = 768026980
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s02, "object/tangible/ship/attachment/booster/shared_blacksun_heavy_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s02, "object/tangible/ship/attachment/booster/shared_blacksun_heavy_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_booster_s01.apt",
@@ -309,7 +309,7 @@ object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s01 = Shar
 	clientObjectCRC = 1906842921
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s01, "object/tangible/ship/attachment/booster/shared_blacksun_light_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s01, "object/tangible/ship/attachment/booster/shared_blacksun_light_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_booster_s02.apt",
@@ -363,7 +363,7 @@ object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s02 = Shar
 	clientObjectCRC = 2864690622
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s02, "object/tangible/ship/attachment/booster/shared_blacksun_light_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s02, "object/tangible/ship/attachment/booster/shared_blacksun_light_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_booster_s01.apt",
@@ -417,7 +417,7 @@ object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s01 = Sha
 	clientObjectCRC = 763756187
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s01, "object/tangible/ship/attachment/booster/shared_blacksun_medium_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s01, "object/tangible/ship/attachment/booster/shared_blacksun_medium_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_booster_s02.apt",
@@ -471,7 +471,7 @@ object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s02 = Sha
 	clientObjectCRC = 4136785420
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s02, "object/tangible/ship/attachment/booster/shared_blacksun_medium_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s02, "object/tangible/ship/attachment/booster/shared_blacksun_medium_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_bwing_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_booster_s01.apt",
@@ -525,7 +525,7 @@ object_tangible_ship_attachment_booster_shared_bwing_booster_s01 = SharedTangibl
 	clientObjectCRC = 2523851270
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_bwing_booster_s01, "object/tangible/ship/attachment/booster/shared_bwing_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_bwing_booster_s01, "object/tangible/ship/attachment/booster/shared_bwing_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_bwing_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_booster_s02.apt",
@@ -579,7 +579,7 @@ object_tangible_ship_attachment_booster_shared_bwing_booster_s02 = SharedTangibl
 	clientObjectCRC = 1299792529
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_bwing_booster_s02, "object/tangible/ship/attachment/booster/shared_bwing_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_bwing_booster_s02, "object/tangible/ship/attachment/booster/shared_bwing_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_decimator_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_booster_s01.apt",
@@ -633,7 +633,7 @@ object_tangible_ship_attachment_booster_shared_decimator_booster_s01 = SharedTan
 	clientObjectCRC = 2076367365
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_decimator_booster_s01, "object/tangible/ship/attachment/booster/shared_decimator_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_decimator_booster_s01, "object/tangible/ship/attachment/booster/shared_decimator_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_decimator_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_booster_s02.apt",
@@ -687,7 +687,7 @@ object_tangible_ship_attachment_booster_shared_decimator_booster_s02 = SharedTan
 	clientObjectCRC = 2698343058
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_decimator_booster_s02, "object/tangible/ship/attachment/booster/shared_decimator_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_decimator_booster_s02, "object/tangible/ship/attachment/booster/shared_decimator_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_booster_s01.apt",
@@ -741,7 +741,7 @@ object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s01 = SharedTa
 	clientObjectCRC = 2708999938
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s01, "object/tangible/ship/attachment/booster/shared_hutt_heavy_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s01, "object/tangible/ship/attachment/booster/shared_hutt_heavy_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_booster_s02.apt",
@@ -795,7 +795,7 @@ object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s02 = SharedTa
 	clientObjectCRC = 2054137749
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s02, "object/tangible/ship/attachment/booster/shared_hutt_heavy_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s02, "object/tangible/ship/attachment/booster/shared_hutt_heavy_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_hutt_light_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_booster_s01.apt",
@@ -849,7 +849,7 @@ object_tangible_ship_attachment_booster_shared_hutt_light_booster_s01 = SharedTa
 	clientObjectCRC = 637572056
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_light_booster_s01, "object/tangible/ship/attachment/booster/shared_hutt_light_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_hutt_light_booster_s01, "object/tangible/ship/attachment/booster/shared_hutt_light_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_hutt_light_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_booster_s02.apt",
@@ -903,7 +903,7 @@ object_tangible_ship_attachment_booster_shared_hutt_light_booster_s02 = SharedTa
 	clientObjectCRC = 4246158159
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_light_booster_s02, "object/tangible/ship/attachment/booster/shared_hutt_light_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_hutt_light_booster_s02, "object/tangible/ship/attachment/booster/shared_hutt_light_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_booster_s01.apt",
@@ -957,7 +957,7 @@ object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s01 = SharedT
 	clientObjectCRC = 3822843033
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s01, "object/tangible/ship/attachment/booster/shared_hutt_medium_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s01, "object/tangible/ship/attachment/booster/shared_hutt_medium_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_booster_s02.apt",
@@ -1011,7 +1011,7 @@ object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s02 = SharedT
 	clientObjectCRC = 952917006
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s02, "object/tangible/ship/attachment/booster/shared_hutt_medium_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s02, "object/tangible/ship/attachment/booster/shared_hutt_medium_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_booster_s01.apt",
@@ -1065,7 +1065,7 @@ object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s01 = Share
 	clientObjectCRC = 2347949328
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s01, "object/tangible/ship/attachment/booster/shared_kse_firespray_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s01, "object/tangible/ship/attachment/booster/shared_kse_firespray_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_booster_s02.apt",
@@ -1119,7 +1119,7 @@ object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s02 = Share
 	clientObjectCRC = 1357215111
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s02, "object/tangible/ship/attachment/booster/shared_kse_firespray_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s02, "object/tangible/ship/attachment/booster/shared_kse_firespray_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_xwing_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
@@ -1173,7 +1173,7 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s01 = SharedTangibl
 	clientObjectCRC = 1074005343
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01, "object/tangible/ship/attachment/booster/shared_xwing_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01, "object/tangible/ship/attachment/booster/shared_xwing_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_xwing_booster_s01_neg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_neg_s01.apt",
@@ -1227,7 +1227,7 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s01_neg = SharedTan
 	clientObjectCRC = 21603316
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01_neg, "object/tangible/ship/attachment/booster/shared_xwing_booster_s01_neg.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01_neg, "object/tangible/ship/attachment/booster/shared_xwing_booster_s01_neg.iff")
 
 object_tangible_ship_attachment_booster_shared_xwing_booster_s01_pos = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_pos_s01.apt",
@@ -1281,7 +1281,7 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s01_pos = SharedTan
 	clientObjectCRC = 2131148464
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01_pos, "object/tangible/ship/attachment/booster/shared_xwing_booster_s01_pos.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01_pos, "object/tangible/ship/attachment/booster/shared_xwing_booster_s01_pos.iff")
 
 object_tangible_ship_attachment_booster_shared_xwing_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s02.apt",
@@ -1335,7 +1335,7 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s02 = SharedTangibl
 	clientObjectCRC = 2601758152
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02, "object/tangible/ship/attachment/booster/shared_xwing_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02, "object/tangible/ship/attachment/booster/shared_xwing_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_xwing_booster_s02_neg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_neg_s02.apt",
@@ -1389,7 +1389,7 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s02_neg = SharedTan
 	clientObjectCRC = 327762153
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02_neg, "object/tangible/ship/attachment/booster/shared_xwing_booster_s02_neg.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02_neg, "object/tangible/ship/attachment/booster/shared_xwing_booster_s02_neg.iff")
 
 object_tangible_ship_attachment_booster_shared_xwing_booster_s02_pos = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_pos_s02.apt",
@@ -1443,7 +1443,7 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s02_pos = SharedTan
 	clientObjectCRC = 1841716653
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02_pos, "object/tangible/ship/attachment/booster/shared_xwing_booster_s02_pos.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02_pos, "object/tangible/ship/attachment/booster/shared_xwing_booster_s02_pos.iff")
 
 object_tangible_ship_attachment_booster_shared_ykl37r_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_booster_s01.apt",
@@ -1497,7 +1497,7 @@ object_tangible_ship_attachment_booster_shared_ykl37r_booster_s01 = SharedTangib
 	clientObjectCRC = 17645535
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_ykl37r_booster_s01, "object/tangible/ship/attachment/booster/shared_ykl37r_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_ykl37r_booster_s01, "object/tangible/ship/attachment/booster/shared_ykl37r_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_ykl37r_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_booster_s02.apt",
@@ -1551,7 +1551,7 @@ object_tangible_ship_attachment_booster_shared_ykl37r_booster_s02 = SharedTangib
 	clientObjectCRC = 3659175752
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_ykl37r_booster_s02, "object/tangible/ship/attachment/booster/shared_ykl37r_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_ykl37r_booster_s02, "object/tangible/ship/attachment/booster/shared_ykl37r_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_yt1300_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_booster_s01.apt",
@@ -1605,7 +1605,7 @@ object_tangible_ship_attachment_booster_shared_yt1300_booster_s01 = SharedTangib
 	clientObjectCRC = 1920544323
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_yt1300_booster_s01, "object/tangible/ship/attachment/booster/shared_yt1300_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_yt1300_booster_s01, "object/tangible/ship/attachment/booster/shared_yt1300_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_yt1300_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_booster_s02.apt",
@@ -1659,7 +1659,7 @@ object_tangible_ship_attachment_booster_shared_yt1300_booster_s02 = SharedTangib
 	clientObjectCRC = 2842592980
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_yt1300_booster_s02, "object/tangible/ship/attachment/booster/shared_yt1300_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_yt1300_booster_s02, "object/tangible/ship/attachment/booster/shared_yt1300_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_ywing_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_booster_s01.apt",
@@ -1713,7 +1713,7 @@ object_tangible_ship_attachment_booster_shared_ywing_booster_s01 = SharedTangibl
 	clientObjectCRC = 2243807251
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_ywing_booster_s01, "object/tangible/ship/attachment/booster/shared_ywing_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_ywing_booster_s01, "object/tangible/ship/attachment/booster/shared_ywing_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_ywing_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_booster_s02.apt",
@@ -1767,7 +1767,7 @@ object_tangible_ship_attachment_booster_shared_ywing_booster_s02 = SharedTangibl
 	clientObjectCRC = 1588224132
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_ywing_booster_s02, "object/tangible/ship/attachment/booster/shared_ywing_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_ywing_booster_s02, "object/tangible/ship/attachment/booster/shared_ywing_booster_s02.iff")
 
 object_tangible_ship_attachment_booster_shared_z95_booster_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_booster_s01.apt",
@@ -1821,7 +1821,7 @@ object_tangible_ship_attachment_booster_shared_z95_booster_s01 = SharedTangibleO
 	clientObjectCRC = 2678287878
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_z95_booster_s01, "object/tangible/ship/attachment/booster/shared_z95_booster_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_z95_booster_s01, "object/tangible/ship/attachment/booster/shared_z95_booster_s01.iff")
 
 object_tangible_ship_attachment_booster_shared_z95_booster_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_booster_s02.apt",
@@ -1875,4 +1875,4 @@ object_tangible_ship_attachment_booster_shared_z95_booster_s02 = SharedTangibleO
 	clientObjectCRC = 1152698001
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_z95_booster_s02, "object/tangible/ship/attachment/booster/shared_z95_booster_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_booster_shared_z95_booster_s02, "object/tangible/ship/attachment/booster/shared_z95_booster_s02.iff")

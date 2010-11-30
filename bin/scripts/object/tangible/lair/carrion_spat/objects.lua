@@ -93,7 +93,7 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat = SharedTangibleObjec
 	clientObjectCRC = 2989290041
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat.iff")
 
 object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTan
 	clientObjectCRC = 2377863666
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat_grassland.iff")

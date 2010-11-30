@@ -93,4 +93,4 @@ object_tangible_deed_shared_test_deed = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3516023581
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_shared_test_deed, "object/tangible/deed/shared_test_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_shared_test_deed, "object/tangible/deed/shared_test_deed.iff")

@@ -93,7 +93,7 @@ object_tangible_lair_verne_shared_lair_verne = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 1856597850
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne, "object/tangible/lair/verne/shared_lair_verne.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_verne_shared_lair_verne, "object/tangible/lair/verne/shared_lair_verne.iff")
 
 object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTempla
 	clientObjectCRC = 2461392200
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne_forest, "object/tangible/lair/verne/shared_lair_verne_forest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_verne_shared_lair_verne_forest, "object/tangible/lair/verne/shared_lair_verne_forest.iff")

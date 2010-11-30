@@ -93,4 +93,4 @@ object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjec
 	clientObjectCRC = 1260954181
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill, "object/tangible/lair/huf_dun_hill/shared_lair_huf_dun_hill.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill, "object/tangible/lair/huf_dun_hill/shared_lair_huf_dun_hill.iff")

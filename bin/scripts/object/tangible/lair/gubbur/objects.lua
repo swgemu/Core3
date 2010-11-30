@@ -93,7 +93,7 @@ object_tangible_lair_gubbur_shared_lair_gubbur = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2954623268
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gubbur_shared_lair_gubbur, "object/tangible/lair/gubbur/shared_lair_gubbur.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gubbur_shared_lair_gubbur, "object/tangible/lair/gubbur/shared_lair_gubbur.iff")
 
 object_tangible_lair_gubbur_shared_lair_gubbur_underwater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_gubbur_shared_lair_gubbur_underwater = SharedTangibleObject
 	clientObjectCRC = 162663967
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gubbur_shared_lair_gubbur_underwater, "object/tangible/lair/gubbur/shared_lair_gubbur_underwater.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gubbur_shared_lair_gubbur_underwater, "object/tangible/lair/gubbur/shared_lair_gubbur_underwater.iff")

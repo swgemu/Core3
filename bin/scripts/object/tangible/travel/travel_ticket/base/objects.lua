@@ -93,4 +93,4 @@ object_tangible_travel_travel_ticket_base_shared_base_travel_ticket = SharedTang
 	clientObjectCRC = 3667975811
 }
 
-ObjectTemplates:addTemplate(object_tangible_travel_travel_ticket_base_shared_base_travel_ticket, "object/tangible/travel/travel_ticket/base/shared_base_travel_ticket.iff")
+ObjectTemplates:addClientTemplate(object_tangible_travel_travel_ticket_base_shared_base_travel_ticket, "object/tangible/travel/travel_ticket/base/shared_base_travel_ticket.iff")

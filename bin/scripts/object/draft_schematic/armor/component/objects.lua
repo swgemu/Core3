@@ -83,7 +83,7 @@ object_draft_schematic_armor_component_shared_armor_layer_acid = SharedDraftSche
 	clientObjectCRC = 1792719503
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_acid, "object/draft_schematic/armor/component/shared_armor_layer_acid.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_acid, "object/draft_schematic/armor/component/shared_armor_layer_acid.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSch
 	clientObjectCRC = 180189865
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_blast, "object/draft_schematic/armor/component/shared_armor_layer_blast.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_blast, "object/draft_schematic/armor/component/shared_armor_layer_blast.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,7 +171,7 @@ object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSche
 	clientObjectCRC = 3769957782
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_cold, "object/draft_schematic/armor/component/shared_armor_layer_cold.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_cold, "object/draft_schematic/armor/component/shared_armor_layer_cold.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -215,7 +215,7 @@ object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDra
 	clientObjectCRC = 2193465881
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_electrical, "object/draft_schematic/armor/component/shared_armor_layer_electrical.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_electrical, "object/draft_schematic/armor/component/shared_armor_layer_electrical.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -259,7 +259,7 @@ object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSc
 	clientObjectCRC = 4258794187
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_energy, "object/draft_schematic/armor/component/shared_armor_layer_energy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_energy, "object/draft_schematic/armor/component/shared_armor_layer_energy.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_environmental = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -303,7 +303,7 @@ object_draft_schematic_armor_component_shared_armor_layer_environmental = Shared
 	clientObjectCRC = 3965303725
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_environmental, "object/draft_schematic/armor/component/shared_armor_layer_environmental.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_environmental, "object/draft_schematic/armor/component/shared_armor_layer_environmental.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -347,7 +347,7 @@ object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSche
 	clientObjectCRC = 408400742
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_heat, "object/draft_schematic/armor/component/shared_armor_layer_heat.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_heat, "object/draft_schematic/armor/component/shared_armor_layer_heat.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,7 +391,7 @@ object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftS
 	clientObjectCRC = 4175436808
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_armor_layer_kinetic.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_armor_layer_kinetic.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -435,7 +435,7 @@ object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraf
 	clientObjectCRC = 3228456823
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_restraint, "object/draft_schematic/armor/component/shared_armor_layer_restraint.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_restraint, "object/draft_schematic/armor/component/shared_armor_layer_restraint.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -479,7 +479,7 @@ object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchem
 	clientObjectCRC = 1540900933
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_ris, "object/draft_schematic/armor/component/shared_armor_layer_ris.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_ris, "object/draft_schematic/armor/component/shared_armor_layer_ris.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -523,7 +523,7 @@ object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSche
 	clientObjectCRC = 2919500503
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_stun, "object/draft_schematic/armor/component/shared_armor_layer_stun.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_stun, "object/draft_schematic/armor/component/shared_armor_layer_stun.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -567,7 +567,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly 
 	clientObjectCRC = 3177230385
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly, "object/draft_schematic/armor/component/shared_deflector_shield_emitter_assembly.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly, "object/draft_schematic/armor/component/shared_deflector_shield_emitter_assembly.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -611,7 +611,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_
 	clientObjectCRC = 3571137786
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray, "object/draft_schematic/armor/component/shared_deflector_shield_generator_energy_ray.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray, "object/draft_schematic/armor/component/shared_deflector_shield_generator_energy_ray.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_generator_particle = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -655,7 +655,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_particl
 	clientObjectCRC = 3523195897
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_particle, "object/draft_schematic/armor/component/shared_deflector_shield_generator_particle.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_particle, "object/draft_schematic/armor/component/shared_deflector_shield_generator_particle.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -699,7 +699,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = S
 	clientObjectCRC = 1075484439
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit, "object/draft_schematic/armor/component/shared_deflector_shield_ion_feed_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit, "object/draft_schematic/armor/component/shared_deflector_shield_ion_feed_unit.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -743,7 +743,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_overload_discharg
 	clientObjectCRC = 831687516
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit, "object/draft_schematic/armor/component/shared_deflector_shield_overload_discharge_unit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit, "object/draft_schematic/armor/component/shared_deflector_shield_overload_discharge_unit.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_projector_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -787,7 +787,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_projector_plate =
 	clientObjectCRC = 951632989
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_projector_plate, "object/draft_schematic/armor/component/shared_deflector_shield_projector_plate.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_projector_plate, "object/draft_schematic/armor/component/shared_deflector_shield_projector_plate.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -831,7 +831,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDra
 	clientObjectCRC = 1874931611
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_acid, "object/draft_schematic/armor/component/shared_heavy_armor_layer_acid.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_acid, "object/draft_schematic/armor/component/shared_heavy_armor_layer_acid.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -875,7 +875,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDr
 	clientObjectCRC = 116196802
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_blast, "object/draft_schematic/armor/component/shared_heavy_armor_layer_blast.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_blast, "object/draft_schematic/armor/component/shared_heavy_armor_layer_blast.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -919,7 +919,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDra
 	clientObjectCRC = 3853478018
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_cold, "object/draft_schematic/armor/component/shared_heavy_armor_layer_cold.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_cold, "object/draft_schematic/armor/component/shared_heavy_armor_layer_cold.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -963,7 +963,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = Sha
 	clientObjectCRC = 127633276
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical, "object/draft_schematic/armor/component/shared_heavy_armor_layer_electrical.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical, "object/draft_schematic/armor/component/shared_heavy_armor_layer_electrical.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1007,7 +1007,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedD
 	clientObjectCRC = 2561407663
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_energy, "object/draft_schematic/armor/component/shared_heavy_armor_layer_energy.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_energy, "object/draft_schematic/armor/component/shared_heavy_armor_layer_energy.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1051,7 +1051,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = 
 	clientObjectCRC = 690401981
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental, "object/draft_schematic/armor/component/shared_heavy_armor_layer_environmental.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental, "object/draft_schematic/armor/component/shared_heavy_armor_layer_environmental.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1095,7 +1095,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDra
 	clientObjectCRC = 491529842
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_heat, "object/draft_schematic/armor/component/shared_heavy_armor_layer_heat.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_heat, "object/draft_schematic/armor/component/shared_heavy_armor_layer_heat.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1139,7 +1139,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = Shared
 	clientObjectCRC = 812701172
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_heavy_armor_layer_kinetic.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_heavy_armor_layer_kinetic.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1183,7 +1183,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = Shar
 	clientObjectCRC = 1695390575
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint, "object/draft_schematic/armor/component/shared_heavy_armor_layer_restraint.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint, "object/draft_schematic/armor/component/shared_heavy_armor_layer_restraint.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1227,4 +1227,4 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDra
 	clientObjectCRC = 2870976451
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_stun, "object/draft_schematic/armor/component/shared_heavy_armor_layer_stun.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_stun, "object/draft_schematic/armor/component/shared_heavy_armor_layer_stun.iff")

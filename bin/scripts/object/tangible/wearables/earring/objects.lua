@@ -93,7 +93,7 @@ object_tangible_wearables_earring_shared_earring_base = SharedTangibleObjectTemp
 	clientObjectCRC = 901601080
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_base, "object/tangible/wearables/earring/shared_earring_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_base, "object/tangible/wearables/earring/shared_earring_base.iff")
 
 object_tangible_wearables_earring_shared_earring_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s01.apt",
@@ -147,7 +147,7 @@ object_tangible_wearables_earring_shared_earring_s01 = SharedTangibleObjectTempl
 	clientObjectCRC = 1313672121
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s01, "object/tangible/wearables/earring/shared_earring_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s01, "object/tangible/wearables/earring/shared_earring_s01.iff")
 
 object_tangible_wearables_earring_shared_earring_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s02.apt",
@@ -201,7 +201,7 @@ object_tangible_wearables_earring_shared_earring_s02 = SharedTangibleObjectTempl
 	clientObjectCRC = 2505745198
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s02, "object/tangible/wearables/earring/shared_earring_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s02, "object/tangible/wearables/earring/shared_earring_s02.iff")
 
 object_tangible_wearables_earring_shared_earring_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s03.apt",
@@ -255,7 +255,7 @@ object_tangible_wearables_earring_shared_earring_s03 = SharedTangibleObjectTempl
 	clientObjectCRC = 3696739491
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s03, "object/tangible/wearables/earring/shared_earring_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s03, "object/tangible/wearables/earring/shared_earring_s03.iff")
 
 object_tangible_wearables_earring_shared_earring_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s04.apt",
@@ -309,7 +309,7 @@ object_tangible_wearables_earring_shared_earring_s04 = SharedTangibleObjectTempl
 	clientObjectCRC = 666169271
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s04, "object/tangible/wearables/earring/shared_earring_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s04, "object/tangible/wearables/earring/shared_earring_s04.iff")
 
 object_tangible_wearables_earring_shared_earring_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s05.apt",
@@ -363,7 +363,7 @@ object_tangible_wearables_earring_shared_earring_s05 = SharedTangibleObjectTempl
 	clientObjectCRC = 1857652794
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s05, "object/tangible/wearables/earring/shared_earring_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s05, "object/tangible/wearables/earring/shared_earring_s05.iff")
 
 object_tangible_wearables_earring_shared_earring_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s06.apt",
@@ -417,7 +417,7 @@ object_tangible_wearables_earring_shared_earring_s06 = SharedTangibleObjectTempl
 	clientObjectCRC = 3048087725
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s06, "object/tangible/wearables/earring/shared_earring_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s06, "object/tangible/wearables/earring/shared_earring_s06.iff")
 
 object_tangible_wearables_earring_shared_earring_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s07.apt",
@@ -471,7 +471,7 @@ object_tangible_wearables_earring_shared_earring_s07 = SharedTangibleObjectTempl
 	clientObjectCRC = 4238559008
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s07, "object/tangible/wearables/earring/shared_earring_s07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s07, "object/tangible/wearables/earring/shared_earring_s07.iff")
 
 object_tangible_wearables_earring_shared_earring_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s08.apt",
@@ -525,7 +525,7 @@ object_tangible_wearables_earring_shared_earring_s08 = SharedTangibleObjectTempl
 	clientObjectCRC = 1185508146
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s08, "object/tangible/wearables/earring/shared_earring_s08.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s08, "object/tangible/wearables/earring/shared_earring_s08.iff")
 
 object_tangible_wearables_earring_shared_earring_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s09.apt",
@@ -579,7 +579,7 @@ object_tangible_wearables_earring_shared_earring_s09 = SharedTangibleObjectTempl
 	clientObjectCRC = 262409407
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s09, "object/tangible/wearables/earring/shared_earring_s09.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s09, "object/tangible/wearables/earring/shared_earring_s09.iff")
 
 object_tangible_wearables_earring_shared_earring_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s10.apt",
@@ -633,7 +633,7 @@ object_tangible_wearables_earring_shared_earring_s10 = SharedTangibleObjectTempl
 	clientObjectCRC = 476602700
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s10, "object/tangible/wearables/earring/shared_earring_s10.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s10, "object/tangible/wearables/earring/shared_earring_s10.iff")
 
 object_tangible_wearables_earring_shared_earring_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s10.apt",
@@ -687,7 +687,7 @@ object_tangible_wearables_earring_shared_earring_s11 = SharedTangibleObjectTempl
 	clientObjectCRC = 1432684225
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s11, "object/tangible/wearables/earring/shared_earring_s11.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s11, "object/tangible/wearables/earring/shared_earring_s11.iff")
 
 object_tangible_wearables_earring_shared_earring_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s12.apt",
@@ -741,7 +741,7 @@ object_tangible_wearables_earring_shared_earring_s12 = SharedTangibleObjectTempl
 	clientObjectCRC = 2389880406
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s12, "object/tangible/wearables/earring/shared_earring_s12.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s12, "object/tangible/wearables/earring/shared_earring_s12.iff")
 
 object_tangible_wearables_earring_shared_earring_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s13_m.apt",
@@ -795,7 +795,7 @@ object_tangible_wearables_earring_shared_earring_s13 = SharedTangibleObjectTempl
 	clientObjectCRC = 3347040731
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s13, "object/tangible/wearables/earring/shared_earring_s13.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s13, "object/tangible/wearables/earring/shared_earring_s13.iff")
 
 object_tangible_wearables_earring_shared_earring_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s14_m.apt",
@@ -849,7 +849,7 @@ object_tangible_wearables_earring_shared_earring_s14 = SharedTangibleObjectTempl
 	clientObjectCRC = 1016914639
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s14, "object/tangible/wearables/earring/shared_earring_s14.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s14, "object/tangible/wearables/earring/shared_earring_s14.iff")
 
 object_tangible_wearables_earring_shared_earring_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s15_m.apt",
@@ -903,4 +903,4 @@ object_tangible_wearables_earring_shared_earring_s15 = SharedTangibleObjectTempl
 	clientObjectCRC = 1972471106
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s15, "object/tangible/wearables/earring/shared_earring_s15.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s15, "object/tangible/wearables/earring/shared_earring_s15.iff")

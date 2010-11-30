@@ -93,7 +93,7 @@ object_ship_base_shared_ship_base = SharedShipObjectTemplate:new {
 	clientObjectCRC = 3840320293
 }
 
-ObjectTemplates:addTemplate(object_ship_base_shared_ship_base, "object/ship/base/shared_ship_base.iff")
+ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_base, "object/ship/base/shared_ship_base.iff")
 
 object_ship_base_shared_ship_capital_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -147,7 +147,7 @@ object_ship_base_shared_ship_capital_base = SharedShipObjectTemplate:new {
 	clientObjectCRC = 2714493516
 }
 
-ObjectTemplates:addTemplate(object_ship_base_shared_ship_capital_base, "object/ship/base/shared_ship_capital_base.iff")
+ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_capital_base, "object/ship/base/shared_ship_capital_base.iff")
 
 object_ship_base_shared_ship_fighter_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -201,7 +201,7 @@ object_ship_base_shared_ship_fighter_base = SharedShipObjectTemplate:new {
 	clientObjectCRC = 1221795395
 }
 
-ObjectTemplates:addTemplate(object_ship_base_shared_ship_fighter_base, "object/ship/base/shared_ship_fighter_base.iff")
+ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_fighter_base, "object/ship/base/shared_ship_fighter_base.iff")
 
 object_ship_base_shared_ship_station_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -255,7 +255,7 @@ object_ship_base_shared_ship_station_base = SharedShipObjectTemplate:new {
 	clientObjectCRC = 92011496
 }
 
-ObjectTemplates:addTemplate(object_ship_base_shared_ship_station_base, "object/ship/base/shared_ship_station_base.iff")
+ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_station_base, "object/ship/base/shared_ship_station_base.iff")
 
 object_ship_base_shared_ship_transport_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
@@ -309,4 +309,4 @@ object_ship_base_shared_ship_transport_base = SharedShipObjectTemplate:new {
 	clientObjectCRC = 4138284526
 }
 
-ObjectTemplates:addTemplate(object_ship_base_shared_ship_transport_base, "object/ship/base/shared_ship_transport_base.iff")
+ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_transport_base, "object/ship/base/shared_ship_transport_base.iff")

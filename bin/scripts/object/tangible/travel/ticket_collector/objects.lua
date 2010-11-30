@@ -93,4 +93,4 @@ object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangible
 	clientObjectCRC = 4243633165
 }
 
-ObjectTemplates:addTemplate(object_tangible_travel_ticket_collector_shared_ticket_collector, "object/tangible/travel/ticket_collector/shared_ticket_collector.iff")
+ObjectTemplates:addClientTemplate(object_tangible_travel_ticket_collector_shared_ticket_collector, "object/tangible/travel/ticket_collector/shared_ticket_collector.iff")

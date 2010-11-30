@@ -97,7 +97,7 @@ object_weapon_melee_special_shared_blacksun_razor = SharedWeaponObjectTemplate:n
 	clientObjectCRC = 3357199743
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_special_shared_blacksun_razor, "object/weapon/melee/special/shared_blacksun_razor.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_special_shared_blacksun_razor, "object/weapon/melee/special/shared_blacksun_razor.iff")
 
 object_weapon_melee_special_shared_vibroknuckler = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_vibroknuckler.apt",
@@ -155,4 +155,4 @@ object_weapon_melee_special_shared_vibroknuckler = SharedWeaponObjectTemplate:ne
 	clientObjectCRC = 1697024206
 }
 
-ObjectTemplates:addTemplate(object_weapon_melee_special_shared_vibroknuckler, "object/weapon/melee/special/shared_vibroknuckler.iff")
+ObjectTemplates:addClientTemplate(object_weapon_melee_special_shared_vibroknuckler, "object/weapon/melee/special/shared_vibroknuckler.iff")

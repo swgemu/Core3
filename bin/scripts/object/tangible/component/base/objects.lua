@@ -93,7 +93,7 @@ object_tangible_component_base_shared_base_barrel = SharedTangibleObjectTemplate
 	clientObjectCRC = 2531878022
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_barrel, "object/tangible/component/base/shared_base_barrel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_barrel, "object/tangible/component/base/shared_base_barrel.iff")
 
 object_tangible_component_base_shared_base_component = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -147,7 +147,7 @@ object_tangible_component_base_shared_base_component = SharedTangibleObjectTempl
 	clientObjectCRC = 2398764559
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_component, "object/tangible/component/base/shared_base_component.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_component, "object/tangible/component/base/shared_base_component.iff")
 
 object_tangible_component_base_shared_base_dna_sample = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -201,7 +201,7 @@ object_tangible_component_base_shared_base_dna_sample = SharedTangibleObjectTemp
 	clientObjectCRC = 2106678290
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_dna_sample, "object/tangible/component/base/shared_base_dna_sample.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_dna_sample, "object/tangible/component/base/shared_base_dna_sample.iff")
 
 object_tangible_component_base_shared_base_electronic_component = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -255,7 +255,7 @@ object_tangible_component_base_shared_base_electronic_component = SharedTangible
 	clientObjectCRC = 77505063
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_electronic_component, "object/tangible/component/base/shared_base_electronic_component.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_electronic_component, "object/tangible/component/base/shared_base_electronic_component.iff")
 
 object_tangible_component_base_shared_base_food = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -309,4 +309,4 @@ object_tangible_component_base_shared_base_food = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 3167521190
 }
 
-ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_food, "object/tangible/component/base/shared_base_food.iff")
+ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_food, "object/tangible/component/base/shared_base_food.iff")

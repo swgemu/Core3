@@ -97,4 +97,4 @@ object_weapon_ranged_heavy_base_shared_heavy_weapon_base = SharedWeaponObjectTem
 	clientObjectCRC = 2361541818
 }
 
-ObjectTemplates:addTemplate(object_weapon_ranged_heavy_base_shared_heavy_weapon_base, "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff")
+ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_base_shared_heavy_weapon_base, "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff")

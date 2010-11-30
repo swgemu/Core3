@@ -93,7 +93,7 @@ object_tangible_ui_shared_ui_char_cust_pedestal = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 580259338
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_char_cust_pedestal, "object/tangible/ui/shared_ui_char_cust_pedestal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_char_cust_pedestal, "object/tangible/ui/shared_ui_char_cust_pedestal.iff")
 
 object_tangible_ui_shared_ui_planet_corellia = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_corl.apt",
@@ -147,7 +147,7 @@ object_tangible_ui_shared_ui_planet_corellia = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 565167488
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_corellia, "object/tangible/ui/shared_ui_planet_corellia.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_corellia, "object/tangible/ui/shared_ui_planet_corellia.iff")
 
 object_tangible_ui_shared_ui_planet_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_faction_imperial.apt",
@@ -201,7 +201,7 @@ object_tangible_ui_shared_ui_planet_imperial = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3225920634
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_imperial, "object/tangible/ui/shared_ui_planet_imperial.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_imperial, "object/tangible/ui/shared_ui_planet_imperial.iff")
 
 object_tangible_ui_shared_ui_planet_naboo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_nboo.apt",
@@ -255,7 +255,7 @@ object_tangible_ui_shared_ui_planet_naboo = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3585856086
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_naboo, "object/tangible/ui/shared_ui_planet_naboo.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_naboo, "object/tangible/ui/shared_ui_planet_naboo.iff")
 
 object_tangible_ui_shared_ui_planet_privateer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_faction_neutral.apt",
@@ -309,7 +309,7 @@ object_tangible_ui_shared_ui_planet_privateer = SharedTangibleObjectTemplate:new
 	clientObjectCRC = 4127966392
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_privateer, "object/tangible/ui/shared_ui_planet_privateer.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_privateer, "object/tangible/ui/shared_ui_planet_privateer.iff")
 
 object_tangible_ui_shared_ui_planet_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_faction_rebel.apt",
@@ -363,7 +363,7 @@ object_tangible_ui_shared_ui_planet_rebel = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3636261575
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_rebel, "object/tangible/ui/shared_ui_planet_rebel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_rebel, "object/tangible/ui/shared_ui_planet_rebel.iff")
 
 object_tangible_ui_shared_ui_planet_rori = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_rori.apt",
@@ -417,7 +417,7 @@ object_tangible_ui_shared_ui_planet_rori = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 2331720771
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_rori, "object/tangible/ui/shared_ui_planet_rori.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_rori, "object/tangible/ui/shared_ui_planet_rori.iff")
 
 object_tangible_ui_shared_ui_planet_talus = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_talu.apt",
@@ -471,7 +471,7 @@ object_tangible_ui_shared_ui_planet_talus = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3437864060
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_talus, "object/tangible/ui/shared_ui_planet_talus.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_talus, "object/tangible/ui/shared_ui_planet_talus.iff")
 
 object_tangible_ui_shared_ui_planet_tatooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_tato.apt",
@@ -525,4 +525,4 @@ object_tangible_ui_shared_ui_planet_tatooine = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 502047775
 }
 
-ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_tatooine, "object/tangible/ui/shared_ui_planet_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_tatooine, "object/tangible/ui/shared_ui_planet_tatooine.iff")

@@ -93,4 +93,4 @@ object_tangible_lair_vir_vir_hill_shared_lair_vir_vir_hill = SharedTangibleObjec
 	clientObjectCRC = 2229387137
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vir_vir_hill_shared_lair_vir_vir_hill, "object/tangible/lair/vir_vir_hill/shared_lair_vir_vir_hill.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vir_vir_hill_shared_lair_vir_vir_hill, "object/tangible/lair/vir_vir_hill/shared_lair_vir_vir_hill.iff")

@@ -93,7 +93,7 @@ object_tangible_ship_attachment_engine_shared_awing_engine_s01 = SharedTangibleO
 	clientObjectCRC = 4185031918
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_awing_engine_s01, "object/tangible/ship/attachment/engine/shared_awing_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_awing_engine_s01, "object/tangible/ship/attachment/engine/shared_awing_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_awing_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_engine_s01.apt",
@@ -147,7 +147,7 @@ object_tangible_ship_attachment_engine_shared_awing_engine_s02 = SharedTangibleO
 	clientObjectCRC = 577055865
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_awing_engine_s02, "object/tangible/ship/attachment/engine/shared_awing_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_awing_engine_s02, "object/tangible/ship/attachment/engine/shared_awing_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_engine_s01.apt",
@@ -201,7 +201,7 @@ object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s01 = Shared
 	clientObjectCRC = 1430717714
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_heavy_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_heavy_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_engine_s02.apt",
@@ -255,7 +255,7 @@ object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s02 = Shared
 	clientObjectCRC = 2387651973
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_heavy_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_heavy_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_engine_s01.apt",
@@ -309,7 +309,7 @@ object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s01 = Shared
 	clientObjectCRC = 2826438901
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_light_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_light_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_engine_s02.apt",
@@ -363,7 +363,7 @@ object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s02 = Shared
 	clientObjectCRC = 1936695394
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_light_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_light_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_engine_s01.apt",
@@ -417,7 +417,7 @@ object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s01 = Share
 	clientObjectCRC = 2775195131
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_medium_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_medium_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_engine_s02.apt",
@@ -471,7 +471,7 @@ object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s02 = Share
 	clientObjectCRC = 2122167660
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_medium_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_medium_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_bwing_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_engine_s01.apt",
@@ -525,7 +525,7 @@ object_tangible_ship_attachment_engine_shared_bwing_engine_s01 = SharedTangibleO
 	clientObjectCRC = 2775913620
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_bwing_engine_s01, "object/tangible/ship/attachment/engine/shared_bwing_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_bwing_engine_s01, "object/tangible/ship/attachment/engine/shared_bwing_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_bwing_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_engine_s02.apt",
@@ -579,7 +579,7 @@ object_tangible_ship_attachment_engine_shared_bwing_engine_s02 = SharedTangibleO
 	clientObjectCRC = 2120399875
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_bwing_engine_s02, "object/tangible/ship/attachment/engine/shared_bwing_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_bwing_engine_s02, "object/tangible/ship/attachment/engine/shared_bwing_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_decimator_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_engine_s01.apt",
@@ -633,7 +633,7 @@ object_tangible_ship_attachment_engine_shared_decimator_engine_s01 = SharedTangi
 	clientObjectCRC = 1116177012
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_decimator_engine_s01, "object/tangible/ship/attachment/engine/shared_decimator_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_decimator_engine_s01, "object/tangible/ship/attachment/engine/shared_decimator_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_decimator_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_engine_s02.apt",
@@ -687,7 +687,7 @@ object_tangible_ship_attachment_engine_shared_decimator_engine_s02 = SharedTangi
 	clientObjectCRC = 2576362211
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_decimator_engine_s02, "object/tangible/ship/attachment/engine/shared_decimator_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_decimator_engine_s02, "object/tangible/ship/attachment/engine/shared_decimator_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_eng_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -741,7 +741,7 @@ object_tangible_ship_attachment_engine_shared_eng_tiefighter_basic = SharedTangi
 	clientObjectCRC = 1064155476
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_eng_tiefighter_basic, "object/tangible/ship/attachment/engine/shared_eng_tiefighter_basic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_eng_tiefighter_basic, "object/tangible/ship/attachment/engine/shared_eng_tiefighter_basic.iff")
 
 object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_engine_s01.apt",
@@ -795,7 +795,7 @@ object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s01 = SharedTang
 	clientObjectCRC = 2054741017
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_heavy_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_heavy_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_engine_s02.apt",
@@ -849,7 +849,7 @@ object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s02 = SharedTang
 	clientObjectCRC = 2708436110
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_heavy_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_heavy_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_hutt_light_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_engine_s01.apt",
@@ -903,7 +903,7 @@ object_tangible_ship_attachment_engine_shared_hutt_light_engine_s01 = SharedTang
 	clientObjectCRC = 2269630974
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_hutt_light_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_light_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_light_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_light_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_hutt_light_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_engine_s02.apt",
@@ -957,7 +957,7 @@ object_tangible_ship_attachment_engine_shared_hutt_light_engine_s02 = SharedTang
 	clientObjectCRC = 1548777833
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_hutt_light_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_light_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_light_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_light_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_engine_s01.apt",
@@ -1011,7 +1011,7 @@ object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s01 = SharedTan
 	clientObjectCRC = 987700646
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_medium_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_medium_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_engine_s02.apt",
@@ -1065,7 +1065,7 @@ object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s02 = SharedTan
 	clientObjectCRC = 3788027185
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_medium_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_medium_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_engine_s01.apt",
@@ -1119,7 +1119,7 @@ object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s01 = SharedT
 	clientObjectCRC = 1758759963
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s01, "object/tangible/ship/attachment/engine/shared_kse_firespray_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s01, "object/tangible/ship/attachment/engine/shared_kse_firespray_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_engine_s02.apt",
@@ -1173,7 +1173,7 @@ object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s02 = SharedT
 	clientObjectCRC = 3015910540
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s02, "object/tangible/ship/attachment/engine/shared_kse_firespray_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s02, "object/tangible/ship/attachment/engine/shared_kse_firespray_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_tie_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1227,7 +1227,7 @@ object_tangible_ship_attachment_engine_shared_tie_engine_s01 = SharedTangibleObj
 	clientObjectCRC = 557699423
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_tie_engine_s01, "object/tangible/ship/attachment/engine/shared_tie_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tie_engine_s01, "object/tangible/ship/attachment/engine/shared_tie_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_tieadvanced_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1281,7 +1281,7 @@ object_tangible_ship_attachment_engine_shared_tieadvanced_engine_s01 = SharedTan
 	clientObjectCRC = 1078468437
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_tieadvanced_engine_s01, "object/tangible/ship/attachment/engine/shared_tieadvanced_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tieadvanced_engine_s01, "object/tangible/ship/attachment/engine/shared_tieadvanced_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_tiebomber_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1335,7 +1335,7 @@ object_tangible_ship_attachment_engine_shared_tiebomber_engine_s01 = SharedTangi
 	clientObjectCRC = 4073386065
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_tiebomber_engine_s01, "object/tangible/ship/attachment/engine/shared_tiebomber_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tiebomber_engine_s01, "object/tangible/ship/attachment/engine/shared_tiebomber_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_tieinterceptor_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1389,7 +1389,7 @@ object_tangible_ship_attachment_engine_shared_tieinterceptor_engine_s01 = Shared
 	clientObjectCRC = 3973162809
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_tieinterceptor_engine_s01, "object/tangible/ship/attachment/engine/shared_tieinterceptor_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tieinterceptor_engine_s01, "object/tangible/ship/attachment/engine/shared_tieinterceptor_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_tieoppressor_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
@@ -1443,7 +1443,7 @@ object_tangible_ship_attachment_engine_shared_tieoppressor_engine_s01 = SharedTa
 	clientObjectCRC = 3648736552
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_tieoppressor_engine_s01, "object/tangible/ship/attachment/engine/shared_tieoppressor_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tieoppressor_engine_s01, "object/tangible/ship/attachment/engine/shared_tieoppressor_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
@@ -1497,7 +1497,7 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s01 = SharedTangi
 	clientObjectCRC = 1476333721
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s01, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s01, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
@@ -1551,7 +1551,7 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s02 = SharedTangi
 	clientObjectCRC = 2364061710
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s02, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s02, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
@@ -1605,7 +1605,7 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s03 = SharedTangi
 	clientObjectCRC = 3320176515
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s03, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s03, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s03.iff")
 
 object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_pos_s01.apt",
@@ -1659,7 +1659,7 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s01 = SharedTangi
 	clientObjectCRC = 4116130746
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s01, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s01, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_pos_s02.apt",
@@ -1713,7 +1713,7 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s02 = SharedTangi
 	clientObjectCRC = 775979821
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s02, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s02, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_pos_s02.apt",
@@ -1767,7 +1767,7 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s03 = SharedTangi
 	clientObjectCRC = 1733158048
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s03, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s03, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s03.iff")
 
 object_tangible_ship_attachment_engine_shared_ykl37r_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_engine_s01.apt",
@@ -1821,7 +1821,7 @@ object_tangible_ship_attachment_engine_shared_ykl37r_engine_s01 = SharedTangible
 	clientObjectCRC = 332197254
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_ykl37r_engine_s01, "object/tangible/ship/attachment/engine/shared_ykl37r_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_ykl37r_engine_s01, "object/tangible/ship/attachment/engine/shared_ykl37r_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_ykl37r_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_engine_s02.apt",
@@ -1875,7 +1875,7 @@ object_tangible_ship_attachment_engine_shared_ykl37r_engine_s02 = SharedTangible
 	clientObjectCRC = 3369813265
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_ykl37r_engine_s02, "object/tangible/ship/attachment/engine/shared_ykl37r_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_ykl37r_engine_s02, "object/tangible/ship/attachment/engine/shared_ykl37r_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_yt1300_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_engine_s01.apt",
@@ -1929,7 +1929,7 @@ object_tangible_ship_attachment_engine_shared_yt1300_engine_s01 = SharedTangible
 	clientObjectCRC = 3573306455
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_yt1300_engine_s01, "object/tangible/ship/attachment/engine/shared_yt1300_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_yt1300_engine_s01, "object/tangible/ship/attachment/engine/shared_yt1300_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_yt1300_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_engine_s02.apt",
@@ -1983,7 +1983,7 @@ object_tangible_ship_attachment_engine_shared_yt1300_engine_s02 = SharedTangible
 	clientObjectCRC = 267123904
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_yt1300_engine_s02, "object/tangible/ship/attachment/engine/shared_yt1300_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_yt1300_engine_s02, "object/tangible/ship/attachment/engine/shared_yt1300_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_ywing_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_engine_s01.apt",
@@ -2037,7 +2037,7 @@ object_tangible_ship_attachment_engine_shared_ywing_engine_s01 = SharedTangibleO
 	clientObjectCRC = 281820240
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_ywing_engine_s01, "object/tangible/ship/attachment/engine/shared_ywing_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_ywing_engine_s01, "object/tangible/ship/attachment/engine/shared_ywing_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_ywing_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_engine_s02.apt",
@@ -2091,7 +2091,7 @@ object_tangible_ship_attachment_engine_shared_ywing_engine_s02 = SharedTangibleO
 	clientObjectCRC = 3420165319
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_ywing_engine_s02, "object/tangible/ship/attachment/engine/shared_ywing_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_ywing_engine_s02, "object/tangible/ship/attachment/engine/shared_ywing_engine_s02.iff")
 
 object_tangible_ship_attachment_engine_shared_z95_engine_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_engine_s01.apt",
@@ -2145,7 +2145,7 @@ object_tangible_ship_attachment_engine_shared_z95_engine_s01 = SharedTangibleObj
 	clientObjectCRC = 2645704367
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_z95_engine_s01, "object/tangible/ship/attachment/engine/shared_z95_engine_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_z95_engine_s01, "object/tangible/ship/attachment/engine/shared_z95_engine_s01.iff")
 
 object_tangible_ship_attachment_engine_shared_z95_engine_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_engine_s02.apt",
@@ -2199,4 +2199,4 @@ object_tangible_ship_attachment_engine_shared_z95_engine_s02 = SharedTangibleObj
 	clientObjectCRC = 1185257016
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_attachment_engine_shared_z95_engine_s02, "object/tangible/ship/attachment/engine/shared_z95_engine_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_z95_engine_s02, "object/tangible/ship/attachment/engine/shared_z95_engine_s02.iff")

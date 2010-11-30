@@ -83,7 +83,7 @@ object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine = SharedStaticObj
 	clientObjectCRC = 2387521344
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine, "object/static/terrain/tatooine/shared_pinnacle_sacred_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine, "object/static/terrain/tatooine/shared_pinnacle_sacred_tatooine.iff")
 
 object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_sarlacc_collision.apt",
@@ -127,7 +127,7 @@ object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor = SharedStatic
 	clientObjectCRC = 3940129403
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor, "object/static/terrain/tatooine/shared_poi_sarlacc_collision_floor.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor, "object/static/terrain/tatooine/shared_poi_sarlacc_collision_floor.iff")
 
 object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_arch_lrg.apt",
@@ -171,7 +171,7 @@ object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1 = SharedS
 	clientObjectCRC = 3663567208
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_large_tatooine_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_large_tatooine_style_1.iff")
 
 object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_arch_med.apt",
@@ -215,7 +215,7 @@ object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1 = Shared
 	clientObjectCRC = 3478274265
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_medium_tatooine_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_medium_tatooine_style_1.iff")
 
 object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_arch_sm.apt",
@@ -259,7 +259,7 @@ object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1 = SharedS
 	clientObjectCRC = 3539268114
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_small_tatooine_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_small_tatooine_style_1.iff")
 
 object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_mushroom.apt",
@@ -303,7 +303,7 @@ object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1 = SharedSta
 	clientObjectCRC = 611566460
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_mushroom_tatooine_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_mushroom_tatooine_style_1.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_fin_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_fin.apt",
@@ -347,7 +347,7 @@ object_static_terrain_tatooine_shared_rock_spire_fin_tatooine = SharedStaticObje
 	clientObjectCRC = 1526101729
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_fin_tatooine, "object/static/terrain/tatooine/shared_rock_spire_fin_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_fin_tatooine, "object/static/terrain/tatooine/shared_rock_spire_fin_tatooine.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_lumpy.apt",
@@ -391,7 +391,7 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine = SharedStaticOb
 	clientObjectCRC = 3421956208
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_lumpy_a1.apt",
@@ -435,7 +435,7 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1 = Shared
 	clientObjectCRC = 1746495727
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine_style_1.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_lumpy_a2.apt",
@@ -479,7 +479,7 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2 = Shared
 	clientObjectCRC = 3004088440
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine_style_2.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_skinny.apt",
@@ -523,7 +523,7 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine = SharedStaticO
 	clientObjectCRC = 505839558
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_skinny_a1.apt",
@@ -567,7 +567,7 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1 = Share
 	clientObjectCRC = 24378186
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine_style_1.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_skinny_a2.apt",
@@ -611,7 +611,7 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2 = Share
 	clientObjectCRC = 3664008157
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine_style_2.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_smooth.apt",
@@ -655,7 +655,7 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine = SharedStaticO
 	clientObjectCRC = 3455314010
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_smooth_a1.apt",
@@ -699,7 +699,7 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1 = Share
 	clientObjectCRC = 323068853
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine_style_1.iff")
 
 object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_smooth_a2.apt",
@@ -743,4 +743,4 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2 = Share
 	clientObjectCRC = 3361082146
 }
 
-ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine_style_2.iff")

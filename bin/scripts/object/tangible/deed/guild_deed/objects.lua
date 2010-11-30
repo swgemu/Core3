@@ -93,7 +93,7 @@ object_tangible_deed_guild_deed_shared_corellia_guild_deed = SharedTangibleObjec
 	clientObjectCRC = 4111019383
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_corellia_guild_deed, "object/tangible/deed/guild_deed/shared_corellia_guild_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_corellia_guild_deed, "object/tangible/deed/guild_deed/shared_corellia_guild_deed.iff")
 
 object_tangible_deed_guild_deed_shared_generic_guild_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -147,7 +147,7 @@ object_tangible_deed_guild_deed_shared_generic_guild_deed = SharedTangibleObject
 	clientObjectCRC = 3345639792
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_generic_guild_deed, "object/tangible/deed/guild_deed/shared_generic_guild_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_generic_guild_deed, "object/tangible/deed/guild_deed/shared_generic_guild_deed.iff")
 
 object_tangible_deed_guild_deed_shared_naboo_guild_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -201,7 +201,7 @@ object_tangible_deed_guild_deed_shared_naboo_guild_deed = SharedTangibleObjectTe
 	clientObjectCRC = 2398572808
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_naboo_guild_deed, "object/tangible/deed/guild_deed/shared_naboo_guild_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_naboo_guild_deed, "object/tangible/deed/guild_deed/shared_naboo_guild_deed.iff")
 
 object_tangible_deed_guild_deed_shared_tatooine_guild_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -255,7 +255,7 @@ object_tangible_deed_guild_deed_shared_tatooine_guild_deed = SharedTangibleObjec
 	clientObjectCRC = 847751074
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_deed, "object/tangible/deed/guild_deed/shared_tatooine_guild_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_deed, "object/tangible/deed/guild_deed/shared_tatooine_guild_deed.iff")
 
 object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -309,4 +309,4 @@ object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed = SharedTang
 	clientObjectCRC = 1677139943
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed, "object/tangible/deed/guild_deed/shared_tatooine_guild_style_02_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed, "object/tangible/deed/guild_deed/shared_tatooine_guild_style_02_deed.iff")

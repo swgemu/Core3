@@ -93,7 +93,7 @@ object_tangible_lair_vlutore_shared_lair_vlutore = SharedTangibleObjectTemplate:
 	clientObjectCRC = 594764698
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore, "object/tangible/lair/vlutore/shared_lair_vlutore.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore, "object/tangible/lair/vlutore/shared_lair_vlutore.iff")
 
 object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjec
 	clientObjectCRC = 3306801185
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_grassland, "object/tangible/lair/vlutore/shared_lair_vlutore_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_grassland, "object/tangible/lair/vlutore/shared_lair_vlutore_grassland.iff")
 
 object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObject
 	clientObjectCRC = 482728149
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_mountain, "object/tangible/lair/vlutore/shared_lair_vlutore_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_mountain, "object/tangible/lair/vlutore/shared_lair_vlutore_mountain.iff")

@@ -93,4 +93,4 @@ object_tangible_gem_base_shared_gem_base = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 1086540149
 }
 
-ObjectTemplates:addTemplate(object_tangible_gem_base_shared_gem_base, "object/tangible/gem/base/shared_gem_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gem_base_shared_gem_base, "object/tangible/gem/base/shared_gem_base.iff")

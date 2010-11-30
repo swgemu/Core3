@@ -93,7 +93,7 @@ object_tangible_wearables_shirt_shared_aakuan_shirt = SharedTangibleObjectTempla
 	clientObjectCRC = 1826844236
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_aakuan_shirt, "object/tangible/wearables/shirt/shared_aakuan_shirt.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_aakuan_shirt, "object/tangible/wearables/shirt/shared_aakuan_shirt.iff")
 
 object_tangible_wearables_shirt_shared_nightsister_shirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_shirt_s01.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_shirt_shared_nightsister_shirt_s01 = SharedTangibleObj
 	clientObjectCRC = 2915181995
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_nightsister_shirt_s01, "object/tangible/wearables/shirt/shared_nightsister_shirt_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_nightsister_shirt_s01, "object/tangible/wearables/shirt/shared_nightsister_shirt_s01.iff")
 
 object_tangible_wearables_shirt_shared_nightsister_shirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_shirt_s02.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_shirt_shared_nightsister_shirt_s02 = SharedTangibleObj
 	clientObjectCRC = 1993706812
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_nightsister_shirt_s02, "object/tangible/wearables/shirt/shared_nightsister_shirt_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_nightsister_shirt_s02, "object/tangible/wearables/shirt/shared_nightsister_shirt_s02.iff")
 
 object_tangible_wearables_shirt_shared_nightsister_shirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_shirt_s03.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_shirt_shared_nightsister_shirt_s03 = SharedTangibleObj
 	clientObjectCRC = 1071180465
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_nightsister_shirt_s03, "object/tangible/wearables/shirt/shared_nightsister_shirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_nightsister_shirt_s03, "object/tangible/wearables/shirt/shared_nightsister_shirt_s03.iff")
 
 object_tangible_wearables_shirt_shared_shirt_dera = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_dara_darklighter_f.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_shirt_shared_shirt_dera = SharedTangibleObjectTemplate
 	clientObjectCRC = 2503455797
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_dera, "object/tangible/wearables/shirt/shared_shirt_dera.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_dera, "object/tangible/wearables/shirt/shared_shirt_dera.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s03_f.sat",
@@ -363,7 +363,7 @@ object_tangible_wearables_shirt_shared_shirt_s03 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2094605554
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s03, "object/tangible/wearables/shirt/shared_shirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s03, "object/tangible/wearables/shirt/shared_shirt_s03.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s03_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s03_rebel_f.sat",
@@ -417,7 +417,7 @@ object_tangible_wearables_shirt_shared_shirt_s03_rebel = SharedTangibleObjectTem
 	clientObjectCRC = 3284391471
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s03_rebel, "object/tangible/wearables/shirt/shared_shirt_s03_rebel.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s03_rebel, "object/tangible/wearables/shirt/shared_shirt_s03_rebel.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s04_f.sat",
@@ -471,7 +471,7 @@ object_tangible_wearables_shirt_shared_shirt_s04 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2268729318
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s04, "object/tangible/wearables/shirt/shared_shirt_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s04, "object/tangible/wearables/shirt/shared_shirt_s04.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s05_f.sat",
@@ -525,7 +525,7 @@ object_tangible_wearables_shirt_shared_shirt_s05 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3459737707
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s05, "object/tangible/wearables/shirt/shared_shirt_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s05, "object/tangible/wearables/shirt/shared_shirt_s05.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s07_f.sat",
@@ -579,7 +579,7 @@ object_tangible_wearables_shirt_shared_shirt_s07 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1546495857
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s07, "object/tangible/wearables/shirt/shared_shirt_s07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s07, "object/tangible/wearables/shirt/shared_shirt_s07.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s08_f.sat",
@@ -633,7 +633,7 @@ object_tangible_wearables_shirt_shared_shirt_s08 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3861351267
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s08, "object/tangible/wearables/shirt/shared_shirt_s08.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s08, "object/tangible/wearables/shirt/shared_shirt_s08.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s09_f.sat",
@@ -687,7 +687,7 @@ object_tangible_wearables_shirt_shared_shirt_s09 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2938825966
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s09, "object/tangible/wearables/shirt/shared_shirt_s09.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s09, "object/tangible/wearables/shirt/shared_shirt_s09.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s10_f.sat",
@@ -741,7 +741,7 @@ object_tangible_wearables_shirt_shared_shirt_s10 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3169222941
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s10, "object/tangible/wearables/shirt/shared_shirt_s10.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s10, "object/tangible/wearables/shirt/shared_shirt_s10.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s11_f.sat",
@@ -795,7 +795,7 @@ object_tangible_wearables_shirt_shared_shirt_s11 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 4125877904
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s11, "object/tangible/wearables/shirt/shared_shirt_s11.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s11, "object/tangible/wearables/shirt/shared_shirt_s11.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s12_f.sat",
@@ -849,7 +849,7 @@ object_tangible_wearables_shirt_shared_shirt_s12 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 788286983
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s12, "object/tangible/wearables/shirt/shared_shirt_s12.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s12, "object/tangible/wearables/shirt/shared_shirt_s12.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s13_f.sat",
@@ -903,7 +903,7 @@ object_tangible_wearables_shirt_shared_shirt_s13 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1743858058
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s13, "object/tangible/wearables/shirt/shared_shirt_s13.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s13, "object/tangible/wearables/shirt/shared_shirt_s13.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s14_f.sat",
@@ -957,7 +957,7 @@ object_tangible_wearables_shirt_shared_shirt_s14 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2618426014
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s14, "object/tangible/wearables/shirt/shared_shirt_s14.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s14, "object/tangible/wearables/shirt/shared_shirt_s14.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s15_f.sat",
@@ -1011,7 +1011,7 @@ object_tangible_wearables_shirt_shared_shirt_s15 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3575604499
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s15, "object/tangible/wearables/shirt/shared_shirt_s15.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s15, "object/tangible/wearables/shirt/shared_shirt_s15.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s16_f.sat",
@@ -1065,7 +1065,7 @@ object_tangible_wearables_shirt_shared_shirt_s16 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 235457924
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s16, "object/tangible/wearables/shirt/shared_shirt_s16.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s16, "object/tangible/wearables/shirt/shared_shirt_s16.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s24 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s24_f.sat",
@@ -1119,7 +1119,7 @@ object_tangible_wearables_shirt_shared_shirt_s24 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2976519446
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s24, "object/tangible/wearables/shirt/shared_shirt_s24.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s24, "object/tangible/wearables/shirt/shared_shirt_s24.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s26 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s26_f.sat",
@@ -1173,7 +1173,7 @@ object_tangible_wearables_shirt_shared_shirt_s26 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 594598412
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s26, "object/tangible/wearables/shirt/shared_shirt_s26.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s26, "object/tangible/wearables/shirt/shared_shirt_s26.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s27_f.sat",
@@ -1227,7 +1227,7 @@ object_tangible_wearables_shirt_shared_shirt_s27 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1786625409
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s27, "object/tangible/wearables/shirt/shared_shirt_s27.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s27, "object/tangible/wearables/shirt/shared_shirt_s27.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s28 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s28_f.sat",
@@ -1281,7 +1281,7 @@ object_tangible_wearables_shirt_shared_shirt_s28 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3497496979
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s28, "object/tangible/wearables/shirt/shared_shirt_s28.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s28, "object/tangible/wearables/shirt/shared_shirt_s28.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s30 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s30_f.sat",
@@ -1335,7 +1335,7 @@ object_tangible_wearables_shirt_shared_shirt_s30 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2327223277
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s30, "object/tangible/wearables/shirt/shared_shirt_s30.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s30, "object/tangible/wearables/shirt/shared_shirt_s30.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s32 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s32_f.sat",
@@ -1389,7 +1389,7 @@ object_tangible_wearables_shirt_shared_shirt_s32 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 413947127
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s32, "object/tangible/wearables/shirt/shared_shirt_s32.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s32, "object/tangible/wearables/shirt/shared_shirt_s32.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s34 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s34_f.sat",
@@ -1443,7 +1443,7 @@ object_tangible_wearables_shirt_shared_shirt_s34 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2856458350
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s34, "object/tangible/wearables/shirt/shared_shirt_s34.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s34, "object/tangible/wearables/shirt/shared_shirt_s34.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s38 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s38_f.sat",
@@ -1497,7 +1497,7 @@ object_tangible_wearables_shirt_shared_shirt_s38 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3412040939
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s38, "object/tangible/wearables/shirt/shared_shirt_s38.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s38, "object/tangible/wearables/shirt/shared_shirt_s38.iff")
 
 object_tangible_wearables_shirt_shared_shirt_s42 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s42_f.sat",
@@ -1551,7 +1551,7 @@ object_tangible_wearables_shirt_shared_shirt_s42 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1500804767
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_shirt_s42, "object/tangible/wearables/shirt/shared_shirt_s42.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_shirt_s42, "object/tangible/wearables/shirt/shared_shirt_s42.iff")
 
 object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_shirt_s01.sat",
@@ -1605,7 +1605,7 @@ object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s01 = SharedT
 	clientObjectCRC = 73383983
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s01, "object/tangible/wearables/shirt/shared_singing_mountain_clan_shirt_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s01, "object/tangible/wearables/shirt/shared_singing_mountain_clan_shirt_s01.iff")
 
 object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_shirt_s02.sat",
@@ -1659,7 +1659,7 @@ object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s02 = SharedT
 	clientObjectCRC = 3746064568
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s02, "object/tangible/wearables/shirt/shared_singing_mountain_clan_shirt_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s02, "object/tangible/wearables/shirt/shared_singing_mountain_clan_shirt_s02.iff")
 
 object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_shirt_s03.sat",
@@ -1713,4 +1713,4 @@ object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s03 = SharedT
 	clientObjectCRC = 2521108277
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s03, "object/tangible/wearables/shirt/shared_singing_mountain_clan_shirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_shirt_shared_singing_mountain_clan_shirt_s03, "object/tangible/wearables/shirt/shared_singing_mountain_clan_shirt_s03.iff")

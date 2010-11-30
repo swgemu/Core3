@@ -93,4 +93,4 @@ object_tangible_vendor_base_shared_base_vendor = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2776424308
 }
 
-ObjectTemplates:addTemplate(object_tangible_vendor_base_shared_base_vendor, "object/tangible/vendor/base/shared_base_vendor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_vendor_base_shared_base_vendor, "object/tangible/vendor/base/shared_base_vendor.iff")

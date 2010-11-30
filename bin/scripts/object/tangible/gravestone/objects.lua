@@ -93,7 +93,7 @@ object_tangible_gravestone_shared_gravestone01 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 479064205
 }
 
-ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone01, "object/tangible/gravestone/shared_gravestone01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone01, "object/tangible/gravestone/shared_gravestone01.iff")
 
 object_tangible_gravestone_shared_gravestone02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s02.apt",
@@ -147,7 +147,7 @@ object_tangible_gravestone_shared_gravestone02 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3348781082
 }
 
-ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone02, "object/tangible/gravestone/shared_gravestone02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone02, "object/tangible/gravestone/shared_gravestone02.iff")
 
 object_tangible_gravestone_shared_gravestone03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s03.apt",
@@ -201,7 +201,7 @@ object_tangible_gravestone_shared_gravestone03 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2392276887
 }
 
-ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone03, "object/tangible/gravestone/shared_gravestone03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone03, "object/tangible/gravestone/shared_gravestone03.iff")
 
 object_tangible_gravestone_shared_gravestone04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s04.apt",
@@ -255,7 +255,7 @@ object_tangible_gravestone_shared_gravestone04 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1970541699
 }
 
-ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone04, "object/tangible/gravestone/shared_gravestone04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone04, "object/tangible/gravestone/shared_gravestone04.iff")
 
 object_tangible_gravestone_shared_gravestone05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s05.apt",
@@ -309,4 +309,4 @@ object_tangible_gravestone_shared_gravestone05 = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1014592270
 }
 
-ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone05, "object/tangible/gravestone/shared_gravestone05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone05, "object/tangible/gravestone/shared_gravestone05.iff")

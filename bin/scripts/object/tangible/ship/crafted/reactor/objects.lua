@@ -93,7 +93,7 @@ object_tangible_ship_crafted_reactor_shared_advanced_fusion_core = SharedTangibl
 	clientObjectCRC = 2957310385
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_advanced_fusion_core, "object/tangible/ship/crafted/reactor/shared_advanced_fusion_core.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_advanced_fusion_core, "object/tangible/ship/crafted/reactor/shared_advanced_fusion_core.iff")
 
 object_tangible_ship_crafted_reactor_shared_advanced_power_distributor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -147,7 +147,7 @@ object_tangible_ship_crafted_reactor_shared_advanced_power_distributor = SharedT
 	clientObjectCRC = 4065301062
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_advanced_power_distributor, "object/tangible/ship/crafted/reactor/shared_advanced_power_distributor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_advanced_power_distributor, "object/tangible/ship/crafted/reactor/shared_advanced_power_distributor.iff")
 
 object_tangible_ship_crafted_reactor_shared_base_reactor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_cowl_neg_s02.apt",
@@ -201,7 +201,7 @@ object_tangible_ship_crafted_reactor_shared_base_reactor = SharedTangibleObjectT
 	clientObjectCRC = 4073763603
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor, "object/tangible/ship/crafted/reactor/shared_base_reactor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor, "object/tangible/ship/crafted/reactor/shared_base_reactor.iff")
 
 object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -255,7 +255,7 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent = SharedTa
 	clientObjectCRC = 2892822392
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent.iff")
 
 object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -309,7 +309,7 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk1 = Shar
 	clientObjectCRC = 3936392569
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk1, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk1, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -363,7 +363,7 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk2 = Shar
 	clientObjectCRC = 834092526
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk2, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk2, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -417,7 +417,7 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk3 = Shar
 	clientObjectCRC = 2025478755
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk3, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk3, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -471,7 +471,7 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk4 = Shar
 	clientObjectCRC = 2203677047
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk4, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk4, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -525,7 +525,7 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk5 = Shar
 	clientObjectCRC = 3394508538
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk5, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk5, "object/tangible/ship/crafted/reactor/shared_base_reactor_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_reactor_shared_basic_reactor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_cowl_neg_s02.apt",
@@ -579,7 +579,7 @@ object_tangible_ship_crafted_reactor_shared_basic_reactor = SharedTangibleObject
 	clientObjectCRC = 1900869763
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_basic_reactor, "object/tangible/ship/crafted/reactor/shared_basic_reactor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_basic_reactor, "object/tangible/ship/crafted/reactor/shared_basic_reactor.iff")
 
 object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -633,7 +633,7 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk1 = SharedTangibleO
 	clientObjectCRC = 3172827767
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk1, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk1, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk1.iff")
 
 object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -687,7 +687,7 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk2 = SharedTangibleO
 	clientObjectCRC = 1711942368
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk2, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk2, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk2.iff")
 
 object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -741,7 +741,7 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk3 = SharedTangibleO
 	clientObjectCRC = 789007725
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk3, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk3, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk3.iff")
 
 object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -795,7 +795,7 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk4 = SharedTangibleO
 	clientObjectCRC = 3571738233
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk4, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk4, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk4.iff")
 
 object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -849,7 +849,7 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk5 = SharedTangibleO
 	clientObjectCRC = 2649293300
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk5, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk5, "object/tangible/ship/crafted/reactor/shared_fusion_reactor_mk5.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -903,7 +903,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk1 = SharedTangible
 	clientObjectCRC = 118151162
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk1, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk1, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk1.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -957,7 +957,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk2 = SharedTangible
 	clientObjectCRC = 3692920685
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk2, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk2, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk2.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1011,7 +1011,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk3 = SharedTangible
 	clientObjectCRC = 2500860128
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk3, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk3, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk3.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1065,7 +1065,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk4 = SharedTangible
 	clientObjectCRC = 1861432308
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk4, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk4, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk4.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1119,7 +1119,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk5 = SharedTangible
 	clientObjectCRC = 670979193
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk5, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk5, "object/tangible/ship/crafted/reactor/shared_reactor_limiter_mk5.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1173,7 +1173,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk1 = SharedTang
 	clientObjectCRC = 1124351052
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk1, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk1, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk1.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1227,7 +1227,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk2 = SharedTang
 	clientObjectCRC = 2551420123
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk2, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk2, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk2.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1281,7 +1281,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk3 = SharedTang
 	clientObjectCRC = 3508466518
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk3, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk3, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk3.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1335,7 +1335,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk4 = SharedTang
 	clientObjectCRC = 721279042
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk4, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk4, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk4.iff")
 
 object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1389,7 +1389,7 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk5 = SharedTang
 	clientObjectCRC = 1676722127
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk5, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk5, "object/tangible/ship/crafted/reactor/shared_reactor_overcharger_mk5.iff")
 
 object_tangible_ship_crafted_reactor_shared_standard_fusion_core = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1443,7 +1443,7 @@ object_tangible_ship_crafted_reactor_shared_standard_fusion_core = SharedTangibl
 	clientObjectCRC = 3532622984
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_standard_fusion_core, "object/tangible/ship/crafted/reactor/shared_standard_fusion_core.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_standard_fusion_core, "object/tangible/ship/crafted/reactor/shared_standard_fusion_core.iff")
 
 object_tangible_ship_crafted_reactor_shared_standard_power_distributor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
@@ -1497,4 +1497,4 @@ object_tangible_ship_crafted_reactor_shared_standard_power_distributor = SharedT
 	clientObjectCRC = 2827748660
 }
 
-ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_standard_power_distributor, "object/tangible/ship/crafted/reactor/shared_standard_power_distributor.iff")
+ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reactor_shared_standard_power_distributor, "object/tangible/ship/crafted/reactor/shared_standard_power_distributor.iff")

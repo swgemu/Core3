@@ -83,7 +83,7 @@ object_draft_schematic_space_droid_interface_shared_basic_droid_interface = Shar
 	clientObjectCRC = 3067045132
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_basic_droid_interface, "object/draft_schematic/space/droid_interface/shared_basic_droid_interface.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_basic_droid_interface, "object/draft_schematic/space/droid_interface/shared_basic_droid_interface.iff")
 
 object_draft_schematic_space_droid_interface_shared_ddi_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk1 = SharedDraftSchemat
 	clientObjectCRC = 3260211482
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk1, "object/draft_schematic/space/droid_interface/shared_ddi_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk1, "object/draft_schematic/space/droid_interface/shared_ddi_mk1.iff")
 
 object_draft_schematic_space_droid_interface_shared_ddi_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,7 +171,7 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk2 = SharedDraftSchemat
 	clientObjectCRC = 423971213
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk2, "object/draft_schematic/space/droid_interface/shared_ddi_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk2, "object/draft_schematic/space/droid_interface/shared_ddi_mk2.iff")
 
 object_draft_schematic_space_droid_interface_shared_ddi_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -215,7 +215,7 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk3 = SharedDraftSchemat
 	clientObjectCRC = 1346907648
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk3, "object/draft_schematic/space/droid_interface/shared_ddi_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk3, "object/draft_schematic/space/droid_interface/shared_ddi_mk3.iff")
 
 object_draft_schematic_space_droid_interface_shared_ddi_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -259,7 +259,7 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk4 = SharedDraftSchemat
 	clientObjectCRC = 2880111892
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk4, "object/draft_schematic/space/droid_interface/shared_ddi_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk4, "object/draft_schematic/space/droid_interface/shared_ddi_mk4.iff")
 
 object_draft_schematic_space_droid_interface_shared_ddi_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -303,7 +303,7 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk5 = SharedDraftSchemat
 	clientObjectCRC = 3802555033
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk5, "object/draft_schematic/space/droid_interface/shared_ddi_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk5, "object/draft_schematic/space/droid_interface/shared_ddi_mk5.iff")
 
 object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -347,7 +347,7 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk1 = Sh
 	clientObjectCRC = 4028213100
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk1, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk1, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk1.iff")
 
 object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,7 +391,7 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk2 = Sh
 	clientObjectCRC = 722341883
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk2, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk2, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk2.iff")
 
 object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -435,7 +435,7 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk3 = Sh
 	clientObjectCRC = 1644390518
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk3, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk3, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk3.iff")
 
 object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -479,7 +479,7 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk4 = Sh
 	clientObjectCRC = 2581611362
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk4, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk4, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk4.iff")
 
 object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -523,7 +523,7 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk5 = Sh
 	clientObjectCRC = 3505202415
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk5, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk5, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk5.iff")
 
 object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -567,7 +567,7 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 3536617726
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk1, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk1.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk1, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk1.iff")
 
 object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -611,7 +611,7 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 165357673
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk2, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk2.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk2, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk2.iff")
 
 object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -655,7 +655,7 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 1087786980
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk3, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk3.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk3, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk3.iff")
 
 object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -699,7 +699,7 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 3140838640
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk4, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk4.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk4, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk4.iff")
 
 object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -743,4 +743,4 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 	clientObjectCRC = 4063757181
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk5, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk5.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk5, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk5.iff")

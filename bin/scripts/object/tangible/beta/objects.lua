@@ -93,7 +93,7 @@ object_tangible_beta_shared_beta_terminal_food = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 3480787913
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_food, "object/tangible/beta/shared_beta_terminal_food.iff")
+ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_food, "object/tangible/beta/shared_beta_terminal_food.iff")
 
 object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -147,7 +147,7 @@ object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplat
 	clientObjectCRC = 600604858
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_medicine, "object/tangible/beta/shared_beta_terminal_medicine.iff")
+ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_medicine, "object/tangible/beta/shared_beta_terminal_medicine.iff")
 
 object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -201,7 +201,7 @@ object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 1792262622
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_money, "object/tangible/beta/shared_beta_terminal_money.iff")
+ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_money, "object/tangible/beta/shared_beta_terminal_money.iff")
 
 object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -255,7 +255,7 @@ object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplat
 	clientObjectCRC = 1782676583
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_resource, "object/tangible/beta/shared_beta_terminal_resource.iff")
+ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_resource, "object/tangible/beta/shared_beta_terminal_resource.iff")
 
 object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -309,7 +309,7 @@ object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1453711903
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_warp, "object/tangible/beta/shared_beta_terminal_warp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_warp, "object/tangible/beta/shared_beta_terminal_warp.iff")
 
 object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
@@ -363,7 +363,7 @@ object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:n
 	clientObjectCRC = 123483416
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_wound, "object/tangible/beta/shared_beta_terminal_wound.iff")
+ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_wound, "object/tangible/beta/shared_beta_terminal_wound.iff")
 
 object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -417,7 +417,7 @@ object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new 
 	clientObjectCRC = 3440875324
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_xp, "object/tangible/beta/shared_beta_terminal_xp.iff")
+ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_xp, "object/tangible/beta/shared_beta_terminal_xp.iff")
 
 object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
@@ -471,4 +471,4 @@ object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 	clientObjectCRC = 3977978094
 }
 
-ObjectTemplates:addTemplate(object_tangible_beta_shared_donham_terminal, "object/tangible/beta/shared_donham_terminal.iff")
+ObjectTemplates:addClientTemplate(object_tangible_beta_shared_donham_terminal, "object/tangible/beta/shared_donham_terminal.iff")

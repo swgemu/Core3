@@ -83,4 +83,4 @@ object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:n
 	clientObjectCRC = 2322781790
 }
 
-ObjectTemplates:addTemplate(object_intangible_theater_shared_base_theater, "object/intangible/theater/shared_base_theater.iff")
+ObjectTemplates:addClientTemplate(object_intangible_theater_shared_base_theater, "object/intangible/theater/shared_base_theater.iff")

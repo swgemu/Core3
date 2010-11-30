@@ -83,7 +83,7 @@ object_static_structure_endor_shared_endor_cap = SharedStaticObjectTemplate:new 
 	clientObjectCRC = 1412682900
 }
 
-ObjectTemplates:addTemplate(object_static_structure_endor_shared_endor_cap, "object/static/structure/endor/shared_endor_cap.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endor_cap, "object/static/structure/endor/shared_endor_cap.iff")
 
 object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_s01.apt",
@@ -127,7 +127,7 @@ object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:
 	clientObjectCRC = 2834035953
 }
 
-ObjectTemplates:addTemplate(object_static_structure_endor_shared_endor_catwalk, "object/static/structure/endor/shared_endor_catwalk.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endor_catwalk, "object/static/structure/endor/shared_endor_catwalk.iff")
 
 object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
@@ -170,7 +170,7 @@ object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObj
 	clientObjectCRC = 2166795982
 }
 
-ObjectTemplates:addTemplate(object_static_structure_endor_shared_endr_imprv_bannerpole_s01, "object/static/structure/endor/shared_endr_imprv_bannerpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endr_imprv_bannerpole_s01, "object/static/structure/endor/shared_endr_imprv_bannerpole_s01.iff")
 
 object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -213,4 +213,4 @@ object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjec
 	clientObjectCRC = 4084104443
 }
 
-ObjectTemplates:addTemplate(object_static_structure_endor_shared_endr_imprv_flagpole_s01, "object/static/structure/endor/shared_endr_imprv_flagpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endr_imprv_flagpole_s01, "object/static/structure/endor/shared_endr_imprv_flagpole_s01.iff")

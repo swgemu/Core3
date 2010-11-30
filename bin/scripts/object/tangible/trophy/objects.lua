@@ -93,7 +93,7 @@ object_tangible_trophy_shared_picture_handheld_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 2296040317
 }
 
-ObjectTemplates:addTemplate(object_tangible_trophy_shared_picture_handheld_s01, "object/tangible/trophy/shared_picture_handheld_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_trophy_shared_picture_handheld_s01, "object/tangible/trophy/shared_picture_handheld_s01.iff")
 
 object_tangible_trophy_shared_picture_handheld_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
@@ -147,7 +147,7 @@ object_tangible_trophy_shared_picture_handheld_s02 = SharedTangibleObjectTemplat
 	clientObjectCRC = 1405969386
 }
 
-ObjectTemplates:addTemplate(object_tangible_trophy_shared_picture_handheld_s02, "object/tangible/trophy/shared_picture_handheld_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_trophy_shared_picture_handheld_s02, "object/tangible/trophy/shared_picture_handheld_s02.iff")
 
 object_tangible_trophy_shared_shisa_decorative_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_shisha.apt",
@@ -201,4 +201,4 @@ object_tangible_trophy_shared_shisa_decorative_s01 = SharedTangibleObjectTemplat
 	clientObjectCRC = 3842630349
 }
 
-ObjectTemplates:addTemplate(object_tangible_trophy_shared_shisa_decorative_s01, "object/tangible/trophy/shared_shisa_decorative_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_trophy_shared_shisa_decorative_s01, "object/tangible/trophy/shared_shisa_decorative_s01.iff")

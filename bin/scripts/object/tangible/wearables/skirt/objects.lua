@@ -93,7 +93,7 @@ object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s01 = SharedT
 	clientObjectCRC = 2970859087
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s01, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s01, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s01.iff")
 
 object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_dress_s02.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s02 = SharedT
 	clientObjectCRC = 1778654936
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s02, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s02.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s02, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s02.iff")
 
 object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_dress_s03.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s03 = SharedT
 	clientObjectCRC = 587823445
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s03, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s03, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s03.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s03_f.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_skirt_shared_skirt_s03 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 647487888
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s03, "object/tangible/wearables/skirt/shared_skirt_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s03, "object/tangible/wearables/skirt/shared_skirt_s03.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s04_f.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_skirt_shared_skirt_s04 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3715418756
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s04, "object/tangible/wearables/skirt/shared_skirt_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s04, "object/tangible/wearables/skirt/shared_skirt_s04.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s05_m.sat",
@@ -363,7 +363,7 @@ object_tangible_wearables_skirt_shared_skirt_s05 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2491002121
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s05, "object/tangible/wearables/skirt/shared_skirt_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s05, "object/tangible/wearables/skirt/shared_skirt_s05.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s06_f.sat",
@@ -417,7 +417,7 @@ object_tangible_wearables_skirt_shared_skirt_s06 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1332610462
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s06, "object/tangible/wearables/skirt/shared_skirt_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s06, "object/tangible/wearables/skirt/shared_skirt_s06.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s07_f.sat",
@@ -471,7 +471,7 @@ object_tangible_wearables_skirt_shared_skirt_s07 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 107176467
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s07, "object/tangible/wearables/skirt/shared_skirt_s07.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s07, "object/tangible/wearables/skirt/shared_skirt_s07.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s08_f.sat",
@@ -525,7 +525,7 @@ object_tangible_wearables_skirt_shared_skirt_s08 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3161017857
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s08, "object/tangible/wearables/skirt/shared_skirt_s08.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s08, "object/tangible/wearables/skirt/shared_skirt_s08.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s09_f.sat",
@@ -579,7 +579,7 @@ object_tangible_wearables_skirt_shared_skirt_s09 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 4116982156
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s09, "object/tangible/wearables/skirt/shared_skirt_s09.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s09, "object/tangible/wearables/skirt/shared_skirt_s09.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s10_f.sat",
@@ -633,7 +633,7 @@ object_tangible_wearables_skirt_shared_skirt_s10 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3869787263
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s10, "object/tangible/wearables/skirt/shared_skirt_s10.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s10, "object/tangible/wearables/skirt/shared_skirt_s10.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s11_f.sat",
@@ -687,7 +687,7 @@ object_tangible_wearables_skirt_shared_skirt_s11 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2946835442
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s11, "object/tangible/wearables/skirt/shared_skirt_s11.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s11, "object/tangible/wearables/skirt/shared_skirt_s11.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s12_f.sat",
@@ -741,7 +741,7 @@ object_tangible_wearables_skirt_shared_skirt_s12 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1957858149
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s12, "object/tangible/wearables/skirt/shared_skirt_s12.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s12, "object/tangible/wearables/skirt/shared_skirt_s12.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s13_f.sat",
@@ -795,7 +795,7 @@ object_tangible_wearables_skirt_shared_skirt_s13 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 1035988200
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s13, "object/tangible/wearables/skirt/shared_skirt_s13.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s13, "object/tangible/wearables/skirt/shared_skirt_s13.iff")
 
 object_tangible_wearables_skirt_shared_skirt_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skirt_s14_f.sat",
@@ -849,4 +849,4 @@ object_tangible_wearables_skirt_shared_skirt_s14 = SharedTangibleObjectTemplate:
 	clientObjectCRC = 3327969276
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_skirt_shared_skirt_s14, "object/tangible/wearables/skirt/shared_skirt_s14.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s14, "object/tangible/wearables/skirt/shared_skirt_s14.iff")

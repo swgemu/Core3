@@ -93,7 +93,7 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith = SharedTangibleObj
 	clientObjectCRC = 2324552203
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith.iff")
 
 object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -147,7 +147,7 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedT
 	clientObjectCRC = 3499819428
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_grassland.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_grassland.iff")
 
 object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
@@ -201,4 +201,4 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTang
 	clientObjectCRC = 3275441058
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_jungle.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_jungle.iff")

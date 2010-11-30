@@ -82,7 +82,7 @@ object_static_structure_lok_shared_lok_imprv_bannerpole_s01 = SharedStaticObject
 	clientObjectCRC = 3199681465
 }
 
-ObjectTemplates:addTemplate(object_static_structure_lok_shared_lok_imprv_bannerpole_s01, "object/static/structure/lok/shared_lok_imprv_bannerpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_lok_shared_lok_imprv_bannerpole_s01, "object/static/structure/lok/shared_lok_imprv_bannerpole_s01.iff")
 
 object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
@@ -125,4 +125,4 @@ object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTe
 	clientObjectCRC = 2646498442
 }
 
-ObjectTemplates:addTemplate(object_static_structure_lok_shared_lok_imprv_flagpole_s01, "object/static/structure/lok/shared_lok_imprv_flagpole_s01.iff")
+ObjectTemplates:addClientTemplate(object_static_structure_lok_shared_lok_imprv_flagpole_s01, "object/static/structure/lok/shared_lok_imprv_flagpole_s01.iff")

@@ -83,7 +83,7 @@ object_draft_schematic_space_chassis_shared_awing = SharedDraftSchematicObjectTe
 	clientObjectCRC = 4088349067
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_awing, "object/draft_schematic/space/chassis/shared_awing.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_awing, "object/draft_schematic/space/chassis/shared_awing.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_heavy_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -127,7 +127,7 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s01 = SharedDraftSche
 	clientObjectCRC = 1739966126
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s01, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s01, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s01.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_heavy_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -171,7 +171,7 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s02 = SharedDraftSche
 	clientObjectCRC = 3164761657
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s02, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s02, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s02.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_heavy_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -215,7 +215,7 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s03 = SharedDraftSche
 	clientObjectCRC = 4121889204
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s03, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s03, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s03.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_heavy_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -259,7 +259,7 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s04 = SharedDraftSche
 	clientObjectCRC = 239870624
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s04, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s04, "object/draft_schematic/space/chassis/shared_blacksun_heavy_s04.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_light_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -303,7 +303,7 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s01 = SharedDraftSche
 	clientObjectCRC = 2076334324
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s01, "object/draft_schematic/space/chassis/shared_blacksun_light_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s01, "object/draft_schematic/space/chassis/shared_blacksun_light_s01.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_light_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -347,7 +347,7 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s02 = SharedDraftSche
 	clientObjectCRC = 2698375267
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s02, "object/draft_schematic/space/chassis/shared_blacksun_light_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s02, "object/draft_schematic/space/chassis/shared_blacksun_light_s02.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_light_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -391,7 +391,7 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s03 = SharedDraftSche
 	clientObjectCRC = 3923285998
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s03, "object/draft_schematic/space/chassis/shared_blacksun_light_s03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s03, "object/draft_schematic/space/chassis/shared_blacksun_light_s03.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_light_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -435,7 +435,7 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s04 = SharedDraftSche
 	clientObjectCRC = 305904890
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s04, "object/draft_schematic/space/chassis/shared_blacksun_light_s04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s04, "object/draft_schematic/space/chassis/shared_blacksun_light_s04.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_medium_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -479,7 +479,7 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s01 = SharedDraftSch
 	clientObjectCRC = 1149181177
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s01, "object/draft_schematic/space/chassis/shared_blacksun_medium_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s01, "object/draft_schematic/space/chassis/shared_blacksun_medium_s01.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_medium_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -523,7 +523,7 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s02 = SharedDraftSch
 	clientObjectCRC = 2674439278
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s02, "object/draft_schematic/space/chassis/shared_blacksun_medium_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s02, "object/draft_schematic/space/chassis/shared_blacksun_medium_s02.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_medium_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -567,7 +567,7 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s03 = SharedDraftSch
 	clientObjectCRC = 3596997603
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s03, "object/draft_schematic/space/chassis/shared_blacksun_medium_s03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s03, "object/draft_schematic/space/chassis/shared_blacksun_medium_s03.iff")
 
 object_draft_schematic_space_chassis_shared_blacksun_medium_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -611,7 +611,7 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s04 = SharedDraftSch
 	clientObjectCRC = 763820279
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s04, "object/draft_schematic/space/chassis/shared_blacksun_medium_s04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s04, "object/draft_schematic/space/chassis/shared_blacksun_medium_s04.iff")
 
 object_draft_schematic_space_chassis_shared_bwing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -655,7 +655,7 @@ object_draft_schematic_space_chassis_shared_bwing = SharedDraftSchematicObjectTe
 	clientObjectCRC = 3782189718
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_bwing, "object/draft_schematic/space/chassis/shared_bwing.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_bwing, "object/draft_schematic/space/chassis/shared_bwing.iff")
 
 object_draft_schematic_space_chassis_shared_decimator = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -699,7 +699,7 @@ object_draft_schematic_space_chassis_shared_decimator = SharedDraftSchematicObje
 	clientObjectCRC = 28631849
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_decimator, "object/draft_schematic/space/chassis/shared_decimator.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_decimator, "object/draft_schematic/space/chassis/shared_decimator.iff")
 
 object_draft_schematic_space_chassis_shared_firespray = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -743,7 +743,7 @@ object_draft_schematic_space_chassis_shared_firespray = SharedDraftSchematicObje
 	clientObjectCRC = 1220046426
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_firespray, "object/draft_schematic/space/chassis/shared_firespray.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_firespray, "object/draft_schematic/space/chassis/shared_firespray.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_heavy_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -787,7 +787,7 @@ object_draft_schematic_space_chassis_shared_hutt_heavy_s01 = SharedDraftSchemati
 	clientObjectCRC = 2018297747
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s01, "object/draft_schematic/space/chassis/shared_hutt_heavy_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s01, "object/draft_schematic/space/chassis/shared_hutt_heavy_s01.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_heavy_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -831,7 +831,7 @@ object_draft_schematic_space_chassis_shared_hutt_heavy_s02 = SharedDraftSchemati
 	clientObjectCRC = 2740678404
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s02, "object/draft_schematic/space/chassis/shared_hutt_heavy_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s02, "object/draft_schematic/space/chassis/shared_hutt_heavy_s02.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_light_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -875,7 +875,7 @@ object_draft_schematic_space_chassis_shared_hutt_light_s01 = SharedDraftSchemati
 	clientObjectCRC = 1681611209
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s01, "object/draft_schematic/space/chassis/shared_hutt_light_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s01, "object/draft_schematic/space/chassis/shared_hutt_light_s01.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_light_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -919,7 +919,7 @@ object_draft_schematic_space_chassis_shared_hutt_light_s02 = SharedDraftSchemati
 	clientObjectCRC = 3207393630
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s02, "object/draft_schematic/space/chassis/shared_hutt_light_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s02, "object/draft_schematic/space/chassis/shared_hutt_light_s02.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_medium_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -963,7 +963,7 @@ object_draft_schematic_space_chassis_shared_hutt_medium_s01 = SharedDraftSchemat
 	clientObjectCRC = 3374335796
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s01, "object/draft_schematic/space/chassis/shared_hutt_medium_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s01, "object/draft_schematic/space/chassis/shared_hutt_medium_s01.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_medium_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1007,7 +1007,7 @@ object_draft_schematic_space_chassis_shared_hutt_medium_s02 = SharedDraftSchemat
 	clientObjectCRC = 305655715
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s02, "object/draft_schematic/space/chassis/shared_hutt_medium_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s02, "object/draft_schematic/space/chassis/shared_hutt_medium_s02.iff")
 
 object_draft_schematic_space_chassis_shared_hutt_turret_ship = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1051,7 +1051,7 @@ object_draft_schematic_space_chassis_shared_hutt_turret_ship = SharedDraftSchema
 	clientObjectCRC = 1789657129
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_turret_ship, "object/draft_schematic/space/chassis/shared_hutt_turret_ship.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_hutt_turret_ship, "object/draft_schematic/space/chassis/shared_hutt_turret_ship.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1095,7 +1095,7 @@ object_draft_schematic_space_chassis_shared_texture_kit_s01 = SharedDraftSchemat
 	clientObjectCRC = 3565914279
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s01, "object/draft_schematic/space/chassis/shared_texture_kit_s01.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s01, "object/draft_schematic/space/chassis/shared_texture_kit_s01.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1139,7 +1139,7 @@ object_draft_schematic_space_chassis_shared_texture_kit_s02 = SharedDraftSchemat
 	clientObjectCRC = 261890096
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s02, "object/draft_schematic/space/chassis/shared_texture_kit_s02.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s02, "object/draft_schematic/space/chassis/shared_texture_kit_s02.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1183,7 +1183,7 @@ object_draft_schematic_space_chassis_shared_texture_kit_s03 = SharedDraftSchemat
 	clientObjectCRC = 1183926205
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s03, "object/draft_schematic/space/chassis/shared_texture_kit_s03.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s03, "object/draft_schematic/space/chassis/shared_texture_kit_s03.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1227,7 +1227,7 @@ object_draft_schematic_space_chassis_shared_texture_kit_s04 = SharedDraftSchemat
 	clientObjectCRC = 3178392745
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s04, "object/draft_schematic/space/chassis/shared_texture_kit_s04.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s04, "object/draft_schematic/space/chassis/shared_texture_kit_s04.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1271,7 +1271,7 @@ object_draft_schematic_space_chassis_shared_texture_kit_s05 = SharedDraftSchemat
 	clientObjectCRC = 4101966628
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s05, "object/draft_schematic/space/chassis/shared_texture_kit_s05.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s05, "object/draft_schematic/space/chassis/shared_texture_kit_s05.iff")
 
 object_draft_schematic_space_chassis_shared_texture_kit_s06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1315,7 +1315,7 @@ object_draft_schematic_space_chassis_shared_texture_kit_s06 = SharedDraftSchemat
 	clientObjectCRC = 795386803
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s06, "object/draft_schematic/space/chassis/shared_texture_kit_s06.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s06, "object/draft_schematic/space/chassis/shared_texture_kit_s06.iff")
 
 object_draft_schematic_space_chassis_shared_tie_in = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1359,7 +1359,7 @@ object_draft_schematic_space_chassis_shared_tie_in = SharedDraftSchematicObjectT
 	clientObjectCRC = 2807324799
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tie_in, "object/draft_schematic/space/chassis/shared_tie_in.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tie_in, "object/draft_schematic/space/chassis/shared_tie_in.iff")
 
 object_draft_schematic_space_chassis_shared_tie_light_duty = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1403,7 +1403,7 @@ object_draft_schematic_space_chassis_shared_tie_light_duty = SharedDraftSchemati
 	clientObjectCRC = 2042083013
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tie_light_duty, "object/draft_schematic/space/chassis/shared_tie_light_duty.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tie_light_duty, "object/draft_schematic/space/chassis/shared_tie_light_duty.iff")
 
 object_draft_schematic_space_chassis_shared_tieadvanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1447,7 +1447,7 @@ object_draft_schematic_space_chassis_shared_tieadvanced = SharedDraftSchematicOb
 	clientObjectCRC = 2726853665
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieadvanced, "object/draft_schematic/space/chassis/shared_tieadvanced.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tieadvanced, "object/draft_schematic/space/chassis/shared_tieadvanced.iff")
 
 object_draft_schematic_space_chassis_shared_tieaggressor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1491,7 +1491,7 @@ object_draft_schematic_space_chassis_shared_tieaggressor = SharedDraftSchematicO
 	clientObjectCRC = 675255699
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieaggressor, "object/draft_schematic/space/chassis/shared_tieaggressor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tieaggressor, "object/draft_schematic/space/chassis/shared_tieaggressor.iff")
 
 object_draft_schematic_space_chassis_shared_tiebomber = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1535,7 +1535,7 @@ object_draft_schematic_space_chassis_shared_tiebomber = SharedDraftSchematicObje
 	clientObjectCRC = 3922789724
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiebomber, "object/draft_schematic/space/chassis/shared_tiebomber.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tiebomber, "object/draft_schematic/space/chassis/shared_tiebomber.iff")
 
 object_draft_schematic_space_chassis_shared_tiefighter = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1579,7 +1579,7 @@ object_draft_schematic_space_chassis_shared_tiefighter = SharedDraftSchematicObj
 	clientObjectCRC = 2781545168
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiefighter, "object/draft_schematic/space/chassis/shared_tiefighter.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tiefighter, "object/draft_schematic/space/chassis/shared_tiefighter.iff")
 
 object_draft_schematic_space_chassis_shared_tiefighter_body = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1623,7 +1623,7 @@ object_draft_schematic_space_chassis_shared_tiefighter_body = SharedDraftSchemat
 	clientObjectCRC = 1164496814
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiefighter_body, "object/draft_schematic/space/chassis/shared_tiefighter_body.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tiefighter_body, "object/draft_schematic/space/chassis/shared_tiefighter_body.iff")
 
 object_draft_schematic_space_chassis_shared_tieinterceptor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1667,7 +1667,7 @@ object_draft_schematic_space_chassis_shared_tieinterceptor = SharedDraftSchemati
 	clientObjectCRC = 2195192561
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieinterceptor, "object/draft_schematic/space/chassis/shared_tieinterceptor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tieinterceptor, "object/draft_schematic/space/chassis/shared_tieinterceptor.iff")
 
 object_draft_schematic_space_chassis_shared_tieoppressor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1711,7 +1711,7 @@ object_draft_schematic_space_chassis_shared_tieoppressor = SharedDraftSchematicO
 	clientObjectCRC = 653085701
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieoppressor, "object/draft_schematic/space/chassis/shared_tieoppressor.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_tieoppressor, "object/draft_schematic/space/chassis/shared_tieoppressor.iff")
 
 object_draft_schematic_space_chassis_shared_xwing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1755,7 +1755,7 @@ object_draft_schematic_space_chassis_shared_xwing = SharedDraftSchematicObjectTe
 	clientObjectCRC = 2544431877
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing, "object/draft_schematic/space/chassis/shared_xwing.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_xwing, "object/draft_schematic/space/chassis/shared_xwing.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_body = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1799,7 +1799,7 @@ object_draft_schematic_space_chassis_shared_xwing_body = SharedDraftSchematicObj
 	clientObjectCRC = 4124324408
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_body, "object/draft_schematic/space/chassis/shared_xwing_body.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_xwing_body, "object/draft_schematic/space/chassis/shared_xwing_body.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_cockpit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1843,7 +1843,7 @@ object_draft_schematic_space_chassis_shared_xwing_cockpit = SharedDraftSchematic
 	clientObjectCRC = 1518980580
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_cockpit, "object/draft_schematic/space/chassis/shared_xwing_cockpit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_xwing_cockpit, "object/draft_schematic/space/chassis/shared_xwing_cockpit.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_customization_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1887,7 +1887,7 @@ object_draft_schematic_space_chassis_shared_xwing_customization_kit = SharedDraf
 	clientObjectCRC = 2412810817
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_customization_kit, "object/draft_schematic/space/chassis/shared_xwing_customization_kit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_xwing_customization_kit, "object/draft_schematic/space/chassis/shared_xwing_customization_kit.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_wing_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1931,7 +1931,7 @@ object_draft_schematic_space_chassis_shared_xwing_wing_l = SharedDraftSchematicO
 	clientObjectCRC = 385814820
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_l, "object/draft_schematic/space/chassis/shared_xwing_wing_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_l, "object/draft_schematic/space/chassis/shared_xwing_wing_l.iff")
 
 object_draft_schematic_space_chassis_shared_xwing_wing_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -1975,7 +1975,7 @@ object_draft_schematic_space_chassis_shared_xwing_wing_r = SharedDraftSchematicO
 	clientObjectCRC = 1714050231
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_r, "object/draft_schematic/space/chassis/shared_xwing_wing_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_r, "object/draft_schematic/space/chassis/shared_xwing_wing_r.iff")
 
 object_draft_schematic_space_chassis_shared_ykl37r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2019,7 +2019,7 @@ object_draft_schematic_space_chassis_shared_ykl37r = SharedDraftSchematicObjectT
 	clientObjectCRC = 1171955086
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ykl37r, "object/draft_schematic/space/chassis/shared_ykl37r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_ykl37r, "object/draft_schematic/space/chassis/shared_ykl37r.iff")
 
 object_draft_schematic_space_chassis_shared_yt1300 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2063,7 +2063,7 @@ object_draft_schematic_space_chassis_shared_yt1300 = SharedDraftSchematicObjectT
 	clientObjectCRC = 654797812
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_yt1300, "object/draft_schematic/space/chassis/shared_yt1300.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_yt1300, "object/draft_schematic/space/chassis/shared_yt1300.iff")
 
 object_draft_schematic_space_chassis_shared_ywing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2107,7 +2107,7 @@ object_draft_schematic_space_chassis_shared_ywing = SharedDraftSchematicObjectTe
 	clientObjectCRC = 1705531747
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ywing, "object/draft_schematic/space/chassis/shared_ywing.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_ywing, "object/draft_schematic/space/chassis/shared_ywing.iff")
 
 object_draft_schematic_space_chassis_shared_ywing_longprobe = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2151,7 +2151,7 @@ object_draft_schematic_space_chassis_shared_ywing_longprobe = SharedDraftSchemat
 	clientObjectCRC = 3626101042
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ywing_longprobe, "object/draft_schematic/space/chassis/shared_ywing_longprobe.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_ywing_longprobe, "object/draft_schematic/space/chassis/shared_ywing_longprobe.iff")
 
 object_draft_schematic_space_chassis_shared_z95 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2195,7 +2195,7 @@ object_draft_schematic_space_chassis_shared_z95 = SharedDraftSchematicObjectTemp
 	clientObjectCRC = 2357203295
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95, "object/draft_schematic/space/chassis/shared_z95.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_z95, "object/draft_schematic/space/chassis/shared_z95.iff")
 
 object_draft_schematic_space_chassis_shared_z95_body = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2239,7 +2239,7 @@ object_draft_schematic_space_chassis_shared_z95_body = SharedDraftSchematicObjec
 	clientObjectCRC = 646958322
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_body, "object/draft_schematic/space/chassis/shared_z95_body.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_z95_body, "object/draft_schematic/space/chassis/shared_z95_body.iff")
 
 object_draft_schematic_space_chassis_shared_z95_cockpit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2283,7 +2283,7 @@ object_draft_schematic_space_chassis_shared_z95_cockpit = SharedDraftSchematicOb
 	clientObjectCRC = 160769152
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_cockpit, "object/draft_schematic/space/chassis/shared_z95_cockpit.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_z95_cockpit, "object/draft_schematic/space/chassis/shared_z95_cockpit.iff")
 
 object_draft_schematic_space_chassis_shared_z95_wing_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2327,7 +2327,7 @@ object_draft_schematic_space_chassis_shared_z95_wing_l = SharedDraftSchematicObj
 	clientObjectCRC = 446234966
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_wing_l, "object/draft_schematic/space/chassis/shared_z95_wing_l.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_z95_wing_l, "object/draft_schematic/space/chassis/shared_z95_wing_l.iff")
 
 object_draft_schematic_space_chassis_shared_z95_wing_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
@@ -2371,4 +2371,4 @@ object_draft_schematic_space_chassis_shared_z95_wing_r = SharedDraftSchematicObj
 	clientObjectCRC = 1783383237
 }
 
-ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_wing_r, "object/draft_schematic/space/chassis/shared_z95_wing_r.iff")
+ObjectTemplates:addClientTemplate(object_draft_schematic_space_chassis_shared_z95_wing_r, "object/draft_schematic/space/chassis/shared_z95_wing_r.iff")

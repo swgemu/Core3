@@ -93,4 +93,4 @@ object_tangible_location_base_shared_location_base = SharedTangibleObjectTemplat
 	clientObjectCRC = 2015057562
 }
 
-ObjectTemplates:addTemplate(object_tangible_location_base_shared_location_base, "object/tangible/location/base/shared_location_base.iff")
+ObjectTemplates:addClientTemplate(object_tangible_location_base_shared_location_base, "object/tangible/location/base/shared_location_base.iff")

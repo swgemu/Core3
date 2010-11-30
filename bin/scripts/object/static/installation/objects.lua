@@ -83,7 +83,7 @@ object_static_installation_shared_mockup_factory_clothing_style_1 = SharedStatic
 	clientObjectCRC = 1376116358
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_clothing_style_1, "object/static/installation/shared_mockup_factory_clothing_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_factory_clothing_style_1, "object/static/installation/shared_mockup_factory_clothing_style_1.iff")
 
 object_static_installation_shared_mockup_factory_item_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_item.apt",
@@ -127,7 +127,7 @@ object_static_installation_shared_mockup_factory_item_style_1 = SharedStaticObje
 	clientObjectCRC = 1702691941
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_item_style_1, "object/static/installation/shared_mockup_factory_item_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_factory_item_style_1, "object/static/installation/shared_mockup_factory_item_style_1.iff")
 
 object_static_installation_shared_mockup_factory_machine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_machine.apt",
@@ -171,7 +171,7 @@ object_static_installation_shared_mockup_factory_machine_style_1 = SharedStaticO
 	clientObjectCRC = 1996893062
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_machine_style_1, "object/static/installation/shared_mockup_factory_machine_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_factory_machine_style_1, "object/static/installation/shared_mockup_factory_machine_style_1.iff")
 
 object_static_installation_shared_mockup_factory_organic_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_organic.apt",
@@ -215,7 +215,7 @@ object_static_installation_shared_mockup_factory_organic_style_1 = SharedStaticO
 	clientObjectCRC = 1851420525
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_organic_style_1, "object/static/installation/shared_mockup_factory_organic_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_factory_organic_style_1, "object/static/installation/shared_mockup_factory_organic_style_1.iff")
 
 object_static_installation_shared_mockup_farm_creature_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_creature_farm_s01_u0.apt",
@@ -259,7 +259,7 @@ object_static_installation_shared_mockup_farm_creature_style_1 = SharedStaticObj
 	clientObjectCRC = 2670476003
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_farm_creature_style_1, "object/static/installation/shared_mockup_farm_creature_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_farm_creature_style_1, "object/static/installation/shared_mockup_farm_creature_style_1.iff")
 
 object_static_installation_shared_mockup_farm_flora_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_flora_farm_s01_u0.apt",
@@ -303,7 +303,7 @@ object_static_installation_shared_mockup_farm_flora_style_1 = SharedStaticObject
 	clientObjectCRC = 455333563
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_farm_flora_style_1, "object/static/installation/shared_mockup_farm_flora_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_farm_flora_style_1, "object/static/installation/shared_mockup_farm_flora_style_1.iff")
 
 object_static_installation_shared_mockup_mining_gas_harvester_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_gas_s01_u0.apt",
@@ -347,7 +347,7 @@ object_static_installation_shared_mockup_mining_gas_harvester_style_1 = SharedSt
 	clientObjectCRC = 952651135
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_gas_harvester_style_1, "object/static/installation/shared_mockup_mining_gas_harvester_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_gas_harvester_style_1, "object/static/installation/shared_mockup_mining_gas_harvester_style_1.iff")
 
 object_static_installation_shared_mockup_mining_liquid_harvester_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_liquid_s01_u0.apt",
@@ -391,7 +391,7 @@ object_static_installation_shared_mockup_mining_liquid_harvester_style_1 = Share
 	clientObjectCRC = 2973636894
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_liquid_harvester_style_1, "object/static/installation/shared_mockup_mining_liquid_harvester_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_liquid_harvester_style_1, "object/static/installation/shared_mockup_mining_liquid_harvester_style_1.iff")
 
 object_static_installation_shared_mockup_mining_liquid_moisture_harvester = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_moisture_s01_u0.apt",
@@ -435,7 +435,7 @@ object_static_installation_shared_mockup_mining_liquid_moisture_harvester = Shar
 	clientObjectCRC = 3774495712
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_liquid_moisture_harvester, "object/static/installation/shared_mockup_mining_liquid_moisture_harvester.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_liquid_moisture_harvester, "object/static/installation/shared_mockup_mining_liquid_moisture_harvester.iff")
 
 object_static_installation_shared_mockup_mining_ore_harvester_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_s01_u1.apt",
@@ -479,7 +479,7 @@ object_static_installation_shared_mockup_mining_ore_harvester_style_1 = SharedSt
 	clientObjectCRC = 3112884760
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_ore_harvester_style_1, "object/static/installation/shared_mockup_mining_ore_harvester_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_ore_harvester_style_1, "object/static/installation/shared_mockup_mining_ore_harvester_style_1.iff")
 
 object_static_installation_shared_mockup_mining_ore_harvester_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_s02_u1.apt",
@@ -523,7 +523,7 @@ object_static_installation_shared_mockup_mining_ore_harvester_style_2 = SharedSt
 	clientObjectCRC = 1654485647
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_ore_harvester_style_2, "object/static/installation/shared_mockup_mining_ore_harvester_style_2.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_ore_harvester_style_2, "object/static/installation/shared_mockup_mining_ore_harvester_style_2.iff")
 
 object_static_installation_shared_mockup_power_generator_fusion_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
@@ -567,7 +567,7 @@ object_static_installation_shared_mockup_power_generator_fusion_style_1 = Shared
 	clientObjectCRC = 2278647849
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_generator_fusion_style_1, "object/static/installation/shared_mockup_power_generator_fusion_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_power_generator_fusion_style_1, "object/static/installation/shared_mockup_power_generator_fusion_style_1.iff")
 
 object_static_installation_shared_mockup_power_generator_photo_bio_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_photo_bio_u0.apt",
@@ -611,7 +611,7 @@ object_static_installation_shared_mockup_power_generator_photo_bio_style_1 = Sha
 	clientObjectCRC = 1650901824
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_generator_photo_bio_style_1, "object/static/installation/shared_mockup_power_generator_photo_bio_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_power_generator_photo_bio_style_1, "object/static/installation/shared_mockup_power_generator_photo_bio_style_1.iff")
 
 object_static_installation_shared_mockup_power_generator_solar_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_solar_u0.apt",
@@ -655,7 +655,7 @@ object_static_installation_shared_mockup_power_generator_solar_style_1 = SharedS
 	clientObjectCRC = 2423687218
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_generator_solar_style_1, "object/static/installation/shared_mockup_power_generator_solar_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_power_generator_solar_style_1, "object/static/installation/shared_mockup_power_generator_solar_style_1.iff")
 
 object_static_installation_shared_mockup_power_generator_wind_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_wind_u0.apt",
@@ -699,4 +699,4 @@ object_static_installation_shared_mockup_power_generator_wind_style_1 = SharedSt
 	clientObjectCRC = 467258209
 }
 
-ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_generator_wind_style_1, "object/static/installation/shared_mockup_power_generator_wind_style_1.iff")
+ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_power_generator_wind_style_1, "object/static/installation/shared_mockup_power_generator_wind_style_1.iff")

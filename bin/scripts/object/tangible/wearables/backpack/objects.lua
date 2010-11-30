@@ -93,7 +93,7 @@ object_tangible_wearables_backpack_shared_backpack_s01 = SharedTangibleObjectTem
 	clientObjectCRC = 4059441362
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s01, "object/tangible/wearables/backpack/shared_backpack_s01.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s01, "object/tangible/wearables/backpack/shared_backpack_s01.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s03_m.sat",
@@ -147,7 +147,7 @@ object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTem
 	clientObjectCRC = 1676470216
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s03, "object/tangible/wearables/backpack/shared_backpack_s03.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s03, "object/tangible/wearables/backpack/shared_backpack_s03.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s03_m.sat",
@@ -201,7 +201,7 @@ object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObj
 	clientObjectCRC = 1103784358
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s03_quest, "object/tangible/wearables/backpack/shared_backpack_s03_quest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s03_quest, "object/tangible/wearables/backpack/shared_backpack_s03_quest.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s04_m.sat",
@@ -255,7 +255,7 @@ object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTem
 	clientObjectCRC = 2551172316
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s04, "object/tangible/wearables/backpack/shared_backpack_s04.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s04, "object/tangible/wearables/backpack/shared_backpack_s04.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s05_m.sat",
@@ -309,7 +309,7 @@ object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTem
 	clientObjectCRC = 3506613073
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s05, "object/tangible/wearables/backpack/shared_backpack_s05.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s05, "object/tangible/wearables/backpack/shared_backpack_s05.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s06_m.sat",
@@ -363,7 +363,7 @@ object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTem
 	clientObjectCRC = 169149382
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s06, "object/tangible/wearables/backpack/shared_backpack_s06.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s06, "object/tangible/wearables/backpack/shared_backpack_s06.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s06_m.sat",
@@ -417,7 +417,7 @@ object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObj
 	clientObjectCRC = 1402459945
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s06_quest, "object/tangible/wearables/backpack/shared_backpack_s06_quest.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s06_quest, "object/tangible/wearables/backpack/shared_backpack_s06_quest.iff")
 
 object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_backpack_s01.sat",
@@ -471,4 +471,4 @@ object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = Share
 	clientObjectCRC = 1811378952
 }
 
-ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack, "object/tangible/wearables/backpack/shared_singing_mountain_clan_backpack.iff")
+ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack, "object/tangible/wearables/backpack/shared_singing_mountain_clan_backpack.iff")

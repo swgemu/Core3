@@ -93,7 +93,7 @@ object_tangible_space_special_loot_shared_encoded_document = SharedTangibleObjec
 	clientObjectCRC = 1384769825
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_encoded_document, "object/tangible/space/special_loot/shared_encoded_document.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_encoded_document, "object/tangible/space/special_loot/shared_encoded_document.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
@@ -147,7 +147,7 @@ object_tangible_space_special_loot_shared_firespray_schematic = SharedTangibleOb
 	clientObjectCRC = 3265273647
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic, "object/tangible/space/special_loot/shared_firespray_schematic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic, "object/tangible/space/special_loot/shared_firespray_schematic.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -201,7 +201,7 @@ object_tangible_space_special_loot_shared_firespray_schematic_part1 = SharedTang
 	clientObjectCRC = 3529502508
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part1, "object/tangible/space/special_loot/shared_firespray_schematic_part1.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part1, "object/tangible/space/special_loot/shared_firespray_schematic_part1.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -255,7 +255,7 @@ object_tangible_space_special_loot_shared_firespray_schematic_part2 = SharedTang
 	clientObjectCRC = 155731899
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part2, "object/tangible/space/special_loot/shared_firespray_schematic_part2.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part2, "object/tangible/space/special_loot/shared_firespray_schematic_part2.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -309,7 +309,7 @@ object_tangible_space_special_loot_shared_firespray_schematic_part3 = SharedTang
 	clientObjectCRC = 1078272054
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part3, "object/tangible/space/special_loot/shared_firespray_schematic_part3.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part3, "object/tangible/space/special_loot/shared_firespray_schematic_part3.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -363,7 +363,7 @@ object_tangible_space_special_loot_shared_firespray_schematic_part4 = SharedTang
 	clientObjectCRC = 3148221218
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part4, "object/tangible/space/special_loot/shared_firespray_schematic_part4.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part4, "object/tangible/space/special_loot/shared_firespray_schematic_part4.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -417,7 +417,7 @@ object_tangible_space_special_loot_shared_firespray_schematic_part5 = SharedTang
 	clientObjectCRC = 4071320751
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part5, "object/tangible/space/special_loot/shared_firespray_schematic_part5.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part5, "object/tangible/space/special_loot/shared_firespray_schematic_part5.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -471,7 +471,7 @@ object_tangible_space_special_loot_shared_firespray_schematic_part6 = SharedTang
 	clientObjectCRC = 700236856
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part6, "object/tangible/space/special_loot/shared_firespray_schematic_part6.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part6, "object/tangible/space/special_loot/shared_firespray_schematic_part6.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -525,7 +525,7 @@ object_tangible_space_special_loot_shared_firespray_schematic_part7 = SharedTang
 	clientObjectCRC = 1622254517
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part7, "object/tangible/space/special_loot/shared_firespray_schematic_part7.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part7, "object/tangible/space/special_loot/shared_firespray_schematic_part7.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
@@ -579,4 +579,4 @@ object_tangible_space_special_loot_shared_firespray_schematic_part8 = SharedTang
 	clientObjectCRC = 3669725095
 }
 
-ObjectTemplates:addTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part8, "object/tangible/space/special_loot/shared_firespray_schematic_part8.iff")
+ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part8, "object/tangible/space/special_loot/shared_firespray_schematic_part8.iff")

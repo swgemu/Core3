@@ -93,7 +93,7 @@ object_tangible_deed_turret_deed_shared_turret_block_large_deed = SharedTangible
 	clientObjectCRC = 662025863
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_turret_deed_shared_turret_block_large_deed, "object/tangible/deed/turret_deed/shared_turret_block_large_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_large_deed, "object/tangible/deed/turret_deed/shared_turret_block_large_deed.iff")
 
 object_tangible_deed_turret_deed_shared_turret_block_medium_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -147,7 +147,7 @@ object_tangible_deed_turret_deed_shared_turret_block_medium_deed = SharedTangibl
 	clientObjectCRC = 3770943764
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_turret_deed_shared_turret_block_medium_deed, "object/tangible/deed/turret_deed/shared_turret_block_medium_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_medium_deed, "object/tangible/deed/turret_deed/shared_turret_block_medium_deed.iff")
 
 object_tangible_deed_turret_deed_shared_turret_block_small_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
@@ -201,4 +201,4 @@ object_tangible_deed_turret_deed_shared_turret_block_small_deed = SharedTangible
 	clientObjectCRC = 1744023588
 }
 
-ObjectTemplates:addTemplate(object_tangible_deed_turret_deed_shared_turret_block_small_deed, "object/tangible/deed/turret_deed/shared_turret_block_small_deed.iff")
+ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_small_deed, "object/tangible/deed/turret_deed/shared_turret_block_small_deed.iff")

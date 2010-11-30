@@ -83,4 +83,4 @@ object_token_shared_token = SharedTokenObjectTemplate:new {
 	clientObjectCRC = 4231471595
 }
 
-ObjectTemplates:addTemplate(object_token_shared_token, "object/token/shared_token.iff")
+ObjectTemplates:addClientTemplate(object_token_shared_token, "object/token/shared_token.iff")

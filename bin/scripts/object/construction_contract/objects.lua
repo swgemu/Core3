@@ -83,4 +83,4 @@ object_construction_contract_shared_construction_contract = SharedConstructionCo
 	clientObjectCRC = 3027882478
 }
 
-ObjectTemplates:addTemplate(object_construction_contract_shared_construction_contract, "object/construction_contract/shared_construction_contract.iff")
+ObjectTemplates:addClientTemplate(object_construction_contract_shared_construction_contract, "object/construction_contract/shared_construction_contract.iff")

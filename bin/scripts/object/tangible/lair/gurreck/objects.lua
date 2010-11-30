@@ -93,7 +93,7 @@ object_tangible_lair_gurreck_shared_lair_gurreck = SharedTangibleObjectTemplate:
 	clientObjectCRC = 2258425428
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurreck_shared_lair_gurreck, "object/tangible/lair/gurreck/shared_lair_gurreck.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gurreck_shared_lair_gurreck, "object/tangible/lair/gurreck/shared_lair_gurreck.iff")
 
 object_tangible_lair_gurreck_shared_lair_gurreck_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_gurreck_shared_lair_gurreck_mountain = SharedTangibleObject
 	clientObjectCRC = 2418881242
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_gurreck_shared_lair_gurreck_mountain, "object/tangible/lair/gurreck/shared_lair_gurreck_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_gurreck_shared_lair_gurreck_mountain, "object/tangible/lair/gurreck/shared_lair_gurreck_mountain.iff")

@@ -93,7 +93,7 @@ object_tangible_lair_bordok_shared_lair_bordok = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 2816531423
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bordok_shared_lair_bordok, "object/tangible/lair/bordok/shared_lair_bordok.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bordok_shared_lair_bordok, "object/tangible/lair/bordok/shared_lair_bordok.iff")
 
 object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
@@ -147,4 +147,4 @@ object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTe
 	clientObjectCRC = 4096042384
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_bordok_shared_lair_bordok_mountain, "object/tangible/lair/bordok/shared_lair_bordok_mountain.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_bordok_shared_lair_bordok_mountain, "object/tangible/lair/bordok/shared_lair_bordok_mountain.iff")

@@ -93,7 +93,7 @@ object_tangible_survey_tool_shared_survey_tool_all = SharedTangibleObjectTemplat
 	clientObjectCRC = 255686868
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_all, "object/tangible/survey_tool/shared_survey_tool_all.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_all, "object/tangible/survey_tool/shared_survey_tool_all.iff")
 
 object_tangible_survey_tool_shared_survey_tool_gas = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_gas.apt",
@@ -147,7 +147,7 @@ object_tangible_survey_tool_shared_survey_tool_gas = SharedTangibleObjectTemplat
 	clientObjectCRC = 1059021891
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_gas, "object/tangible/survey_tool/shared_survey_tool_gas.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_gas, "object/tangible/survey_tool/shared_survey_tool_gas.iff")
 
 object_tangible_survey_tool_shared_survey_tool_inorganic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_fusion.apt",
@@ -201,7 +201,7 @@ object_tangible_survey_tool_shared_survey_tool_inorganic = SharedTangibleObjectT
 	clientObjectCRC = 3427396409
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_inorganic, "object/tangible/survey_tool/shared_survey_tool_inorganic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_inorganic, "object/tangible/survey_tool/shared_survey_tool_inorganic.iff")
 
 object_tangible_survey_tool_shared_survey_tool_liquid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_liquid.apt",
@@ -255,7 +255,7 @@ object_tangible_survey_tool_shared_survey_tool_liquid = SharedTangibleObjectTemp
 	clientObjectCRC = 2242363434
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_liquid, "object/tangible/survey_tool/shared_survey_tool_liquid.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_liquid, "object/tangible/survey_tool/shared_survey_tool_liquid.iff")
 
 object_tangible_survey_tool_shared_survey_tool_lumber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_organic.apt",
@@ -309,7 +309,7 @@ object_tangible_survey_tool_shared_survey_tool_lumber = SharedTangibleObjectTemp
 	clientObjectCRC = 1329114448
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_lumber, "object/tangible/survey_tool/shared_survey_tool_lumber.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_lumber, "object/tangible/survey_tool/shared_survey_tool_lumber.iff")
 
 object_tangible_survey_tool_shared_survey_tool_mineral = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_ore.apt",
@@ -363,7 +363,7 @@ object_tangible_survey_tool_shared_survey_tool_mineral = SharedTangibleObjectTem
 	clientObjectCRC = 2862265132
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_mineral, "object/tangible/survey_tool/shared_survey_tool_mineral.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_mineral, "object/tangible/survey_tool/shared_survey_tool_mineral.iff")
 
 object_tangible_survey_tool_shared_survey_tool_moisture = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_moisture.apt",
@@ -417,7 +417,7 @@ object_tangible_survey_tool_shared_survey_tool_moisture = SharedTangibleObjectTe
 	clientObjectCRC = 2175673400
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_moisture, "object/tangible/survey_tool/shared_survey_tool_moisture.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_moisture, "object/tangible/survey_tool/shared_survey_tool_moisture.iff")
 
 object_tangible_survey_tool_shared_survey_tool_organic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s2.apt",
@@ -471,7 +471,7 @@ object_tangible_survey_tool_shared_survey_tool_organic = SharedTangibleObjectTem
 	clientObjectCRC = 963146674
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_organic, "object/tangible/survey_tool/shared_survey_tool_organic.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_organic, "object/tangible/survey_tool/shared_survey_tool_organic.iff")
 
 object_tangible_survey_tool_shared_survey_tool_solar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_solar.apt",
@@ -525,7 +525,7 @@ object_tangible_survey_tool_shared_survey_tool_solar = SharedTangibleObjectTempl
 	clientObjectCRC = 2341848205
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_solar, "object/tangible/survey_tool/shared_survey_tool_solar.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_solar, "object/tangible/survey_tool/shared_survey_tool_solar.iff")
 
 object_tangible_survey_tool_shared_survey_tool_wind = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_wind.apt",
@@ -579,4 +579,4 @@ object_tangible_survey_tool_shared_survey_tool_wind = SharedTangibleObjectTempla
 	clientObjectCRC = 566467536
 }
 
-ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_wind, "object/tangible/survey_tool/shared_survey_tool_wind.iff")
+ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_wind, "object/tangible/survey_tool/shared_survey_tool_wind.iff")

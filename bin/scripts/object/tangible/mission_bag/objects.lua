@@ -93,4 +93,4 @@ object_tangible_mission_bag_shared_mission_bag = SharedTangibleObjectTemplate:ne
 	clientObjectCRC = 1031761823
 }
 
-ObjectTemplates:addTemplate(object_tangible_mission_bag_shared_mission_bag, "object/tangible/mission_bag/shared_mission_bag.iff")
+ObjectTemplates:addClientTemplate(object_tangible_mission_bag_shared_mission_bag, "object/tangible/mission_bag/shared_mission_bag.iff")

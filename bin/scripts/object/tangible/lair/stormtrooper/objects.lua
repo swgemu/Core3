@@ -93,4 +93,4 @@ object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc = SharedTangibleO
 	clientObjectCRC = 2371032814
 }
 
-ObjectTemplates:addTemplate(object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc, "object/tangible/lair/stormtrooper/shared_lair_stormtrooper_npc.iff")
+ObjectTemplates:addClientTemplate(object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc, "object/tangible/lair/stormtrooper/shared_lair_stormtrooper_npc.iff")
