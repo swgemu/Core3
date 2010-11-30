@@ -1030,8 +1030,9 @@ void CraftingToolImplementation::setInitialCraftingValues() {
 
 	craftingValues->recalculateValues(true);
 
-	if (applyComponentBoost())
+	if (applyComponentBoost()) {
 		craftingValues->recalculateValues(true);
+	}
 }
 
 bool CraftingToolImplementation::applyComponentBoost() {
@@ -1057,7 +1058,10 @@ bool CraftingToolImplementation::applyComponentBoost() {
 
 			ManagedReference<TangibleObject*> tano = ingredientSlot->get();
 
-			if (tano != NULL && tano->isComponent()) {
+			if (tano == NULL)
+				continue;
+
+			if (tano->isComponent()) {
 
 				ManagedReference<Component*> component = (Component*) tano.get();
 
@@ -1160,7 +1164,6 @@ void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsA
 
 	int rowEffected, pointsAttempted, failure;
 	int lowestExpSuccess = 0;
-	int totalPoints = 0;
 
 	lastExperimentationTimestamp = Time::currentNanoTime();
 
@@ -1174,16 +1177,23 @@ void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsA
 		rowEffected = tokenizer.getIntToken();
 		pointsAttempted = tokenizer.getIntToken();
 
-		totalPoints += pointsAttempted;
+		experimentationPointsUsed += pointsAttempted;
 
 		// Each line gets it's own rolls
 		// Calcualte a new failure rate for each line of experimentation
 		failure = craftingManager->calculateExperimentationFailureRate(player, manufactureSchematic,
 				pointsAttempted);
 
+		if(experimentationPointsUsed <= experimentationPointsTotal)
+		{
 			// Set the experimentation result ie:  Amazing Success
-		experimentationResult = craftingManager->calculateExperimentationSuccess(player,
-				manufactureSchematic->getDraftSchematic(), failure);
+			experimentationResult = craftingManager->calculateExperimentationSuccess(player,
+					manufactureSchematic->getDraftSchematic(), failure);
+		} else {
+			// If this code is reached, they have likely tried to hack to
+			// get more experimenting points, so lets just give them a failure
+			experimentationResult = CraftingManager::CRITICALFAILURE;
+		}
 
 		// Make sure to store the lowest roll to display (Effect the multiline rolls
 		if (lowestExpSuccess < experimentationResult)
@@ -1206,9 +1216,6 @@ void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsA
 
 	// Sets the result for display
 	experimentationResult = lowestExpSuccess;
-
-	// Set points used
-	experimentationPointsUsed += totalPoints;
 
 	// Start Player Object Delta **************************************
 	PlayerObjectDeltaMessage9* dplay9 =
