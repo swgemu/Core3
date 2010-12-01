@@ -287,9 +287,12 @@ void ZoneServerImplementation::start(int p, int mconn) {
 
 void ZoneServerImplementation::stop() {
 	datagramService->stop();
+	datagramService->setHandler(NULL);
 }
 
 void ZoneServerImplementation::shutdown() {
+	//datagramService->setHandler(NULL);
+
 	stopManagers();
 
 	info("shutting down zones", true);
@@ -348,7 +351,9 @@ ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, Sock
 	session->init(datagramService);
 
 	ZoneClientSession* client = new ZoneClientSession(session);
-	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
+	//clients arent undeployed instantly so we get already deployed clients
+	//client->deploy("ZoneClientSession " + addr.getFullIPAddress());
+	client->deploy();
 
 	String address = session->getAddress();
 
