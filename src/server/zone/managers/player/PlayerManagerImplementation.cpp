@@ -2215,17 +2215,25 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player
 
 	Vector3 newWorldPosition(newX, newY, newZ);
 
+	/*StringBuffer newWorldPosMsg;
+	newWorldPosMsg << "x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
+	player->info(newWorldPosMsg.toString(), true);*/
+
 	if (newParent != NULL) {
 		ManagedReference<SceneObject*> root = newParent->getRootParent();
 
 		if (!root->isBuildingObject())
 			return 1;
 
-		float length = Math::sqrt(newX * newX + newY * newY + newZ * newZ);
+		float length = Math::sqrt(newX * newX + newY * newY);
 		float angle = root->getDirection()->getRadians() + atan2(newX, newY);
 
 		newWorldPosition.set(root->getPositionX() + (sin(angle) * length), root->getPositionZ() + newZ, root->getPositionY() + (cos(angle) * length));
 	}
+
+	/*newWorldPosMsg.deleteAll();
+	newWorldPosMsg << "x:" << newWorldPosition.getX() << " z:" << newWorldPosition.getZ() << " y:" << newWorldPosition.getY();
+	player->info(newWorldPosMsg.toString(), true);*/
 
 	ValidatedPosition* lastValidatedPosition = player->getLastValidatedPosition();
 

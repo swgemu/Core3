@@ -1388,7 +1388,7 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 	if (!root->isBuildingObject())
 		return getPosition();
 
-	float length = Math::sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+	float length = Math::sqrt(positionX * positionX + positionY * positionY);
 	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
 
 	float posX = root->getPositionX() + (sin(angle) * length);
@@ -1417,7 +1417,7 @@ float SceneObjectImplementation::getWorldPositionX() {
 
 	SceneObject* root = getRootParent();
 
-	float length = Math::sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+	float length = Math::sqrt(positionX * positionX + positionY * positionY);
 	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
 
 	return root->getPositionX() + (sin(angle) * length);
@@ -1429,7 +1429,7 @@ float SceneObjectImplementation::getWorldPositionY() {
 
 	SceneObject* root = getRootParent();
 
-	float length = Math::sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+	float length = Math::sqrt(positionX * positionX + positionY * positionY);
 	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
 
 	return root->getPositionY() + (cos(angle) * length);
