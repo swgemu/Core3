@@ -38,9 +38,7 @@ AccountManager::~AccountManager() {
 	}
 }
 
-void AccountManager::loginAccount(Message* packet) {
-	LoginClient* client = (LoginClient*) packet->getClient();
-
+void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	String username, password, version;
 	AccountVersionMessage::parse(packet, username, password, version);
 

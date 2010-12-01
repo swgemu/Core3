@@ -127,7 +127,7 @@ void ZoneImplementation::startManagers() {
 
 	planetManager->initialize();
 
-	creatureManager->initialize();
+	//creatureManager->initialize();
 	planetManager->loadShuttles();
 
 	cityManager->loadLuaConfig();

@@ -39,7 +39,7 @@ namespace server {
 				AccountManager(LoginServer* loginserv);
 				~AccountManager();
 
-				void loginAccount(Message* packet);
+				void loginAccount(LoginClient* client, Message* packet);
 
 				Account* validateAccountCredentials(LoginClient* client, const String& username, const String& password);
 

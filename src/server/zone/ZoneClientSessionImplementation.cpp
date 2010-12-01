@@ -55,35 +55,23 @@ which carries forward this exception.
 #include "server/zone/objects/player/events/ClearClientEvent.h"
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
 
-ZoneClientSessionImplementation::ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr)
-		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
+ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy* session)
+		:  ManagedObjectImplementation() {
+	ZoneClientSessionImplementation::session = session;
+
 	player = NULL;
 	sessionID = 0;
 	account = NULL;
 
 	disconnecting = false;
-
-	StringBuffer loggingname;
-	loggingname << "ZoneClientSession " << addr->getFullIPAddress();
-
-	setLoggingName(loggingname.toString());
-	setLogging(false);
 }
 
 void ZoneClientSessionImplementation::disconnect() {
-	BaseClient::disconnect();
-}
-
-void ZoneClientSessionImplementation::lock(bool doLock) {
-	BaseClient::lock(doLock);
-}
-
-void ZoneClientSessionImplementation::unlock(bool doLock) {
-	BaseClient::unlock(doLock);
+	session->disconnect();
 }
 
 void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
-	BaseClientProxy::sendPacket(msg);
+	session->sendPacket(msg);
 }
 
 
@@ -94,26 +82,22 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	if (disconnecting) {
 		unlock(doLock);
 		return;
-	}
+		}
 
 	disconnecting = true;
 
-	if (hasError || !clientDisconnected) {
+	if (session->hasError() || !session->isClientDisconnected()) {
 		if (player != NULL) {
-			unlock(true);
 
 			if (player->getClient() == _this) {
 				//((PlayerCreature*)player.get())->disconnect(false, true);
 				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::DISCONNECT);
 				Core::getTaskManager()->executeTask(task);
 			}
-
-			lock(true);
 		}
 
 		closeConnection(true, false);
 	} else if (player != NULL) {
-		unlock(true);
 
 		if (((PlayerCreature*)player.get())->isLoggingOut() && player->getClient() == _this) {
 			//((PlayerCreature*)player.get())->logout(true);
@@ -137,18 +121,16 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 
 			closeConnection(true, true);
 		}
-
-		lock(true);
 	}
-
+	
 	unlock(doLock);
 }
 
 void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLock) {
 	try {
 		lock(doLock);
-
-		info("disconnecting client \'" + ip + "\'");
+	
+		session->info("disconnecting client \'" + session->getIPAddress() + "\'");
 
 		ZoneServer* server = NULL;
 		ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
@@ -162,11 +144,11 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 			setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter
 		}
 
-		BaseClient::disconnect(false);
+		session->disconnect();
 
 		if (server != NULL) {
-			server->addTotalSentPacket(getSentPacketCount());
-			server->addTotalResentPacket(getResentPacketCount());
+			server->addTotalSentPacket(session->getSentPacketCount());
+			server->addTotalResentPacket(session->getResentPacketCount());
 
 			if (account != NULL)
 				account->removeZoneSession(sessionID);
@@ -178,19 +160,26 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	}
 }
 
-void ZoneClientSession::acquire() {
-	ManagedObject::acquire();
+void ZoneClientSessionImplementation::balancePacketCheckupTime() {
+	session->balancePacketCheckupTime();
 }
 
-void ZoneClientSession::release() {
-	ManagedObject::release();
+void ZoneClientSessionImplementation::resetPacketCheckupTime() {
+	session->resetPacketCheckupTime();
 }
 
-void ZoneClientSessionImplementation::acquire() {
-	_this->acquire();
+void ZoneClientSessionImplementation::info(const String& msg, bool force) {
+	session->info(msg, force);
 }
 
-void ZoneClientSessionImplementation::release() {
-	_this->release();
+void ZoneClientSessionImplementation::error(const String& msg) {
+	session->error(msg);
 }
 
+String ZoneClientSessionImplementation::getAddress() {
+	return session->getAddress();
+}
+
+BaseClientProxy* ZoneClientSessionImplementation::getSession() {
+	return session;
+}

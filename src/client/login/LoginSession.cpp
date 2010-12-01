@@ -38,6 +38,10 @@ void LoginSession::run() {
 
 	info("connected to login server", true);
 
+	#ifdef WITH_STM
+		Core::commitTask();
+	#endif
+
 	char userinput[32];
 	char passwordinput[32];
 
@@ -56,10 +60,6 @@ void LoginSession::run() {
 
 	BaseMessage* acc = new AccountVersionMessage(user, password, "20050408-18:00");
 	login->sendMessage(acc);
-
-	#ifdef WITH_STM
-		Core::commitTask();
-	#endif
 
 	info("sent account version message", true);
 

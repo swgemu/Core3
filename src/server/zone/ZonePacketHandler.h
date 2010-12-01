@@ -53,8 +53,9 @@ which carries forward this exception.
 namespace server {
 namespace zone {
 
-class ZoneProcessServer;
-class ZoneServer;
+	class ZoneClientSession;
+	class ZoneProcessServer;
+	class ZoneServer;
 
 	class ZonePacketHandler : public Logger {
 		ManagedReference<ZoneProcessServer*> processServer;
@@ -76,7 +77,7 @@ class ZoneServer;
 		void registerMessages();
 		void registerObjectControllerMessages();
 
-		Task* generateMessageTask(Message* pack);
+		Task* generateMessageTask(ZoneClientSession* client, Message* pack);
 	};
 
 	}

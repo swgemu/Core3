@@ -44,7 +44,38 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 
-#include "server/zone/managers/planet/HeightMap.h"
+#include "server/zone/objects/scene/SceneObject.h"
+
+class TestTask : public Task {
+public :
+	void run() {
+
+	}
+};
+
+void testTransactions() {
+	ManagedReference<SceneObject*> scno = new SceneObject();
+	ManagedReference<SceneObject*> scno2 = new SceneObject();
+
+	Core::commitTask();
+
+	for (int i = 0; i < 50; ++i) {
+		String name = scno->getObjectName()->getDisplayedName();
+		uint64 id = scno2->getObjectID();
+
+		Task* task = new TestTask();
+
+		Core::getTaskManager()->scheduleTask(task, 1000);
+
+		scno->setParent(scno2);
+
+		Core::commitTask();
+	}
+
+	Thread::sleep(10000);
+
+	raise(SIGSEGV);
+}
 
 int main(int argc, char* argv[]) {
 	try {
@@ -56,6 +87,8 @@ int main(int argc, char* argv[]) {
 		ServerCore core;
 
 		core.init();
+
+		//testTransactions();
 
 		core.run();
 	} catch (Exception& e) {

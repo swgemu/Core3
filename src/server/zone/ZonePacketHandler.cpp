@@ -205,7 +205,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 
 }
 
-Task* ZonePacketHandler::generateMessageTask(Message* pack) {
+Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message* pack) {
 	//info("parsing " + pack->toStringData(), true);
 
 	try {
@@ -215,9 +215,6 @@ Task* ZonePacketHandler::generateMessageTask(Message* pack) {
 		StringBuffer buffer;
 		buffer << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
 		info(buffer);
-
-		ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
-		ManagedReference<ZoneClientSession*> client = (ZoneClientSession*) clientimpl->_getStub();
 
 		MessageCallback* messageCallback = messageCallbackFactory.createObject(opcode, client, processServer);
 

@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "LoginClient.h"
+
 namespace server {
 namespace login {
 
@@ -73,8 +75,8 @@ namespace login {
 		void handleClientPermissionsMessage(Message* pack);
 		void handleSelectCharacter(Message* pack);
 		void handleCmdSceneReady(Message* packet);
-		void handleLoginClientID(Message* packet);
-		void handleDeleteCharacterMessage(Message* pack);
+		void handleLoginClientID(LoginClient* client, Message* packet);
+		void handleDeleteCharacterMessage(LoginClient* client, Message* pack);
 
 	};
 }
