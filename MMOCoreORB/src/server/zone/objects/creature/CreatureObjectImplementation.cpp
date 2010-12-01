@@ -258,12 +258,6 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		SceneObject* object = slottedObjects.get(i);
 
-		if (object->getParent() == NULL)
-			object->setParent(_this);
-
-		if (object->getContainmentType() != 4)
-			object->setContainmentType(4);
-
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		bool sendWithoutContents = false;
@@ -587,7 +581,10 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 }
 
 int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient) {
-	if (damageType < 0 || damageType >= hamList.size() || damage == 0) {
+	if (damage == 0)
+		return 0;
+
+	if (damageType < 0 || damageType >= hamList.size()) {
 		error("incorrect damage type in CreatureObjectImplementation::healDamage");
 		return 0;
 	}
@@ -609,7 +606,8 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 		if (newValue <= 0)
 			newValue = 1;
 
-		setPosture(CreaturePosture::UPRIGHT);
+		if (damageType % 3 == 0)
+			setPosture(CreaturePosture::UPRIGHT);
 	}
 
 	setHAM(damageType, newValue, notifyClient);
@@ -704,6 +702,10 @@ void CreatureObjectImplementation::setMaxHAM(int type, int value, bool notifyCli
 		broadcastMessage(msg, true);
 	} else {
 		maxHamList.set(type, value, NULL);
+	}
+
+	if (type % 3 != 0) { //changing secondary stats, updating current value
+		healDamage(_this, type, value - hamList.get(type), notifyClient);
 	}
 }
 
