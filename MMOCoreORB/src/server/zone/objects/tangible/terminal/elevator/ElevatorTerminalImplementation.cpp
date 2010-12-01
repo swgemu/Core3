@@ -67,7 +67,7 @@ void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	SceneObject* scnobj = (SceneObject*) scno->_getStub();
 
 	//Only check elevator terminals in the same cell.
-	if (obj->getParent() != parent || !scnobj->isTerminal())
+	if (scnobj->getParent() != parent || !scnobj->isTerminal())
 		return;
 
 	Terminal* terminal = (Terminal*) scnobj;
