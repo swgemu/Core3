@@ -76,7 +76,7 @@ object_weapon_melee_special_blacksun_razor = object_weapon_melee_special_shared_
 	speedModifiers = { "unarmed_speed" },
 	
 	-- Leave blank for now
-	damageModifiers = { },
+	damageModifiers = { "unarmed_damage" },
 	       
 	
 	-- The values below are the default values.  To be used for blue frog objects primarily

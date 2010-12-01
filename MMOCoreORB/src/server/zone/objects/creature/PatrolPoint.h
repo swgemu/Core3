@@ -112,7 +112,7 @@ public:
 
 		SceneObject* root = cell->getRootParent();
 
-		float length = Math::sqrt(position.getX() * position.getX() + position.getY() * position.getY() + position.getZ() * position.getZ());
+		float length = Math::sqrt(position.getX() * position.getX() + position.getY() * position.getY());
 		float angle = root->getDirection()->getRadians() + atan2(position.getX(), position.getY());
 
 		float posX = root->getPositionX() + (sin(angle) * length);
