@@ -120,6 +120,8 @@ namespace server {
 
 			client->disconnect();
 
+			client->disconnect(true);
+
 			clients.remove(client);
 
 			return false;
