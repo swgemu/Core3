@@ -61,7 +61,6 @@ namespace login {
 		}
 
 		virtual ~LoginClient() {
-			delete session;
 		}
 		
 		void disconnect(bool doLock = true) {
