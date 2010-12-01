@@ -34,6 +34,7 @@
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
+#include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/chat/ChatManager.h"
@@ -342,6 +343,82 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 				cell->updateToDatabase();
 			else
 				missionTerminal->updateToDatabase();
+		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
+	}
+
+	delete result;
+}
+
+void StructureManagerImplementation::loadStaticElevatorTerminals() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	uint32 serverCRC = String("object/tangible/terminal/terminal_elevator.iff").hashCode();
+
+	//lock();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND (file LIKE 'object/tangible/terminal/shared_terminal_elevator%');";
+
+	ResultSet* result = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		ManagedReference<ElevatorTerminal*> elevatorTerminal = NULL;
+		ManagedReference<CellObject*> cell = NULL;
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		float positionX, positionZ, positionY;
+		String file;
+
+		while (result->next()) {
+			parentId = result->getUnsignedLong(2);
+			objectID = result->getUnsignedLong(1);
+			file = result->getString(3);
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			if (parentId != 0) {
+				SceneObject* scene = zoneServer->getObject(parentId);
+
+				if (scene != NULL && scene->isCellObject())
+					cell = (CellObject*) scene;
+				else {
+					cell = NULL;
+
+					error("mission terminal unknown parentid " + String::valueOf(parentId));
+					continue;
+				}
+			} else
+				cell = NULL;
+
+			elevatorTerminal = (ElevatorTerminal*) zoneServer->createStaticObject(serverCRC, objectID);
+			elevatorTerminal->setStaticObject(true);
+
+			if (cell != NULL)
+				cell->addObject(elevatorTerminal, -1);
+
+			elevatorTerminal->initializePosition(positionX, positionZ, positionY);
+			elevatorTerminal->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				elevatorTerminal->updateToDatabase();
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());

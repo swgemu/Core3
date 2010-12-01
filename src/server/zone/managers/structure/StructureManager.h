@@ -202,6 +202,8 @@ private:
 
 	void loadStaticMissionTerminals();
 
+	void loadStaticElevatorTerminals();
+
 	void loadStaticCraftingStations();
 
 	void loadPlayerStructures();
