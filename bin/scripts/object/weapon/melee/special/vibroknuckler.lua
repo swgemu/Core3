@@ -76,7 +76,7 @@ object_weapon_melee_special_vibroknuckler = object_weapon_melee_special_shared_v
 	speedModifiers = { "unarmed_speed" },
 	
 	-- Leave blank for now
-	damageModifiers = { },
+	damageModifiers = { "unarmed_damage" },
 	       
 	
 	-- The values below are the default values.  To be used for blue frog objects primarily
@@ -94,8 +94,8 @@ object_weapon_melee_special_vibroknuckler = object_weapon_melee_special_shared_v
 	maxRange = 5,
 	maxRangeAccuracy = 5,
 
-	minDamage = 7,
-	maxDamage = 60,
+	minDamage = 50,
+	maxDamage = 120,
 	
 	attackSpeed = 3.6
 

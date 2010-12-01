@@ -54,7 +54,7 @@ public:
 	UnarmedCombo2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
 
-		damageMultiplier = 3.0;
+		damageMultiplier = 1.5;
 		speedMultiplier = 4.0;
 
 		healthCostMultiplier = 2;
