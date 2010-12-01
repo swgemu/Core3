@@ -692,6 +692,8 @@ void PlayerCreatureImplementation::sendBadgesResponseTo(PlayerCreature* player) 
 }
 
 void PlayerCreatureImplementation::notifySceneReady() {
+	teleport(positionX, positionZ, positionY, getParentID());
+
 	BaseMessage* msg = new CmdSceneReady();
 	sendMessage(msg);
 
