@@ -85,6 +85,7 @@ class StructureManager extends ManagedService implements Logger {
 	private native void loadStaticBanks();
 	private native void loadStaticBazaars();
 	private native void loadStaticMissionTerminals();
+	private native void loadStaticElevatorTerminals();
 	private native void loadStaticCraftingStations();
 	private native void loadPlayerStructures();
 	private native void loadStaticGamblingTerminals();
@@ -107,6 +108,7 @@ class StructureManager extends ManagedService implements Logger {
 		loadStaticMissionTerminals();
 		loadStaticGamblingTerminals();
 		loadStaticCraftingStations();
+		loadStaticElevatorTerminals();
 		loadStaticGarages();
 	}
 	

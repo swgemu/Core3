@@ -241,25 +241,27 @@ void StructureManagerImplementation::_serializationHelperMethod() {
 }
 
 void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl(99):  		Logger.info("loading structures...", true);
+	// server/zone/managers/structure/StructureManager.idl(100):  		Logger.info("loading structures...", true);
 	Logger::info("loading structures...", true);
-	// server/zone/managers/structure/StructureManager.idl(101):  		listOfStaticBuildings.setNoDuplicateInsertPlan();
+	// server/zone/managers/structure/StructureManager.idl(102):  		listOfStaticBuildings.setNoDuplicateInsertPlan();
 	(&listOfStaticBuildings)->setNoDuplicateInsertPlan();
-	// server/zone/managers/structure/StructureManager.idl(103):  		loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl(104):  		loadStaticBuildings();
 	loadStaticBuildings();
-	// server/zone/managers/structure/StructureManager.idl(104):  		loadPlayerStructures();
+	// server/zone/managers/structure/StructureManager.idl(105):  		loadPlayerStructures();
 	loadPlayerStructures();
-	// server/zone/managers/structure/StructureManager.idl(105):  		loadStaticBanks();
+	// server/zone/managers/structure/StructureManager.idl(106):  		loadStaticBanks();
 	loadStaticBanks();
-	// server/zone/managers/structure/StructureManager.idl(106):  		loadStaticBazaars();
+	// server/zone/managers/structure/StructureManager.idl(107):  		loadStaticBazaars();
 	loadStaticBazaars();
-	// server/zone/managers/structure/StructureManager.idl(107):  		loadStaticMissionTerminals();
+	// server/zone/managers/structure/StructureManager.idl(108):  		loadStaticMissionTerminals();
 	loadStaticMissionTerminals();
-	// server/zone/managers/structure/StructureManager.idl(108):  		loadStaticGamblingTerminals();
+	// server/zone/managers/structure/StructureManager.idl(109):  		loadStaticGamblingTerminals();
 	loadStaticGamblingTerminals();
-	// server/zone/managers/structure/StructureManager.idl(109):  		loadStaticCraftingStations();
+	// server/zone/managers/structure/StructureManager.idl(110):  		loadStaticCraftingStations();
 	loadStaticCraftingStations();
-	// server/zone/managers/structure/StructureManager.idl(110):  		loadStaticGarages();
+	// server/zone/managers/structure/StructureManager.idl(111):  		loadStaticElevatorTerminals();
+	loadStaticElevatorTerminals();
+	// server/zone/managers/structure/StructureManager.idl(112):  		loadStaticGarages();
 	loadStaticGarages();
 }
 
