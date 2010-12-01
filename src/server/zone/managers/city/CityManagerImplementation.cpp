@@ -206,6 +206,10 @@ void CityManagerImplementation::handleCityAdvancement(CityHallObject* city) {
 
 	uint8 oldRank = city->getCityRank();
 
+	//Can't advance past Metropolis.
+	if (oldRank == METROPOLIS)
+		return;
+
 	int citizens = city->getCitizenCount();
 
 	uint8 thisRankCitizensReq = citizensPerRank.get(oldRank);
