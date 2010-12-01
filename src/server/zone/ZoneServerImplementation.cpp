@@ -387,6 +387,8 @@ void ZoneServerImplementation::processMessage(Message* message) {
 
 	if (task != NULL)
 		Core::getTaskManager()->executeTask(task);
+
+	delete message;
 }
 
 bool ZoneServerImplementation::handleError(ZoneClientSession* client, Exception& e) {
