@@ -52,43 +52,53 @@ which carries forward this exception.
 namespace server {
 namespace login {
 
-	class LoginClient : public BaseClientProxy {
-	public:
-		LoginClient(DatagramServiceThread* serv, Socket* sock, SocketAddress& addr) : BaseClientProxy(sock, addr) {
-			setLoggingName("LoginClient " + ip);
-			setLogging(false);
+	class LoginClient : public Object {
+		Reference<BaseClientProxy*> session;
 
-			init(serv);
+	public:
+		LoginClient(BaseClientProxy* session) {
+			LoginClient::session = session;
 		}
 
 		virtual ~LoginClient() {
+			delete session;
 		}
 		
 		void disconnect(bool doLock = true) {
-			if (isDisconnected())
+			if (session->isDisconnected())
 				return;
 	
 			String time;
 			Logger::getTime(time);
 	
 			StringBuffer msg;
-			msg << time << " [LoginServer] disconnecting client \'" << ip << "\'\n";
+			msg << time << " [LoginServer] disconnecting client \'" << session->getIPAddress() << "\'\n";
 			Logger::console.log(msg);
 
-			BaseClientProxy::disconnect(doLock);
+			session->disconnect(doLock);
 		}
 
 		void sendMessage(Message* msg) {
-			BaseClientProxy::sendPacket((BasePacket*) msg);
+			session->sendPacket((BasePacket*) msg);
 		}
 	
 		void sendErrorMessage(const String& title, const String& text, bool fatal = false) {
 			ErrorMessage* errorMessage = new ErrorMessage(title, text, fatal);
+
 			sendMessage(errorMessage);
 		}
+
+		void info(const String& msg, bool doLog = true) {
+			session->info(msg, doLog);
+		}
+
+		ServiceClient* getSession() {
+			return session;
+		}
 	};
-}
-}
+
+  } // namespace login
+} // namespace server
 
 using namespace server::login;
 

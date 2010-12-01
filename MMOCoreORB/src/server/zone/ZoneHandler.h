@@ -47,11 +47,52 @@ which carries forward this exception.
 
 #include "ZoneServer.h"
 
+#include "ZoneClientSession.h"
+
 namespace server {
   namespace zone {
 
+	class ZoneSessionMap : public HashTable<uint64, ZoneClientSession*>,
+			public HashTableIterator<uint64, ZoneClientSession*> {
+
+		int maxConnections;
+
+		int hash(const uint64& key) {
+	        return Long::hashCode(key);
+		}
+
+	public:
+		ZoneSessionMap(int maxconn = 10000) : HashTable<uint64, ZoneClientSession*>((int) (maxconn * 1.25f)),
+				HashTableIterator<uint64, ZoneClientSession*>(this) {
+			maxConnections = maxconn;
+
+			setNullValue(NULL);
+		}
+
+		bool add(ZoneClientSession* client) {
+			if (HashTable<uint64, ZoneClientSession*>::put(client->getSession()->getNetworkID(), client) == NULL) {
+				client->acquire();
+
+				return true;
+			} else
+				return false;
+		}
+
+		bool remove(ZoneClientSession* client) {
+			if (HashTable<uint64, ZoneClientSession*>::remove(client->getSession()->getNetworkID()) != NULL) {
+				client->release();
+
+				return true;
+			} else
+				return false;
+		}
+
+	};
+
 	class ZoneHandler: public ServiceHandler {
 		ManagedReference<ZoneServer*> zoneServerRef;
+
+		ZoneSessionMap clients;
 
 	public:
 		ZoneHandler(ZoneServer* server) {
@@ -67,15 +108,27 @@ namespace server {
 		ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
 			ZoneServer* server =  zoneServerRef.getForUpdate();
 
-			return server->createConnection(sock, addr);
+			ZoneClientSession* client = server->createConnection(sock, addr);
+
+			clients.add(client);
+
+			return client->getSession();
 		}
 
-		bool deleteConnection(ServiceClient* client) {
+		bool deleteConnection(ServiceClient* session) {
+			ZoneClientSession* client = getClientSession(session);
+
+			client->disconnect();
+
+			clients.remove(client);
+
 			return false;
 		}
 
-		void handleMessage(ServiceClient* client, Packet* message) {
+		void handleMessage(ServiceClient* session, Packet* message) {
 			ZoneServer* server =  zoneServerRef.getForUpdate();
+
+			ZoneClientSession* client = getClientSession(session);
 
 			return server->handleMessage(client, message);
 		}
@@ -86,15 +139,21 @@ namespace server {
 			return server->processMessage(message);
 		}
 
-		bool handleError(ServiceClient* client, Exception& e) {
+		bool handleError(ServiceClient* session, Exception& e) {
 			ZoneServer* server =  zoneServerRef.getForUpdate();
+
+			ZoneClientSession* client = getClientSession(session);
 
 			return server->handleError(client, e);
 		}
+
+		ZoneClientSession* getClientSession(ServiceClient* session) {
+				return clients.get(session->getNetworkID());
+			}
 	};
 
-  }
-}
+  } // namespace zone
+} // namespace server
 
 using namespace server::zone;
 

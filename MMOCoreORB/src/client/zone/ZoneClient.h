@@ -98,6 +98,10 @@ public:
 
 	void sendMessage(StandaloneBaseMessage* msg) {
 		BaseClient::sendPacket((BasePacket*) msg);
+
+	#ifdef WITH_STM
+		Core::commitTask();
+	#endif
 	}
 
 	void handleMessage(Packet* message);

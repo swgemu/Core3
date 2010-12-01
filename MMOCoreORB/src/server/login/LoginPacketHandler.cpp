@@ -64,6 +64,8 @@ LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplem
 }
 
 void LoginPacketHandler::handleMessage(Message* pack) {
+	LoginClient* client = server->getLoginClient(pack->getClient());
+
 	StringBuffer msg;
 	msg << "parsing " << pack->toStringData();
 	//info(msg);
@@ -79,14 +81,14 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 	case 03:
 		switch (opcode) {
 			case 0xE87AD031:
-			handleDeleteCharacterMessage(pack);
+			handleDeleteCharacterMessage(client, pack);
 			break;
 		}
 		break;
 	case 04:
 		switch (opcode) {
 		case 0x41131F96: //LoginClientID CLIENT VERSION BUILD DATE AND LOGIN INFO
-			handleLoginClientID(pack);
+			handleLoginClientID(client, pack);
 			break;
 		}
 		break;
@@ -97,14 +99,12 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 	}
 }
 
-void LoginPacketHandler::handleLoginClientID(Message* pack) {
+void LoginPacketHandler::handleLoginClientID(LoginClient* client, Message* pack) {
 	AccountManager* accountManager = server->getAccountManager();
-	accountManager->loginAccount(pack);
+	accountManager->loginAccount(client, pack);
 }
 
-void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
-	LoginClient* client = (LoginClient*) pack->getClient();
-
+void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Message* pack) {
 	uint32 ServerId = pack->parseInt();
 
 	//pack->shiftOffset(4);

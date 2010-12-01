@@ -158,7 +158,7 @@ void ZoneServerImplementation::initialize() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
 	creatureTemplateManager->loadTemplates();
 
-	phandler = new BasePacketHandler("ZoneServer", this);
+	phandler = new BasePacketHandler("ZoneServer", zoneHandler);
 	phandler->setLogging(false);
 
 	info("Initializing chat manager...", true);
@@ -274,7 +274,8 @@ void ZoneServerImplementation::startManagers() {
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
-	ZoneHandler* zoneHandler = new ZoneHandler(_this);
+	zoneHandler = new ZoneHandler(_this);
+
 	datagramService->setHandler(zoneHandler);
 
 	datagramService->start(p, mconn);
@@ -332,32 +333,37 @@ void ZoneServerImplementation::stopManagers() {
 	info("managers stopped", true);
 }
 
-ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
+ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
 	/*if (!userManager->checkUser(addr.getIPID()))
 		return NULL;*/
 
-	ZoneClientSession* client = new ZoneClientSession(sock, &addr);
+	BaseClientProxy* session = new BaseClientProxy(sock, addr);
+
+	StringBuffer loggingname;
+	loggingname << "ZoneClientSession " << addr.getFullIPAddress();
+
+	session->setLoggingName(loggingname.toString());
+	session->setLogging(false);
+
+	session->init(datagramService);
+
+	ZoneClientSession* client = new ZoneClientSession(session);
 	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 
-	ZoneClientSessionImplementation* clientImpl = (ZoneClientSessionImplementation*) client->_getImplementation();
-	clientImpl->init(datagramService);
-
-	String address = client->getAddress();
+	String address = session->getAddress();
 
 	//info("client connected from \'" + address + "\'");
 
-	return clientImpl;
+	return client;
 }
 
-void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* message) {
-	ZoneClientSessionImplementation* zclient = (ZoneClientSessionImplementation*) client;
-
+void ZoneServerImplementation::handleMessage(ZoneClientSession* client, Packet* message) {
 	try {
 		/*if (zclient->simulatePacketLoss())
 			return;*/
 
-		if (zclient->isAvailable())
-			phandler->handlePacket(zclient, message);
+		if (client->getSession()->isAvailable())
+			phandler->handlePacket(client->getSession(), message);
 
 	} catch (PacketIndexOutOfBoundsException& e) {
 		error(e.getMessage());
@@ -374,19 +380,19 @@ void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* mess
 
 void ZoneServerImplementation::processMessage(Message* message) {
 	ZonePacketHandler* zonePacketHandler = processor->getPacketHandler();
-	Task* task = zonePacketHandler->generateMessageTask(message);//;new ZoneMessageProcessorTask(message, processor->getPacketHandler());
 
-	delete message;
+	ZoneClientSession* client = zoneHandler->getClientSession(message->getClient());
+
+	Task* task = zonePacketHandler->generateMessageTask(client, message);
 
 	if (task != NULL)
 		Core::getTaskManager()->executeTask(task);
 }
 
-bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) {
-	ZoneClientSessionImplementation* zclient = (ZoneClientSessionImplementation*) client;
-	zclient->setError();
+bool ZoneServerImplementation::handleError(ZoneClientSession* client, Exception& e) {
+	client->getSession()->setError();
 
-	zclient->disconnect();
+	client->disconnect();
 
 	return true;
 }

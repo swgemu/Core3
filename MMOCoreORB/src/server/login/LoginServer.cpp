@@ -6,6 +6,8 @@
 
 #include "server/conf/ConfigManager.h"
 
+#include "server/login/LoginClient.h"
+
 #include "server/login/LoginProcessServerImplementation.h"
 
 #include "server/login/LoginHandler.h"
@@ -48,7 +50,7 @@ void LoginServer::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-ServiceClient* LoginServer::createConnection(Socket* sock, SocketAddress& addr) {
+LoginClient* LoginServer::createConnection(Socket* sock, SocketAddress& addr) {
 	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -137,7 +139,7 @@ void LoginServer::stop() {
 		_implementation->stop();
 }
 
-void LoginServer::handleMessage(ServiceClient* client, Packet* message) {
+void LoginServer::handleMessage(LoginClient* client, Packet* message) {
 	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -211,6 +213,15 @@ Account* LoginServer::getAccount(unsigned int accountID) {
 		return (Account*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getAccount(accountID);
+}
+
+LoginClient* LoginServer::getLoginClient(ServiceClient* session) {
+	LoginServerImplementation* _implementation = (LoginServerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getLoginClient(session);
 }
 
 LoginEnumCluster* LoginServer::getLoginEnumClusterMessage() {
@@ -319,22 +330,22 @@ void LoginServerImplementation::_serializationHelperMethod() {
 }
 
 AccountManager* LoginServerImplementation::getAccountManager() {
-	// server/login/LoginServer.idl(72):  		return accountManager;
+	// server/login/LoginServer.idl(74):  		return accountManager;
 	return accountManager;
 }
 
 Account* LoginServerImplementation::getAccount(unsigned int accountID) {
-	// server/login/LoginServer.idl(76):  		return accountManager.getAccount(accountID);
+	// server/login/LoginServer.idl(78):  		return accountManager.getAccount(accountID);
 	return accountManager->getAccount(accountID);
 }
 
 LoginEnumCluster* LoginServerImplementation::getLoginEnumClusterMessage() {
-	// server/login/LoginServer.idl(80):  		return (LoginEnumCluster) enumClusterMessage.clone();
+	// server/login/LoginServer.idl(85):  		return (LoginEnumCluster) enumClusterMessage.clone();
 	return (LoginEnumCluster*) enumClusterMessage->clone();
 }
 
 LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
-	// server/login/LoginServer.idl(84):  		return (LoginClusterStatus) clusterStatusMessage.clone();
+	// server/login/LoginServer.idl(89):  		return (LoginClusterStatus) clusterStatusMessage.clone();
 	return (LoginClusterStatus*) clusterStatusMessage->clone();
 }
 

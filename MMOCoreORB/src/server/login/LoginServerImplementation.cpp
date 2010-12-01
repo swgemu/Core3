@@ -62,7 +62,7 @@ LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 
 	phandler = NULL;
 
-	datagramService = new DatagramServiceThread("LoginServer");
+	datagramService = new DatagramServiceThread("LoginDatagramService");
 	datagramService->setLogging(false);
 	datagramService->setLockName("LoginServerLock");
 
@@ -139,28 +139,33 @@ void LoginServerImplementation::stopManagers() {
 	info("managers stopped", true);
 }
 
-ServiceClient* LoginServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
-	LoginClient* client = new LoginClient(datagramService, sock, addr);
+LoginClient* LoginServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
+	BaseClientProxy* session = new BaseClientProxy(sock, addr);
 
-	info("client connected from \'" + client->getAddress() + "\'");
+	session->setLoggingName("LoginClient " + session->getIPAddress());
+	session->setLogging(false);
+
+	session->init(datagramService);
+
+	LoginClient* client = new LoginClient(session);
+
+	info("client connected from \'" + session->getAddress() + "\'");
 
 	return client;
 }
 
-void LoginServerImplementation::handleMessage(ServiceClient* client, Packet* message) {
-	LoginClient* lclient = (LoginClient*) client;
+void LoginServerImplementation::handleMessage(LoginClient* client, Packet* message) {
+	BaseClientProxy* session = (BaseClientProxy*) client->getSession();
 
 	try {
-		if (lclient->isAvailable())
-			phandler->handlePacket(lclient, message);
+		if (session->isAvailable())
+			phandler->handlePacket(session, message);
 
 	} catch (PacketIndexOutOfBoundsException& e) {
 		System::out << e.getMessage();
 
 		error("incorrect packet - " + message->toStringData());
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	} catch (ArrayIndexOutOfBoundsException& e) {
+	} catch (Exception& e) {
 		error(e.getMessage());
 	} catch (...) {
 		System::out << "[LoginServer] unreported Exception caught\n";
@@ -170,16 +175,20 @@ void LoginServerImplementation::handleMessage(ServiceClient* client, Packet* mes
 void LoginServerImplementation::processMessage(Message* message) {
 	//info("processing message " + message->toStringData());
 
-	Task* task = new LoginMessageProcessorTask(message, processor->getPacketHandler());
+	Reference<Task*> task = new LoginMessageProcessorTask(message, processor->getPacketHandler());
 
 	Core::getTaskManager()->executeTask(task);
 }
 
-bool LoginServerImplementation::handleError(ServiceClient* client, Exception& e) {
-	LoginClient* lclient = (LoginClient*) client;
-	lclient->setError();
+LoginClient* LoginServerImplementation::getLoginClient(ServiceClient* session) {
+	return loginHandler->getClient(session);
+}
 
-	lclient->disconnect();
+bool LoginServerImplementation::handleError(ServiceClient* client, Exception& e) {
+	BaseClientProxy* bclient = (BaseClientProxy*) client;
+	bclient->setError();
+
+	bclient->disconnect();
 
 	return true;
 }

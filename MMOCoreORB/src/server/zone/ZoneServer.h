@@ -49,6 +49,46 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
+
+class ZoneClientSession;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+
+class ZoneHandler;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace chat {
+
+class ChatManager;
+
+} // namespace chat
+} // namespace server
+
+using namespace server::chat;
+
+namespace server {
+namespace zone {
 namespace managers {
 namespace object {
 
@@ -74,26 +114,6 @@ class PlayerManager;
 } // namespace server
 
 using namespace server::zone::managers::player;
-
-namespace server {
-namespace zone {
-
-class Zone;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
-namespace server {
-namespace chat {
-
-class ChatManager;
-
-} // namespace chat
-} // namespace server
-
-using namespace server::chat;
 
 namespace server {
 namespace zone {
@@ -297,6 +317,8 @@ using namespace server::zone::managers::guild;
 
 #include "system/lang/Time.h"
 
+#include "system/lang/ref/Reference.h"
+
 #include "system/util/Vector.h"
 
 #include "system/net/Socket.h"
@@ -324,7 +346,7 @@ public:
 
 	void initializeTransientMembers();
 
-	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
+	ZoneClientSession* createConnection(Socket* sock, SocketAddress& addr);
 
 	void initialize();
 
@@ -340,11 +362,11 @@ public:
 
 	void stop();
 
-	void handleMessage(ServiceClient* client, Packet* message);
+	void handleMessage(ZoneClientSession* client, Packet* message);
 
 	void processMessage(Message* message);
 
-	bool handleError(ServiceClient* client, Exception& e);
+	bool handleError(ZoneClientSession* client, Exception& e);
 
 	void addTotalSentPacket(int count);
 
@@ -477,10 +499,12 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 
-class ZoneServerImplementation : public ManagedServiceImplementation, public ServiceHandler, public Logger {
+class ZoneServerImplementation : public ManagedServiceImplementation, public Logger {
 	DatagramServiceThread* datagramService;
 
 	BasePacketHandler* phandler;
+
+	ZoneHandler* zoneHandler;
 
 	ManagedReference<ZoneProcessServer* > processor;
 
@@ -551,7 +575,7 @@ public:
 
 	void initializeTransientMembers();
 
-	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
+	ZoneClientSession* createConnection(Socket* sock, SocketAddress& addr);
 
 	void initialize();
 
@@ -567,11 +591,11 @@ public:
 
 	void stop();
 
-	void handleMessage(ServiceClient* client, Packet* message);
+	void handleMessage(ZoneClientSession* client, Packet* message);
 
 	void processMessage(Message* message);
 
-	bool handleError(ServiceClient* client, Exception& e);
+	bool handleError(ZoneClientSession* client, Exception& e);
 
 	void addTotalSentPacket(int count);
 
