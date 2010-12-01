@@ -67,6 +67,8 @@ using namespace server::zone;
 
 #include "engine/service/proto/events/BaseClientEvent.h"
 
+#include "engine/log/Logger.h"
+
 namespace server {
 namespace zone {
 

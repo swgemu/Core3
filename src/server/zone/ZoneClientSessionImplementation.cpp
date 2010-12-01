@@ -77,12 +77,11 @@ void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
 
 //this needs to be run in a different thread
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
-	lock(doLock);
+	Locker locker(_this);
 
 	if (disconnecting) {
-		unlock(doLock);
 		return;
-		}
+	}
 
 	disconnecting = true;
 
@@ -123,40 +122,36 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 		}
 	}
 	
-	unlock(doLock);
+
+	/*info("references left " + String::valueOf(_this->getReferenceCount()), true);
+	_this->printReferenceHolders();*/
 }
 
 void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLock) {
-	try {
-		lock(doLock);
-	
-		session->info("disconnecting client \'" + session->getIPAddress() + "\'");
+	Locker locker(_this);
 
-		ZoneServer* server = NULL;
-		ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
+	session->info("disconnecting client \'" + session->getIPAddress() + "\'");
 
-		if (play != NULL) {
-			server = play->getZoneServer();
+	ZoneServer* server = NULL;
+	ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
 
-			Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this);
-			Core::getTaskManager()->executeTask(task);
+	if (play != NULL) {
+		server = play->getZoneServer();
 
-			setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter
-		}
+		Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this);
+		Core::getTaskManager()->executeTask(task);
 
-		session->disconnect();
+		setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter
+	}
 
-		if (server != NULL) {
-			server->addTotalSentPacket(session->getSentPacketCount());
-			server->addTotalResentPacket(session->getResentPacketCount());
+	session->disconnect();
 
-			if (account != NULL)
-				account->removeZoneSession(sessionID);
-		}
+	if (server != NULL) {
+		server->addTotalSentPacket(session->getSentPacketCount());
+		server->addTotalResentPacket(session->getResentPacketCount());
 
-		unlock(doLock);
-	} catch (...) {
-		unlock(doLock);
+		if (account != NULL)
+			account->removeZoneSession(sessionID);
 	}
 }
 

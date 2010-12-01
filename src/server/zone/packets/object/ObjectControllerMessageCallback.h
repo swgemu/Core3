@@ -20,7 +20,7 @@ class ObjectControllerMessageCallback : public MessageCallback {
 
 	uint64 objectID;
 
-	MessageCallback* objectControllerCallback;
+	Reference<MessageCallback*> objectControllerCallback;
 public:
 	ObjectControllerMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {

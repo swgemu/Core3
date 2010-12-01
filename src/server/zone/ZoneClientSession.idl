@@ -60,6 +60,8 @@ import engine.service.proto.events.BaseClientCleanupEvent;
 import engine.service.proto.events.BaseClientNetStatusRequestEvent;
 import engine.service.proto.events.BaseClientEvent;
 
+import engine.log.Logger;
+
 @nonTransactional
 class ZoneClientSession extends ManagedObject {
 	@dereferenced
@@ -75,7 +77,7 @@ class ZoneClientSession extends ManagedObject {
 	boolean disconnecting;
 	
 	public native ZoneClientSession(BaseClientProxy session);
-		
+			
 	public native void disconnect();
 	public native void disconnect(boolean doLock);
 	
