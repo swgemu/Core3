@@ -265,9 +265,13 @@ public:
 		if (!canPerformSkill(creature, creatureTarget, revivePack))
 			return 0;
 
-		int healedHealth = creatureTarget->healDamage(creature, CreatureAttribute::HEALTH, (int) round(revivePack->getHealthHealed()));
-		int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, (int) round(revivePack->getActionHealed()));
-		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, (int) round(revivePack->getMindHealed()));
+		int healthToHeal = MAX(1, (int) round(revivePack->getHealthHealed()));
+		int actionToHeal = MAX(1, (int) round(revivePack->getActionHealed()));
+		int mindToHeal = MAX(1, (int) round(revivePack->getMindHealed()));
+
+		int healedHealth = creatureTarget->healDamage(creature, CreatureAttribute::HEALTH, healthToHeal);
+		int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, actionToHeal);
+		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, mindToHeal);
 
 		creatureTarget->setPosture(CreaturePosture::UPRIGHT);
 

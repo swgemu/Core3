@@ -29,23 +29,24 @@ void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 }
 
 void CellObjectImplementation::notifyLoadFromDatabase() {
-	/*for (int j = 0; j < containerObjects.size(); ++j) {
+	// objects are added to the container twice because if insertToZone() called while the objects are loaded into the map
+
+	//temproary fix
+
+	Vector<ManagedReference<SceneObject*> > tempObjects;
+
+	for (int j = 0; j < containerObjects.size(); ++j) {
 		SceneObject* containerObject = containerObjects.get(j);
-		SceneObject* containerParent = containerObject->getParent();
 
-		if (containerParent == NULL) {
-			containerObject->setParent(_this);
-		} else if (containerParent != _this) {
-			if ((containerParent->hasObjectInSlottedContainer(containerObject))
-								|| (containerParent->hasObjectInContainer(containerObject->getObjectID()))) {
-				containerObjects.remove(j);
+		tempObjects.add(containerObject);
+	}
 
-				--j;
+	containerObjects.removeAll();
 
-				j = (j < -1) ? -1 : j;
-			}
-		}
-	}*/
+	for (int i = 0; i < tempObjects.size(); ++i) {
+		SceneObject* obj = tempObjects.get(i);
+		containerObjects.put(obj->getObjectID(), obj);
+	}
 
 	SceneObjectImplementation::notifyLoadFromDatabase();
 }
