@@ -8,13 +8,53 @@
 #ifndef LOGINHANDLER_H_
 #define LOGINHANDLER_H_
 
+#include "LoginClient.h"
 #include "LoginServer.h"
 
 namespace server {
   namespace login {
 
+	class LoginSessionMap : public HashTable<uint64, LoginClient*>,
+			public HashTableIterator<uint64, LoginClient*> {
+
+		int maxConnections;
+
+		int hash(const uint64& key) {
+	        return Long::hashCode(key);
+		}
+
+	public:
+		LoginSessionMap(int maxconn = 10000) : HashTable<uint64, LoginClient*>((int) (maxconn * 1.25f)),
+				HashTableIterator<uint64, LoginClient*>(this) {
+			maxConnections = maxconn;
+
+			setNullValue(NULL);
+		}
+
+		bool add(LoginClient* client) {
+			if (HashTable<uint64, LoginClient*>::put(client->getSession()->getNetworkID(), client) == NULL) {
+				client->acquire();
+
+				return true;
+			} else
+				return false;
+		}
+
+		bool remove(LoginClient* client) {
+			if (HashTable<uint64, LoginClient*>::remove(client->getSession()->getNetworkID()) != NULL) {
+				client->release();
+
+				return true;
+			} else
+				return false;
+		}
+
+	};
+
 	class LoginHandler: public ServiceHandler {
 		ManagedReference<LoginServer*> loginServerRef;
+
+		LoginSessionMap clients;
 
 	public:
 		LoginHandler() {
@@ -29,15 +69,25 @@ namespace server {
 		ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
 			LoginServer* server =  loginServerRef.getForUpdate();
 
-			return server->createConnection(sock, addr);
+			LoginClient* client =  server->createConnection(sock, addr);
+
+			clients.add(client);
+
+			return client->getSession();
 		}
 
-		bool deleteConnection(ServiceClient* client) {
+		bool deleteConnection(ServiceClient* session) {
+			LoginClient* client = getClient(session);
+
+			client->disconnect();
+
 			return false;
 		}
 
-		void handleMessage(ServiceClient* client, Packet* message) {
+		void handleMessage(ServiceClient* session, Packet* message) {
 			LoginServer* server =  loginServerRef.getForUpdate();
+
+			LoginClient* client = getClient(session);
 
 			return server->handleMessage(client, message);
 		}
@@ -56,6 +106,10 @@ namespace server {
 
 		void setLoginSerrver(LoginServer* server) {
 			loginServerRef = server;
+		}
+
+		LoginClient* getClient(ServiceClient* session) {
+			return clients.get(session->getNetworkID());
 		}
 	};
 

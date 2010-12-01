@@ -10,13 +10,17 @@
 
 #include "server/zone/ZoneProcessServer.h"
 
-#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/ZoneClientSession.h"
 
-#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/ZoneHandler.h"
 
 #include "server/zone/Zone.h"
 
 #include "server/chat/ChatManager.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
@@ -74,7 +78,7 @@ void ZoneServer::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-ServiceClient* ZoneServer::createConnection(Socket* sock, SocketAddress& addr) {
+ZoneClientSession* ZoneServer::createConnection(Socket* sock, SocketAddress& addr) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -176,7 +180,7 @@ void ZoneServer::stop() {
 		_implementation->stop();
 }
 
-void ZoneServer::handleMessage(ServiceClient* client, Packet* message) {
+void ZoneServer::handleMessage(ZoneClientSession* client, Packet* message) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -194,7 +198,7 @@ void ZoneServer::processMessage(Message* message) {
 		_implementation->processMessage(message);
 }
 
-bool ZoneServer::handleError(ServiceClient* client, Exception& e) {
+bool ZoneServer::handleError(ZoneClientSession* client, Exception& e) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -995,144 +999,144 @@ void ZoneServerImplementation::fixScheduler() {
 }
 
 int ZoneServerImplementation::getGalaxyID() {
-	// server/zone/ZoneServer.idl(241):  		return galaxyID;
+	// server/zone/ZoneServer.idl(246):  		return galaxyID;
 	return galaxyID;
 }
 
 bool ZoneServerImplementation::isServerLocked() {
-	// server/zone/ZoneServer.idl(247):  		return serverState == LOCKED;
+	// server/zone/ZoneServer.idl(252):  		return serverState == LOCKED;
 	return serverState == LOCKED;
 }
 
 bool ZoneServerImplementation::isServerOnline() {
-	// server/zone/ZoneServer.idl(251):  		return serverState == ONLINE;
+	// server/zone/ZoneServer.idl(256):  		return serverState == ONLINE;
 	return serverState == ONLINE;
 }
 
 bool ZoneServerImplementation::isServerOffline() {
-	// server/zone/ZoneServer.idl(255):  		return serverState == OFFLINE;
+	// server/zone/ZoneServer.idl(260):  		return serverState == OFFLINE;
 	return serverState == OFFLINE;
 }
 
 bool ZoneServerImplementation::isServerLoading() {
-	// server/zone/ZoneServer.idl(259):  		return serverState == LOADING;
+	// server/zone/ZoneServer.idl(264):  		return serverState == LOADING;
 	return serverState == LOADING;
 }
 
 int ZoneServerImplementation::getServerState() {
-	// server/zone/ZoneServer.idl(263):  		return serverState;
+	// server/zone/ZoneServer.idl(268):  		return serverState;
 	return serverState;
 }
 
 Zone* ZoneServerImplementation::getZone(int index) {
-	// server/zone/ZoneServer.idl(267):  		return zones.get(index);
+	// server/zone/ZoneServer.idl(272):  		return zones.get(index);
 	return (&zones)->get(index);
 }
 
 int ZoneServerImplementation::getZoneCount() {
-	// server/zone/ZoneServer.idl(271):  		return zones.size();
+	// server/zone/ZoneServer.idl(276):  		return zones.size();
 	return (&zones)->size();
 }
 
 int ZoneServerImplementation::getMaxPlayers() {
-	// server/zone/ZoneServer.idl(275):  		return maximumPlayers.get();
+	// server/zone/ZoneServer.idl(280):  		return maximumPlayers.get();
 	return (&maximumPlayers)->get();
 }
 
 int ZoneServerImplementation::getTotalPlayers() {
-	// server/zone/ZoneServer.idl(279):  		return totalPlayers.get();
+	// server/zone/ZoneServer.idl(284):  		return totalPlayers.get();
 	return (&totalPlayers)->get();
 }
 
 int ZoneServerImplementation::getDeletedPlayers() {
-	// server/zone/ZoneServer.idl(283):  		return totalDeletedPlayers.get();
+	// server/zone/ZoneServer.idl(288):  		return totalDeletedPlayers.get();
 	return (&totalDeletedPlayers)->get();
 }
 
 ObjectManager* ZoneServerImplementation::getObjectManager() {
-	// server/zone/ZoneServer.idl(288):  		return objectManager;
+	// server/zone/ZoneServer.idl(293):  		return objectManager;
 	return objectManager;
 }
 
 PlayerManager* ZoneServerImplementation::getPlayerManager() {
-	// server/zone/ZoneServer.idl(292):  		return playerManager;
+	// server/zone/ZoneServer.idl(297):  		return playerManager;
 	return playerManager;
 }
 
 ChatManager* ZoneServerImplementation::getChatManager() {
-	// server/zone/ZoneServer.idl(296):  		return chatManager;
+	// server/zone/ZoneServer.idl(301):  		return chatManager;
 	return chatManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
-	// server/zone/ZoneServer.idl(300):  		return processor.getObjectController();
+	// server/zone/ZoneServer.idl(305):  		return processor.getObjectController();
 	return processor->getObjectController();
 }
 
 MissionManager* ZoneServerImplementation::getMissionManager() {
-	// server/zone/ZoneServer.idl(304):  		return missionManager;
+	// server/zone/ZoneServer.idl(309):  		return missionManager;
 	return missionManager;
 }
 
 RadialManager* ZoneServerImplementation::getRadialManager() {
-	// server/zone/ZoneServer.idl(308):  		return radialManager;
+	// server/zone/ZoneServer.idl(313):  		return radialManager;
 	return radialManager;
 }
 
 GuildManager* ZoneServerImplementation::getGuildManager() {
-	// server/zone/ZoneServer.idl(312):  		return guildManager;
+	// server/zone/ZoneServer.idl(317):  		return guildManager;
 	return guildManager;
 }
 
 ResourceManager* ZoneServerImplementation::getResourceManager() {
-	// server/zone/ZoneServer.idl(316):  		return resourceManager;
+	// server/zone/ZoneServer.idl(321):  		return resourceManager;
 	return resourceManager;
 }
 
 CraftingManager* ZoneServerImplementation::getCraftingManager() {
-	// server/zone/ZoneServer.idl(320):  		return craftingManager;
+	// server/zone/ZoneServer.idl(325):  		return craftingManager;
 	return craftingManager;
 }
 
 LootManager* ZoneServerImplementation::getLootManager() {
-	// server/zone/ZoneServer.idl(324):  		return lootManager;
+	// server/zone/ZoneServer.idl(329):  		return lootManager;
 	return lootManager;
 }
 
 BazaarManager* ZoneServerImplementation::getBazaarManager() {
-	// server/zone/ZoneServer.idl(328):  		return bazaarManager;
+	// server/zone/ZoneServer.idl(333):  		return bazaarManager;
 	return bazaarManager;
 }
 
 FishingManager* ZoneServerImplementation::getFishingManager() {
-	// server/zone/ZoneServer.idl(332):  		return fishingManager;
+	// server/zone/ZoneServer.idl(337):  		return fishingManager;
 	return fishingManager;
 }
 
 GamblingManager* ZoneServerImplementation::getGamblingManager() {
-	// server/zone/ZoneServer.idl(336):  		return gamblingManager;
+	// server/zone/ZoneServer.idl(341):  		return gamblingManager;
 	return gamblingManager;
 }
 
 ProfessionManager* ZoneServerImplementation::getProfessionManager() {
-	// server/zone/ZoneServer.idl(343):  		return processor.getProfessionManager();
+	// server/zone/ZoneServer.idl(348):  		return processor.getProfessionManager();
 	return processor->getProfessionManager();
 }
 
 Time* ZoneServerImplementation::getStartTimestamp() {
-	// server/zone/ZoneServer.idl(348):  		return startTimestamp;
+	// server/zone/ZoneServer.idl(353):  		return startTimestamp;
 	return (&startTimestamp);
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(354):  		galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl(359):  		galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(358):  		serverState = state;
+	// server/zone/ZoneServer.idl(363):  		serverState = state;
 	serverState = state;
 }
 

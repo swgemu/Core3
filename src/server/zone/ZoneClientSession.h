@@ -53,6 +53,8 @@ using namespace server::zone;
 
 #include "engine/core/ManagedObject.h"
 
+#include "system/lang/ref/Reference.h"
+
 #include "system/net/SocketAddress.h"
 
 #include "system/net/Socket.h"
@@ -70,7 +72,7 @@ namespace zone {
 
 class ZoneClientSession : public ManagedObject {
 public:
-	ZoneClientSession(Socket* sock, SocketAddress* addr);
+	ZoneClientSession(BaseClientProxy* session);
 
 	void disconnect();
 
@@ -84,17 +86,9 @@ public:
 
 	void closeConnection(bool lockPlayer, bool doLock = true);
 
-	void lock(bool doLock = true);
-
-	void unlock(bool doLock = true);
-
 	void info(const String& msg, bool force = false);
 
 	void error(const String& msg);
-
-	void acquire();
-
-	void release();
 
 	String getAddress();
 
@@ -103,6 +97,8 @@ public:
 	void setSessionID(unsigned int id);
 
 	void setAccount(Account* acc);
+
+	BaseClientProxy* getSession();
 
 	SceneObject* getPlayer();
 
@@ -119,10 +115,6 @@ protected:
 
 	virtual ~ZoneClientSession();
 
-	void _acquire();
-
-	void _release();
-
 	String _return_getAddress;
 
 	friend class ZoneClientSessionHelper;
@@ -136,8 +128,10 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 
-class ZoneClientSessionImplementation : public ManagedObjectImplementation, public BaseClientProxy {
+class ZoneClientSessionImplementation : public ManagedObjectImplementation {
 protected:
+	Reference<BaseClientProxy*> session;
+
 	ManagedWeakReference<SceneObject* > player;
 
 	unsigned int sessionID;
@@ -148,7 +142,7 @@ private:
 	bool disconnecting;
 
 public:
-	ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr);
+	ZoneClientSessionImplementation(BaseClientProxy* session);
 
 	ZoneClientSessionImplementation(DummyConstructorParameter* param);
 
@@ -164,17 +158,9 @@ public:
 
 	void closeConnection(bool lockPlayer, bool doLock = true);
 
-	void lock(bool doLock = true);
-
-	void unlock(bool doLock = true);
-
 	void info(const String& msg, bool force = false);
 
 	void error(const String& msg);
-
-	void acquire();
-
-	void release();
 
 	String getAddress();
 
@@ -183,6 +169,8 @@ public:
 	void setSessionID(unsigned int id);
 
 	void setAccount(Account* acc);
+
+	BaseClientProxy* getSession();
 
 	SceneObject* getPlayer();
 
@@ -204,11 +192,17 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 
+	void lock(bool doLock = true);
+
+	void lock(ManagedObject* obj);
+
 	void rlock(bool doLock = true);
 
 	void wlock(bool doLock = true);
 
 	void wlock(ManagedObject* obj);
+
+	void unlock(bool doLock = true);
 
 	void runlock(bool doLock = true);
 
@@ -235,17 +229,9 @@ public:
 
 	void closeConnection(bool lockPlayer, bool doLock);
 
-	void lock(bool doLock);
-
-	void unlock(bool doLock);
-
 	void info(const String& msg, bool force);
 
 	void error(const String& msg);
-
-	void acquire();
-
-	void release();
 
 	String getAddress();
 

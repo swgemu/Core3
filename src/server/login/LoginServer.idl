@@ -8,6 +8,7 @@ import engine.core.ManagedService;
 import engine.service.Message;
 import engine.log.Logger;
 import server.conf.ConfigManager;
+import server.login.LoginClient;
 import server.login.LoginProcessServerImplementation;
 import server.login.LoginHandler;
 import server.login.account.Account;
@@ -15,6 +16,7 @@ import server.login.account.AccountManager;
 import server.login.packets.LoginClusterStatus;
 import server.login.packets.LoginEnumCluster;
 import system.lang.Exception;
+import system.lang.ref.Reference;
 import system.net.Socket;
 import system.net.SocketAddress;
 import system.net.Packet;
@@ -40,7 +42,7 @@ class LoginServer extends ManagedService implements Logger {
 	public native void initializeTransientMembers();
 	
 	@local
-	public native ServiceClient createConnection(Socket sock, @dereferenced SocketAddress addr);
+	public native LoginClient createConnection(Socket sock, @dereferenced SocketAddress addr);
 	
 	public native void initialize();
 	
@@ -55,7 +57,7 @@ class LoginServer extends ManagedService implements Logger {
 	public native void stop();
 	
 	@local
-	public native void handleMessage(ServiceClient client, Packet message);
+	public native void handleMessage(LoginClient client, Packet message);
 
 	@local
 	public native void processMessage(Message message);
@@ -75,6 +77,9 @@ class LoginServer extends ManagedService implements Logger {
 	public Account getAccount(unsigned int accountID) {
 		return accountManager.getAccount(accountID);
 	}
+	
+	@local
+	public native LoginClient getLoginClient(ServiceClient session);
 	
 	public LoginEnumCluster getLoginEnumClusterMessage() {
 		return (LoginEnumCluster) enumClusterMessage.clone();

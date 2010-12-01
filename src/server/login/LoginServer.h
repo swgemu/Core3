@@ -24,6 +24,16 @@ using namespace server::conf;
 namespace server {
 namespace login {
 
+class LoginClient;
+
+} // namespace login
+} // namespace server
+
+using namespace server::login;
+
+namespace server {
+namespace login {
+
 class LoginProcessServerImplementation;
 
 } // namespace login
@@ -105,6 +115,8 @@ using namespace server::login::packets;
 
 #include "system/lang/Exception.h"
 
+#include "system/lang/ref/Reference.h"
+
 #include "system/net/Socket.h"
 
 #include "system/net/SocketAddress.h"
@@ -120,7 +132,7 @@ public:
 
 	void initializeTransientMembers();
 
-	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
+	LoginClient* createConnection(Socket* sock, SocketAddress& addr);
 
 	void initialize();
 
@@ -134,7 +146,7 @@ public:
 
 	void stop();
 
-	void handleMessage(ServiceClient* client, Packet* message);
+	void handleMessage(LoginClient* client, Packet* message);
 
 	void processMessage(Message* message);
 
@@ -147,6 +159,8 @@ public:
 	AccountManager* getAccountManager();
 
 	Account* getAccount(unsigned int accountID);
+
+	LoginClient* getLoginClient(ServiceClient* session);
 
 	LoginEnumCluster* getLoginEnumClusterMessage();
 
@@ -196,7 +210,7 @@ public:
 
 	void initializeTransientMembers();
 
-	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
+	LoginClient* createConnection(Socket* sock, SocketAddress& addr);
 
 	void initialize();
 
@@ -210,7 +224,7 @@ public:
 
 	void stop();
 
-	void handleMessage(ServiceClient* client, Packet* message);
+	void handleMessage(LoginClient* client, Packet* message);
 
 	void processMessage(Message* message);
 
@@ -223,6 +237,8 @@ public:
 	AccountManager* getAccountManager();
 
 	Account* getAccount(unsigned int accountID);
+
+	LoginClient* getLoginClient(ServiceClient* session);
 
 	LoginEnumCluster* getLoginEnumClusterMessage();
 

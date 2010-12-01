@@ -47,6 +47,7 @@ package server.zone;
 import engine.service.proto.BaseClientProxy;
 import engine.service.proto.BasePacket;
 import engine.core.ManagedObject;
+import system.lang.ref.Reference;
 import system.net.SocketAddress;
 import system.net.Socket;
 
@@ -60,7 +61,10 @@ import engine.service.proto.events.BaseClientNetStatusRequestEvent;
 import engine.service.proto.events.BaseClientEvent;
 
 @nonTransactional
-class ZoneClientSession extends ManagedObject implements BaseClientProxy {
+class ZoneClientSession extends ManagedObject {
+	@dereferenced
+	transient protected Reference<BaseClientProxy> session;
+	
 	@weakReference
 	protected SceneObject player;
 
@@ -70,43 +74,24 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	
 	boolean disconnecting;
 	
-	public native ZoneClientSession(Socket sock, SocketAddress addr);
+	public native ZoneClientSession(BaseClientProxy session);
 		
 	public native void disconnect();
 	public native void disconnect(boolean doLock);
 	
 	public native void sendMessage(BasePacket msg);
 
-	public void balancePacketCheckupTime() {
-		BaseClientProxy.balancePacketCheckupTime();
-	}
+	public native void balancePacketCheckupTime();
 	
-	public void resetPacketCheckupTime() {
-		BaseClientProxy.resetPacketCheckupTime();
-	}
-
+	public native void resetPacketCheckupTime();
+	
 	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
 
-	public native void lock(boolean doLock = true);
-	public native void unlock(boolean doLock = true);
+	public native void info(final string msg, boolean force = false);
 	
-	public void info(final string msg, boolean force = false) {
-		Logger.info(msg, force);
-	}
-	
-	public void error(final string msg) {
-		Logger.error(msg);
-	}
+	public native void error(final string msg);
 
-	@nativeStub
-	public native void acquire();
-
-	@nativeStub
-	public native void release();
-
-	public string getAddress() {
-		return BaseClientProxy.getAddress();
-	}
+	public native string getAddress();
 	
 	// setters and getters
 	public void setPlayer(SceneObject playerCreature) {
@@ -133,6 +118,9 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 		account = acc;
 	}
 
+	@local
+	public native BaseClientProxy getSession();
+	
 	public SceneObject getPlayer() {
 		return player;
 	}

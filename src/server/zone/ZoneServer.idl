@@ -57,6 +57,7 @@ import engine.log.Logger;
 
 import system.lang.Exception;
 import system.lang.Time;
+import system.lang.ref.Reference;
 import system.util.Vector;
 import system.net.Socket;
 import system.net.SocketAddress;
@@ -65,10 +66,12 @@ import system.thread.atomic.AtomicInteger;
 
 import server.login.account.Account;
 import server.zone.ZoneProcessServer;
-import server.zone.managers.object.ObjectManager;
-import server.zone.managers.player.PlayerManager;
+import server.zone.ZoneClientSession;
+import server.zone.ZoneHandler;
 import server.zone.Zone;
 import server.chat.ChatManager;
+import server.zone.managers.object.ObjectManager;
+import server.zone.managers.player.PlayerManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.radial.RadialManager;
 import server.zone.managers.professions.ProfessionManager;
@@ -83,10 +86,12 @@ import server.zone.managers.stringid.StringIdManager;
 import server.zone.managers.creature.CreatureTemplateManager;
 import server.zone.managers.guild.GuildManager;
 
-class ZoneServer extends ManagedService implements ServiceHandler, Logger {
+class ZoneServer extends ManagedService implements Logger {
 	private transient DatagramServiceThread datagramService;
 	
 	private transient BasePacketHandler phandler;
+
+	private transient ZoneHandler zoneHandler;
 	
 	private transient ZoneProcessServer processor;
 
@@ -180,7 +185,7 @@ class ZoneServer extends ManagedService implements ServiceHandler, Logger {
 	public native void initializeTransientMembers();
 	
 	@local
-	public native ServiceClient createConnection(Socket sock, @dereferenced SocketAddress addr);
+	public native ZoneClientSession createConnection(Socket sock, @dereferenced SocketAddress addr);
 	
 	public native void initialize();
 
@@ -197,13 +202,13 @@ class ZoneServer extends ManagedService implements ServiceHandler, Logger {
 	public native void stop();
 
 	@local
-	public native void handleMessage(ServiceClient client, Packet message);
+	public native void handleMessage(ZoneClientSession client, Packet message);
 
 	@local
 	public native void processMessage(Message message);
 
 	@local
-	public native boolean handleError(ServiceClient client, @dereferenced Exception e);
+	public native boolean handleError(ZoneClientSession client, @dereferenced Exception e);
 	
 	public native void addTotalSentPacket(int count);
 	public native void addTotalResentPacket(int count);
