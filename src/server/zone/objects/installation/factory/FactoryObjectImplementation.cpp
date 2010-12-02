@@ -555,7 +555,7 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 
 FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject* prototype) {
 
-	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(true);
+	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(false);
 
 	if (crate == NULL) {
 		stopFactory("manf_error_7", "", "", -1);
