@@ -556,7 +556,7 @@ float CraftingValues::getCurrentPercentageAverage(const String title) {
 
 		if (values->getMaxPercentage() <= 1.0f && !values->isFiller()) {
 
-			float item = values->getPercentage();
+			float item = (values->getPercentage() / values->getMaxPercentage()) * 100;
 			if (item > 0) {
 				average += item;
 				count++;
