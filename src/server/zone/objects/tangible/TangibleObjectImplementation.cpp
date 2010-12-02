@@ -570,7 +570,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 
 	crate->setOptionsBitmask(0x2100);
 
-	if (!insertSelf) {
+	if (insertSelf) {
 
 		setOptionsBitmask(0x2100);
 		updateToDatabase();
