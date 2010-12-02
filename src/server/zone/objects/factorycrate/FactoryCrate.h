@@ -118,7 +118,7 @@ public:
 
 	String getCraftersSerial();
 
-	bool extractObjectToParent(int count = 1);
+	bool extractObjectToParent();
 
 	TangibleObject* extractObject(int count = 1);
 
@@ -181,7 +181,7 @@ public:
 
 	String getCraftersSerial();
 
-	bool extractObjectToParent(int count = 1);
+	bool extractObjectToParent();
 
 	TangibleObject* extractObject(int count = 1);
 
@@ -242,7 +242,7 @@ public:
 
 	String getCraftersSerial();
 
-	bool extractObjectToParent(int count);
+	bool extractObjectToParent();
 
 	TangibleObject* extractObject(int count);
 

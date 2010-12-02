@@ -169,18 +169,17 @@ String FactoryCrate::getCraftersSerial() {
 		return _implementation->getCraftersSerial();
 }
 
-bool FactoryCrate::extractObjectToParent(int count) {
+bool FactoryCrate::extractObjectToParent() {
 	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
-		method.addSignedIntParameter(count);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->extractObjectToParent(count);
+		return _implementation->extractObjectToParent();
 }
 
 TangibleObject* FactoryCrate::extractObject(int count) {
@@ -337,7 +336,7 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertAscii(getCraftersSerial());
 		break;
 	case 14:
-		resp->insertBoolean(extractObjectToParent(inv->getSignedIntParameter()));
+		resp->insertBoolean(extractObjectToParent());
 		break;
 	case 15:
 		resp->insertLong(extractObject(inv->getSignedIntParameter())->_getObjectID());
@@ -384,8 +383,8 @@ String FactoryCrateAdapter::getCraftersSerial() {
 	return ((FactoryCrateImplementation*) impl)->getCraftersSerial();
 }
 
-bool FactoryCrateAdapter::extractObjectToParent(int count) {
-	return ((FactoryCrateImplementation*) impl)->extractObjectToParent(count);
+bool FactoryCrateAdapter::extractObjectToParent() {
+	return ((FactoryCrateImplementation*) impl)->extractObjectToParent();
 }
 
 TangibleObject* FactoryCrateAdapter::extractObject(int count) {
