@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 
 class GenerateCraftedItemCommand : public QueueCommand {
 public:
@@ -68,6 +69,10 @@ public:
 
 		if(!creature->isPlayerCreature())
 			return GENERALERROR;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+
+		ManagedReference<CraftingManager*> craftingManager = player->getZoneServer()->getCraftingManager();
 
 		try {
 
@@ -108,10 +113,20 @@ public:
 
 			prototype->createChildObjects();
 
+			// Set Crafter name and generate serial number
+			String name = player->getFirstName();
+			prototype->setCraftersName(name);
+
+			String serial = craftingManager->generateSerial();
+			prototype->setCraftersSerial(serial);
+
 			int quantity = 1;
 
 			if(tokenizer.hasMoreTokens())
 				quantity = tokenizer.getIntToken();
+
+			if(quantity == 0)
+				quantity = 1;
 
 			ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
@@ -132,7 +147,7 @@ public:
 
 			} else {
 				inventory->addObject(prototype, -1, true);
-				crate->sendTo(creature, true);
+				prototype->sendTo(creature, true);
 			}
 
 		} catch (...) {
