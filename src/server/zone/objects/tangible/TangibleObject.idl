@@ -54,6 +54,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.factorycrate.FactoryCrate;
 
 include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.scene.variables.DeltaVector;
@@ -497,6 +498,21 @@ class TangibleObject extends SceneObject {
 	public boolean isFromFactoryCrate() {
 		return optionsBitmask & 0x2100;
 	}
+	
+	/*
+	 * Set the initial values for this object based on the schematic
+	 */
+	public native void setInitialCraftingValues(ManufactureSchematic manufactureSchematic, int assemblySuccess = 1);
+	
+	/*
+	 * Add the subcomponent stats to this based on the items in the schematic
+	 */
+	public native boolean applyComponentStats(ManufactureSchematic manufactureSchematic);
+
+	/*
+	 * Creates a factory crate for this object, can insert this object or a clone
+	 */
+	public native FactoryCrate createFactoryCrate(boolean insertSelf = false);
 
 }
 
