@@ -131,7 +131,7 @@ String FactoryCrateImplementation::getCraftersSerial() {
 	return prototype->getCraftersSerial();
 }
 
-bool FactoryCrateImplementation::extractObjectToParent(int count) {
+bool FactoryCrateImplementation::extractObjectToParent() {
 
 	TangibleObject* prototype = getPrototype();
 
@@ -147,7 +147,6 @@ bool FactoryCrateImplementation::extractObjectToParent(int count) {
 	if (protoclone != NULL) {
 		protoclone->setParent(NULL);
 		protoclone->setOptionsBitmask(0x2100);
-		protoclone->setUseCount(count, false);
 
 		String errorDescription;
 		int errorNumber = 0;
@@ -169,7 +168,7 @@ bool FactoryCrateImplementation::extractObjectToParent(int count) {
 			parent->broadcastObject(protoclone, true);
 		}
 
-		setUseCount(getUseCount() - count);
+		setUseCount(getUseCount() - 1);
 
 		return true;
 	}
