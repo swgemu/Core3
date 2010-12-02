@@ -189,11 +189,7 @@ class CraftingTool extends ToolTangibleObject {
 	private native void initialAssembly(PlayerCreature player, int counter);
 	
 	private native void finishAssembly(PlayerCreature player, int clientCounter);
-	
-	private native void setInitialCraftingValues();
-	
-	private native boolean applyComponentBoost();
-	
+
 	public native void experiment(PlayerCreature player, int numRowsAttempted, string expString, int clientCounter);
 
 	@local

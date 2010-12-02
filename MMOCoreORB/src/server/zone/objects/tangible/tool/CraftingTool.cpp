@@ -591,12 +591,12 @@ ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
 }
 
 unsigned long long CraftingToolImplementation::getLastExperimentationTimestamp() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(218):  		return lastExperimentationTimestamp;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(214):  		return lastExperimentationTimestamp;
 	return lastExperimentationTimestamp;
 }
 
 int CraftingToolImplementation::getExperimentationResult() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(222):  		return experimentationResult;
+	// server/zone/objects/tangible/tool/CraftingTool.idl(218):  		return experimentationResult;
 	return experimentationResult;
 }
 
