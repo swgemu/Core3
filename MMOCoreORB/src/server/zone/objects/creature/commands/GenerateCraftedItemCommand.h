@@ -104,7 +104,7 @@ public:
 			manuSchematic->createChildObjects();
 
 			ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (
-					creature->getZoneServer()->createObject(draftSchematic->getTanoCRC(), 0));
+					creature->getZoneServer()->createObject(draftSchematic->getTanoCRC(), 2));
 
 			if(prototype == NULL) {
 				creature->sendSystemMessage("Unable to create target item, is it implemented yet?");
