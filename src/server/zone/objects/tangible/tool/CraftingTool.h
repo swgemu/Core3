@@ -337,10 +337,6 @@ private:
 
 	void finishAssembly(PlayerCreature* player, int clientCounter);
 
-	void setInitialCraftingValues();
-
-	bool applyComponentBoost();
-
 public:
 	void experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter);
 

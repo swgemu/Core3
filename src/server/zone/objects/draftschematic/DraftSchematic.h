@@ -98,7 +98,7 @@ public:
 
 	void sendResourceWeightsTo(PlayerCreature* player);
 
-	SceneObject* createManufactureSchematic(SceneObject* craftingTool);
+	SceneObject* createManufactureSchematic(SceneObject* craftingTool = NULL);
 
 	void setSchematicID(unsigned int id);
 
@@ -207,7 +207,7 @@ private:
 public:
 	void sendResourceWeightsTo(PlayerCreature* player);
 
-	SceneObject* createManufactureSchematic(SceneObject* craftingTool);
+	SceneObject* createManufactureSchematic(SceneObject* craftingTool = NULL);
 
 	void setSchematicID(unsigned int id);
 

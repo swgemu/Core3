@@ -118,7 +118,7 @@ class DraftSchematic extends IntangibleObject {
 	 */
 	public native void sendResourceWeightsTo(PlayerCreature player);
 
-	public native SceneObject createManufactureSchematic(SceneObject craftingTool);
+	public native SceneObject createManufactureSchematic(SceneObject craftingTool = null);
 	
 	/**
 	 * Setter for the schematic ID

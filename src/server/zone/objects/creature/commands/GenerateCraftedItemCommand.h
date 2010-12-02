@@ -46,6 +46,9 @@ which carries forward this exception.
 #define GENERATECRAFTEDITEMCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 
 class GenerateCraftedItemCommand : public QueueCommand {
 public:
@@ -63,9 +66,82 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if(!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		try {
+
+			StringTokenizer tokenizer(arguments.toString());
+
+			if(!tokenizer.hasMoreTokens()) {
+				creature->sendSystemMessage("Usage: /GenerateCraftedItem SERVERSCRIPTPATH [Quantity]");
+				return GENERALERROR;
+			}
+
+			String file;
+			tokenizer.getStringToken(file);
+
+			ManagedReference<DraftSchematic* > draftSchematic =
+					dynamic_cast<DraftSchematic*>(creature->getZoneServer()->createObject(file.hashCode(), 0));
+
+			if(draftSchematic == NULL) {
+				creature->sendSystemMessage("File entered not valid, please be sure to use the draft schematics server script path not client path");
+				return GENERALERROR;
+			}
+
+			ManagedReference<ManufactureSchematic* > manuSchematic = (ManufactureSchematic*) draftSchematic->createManufactureSchematic();
+
+			if(manuSchematic == NULL) {
+				creature->sendSystemMessage("Error creating ManufactureSchematic from DraftSchematic");
+				return GENERALERROR;
+			}
+
+			manuSchematic->createChildObjects();
+
+			ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (
+					creature->getZoneServer()->createObject(draftSchematic->getTanoCRC(), 0));
+
+			if(prototype == NULL) {
+				creature->sendSystemMessage("Unable to create target item, is it implemented yet?");
+				return GENERALERROR;
+			}
+
+			prototype->createChildObjects();
+
+			int quantity = 1;
+
+			if(tokenizer.hasMoreTokens())
+				quantity = tokenizer.getIntToken();
+
+			ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+			if(inventory == NULL) {
+				creature->sendSystemMessage("Error locating target inventory");
+				return GENERALERROR;
+			}
+
+			prototype->updateToDatabase();
+
+			if(quantity > 1) {
+
+				ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(true);
+				crate->setUseCount(quantity);
+
+				inventory->addObject(crate, -1, true);
+				crate->sendTo(creature, true);
+
+			} else {
+				inventory->addObject(prototype, -1, true);
+				crate->sendTo(creature, true);
+			}
+
+		} catch (...) {
+			creature->sendSystemMessage("Error in data input, try again");
+			return GENERALERROR;
+		}
+
 		return SUCCESS;
 	}
-
 };
 
 #endif //GENERATECRAFTEDITEMCOMMAND_H_

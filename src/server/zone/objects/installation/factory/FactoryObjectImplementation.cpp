@@ -555,54 +555,12 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 
 FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject* prototype) {
 
-	String file;
-	uint32 type = prototype->getGameObjectType();
-
-	if(type & SceneObject::ARMOR)
-		file = "object/factory/factory_crate_armor.iff";
-	else if(type == SceneObject::CHEMICAL || type == SceneObject::PHARMACEUTICAL || type == SceneObject::PETMEDECINE)
-		file = "object/factory/factory_crate_chemicals.iff";
-	else if(type & SceneObject::CLOTHING)
-		file = "object/factory/factory_crate_clothing.iff";
-	else if(type == SceneObject::ELECTRONICS)
-		file = "object/factory/factory_crate_electronics.iff";
-	else if(type == SceneObject::FOOD || type == SceneObject::DRINK)
-		file = "object/factory/factory_crate_food.iff";
-	else if(type == SceneObject::FURNITURE)
-		file = "object/factory/factory_crate_furniture.iff";
-	else if(type & SceneObject::INSTALLATION)
-		file = "object/factory/factory_crate_installation.iff";
-	else if(type & SceneObject::WEAPON)
-		file = "object/factory/factory_crate_weapon.iff";
-	else
-		file = "object/factory/factory_crate_generic_items.iff";
-
-	ObjectManager* objectManager = ObjectManager::instance();
-
-	FactoryCrate* crate = dynamic_cast<FactoryCrate*>(server->getZoneServer()->createObject(file.hashCode(), 2));
+	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(true);
 
 	if (crate == NULL) {
 		stopFactory("manf_error_7", "", "", -1);
 		return NULL;
 	}
-
-	crate->setOptionsBitmask(0x2100);
-	ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(prototype);
-
-	if (protoclone == NULL) {
-		stopFactory("manf_error", "", "", -1);
-		return NULL;
-	}
-
-	protoclone->setOptionsBitmask(0x2100);
-	crate->addObject(protoclone, -1, false);
-
-	if(protoclone->getCustomObjectName().isEmpty()) {
-		UnicodeString newName = "@" + protoclone->getObjectNameStringIdFile()
-				+ ":" + protoclone->getObjectNameStringIdName();
-		crate->setCustomObjectName(newName, false);
-	} else
-		crate->setCustomObjectName(protoclone->getCustomObjectName(), false);
 
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 

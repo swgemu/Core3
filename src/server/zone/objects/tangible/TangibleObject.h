@@ -79,6 +79,20 @@ using namespace server::zone::objects::manufactureschematic;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace factorycrate {
+
+class FactoryCrate;
+
+} // namespace factorycrate
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::factorycrate;
+
+namespace server {
+namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -301,6 +315,12 @@ public:
 	String getCraftersSerial();
 
 	bool isFromFactoryCrate();
+
+	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess = 1);
+
+	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
+
+	FactoryCrate* createFactoryCrate(bool insertSelf = false);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -556,6 +576,12 @@ public:
 
 	bool isFromFactoryCrate();
 
+	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess = 1);
+
+	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
+
+	FactoryCrate* createFactoryCrate(bool insertSelf = false);
+
 	TangibleObject* _this;
 
 	operator const TangibleObject*();
@@ -704,6 +730,12 @@ public:
 	String getCraftersSerial();
 
 	bool isFromFactoryCrate();
+
+	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess);
+
+	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
+
+	FactoryCrate* createFactoryCrate(bool insertSelf);
 
 protected:
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;

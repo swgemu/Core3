@@ -56,6 +56,9 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/objects/tangible/component/Component.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -369,4 +372,233 @@ void TangibleObjectImplementation::setOptionsBitmask(uint32 bitmask, bool notify
 	dtano3->close();
 
 	broadcastMessage(dtano3, true);
+}
+
+void TangibleObjectImplementation::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
+
+	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)
+		return;
+
+	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
+	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
+	ManagedReference<CraftingManager* > craftingManager = getZoneServer()->getCraftingManager();
+
+	float value, maxPercentage, currentPercentage, weightedSum;
+	String itemName;
+
+	// These 2 values are pretty standard, adding these
+	itemName = "xp";
+	value = float(draftSchematic->getXpAmount());
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, 1);
+
+	itemName = "complexity";
+	value = manufactureSchematic->getComplexity();
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, 1);
+
+	float modifier = craftingManager->calculateAssemblyValueModifier(assemblySuccess);
+	int subtitleCounter = 0;
+
+	for (int i = 0; i < draftSchematic->getResourceWeightCount(); ++i) {
+
+		// Grab the first weight group
+		Reference<ResourceWeight* > resourceWeight = draftSchematic->getResourceWeight(i);
+
+		// Getting the title ex: expDamage
+		String experimentalTitle = resourceWeight->getExperimentalTitle();
+
+		// Getting the subtitle ex: minDamage
+		String property = resourceWeight->getPropertyName();
+
+		weightedSum = 0;
+
+		craftingValues->addExperimentalProperty(experimentalTitle, property,
+				resourceWeight->getMinValue(), resourceWeight->getMaxValue(),
+				resourceWeight->getPrecision(), resourceWeight->isFiller());
+
+		for (int ii = 0; ii < resourceWeight->getPropertyListSize(); ++ii) {
+
+			// Based on the script we cycle through each exp group
+
+			// Get the type from the type/weight
+			int type = (resourceWeight->getTypeAndWeight(ii) >> 4);
+
+			// Get the calculation percentage
+			float percentage = resourceWeight->getPropertyPercentage(ii);
+
+			// add to the weighted sum based on type and percentage
+			weightedSum += craftingManager->getWeightedValue(manufactureSchematic, type) * percentage;
+		}
+
+		// > 0 ensures that we don't add things when there is NaN value
+		if (weightedSum > 0) {
+
+			// This is the formula for max experimenting percentages
+			maxPercentage = ((weightedSum / 10.0f) * .01f);
+
+			// Based on the weighted sum, we can get the initial %
+			currentPercentage = (craftingManager->getAssemblyPercentage(weightedSum)) * modifier;
+
+			craftingValues->setMaxPercentage(property, maxPercentage);
+			craftingValues->setCurrentPercentage(property, currentPercentage);
+
+			subtitleCounter++;
+
+		}
+	}
+
+	craftingValues->recalculateValues(true);
+
+	if (applyComponentStats(manufactureSchematic)) {
+		craftingValues->recalculateValues(true);
+	}
+}
+
+bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* manufactureSchematic) {
+
+	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)
+		return false;
+
+	float max, min, currentvalue, propertyvalue;
+	int precision;
+	bool modified = false;
+	bool hidden;
+	String experimentalTitle, property;
+
+	CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
+	ManagedReference<DraftSchematic* > draftSchematic = manufactureSchematic->getDraftSchematic();
+
+	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
+
+		Reference<IngredientSlot* > ingredientSlot = manufactureSchematic->getIngredientSlot(i);
+		Reference<DraftSlot* > draftSlot = draftSchematic->getDraftSlot(i);
+
+		if (ingredientSlot != NULL) {
+
+			ManagedReference<TangibleObject*> tano = ingredientSlot->get();
+
+			if (tano == NULL)
+				continue;
+
+			if (tano->isComponent()) {
+
+				ManagedReference<Component*> component = (Component*) tano.get();
+
+				for (int j = 0; j < component->getPropertyCount(); ++j) {
+
+					property = component->getProperty(j); // charges
+
+					modified = true;
+
+					if (craftingValues->hasProperty(property) && !component->getAttributeHidden(property)) {
+
+						max = craftingValues->getMaxValue(property);
+
+						min = craftingValues->getMinValue(property);
+
+						hidden = craftingValues->isHidden(property);
+
+						currentvalue = craftingValues->getCurrentValue(property);
+
+						propertyvalue = component->getAttributeValue(property) * draftSlot->getContribution();
+
+						currentvalue += propertyvalue;
+						min += propertyvalue;
+						max += propertyvalue;
+
+						craftingValues->setMinValue(property, min);
+						craftingValues->setMaxValue(property, max);
+
+						if (draftSlot->getCombineType() == CraftingManager::COMPONENTLINEAR) {
+
+							craftingValues->setCurrentValue(property, currentvalue);
+
+						} else if (draftSlot->getCombineType() == CraftingManager::COMPONENTPERCENTAGE) {
+
+							craftingValues->setCurrentPercentage(property, currentvalue);
+
+						}
+					} else if(!component->getAttributeHidden(property)) {
+
+						currentvalue = component->getAttributeValue(property);
+						precision = component->getAttributePrecision(property);
+						experimentalTitle = component->getAttributeTitle(property);
+
+						craftingValues->addExperimentalProperty(experimentalTitle, property, currentvalue, currentvalue, precision, false);
+						craftingValues->setCurrentPercentage(property, .5f);
+						craftingValues->setMaxPercentage(property, 1.0f);
+						craftingValues->setCurrentValue(property, currentvalue);
+					}
+				}
+			}
+		}
+	}
+	//craftingValues->toString();
+
+	return modified;
+}
+
+FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) {
+
+	String file;
+	uint32 type = getGameObjectType();
+
+	if(type & SceneObject::ARMOR)
+		file = "object/factory/factory_crate_armor.iff";
+	else if(type == SceneObject::CHEMICAL || type == SceneObject::PHARMACEUTICAL || type == SceneObject::PETMEDECINE)
+		file = "object/factory/factory_crate_chemicals.iff";
+	else if(type & SceneObject::CLOTHING)
+		file = "object/factory/factory_crate_clothing.iff";
+	else if(type == SceneObject::ELECTRONICS)
+		file = "object/factory/factory_crate_electronics.iff";
+	else if(type == SceneObject::FOOD || type == SceneObject::DRINK)
+		file = "object/factory/factory_crate_food.iff";
+	else if(type == SceneObject::FURNITURE)
+		file = "object/factory/factory_crate_furniture.iff";
+	else if(type & SceneObject::INSTALLATION)
+		file = "object/factory/factory_crate_installation.iff";
+	else if(type & SceneObject::WEAPON)
+		file = "object/factory/factory_crate_weapon.iff";
+	else
+		file = "object/factory/factory_crate_generic_items.iff";
+
+	ObjectManager* objectManager = ObjectManager::instance();
+
+	ManagedReference<FactoryCrate*> crate = dynamic_cast<FactoryCrate*>(getZoneServer()->createObject(file.hashCode(), 2));
+
+	if (crate == NULL)
+		return NULL;
+
+	crate->setOptionsBitmask(0x2100);
+
+	if (!insertSelf) {
+
+		setOptionsBitmask(0x2100);
+		updateToDatabase();
+
+		if (parent != NULL) {
+			parent->removeObject(_this, true);
+		}
+
+		crate->addObject(_this, -1, false);
+
+	} else {
+
+		ManagedReference<TangibleObject*> protoclone = (TangibleObject*) objectManager->cloneObject(_this);
+
+		if (protoclone == NULL)
+			return NULL;
+
+		protoclone->setParent(NULL);
+		protoclone->setOptionsBitmask(0x2100);
+		protoclone->updateToDatabase();
+		crate->addObject(protoclone, -1, false);
+	}
+
+	crate->setObjectName(*getObjectName());
+
+	crate->setUseCount(1);
+
+	crate->updateToDatabase();
+
+	return crate;
 }
