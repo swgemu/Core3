@@ -73,7 +73,6 @@ class Buff extends ManagedObject implements Logger {
 	protected float buffDuration;
 	protected unsigned int buffCRC;
 	protected int buffType;
-	protected boolean stackable;
 	protected float speedMultiplierMod;
 	protected float accelerationMultiplierMod;
 	protected boolean fillAttirbutesOnBuff;
@@ -91,7 +90,6 @@ class Buff extends ManagedObject implements Logger {
 		buffCRC = buffcrc;
 		buffDuration = duration;
 		buffType = bufftype;
-		stackable = false;
 		speedMultiplierMod = -1.f;
 		accelerationMultiplierMod = -1.f;
 		fillAttirbutesOnBuff = false;
@@ -170,10 +168,6 @@ class Buff extends ManagedObject implements Logger {
 		fillAttirbutesOnBuff = val;
 	}
 
-	public void setStackable(boolean val) {
-		stackable = val;
-	}
-
 	//Getters
 	public string getBuffName() {
 		return buffName;
@@ -213,10 +207,6 @@ class Buff extends ManagedObject implements Logger {
 
 	public boolean isAttributeBuff() {
 		return (attributeModifiers.size() != 0);
-	}
-
-	public boolean isStackable() {
-		return stackable;
 	}
 	
 	@local

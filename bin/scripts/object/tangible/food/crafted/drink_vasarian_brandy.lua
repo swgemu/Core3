@@ -50,8 +50,6 @@ object_tangible_food_crafted_drink_vasarian_brandy = object_tangible_food_crafte
 
 	effectType = 1,
 
-	stackable = 1,
-
 	fillingMin = 55,
 	fillingMax = 33,
 	flavorMin = 1800,

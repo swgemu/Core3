@@ -64,8 +64,6 @@ class Consumable extends TangibleObject {
 
 	protected int effectType;
 
-	protected int stackable;
-
 	protected int fillingMin;
 	protected int fillingMax;
 	protected int flavorMin;
@@ -104,8 +102,6 @@ class Consumable extends TangibleObject {
 		duration = 30;
 		filling = 0;
 		effectType = EFFECT_ATTRIBUTE;
-
-		stackable = 0;
 
 		fillingMin = 1;
 		fillingMax = 1;
@@ -188,10 +184,6 @@ class Consumable extends TangibleObject {
 
 	public boolean isSpice() {
 		return (isSpiceEffect() && isFood());
-	}
-
-	public boolean isStackable() {
-		return (stackable == 1);
 	}
 	
 }
