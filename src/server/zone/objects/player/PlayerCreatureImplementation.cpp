@@ -715,6 +715,19 @@ void PlayerCreatureImplementation::notifySceneReady() {
 	}
 
 	playerObject->sendFriendLists();
+
+	if (isDead()) {
+		//If the player is dead, see if they already have a clone box. If so, resend it.
+		ManagedReference<SuiBox*> cloneBox = getSuiBoxFromWindowType(SuiWindowType::CLONE_REQUEST);
+
+		if (cloneBox != NULL) {
+			cloneBox->clearOptions();
+			sendMessage(cloneBox->generateMessage());
+		} else {
+			//Otherwise, send them a new one.
+			server->getPlayerManager()->sendActivateCloneRequest(_this);
+		}
+	}
 }
 
 void PlayerCreatureImplementation::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
