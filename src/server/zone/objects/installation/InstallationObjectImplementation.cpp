@@ -269,7 +269,8 @@ void InstallationObjectImplementation::handleStructureAddEnergy(PlayerCreature* 
 		player->addSuiBox(energyBox);
 		player->sendMessage(energyBox->generateMessage());
 
-	} catch (...) {
+	} catch (Exception& e) {
+		e.printStackTrace();
 		error("unreported exception in InstallationObjectImplementation::handleStructureAddEnergy");
 	}
 }

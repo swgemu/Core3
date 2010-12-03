@@ -373,7 +373,7 @@ void SuiManager::handleAddEnergy(PlayerCreature* player, SuiBox* suiBox, uint32 
 	if (args->size() < 1)
 		return;
 
-	int newEnergyVal = Integer::valueOf(args->get(0).toString());
+	uint32 newEnergyVal = (uint64) Long::valueOf(args->get(0).toString());
 
 	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
@@ -385,37 +385,29 @@ void SuiManager::handleAddEnergy(PlayerCreature* player, SuiBox* suiBox, uint32 
 	ManagedReference<ResourceManager*> resourceManager = player->getZoneServer()->getResourceManager();
 
 	//TODO: This should be handled in StructureManager
-	try {
-		installation->wlock(player);
 
-		uint32 energyFromPlayer = resourceManager->getAvailablePowerFromPlayer(player);
-		uint32 energy = energyFromPlayer - newEnergyVal;
+	Locker _lock(installation, player);
 
-		if (energy > energyFromPlayer) {
-			installation->unlock();
-			return;
-		}
+	uint32 energyFromPlayer = resourceManager->getAvailablePowerFromPlayer(player);
+	uint32 energy = energyFromPlayer - newEnergyVal;
 
-		installation->addPower(energy);
-		resourceManager->removePowerFromPlayer(player, energy);
+	if (energy > energyFromPlayer)
+		return;
 
-		StringIdChatParameter stringId("player_structure", "deposit_successful");
-		stringId.setDI(energy);
+	installation->addPower(energy);
+	resourceManager->removePowerFromPlayer(player, energy);
 
-		player->sendSystemMessage(stringId);
+	StringIdChatParameter stringId("player_structure", "deposit_successful");
+	stringId.setDI(energy);
 
-		stringId.setStringId("player_structure", "reserve_report");
-		stringId.setDI(energy);
+	player->sendSystemMessage(stringId);
 
-		player->sendSystemMessage(stringId);
+	stringId.setStringId("player_structure", "reserve_report");
+	stringId.setDI(energy);
 
-		installation->updateToDatabase();
+	player->sendSystemMessage(stringId);
 
-		installation->unlock();
-	} catch (...) {
-		installation->unlock();
-	}
-
+	installation->updateToDatabase();
 }
 
 void SuiManager::handleStartDancing(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
