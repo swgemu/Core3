@@ -18,7 +18,7 @@ void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) 
 	if (controlledObject->isInQuadTree())
 		return;
 
-	if (player->isInCombat())
+	if (player->isInCombat() || player->isDead() || player->isIncapacitated())
 		return;
 
 	ZoneServer* zoneServer = getZoneServer();
