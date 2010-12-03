@@ -152,6 +152,10 @@ public:
 		//TODO: Check to make sure the item is not being moved outside the range of the cell.
 		//Need cell dimensions for this...
 
+		/*StringBuffer msg;
+		msg << "moving to x:" << x << " z:" << z << " y:" << y;
+		obj->info(msg.toString(), true);*/
+
 		obj->setPosition(x, z, y);
 		obj->incrementMovementCounter();
 
