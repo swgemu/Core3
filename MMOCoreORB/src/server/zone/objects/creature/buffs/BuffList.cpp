@@ -51,7 +51,7 @@ BuffList::BuffList() {
 	spiceActive = false;
 
 	buffList.setNullValue(NULL);
-	buffList.setNoDuplicateInsertPlan();
+	buffList.setAllowDuplicateInsertPlan();
 
 	addSerializableVariable("spiceActive", &spiceActive);
 	addSerializableVariable("buffList", &buffList);
@@ -102,7 +102,8 @@ void BuffList::addBuff(CreatureObject* creature, Buff* buff) {
 	uint32 buffcrc = buff->getBuffCRC();
 
 	//Remove the old buff if it exists. (Exists checked in removeBuff)
-	removeBuff(creature, buffcrc);
+	if (!buff->isAttributeBuff() && !buff->isStackable())
+		removeBuff(creature, buffcrc);
 
 	if (!buff->isPersistent())
 		ObjectManager::instance()->persistObject(buff, 1, "buffs");
@@ -141,14 +142,14 @@ void BuffList::removeBuff(CreatureObject* creature, Buff* buff) {
 		if (buff->isSpiceBuff())
 			spiceActive = false;
 
-		//Already null checked the buff.
-		buff->deactivate();
-
 		buff->clearBuffEvent();
 
 		removedBuffs.add(buff);
 
 		buffList.drop(buffcrc);
+
+		//Already null checked the buff.
+		buff->deactivate();
 	}
 }
 

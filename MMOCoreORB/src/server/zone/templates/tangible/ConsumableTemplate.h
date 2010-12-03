@@ -17,6 +17,8 @@ class ConsumableTemplate : public SharedTangibleObjectTemplate {
 
 	int effectType;
 
+	int stackable;
+
 	int fillingMin;
 	int fillingMax;
 	int flavorMin;
@@ -51,6 +53,8 @@ public:
 		nutrition = templateData->getIntField("nutrition");
 
 		effectType = templateData->getIntField("effectType");
+
+		stackable = templateData->getIntField("stackable");
 
 		fillingMin = templateData->getIntField("fillingMin");
 		fillingMax = templateData->getIntField("fillingMax");
@@ -99,6 +103,10 @@ public:
     inline int getEffectType() const {
 		return effectType;
 	}
+
+    inline int getStackable() const {
+    	return stackable;
+    }
 
     inline int getFilling() const {
 		return filling;
