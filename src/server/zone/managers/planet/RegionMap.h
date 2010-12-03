@@ -63,6 +63,27 @@ public:
 		return NULL;
 	}
 
+	Vector<ManagedReference<Region*> > getRegions(StringId* regionName) {
+		Vector<ManagedReference<Region*> > regionsToReturn;
+		String fullId;
+		regionName->getFullPath(fullId);
+
+		for (int i = 0; i < regions.size(); ++i) {
+			Region* region = regions.get(i);
+
+			StringId* objectName = region->getObjectName();
+			//UnicodeString custom = objectName->getCustomString();
+
+			String fullPath;
+			objectName->getFullPath(fullPath);
+
+			if (fullPath == fullId)
+				regionsToReturn.add(region);
+		}
+
+		return regionsToReturn;
+	}
+
 	bool containsRegion(const String& name) {
 		for (int i = 0; i < regions.size(); ++i) {
 			Region* region = regions.get(i);
