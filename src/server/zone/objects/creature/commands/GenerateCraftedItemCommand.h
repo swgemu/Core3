@@ -89,7 +89,7 @@ public:
 			ManagedReference<DraftSchematic* > draftSchematic =
 					dynamic_cast<DraftSchematic*>(creature->getZoneServer()->createObject(file.hashCode(), 0));
 
-			if(draftSchematic == NULL) {
+			if(draftSchematic == NULL || !draftSchematic->isValidDraftSchematic()) {
 				creature->sendSystemMessage("File entered not valid, please be sure to use the draft schematics server script path not client path");
 				return GENERALERROR;
 			}

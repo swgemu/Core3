@@ -66,7 +66,11 @@ class DraftSchematic extends IntangibleObject {
 	
 	private int useCount;
 	
-	public DraftSchematic() {	
+	public DraftSchematic() {
+		schematicTemplate = null;
+		useCount = 0;
+		schematicID = 0;
+		
 		Logger.setLoggingName("DraftSchematic");
 	}
 
@@ -137,6 +141,10 @@ class DraftSchematic extends IntangibleObject {
 	}
 	
 	public native int getDraftSlotCount();
+	
+	public boolean isValidDraftSchematic() {
+		return schematicTemplate != null;
+	}
 	
 	@local
 	public native DraftSlot getDraftSlot(int i);

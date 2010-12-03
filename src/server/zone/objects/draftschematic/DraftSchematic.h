@@ -106,6 +106,8 @@ public:
 
 	int getDraftSlotCount();
 
+	bool isValidDraftSchematic();
+
 	DraftSlot* getDraftSlot(int i);
 
 	int getResourceWeightCount();
@@ -215,6 +217,8 @@ public:
 
 	int getDraftSlotCount();
 
+	bool isValidDraftSchematic();
+
 	DraftSlot* getDraftSlot(int i);
 
 	int getResourceWeightCount();
@@ -311,6 +315,8 @@ public:
 	unsigned int getSchematicID();
 
 	int getDraftSlotCount();
+
+	bool isValidDraftSchematic();
 
 	int getResourceWeightCount();
 
