@@ -172,7 +172,7 @@ void ResourceManager::harvestResourceToPlayer(PlayerCreature* player, ResourceSp
 		_implementation->harvestResourceToPlayer(player, resourceSpawn, quantity);
 }
 
-unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player) {
+unsigned int ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -181,12 +181,12 @@ unsigned long long ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* 
 		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
-		return method.executeWithUnsignedLongReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
 		return _implementation->getAvailablePowerFromPlayer(player);
 }
 
-void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned long long power) {
+void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned int power) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -194,7 +194,7 @@ void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned lon
 
 		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
-		method.addUnsignedLongParameter(power);
+		method.addUnsignedIntParameter(power);
 
 		method.executeWithVoidReturn();
 	} else
@@ -421,10 +421,10 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		harvestResourceToPlayer((PlayerCreature*) inv->getObjectParameter(), (ResourceSpawn*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 15:
-		resp->insertLong(getAvailablePowerFromPlayer((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertInt(getAvailablePowerFromPlayer((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 16:
-		removePowerFromPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		removePowerFromPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 17:
 		createResourceSpawn((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__PlayerCreature_String_));
@@ -484,11 +484,11 @@ void ResourceManagerAdapter::harvestResourceToPlayer(PlayerCreature* player, Res
 	((ResourceManagerImplementation*) impl)->harvestResourceToPlayer(player, resourceSpawn, quantity);
 }
 
-unsigned long long ResourceManagerAdapter::getAvailablePowerFromPlayer(PlayerCreature* player) {
+unsigned int ResourceManagerAdapter::getAvailablePowerFromPlayer(PlayerCreature* player) {
 	return ((ResourceManagerImplementation*) impl)->getAvailablePowerFromPlayer(player);
 }
 
-void ResourceManagerAdapter::removePowerFromPlayer(PlayerCreature* player, unsigned long long power) {
+void ResourceManagerAdapter::removePowerFromPlayer(PlayerCreature* player, unsigned int power) {
 	((ResourceManagerImplementation*) impl)->removePowerFromPlayer(player, power);
 }
 
