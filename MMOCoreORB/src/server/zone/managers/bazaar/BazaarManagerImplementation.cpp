@@ -749,17 +749,25 @@ void BazaarManagerImplementation::getRegionBazaarData(PlayerCreature* player, Ba
 		return;
 	}
 
-	Region* regionObject = (Region*) area;
+	StringId* name = area->getObjectName();
+
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	Vector<ManagedReference<Region*> > regions = planetManager->getRegions(*name);
 
 	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
 
-	for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
-		BazaarTerminal* term = regionObject->getBazaar(i);
+	for (int i = 0; i < regions.size(); ++i) {
+		Region* regionObject = regions.get(i);
 
-		VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = term->getAuctions();
+		for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
+			BazaarTerminal* term = regionObject->getBazaar(i);
 
-		for (int j = 0; j < regionItems->size(); ++j) {
-			items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
+			VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = term->getAuctions();
+
+			for (int j = 0; j < regionItems->size(); ++j) {
+				items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
+			}
 		}
 	}
 

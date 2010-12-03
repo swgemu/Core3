@@ -158,6 +158,12 @@ class PlanetManager extends ManagedService implements Logger {
 		return regionMap.getRegion(name, x, y);
 	}*/
 	
+	@local
+	@dereferenced
+	public Vector<Region> getRegions(@dereferenced StringId regionName) {
+		return regionMap.getRegions(regionName);
+	}
+	
 	public StructureManager getStructureManager() {
 		return structureManager;
 	}

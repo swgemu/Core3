@@ -188,6 +188,8 @@ public:
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
+	Vector<ManagedReference<Region* > > getRegions(StringId& regionName);
+
 	StructureManager* getStructureManager();
 
 	TerrainManager* getTerrainManager();
@@ -322,6 +324,8 @@ public:
 	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
+
+	Vector<ManagedReference<Region* > > getRegions(StringId& regionName);
 
 	StructureManager* getStructureManager();
 
