@@ -51,8 +51,6 @@ public:
 
 	void initializeTransientMembers();
 
-	void notifyDissapear(QuadTreeEntry* obj);
-
 	bool isTerminal();
 
 	bool isGuildTerminal();
@@ -99,8 +97,6 @@ public:
 	TerminalImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
-
-	void notifyDissapear(QuadTreeEntry* obj);
 
 	bool isTerminal();
 
