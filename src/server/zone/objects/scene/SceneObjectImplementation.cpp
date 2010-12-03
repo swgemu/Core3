@@ -140,6 +140,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	setLogging(false);
 
 	setLoggingName("SceneObject");
+
+	outdoorChildObjects.setNoDuplicateInsertPlan();
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -252,6 +254,17 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 
 		if (destroyedObjects.put(object) != -1)
 			object->destroyObjectFromDatabase(true);
+	}
+
+	//Remove all outdoor child objects from database
+	while (outdoorChildObjects.size() > 0) {
+		ManagedReference<SceneObject*> outdoorChild = outdoorChildObjects.get(0);
+
+		if (outdoorChild == NULL)
+			continue;
+
+		outdoorChild->destroyObjectFromDatabase(true);
+		outdoorChildObjects.remove(0);
 	}
 }
 
@@ -930,6 +943,16 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 		}
 	}
 
+	//Insert all outdoor child objects to zone
+	for (int i = 0; i < outdoorChildObjects.size(); ++i) {
+		ManagedReference<SceneObject*> outdoorChild = outdoorChildObjects.get(i);
+
+		if (outdoorChild == NULL)
+			continue;
+
+		outdoorChild->insertToZone(zone);
+	}
+
 	zone->updateActiveAreas(_this);
 
 	teleport(positionX, positionZ, positionY, getParentID());
@@ -1023,6 +1046,16 @@ void SceneObjectImplementation::removeFromZone() {
 			area->enqueueExitEvent(_this);
 
 			activeAreas.remove(0);
+		}
+
+		//Remove all outdoor child objects from zone
+		for (int i = 0; i < outdoorChildObjects.size(); ++i) {
+			ManagedReference<SceneObject*> outdoorChild = outdoorChildObjects.get(i);
+
+			if (outdoorChild == NULL)
+				continue;
+
+			outdoorChild->removeFromZone();
 		}
 
 		//removeInRangeObjects();
@@ -1506,6 +1539,9 @@ void SceneObjectImplementation::createChildObjects() {
 
 			obj->initializePosition(x, z, y);
 			obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
+
+			//Add the object to the outdoorChildObjects vector
+			outdoorChildObjects.put(obj);
 		}
 
 		//TODO: Is there a better way of handling this?

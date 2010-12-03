@@ -60,10 +60,7 @@ class Terminal extends TangibleObject {
 	}
 	
 	public native void initializeTransientMembers();
-	
-	@local
-	public native void notifyDissapear(QuadTreeEntry obj);
-	
+
 	public boolean isTerminal() {
 		return true;
 	}
