@@ -46,6 +46,7 @@ which carries forward this exception.
 
 #include "Buff.h"
 #include "BuffDurationEvent.h"
+#include "BuffList.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
@@ -81,8 +82,10 @@ void BuffImplementation::setBuffEventNull() {
 }
 
 void BuffImplementation::sendDestroyTo(PlayerCreature* player) {
-	RemoveBuffMessage* rbm = new RemoveBuffMessage(player, buffCRC);
-	player->sendMessage(rbm);
+	if (!player->hasBuff(buffCRC)) {
+		RemoveBuffMessage* rbm = new RemoveBuffMessage(player, buffCRC);
+		player->sendMessage(rbm);
+	}
 }
 
 void BuffImplementation::activate(bool applyModifiers) {

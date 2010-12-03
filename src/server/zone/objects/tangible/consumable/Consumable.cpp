@@ -161,6 +161,19 @@ bool Consumable::isSpice() {
 		return _implementation->isSpice();
 }
 
+bool Consumable::isStackable() {
+	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isStackable();
+}
+
 DistributedObjectServant* Consumable::_getImplementation() {
 
 	_updated = true;
@@ -242,6 +255,7 @@ void ConsumableImplementation::_serializationHelperMethod() {
 	addSerializableVariable("filling", &filling);
 	addSerializableVariable("nutrition", &nutrition);
 	addSerializableVariable("effectType", &effectType);
+	addSerializableVariable("stackable", &stackable);
 	addSerializableVariable("fillingMin", &fillingMin);
 	addSerializableVariable("fillingMax", &fillingMax);
 	addSerializableVariable("flavorMin", &flavorMin);
@@ -259,85 +273,92 @@ void ConsumableImplementation::_serializationHelperMethod() {
 
 ConsumableImplementation::ConsumableImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/consumable/Consumable.idl(98):  		setLoggingName("PharmaceuticalObject");
+	// server/zone/objects/tangible/consumable/Consumable.idl(100):  		setLoggingName("PharmaceuticalObject");
 	setLoggingName("PharmaceuticalObject");
-	// server/zone/objects/tangible/consumable/Consumable.idl(100):  		consumableType = 0;
+	// server/zone/objects/tangible/consumable/Consumable.idl(102):  		consumableType = 0;
 	consumableType = 0;
-	// server/zone/objects/tangible/consumable/Consumable.idl(102):  		duration = 30;
+	// server/zone/objects/tangible/consumable/Consumable.idl(104):  		duration = 30;
 	duration = 30;
-	// server/zone/objects/tangible/consumable/Consumable.idl(103):  		filling = 0;
+	// server/zone/objects/tangible/consumable/Consumable.idl(105):  		filling = 0;
 	filling = 0;
-	// server/zone/objects/tangible/consumable/Consumable.idl(104):  		effectType = EFFECT_ATTRIBUTE;
+	// server/zone/objects/tangible/consumable/Consumable.idl(106):  		effectType = EFFECT_ATTRIBUTE;
 	effectType = EFFECT_ATTRIBUTE;
-	// server/zone/objects/tangible/consumable/Consumable.idl(106):  		fillingMin = 1;
+	// server/zone/objects/tangible/consumable/Consumable.idl(108):  		stackable = 0;
+	stackable = 0;
+	// server/zone/objects/tangible/consumable/Consumable.idl(110):  		fillingMin = 1;
 	fillingMin = 1;
-	// server/zone/objects/tangible/consumable/Consumable.idl(107):  		fillingMax = 1;
+	// server/zone/objects/tangible/consumable/Consumable.idl(111):  		fillingMax = 1;
 	fillingMax = 1;
-	// server/zone/objects/tangible/consumable/Consumable.idl(108):  		flavorMin = 1;
+	// server/zone/objects/tangible/consumable/Consumable.idl(112):  		flavorMin = 1;
 	flavorMin = 1;
-	// server/zone/objects/tangible/consumable/Consumable.idl(109):  		flavorMax = 1;
+	// server/zone/objects/tangible/consumable/Consumable.idl(113):  		flavorMax = 1;
 	flavorMax = 1;
-	// server/zone/objects/tangible/consumable/Consumable.idl(110):  		nutritionMin = 1;
+	// server/zone/objects/tangible/consumable/Consumable.idl(114):  		nutritionMin = 1;
 	nutritionMin = 1;
-	// server/zone/objects/tangible/consumable/Consumable.idl(111):  		nutritionMax = 1;
+	// server/zone/objects/tangible/consumable/Consumable.idl(115):  		nutritionMax = 1;
 	nutritionMax = 1;
-	// server/zone/objects/tangible/consumable/Consumable.idl(112):  		quantityMin = 1;
+	// server/zone/objects/tangible/consumable/Consumable.idl(116):  		quantityMin = 1;
 	quantityMin = 1;
-	// server/zone/objects/tangible/consumable/Consumable.idl(113):  		quantityMax = 1;
+	// server/zone/objects/tangible/consumable/Consumable.idl(117):  		quantityMax = 1;
 	quantityMax = 1;
-	// server/zone/objects/tangible/consumable/Consumable.idl(115):  		modifiers.setNoDuplicateInsertPlan();
+	// server/zone/objects/tangible/consumable/Consumable.idl(119):  		modifiers.setNoDuplicateInsertPlan();
 	(&modifiers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/tangible/consumable/Consumable.idl(116):  		modifiers.setNullValue(0);
+	// server/zone/objects/tangible/consumable/Consumable.idl(120):  		modifiers.setNullValue(0);
 	(&modifiers)->setNullValue(0);
-	// server/zone/objects/tangible/consumable/Consumable.idl(118):  		buffCRC = 0;
+	// server/zone/objects/tangible/consumable/Consumable.idl(122):  		buffCRC = 0;
 	buffCRC = 0;
 }
 
 void ConsumableImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/consumable/Consumable.idl(133):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	// server/zone/objects/tangible/consumable/Consumable.idl(137):  		CraftingValues craftingValues = schematic.getCraftingValues();
 	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/consumable/Consumable.idl(135):  		int cond = craftingValues.getCurrentValue("hitpoints");
+	// server/zone/objects/tangible/consumable/Consumable.idl(139):  		int cond = craftingValues.getCurrentValue("hitpoints");
 	int cond = craftingValues->getCurrentValue("hitpoints");
-	// server/zone/objects/tangible/consumable/Consumable.idl(137):  		super.conditionDamage = cond;
+	// server/zone/objects/tangible/consumable/Consumable.idl(141):  		super.conditionDamage = cond;
 	TangibleObjectImplementation::conditionDamage = cond;
-	// server/zone/objects/tangible/consumable/Consumable.idl(138):  		super.maxCondition = cond;
+	// server/zone/objects/tangible/consumable/Consumable.idl(142):  		super.maxCondition = cond;
 	TangibleObjectImplementation::maxCondition = cond;
-	// server/zone/objects/tangible/consumable/Consumable.idl(140):  	}
+	// server/zone/objects/tangible/consumable/Consumable.idl(144):  	}
 	if (!isSpice()){
-	// server/zone/objects/tangible/consumable/Consumable.idl(141):  			filling = (fillingMax - fillingMin) * craftingValues.getCurrentPercentage("filling") + fillingMin;
+	// server/zone/objects/tangible/consumable/Consumable.idl(145):  			filling = (fillingMax - fillingMin) * craftingValues.getCurrentPercentage("filling") + fillingMin;
 	filling = (fillingMax - fillingMin) * craftingValues->getCurrentPercentage("filling") + fillingMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl(142):  			super.useCount = (quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin;
+	// server/zone/objects/tangible/consumable/Consumable.idl(146):  			super.useCount = (quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin;
 	TangibleObjectImplementation::useCount = (quantityMax - quantityMin) * craftingValues->getCurrentPercentage("quantity") + quantityMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl(143):  			duration = (flavorMax - flavorMin) * craftingValues.getCurrentPercentage("flavor") + flavorMin;
+	// server/zone/objects/tangible/consumable/Consumable.idl(147):  			duration = (flavorMax - flavorMin) * craftingValues.getCurrentPercentage("flavor") + flavorMin;
 	duration = (flavorMax - flavorMin) * craftingValues->getCurrentPercentage("flavor") + flavorMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl(144):  			nutrition = (nutritionMax - nutritionMin) * craftingValues.getCurrentPercentage("nutrition") + nutritionMin;
+	// server/zone/objects/tangible/consumable/Consumable.idl(148):  			nutrition = (nutritionMax - nutritionMin) * craftingValues.getCurrentPercentage("nutrition") + nutritionMin;
 	nutrition = (nutritionMax - nutritionMin) * craftingValues->getCurrentPercentage("nutrition") + nutritionMin;
 }
 }
 
 bool ConsumableImplementation::isSpiceEffect() {
-	// server/zone/objects/tangible/consumable/Consumable.idl(170):  		return (effectType == EFFECT_SPICE);
+	// server/zone/objects/tangible/consumable/Consumable.idl(174):  		return (effectType == EFFECT_SPICE);
 	return (effectType == EFFECT_SPICE);
 }
 
 bool ConsumableImplementation::isAttributeEffect() {
-	// server/zone/objects/tangible/consumable/Consumable.idl(174):  		return (effectType == EFFECT_ATTRIBUTE);
+	// server/zone/objects/tangible/consumable/Consumable.idl(178):  		return (effectType == EFFECT_ATTRIBUTE);
 	return (effectType == EFFECT_ATTRIBUTE);
 }
 
 bool ConsumableImplementation::isDrink() {
-	// server/zone/objects/tangible/consumable/Consumable.idl(178):  		return (consumableType == DRINK);
+	// server/zone/objects/tangible/consumable/Consumable.idl(182):  		return (consumableType == DRINK);
 	return (consumableType == DRINK);
 }
 
 bool ConsumableImplementation::isFood() {
-	// server/zone/objects/tangible/consumable/Consumable.idl(182):  		return (consumableType == FOOD);
+	// server/zone/objects/tangible/consumable/Consumable.idl(186):  		return (consumableType == FOOD);
 	return (consumableType == FOOD);
 }
 
 bool ConsumableImplementation::isSpice() {
-	// server/zone/objects/tangible/consumable/Consumable.idl(186):  		return (isSpiceEffect() && isFood());
+	// server/zone/objects/tangible/consumable/Consumable.idl(190):  		return (isSpiceEffect() && isFood());
 	return (isSpiceEffect() && isFood());
+}
+
+bool ConsumableImplementation::isStackable() {
+	// server/zone/objects/tangible/consumable/Consumable.idl(194):  		return (stackable == 1);
+	return (stackable == 1);
 }
 
 /*
@@ -372,6 +393,9 @@ Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 12:
 		resp->insertBoolean(isSpice());
 		break;
+	case 13:
+		resp->insertBoolean(isStackable());
+		break;
 	default:
 		return NULL;
 	}
@@ -405,6 +429,10 @@ bool ConsumableAdapter::isFood() {
 
 bool ConsumableAdapter::isSpice() {
 	return ((ConsumableImplementation*) impl)->isSpice();
+}
+
+bool ConsumableAdapter::isStackable() {
+	return ((ConsumableImplementation*) impl)->isStackable();
 }
 
 /*
