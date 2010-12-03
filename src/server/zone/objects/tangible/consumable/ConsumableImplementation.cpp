@@ -30,6 +30,8 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 
 	effectType = consumable->getEffectType();
 
+	stackable = consumable->getStackable();
+
 	fillingMin = consumable->getFillingMin();
 	fillingMax = consumable->getFillingMax();
 	flavorMin = consumable->getFlavorMin();
@@ -73,7 +75,7 @@ int ConsumableImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 		return 0;
 	}
 
-	if (player->hasBuff(buffCRC)) {
+	if (player->hasBuff(buffCRC)  && !isStackable()) {
 		player->sendSystemMessage("combat_effects", "already_affected"); //You are already under the influence of that food. Eating more won't enhance the effect.
 		return 0;
 	}
@@ -212,11 +214,15 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 
 		uint8 hamAttribute = CreatureAttribute::getAttribute(attribute);
 
+		if (isStackable())
+			buff->setStackable(true);
+
 		if (!isSpice())
 			value = nutrition;
 
 		if (!skillModifiers)
 			buff->setAttributeModifier(hamAttribute, (int)value);
+
 		else
 			buff->setSkillModifier(attribute, (int)value);
 	}

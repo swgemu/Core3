@@ -367,13 +367,27 @@ void Buff::setFillAttirbutesOnBuff(bool val) {
 		_implementation->setFillAttirbutesOnBuff(val);
 }
 
-String Buff::getBuffName() {
+void Buff::setStackable(bool val) {
 	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 31);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setStackable(val);
+}
+
+String Buff::getBuffName() {
+	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
 
 		method.executeWithAsciiReturn(_return_getBuffName);
 		return _return_getBuffName;
@@ -387,7 +401,7 @@ int Buff::getBuffCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -400,7 +414,7 @@ float Buff::getBuffDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -413,7 +427,7 @@ int Buff::getBuffType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -426,7 +440,7 @@ int Buff::getAttributeModifierValue(byte attribute) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addByteParameter(attribute);
 
 		return method.executeWithSignedIntReturn();
@@ -440,7 +454,7 @@ int Buff::getSkillModifierValue(const String& modname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addAsciiParameter(modname);
 
 		return method.executeWithSignedIntReturn();
@@ -454,7 +468,7 @@ bool Buff::isActive() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -467,11 +481,37 @@ bool Buff::isSpiceBuff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isSpiceBuff();
+}
+
+bool Buff::isAttributeBuff() {
+	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAttributeBuff();
+}
+
+bool Buff::isStackable() {
+	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 41);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isStackable();
 }
 
 void Buff::setStartMessage(StringIdChatParameter& start) {
@@ -576,6 +616,7 @@ void BuffImplementation::_serializationHelperMethod() {
 	addSerializableVariable("buffDuration", &buffDuration);
 	addSerializableVariable("buffCRC", &buffCRC);
 	addSerializableVariable("buffType", &buffType);
+	addSerializableVariable("stackable", &stackable);
 	addSerializableVariable("speedMultiplierMod", &speedMultiplierMod);
 	addSerializableVariable("accelerationMultiplierMod", &accelerationMultiplierMod);
 	addSerializableVariable("fillAttirbutesOnBuff", &fillAttirbutesOnBuff);
@@ -586,119 +627,136 @@ void BuffImplementation::_serializationHelperMethod() {
 
 BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) {
 	_initializeImplementation();
-	// server/zone/objects/creature/buffs/Buff.idl(89):  		creature = creo;
+	// server/zone/objects/creature/buffs/Buff.idl(90):  		creature = creo;
 	creature = creo;
-	// server/zone/objects/creature/buffs/Buff.idl(90):  		buffCRC = buffcrc;
+	// server/zone/objects/creature/buffs/Buff.idl(91):  		buffCRC = buffcrc;
 	buffCRC = buffcrc;
-	// server/zone/objects/creature/buffs/Buff.idl(91):  		buffDuration = duration;
+	// server/zone/objects/creature/buffs/Buff.idl(92):  		buffDuration = duration;
 	buffDuration = duration;
-	// server/zone/objects/creature/buffs/Buff.idl(92):  		buffType = bufftype;
+	// server/zone/objects/creature/buffs/Buff.idl(93):  		buffType = bufftype;
 	buffType = bufftype;
-	// server/zone/objects/creature/buffs/Buff.idl(93):  		speedMultiplierMod = -1.f;
+	// server/zone/objects/creature/buffs/Buff.idl(94):  		stackable = false;
+	stackable = false;
+	// server/zone/objects/creature/buffs/Buff.idl(95):  		speedMultiplierMod = -1.f;
 	speedMultiplierMod = -1.f;
-	// server/zone/objects/creature/buffs/Buff.idl(94):  		accelerationMultiplierMod = -1.f;
+	// server/zone/objects/creature/buffs/Buff.idl(96):  		accelerationMultiplierMod = -1.f;
 	accelerationMultiplierMod = -1.f;
-	// server/zone/objects/creature/buffs/Buff.idl(95):  		fillAttirbutesOnBuff = false;
+	// server/zone/objects/creature/buffs/Buff.idl(97):  		fillAttirbutesOnBuff = false;
 	fillAttirbutesOnBuff = false;
-	// server/zone/objects/creature/buffs/Buff.idl(97):  		Logger.setLoggingName("Buff");
+	// server/zone/objects/creature/buffs/Buff.idl(99):  		Logger.setLoggingName("Buff");
 	Logger::setLoggingName("Buff");
-	// server/zone/objects/creature/buffs/Buff.idl(99):  		init();
+	// server/zone/objects/creature/buffs/Buff.idl(101):  		init();
 	init();
 }
 
 void BuffImplementation::init() {
-	// server/zone/objects/creature/buffs/Buff.idl(105):  		attributeModifiers.setNoDuplicateInsertPlan();
+	// server/zone/objects/creature/buffs/Buff.idl(107):  		attributeModifiers.setNoDuplicateInsertPlan();
 	(&attributeModifiers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/creature/buffs/Buff.idl(106):  		attributeModifiers.setNullValue(0);
+	// server/zone/objects/creature/buffs/Buff.idl(108):  		attributeModifiers.setNullValue(0);
 	(&attributeModifiers)->setNullValue(0);
-	// server/zone/objects/creature/buffs/Buff.idl(107):  		skillModifiers.setNoDuplicateInsertPlan();
+	// server/zone/objects/creature/buffs/Buff.idl(109):  		skillModifiers.setNoDuplicateInsertPlan();
 	(&skillModifiers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/creature/buffs/Buff.idl(108):  		skillModifiers.setNullValue(0);
+	// server/zone/objects/creature/buffs/Buff.idl(110):  		skillModifiers.setNullValue(0);
 	(&skillModifiers)->setNullValue(0);
 }
 
 void BuffImplementation::activate() {
-	// server/zone/objects/creature/buffs/Buff.idl(118):  		activate(true);
+	// server/zone/objects/creature/buffs/Buff.idl(120):  		activate(true);
 	activate(true);
 }
 
 void BuffImplementation::deactivate() {
-	// server/zone/objects/creature/buffs/Buff.idl(122):  		deactivate(true);
+	// server/zone/objects/creature/buffs/Buff.idl(124):  		deactivate(true);
 	deactivate(true);
 }
 
 void BuffImplementation::setAttributeModifier(byte attribute, int value) {
-	// server/zone/objects/creature/buffs/Buff.idl(146):  
-	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(147):  			attributeModifiers.get(attribute) = value;
+	// server/zone/objects/creature/buffs/Buff.idl(148):  
+	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(149):  			attributeModifiers.get(attribute) = value;
 	(&attributeModifiers)->get(attribute) = value;
 
-	else 	// server/zone/objects/creature/buffs/Buff.idl(149):  			attributeModifiers.put(attribute, value);
+	else 	// server/zone/objects/creature/buffs/Buff.idl(151):  			attributeModifiers.put(attribute, value);
 	(&attributeModifiers)->put(attribute, value);
 }
 
 void BuffImplementation::setSkillModifier(const String& modname, int value) {
-	// server/zone/objects/creature/buffs/Buff.idl(153):  
-	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(154):  			skillModifiers.get(modname) = value;
+	// server/zone/objects/creature/buffs/Buff.idl(155):  
+	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(156):  			skillModifiers.get(modname) = value;
 	(&skillModifiers)->get(modname) = value;
 
-	else 	// server/zone/objects/creature/buffs/Buff.idl(156):  			skillModifiers.put(modname, value);
+	else 	// server/zone/objects/creature/buffs/Buff.idl(158):  			skillModifiers.put(modname, value);
 	(&skillModifiers)->put(modname, value);
 }
 
 void BuffImplementation::setSpeedMultiplierMod(float multiplier) {
-	// server/zone/objects/creature/buffs/Buff.idl(160):  		speedMultiplierMod = multiplier;
+	// server/zone/objects/creature/buffs/Buff.idl(162):  		speedMultiplierMod = multiplier;
 	speedMultiplierMod = multiplier;
 }
 
 void BuffImplementation::setAccelerationMultiplierMod(float multiplier) {
-	// server/zone/objects/creature/buffs/Buff.idl(164):  		accelerationMultiplierMod = multiplier;
+	// server/zone/objects/creature/buffs/Buff.idl(166):  		accelerationMultiplierMod = multiplier;
 	accelerationMultiplierMod = multiplier;
 }
 
 void BuffImplementation::setFillAttirbutesOnBuff(bool val) {
-	// server/zone/objects/creature/buffs/Buff.idl(168):  		fillAttirbutesOnBuff = val;
+	// server/zone/objects/creature/buffs/Buff.idl(170):  		fillAttirbutesOnBuff = val;
 	fillAttirbutesOnBuff = val;
 }
 
+void BuffImplementation::setStackable(bool val) {
+	// server/zone/objects/creature/buffs/Buff.idl(174):  		stackable = val;
+	stackable = val;
+}
+
 String BuffImplementation::getBuffName() {
-	// server/zone/objects/creature/buffs/Buff.idl(173):  		return buffName;
+	// server/zone/objects/creature/buffs/Buff.idl(179):  		return buffName;
 	return buffName;
 }
 
 int BuffImplementation::getBuffCRC() {
-	// server/zone/objects/creature/buffs/Buff.idl(177):  		return buffCRC;
+	// server/zone/objects/creature/buffs/Buff.idl(183):  		return buffCRC;
 	return buffCRC;
 }
 
 float BuffImplementation::getBuffDuration() {
-	// server/zone/objects/creature/buffs/Buff.idl(181):  		return buffDuration;
+	// server/zone/objects/creature/buffs/Buff.idl(187):  		return buffDuration;
 	return buffDuration;
 }
 
 int BuffImplementation::getBuffType() {
-	// server/zone/objects/creature/buffs/Buff.idl(185):  		return buffType;
+	// server/zone/objects/creature/buffs/Buff.idl(191):  		return buffType;
 	return buffType;
 }
 
 int BuffImplementation::getAttributeModifierValue(byte attribute) {
-	// server/zone/objects/creature/buffs/Buff.idl(189):  		return 
-	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(190):  			return attributeModifiers.get(attribute);
+	// server/zone/objects/creature/buffs/Buff.idl(195):  		return 
+	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl(196):  			return attributeModifiers.get(attribute);
 	return (&attributeModifiers)->get(attribute);
-	// server/zone/objects/creature/buffs/Buff.idl(192):  0;
+	// server/zone/objects/creature/buffs/Buff.idl(198):  0;
 	return 0;
 }
 
 int BuffImplementation::getSkillModifierValue(const String& modname) {
-	// server/zone/objects/creature/buffs/Buff.idl(196):  		return 
-	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(197):  			return skillModifiers.get(modname);
+	// server/zone/objects/creature/buffs/Buff.idl(202):  		return 
+	if ((&skillModifiers)->contains(modname))	// server/zone/objects/creature/buffs/Buff.idl(203):  			return skillModifiers.get(modname);
 	return (&skillModifiers)->get(modname);
-	// server/zone/objects/creature/buffs/Buff.idl(199):  0;
+	// server/zone/objects/creature/buffs/Buff.idl(205):  0;
 	return 0;
 }
 
 bool BuffImplementation::isSpiceBuff() {
-	// server/zone/objects/creature/buffs/Buff.idl(205):  		return (buffType == BuffType.SPICE);
+	// server/zone/objects/creature/buffs/Buff.idl(211):  		return (buffType == BuffType.SPICE);
 	return (buffType == BuffType::SPICE);
+}
+
+bool BuffImplementation::isAttributeBuff() {
+	// server/zone/objects/creature/buffs/Buff.idl(215):  		return (attributeModifiers.size() != 0);
+	return ((&attributeModifiers)->size() != 0);
+}
+
+bool BuffImplementation::isStackable() {
+	// server/zone/objects/creature/buffs/Buff.idl(219):  		return stackable;
+	return stackable;
 }
 
 /*
@@ -788,28 +846,37 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setFillAttirbutesOnBuff(inv->getBooleanParameter());
 		break;
 	case 31:
-		resp->insertAscii(getBuffName());
+		setStackable(inv->getBooleanParameter());
 		break;
 	case 32:
-		resp->insertSignedInt(getBuffCRC());
+		resp->insertAscii(getBuffName());
 		break;
 	case 33:
-		resp->insertFloat(getBuffDuration());
+		resp->insertSignedInt(getBuffCRC());
 		break;
 	case 34:
-		resp->insertSignedInt(getBuffType());
+		resp->insertFloat(getBuffDuration());
 		break;
 	case 35:
-		resp->insertSignedInt(getAttributeModifierValue(inv->getByteParameter()));
+		resp->insertSignedInt(getBuffType());
 		break;
 	case 36:
-		resp->insertSignedInt(getSkillModifierValue(inv->getAsciiParameter(_param0_getSkillModifierValue__String_)));
+		resp->insertSignedInt(getAttributeModifierValue(inv->getByteParameter()));
 		break;
 	case 37:
-		resp->insertBoolean(isActive());
+		resp->insertSignedInt(getSkillModifierValue(inv->getAsciiParameter(_param0_getSkillModifierValue__String_)));
 		break;
 	case 38:
+		resp->insertBoolean(isActive());
+		break;
+	case 39:
 		resp->insertBoolean(isSpiceBuff());
+		break;
+	case 40:
+		resp->insertBoolean(isAttributeBuff());
+		break;
+	case 41:
+		resp->insertBoolean(isStackable());
 		break;
 	default:
 		return NULL;
@@ -918,6 +985,10 @@ void BuffAdapter::setFillAttirbutesOnBuff(bool val) {
 	((BuffImplementation*) impl)->setFillAttirbutesOnBuff(val);
 }
 
+void BuffAdapter::setStackable(bool val) {
+	((BuffImplementation*) impl)->setStackable(val);
+}
+
 String BuffAdapter::getBuffName() {
 	return ((BuffImplementation*) impl)->getBuffName();
 }
@@ -948,6 +1019,14 @@ bool BuffAdapter::isActive() {
 
 bool BuffAdapter::isSpiceBuff() {
 	return ((BuffImplementation*) impl)->isSpiceBuff();
+}
+
+bool BuffAdapter::isAttributeBuff() {
+	return ((BuffImplementation*) impl)->isAttributeBuff();
+}
+
+bool BuffAdapter::isStackable() {
+	return ((BuffImplementation*) impl)->isStackable();
 }
 
 /*
