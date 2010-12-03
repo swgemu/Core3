@@ -248,6 +248,15 @@ void PlanetManager::sendPlanetTravelPointListResponse(PlayerCreature* player) {
 		_implementation->sendPlanetTravelPointListResponse(player);
 }
 
+Vector<ManagedReference<Region* > > PlanetManager::getRegions(StringId& regionName) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRegions(regionName);
+}
+
 StructureManager* PlanetManager::getStructureManager() {
 	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -616,103 +625,108 @@ void PlanetManagerImplementation::dropShuttle(const String& city) {
 	(&shuttleMap)->remove(city);
 }
 
+Vector<ManagedReference<Region* > > PlanetManagerImplementation::getRegions(StringId& regionName) {
+	// server/zone/managers/planet/PlanetManager.idl(164):  		return regionMap.getRegions(regionName);
+	return (&regionMap)->getRegions((&regionName));
+}
+
 StructureManager* PlanetManagerImplementation::getStructureManager() {
-	// server/zone/managers/planet/PlanetManager.idl(162):  		return structureManager;
+	// server/zone/managers/planet/PlanetManager.idl(168):  		return structureManager;
 	return structureManager;
 }
 
 TerrainManager* PlanetManagerImplementation::getTerrainManager() {
-	// server/zone/managers/planet/PlanetManager.idl(167):  		return terrainManager;
+	// server/zone/managers/planet/PlanetManager.idl(173):  		return terrainManager;
 	return terrainManager;
 }
 
 Region* PlanetManagerImplementation::getRegion(float x, float y) {
-	// server/zone/managers/planet/PlanetManager.idl(171):  		return regionMap.getRegion(x, y);
+	// server/zone/managers/planet/PlanetManager.idl(177):  		return regionMap.getRegion(x, y);
 	return (&regionMap)->getRegion(x, y);
 }
 
 int PlanetManagerImplementation::getRegionCount() {
-	// server/zone/managers/planet/PlanetManager.idl(175):  		return regionMap.size();
+	// server/zone/managers/planet/PlanetManager.idl(181):  		return regionMap.size();
 	return (&regionMap)->size();
 }
 
 int PlanetManagerImplementation::getNumberOfCities() {
-	// server/zone/managers/planet/PlanetManager.idl(179):  		return numberOfCities;
+	// server/zone/managers/planet/PlanetManager.idl(185):  		return numberOfCities;
 	return numberOfCities;
 }
 
 void PlanetManagerImplementation::increaseNumberOfCities() {
-	// server/zone/managers/planet/PlanetManager.idl(183):  		numberOfCities = numberOfCities + 1;
+	// server/zone/managers/planet/PlanetManager.idl(189):  		numberOfCities = numberOfCities + 1;
 	numberOfCities = numberOfCities + 1;
 }
 
 Region* PlanetManagerImplementation::getRegion(int index) {
-	// server/zone/managers/planet/PlanetManager.idl(187):  		return regionMap.getRegion(index);
+	// server/zone/managers/planet/PlanetManager.idl(193):  		return regionMap.getRegion(index);
 	return (&regionMap)->getRegion(index);
 }
 
 void PlanetManagerImplementation::addRegion(Region* region) {
-	// server/zone/managers/planet/PlanetManager.idl(191):  		regionMap.addRegion(region);
+	// server/zone/managers/planet/PlanetManager.idl(197):  		regionMap.addRegion(region);
 	(&regionMap)->addRegion(region);
 }
 
 void PlanetManagerImplementation::dropRegion(Region* region) {
-	// server/zone/managers/planet/PlanetManager.idl(195):  		regionMap.dropRegion(region);
+	// server/zone/managers/planet/PlanetManager.idl(201):  		regionMap.dropRegion(region);
 	(&regionMap)->dropRegion(region);
 }
 
 bool PlanetManagerImplementation::hasRegion(const String& name) {
-	// server/zone/managers/planet/PlanetManager.idl(199):  		return regionMap.containsRegion(name);
+	// server/zone/managers/planet/PlanetManager.idl(205):  		return regionMap.containsRegion(name);
 	return (&regionMap)->containsRegion(name);
 }
 
 void PlanetManagerImplementation::addPerformanceLocation(SceneObject* obj) {
-	// server/zone/managers/planet/PlanetManager.idl(203):  		performanceLocations.add(obj);
+	// server/zone/managers/planet/PlanetManager.idl(209):  		performanceLocations.add(obj);
 	(&performanceLocations)->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getPerformanceLocations() {
-	// server/zone/managers/planet/PlanetManager.idl(208):  		return performanceLocations;
+	// server/zone/managers/planet/PlanetManager.idl(214):  		return performanceLocations;
 	return (&performanceLocations);
 }
 
 void PlanetManagerImplementation::addMissionNpc(SceneObject* npc) {
-	// server/zone/managers/planet/PlanetManager.idl(212):  		missionNpcs.add(npc);
+	// server/zone/managers/planet/PlanetManager.idl(218):  		missionNpcs.add(npc);
 	(&missionNpcs)->add(npc);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getMissionNpcs() {
-	// server/zone/managers/planet/PlanetManager.idl(217):  		return missionNpcs;
+	// server/zone/managers/planet/PlanetManager.idl(223):  		return missionNpcs;
 	return (&missionNpcs);
 }
 
 void PlanetManagerImplementation::addHuntingTargetTemplate(const String& temp1, const String& temp2, int level) {
-	// server/zone/managers/planet/PlanetManager.idl(221):  		huntingTargets.addTarget(temp1, temp2, level);
+	// server/zone/managers/planet/PlanetManager.idl(227):  		huntingTargets.addTarget(temp1, temp2, level);
 	(&huntingTargets)->addTarget(temp1, temp2, level);
 }
 
 HuntingTargetEntry* PlanetManagerImplementation::getHuntingTargetTemplate(int level) {
-	// server/zone/managers/planet/PlanetManager.idl(226):  		return huntingTargets.getRandomTarget(level);
+	// server/zone/managers/planet/PlanetManager.idl(232):  		return huntingTargets.getRandomTarget(level);
 	return (&huntingTargets)->getRandomTarget(level);
 }
 
 void PlanetManagerImplementation::addReconLoc(SceneObject* obj) {
-	// server/zone/managers/planet/PlanetManager.idl(230):  		reconLocs.add(obj);
+	// server/zone/managers/planet/PlanetManager.idl(236):  		reconLocs.add(obj);
 	(&reconLocs)->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getReconLocs() {
-	// server/zone/managers/planet/PlanetManager.idl(235):  		return reconLocs;
+	// server/zone/managers/planet/PlanetManager.idl(241):  		return reconLocs;
 	return (&reconLocs);
 }
 
 void PlanetManagerImplementation::addInformant(SceneObject* obj) {
-	// server/zone/managers/planet/PlanetManager.idl(239):  		informants.add(obj);
+	// server/zone/managers/planet/PlanetManager.idl(245):  		informants.add(obj);
 	(&informants)->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getInformants() {
-	// server/zone/managers/planet/PlanetManager.idl(244):  		return informants;
+	// server/zone/managers/planet/PlanetManager.idl(250):  		return informants;
 	return (&informants);
 }
 
