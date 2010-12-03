@@ -102,7 +102,7 @@ void BuffList::addBuff(CreatureObject* creature, Buff* buff) {
 	uint32 buffcrc = buff->getBuffCRC();
 
 	//Remove the old buff if it exists. (Exists checked in removeBuff)
-	if (!buff->isAttributeBuff() && !buff->isStackable())
+	if (!buff->isAttributeBuff() && buff->getBuffType() == BuffType::FOOD)
 		removeBuff(creature, buffcrc);
 
 	if (!buff->isPersistent())

@@ -185,8 +185,6 @@ public:
 
 	bool isSpice();
 
-	bool isStackable();
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -222,8 +220,6 @@ protected:
 	int nutrition;
 
 	int effectType;
-
-	int stackable;
 
 	int fillingMin;
 
@@ -294,8 +290,6 @@ public:
 
 	bool isSpice();
 
-	bool isStackable();
-
 	Consumable* _this;
 
 	operator const Consumable*();
@@ -348,8 +342,6 @@ public:
 	bool isFood();
 
 	bool isSpice();
-
-	bool isStackable();
 
 };
 

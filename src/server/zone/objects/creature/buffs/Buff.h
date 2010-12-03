@@ -129,8 +129,6 @@ public:
 
 	void setFillAttirbutesOnBuff(bool val);
 
-	void setStackable(bool val);
-
 	String getBuffName();
 
 	int getBuffCRC();
@@ -148,8 +146,6 @@ public:
 	bool isSpiceBuff();
 
 	bool isAttributeBuff();
-
-	bool isStackable();
 
 	void setStartMessage(StringIdChatParameter& start);
 
@@ -202,8 +198,6 @@ protected:
 	unsigned int buffCRC;
 
 	int buffType;
-
-	bool stackable;
 
 	float speedMultiplierMod;
 
@@ -272,8 +266,6 @@ public:
 
 	void setFillAttirbutesOnBuff(bool val);
 
-	void setStackable(bool val);
-
 	String getBuffName();
 
 	int getBuffCRC();
@@ -291,8 +283,6 @@ public:
 	bool isSpiceBuff();
 
 	bool isAttributeBuff();
-
-	bool isStackable();
 
 	void setStartMessage(StringIdChatParameter& start);
 
@@ -387,8 +377,6 @@ public:
 
 	void setFillAttirbutesOnBuff(bool val);
 
-	void setStackable(bool val);
-
 	String getBuffName();
 
 	int getBuffCRC();
@@ -406,8 +394,6 @@ public:
 	bool isSpiceBuff();
 
 	bool isAttributeBuff();
-
-	bool isStackable();
 
 protected:
 	String _param0_parseAttributeModifierString__String_;
