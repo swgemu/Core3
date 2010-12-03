@@ -91,6 +91,9 @@ public:
 			return GENERALERROR;
 		}
 
+		if (cityHall->isMayor(targetPlayer) || cityHall->isMilitiaMember(targetPlayer))
+			return GENERALERROR; //Cannot revoke the rights of the mayor or a militia member.
+
 		Locker _locker(cityHall);
 
 		//Target already has zoning rights

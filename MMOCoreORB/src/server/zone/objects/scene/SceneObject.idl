@@ -98,6 +98,9 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 
 	@dereferenced
 	protected VectorMap<unsigned long, SceneObject> containerObjects;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> outdoorChildObjects;
 
 	protected unsigned int serverObjectCRC;
 	protected unsigned int clientObjectCRC;

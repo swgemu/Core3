@@ -38,15 +38,6 @@ void Terminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void Terminal::notifyDissapear(QuadTreeEntry* obj) {
-	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->notifyDissapear(obj);
-}
-
 bool Terminal::isTerminal() {
 	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -202,27 +193,27 @@ TerminalImplementation::TerminalImplementation() {
 }
 
 bool TerminalImplementation::isTerminal() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(68):  		return true;
+	// server/zone/objects/tangible/terminal/Terminal.idl(65):  		return true;
 	return true;
 }
 
 bool TerminalImplementation::isGuildTerminal() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(72):  		return false;
+	// server/zone/objects/tangible/terminal/Terminal.idl(69):  		return false;
 	return false;
 }
 
 void TerminalImplementation::setControlledObject(SceneObject* obj) {
-	// server/zone/objects/tangible/terminal/Terminal.idl(76):  		controlledObject = obj;
+	// server/zone/objects/tangible/terminal/Terminal.idl(73):  		controlledObject = obj;
 	controlledObject = obj;
 }
 
 SceneObject* TerminalImplementation::getControlledObject() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(80):  		return controlledObject;
+	// server/zone/objects/tangible/terminal/Terminal.idl(77):  		return controlledObject;
 	return controlledObject;
 }
 
 bool TerminalImplementation::isElevatorTerminal() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(84):  		return false;
+	// server/zone/objects/tangible/terminal/Terminal.idl(81):  		return false;
 	return false;
 }
 

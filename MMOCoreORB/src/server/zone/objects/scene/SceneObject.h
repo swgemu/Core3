@@ -1102,6 +1102,8 @@ protected:
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
 
+	SortedVector<ManagedReference<SceneObject* > > outdoorChildObjects;
+
 	unsigned int serverObjectCRC;
 
 	unsigned int clientObjectCRC;
