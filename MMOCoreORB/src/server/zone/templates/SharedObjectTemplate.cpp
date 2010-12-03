@@ -6,6 +6,7 @@
  */
 
 #include "SharedObjectTemplate.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	objectName = templateData->getStringField("objectName");
@@ -36,6 +37,10 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 	appearanceFilename = templateData->getStringField("appearanceFilename");
 	portalLayoutFilename = templateData->getStringField("portalLayoutFilename");
+
+	if (portalLayoutFilename.length() > 1) {
+		portalLayout = TemplateManager::instance()->getPortalLayout(portalLayoutFilename);
+	}
 
 	totalCellNumber = templateData->getIntField("totalCellNumber");
 

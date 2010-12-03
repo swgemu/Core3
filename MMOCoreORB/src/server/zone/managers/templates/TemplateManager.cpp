@@ -7,6 +7,7 @@
 
 #include "TemplateManager.h"
 #include "TemplateCRCMap.h"
+#include "PortalLayoutMap.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/intangible/SharedConstructionContractObjectTemplate.h"
@@ -68,6 +69,9 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
 
+#include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/appearance/FloorMesh.h"
+
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
 TemplateManager::TemplateManager() {
@@ -83,16 +87,17 @@ TemplateManager::TemplateManager() {
 	templateCRCMap = new TemplateCRCMap();
 	clientTemplateCRCMap = new ClientTemplateCRCMap();
 
+	portalLayoutMap = new PortalLayoutMap();
+	portalLayoutMap->setNullValue(NULL);
+
+	floorMeshMap = new FloorMeshMap();
+	floorMeshMap->setNullValue(NULL);
+
 	registerFunctions();
 	registerGlobals();
 }
 
 TemplateManager::~TemplateManager() {
-	/*HashTableIterator<uint32, SharedObjectTemplate*> iterator(&templateCRCMap);
-
-	while (iterator.hasNext())
-		delete iterator.getNextValue();*/
-
 	delete templateCRCMap;
 	templateCRCMap = NULL;
 
@@ -101,6 +106,29 @@ TemplateManager::~TemplateManager() {
 
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
+
+	delete portalLayoutMap;
+	portalLayoutMap = NULL;
+
+	delete floorMeshMap;
+	floorMeshMap = NULL;
+}
+
+void TemplateManager::loadLuaTemplates() {
+	info("loading object templates...", true);
+
+	try {
+		luaTemplatesInstance->runFile("scripts/object/main.lua");
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		error("unreported exception caught while loading templates");
+	}
+
+	info("done loading object templates", true);
+	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
+	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
 }
 
 void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject* templateData) {
@@ -331,6 +359,98 @@ String TemplateManager::getTemplateFile(uint32 key) {
 	}
 
 	return templateData->getFullTemplateString();
+}
+
+IffStream* TemplateManager::openIffFile(const String& fileName) {
+	String correctedFileName = "scripts/" + fileName;
+
+	IffStream* iffStream = NULL;
+
+	try {
+		iffStream = new IffStream(correctedFileName);
+	} catch (...) {
+		iffStream = NULL;
+
+		info("could not open " + correctedFileName);
+
+		return NULL;
+	}
+
+	if (iffStream != NULL) {
+		try {
+			if (!iffStream->parseChunks()) {
+				delete iffStream;
+				return NULL;
+			}
+		} catch (...) {
+			delete iffStream;
+			return NULL;
+		}
+	}
+
+	return iffStream;
+}
+
+FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
+	FloorMesh* floorMesh = floorMeshMap->get(fileName);
+
+	if (floorMesh == NULL) {
+		// read file
+
+		IffStream* iffStream = openIffFile(fileName);
+
+		if (iffStream != NULL) {
+			try {
+				floorMesh = new FloorMesh();
+
+				floorMesh->readObject(iffStream);
+
+				info("parsed " + fileName);
+			} catch (...) {
+				info("could not parse " + fileName);
+				delete floorMesh;
+				floorMesh = NULL;
+			}
+
+			delete iffStream;
+			iffStream = NULL;
+
+			floorMeshMap->put(fileName, floorMesh);
+		}
+	}
+
+	return floorMesh;
+	//return NULL;
+}
+
+PortalLayout* TemplateManager::getPortalLayout(const String& fileName) {
+	PortalLayout* portalLayout = portalLayoutMap->get(fileName);
+
+	if (portalLayout == NULL) {
+		IffStream* iffStream = openIffFile(fileName);
+
+		if (iffStream != NULL) {
+			try {
+				portalLayout = new PortalLayout();
+
+				portalLayout->readObject(iffStream);
+
+				info("parsed " + fileName);
+			} catch (...) {
+				info("could not parse " + fileName);
+				delete portalLayout;
+				portalLayout = NULL;
+			}
+
+			delete iffStream;
+			iffStream = NULL;
+
+			portalLayoutMap->put(fileName, portalLayout);
+		}
+	}
+
+	return portalLayout;
+	//return NULL;
 }
 
 SharedObjectTemplate* TemplateManager::getTemplate(uint32 key) {

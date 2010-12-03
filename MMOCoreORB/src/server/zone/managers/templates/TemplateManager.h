@@ -15,12 +15,19 @@
 
 class TemplateCRCMap;
 class ClientTemplateCRCMap;
+class PortalLayoutMap;
+class FloorMeshMap;
+
+class FloorMesh;
+class PortalLayout;
 
 class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	TemplateCRCMap* templateCRCMap;
 
 	ObjectFactory<SharedObjectTemplate* (), uint32> templateFactory;
 	ClientTemplateCRCMap* clientTemplateCRCMap;
+	PortalLayoutMap* portalLayoutMap;
+	FloorMeshMap* floorMeshMap;
 
 public:
 	static Lua* luaTemplatesInstance;
@@ -31,26 +38,18 @@ public:
 
 	void registerTemplateObjects();
 
-	void loadLuaTemplates() {
-		info("loading object templates...", true);
-
-		try {
-			luaTemplatesInstance->runFile("scripts/object/main.lua");
-		} catch (Exception& e) {
-			error(e.getMessage());
-			e.printStackTrace();
-		} catch (...) {
-			error("unreported exception caught while loading templates");
-		}
-
-		info("done loading object templates", true);
-	}
+	void loadLuaTemplates();
 
 	void addTemplate(uint32 key, const String& fullName, LuaObject* templateData);
 
 	String getTemplateFile(uint32 key);
 
 	SharedObjectTemplate* getTemplate(uint32 key);
+
+	IffStream* openIffFile(const String& fileName);
+
+	FloorMesh* getFloorMesh(const String& fileName);
+	PortalLayout* getPortalLayout(const String& fileName);
 
 	bool existsTemplate(uint32 key);
 
