@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "resourcespawner/SampleTask.h"
 #include "resourcespawner/SampleResultsTask.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
 void ResourceManagerImplementation::initialize() {
 	Lua::init();
@@ -274,69 +275,76 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 	runlock();
 }
 
-uint64 ResourceManagerImplementation::getAvailablePowerFromPlayer(PlayerCreature* player) {
+uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(PlayerCreature* player) {
 	SceneObject* inventory = player->getSlottedObject("inventory");
-	uint64 power = 0;
+	uint32 power = 0;
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-		ManagedReference<SceneObject*> tano = (SceneObject*) inventory->getContainerObject(i);
+		ManagedReference<SceneObject*> obj = (SceneObject*) inventory->getContainerObject(i);
 
-		if (tano->isResourceContainer()) {
-			ResourceContainer* rcno = (ResourceContainer*) tano.get();
-			ResourceSpawn* spawn = rcno->getSpawnObject();
+		if (obj == NULL || !obj->isResourceContainer())
+			continue;
 
-			if (spawn != NULL && spawn->isEnergy()) {
-				int PE = spawn->getValueOf(3); // potential energy
+		ResourceContainer* rcno = (ResourceContainer*) obj.get();
+		ManagedReference<ResourceSpawn*> spawn = rcno->getSpawnObject();
 
-				if (PE > 500)
-					power += (unsigned long long) ( (PE /* * 1.0 */) / 500.0 * (rcno->getQuantity() /* * 1.0 */) );
-				else
-					power += rcno->getQuantity();
-			}
-		}
+		if (spawn == NULL || !spawn->isEnergy())
+			continue;
+
+		int quantity = rcno->getQuantity();
+		int pe = spawn->getValueOf(3); // potential energy
+
+		float modifier = MAX(1.0f, pe / 500.0f);
+
+		power += (uint32) (modifier * quantity);
 	}
 
 	return power;
 }
 
-void ResourceManagerImplementation::removePowerFromPlayer(PlayerCreature* player, uint64 power) {
+void ResourceManagerImplementation::removePowerFromPlayer(PlayerCreature* player, uint32 power) {
 	if (power == 0)
 		return;
 
 	SceneObject* inventory = player->getSlottedObject("inventory");
 
-	uint64 containerPower = 0;
+	uint32 containerPower = 0;
 
-	for (int i = 0; i < inventory->getContainerObjectsSize(); i++ && power > 0) {
-		ManagedReference<SceneObject*> tano = inventory->getContainerObject(i);
+	for (int i = 0; i < inventory->getContainerObjectsSize() && power > 0; ++i) {
+		ManagedReference<SceneObject*> obj = inventory->getContainerObject(i);
 
-		if (tano->isResourceContainer()) {
-			ResourceContainer* rcno = (ResourceContainer*)tano.get();
-			ResourceSpawn* spawn = rcno->getSpawnObject();
+		if (obj == NULL || !obj->isResourceContainer())
+			continue;
 
-			if (spawn != NULL && spawn->isEnergy()) {
-				int PE = spawn->getAttributeValue(3); // potential energy
+		ResourceContainer* rcno = (ResourceContainer*) obj.get();
+		ManagedReference<ResourceSpawn*> spawn = rcno->getSpawnObject();
 
-				if (PE > 500)
-					containerPower = (unsigned long long) ( (PE  /* * 1.0 */) / 500.0 * (rcno->getQuantity() /* * 1.0*/) );
-				else
-					containerPower = rcno->getQuantity();
+		if (spawn == NULL || !spawn->isEnergy())
+			continue;
 
-				if (containerPower > power) {
-					// remove
-					uint64 consumedUnits = (unsigned long long) ( (power /* * 1.0 */) / ( (containerPower /* * 1.0*/) / rcno->getQuantity() ) );
-					power = 0; // zero it down
+		int quantity = rcno->getQuantity();
+		int pe = spawn->getValueOf(3); // potential energy
 
-					rcno->setQuantity(rcno->getQuantity() - consumedUnits);
-				} else {
-					power -= containerPower;
+		float modifier = MAX(1.0f, pe / 500.0f);
 
-					inventory->removeObject(rcno, true);
-					rcno->destroyObjectFromDatabase(true);
-				}
-			}
+		containerPower = modifier * quantity;
+
+		if (containerPower > power) {
+			uint32 consumedUnits = (uint64) power / modifier;
+			rcno->setQuantity(quantity - consumedUnits);
+
+			player->sendSystemMessage("im deleting some resource from a container");
+
+			TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(rcno);
+			tanod3->setQuantity(rcno->getQuantity());
+			tanod3->close();
+			player->sendMessage(tanod3);
+		} else {
+			inventory->removeObject(rcno, true);
+			rcno->destroyObjectFromDatabase(true);
 		}
 
+		power -= containerPower;
 	}
 }
 void ResourceManagerImplementation::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {

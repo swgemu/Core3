@@ -166,9 +166,9 @@ public:
 
 	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
 
-	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
+	unsigned int getAvailablePowerFromPlayer(PlayerCreature* player);
 
-	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
+	void removePowerFromPlayer(PlayerCreature* player, unsigned int power);
 
 	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid);
 
@@ -242,9 +242,9 @@ public:
 
 	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
 
-	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
+	unsigned int getAvailablePowerFromPlayer(PlayerCreature* player);
 
-	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
+	void removePowerFromPlayer(PlayerCreature* player, unsigned int power);
 
 	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid);
 
@@ -325,9 +325,9 @@ public:
 
 	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
 
-	unsigned long long getAvailablePowerFromPlayer(PlayerCreature* player);
+	unsigned int getAvailablePowerFromPlayer(PlayerCreature* player);
 
-	void removePowerFromPlayer(PlayerCreature* player, unsigned long long power);
+	void removePowerFromPlayer(PlayerCreature* player, unsigned int power);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
