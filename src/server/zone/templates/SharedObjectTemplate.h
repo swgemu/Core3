@@ -13,6 +13,8 @@
 #include "LuaTemplate.h"
 #include "ChildObject.h"
 
+class PortalLayout;
+
 namespace server {
  namespace zone {
   namespace templates {
@@ -63,6 +65,8 @@ protected:
 	int templateType;
 
 	Vector<ChildObject> childObjects;
+
+	PortalLayout* portalLayout;
 
 public:
 	const static int SHOT = 0x1;
@@ -124,7 +128,7 @@ public:
 
 public:
 	SharedObjectTemplate() {
-
+		portalLayout = NULL;
 	}
 
 	virtual ~SharedObjectTemplate() {

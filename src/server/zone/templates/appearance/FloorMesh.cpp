@@ -1,0 +1,198 @@
+/*
+ * FloorMesh.cpp
+ *
+ *  Created on: 02/12/2010
+ *      Author: victor
+ */
+
+#include "FloorMesh.h"
+
+void FloorMesh::readObject(IffStream* iffStream) {
+	iffStream->openForm('FLOR');
+
+	uint32 nextFormType = iffStream->getNextFormType();
+
+	switch (nextFormType) {
+	case '0006':
+		parseVersion0006(iffStream);
+		break;
+	case '0005':
+		parseVersion0005(iffStream);
+		break;
+	default:
+		error("unkown FloorMesh version " + String::hexvalueOf((int)nextFormType));
+		break;
+	}
+
+	iffStream->closeForm('FLOR');
+}
+
+void FloorMesh::parseVersion0005(IffStream* iffStream) {
+	try {
+		iffStream->openForm('0005');
+
+		Chunk* vertData = iffStream->openChunk('VERT');
+
+		int vertSize = vertData->getChunkSize();
+
+		while (vertSize > 0) {
+			Vert vert;
+			vert.readObject(iffStream);
+
+			vertices.add(vert);
+
+			vertSize -= 12;
+		}
+
+		iffStream->closeChunk();
+
+		Chunk* trisData = iffStream->openChunk('TRIS');
+
+		int trisDataSize = trisData->getChunkSize();
+
+		/*while (trisDataSize > 0) {
+			Tri tri;
+
+			tri.readObject(iffStream);
+
+			tris.add(tri);
+
+			trisDataSize -= 60;
+		}*/
+
+		iffStream->closeChunk();
+
+		parseBTRE(iffStream);
+
+		parseBEDG(iffStream);
+
+		parsePGRF(iffStream);
+
+		iffStream->closeForm('0005');
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		String err = "unable to parse file ";
+		err += iffStream->getFileName();
+		error(err);
+	}
+}
+
+void FloorMesh::parseVersion0006(IffStream* iffStream) {
+	try {
+		iffStream->openForm('0006');
+
+		Chunk* data = iffStream->openChunk('VERT');
+
+		int verticesSize = data->readInt();
+
+		for (int i = 0; i < verticesSize; ++i) {
+			Vert vert;
+			vert.readObject(iffStream);
+
+			vertices.add(vert);
+		}
+
+		iffStream->closeChunk();
+
+		iffStream->openChunk('TRIS');
+
+		int trisCount = iffStream->getInt();
+
+		/*for (int i = 0; i < trisCount; ++i) {
+			Tri tri;
+
+			tri.readObject(iffStream);
+
+			tris.add(tri);
+		}*/
+
+		iffStream->closeChunk();
+
+		parseBTRE(iffStream);
+
+		parseBEDG(iffStream);
+
+		parsePGRF(iffStream);
+
+		iffStream->closeForm('0006');
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		String err = "unable to parse file ";
+		err += iffStream->getFileName();
+		error(err);
+	}
+}
+
+void FloorMesh::parseBTRE(IffStream* iffStream) {
+	/*uint32 nextForm = 0;
+
+	try {
+		nextForm = iffStream->getNextFormType();
+	} catch (...) {
+		return;
+	}
+
+	if (nextForm != 'BTRE')
+		return;
+
+	iffStream->openForm('BTRE');
+
+	iffStream->openForm('0000');
+
+	iffStream->openChunk('NODS');
+
+	int nodeSize = iffStream->getInt();
+
+	for (int i = 0; i < nodeSize; ++i) {
+		Nods nods;
+		nods.readObject(iffStream);
+
+		nodes.add(nods);
+	}
+
+	iffStream->closeChunk();
+
+	iffStream->closeForm('0000');
+
+	iffStream->closeForm('BTRE');*/
+}
+
+void FloorMesh::parseBEDG(IffStream* iffStream) {
+	/*iffStream->openChunk('BEDG');
+
+	int edgeSize = iffStream->getInt();
+
+	for (int i = 0; i < edgeSize; ++i) {
+		Bedg bedg;
+
+		bedg.readObject(iffStream);
+
+		edges.add(bedg);
+	}
+
+	iffStream->closeChunk('BEDG');*/
+}
+
+void FloorMesh::parsePGRF(IffStream* iffStream) {
+	if (iffStream->getRemainingSubChunksNumber() == 0) {
+		return;
+	}
+
+	uint32 nextForm = 0;
+
+	try {
+		nextForm = iffStream->getNextFormType();
+	} catch (...) {
+		return;
+	}
+
+	if (nextForm != 'PGRF')
+		return;
+
+	pathGraph = new PathGraph();
+	pathGraph->readObject(iffStream);
+}
