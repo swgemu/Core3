@@ -203,7 +203,7 @@ private:
 
 	bool removeIngredientsFromHopper(ManufactureSchematic* schematic);
 
-	TangibleObject* findMatchInInputHopper(SceneObject* inputHopper, TangibleObject* ingredient);
+	TangibleObject* findMatchInInputHopper(SceneObject* inputHopper, TangibleObject* ingredient, bool identical);
 
 public:
 	FactoryObject* _this;

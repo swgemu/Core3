@@ -153,6 +153,10 @@ public:
 		return false;
 	}
 
+	inline bool needIdentical() {
+		return requiresIdentical;
+	}
+
 	virtual inline bool hasItem() {
 		return false;
 	}
