@@ -76,8 +76,7 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 
 		for (int i = 0; i < factoryIngredients.size(); ++i) {
 
-			ManagedReference<SceneObject*> ingredient = factoryIngredients.get(
-					i);
+			ManagedReference<TangibleObject*> ingredient = factoryIngredients.get(i);
 
 			if (ingredient == NULL)
 				continue;
@@ -330,12 +329,13 @@ void ManufactureSchematicImplementation::initializeFactoryIngredients() {
 		if (ingredientSlot == NULL || ingredientSlot->get() == NULL)
 			continue;
 
-		SceneObject* scno = ingredientSlot->get();
+		TangibleObject* ingredient = ingredientSlot->get();
 
-		if(scno->getParent() != NULL)
-			scno->getParent()->removeObject(scno, true);
+		if(ingredient->getParent() != NULL)
+			ingredient->getParent()->removeObject(ingredient, true);
 
-		addObject(scno, -1, true);
-		factoryIngredients.add(scno);
+		addObject(ingredient, -1, true);
+		factoryIngredients.add(ingredient);
+		factoryIngredientSlotType.add(ingredientSlot->getSlotType());
 	}
 }

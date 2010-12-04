@@ -517,6 +517,20 @@ SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
 		return _implementation->getFactoryIngredient(i);
 }
 
+int ManufactureSchematic::getFactoryIngredientSlotType(int i) {
+	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getFactoryIngredientSlotType(i);
+}
+
 DistributedObjectServant* ManufactureSchematic::_getImplementation() {
 
 	_updated = true;
@@ -603,6 +617,7 @@ void ManufactureSchematicImplementation::_serializationHelperMethod() {
 	addSerializableVariable("crafter", &crafter);
 	addSerializableVariable("firstCraftingUpdate", &firstCraftingUpdate);
 	addSerializableVariable("factoryIngredients", &factoryIngredients);
+	addSerializableVariable("factoryIngredientSlotType", &factoryIngredientSlotType);
 	addSerializableVariable("ingredientSlots", &ingredientSlots);
 	addSerializableVariable("assembled", &assembled);
 	addSerializableVariable("completed", &completed);
@@ -615,130 +630,135 @@ void ManufactureSchematicImplementation::_serializationHelperMethod() {
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(94):  		Logger.setLoggingName("ManufactureSchematic");
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(97):  		Logger.setLoggingName("ManufactureSchematic");
 	Logger::setLoggingName("ManufactureSchematic");
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(95):  		prototype = null;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(98):  		prototype = null;
 	prototype = NULL;
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(96):  		firstCraftingUpdate = true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(99):  		firstCraftingUpdate = true;
 	firstCraftingUpdate = true;
 }
 
 void ManufactureSchematicImplementation::initializeTransientMembers() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(100):  		super.initializeTransientMembers();
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(103):  		super.initializeTransientMembers();
 	IntangibleObjectImplementation::initializeTransientMembers();
 }
 
 bool ManufactureSchematicImplementation::isManufactureSchematic() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(152):  		return true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(155):  		return true;
 	return true;
 }
 
 DraftSchematic* ManufactureSchematicImplementation::getDraftSchematic() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(162):  		return draftSchematic;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(165):  		return draftSchematic;
 	return draftSchematic;
 }
 
 void ManufactureSchematicImplementation::increaseComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(172):  		complexity++;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(175):  		complexity++;
 	complexity ++;
 }
 
 void ManufactureSchematicImplementation::decreaseComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(176):  	}
-	if (complexity > 1)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(177):  			complexity = complexity - 1;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(179):  	}
+	if (complexity > 1)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(180):  			complexity = complexity - 1;
 	complexity = complexity - 1;
 }
 
 float ManufactureSchematicImplementation::getComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(181):  		return complexity;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(184):  		return complexity;
 	return complexity;
 }
 
 bool ManufactureSchematicImplementation::isFirstCraftingUpdate() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(185):  		return firstCraftingUpdate;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(188):  		return firstCraftingUpdate;
 	return firstCraftingUpdate;
 }
 
 void ManufactureSchematicImplementation::setFirstCraftingUpdateComplete() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(189):  		firstCraftingUpdate = false;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(192):  		firstCraftingUpdate = false;
 	firstCraftingUpdate = false;
 }
 
 void ManufactureSchematicImplementation::setAssembled() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(195):  		assembled = true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(198):  		assembled = true;
 	assembled = true;
 }
 
 bool ManufactureSchematicImplementation::isAssembled() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(199):  		return assembled;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(202):  		return assembled;
 	return assembled;
 }
 
 void ManufactureSchematicImplementation::setCompleted() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(203):  		completed = true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(206):  		completed = true;
 	completed = true;
 }
 
 bool ManufactureSchematicImplementation::isCompleted() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(207):  		return completed;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(210):  		return completed;
 	return completed;
 }
 
 void ManufactureSchematicImplementation::setCrafter(PlayerCreature* player) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(211):  		crafter = player;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(214):  		crafter = player;
 	crafter = player;
 }
 
 PlayerCreature* ManufactureSchematicImplementation::getCrafter() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(215):  		return crafter;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(218):  		return crafter;
 	return crafter;
 }
 
 CraftingValues* ManufactureSchematicImplementation::getCraftingValues() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(220):  		return craftingValues;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(223):  		return craftingValues;
 	return (&craftingValues);
 }
 
 void ManufactureSchematicImplementation::setExperimentingCounter(int value) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(224):  		experimentingCounterPrevious = experimentingCounter;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(227):  		experimentingCounterPrevious = experimentingCounter;
 	experimentingCounterPrevious = experimentingCounter;
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(225):  		experimentingCounter = value;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(228):  		experimentingCounter = value;
 	experimentingCounter = value;
 }
 
 int ManufactureSchematicImplementation::getExperimentingCounter() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(229):  		return experimentingCounter;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(232):  		return experimentingCounter;
 	return experimentingCounter;
 }
 
 int ManufactureSchematicImplementation::getExperimentingCounterPrevious() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(233):  		return experimentingCounterPrevious;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(236):  		return experimentingCounterPrevious;
 	return experimentingCounterPrevious;
 }
 
 void ManufactureSchematicImplementation::setManufactureLimit(int limit) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(237):  		manufactureLimit = limit;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(240):  		manufactureLimit = limit;
 	manufactureLimit = limit;
 }
 
 int ManufactureSchematicImplementation::getManufactureLimit() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(241):  		return manufactureLimit;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(244):  		return manufactureLimit;
 	return manufactureLimit;
 }
 
 TangibleObject* ManufactureSchematicImplementation::getPrototype() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(247):  		return prototype;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(250):  		return prototype;
 	return prototype;
 }
 
 int ManufactureSchematicImplementation::getFactoryIngredientsSize() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(253):  		return factoryIngredients.size();
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(256):  		return factoryIngredients.size();
 	return (&factoryIngredients)->size();
 }
 
 SceneObject* ManufactureSchematicImplementation::getFactoryIngredient(int i) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(257):  		return factoryIngredients.get(i);
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(260):  		return factoryIngredients.get(i);
 	return (&factoryIngredients)->get(i);
+}
+
+int ManufactureSchematicImplementation::getFactoryIngredientSlotType(int i) {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(264):  		return factoryIngredientSlotType.get(i);
+	return (&factoryIngredientSlotType)->get(i);
 }
 
 /*
@@ -853,6 +873,9 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		break;
 	case 39:
 		resp->insertLong(getFactoryIngredient(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 40:
+		resp->insertSignedInt(getFactoryIngredientSlotType(inv->getSignedIntParameter()));
 		break;
 	default:
 		return NULL;
@@ -995,6 +1018,10 @@ int ManufactureSchematicAdapter::getFactoryIngredientsSize() {
 
 SceneObject* ManufactureSchematicAdapter::getFactoryIngredient(int i) {
 	return ((ManufactureSchematicImplementation*) impl)->getFactoryIngredient(i);
+}
+
+int ManufactureSchematicAdapter::getFactoryIngredientSlotType(int i) {
+	return ((ManufactureSchematicImplementation*) impl)->getFactoryIngredientSlotType(i);
 }
 
 /*

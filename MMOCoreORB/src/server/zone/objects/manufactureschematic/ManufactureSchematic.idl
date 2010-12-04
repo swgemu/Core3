@@ -71,8 +71,11 @@ class ManufactureSchematic extends IntangibleObject {
 	protected boolean firstCraftingUpdate;
 	
 	@dereferenced
-	protected Vector<SceneObject> factoryIngredients;
-
+	protected Vector<TangibleObject> factoryIngredients;
+	
+	@dereferenced
+	protected Vector<int> factoryIngredientSlotType;
+	
 	@dereferenced
 	protected IngredientSlots ingredientSlots;
 	
@@ -255,5 +258,9 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	public SceneObject getFactoryIngredient(int i) {
 		return factoryIngredients.get(i);
+	}
+	
+	public int getFactoryIngredientSlotType(int i) {
+		return factoryIngredientSlotType.get(i);
 	}
 }
