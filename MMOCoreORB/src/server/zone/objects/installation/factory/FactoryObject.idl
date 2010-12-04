@@ -117,5 +117,5 @@ class FactoryObject extends InstallationObject {
 
 	private native boolean removeIngredientsFromHopper(ManufactureSchematic schematic);
 
-	private native TangibleObject findMatchInInputHopper(SceneObject inputHopper, TangibleObject ingredient);
+	private native TangibleObject findMatchInInputHopper(SceneObject inputHopper, TangibleObject ingredient, boolean identical);
 }

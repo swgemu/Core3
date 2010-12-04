@@ -114,7 +114,7 @@ public:
 			prototype->createChildObjects();
 
 			// Set Crafter name and generate serial number
-			String name = player->getFirstName();
+			String name = "System Generated";
 			prototype->setCraftersName(name);
 
 			String serial = craftingManager->generateSerial();
