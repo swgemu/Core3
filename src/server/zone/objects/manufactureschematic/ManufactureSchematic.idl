@@ -261,6 +261,9 @@ class ManufactureSchematic extends IntangibleObject {
 	}
 	
 	public int getFactoryIngredientSlotType(int i) {
-		return factoryIngredientSlotType.get(i);
+		if(factoryIngredientSlotType.size() > i)
+			return factoryIngredientSlotType.get(i);
+		else
+			return 0;
 	}
 }
