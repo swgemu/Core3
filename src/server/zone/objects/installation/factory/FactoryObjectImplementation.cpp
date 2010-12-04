@@ -596,11 +596,18 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 		ManagedReference<TangibleObject*> ingredient = dynamic_cast<TangibleObject*>(schematic->getFactoryIngredient(i));
 
 		if(ingredient == NULL) {
-			error("NULL ingredient in removeIngredientsFromHopper");
+			error("NULL ingredient in FactoryObjectImplementation::removeIngredientsFromHopper");
 			continue;
 		}
 
-		ManagedReference<TangibleObject*> usableObject = findMatchInInputHopper(inputHopper, ingredient);
+		Reference<IngredientSlot*> slot = schematic->getIngredientSlot(i);
+
+		if(slot == NULL) {
+			error("NULL slot in FactoryObjectImplementation::removeIngredientsFromHopper");
+			continue;
+		}
+
+		ManagedReference<TangibleObject*> usableObject = findMatchInInputHopper(inputHopper, ingredient, slot->needIdentical());
 
 		if(usableObject == NULL || !usableObject->isTangibleObject()) {
 			stopFactory(ingredient);
@@ -656,7 +663,7 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 }
 
 TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
-		SceneObject* inputHopper, TangibleObject* ingredient) {
+		SceneObject* inputHopper, TangibleObject* ingredient, bool requiresIdentical) {
 
 	try {
 
@@ -688,9 +695,20 @@ TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
 					return object;
 
 			} else {
-				if (ingredient->getCraftersSerial() == object->getCraftersSerial()
-						&& ingredient->getUseCount() <= object->getUseCount())
+
+				if(requiresIdentical) {
+
+					if (ingredient->getCraftersSerial() == object->getCraftersSerial()
+							&& ingredient->getUseCount() <= object->getUseCount())
 					return object;
+
+				} else {
+
+					if (ingredient->getServerObjectCRC() == object->getServerObjectCRC()
+							&& ingredient->getUseCount() <= object->getUseCount())
+					return object;
+
+				}
 			}
 		}
 
