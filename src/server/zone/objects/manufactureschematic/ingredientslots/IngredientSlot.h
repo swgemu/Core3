@@ -117,6 +117,10 @@ public:
 		return type == slottype;
 	}
 
+	bool getSlotType() {
+		return slottype;
+	}
+
 	bool isOptional() {
 		return optional;
 	}
@@ -153,8 +157,9 @@ public:
 		return false;
 	}
 
-	inline bool needIdentical() {
-		return requiresIdentical;
+	inline bool isIdentical() {
+		return (slottype == OPTIONALIDENTICALSLOT ||
+				slottype == IDENTICALSLOT);
 	}
 
 	virtual inline bool hasItem() {

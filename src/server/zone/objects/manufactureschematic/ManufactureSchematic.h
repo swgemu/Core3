@@ -180,6 +180,8 @@ public:
 
 	SceneObject* getFactoryIngredient(int i);
 
+	int getFactoryIngredientSlotType(int i);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -222,7 +224,9 @@ protected:
 
 	bool firstCraftingUpdate;
 
-	Vector<ManagedReference<SceneObject* > > factoryIngredients;
+	Vector<ManagedReference<TangibleObject* > > factoryIngredients;
+
+	Vector<int> factoryIngredientSlotType;
 
 	IngredientSlots ingredientSlots;
 
@@ -318,6 +322,8 @@ public:
 	int getFactoryIngredientsSize();
 
 	SceneObject* getFactoryIngredient(int i);
+
+	int getFactoryIngredientSlotType(int i);
 
 	ManufactureSchematic* _this;
 
@@ -425,6 +431,8 @@ public:
 	int getFactoryIngredientsSize();
 
 	SceneObject* getFactoryIngredient(int i);
+
+	int getFactoryIngredientSlotType(int i);
 
 };
 
