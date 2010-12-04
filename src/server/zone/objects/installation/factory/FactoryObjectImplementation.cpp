@@ -600,14 +600,11 @@ bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchemat
 			continue;
 		}
 
-		Reference<IngredientSlot*> slot = schematic->getIngredientSlot(i);
+		int slottype = schematic->getFactoryIngredientSlotType(i);
 
-		if(slot == NULL) {
-			error("NULL slot in FactoryObjectImplementation::removeIngredientsFromHopper");
-			continue;
-		}
+		bool requiresIdentical = (slottype == IngredientSlot::IDENTICALSLOT || slottype == IngredientSlot::OPTIONALIDENTICALSLOT);
 
-		ManagedReference<TangibleObject*> usableObject = findMatchInInputHopper(inputHopper, ingredient, slot->needIdentical());
+		ManagedReference<TangibleObject*> usableObject = findMatchInInputHopper(inputHopper, ingredient, requiresIdentical);
 
 		if(usableObject == NULL || !usableObject->isTangibleObject()) {
 			stopFactory(ingredient);
