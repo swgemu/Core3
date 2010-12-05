@@ -130,7 +130,7 @@ namespace server {
 		void handleMessage(ServiceClient* session, Packet* message) {
 			ZoneServer* server =  zoneServerRef.getForUpdate();
 
-			ZoneClientSession* client = getClientSession(session);
+			ManagedReference<ZoneClientSession*> client = getClientSession(session);
 
 			return server->handleMessage(client, message);
 		}

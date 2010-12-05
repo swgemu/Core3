@@ -94,6 +94,8 @@ public:
 	void follow(const String& name);
 	void stopFollow();
 
+	void lurk();
+
 	bool doCommand(const String& command, const String& arguments);
 
 	//LocalPlayer* createLocalPlayer(uint64 pid);
