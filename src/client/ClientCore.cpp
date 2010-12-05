@@ -121,6 +121,9 @@ void ClientCore::handleCommands() {
 			} else if (firstToken == "stopFollow") {
 				for (int i = 0; i < zones.size(); ++i)
 					zones.get(i)->stopFollow();
+			} else if (firstToken == "lurk") {
+				for (int i = 0; i < zones.size(); ++i)
+					zones.get(i)->lurk();
 			} else if (firstToken == "info") {
 				for (int i = 0; i < zones.size(); ++i) {
 					uint32 size = zones.get(i)->getObjectManager()->getObjectMapSize();

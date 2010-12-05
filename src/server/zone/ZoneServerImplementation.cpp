@@ -115,6 +115,8 @@ ZoneServerImplementation::ZoneServerImplementation(int galaxyid) :
 	totalDeletedPlayers = 0;
 
 	serverState = OFFLINE;
+
+	setLogging(true);
 }
 
 void ZoneServerImplementation::initializeTransientMembers() {
@@ -215,7 +217,7 @@ void ZoneServerImplementation::startZones() {
 		Zone* zone = zones.get(i);
 
 		if (zone != NULL) {
-			//	zone->startManagers();
+			zone->startManagers();
 
 			Reference<Task*> task = new ZoneLoadManagersTask(zone);
 			Core::getTaskManager()->executeTask(task);
