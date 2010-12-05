@@ -59,10 +59,6 @@ which carries forward this exception.
 #include "ingredientslots/ResourceSlot.h"
 #include "ingredientslots/ComponentSlot.h"
 
-/*#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
-#include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"*/
-
 void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
 
 	alm->insertAttribute("data_volume", dataSize);
@@ -81,6 +77,10 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 			if (ingredient == NULL)
 				continue;
 
+			int slottype = factoryIngredientSlotType.get(i);
+
+			bool requiresIdentical = (slottype == IngredientSlot::IDENTICALSLOT || slottype == IngredientSlot::OPTIONALIDENTICALSLOT);
+
 			if (ingredient->isResourceContainer()) {
 				ManagedReference<ResourceContainer*> rcno =
 						(ResourceContainer*) ingredient.get();
@@ -95,14 +95,10 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 				ManagedReference<TangibleObject*> component =
 						(TangibleObject*) ingredient.get();
 
-				if (component->getCustomObjectName().isEmpty())
-					name = "@" + component->getObjectNameStringIdFile() + ":"
-							+ component->getObjectNameStringIdName() + " ";
-				else
-					name = component->getCustomObjectName().toString();
+				name = resourceHead + component->getObjectName()->getDisplayedName();
 
-				name = resourceHead + name.concat(
-						component->getCraftersSerial());
+				if(requiresIdentical)
+					name += " " + component->getCraftersSerial();
 
 				value = component->getUseCount();
 
@@ -333,6 +329,8 @@ void ManufactureSchematicImplementation::initializeFactoryIngredients() {
 
 		if(ingredient->getParent() != NULL)
 			ingredient->getParent()->removeObject(ingredient, true);
+
+		ingredient->setUseCount(ingredientSlot->getRequiredQuantity(), false);
 
 		addObject(ingredient, -1, true);
 		factoryIngredients.add(ingredient);
