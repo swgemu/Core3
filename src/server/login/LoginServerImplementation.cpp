@@ -78,7 +78,7 @@ LoginServerImplementation::LoginServerImplementation(ConfigManager* configMan) :
 
 	accountManager = NULL;
 
-	setLogging(true);
+	setLogging(false);
 }
 
 void LoginServerImplementation::initializeTransientMembers() {

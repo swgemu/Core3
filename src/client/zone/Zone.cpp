@@ -163,6 +163,12 @@ void Zone::stopFollow() {
 	client->info("stopped following", true);
 }
 
+void Zone::lurk() {
+	PlayerCreature* player = getSelfPlayer();
+
+	Locker _locker(player);
+}
+
 bool Zone::doCommand(const String& command, const String& arguments) {
 	if (command.length() == 0)
 		return false;
