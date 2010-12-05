@@ -757,8 +757,12 @@ SceneObject* ManufactureSchematicImplementation::getFactoryIngredient(int i) {
 }
 
 int ManufactureSchematicImplementation::getFactoryIngredientSlotType(int i) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(264):  		return factoryIngredientSlotType.get(i);
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(264):  
+	if ((&factoryIngredientSlotType)->size() > i)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(265):  			return factoryIngredientSlotType.get(i);
 	return (&factoryIngredientSlotType)->get(i);
+
+	else 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(267):  			return 0;
+	return 0;
 }
 
 /*

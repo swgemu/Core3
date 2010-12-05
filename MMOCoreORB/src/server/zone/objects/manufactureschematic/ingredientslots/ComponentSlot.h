@@ -105,6 +105,7 @@ public:
 		}
 
 		int needs = requiredQuantity - itemsInSlot;
+		SceneObject* incomingTanoParent = incomingTano->getParent();
 
 		if(incomingTano->isFactoryCrate()) {
 
@@ -128,7 +129,7 @@ public:
 				if (incomingTano->getUseCount() <= needs) {
 
 					contents.add(incomingTano);
-					contentsPreviousParent.add(incomingTano->getParent());
+					contentsPreviousParent.add(incomingTanoParent);
 
 					if(incomingTano->getParent() != NULL)
 						incomingTano->getParent()->removeObject(incomingTano, true);
@@ -152,7 +153,7 @@ public:
 					newTano->setParent(NULL);
 
 					contents.add(newTano);
-					contentsPreviousParent.add(incomingTano->getParent());
+					contentsPreviousParent.add(incomingTanoParent);
 					craftingTool->addObject(newTano, -1, false);
 
 					newTano->setUseCount(needs, false);
@@ -173,13 +174,13 @@ public:
 					newTano->setUseCount(getQuantity() + needs, true);
 
 					contents.add(newTano);
-					contentsPreviousParent.add(incomingTano->getParent());
+					contentsPreviousParent.add(incomingTanoParent);
 					craftingTool->addObject(newTano, -1, false);
 
 				} else {
 
 					contents.add(incomingTano);
-					contentsPreviousParent.add(incomingTano->getParent());
+					contentsPreviousParent.add(incomingTanoParent);
 
 					if(incomingTano->getParent() != NULL)
 						incomingTano->getParent()->removeObject(incomingTano, true);
