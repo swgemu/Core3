@@ -104,7 +104,7 @@ void StringId::setStringId(const String& fullPath) {
 String StringId::getDisplayedName() {
 
 	if(customName.isEmpty()) {
-		return "@" + file + ":" + stringID;;
+		return "@" + file + ":" + stringID;
 	} else {
 		return customName.toString();
 	}

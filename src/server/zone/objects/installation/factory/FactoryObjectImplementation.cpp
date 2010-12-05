@@ -259,17 +259,20 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 
 			ManagedReference<TangibleObject*> component = dynamic_cast<TangibleObject*>(ingredient.get());
 
-			String sendstring;
+			StringBuffer sendstring;
+			sendstring << component->getObjectName()->getDisplayedName();
 
-			if (component->getCustomObjectName().isEmpty())
-				sendstring = "@" + component->getObjectNameStringIdFile() + ":"
-					+ component->getObjectNameStringIdName() + " ";
+			int slottype = schematic->getFactoryIngredientSlotType(i);
+			bool requiresIdentical = (slottype == IngredientSlot::IDENTICALSLOT || slottype == IngredientSlot::OPTIONALIDENTICALSLOT);
+
+			if(requiresIdentical)
+				sendstring << " " << component->getCraftersSerial();
 			else
-				sendstring = component->getCustomObjectName().toString();
+				sendstring << " ()";
 
-			sendstring += component->getCraftersSerial() + ":\\>200" + component->getUseCount();
+			sendstring << ":\\>200" << component->getUseCount();
 
-			ingredientList->addMenuItem(sendstring, 0);
+			ingredientList->addMenuItem(sendstring.toString(), 0);
 		}
 	}
 
@@ -693,15 +696,23 @@ TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
 
 			} else {
 
+				ManagedReference<TangibleObject*> prototype = NULL;
+
+				if(object->isFactoryCrate()) {
+					FactoryCrate* crate = (FactoryCrate*) object.get();
+					prototype = crate->getPrototype();
+				} else
+					prototype = object;
+
 				if(requiresIdentical) {
 
-					if (ingredient->getCraftersSerial() == object->getCraftersSerial()
+					if (ingredient->getCraftersSerial() == prototype->getCraftersSerial()
 							&& ingredient->getUseCount() <= object->getUseCount())
 					return object;
 
 				} else {
 
-					if (ingredient->getServerObjectCRC() == object->getServerObjectCRC()
+					if (ingredient->getServerObjectCRC() == prototype->getServerObjectCRC()
 							&& ingredient->getUseCount() <= object->getUseCount())
 					return object;
 

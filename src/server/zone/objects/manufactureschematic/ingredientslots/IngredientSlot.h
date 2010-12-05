@@ -117,7 +117,7 @@ public:
 		return type == slottype;
 	}
 
-	bool getSlotType() {
+	int getSlotType() {
 		return slottype;
 	}
 
@@ -136,6 +136,11 @@ public:
 	virtual inline int getQuantity() {
 
 		return 0;
+	}
+
+	inline int getRequiredQuantity() {
+
+		return requiredQuantity;
 	}
 
 	virtual inline bool add(PlayerCreature* player, TangibleObject* tano) {
