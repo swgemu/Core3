@@ -15,6 +15,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/building/city/CityHallObject.h"
 
 
 void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
@@ -72,7 +73,7 @@ void VehicleObjectImplementation::repairVehicle(PlayerCreature* player) {
 		ManagedReference<ActiveArea*> activeArea = getActiveRegion();
 
 		if (activeArea != NULL && activeArea->isRegion()) {
-			Region* region = (Region*) activeArea;
+			Region* region = (Region*) activeArea.get();
 
 			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 
