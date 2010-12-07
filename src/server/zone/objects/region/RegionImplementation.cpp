@@ -26,6 +26,9 @@ void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
 	stringId.setTO(type.toString());
 
 	player->sendSystemMessage(stringId);
+
+	if (cityHall->isBanned(player->getObjectID()))
+		player->sendSystemMessage("@city/city:youre_city_banned"); //You are banned from this city and may not use any of its public services and structures.
 }
 
 void RegionImplementation::insertToZone(Zone* zone) {
