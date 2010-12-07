@@ -1056,6 +1056,8 @@ public:
 
 	int getMapLocationsType3();
 
+	SharedObjectTemplate* getObjectTemplate();
+
 	void createChildObjects();
 
 	DistributedObjectServant* _getImplementation();
@@ -2000,6 +2002,8 @@ public:
 	int getMapLocationsType2();
 
 	int getMapLocationsType3();
+
+	SharedObjectTemplate* getObjectTemplate();
 
 	virtual void createChildObjects();
 

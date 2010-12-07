@@ -49,6 +49,9 @@ which carries forward this exception.
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/packets/object/DataTransformWithParent.h"
+#include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/appearance/FloorMesh.h"
+#include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 
 class MoveFurnitureCommand : public QueueCommand {
 public:
@@ -56,6 +59,97 @@ public:
 	MoveFurnitureCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
+	}
+
+	const static int UP = 1;
+	const static int DOWN = 2;
+	const static int FORWARD = 3;
+	const static int BACK = 4;
+
+	//returns false on collision detection
+	bool checkCollision(SceneObject* object, int dir, float dist, float radians) {
+		ManagedReference<SceneObject*> parent = object->getParent();
+
+		if (parent == NULL || !parent->isCellObject())
+			return true;
+
+		CellObject* cell = (CellObject*) parent.get();
+
+		SharedObjectTemplate* objectTemplate = parent->getRootParent()->getObjectTemplate();
+		PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+
+		if (portalLayout == NULL)
+			return true;
+
+		MeshAppearanceTemplate* appearanceMesh = portalLayout->getMeshAppearanceTemplate(cell->getCellNumber());
+
+		if (appearanceMesh == NULL) {
+			//info("null appearance mesh ");
+			return true;
+		}
+
+		//doing a bruteforce test, TODO: implement sweep test
+
+		float radius = 0.1;
+
+		if (dist < radius)
+			dist = radius;
+
+		float checkedDistance = 0.1;
+
+		Vector3 currentPosition = object->getPosition();
+
+		if (dir != DOWN && dir != UP) {
+			while (checkedDistance <= dist) {
+				float offsetX = checkedDistance * sin(radians);
+				float offsetY = checkedDistance * cos(radians);
+
+				switch (dir) {
+				case FORWARD: {
+					float x = currentPosition.getX() + offsetX;
+					float y = currentPosition.getY() + offsetY;
+
+					if (appearanceMesh->testCollide(x, object->getPositionZ() + 0.1, y, radius))
+						return false;
+
+					break;
+				}
+
+				case BACK: {
+					float x = currentPosition.getX() - offsetX;
+					float y = currentPosition.getY() - offsetY;
+
+					if (appearanceMesh->testCollide(x, object->getPositionZ() + 0.1, y, radius))
+						return false;
+					break;
+				}
+				}
+
+				checkedDistance += radius;
+			}
+		} else if (dir == UP || dir == DOWN) {
+			while (checkedDistance <= dist) {
+
+				switch (dir) {
+				case UP:
+					if (appearanceMesh->testCollide(currentPosition.getX(), currentPosition.getZ() + checkedDistance + 0.1, currentPosition.getY(), radius))
+						return false;
+
+					break;
+
+
+				case DOWN:
+					if (appearanceMesh->testCollide(currentPosition.getX(), currentPosition.getZ() - checkedDistance + 0.1, currentPosition.getY(), radius))
+						return false;
+
+					break;
+				}
+
+				checkedDistance += radius;
+			}
+		}
+
+		return true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -124,30 +218,48 @@ public:
 		}
 
 		float degrees = creature->getDirectionAngle();
+		float radians = Math::deg2rad(degrees);
 
 		dist /= 100.0f;
 
-		float offsetX = dist * sin(Math::deg2rad(degrees));
-		float offsetY = dist * cos(Math::deg2rad(degrees));
+		float offsetX = dist * sin(radians);
+		float offsetY = dist * cos(radians);
 
 		float x = obj->getPositionX();
 		float y = obj->getPositionY();
 		float z = obj->getPositionZ();
 
 		if (dir == "forward") {
+			if (!checkCollision(obj, FORWARD, dist, radians)) {
+				player->sendSystemMessage("You cant move the item there");
+				return GENERALERROR;
+			}
+
 			x += (offsetX);
 			y += (offsetY);
-		}
+		} else if (dir == "back") {
+			if (!checkCollision(obj, BACK, dist, radians)) {
+				player->sendSystemMessage("You cant move the item there");
+				return GENERALERROR;
+			}
 
-		if (dir == "back") {
 			x -= (offsetX);
 			y -= (offsetY);
-		}
+		} else if (dir == "up") {
+			if (!checkCollision(obj, UP, dist, radians)) {
+				player->sendSystemMessage("You cant move the item there");
+				return GENERALERROR;
+			}
 
-		if (dir == "up")
 			z += dist;
-		if (dir == "down")
+		} else if (dir == "down") {
+			if (!checkCollision(obj, DOWN, dist, radians)) {
+				player->sendSystemMessage("You cant move the item there");
+				return GENERALERROR;
+			}
+
 			z -= dist;
+		}
 
 		//TODO: Check to make sure the item is not being moved outside the range of the cell.
 		//Need cell dimensions for this...
