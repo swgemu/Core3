@@ -7,6 +7,8 @@
 
 #include "FloorMesh.h"
 
+#include "MeshAppearanceTemplate.h"
+
 void FloorMesh::readObject(IffStream* iffStream) {
 	iffStream->openForm('FLOR');
 
@@ -23,6 +25,40 @@ void FloorMesh::readObject(IffStream* iffStream) {
 		error("unkown FloorMesh version " + String::hexvalueOf((int)nextFormType));
 		break;
 	}
+
+	// Generating our own tree from triangles
+
+	Vector<Triangle> triangles;
+
+	for (int i = 0; i < tris.size(); ++i) {
+		Tri* tri = &tris.get(i);
+
+		int pointA = tri->getVertex1();
+		int pointB = tri->getVertex2();
+		int pointC = tri->getVertex3();
+
+		Vert* vert1 = &vertices.get(pointA);
+		Vert* vert2 = &vertices.get(pointB);
+		Vert* vert3 = &vertices.get(pointC);
+
+		Vector3 trian[3];
+		trian[0] = Vector3(vert1->getX(), vert1->getY(), vert1->getZ());
+		trian[1] = Vector3(vert2->getX(), vert2->getY(), vert2->getZ());
+		trian[2] = Vector3(vert3->getX(), vert3->getY(), vert3->getZ());
+
+		triangles.add(Triangle(trian));
+	}
+
+	tris.removeAll();
+	vertices.removeAll();
+
+	AABBNode::Heuristic heurData;
+	heurData.maxdepth = 10; // maximum depth
+	heurData.mintricnt = 5; // minimum triangle count
+	heurData.tartricnt = 10; // target triangle count
+	heurData.minerror = 0.5f; // minimum error required
+
+	aabbTree = new AABBNode(triangles, 0, heurData);
 
 	iffStream->closeForm('FLOR');
 }
@@ -50,7 +86,7 @@ void FloorMesh::parseVersion0005(IffStream* iffStream) {
 
 		int trisDataSize = trisData->getChunkSize();
 
-		/*while (trisDataSize > 0) {
+		while (trisDataSize > 0) {
 			Tri tri;
 
 			tri.readObject(iffStream);
@@ -58,7 +94,7 @@ void FloorMesh::parseVersion0005(IffStream* iffStream) {
 			tris.add(tri);
 
 			trisDataSize -= 60;
-		}*/
+		}
 
 		iffStream->closeChunk();
 
@@ -100,13 +136,13 @@ void FloorMesh::parseVersion0006(IffStream* iffStream) {
 
 		int trisCount = iffStream->getInt();
 
-		/*for (int i = 0; i < trisCount; ++i) {
+		for (int i = 0; i < trisCount; ++i) {
 			Tri tri;
 
 			tri.readObject(iffStream);
 
 			tris.add(tri);
-		}*/
+		}
 
 		iffStream->closeChunk();
 
@@ -128,7 +164,7 @@ void FloorMesh::parseVersion0006(IffStream* iffStream) {
 }
 
 void FloorMesh::parseBTRE(IffStream* iffStream) {
-	/*uint32 nextForm = 0;
+	uint32 nextForm = 0;
 
 	try {
 		nextForm = iffStream->getNextFormType();
@@ -147,22 +183,24 @@ void FloorMesh::parseBTRE(IffStream* iffStream) {
 
 	int nodeSize = iffStream->getInt();
 
-	for (int i = 0; i < nodeSize; ++i) {
+	/*for (int i = 0; i < nodeSize; ++i) {
 		Nods nods;
 		nods.readObject(iffStream);
 
 		nodes.add(nods);
-	}
+	}*/
 
 	iffStream->closeChunk();
 
 	iffStream->closeForm('0000');
 
-	iffStream->closeForm('BTRE');*/
+	iffStream->closeForm('BTRE');
 }
 
 void FloorMesh::parseBEDG(IffStream* iffStream) {
-	/*iffStream->openChunk('BEDG');
+	/*Vector<Bedg> edges;
+
+	iffStream->openChunk('BEDG');
 
 	int edgeSize = iffStream->getInt();
 
@@ -195,4 +233,12 @@ void FloorMesh::parsePGRF(IffStream* iffStream) {
 
 	pathGraph = new PathGraph();
 	pathGraph->readObject(iffStream);
+}
+
+bool FloorMesh::testCollide(float x, float z, float y, float radius) {
+	Vector3 point(x, z, y);
+
+	Sphere sphere(point, radius);
+
+	return aabbTree->testCollide(sphere);
 }

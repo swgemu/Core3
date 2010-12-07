@@ -7,6 +7,7 @@
 
 #include "PortalLayout.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "MeshAppearanceTemplate.h"
 
 void PortalLayout::parse(IffStream* iffStream) {
 	try {
@@ -86,6 +87,14 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 				String meshFile;
 				iffStream->getString(meshFile);
 
+				if (meshFile.length() > 1) {
+					if (meshFile.indexOf(".lod") == -1) {
+						MeshAppearanceTemplate* appMesh = TemplateManager::instance()->getMeshAppearanceTemplate(meshFile);
+						appearanceTemplates.add(appMesh);
+					} else
+						appearanceTemplates.add(NULL);
+				}
+
 				int readCase2 = iffStream->getByte();
 
 				if (dataChunk->hasData()) {
@@ -95,8 +104,7 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 					if (floorFile.length() > 1) {
 						FloorMesh* floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
 
-						if (floorMesh != NULL)
-							floorMeshes.add(floorMesh);
+						floorMeshes.add(floorMesh);
 					}
 				}
 
