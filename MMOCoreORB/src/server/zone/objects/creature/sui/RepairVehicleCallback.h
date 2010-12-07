@@ -42,7 +42,7 @@ public:
 		ManagedReference<ActiveArea*> activeArea = vehicle->getActiveRegion();
 
 		if (activeArea != NULL && activeArea->isRegion() && !player->getPlayerObject()->isPrivileged()) {
-			Region* region = (Region*) activeArea;
+			Region* region = (Region*) activeArea.get();
 
 			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 
