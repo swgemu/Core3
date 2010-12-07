@@ -13,6 +13,9 @@
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/building/city/CityHallObject.h"
 
 class RepairVehicleCallback : public SuiMessageCallback {
 public:
@@ -34,6 +37,20 @@ public:
 		VehicleObject* vehicle = (VehicleObject*) obj.get();
 
 		Locker _lock(vehicle, player);
+
+		//Need to check if they are city banned.
+		ManagedReference<ActiveArea*> activeArea = vehicle->getActiveRegion();
+
+		if (activeArea != NULL && activeArea->isRegion()) {
+			Region* region = (Region*) activeArea;
+
+			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
+
+			if (cityHall != NULL && cityHall->isBanned(player->getObjectID())) {
+				player->sendSystemMessage("@city/city:garage_banned"); //You are city banned and cannot use this garage.
+				return;
+			}
+		}
 
 		int repairCost = vehicle->calculateRepairCost(player);
 		int totalFunds = player->getBankCredits();
