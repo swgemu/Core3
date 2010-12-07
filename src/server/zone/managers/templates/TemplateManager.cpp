@@ -71,6 +71,7 @@
 
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
+#include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
@@ -88,10 +89,8 @@ TemplateManager::TemplateManager() {
 	clientTemplateCRCMap = new ClientTemplateCRCMap();
 
 	portalLayoutMap = new PortalLayoutMap();
-	portalLayoutMap->setNullValue(NULL);
-
 	floorMeshMap = new FloorMeshMap();
-	floorMeshMap->setNullValue(NULL);
+	meshAppearanceMap = new MeshAppearanceMap();
 
 	registerFunctions();
 	registerGlobals();
@@ -421,6 +420,35 @@ FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
 
 	return floorMesh;
 	//return NULL;
+}
+
+MeshAppearanceTemplate* TemplateManager::getMeshAppearanceTemplate(const String& fileName) {
+	MeshAppearanceTemplate* meshAppearance = meshAppearanceMap->get(fileName);
+
+	if (meshAppearance == NULL) {
+		IffStream* iffStream = openIffFile(fileName);
+
+		if (iffStream != NULL) {
+			try {
+				meshAppearance = new MeshAppearanceTemplate();
+
+				meshAppearance->readObject(iffStream);
+
+				info("parsed " + fileName);
+			} catch (...) {
+				info("could not parse " + fileName);
+				delete meshAppearance;
+				meshAppearance = NULL;
+			}
+
+			delete iffStream;
+			iffStream = NULL;
+
+			meshAppearanceMap->put(fileName, meshAppearance);
+		}
+	}
+
+	return meshAppearance;
 }
 
 PortalLayout* TemplateManager::getPortalLayout(const String& fileName) {

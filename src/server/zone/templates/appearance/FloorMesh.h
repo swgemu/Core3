@@ -29,16 +29,26 @@ public:
 
 	void readObject(IffStream* iffStream) {
 		x = iffStream->getFloat();
-		z = iffStream->getFloat();
 		y = iffStream->getFloat();
+		z = iffStream->getFloat();
 	}
 
+	inline float getX() {
+		return x;
+	}
 
+	inline float getY() {
+		return y;
+	}
+
+	inline float getZ() {
+		return z;
+	}
 };
 
 class Nods  : public Object {
-	float x1, y1, z1, x2, y2, z2;
-	int var1, var2, var3, var4;
+	float x0, y0, z0, x1, y1, z1;
+	int id, var2, leftNode, rightNode;
 
 public:
 	Nods() {
@@ -47,17 +57,17 @@ public:
 
 	void readObject(IffStream* iffStream) {
 		x1 = iffStream->getFloat();
-		y1 = iffStream->getFloat();
 		z1 = iffStream->getFloat();
+		y1 = iffStream->getFloat();
 
-		x2 = iffStream->getFloat();
-		y2 = iffStream->getFloat();
-		z2 = iffStream->getFloat();
+		x0 = iffStream->getFloat();
+		z0 = iffStream->getFloat();
+		y0 = iffStream->getFloat();
 
-		var1 = iffStream->getInt();
+		id = iffStream->getInt();
 		var2 = iffStream->getInt();
-		var3 = iffStream->getInt();
-		var4 = iffStream->getInt();
+		leftNode = iffStream->getInt();
+		rightNode = iffStream->getInt();
 	}
 };
 
@@ -74,6 +84,14 @@ public:
 		var1 = iffStream->getInt();
 		var2 = iffStream->getInt();
 		var3 = iffStream->getByte();
+	}
+
+	inline int getFrom() {
+		return var1;
+	}
+
+	inline int getTo() {
+		return var2;
 	}
 
 };
@@ -111,20 +129,35 @@ public:
 		var17 = iffStream->getInt();
 		var18 = iffStream->getInt();
 	}
+
+	inline int getVertex1() {
+		return var1;
+	}
+
+	inline int getVertex2() {
+		return var2;
+	}
+
+	inline int getVertex3() {
+		return var3;
+	}
 };
 
 class FloorMesh : public IffTemplate, public Logger {
 	Vector<Vert> vertices;
-	//Vector<Tri> tris;
+	Vector<Tri> tris;
 	//Vector<Nods> nodes;
 	//Vector<Bedg> edges; these disabed cause of ram
 
 	PathGraph* pathGraph;
 
+	AABBNode* aabbTree;
+
 public:
 	FloorMesh() {
 		setLoggingName("FloorMesh");
 		pathGraph = NULL;
+		aabbTree = NULL;
 	}
 
 	~FloorMesh() {
@@ -132,6 +165,9 @@ public:
 			delete pathGraph;
 			pathGraph = NULL;
 		}
+
+		delete aabbTree;
+		aabbTree = NULL;
 	}
 
 	void readObject(IffStream* iffStream);
@@ -140,6 +176,9 @@ public:
 	void parsePGRF(IffStream* iffStream);
 	void parseVersion0006(IffStream* iffStream);
 	void parseVersion0005(IffStream* iffStream);
+
+
+	bool testCollide(float x, float z, float y, float radius);
 
 
 };

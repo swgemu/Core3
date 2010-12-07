@@ -1538,6 +1538,11 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return templateObject.getMapLocationsType3();
 	}
 	
+	@local
+	public SharedObjectTemplate getObjectTemplate() {
+		return templateObject;
+	}
+	
 	public native abstract void createChildObjects();
 }
 

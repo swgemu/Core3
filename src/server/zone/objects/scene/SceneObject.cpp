@@ -2662,6 +2662,15 @@ int SceneObject::getMapLocationsType3() {
 		return _implementation->getMapLocationsType3();
 }
 
+SharedObjectTemplate* SceneObject::getObjectTemplate() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getObjectTemplate();
+}
+
 void SceneObject::createChildObjects() {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -3508,6 +3517,11 @@ int SceneObjectImplementation::getMapLocationsType2() {
 int SceneObjectImplementation::getMapLocationsType3() {
 	// server/zone/objects/scene/SceneObject.idl(1538):  		return templateObject.getMapLocationsType3();
 	return templateObject->getMapLocationsType3();
+}
+
+SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {
+	// server/zone/objects/scene/SceneObject.idl(1543):  		return templateObject;
+	return templateObject;
 }
 
 /*

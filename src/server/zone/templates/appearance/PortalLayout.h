@@ -9,11 +9,14 @@
 #define PORTALLAYOUT_H_
 
 #include "../IffTemplate.h"
+
 class FloorMesh;
+class MeshAppearanceTemplate;
 
 class PortalLayout : public IffTemplate, public Logger {
 	int cellTotalNumber;
-	Vector<FloorMesh*> floorMeshes; // indexed by cells
+	Vector<FloorMesh*> floorMeshes; // indexed by cells started by 0
+	Vector<MeshAppearanceTemplate*> appearanceTemplates;
 
 public:
 	PortalLayout() {
@@ -30,9 +33,18 @@ public:
 
 	void parseCELSForm(IffStream* iffStream);
 
-	int getCellNumber() {
+	inline int getCellTotalNumber() {
 		return cellTotalNumber;
 	}
+
+	inline FloorMesh* getFloorMesh(int cellIndex) {
+		return floorMeshes.get(cellIndex);
+	}
+
+	inline MeshAppearanceTemplate* getMeshAppearanceTemplate(int cellIndex) {
+		return appearanceTemplates.get(cellIndex);
+	}
+
 };
 
 #endif /* PORTALLAYOUT_H_ */

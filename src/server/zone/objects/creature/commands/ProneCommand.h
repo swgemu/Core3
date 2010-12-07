@@ -87,15 +87,6 @@ public:
 					return SUCCESS;
 				}
 
-
-				if (player->getFirstName() != "TheAnswer") {
-					if (player->hasSpawnedBlueFrog()) {
-						player->sendSystemMessage("You are only allowed to spawn 1 blue frog per session");
-						return GENERALERROR;
-					} else
-						player->setSpawnedBlueFrog();
-				}
-
 				ZoneServer* zserv = server->getZoneServer();
 
 				String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";

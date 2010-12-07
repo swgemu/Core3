@@ -434,6 +434,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/appearance/FloorMesh.cpp \
+		server/zone/templates/appearance/MeshAppearanceTemplate.cpp \
 		server/zone/templates/appearance/PortalLayout.cpp \
 		server/zone/templates/appearance/PathGraph.cpp \
 		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
