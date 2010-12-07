@@ -394,6 +394,7 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	public static final int MISSIONRECONAREA = 0x2000003;
 	public static final int DYNAMICSPAWNAREA = 0x2000004;
 	public static final int STATICSPAWNAREA = 0x2000005;
+	public static final int GARAGEAREA = 0x2000006;
 	
 	public static final int AIGROUP = 0x4000000;
 	public static final int HERDGROUP = 0x4000001;

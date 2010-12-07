@@ -160,6 +160,21 @@ String StructureManager::getTimeString(unsigned int timestamp) {
 		return _implementation->getTimeString(timestamp);
 }
 
+SceneObject* StructureManager::getInRangeParkingGarage(SceneObject* obj, int range) {
+	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(obj);
+		method.addSignedIntParameter(range);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getInRangeParkingGarage(obj, range);
+}
+
 DistributedObjectServant* StructureManager::_getImplementation() {
 
 	_updated = true;
@@ -297,6 +312,9 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case 12:
 		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
 		break;
+	case 13:
+		resp->insertLong(getInRangeParkingGarage((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter())->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -330,6 +348,10 @@ int StructureManagerAdapter::changePrivacy(PlayerCreature* player, StructureObje
 
 String StructureManagerAdapter::getTimeString(unsigned int timestamp) {
 	return ((StructureManagerImplementation*) impl)->getTimeString(timestamp);
+}
+
+SceneObject* StructureManagerAdapter::getInRangeParkingGarage(SceneObject* obj, int range) {
+	return ((StructureManagerImplementation*) impl)->getInRangeParkingGarage(obj, range);
 }
 
 /*

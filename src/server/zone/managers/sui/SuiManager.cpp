@@ -104,6 +104,8 @@ which carries forward this exception.
 #include "server/zone/objects/guild/sui/GuildSponsoredListCallback.h"
 #include "server/zone/objects/guild/sui/GuildSponsoredOptionsCallback.h"
 
+#include "server/zone/objects/creature/sui/RepairVehicleCallback.h"
+
 #include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeCallback.h"
 
 #include "server/zone/managers/guild/GuildManager.h"
@@ -137,6 +139,7 @@ void SuiManager::registerMessages() {
 	messageCallbackFactory.registerObject<GuildSponsorVerifyCallback>(SuiWindowType::GUILD_SPONSOR_VERIFY);
 	messageCallbackFactory.registerObject<GuildSponsoredListCallback>(SuiWindowType::GUILD_SPONSORED_LIST);
 	messageCallbackFactory.registerObject<GuildSponsoredOptionsCallback>(SuiWindowType::GUILD_SPONSORED_OPTIONS);
+	messageCallbackFactory.registerObject<RepairVehicleCallback>(SuiWindowType::GARAGE_REPAIR);
 
 	messageCallbackFactory.registerObject<ListGuildsResponseCallback>(SuiWindowType::ADMIN_GUILDLIST);
 }
