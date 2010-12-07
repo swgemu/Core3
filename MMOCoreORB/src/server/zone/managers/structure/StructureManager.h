@@ -146,6 +146,8 @@ public:
 
 	String getTimeString(unsigned int timestamp);
 
+	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -237,6 +239,8 @@ public:
 
 	String getTimeString(unsigned int timestamp);
 
+	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
+
 	StructureManager* _this;
 
 	operator const StructureManager*();
@@ -289,6 +293,8 @@ public:
 	int changePrivacy(PlayerCreature* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
+
+	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range);
 
 };
 

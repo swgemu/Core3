@@ -179,5 +179,14 @@ class StructureManager extends ManagedService implements Logger {
 	
 	//TEMPORARY
 	public native string getTimeString(unsigned int timestamp);
+	
+	/**
+	 * Returns the closest parking garage to the obj, or NULL if one can't be found within the required radius.
+	 * @pre { obj locked, zone unlocked }
+	 * @post { obj locked, zone unlocked }
+	 * @param obj The object to use as reference for searching for the nearest parking garage.
+	 * @return Returns a SceneObject representing the nearest parking garage, or NULL if one was not found in the required range.
+	 */
+	public native SceneObject getInRangeParkingGarage(SceneObject obj, int range = 64);
 }
 

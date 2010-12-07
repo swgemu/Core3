@@ -201,13 +201,55 @@ int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-bool VehicleObject::isVehicleObject() {
+void VehicleObject::repairVehicle(PlayerCreature* player) {
 	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->repairVehicle(player);
+}
+
+int VehicleObject::calculateRepairCost(PlayerCreature* player) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->calculateRepairCost(player);
+}
+
+void VehicleObject::sendRepairConfirmTo(PlayerCreature* player) {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendRepairConfirmTo(player);
+}
+
+bool VehicleObject::isVehicleObject() {
+	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -333,7 +375,7 @@ bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {
-	// server/zone/objects/creature/VehicleObject.idl(168):  		return true;
+	// server/zone/objects/creature/VehicleObject.idl(180):  		return true;
 	return true;
 }
 
@@ -379,6 +421,15 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 16:
+		repairVehicle((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 17:
+		resp->insertSignedInt(calculateRepairCost((PlayerCreature*) inv->getObjectParameter()));
+		break;
+	case 18:
+		sendRepairConfirmTo((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 19:
 		resp->insertBoolean(isVehicleObject());
 		break;
 	default:
@@ -426,6 +477,18 @@ int VehicleObjectAdapter::notifyObjectDestructionObservers(TangibleObject* attac
 
 int VehicleObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((VehicleObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void VehicleObjectAdapter::repairVehicle(PlayerCreature* player) {
+	((VehicleObjectImplementation*) impl)->repairVehicle(player);
+}
+
+int VehicleObjectAdapter::calculateRepairCost(PlayerCreature* player) {
+	return ((VehicleObjectImplementation*) impl)->calculateRepairCost(player);
+}
+
+void VehicleObjectAdapter::sendRepairConfirmTo(PlayerCreature* player) {
+	((VehicleObjectImplementation*) impl)->sendRepairConfirmTo(player);
 }
 
 bool VehicleObjectAdapter::isVehicleObject() {

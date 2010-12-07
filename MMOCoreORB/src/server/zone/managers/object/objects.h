@@ -46,6 +46,7 @@
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
+#include "server/zone/objects/installation/garage/GarageInstallation.h"
 #include "server/zone/objects/installation/generator/GeneratorObject.h"
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/tangible/component/Component.h"
@@ -97,6 +98,7 @@
 #include "server/zone/objects/resource/ResourceContainer.h"
 
 #include "server/zone/objects/area/BadgeActiveArea.h"
+#include "server/zone/objects/area/GarageArea.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"

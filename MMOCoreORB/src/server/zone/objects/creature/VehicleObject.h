@@ -144,6 +144,12 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	void repairVehicle(PlayerCreature* player);
+
+	int calculateRepairCost(PlayerCreature* player);
+
+	void sendRepairConfirmTo(PlayerCreature* player);
+
 	bool isVehicleObject();
 
 	DistributedObjectServant* _getImplementation();
@@ -202,6 +208,12 @@ public:
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void repairVehicle(PlayerCreature* player);
+
+	int calculateRepairCost(PlayerCreature* player);
+
+	void sendRepairConfirmTo(PlayerCreature* player);
 
 	bool isVehicleObject();
 
@@ -263,6 +275,12 @@ public:
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void repairVehicle(PlayerCreature* player);
+
+	int calculateRepairCost(PlayerCreature* player);
+
+	void sendRepairConfirmTo(PlayerCreature* player);
 
 	bool isVehicleObject();
 

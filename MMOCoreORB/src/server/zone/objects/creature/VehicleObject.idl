@@ -164,6 +164,18 @@ class VehicleObject extends CreatureObject {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
+	/**
+	 * Attempts to see if the vehicle can be repaired. If tests are passed, then it sends the confirmation box to the player.
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player The player that is repairing the vehicle.
+	 */
+	public native void repairVehicle(PlayerCreature player);
+	
+	public native int calculateRepairCost(PlayerCreature player);
+	
+	public native void sendRepairConfirmTo(PlayerCreature player);
+	
 	public boolean isVehicleObject() {
 		return true;
 	}
