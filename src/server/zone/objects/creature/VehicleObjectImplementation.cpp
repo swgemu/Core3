@@ -68,6 +68,20 @@ int VehicleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 
 void VehicleObjectImplementation::repairVehicle(PlayerCreature* player) {
 	if (!player->getPlayerObject()->isPrivileged()) {
+		//Need to check if they are city banned.
+		ManagedReference<ActiveArea*> activeArea = getActiveRegion();
+
+		if (activeArea != NULL && activeArea->isRegion()) {
+			Region* region = (Region*) activeArea;
+
+			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
+
+			if (cityHall != NULL && cityHall->isBanned(player->getObjectID())) {
+				player->sendSystemMessage("@city/city:garage_banned"); //You are city banned and cannot use this garage.
+				return;
+			}
+		}
+
 		if (getConditionDamage() == 0) {
 			player->sendSystemMessage("@pet/pet_menu:undamaged_vehicle"); //The targeted vehicle does not require any repairs at the moment.
 			return;

@@ -41,7 +41,7 @@ public:
 		//Need to check if they are city banned.
 		ManagedReference<ActiveArea*> activeArea = vehicle->getActiveRegion();
 
-		if (activeArea != NULL && activeArea->isRegion()) {
+		if (activeArea != NULL && activeArea->isRegion() && !player->getPlayerObject()->isPrivileged()) {
 			Region* region = (Region*) activeArea;
 
 			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
