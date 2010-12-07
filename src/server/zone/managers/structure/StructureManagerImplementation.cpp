@@ -940,6 +940,17 @@ SceneObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 				createdObject->updateToDatabase();
 
 				returnObject = createdObject;
+
+
+				//Temporary hack for static garage active areas (we need to find a way to mvoe this to scripts)
+				if (buio != NULL && buio->isGarage()) {
+					//Active area for static garages
+					String garageAreaTemplate = "object/garage_area.iff";
+					ManagedReference<ActiveArea*> garageArea = (ActiveArea*) zoneServer->createObject(garageAreaTemplate.hashCode(), 0);
+					garageArea->setRadius(64);
+					garageArea->initializePosition(x, z, y);
+					garageArea->insertToZone(zone);
+				}
 			}
 
 			delete result;
@@ -1617,4 +1628,23 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 	}
 
 	return 0;
+}
+
+SceneObject* StructureManagerImplementation::getInRangeParkingGarage(SceneObject* obj, int range) {
+	if (obj->getZone() != zone)
+		return NULL;
+
+	Locker _locker(zone);
+
+	for (int i = 0; i < obj->inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) obj->getInRangeObject(i);
+
+		if (scno == obj->_getImplementation())
+			continue;
+
+		if (scno->isGarage() && scno->isInRange(obj, range))
+			return (SceneObject*) scno->_getStub();
+	}
+
+	return NULL;
 }

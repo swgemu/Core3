@@ -80,6 +80,7 @@ void ObjectManager::registerObjectTypes() {
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERALTANGIBLEOBJECT);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
+	objectFactory.registerObject<GarageArea>(SceneObject::GARAGEAREA);
 	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObject::MISSIONSPAWNAREA);
 	objectFactory.registerObject<MissionReconActiveArea>(SceneObject::MISSIONRECONAREA);
 	objectFactory.registerObject<DynamicSpawnArea>(SceneObject::DYNAMICSPAWNAREA);
@@ -161,7 +162,7 @@ void ObjectManager::registerObjectTypes() {
 
 
 	objectFactory.registerObject<InstallationObject>(SceneObject::INSTALLATION);
-	objectFactory.registerObject<InstallationObject>(SceneObject::GARAGEINSTALLATION);
+	objectFactory.registerObject<GarageInstallation>(SceneObject::GARAGEINSTALLATION);
 	objectFactory.registerObject<ShuttleInstallation>(SceneObject::SHUTTLEINSTALLATION);
 	objectFactory.registerObject<HarvesterObject>(SceneObject::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObject::FACTORY);

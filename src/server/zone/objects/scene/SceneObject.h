@@ -648,6 +648,8 @@ public:
 
 	static const int STATICSPAWNAREA = 0x2000005;
 
+	static const int GARAGEAREA = 0x2000006;
+
 	static const int AIGROUP = 0x4000000;
 
 	static const int HERDGROUP = 0x4000001;
@@ -1590,6 +1592,8 @@ public:
 	static const int DYNAMICSPAWNAREA = 0x2000004;
 
 	static const int STATICSPAWNAREA = 0x2000005;
+
+	static const int GARAGEAREA = 0x2000006;
 
 	static const int AIGROUP = 0x4000000;
 
