@@ -397,6 +397,9 @@ bool CityHallObjectImplementation::hasZoningRights(uint64 playerID) {
 	if (playerID == mayorObjectID)
 		return true;
 
+	if (isMilitiaMember(playerID))
+		return true;
+
 	uint32 expires = playerZoningRights.get(playerID);
 
 	Time currentTime;
