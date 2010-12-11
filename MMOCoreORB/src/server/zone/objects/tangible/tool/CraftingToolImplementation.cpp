@@ -383,10 +383,7 @@ void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
 	ManagedReference<CraftingStation*> station = NULL;
 
 	for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* impl =
-				(SceneObjectImplementation*) player->getInRangeObject(i);
-
-		SceneObject* scno = impl->_this;
+		SceneObject* scno = (SceneObject*) player->getInRangeObject(i);
 
 		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
 

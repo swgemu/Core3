@@ -1248,7 +1248,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 		zone->rlock();
 
 		for (int i = 0; i < attacker->inRangeObjectCount(); ++i) {
-			ManagedReference<SceneObject*> object = (SceneObject*) (((SceneObjectImplementation*) attacker->getInRangeObject(i))->_this);
+			ManagedReference<SceneObject*> object = (SceneObject*) attacker->getInRangeObject(i);
 
 			if (!object->isTangibleObject()) {
 				//error("object is not tangible");
@@ -1310,7 +1310,7 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 	Locker _locker(zone);
 
 	for (int i = 0; i < attacker->inRangeObjectCount(); ++i) {
-		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) attacker->getInRangeObject(i))->_this);
+		SceneObject* object = (SceneObject*) attacker->getInRangeObject(i);
 
 		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
 			PlayerCreature* player = (PlayerCreature*) object;

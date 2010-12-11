@@ -73,18 +73,16 @@ public:
 				player->removePendingTask("invisibledelayevent");
 
 				ManagedReference<Zone*> zone = player->getZone();
-				PlayerCreatureImplementation* playerImpl = (PlayerCreatureImplementation*) player->_getImplementation();
 
 				Locker zoneLocker(zone);
 
 				if (!player->isInvisible()) {
 
 					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-						QuadTreeEntry* obj = player->getInRangeObject(i);
-						SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+						SceneObject* scno = (SceneObject*) player->getInRangeObject(i);
 
-						if (obj != (QuadTreeEntry*) playerImpl && scno->isPlayerCreature())
-								obj->notifyDissapear((QuadTreeEntry*) playerImpl);
+						if (scno != player && scno->isPlayerCreature())
+								scno->notifyDissapear(player);
 
 					}
 
@@ -95,15 +93,13 @@ public:
 					player->sendSystemMessage("DO NOT CHANGE YOUR EQUIPPED ITEMS!");
 
 				} else {
-
 					player->setInvisible(false);
 
 					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-						QuadTreeEntry* obj = player->getInRangeObject(i);
-						SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+						SceneObject* scno = (SceneObject*) player->getInRangeObject(i);
 
-						if (obj != (QuadTreeEntry*) playerImpl && scno->isPlayerCreature())
-								obj->notifyInsert((QuadTreeEntry*) playerImpl);
+						if (scno != player && scno->isPlayerCreature())
+								scno->notifyInsert(player);
 
 					}
 
@@ -113,7 +109,7 @@ public:
 
 				}
 
-				UpdatePVPStatusMessage* mess = new UpdatePVPStatusMessage(playerImpl, player->getPvpStatusBitmask());
+				UpdatePVPStatusMessage* mess = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
 				player->broadcastMessage(mess, true, false);
 
 			}

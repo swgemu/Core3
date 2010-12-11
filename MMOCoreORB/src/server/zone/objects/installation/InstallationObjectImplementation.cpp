@@ -134,9 +134,9 @@ void InstallationObjectImplementation::broadcastMessage(BasePacket* message, boo
 	Locker zoneLocker(zone);
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+		SceneObject* scno = (SceneObject*) getInRangeObject(i);
 
-		if (!sendSelf && scno == this)
+		if (!sendSelf && scno == _this)
 			continue;
 
 		if(!scno->isPlayerCreature())

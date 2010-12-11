@@ -35,7 +35,7 @@ int TicketObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 		int size = player->inRangeObjectCount();
 
 		for (int i = 0; i < size; ++i) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+			SceneObject* object = (SceneObject*) player->getInRangeObject(i);
 
 			if (object->isTangibleObject()) {
 				TangibleObject* tano = (TangibleObject*) object;
