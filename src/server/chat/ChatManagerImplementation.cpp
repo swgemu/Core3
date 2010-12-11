@@ -289,7 +289,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 		firstName = ((PlayerCreature*)sender)->getFirstName();
 
 	for (int i = 0; i < sender->inRangeObjectCount(); ++i) {
-		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) sender->getInRangeObject(i))->_this);
+		SceneObject* object = (SceneObject*) sender->getInRangeObject(i);
 
 		if (object->isPlayerCreature()) {
 			PlayerCreature* creature = (PlayerCreature*) object;
@@ -431,7 +431,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		try {
 
 			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+				SceneObject* object = (SceneObject*) player->getInRangeObject(i);
 
 				if (object->isPlayerCreature()) {
 					PlayerCreature* creature = (PlayerCreature*) object;

@@ -127,7 +127,11 @@ void ZoneImplementation::startManagers() {
 
 	planetManager->initialize();
 
+	//FIXME
+#ifndef WITH_STM
 	creatureManager->initialize();
+#endif
+
 	planetManager->loadShuttles();
 
 	cityManager->loadLuaConfig();
@@ -212,8 +216,8 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 	QuadTree::inRange(x, y, range, entryObjects);
 
 	for (int i = 0; i < entryObjects.size(); ++i) {
-		SceneObjectImplementation* obj = dynamic_cast<SceneObjectImplementation*>(entryObjects.get(i));
-		objects->put(obj->_this);
+		SceneObject* obj = dynamic_cast<SceneObject*>(entryObjects.get(i));
+		objects->put(obj);
 	}
 
 	return objects->size();

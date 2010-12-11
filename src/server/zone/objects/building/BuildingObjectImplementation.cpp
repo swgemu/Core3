@@ -202,7 +202,7 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	//info("BuildingObjectImplementation::notifyInsert");
-	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
+	SceneObject* scno = (SceneObject*) obj;
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -223,11 +223,9 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 }
 
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
-	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
+	SceneObject* scno = (SceneObject*) obj;
 
-	SceneObject* scnoStub = (SceneObject*) scno->_getStub();
-
-	removeNotifiedSentObject(scnoStub);
+	removeNotifiedSentObject(scno);
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);

@@ -2054,7 +2054,7 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	Locker _locker(creature->getZone());
 
 	for (int i = 0; i < creature->inRangeObjectCount(); ++i) {
-		ManagedReference<SceneObject*> tObj = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
+		ManagedReference<SceneObject*> tObj = (SceneObject*) creature->getInRangeObject(i);
 
 		if (tObj != NULL) {
 			if (tObj->isStructureObject()) {

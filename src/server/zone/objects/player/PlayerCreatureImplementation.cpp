@@ -196,14 +196,9 @@ void PlayerCreatureImplementation::teleport(float newPositionX, float newPositio
 }
 
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
-	SceneObjectImplementation* implementation =(SceneObjectImplementation*) entry;
+	SceneObject* scno =(SceneObject*) entry;
 
-	SceneObject* scno = implementation->_this;/*(SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());*/
-
-	if (scno == NULL)
-		return;
-
-	if (scno == _this)
+	if (scno == NULL || scno == _this)
 		return;
 
 	if (scno->isPlayerCreature()) {
@@ -279,13 +274,9 @@ bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 }
 
 void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
-	SceneObjectImplementation* implementation =(SceneObjectImplementation*) entry;
-	SceneObject* scno = implementation->_this;/*(SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());*/
+	SceneObject* scno =(SceneObject*) entry;
 
-	if (scno == NULL)
-		return;
-
-	if (scno == _this)
+	if (scno == NULL || scno == _this)
 		return;
 
 	scno->sendDestroyTo(_this);
