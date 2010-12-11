@@ -63,14 +63,13 @@ int ElevatorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* playe
 void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	TerminalImplementation::notifyInsert(obj);
 
-	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
-	SceneObject* scnobj = (SceneObject*) scno->_getStub();
+	SceneObject* scno = (SceneObject*) obj;
 
 	//Only check elevator terminals in the same cell.
-	if (scnobj->getParent() != parent || !scnobj->isTerminal())
+	if (scno->getParent() != parent || !scno->isTerminal())
 		return;
 
-	Terminal* terminal = (Terminal*) scnobj;
+	Terminal* terminal = (Terminal*) scno;
 
 	if (!terminal->isElevatorTerminal())
 		return;

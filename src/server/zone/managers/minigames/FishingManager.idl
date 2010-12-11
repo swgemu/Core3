@@ -56,10 +56,10 @@ import server.zone.objects.tangible.fishing.FishingBaitObject;
 import server.zone.managers.minigames.events.FishingEvent;
 import server.zone.managers.minigames.events.FishingSplashEvent;
 import system.lang.ref.Reference;
-import server.zone.objects.scene.Observer;
-import server.zone.objects.scene.Observable;
+import engine.util.Observer;
+import engine.util.Observable;
 import server.zone.managers.minigames.FishingSession;
-include server.zone.objects.scene.ObserverEventType;
+include engine.util.ObserverEventType;
 
 class FishingManager extends Observer implements Logger {
 	@weakReference

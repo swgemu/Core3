@@ -20,8 +20,6 @@
 
 #include "server/zone/managers/minigames/events/FishingSplashEvent.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/managers/minigames/FishingSession.h"
 
 /*

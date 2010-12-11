@@ -49,7 +49,7 @@ import system.util.SortedVector;
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServer;
 import server.zone.objects.mission.MissionObject;
-import server.zone.objects.scene.Observer;
+import engine.util.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.region.Region;

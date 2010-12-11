@@ -44,8 +44,8 @@ which carries forward this exception.
 
 package server.zone.objects.area;
 
-import server.zone.objects.scene.Observer;
-import server.zone.objects.scene.Observable;
+import engine.util.Observer;
+import engine.util.Observable;
 include server.zone.objects.area.DynamicSpawnArea;
 include server.zone.objects.area.SpawnArea;
 import server.zone.objects.scene.SceneObject;

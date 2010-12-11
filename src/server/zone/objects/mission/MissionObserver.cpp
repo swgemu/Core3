@@ -4,8 +4,6 @@
 
 #include "MissionObserver.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/mission/MissionObject.h"
 
 #include "server/zone/objects/mission/MissionObjective.h"

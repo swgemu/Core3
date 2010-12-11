@@ -66,20 +66,6 @@ using namespace server::zone::managers::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class Observable;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 namespace aigroup {
 
@@ -102,6 +88,8 @@ using namespace server::zone::objects::creature::aigroup;
 #include "system/util/SortedVector.h"
 
 #include "system/util/Vector.h"
+
+#include "engine/util/Observable.h"
 
 namespace server {
 namespace zone {

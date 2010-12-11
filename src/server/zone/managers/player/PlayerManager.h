@@ -118,20 +118,6 @@ using namespace server::zone::objects::tangible::wearables;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class Observable;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace player {
 
 class PlayerObject;
@@ -163,7 +149,9 @@ using namespace server::zone::objects::player;
 
 #include "engine/core/ManagedObject.h"
 
-#include "server/zone/objects/scene/Observer.h"
+#include "engine/util/Observer.h"
+
+#include "engine/util/Observable.h"
 
 #include "engine/util/Vector3.h"
 

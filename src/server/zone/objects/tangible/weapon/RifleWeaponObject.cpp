@@ -23,7 +23,7 @@
 
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
-#include "server/zone/objects/scene/ObserverEventMap.h"
+#include "engine/util/ObserverEventMap.h"
 
 #include "server/zone/managers/planet/HeightMap.h"
 

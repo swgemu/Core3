@@ -49,7 +49,7 @@ import system.util.SortedVector;
 import engine.core.ManagedObject;
 import server.zone.objects.creature.aigroup.AiGroup;
 import server.zone.objects.area.SpawnObserver;
-import server.zone.objects.scene.Observable;
+import engine.util.Observable;
 
 class SpawnArea extends ActiveArea {
 	@dereferenced

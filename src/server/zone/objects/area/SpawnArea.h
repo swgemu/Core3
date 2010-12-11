@@ -41,25 +41,13 @@ class SpawnObserver;
 
 using namespace server::zone::objects::area;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class Observable;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "system/util/SortedVector.h"
 
 #include "engine/core/ManagedObject.h"
+
+#include "engine/util/Observable.h"
 
 namespace server {
 namespace zone {

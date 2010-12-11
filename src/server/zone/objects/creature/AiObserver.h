@@ -14,20 +14,6 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class Observable;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class AiAgent;
@@ -53,9 +39,11 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "engine/util/ObserverEventType.h"
 
-#include "server/zone/objects/scene/Observer.h"
+#include "engine/util/Observer.h"
+
+#include "engine/util/Observable.h"
 
 namespace server {
 namespace zone {

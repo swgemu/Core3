@@ -107,7 +107,7 @@ using namespace server::zone::objects::tangible;
 
 #include "engine/core/ManagedReference.h"
 
-#include "server/zone/objects/scene/Facade.h"
+#include "engine/util/Facade.h"
 
 #include "system/lang/ref/Reference.h"
 

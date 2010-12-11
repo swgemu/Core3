@@ -18,8 +18,6 @@
 
 #include "server/zone/objects/area/SpawnDynamicAreaCreatureTask.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 /*
  *	DynamicSpawnAreaStub
  */

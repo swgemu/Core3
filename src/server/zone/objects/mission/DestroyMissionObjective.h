@@ -14,34 +14,6 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class Observer;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class Observable;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace mission {
 
 class MissionObject;
@@ -124,6 +96,10 @@ class LairObject;
 using namespace server::zone::objects::tangible::lair;
 
 #include "server/zone/templates/TemplateReference.h"
+
+#include "engine/util/Observer.h"
+
+#include "engine/util/Observable.h"
 
 #include "server/zone/objects/mission/MissionObjective.h"
 

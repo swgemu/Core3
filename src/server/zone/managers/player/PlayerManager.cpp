@@ -20,8 +20,6 @@
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/player/PlayerObject.h"
 
 /*

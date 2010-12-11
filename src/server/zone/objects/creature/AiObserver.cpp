@@ -4,8 +4,6 @@
 
 #include "AiObserver.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/creature/AiAgent.h"
 
 #include "server/zone/objects/scene/SceneObject.h"

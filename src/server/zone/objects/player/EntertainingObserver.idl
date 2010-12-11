@@ -48,13 +48,13 @@ include engine.core.ManagedObject;
 
 import engine.log.Logger;
 import engine.core.ManagedReference;
-import server.zone.objects.scene.Facade;
+import engine.util.Facade;
 import system.lang.ref.Reference;
 import engine.core.Task;
-import server.zone.objects.scene.Observer;
-import server.zone.objects.scene.Observable;
+import engine.util.Observer;
+import engine.util.Observable;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.scene.ObserverEventType;
+include engine.util.ObserverEventType;
 
 class EntertainingObserver extends Observer {
 	

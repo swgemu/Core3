@@ -58,8 +58,8 @@ import engine.service.proto.BaseMessage;
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 include server.zone.packets.resource.ResourceListForSurveyMessage;
 include server.zone.objects.resource.ResourceSpawn;
-import server.zone.objects.scene.Observer;
-import server.zone.objects.scene.Observable;
+import engine.util.Observer;
+import engine.util.Observable;
 import server.zone.objects.player.sui.listbox.resourcedeedlistbox.ResourceDeedListBox;
 
 /**

@@ -41,13 +41,13 @@ using namespace server::zone::objects::tangible;
 
 #include "engine/core/ManagedObject.h"
 
-#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "engine/util/SessionFacadeType.h"
 
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
 
-#include "server/zone/objects/scene/Facade.h"
+#include "engine/util/Facade.h"
 
 #include "system/lang/ref/Reference.h"
 

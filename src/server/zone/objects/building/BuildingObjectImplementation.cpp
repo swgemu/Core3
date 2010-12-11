@@ -160,14 +160,12 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 	//info("BuildingObjectImplementation::notifyInsertToZone");
-	SceneObjectImplementation* creoImpl = (SceneObjectImplementation*) object->_getImplementation();
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		QuadTreeEntry* obj = getInRangeObject(i);
-		SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
 
-		creoImpl->addInRangeObject(obj, true);
-		obj->addInRangeObject(creoImpl, true);
+		object->addInRangeObject(obj, true);
+		obj->addInRangeObject(object, true);
 	}
 
 	for (int i = 0; i < cells.size(); ++i) {
@@ -175,22 +173,21 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 
 		if (isStaticBuilding()) {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				SceneObject* childStub = cell->getContainerObject(j);
-				SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
+				SceneObject* child = cell->getContainerObject(j);
 
 				//if (childStub->isInRange(object, 128)) {
-				child->addInRangeObject(creoImpl, false);
+				child->addInRangeObject(object, false);
 
-				if (childStub != object) {
-					creoImpl->notifyInsert(child);
+				if (child != object) {
+					object->notifyInsert(child);
 					//child->sendTo(object, true);
 				}
 
-				creoImpl->addInRangeObject(child, false);
+				object->addInRangeObject(child, false);
 
-				if (childStub != object) {
+				if (child != object) {
 					//object->sendTo(childStub, true);
-					child->notifyInsert(creoImpl);
+					child->notifyInsert(object);
 				}
 
 				//}
@@ -198,8 +195,8 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 		}
 	}
 
-	creoImpl->addInRangeObject(this, false);
-	addInRangeObject(creoImpl, false);
+	object->addInRangeObject(_this, false);
+	addInRangeObject(object, false);
 	//this->sendTo(object, true);
 }
 
@@ -211,12 +208,10 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* childStub = cell->getContainerObject(j);
+			SceneObject* child = cell->getContainerObject(j);
 
 			/*if (childStub->isCreatureObject()
 					|| (scno->getRootParent() == _this) && (scno->isInRange(childStub, 128))) {*/
-
-				SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
 
 				if (isStaticBuilding()) {
 					child->addInRangeObject(obj, false);
@@ -238,8 +233,7 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* childStub = cell->getContainerObject(j);
-			SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
+			SceneObject* child = cell->getContainerObject(j);
 
 			child->removeInRangeObject(obj);
 			obj->removeInRangeObject(child);

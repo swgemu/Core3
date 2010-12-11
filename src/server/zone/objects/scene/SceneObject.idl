@@ -64,7 +64,9 @@ import server.zone.managers.objectcontroller.ObjectController;
 import system.lang.ref.Reference;
 import engine.core.Task;
 import engine.util.Vector3;
-
+include engine.util.Facade;
+import engine.util.Observable;
+include engine.util.ObserverEventType;
 
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneClientSession;
@@ -74,17 +76,14 @@ import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.scene.Observable;
 
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.variables.PendingTasksMap;
 import server.zone.templates.SharedObjectTemplate;
-include server.zone.objects.scene.ObserverEventType;
 import server.zone.objects.area.ActiveArea;
-include server.zone.objects.scene.Facade;
 
-class SceneObject extends Observable implements QuadTreeEntry, Logger {
+class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
 
 	//@weakReference
@@ -109,13 +108,6 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	protected Quaternion direction;
 
 	protected unsigned int movementCounter;
-
-	protected native float positionX;
-	protected native float previousPositionX;
-	protected native float positionZ;
-	protected native float previousPositionZ;
-	protected native float positionY;
-	protected native float previousPositionY;
 
 	@dereferenced
 	protected Vector<string> arrangementDescriptors;
@@ -462,27 +454,6 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		Logger.error(msg);
 	}
 
-	/** 
-	 * Returns the number of in range objects, the size of the in range object vector
-	 * @pre { this object is locked, zone is locked}
-	 * @post {this object is locked, zone is locked }
-	 * @return number of in range objects
-	 */
-	public int inRangeObjectCount() {
-		return QuadTreeEntry.inRangeObjectCount();
-	}
-
-	/**
-	 * Retrieves an object from the in range object vector
-	 * @pre { this object is locked, zone is locked}
-	 * @post { thisobject is locked, zone is locked }
-	 * @return returns a QuadTreeEntry in range object from the in range vector
-	 */
-	@local
-	public QuadTreeEntry getInRangeObject(int index) {
-		return QuadTreeEntry.getInRangeObject(index);
-	}
-	
 	/**
 	 * Returns number of specified game objects in range
 	 * @pre { this object is locked }
@@ -500,23 +471,6 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	 * @return returns true if this object is in range with obj
 	 */
 	public native boolean isInRange(SceneObject obj, float range);
-
-	/**
-	 * Evaluates if the object is in range
-	 * @pre { this object is locked, obj is locked}
-	 * @post { thisobject is locked, obj is locked }
-	 * @param obj object that will be checked against
-	 * @param range range to check
-	 * @return returns true if this object is in range with obj
-	 */
-	@local
-	public boolean isInRange(QuadTreeEntry obj, float range) {
-		return QuadTreeEntry.isInRange(obj, range);
-	}
-	@local
-	public void removeInRangeObject(QuadTreeEntry obj) {
-		QuadTreeEntry.removeInRangeObject(obj);
-	}
 
 	/**
 	 * Tries to add/link object
@@ -1012,12 +966,6 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	}
 
 	public native unsigned long getObjectID();
-
-	@local
-	@dereferenced
-	public Vector3 getPosition() {
-		return QuadTreeEntry.getPosition();
-	}
 	
 	@local
 	@dereferenced
@@ -1030,18 +978,6 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 	@local
 	@dereferenced
 	public native Vector3 getWorldPosition();
-	
-	public float getPositionX() {
-		return QuadTreeEntry.getPositionX();
-	}
-
-	public float getPositionZ() {
-		return QuadTreeEntry.getPositionZ();
-	}
-
-	public float getPositionY() {
-		return QuadTreeEntry.getPositionY();
-	}
 
 	public float getDirectionX() {
 		return direction.getX();
@@ -1220,10 +1156,6 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 		return objectName.getCustomString();
 	}
 
-	public boolean isInQuadTree() {
-		return QuadTreeEntry.isInQuadTree();
-	}
-
 	public string getLoggingName() {
 		return Logger.getLoggingName();
 	}
@@ -1366,14 +1298,6 @@ class SceneObject extends Observable implements QuadTreeEntry, Logger {
 
 	public boolean isFishingBait() {
 		return gameObjectType == FISHINGBAIT;
-	}
-
-	public void setPosition(float x, float z, float y) {
-		QuadTreeEntry.setPosition(x, z, y);
-	}
-
-	public void initializePosition(float x, float z, float y) {
-		QuadTreeEntry.initializePosition(x, z, y);
 	}
 
 	public void setGameObjectType(unsigned int type) {
