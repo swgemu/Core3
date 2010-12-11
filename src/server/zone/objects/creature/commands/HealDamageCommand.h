@@ -346,7 +346,7 @@ public:
 			zone->rlock();
 
 			for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
-				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) areaCenter->getInRangeObject(i))->_this);
+				SceneObject* object = (SceneObject*) areaCenter->getInRangeObject(i);
 
 				if (!object->isPlayerCreature())
 					continue;

@@ -516,13 +516,13 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 	Locker zoneLocker(zone);
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+		SceneObject* scno = (SceneObject*) getInRangeObject(i);
 
-		if (!sendSelf && scno == this)
+		if (!sendSelf && scno == _this)
 			continue;
 
 		if (scno->isPlayerCreature()) {
-			object->sendTo((SceneObject*) scno->_getStub(), true);
+			object->sendTo(scno, true);
 		}
 	}
 
@@ -544,13 +544,13 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 	Locker zoneLocker(zone);
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+		SceneObject* scno = (SceneObject*) getInRangeObject(i);
 
-		if (!sendSelf && scno == this)
+		if (!sendSelf && scno == _this)
 			continue;
 
 		if (scno->isPlayerCreature()) {
-			object->sendDestroyTo((SceneObject*) scno->_getStub());
+			object->sendDestroyTo(scno);
 		}
 	}
 
@@ -617,9 +617,9 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 	try {
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* scno = (SceneObject*) getInRangeObject(i);
 
-			if (!sendSelf && scno == this)
+			if (!sendSelf && scno == _this)
 				continue;
 
 			if (scno->isPlayerCreature()) {
@@ -650,7 +650,7 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 	Locker zoneLocker(zone);
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+		SceneObject* scno = (SceneObject*) getInRangeObject(i);
 
 		if (scno->isInRange(_this, range) && scno->getGameObjectType() == gameObjectType)
 			++numberOfObjects;

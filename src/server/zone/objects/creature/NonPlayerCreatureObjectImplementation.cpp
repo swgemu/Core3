@@ -8,7 +8,7 @@
 #include "NonPlayerCreatureObject.h"
 
 void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
+	SceneObject* scno = (SceneObject*) entry;
 
 	// don't worry about this if no one's around, and do it for any creature
 	if (scno == _this || numberOfPlayersInRange <= 0  || !scno->isCreatureObject() || isRetreating() || isFleeing() || isInCombat())

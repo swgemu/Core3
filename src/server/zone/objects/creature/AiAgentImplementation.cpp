@@ -368,7 +368,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
+	SceneObject* scno = (SceneObject*) entry;
 
 	if (scno == _this)
 		return;
@@ -425,7 +425,7 @@ void AiAgentImplementation::scheduleDespawn() {
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
+	SceneObject* scno = (SceneObject*) entry;
 
 	if (scno == _this)
 		return;

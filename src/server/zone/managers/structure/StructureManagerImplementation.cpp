@@ -1573,7 +1573,7 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 
 	//All players outside, that are in range...
 	for (int i = 0; i < inRangeObjectCount; ++i) {
-		ManagedReference<SceneObject*> obj = (SceneObject*) (((SceneObjectImplementation*) buildingObject->getInRangeObject(i))->_this);;
+		ManagedReference<SceneObject*> obj = (SceneObject*) buildingObject->getInRangeObject(i);;
 
 		if (obj == NULL || !obj->isPlayerCreature() || obj == player)
 			continue;
@@ -1637,13 +1637,13 @@ SceneObject* StructureManagerImplementation::getInRangeParkingGarage(SceneObject
 	Locker _locker(zone);
 
 	for (int i = 0; i < obj->inRangeObjectCount(); ++i) {
-		SceneObjectImplementation* scno = (SceneObjectImplementation*) obj->getInRangeObject(i);
+		SceneObject* scno = (SceneObject*) obj->getInRangeObject(i);
 
-		if (scno == obj->_getImplementation())
+		if (scno == obj)
 			continue;
 
 		if (scno->isGarage() && scno->isInRange(obj, range))
-			return (SceneObject*) scno->_getStub();
+			return scno;
 	}
 
 	return NULL;
