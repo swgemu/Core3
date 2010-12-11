@@ -241,9 +241,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 	// we update the ones in quadtree.
 	for (int i = 0; i < entryObjects.size(); ++i) {
 		//update in new ones
-		ActiveAreaImplementation* obj = dynamic_cast<ActiveAreaImplementation*>(entryObjects.get(i));
-
-		ActiveArea* activeArea = obj->_this;
+		ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i));
 
 		if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
 			object->addActiveArea(activeArea);

@@ -90,20 +90,6 @@ using namespace server::zone::objects::resource;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class Observable;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace player {
 namespace sui {
 namespace listbox {
@@ -135,7 +121,9 @@ using namespace server::zone::objects::player::sui::listbox::resourcedeedlistbox
 
 #include "engine/service/proto/BaseMessage.h"
 
-#include "server/zone/objects/scene/Observer.h"
+#include "engine/util/Observer.h"
+
+#include "engine/util/Observable.h"
 
 namespace server {
 namespace zone {

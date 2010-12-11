@@ -66,9 +66,6 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/ZoneClientSession.cpp \
 				server/zone/Zone.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
-				server/zone/objects/scene/Observer.cpp \
-				server/zone/objects/scene/Observable.cpp \
-				server/zone/objects/scene/Facade.cpp \
 				server/zone/objects/area/ActiveArea.cpp \
 				server/zone/objects/area/BadgeActiveArea.cpp \
 				server/zone/objects/area/GarageArea.cpp \
@@ -289,8 +286,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/factorycrate/FactoryCrateImplementation.cpp \
 		server/zone/objects/manufactureschematic/ManufactureSchematicImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
-		server/zone/objects/scene/ObserverImplementation.cpp \
-		server/zone/objects/scene/ObserverEventMap.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
 		server/zone/objects/area/DynamicSpawnAreaImplementation.cpp \
 		server/zone/objects/area/StaticSpawnAreaImplementation.cpp \

@@ -65,8 +65,8 @@ import server.zone.objects.tangible.wearables.ArmorObject;
 include server.zone.managers.player.StartingItemList;
 include server.zone.objects.tangible.DamageMap;
 
-import server.zone.objects.scene.Observer;
-import server.zone.objects.scene.Observable;
+import engine.util.Observer;
+import engine.util.Observable;
 import server.zone.objects.player.PlayerObject;
 include server.zone.objects.player.ValidatedPosition;
 import engine.util.Vector3;

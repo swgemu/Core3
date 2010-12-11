@@ -32,8 +32,6 @@
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/creature/AiObserver.h"
 
 /*

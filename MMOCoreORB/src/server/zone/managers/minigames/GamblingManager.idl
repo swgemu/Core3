@@ -57,7 +57,7 @@ import server.zone.objects.tangible.terminal.gambling.GamblingTerminal;
 import server.zone.managers.minigames.events.GamblingEvent;
 import system.lang.ref.Reference;
 
-include server.zone.objects.scene.Observer;
+include engine.util.Observer;
 
 
 class GamblingManager extends ManagedObject implements Logger, Observer {

@@ -12,8 +12,6 @@
 
 #include "server/zone/managers/creature/DynamicSpawnGroup.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/creature/aigroup/AiGroupObserver.h"
 
 /*

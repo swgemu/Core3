@@ -220,20 +220,6 @@ using namespace server::zone::objects::creature::commands;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class Observable;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class AiObserver;
@@ -268,6 +254,8 @@ using namespace server::zone::objects::creature;
 #include "engine/core/ManagedObject.h"
 
 #include "engine/util/Coordinate.h"
+
+#include "engine/util/Observable.h"
 
 namespace server {
 namespace zone {

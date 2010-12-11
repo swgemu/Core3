@@ -15,7 +15,7 @@
 #include "server/zone/objects/creature/aigroup/AiGroup.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "engine/util/ObserverEventType.h"
 
 void DynamicSpawnAreaImplementation::registerObservers() {
 	for (int i = 0; i < noSpawnAreas.size(); ++i) {

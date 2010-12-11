@@ -8,7 +8,7 @@
 #include "SurveyMissionObjective.h"
 #include "MissionObserver.h"
 #include "MissionObject.h"
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "engine/util/ObserverEventType.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"

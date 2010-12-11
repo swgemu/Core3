@@ -4,10 +4,6 @@
 
 #include "InstrumentObserver.h"
 
-#include "server/zone/objects/scene/Facade.h"
-
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/tangible/Instrument.h"

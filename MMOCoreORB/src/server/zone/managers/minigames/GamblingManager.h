@@ -93,7 +93,7 @@ class GamblingEvent;
 
 using namespace server::zone::managers::minigames::events;
 
-#include "server/zone/objects/scene/Observer.h"
+#include "engine/util/Observer.h"
 
 #include "engine/core/ManagedObject.h"
 

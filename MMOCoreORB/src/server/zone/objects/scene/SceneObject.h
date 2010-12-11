@@ -149,15 +149,15 @@ using namespace server::zone::objects::area;
 
 #include "engine/core/ManagedObject.h"
 
+#include "engine/util/Facade.h"
+
+#include "engine/util/ObserverEventType.h"
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/scene/TransferErrorCode.h"
 
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/ObserverEventType.h"
-
-#include "server/zone/objects/scene/Facade.h"
 
 #include "engine/log/Logger.h"
 
@@ -193,14 +193,14 @@ using namespace server::zone::objects::area;
 
 #include "engine/util/Vector3.h"
 
-#include "server/zone/objects/scene/Observable.h"
+#include "engine/util/Observable.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace scene {
 
-class SceneObject : public Observable {
+class SceneObject : public QuadTreeEntry {
 public:
 	static const int CELLOBJECT = 11;
 
@@ -672,17 +672,9 @@ public:
 
 	void error(const String& msg);
 
-	int inRangeObjectCount();
-
-	QuadTreeEntry* getInRangeObject(int index);
-
 	int inRangeObjects(unsigned int gameObjectType, float range);
 
 	bool isInRange(SceneObject* obj, float range);
-
-	bool isInRange(QuadTreeEntry* obj, float range);
-
-	void removeInRangeObject(QuadTreeEntry* obj);
 
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
@@ -812,8 +804,6 @@ public:
 
 	unsigned long long getObjectID();
 
-	Vector3 getPosition();
-
 	Vector3 getCoordinate(float distance, float angleDegrees);
 
 	float getWorldPositionX();
@@ -823,12 +813,6 @@ public:
 	float getWorldPositionZ();
 
 	Vector3 getWorldPosition();
-
-	float getPositionX();
-
-	float getPositionZ();
-
-	float getPositionY();
 
 	float getDirectionX();
 
@@ -908,8 +892,6 @@ public:
 
 	UnicodeString getCustomObjectName();
 
-	bool isInQuadTree();
-
 	String getLoggingName();
 
 	bool isPlayerCreature();
@@ -981,10 +963,6 @@ public:
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
-
-	void setPosition(float x, float z, float y);
-
-	void initializePosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
 
@@ -1094,7 +1072,7 @@ namespace zone {
 namespace objects {
 namespace scene {
 
-class SceneObjectImplementation : public ObservableImplementation, public QuadTreeEntry, public Logger {
+class SceneObjectImplementation : public QuadTreeEntryImplementation, public Logger {
 protected:
 	ManagedReference<ZoneProcessServer* > server;
 
@@ -1621,17 +1599,9 @@ public:
 
 	void error(const String& msg);
 
-	int inRangeObjectCount();
-
-	QuadTreeEntry* getInRangeObject(int index);
-
 	int inRangeObjects(unsigned int gameObjectType, float range);
 
 	bool isInRange(SceneObject* obj, float range);
-
-	bool isInRange(QuadTreeEntry* obj, float range);
-
-	void removeInRangeObject(QuadTreeEntry* obj);
 
 	virtual bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
@@ -1761,8 +1731,6 @@ public:
 
 	unsigned long long getObjectID();
 
-	Vector3 getPosition();
-
 	Vector3 getCoordinate(float distance, float angleDegrees);
 
 	float getWorldPositionX();
@@ -1772,12 +1740,6 @@ public:
 	float getWorldPositionZ();
 
 	Vector3 getWorldPosition();
-
-	float getPositionX();
-
-	float getPositionZ();
-
-	float getPositionY();
 
 	float getDirectionX();
 
@@ -1857,8 +1819,6 @@ public:
 
 	UnicodeString getCustomObjectName();
 
-	bool isInQuadTree();
-
 	String getLoggingName();
 
 	bool isPlayerCreature();
@@ -1930,10 +1890,6 @@ public:
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
-
-	void setPosition(float x, float z, float y);
-
-	void initializePosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
 
@@ -2042,7 +1998,7 @@ protected:
 	friend class SceneObject;
 };
 
-class SceneObjectAdapter : public ObservableAdapter {
+class SceneObjectAdapter : public QuadTreeEntryAdapter {
 public:
 	SceneObjectAdapter(SceneObjectImplementation* impl);
 
@@ -2059,8 +2015,6 @@ public:
 	void info(const String& msg, bool forced);
 
 	void error(const String& msg);
-
-	int inRangeObjectCount();
 
 	int inRangeObjects(unsigned int gameObjectType, float range);
 
@@ -2184,12 +2138,6 @@ public:
 
 	float getWorldPositionZ();
 
-	float getPositionX();
-
-	float getPositionZ();
-
-	float getPositionY();
-
 	float getDirectionX();
 
 	float getDirectionZ();
@@ -2262,8 +2210,6 @@ public:
 
 	UnicodeString getCustomObjectName();
 
-	bool isInQuadTree();
-
 	String getLoggingName();
 
 	bool isPlayerCreature();
@@ -2335,10 +2281,6 @@ public:
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
-
-	void setPosition(float x, float z, float y);
-
-	void initializePosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
 

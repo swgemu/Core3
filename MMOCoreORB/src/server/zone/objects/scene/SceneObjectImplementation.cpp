@@ -44,6 +44,8 @@ which carries forward this exception.
 
 #include "SceneObject.h"
 
+#include "engine/util/Facade.h"
+
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
@@ -73,7 +75,6 @@ which carries forward this exception.
 #include "events/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/objects/scene/Facade.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/templates/ChildObject.h"
@@ -576,9 +577,9 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 	try {
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* scno = (SceneObject*) getInRangeObject(i);
 
-			if (!sendSelf && scno == this)
+			if (!sendSelf && scno == _this)
 				continue;
 
 			if (scno->isPlayerCreature()) {
@@ -676,7 +677,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
     parent->removeObject(_this);
 
     if (building != NULL) {
-    	building->remove(this);
+    	building->remove(_this);
 
     	building->removeNotifiedSentObject(_this);
     }
@@ -718,11 +719,11 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 
 		setParent(NULL);
 
-		zone->insert(this);
+		zone->insert(_this);
 	} else
-		zone->update(this);
+		zone->update(_this);
 
-	zone->inRange(this, 192);
+	zone->inRange(_this, 192);
 
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
 		if (lightUpdate) {
@@ -780,7 +781,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 	if (newParent != parent) {
 		if (parent == NULL) {
-			zone->remove(this);
+			zone->remove(_this);
 			insert = true;
 		} else {
 			if (parent->isCellObject()) {
@@ -820,8 +821,9 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		info("insertToBuilding from updateZoneWithParent");
 		insertToBuilding(building);
 	} else {
-		building->update(this);
-		building->inRange(this, 192);
+		building->update(_this);
+
+		building->inRange(_this, 192);
 	}
 
 	if (sendPackets) {
@@ -913,16 +915,16 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 	if (isInQuadTree()) {
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObjectImplementation* object = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* object = (SceneObject*) getInRangeObject(i);
 
 			//if (object->getParent() == NULL)
 				notifyInsert(object);
 
 			//teleport(positionX, positionZ, positionY, getParentID());
 
-			if (object != this) {
-				object->notifyDissapear(this);
-				object->notifyInsert(this);
+			if (object != _this) {
+				object->notifyDissapear(_this);
+				object->notifyInsert(_this);
 				//sendDestroyTo((SceneObject*) object->_getStub());
 				//sendTo((SceneObject*) object->_getStub(), true);
 			}
@@ -933,8 +935,9 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 		movementCounter = 0;
 
 		if (parent == NULL || !parent->isCellObject() || parent->getParent() == NULL) {
-			zone->insert(this);
-			zone->inRange(this, 192);
+			zone->insert(_this);
+
+			zone->inRange(_this, 192);
 		} else if (parent->isCellObject()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 			insertToBuilding(building);
@@ -992,8 +995,9 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 		//parent->addObject(_this, 0xFFFFFFFF);
 
-		building->insert(this);
-		building->inRange(this, 192);
+		building->insert(_this);
+
+		building->inRange(_this, 192);
 
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
@@ -1028,17 +1032,17 @@ void SceneObjectImplementation::removeFromZone() {
 			if (building != NULL)
 				removeFromBuilding(building);
 			else
-				zone->remove(this);
+				zone->remove(_this);
 		} else
-			zone->remove(this);
+			zone->remove(_this);
 
 		while (inRangeObjectCount() > 0) {
 			QuadTreeEntry* obj = getInRangeObject(0);
 
-			if (obj != this)
-				obj->removeInRangeObject(this);
+			if (obj != _this)
+				obj->removeInRangeObject(_this);
 
-			QuadTreeEntry::removeInRangeObject((int)0);
+			QuadTreeEntryImplementation::removeInRangeObject((int) 0);
 		}
 
 		while (activeAreas.size() > 0) {
