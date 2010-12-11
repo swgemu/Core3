@@ -44,11 +44,11 @@ which carries forward this exception.
 
 package server.zone.objects.creature;
 
-import server.zone.objects.scene.Observer;
-import server.zone.objects.scene.Observable;
+import engine.util.Observer;
+import engine.util.Observable;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.scene.ObserverEventType;
+include engine.util.ObserverEventType;
 
 class AiObserver extends Observer implements Logger {
 	protected AiAgent aiAgent;

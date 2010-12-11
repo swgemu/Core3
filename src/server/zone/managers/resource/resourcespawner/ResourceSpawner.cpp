@@ -54,7 +54,7 @@
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/resource/SurveyMessage.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "engine/util/ObserverEventType.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/player/PlayerManager.h"
 

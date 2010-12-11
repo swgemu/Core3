@@ -61,7 +61,7 @@ LoginAllowedConnections = 3000
 LoginRequiredVersion = "20050408-18:00"
 
 MantisHost = "192.168.1.100"
-MantisPort = 3600
+MantisPort = 3306
 MantisName = "swgemu"
 MantisUser = "swgemu"
 MantisPass = "123456"

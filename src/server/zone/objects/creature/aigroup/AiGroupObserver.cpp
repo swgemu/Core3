@@ -4,8 +4,6 @@
 
 #include "AiGroupObserver.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/creature/aigroup/AiGroup.h"
 
 #include "server/zone/objects/scene/SceneObject.h"

@@ -37,7 +37,7 @@
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "server/zone/objects/scene/ObserverEventMap.h"
+#include "engine/util/ObserverEventMap.h"
 
 #include "system/lang/Time.h"
 

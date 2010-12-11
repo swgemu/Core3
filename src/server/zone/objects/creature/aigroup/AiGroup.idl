@@ -53,7 +53,7 @@ import system.util.Vector;
 import server.zone.objects.creature.AiAgent;
 import server.zone.managers.creature.StaticSpawnGroup;
 import server.zone.managers.creature.DynamicSpawnGroup;
-import server.zone.objects.scene.Observable;
+import engine.util.Observable;
 import server.zone.objects.creature.aigroup.AiGroupObserver;
 
 class AiGroup extends SceneObject {

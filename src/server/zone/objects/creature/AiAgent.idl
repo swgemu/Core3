@@ -70,7 +70,7 @@ import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
 include server.zone.objects.creature.variables.CreatureAttackMap;
 import engine.util.Coordinate;
 import server.zone.objects.creature.commands.QueueCommand;
-import server.zone.objects.scene.Observable;
+import engine.util.Observable;
 import server.zone.objects.creature.AiObserver;
 
 class AiAgent extends CreatureObject {

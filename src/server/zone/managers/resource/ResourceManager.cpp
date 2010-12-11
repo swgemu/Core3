@@ -16,8 +16,6 @@
 
 #include "server/zone/objects/resource/ResourceContainer.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
 
 /*

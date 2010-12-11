@@ -123,7 +123,7 @@ using namespace server::zone::managers::stringid;
 
 #include "system/util/SortedVector.h"
 
-#include "server/zone/objects/scene/Observer.h"
+#include "engine/util/Observer.h"
 
 namespace server {
 namespace zone {

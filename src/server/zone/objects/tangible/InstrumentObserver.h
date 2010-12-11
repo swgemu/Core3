@@ -14,34 +14,6 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class Facade;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class Observable;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -69,17 +41,21 @@ using namespace server::zone::objects::tangible;
 
 #include "engine/core/ManagedObject.h"
 
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "engine/util/ObserverEventType.h"
 
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/util/Facade.h"
+
 #include "system/lang/ref/Reference.h"
 
 #include "engine/core/Task.h"
 
-#include "server/zone/objects/scene/Observer.h"
+#include "engine/util/Observer.h"
+
+#include "engine/util/Observable.h"
 
 namespace server {
 namespace zone {

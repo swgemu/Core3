@@ -34,8 +34,9 @@ void ActiveAreaImplementation::insertToZone(Zone* newZone) {
 
 	QuadTree* regionTree = zone->getRegionTree();
 
-	regionTree->insert(this);
-	regionTree->inRange(this, 512);
+	regionTree->insert(_this);
+
+	regionTree->inRange(_this, 512);
 
 	// lets update area to the in range players
 	SortedVector<ManagedReference<SceneObject*> > objects;
@@ -66,15 +67,15 @@ void ActiveAreaImplementation::removeFromZone() {
 
 	QuadTree* regionTree = zone->getRegionTree();
 
-	regionTree->remove(this);
+	regionTree->remove(_this);
 
 	while (inRangeObjectCount() > 0) {
 		QuadTreeEntry* obj = getInRangeObject(0);
 
-		if (obj != this)
-			obj->removeInRangeObject(this);
+		if (obj != _this)
+			obj->removeInRangeObject(_this);
 
-		QuadTreeEntry::removeInRangeObject((int)0);
+		QuadTreeEntryImplementation::removeInRangeObject((int)0);
 	}
 
 	// lets remove the in range active areas of players

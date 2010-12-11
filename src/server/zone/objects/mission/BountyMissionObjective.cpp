@@ -4,10 +4,6 @@
 
 #include "BountyMissionObjective.h"
 
-#include "server/zone/objects/scene/Observer.h"
-
-#include "server/zone/objects/scene/Observable.h"
-
 #include "server/zone/objects/mission/MissionObject.h"
 
 #include "server/zone/objects/mission/MissionObserver.h"

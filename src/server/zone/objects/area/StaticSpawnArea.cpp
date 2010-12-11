@@ -12,8 +12,6 @@
 
 #include "server/zone/objects/area/SpawnObserver.h"
 
-#include "server/zone/objects/scene/Observable.h"
-
 /*
  *	StaticSpawnAreaStub
  */
