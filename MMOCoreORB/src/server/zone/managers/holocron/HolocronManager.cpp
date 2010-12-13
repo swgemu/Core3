@@ -136,18 +136,18 @@ String HolocronManager::getTokenValue(const String& token, const UnicodeString& 
 }
 
 uint32 HolocronManager::getSeverityFromString(const String& str) {
-	if (str == "Causes Crash") {
+	if (str.indexOf("Causes Crash") != -1) {
 		return 70;
-	} else if (str == "Can bypass") {
+	} else if (str.indexOf("Can bypass") != -1) {
 		return 60;
-	} else if (str == "Cannot be bypassed") {
+	} else if (str.indexOf("Cannot be bypassed") != -1) {
 		return 80;
 	} else {
 		return 50; //Unknown
 	}
 }
 uint32 HolocronManager::getReproducibilityFromString(const String& str) {
-	if (str == "Yes") {
+	if (str.indexOf("Yes") != -1) {
 		return 10;
 	} else {
 		return 90;
