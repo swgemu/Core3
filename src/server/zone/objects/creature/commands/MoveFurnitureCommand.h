@@ -231,7 +231,7 @@ public:
 
 		if (dir == "forward") {
 			if (!checkCollision(obj, FORWARD, dist, radians)) {
-				player->sendSystemMessage("You cant move the item there");
+				player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
 				return GENERALERROR;
 			}
 
@@ -239,7 +239,7 @@ public:
 			y += (offsetY);
 		} else if (dir == "back") {
 			if (!checkCollision(obj, BACK, dist, radians)) {
-				player->sendSystemMessage("You cant move the item there");
+				player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
 				return GENERALERROR;
 			}
 
@@ -247,14 +247,14 @@ public:
 			y -= (offsetY);
 		} else if (dir == "up") {
 			if (!checkCollision(obj, UP, dist, radians)) {
-				player->sendSystemMessage("You cant move the item there");
+				player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
 				return GENERALERROR;
 			}
 
 			z += dist;
 		} else if (dir == "down") {
 			if (!checkCollision(obj, DOWN, dist, radians)) {
-				player->sendSystemMessage("You cant move the item there");
+				player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
 				return GENERALERROR;
 			}
 

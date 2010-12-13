@@ -476,6 +476,19 @@ void BuildingObject::setPublicStructure(bool privacy) {
 		_implementation->setPublicStructure(privacy);
 }
 
+unsigned int BuildingObject::getMaximumNumberOfPlayerItems() {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getMaximumNumberOfPlayerItems();
+}
+
 DistributedObjectServant* BuildingObject::_getImplementation() {
 
 	_updated = true;
@@ -758,6 +771,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 32:
 		setPublicStructure(inv->getBooleanParameter());
 		break;
+	case 33:
+		resp->insertInt(getMaximumNumberOfPlayerItems());
+		break;
 	default:
 		return NULL;
 	}
@@ -871,6 +887,10 @@ bool BuildingObjectAdapter::isPublicStructure() {
 
 void BuildingObjectAdapter::setPublicStructure(bool privacy) {
 	((BuildingObjectImplementation*) impl)->setPublicStructure(privacy);
+}
+
+unsigned int BuildingObjectAdapter::getMaximumNumberOfPlayerItems() {
+	return ((BuildingObjectImplementation*) impl)->getMaximumNumberOfPlayerItems();
 }
 
 /*

@@ -76,7 +76,7 @@ class BuildingObject extends StructureObject implements QuadTree {
 	
 	public boolean publicStructure;
 	
-	public static final int MAXPLAYERITEMS = 200;
+	public static final int MAXPLAYERITEMS = 400;
 	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
@@ -252,4 +252,10 @@ class BuildingObject extends StructureObject implements QuadTree {
 	public void setPublicStructure(boolean privacy) {
 		publicStructure = privacy;
 	}
+	
+	/**
+	 * Calculates the maximum number of items that can be stored by a player in this building.
+	 * @return Returns a uint32 number representing the max items that can be stored in this building.
+	 */
+	public abstract native unsigned int getMaximumNumberOfPlayerItems();
 }

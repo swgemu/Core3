@@ -142,7 +142,7 @@ namespace building {
 
 class BuildingObject : public StructureObject {
 public:
-	static const int MAXPLAYERITEMS = 200;
+	static const int MAXPLAYERITEMS = 400;
 
 	BuildingObject();
 
@@ -216,6 +216,8 @@ public:
 
 	void setPublicStructure(bool privacy);
 
+	unsigned int getMaximumNumberOfPlayerItems();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -255,7 +257,7 @@ protected:
 public:
 	bool publicStructure;
 
-	static const int MAXPLAYERITEMS = 200;
+	static const int MAXPLAYERITEMS = 400;
 
 	BuildingObjectImplementation();
 
@@ -330,6 +332,8 @@ public:
 	bool isPublicStructure();
 
 	void setPublicStructure(bool privacy);
+
+	virtual unsigned int getMaximumNumberOfPlayerItems();
 
 	BuildingObject* _this;
 
@@ -423,6 +427,8 @@ public:
 	bool isPublicStructure();
 
 	void setPublicStructure(bool privacy);
+
+	unsigned int getMaximumNumberOfPlayerItems();
 
 };
 
