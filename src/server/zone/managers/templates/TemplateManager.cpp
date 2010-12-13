@@ -72,6 +72,8 @@
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
+#include "server/zone/templates/appearance/DetailAppearanceTemplate.h"
+#include "server/zone/templates/appearance/ComponentAppearanceTemplate.h"
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
@@ -90,7 +92,7 @@ TemplateManager::TemplateManager() {
 
 	portalLayoutMap = new PortalLayoutMap();
 	floorMeshMap = new FloorMeshMap();
-	meshAppearanceMap = new MeshAppearanceMap();
+	appearanceMap = new AppearanceMap();
 
 	registerFunctions();
 	registerGlobals();
@@ -422,33 +424,57 @@ FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
 	//return NULL;
 }
 
-MeshAppearanceTemplate* TemplateManager::getMeshAppearanceTemplate(const String& fileName) {
-	MeshAppearanceTemplate* meshAppearance = meshAppearanceMap->get(fileName);
+AppearanceTemplate* TemplateManager::getAppearanceTemplate(const String& fileName) {
+	AppearanceTemplate* meshAppearance = appearanceMap->get(fileName);
 
 	if (meshAppearance == NULL) {
 		IffStream* iffStream = openIffFile(fileName);
 
 		if (iffStream != NULL) {
-			try {
-				meshAppearance = new MeshAppearanceTemplate();
-
-				meshAppearance->readObject(iffStream);
-
-				info("parsed " + fileName);
-			} catch (...) {
-				info("could not parse " + fileName);
-				delete meshAppearance;
-				meshAppearance = NULL;
-			}
+			meshAppearance = instantiateAppearanceTemplate(iffStream);
 
 			delete iffStream;
 			iffStream = NULL;
-
-			meshAppearanceMap->put(fileName, meshAppearance);
 		}
 	}
 
+	appearanceMap->put(fileName, meshAppearance);
+
 	return meshAppearance;
+}
+
+AppearanceTemplate* TemplateManager::instantiateAppearanceTemplate(IffStream* iffStream) {
+	uint32 formType = iffStream->getNextFormType();
+	AppearanceTemplate* appTemplate = NULL;
+
+	try {
+
+		switch (formType) {
+		case 'MESH':
+			appTemplate = new MeshAppearanceTemplate();
+			break;
+		case 'CMPA':
+			appTemplate = new ComponentAppearanceTemplate();
+			break;
+		case 'DTLA':
+			appTemplate = new DetailAppearanceTemplate();
+			break;
+		default:
+			error("unknown appearance type " + String::hexvalueOf((int)formType));
+			break;
+		}
+
+		if (appTemplate != NULL)
+			appTemplate->readObject(iffStream);
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		error("unreported exception caught in TemplateManager::instantiateAppearanceTemplate(IffStream* iffStream)");
+	}
+
+	return appTemplate;
 }
 
 PortalLayout* TemplateManager::getPortalLayout(const String& fileName) {

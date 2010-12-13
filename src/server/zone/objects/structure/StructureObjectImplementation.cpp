@@ -7,17 +7,22 @@
 
 #include "StructureObject.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
+
+#include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
+#include "server/zone/templates/appearance/PortalLayout.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -33,6 +38,26 @@ void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templ
 	length = structureTemplate->getLength();
 
 	width = structureTemplate->getWidth();
+}
+
+void StructureObjectImplementation::initializeTransientMembers() {
+	TangibleObjectImplementation::initializeTransientMembers();
+
+	Logger::setLoggingName("StructureObject");
+}
+
+void StructureObjectImplementation::finalize() {
+}
+
+AABBTree* StructureObjectImplementation::getAABBTree() {
+	PortalLayout* portalLayout = templateObject->getPortalLayout();
+
+	if (portalLayout == NULL)
+		return NULL;
+
+	MeshAppearanceTemplate* app = portalLayout->getMeshAppearanceTemplate(0);
+
+	return app->getAABBTree();
 }
 
 bool StructureObjectImplementation::addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName) {

@@ -88,11 +88,10 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 				iffStream->getString(meshFile);
 
 				if (meshFile.length() > 1) {
-					if (meshFile.indexOf(".lod") == -1) {
-						MeshAppearanceTemplate* appMesh = TemplateManager::instance()->getMeshAppearanceTemplate(meshFile);
-						appearanceTemplates.add(appMesh);
-					} else
-						appearanceTemplates.add(NULL);
+					AppearanceTemplate* app = TemplateManager::instance()->getAppearanceTemplate(meshFile);
+
+					if (app != NULL)
+						appearanceTemplates.add(dynamic_cast<MeshAppearanceTemplate*>(app->getFirstMesh()));
 				}
 
 				int readCase2 = iffStream->getByte();

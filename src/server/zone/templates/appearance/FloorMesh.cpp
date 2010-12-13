@@ -52,13 +52,14 @@ void FloorMesh::readObject(IffStream* iffStream) {
 	tris.removeAll();
 	vertices.removeAll();
 
-	AABBNode::Heuristic heurData;
+	AABBTreeHeuristic heurData;
 	heurData.maxdepth = 10; // maximum depth
 	heurData.mintricnt = 5; // minimum triangle count
 	heurData.tartricnt = 10; // target triangle count
 	heurData.minerror = 0.5f; // minimum error required
+	heurData.storePrimitives = true;
 
-	aabbTree = new AABBNode(triangles, 0, heurData);
+	aabbTree = new AABBTree(triangles, 0, heurData);
 
 	iffStream->closeForm('FLOR');
 }
