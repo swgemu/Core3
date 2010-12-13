@@ -104,6 +104,7 @@ public:
 	const static int INVALIDPARAMETERS = 8;
 	const static int NOPRONE = 9;
 	const static int NOKNEELING = 10;
+	const static int INSUFFICIENTPERMISSION = 11;
 
 
 	virtual ~QueueCommand() {

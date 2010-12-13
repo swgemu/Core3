@@ -186,6 +186,11 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 			creature->clearQueueAction(actioncntr, 0, 1, 4);
 
 		break;
+	case INSUFFICIENTPERMISSION:
+		creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
+
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr);
 	default:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);

@@ -46,6 +46,7 @@ which carries forward this exception.
 #define DESTROYCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 class DestroyCommand : public QueueCommand {
 public:
@@ -62,6 +63,32 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		if (player->getPlayerObject()->isPrivileged())
+			return INSUFFICIENTPERMISSION;
+
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+		if (obj == NULL)
+			return INVALIDTARGET;
+
+		StringBuffer text;
+		text << "Really destroy \\#dd3300" << obj->getObjectName()->getDisplayedName() << "\\#.?";
+
+		ManagedReference<SuiMessageBox*> confirmbox = new SuiMessageBox(player, SuiWindowType::ADMIN_DESTROY_CONFIRM);
+		confirmbox->setPromptTitle("Destroy");
+		confirmbox->setPromptText(text.toString());
+		confirmbox->setUsingObject(obj);
+		confirmbox->setCancelButton(true, "@no");
+		confirmbox->setOkButton(true, "@yes");
+
+		player->addSuiBox(confirmbox);
+		player->sendMessage(confirmbox->generateMessage());
 
 		return SUCCESS;
 	}

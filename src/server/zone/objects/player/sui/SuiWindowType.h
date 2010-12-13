@@ -125,6 +125,7 @@ public:
 	static const uint16 ADMIN_ACCOUNTINFO = 173;
 	static const uint16 ADMIN_PLAYERINFO = 174;
 	static const uint16 ADMIN_GUILDLIST = 175;
+	static const uint16 ADMIN_DESTROY_CONFIRM = 176;
 
 	//Teach 221 - 230
 	static const uint16 TEACH_SKILL = 221;
