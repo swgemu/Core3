@@ -357,5 +357,5 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 	if (ssot == NULL)
 		return 0;
 
-	return MAX(MAXPLAYERITEMS, ssot->getLotSize() * 100);
+	return MIN(MAXPLAYERITEMS, ssot->getLotSize() * 100);
 }
