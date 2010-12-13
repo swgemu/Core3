@@ -54,6 +54,11 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
+import engine.util.AABBTree;
+import engine.util.AABBNode;
+import engine.util.Vector3;
+
+include server.zone.packets.ui.CreateClientPathMessage;
 
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
@@ -112,11 +117,9 @@ class StructureObject extends TangibleObject {
 		structureMaintenanceTask = null;
 	}
 	
-	public void initializeTransientMembers() {
-		super.initializeTransientMembers();
-		
-		Logger.setLoggingName("StructureObject");
-	}
+	public native void initializeTransientMembers();
+	
+	public native void finalize();
 	
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
@@ -324,6 +327,9 @@ class StructureObject extends TangibleObject {
 	public int getLength() {
 		return length;
 	}
+	
+	@local
+	public native AABBTree getAABBTree();
 	
 	public void setLength(int len) {
 		length = len;

@@ -1082,11 +1082,11 @@ void SceneObjectImplementation::removeFromZone() {
 }
 
 void SceneObjectImplementation::notifyAddedToCloseObjects() {
-	_this->acquire();
+	//_this->acquire();
 }
 
 void SceneObjectImplementation::notifyRemovedFromCloseObjects() {
-	_this->release();
+	//_this->release();
 }
 
 int SceneObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {

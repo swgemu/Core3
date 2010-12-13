@@ -12,7 +12,7 @@
 
 class PortalLayout;
 class FloorMesh;
-class MeshAppearanceTemplate;
+class AppearanceTemplate;
 
 class PortalLayoutMap : public HashTable<String, Reference<PortalLayout*> > {
 	int hash(const String& k) {
@@ -36,13 +36,13 @@ public:
 	}
 };
 
-class MeshAppearanceMap : public HashTable<String, Reference<MeshAppearanceTemplate*> > {
+class AppearanceMap : public HashTable<String, Reference<AppearanceTemplate*> > {
 	int hash(const String& k) {
 		return k.hashCode();
 	}
 
 public:
-	MeshAppearanceMap() {
+	AppearanceMap() {
 		setNullValue(NULL);
 	}
 };

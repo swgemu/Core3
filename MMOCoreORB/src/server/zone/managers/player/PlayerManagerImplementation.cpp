@@ -2255,6 +2255,16 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player
 
 	float speed = dist / (float) deltaTime * 1000;
 
+	/*if (oldNewPosZ > oldValidZ) {
+		float heightDist = oldNewPosZ - oldValidZ;
+
+		//if (heightDist > speed) {
+			StringBuffer msg;
+			msg << " heightDist:" << heightDist << " speed:" << speed << " terrain neg:" << player->getSlopeModPercent();
+			player->info(msg.toString(), true);
+		//}
+	}*/
+
 	//lastValidatedPosition->set(newWorldPosition.getX(), oldNewPosZ, newWorldPosition.getY());
 
 	/*StringBuffer msg;
@@ -2277,4 +2287,83 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player
 	return ret;
 
 	//return 0;
+}
+
+bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
+	Zone* zone = object1->getZone();
+
+	if (zone == NULL)
+		return false;
+
+	if (object2->getZone() != zone)
+		return false;
+
+	//For now only cell-cell, cell LOS for later
+	SceneObject* parent = object1->getParent();
+
+	if (object2->getParent() != parent)
+		return false;
+	else if (parent != NULL)
+		return true;
+
+	//switching x<->y, adding 1.f for height(head), todo: get height from players
+	Vector3 rayOrigin = object1->getWorldPosition();
+	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + 1.f);
+
+	Vector3 rayEnd = object2->getWorldPosition();
+	rayEnd.set(rayEnd.getX(), rayEnd.getY(), rayEnd.getZ() + 1.f);
+
+	float dist = rayEnd.distanceTo(rayOrigin);
+
+	//Ray ray(rayOrigin, norm);
+
+	for (int i = 0; i < object1->inRangeObjectCount(); ++i) {
+		SceneObject* scno = (SceneObject*) object1->getInRangeObject(i);
+
+		if (scno->isStructureObject()) {
+			StructureObject* structure = (StructureObject*) scno;
+
+			AABBTree* aabbTree = structure->getAABBTree();
+
+			if (aabbTree != NULL) {
+				//moving ray to model space
+				Matrix4 translationMatrix;
+				translationMatrix.setTranslation(-structure->getPositionX(), -structure->getPositionZ(), -structure->getPositionY());
+
+				float rad = -structure->getDirection()->getRadians();
+				float cosRad = cos(rad);
+				float sinRad = sin(rad);
+
+				Matrix3 rot;
+				rot[0][0] = cosRad;
+				rot[0][2] = -sinRad;
+				rot[1][1] = 1;
+				rot[2][0] = sinRad;
+				rot[2][2] = cosRad;
+
+				Matrix4 rotateMatrix;
+				rotateMatrix.setRotationMatrix(rot);
+
+				Matrix4 modelMatrix;
+				modelMatrix = translationMatrix * rotateMatrix;
+
+				Vector3 transformedOrigin = rayOrigin * modelMatrix;
+				Vector3 transformedEnd = rayEnd * modelMatrix;
+
+				Vector3 norm = transformedEnd - transformedOrigin;
+				norm.normalize();
+
+				Ray ray(transformedOrigin, norm);
+
+				structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
+
+				if (aabbTree->intersects(ray, dist, true)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
+
 }

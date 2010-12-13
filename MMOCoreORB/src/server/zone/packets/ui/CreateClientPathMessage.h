@@ -22,7 +22,7 @@ public:
 
    }
 
-   void addCoordinate(float x, float y, float z) {
+   void addCoordinate(float x, float z, float y) {
 			insertFloat(x); //Float PosX
 	   		insertFloat(y); //Float PosZ
 	   		insertFloat(z); //Float PosY

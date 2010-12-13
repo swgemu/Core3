@@ -17,11 +17,11 @@ class TemplateCRCMap;
 class ClientTemplateCRCMap;
 class PortalLayoutMap;
 class FloorMeshMap;
-class MeshAppearanceMap;
+class AppearanceMap;
 
 class FloorMesh;
 class PortalLayout;
-class MeshAppearanceTemplate;
+class AppearanceTemplate;
 
 class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	TemplateCRCMap* templateCRCMap;
@@ -30,7 +30,7 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	ClientTemplateCRCMap* clientTemplateCRCMap;
 	PortalLayoutMap* portalLayoutMap;
 	FloorMeshMap* floorMeshMap;
-	MeshAppearanceMap* meshAppearanceMap;
+	AppearanceMap* appearanceMap;
 
 public:
 	static Lua* luaTemplatesInstance;
@@ -53,7 +53,8 @@ public:
 
 	FloorMesh* getFloorMesh(const String& fileName);
 	PortalLayout* getPortalLayout(const String& fileName);
-	MeshAppearanceTemplate* getMeshAppearanceTemplate(const String& fileName);
+	AppearanceTemplate* getAppearanceTemplate(const String& fileName);
+	AppearanceTemplate* instantiateAppearanceTemplate(IffStream* iffStream);
 
 	bool existsTemplate(uint32 key);
 
