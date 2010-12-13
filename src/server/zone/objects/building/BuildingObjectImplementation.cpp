@@ -350,3 +350,12 @@ void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
 		}
 	}
 }
+
+uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
+	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject);
+
+	if (ssot == NULL)
+		return 0;
+
+	return MAX(MAXPLAYERITEMS, ssot->getLotSize() * 100);
+}
