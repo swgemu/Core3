@@ -88,6 +88,7 @@ which carries forward this exception.
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/commands/FindCommand.h"
 
+#include "server/zone/objects/creature/commands/sui/DestroyCommandCallback.h"
 #include "server/zone/objects/creature/commands/sui/FindCommandCallback.h"
 #include "server/zone/objects/creature/commands/sui/ListGuildsResponseCallback.h"
 
@@ -142,6 +143,7 @@ void SuiManager::registerMessages() {
 	messageCallbackFactory.registerObject<RepairVehicleCallback>(SuiWindowType::GARAGE_REPAIR);
 
 	messageCallbackFactory.registerObject<ListGuildsResponseCallback>(SuiWindowType::ADMIN_GUILDLIST);
+	messageCallbackFactory.registerObject<DestroyCommandCallback>(SuiWindowType::ADMIN_DESTROY_CONFIRM);
 }
 
 void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args) {
