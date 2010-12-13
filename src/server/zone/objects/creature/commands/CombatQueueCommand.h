@@ -11,6 +11,7 @@
 #include"server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
@@ -101,6 +102,7 @@ public:
 
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") {
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+		PlayerManager* playerManager = server->getPlayerManager();
 
 		if (targetObject == NULL || !targetObject->isTangibleObject() || targetObject == creature)
 			return INVALIDTARGET;
@@ -121,6 +123,11 @@ public:
 
 		if (!targetObject->isInRange(creature, checkRange))
 			return TOOFAR;
+
+		if (!playerManager->checkLineOfSight(creature, targetObject)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
 
 		CombatManager* combatManager = CombatManager::instance();
 

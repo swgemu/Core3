@@ -61,13 +61,8 @@ public:
 
 	}
 
-	const static int UP = 1;
-	const static int DOWN = 2;
-	const static int FORWARD = 3;
-	const static int BACK = 4;
-
 	//returns false on collision detection
-	bool checkCollision(SceneObject* object, int dir, float dist, float radians) {
+	bool checkCollision(SceneObject* object, Vector3& endPoint) {
 		ManagedReference<SceneObject*> parent = object->getParent();
 
 		if (parent == NULL || !parent->isCellObject())
@@ -77,77 +72,42 @@ public:
 
 		SharedObjectTemplate* objectTemplate = parent->getRootParent()->getObjectTemplate();
 		PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+		MeshAppearanceTemplate* appearanceMesh = NULL;
 
 		if (portalLayout == NULL)
 			return true;
 
-		MeshAppearanceTemplate* appearanceMesh = portalLayout->getMeshAppearanceTemplate(cell->getCellNumber());
+		try {
+			appearanceMesh = portalLayout->getMeshAppearanceTemplate(cell->getCellNumber());
+		} catch (...) {
+			return true;
+		}
 
 		if (appearanceMesh == NULL) {
 			//info("null appearance mesh ");
 			return true;
 		}
 
-		//doing a bruteforce test, TODO: implement sweep test
+		AABBTree* aabbTree = appearanceMesh->getAABBTree();
 
-		float radius = 0.1;
+		if (aabbTree == NULL)
+			return true;
 
-		if (dist < radius)
-			dist = radius;
+		//switching Y<->Z, adding 0.1 to account floor
+		Vector3 startPoint = object->getPosition();
+		startPoint.set(startPoint.getX(), startPoint.getY(), startPoint.getZ() + 0.1f);
 
-		float checkedDistance = 0.1;
+		endPoint.set(endPoint.getX(), endPoint.getY(), endPoint.getZ() + 0.1f);
 
-		Vector3 currentPosition = object->getPosition();
+		Vector3 dir = endPoint - startPoint;
+		dir.normalize();
 
-		if (dir != DOWN && dir != UP) {
-			while (checkedDistance <= dist) {
-				float offsetX = checkedDistance * sin(radians);
-				float offsetY = checkedDistance * cos(radians);
+		float distance = endPoint.distanceTo(startPoint);
 
-				switch (dir) {
-				case FORWARD: {
-					float x = currentPosition.getX() + offsetX;
-					float y = currentPosition.getY() + offsetY;
+		Ray ray(startPoint, dir);
 
-					if (appearanceMesh->testCollide(x, object->getPositionZ() + 0.1, y, radius))
-						return false;
-
-					break;
-				}
-
-				case BACK: {
-					float x = currentPosition.getX() - offsetX;
-					float y = currentPosition.getY() - offsetY;
-
-					if (appearanceMesh->testCollide(x, object->getPositionZ() + 0.1, y, radius))
-						return false;
-					break;
-				}
-				}
-
-				checkedDistance += radius;
-			}
-		} else if (dir == UP || dir == DOWN) {
-			while (checkedDistance <= dist) {
-
-				switch (dir) {
-				case UP:
-					if (appearanceMesh->testCollide(currentPosition.getX(), currentPosition.getZ() + checkedDistance + 0.1, currentPosition.getY(), radius))
-						return false;
-
-					break;
-
-
-				case DOWN:
-					if (appearanceMesh->testCollide(currentPosition.getX(), currentPosition.getZ() - checkedDistance + 0.1, currentPosition.getY(), radius))
-						return false;
-
-					break;
-				}
-
-				checkedDistance += radius;
-			}
-		}
+		if (aabbTree->intersects(ray, distance, true))
+			return false;
 
 		return true;
 	}
@@ -230,39 +190,23 @@ public:
 		float z = obj->getPositionZ();
 
 		if (dir == "forward") {
-			if (!checkCollision(obj, FORWARD, dist, radians)) {
-				player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
-				return GENERALERROR;
-			}
-
 			x += (offsetX);
 			y += (offsetY);
 		} else if (dir == "back") {
-			if (!checkCollision(obj, BACK, dist, radians)) {
-				player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
-				return GENERALERROR;
-			}
-
 			x -= (offsetX);
 			y -= (offsetY);
 		} else if (dir == "up") {
-			if (!checkCollision(obj, UP, dist, radians)) {
-				player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
-				return GENERALERROR;
-			}
-
 			z += dist;
 		} else if (dir == "down") {
-			if (!checkCollision(obj, DOWN, dist, radians)) {
-				player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
-				return GENERALERROR;
-			}
-
 			z -= dist;
 		}
 
-		//TODO: Check to make sure the item is not being moved outside the range of the cell.
-		//Need cell dimensions for this...
+		Vector3 endPoint(x, y, z);
+
+		if (!checkCollision(obj, endPoint)) {
+			player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
+			return GENERALERROR;
+		}
 
 		/*StringBuffer msg;
 		msg << "moving to x:" << x << " z:" << z << " y:" << y;

@@ -8,14 +8,14 @@
 #include "MeshAppearanceTemplate.h"
 
 void MeshAppearanceTemplate::parse(IffStream* iffStream) {
+	file = iffStream->getFileName();
+
 	iffStream->openForm('MESH');
 
 	uint32 version = iffStream->getNextFormType();
 	iffStream->openForm(version);
 
-	iffStream->openForm('APPR');
-	//ignoring this atm
-	iffStream->closeForm('APPR');
+	AppearanceTemplate::readObject(iffStream);
 
 	parseSPS(iffStream);
 
@@ -57,14 +57,19 @@ void MeshAppearanceTemplate::createAABB() {
 
 	//Logger::console.info("creating mesh aabb for triangles " + String::valueOf(triangles.size()), true);
 
-	AABBNode::Heuristic heurData;
+	AABBTreeHeuristic heurData;
 	heurData.maxdepth = 10; // maximum depth
 	heurData.mintricnt = 5; // minimum triangle count
 	heurData.tartricnt = 10; // target triangle count
 	heurData.minerror = 0.5f; // minimum error required
+	heurData.storePrimitives = true;
 
-	aabbTree = new AABBNode(triangles, 0, heurData);
+	aabbTree = new AABBTree(triangles, 0, heurData);
 }
+
+/*AABNode* MeshAppearanceTemplate::createNewAABB(float rotationRadians = 0) {
+
+}*/
 
 bool MeshAppearanceTemplate::testCollide(float x, float z, float y, float radius) {
 	Vector3 point(x, z, y);

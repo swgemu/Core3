@@ -151,7 +151,7 @@ class FloorMesh : public IffTemplate, public Logger {
 
 	PathGraph* pathGraph;
 
-	AABBNode* aabbTree;
+	AABBTree* aabbTree;
 
 public:
 	FloorMesh() {

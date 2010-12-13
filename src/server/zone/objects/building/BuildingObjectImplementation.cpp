@@ -24,7 +24,7 @@
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
-	TangibleObjectImplementation::initializeTransientMembers();
+	StructureObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("BuildingObject");
 }

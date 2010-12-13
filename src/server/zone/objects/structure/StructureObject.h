@@ -97,7 +97,15 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/structure/StructurePermissionList.h"
 
+#include "server/zone/packets/ui/CreateClientPathMessage.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "engine/util/AABBTree.h"
+
+#include "engine/util/AABBNode.h"
+
+#include "engine/util/Vector3.h"
 
 namespace server {
 namespace zone {
@@ -214,6 +222,8 @@ public:
 
 	int getLength();
 
+	AABBTree* getAABBTree();
+
 	void setLength(int len);
 
 	int getWidth();
@@ -282,6 +292,8 @@ public:
 	StructureObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void finalize();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -387,6 +399,8 @@ public:
 
 	int getLength();
 
+	AABBTree* getAABBTree();
+
 	void setLength(int len);
 
 	int getWidth();
@@ -400,8 +414,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~StructureObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -433,6 +445,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void finalize();
 
 	void createChildObjects();
 
