@@ -70,6 +70,8 @@ public:
 
 	   //Calculate the offset for the optionCount (priority+crc+pageid+asciiSize+ascii+4):
 	   optionOffset = 16+scriptClass.length();
+
+	   setCompression(true);
    }
 
 	/**

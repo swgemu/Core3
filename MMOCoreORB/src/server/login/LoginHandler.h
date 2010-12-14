@@ -77,9 +77,11 @@ namespace server {
 		}
 
 		bool deleteConnection(ServiceClient* session) {
-			LoginClient* client = getClient(session);
+			Reference<LoginClient*> client = getClient(session);
 
 			client->disconnect();
+
+			clients.remove(client);
 
 			return false;
 		}
@@ -87,7 +89,7 @@ namespace server {
 		void handleMessage(ServiceClient* session, Packet* message) {
 			LoginServer* server =  loginServerRef.getForUpdate();
 
-			LoginClient* client = getClient(session);
+			Reference<LoginClient*> client = getClient(session);
 
 			return server->handleMessage(client, message);
 		}

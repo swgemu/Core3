@@ -56,6 +56,8 @@ public:
 		
 		insertLong(objectid);
 		
+		setCompression(true);
+
 		insertUnicode(description);
 		insertInt(0);
 		insertInt(0);

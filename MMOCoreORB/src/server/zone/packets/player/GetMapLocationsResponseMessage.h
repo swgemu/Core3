@@ -60,6 +60,8 @@ public:
 		insertAscii(planetName); //planet name
 
 		insertInt(listSize = 0); //size
+
+		setCompression(true);
 	}
 
 	void updateListSize(int num) {

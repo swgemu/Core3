@@ -57,6 +57,8 @@ public:
 			insertInt(1);
 			insertInt(0); //Blank Unicode string.
 		}
+
+		setCompression(true);
    }
 
    void insertArticle(const UnicodeString& article) {

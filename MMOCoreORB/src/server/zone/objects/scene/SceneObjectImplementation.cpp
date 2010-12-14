@@ -487,9 +487,22 @@ void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 
-	fillAttributeList(alm, object);
+	try {
+		fillAttributeList(alm, object);
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
 
-	object->sendMessage(alm);
+		delete alm;
+		alm = NULL;
+	} catch (...) {
+		error("unreported exception caught in SceneObjectImplementation::sendAttributeListTo");
+		delete alm;
+		alm = NULL;
+	}
+
+	if (alm != NULL)
+		object->sendMessage(alm);
 }
 
 void SceneObjectImplementation::destroy(ZoneClientSession* client) {

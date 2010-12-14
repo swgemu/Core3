@@ -29,6 +29,8 @@ public:
 
 			category->insertToMessage(this);
 		}
+
+		setCompression(true);
    }
 };
 

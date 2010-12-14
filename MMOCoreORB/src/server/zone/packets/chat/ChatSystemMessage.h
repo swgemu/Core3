@@ -63,6 +63,8 @@ public:
 
 		insertUnicode(message);
 		insertInt(0); //No params
+
+		setCompression(true);
 	}
 
 	ChatSystemMessage(StringIdChatParameter& sid, byte displayType = DISPLAY_CHATANDSCREEN) : BaseMessage() {
@@ -81,6 +83,8 @@ public:
 		int size = (getOffset() - offset - 4) / 2;
 
 		insertInt(offset, size);
+
+		setCompression(true);
 	}
 };
 

@@ -36,7 +36,7 @@ void DetailAppearanceTemplate::parse(IffStream* iffStream) {
 	int subChunks = dataChunk->getChunksSize();
 
 	//loading first child only
-	for (int i = 0; i < /*subChunks*/ 1; ++i) {
+	for (int i = 0; i < subChunks; ++i) {
 		iffStream->openChunk('CHLD');
 
 		int var1 = iffStream->getInt();
@@ -44,10 +44,11 @@ void DetailAppearanceTemplate::parse(IffStream* iffStream) {
 		String meshFile;
 		iffStream->getString(meshFile);
 
-		AppearanceTemplate* templ = TemplateManager::instance()->getAppearanceTemplate("appearance/" + meshFile);
+		if (i == subChunks - 1) {
+			AppearanceTemplate* templ = TemplateManager::instance()->getAppearanceTemplate("appearance/" + meshFile);
 
-		if (i == 0)
 			firstMesh = templ->getFirstMesh();
+		}
 
 		iffStream->closeChunk('CHLD');
 	}

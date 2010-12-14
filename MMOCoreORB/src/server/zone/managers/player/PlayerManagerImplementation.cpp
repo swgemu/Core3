@@ -2317,6 +2317,8 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 
 	//Ray ray(rayOrigin, norm);
 
+	zone->rlock();
+
 	for (int i = 0; i < object1->inRangeObjectCount(); ++i) {
 		SceneObject* scno = (SceneObject*) object1->getInRangeObject(i);
 
@@ -2325,44 +2327,57 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 
 			AABBTree* aabbTree = structure->getAABBTree();
 
+
 			if (aabbTree != NULL) {
 				//moving ray to model space
-				Matrix4 translationMatrix;
-				translationMatrix.setTranslation(-structure->getPositionX(), -structure->getPositionZ(), -structure->getPositionY());
+				zone->runlock();
 
-				float rad = -structure->getDirection()->getRadians();
-				float cosRad = cos(rad);
-				float sinRad = sin(rad);
+				try {
+					Matrix4 translationMatrix;
+					translationMatrix.setTranslation(-structure->getPositionX(), -structure->getPositionZ(), -structure->getPositionY());
 
-				Matrix3 rot;
-				rot[0][0] = cosRad;
-				rot[0][2] = -sinRad;
-				rot[1][1] = 1;
-				rot[2][0] = sinRad;
-				rot[2][2] = cosRad;
+					float rad = -structure->getDirection()->getRadians();
+					float cosRad = cos(rad);
+					float sinRad = sin(rad);
 
-				Matrix4 rotateMatrix;
-				rotateMatrix.setRotationMatrix(rot);
+					Matrix3 rot;
+					rot[0][0] = cosRad;
+					rot[0][2] = -sinRad;
+					rot[1][1] = 1;
+					rot[2][0] = sinRad;
+					rot[2][2] = cosRad;
 
-				Matrix4 modelMatrix;
-				modelMatrix = translationMatrix * rotateMatrix;
+					Matrix4 rotateMatrix;
+					rotateMatrix.setRotationMatrix(rot);
 
-				Vector3 transformedOrigin = rayOrigin * modelMatrix;
-				Vector3 transformedEnd = rayEnd * modelMatrix;
+					Matrix4 modelMatrix;
+					modelMatrix = translationMatrix * rotateMatrix;
 
-				Vector3 norm = transformedEnd - transformedOrigin;
-				norm.normalize();
+					Vector3 transformedOrigin = rayOrigin * modelMatrix;
+					Vector3 transformedEnd = rayEnd * modelMatrix;
 
-				Ray ray(transformedOrigin, norm);
+					Vector3 norm = transformedEnd - transformedOrigin;
+					norm.normalize();
 
-				structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
+					Ray ray(transformedOrigin, norm);
 
-				if (aabbTree->intersects(ray, dist, true)) {
-					return false;
+					//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
+
+					if (aabbTree->intersects(ray, dist, true)) {
+						return false;
+					}
+				} catch (...) {
+
 				}
+
+				zone->rlock();
 			}
+
+
 		}
 	}
+
+	zone->runlock();
 
 	return true;
 
