@@ -158,7 +158,7 @@ void LoginServerImplementation::handleMessage(LoginClient* client, Packet* messa
 	BaseClientProxy* session = (BaseClientProxy*) client->getSession();
 
 	try {
-		if (session->isAvailable())
+		if (session != NULL && session->isAvailable())
 			phandler->handlePacket(session, message);
 
 	} catch (PacketIndexOutOfBoundsException& e) {

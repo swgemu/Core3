@@ -62,6 +62,8 @@ public:
 		insertUnicode(message);
 		insertInt(0);
 		
+		setCompression(true);
+
 	} 
 
 };

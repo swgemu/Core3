@@ -20,6 +20,8 @@ public:
 
 		insertInt(0); //Coordinate Count.
 
+		setCompression(true);
+
    }
 
    void addCoordinate(float x, float z, float y) {

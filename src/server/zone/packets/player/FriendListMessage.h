@@ -60,6 +60,8 @@ public:
 
 		insertLong(ghost->getParentID());
 
+		setCompression(true);
+
 		String serverName = ghost->getZoneServer()->getServerName();
 
 		DeltaVector<String>* friendList = ghost->getFriendList();

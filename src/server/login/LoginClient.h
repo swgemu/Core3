@@ -64,6 +64,9 @@ namespace login {
 		}
 		
 		void disconnect(bool doLock = true) {
+			if (session == NULL)
+				return;
+
 			if (session->isDisconnected())
 				return;
 	

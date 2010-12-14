@@ -55,8 +55,8 @@ void LoginPacketHandler::handleErrorMessage(Message* pack) {
 	pack->parseAscii(errorMessage);
 
 	client->error(errorType + " : " + errorMessage);
-	client->disconnect();
-	exit(1);
+	//client->disconnect();
+	//exit(1);
 }
 
 void LoginPacketHandler::handleLoginClientToken(Message* pack) {

@@ -368,6 +368,10 @@ public:
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
+	void updateZone(bool lightUpdate, bool sendPackets = true);
+
+	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
+
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
@@ -782,6 +786,10 @@ public:
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
+	void updateZone(bool lightUpdate, bool sendPackets = true);
+
+	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
+
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
@@ -1088,6 +1096,10 @@ public:
 	void doRecovery();
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID);
+
+	void updateZone(bool lightUpdate, bool sendPackets);
+
+	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

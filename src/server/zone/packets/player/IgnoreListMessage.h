@@ -65,6 +65,8 @@ public:
 			insertAscii("Core3");
 			insertAscii(ignoreList->get(i));
 		}
+
+		setCompression(true);
 	}
 };
 

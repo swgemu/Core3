@@ -70,6 +70,8 @@ public:
 		insertInt(player->getMigrationFocus()); // Focus Migration
 		insertInt(player->getMigrationWillpower()); // Willpower Migration*/
 		insertInt(0); // Points Remaining
+
+		setCompression(true);
 	}
 
 };

@@ -60,6 +60,8 @@ public:
 		insertInt(imppts);
 		insertInt(0); //hutt points - unused.
 		
+		setCompression(true);
+
 	}
 	
 	/*

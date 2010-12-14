@@ -41,6 +41,9 @@ public:
 
 	void addSerializableVariables();
 
+	/*bool toBinaryStream(ObjectOutputStream* stream);
+	bool parseFromBinaryStream(ObjectInputStream* stream);*/
+
 	//~DamageOverTime();
 
 	void activate();

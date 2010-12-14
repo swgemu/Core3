@@ -59,6 +59,8 @@ public:
 		//insertInt(generateRandomObjectCRC());
 		insertByte(type);
 		insertInt(0);
+
+		setCompression(true);
 	
 		updateCount = 0;
 		insertShort(updateCount);

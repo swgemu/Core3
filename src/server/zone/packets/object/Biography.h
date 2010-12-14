@@ -50,7 +50,7 @@ which carries forward this exception.
 
 class Biography : public ObjectControllerMessage {
 public:
-	Biography(PlayerCreature* play, PlayerCreature* player) : ObjectControllerMessage(play->getObjectID(), 0x1B, 0x1DB, false) {
+	Biography(PlayerCreature* play, PlayerCreature* player) : ObjectControllerMessage(play->getObjectID(), 0x1B, 0x1DB, true) {
 		insertLong(player->getObjectID());
 		insertUnicode(player->getBiography());		
 	}

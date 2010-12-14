@@ -71,6 +71,8 @@ public:
 		insertInt(0); //List Count
 		
 		channelCounter = 0;
+
+		setCompression(true);
 	}
 	
 	void addChannel(ChatRoom* channel) {

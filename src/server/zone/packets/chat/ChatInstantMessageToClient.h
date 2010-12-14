@@ -59,6 +59,8 @@ public:
 		insertUnicode(message);
 
 		insertInt(0x00);
+
+		setCompression(true);
 	} 
 	
 };
