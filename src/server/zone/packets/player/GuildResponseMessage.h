@@ -65,6 +65,8 @@ public:
 			insertAscii(guild->getGuildName());
 		
 		insertShort(0);
+
+		setCompression(true);
 	}
 	
 };

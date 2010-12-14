@@ -63,6 +63,8 @@ public:
 		insertInt(counter);
 		insertInt(screen); // Vendor screen number
 
+		setCompression(true);
+
 		locationList.setNoDuplicateInsertPlan();
 	}
 

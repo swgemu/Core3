@@ -114,6 +114,8 @@ public:
 		insertInt(timestamp);
 		
 		insertInt(0x00);
+
+		setCompression(true);
 	}
 
 
@@ -147,6 +149,8 @@ public:
 		insertInt(timestamp);
 
 		insertInt(0x00);
+
+		setCompression(true);
 	}
 
 	ChatPersistentMessageToClient(PersistentMessage* mail, bool sendBody) {
@@ -177,6 +181,8 @@ public:
 		//insertInt(0); //Pretty sure we don't need to append this.
 
 		//System::out << toStringData() << endl;
+
+		setCompression(true);
 	}
 };
 

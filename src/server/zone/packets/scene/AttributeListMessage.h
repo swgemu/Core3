@@ -70,6 +70,8 @@ public:
 		insertLong(object->getObjectID());
 		insertInt(0); // list count
 
+		setCompression(true);
+
 		listcount = 0;
 		countLocation = 18;
 	}
@@ -80,6 +82,7 @@ public:
 
 		insertLong(objectID);
 		insertInt(listCount); // list count
+		setCompression(true);
 	}
 
 	AttributeListMessage(uint64 objectID) : BaseMessage() {
@@ -89,6 +92,7 @@ public:
 		insertInt(0); // list count
 		listcount = 0;
 		countLocation = 18;
+		setCompression(true);
 	}
 
 	// For bazaar/vendor items
@@ -103,6 +107,7 @@ public:
 		insertInt(0); // list count
 		listcount = 0;
 		countLocation = 22 + description.length() * 2;
+		setCompression(true);
 	}
 
 	void insertAttribute(const String& attribute, UnicodeString& value) {

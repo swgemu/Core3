@@ -80,6 +80,8 @@ public:
 		insertShort(0x06);
 		insertInt(0x4D32541F);  // CRC
         insertAscii(planet);
+
+        setCompression(true);
 	}
 	
 	~TravelListResponseMessage() {

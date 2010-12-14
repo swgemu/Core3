@@ -16,6 +16,8 @@ public:
 
 		insertAscii("Core3.0");
 		insertInt(0);
+
+		setCompression(true);
    }
 
 };

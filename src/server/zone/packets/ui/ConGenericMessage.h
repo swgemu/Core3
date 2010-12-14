@@ -17,7 +17,7 @@ public:
 		insertAscii(msg); //Message to show in spatial chat box
 		insertInt(0); //??
 
-
+		setCompression(true);
 
    }
 

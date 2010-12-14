@@ -563,7 +563,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	ManagedReference<FactoryCrate*> crate = dynamic_cast<FactoryCrate*>(getZoneServer()->createObject(file.hashCode(), 2));
+	FactoryCrate* crate = dynamic_cast<FactoryCrate*>(getZoneServer()->createObject(file.hashCode(), 2));
 
 	if (crate == NULL)
 		return NULL;

@@ -87,6 +87,8 @@ public:
 
 		insertInt(player->getFaction()); //Faction CRC (or hashCode?)
 		insertInt(player->getFactionStatus()); //Faction Status
+
+		setCompression(true);
 	}
 
 };

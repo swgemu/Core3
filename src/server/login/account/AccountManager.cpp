@@ -81,7 +81,7 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 
 
 Account* AccountManager::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
-	ManagedReference<Account*> account = NULL;
+	Account* account = NULL;
 
 	StringBuffer query;
 	query << "SELECT a.active, a.password, SHA1('" << password << "'), IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > NOW() LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > NOW() LIMIT 1), ''), a.account_id, a.station_id, a.created, a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
@@ -169,7 +169,7 @@ Account* AccountManager::createAccount(const String& username, const String& pas
 
 	uint32 accountID = result->getLastAffectedRow();
 
-	ManagedReference<Account*> account = new Account(this, username, accountID, stationID);
+	Account* account = new Account(this, username, accountID, stationID);
 
 	addAccount(account);
 

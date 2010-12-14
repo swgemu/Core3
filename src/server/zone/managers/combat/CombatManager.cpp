@@ -719,10 +719,48 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	//info("defender armor reduction is " + String::valueOf(armorReduction), true);
 
 	if (armorReduction > 0)
-		damage *= (armorReduction /= 100.f);
+		damage *= (1.f - (armorReduction /= 100.f));
 
 	if (defender->isBerserked()) {
 		damage += 50;
+	}
+
+	//Toughness
+	ManagedReference<WeaponObject*> weaponDefender = defender->getWeapon();
+
+	if (weaponDefender != NULL) {
+		// Weapon related toughness.
+		int toughness = 0;
+		int jediToughness = 0;
+
+		if (weaponDefender->isUnarmedWeapon())
+			toughness = defender->getSkillMod("unarmed_toughness");
+		else if (weaponDefender->isOneHandMeleeWeapon())
+			toughness = defender->getSkillMod("onehandmelee_toughness");
+		else if (weaponDefender->isTwoHandMeleeWeapon())
+			toughness = defender->getSkillMod("twohandmelee_toughness");
+		else if (weaponDefender->isPolearmWeaponObject())
+			toughness = defender->getSkillMod("polearm_toughness");
+		/*else if (weaponDefender->isOneHandLightsaber()){
+		toughness = defender->getSkillMod("lightsaber_toughness");
+
+		if (weapon->getDamageType() == WeaponObject::LIGHTSABER)
+			jediToughness = defender->getSkillMod("jedi_toughness");
+	} else if	(weaponDefender->isTwoHandLightsaber()){
+		toughness = defender->getSkillMod("lightsaber_toughness");
+
+		if (weapon->getDamageType() == WeaponObject::LIGHTSABER)
+			jediToughness = defender->getSkillMod("jedi_toughness");
+	} else if	(weaponDefender->isPolearmLightsaber()){
+		toughness = defender->getSkillMod("lightsaber_toughness");
+
+		if (weapon->getDamageType() == WeaponObject::LIGHTSABER)
+			jediToughness = defender->getSkillMod("jedi_toughness");
+	}*/
+
+		if (!defender->isAiAgent()) { // NPCs/Creatures do not have toughness.
+			damage -= damage * (toughness + jediToughness / 1.02f) / 100.0f;
+		}
 	}
 
 	//info("damage to be dealt is " + String::valueOf(damage), true);

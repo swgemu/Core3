@@ -89,6 +89,9 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!objectToTransfer->isASubChildOf(creature))
+			return GENERALERROR;
+
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {

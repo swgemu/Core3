@@ -85,22 +85,30 @@ public:
 			return GENERALERROR;
 		}
 
-		if (objectToTransfer->isPlayerCreature()) {
-			//creature->sendSystemMessage("You cant pickup players");
+		if (objectToTransfer->isCreatureObject()) {
+			//creature->sendSystemMessage("You cant pickup creatures");
 			return GENERALERROR;
 		}
 
 		SceneObject* objectsParent = objectToTransfer->getParent();
 
-		if (objectsParent != NULL && objectsParent->isCellObject()) {
-			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
+		if (objectsParent != NULL) {
+			if (objectsParent->isCellObject()) {
 
-			if (!building->isOnAdminList(creature)) {
-				return GENERALERROR;
+				ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
+
+				if (!building->isOnAdminList(creature)) {
+					return GENERALERROR;
+				}
+
+				if (objectToTransfer->isTerminal())
+					return GENERALERROR;
+			} else {
+				SceneObject* rootParent = objectToTransfer->getRootParent();
+
+				if (rootParent->isPlayerCreature() && rootParent != creature)
+					return GENERALERROR;
 			}
-
-			if (objectToTransfer->isTerminal())
-				return GENERALERROR;
 		}
 
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);

@@ -72,7 +72,7 @@ public:
 
 	}
 
-	const static int DEFAULT_SERVERDATABASE_INSTANCES = 1;
+	const static int DEFAULT_SERVERDATABASE_INSTANCES = 8;
 
 	~ServerDatabase() {
 		while (!databases->isEmpty()) {

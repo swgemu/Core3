@@ -392,6 +392,25 @@ void PlayerCreatureImplementation::updateToDatabase() {
 	CreatureObjectImplementation::updateToDatabase();
 }
 
+/**
+	 * Updates position of this object to the rest of in range objects
+	 * @pre { this object is locked}
+	 * @post { this object is locked, in range objects are updated with the new position }
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
+void PlayerCreatureImplementation::updateZone(bool lightUpdate, bool sendPackets) {
+	CreatureObjectImplementation::updateZone(lightUpdate, sendPackets);
+
+	savedParentID = 0;
+}
+
+void PlayerCreatureImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
+	CreatureObjectImplementation::updateZoneWithParent(newParent, lightUpdate, sendPackets);
+
+	if (parent != NULL)
+		savedParentID = parent->getObjectID();
+}
+
 void PlayerCreatureImplementation::unload() {
 	info("unloading player");
 
@@ -410,17 +429,17 @@ void PlayerCreatureImplementation::unload() {
 
 	unloadSpawnedChildren();
 
-	if (parent != NULL) {
-		savedParentID = parent->getObjectID();
-
-		savedParent = parent;
-	} else
-		savedParentID = 0;
-
 	if (zone != NULL) {
 		savedZoneID = zone->getZoneID();
 
 		if (isInQuadTree()) {
+			if (parent != NULL) {
+				savedParentID = parent->getObjectID();
+
+				savedParent = parent;
+			} else
+				savedParentID = 0;
+
 			removeFromZone();
 		}
 	}
@@ -440,6 +459,8 @@ void PlayerCreatureImplementation::unload() {
 	stopEntertaining();
 
 	tradeContainer.clear();
+
+	damageOverTimeList.removeAll();
 
 	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
 
@@ -683,7 +704,7 @@ void PlayerCreatureImplementation::sendBadgesResponseTo(PlayerCreature* player) 
 }
 
 void PlayerCreatureImplementation::notifySceneReady() {
-	teleport(positionX, positionZ, positionY, getParentID());
+	teleporting = false;
 
 	BaseMessage* msg = new CmdSceneReady();
 	sendMessage(msg);

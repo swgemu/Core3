@@ -65,6 +65,8 @@ public:
 		insertFloat(scno->getPositionY());
 		insertInt(scno->getClientObjectCRC());  // ObjectCRC
 		insertByte(0);
+
+		setCompression(true);
 	}
 
 	SceneObjectCreateMessage(uint64 oid, uint32 objCrc) : BaseMessage() {
@@ -80,6 +82,8 @@ public:
 		insertFloat(0);
 		insertInt(objCrc);  // ObjectCRC
 		insertByte(0x00);
+
+		setCompression(true);
 	}
 
 	static void parseMessage(Message* pack, SceneObject* scno) {

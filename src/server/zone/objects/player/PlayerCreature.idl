@@ -273,6 +273,23 @@ class PlayerCreature extends CreatureObject {
 	public native void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
 	
 	/**
+	 * Updates position of this object to the rest of in range objects
+	 * @pre { this object is locked}
+	 * @post { this object is locked, in range objects are updated with the new position }
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
+	public native void updateZone(boolean lightUpdate, boolean sendPackets = true);
+
+	/**
+	 * Updates position and/or parent of this object and to the rest of in range objects
+	 * @pre { this object is locked, newParent is a CellObject }
+	 * @post {this object is locked, in range objects are updated of the new position and parent }
+	 * @param newParent cellObject where this object is
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
+	public native void updateZoneWithParent(SceneObject newParent, boolean lightUpdate, boolean sendPackets = true); 
+	
+	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
 	 * @post { this object is locked, menuResponse is complete}

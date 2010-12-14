@@ -61,6 +61,8 @@ public:
 
 		insertInt(0x0F); //needs to be 0F in order to show badges. *shrug*
 
+		setCompression(true);
+
 		for (int i = 0; i < 5; ++i) {
 			insertInt(badges->getBitmask(i));
 		}
