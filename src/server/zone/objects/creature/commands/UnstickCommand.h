@@ -63,6 +63,12 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		/*
+string/en/cmd_err.stf	7	unstick_in_progress	Unstick in progress
+string/en/cmd_err.stf	8	unstick_request_complete	Unstick complete
+string/en/cmd_err.stf	9	unstick_request_cancelled	Unstick request was cancelled
+		 */
+
 		return SUCCESS;
 	}
 

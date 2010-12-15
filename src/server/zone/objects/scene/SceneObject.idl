@@ -1172,6 +1172,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isPlayerObject() {
 		return gameObjectType == PLAYEROBJECT;
 	}
+	
+	public abstract boolean isActiveArea() {
+		return false;
+	}
+	
+	public abstract boolean isRegion() {
+		return false;
+	}
 
 	public abstract boolean isCreatureObject() {
 		return false;

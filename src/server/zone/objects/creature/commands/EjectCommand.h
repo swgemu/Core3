@@ -63,6 +63,22 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+		player->sendSystemMessage("@error_message:sys_eject_request"); //Processing eject request...
+
+
+		/*
+string/en/error_message.stf	120	sys_eject_fail_contained	The ejection attempt failed because you are inside a building.
+string/en/error_message.stf	121	sys_eject_fail_ground	The ejection attempt failed because you were already on the ground.
+string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed because you moved.
+string/en/error_message.stf	123	sys_eject_fail_proximity	The eject attempt failed because there isn't a building nearby.
+string/en/error_message.stf	124	sys_eject_request	Processing eject request...
+string/en/error_message.stf	125	sys_eject_success	You have been moved to the nearest building's ejection point.
+		 */
+
 		return SUCCESS;
 	}
 
