@@ -285,6 +285,14 @@ public:
 		if (!creatureTarget->isInRange(creature, range))
 			return TOOFAR;
 
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
+
+
 		if (!creatureTarget->clearState(state)) {
 			if (creature == creatureTarget)
 				creature->sendSystemMessage("healing_response", "healing_response_72"); //You have no state of that type to heal.

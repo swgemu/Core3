@@ -168,6 +168,13 @@ public:
 			break;
 		}
 
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+			return false;
+		}
+
+
 		/*if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
 			return false;
 		}*/
@@ -334,6 +341,13 @@ public:
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
 			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			return false;
+		}
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+			creature->sendSystemMessage("@container_error_message:container18");
 			return false;
 		}
 

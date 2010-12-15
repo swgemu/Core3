@@ -217,9 +217,7 @@ public:
 		return portalLayoutFilename;
 	}
 
-    inline PortalLayout* getPortalLayout() const {
-    	return portalLayout;
-    }
+    PortalLayout* getPortalLayout();
 
     inline Vector<String> getArrangementDescriptors() const {
 		return arrangementDescriptors;

@@ -89,16 +89,17 @@ public:
 };
 
 class MeshAppearanceTemplate : public AppearanceTemplate {
-	Vector<MeshData> meshes;
+	Vector<MeshData>* meshes;
 	//Vector<Triangle> triangles;
 
 	AABBTree* aabbTree;
 
-	String file;
+	//String file;
 
 public:
 	MeshAppearanceTemplate() {
 		aabbTree = NULL;
+		meshes = NULL;
 	}
 
 	~MeshAppearanceTemplate() {
@@ -127,9 +128,9 @@ public:
 			aabbTree->getTriangles(triangles);
 	}
 
-	inline String& getFileName() {
+	/*inline String& getFileName() {
 		return file;
-	}
+	}*/
 
 	inline AABBTree* getAABBTree() {
 		return aabbTree;

@@ -224,6 +224,8 @@ public:
 
 	bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
 
+	bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
+
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
@@ -370,6 +372,8 @@ public:
 
 	bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
 
+	bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
+
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
@@ -502,6 +506,8 @@ public:
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
 	bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
+
+	bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 

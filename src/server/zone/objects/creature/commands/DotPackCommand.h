@@ -75,6 +75,12 @@ public:
 			targetCreature->stopDancing();
 		 */
 
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != targetCreature && !playerManager->checkLineOfSight(creature, targetCreature)) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -271,6 +277,14 @@ public:
 			return GENERALERROR;
 
 		CreatureObject* creatureTarget = (CreatureObject*) object.get();
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
+
 
 		Locker clocker(creatureTarget, creature);
 

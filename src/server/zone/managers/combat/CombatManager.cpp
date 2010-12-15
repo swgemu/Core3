@@ -1269,6 +1269,8 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 	if (zone == NULL)
 		return 0;
 
+	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
+
 	int damage = 0;
 
 	int range = data.getAreaRange();
@@ -1323,10 +1325,12 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 			zone->runlock();
 
-			try {
-				damage += doTargetCombatAction(attacker, tano, data);
-			} catch (...) {
-				error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data) executing doTargetCombatAction");
+			if (playerManager->checkLineOfSight(object, attacker)) {
+				try {
+					damage += doTargetCombatAction(attacker, tano, data);
+				} catch (...) {
+					error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data) executing doTargetCombatAction");
+				}
 			}
 
 			zone->rlock();

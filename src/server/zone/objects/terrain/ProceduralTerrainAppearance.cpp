@@ -28,28 +28,75 @@ ProceduralTerrainAppearance::~ProceduralTerrainAppearance() {
 bool ProceduralTerrainAppearance::load(const String& file) {
 	setLoggingName(getLoggingName() + " " + file);
 
-	IffStream* iffStream;
+	IffStream* iffStream = NULL;
+
+	FileInputStream* fileStream = NULL;
+	File* fileObject = NULL;
 
 	try {
-		iffStream = new IffStream(file);
+		fileObject = new File(file);
+
+		fileObject->setReadOnly();
+
+		if (!fileObject->exists()) {
+			fileObject->close();
+			delete fileObject;
+			fileObject == NULL;
+			return false;
+		}
+
+		fileStream = new FileInputStream(fileObject);
 	} catch (...) {
-		iffStream = NULL;
+		delete fileObject;
+		fileObject->close();
+		fileObject = NULL;
+		info("could not open " + file);
+
 		throw;
 	}
 
-	if (!iffStream->parseChunks())
+	int size = fileObject->size();
+
+	sys::byte* data = new byte[size];
+
+	fileStream->read(data, size);
+
+	fileStream->close();
+	delete fileStream;
+	delete fileObject;
+
+	iffStream = new IffStream();
+
+	if (iffStream != NULL) {
+		try {
+			if (!iffStream->parseChunks(data, size, file)) {
+				delete iffStream;
+				iffStream = NULL;
+			}
+		} catch (...) {
+			delete iffStream;
+			iffStream = NULL;
+		}
+	}
+
+	delete [] data;
+
+	if (iffStream != NULL) {
+		readObject(iffStream);
+
+		delete iffStream;
+		iffStream = NULL;
+
+		terrainGenerator->processLayers();
+
+
+		info("loading finished", true);
+
+		return true;
+	} else
 		return false;
 
-	readObject(iffStream);
 
-	delete iffStream;
-	iffStream = NULL;
-
-	terrainGenerator->processLayers();
-
-	info("loading finished", true);
-
-	return true;
 }
 
 void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* iffStream) {

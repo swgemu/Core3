@@ -152,6 +152,10 @@ namespace zone {
 		void updateModifiedObjectsToDatabase(bool startTask);
 		void finishObjectUpdate(bool startNew);
 
+		inline void scheduleUpdateToDatabase() {
+			updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
+		}
+
 		void updateObjectVersion();
 
 		//used internally

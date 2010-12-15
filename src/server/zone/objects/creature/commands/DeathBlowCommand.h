@@ -77,8 +77,14 @@ public:
 		try {
 			Locker clocker(player, creature);
 
+			PlayerManager* playerManager = server->getPlayerManager();
+
+			if (!playerManager->checkLineOfSight(creature, player)) {
+				creature->sendSystemMessage("@container_error_message:container18");
+				return GENERALERROR;
+			}
+
 			if (player->isIncapacitated() && player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
-				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 				playerManager->killPlayer(creature, player);
 			}
 

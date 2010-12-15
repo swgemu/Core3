@@ -191,6 +191,11 @@ public:
 			return false;
 		}
 
+		if (enhancer != patient && !playerManager->checkLineOfSight(enhancer, patient)) {
+			enhancer->sendSystemMessage("@container_error_message:container18");
+			return false;
+		}
+
 		return true;
 	}
 

@@ -179,6 +179,12 @@ public:
 			return false;
 		}
 
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -443,13 +449,19 @@ public:
 		if (!creature->isInRange(targetCreature, rangeToCheck))
 			return TOOFAR;
 
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != targetCreature && !playerManager->checkLineOfSight(creature, targetCreature)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
+
 		uint32 stimPower = stimPack->calculatePower(creature, targetCreature);
 
 		uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
 		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
 
 		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
-			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 			playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)targetCreature);
 		}
 
