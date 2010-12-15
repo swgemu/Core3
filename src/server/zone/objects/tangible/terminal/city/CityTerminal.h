@@ -102,10 +102,6 @@ public:
 
 	bool isCityTerminal();
 
-	void setCityHallObject(CityHallObject* cityHall);
-
-	CityHallObject* getCityHallObject();
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -135,8 +131,6 @@ namespace terminal {
 namespace city {
 
 class CityTerminalImplementation : public TerminalImplementation {
-protected:
-	ManagedWeakReference<CityHallObject* > cityHallObject;
 
 public:
 	CityTerminalImplementation();
@@ -150,10 +144,6 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isCityTerminal();
-
-	void setCityHallObject(CityHallObject* cityHall);
-
-	CityHallObject* getCityHallObject();
 
 	CityTerminal* _this;
 
@@ -201,10 +191,6 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isCityTerminal();
-
-	void setCityHallObject(CityHallObject* cityHall);
-
-	CityHallObject* getCityHallObject();
 
 };
 

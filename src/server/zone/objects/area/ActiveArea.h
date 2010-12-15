@@ -58,6 +58,8 @@ public:
 
 	void notifyExit(SceneObject* object);
 
+	bool isActiveArea();
+
 	bool isRegion();
 
 	void insertToZone(Zone* zone);
@@ -116,6 +118,8 @@ public:
 	virtual void notifyEnter(SceneObject* object);
 
 	virtual void notifyExit(SceneObject* object);
+
+	bool isActiveArea();
 
 	virtual bool isRegion();
 
@@ -179,6 +183,8 @@ public:
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
+
+	bool isActiveArea();
 
 	bool isRegion();
 
