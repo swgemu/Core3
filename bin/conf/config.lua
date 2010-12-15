@@ -49,22 +49,22 @@ MakeStatus = 1
 
 ORB = ""
 
-DBHost = "192.168.1.100"
+DBHost = "172.26.0.2"
 DBPort = 3306
 DBName = "swgemu"
-DBUser = "swgemu"
-DBPass = "123456"
+DBUser = "root"
+DBPass = "swgemu"
 
 LoginPort = 44453
 LoginProcessingThreads = 1
 LoginAllowedConnections = 3000
 LoginRequiredVersion = "20050408-18:00"
 
-MantisHost = "192.168.1.100"
+MantisHost = "172.26.0.2"
 MantisPort = 3306
 MantisName = "swgemu"
-MantisUser = "swgemu"
-MantisPass = "123456"
+MantisUser = "root"
+MantisPass = "swgemu"
 MantisPrfx = "mantis_" -- The prefix for your mantis tables.
 
 AutoReg = 1
@@ -77,7 +77,63 @@ ZoneAllowedConnections = 30000
 ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with your login server.
 ZoneOnlineCharactersPerAccount = 2 --How many characters are allowed online from a single account.
 
+-- directory of tres with live.cfg
+TrePath = "/Applications/SWGEmu.app/Contents/Resources/transgaming/c_drive/SWGEMU"
+
 --Status Server Config
 StatusPort = 44455
 StatusAllowedConnections = 500
 StatusInterval = 30 -- interval to check if zone is locked up (in seconds)
+
+TreFiles = {
+	"default_patch.tre",
+	"hotfix_13_1_00.tre",
+	"patch_sku1_13_00.tre",
+	"patch_13_00.tre",
+	"patch_sku1_12_00.tre",
+	"patch_12_00.tre",
+	"patch_11_03.tre",
+	"data_sku1_07.tre",
+	"patch_11_02.tre",
+	"data_sku1_06.tre",
+	"patch_11_01.tre",
+	"patch_11_00.tre",
+	"data_sku1_05.tre",
+	"data_sku1_04.tre",
+	"data_sku1_03.tre",
+	"data_sku1_02.tre",
+	"data_sku1_01.tre",
+	"data_sku1_00.tre",
+	"patch_10.tre",
+	"patch_09.tre",
+	"patch_08.tre",
+	"patch_07.tre",
+	"patch_06.tre",
+	"patch_05.tre",
+	"patch_04.tre",
+	"patch_03.tre",
+	"patch_02.tre",
+	"patch_01.tre",
+	"patch_00.tre",
+	"data_other_00.tre",
+	"data_static_mesh_01.tre",
+	"data_static_mesh_00.tre",
+	"data_texture_07.tre",
+	"data_texture_06.tre",
+	"data_texture_05.tre",
+	"data_texture_04.tre",
+	"data_texture_03.tre",
+	"data_texture_02.tre",
+	"data_texture_01.tre",
+	"data_texture_00.tre",
+	"data_skeletal_mesh_01.tre",
+	"data_skeletal_mesh_00.tre",
+	"data_animation_00.tre",
+	"data_sample_04.tre",
+	"data_sample_03.tre",
+	"data_sample_02.tre",
+	"data_sample_01.tre",
+	"data_sample_00.tre",
+	"data_music_00.tre",
+	"bottom.tre"
+}

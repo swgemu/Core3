@@ -167,6 +167,8 @@ void ServerCore::run() {
 		pingServer->start(pingPort, pingAllowedConnections);
 	}
 
+	ObjectManager::instance()->scheduleUpdateToDatabase();
+
 	Core::initialize();
 
 	info("initialized", true);

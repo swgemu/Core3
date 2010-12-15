@@ -72,6 +72,8 @@ namespace server {
 			String mantisPass;
 			String mantisPrfx;
 
+			String trePath;
+
 			uint16 statusPort;
 			uint16 loginPort;
 			uint16 pingPort;
@@ -92,6 +94,8 @@ namespace server {
 			int pingAllowedConnections;
 
 			String messageOfTheDay;
+
+			Vector<String> treFiles;
 
 		public:
 
@@ -145,6 +149,7 @@ namespace server {
 
 			bool loadConfigData();
 			void loadMOTD();
+			void loadTreFileList();
 
 			//getters
 
@@ -196,6 +201,10 @@ namespace server {
 				return mantisPort;
 			}
 
+			inline Vector<String>& getTreFiles() {
+				return treFiles;
+			}
+
 			inline String& getMantisName() {
 				return mantisName;
 			}
@@ -214,6 +223,10 @@ namespace server {
 
 			inline String& getMessageOfTheDay() {
 				return messageOfTheDay;
+			}
+
+			inline String& getTrePath() {
+				return trePath;
 			}
 
 			inline uint16 getLoginPort() {

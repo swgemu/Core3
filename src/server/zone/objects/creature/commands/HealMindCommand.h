@@ -192,13 +192,19 @@ public:
 		if (!creatureTarget->isInRange(creature, range))
 			return TOOFAR;
 
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
+
 		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
 		int healPower = (int) round((100.0f + modSkill) / 100.0f * creatureTarget->getMaxHAM(CreatureAttribute::MIND) / 2);
 
 		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, healPower);
 
 		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
-			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 			playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)creatureTarget);
 		}
 

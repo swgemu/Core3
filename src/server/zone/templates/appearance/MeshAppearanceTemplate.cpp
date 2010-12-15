@@ -8,7 +8,9 @@
 #include "MeshAppearanceTemplate.h"
 
 void MeshAppearanceTemplate::parse(IffStream* iffStream) {
-	file = iffStream->getFileName();
+	//file = iffStream->getFileName();
+
+	meshes = new Vector<MeshData>();
 
 	iffStream->openForm('MESH');
 
@@ -22,16 +24,19 @@ void MeshAppearanceTemplate::parse(IffStream* iffStream) {
 	iffStream->closeForm(version);
 	iffStream->closeForm('MESH');
 
-	if (meshes.size() != 0) {
+	if (meshes->size() != 0) {
 		createAABB();
 	}
+
+	delete meshes;
+	meshes = NULL;
 }
 
 void MeshAppearanceTemplate::createAABB() {
 	Vector<Triangle> triangles;
 
-	for (int k = 0; k < meshes.size(); ++k) {
-		MeshData* meshData = &meshes.get(k);
+	for (int k = 0; k < meshes->size(); ++k) {
+		MeshData* meshData = &meshes->get(k);
 
 		for (int i = 0; i < meshData->triangles.size(); ++i) {
 			MeshTriangle* tri = &meshData->triangles.get(i);
@@ -53,12 +58,12 @@ void MeshAppearanceTemplate::createAABB() {
 		}
 	}
 
-	meshes.removeAll();
+	//meshes.removeAll();
 
 	//Logger::console.info("creating mesh aabb for triangles " + String::valueOf(triangles.size()), true);
 
 	AABBTreeHeuristic heurData;
-	heurData.maxdepth = 10; // maximum depth
+	heurData.maxdepth = 5; // maximum depth
 	heurData.mintricnt = 5; // minimum triangle count
 	heurData.tartricnt = 10; // target triangle count
 	heurData.minerror = 0.5f; // minimum error required
@@ -136,7 +141,7 @@ void MeshAppearanceTemplate::parseVertexData(IffStream* iffStream, int idx) {
 
 	MeshData meshData;
 	meshData.readObject(iffStream);
-	meshes.add(meshData);
+	meshes->add(meshData);
 
 	iffStream->closeForm('0001');
 

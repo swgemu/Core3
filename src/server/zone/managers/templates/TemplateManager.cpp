@@ -75,6 +75,8 @@
 #include "server/zone/templates/appearance/DetailAppearanceTemplate.h"
 #include "server/zone/templates/appearance/ComponentAppearanceTemplate.h"
 
+#include "server/conf/ConfigManager.h"
+
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
 TemplateManager::TemplateManager() {
@@ -93,9 +95,11 @@ TemplateManager::TemplateManager() {
 	portalLayoutMap = new PortalLayoutMap();
 	floorMeshMap = new FloorMeshMap();
 	appearanceMap = new AppearanceMap();
+	treeDirectory = NULL;
 
 	registerFunctions();
 	registerGlobals();
+	loadTreArchive();
 }
 
 TemplateManager::~TemplateManager() {
@@ -130,6 +134,45 @@ void TemplateManager::loadLuaTemplates() {
 	info("done loading object templates", true);
 	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
 	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
+}
+
+void TemplateManager::loadTreArchive() {
+	String path = ConfigManager::instance()->getTrePath();
+
+	if (path.length() <= 1)
+		return;
+
+	Vector<String> treFilesToLoad = ConfigManager::instance()->getTreFiles();
+
+	if (treFilesToLoad.size() == 0)
+		return;
+
+	info("loading tres..", true);
+
+	treeDirectory = new treArchive();
+
+	int j = 0;
+
+	for (int i = treFilesToLoad.size() - 1; i >= 0; --i) {
+		String file = treFilesToLoad.get(i);
+
+		String fullPath = path + "/";
+		fullPath += file;
+
+		if (!treeDirectory->addFile(fullPath.toCharArray()))
+			error("could not load " + fullPath);
+		else
+			++j;
+	}
+
+	if (j == 0) {
+		delete treeDirectory;
+		treeDirectory = NULL;
+	}
+
+	//treeDirectory->printArchiveContents();
+
+	info("tres loaded", true);
 }
 
 void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject* templateData) {
@@ -363,31 +406,42 @@ String TemplateManager::getTemplateFile(uint32 key) {
 }
 
 IffStream* TemplateManager::openIffFile(const String& fileName) {
-	String correctedFileName = "scripts/" + fileName;
-
 	IffStream* iffStream = NULL;
 
-	try {
-		iffStream = new IffStream(correctedFileName);
-	} catch (...) {
-		iffStream = NULL;
-
-		info("could not open " + correctedFileName);
-
+	if (treeDirectory == NULL)
 		return NULL;
-	}
+
+	std::stringstream* stringStream = treeDirectory->getFileStream(fileName.toCharArray());
+
+	if (stringStream == NULL)
+		return NULL;
+
+	stringStream->seekg (0, std::ios::end);
+	int size = stringStream->tellg();
+	stringStream->seekg(0, std::ios::beg);
+
+	sys::byte* data = new byte[size];
+
+	stringStream->read((char*)data, size);
+
+	//stringStream->close();
+	delete stringStream;
+
+	iffStream = new IffStream();
 
 	if (iffStream != NULL) {
 		try {
-			if (!iffStream->parseChunks()) {
+			if (!iffStream->parseChunks(data, size, fileName)) {
 				delete iffStream;
-				return NULL;
+				iffStream = NULL;
 			}
 		} catch (...) {
 			delete iffStream;
-			return NULL;
+			iffStream = NULL;
 		}
 	}
+
+	delete [] data;
 
 	return iffStream;
 }
@@ -425,7 +479,11 @@ FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
 }
 
 AppearanceTemplate* TemplateManager::getAppearanceTemplate(const String& fileName) {
+	//appearanceMapLock.rlock();
+
 	AppearanceTemplate* meshAppearance = appearanceMap->get(fileName);
+
+	//appearanceMapLock.runlock();
 
 	if (meshAppearance == NULL) {
 		IffStream* iffStream = openIffFile(fileName);
@@ -435,10 +493,10 @@ AppearanceTemplate* TemplateManager::getAppearanceTemplate(const String& fileNam
 
 			delete iffStream;
 			iffStream = NULL;
+
+			appearanceMap->put(fileName, meshAppearance);
 		}
 	}
-
-	appearanceMap->put(fileName, meshAppearance);
 
 	return meshAppearance;
 }
@@ -478,6 +536,8 @@ AppearanceTemplate* TemplateManager::instantiateAppearanceTemplate(IffStream* if
 }
 
 PortalLayout* TemplateManager::getPortalLayout(const String& fileName) {
+	Locker _locker(&appearanceMapLock);
+
 	PortalLayout* portalLayout = portalLayoutMap->get(fileName);
 
 	if (portalLayout == NULL) {

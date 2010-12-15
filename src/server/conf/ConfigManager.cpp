@@ -70,6 +70,9 @@ bool ConfigManager::loadConfigData() {
 	mantisPass = getGlobalString("MantisPass");
 	mantisPrfx = getGlobalString("MantisPrfx");
 
+	trePath = getGlobalString("TrePath");
+	loadTreFileList();
+
 	statusPort = getGlobalShort("StatusPort");
 
 	pingPort = getGlobalShort("PingPort");
@@ -90,6 +93,16 @@ bool ConfigManager::loadConfigData() {
 	statusInterval = getGlobalInt("StatusInterval");
 
 	return true;
+}
+
+void ConfigManager::loadTreFileList() {
+	LuaObject files = getGlobalObject("TreFiles");
+
+	for (int i = 1; i <= files.getTableSize(); ++i) {
+		treFiles.add(files.getStringAt(i));
+	}
+
+	files.pop();
 }
 
 void ConfigManager::loadMOTD() {

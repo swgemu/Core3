@@ -60,6 +60,9 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
+
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 	Logger("PlayerManager") {
 	server = zoneServer;
@@ -2289,6 +2292,43 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player
 	//return 0;
 }
 
+bool PlayerManagerImplementation::checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building) {
+	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
+	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
+
+	if (portalLayout == NULL)
+		return true;
+
+	//we are in model space... in cells
+	Vector3 rayOrigin = object1->getPosition();
+	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + 1.f);
+
+	Vector3 rayEnd = object2->getPosition();
+	rayEnd.set(rayEnd.getX(), rayEnd.getY(), rayEnd.getZ() + 1.f);
+
+	Vector3 direction(Vector3(rayEnd - rayOrigin));
+	direction.normalize();
+
+	float distance = rayEnd.distanceTo(rayOrigin);
+
+	Ray ray(rayOrigin, direction);
+
+	// we check interior cells
+	for (int i = 1; i < portalLayout->getAppearanceTemplatesSize(); ++i) {
+		MeshAppearanceTemplate* app = portalLayout->getMeshAppearanceTemplate(i);
+
+		AABBTree* aabbTree = app->getAABBTree();
+
+		if (aabbTree == NULL)
+			continue;
+
+		if (aabbTree->intersects(ray, distance, true))
+			return false;
+	}
+
+	return true;
+}
+
 bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
 
@@ -2299,12 +2339,15 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 		return false;
 
 	//For now only cell-cell, cell LOS for later
-	SceneObject* parent = object1->getParent();
+	SceneObject* rootParent1 = object1->getRootParent();
+	SceneObject* rootParent2 = object2->getRootParent();
 
-	if (object2->getParent() != parent)
-		return false;
-	else if (parent != NULL)
-		return true;
+	if (rootParent1 != NULL || rootParent2 != NULL) {
+		if (rootParent1 == rootParent2) {
+			return checkLineOfSightInBuilding(object1, object2, rootParent1);
+		} else if (rootParent1 != NULL && rootParent2 != NULL)
+			return false; //different buildings
+	}
 
 	//switching x<->y, adding 1.f for height(head), todo: get height from players
 	Vector3 rayOrigin = object1->getWorldPosition();

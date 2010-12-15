@@ -49,11 +49,11 @@ void FloorMesh::readObject(IffStream* iffStream) {
 		triangles.add(Triangle(trian));
 	}
 
-	tris.removeAll();
-	vertices.removeAll();
+	tris.removeAll(1, 1);
+	vertices.removeAll(1, 1);
 
 	AABBTreeHeuristic heurData;
-	heurData.maxdepth = 10; // maximum depth
+	heurData.maxdepth = 5; // maximum depth
 	heurData.mintricnt = 5; // minimum triangle count
 	heurData.tartricnt = 10; // target triangle count
 	heurData.minerror = 0.5f; // minimum error required
