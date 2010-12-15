@@ -158,9 +158,9 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	clientGameObjectType = templateData->getClientGameObjectType();
 	clientObjectCRC = templateData->getClientObjectCRC();
 
-	arrangementDescriptors = templateData->getArrangementDescriptors();
+	/*arrangementDescriptors = templateData->getArrangementDescriptors();
 
-	slotDescriptors = templateData->getSlotDescriptors();
+	slotDescriptors = templateData->getSlotDescriptors();*/
 
 	templateObject = templateData;
 }

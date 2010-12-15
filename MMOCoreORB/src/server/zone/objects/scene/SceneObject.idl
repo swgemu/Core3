@@ -109,11 +109,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	protected unsigned int movementCounter;
 
-	@dereferenced
+/*	@dereferenced
 	protected Vector<string> arrangementDescriptors;
 
 	@dereferenced
 	protected Vector<string> slotDescriptors;
+*/
 
 	@dereferenced
 	protected StringId objectName;
@@ -1029,20 +1030,20 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public int getArrangementDescriptorSize() {
-		return arrangementDescriptors.size();
+		return templateObject.getArrangementDescriptors().size();
 	}
 
 	public string getArrangementDescriptor(int idx) {
-		return arrangementDescriptors.get(idx);
+		return templateObject.getArrangementDescriptors().get(idx);
 	}
 
 	public string getSlotDescriptor(int idx) {
-		return slotDescriptors.get(idx);
+		return templateObject.getSlotDescriptors().get(idx);
 	}
 	
 	public boolean hasSlotDescriptor(final string descr) {
-		for (int i = 0; i < slotDescriptors.size(); ++i) {
-			if (slotDescriptors.get(i) == descr)
+		for (int i = 0; i < getSlotDescriptorSize(); ++i) {
+			if (getSlotDescriptor(i) == descr)
 				return true;
 		}
 		
@@ -1054,7 +1055,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public int getSlotDescriptorSize() {
-		return slotDescriptors.size();
+		return templateObject.getSlotDescriptors().size();
 	}
 
 	public int getContainerObjectsSize() {
