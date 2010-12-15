@@ -45,6 +45,10 @@ public:
 		return appearanceTemplates.get(cellIndex);
 	}
 
+	inline int getAppearanceTemplatesSize() {
+		return appearanceTemplates.size();
+	}
+
 };
 
 #endif /* PORTALLAYOUT_H_ */

@@ -13,6 +13,8 @@
 #include "engine/util/ObjectFactory.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "treLib/treArchive.hpp"
+
 class TemplateCRCMap;
 class ClientTemplateCRCMap;
 class PortalLayoutMap;
@@ -32,6 +34,10 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	FloorMeshMap* floorMeshMap;
 	AppearanceMap* appearanceMap;
 
+	treArchive* treeDirectory;
+
+	ReadWriteLock appearanceMapLock;
+
 public:
 	static Lua* luaTemplatesInstance;
 
@@ -42,6 +48,8 @@ public:
 	void registerTemplateObjects();
 
 	void loadLuaTemplates();
+
+	void loadTreArchive();
 
 	void addTemplate(uint32 key, const String& fullName, LuaObject* templateData);
 

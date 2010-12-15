@@ -166,6 +166,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void startListen(CreatureObject creature, unsigned long entid);
 	
 	public native boolean checkLineOfSight(SceneObject object1, SceneObject object2);
+	public native boolean checkLineOfSightInBuilding(SceneObject object1, SceneObject object2, SceneObject building);
 	
 	/**
 	 * Enhances the patients attribute by a specified amount for a specified duration.

@@ -217,6 +217,11 @@ public:
 			return false;
 		}
 
+		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return false;
+		}
+
 		return true;
 	}
 

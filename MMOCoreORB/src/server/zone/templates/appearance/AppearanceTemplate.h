@@ -11,13 +11,15 @@
 #include "engine/engine.h"
 #include "../IffTemplate.h"
 
-class AppearanceTemplate : public IffTemplate {
+class AppearanceTemplate/* : public IffTemplate*/ {
 public:
-	void readObject(IffStream* iffStream) {
+	virtual void readObject(IffStream* iffStream) {
 		iffStream->openForm('APPR');
 		//ignoring this atm
 		iffStream->closeForm('APPR');
 	}
+
+	//void readObject(IffStream* templateData) = 0;
 
 	virtual AppearanceTemplate* getFirstMesh() {
 		return NULL;

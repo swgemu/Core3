@@ -37,10 +37,7 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 	appearanceFilename = templateData->getStringField("appearanceFilename");
 	portalLayoutFilename = templateData->getStringField("portalLayoutFilename");
-
-	if (portalLayoutFilename.length() > 1) {
-		portalLayout = TemplateManager::instance()->getPortalLayout(portalLayoutFilename);
-	}
+	portalLayout = NULL;
 
 	totalCellNumber = templateData->getIntField("totalCellNumber");
 
@@ -93,4 +90,22 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	}
 
 	luaItemList.pop();
+}
+
+PortalLayout* SharedObjectTemplate::getPortalLayout() {
+	if (portalLayout != NULL)
+		return portalLayout;
+	else {
+		if (portalLayoutFilename.length() > 1) {
+			try {
+				portalLayout = TemplateManager::instance()->getPortalLayout(portalLayoutFilename);
+			} catch(Exception& e) {
+				e.printStackTrace();
+			} catch (...) {
+
+			}
+		}
+	}
+
+	return portalLayout;
 }
