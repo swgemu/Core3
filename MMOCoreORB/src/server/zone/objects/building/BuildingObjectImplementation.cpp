@@ -91,6 +91,18 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 }
 
 Vector3 BuildingObjectImplementation::getEjectionPoint() {
+/*
+	PortalLayout* portalLayout = templateObject->getPortalLayout();
+
+	if (portalLayout == NULL)
+		return;
+
+	FloorMesh* floorMesh = portalLayout->getFloorMesh(0);
+
+	if (floorMesh == NULL)
+		return;
+		*/
+
 	Vector3 ejectionPoint = getWorldPosition();
 
 	float x = ejectionPoint.getX();

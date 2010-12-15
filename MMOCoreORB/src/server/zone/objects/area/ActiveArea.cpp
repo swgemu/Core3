@@ -96,13 +96,26 @@ void ActiveArea::notifyExit(SceneObject* object) {
 		_implementation->notifyExit(object);
 }
 
-bool ActiveArea::isRegion() {
+bool ActiveArea::isActiveArea() {
 	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isActiveArea();
+}
+
+bool ActiveArea::isRegion() {
+	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -115,7 +128,7 @@ void ActiveArea::insertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -129,7 +142,7 @@ void ActiveArea::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithVoidReturn();
 	} else
@@ -142,7 +155,7 @@ bool ActiveArea::containsPoint(float x, float y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -157,7 +170,7 @@ float ActiveArea::getRadius() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -170,7 +183,7 @@ float ActiveArea::getRadius2() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -183,7 +196,7 @@ void ActiveArea::setRadius(float r) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addFloatParameter(r);
 
 		method.executeWithVoidReturn();
@@ -291,25 +304,30 @@ void ActiveAreaImplementation::notifyEnter(SceneObject* object) {
 void ActiveAreaImplementation::notifyExit(SceneObject* object) {
 }
 
+bool ActiveAreaImplementation::isActiveArea() {
+	// server/zone/objects/area/ActiveArea.idl(87):  		return true;
+	return true;
+}
+
 bool ActiveAreaImplementation::isRegion() {
-	// server/zone/objects/area/ActiveArea.idl(87):  		return false;
+	// server/zone/objects/area/ActiveArea.idl(91):  		return false;
 	return false;
 }
 
 float ActiveAreaImplementation::getRadius() {
-	// server/zone/objects/area/ActiveArea.idl(108):  		return radius;
+	// server/zone/objects/area/ActiveArea.idl(112):  		return radius;
 	return radius;
 }
 
 float ActiveAreaImplementation::getRadius2() {
-	// server/zone/objects/area/ActiveArea.idl(112):  		return radius2;
+	// server/zone/objects/area/ActiveArea.idl(116):  		return radius2;
 	return radius2;
 }
 
 void ActiveAreaImplementation::setRadius(float r) {
-	// server/zone/objects/area/ActiveArea.idl(116):  		radius = r;
+	// server/zone/objects/area/ActiveArea.idl(120):  		radius = r;
 	radius = r;
-	// server/zone/objects/area/ActiveArea.idl(117):  		radius2 = r * r;
+	// server/zone/objects/area/ActiveArea.idl(121):  		radius2 = r * r;
 	radius2 = r * r;
 }
 
@@ -340,24 +358,27 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		notifyExit((SceneObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		resp->insertBoolean(isRegion());
+		resp->insertBoolean(isActiveArea());
 		break;
 	case 12:
-		insertToZone((Zone*) inv->getObjectParameter());
+		resp->insertBoolean(isRegion());
 		break;
 	case 13:
-		removeFromZone();
+		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		removeFromZone();
 		break;
 	case 15:
-		resp->insertFloat(getRadius());
+		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 16:
-		resp->insertFloat(getRadius2());
+		resp->insertFloat(getRadius());
 		break;
 	case 17:
+		resp->insertFloat(getRadius2());
+		break;
+	case 18:
 		setRadius(inv->getFloatParameter());
 		break;
 	default:
@@ -385,6 +406,10 @@ void ActiveAreaAdapter::notifyEnter(SceneObject* object) {
 
 void ActiveAreaAdapter::notifyExit(SceneObject* object) {
 	((ActiveAreaImplementation*) impl)->notifyExit(object);
+}
+
+bool ActiveAreaAdapter::isActiveArea() {
+	return ((ActiveAreaImplementation*) impl)->isActiveArea();
 }
 
 bool ActiveAreaAdapter::isRegion() {

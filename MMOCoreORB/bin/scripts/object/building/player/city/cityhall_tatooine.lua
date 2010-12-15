@@ -54,6 +54,8 @@ object_building_player_city_cityhall_tatooine = object_building_player_city_shar
 	abilityRequired = "place_cityhall",
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -16.78, z = 2.0, y = 7.9, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 3, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_city_vote.iff", x = 0.25, z = 2.0, y = -9.65, ow = 1, ox = 0, oy = 0, oz = 0, cellid = 2, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_city.iff", x = 17.07, z = 2.0, y = -8.7, ow = 1, ox = 0, oy = 0, oz = 0, cellid = 4, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_character_builder.iff", x = 0, z = 2.0, y = 14, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1}
 	},
 	alwaysPublic = 1

@@ -13,8 +13,17 @@
 #include "server/zone/managers/city/CityManager.h"
 
 void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	if (controlledObject == NULL || !controlledObject->isBuildingObject())
+		return;
 
-	Locker _locker(cityHallObject);
+	BuildingObject* building = (BuildingObject*) controlledObject.get();
+
+	if (!building->isCityHallBuilding())
+		return;
+
+	CityHallObject* cityHall = (CityHallObject*) building;
+
+	Locker _locker(cityHall);
 
 	menuResponse->addRadialMenuItem(211, 3, "@city/city:city_info"); //City Info
 	menuResponse->addRadialMenuItemToRadialID(211, 212, 3, "@city/city:city_status"); //Status Report
@@ -24,7 +33,7 @@ void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 	menuResponse->addRadialMenuItemToRadialID(211, 224, 3, "@city/city:city_maint"); //Maintenance Report
 	menuResponse->addRadialMenuItemToRadialID(211, 215, 3, "@city/city:treasury_status"); //Treasury Report
 
-	if (!cityHallObject->isMayor(player->getObjectID()))
+	if (!cityHall->isMayor(player->getObjectID()))
 		return;
 
 	menuResponse->addRadialMenuItem(216, 3, "@city/city:city_management"); //City Management
@@ -34,7 +43,7 @@ void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 	menuResponse->addRadialMenuItemToRadialID(216, 222, 3, "@city/city:city_unregister"); //Unregister City
 	//menuResponse->addRadialMenuItemToRadialID(216, 222, 3, "@city/city:city_register"); //Register City
 
-	if (!cityHallObject->isZoningEnabled())
+	if (!cityHall->isZoningEnabled())
 		menuResponse->addRadialMenuItemToRadialID(216, 226, 3, "@city/city:zone"); //Enable Zoning
 	else
 		menuResponse->addRadialMenuItemToRadialID(216, 226, 3, "@city/city:unzone"); //Disable Zoning
@@ -53,9 +62,19 @@ int CityTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 	if (zone == NULL)
 		return 0;
 
-	Locker _locker(cityHallObject);
-
 	ManagedReference<CityManager*> cityManager = zone->getCityManager();
+
+	if (controlledObject == NULL || !controlledObject->isBuildingObject())
+		return 0;
+
+	BuildingObject* building = (BuildingObject*) controlledObject.get();
+
+	if (!building->isCityHallBuilding())
+		return 0;
+
+	CityHallObject* cityHallObject = (CityHallObject*) building;
+
+	Locker _locker(cityHallObject);
 
 	cityManager->handleCityAdvancement(cityHallObject);
 

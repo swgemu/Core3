@@ -53,9 +53,6 @@ import server.zone.Zone;
 import server.zone.objects.building.city.CityHallObject;
 
 class CityTerminal extends Terminal {
-	@weakReference
-	protected CityHallObject cityHallObject;
-	
 	public CityTerminal() {
 		Logger.setLoggingName("CityTerminal");
 	}
@@ -71,13 +68,5 @@ class CityTerminal extends Terminal {
 	
 	public boolean isCityTerminal() {
 		return true;
-	}
-	
-	public void setCityHallObject(CityHallObject cityHall) {
-		cityHallObject = cityHall;
-	}
-	
-	public CityHallObject getCityHallObject() {
-		return cityHallObject;
 	}
 }

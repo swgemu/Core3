@@ -155,6 +155,9 @@ class Zone extends ManagedObject implements QuadTree {
 	public native void sendMapLocationsTo(final string planetName, SceneObject player);
 	
 	public native void dropSceneObject(SceneObject object);
+	
+	//public native void registerPlanetaryMapObject(SceneObject object);
+	//public native void unregisterPlanetaryMapObject(SceneObject object);
 
 	// setters and getters
 	public int getZoneID() {

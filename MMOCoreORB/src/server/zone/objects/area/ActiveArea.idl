@@ -83,6 +83,10 @@ class ActiveArea extends SceneObject {
 
 	}
 	
+	public boolean isActiveArea() {
+		return true;
+	}
+	
 	public abstract boolean isRegion() {
 		return false;
 	}
