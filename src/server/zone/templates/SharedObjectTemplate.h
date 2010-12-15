@@ -219,8 +219,8 @@ public:
 
     PortalLayout* getPortalLayout();
 
-    inline Vector<String> getArrangementDescriptors() const {
-		return arrangementDescriptors;
+    inline Vector<String>* getArrangementDescriptors() {
+		return &arrangementDescriptors;
 	}
 
     inline float getScale() const {
@@ -235,8 +235,8 @@ public:
 		return sendToClient;
 	}
 
-    inline Vector<String> getSlotDescriptors() const {
-		return slotDescriptors;
+    inline Vector<String>* getSlotDescriptors() {
+		return &slotDescriptors;
 	}
 
     inline bool getSnapToTerrain() const {
