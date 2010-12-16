@@ -16,8 +16,13 @@ void DetailAppearanceTemplate::parse(IffStream* iffStream) {
 
 	AppearanceTemplate::readObject(iffStream);
 
-	iffStream->openChunk('PIVT');
-	iffStream->closeChunk('PIVT');
+	//if (iffStream->getNextFormType() == 'PIVT') {
+
+	if (version != '0005') {
+		iffStream->openChunk('PIVT');
+		iffStream->closeChunk('PIVT');
+	}
+	//}
 
 	Chunk* infoChunk = iffStream->openChunk('INFO');
 

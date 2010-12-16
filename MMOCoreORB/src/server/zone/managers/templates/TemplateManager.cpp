@@ -70,6 +70,7 @@
 #include "server/zone/objects/creature/CreatureState.h"
 
 #include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/appearance/AppearanceRedirect.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 #include "server/zone/templates/appearance/DetailAppearanceTemplate.h"
@@ -481,6 +482,8 @@ FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
 AppearanceTemplate* TemplateManager::getAppearanceTemplate(const String& fileName) {
 	//appearanceMapLock.rlock();
 
+	//return NULL;
+
 	AppearanceTemplate* meshAppearance = appearanceMap->get(fileName);
 
 	//appearanceMapLock.runlock();
@@ -517,6 +520,17 @@ AppearanceTemplate* TemplateManager::instantiateAppearanceTemplate(IffStream* if
 		case 'DTLA':
 			appTemplate = new DetailAppearanceTemplate();
 			break;
+		case 'SMAT':
+			break;
+		case 'PEFT':
+			break;
+		case 'APT ': {
+			AppearanceRedirect redirect;
+			redirect.readObject(iffStream);
+
+			return getAppearanceTemplate(redirect.getRedirectFile());
+			break;
+		}
 		default:
 			error("unknown appearance type " + String::hexvalueOf((int)formType));
 			break;

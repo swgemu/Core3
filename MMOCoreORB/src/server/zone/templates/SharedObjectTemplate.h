@@ -14,6 +14,7 @@
 #include "ChildObject.h"
 
 class PortalLayout;
+class AppearanceTemplate;
 
 namespace server {
  namespace zone {
@@ -67,6 +68,8 @@ protected:
 	Vector<ChildObject> childObjects;
 
 	PortalLayout* portalLayout;
+	AppearanceTemplate* appearanceTemplate;
+	bool loadedPortalLayout, loadedAppearanceTemplate;
 
 public:
 	const static int SHOT = 0x1;
@@ -129,6 +132,8 @@ public:
 public:
 	SharedObjectTemplate() {
 		portalLayout = NULL;
+		appearanceTemplate = NULL;
+		loadedPortalLayout = false, loadedAppearanceTemplate = false;
 	}
 
 	virtual ~SharedObjectTemplate() {
@@ -218,6 +223,7 @@ public:
 	}
 
     PortalLayout* getPortalLayout();
+    AppearanceTemplate* getAppearanceTemplate();
 
     inline Vector<String>* getArrangementDescriptors() {
 		return &arrangementDescriptors;

@@ -36,6 +36,7 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	slots.pop();
 
 	appearanceFilename = templateData->getStringField("appearanceFilename");
+	appearanceTemplate = NULL;
 	portalLayoutFilename = templateData->getStringField("portalLayoutFilename");
 	portalLayout = NULL;
 
@@ -95,7 +96,9 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 PortalLayout* SharedObjectTemplate::getPortalLayout() {
 	if (portalLayout != NULL)
 		return portalLayout;
-	else {
+	else if (!loadedPortalLayout) {
+		loadedPortalLayout = true;
+
 		if (portalLayoutFilename.length() > 1) {
 			try {
 				portalLayout = TemplateManager::instance()->getPortalLayout(portalLayoutFilename);
@@ -108,4 +111,24 @@ PortalLayout* SharedObjectTemplate::getPortalLayout() {
 	}
 
 	return portalLayout;
+}
+
+AppearanceTemplate* SharedObjectTemplate::getAppearanceTemplate() {
+	if (appearanceTemplate != NULL)
+		return appearanceTemplate;
+	else if (!loadedAppearanceTemplate) {
+		loadedAppearanceTemplate = true;
+
+		if (appearanceFilename.length() > 1) {
+			try {
+				appearanceTemplate = TemplateManager::instance()->getAppearanceTemplate(appearanceFilename);
+			} catch(Exception& e) {
+				e.printStackTrace();
+			} catch (...) {
+
+			}
+		}
+	}
+
+	return appearanceTemplate;
 }

@@ -196,6 +196,76 @@ void StructureManagerImplementation::createNewLuas() {
 	createLuaIncludes();
 }
 
+void StructureManagerImplementation::loadStaticClientObjects() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	//lock();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	//query << " AND (type = 512 OR type = 256 OR type = 32);";
+
+	ResultSet* result = NULL;
+
+	uint64 objectID;
+	String templateFile;
+	float positionX, positionY, positionZ;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		while (result->next()) {
+			objectID = result->getUnsignedLong(1);
+
+			templateFile = result->getString(3);
+
+			String serverTemplate = templateFile.replaceFirst("shared_", "");
+
+			SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(serverTemplate.hashCode());
+
+			if (templateObject->getCollisionActionBlockFlags() != 255)
+				continue;
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			float oX = result->getFloat(4);
+			float oY = result->getFloat(5);
+			float oZ = result->getFloat(6);
+			float oW = result->getFloat(7);
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			//info("creating " + templateFile, true);
+
+			SceneObject* object = zoneServer->createStaticObject(serverTemplate.hashCode(), objectID);
+			object->setStaticObject(true);
+
+			object->initializePosition(positionX, positionZ, positionY);
+			object->setDirection(oW, oX, oY, oZ);
+			object->insertToZone(zone);
+
+			//building->updateToDatabase();
+
+			//++i;
+		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
+	}
+
+	delete result;
+
+
+}
+
 void StructureManagerImplementation::loadStaticGarages() {
 	int planetid = zone->getZoneID();
 	ZoneServer* zoneServer = zone->getZoneServer();
@@ -230,6 +300,12 @@ void StructureManagerImplementation::loadStaticGarages() {
 
 			String serverTemplate = templateFile.replaceFirst("shared_", "");
 
+			float oX = result->getFloat(4);
+			float oY = result->getFloat(5);
+			float oZ = result->getFloat(6);
+			float oW = result->getFloat(7);
+
+
 			positionX = result->getFloat(8);
 			positionZ = result->getFloat(9);
 			positionY = result->getFloat(10);
@@ -237,6 +313,7 @@ void StructureManagerImplementation::loadStaticGarages() {
 			building = (BuildingObject*) zoneServer->createStaticObject(serverTemplate.hashCode(), objectID);
 			building->setStaticObject(true);
 
+			building->setDirection(oW, oX, oY, oZ);
 			building->initializePosition(positionX, positionZ, positionY);
 			building->insertToZone(zone);
 

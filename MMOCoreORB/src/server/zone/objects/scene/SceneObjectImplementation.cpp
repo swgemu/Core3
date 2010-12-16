@@ -162,6 +162,11 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	slotDescriptors = templateData->getSlotDescriptors();*/
 
+	if (templateData->getCollisionActionBlockFlags() == 255) { //loading meshes for line of sight
+		templateData->getPortalLayout();
+		templateData->getAppearanceTemplate();
+	}
+
 	templateObject = templateData;
 }
 
