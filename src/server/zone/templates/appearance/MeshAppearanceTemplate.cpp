@@ -63,7 +63,7 @@ void MeshAppearanceTemplate::createAABB() {
 	//Logger::console.info("creating mesh aabb for triangles " + String::valueOf(triangles.size()), true);
 
 	AABBTreeHeuristic heurData;
-	heurData.maxdepth = 5; // maximum depth
+	heurData.maxdepth = 4; // maximum depth
 	heurData.mintricnt = 5; // minimum triangle count
 	heurData.tartricnt = 10; // target triangle count
 	heurData.minerror = 0.5f; // minimum error required
@@ -134,7 +134,8 @@ void MeshAppearanceTemplate::parseVertexData(IffStream* iffStream, int idx) {
 	iffStream->openChunk('INFO');
 	iffStream->closeChunk();
 
-	iffStream->openForm('0001');
+	uint32 nextVersion = iffStream->getNextFormType();
+	iffStream->openForm(nextVersion);
 
 	iffStream->openChunk('INFO');
 	iffStream->closeChunk();
@@ -143,7 +144,7 @@ void MeshAppearanceTemplate::parseVertexData(IffStream* iffStream, int idx) {
 	meshData.readObject(iffStream);
 	meshes->add(meshData);
 
-	iffStream->closeForm('0001');
+	iffStream->closeForm(nextVersion);
 
 	iffStream->closeForm(formVersion);
 }

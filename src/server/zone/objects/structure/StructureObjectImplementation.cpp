@@ -40,6 +40,7 @@ void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templ
 	width = structureTemplate->getWidth();
 
 	structureTemplate->getPortalLayout();
+	structureTemplate->getAppearanceTemplate();
 }
 
 void StructureObjectImplementation::initializeTransientMembers() {
