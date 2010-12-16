@@ -2363,59 +2363,89 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 	zone->rlock();
 
 	for (int i = 0; i < object1->inRangeObjectCount(); ++i) {
+		AABBTree* aabbTree = NULL;
+
 		SceneObject* scno = (SceneObject*) object1->getInRangeObject(i);
 
-		if (scno->isStructureObject()) {
-			StructureObject* structure = (StructureObject*) scno;
+		try {
+			SharedObjectTemplate* templateObject = scno->getObjectTemplate();
 
-			AABBTree* aabbTree = structure->getAABBTree();
+			if (templateObject == NULL)
+				continue;
 
+			if (templateObject->getCollisionActionBlockFlags() != 255)
+				continue;
 
-			if (aabbTree != NULL) {
-				//moving ray to model space
-				zone->runlock();
+			PortalLayout* portalLayout = templateObject->getPortalLayout();
+			MeshAppearanceTemplate* mesh = NULL;
 
-				try {
-					Matrix4 translationMatrix;
-					translationMatrix.setTranslation(-structure->getPositionX(), -structure->getPositionZ(), -structure->getPositionY());
+			if (portalLayout != NULL) {
+				mesh = portalLayout->getMeshAppearanceTemplate(0);
+			} else {
+				AppearanceTemplate* appTemplate = templateObject->getAppearanceTemplate();
 
-					float rad = -structure->getDirection()->getRadians();
-					float cosRad = cos(rad);
-					float sinRad = sin(rad);
+				if (appTemplate == NULL)
+					continue;
 
-					Matrix3 rot;
-					rot[0][0] = cosRad;
-					rot[0][2] = -sinRad;
-					rot[1][1] = 1;
-					rot[2][0] = sinRad;
-					rot[2][2] = cosRad;
-
-					Matrix4 rotateMatrix;
-					rotateMatrix.setRotationMatrix(rot);
-
-					Matrix4 modelMatrix;
-					modelMatrix = translationMatrix * rotateMatrix;
-
-					Vector3 transformedOrigin = rayOrigin * modelMatrix;
-					Vector3 transformedEnd = rayEnd * modelMatrix;
-
-					Vector3 norm = transformedEnd - transformedOrigin;
-					norm.normalize();
-
-					Ray ray(transformedOrigin, norm);
-
-					//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
-
-					if (aabbTree->intersects(ray, dist, true)) {
-						return false;
-					}
-				} catch (...) {
-
-				}
-
-				zone->rlock();
+				mesh = dynamic_cast<MeshAppearanceTemplate*>(appTemplate->getFirstMesh());
 			}
 
+			if (mesh == NULL)
+				continue;
+
+			aabbTree = mesh->getAABBTree();
+
+			if (aabbTree == NULL)
+				continue;
+
+		} catch (...) {
+			aabbTree = NULL;
+			continue;
+		}
+
+		if (aabbTree != NULL) {
+			//moving ray to model space
+			zone->runlock();
+
+			try {
+				Matrix4 translationMatrix;
+				translationMatrix.setTranslation(-scno->getPositionX(), -scno->getPositionZ(), -scno->getPositionY());
+
+				float rad = -scno->getDirection()->getRadians();
+				float cosRad = cos(rad);
+				float sinRad = sin(rad);
+
+				Matrix3 rot;
+				rot[0][0] = cosRad;
+				rot[0][2] = -sinRad;
+				rot[1][1] = 1;
+				rot[2][0] = sinRad;
+				rot[2][2] = cosRad;
+
+				Matrix4 rotateMatrix;
+				rotateMatrix.setRotationMatrix(rot);
+
+				Matrix4 modelMatrix;
+				modelMatrix = translationMatrix * rotateMatrix;
+
+				Vector3 transformedOrigin = rayOrigin * modelMatrix;
+				Vector3 transformedEnd = rayEnd * modelMatrix;
+
+				Vector3 norm = transformedEnd - transformedOrigin;
+				norm.normalize();
+
+				Ray ray(transformedOrigin, norm);
+
+				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
+
+				if (aabbTree->intersects(ray, dist, true)) {
+					return false;
+				}
+			} catch (...) {
+
+			}
+
+			zone->rlock();
 
 		}
 	}

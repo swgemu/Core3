@@ -53,7 +53,7 @@ void FloorMesh::readObject(IffStream* iffStream) {
 	vertices.removeAll(1, 1);
 
 	AABBTreeHeuristic heurData;
-	heurData.maxdepth = 5; // maximum depth
+	heurData.maxdepth = 2; // maximum depth
 	heurData.mintricnt = 5; // minimum triangle count
 	heurData.tartricnt = 10; // target triangle count
 	heurData.minerror = 0.5f; // minimum error required

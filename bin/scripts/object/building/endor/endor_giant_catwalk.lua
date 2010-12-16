@@ -42,7 +42,7 @@
 
 
 object_building_endor_endor_giant_catwalk = object_building_endor_shared_endor_giant_catwalk:new {
-
+	gameObjectType = 5
 }
 
 ObjectTemplates:addTemplate(object_building_endor_endor_giant_catwalk, "object/building/endor/endor_giant_catwalk.iff")

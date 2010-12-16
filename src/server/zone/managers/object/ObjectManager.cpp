@@ -78,7 +78,9 @@ ObjectManager::~ObjectManager() {
 void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
+	objectFactory.registerObject<TangibleObject>(6);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERALTANGIBLEOBJECT);
+	objectFactory.registerObject<StaticObject>(SceneObject::FLORA);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
 	objectFactory.registerObject<GarageArea>(SceneObject::GARAGEAREA);
 	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObject::MISSIONSPAWNAREA);
@@ -111,6 +113,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<PsgArmorObject>(SceneObject::SHIELDGENERATOR);
 
 	objectFactory.registerObject<ToolTangibleObject>(SceneObject::TOOL);
+	objectFactory.registerObject<ToolTangibleObject>(SceneObject::REPAIRTOOL);
 	objectFactory.registerObject<CraftingTool>(SceneObject::CRAFTINGTOOL);
 	objectFactory.registerObject<SurveyTool>(SceneObject::SURVEYTOOL);
 
