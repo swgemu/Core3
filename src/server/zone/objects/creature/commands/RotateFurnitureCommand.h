@@ -123,22 +123,17 @@ public:
 			}
 		}
 
-		//creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);
-
-		if (dir == "right") {
-			//creature->info("Rotating object " + String::valueOf(-degrees) + " degrees.", true);
+		if (dir == "right")
 			obj->rotate(-degrees);
-		} else {
-			//creature->info("Rotating object " + String::valueOf(degrees) + " degrees.", true);
+		else
 			obj->rotate(degrees);
-		}
 
-		//creature->info(String::valueOf(obj->getDirection()->getDegrees()), true);
+		obj->incrementMovementCounter();
 
 		if (obj->getParent() != NULL)
-			obj->updateZoneWithParent(obj->getParent(), true);
+			obj->teleport(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY(), obj->getParent()->getObjectID());
 		else
-			obj->updateZone(true);
+			obj->teleport(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY());
 
 		return SUCCESS;
 	}

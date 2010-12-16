@@ -220,6 +220,8 @@ private:
 
 	void loadStaticCells(BuildingObject* building);
 
+	void loadStaticClientObjects();
+
 public:
 	void loadStructures();
 

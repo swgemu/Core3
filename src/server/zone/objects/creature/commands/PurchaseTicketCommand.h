@@ -198,6 +198,11 @@ public:
 		player->addSuiBox(sui);
 		player->sendMessage(sui->generateMessage());
 
+		//TODO: This should say the city name if bought from a city?
+		StringIdChatParameter params("@base_player:prose_pay_acct_success");
+		params.setTO("@money/acct_n:travelsystem"); //the Galactic Travel Commission
+		player->sendSystemMessage(params);
+
 		return SUCCESS;
 	}
 
