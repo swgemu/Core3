@@ -63,19 +63,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-
-		ZoneServer* zoneServer = creature->getZoneServer();
-		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
-
-		if (obj == NULL)
-			return false;
-
-		obj->rotate(-45);
-
-		if (obj->getParent() != NULL)
-			obj->updateZoneWithParent(obj->getParent(), true);
-		else
-			obj->updateZone(true);
+		creature->executeObjectControllerAction(0xA8EB1D48, target, "right 45");
 
 		return SUCCESS;
 	}
