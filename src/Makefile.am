@@ -293,6 +293,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/area/StaticSpawnAreaImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
+		server/zone/objects/terrain/Mfrc.cpp \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
 		server/zone/objects/terrain/layer/Layer.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
