@@ -10,25 +10,24 @@
 
 class Random {
 	int seed;
-	int number;
+	int unknown;
 
 	int table[322];
 
 public:
 	Random() {
-		number = 0;
+		unknown = 0;
 		seed = 0;
 	}
 
 	void setSeed(int seed) {
-		this->seed = seed;
+		this->seed = -seed;
 	}
 
 	int next() {
-		int v2, v5;
-		int v8;
+		int v2, v8;
 
-		if (seed <= 0 || number == 0) {
+		if (seed <= 0 || unknown == 0) {
 			v2 = -seed;
 
 			if (v2 >= 1)
@@ -41,11 +40,9 @@ public:
 				int value2 = 16807 * valueTo1;
 				int tempDiv = valueTo1 / 0x1F31D;
 				int value3 = (0x7FFFFFFF * tempDiv);
-				v5 = value2 - value3;
+				seed = value2 - value3;
 
-				seed = v5;
-
-				if (v5 < 0)
+				if (seed < 0)
 					seed = seed + 0x7FFFFFFF;
 
 				if (i < 322) {
@@ -53,7 +50,7 @@ public:
 				}
 			}
 
-			number = table[0];
+			unknown = table[0];
 		}
 
 		int valueTo1 = seed;
@@ -61,21 +58,18 @@ public:
 		int tempDiv = valueTo1 / 0x1F31D;
 		int value3 = (0x7FFFFFFF * tempDiv);
 
-		v5 = value2 - value3;
+		seed = value2 - value3;
 
-		seed = v5;
-
-		if (v5 < 0)
+		if (seed < 0)
 			seed = seed + 0x7FFFFFFF;
 
-		v8 = ((double) number / 6669205.0); // random index?
+		v8 = ((double) unknown / 6669205.0); // random index?
 
-		number = table[v8];
+		unknown = table[v8];
 		table[v8] = seed;
 
-		return number;
+		return unknown;
 	}
 };
-
 
 #endif /* RANDOM_H_ */
