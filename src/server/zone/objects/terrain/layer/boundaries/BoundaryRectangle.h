@@ -27,6 +27,16 @@ class BoundaryRectangle : public ProceduralRule<'BREC'>,  public Boundary {
 	float shaderSize;
 	String shaderName;
 
+    float newX0, newX1, newY0, newY1;
+
+    /*
+     * result of process() is modified based on this feathering types and then multiplied by the affectors
+     * feathering types:
+     * 1: x^2
+     * 2: sqrt(x)
+     * 3: x^2 * (3 - 2x)
+     */
+
 public:
 	BoundaryRectangle() {
 		ruleType = BOUNDARYRECTANGLE;
@@ -96,11 +106,93 @@ public:
 		iffStream->getString(shaderName);
 
 		iffStream->closeChunk('DATA');
-	}
 
+		initialize();
+	}
 
 	float getLocalWaterTableHeight() {
 		return localWaterTableHeight;
+	}
+
+	float process(float x, float y) {
+		/*v3 = this;
+		  if ( *(_BYTE *)(this + 60) ) initialized to 0
+		  {
+		    v31 = x;
+		    v32 = y;
+		    sub_ABB330(this + 64, (int)&v33, (int)&v31);
+		    x = v33;
+		    y = v34;
+		  }*/
+
+		if (!(x >= x0))
+			return 0.0;
+
+		if (!(x < (double)x1 | x == x1) || y < (double)y0)
+			return 0.0;
+
+		if (!(y < (double)y1 | y == y1))
+			return 0.0;
+
+		if (featheringAmount == 0.0)
+			return 1.0;
+
+		if (!(x < newX1 || x > newX0 || y < newY1 || y > newY0))
+			return 1.0;
+
+		float v36 = x - x0;
+		float v35 = x1 - x;
+		float v34 = y - y0;
+		y = y1 - y;
+		x = x1 - x0;
+		float v28 = y1 - y0;
+		float v32 = v28;
+		float* v27 = &v32;
+		if ( v28 >= x )
+			v27 = &x;
+
+		float v30 = featheringAmount * *v27 * 0.5;
+		float v29 = v30;
+		if ( v36 < v30 )
+			v29 = v36;
+		if ( v35 < v29 )
+			v29 = v35;
+		if ( v34 < v29 )
+			v29 = v34;
+		if ( y < v29 )
+			v29 = y;
+
+		return v29 / v30;
+	}
+
+	void initialize() {
+		if (x0 > x1) {
+			double v1 = x0;
+			x0 = x1;
+			x1 = v1;
+		}
+
+		if (y0 > y1) {
+			double v2 = y0;
+			y0 = y1;
+			y1 = v2;
+		}
+
+		float v3 = y1 - y0;
+
+		if ((y1 - y0) >= (x1 - x0))
+			v3 = (x1 - x0);
+
+		double v7 = featheringAmount * v3 * 0.5;
+		newX0 = x0;
+		newY0 = y0;
+		newX1 = x1;
+		newY1 = y1;
+
+		newX0 = v7 + newX0;
+		newY0 = v7 + newY0;
+		newX1 = newX1 - v7;
+		newY1 = newY1 - v7;
 	}
 };
 
