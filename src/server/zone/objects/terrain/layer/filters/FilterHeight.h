@@ -15,7 +15,7 @@ class FilterHeight : public ProceduralRule<'FHGT'> {
 	float minHeight;
 	float maxHeight;
 	int featheringType;
-	float featheringDistance; // how far out to affect the selected height
+	float featheringAmount; // how far out to affect the selected height
 
 public:
 	FilterHeight() {
@@ -47,9 +47,30 @@ public:
 		minHeight = iffStream->getFloat();
 		maxHeight = iffStream->getFloat();
 		featheringType = iffStream->getInt();
-		featheringDistance = iffStream->getFloat();
+		featheringAmount = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
+	}
+
+	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
+		float result;
+
+		if ((baseValue > minHeight) && (baseValue < maxHeight)) {
+			float v9 = (maxHeight - minHeight) * featheringAmount * 0.5;
+
+			if (minHeight + v9 <= baseValue) {
+				if (maxHeight - v9 >= baseValue) {
+					result = 1.0;
+				} else
+					result = (maxHeight - baseValue) / v9;
+
+			} else {
+				result = (baseValue - minHeight) / v9;
+			}
+		} else
+			result = 0;
+
+		return result;
 	}
 };
 

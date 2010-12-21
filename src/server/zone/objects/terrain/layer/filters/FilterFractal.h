@@ -11,12 +11,14 @@
 
 #include "../ProceduralRule.h"
 
+class TerrainGenerator;
+
 class FilterFractal : public ProceduralRule<'FFRA'> {
-	int groupId; // Fractal Group ID to modify (MGRP)
-	int var2;
-	float max;
+	int fractalId; // Fractal Group ID to modify (MGRP)
+	int featheringType;
+	float featheringAmount;
 	float min;
-	float var5; // Scale/Stepping?
+	float max; // Scale/Stepping?
 	float var6; // Scale/Stepping?
 
 public:
@@ -49,17 +51,19 @@ public:
 		iffStream->openChunk('PARM');
 
 		//6 vars
-		groupId = iffStream->getInt();
-		var2 = iffStream->getInt();
-		max = iffStream->getFloat();
+		fractalId = iffStream->getInt();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
 		min = iffStream->getFloat();
-		var5 = iffStream->getFloat();
+		max = iffStream->getFloat();
 		var6 = iffStream->getFloat();
 
 		iffStream->closeChunk('PARM');
 
 		iffStream->closeForm('DATA');
 	}
+
+	float process(float x, float y, float& baseValue, TerrainGenerator* terrainGenerator);
 };
 
 #endif /* FILTERFRACTAL_H_ */

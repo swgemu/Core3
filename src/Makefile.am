@@ -297,6 +297,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
 		server/zone/objects/terrain/layer/Layer.cpp \
 		server/zone/objects/terrain/layer/affectors/AffectorHeightFractal.cpp \
+		server/zone/objects/terrain/layer/filters/FilterFractal.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
