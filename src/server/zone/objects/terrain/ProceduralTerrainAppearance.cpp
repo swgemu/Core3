@@ -183,3 +183,21 @@ bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight)
 
 	return false;
 }
+
+int ProceduralTerrainAppearance::tests() {
+	MapGroup* mapGroup = terrainGenerator->getMapGroup();
+	LayersGroup* layersGroup = terrainGenerator->getLayersGroup();
+
+	Vector<Layer*>* layers = layersGroup->getLayers();
+
+	for (int i = 0; i < layers->size(); ++i) {
+		Layer* layer = layers->get(i);
+
+		Vector<Layer*>* children = layer->getChildren();
+
+		Vector<TerrainRule*>* rules = layer->getRules();
+
+	}
+
+	//mapGroup->getMfrc(id - 1);
+}

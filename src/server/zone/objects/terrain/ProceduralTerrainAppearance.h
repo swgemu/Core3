@@ -74,6 +74,8 @@ public:
 	}
 
 	bool getWater(float x, float y, float& waterHeight);
+
+	int tests();
 };
 
 
