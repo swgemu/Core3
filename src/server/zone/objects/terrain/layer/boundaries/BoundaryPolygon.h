@@ -23,6 +23,9 @@ class BoundaryPolygon : public ProceduralRule<'BPOL'>,  public Boundary {
 	float localWaterTableHeight;
 	float shaderSize;
 	String shaderName;
+
+	float minX, minY, maxX, maxY;
+
 public:
 	BoundaryPolygon() {
 		ruleType = BOUNDARYPOLYGON;
@@ -36,6 +39,122 @@ public:
 	void executeRule(ProceduralTerrainAppearance* generator) {
 		if (localWaterTableEnabled != 0)
 			generator->insertWaterBoundary(this);
+	}
+
+	void initialize() {
+		for(int i = 0; i < vertices.size(); ++i) {
+			const Point2D* point = vertices.get(i);
+
+			if (point->x < minX)
+				minX = point->x;
+
+			if (point->y < minY)
+				minY = point->y;
+
+			if (point->x > maxX)
+				maxX = point->x;
+
+			if (point->y > maxY)
+				maxY = point->y;
+		}
+	}
+
+	float process(float x, float y) {
+		Point2D* lastPoint = NULL;
+
+		float result = 0;
+
+		if (x < minX)
+			return 0.0;
+
+		if (x > maxX || y < minY)
+			return 0.0;
+
+		if (y > maxY)
+			return 0.0;
+
+		if (vertices.size() <= 0)
+			return 0.0;
+
+		bool v50 = 0;
+
+		lastPoint = vertices.get(vertices.size() - 1);
+
+		for (int i = 0; i < vertices.size(); ++i) {
+			Point2D* point = vertices.get(i);
+
+			if ((point->y <= y && y < lastPoint->y) || (lastPoint->y <= y && y < point->y)) {
+				if ( (y - point->y) * (lastPoint->x - point->x) / (lastPoint->y - point->y)
+						+ point->x > (double)x ) {
+
+					v50 = v50 == 0;
+
+				}
+			}
+
+			lastPoint = point;
+		}
+
+
+		double v25, v43;
+
+		if (v50) {
+			if (featheringAmount == 0.0)
+				return 1.0;
+
+			v25 = featheringAmount * featheringAmount;
+			v43 = v25;
+			double v27, v26, v28;
+
+			for (int i = 0; i < vertices.size(); ++i) {
+				Point2D* point = vertices.get(i);
+
+				v27 = y - point->y;
+				v26 = v27 * v27 + (x - point->x) * (x - point->x);
+
+				if ( v26 < v25 ) {
+					v28 = v26;
+					v25 = v28;
+				}
+
+			}
+
+			double v35, v36, v44, v45, v37, v38, v39, v40, v41;
+
+			lastPoint = vertices.get(vertices.size() - 1);
+
+			for (int i = 0; i < vertices.size(); ++i) {
+				Point2D* point = vertices.get(i);
+
+				v35 = lastPoint->x - point->x;
+				v36 = lastPoint->y - point->y;
+				v44 = point->y - lastPoint->y;
+				v45 = point->x - lastPoint->x;
+				v37 = ((x - lastPoint->x) * v45 + (y - lastPoint->y) * v44) / (v36 * v36 + v35 * v35);
+				if ( v37 >= 0.0 ) {
+					if ( v37 <= 1.0 ) {
+						v39 = x - (v45 * v37 + lastPoint->x);
+						v40 = y - (v44 * v37 + lastPoint->y);
+						v38 = v40 * v40 + v39 * v39;
+						if ( v38 < v25 ) {
+							v41 = v38;
+							v25 = v41;
+						}
+					}
+				}
+
+				lastPoint = point;
+			}
+
+			if ( v25 >= v43 - 0.00009999999747378752 && v25 <= v43 + 0.00009999999747378752 )
+				result = 1.0;
+			else
+				result = sqrt(v25) / featheringAmount;
+		} else {
+			result = 0.0;
+		}
+
+		return result;
 	}
 
 	bool containsPoint(float px, float py) {
@@ -150,6 +269,8 @@ public:
 		iffStream->getString(shaderName);
 
 		iffStream->closeChunk('DATA');
+
+		initialize();
 	}
 
 	float getLocalWaterTableHeight() {
