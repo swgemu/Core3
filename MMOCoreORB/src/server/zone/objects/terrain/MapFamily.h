@@ -27,6 +27,10 @@ public:
 
 		mfrc.readObject(iffStream);
 	}
+
+	inline Mfrc* getMfrc() {
+		return &mfrc;
+	}
 };
 
 
