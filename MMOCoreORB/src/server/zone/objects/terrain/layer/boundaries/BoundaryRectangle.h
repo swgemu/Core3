@@ -131,13 +131,13 @@ public:
 		    y = v34;
 		  }*/
 
-		if (!(x >= x0))
+		if (x < x0)
 			return 0.0;
 
-		if (!(x < (double)x1 | x == x1) || y < (double)y0)
+		if (x > x1 || y < (double)y0)
 			return 0.0;
 
-		if (!(y < (double)y1 | y == y1))
+		if (y > y1)
 			return 0.0;
 
 		if (featheringAmount == 0.0)
@@ -190,15 +190,11 @@ public:
 			v3 = (x1 - x0);
 
 		double v7 = featheringAmount * v3 * 0.5;
-		newX0 = x0;
-		newY0 = y0;
-		newX1 = x1;
-		newY1 = y1;
 
-		newX0 = v7 + newX0;
-		newY0 = v7 + newY0;
-		newX1 = newX1 - v7;
-		newY1 = newY1 - v7;
+		newX0 = v7 + x0;
+		newY0 = v7 + y0;
+		newX1 = x1 - v7;
+		newY1 = y1 - v7;
 	}
 };
 
