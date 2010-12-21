@@ -43,6 +43,19 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream);
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0000'>);
 
+	inline MapGroup* getMapGroup() {
+		return &mapGroup;
+	}
+
+	inline LayersGroup* getLayersGroup() {
+		return &layers;
+	}
+
+	inline Mfrc* getMfrc(int idx) {
+		return mapGroup.getMfrc(idx);
+	}
+
+
 };
 
 

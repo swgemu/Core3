@@ -8,18 +8,21 @@
 #ifndef AFFECTORHEIGHTFRACTAL_H_
 #define AFFECTORHEIGHTFRACTAL_H_
 
-
 #include "../ProceduralRule.h"
+
+class TerrainGenerator;
 
 class AffectorHeightFractal : public ProceduralRule<'AHFR'> {
 	int fractalId; // fractal group id in MGRP
-	int var2;
+	int operationType;
 	float height;
 
 public:
 	AffectorHeightFractal() {
 
 	}
+
+	void process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator);
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
 		uint32 version = iffStream->getNextFormType();
@@ -46,11 +49,20 @@ public:
 		iffStream->openChunk('PARM');
 
 		fractalId = iffStream->getInt();
-		var2 = iffStream->getInt();
+		operationType = iffStream->getInt();
+
 		height = iffStream->getFloat();
 
 		iffStream->closeChunk('PARM');
 		iffStream->closeForm('DATA');
+	}
+
+	inline int getFractalId() {
+		return fractalId;
+	}
+
+	inline float getHeight() {
+		return height;
 	}
 };
 

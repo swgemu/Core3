@@ -47,6 +47,10 @@ public:
 		}
 	}
 
+	inline Mfrc* getMfrc(int index) {
+		return mfams.get(index)->getMfrc();
+	}
+
 };
 
 

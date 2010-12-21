@@ -47,6 +47,25 @@ public:
 
 		iffStream->closeChunk('DATA');
 	}
+
+	void process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
+		if (transformValue == 0)
+			return;
+
+		if (height <= 0)
+			return;
+
+		float var1 = height + height;
+		float var2 = baseValue - var1;
+		float var3 = height * flatRatio + var2;
+		float var4 = height + var2;
+
+		if (baseValue > var3) {
+			var2 = (baseValue - var3) / (var4 - var3) + var2;
+		}
+
+		baseValue = (var2 - baseValue) * transformValue + baseValue;
+	}
 };
 
 #endif /* AFFECTORHEIGHTTERRACE_H_ */
