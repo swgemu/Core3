@@ -63,28 +63,28 @@ public:
 		iffStream->closeChunk('DATA');
 	}
 
-	 float process(float x, float y) {
-	      float v3 = centerX - x;
-	      float v4 = centerY - y;
-	      float result;
+	float process(float x, float y) {
+		float v3 = centerX - x;
+		float v4 = centerY - y;
+		float result;
 
-	      float v8 = v4 * v4 + v3 * v3;
+		float v8 = v4 * v4 + v3 * v3;
 
-	      if (v8 <= radiusSquared) {
-	        float v7 = (1.0 - featheringAmount) * radius;
-	        float v6 = v7 * v7;
+		if (v8 <= radiusSquared) {
+			float v7 = (1.0 - featheringAmount) * radius;
+			float v6 = v7 * v7;
 
-	        if (v8 > v6)
-	          result = 1.0 - (v8 - v6) / (radiusSquared - v6);
-	        else
-	          result = 1.0;
+			if (v8 > v6)
+				result = 1.0 - (v8 - v6) / (radiusSquared - v6);
+			else
+				result = 1.0;
 
-	      } else {
-	        result = 0.0;
-	      }
+		} else {
+			result = 0.0;
+		}
 
-	      return result;
-	    }
+		return result;
+	}
 };
 
 
