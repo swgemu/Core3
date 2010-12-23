@@ -11,7 +11,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorShaderConstant : public ProceduralRule<'ASCN'> {
+class AffectorShaderConstant : public ProceduralRule<'ASCN'>, public AffectorProceduralRule {
 	int familyId; // shader family id to affect
 	int featheringType;
 	float featheringAmount; // how much to soften

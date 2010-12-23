@@ -26,7 +26,7 @@ public:
 };
 
 
-class AffectorRiver : public ProceduralRule<'ARIV'> {
+class AffectorRiver : public ProceduralRule<'ARIV'>, public AffectorProceduralRule {
 	Road road;
 	Hdta hdta;
 

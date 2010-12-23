@@ -10,13 +10,12 @@
 
 
 #include "../ProceduralRule.h"
+#include "FilterProceduralRule.h"
 
 class TerrainGenerator;
 
-class FilterFractal : public ProceduralRule<'FFRA'> {
+class FilterFractal : public ProceduralRule<'FFRA'>, public FilterProceduralRule {
 	int fractalId; // Fractal Group ID to modify (MGRP)
-	int featheringType;
-	float featheringAmount;
 	float min;
 	float max; // Scale/Stepping?
 	float var6; // Scale/Stepping?
@@ -63,7 +62,11 @@ public:
 		iffStream->closeForm('DATA');
 	}
 
-	float process(float x, float y, float& baseValue, TerrainGenerator* terrainGenerator);
+	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator);
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
+	}
 };
 
 #endif /* FILTERFRACTAL_H_ */

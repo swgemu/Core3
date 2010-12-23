@@ -40,6 +40,14 @@ public:
 
 		iffStream->closeChunk('DATA');
 	}
+
+	inline bool isEnabled() {
+		return var1 != 0;
+	}
+
+	inline String& getDescription() {
+		return description;
+	}
 };
 
 

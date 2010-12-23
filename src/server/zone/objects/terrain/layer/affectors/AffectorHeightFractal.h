@@ -9,10 +9,10 @@
 #define AFFECTORHEIGHTFRACTAL_H_
 
 #include "../ProceduralRule.h"
-
+#include "AffectorProceduralRule.h"
 class TerrainGenerator;
 
-class AffectorHeightFractal : public ProceduralRule<'AHFR'> {
+class AffectorHeightFractal : public ProceduralRule<'AHFR'>, public AffectorProceduralRule {
 	int fractalId; // fractal group id in MGRP
 	int operationType;
 	float height;
@@ -63,6 +63,10 @@ public:
 
 	inline float getHeight() {
 		return height;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

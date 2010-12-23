@@ -10,7 +10,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorColorRampHeight : public ProceduralRule<'ACRH'> {
+class AffectorColorRampHeight : public ProceduralRule<'ACRH'>, public AffectorProceduralRule {
 	int familyId;
 	float min;
 	float max;

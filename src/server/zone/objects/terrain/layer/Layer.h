@@ -12,31 +12,37 @@
 #include "InformationHeader.h"
 #include "TerrainRule.h"
 
+/*class Boundary;
+class AffectorProceduralRule;
+class FilterProceduralRule;*/
+
+#include "boundaries/Boundary.h"
+#include "affectors/AffectorProceduralRule.h"
+#include "filters/FilterProceduralRule.h"
+
 class Layer : public TemplateVariable<'LAYR'> {
 	InformationHeader infoHeader;
 
 	Vector<Layer*> children;
-	Vector<TerrainRule*> rules;
+	//Vector<TerrainRule*> rules;
+
+	Vector<Boundary*> boundaries;
+	Vector<AffectorProceduralRule*> affectors;
+	Vector<FilterProceduralRule*> filters;
 
 	Layer* parent;
-	/*Vector<Boundary*> boundaries;
-	Vector<Affector*> affectors;
-	Vector<Rule*> filters;*/
+
+	int boundariesFlag;
+	int filterFlag;
 
 public:
 	Layer(Layer* par = NULL) {
 		parent = par;
+		boundariesFlag = 0;
+		filterFlag = 0;
 	}
 
-	~Layer() {
-		while (children.size() > 0) {
-			delete children.remove(0);
-		}
-
-		while (rules.size() > 0) {
-			delete rules.remove(0);
-		}
-	}
+	~Layer();
 
 	void parseFromIffStream(engine::util::IffStream* iffStream);
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003'>);
@@ -49,8 +55,32 @@ public:
 		return &children;
 	}
 
-	Vector<TerrainRule*>* getRules() {
-		return &rules;
+	Vector<Boundary*>* getBoundaries() {
+		return &boundaries;
+	}
+
+	Vector<AffectorProceduralRule*>* getAffectors() {
+		return &affectors;
+	}
+
+	Vector<FilterProceduralRule*>* getFilters() {
+		return &filters;
+	}
+
+	inline Layer* getParent() {
+		return parent;
+	}
+
+	inline bool invertBoundaries() {
+		return boundariesFlag != 0;
+	}
+
+	inline bool invertFilters() {
+		return filterFlag != 0;
+	}
+
+	inline bool isEnabled() {
+		return infoHeader.isEnabled();
 	}
 };
 

@@ -11,7 +11,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorHeightTerrace : public ProceduralRule<'AHTR'> {
+class AffectorHeightTerrace : public ProceduralRule<'AHTR'>, public AffectorProceduralRule {
 	float flatRatio;
 	float height;
 
@@ -65,6 +65,10 @@ public:
 		}
 
 		baseValue = (var2 - baseValue) * transformValue + baseValue;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

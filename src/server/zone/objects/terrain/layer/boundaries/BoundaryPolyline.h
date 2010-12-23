@@ -15,8 +15,6 @@
 
 class BoundaryPolyline : public ProceduralRule<'BPLN'>,  public Boundary {
 	Vector<Point2D*> points;
-	int featheringType;
-	float featheringAmount;
 	float lineWidth;
 
 	float minX, minY, maxX, maxY;
@@ -24,6 +22,12 @@ class BoundaryPolyline : public ProceduralRule<'BPLN'>,  public Boundary {
 public:
 	BoundaryPolyline() {
 		ruleType = BOUNDARYPOLYLINE;
+
+		minX = 800000000;
+		minY = 800000000;
+
+		maxX = -80000000;
+		minX = -80000000;
 	}
 
 	~BoundaryPolyline() {
@@ -161,6 +165,10 @@ public:
 			result = 1.0;
 
 		return result;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

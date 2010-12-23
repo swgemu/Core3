@@ -12,7 +12,7 @@
 
 class TerrainGenerator;
 
-class AffectorHeightConstant : public ProceduralRule<'AHCN'> {
+class AffectorHeightConstant : public ProceduralRule<'AHCN'>, public AffectorProceduralRule {
 	int operationType; // id?
 	float height;
 
@@ -77,6 +77,10 @@ public:
 
 	inline float getHeight() {
 		return height;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

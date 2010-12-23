@@ -10,7 +10,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorFCN : public ProceduralRule<'AFCN'> {
+class AffectorFCN : public ProceduralRule<'AFCN'>, public AffectorProceduralRule {
 	int familyId;
 	int var2;
 	int flag; //add/remove

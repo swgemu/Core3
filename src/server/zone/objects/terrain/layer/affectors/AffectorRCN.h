@@ -11,7 +11,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorRCN : public ProceduralRule<'ARCN'> {
+class AffectorRCN : public ProceduralRule<'ARCN'>, public AffectorProceduralRule {
 	int familyId;
 	int var2;
 	int flag; //add/remove

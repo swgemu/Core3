@@ -10,7 +10,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorEnvironment : public ProceduralRule<'AENV'> {
+class AffectorEnvironment : public ProceduralRule<'AENV'>, public AffectorProceduralRule {
 	int environmentId;
 	int var2;
 	float weight;

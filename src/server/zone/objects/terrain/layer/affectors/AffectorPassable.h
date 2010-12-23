@@ -11,11 +11,11 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorPAS : public ProceduralRule<'APAS'> {
+class AffectorPassable : public ProceduralRule<'APAS'>, public AffectorProceduralRule {
 	float var1, var2;
 
 public:
-	AffectorPAS() {
+	AffectorPassable() {
 
 	}
 

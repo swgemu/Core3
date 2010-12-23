@@ -10,8 +10,14 @@
 #include "../../TerrainGenerator.h"
 
 
-float FilterFractal::process(float x, float y, float& baseValue, TerrainGenerator* terrainGenerator) {
-	Mfrc* mfrc = terrainGenerator->getMfrc(fractalId - 1);
+float FilterFractal::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
+	Mfrc* mfrc = terrainGenerator->getMfrc(fractalId);
+
+	if (mfrc == NULL) {
+		System::out << "error out of bounds fractal id for affector " << informationHeader.getDescription() << endl;
+
+		return 1;
+	}
 
 	float noiseResult = mfrc->getNoise(x, y, 0, 0) * var6;
 	float result = 0;
