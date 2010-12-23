@@ -130,7 +130,7 @@ double Mfrc::calculateCombination1(float v39, float v41) {
 
 	float v42 = v41 + zOffset; // + 16 = z.offset
 	float v36 = v39 + xOffset; // + 12 = x.offset
-	float v15, v16, v33;
+	float v15, v16, v33 = 0;
 	double coord[2];
 
 	for (int i = 0; i < octaves; ++i) {
