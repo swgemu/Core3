@@ -19,8 +19,6 @@ class BoundaryRectangle : public ProceduralRule<'BREC'>,  public Boundary {
 	float y0;
 	float x1;
 	float y1;
-	int featheringType;
-	float featheringAmount; // how much to soften sides (like on a hill)
 	int var7;
 	int localWaterTableEnabled;
 	float localWaterTableHeight;
@@ -80,12 +78,37 @@ public:
 		case '0003':
 			parseFromIffStream(iffStream, Version<'0003'>());
 			break;
+		case '0002':
+			parseFromIffStream(iffStream, Version<'0002'>());
+			break;
 		default:
 			System::out << "unknown BoundaryRectangle version 0x" << hex << version << endl;
 			break;
 		}
 
 		iffStream->closeForm(version);
+	}
+
+	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0002'>) {
+		informationHeader.readObject(iffStream);
+
+		iffStream->openChunk('DATA');
+
+		x0 = iffStream->getFloat();
+		y0 = iffStream->getFloat();
+		x1 = iffStream->getFloat();
+		y1 = iffStream->getFloat();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
+
+		if (featheringAmount < 0)
+			featheringAmount = 0;
+		else if (featheringAmount > 1)
+			featheringAmount = 1;
+
+		iffStream->closeChunk('DATA');
+
+		initialize();
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003'>) {
@@ -134,8 +157,10 @@ public:
 		if (x < x0)
 			return 0.0;
 
-		if (x > x1 || y < (double)y0)
+		if (x > x1 || y < (double)y0) {
+			//System::out << "x > x1" << x << " " << x1 << " o y < y0" << y << " " << y0 << endl;
 			return 0.0;
+		}
 
 		if (y > y1)
 			return 0.0;
@@ -195,6 +220,10 @@ public:
 		newY0 = v7 + y0;
 		newX1 = x1 - v7;
 		newY1 = y1 - v7;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

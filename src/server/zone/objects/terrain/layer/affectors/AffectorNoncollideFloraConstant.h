@@ -10,7 +10,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorNoncollideFloraConstant : public ProceduralRule<'AFSC'> {
+class AffectorNoncollideFloraConstant : public ProceduralRule<'AFSC'>, public AffectorProceduralRule {
 	int familyId;
 	int var2;
 	int flag; //add/remove

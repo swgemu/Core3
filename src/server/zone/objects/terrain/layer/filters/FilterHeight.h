@@ -10,12 +10,11 @@
 
 
 #include "../ProceduralRule.h"
+#include "FilterProceduralRule.h"
 
-class FilterHeight : public ProceduralRule<'FHGT'> {
+class FilterHeight : public ProceduralRule<'FHGT'>, public FilterProceduralRule {
 	float minHeight;
 	float maxHeight;
-	int featheringType;
-	float featheringAmount; // how far out to affect the selected height
 
 public:
 	FilterHeight() {
@@ -71,6 +70,10 @@ public:
 			result = 0;
 
 		return result;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

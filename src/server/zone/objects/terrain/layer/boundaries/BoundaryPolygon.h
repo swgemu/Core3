@@ -17,8 +17,6 @@
 
 class BoundaryPolygon : public ProceduralRule<'BPOL'>,  public Boundary {
 	Vector<Point2D*> vertices;
-	int featheringType;
-	float featheringAmount;
 	int localWaterTableEnabled;
 	float localWaterTableHeight;
 	float shaderSize;
@@ -29,6 +27,12 @@ class BoundaryPolygon : public ProceduralRule<'BPOL'>,  public Boundary {
 public:
 	BoundaryPolygon() {
 		ruleType = BOUNDARYPOLYGON;
+
+		minX = 800000000;
+		minY = 800000000;
+
+		maxX = -80000000;
+		minX = -80000000;
 	}
 
 	~BoundaryPolygon() {
@@ -275,6 +279,10 @@ public:
 
 	float getLocalWaterTableHeight() {
 		return localWaterTableHeight;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

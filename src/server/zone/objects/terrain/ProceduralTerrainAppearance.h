@@ -14,6 +14,10 @@ class TerrainGenerator;
 class Boundary;
 class TerrainMaps;
 
+class Boundary;
+
+class Layer;
+
 class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logger {
 	TerrainGenerator* terrainGenerator;
 
@@ -75,7 +79,17 @@ public:
 
 	bool getWater(float x, float y, float& waterHeight);
 
-	int tests();
+	float getHeight(float x, float y);
+
+	float calculateFeathering(float value, int featheringType);
+
+	void processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue);
+
+	Vector<Boundary*> getBoundaries(float x, float y);
+
+	Layer* getLayerRecursive(float x, float y, Layer* rootParent);
+
+	Layer* getLayer(float x, float y);
 };
 
 

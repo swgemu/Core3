@@ -5,12 +5,33 @@
  *      Author: victor
  */
 
+#include "affectors/AffectorProceduralRule.h"
+#include "filters/FilterProceduralRule.h"
+#include "boundaries/Boundary.h"
+
 #include "Layer.h"
 
 #include "affectors.h"
 #include "boundaries.h"
 #include "filters.h"
 
+Layer::~Layer() {
+	while (children.size() > 0) {
+		delete children.remove(0);
+	}
+
+	while (boundaries.size() > 0) {
+		delete boundaries.remove(0);
+	}
+
+	while (affectors.size() > 0) {
+		delete affectors.remove(0);
+	}
+
+	while (filters.size() > 0) {
+		delete filters.remove(0);
+	}
+}
 
 void Layer::parseFromIffStream(engine::util::IffStream* iffStream) {
 	uint32 version = iffStream->getNextFormType();
@@ -34,8 +55,8 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 
 	iffStream->openChunk('ADTA');
 
-	uint32 var1 = iffStream->getUnsignedInt();
-	uint32 var2 = iffStream->getUnsignedInt();
+	boundariesFlag = iffStream->getUnsignedInt();
+	filterFlag = iffStream->getUnsignedInt();
 	uint32 var3 = iffStream->getUnsignedInt();
 
 	String var4;
@@ -68,12 +89,25 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 						children.add(layer);
 					}
 				}
+
 			}
+
 		}
 
-		if (rule != NULL)
-			rules.add(rule);
+		if (rule != NULL) {
+			Boundary* boundary = dynamic_cast<Boundary*>(rule);
+			FilterProceduralRule* filter = dynamic_cast<FilterProceduralRule*>(rule);
+			AffectorProceduralRule* affector = dynamic_cast<AffectorProceduralRule*>(rule);
 
+			if (filter != NULL)
+				filters.add(filter);
+
+			if (boundary != NULL)
+				boundaries.add(boundary);
+
+			if (affector != NULL)
+				affectors.add(affector);
+		}
 	}
 }
 
@@ -147,7 +181,7 @@ TerrainRule* Layer::parseAffector(IffStream* iffStream) {
 		break;
 	}
 	case ('APAS'): {
-		res = new AffectorPAS();
+		res = new AffectorPassable();
 		break;
 	}
 	case ('ARCN'): { // same as afdn

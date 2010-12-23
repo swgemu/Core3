@@ -10,7 +10,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorRadialFarConstant : public ProceduralRule<'AFDF'> {
+class AffectorRadialFarConstant : public ProceduralRule<'AFDF'>, public AffectorProceduralRule {
 	int familyId;
 	int var2;
 	int flag;

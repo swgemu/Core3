@@ -12,7 +12,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorShaderReplace : public ProceduralRule<'ASRP'> {
+class AffectorShaderReplace : public ProceduralRule<'ASRP'>, public AffectorProceduralRule {
 	int oldShaderId;
 	int newShaderId;
 	int featheringType;

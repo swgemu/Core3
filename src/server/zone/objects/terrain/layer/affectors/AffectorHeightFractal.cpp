@@ -12,9 +12,17 @@ void AffectorHeightFractal::process(float x, float y, float transformValue, floa
 	if (transformValue == 0)
 		return;
 
-	Mfrc* mfrc = terrainGenerator->getMfrc(fractalId - 1);
+	Mfrc* mfrc = terrainGenerator->getMfrc(fractalId);
+
+	if (mfrc == NULL) {
+		System::out << "error out of bounds fractal id for affector " << informationHeader.getDescription() << endl;
+
+		return;
+	}
 
 	float noiseResult = mfrc->getNoise(x, y, 0, 0) * height;
+
+	//System::out << "noiseResult " << noiseResult / height << endl;
 
 	float result;
 

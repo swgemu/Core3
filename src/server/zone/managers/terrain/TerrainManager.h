@@ -46,6 +46,10 @@ public:
 	float getHighestHeight(float x0, float y0, float x1, float y1, int stepping = 1);
 
 	int notifyPositionUpdate(CreatureObject* object);
+
+	ProceduralTerrainAppearance* getProceduralTerrainAppearance() {
+		return &terrainData;
+	}
 };
 
 

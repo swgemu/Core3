@@ -11,7 +11,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorFloraNonCollidableConstant : public ProceduralRule<'AFSN'> {
+class AffectorFloraNonCollidableConstant : public ProceduralRule<'AFSN'>, public AffectorProceduralRule {
 	int familyId;
 	int var2;
 	int flag; //add/remove

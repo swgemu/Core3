@@ -11,7 +11,9 @@
 
 #include "../ProceduralRule.h"
 
-class FilterBIT : public ProceduralRule<'FBIT'> {
+#include "FilterProceduralRule.h"
+
+class FilterBIT : public ProceduralRule<'FBIT'>, public FilterProceduralRule {
 	int var1;
 	int var2;
 	float var3;

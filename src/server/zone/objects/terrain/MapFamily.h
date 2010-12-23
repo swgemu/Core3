@@ -31,6 +31,10 @@ public:
 	inline Mfrc* getMfrc() {
 		return &mfrc;
 	}
+
+	inline int getVar1() {
+		return var1;
+	}
 };
 
 

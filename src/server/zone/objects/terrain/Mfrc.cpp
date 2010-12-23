@@ -81,7 +81,7 @@ void Mfrc::parseFromIffStream(engine::util::IffStream* iffStream) {
 		parseFromIffStream(iffStream, Version<'0001'>());
 		break;
 	default:
-		System::out << "unknown MFRC version " << version << endl;
+		//System::out << "unknown MFRC version " << version << endl;
 		break;
 	}
 
@@ -91,18 +91,34 @@ void Mfrc::parseFromIffStream(engine::util::IffStream* iffStream) {
 void Mfrc::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0001'>) {
 	iffStream->openChunk('DATA');
 
-	setSeed(iffStream->getInt());
+
+	int seed = iffStream->getInt();
+	setSeed(seed);
+	////System::out << "setting seed to:" << seed << endl;
 	bias = iffStream->getInt();
+	////System::out << "setting bias to:" << bias << endl;
+
 	biasValue = iffStream->getFloat();
+
+	////System::out << "setting biasValue to:" << biasValue << endl;
 	gainType = iffStream->getInt();
+
+	//System::out << "setting gainType to:" << gainType << endl;
 	gainValue = iffStream->getFloat();
+
+	//System::out << "setting gainValue to:" << gainValue << endl;
+
 	octaves = iffStream->getUnsignedInt();
+
+	//System::out << "setting octaves to:" << octaves << endl;
 	octavesParam = iffStream->getFloat();
 	setAmplitude(iffStream->getFloat());
+	//System::out << "setting amplitude to:" << amplitude << endl;
+
 	xFrequency = iffStream->getFloat();
 	yFrequency = iffStream->getFloat();
-	xOffset = iffStream->getUnsignedInt();
-	zOffset = iffStream->getUnsignedInt();
+	xOffset = iffStream->getFloat();
+	zOffset = iffStream->getFloat();
 	combination = iffStream->getUnsignedInt();
 
 	iffStream->closeChunk('DATA');
