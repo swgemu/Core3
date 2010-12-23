@@ -16,8 +16,6 @@ class BoundaryCircle : public ProceduralRule<'BCIR'>, public Boundary {
 	float centerY;
 	float radius;
 	float radiusSquared;
-	int featheringType;
-	float featheringAmount;
 
 public:
 	BoundaryCircle() {
@@ -84,6 +82,10 @@ public:
 		}
 
 		return result;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

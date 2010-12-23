@@ -48,7 +48,14 @@ public:
 	}
 
 	inline Mfrc* getMfrc(int index) {
-		return mfams.get(index)->getMfrc();
+		for (int i = 0; i < mfams.size(); ++i) {
+			MapFamily* mfam = mfams.get(i);
+
+			if (mfam->getVar1() == index)
+				return mfam->getMfrc();
+		}
+
+		return NULL;
 	}
 
 };

@@ -9,10 +9,13 @@
 #define BOUNDARY_H_
 
 class Boundary {
+protected:
+	int featheringType;
+	float featheringAmount;
 
 public:
 	virtual ~Boundary() {
-
+		featheringType = 0;
 	}
 
 	virtual bool containsPoint(float x, float y) {
@@ -21,6 +24,18 @@ public:
 
 	virtual float getLocalWaterTableHeight() {
 		return -16000;
+	}
+
+	virtual float process(float x, float y) {
+		return 0;
+	}
+
+	inline int getFeatheringType() {
+		return featheringType;
+	}
+
+	virtual bool isEnabled() {
+		return false;
 	}
 
 };

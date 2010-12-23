@@ -11,7 +11,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorExclude : public ProceduralRule<'AEXC'> {
+class AffectorExclude : public ProceduralRule<'AEXC'>, public AffectorProceduralRule {
 
 public:
 	AffectorExclude() {

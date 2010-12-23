@@ -10,7 +10,7 @@
 
 #include "../ProceduralRule.h"
 
-class AffectorColorRampFractal : public ProceduralRule<'ACRF'> {
+class AffectorColorRampFractal : public ProceduralRule<'ACRF'>, public AffectorProceduralRule {
 	int familyId; // fractal family id
 	byte var2;
 	String shaderFile; // .tga

@@ -9,8 +9,9 @@
 #define AFFECTORCOLORCONSTANT_H_
 
 #include "../ProceduralRule.h"
+#include "AffectorProceduralRule.h"
 
-class AffectorColorConstant : public ProceduralRule<'ACCN'> {
+class AffectorColorConstant : public ProceduralRule<'ACCN'>, public AffectorProceduralRule {
 	int id; // never tested
 	byte r;
 	byte g;

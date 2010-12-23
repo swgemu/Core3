@@ -10,8 +10,9 @@
 
 
 #include "../ProceduralRule.h"
+#include "FilterProceduralRule.h"
 
-class FilterShader : public ProceduralRule<'FSHD'> {
+class FilterShader : public ProceduralRule<'FSHD'>, public FilterProceduralRule {
 	int shaderId;
 
 public:

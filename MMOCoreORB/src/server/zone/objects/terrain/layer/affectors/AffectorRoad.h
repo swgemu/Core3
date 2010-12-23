@@ -14,7 +14,7 @@
 #include "../Hdta.h"
 #include "AffectorRiver.h"
 
-class AffectorRoad : public ProceduralRule<'AROA'> {
+class AffectorRoad : public ProceduralRule<'AROA'>, public AffectorProceduralRule {
 	Road road;
 	Hdta hdta;
 
@@ -24,8 +24,8 @@ class AffectorRoad : public ProceduralRule<'AROA'> {
 
 	float var2;
 	int var3;
-	int var4;
-	float var5;
+	int featheringType;
+	float featheringAmount;
 	int var6;
 	float var7;
 
@@ -89,8 +89,8 @@ public:
 
 		var2 = iffStream->getFloat();
 		var3 = iffStream->getInt();
-		var4 = iffStream->getInt();
-		var5 = iffStream->getFloat();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
 		var6 = iffStream->getInt();
 		var7 = iffStream->getFloat();
 

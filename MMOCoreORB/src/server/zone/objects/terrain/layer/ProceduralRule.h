@@ -26,6 +26,10 @@ public:
 
 	}
 
+	inline bool isEnabled() {
+		return informationHeader.isEnabled();
+	}
+
 };
 
 #endif /* PROCEDURALRULE_H_ */
