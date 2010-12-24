@@ -83,7 +83,7 @@ public:
 
 	float calculateFeathering(float value, int featheringType);
 
-	void processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue);
+	float processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, bool& found);
 
 	Vector<Boundary*> getBoundaries(float x, float y);
 

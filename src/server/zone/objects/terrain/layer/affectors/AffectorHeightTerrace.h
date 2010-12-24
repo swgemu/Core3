@@ -55,13 +55,19 @@ public:
 		if (height <= 0)
 			return;
 
-		float var1 = height + height;
+		//float var1 = height + height;
+		float var1 = fmod(baseValue, height);
+
+		if (baseValue == 0) {
+			var1 += height;
+		}
+
 		float var2 = baseValue - var1;
 		float var3 = height * flatRatio + var2;
 		float var4 = height + var2;
 
 		if (baseValue > var3) {
-			var2 = (baseValue - var3) / (var4 - var3) + var2;
+			var2 = (baseValue - var3) / (var4 - var3) * (var4 - var2) + var2;
 		}
 
 		baseValue = (var2 - baseValue) * transformValue + baseValue;

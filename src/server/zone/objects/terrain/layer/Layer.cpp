@@ -69,7 +69,7 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 	for (int i = 0; i < number; ++i) {
 		bool result = false;
 
-		TerrainRule* rule = parseBoundary(iffStream);
+		IffTemplateVariable* rule = parseBoundary(iffStream);
 
 		if (rule == NULL) {
 			rule = parseFilter(iffStream);
@@ -111,8 +111,8 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 	}
 }
 
-TerrainRule* Layer::parseAffector(IffStream* iffStream) {
-	TerrainRule* res = NULL;
+IffTemplateVariable* Layer::parseAffector(IffStream* iffStream) {
+	IffTemplateVariable* res = NULL;
 	uint32 type = iffStream->getNextFormType();
 
 	switch (type) {
@@ -218,8 +218,8 @@ TerrainRule* Layer::parseAffector(IffStream* iffStream) {
 	return res;
 }
 
-TerrainRule* Layer::parseBoundary(IffStream* iffStream) {
-	TerrainRule* res = NULL;
+IffTemplateVariable* Layer::parseBoundary(IffStream* iffStream) {
+	IffTemplateVariable* res = NULL;
 	uint32 type = iffStream->getNextFormType();
 
 	switch (type) {
@@ -256,8 +256,8 @@ TerrainRule* Layer::parseBoundary(IffStream* iffStream) {
 	return res;
 }
 
-TerrainRule* Layer::parseFilter(IffStream* iffStream) {
-	TerrainRule* res = NULL;
+IffTemplateVariable* Layer::parseFilter(IffStream* iffStream) {
+	IffTemplateVariable* res = NULL;
 	uint32 type = iffStream->getNextFormType();
 
 	switch (type) {

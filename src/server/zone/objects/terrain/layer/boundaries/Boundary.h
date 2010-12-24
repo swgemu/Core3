@@ -18,6 +18,10 @@ public:
 		featheringType = 0;
 	}
 
+	virtual void executeRule(ProceduralTerrainAppearance* generator) {
+
+	}
+
 	virtual bool containsPoint(float x, float y) {
 		return false;
 	}

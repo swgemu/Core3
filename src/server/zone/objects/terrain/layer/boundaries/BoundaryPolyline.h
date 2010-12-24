@@ -21,7 +21,7 @@ class BoundaryPolyline : public ProceduralRule<'BPLN'>,  public Boundary {
 
 public:
 	BoundaryPolyline() {
-		ruleType = BOUNDARYPOLYLINE;
+		//ruleType = BOUNDARYPOLYLINE;
 
 		minX = 800000000;
 		minY = 800000000;

@@ -22,7 +22,7 @@ void TerrainGenerator::processLayer(Layer* layer) {
 	Vector<Boundary*>* terrainRules = layer->getBoundaries();
 
 	for (int i = 0; i < terrainRules->size(); ++i) {
-		(dynamic_cast<TerrainRule*>(terrainRules->get(i)))->executeRule(terrain);
+		terrainRules->get(i)->executeRule(terrain);
 	}
 
 	Vector<Layer*>* childrenLayers = layer->getChildren();

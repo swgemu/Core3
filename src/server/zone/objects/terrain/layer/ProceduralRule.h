@@ -16,7 +16,7 @@
 #include "TerrainRule.h"
 
 template<int formType>
-class ProceduralRule : public TemplateVariable<formType>, public TerrainRule {
+class ProceduralRule : public TemplateVariable<formType> {
 
 protected:
 	InformationHeader informationHeader;

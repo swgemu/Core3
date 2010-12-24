@@ -14,10 +14,12 @@ class TerrainGenerator;
 
 class AffectorProceduralRule {
 
-protected:
-
 public:
 	AffectorProceduralRule() {
+
+	}
+
+	virtual ~AffectorProceduralRule() {
 
 	}
 
