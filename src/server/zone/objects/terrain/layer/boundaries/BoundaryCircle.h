@@ -19,7 +19,7 @@ class BoundaryCircle : public ProceduralRule<'BCIR'>, public Boundary {
 
 public:
 	BoundaryCircle() {
-		ruleType = BOUNDARYCIRCLE;
+		//ruleType = BOUNDARYCIRCLE;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {

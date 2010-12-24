@@ -47,9 +47,9 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream);
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003'>);
 
-	TerrainRule* parseAffector(IffStream* iffStream);
-	TerrainRule* parseBoundary(IffStream* iffStream);
-	TerrainRule* parseFilter(IffStream* iffStream);
+	IffTemplateVariable* parseAffector(IffStream* iffStream);
+	IffTemplateVariable* parseBoundary(IffStream* iffStream);
+	IffTemplateVariable* parseFilter(IffStream* iffStream);
 
 	Vector<Layer*>* getChildren() {
 		return &children;
@@ -81,6 +81,10 @@ public:
 
 	inline bool isEnabled() {
 		return infoHeader.isEnabled();
+	}
+
+	inline String& getDescription() {
+		return infoHeader.getDescription();
 	}
 };
 

@@ -16,6 +16,7 @@
 
 class ProceduralTerrainAppearance;
 
+/*
 class TerrainRule : public virtual IffTemplateVariable {
 protected:
 	int ruleType;
@@ -62,5 +63,7 @@ public:
 	}
 
 };
+
+*/
 
 #endif /* TERRAINRULE_H_ */

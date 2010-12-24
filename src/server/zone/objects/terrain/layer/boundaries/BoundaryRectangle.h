@@ -37,7 +37,7 @@ class BoundaryRectangle : public ProceduralRule<'BREC'>,  public Boundary {
 
 public:
 	BoundaryRectangle() {
-		ruleType = BOUNDARYRECTANGLE;
+		//ruleType = BOUNDARYRECTANGLE;
 	}
 
 	~BoundaryRectangle() {

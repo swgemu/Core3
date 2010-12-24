@@ -27,7 +27,16 @@ ProceduralTerrainAppearance::~ProceduralTerrainAppearance() {
 }
 
 bool ProceduralTerrainAppearance::load(const String& file) {
-	setLoggingName(getLoggingName() + " " + file);
+	waterBoundaries.removeAll();
+
+	delete terrainGenerator;
+	delete terrainMaps;
+
+	terrainGenerator = new TerrainGenerator(this);
+	terrainMaps = new TerrainMaps();
+
+
+	setLoggingName("ProceduralTerrainAppearance " + file);
 
 	info("trying to open", true);
 
@@ -296,7 +305,7 @@ float ProceduralTerrainAppearance::calculateFeathering(float value, int featheri
 	return result;
 }
 
-void ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue) {
+float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, bool& found) {
 	Vector<Boundary*>* boundaries = layer->getBoundaries();
 	Vector<AffectorProceduralRule*>* affectors = layer->getAffectors();
 	Vector<FilterProceduralRule*>* filters = layer->getFilters();
@@ -322,8 +331,10 @@ void ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, 
 		if (result > transformValue)
 			transformValue = result;
 
-		if (transformValue >= 1)
+		if (transformValue >= 1) {
+			found = true;
 			break;
+		}
 	}
 
 	if (!hasBoundaries)
@@ -333,6 +344,8 @@ void ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, 
 		transformValue = 1.0 - transformValue;
 
 	if (transformValue != 0) {
+		found = true;
+
 		for (int i = 0; i < filters->size(); ++i) {
 			FilterProceduralRule* filter = filters->get(i);
 
@@ -375,9 +388,11 @@ void ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, 
 			Layer* layer = children->get(i);
 
 			if (layer->isEnabled())
-				processHeight(layer, x, y, baseValue, affectorTransformValue * transformValue);
+				processHeight(layer, x, y, baseValue, affectorTransformValue * transformValue, found);
 		}
 	}
+
+	return transformValue;
 }
 
 float ProceduralTerrainAppearance::getHeight(float x, float y) {
@@ -387,11 +402,15 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) {
 
 	float affectorTransform = 1.0;
 
+	bool found = false;
+
 	if (foundLayer != NULL) {
+
+		info("found layer " + foundLayer->getDescription(), true);
 
 		float singleTraverse = 0.f;
 
-		processHeight(foundLayer, x, y, singleTraverse, affectorTransform);
+		processHeight(foundLayer, x, y, singleTraverse, affectorTransform, found);
 
 		info("single traverse height ... is " + String::valueOf(singleTraverse), true);
 
@@ -403,7 +422,7 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) {
 		float rootTraverse = 0;
 		affectorTransform = 1.0;
 
-		processHeight(root, x, y, rootTraverse, affectorTransform);
+		processHeight(root, x, y, rootTraverse, affectorTransform, found);
 
 		info("root traverse height ... is " + String::valueOf(rootTraverse), true);
 
@@ -417,11 +436,17 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) {
 
 	affectorTransform = 1.0;
 
+	float transformValue = 0;
+
+	found = false;
+
 	for (int i = 0; i < layers->size(); ++i) {
+		//fullTraverse = 0;
+
 		Layer* layer = layers->get(i);
 
 		if (layer->isEnabled())
-			processHeight(layer, x, y, fullTraverse, affectorTransform);
+			transformValue = processHeight(layer, x, y, fullTraverse, affectorTransform, found);
 		//Vector<TerrainRule*>* rules = layer->getRules();
 	}
 
