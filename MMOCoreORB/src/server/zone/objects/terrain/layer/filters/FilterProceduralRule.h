@@ -22,6 +22,10 @@ public:
 		featheringType = 0;
 	}
 
+	virtual ~FilterProceduralRule() {
+
+	}
+
 	virtual float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
 		return 0;
 	}

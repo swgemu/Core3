@@ -26,7 +26,7 @@ class BoundaryPolygon : public ProceduralRule<'BPOL'>,  public Boundary {
 
 public:
 	BoundaryPolygon() {
-		ruleType = BOUNDARYPOLYGON;
+		//ruleType = BOUNDARYPOLYGON;
 
 		minX = 800000000;
 		minY = 800000000;
