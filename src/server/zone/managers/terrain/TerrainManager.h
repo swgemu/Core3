@@ -50,6 +50,10 @@ public:
 	ProceduralTerrainAppearance* getProceduralTerrainAppearance() {
 		return &terrainData;
 	}
+
+	float getHeight(float x, float y) {
+		return terrainData.getHeight(x, y);
+	}
 };
 
 

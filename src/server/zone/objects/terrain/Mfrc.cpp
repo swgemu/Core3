@@ -41,7 +41,7 @@ float Mfrc::getNoise(float x, float y, int i, int j) {
 	}
 
 	if (bias) {
-		result = pow(log(biasValue) / log05, result);
+		result = pow(result, log(biasValue) / log05);
 	}
 
 	if (gainType) {
@@ -60,12 +60,12 @@ float Mfrc::getNoise(float x, float y, int i, int j) {
 		double v40 = log(1.0 - gainValue) / log05;
 
 		if (result < 0.5) {
-			result = pow(v40, result + result) * 0.5;
+			result = pow(result * 2, v40) * 0.5;
 
 			return result;
 		}
 
-		result = 1.0 - pow(v40, 1.0 - result + 1.0 - result) * 0.5;
+		result = 1.0 - pow((1.0 - result) * 2, v40) * 0.5;
 	}
 
 	return result;
