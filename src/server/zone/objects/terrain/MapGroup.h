@@ -13,7 +13,14 @@
 
 class MapGroup : public TemplateVariable<'MGRP'> {
 	Vector<MapFamily*> mfams;
+	VectorMap<uint32, Mfrc*> mfrcs;
+
 public:
+
+	MapGroup() {
+		mfrcs.setNullValue(NULL);
+		mfrcs.setNoDuplicateInsertPlan();
+	}
 
 	~MapGroup() {
 		while (mfams.size() > 0)
@@ -44,18 +51,12 @@ public:
 			MapFamily* sfam = new MapFamily();
 			sfam->readObject(iffStream);
 			mfams.add(sfam);
+			mfrcs.put(sfam->getVar1(), sfam->getMfrc());
 		}
 	}
 
 	inline Mfrc* getMfrc(int index) {
-		for (int i = 0; i < mfams.size(); ++i) {
-			MapFamily* mfam = mfams.get(i);
-
-			if (mfam->getVar1() == index)
-				return mfam->getMfrc();
-		}
-
-		return NULL;
+		return mfrcs.get((uint32)index);
 	}
 
 };

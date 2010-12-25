@@ -32,6 +32,10 @@ public:
 
 	float getHeight(float x, float y);
 
+	inline bool isLoaded() {
+		return reader != NULL;
+	}
+
 	static float getHeightFrom(FileInputStream* file, float x, float y);
 
 	static void convert(const String& path);

@@ -305,7 +305,7 @@ float ProceduralTerrainAppearance::calculateFeathering(float value, int featheri
 	return result;
 }
 
-float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, bool& found) {
+float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue) {
 	Vector<Boundary*>* boundaries = layer->getBoundaries();
 	Vector<AffectorProceduralRule*>* affectors = layer->getAffectors();
 	Vector<FilterProceduralRule*>* filters = layer->getFilters();
@@ -332,7 +332,6 @@ float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y,
 			transformValue = result;
 
 		if (transformValue >= 1) {
-			found = true;
 			break;
 		}
 	}
@@ -344,8 +343,6 @@ float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y,
 		transformValue = 1.0 - transformValue;
 
 	if (transformValue != 0) {
-		found = true;
-
 		for (int i = 0; i < filters->size(); ++i) {
 			FilterProceduralRule* filter = filters->get(i);
 
@@ -377,82 +374,43 @@ float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y,
 
 				affector->process(x, y, transformValue * affectorTransformValue, baseValue, terrainGenerator);
 			}
+
+
+			Vector<Layer*>* children = layer->getChildren();
+
+			for (int i = 0; i < children->size(); ++i) {
+				Layer* layer = children->get(i);
+
+				if (layer->isEnabled()) {
+					processHeight(layer, x, y, baseValue, affectorTransformValue * transformValue);
+				}
+			}
+
 		}
 
-	}
-
-	Vector<Layer*>* children = layer->getChildren();
-
-	if (children->size() != 0) {
-		for (int i = 0; i < children->size(); ++i) {
-			Layer* layer = children->get(i);
-
-			if (layer->isEnabled())
-				processHeight(layer, x, y, baseValue, affectorTransformValue * transformValue, found);
-		}
 	}
 
 	return transformValue;
 }
 
 float ProceduralTerrainAppearance::getHeight(float x, float y) {
-
-	//-5576, 1048
-	Layer* foundLayer = getLayer(x, y);
-
-	float affectorTransform = 1.0;
-
-	bool found = false;
-
-	if (foundLayer != NULL) {
-
-		info("found layer " + foundLayer->getDescription(), true);
-
-		float singleTraverse = 0.f;
-
-		processHeight(foundLayer, x, y, singleTraverse, affectorTransform, found);
-
-		info("single traverse height ... is " + String::valueOf(singleTraverse), true);
-
-		Layer* root = foundLayer;
-
-		while (root->getParent() != NULL)
-			root = root->getParent();
-
-		float rootTraverse = 0;
-		affectorTransform = 1.0;
-
-		processHeight(root, x, y, rootTraverse, affectorTransform, found);
-
-		info("root traverse height ... is " + String::valueOf(rootTraverse), true);
-
-	}
-
-	float fullTraverse = 0;
-
 	LayersGroup* layersGroup = terrainGenerator->getLayersGroup();
 
 	Vector<Layer*>* layers = layersGroup->getLayers();
 
-	affectorTransform = 1.0;
+	float affectorTransform = 1.0;
 
 	float transformValue = 0;
-
-	found = false;
+	float fullTraverse = 0;
 
 	for (int i = 0; i < layers->size(); ++i) {
-		//fullTraverse = 0;
-
 		Layer* layer = layers->get(i);
 
 		if (layer->isEnabled())
-			transformValue = processHeight(layer, x, y, fullTraverse, affectorTransform, found);
-		//Vector<TerrainRule*>* rules = layer->getRules();
+			transformValue = processHeight(layer, x, y, fullTraverse, affectorTransform);
 	}
 
+	//info("full traverse height ... is " + String::valueOf(fullTraverse), true);
 
-	info("full traverse height ... is " + String::valueOf(fullTraverse), true);
-
-
-	return 0;
+	return fullTraverse;
 }
