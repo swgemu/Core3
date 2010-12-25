@@ -13,54 +13,22 @@
 #include "FilterProceduralRule.h"
 
 class TerrainGenerator;
+class Mfrc;
 
 class FilterFractal : public ProceduralRule<'FFRA'>, public FilterProceduralRule {
 	int fractalId; // Fractal Group ID to modify (MGRP)
 	float min;
 	float max; // Scale/Stepping?
 	float var6; // Scale/Stepping?
+	Mfrc* mfrc;
 
 public:
 	FilterFractal() {
-
+		mfrc = NULL;
 	}
 
-	void parseFromIffStream(engine::util::IffStream* iffStream) {
-		uint32 version = iffStream->getNextFormType();
-
-		iffStream->openForm(version);
-
-		switch (version) {
-		case '0005':
-			parseFromIffStream(iffStream, Version<'0005'>());
-			break;
-		default:
-			System::out << "unknown FilterFractal version 0x" << hex << version << endl;
-			break;
-		}
-
-		iffStream->closeForm(version);
-	}
-
-	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0005'>) {
-		informationHeader.readObject(iffStream);
-
-		iffStream->openForm('DATA');
-
-		iffStream->openChunk('PARM');
-
-		//6 vars
-		fractalId = iffStream->getInt();
-		featheringType = iffStream->getInt();
-		featheringAmount = iffStream->getFloat();
-		min = iffStream->getFloat();
-		max = iffStream->getFloat();
-		var6 = iffStream->getFloat();
-
-		iffStream->closeChunk('PARM');
-
-		iffStream->closeForm('DATA');
-	}
+	void parseFromIffStream(engine::util::IffStream* iffStream);
+	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0005'>);
 
 	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator);
 

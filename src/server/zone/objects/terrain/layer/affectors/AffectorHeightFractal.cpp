@@ -12,7 +12,10 @@ void AffectorHeightFractal::process(float x, float y, float transformValue, floa
 	if (transformValue == 0)
 		return;
 
-	Mfrc* mfrc = terrainGenerator->getMfrc(fractalId);
+
+	if (mfrc == NULL) {
+		mfrc = terrainGenerator->getMfrc(fractalId);
+	}
 
 	if (mfrc == NULL) {
 		System::out << "error out of bounds fractal id for affector " << informationHeader.getDescription() << endl;
@@ -45,4 +48,37 @@ void AffectorHeightFractal::process(float x, float y, float transformValue, floa
 	}
 
 	baseValue = result;
+}
+
+void AffectorHeightFractal::parseFromIffStream(engine::util::IffStream* iffStream) {
+	uint32 version = iffStream->getNextFormType();
+
+	iffStream->openForm(version);
+
+	switch (version) {
+	case '0003':
+		parseFromIffStream(iffStream, Version<'0003'>());
+		break;
+	default:
+		System::out << "unknown AffectorHeightFractal version 0x" << hex << version << endl;
+		break;
+	}
+
+	iffStream->closeForm(version);
+}
+
+void AffectorHeightFractal::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003'>) {
+	informationHeader.readObject(iffStream);
+
+	iffStream->openForm('DATA');
+
+	iffStream->openChunk('PARM');
+
+	fractalId = iffStream->getInt();
+	operationType = iffStream->getInt();
+
+	height = iffStream->getFloat();
+
+	iffStream->closeChunk('PARM');
+	iffStream->closeForm('DATA');
 }

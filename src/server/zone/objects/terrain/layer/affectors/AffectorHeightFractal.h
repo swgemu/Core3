@@ -11,51 +11,24 @@
 #include "../ProceduralRule.h"
 #include "AffectorProceduralRule.h"
 class TerrainGenerator;
+class Mfrc;
 
 class AffectorHeightFractal : public ProceduralRule<'AHFR'>, public AffectorProceduralRule {
 	int fractalId; // fractal group id in MGRP
 	int operationType;
 	float height;
+	Mfrc* mfrc;
 
 public:
 	AffectorHeightFractal() {
-
+		mfrc = NULL;
+		affectorType = HEIGHTFRACTAL;
 	}
 
 	void process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator);
 
-	void parseFromIffStream(engine::util::IffStream* iffStream) {
-		uint32 version = iffStream->getNextFormType();
-
-		iffStream->openForm(version);
-
-		switch (version) {
-		case '0003':
-			parseFromIffStream(iffStream, Version<'0003'>());
-			break;
-		default:
-			System::out << "unknown AffectorHeightFractal version 0x" << hex << version << endl;
-			break;
-		}
-
-		iffStream->closeForm(version);
-	}
-
-	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003'>) {
-		informationHeader.readObject(iffStream);
-
-		iffStream->openForm('DATA');
-
-		iffStream->openChunk('PARM');
-
-		fractalId = iffStream->getInt();
-		operationType = iffStream->getInt();
-
-		height = iffStream->getFloat();
-
-		iffStream->closeChunk('PARM');
-		iffStream->closeForm('DATA');
-	}
+	void parseFromIffStream(engine::util::IffStream* iffStream);
+	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003'>);
 
 	inline int getFractalId() {
 		return fractalId;
