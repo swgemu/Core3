@@ -17,7 +17,7 @@ class AffectorHeightTerrace : public ProceduralRule<'AHTR'>, public AffectorProc
 
 public:
 	AffectorHeightTerrace() {
-
+		affectorType = HEIGHTTERRACE;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {

@@ -18,7 +18,7 @@ class AffectorHeightConstant : public ProceduralRule<'AHCN'>, public AffectorPro
 
 public:
 	AffectorHeightConstant() {
-
+		affectorType = HEIGHTCONSTANT;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {

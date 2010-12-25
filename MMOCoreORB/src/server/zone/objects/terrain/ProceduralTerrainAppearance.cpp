@@ -209,23 +209,6 @@ bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight)
 	return false;
 }
 
-Vector<Boundary*> ProceduralTerrainAppearance::getBoundaries(float x, float y) {
-	LayersGroup* layersGroup = terrainGenerator->getLayersGroup();
-
-	Vector<Layer*>* layers = layersGroup->getLayers();
-
-	for (int i = 0; i < layers->size(); ++i) {
-		Layer* layer = layers->get(i);
-
-		Vector<Layer*>* children = layer->getChildren();
-
-		//Vector<TerrainRule*>* rules = layer->getRules();
-
-	}
-
-	return NULL;
-}
-
 Layer* ProceduralTerrainAppearance::getLayerRecursive(float x, float y, Layer* rootParent) {
 	Layer* returnLayer = NULL;
 
@@ -307,7 +290,7 @@ float ProceduralTerrainAppearance::calculateFeathering(float value, int featheri
 
 float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue) {
 	Vector<Boundary*>* boundaries = layer->getBoundaries();
-	Vector<AffectorProceduralRule*>* affectors = layer->getAffectors();
+	Vector<AffectorProceduralRule*>* affectors = layer->getHeightAffectors();
 	Vector<FilterProceduralRule*>* filters = layer->getFilters();
 
 	float transformValue = 0;
@@ -369,8 +352,8 @@ float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y,
 			for (int i = 0; i < affectors->size(); ++i) {
 				AffectorProceduralRule* affector = affectors->get(i);
 
-				if (!affector->isEnabled())
-					continue;
+				/*if (!affector->isEnabled()) filtered in height affectors vector
+					continue;*/
 
 				affector->process(x, y, transformValue * affectorTransformValue, baseValue, terrainGenerator);
 			}
@@ -403,6 +386,8 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) {
 	float transformValue = 0;
 	float fullTraverse = 0;
 
+	//Time start;
+
 	for (int i = 0; i < layers->size(); ++i) {
 		Layer* layer = layers->get(i);
 
@@ -410,7 +395,7 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) {
 			transformValue = processHeight(layer, x, y, fullTraverse, affectorTransform);
 	}
 
-	//info("full traverse height ... is " + String::valueOf(fullTraverse), true);
+	//info("full traverse height ... is " + String::valueOf(fullTraverse) + " in mili:" + String::valueOf(start.miliDifference()), true);
 
 	return fullTraverse;
 }

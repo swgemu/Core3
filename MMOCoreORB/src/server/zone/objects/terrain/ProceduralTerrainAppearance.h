@@ -63,6 +63,12 @@ class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logg
 	float radialFarTileBorder;
 	float radialFarSeed;
 
+protected:
+	float calculateFeathering(float value, int featheringType);
+	float processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue);
+	Layer* getLayerRecursive(float x, float y, Layer* rootParent);
+	Layer* getLayer(float x, float y);
+
 public:
 	ProceduralTerrainAppearance();
 	~ProceduralTerrainAppearance();
@@ -70,7 +76,6 @@ public:
 	bool load(const String& file);
 
 	void parseFromIffStream(engine::util::IffStream* iffStream);
-
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0014'>);
 
 	void insertWaterBoundary(Boundary* boundary) {
@@ -78,18 +83,8 @@ public:
 	}
 
 	bool getWater(float x, float y, float& waterHeight);
-
 	float getHeight(float x, float y);
 
-	float calculateFeathering(float value, int featheringType);
-
-	float processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue);
-
-	Vector<Boundary*> getBoundaries(float x, float y);
-
-	Layer* getLayerRecursive(float x, float y, Layer* rootParent);
-
-	Layer* getLayer(float x, float y);
 };
 
 

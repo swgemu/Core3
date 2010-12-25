@@ -11,10 +11,12 @@
 
 
 float FilterFractal::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
-	Mfrc* mfrc = terrainGenerator->getMfrc(fractalId);
+	if (mfrc == NULL) {
+		mfrc = terrainGenerator->getMfrc(fractalId);
+	}
 
 	if (mfrc == NULL) {
-		System::out << "error out of bounds fractal id for affector " << informationHeader.getDescription() << endl;
+		System::out << "error out of bounds fractal id for filter " << informationHeader.getDescription() << endl;
 
 		return 1;
 	}
@@ -36,5 +38,42 @@ float FilterFractal::process(float x, float y, float transformValue, float& base
 		result = 0;
 
 	return result;
-
 }
+
+void FilterFractal::parseFromIffStream(engine::util::IffStream* iffStream) {
+	uint32 version = iffStream->getNextFormType();
+
+	iffStream->openForm(version);
+
+	switch (version) {
+	case '0005':
+		parseFromIffStream(iffStream, Version<'0005'>());
+		break;
+	default:
+		System::out << "unknown FilterFractal version 0x" << hex << version << endl;
+		break;
+	}
+
+	iffStream->closeForm(version);
+}
+
+void FilterFractal::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0005'>) {
+	informationHeader.readObject(iffStream);
+
+	iffStream->openForm('DATA');
+
+	iffStream->openChunk('PARM');
+
+	//6 vars
+	fractalId = iffStream->getInt();
+	featheringType = iffStream->getInt();
+	featheringAmount = iffStream->getFloat();
+	min = iffStream->getFloat();
+	max = iffStream->getFloat();
+	var6 = iffStream->getFloat();
+
+	iffStream->closeChunk('PARM');
+
+	iffStream->closeForm('DATA');
+}
+
