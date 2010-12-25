@@ -35,6 +35,10 @@ public:
 	inline int getVar1() {
 		return var1;
 	}
+
+	inline String& getName() {
+		return var2;
+	}
 };
 
 
