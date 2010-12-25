@@ -30,6 +30,8 @@ class Layer : public TemplateVariable<'LAYR'> {
 	Vector<AffectorProceduralRule*> affectors;
 	Vector<FilterProceduralRule*> filters;
 
+	Vector<AffectorProceduralRule*> heightAffectors;
+
 	Layer* parent;
 
 	int boundariesFlag;
@@ -61,6 +63,10 @@ public:
 
 	Vector<AffectorProceduralRule*>* getAffectors() {
 		return &affectors;
+	}
+
+	Vector<AffectorProceduralRule*>* getHeightAffectors() {
+		return &heightAffectors;
 	}
 
 	Vector<FilterProceduralRule*>* getFilters() {

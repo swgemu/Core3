@@ -105,8 +105,12 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 			if (boundary != NULL)
 				boundaries.add(boundary);
 
-			if (affector != NULL)
+			if (affector != NULL) {
 				affectors.add(affector);
+
+				if (affector->isEnabled() && affector->isHeightTypeAffector())
+					heightAffectors.add(affector);
+			}
 		}
 	}
 }

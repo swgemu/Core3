@@ -12,8 +12,10 @@
 #include "FilterProceduralRule.h"
 
 class FilterDirection : public ProceduralRule<'FDIR'>, public FilterProceduralRule {
-	float minDegree;
+	float minDegree;//+20h
+	float min;//+28h
 	float maxDegree;
+	float max;
 
 public:
 	FilterDirection() {
@@ -37,12 +39,23 @@ public:
 		iffStream->closeForm(version);
 	}
 
+	/*void setMinDegree(float deg) {
+		minDegree = deg;
+
+		if (-M_PI >= minDegree) {
+			minDegree = -M_PI
+		}
+	}*/
+
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0000'>) {
 		informationHeader.readObject(iffStream);
 
 		iffStream->openChunk('DATA');
 
 		minDegree = iffStream->getFloat();
+
+		//setMinAngle(M_PI * minDegree * 0.005555555690079927);
+
 		maxDegree = iffStream->getFloat();
 		featheringType = iffStream->getInt();
 		featheringAmount = iffStream->getFloat();
