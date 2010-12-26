@@ -13,12 +13,12 @@
 float FilterFractal::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
 	if (mfrc == NULL) {
 		mfrc = terrainGenerator->getMfrc(fractalId);
-	}
 
-	if (mfrc == NULL) {
-		System::out << "error out of bounds fractal id for filter " << informationHeader.getDescription() << endl;
+		if (mfrc == NULL) {
+			System::out << "error out of bounds fractal id for filter " << informationHeader.getDescription() << endl;
 
-		return 1;
+			return 1;
+		}
 	}
 
 	float noiseResult = mfrc->getNoise(x, y, 0, 0) * var6;

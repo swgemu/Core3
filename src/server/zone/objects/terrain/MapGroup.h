@@ -8,12 +8,12 @@
 #ifndef MAPGROUP_H_
 #define MAPGROUP_H_
 
-#include "Mfrc.h"
+#include "MapFractal.h"
 #include "MapFamily.h"
 
 class MapGroup : public TemplateVariable<'MGRP'> {
 	Vector<MapFamily*> mfams;
-	VectorMap<uint32, Mfrc*> mfrcs;
+	VectorMap<uint32, MapFractal*> mfrcs;
 
 public:
 
@@ -55,7 +55,7 @@ public:
 		}
 	}
 
-	inline Mfrc* getMfrc(int index) {
+	inline MapFractal* getMfrc(int index) {
 		return mfrcs.get((uint32)index);
 	}
 

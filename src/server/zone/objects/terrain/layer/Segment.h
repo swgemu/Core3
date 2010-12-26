@@ -15,11 +15,11 @@ public:
 	float x, z, y;
 };
 
-class Sgmt : public TemplateVariable<'SGMT'> {
+class Segment : public TemplateVariable<'SGMT'> {
 	Vector<Point3D*> positions;
 
 public:
-	~Sgmt() {
+	~Segment() {
 		for (int i = 0; i < positions.size(); ++i)
 			delete positions.get(i);
 	}
