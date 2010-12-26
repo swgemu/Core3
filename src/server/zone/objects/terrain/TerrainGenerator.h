@@ -51,7 +51,7 @@ public:
 		return &layers;
 	}
 
-	inline Mfrc* getMfrc(int idx) {
+	inline MapFractal* getMfrc(int idx) {
 		return mapGroup.getMfrc(idx);
 	}
 

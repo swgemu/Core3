@@ -13,14 +13,14 @@
 #include "FilterProceduralRule.h"
 
 class TerrainGenerator;
-class Mfrc;
+class MapFractal;
 
 class FilterFractal : public ProceduralRule<'FFRA'>, public FilterProceduralRule {
 	int fractalId; // Fractal Group ID to modify (MGRP)
 	float min;
 	float max; // Scale/Stepping?
 	float var6; // Scale/Stepping?
-	Mfrc* mfrc;
+	MapFractal* mfrc;
 
 public:
 	FilterFractal() {

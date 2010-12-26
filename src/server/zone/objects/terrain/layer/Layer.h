@@ -10,7 +10,6 @@
 
 #include "../TemplateVariable.h"
 #include "InformationHeader.h"
-#include "TerrainRule.h"
 
 /*class Boundary;
 class AffectorProceduralRule;

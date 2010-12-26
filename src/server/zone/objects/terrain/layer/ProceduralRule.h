@@ -13,8 +13,6 @@
 #include "../TemplateVariable.h"
 #include "InformationHeader.h"
 
-#include "TerrainRule.h"
-
 template<int formType>
 class ProceduralRule : public TemplateVariable<formType> {
 

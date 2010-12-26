@@ -10,10 +10,10 @@
 
 
 #include "../TemplateVariable.h"
-#include "Sgmt.h"
+#include "Segment.h"
 
 class Road : public TemplateVariable<'ROAD'> {
-	Vector<Sgmt*> sgmts;
+	Vector<Segment*> sgmts;
 
 public:
 	~Road() {
@@ -42,7 +42,7 @@ public:
 		int number = iffStream->getSubChunksNumber();
 
 		for (int i = 0; i < number; i++) {
-			Sgmt* sgmt = new Sgmt();
+			Segment* sgmt = new Segment();
 			sgmt->readObject(iffStream);
 
 			sgmts.add(sgmt);

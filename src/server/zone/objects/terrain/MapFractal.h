@@ -12,7 +12,7 @@
 #include "Random.h"
 #include "PerlinNoise.h"
 
-class Mfrc : public TemplateVariable<'MFRC'> {
+class MapFractal : public TemplateVariable<'MFRC'> {
 	PerlinNoise* noise;
 	Random* rand;
 
@@ -34,9 +34,9 @@ class Mfrc : public TemplateVariable<'MFRC'> {
 	float offset32;
 
 public:
-	Mfrc();
+	MapFractal();
 
-	~Mfrc() {
+	~MapFractal() {
 		delete noise;
 		noise = NULL;
 
@@ -55,15 +55,7 @@ public:
 	double calculateCombination4(float xfreq, float yfreq);
 	double calculateCombination5(float xfreq, float yfreq);
 
-	void setSeed(int seed) {
-		delete noise;
-		delete rand;
-
-		rand = new Random();
-		rand->setSeed(seed);
-
-		noise = new PerlinNoise(rand);
-	}
+	void setSeed(int seed);
 
 	inline void setBias(int bias) {
 		this->bias = bias; // bias

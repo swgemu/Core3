@@ -11,13 +11,13 @@
 #include "../ProceduralRule.h"
 #include "AffectorProceduralRule.h"
 class TerrainGenerator;
-class Mfrc;
+class MapFractal;
 
 class AffectorHeightFractal : public ProceduralRule<'AHFR'>, public AffectorProceduralRule {
 	int fractalId; // fractal group id in MGRP
 	int operationType;
 	float height;
-	Mfrc* mfrc;
+	MapFractal* mfrc;
 
 public:
 	AffectorHeightFractal() {
