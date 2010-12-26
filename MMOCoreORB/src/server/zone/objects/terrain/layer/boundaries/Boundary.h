@@ -8,6 +8,8 @@
 #ifndef BOUNDARY_H_
 #define BOUNDARY_H_
 
+class ProceduralTerrainAppearance;
+
 class Boundary {
 protected:
 	int featheringType;

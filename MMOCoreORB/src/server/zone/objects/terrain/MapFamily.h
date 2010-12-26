@@ -10,12 +10,12 @@
 
 #include "TemplateVariable.h"
 
-#include "Mfrc.h"
+#include "MapFractal.h"
 
 class MapFamily : public TemplateVariable<'MFAM'> {
 	int var1;
 	String var2;
-	Mfrc mfrc;
+	MapFractal mfrc;
 public:
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
 		iffStream->openChunk('DATA');
@@ -28,7 +28,7 @@ public:
 		mfrc.readObject(iffStream);
 	}
 
-	inline Mfrc* getMfrc() {
+	inline MapFractal* getMfrc() {
 		return &mfrc;
 	}
 

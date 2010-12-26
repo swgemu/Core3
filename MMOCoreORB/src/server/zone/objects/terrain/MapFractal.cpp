@@ -6,16 +6,16 @@
  */
 
 #include "engine/engine.h"
-#include "Mfrc.h"
+#include "MapFractal.h"
 
-double Mfrc::log05 = log(0.5);
+double MapFractal::log05 = log(0.5);
 
-Mfrc::Mfrc() {
+MapFractal::MapFractal() {
 	noise = NULL;
 	rand = NULL;
 }
 
-float Mfrc::getNoise(float x, float y, int i, int j) {
+float MapFractal::getNoise(float x, float y, int i, int j) {
 	float v39 = x * xFrequency;
 	float v41 = y * yFrequency;
 
@@ -71,7 +71,7 @@ float Mfrc::getNoise(float x, float y, int i, int j) {
 	return result;
 }
 
-void Mfrc::parseFromIffStream(engine::util::IffStream* iffStream) {
+void MapFractal::parseFromIffStream(engine::util::IffStream* iffStream) {
 	uint32 version = iffStream->getNextFormType();
 
 	iffStream->openForm(version);
@@ -88,7 +88,7 @@ void Mfrc::parseFromIffStream(engine::util::IffStream* iffStream) {
 	iffStream->closeForm(version);
 }
 
-void Mfrc::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0001'>) {
+void MapFractal::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0001'>) {
 	iffStream->openChunk('DATA');
 
 
@@ -124,7 +124,7 @@ void Mfrc::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0001'
 	iffStream->closeChunk('DATA');
 }
 
-double Mfrc::calculateCombination1(float v39, float v41) {
+double MapFractal::calculateCombination1(float v39, float v41) {
 	float v48 = 1, v47 = 1;
 	double result = 0;
 
@@ -153,7 +153,7 @@ double Mfrc::calculateCombination1(float v39, float v41) {
 	return result;
 }
 
-double Mfrc::calculateCombination2(float v39, float v41) {
+double MapFractal::calculateCombination2(float v39, float v41) {
 	float v34 = 0;
 	float v43 = v41 + zOffset; // + 16 = z.offset
 	float v19, v18, v20;
@@ -183,7 +183,7 @@ double Mfrc::calculateCombination2(float v39, float v41) {
 	return result;
 }
 
-double Mfrc::calculateCombination3(float v39, float v41) {
+double MapFractal::calculateCombination3(float v39, float v41) {
 	float v48 = 1.0;
 	float v47 = 1.0;
 	double result = 0;
@@ -214,7 +214,7 @@ double Mfrc::calculateCombination3(float v39, float v41) {
 	return result;
 }
 
-double Mfrc::calculateCombination4(float v39, float v41) {
+double MapFractal::calculateCombination4(float v39, float v41) {
 	float v34 = 0;
 	float v27, v28, v26;
 	float v45 = v41 + zOffset; // + 16 = z.offset
@@ -253,7 +253,7 @@ double Mfrc::calculateCombination4(float v39, float v41) {
 	return result;
 }
 
-double Mfrc::calculateCombination5(float v39, float v41) {
+double MapFractal::calculateCombination5(float v39, float v41) {
 	float v34 = 0;
 	float v31, v32, v30;
 	float v46 = v41 + zOffset; //  + 16 = z.offset
@@ -291,4 +291,18 @@ double Mfrc::calculateCombination5(float v39, float v41) {
 	result = v34 * offset32; //
 
 	return result;
+}
+
+void MapFractal::setSeed(int seed) {
+	delete noise;
+	delete rand;
+
+	rand = new Random();
+	rand->setSeed(seed);
+
+	noise = new PerlinNoise(rand);
+	double coord[2];
+	coord[0] = 0, coord[1] = 0;
+
+	noise->noise2(coord); //initialize
 }

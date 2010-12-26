@@ -10,10 +10,10 @@
 
 
 #include "../TemplateVariable.h"
-#include "Sgmt.h"
+#include "Segment.h"
 
 class Hdta : public TemplateVariable<'HDTA'> {
-	Vector<Sgmt*> sgmts;
+	Vector<Segment*> sgmts;
 
 
 public:
@@ -43,7 +43,7 @@ public:
 		int number = iffStream->getSubChunksNumber();
 
 		for (int i = 0; i < number; i++) {
-			Sgmt* sgmt = new Sgmt();
+			Segment* sgmt = new Segment();
 			sgmt->readObject(iffStream);
 
 			sgmts.add(sgmt);
