@@ -68,7 +68,10 @@ public:
     	insertAscii(name); //IP Address
 
     	insertInt(0xFFFF8F80);
-    	insertInt(0x00000008);
+	}
+
+	void finish() {
+		insertInt(0x00000008);
 	}
 
 	static void parse(Packet* pack) {
