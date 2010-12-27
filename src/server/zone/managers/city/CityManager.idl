@@ -66,8 +66,8 @@ class CityManager extends ManagedService implements Logger {
 	@dereferenced
 	public VectorMap<unsigned long, CityHallObject> cities;
 	
-	public static int cityUpdateInterval;
-	public static int newCityGracePeriod;
+	public transient static int cityUpdateInterval;
+	public transient static int newCityGracePeriod;
 	
 	@dereferenced
 	private transient Vector<byte> citiesAllowedPerRank;
