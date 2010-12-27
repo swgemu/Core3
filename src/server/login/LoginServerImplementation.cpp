@@ -235,4 +235,6 @@ void LoginServerImplementation::populateGalaxyList() {
 
     	clusterStatusMessage->addGalaxy(galaxyID, address, galaxies.getGalaxyPort(), galaxies.getGalaxyPingPort());
     }
+
+    enumClusterMessage->finish();
 }
