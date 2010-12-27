@@ -151,6 +151,7 @@ void BountyMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(BountyMissionObjectiveHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void BountyMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
@@ -199,8 +200,74 @@ void BountyMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("BountyMissionObjective");
 
-	addSerializableVariable("npcTemplateToSpawn", &npcTemplateToSpawn);
-	addSerializableVariable("npcTarget", &npcTarget);
+}
+
+void BountyMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(BountyMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "npcTemplateToSpawn") {
+		TypeInfo<TemplateReference<SharedObjectTemplate*> >::parseFromBinaryStream(&npcTemplateToSpawn, stream);
+		return true;
+	}
+
+	if (_name == "npcTarget") {
+		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&npcTarget, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void BountyMissionObjectiveImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = BountyMissionObjectiveImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "npcTemplateToSpawn";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<TemplateReference<SharedObjectTemplate*> >::toBinaryStream(&npcTemplateToSpawn, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "npcTarget";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&npcTarget, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

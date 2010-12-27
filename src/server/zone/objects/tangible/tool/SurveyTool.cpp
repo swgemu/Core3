@@ -385,6 +385,7 @@ void SurveyToolImplementation::_initializeImplementation() {
 	_setClassHelper(SurveyToolHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SurveyToolImplementation::_setStub(DistributedObjectStub* stub) {
@@ -433,17 +434,191 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 
 	_setClassName("SurveyTool");
 
-	addSerializableVariable("range", &range);
-	addSerializableVariable("points", &points);
-	addSerializableVariable("type", &type);
-	addSerializableVariable("surveyType", &surveyType);
-	addSerializableVariable("surveyAnimation", &surveyAnimation);
-	addSerializableVariable("sampleAnimation", &sampleAnimation);
-	addSerializableVariable("lastResourceSampleName", &lastResourceSampleName);
-	addSerializableVariable("lastResourceSurveyName", &lastResourceSurveyName);
-	addSerializableVariable("radioactiveOk", &radioactiveOk);
-	addSerializableVariable("doGamble", &doGamble);
-	addSerializableVariable("inUse", &inUse);
+}
+
+void SurveyToolImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SurveyToolImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SurveyToolImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ToolTangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "range") {
+		TypeInfo<int >::parseFromBinaryStream(&range, stream);
+		return true;
+	}
+
+	if (_name == "points") {
+		TypeInfo<int >::parseFromBinaryStream(&points, stream);
+		return true;
+	}
+
+	if (_name == "type") {
+		TypeInfo<int >::parseFromBinaryStream(&type, stream);
+		return true;
+	}
+
+	if (_name == "surveyType") {
+		TypeInfo<String >::parseFromBinaryStream(&surveyType, stream);
+		return true;
+	}
+
+	if (_name == "surveyAnimation") {
+		TypeInfo<String >::parseFromBinaryStream(&surveyAnimation, stream);
+		return true;
+	}
+
+	if (_name == "sampleAnimation") {
+		TypeInfo<String >::parseFromBinaryStream(&sampleAnimation, stream);
+		return true;
+	}
+
+	if (_name == "lastResourceSampleName") {
+		TypeInfo<String >::parseFromBinaryStream(&lastResourceSampleName, stream);
+		return true;
+	}
+
+	if (_name == "lastResourceSurveyName") {
+		TypeInfo<String >::parseFromBinaryStream(&lastResourceSurveyName, stream);
+		return true;
+	}
+
+	if (_name == "radioactiveOk") {
+		TypeInfo<bool >::parseFromBinaryStream(&radioactiveOk, stream);
+		return true;
+	}
+
+	if (_name == "doGamble") {
+		TypeInfo<bool >::parseFromBinaryStream(&doGamble, stream);
+		return true;
+	}
+
+	if (_name == "inUse") {
+		TypeInfo<bool >::parseFromBinaryStream(&inUse, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SurveyToolImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SurveyToolImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SurveyToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "range";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&range, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "points";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&points, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "type";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&type, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "surveyType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&surveyType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "surveyAnimation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&surveyAnimation, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "sampleAnimation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&sampleAnimation, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastResourceSampleName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lastResourceSampleName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastResourceSurveyName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lastResourceSurveyName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "radioactiveOk";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&radioactiveOk, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "doGamble";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&doGamble, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "inUse";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&inUse, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 11 + ToolTangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 SurveyToolImplementation::SurveyToolImplementation() {

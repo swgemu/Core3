@@ -70,6 +70,7 @@ void ZoneManagerImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneManagerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ZoneManagerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -118,6 +119,48 @@ void ZoneManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("ZoneManager");
 
+}
+
+void ZoneManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ZoneManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ZoneManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void ZoneManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ZoneManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ZoneManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 ZoneManagerImplementation::ZoneManagerImplementation(const String& name) {

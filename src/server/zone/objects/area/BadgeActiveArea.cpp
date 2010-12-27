@@ -95,6 +95,7 @@ void BadgeActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(BadgeActiveAreaHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void BadgeActiveAreaImplementation::_setStub(DistributedObjectStub* stub) {
@@ -143,7 +144,61 @@ void BadgeActiveAreaImplementation::_serializationHelperMethod() {
 
 	_setClassName("BadgeActiveArea");
 
-	addSerializableVariable("areaBadge", &areaBadge);
+}
+
+void BadgeActiveAreaImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(BadgeActiveAreaImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool BadgeActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "areaBadge") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&areaBadge, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void BadgeActiveAreaImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = BadgeActiveAreaImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int BadgeActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "areaBadge";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&areaBadge, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 BadgeActiveAreaImplementation::BadgeActiveAreaImplementation() {

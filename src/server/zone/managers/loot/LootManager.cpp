@@ -131,6 +131,7 @@ void LootManagerImplementation::_initializeImplementation() {
 	_setClassHelper(LootManagerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void LootManagerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -179,7 +180,61 @@ void LootManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("LootManager");
 
-	addSerializableVariable("lootGroups", &lootGroups);
+}
+
+void LootManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(LootManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool LootManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ZoneManagerImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "lootGroups") {
+		TypeInfo<VectorMap<unsigned int, ManagedReference<LootGroupObject* > > >::parseFromBinaryStream(&lootGroups, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void LootManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = LootManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int LootManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "lootGroups";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, ManagedReference<LootGroupObject* > > >::toBinaryStream(&lootGroups, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + ZoneManagerImplementation::writeObjectMembers(stream);
 }
 
 LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman) : ZoneManagerImplementation("LootManager") {

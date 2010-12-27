@@ -1937,6 +1937,7 @@ void PlayerCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(PlayerCreatureHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void PlayerCreatureImplementation::_setStub(DistributedObjectStub* stub) {
@@ -1985,43 +1986,529 @@ void PlayerCreatureImplementation::_serializationHelperMethod() {
 
 	_setClassName("PlayerCreature");
 
-	addSerializableVariable("savedZoneID", &savedZoneID);
-	addSerializableVariable("savedParentID", &savedParentID);
-	addSerializableVariable("onlineStatus", &onlineStatus);
-	addSerializableVariable("declaredResidence", &declaredResidence);
-	addSerializableVariable("cloningFacility", &cloningFacility);
-	addSerializableVariable("logoutTimeStamp", &logoutTimeStamp);
-	addSerializableVariable("clientLastMovementStamp", &clientLastMovementStamp);
-	addSerializableVariable("serverLastMovementStamp", &serverLastMovementStamp);
-	addSerializableVariable("teleporting", &teleporting);
-	addSerializableVariable("lastValidatedPosition", &lastValidatedPosition);
-	addSerializableVariable("accountID", &accountID);
-	addSerializableVariable("invisible", &invisible);
-	addSerializableVariable("suiBoxNextID", &suiBoxNextID);
-	addSerializableVariable("raceFile", &raceFile);
-	addSerializableVariable("raceID", &raceID);
-	addSerializableVariable("startingLocation", &startingLocation);
-	addSerializableVariable("startingProfession", &startingProfession);
-	addSerializableVariable("biography", &biography);
-	addSerializableVariable("lotsRemaining", &lotsRemaining);
-	addSerializableVariable("skillPoints", &skillPoints);
-	addSerializableVariable("teachingOrLearning", &teachingOrLearning);
-	addSerializableVariable("badges", &badges);
-	addSerializableVariable("chatRooms", &chatRooms);
-	addSerializableVariable("incapacitationCounter", &incapacitationCounter);
-	addSerializableVariable("suiBoxes", &suiBoxes);
-	addSerializableVariable("pvpRating", &pvpRating);
-	addSerializableVariable("factionStatus", &factionStatus);
-	addSerializableVariable("persistentMessages", &persistentMessages);
-	addSerializableVariable("duelList", &duelList);
-	addSerializableVariable("surveyTool", &surveyTool);
-	addSerializableVariable("consentList", &consentList);
-	addSerializableVariable("lastNpcConvoMessage", &lastNpcConvoMessage);
-	addSerializableVariable("lastNpcConvo", &lastNpcConvo);
-	addSerializableVariable("lastNpcConvoOptions", &lastNpcConvoOptions);
-	addSerializableVariable("conversatingCreature", &conversatingCreature);
-	addSerializableVariable("centeredBonus", &centeredBonus);
-	addSerializableVariable("tradeContainer", &tradeContainer);
+}
+
+void PlayerCreatureImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(PlayerCreatureImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool PlayerCreatureImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (CreatureObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "savedZoneID") {
+		TypeInfo<int >::parseFromBinaryStream(&savedZoneID, stream);
+		return true;
+	}
+
+	if (_name == "savedParentID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&savedParentID, stream);
+		return true;
+	}
+
+	if (_name == "onlineStatus") {
+		TypeInfo<int >::parseFromBinaryStream(&onlineStatus, stream);
+		return true;
+	}
+
+	if (_name == "declaredResidence") {
+		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&declaredResidence, stream);
+		return true;
+	}
+
+	if (_name == "cloningFacility") {
+		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&cloningFacility, stream);
+		return true;
+	}
+
+	if (_name == "logoutTimeStamp") {
+		TypeInfo<Time >::parseFromBinaryStream(&logoutTimeStamp, stream);
+		return true;
+	}
+
+	if (_name == "clientLastMovementStamp") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&clientLastMovementStamp, stream);
+		return true;
+	}
+
+	if (_name == "serverLastMovementStamp") {
+		TypeInfo<Time >::parseFromBinaryStream(&serverLastMovementStamp, stream);
+		return true;
+	}
+
+	if (_name == "teleporting") {
+		TypeInfo<bool >::parseFromBinaryStream(&teleporting, stream);
+		return true;
+	}
+
+	if (_name == "lastValidatedPosition") {
+		TypeInfo<ValidatedPosition >::parseFromBinaryStream(&lastValidatedPosition, stream);
+		return true;
+	}
+
+	if (_name == "accountID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
+		return true;
+	}
+
+	if (_name == "invisible") {
+		TypeInfo<bool >::parseFromBinaryStream(&invisible, stream);
+		return true;
+	}
+
+	if (_name == "suiBoxNextID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&suiBoxNextID, stream);
+		return true;
+	}
+
+	if (_name == "raceFile") {
+		TypeInfo<String >::parseFromBinaryStream(&raceFile, stream);
+		return true;
+	}
+
+	if (_name == "raceID") {
+		TypeInfo<byte >::parseFromBinaryStream(&raceID, stream);
+		return true;
+	}
+
+	if (_name == "startingLocation") {
+		TypeInfo<String >::parseFromBinaryStream(&startingLocation, stream);
+		return true;
+	}
+
+	if (_name == "startingProfession") {
+		TypeInfo<String >::parseFromBinaryStream(&startingProfession, stream);
+		return true;
+	}
+
+	if (_name == "biography") {
+		TypeInfo<UnicodeString >::parseFromBinaryStream(&biography, stream);
+		return true;
+	}
+
+	if (_name == "lotsRemaining") {
+		TypeInfo<int >::parseFromBinaryStream(&lotsRemaining, stream);
+		return true;
+	}
+
+	if (_name == "skillPoints") {
+		TypeInfo<int >::parseFromBinaryStream(&skillPoints, stream);
+		return true;
+	}
+
+	if (_name == "teachingOrLearning") {
+		TypeInfo<bool >::parseFromBinaryStream(&teachingOrLearning, stream);
+		return true;
+	}
+
+	if (_name == "badges") {
+		TypeInfo<Badges >::parseFromBinaryStream(&badges, stream);
+		return true;
+	}
+
+	if (_name == "chatRooms") {
+		TypeInfo<SortedVector<ManagedReference<ChatRoom* > > >::parseFromBinaryStream(&chatRooms, stream);
+		return true;
+	}
+
+	if (_name == "incapacitationCounter") {
+		TypeInfo<byte >::parseFromBinaryStream(&incapacitationCounter, stream);
+		return true;
+	}
+
+	if (_name == "suiBoxes") {
+		TypeInfo<VectorMap<unsigned int, ManagedReference<SuiBox* > > >::parseFromBinaryStream(&suiBoxes, stream);
+		return true;
+	}
+
+	if (_name == "pvpRating") {
+		TypeInfo<int >::parseFromBinaryStream(&pvpRating, stream);
+		return true;
+	}
+
+	if (_name == "factionStatus") {
+		TypeInfo<int >::parseFromBinaryStream(&factionStatus, stream);
+		return true;
+	}
+
+	if (_name == "persistentMessages") {
+		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&persistentMessages, stream);
+		return true;
+	}
+
+	if (_name == "duelList") {
+		TypeInfo<SortedVector<ManagedReference<PlayerCreature* > > >::parseFromBinaryStream(&duelList, stream);
+		return true;
+	}
+
+	if (_name == "surveyTool") {
+		TypeInfo<ManagedWeakReference<SurveyTool* > >::parseFromBinaryStream(&surveyTool, stream);
+		return true;
+	}
+
+	if (_name == "consentList") {
+		TypeInfo<SortedVector<String> >::parseFromBinaryStream(&consentList, stream);
+		return true;
+	}
+
+	if (_name == "lastNpcConvoMessage") {
+		TypeInfo<String >::parseFromBinaryStream(&lastNpcConvoMessage, stream);
+		return true;
+	}
+
+	if (_name == "lastNpcConvo") {
+		TypeInfo<String >::parseFromBinaryStream(&lastNpcConvo, stream);
+		return true;
+	}
+
+	if (_name == "lastNpcConvoOptions") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&lastNpcConvoOptions, stream);
+		return true;
+	}
+
+	if (_name == "conversatingCreature") {
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&conversatingCreature, stream);
+		return true;
+	}
+
+	if (_name == "centeredBonus") {
+		TypeInfo<int >::parseFromBinaryStream(&centeredBonus, stream);
+		return true;
+	}
+
+	if (_name == "tradeContainer") {
+		TypeInfo<TradeContainer >::parseFromBinaryStream(&tradeContainer, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void PlayerCreatureImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = PlayerCreatureImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int PlayerCreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "savedZoneID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&savedZoneID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "savedParentID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&savedParentID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "onlineStatus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&onlineStatus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "declaredResidence";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<BuildingObject* > >::toBinaryStream(&declaredResidence, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cloningFacility";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<BuildingObject* > >::toBinaryStream(&cloningFacility, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "logoutTimeStamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&logoutTimeStamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "clientLastMovementStamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&clientLastMovementStamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "serverLastMovementStamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&serverLastMovementStamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "teleporting";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&teleporting, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastValidatedPosition";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ValidatedPosition >::toBinaryStream(&lastValidatedPosition, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "accountID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&accountID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "invisible";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&invisible, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "suiBoxNextID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&suiBoxNextID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "raceFile";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&raceFile, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "raceID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&raceID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startingLocation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&startingLocation, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startingProfession";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&startingProfession, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "biography";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<UnicodeString >::toBinaryStream(&biography, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lotsRemaining";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&lotsRemaining, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "skillPoints";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&skillPoints, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "teachingOrLearning";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&teachingOrLearning, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "badges";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Badges >::toBinaryStream(&badges, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "chatRooms";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<ChatRoom* > > >::toBinaryStream(&chatRooms, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "incapacitationCounter";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&incapacitationCounter, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "suiBoxes";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, ManagedReference<SuiBox* > > >::toBinaryStream(&suiBoxes, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "pvpRating";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&pvpRating, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "factionStatus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&factionStatus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "persistentMessages";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&persistentMessages, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "duelList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<PlayerCreature* > > >::toBinaryStream(&duelList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "surveyTool";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<SurveyTool* > >::toBinaryStream(&surveyTool, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "consentList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<String> >::toBinaryStream(&consentList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastNpcConvoMessage";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lastNpcConvoMessage, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastNpcConvo";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lastNpcConvo, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastNpcConvoOptions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&lastNpcConvoOptions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "conversatingCreature";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&conversatingCreature, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "centeredBonus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&centeredBonus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "tradeContainer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<TradeContainer >::toBinaryStream(&tradeContainer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 37 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 PlayerCreatureImplementation::PlayerCreatureImplementation() {

@@ -143,6 +143,7 @@ void GuildTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(GuildTerminalHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void GuildTerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -191,7 +192,61 @@ void GuildTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("GuildTerminal");
 
-	addSerializableVariable("guildObject", &guildObject);
+}
+
+void GuildTerminalImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(GuildTerminalImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool GuildTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TerminalImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "guildObject") {
+		TypeInfo<ManagedReference<GuildObject* > >::parseFromBinaryStream(&guildObject, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void GuildTerminalImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = GuildTerminalImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int GuildTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "guildObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<GuildObject* > >::toBinaryStream(&guildObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 GuildTerminalImplementation::GuildTerminalImplementation() {

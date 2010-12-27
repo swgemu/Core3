@@ -71,6 +71,7 @@ void AiObserverImplementation::_initializeImplementation() {
 	_setClassHelper(AiObserverHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void AiObserverImplementation::_setStub(DistributedObjectStub* stub) {
@@ -119,7 +120,61 @@ void AiObserverImplementation::_serializationHelperMethod() {
 
 	_setClassName("AiObserver");
 
-	addSerializableVariable("aiAgent", &aiAgent);
+}
+
+void AiObserverImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(AiObserverImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool AiObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ObserverImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "aiAgent") {
+		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&aiAgent, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void AiObserverImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = AiObserverImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int AiObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "aiAgent";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&aiAgent, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 AiObserverImplementation::AiObserverImplementation(AiAgent* agent) {

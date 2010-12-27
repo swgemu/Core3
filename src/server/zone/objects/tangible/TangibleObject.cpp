@@ -912,6 +912,7 @@ void TangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TangibleObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void TangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -960,23 +961,269 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("TangibleObject");
 
-	addSerializableVariable("targetable", &targetable);
-	addSerializableVariable("complexity", &complexity);
-	addSerializableVariable("volume", &volume);
-	addSerializableVariable("faction", &faction);
-	addSerializableVariable("customizationVariables", &customizationVariables);
-	addSerializableVariable("conditionDamage", &conditionDamage);
-	addSerializableVariable("maxCondition", &maxCondition);
-	addSerializableVariable("useCount", &useCount);
-	addSerializableVariable("level", &level);
-	addSerializableVariable("optionsBitmask", &optionsBitmask);
-	addSerializableVariable("pvpStatusBitmask", &pvpStatusBitmask);
-	addSerializableVariable("unknownByte", &unknownByte);
-	addSerializableVariable("craftersName", &craftersName);
-	addSerializableVariable("craftersSerial", &craftersSerial);
-	addSerializableVariable("defenderList", &defenderList);
-	addSerializableVariable("playerUseMask", &playerUseMask);
-	addSerializableVariable("sliced", &sliced);
+}
+
+void TangibleObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(TangibleObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SceneObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "targetable") {
+		TypeInfo<bool >::parseFromBinaryStream(&targetable, stream);
+		return true;
+	}
+
+	if (_name == "complexity") {
+		TypeInfo<float >::parseFromBinaryStream(&complexity, stream);
+		return true;
+	}
+
+	if (_name == "volume") {
+		TypeInfo<int >::parseFromBinaryStream(&volume, stream);
+		return true;
+	}
+
+	if (_name == "faction") {
+		TypeInfo<int >::parseFromBinaryStream(&faction, stream);
+		return true;
+	}
+
+	if (_name == "customizationVariables") {
+		TypeInfo<CustomizationVariables >::parseFromBinaryStream(&customizationVariables, stream);
+		return true;
+	}
+
+	if (_name == "conditionDamage") {
+		TypeInfo<int >::parseFromBinaryStream(&conditionDamage, stream);
+		return true;
+	}
+
+	if (_name == "maxCondition") {
+		TypeInfo<int >::parseFromBinaryStream(&maxCondition, stream);
+		return true;
+	}
+
+	if (_name == "useCount") {
+		TypeInfo<int >::parseFromBinaryStream(&useCount, stream);
+		return true;
+	}
+
+	if (_name == "level") {
+		TypeInfo<short >::parseFromBinaryStream(&level, stream);
+		return true;
+	}
+
+	if (_name == "optionsBitmask") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&optionsBitmask, stream);
+		return true;
+	}
+
+	if (_name == "pvpStatusBitmask") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&pvpStatusBitmask, stream);
+		return true;
+	}
+
+	if (_name == "unknownByte") {
+		TypeInfo<byte >::parseFromBinaryStream(&unknownByte, stream);
+		return true;
+	}
+
+	if (_name == "craftersName") {
+		TypeInfo<String >::parseFromBinaryStream(&craftersName, stream);
+		return true;
+	}
+
+	if (_name == "craftersSerial") {
+		TypeInfo<String >::parseFromBinaryStream(&craftersSerial, stream);
+		return true;
+	}
+
+	if (_name == "defenderList") {
+		TypeInfo<DeltaVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&defenderList, stream);
+		return true;
+	}
+
+	if (_name == "playerUseMask") {
+		TypeInfo<unsigned short >::parseFromBinaryStream(&playerUseMask, stream);
+		return true;
+	}
+
+	if (_name == "sliced") {
+		TypeInfo<bool >::parseFromBinaryStream(&sliced, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void TangibleObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = TangibleObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "targetable";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&targetable, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "complexity";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&complexity, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "volume";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&volume, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "faction";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&faction, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "customizationVariables";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<CustomizationVariables >::toBinaryStream(&customizationVariables, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "conditionDamage";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&conditionDamage, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "maxCondition";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxCondition, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "useCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&useCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "level";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<short >::toBinaryStream(&level, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "optionsBitmask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&optionsBitmask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "pvpStatusBitmask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&pvpStatusBitmask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "unknownByte";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&unknownByte, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "craftersName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&craftersName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "craftersSerial";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&craftersSerial, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "defenderList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaVector<ManagedReference<SceneObject* > > >::toBinaryStream(&defenderList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "playerUseMask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned short >::toBinaryStream(&playerUseMask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "sliced";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&sliced, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 17 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 TangibleObjectImplementation::TangibleObjectImplementation() {

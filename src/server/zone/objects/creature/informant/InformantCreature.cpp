@@ -146,6 +146,7 @@ void InformantCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(InformantCreatureHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void InformantCreatureImplementation::_setStub(DistributedObjectStub* stub) {
@@ -194,7 +195,61 @@ void InformantCreatureImplementation::_serializationHelperMethod() {
 
 	_setClassName("InformantCreature");
 
-	addSerializableVariable("level", &level);
+}
+
+void InformantCreatureImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(InformantCreatureImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool InformantCreatureImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (AiAgentImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "level") {
+		TypeInfo<int >::parseFromBinaryStream(&level, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void InformantCreatureImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = InformantCreatureImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int InformantCreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "level";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&level, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + AiAgentImplementation::writeObjectMembers(stream);
 }
 
 InformantCreatureImplementation::InformantCreatureImplementation() {

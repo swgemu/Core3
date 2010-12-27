@@ -776,6 +776,7 @@ void FishingManagerImplementation::_initializeImplementation() {
 	_setClassHelper(FishingManagerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void FishingManagerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -824,17 +825,191 @@ void FishingManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("FishingManager");
 
-	addSerializableVariable("zoneServer", &zoneServer);
-	addSerializableVariable("miscLoot", &miscLoot);
-	addSerializableVariable("rareLoot", &rareLoot);
-	addSerializableVariable("color", &color);
-	addSerializableVariable("fishLength", &fishLength);
-	addSerializableVariable("fishType", &fishType);
-	addSerializableVariable("state", &state);
-	addSerializableVariable("action", &action);
-	addSerializableVariable("property", &property);
-	addSerializableVariable("baitStatus", &baitStatus);
-	addSerializableVariable("sessions", &sessions);
+}
+
+void FishingManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(FishingManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool FishingManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ObserverImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "zoneServer") {
+		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
+		return true;
+	}
+
+	if (_name == "miscLoot") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&miscLoot, stream);
+		return true;
+	}
+
+	if (_name == "rareLoot") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&rareLoot, stream);
+		return true;
+	}
+
+	if (_name == "color") {
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&color, stream);
+		return true;
+	}
+
+	if (_name == "fishLength") {
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&fishLength, stream);
+		return true;
+	}
+
+	if (_name == "fishType") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&fishType, stream);
+		return true;
+	}
+
+	if (_name == "state") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&state, stream);
+		return true;
+	}
+
+	if (_name == "action") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&action, stream);
+		return true;
+	}
+
+	if (_name == "property") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&property, stream);
+		return true;
+	}
+
+	if (_name == "baitStatus") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&baitStatus, stream);
+		return true;
+	}
+
+	if (_name == "sessions") {
+		TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, FishingSession*> >::parseFromBinaryStream(&sessions, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void FishingManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = FishingManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "zoneServer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "miscLoot";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&miscLoot, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "rareLoot";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&rareLoot, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "color";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<int> >::toBinaryStream(&color, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "fishLength";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<int> >::toBinaryStream(&fishLength, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "fishType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&fishType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "state";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&state, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "action";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&action, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "property";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&property, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "baitStatus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&baitStatus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "sessions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, FishingSession*> >::toBinaryStream(&sessions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 11 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 FishingManagerImplementation::FishingManagerImplementation(ZoneServer* server) {

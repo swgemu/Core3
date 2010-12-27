@@ -205,6 +205,7 @@ void RangedStimPackImplementation::_initializeImplementation() {
 	_setClassHelper(RangedStimPackHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void RangedStimPackImplementation::_setStub(DistributedObjectStub* stub) {
@@ -253,9 +254,87 @@ void RangedStimPackImplementation::_serializationHelperMethod() {
 
 	_setClassName("RangedStimPack");
 
-	addSerializableVariable("range", &range);
-	addSerializableVariable("area", &area);
-	addSerializableVariable("rangeMod", &rangeMod);
+}
+
+void RangedStimPackImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(RangedStimPackImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool RangedStimPackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (StimPackImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "range") {
+		TypeInfo<float >::parseFromBinaryStream(&range, stream);
+		return true;
+	}
+
+	if (_name == "area") {
+		TypeInfo<float >::parseFromBinaryStream(&area, stream);
+		return true;
+	}
+
+	if (_name == "rangeMod") {
+		TypeInfo<float >::parseFromBinaryStream(&rangeMod, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void RangedStimPackImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = RangedStimPackImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int RangedStimPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "range";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&range, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "area";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&area, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "rangeMod";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&rangeMod, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + StimPackImplementation::writeObjectMembers(stream);
 }
 
 RangedStimPackImplementation::RangedStimPackImplementation() {

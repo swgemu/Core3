@@ -957,6 +957,7 @@ void PlayerObjectImplementation::_initializeImplementation() {
 	_setClassHelper(PlayerObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void PlayerObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -1005,25 +1006,295 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("PlayerObject");
 
-	addSerializableVariable("characterBitmask", &characterBitmask);
-	addSerializableVariable("title", &title);
-	addSerializableVariable("forcePower", &forcePower);
-	addSerializableVariable("forcePowerMax", &forcePowerMax);
-	addSerializableVariable("foodFilling", &foodFilling);
-	addSerializableVariable("foodFillingMax", &foodFillingMax);
-	addSerializableVariable("drinkFilling", &drinkFilling);
-	addSerializableVariable("drinkFillingMax", &drinkFillingMax);
-	addSerializableVariable("jediState", &jediState);
-	addSerializableVariable("adminLevel", &adminLevel);
-	addSerializableVariable("languageID", &languageID);
-	addSerializableVariable("xpTypeCapList", &xpTypeCapList);
-	addSerializableVariable("commandMessageStrings", &commandMessageStrings);
-	addSerializableVariable("experienceList", &experienceList);
-	addSerializableVariable("waypointList", &waypointList);
-	addSerializableVariable("skillList", &skillList);
-	addSerializableVariable("friendList", &friendList);
-	addSerializableVariable("ignoreList", &ignoreList);
-	addSerializableVariable("schematicList", &schematicList);
+}
+
+void PlayerObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(PlayerObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "characterBitmask") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&characterBitmask, stream);
+		return true;
+	}
+
+	if (_name == "title") {
+		TypeInfo<String >::parseFromBinaryStream(&title, stream);
+		return true;
+	}
+
+	if (_name == "forcePower") {
+		TypeInfo<int >::parseFromBinaryStream(&forcePower, stream);
+		return true;
+	}
+
+	if (_name == "forcePowerMax") {
+		TypeInfo<int >::parseFromBinaryStream(&forcePowerMax, stream);
+		return true;
+	}
+
+	if (_name == "foodFilling") {
+		TypeInfo<int >::parseFromBinaryStream(&foodFilling, stream);
+		return true;
+	}
+
+	if (_name == "foodFillingMax") {
+		TypeInfo<int >::parseFromBinaryStream(&foodFillingMax, stream);
+		return true;
+	}
+
+	if (_name == "drinkFilling") {
+		TypeInfo<int >::parseFromBinaryStream(&drinkFilling, stream);
+		return true;
+	}
+
+	if (_name == "drinkFillingMax") {
+		TypeInfo<int >::parseFromBinaryStream(&drinkFillingMax, stream);
+		return true;
+	}
+
+	if (_name == "jediState") {
+		TypeInfo<int >::parseFromBinaryStream(&jediState, stream);
+		return true;
+	}
+
+	if (_name == "adminLevel") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&adminLevel, stream);
+		return true;
+	}
+
+	if (_name == "languageID") {
+		TypeInfo<byte >::parseFromBinaryStream(&languageID, stream);
+		return true;
+	}
+
+	if (_name == "xpTypeCapList") {
+		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&xpTypeCapList, stream);
+		return true;
+	}
+
+	if (_name == "commandMessageStrings") {
+		TypeInfo<VectorMap<unsigned int, String> >::parseFromBinaryStream(&commandMessageStrings, stream);
+		return true;
+	}
+
+	if (_name == "experienceList") {
+		TypeInfo<DeltaVectorMap<String, int> >::parseFromBinaryStream(&experienceList, stream);
+		return true;
+	}
+
+	if (_name == "waypointList") {
+		TypeInfo<WaypointList >::parseFromBinaryStream(&waypointList, stream);
+		return true;
+	}
+
+	if (_name == "skillList") {
+		TypeInfo<SkillList >::parseFromBinaryStream(&skillList, stream);
+		return true;
+	}
+
+	if (_name == "friendList") {
+		TypeInfo<FriendList >::parseFromBinaryStream(&friendList, stream);
+		return true;
+	}
+
+	if (_name == "ignoreList") {
+		TypeInfo<IgnoreList >::parseFromBinaryStream(&ignoreList, stream);
+		return true;
+	}
+
+	if (_name == "schematicList") {
+		TypeInfo<SchematicList >::parseFromBinaryStream(&schematicList, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void PlayerObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = PlayerObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "characterBitmask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&characterBitmask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "title";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&title, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "forcePower";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&forcePower, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "forcePowerMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&forcePowerMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "foodFilling";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&foodFilling, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "foodFillingMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&foodFillingMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "drinkFilling";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&drinkFilling, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "drinkFillingMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&drinkFillingMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "jediState";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&jediState, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "adminLevel";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&adminLevel, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "languageID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&languageID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "xpTypeCapList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<String, int> >::toBinaryStream(&xpTypeCapList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "commandMessageStrings";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, String> >::toBinaryStream(&commandMessageStrings, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "experienceList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaVectorMap<String, int> >::toBinaryStream(&experienceList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "waypointList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<WaypointList >::toBinaryStream(&waypointList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "skillList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SkillList >::toBinaryStream(&skillList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "friendList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<FriendList >::toBinaryStream(&friendList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "ignoreList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<IgnoreList >::toBinaryStream(&ignoreList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "schematicList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SchematicList >::toBinaryStream(&schematicList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 19 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation() {

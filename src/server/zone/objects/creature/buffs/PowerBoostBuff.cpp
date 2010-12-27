@@ -138,6 +138,7 @@ void PowerBoostBuffImplementation::_initializeImplementation() {
 	_setClassHelper(PowerBoostBuffHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void PowerBoostBuffImplementation::_setStub(DistributedObjectStub* stub) {
@@ -186,11 +187,113 @@ void PowerBoostBuffImplementation::_serializationHelperMethod() {
 
 	_setClassName("PowerBoostBuff");
 
-	addSerializableVariable("pbBonus", &pbBonus);
-	addSerializableVariable("pbTick", &pbTick);
-	addSerializableVariable("time", &time);
-	addSerializableVariable("counter", &counter);
-	addSerializableVariable("nextTickTime", &nextTickTime);
+}
+
+void PowerBoostBuffImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(PowerBoostBuffImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool PowerBoostBuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (BuffImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "pbBonus") {
+		TypeInfo<int >::parseFromBinaryStream(&pbBonus, stream);
+		return true;
+	}
+
+	if (_name == "pbTick") {
+		TypeInfo<int >::parseFromBinaryStream(&pbTick, stream);
+		return true;
+	}
+
+	if (_name == "time") {
+		TypeInfo<int >::parseFromBinaryStream(&time, stream);
+		return true;
+	}
+
+	if (_name == "counter") {
+		TypeInfo<int >::parseFromBinaryStream(&counter, stream);
+		return true;
+	}
+
+	if (_name == "nextTickTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&nextTickTime, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void PowerBoostBuffImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = PowerBoostBuffImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int PowerBoostBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "pbBonus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&pbBonus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "pbTick";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&pbTick, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "time";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&time, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "counter";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&counter, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nextTickTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&nextTickTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 5 + BuffImplementation::writeObjectMembers(stream);
 }
 
 PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo, const String& name, unsigned int buffCRC, int value, int duration) : BuffImplementation(creo, buffCRC, duration, BuffType::SKILL) {

@@ -128,6 +128,7 @@ void HuntingMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(HuntingMissionObjectiveHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void HuntingMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
@@ -176,7 +177,61 @@ void HuntingMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("HuntingMissionObjective");
 
-	addSerializableVariable("targetsKilled", &targetsKilled);
+}
+
+void HuntingMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(HuntingMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool HuntingMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "targetsKilled") {
+		TypeInfo<int >::parseFromBinaryStream(&targetsKilled, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void HuntingMissionObjectiveImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = HuntingMissionObjectiveImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int HuntingMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "targetsKilled";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&targetsKilled, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 HuntingMissionObjectiveImplementation::HuntingMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

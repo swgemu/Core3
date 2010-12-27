@@ -269,6 +269,7 @@ void ResourceContainerImplementation::_initializeImplementation() {
 	_setClassHelper(ResourceContainerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ResourceContainerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -317,8 +318,74 @@ void ResourceContainerImplementation::_serializationHelperMethod() {
 
 	_setClassName("ResourceContainer");
 
-	addSerializableVariable("spawnObject", &spawnObject);
-	addSerializableVariable("stackQuantity", &stackQuantity);
+}
+
+void ResourceContainerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ResourceContainerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ResourceContainerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "spawnObject") {
+		TypeInfo<ManagedReference<ResourceSpawn* > >::parseFromBinaryStream(&spawnObject, stream);
+		return true;
+	}
+
+	if (_name == "stackQuantity") {
+		TypeInfo<int >::parseFromBinaryStream(&stackQuantity, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ResourceContainerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ResourceContainerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ResourceContainerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "spawnObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ResourceSpawn* > >::toBinaryStream(&spawnObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "stackQuantity";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&stackQuantity, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation() {

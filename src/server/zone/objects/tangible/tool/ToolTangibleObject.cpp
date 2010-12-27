@@ -67,6 +67,7 @@ void ToolTangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(ToolTangibleObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ToolTangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -115,6 +116,48 @@ void ToolTangibleObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("ToolTangibleObject");
 
+}
+
+void ToolTangibleObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ToolTangibleObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ToolTangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void ToolTangibleObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ToolTangibleObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ToolTangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ToolTangibleObjectImplementation::ToolTangibleObjectImplementation() {

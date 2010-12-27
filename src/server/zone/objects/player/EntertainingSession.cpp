@@ -600,6 +600,7 @@ void EntertainingSessionImplementation::_initializeImplementation() {
 	_setClassHelper(EntertainingSessionHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void EntertainingSessionImplementation::_setStub(DistributedObjectStub* stub) {
@@ -648,20 +649,230 @@ void EntertainingSessionImplementation::_serializationHelperMethod() {
 
 	_setClassName("EntertainingSession");
 
-	addSerializableVariable("entertainer", &entertainer);
-	addSerializableVariable("observer", &observer);
-	addSerializableVariable("watchers", &watchers);
-	addSerializableVariable("listeners", &listeners);
-	addSerializableVariable("nextTick", &nextTick);
-	addSerializableVariable("performanceName", &performanceName);
-	addSerializableVariable("dancing", &dancing);
-	addSerializableVariable("playingMusic", &playingMusic);
-	addSerializableVariable("flourishXp", &flourishXp);
-	addSerializableVariable("healingXp", &healingXp);
-	addSerializableVariable("flourishCount", &flourishCount);
-	addSerializableVariable("acceptingBandFlourishes", &acceptingBandFlourishes);
-	addSerializableVariable("targetInstrument", &targetInstrument);
-	addSerializableVariable("externalInstrument", &externalInstrument);
+}
+
+void EntertainingSessionImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(EntertainingSessionImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool EntertainingSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (FacadeImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "entertainer") {
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&entertainer, stream);
+		return true;
+	}
+
+	if (_name == "observer") {
+		TypeInfo<ManagedReference<EntertainingObserver* > >::parseFromBinaryStream(&observer, stream);
+		return true;
+	}
+
+	if (_name == "watchers") {
+		TypeInfo<EntertainingDataMap >::parseFromBinaryStream(&watchers, stream);
+		return true;
+	}
+
+	if (_name == "listeners") {
+		TypeInfo<EntertainingDataMap >::parseFromBinaryStream(&listeners, stream);
+		return true;
+	}
+
+	if (_name == "nextTick") {
+		TypeInfo<Time >::parseFromBinaryStream(&nextTick, stream);
+		return true;
+	}
+
+	if (_name == "performanceName") {
+		TypeInfo<String >::parseFromBinaryStream(&performanceName, stream);
+		return true;
+	}
+
+	if (_name == "dancing") {
+		TypeInfo<bool >::parseFromBinaryStream(&dancing, stream);
+		return true;
+	}
+
+	if (_name == "playingMusic") {
+		TypeInfo<bool >::parseFromBinaryStream(&playingMusic, stream);
+		return true;
+	}
+
+	if (_name == "flourishXp") {
+		TypeInfo<int >::parseFromBinaryStream(&flourishXp, stream);
+		return true;
+	}
+
+	if (_name == "healingXp") {
+		TypeInfo<int >::parseFromBinaryStream(&healingXp, stream);
+		return true;
+	}
+
+	if (_name == "flourishCount") {
+		TypeInfo<int >::parseFromBinaryStream(&flourishCount, stream);
+		return true;
+	}
+
+	if (_name == "acceptingBandFlourishes") {
+		TypeInfo<bool >::parseFromBinaryStream(&acceptingBandFlourishes, stream);
+		return true;
+	}
+
+	if (_name == "targetInstrument") {
+		TypeInfo<bool >::parseFromBinaryStream(&targetInstrument, stream);
+		return true;
+	}
+
+	if (_name == "externalInstrument") {
+		TypeInfo<ManagedReference<Instrument* > >::parseFromBinaryStream(&externalInstrument, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void EntertainingSessionImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = EntertainingSessionImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int EntertainingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "entertainer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&entertainer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "observer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<EntertainingObserver* > >::toBinaryStream(&observer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "watchers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<EntertainingDataMap >::toBinaryStream(&watchers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "listeners";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<EntertainingDataMap >::toBinaryStream(&listeners, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nextTick";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&nextTick, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "performanceName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&performanceName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "dancing";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&dancing, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "playingMusic";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&playingMusic, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "flourishXp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&flourishXp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "healingXp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&healingXp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "flourishCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&flourishCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "acceptingBandFlourishes";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&acceptingBandFlourishes, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "targetInstrument";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&targetInstrument, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "externalInstrument";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<Instrument* > >::toBinaryStream(&externalInstrument, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 14 + FacadeImplementation::writeObjectMembers(stream);
 }
 
 EntertainingSessionImplementation::EntertainingSessionImplementation(CreatureObject* ent) {

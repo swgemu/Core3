@@ -160,6 +160,7 @@ void InstallationDeedImplementation::_initializeImplementation() {
 	_setClassHelper(InstallationDeedHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void InstallationDeedImplementation::_setStub(DistributedObjectStub* stub) {
@@ -208,8 +209,74 @@ void InstallationDeedImplementation::_serializationHelperMethod() {
 
 	_setClassName("InstallationDeed");
 
-	addSerializableVariable("surplusMaintenance", &surplusMaintenance);
-	addSerializableVariable("surplusPower", &surplusPower);
+}
+
+void InstallationDeedImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(InstallationDeedImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool InstallationDeedImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (DeedImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "surplusMaintenance") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&surplusMaintenance, stream);
+		return true;
+	}
+
+	if (_name == "surplusPower") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&surplusPower, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void InstallationDeedImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = InstallationDeedImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int InstallationDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "surplusMaintenance";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&surplusMaintenance, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "surplusPower";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&surplusPower, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + DeedImplementation::writeObjectMembers(stream);
 }
 
 InstallationDeedImplementation::InstallationDeedImplementation() {

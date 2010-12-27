@@ -561,6 +561,7 @@ void ZoneImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ZoneImplementation::_setStub(DistributedObjectStub* stub) {
@@ -609,18 +610,204 @@ void ZoneImplementation::_serializationHelperMethod() {
 
 	_setClassName("Zone");
 
-	addSerializableVariable("zoneID", &zoneID);
-	addSerializableVariable("objectMap", &objectMap);
-	addSerializableVariable("planetManager", &planetManager);
-	addSerializableVariable("cityManager", &cityManager);
-	addSerializableVariable("creatureManager", &creatureManager);
-	addSerializableVariable("server", &server);
-	addSerializableVariable("galacticTime", &galacticTime);
-	addSerializableVariable("managersStarted", &managersStarted);
-	addSerializableVariable("weatherWindX", &weatherWindX);
-	addSerializableVariable("weatherWindY", &weatherWindY);
-	addSerializableVariable("weatherID", &weatherID);
-	addSerializableVariable("weatherEnabled", &weatherEnabled);
+}
+
+void ZoneImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ZoneImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "zoneID") {
+		TypeInfo<int >::parseFromBinaryStream(&zoneID, stream);
+		return true;
+	}
+
+	if (_name == "objectMap") {
+		TypeInfo<ObjectMap >::parseFromBinaryStream(&objectMap, stream);
+		return true;
+	}
+
+	if (_name == "planetManager") {
+		TypeInfo<ManagedReference<PlanetManager* > >::parseFromBinaryStream(&planetManager, stream);
+		return true;
+	}
+
+	if (_name == "cityManager") {
+		TypeInfo<ManagedReference<CityManager* > >::parseFromBinaryStream(&cityManager, stream);
+		return true;
+	}
+
+	if (_name == "creatureManager") {
+		TypeInfo<ManagedReference<CreatureManager* > >::parseFromBinaryStream(&creatureManager, stream);
+		return true;
+	}
+
+	if (_name == "server") {
+		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
+		return true;
+	}
+
+	if (_name == "galacticTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&galacticTime, stream);
+		return true;
+	}
+
+	if (_name == "managersStarted") {
+		TypeInfo<bool >::parseFromBinaryStream(&managersStarted, stream);
+		return true;
+	}
+
+	if (_name == "weatherWindX") {
+		TypeInfo<float >::parseFromBinaryStream(&weatherWindX, stream);
+		return true;
+	}
+
+	if (_name == "weatherWindY") {
+		TypeInfo<float >::parseFromBinaryStream(&weatherWindY, stream);
+		return true;
+	}
+
+	if (_name == "weatherID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&weatherID, stream);
+		return true;
+	}
+
+	if (_name == "weatherEnabled") {
+		TypeInfo<bool >::parseFromBinaryStream(&weatherEnabled, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ZoneImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ZoneImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "zoneID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&zoneID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "objectMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ObjectMap >::toBinaryStream(&objectMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "planetManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<PlanetManager* > >::toBinaryStream(&planetManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CityManager* > >::toBinaryStream(&cityManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "creatureManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CreatureManager* > >::toBinaryStream(&creatureManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "server";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&server, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "galacticTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&galacticTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "managersStarted";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&managersStarted, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "weatherWindX";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&weatherWindX, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "weatherWindY";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&weatherWindY, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "weatherID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&weatherID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "weatherEnabled";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&weatherEnabled, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 12 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 QuadTree* ZoneImplementation::getRegionTree() {

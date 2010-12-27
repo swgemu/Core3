@@ -547,6 +547,7 @@ void GamblingTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(GamblingTerminalHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void GamblingTerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -595,18 +596,204 @@ void GamblingTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("GamblingTerminal");
 
-	addSerializableVariable("gamblingRegion", &gamblingRegion);
-	addSerializableVariable("machineType", &machineType);
-	addSerializableVariable("playersWindows", &playersWindows);
-	addSerializableVariable("winnings", &winnings);
-	addSerializableVariable("gameCount", &gameCount);
-	addSerializableVariable("first", &first);
-	addSerializableVariable("second", &second);
-	addSerializableVariable("third", &third);
-	addSerializableVariable("minBet", &minBet);
-	addSerializableVariable("maxBet", &maxBet);
-	addSerializableVariable("state", &state);
-	addSerializableVariable("bets", &bets);
+}
+
+void GamblingTerminalImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(GamblingTerminalImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool GamblingTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TerminalImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "gamblingRegion") {
+		TypeInfo<String >::parseFromBinaryStream(&gamblingRegion, stream);
+		return true;
+	}
+
+	if (_name == "machineType") {
+		TypeInfo<int >::parseFromBinaryStream(&machineType, stream);
+		return true;
+	}
+
+	if (_name == "playersWindows") {
+		TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, unsigned int> >::parseFromBinaryStream(&playersWindows, stream);
+		return true;
+	}
+
+	if (_name == "winnings") {
+		TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, int> >::parseFromBinaryStream(&winnings, stream);
+		return true;
+	}
+
+	if (_name == "gameCount") {
+		TypeInfo<int >::parseFromBinaryStream(&gameCount, stream);
+		return true;
+	}
+
+	if (_name == "first") {
+		TypeInfo<int >::parseFromBinaryStream(&first, stream);
+		return true;
+	}
+
+	if (_name == "second") {
+		TypeInfo<int >::parseFromBinaryStream(&second, stream);
+		return true;
+	}
+
+	if (_name == "third") {
+		TypeInfo<int >::parseFromBinaryStream(&third, stream);
+		return true;
+	}
+
+	if (_name == "minBet") {
+		TypeInfo<int >::parseFromBinaryStream(&minBet, stream);
+		return true;
+	}
+
+	if (_name == "maxBet") {
+		TypeInfo<int >::parseFromBinaryStream(&maxBet, stream);
+		return true;
+	}
+
+	if (_name == "state") {
+		TypeInfo<int >::parseFromBinaryStream(&state, stream);
+		return true;
+	}
+
+	if (_name == "bets") {
+		TypeInfo<Vector<GamblingBet*> >::parseFromBinaryStream(&bets, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void GamblingTerminalImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = GamblingTerminalImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "gamblingRegion";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&gamblingRegion, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "machineType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&machineType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "playersWindows";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, unsigned int> >::toBinaryStream(&playersWindows, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "winnings";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, int> >::toBinaryStream(&winnings, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "gameCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&gameCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "first";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&first, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "second";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&second, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "third";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&third, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "minBet";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&minBet, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "maxBet";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxBet, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "state";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&state, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "bets";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<GamblingBet*> >::toBinaryStream(&bets, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 12 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 GamblingTerminalImplementation::GamblingTerminalImplementation() {

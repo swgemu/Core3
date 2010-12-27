@@ -545,6 +545,7 @@ void SuiBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiBoxHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SuiBoxImplementation::_setStub(DistributedObjectStub* stub) {
@@ -593,25 +594,295 @@ void SuiBoxImplementation::_serializationHelperMethod() {
 
 	_setClassName("SuiBox");
 
-	addSerializableVariable("player", &player);
-	addSerializableVariable("boxID", &boxID);
-	addSerializableVariable("usingObject", &usingObject);
-	addSerializableVariable("handlerStr", &handlerStr);
-	addSerializableVariable("cancelButtonText", &cancelButtonText);
-	addSerializableVariable("cancelButton", &cancelButton);
-	addSerializableVariable("okButtonText", &okButtonText);
-	addSerializableVariable("okButton", &okButton);
-	addSerializableVariable("otherButtonText", &otherButtonText);
-	addSerializableVariable("otherButton", &otherButton);
-	addSerializableVariable("promptTitle", &promptTitle);
-	addSerializableVariable("promptText", &promptText);
-	addSerializableVariable("boxType", &boxType);
-	addSerializableVariable("windowType", &windowType);
-	addSerializableVariable("forceCloseDistance", &forceCloseDistance);
-	addSerializableVariable("headerSets", &headerSets);
-	addSerializableVariable("optionSets", &optionSets);
-	addSerializableVariable("hdrOptCount", &hdrOptCount);
-	addSerializableVariable("hasGenerated", &hasGenerated);
+}
+
+void SuiBoxImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SuiBoxImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SuiBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "player") {
+		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&player, stream);
+		return true;
+	}
+
+	if (_name == "boxID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&boxID, stream);
+		return true;
+	}
+
+	if (_name == "usingObject") {
+		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&usingObject, stream);
+		return true;
+	}
+
+	if (_name == "handlerStr") {
+		TypeInfo<String >::parseFromBinaryStream(&handlerStr, stream);
+		return true;
+	}
+
+	if (_name == "cancelButtonText") {
+		TypeInfo<String >::parseFromBinaryStream(&cancelButtonText, stream);
+		return true;
+	}
+
+	if (_name == "cancelButton") {
+		TypeInfo<bool >::parseFromBinaryStream(&cancelButton, stream);
+		return true;
+	}
+
+	if (_name == "okButtonText") {
+		TypeInfo<String >::parseFromBinaryStream(&okButtonText, stream);
+		return true;
+	}
+
+	if (_name == "okButton") {
+		TypeInfo<bool >::parseFromBinaryStream(&okButton, stream);
+		return true;
+	}
+
+	if (_name == "otherButtonText") {
+		TypeInfo<String >::parseFromBinaryStream(&otherButtonText, stream);
+		return true;
+	}
+
+	if (_name == "otherButton") {
+		TypeInfo<bool >::parseFromBinaryStream(&otherButton, stream);
+		return true;
+	}
+
+	if (_name == "promptTitle") {
+		TypeInfo<String >::parseFromBinaryStream(&promptTitle, stream);
+		return true;
+	}
+
+	if (_name == "promptText") {
+		TypeInfo<String >::parseFromBinaryStream(&promptText, stream);
+		return true;
+	}
+
+	if (_name == "boxType") {
+		TypeInfo<int >::parseFromBinaryStream(&boxType, stream);
+		return true;
+	}
+
+	if (_name == "windowType") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&windowType, stream);
+		return true;
+	}
+
+	if (_name == "forceCloseDistance") {
+		TypeInfo<float >::parseFromBinaryStream(&forceCloseDistance, stream);
+		return true;
+	}
+
+	if (_name == "headerSets") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&headerSets, stream);
+		return true;
+	}
+
+	if (_name == "optionSets") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&optionSets, stream);
+		return true;
+	}
+
+	if (_name == "hdrOptCount") {
+		TypeInfo<int >::parseFromBinaryStream(&hdrOptCount, stream);
+		return true;
+	}
+
+	if (_name == "hasGenerated") {
+		TypeInfo<bool >::parseFromBinaryStream(&hasGenerated, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SuiBoxImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SuiBoxImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "player";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&player, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "boxID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&boxID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "usingObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&usingObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "handlerStr";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&handlerStr, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cancelButtonText";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&cancelButtonText, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cancelButton";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&cancelButton, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "okButtonText";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&okButtonText, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "okButton";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&okButton, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "otherButtonText";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&otherButtonText, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "otherButton";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&otherButton, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "promptTitle";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&promptTitle, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "promptText";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&promptText, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "boxType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&boxType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "windowType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&windowType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "forceCloseDistance";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&forceCloseDistance, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "headerSets";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&headerSets, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "optionSets";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&optionSets, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "hdrOptCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&hdrOptCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "hasGenerated";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&hasGenerated, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 19 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 SuiBoxImplementation::SuiBoxImplementation(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) {

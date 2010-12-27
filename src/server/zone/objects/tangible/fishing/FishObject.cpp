@@ -151,6 +151,7 @@ void FishObjectImplementation::_initializeImplementation() {
 	_setClassHelper(FishObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void FishObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -199,10 +200,100 @@ void FishObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("FishObject");
 
-	addSerializableVariable("player", &player);
-	addSerializableVariable("planet", &planet);
-	addSerializableVariable("timeCaught", &timeCaught);
-	addSerializableVariable("length", &length);
+}
+
+void FishObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(FishObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool FishObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "player") {
+		TypeInfo<String >::parseFromBinaryStream(&player, stream);
+		return true;
+	}
+
+	if (_name == "planet") {
+		TypeInfo<int >::parseFromBinaryStream(&planet, stream);
+		return true;
+	}
+
+	if (_name == "timeCaught") {
+		TypeInfo<String >::parseFromBinaryStream(&timeCaught, stream);
+		return true;
+	}
+
+	if (_name == "length") {
+		TypeInfo<float >::parseFromBinaryStream(&length, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void FishObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = FishObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "player";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&player, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "planet";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&planet, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "timeCaught";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&timeCaught, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "length";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&length, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 FishObjectImplementation::FishObjectImplementation() {

@@ -84,6 +84,7 @@ void MissionSpawnActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(MissionSpawnActiveAreaHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void MissionSpawnActiveAreaImplementation::_setStub(DistributedObjectStub* stub) {
@@ -132,7 +133,61 @@ void MissionSpawnActiveAreaImplementation::_serializationHelperMethod() {
 
 	_setClassName("MissionSpawnActiveArea");
 
-	addSerializableVariable("destroyMissionObjective", &destroyMissionObjective);
+}
+
+void MissionSpawnActiveAreaImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(MissionSpawnActiveAreaImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool MissionSpawnActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "destroyMissionObjective") {
+		TypeInfo<ManagedWeakReference<DestroyMissionObjective* > >::parseFromBinaryStream(&destroyMissionObjective, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void MissionSpawnActiveAreaImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = MissionSpawnActiveAreaImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int MissionSpawnActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "destroyMissionObjective";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<DestroyMissionObjective* > >::toBinaryStream(&destroyMissionObjective, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation() {

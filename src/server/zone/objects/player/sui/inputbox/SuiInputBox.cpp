@@ -121,6 +121,7 @@ void SuiInputBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiInputBoxHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SuiInputBoxImplementation::_setStub(DistributedObjectStub* stub) {
@@ -169,9 +170,87 @@ void SuiInputBoxImplementation::_serializationHelperMethod() {
 
 	_setClassName("SuiInputBox");
 
-	addSerializableVariable("maxInputSize", &maxInputSize);
-	addSerializableVariable("defaultInput", &defaultInput);
-	addSerializableVariable("inputType", &inputType);
+}
+
+void SuiInputBoxImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SuiInputBoxImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SuiInputBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SuiBoxImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "maxInputSize") {
+		TypeInfo<int >::parseFromBinaryStream(&maxInputSize, stream);
+		return true;
+	}
+
+	if (_name == "defaultInput") {
+		TypeInfo<String >::parseFromBinaryStream(&defaultInput, stream);
+		return true;
+	}
+
+	if (_name == "inputType") {
+		TypeInfo<int >::parseFromBinaryStream(&inputType, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SuiInputBoxImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SuiInputBoxImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SuiInputBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "maxInputSize";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxInputSize, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "defaultInput";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&defaultInput, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "inputType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&inputType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + SuiBoxImplementation::writeObjectMembers(stream);
 }
 
 SuiInputBoxImplementation::SuiInputBoxImplementation(PlayerCreature* player, unsigned int windowType, int inputtype) : SuiBoxImplementation(player, windowType, SuiBox::INPUTBOX) {

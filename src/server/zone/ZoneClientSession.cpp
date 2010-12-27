@@ -271,6 +271,7 @@ void ZoneClientSessionImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneClientSessionHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ZoneClientSessionImplementation::_setStub(DistributedObjectStub* stub) {
@@ -319,10 +320,100 @@ void ZoneClientSessionImplementation::_serializationHelperMethod() {
 
 	_setClassName("ZoneClientSession");
 
-	addSerializableVariable("player", &player);
-	addSerializableVariable("sessionID", &sessionID);
-	addSerializableVariable("account", &account);
-	addSerializableVariable("disconnecting", &disconnecting);
+}
+
+void ZoneClientSessionImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ZoneClientSessionImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "player") {
+		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&player, stream);
+		return true;
+	}
+
+	if (_name == "sessionID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&sessionID, stream);
+		return true;
+	}
+
+	if (_name == "account") {
+		TypeInfo<ManagedReference<Account* > >::parseFromBinaryStream(&account, stream);
+		return true;
+	}
+
+	if (_name == "disconnecting") {
+		TypeInfo<bool >::parseFromBinaryStream(&disconnecting, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ZoneClientSessionImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ZoneClientSessionImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "player";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&player, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "sessionID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&sessionID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "account";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<Account* > >::toBinaryStream(&account, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "disconnecting";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&disconnecting, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {

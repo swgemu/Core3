@@ -222,6 +222,7 @@ void TicketObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TicketObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void TicketObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -270,10 +271,100 @@ void TicketObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("TicketObject");
 
-	addSerializableVariable("departurePlanet", &departurePlanet);
-	addSerializableVariable("departurePoint", &departurePoint);
-	addSerializableVariable("arrivalPlanet", &arrivalPlanet);
-	addSerializableVariable("arrivalPoint", &arrivalPoint);
+}
+
+void TicketObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(TicketObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool TicketObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "departurePlanet") {
+		TypeInfo<String >::parseFromBinaryStream(&departurePlanet, stream);
+		return true;
+	}
+
+	if (_name == "departurePoint") {
+		TypeInfo<String >::parseFromBinaryStream(&departurePoint, stream);
+		return true;
+	}
+
+	if (_name == "arrivalPlanet") {
+		TypeInfo<String >::parseFromBinaryStream(&arrivalPlanet, stream);
+		return true;
+	}
+
+	if (_name == "arrivalPoint") {
+		TypeInfo<String >::parseFromBinaryStream(&arrivalPoint, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void TicketObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = TicketObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "departurePlanet";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&departurePlanet, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "departurePoint";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&departurePoint, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "arrivalPlanet";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&arrivalPlanet, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "arrivalPoint";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&arrivalPoint, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 TicketObjectImplementation::TicketObjectImplementation() {

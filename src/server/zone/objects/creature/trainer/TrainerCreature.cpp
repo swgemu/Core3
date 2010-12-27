@@ -270,6 +270,7 @@ void TrainerCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(TrainerCreatureHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void TrainerCreatureImplementation::_setStub(DistributedObjectStub* stub) {
@@ -318,9 +319,87 @@ void TrainerCreatureImplementation::_serializationHelperMethod() {
 
 	_setClassName("TrainerCreature");
 
-	addSerializableVariable("profession", &profession);
-	addSerializableVariable("trainerID", &trainerID);
-	addSerializableVariable("location", &location);
+}
+
+void TrainerCreatureImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(TrainerCreatureImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool TrainerCreatureImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (CreatureObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "profession") {
+		TypeInfo<ProfessionReference >::parseFromBinaryStream(&profession, stream);
+		return true;
+	}
+
+	if (_name == "trainerID") {
+		TypeInfo<int >::parseFromBinaryStream(&trainerID, stream);
+		return true;
+	}
+
+	if (_name == "location") {
+		TypeInfo<String >::parseFromBinaryStream(&location, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void TrainerCreatureImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = TrainerCreatureImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int TrainerCreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "profession";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ProfessionReference >::toBinaryStream(&profession, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "trainerID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&trainerID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "location";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&location, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 TrainerCreatureImplementation::TrainerCreatureImplementation() {

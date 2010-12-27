@@ -142,6 +142,7 @@ void ControlDeviceImplementation::_initializeImplementation() {
 	_setClassHelper(ControlDeviceHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ControlDeviceImplementation::_setStub(DistributedObjectStub* stub) {
@@ -190,7 +191,61 @@ void ControlDeviceImplementation::_serializationHelperMethod() {
 
 	_setClassName("ControlDevice");
 
-	addSerializableVariable("controlledObject", &controlledObject);
+}
+
+void ControlDeviceImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ControlDeviceImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ControlDeviceImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "controlledObject") {
+		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&controlledObject, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ControlDeviceImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ControlDeviceImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "controlledObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&controlledObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ControlDeviceImplementation::ControlDeviceImplementation() {

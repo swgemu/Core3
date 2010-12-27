@@ -83,6 +83,7 @@ void ArmorComponentImplementation::_initializeImplementation() {
 	_setClassHelper(ArmorComponentHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ArmorComponentImplementation::_setStub(DistributedObjectStub* stub) {
@@ -131,7 +132,61 @@ void ArmorComponentImplementation::_serializationHelperMethod() {
 
 	_setClassName("ArmorComponent");
 
-	addSerializableVariable("specialResists", &specialResists);
+}
+
+void ArmorComponentImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ArmorComponentImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ArmorComponentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ComponentImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "specialResists") {
+		TypeInfo<int >::parseFromBinaryStream(&specialResists, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ArmorComponentImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ArmorComponentImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ArmorComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "specialResists";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&specialResists, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + ComponentImplementation::writeObjectMembers(stream);
 }
 
 ArmorComponentImplementation::ArmorComponentImplementation() {

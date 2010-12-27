@@ -190,6 +190,7 @@ void ConsumableImplementation::_initializeImplementation() {
 	_setClassHelper(ConsumableHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ConsumableImplementation::_setStub(DistributedObjectStub* stub) {
@@ -238,23 +239,269 @@ void ConsumableImplementation::_serializationHelperMethod() {
 
 	_setClassName("Consumable");
 
-	addSerializableVariable("duration", &duration);
-	addSerializableVariable("filling", &filling);
-	addSerializableVariable("nutrition", &nutrition);
-	addSerializableVariable("effectType", &effectType);
-	addSerializableVariable("fillingMin", &fillingMin);
-	addSerializableVariable("fillingMax", &fillingMax);
-	addSerializableVariable("flavorMin", &flavorMin);
-	addSerializableVariable("flavorMax", &flavorMax);
-	addSerializableVariable("nutritionMin", &nutritionMin);
-	addSerializableVariable("nutritionMax", &nutritionMax);
-	addSerializableVariable("quantityMin", &quantityMin);
-	addSerializableVariable("quantityMax", &quantityMax);
-	addSerializableVariable("modifiers", &modifiers);
-	addSerializableVariable("buffName", &buffName);
-	addSerializableVariable("buffCRC", &buffCRC);
-	addSerializableVariable("consumableType", &consumableType);
-	addSerializableVariable("speciesRestriction", &speciesRestriction);
+}
+
+void ConsumableImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ConsumableImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ConsumableImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "duration") {
+		TypeInfo<int >::parseFromBinaryStream(&duration, stream);
+		return true;
+	}
+
+	if (_name == "filling") {
+		TypeInfo<int >::parseFromBinaryStream(&filling, stream);
+		return true;
+	}
+
+	if (_name == "nutrition") {
+		TypeInfo<int >::parseFromBinaryStream(&nutrition, stream);
+		return true;
+	}
+
+	if (_name == "effectType") {
+		TypeInfo<int >::parseFromBinaryStream(&effectType, stream);
+		return true;
+	}
+
+	if (_name == "fillingMin") {
+		TypeInfo<int >::parseFromBinaryStream(&fillingMin, stream);
+		return true;
+	}
+
+	if (_name == "fillingMax") {
+		TypeInfo<int >::parseFromBinaryStream(&fillingMax, stream);
+		return true;
+	}
+
+	if (_name == "flavorMin") {
+		TypeInfo<int >::parseFromBinaryStream(&flavorMin, stream);
+		return true;
+	}
+
+	if (_name == "flavorMax") {
+		TypeInfo<int >::parseFromBinaryStream(&flavorMax, stream);
+		return true;
+	}
+
+	if (_name == "nutritionMin") {
+		TypeInfo<int >::parseFromBinaryStream(&nutritionMin, stream);
+		return true;
+	}
+
+	if (_name == "nutritionMax") {
+		TypeInfo<int >::parseFromBinaryStream(&nutritionMax, stream);
+		return true;
+	}
+
+	if (_name == "quantityMin") {
+		TypeInfo<int >::parseFromBinaryStream(&quantityMin, stream);
+		return true;
+	}
+
+	if (_name == "quantityMax") {
+		TypeInfo<int >::parseFromBinaryStream(&quantityMax, stream);
+		return true;
+	}
+
+	if (_name == "modifiers") {
+		TypeInfo<VectorMap<String, float> >::parseFromBinaryStream(&modifiers, stream);
+		return true;
+	}
+
+	if (_name == "buffName") {
+		TypeInfo<String >::parseFromBinaryStream(&buffName, stream);
+		return true;
+	}
+
+	if (_name == "buffCRC") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&buffCRC, stream);
+		return true;
+	}
+
+	if (_name == "consumableType") {
+		TypeInfo<int >::parseFromBinaryStream(&consumableType, stream);
+		return true;
+	}
+
+	if (_name == "speciesRestriction") {
+		TypeInfo<String >::parseFromBinaryStream(&speciesRestriction, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ConsumableImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ConsumableImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "duration";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&duration, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "filling";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&filling, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nutrition";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&nutrition, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "effectType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&effectType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "fillingMin";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&fillingMin, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "fillingMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&fillingMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "flavorMin";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&flavorMin, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "flavorMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&flavorMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nutritionMin";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&nutritionMin, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nutritionMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&nutritionMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "quantityMin";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&quantityMin, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "quantityMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&quantityMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "modifiers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<String, float> >::toBinaryStream(&modifiers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "buffName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&buffName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "buffCRC";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&buffCRC, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "consumableType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&consumableType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "speciesRestriction";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&speciesRestriction, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 17 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ConsumableImplementation::ConsumableImplementation() {

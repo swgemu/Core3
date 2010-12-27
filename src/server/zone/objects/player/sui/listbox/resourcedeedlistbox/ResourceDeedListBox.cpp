@@ -148,6 +148,7 @@ void ResourceDeedListBoxImplementation::_initializeImplementation() {
 	_setClassHelper(ResourceDeedListBoxHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ResourceDeedListBoxImplementation::_setStub(DistributedObjectStub* stub) {
@@ -196,6 +197,48 @@ void ResourceDeedListBoxImplementation::_serializationHelperMethod() {
 
 	_setClassName("ResourceDeedListBox");
 
+}
+
+void ResourceDeedListBoxImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ResourceDeedListBoxImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ResourceDeedListBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SuiListBoxImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void ResourceDeedListBoxImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ResourceDeedListBoxImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ResourceDeedListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
 ResourceDeedListBoxImplementation::ResourceDeedListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiListBoxImplementation(player, windowType, SuiBox::LISTBOX) {

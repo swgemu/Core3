@@ -159,6 +159,7 @@ void BazaarAuctionsMapImplementation::_initializeImplementation() {
 	_setClassHelper(BazaarAuctionsMapHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void BazaarAuctionsMapImplementation::_setStub(DistributedObjectStub* stub) {
@@ -207,8 +208,74 @@ void BazaarAuctionsMapImplementation::_serializationHelperMethod() {
 
 	_setClassName("BazaarAuctionsMap");
 
-	addSerializableVariable("auctions", &auctions);
-	addSerializableVariable("playerAuctionCount", &playerAuctionCount);
+}
+
+void BazaarAuctionsMapImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(BazaarAuctionsMapImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool BazaarAuctionsMapImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "auctions") {
+		TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::parseFromBinaryStream(&auctions, stream);
+		return true;
+	}
+
+	if (_name == "playerAuctionCount") {
+		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&playerAuctionCount, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void BazaarAuctionsMapImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = BazaarAuctionsMapImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int BazaarAuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "auctions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::toBinaryStream(&auctions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "playerAuctionCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned long long, int> >::toBinaryStream(&playerAuctionCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 BazaarAuctionsMapImplementation::BazaarAuctionsMapImplementation() {

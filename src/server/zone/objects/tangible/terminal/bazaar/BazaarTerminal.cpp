@@ -125,6 +125,7 @@ void BazaarTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(BazaarTerminalHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void BazaarTerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -173,7 +174,61 @@ void BazaarTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("BazaarTerminal");
 
-	addSerializableVariable("auctions", &auctions);
+}
+
+void BazaarTerminalImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(BazaarTerminalImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool BazaarTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TerminalImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "auctions") {
+		TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::parseFromBinaryStream(&auctions, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void BazaarTerminalImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = BazaarTerminalImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int BazaarTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "auctions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::toBinaryStream(&auctions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 BazaarTerminalImplementation::BazaarTerminalImplementation() {

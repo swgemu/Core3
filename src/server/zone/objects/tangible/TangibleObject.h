@@ -587,6 +587,8 @@ public:
 	operator const TangibleObject*();
 
 	DistributedObjectStub* _getStub();
+	virtual void readObject(ObjectInputStream* stream);
+	virtual void writeObject(ObjectOutputStream* stream);
 protected:
 	virtual ~TangibleObjectImplementation();
 
@@ -611,6 +613,8 @@ protected:
 	void runlock(bool doLock = true);
 
 	void _serializationHelperMethod();
+	bool readObjectMember(ObjectInputStream* stream, const String& name);
+	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class TangibleObject;
 };

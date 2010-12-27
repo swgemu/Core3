@@ -308,6 +308,7 @@ void ComponentImplementation::_initializeImplementation() {
 	_setClassHelper(ComponentHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ComponentImplementation::_setStub(DistributedObjectStub* stub) {
@@ -356,11 +357,113 @@ void ComponentImplementation::_serializationHelperMethod() {
 
 	_setClassName("Component");
 
-	addSerializableVariable("attributeMap", &attributeMap);
-	addSerializableVariable("precisionMap", &precisionMap);
-	addSerializableVariable("titleMap", &titleMap);
-	addSerializableVariable("hiddenMap", &hiddenMap);
-	addSerializableVariable("keyList", &keyList);
+}
+
+void ComponentImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ComponentImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ComponentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "attributeMap") {
+		TypeInfo<VectorMap<String, float> >::parseFromBinaryStream(&attributeMap, stream);
+		return true;
+	}
+
+	if (_name == "precisionMap") {
+		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&precisionMap, stream);
+		return true;
+	}
+
+	if (_name == "titleMap") {
+		TypeInfo<VectorMap<String, String> >::parseFromBinaryStream(&titleMap, stream);
+		return true;
+	}
+
+	if (_name == "hiddenMap") {
+		TypeInfo<VectorMap<String, bool> >::parseFromBinaryStream(&hiddenMap, stream);
+		return true;
+	}
+
+	if (_name == "keyList") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&keyList, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ComponentImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ComponentImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "attributeMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<String, float> >::toBinaryStream(&attributeMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "precisionMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<String, int> >::toBinaryStream(&precisionMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "titleMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<String, String> >::toBinaryStream(&titleMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "hiddenMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<String, bool> >::toBinaryStream(&hiddenMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "keyList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&keyList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 5 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ComponentImplementation::ComponentImplementation() {
