@@ -160,6 +160,7 @@ void LootGroupObjectImplementation::_initializeImplementation() {
 	_setClassHelper(LootGroupObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void LootGroupObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -208,12 +209,126 @@ void LootGroupObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("LootGroupObject");
 
-	addSerializableVariable("lootObjects", &lootObjects);
-	addSerializableVariable("zoneServer", &zoneServer);
-	addSerializableVariable("lootGroup", &lootGroup);
-	addSerializableVariable("weight", &weight);
-	addSerializableVariable("maxDrop", &maxDrop);
-	addSerializableVariable("maxChance", &maxChance);
+}
+
+void LootGroupObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(LootGroupObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool LootGroupObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "lootObjects") {
+		TypeInfo<VectorMap<unsigned int, ManagedReference<LootObject* > > >::parseFromBinaryStream(&lootObjects, stream);
+		return true;
+	}
+
+	if (_name == "zoneServer") {
+		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
+		return true;
+	}
+
+	if (_name == "lootGroup") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&lootGroup, stream);
+		return true;
+	}
+
+	if (_name == "weight") {
+		TypeInfo<int >::parseFromBinaryStream(&weight, stream);
+		return true;
+	}
+
+	if (_name == "maxDrop") {
+		TypeInfo<int >::parseFromBinaryStream(&maxDrop, stream);
+		return true;
+	}
+
+	if (_name == "maxChance") {
+		TypeInfo<int >::parseFromBinaryStream(&maxChance, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void LootGroupObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = LootGroupObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int LootGroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "lootObjects";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, ManagedReference<LootObject* > > >::toBinaryStream(&lootObjects, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "zoneServer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lootGroup";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&lootGroup, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "weight";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&weight, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "maxDrop";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxDrop, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "maxChance";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxChance, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 6 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 LootGroupObjectImplementation::LootGroupObjectImplementation(unsigned int group, int w, int max) {

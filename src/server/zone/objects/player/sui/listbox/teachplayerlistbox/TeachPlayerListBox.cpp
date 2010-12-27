@@ -101,6 +101,7 @@ void TeachPlayerListBoxImplementation::_initializeImplementation() {
 	_setClassHelper(TeachPlayerListBoxHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void TeachPlayerListBoxImplementation::_setStub(DistributedObjectStub* stub) {
@@ -149,8 +150,74 @@ void TeachPlayerListBoxImplementation::_serializationHelperMethod() {
 
 	_setClassName("TeachPlayerListBox");
 
-	addSerializableVariable("studentPlayer", &studentPlayer);
-	addSerializableVariable("teachingSkillOptions", &teachingSkillOptions);
+}
+
+void TeachPlayerListBoxImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(TeachPlayerListBoxImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool TeachPlayerListBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SuiListBoxImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "studentPlayer") {
+		TypeInfo<ManagedReference<PlayerCreature* > >::parseFromBinaryStream(&studentPlayer, stream);
+		return true;
+	}
+
+	if (_name == "teachingSkillOptions") {
+		TypeInfo<Vector<SkillBox*> >::parseFromBinaryStream(&teachingSkillOptions, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void TeachPlayerListBoxImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = TeachPlayerListBoxImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int TeachPlayerListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "studentPlayer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<PlayerCreature* > >::toBinaryStream(&studentPlayer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "teachingSkillOptions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<SkillBox*> >::toBinaryStream(&teachingSkillOptions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
 TeachPlayerListBoxImplementation::TeachPlayerListBoxImplementation(PlayerCreature* player) : SuiListBoxImplementation(player, 36, 0) {

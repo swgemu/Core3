@@ -349,6 +349,7 @@ void BazaarManagerImplementation::_initializeImplementation() {
 	_setClassHelper(BazaarManagerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void BazaarManagerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -397,8 +398,74 @@ void BazaarManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("BazaarManager");
 
-	addSerializableVariable("auctionMap", &auctionMap);
-	addSerializableVariable("zoneServer", &zoneServer);
+}
+
+void BazaarManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(BazaarManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool BazaarManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "auctionMap") {
+		TypeInfo<ManagedReference<BazaarAuctionsMap* > >::parseFromBinaryStream(&auctionMap, stream);
+		return true;
+	}
+
+	if (_name == "zoneServer") {
+		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void BazaarManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = BazaarManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int BazaarManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "auctionMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<BazaarAuctionsMap* > >::toBinaryStream(&auctionMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "zoneServer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) {

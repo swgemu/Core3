@@ -79,6 +79,7 @@ void SuiListBoxMenuItemImplementation::_initializeImplementation() {
 	_setClassHelper(SuiListBoxMenuItemHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SuiListBoxMenuItemImplementation::_setStub(DistributedObjectStub* stub) {
@@ -127,8 +128,74 @@ void SuiListBoxMenuItemImplementation::_serializationHelperMethod() {
 
 	_setClassName("SuiListBoxMenuItem");
 
-	addSerializableVariable("optionName", &optionName);
-	addSerializableVariable("objectID", &objectID);
+}
+
+void SuiListBoxMenuItemImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SuiListBoxMenuItemImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SuiListBoxMenuItemImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "optionName") {
+		TypeInfo<String >::parseFromBinaryStream(&optionName, stream);
+		return true;
+	}
+
+	if (_name == "objectID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&objectID, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SuiListBoxMenuItemImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SuiListBoxMenuItemImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SuiListBoxMenuItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "optionName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&optionName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "objectID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&objectID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 SuiListBoxMenuItemImplementation::SuiListBoxMenuItemImplementation(const String& name, unsigned long long oid) {

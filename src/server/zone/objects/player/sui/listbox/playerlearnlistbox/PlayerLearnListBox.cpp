@@ -100,6 +100,7 @@ void PlayerLearnListBoxImplementation::_initializeImplementation() {
 	_setClassHelper(PlayerLearnListBoxHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void PlayerLearnListBoxImplementation::_setStub(DistributedObjectStub* stub) {
@@ -148,8 +149,74 @@ void PlayerLearnListBoxImplementation::_serializationHelperMethod() {
 
 	_setClassName("PlayerLearnListBox");
 
-	addSerializableVariable("teacherPlayer", &teacherPlayer);
-	addSerializableVariable("teachingOffer", &teachingOffer);
+}
+
+void PlayerLearnListBoxImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(PlayerLearnListBoxImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool PlayerLearnListBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SuiListBoxImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "teacherPlayer") {
+		TypeInfo<ManagedReference<PlayerCreature* > >::parseFromBinaryStream(&teacherPlayer, stream);
+		return true;
+	}
+
+	if (_name == "teachingOffer") {
+		TypeInfo<String >::parseFromBinaryStream(&teachingOffer, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void PlayerLearnListBoxImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = PlayerLearnListBoxImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int PlayerLearnListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "teacherPlayer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<PlayerCreature* > >::toBinaryStream(&teacherPlayer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "teachingOffer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&teachingOffer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
 PlayerLearnListBoxImplementation::PlayerLearnListBoxImplementation(PlayerCreature* player) : SuiListBoxImplementation(player, 35, 0) {

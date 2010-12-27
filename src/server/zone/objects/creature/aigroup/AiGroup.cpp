@@ -161,6 +161,7 @@ void AiGroupImplementation::_initializeImplementation() {
 	_setClassHelper(AiGroupHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void AiGroupImplementation::_setStub(DistributedObjectStub* stub) {
@@ -209,22 +210,256 @@ void AiGroupImplementation::_serializationHelperMethod() {
 
 	_setClassName("AiGroup");
 
-	addSerializableVariable("leader", &leader);
-	addSerializableVariable("scouts", &scouts);
-	addSerializableVariable("scoutTemps", &scoutTemps);
-	addSerializableVariable("protectors", &protectors);
-	addSerializableVariable("protectorTemps", &protectorTemps);
-	addSerializableVariable("babies", &babies);
-	addSerializableVariable("babyTemps", &babyTemps);
-	addSerializableVariable("subgroups", &subgroups);
-	addSerializableVariable("observers", &observers);
-	addSerializableVariable("commandLevel", &commandLevel);
-	addSerializableVariable("wanderRadius", &wanderRadius);
-	addSerializableVariable("size", &size);
-	addSerializableVariable("scoutWeight", &scoutWeight);
-	addSerializableVariable("protectorWeight", &protectorWeight);
-	addSerializableVariable("babyWeight", &babyWeight);
-	addSerializableVariable("isStatic", &isStatic);
+}
+
+void AiGroupImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(AiGroupImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool AiGroupImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SceneObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "leader") {
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&leader, stream);
+		return true;
+	}
+
+	if (_name == "scouts") {
+		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&scouts, stream);
+		return true;
+	}
+
+	if (_name == "scoutTemps") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&scoutTemps, stream);
+		return true;
+	}
+
+	if (_name == "protectors") {
+		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&protectors, stream);
+		return true;
+	}
+
+	if (_name == "protectorTemps") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&protectorTemps, stream);
+		return true;
+	}
+
+	if (_name == "babies") {
+		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&babies, stream);
+		return true;
+	}
+
+	if (_name == "babyTemps") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&babyTemps, stream);
+		return true;
+	}
+
+	if (_name == "subgroups") {
+		TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::parseFromBinaryStream(&subgroups, stream);
+		return true;
+	}
+
+	if (_name == "observers") {
+		TypeInfo<SortedVector<ManagedReference<AiGroupObserver* > > >::parseFromBinaryStream(&observers, stream);
+		return true;
+	}
+
+	if (_name == "commandLevel") {
+		TypeInfo<int >::parseFromBinaryStream(&commandLevel, stream);
+		return true;
+	}
+
+	if (_name == "wanderRadius") {
+		TypeInfo<float >::parseFromBinaryStream(&wanderRadius, stream);
+		return true;
+	}
+
+	if (_name == "size") {
+		TypeInfo<int >::parseFromBinaryStream(&size, stream);
+		return true;
+	}
+
+	if (_name == "scoutWeight") {
+		TypeInfo<float >::parseFromBinaryStream(&scoutWeight, stream);
+		return true;
+	}
+
+	if (_name == "protectorWeight") {
+		TypeInfo<float >::parseFromBinaryStream(&protectorWeight, stream);
+		return true;
+	}
+
+	if (_name == "babyWeight") {
+		TypeInfo<float >::parseFromBinaryStream(&babyWeight, stream);
+		return true;
+	}
+
+	if (_name == "isStatic") {
+		TypeInfo<bool >::parseFromBinaryStream(&isStatic, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void AiGroupImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = AiGroupImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "leader";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&leader, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "scouts";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::toBinaryStream(&scouts, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "scoutTemps";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&scoutTemps, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "protectors";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::toBinaryStream(&protectors, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "protectorTemps";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&protectorTemps, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "babies";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::toBinaryStream(&babies, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "babyTemps";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&babyTemps, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "subgroups";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::toBinaryStream(&subgroups, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "observers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<AiGroupObserver* > > >::toBinaryStream(&observers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "commandLevel";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&commandLevel, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "wanderRadius";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&wanderRadius, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "size";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&size, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "scoutWeight";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&scoutWeight, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "protectorWeight";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&protectorWeight, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "babyWeight";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&babyWeight, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "isStatic";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&isStatic, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 16 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 AiGroupImplementation::AiGroupImplementation() {

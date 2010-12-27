@@ -3228,6 +3228,7 @@ void CreatureObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CreatureObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void CreatureObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -3276,60 +3277,750 @@ void CreatureObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("CreatureObject");
 
-	addSerializableVariable("bankCredits", &bankCredits);
-	addSerializableVariable("cashCredits", &cashCredits);
-	addSerializableVariable("gender", &gender);
-	addSerializableVariable("species", &species);
-	addSerializableVariable("baseHAM", &baseHAM);
-	addSerializableVariable("posture", &posture);
-	addSerializableVariable("factionRank", &factionRank);
-	addSerializableVariable("linkedCreature", &linkedCreature);
-	addSerializableVariable("controlDevice", &controlDevice);
-	addSerializableVariable("shockWounds", &shockWounds);
-	addSerializableVariable("wounds", &wounds);
-	addSerializableVariable("stateBitmask", &stateBitmask);
-	addSerializableVariable("encumbrances", &encumbrances);
-	addSerializableVariable("accelerationMultiplierBase", &accelerationMultiplierBase);
-	addSerializableVariable("accelerationMultiplierMod", &accelerationMultiplierMod);
-	addSerializableVariable("speedMultiplierBase", &speedMultiplierBase);
-	addSerializableVariable("speedMultiplierModChanges", &speedMultiplierModChanges);
-	addSerializableVariable("speedMultiplierMod", &speedMultiplierMod);
-	addSerializableVariable("runSpeed", &runSpeed);
-	addSerializableVariable("walkSpeed", &walkSpeed);
-	addSerializableVariable("terrainNegotiation", &terrainNegotiation);
-	addSerializableVariable("runAcceleration", &runAcceleration);
-	addSerializableVariable("walkAcceleration", &walkAcceleration);
-	addSerializableVariable("height", &height);
-	addSerializableVariable("swimHeight", &swimHeight);
-	addSerializableVariable("slopeModPercent", &slopeModPercent);
-	addSerializableVariable("slopeModAngle", &slopeModAngle);
-	addSerializableVariable("listenToID", &listenToID);
-	addSerializableVariable("watchToID", &watchToID);
-	addSerializableVariable("performanceAnimation", &performanceAnimation);
-	addSerializableVariable("moodString", &moodString);
-	addSerializableVariable("weapon", &weapon);
-	addSerializableVariable("group", &group);
-	addSerializableVariable("groupInviterID", &groupInviterID);
-	addSerializableVariable("groupInviteCounter", &groupInviteCounter);
-	addSerializableVariable("guild", &guild);
-	addSerializableVariable("targetID", &targetID);
-	addSerializableVariable("moodID", &moodID);
-	addSerializableVariable("performanceCounter", &performanceCounter);
-	addSerializableVariable("instrumentID", &instrumentID);
-	addSerializableVariable("hamList", &hamList);
-	addSerializableVariable("maxHamList", &maxHamList);
-	addSerializableVariable("lootGroup", &lootGroup);
-	addSerializableVariable("frozen", &frozen);
-	addSerializableVariable("templateString", &templateString);
-	addSerializableVariable("skillBoxList", &skillBoxList);
-	addSerializableVariable("skillModList", &skillModList);
-	addSerializableVariable("commandQueue", &commandQueue);
-	addSerializableVariable("nextAction", &nextAction);
-	addSerializableVariable("cooldownTimerMap", &cooldownTimerMap);
-	addSerializableVariable("creatureBuffs", &creatureBuffs);
-	addSerializableVariable("damageOverTimeList", &damageOverTimeList);
-	addSerializableVariable("lastSuccessfulCombatAction", &lastSuccessfulCombatAction);
-	addSerializableVariable("timeOfDeath", &timeOfDeath);
+}
+
+void CreatureObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CreatureObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "bankCredits") {
+		TypeInfo<int >::parseFromBinaryStream(&bankCredits, stream);
+		return true;
+	}
+
+	if (_name == "cashCredits") {
+		TypeInfo<int >::parseFromBinaryStream(&cashCredits, stream);
+		return true;
+	}
+
+	if (_name == "gender") {
+		TypeInfo<int >::parseFromBinaryStream(&gender, stream);
+		return true;
+	}
+
+	if (_name == "species") {
+		TypeInfo<int >::parseFromBinaryStream(&species, stream);
+		return true;
+	}
+
+	if (_name == "baseHAM") {
+		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&baseHAM, stream);
+		return true;
+	}
+
+	if (_name == "posture") {
+		TypeInfo<byte >::parseFromBinaryStream(&posture, stream);
+		return true;
+	}
+
+	if (_name == "factionRank") {
+		TypeInfo<byte >::parseFromBinaryStream(&factionRank, stream);
+		return true;
+	}
+
+	if (_name == "linkedCreature") {
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&linkedCreature, stream);
+		return true;
+	}
+
+	if (_name == "controlDevice") {
+		TypeInfo<ManagedWeakReference<ControlDevice* > >::parseFromBinaryStream(&controlDevice, stream);
+		return true;
+	}
+
+	if (_name == "shockWounds") {
+		TypeInfo<float >::parseFromBinaryStream(&shockWounds, stream);
+		return true;
+	}
+
+	if (_name == "wounds") {
+		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&wounds, stream);
+		return true;
+	}
+
+	if (_name == "stateBitmask") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&stateBitmask, stream);
+		return true;
+	}
+
+	if (_name == "encumbrances") {
+		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&encumbrances, stream);
+		return true;
+	}
+
+	if (_name == "accelerationMultiplierBase") {
+		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierBase, stream);
+		return true;
+	}
+
+	if (_name == "accelerationMultiplierMod") {
+		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierMod, stream);
+		return true;
+	}
+
+	if (_name == "speedMultiplierBase") {
+		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierBase, stream);
+		return true;
+	}
+
+	if (_name == "speedMultiplierModChanges") {
+		TypeInfo<SpeedMultiplierModChanges >::parseFromBinaryStream(&speedMultiplierModChanges, stream);
+		return true;
+	}
+
+	if (_name == "speedMultiplierMod") {
+		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierMod, stream);
+		return true;
+	}
+
+	if (_name == "runSpeed") {
+		TypeInfo<float >::parseFromBinaryStream(&runSpeed, stream);
+		return true;
+	}
+
+	if (_name == "walkSpeed") {
+		TypeInfo<float >::parseFromBinaryStream(&walkSpeed, stream);
+		return true;
+	}
+
+	if (_name == "terrainNegotiation") {
+		TypeInfo<float >::parseFromBinaryStream(&terrainNegotiation, stream);
+		return true;
+	}
+
+	if (_name == "runAcceleration") {
+		TypeInfo<float >::parseFromBinaryStream(&runAcceleration, stream);
+		return true;
+	}
+
+	if (_name == "walkAcceleration") {
+		TypeInfo<float >::parseFromBinaryStream(&walkAcceleration, stream);
+		return true;
+	}
+
+	if (_name == "height") {
+		TypeInfo<float >::parseFromBinaryStream(&height, stream);
+		return true;
+	}
+
+	if (_name == "swimHeight") {
+		TypeInfo<float >::parseFromBinaryStream(&swimHeight, stream);
+		return true;
+	}
+
+	if (_name == "slopeModPercent") {
+		TypeInfo<float >::parseFromBinaryStream(&slopeModPercent, stream);
+		return true;
+	}
+
+	if (_name == "slopeModAngle") {
+		TypeInfo<float >::parseFromBinaryStream(&slopeModAngle, stream);
+		return true;
+	}
+
+	if (_name == "listenToID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&listenToID, stream);
+		return true;
+	}
+
+	if (_name == "watchToID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&watchToID, stream);
+		return true;
+	}
+
+	if (_name == "performanceAnimation") {
+		TypeInfo<String >::parseFromBinaryStream(&performanceAnimation, stream);
+		return true;
+	}
+
+	if (_name == "moodString") {
+		TypeInfo<String >::parseFromBinaryStream(&moodString, stream);
+		return true;
+	}
+
+	if (_name == "weapon") {
+		TypeInfo<ManagedReference<WeaponObject* > >::parseFromBinaryStream(&weapon, stream);
+		return true;
+	}
+
+	if (_name == "group") {
+		TypeInfo<ManagedReference<GroupObject* > >::parseFromBinaryStream(&group, stream);
+		return true;
+	}
+
+	if (_name == "groupInviterID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&groupInviterID, stream);
+		return true;
+	}
+
+	if (_name == "groupInviteCounter") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&groupInviteCounter, stream);
+		return true;
+	}
+
+	if (_name == "guild") {
+		TypeInfo<ManagedReference<GuildObject* > >::parseFromBinaryStream(&guild, stream);
+		return true;
+	}
+
+	if (_name == "targetID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&targetID, stream);
+		return true;
+	}
+
+	if (_name == "moodID") {
+		TypeInfo<byte >::parseFromBinaryStream(&moodID, stream);
+		return true;
+	}
+
+	if (_name == "performanceCounter") {
+		TypeInfo<int >::parseFromBinaryStream(&performanceCounter, stream);
+		return true;
+	}
+
+	if (_name == "instrumentID") {
+		TypeInfo<int >::parseFromBinaryStream(&instrumentID, stream);
+		return true;
+	}
+
+	if (_name == "hamList") {
+		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&hamList, stream);
+		return true;
+	}
+
+	if (_name == "maxHamList") {
+		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&maxHamList, stream);
+		return true;
+	}
+
+	if (_name == "lootGroup") {
+		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&lootGroup, stream);
+		return true;
+	}
+
+	if (_name == "frozen") {
+		TypeInfo<byte >::parseFromBinaryStream(&frozen, stream);
+		return true;
+	}
+
+	if (_name == "templateString") {
+		TypeInfo<String >::parseFromBinaryStream(&templateString, stream);
+		return true;
+	}
+
+	if (_name == "skillBoxList") {
+		TypeInfo<SkillBoxList >::parseFromBinaryStream(&skillBoxList, stream);
+		return true;
+	}
+
+	if (_name == "skillModList") {
+		TypeInfo<DeltaVectorMap<String, long long> >::parseFromBinaryStream(&skillModList, stream);
+		return true;
+	}
+
+	if (_name == "commandQueue") {
+		TypeInfo<Vector<CommandQueueAction*> >::parseFromBinaryStream(&commandQueue, stream);
+		return true;
+	}
+
+	if (_name == "nextAction") {
+		TypeInfo<Time >::parseFromBinaryStream(&nextAction, stream);
+		return true;
+	}
+
+	if (_name == "cooldownTimerMap") {
+		TypeInfo<CooldownTimerMap >::parseFromBinaryStream(&cooldownTimerMap, stream);
+		return true;
+	}
+
+	if (_name == "creatureBuffs") {
+		TypeInfo<BuffList >::parseFromBinaryStream(&creatureBuffs, stream);
+		return true;
+	}
+
+	if (_name == "damageOverTimeList") {
+		TypeInfo<DamageOverTimeList >::parseFromBinaryStream(&damageOverTimeList, stream);
+		return true;
+	}
+
+	if (_name == "lastSuccessfulCombatAction") {
+		TypeInfo<Time >::parseFromBinaryStream(&lastSuccessfulCombatAction, stream);
+		return true;
+	}
+
+	if (_name == "timeOfDeath") {
+		TypeInfo<Time >::parseFromBinaryStream(&timeOfDeath, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void CreatureObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CreatureObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "bankCredits";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&bankCredits, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cashCredits";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&cashCredits, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "gender";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&gender, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "species";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&species, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "baseHAM";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaVector<int> >::toBinaryStream(&baseHAM, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "posture";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&posture, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "factionRank";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&factionRank, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "linkedCreature";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&linkedCreature, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "controlDevice";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<ControlDevice* > >::toBinaryStream(&controlDevice, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "shockWounds";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&shockWounds, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "wounds";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaVector<int> >::toBinaryStream(&wounds, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "stateBitmask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&stateBitmask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "encumbrances";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaVector<int> >::toBinaryStream(&encumbrances, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "accelerationMultiplierBase";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&accelerationMultiplierBase, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "accelerationMultiplierMod";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&accelerationMultiplierMod, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "speedMultiplierBase";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&speedMultiplierBase, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "speedMultiplierModChanges";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SpeedMultiplierModChanges >::toBinaryStream(&speedMultiplierModChanges, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "speedMultiplierMod";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&speedMultiplierMod, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "runSpeed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&runSpeed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "walkSpeed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&walkSpeed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "terrainNegotiation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&terrainNegotiation, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "runAcceleration";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&runAcceleration, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "walkAcceleration";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&walkAcceleration, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "height";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&height, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "swimHeight";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&swimHeight, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "slopeModPercent";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&slopeModPercent, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "slopeModAngle";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&slopeModAngle, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "listenToID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&listenToID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "watchToID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&watchToID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "performanceAnimation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&performanceAnimation, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "moodString";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&moodString, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "weapon";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<WeaponObject* > >::toBinaryStream(&weapon, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "group";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<GroupObject* > >::toBinaryStream(&group, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "groupInviterID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&groupInviterID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "groupInviteCounter";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&groupInviteCounter, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "guild";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<GuildObject* > >::toBinaryStream(&guild, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "targetID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&targetID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "moodID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&moodID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "performanceCounter";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&performanceCounter, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "instrumentID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&instrumentID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "hamList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaVector<int> >::toBinaryStream(&hamList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "maxHamList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaVector<int> >::toBinaryStream(&maxHamList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lootGroup";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<unsigned int> >::toBinaryStream(&lootGroup, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "frozen";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&frozen, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "templateString";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&templateString, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "skillBoxList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SkillBoxList >::toBinaryStream(&skillBoxList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "skillModList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaVectorMap<String, long long> >::toBinaryStream(&skillModList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "commandQueue";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<CommandQueueAction*> >::toBinaryStream(&commandQueue, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nextAction";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&nextAction, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cooldownTimerMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<CooldownTimerMap >::toBinaryStream(&cooldownTimerMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "creatureBuffs";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<BuffList >::toBinaryStream(&creatureBuffs, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "damageOverTimeList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DamageOverTimeList >::toBinaryStream(&damageOverTimeList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastSuccessfulCombatAction";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&lastSuccessfulCombatAction, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "timeOfDeath";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&timeOfDeath, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 54 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 CreatureObjectImplementation::CreatureObjectImplementation() {

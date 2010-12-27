@@ -533,6 +533,7 @@ void PlanetManagerImplementation::_initializeImplementation() {
 	_setClassHelper(PlanetManagerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void PlanetManagerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -581,10 +582,100 @@ void PlanetManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("PlanetManager");
 
-	addSerializableVariable("zone", &zone);
-	addSerializableVariable("regionMap", &regionMap);
-	addSerializableVariable("structureManager", &structureManager);
-	addSerializableVariable("numberOfCities", &numberOfCities);
+}
+
+void PlanetManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(PlanetManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "zone") {
+		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
+		return true;
+	}
+
+	if (_name == "regionMap") {
+		TypeInfo<RegionMap >::parseFromBinaryStream(&regionMap, stream);
+		return true;
+	}
+
+	if (_name == "structureManager") {
+		TypeInfo<ManagedReference<StructureManager* > >::parseFromBinaryStream(&structureManager, stream);
+		return true;
+	}
+
+	if (_name == "numberOfCities") {
+		TypeInfo<int >::parseFromBinaryStream(&numberOfCities, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void PlanetManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = PlanetManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "zone";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<Zone* > >::toBinaryStream(&zone, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "regionMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<RegionMap >::toBinaryStream(&regionMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "structureManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<StructureManager* > >::toBinaryStream(&structureManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "numberOfCities";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&numberOfCities, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {

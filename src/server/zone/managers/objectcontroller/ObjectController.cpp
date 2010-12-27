@@ -137,6 +137,7 @@ void ObjectControllerImplementation::_initializeImplementation() {
 	_setClassHelper(ObjectControllerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ObjectControllerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -185,6 +186,48 @@ void ObjectControllerImplementation::_serializationHelperMethod() {
 
 	_setClassName("ObjectController");
 
+}
+
+void ObjectControllerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ObjectControllerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ObjectControllerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void ObjectControllerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ObjectControllerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ObjectControllerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer* srv) {

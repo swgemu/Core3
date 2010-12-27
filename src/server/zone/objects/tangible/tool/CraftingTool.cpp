@@ -492,6 +492,7 @@ void CraftingToolImplementation::_initializeImplementation() {
 	_setClassHelper(CraftingToolHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void CraftingToolImplementation::_setStub(DistributedObjectStub* stub) {
@@ -540,15 +541,165 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 
 	_setClassName("CraftingTool");
 
-	addSerializableVariable("type", &type);
-	addSerializableVariable("effectiveness", &effectiveness);
-	addSerializableVariable("status", &status);
-	addSerializableVariable("complexityLevel", &complexityLevel);
-	addSerializableVariable("craftingManager", &craftingManager);
-	addSerializableVariable("enabledTabs", &enabledTabs);
-	addSerializableVariable("currentSchematicList", &currentSchematicList);
-	addSerializableVariable("craftingStation", &craftingStation);
-	addSerializableVariable("state", &state);
+}
+
+void CraftingToolImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CraftingToolImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CraftingToolImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ToolTangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "type") {
+		TypeInfo<int >::parseFromBinaryStream(&type, stream);
+		return true;
+	}
+
+	if (_name == "effectiveness") {
+		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
+		return true;
+	}
+
+	if (_name == "status") {
+		TypeInfo<String >::parseFromBinaryStream(&status, stream);
+		return true;
+	}
+
+	if (_name == "complexityLevel") {
+		TypeInfo<int >::parseFromBinaryStream(&complexityLevel, stream);
+		return true;
+	}
+
+	if (_name == "craftingManager") {
+		TypeInfo<ManagedReference<CraftingManager* > >::parseFromBinaryStream(&craftingManager, stream);
+		return true;
+	}
+
+	if (_name == "enabledTabs") {
+		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&enabledTabs, stream);
+		return true;
+	}
+
+	if (_name == "currentSchematicList") {
+		TypeInfo<Vector<ManagedReference<DraftSchematic* > > >::parseFromBinaryStream(&currentSchematicList, stream);
+		return true;
+	}
+
+	if (_name == "craftingStation") {
+		TypeInfo<ManagedReference<CraftingStation* > >::parseFromBinaryStream(&craftingStation, stream);
+		return true;
+	}
+
+	if (_name == "state") {
+		TypeInfo<int >::parseFromBinaryStream(&state, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void CraftingToolImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CraftingToolImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "type";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&type, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "effectiveness";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "status";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&status, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "complexityLevel";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&complexityLevel, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "craftingManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CraftingManager* > >::toBinaryStream(&craftingManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "enabledTabs";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<unsigned int> >::toBinaryStream(&enabledTabs, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "currentSchematicList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<DraftSchematic* > > >::toBinaryStream(&currentSchematicList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "craftingStation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CraftingStation* > >::toBinaryStream(&craftingStation, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "state";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&state, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 9 + ToolTangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 CraftingToolImplementation::CraftingToolImplementation() {

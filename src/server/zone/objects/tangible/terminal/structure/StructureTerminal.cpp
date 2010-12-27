@@ -95,6 +95,7 @@ void StructureTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(StructureTerminalHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void StructureTerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -143,6 +144,48 @@ void StructureTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("StructureTerminal");
 
+}
+
+void StructureTerminalImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(StructureTerminalImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool StructureTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TerminalImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void StructureTerminalImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = StructureTerminalImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int StructureTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 StructureTerminalImplementation::StructureTerminalImplementation() {

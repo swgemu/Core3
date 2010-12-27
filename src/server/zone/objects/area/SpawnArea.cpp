@@ -152,6 +152,7 @@ void SpawnAreaImplementation::_initializeImplementation() {
 	_setClassHelper(SpawnAreaHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SpawnAreaImplementation::_setStub(DistributedObjectStub* stub) {
@@ -200,10 +201,100 @@ void SpawnAreaImplementation::_serializationHelperMethod() {
 
 	_setClassName("SpawnArea");
 
-	addSerializableVariable("spawnCreatureTemplates", &spawnCreatureTemplates);
-	addSerializableVariable("observers", &observers);
-	addSerializableVariable("tier", &tier);
-	addSerializableVariable("spawnConstant", &spawnConstant);
+}
+
+void SpawnAreaImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SpawnAreaImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "spawnCreatureTemplates") {
+		TypeInfo<SortedVector<unsigned int> >::parseFromBinaryStream(&spawnCreatureTemplates, stream);
+		return true;
+	}
+
+	if (_name == "observers") {
+		TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::parseFromBinaryStream(&observers, stream);
+		return true;
+	}
+
+	if (_name == "tier") {
+		TypeInfo<int >::parseFromBinaryStream(&tier, stream);
+		return true;
+	}
+
+	if (_name == "spawnConstant") {
+		TypeInfo<int >::parseFromBinaryStream(&spawnConstant, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SpawnAreaImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "spawnCreatureTemplates";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<unsigned int> >::toBinaryStream(&spawnCreatureTemplates, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "observers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::toBinaryStream(&observers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "tier";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&tier, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "spawnConstant";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&spawnConstant, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 SpawnAreaImplementation::SpawnAreaImplementation() {

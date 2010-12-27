@@ -19,7 +19,7 @@ WaypointChatParameter::WaypointChatParameter(WaypointObject* waypoint) {
 	set(waypoint);
 }
 
-WaypointChatParameter::WaypointChatParameter(const WaypointChatParameter& par) : Object(), ChatParameter() {
+WaypointChatParameter::WaypointChatParameter(const WaypointChatParameter& par) : Object(), ChatParameter(), Serializable() {
 	addSerializableVariables();
 
 	waypointName = par.waypointName;
@@ -35,16 +35,16 @@ WaypointChatParameter::WaypointChatParameter(const WaypointChatParameter& par) :
 }
 
 void WaypointChatParameter::addToPacketStream(Message* packet) {
-		packet->insertInt(unknownInt);
-		packet->insertFloat(positionX);
-		packet->insertFloat(positionZ);
-		packet->insertFloat(positionY);
-		packet->insertLong(0); //pointerParameter (always added as 0 though afaik)
-		packet->insertInt(planetCRC);
-		packet->insertUnicode(waypointName);
-		packet->insertLong(cellID);
-		packet->insertByte(color);
-		packet->insertByte((byte) active);
+	packet->insertInt(unknownInt);
+	packet->insertFloat(positionX);
+	packet->insertFloat(positionZ);
+	packet->insertFloat(positionY);
+	packet->insertLong(0); //pointerParameter (always added as 0 though afaik)
+	packet->insertInt(planetCRC);
+	packet->insertUnicode(waypointName);
+	packet->insertLong(cellID);
+	packet->insertByte(color);
+	packet->insertByte((byte) active);
 }
 
 void WaypointChatParameter::parse(Message* message) {

@@ -70,6 +70,7 @@ void CampSiteActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(CampSiteActiveAreaHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void CampSiteActiveAreaImplementation::_setStub(DistributedObjectStub* stub) {
@@ -118,20 +119,230 @@ void CampSiteActiveAreaImplementation::_serializationHelperMethod() {
 
 	_setClassName("CampSiteActiveArea");
 
-	addSerializableVariable("spawnedObject", &spawnedObject);
-	addSerializableVariable("currentXP", &currentXP);
-	addSerializableVariable("campType", &campType);
-	addSerializableVariable("aggroMod", &aggroMod);
-	addSerializableVariable("areaRange", &areaRange);
-	addSerializableVariable("campObjects", &campObjects);
-	addSerializableVariable("visitors", &visitors);
-	addSerializableVariable("abandoned", &abandoned);
-	addSerializableVariable("despawnEvent", &despawnEvent);
-	addSerializableVariable("maxXP", &maxXP);
-	addSerializableVariable("campModifier", &campModifier);
-	addSerializableVariable("duration", &duration);
-	addSerializableVariable("campOwner", &campOwner);
-	addSerializableVariable("placementTime", &placementTime);
+}
+
+void CampSiteActiveAreaImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CampSiteActiveAreaImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CampSiteActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "spawnedObject") {
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&spawnedObject, stream);
+		return true;
+	}
+
+	if (_name == "currentXP") {
+		TypeInfo<float >::parseFromBinaryStream(&currentXP, stream);
+		return true;
+	}
+
+	if (_name == "campType") {
+		TypeInfo<byte >::parseFromBinaryStream(&campType, stream);
+		return true;
+	}
+
+	if (_name == "aggroMod") {
+		TypeInfo<byte >::parseFromBinaryStream(&aggroMod, stream);
+		return true;
+	}
+
+	if (_name == "areaRange") {
+		TypeInfo<float >::parseFromBinaryStream(&areaRange, stream);
+		return true;
+	}
+
+	if (_name == "campObjects") {
+		TypeInfo<Vector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&campObjects, stream);
+		return true;
+	}
+
+	if (_name == "visitors") {
+		TypeInfo<CampVisitorList >::parseFromBinaryStream(&visitors, stream);
+		return true;
+	}
+
+	if (_name == "abandoned") {
+		TypeInfo<bool >::parseFromBinaryStream(&abandoned, stream);
+		return true;
+	}
+
+	if (_name == "despawnEvent") {
+		TypeInfo<Reference<CampDespawnEvent*> >::parseFromBinaryStream(&despawnEvent, stream);
+		return true;
+	}
+
+	if (_name == "maxXP") {
+		TypeInfo<int >::parseFromBinaryStream(&maxXP, stream);
+		return true;
+	}
+
+	if (_name == "campModifier") {
+		TypeInfo<byte >::parseFromBinaryStream(&campModifier, stream);
+		return true;
+	}
+
+	if (_name == "duration") {
+		TypeInfo<int >::parseFromBinaryStream(&duration, stream);
+		return true;
+	}
+
+	if (_name == "campOwner") {
+		TypeInfo<ManagedReference<PlayerCreature* > >::parseFromBinaryStream(&campOwner, stream);
+		return true;
+	}
+
+	if (_name == "placementTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&placementTime, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void CampSiteActiveAreaImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CampSiteActiveAreaImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "spawnedObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&spawnedObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "currentXP";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&currentXP, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "campType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&campType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "aggroMod";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&aggroMod, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "areaRange";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&areaRange, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "campObjects";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<SceneObject* > > >::toBinaryStream(&campObjects, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "visitors";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<CampVisitorList >::toBinaryStream(&visitors, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "abandoned";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&abandoned, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "despawnEvent";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<CampDespawnEvent*> >::toBinaryStream(&despawnEvent, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "maxXP";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maxXP, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "campModifier";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&campModifier, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "duration";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&duration, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "campOwner";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<PlayerCreature* > >::toBinaryStream(&campOwner, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "placementTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&placementTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 14 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 CampSiteActiveAreaImplementation::CampSiteActiveAreaImplementation() {

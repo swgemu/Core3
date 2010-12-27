@@ -86,6 +86,7 @@ void MissionObserverImplementation::_initializeImplementation() {
 	_setClassHelper(MissionObserverHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void MissionObserverImplementation::_setStub(DistributedObjectStub* stub) {
@@ -134,7 +135,61 @@ void MissionObserverImplementation::_serializationHelperMethod() {
 
 	_setClassName("MissionObserver");
 
-	addSerializableVariable("missionObjective", &missionObjective);
+}
+
+void MissionObserverImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(MissionObserverImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool MissionObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ObserverImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "missionObjective") {
+		TypeInfo<ManagedWeakReference<MissionObjective* > >::parseFromBinaryStream(&missionObjective, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void MissionObserverImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = MissionObserverImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int MissionObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "missionObjective";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<MissionObjective* > >::toBinaryStream(&missionObjective, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 MissionObserverImplementation::MissionObserverImplementation(MissionObjective* objective) {

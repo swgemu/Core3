@@ -490,6 +490,7 @@ void AuctionItemImplementation::_initializeImplementation() {
 	_setClassHelper(AuctionItemHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void AuctionItemImplementation::_setStub(DistributedObjectStub* stub) {
@@ -538,26 +539,308 @@ void AuctionItemImplementation::_serializationHelperMethod() {
 
 	_setClassName("AuctionItem");
 
-	addSerializableVariable("bazaarTerminal", &bazaarTerminal);
-	addSerializableVariable("auctionedItemObjectID", &auctionedItemObjectID);
-	addSerializableVariable("itemType", &itemType);
-	addSerializableVariable("ownerID", &ownerID);
-	addSerializableVariable("ownerName", &ownerName);
-	addSerializableVariable("bidderName", &bidderName);
-	addSerializableVariable("planet", &planet);
-	addSerializableVariable("region", &region);
-	addSerializableVariable("location", &location);
-	addSerializableVariable("terminalTitle", &terminalTitle);
-	addSerializableVariable("itemName", &itemName);
-	addSerializableVariable("itemDescription", &itemDescription);
-	addSerializableVariable("price", &price);
-	addSerializableVariable("auction", &auction);
-	addSerializableVariable("sold", &sold);
-	addSerializableVariable("ownerRemove", &ownerRemove);
-	addSerializableVariable("buyerID", &buyerID);
-	addSerializableVariable("expireTime", &expireTime);
-	addSerializableVariable("remainingTime", &remainingTime);
-	addSerializableVariable("updated", &updated);
+}
+
+void AuctionItemImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(AuctionItemImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "bazaarTerminal") {
+		TypeInfo<ManagedWeakReference<BazaarTerminal* > >::parseFromBinaryStream(&bazaarTerminal, stream);
+		return true;
+	}
+
+	if (_name == "auctionedItemObjectID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&auctionedItemObjectID, stream);
+		return true;
+	}
+
+	if (_name == "itemType") {
+		TypeInfo<int >::parseFromBinaryStream(&itemType, stream);
+		return true;
+	}
+
+	if (_name == "ownerID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&ownerID, stream);
+		return true;
+	}
+
+	if (_name == "ownerName") {
+		TypeInfo<String >::parseFromBinaryStream(&ownerName, stream);
+		return true;
+	}
+
+	if (_name == "bidderName") {
+		TypeInfo<String >::parseFromBinaryStream(&bidderName, stream);
+		return true;
+	}
+
+	if (_name == "planet") {
+		TypeInfo<unsigned short >::parseFromBinaryStream(&planet, stream);
+		return true;
+	}
+
+	if (_name == "region") {
+		TypeInfo<String >::parseFromBinaryStream(&region, stream);
+		return true;
+	}
+
+	if (_name == "location") {
+		TypeInfo<String >::parseFromBinaryStream(&location, stream);
+		return true;
+	}
+
+	if (_name == "terminalTitle") {
+		TypeInfo<String >::parseFromBinaryStream(&terminalTitle, stream);
+		return true;
+	}
+
+	if (_name == "itemName") {
+		TypeInfo<String >::parseFromBinaryStream(&itemName, stream);
+		return true;
+	}
+
+	if (_name == "itemDescription") {
+		TypeInfo<String >::parseFromBinaryStream(&itemDescription, stream);
+		return true;
+	}
+
+	if (_name == "price") {
+		TypeInfo<int >::parseFromBinaryStream(&price, stream);
+		return true;
+	}
+
+	if (_name == "auction") {
+		TypeInfo<bool >::parseFromBinaryStream(&auction, stream);
+		return true;
+	}
+
+	if (_name == "sold") {
+		TypeInfo<bool >::parseFromBinaryStream(&sold, stream);
+		return true;
+	}
+
+	if (_name == "ownerRemove") {
+		TypeInfo<bool >::parseFromBinaryStream(&ownerRemove, stream);
+		return true;
+	}
+
+	if (_name == "buyerID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&buyerID, stream);
+		return true;
+	}
+
+	if (_name == "expireTime") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&expireTime, stream);
+		return true;
+	}
+
+	if (_name == "remainingTime") {
+		TypeInfo<int >::parseFromBinaryStream(&remainingTime, stream);
+		return true;
+	}
+
+	if (_name == "updated") {
+		TypeInfo<bool >::parseFromBinaryStream(&updated, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void AuctionItemImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = AuctionItemImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "bazaarTerminal";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<BazaarTerminal* > >::toBinaryStream(&bazaarTerminal, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "auctionedItemObjectID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&auctionedItemObjectID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "itemType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&itemType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "ownerID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&ownerID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "ownerName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&ownerName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "bidderName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&bidderName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "planet";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned short >::toBinaryStream(&planet, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "region";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&region, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "location";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&location, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "terminalTitle";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&terminalTitle, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "itemName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&itemName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "itemDescription";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&itemDescription, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "price";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&price, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "auction";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&auction, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "sold";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&sold, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "ownerRemove";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&ownerRemove, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "buyerID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&buyerID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "expireTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&expireTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "remainingTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&remainingTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "updated";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&updated, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 20 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid) {

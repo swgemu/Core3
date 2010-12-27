@@ -113,6 +113,7 @@ void FireworkObjectImplementation::_initializeImplementation() {
 	_setClassHelper(FireworkObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void FireworkObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -161,7 +162,61 @@ void FireworkObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("FireworkObject");
 
-	addSerializableVariable("fireworkObject", &fireworkObject);
+}
+
+void FireworkObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(FireworkObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool FireworkObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "fireworkObject") {
+		TypeInfo<String >::parseFromBinaryStream(&fireworkObject, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void FireworkObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = FireworkObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int FireworkObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "fireworkObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&fireworkObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 FireworkObjectImplementation::FireworkObjectImplementation() {

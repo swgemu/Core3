@@ -125,6 +125,7 @@ void TutorialBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TutorialBuildingObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void TutorialBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -173,6 +174,48 @@ void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("TutorialBuildingObject");
 
+}
+
+void TutorialBuildingObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(TutorialBuildingObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool TutorialBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (BuildingObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void TutorialBuildingObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = TutorialBuildingObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int TutorialBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + BuildingObjectImplementation::writeObjectMembers(stream);
 }
 
 TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation() {

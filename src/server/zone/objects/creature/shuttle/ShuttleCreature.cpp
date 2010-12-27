@@ -308,6 +308,7 @@ void ShuttleCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(ShuttleCreatureHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ShuttleCreatureImplementation::_setStub(DistributedObjectStub* stub) {
@@ -356,13 +357,139 @@ void ShuttleCreatureImplementation::_serializationHelperMethod() {
 
 	_setClassName("ShuttleCreature");
 
-	addSerializableVariable("planet", &planet);
-	addSerializableVariable("city", &city);
-	addSerializableVariable("tax", &tax);
-	addSerializableVariable("starport", &starport);
-	addSerializableVariable("arrivalPositionX", &arrivalPositionX);
-	addSerializableVariable("arrivalPositionZ", &arrivalPositionZ);
-	addSerializableVariable("arrivalPositionY", &arrivalPositionY);
+}
+
+void ShuttleCreatureImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ShuttleCreatureImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ShuttleCreatureImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (CreatureObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "planet") {
+		TypeInfo<String >::parseFromBinaryStream(&planet, stream);
+		return true;
+	}
+
+	if (_name == "city") {
+		TypeInfo<String >::parseFromBinaryStream(&city, stream);
+		return true;
+	}
+
+	if (_name == "tax") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&tax, stream);
+		return true;
+	}
+
+	if (_name == "starport") {
+		TypeInfo<bool >::parseFromBinaryStream(&starport, stream);
+		return true;
+	}
+
+	if (_name == "arrivalPositionX") {
+		TypeInfo<float >::parseFromBinaryStream(&arrivalPositionX, stream);
+		return true;
+	}
+
+	if (_name == "arrivalPositionZ") {
+		TypeInfo<float >::parseFromBinaryStream(&arrivalPositionZ, stream);
+		return true;
+	}
+
+	if (_name == "arrivalPositionY") {
+		TypeInfo<float >::parseFromBinaryStream(&arrivalPositionY, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ShuttleCreatureImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ShuttleCreatureImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ShuttleCreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "planet";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&planet, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "city";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&city, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "tax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&tax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "starport";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&starport, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "arrivalPositionX";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&arrivalPositionX, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "arrivalPositionZ";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&arrivalPositionZ, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "arrivalPositionY";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&arrivalPositionY, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 7 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 ShuttleCreatureImplementation::ShuttleCreatureImplementation() {

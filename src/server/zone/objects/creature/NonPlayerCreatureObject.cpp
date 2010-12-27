@@ -85,6 +85,7 @@ void NonPlayerCreatureObjectImplementation::_initializeImplementation() {
 	_setClassHelper(NonPlayerCreatureObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void NonPlayerCreatureObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -133,6 +134,48 @@ void NonPlayerCreatureObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("NonPlayerCreatureObject");
 
+}
+
+void NonPlayerCreatureObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(NonPlayerCreatureObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool NonPlayerCreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (AiAgentImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void NonPlayerCreatureObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = NonPlayerCreatureObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int NonPlayerCreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + AiAgentImplementation::writeObjectMembers(stream);
 }
 
 NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation() {

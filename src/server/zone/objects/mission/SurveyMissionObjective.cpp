@@ -168,6 +168,7 @@ void SurveyMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(SurveyMissionObjectiveHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SurveyMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
@@ -216,9 +217,87 @@ void SurveyMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("SurveyMissionObjective");
 
-	addSerializableVariable("spawn", &spawn);
-	addSerializableVariable("efficiency", &efficiency);
-	addSerializableVariable("missionGiver", &missionGiver);
+}
+
+void SurveyMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SurveyMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SurveyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "spawn") {
+		TypeInfo<ManagedReference<ResourceSpawn* > >::parseFromBinaryStream(&spawn, stream);
+		return true;
+	}
+
+	if (_name == "efficiency") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&efficiency, stream);
+		return true;
+	}
+
+	if (_name == "missionGiver") {
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&missionGiver, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SurveyMissionObjectiveImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SurveyMissionObjectiveImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SurveyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "spawn";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ResourceSpawn* > >::toBinaryStream(&spawn, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "efficiency";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&efficiency, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "missionGiver";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&missionGiver, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 SurveyMissionObjectiveImplementation::SurveyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

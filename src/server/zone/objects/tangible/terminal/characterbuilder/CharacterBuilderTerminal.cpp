@@ -137,6 +137,7 @@ void CharacterBuilderTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(CharacterBuilderTerminalHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void CharacterBuilderTerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -185,6 +186,48 @@ void CharacterBuilderTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("CharacterBuilderTerminal");
 
+}
+
+void CharacterBuilderTerminalImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CharacterBuilderTerminalImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CharacterBuilderTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TerminalImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void CharacterBuilderTerminalImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CharacterBuilderTerminalImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CharacterBuilderTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation() {

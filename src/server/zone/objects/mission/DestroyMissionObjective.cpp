@@ -165,6 +165,7 @@ void DestroyMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(DestroyMissionObjectiveHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void DestroyMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
@@ -213,9 +214,87 @@ void DestroyMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("DestroyMissionObjective");
 
-	addSerializableVariable("lairTemplateToSpawn", &lairTemplateToSpawn);
-	addSerializableVariable("spawnActiveArea", &spawnActiveArea);
-	addSerializableVariable("lairObject", &lairObject);
+}
+
+void DestroyMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(DestroyMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool DestroyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "lairTemplateToSpawn") {
+		TypeInfo<TemplateReference<SharedObjectTemplate*> >::parseFromBinaryStream(&lairTemplateToSpawn, stream);
+		return true;
+	}
+
+	if (_name == "spawnActiveArea") {
+		TypeInfo<ManagedReference<MissionSpawnActiveArea* > >::parseFromBinaryStream(&spawnActiveArea, stream);
+		return true;
+	}
+
+	if (_name == "lairObject") {
+		TypeInfo<ManagedReference<LairObject* > >::parseFromBinaryStream(&lairObject, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void DestroyMissionObjectiveImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = DestroyMissionObjectiveImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "lairTemplateToSpawn";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<TemplateReference<SharedObjectTemplate*> >::toBinaryStream(&lairTemplateToSpawn, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "spawnActiveArea";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<MissionSpawnActiveArea* > >::toBinaryStream(&spawnActiveArea, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lairObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<LairObject* > >::toBinaryStream(&lairObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 DestroyMissionObjectiveImplementation::DestroyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

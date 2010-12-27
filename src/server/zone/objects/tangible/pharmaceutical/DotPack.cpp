@@ -265,6 +265,7 @@ void DotPackImplementation::_initializeImplementation() {
 	_setClassHelper(DotPackHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void DotPackImplementation::_setStub(DistributedObjectStub* stub) {
@@ -313,15 +314,165 @@ void DotPackImplementation::_serializationHelperMethod() {
 
 	_setClassName("DotPack");
 
-	addSerializableVariable("effectiveness", &effectiveness);
-	addSerializableVariable("range", &range);
-	addSerializableVariable("area", &area);
-	addSerializableVariable("rangeMod", &rangeMod);
-	addSerializableVariable("potency", &potency);
-	addSerializableVariable("commandToExecute", &commandToExecute);
-	addSerializableVariable("duration", &duration);
-	addSerializableVariable("pool", &pool);
-	addSerializableVariable("dotType", &dotType);
+}
+
+void DotPackImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(DotPackImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool DotPackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "effectiveness") {
+		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
+		return true;
+	}
+
+	if (_name == "range") {
+		TypeInfo<float >::parseFromBinaryStream(&range, stream);
+		return true;
+	}
+
+	if (_name == "area") {
+		TypeInfo<float >::parseFromBinaryStream(&area, stream);
+		return true;
+	}
+
+	if (_name == "rangeMod") {
+		TypeInfo<float >::parseFromBinaryStream(&rangeMod, stream);
+		return true;
+	}
+
+	if (_name == "potency") {
+		TypeInfo<float >::parseFromBinaryStream(&potency, stream);
+		return true;
+	}
+
+	if (_name == "commandToExecute") {
+		TypeInfo<String >::parseFromBinaryStream(&commandToExecute, stream);
+		return true;
+	}
+
+	if (_name == "duration") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&duration, stream);
+		return true;
+	}
+
+	if (_name == "pool") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&pool, stream);
+		return true;
+	}
+
+	if (_name == "dotType") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&dotType, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void DotPackImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = DotPackImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "effectiveness";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "range";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&range, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "area";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&area, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "rangeMod";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&rangeMod, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "potency";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&potency, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "commandToExecute";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&commandToExecute, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "duration";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&duration, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "pool";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&pool, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "dotType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&dotType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 9 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 }
 
 DotPackImplementation::DotPackImplementation() {

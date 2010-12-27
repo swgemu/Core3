@@ -102,6 +102,7 @@ void TravelTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(TravelTerminalHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void TravelTerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -150,7 +151,61 @@ void TravelTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("TravelTerminal");
 
-	addSerializableVariable("shuttle", &shuttle);
+}
+
+void TravelTerminalImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(TravelTerminalImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool TravelTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TerminalImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "shuttle") {
+		TypeInfo<ManagedReference<ShuttleCreature* > >::parseFromBinaryStream(&shuttle, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void TravelTerminalImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = TravelTerminalImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int TravelTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "shuttle";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ShuttleCreature* > >::toBinaryStream(&shuttle, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 TravelTerminalImplementation::TravelTerminalImplementation() {

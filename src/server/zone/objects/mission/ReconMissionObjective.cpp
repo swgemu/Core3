@@ -110,6 +110,7 @@ void ReconMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(ReconMissionObjectiveHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ReconMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
@@ -158,7 +159,61 @@ void ReconMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("ReconMissionObjective");
 
-	addSerializableVariable("locationActiveArea", &locationActiveArea);
+}
+
+void ReconMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ReconMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ReconMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "locationActiveArea") {
+		TypeInfo<ManagedReference<MissionReconActiveArea* > >::parseFromBinaryStream(&locationActiveArea, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ReconMissionObjectiveImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ReconMissionObjectiveImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ReconMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "locationActiveArea";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<MissionReconActiveArea* > >::toBinaryStream(&locationActiveArea, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 ReconMissionObjectiveImplementation::ReconMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

@@ -233,6 +233,7 @@ void ActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(ActiveAreaHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ActiveAreaImplementation::_setStub(DistributedObjectStub* stub) {
@@ -281,8 +282,74 @@ void ActiveAreaImplementation::_serializationHelperMethod() {
 
 	_setClassName("ActiveArea");
 
-	addSerializableVariable("radius", &radius);
-	addSerializableVariable("radius2", &radius2);
+}
+
+void ActiveAreaImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ActiveAreaImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SceneObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "radius") {
+		TypeInfo<float >::parseFromBinaryStream(&radius, stream);
+		return true;
+	}
+
+	if (_name == "radius2") {
+		TypeInfo<float >::parseFromBinaryStream(&radius2, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ActiveAreaImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ActiveAreaImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "radius";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&radius, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "radius2";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&radius2, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 ActiveAreaImplementation::ActiveAreaImplementation() {

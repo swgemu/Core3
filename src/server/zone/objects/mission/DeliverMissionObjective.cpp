@@ -191,6 +191,7 @@ void DeliverMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(DeliverMissionObjectiveHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void DeliverMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
@@ -239,10 +240,100 @@ void DeliverMissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("DeliverMissionObjective");
 
-	addSerializableVariable("target", &target);
-	addSerializableVariable("targetDest", &targetDest);
-	addSerializableVariable("item", &item);
-	addSerializableVariable("objectiveStatus", &objectiveStatus);
+}
+
+void DeliverMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(DeliverMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool DeliverMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "target") {
+		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&target, stream);
+		return true;
+	}
+
+	if (_name == "targetDest") {
+		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&targetDest, stream);
+		return true;
+	}
+
+	if (_name == "item") {
+		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&item, stream);
+		return true;
+	}
+
+	if (_name == "objectiveStatus") {
+		TypeInfo<int >::parseFromBinaryStream(&objectiveStatus, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void DeliverMissionObjectiveImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = DeliverMissionObjectiveImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "target";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&target, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "targetDest";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&targetDest, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "item";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&item, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "objectiveStatus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&objectiveStatus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + MissionObjectiveImplementation::writeObjectMembers(stream);
 }
 
 DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

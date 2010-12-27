@@ -239,6 +239,7 @@ void FactoryCrateImplementation::_initializeImplementation() {
 	_setClassHelper(FactoryCrateHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void FactoryCrateImplementation::_setStub(DistributedObjectStub* stub) {
@@ -287,6 +288,48 @@ void FactoryCrateImplementation::_serializationHelperMethod() {
 
 	_setClassName("FactoryCrate");
 
+}
+
+void FactoryCrateImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(FactoryCrateImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool FactoryCrateImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void FactoryCrateImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = FactoryCrateImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int FactoryCrateImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 FactoryCrateImplementation::FactoryCrateImplementation() {

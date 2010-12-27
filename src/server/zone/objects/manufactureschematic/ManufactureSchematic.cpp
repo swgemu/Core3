@@ -560,6 +560,7 @@ void ManufactureSchematicImplementation::_initializeImplementation() {
 	_setClassHelper(ManufactureSchematicHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ManufactureSchematicImplementation::_setStub(DistributedObjectStub* stub) {
@@ -608,24 +609,282 @@ void ManufactureSchematicImplementation::_serializationHelperMethod() {
 
 	_setClassName("ManufactureSchematic");
 
-	addSerializableVariable("draftSchematic", &draftSchematic);
-	addSerializableVariable("prototype", &prototype);
-	addSerializableVariable("dataSize", &dataSize);
-	addSerializableVariable("manufactureLimit", &manufactureLimit);
-	addSerializableVariable("complexity", &complexity);
-	addSerializableVariable("crcToSend", &crcToSend);
-	addSerializableVariable("crafter", &crafter);
-	addSerializableVariable("firstCraftingUpdate", &firstCraftingUpdate);
-	addSerializableVariable("factoryIngredients", &factoryIngredients);
-	addSerializableVariable("factoryIngredientSlotType", &factoryIngredientSlotType);
-	addSerializableVariable("ingredientSlots", &ingredientSlots);
-	addSerializableVariable("assembled", &assembled);
-	addSerializableVariable("completed", &completed);
-	addSerializableVariable("experimentingCounter", &experimentingCounter);
-	addSerializableVariable("experimentingCounterPrevious", &experimentingCounterPrevious);
-	addSerializableVariable("craftingValues", &craftingValues);
-	addSerializableVariable("customizationOptions", &customizationOptions);
-	addSerializableVariable("customizationDefaultValues", &customizationDefaultValues);
+}
+
+void ManufactureSchematicImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ManufactureSchematicImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "draftSchematic") {
+		TypeInfo<ManagedReference<DraftSchematic* > >::parseFromBinaryStream(&draftSchematic, stream);
+		return true;
+	}
+
+	if (_name == "prototype") {
+		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&prototype, stream);
+		return true;
+	}
+
+	if (_name == "dataSize") {
+		TypeInfo<float >::parseFromBinaryStream(&dataSize, stream);
+		return true;
+	}
+
+	if (_name == "manufactureLimit") {
+		TypeInfo<int >::parseFromBinaryStream(&manufactureLimit, stream);
+		return true;
+	}
+
+	if (_name == "complexity") {
+		TypeInfo<float >::parseFromBinaryStream(&complexity, stream);
+		return true;
+	}
+
+	if (_name == "crcToSend") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&crcToSend, stream);
+		return true;
+	}
+
+	if (_name == "crafter") {
+		TypeInfo<ManagedReference<PlayerCreature* > >::parseFromBinaryStream(&crafter, stream);
+		return true;
+	}
+
+	if (_name == "firstCraftingUpdate") {
+		TypeInfo<bool >::parseFromBinaryStream(&firstCraftingUpdate, stream);
+		return true;
+	}
+
+	if (_name == "factoryIngredients") {
+		TypeInfo<Vector<ManagedReference<TangibleObject* > > >::parseFromBinaryStream(&factoryIngredients, stream);
+		return true;
+	}
+
+	if (_name == "factoryIngredientSlotType") {
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&factoryIngredientSlotType, stream);
+		return true;
+	}
+
+	if (_name == "ingredientSlots") {
+		TypeInfo<IngredientSlots >::parseFromBinaryStream(&ingredientSlots, stream);
+		return true;
+	}
+
+	if (_name == "assembled") {
+		TypeInfo<bool >::parseFromBinaryStream(&assembled, stream);
+		return true;
+	}
+
+	if (_name == "completed") {
+		TypeInfo<bool >::parseFromBinaryStream(&completed, stream);
+		return true;
+	}
+
+	if (_name == "experimentingCounter") {
+		TypeInfo<int >::parseFromBinaryStream(&experimentingCounter, stream);
+		return true;
+	}
+
+	if (_name == "experimentingCounterPrevious") {
+		TypeInfo<int >::parseFromBinaryStream(&experimentingCounterPrevious, stream);
+		return true;
+	}
+
+	if (_name == "craftingValues") {
+		TypeInfo<CraftingValues >::parseFromBinaryStream(&craftingValues, stream);
+		return true;
+	}
+
+	if (_name == "customizationOptions") {
+		TypeInfo<Vector<byte> >::parseFromBinaryStream(&customizationOptions, stream);
+		return true;
+	}
+
+	if (_name == "customizationDefaultValues") {
+		TypeInfo<Vector<byte> >::parseFromBinaryStream(&customizationDefaultValues, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ManufactureSchematicImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ManufactureSchematicImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "draftSchematic";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<DraftSchematic* > >::toBinaryStream(&draftSchematic, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "prototype";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&prototype, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "dataSize";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&dataSize, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "manufactureLimit";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&manufactureLimit, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "complexity";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&complexity, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "crcToSend";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&crcToSend, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "crafter";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<PlayerCreature* > >::toBinaryStream(&crafter, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "firstCraftingUpdate";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&firstCraftingUpdate, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "factoryIngredients";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<TangibleObject* > > >::toBinaryStream(&factoryIngredients, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "factoryIngredientSlotType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<int> >::toBinaryStream(&factoryIngredientSlotType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "ingredientSlots";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<IngredientSlots >::toBinaryStream(&ingredientSlots, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "assembled";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&assembled, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "completed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&completed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "experimentingCounter";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&experimentingCounter, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "experimentingCounterPrevious";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&experimentingCounterPrevious, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "craftingValues";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<CraftingValues >::toBinaryStream(&craftingValues, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "customizationOptions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<byte> >::toBinaryStream(&customizationOptions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "customizationDefaultValues";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<byte> >::toBinaryStream(&customizationDefaultValues, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 18 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {

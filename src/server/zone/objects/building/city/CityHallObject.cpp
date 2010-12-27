@@ -832,6 +832,7 @@ void CityHallObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CityHallObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void CityHallObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -880,23 +881,269 @@ void CityHallObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("CityHallObject");
 
-	addSerializableVariable("declaredCitizens", &declaredCitizens);
-	addSerializableVariable("militiaMembers", &militiaMembers);
-	addSerializableVariable("bannedPlayers", &bannedPlayers);
-	addSerializableVariable("cityStructures", &cityStructures);
-	addSerializableVariable("playerZoningRights", &playerZoningRights);
-	addSerializableVariable("zoningEnabled", &zoningEnabled);
-	addSerializableVariable("cityRegion", &cityRegion);
-	addSerializableVariable("cityName", &cityName);
-	addSerializableVariable("cityRank", &cityRank);
-	addSerializableVariable("citySpecialization", &citySpecialization);
-	addSerializableVariable("incomeTax", &incomeTax);
-	addSerializableVariable("propertyTax", &propertyTax);
-	addSerializableVariable("salesTax", &salesTax);
-	addSerializableVariable("nextCityUpdate", &nextCityUpdate);
-	addSerializableVariable("mayorObjectID", &mayorObjectID);
-	addSerializableVariable("cityTerminal", &cityTerminal);
-	addSerializableVariable("cityVoteTerminal", &cityVoteTerminal);
+}
+
+void CityHallObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CityHallObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CityHallObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (BuildingObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "declaredCitizens") {
+		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&declaredCitizens, stream);
+		return true;
+	}
+
+	if (_name == "militiaMembers") {
+		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&militiaMembers, stream);
+		return true;
+	}
+
+	if (_name == "bannedPlayers") {
+		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&bannedPlayers, stream);
+		return true;
+	}
+
+	if (_name == "cityStructures") {
+		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&cityStructures, stream);
+		return true;
+	}
+
+	if (_name == "playerZoningRights") {
+		TypeInfo<VectorMap<unsigned long long, unsigned int> >::parseFromBinaryStream(&playerZoningRights, stream);
+		return true;
+	}
+
+	if (_name == "zoningEnabled") {
+		TypeInfo<bool >::parseFromBinaryStream(&zoningEnabled, stream);
+		return true;
+	}
+
+	if (_name == "cityRegion") {
+		TypeInfo<ManagedReference<Region* > >::parseFromBinaryStream(&cityRegion, stream);
+		return true;
+	}
+
+	if (_name == "cityName") {
+		TypeInfo<String >::parseFromBinaryStream(&cityName, stream);
+		return true;
+	}
+
+	if (_name == "cityRank") {
+		TypeInfo<byte >::parseFromBinaryStream(&cityRank, stream);
+		return true;
+	}
+
+	if (_name == "citySpecialization") {
+		TypeInfo<byte >::parseFromBinaryStream(&citySpecialization, stream);
+		return true;
+	}
+
+	if (_name == "incomeTax") {
+		TypeInfo<float >::parseFromBinaryStream(&incomeTax, stream);
+		return true;
+	}
+
+	if (_name == "propertyTax") {
+		TypeInfo<float >::parseFromBinaryStream(&propertyTax, stream);
+		return true;
+	}
+
+	if (_name == "salesTax") {
+		TypeInfo<float >::parseFromBinaryStream(&salesTax, stream);
+		return true;
+	}
+
+	if (_name == "nextCityUpdate") {
+		TypeInfo<Time >::parseFromBinaryStream(&nextCityUpdate, stream);
+		return true;
+	}
+
+	if (_name == "mayorObjectID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&mayorObjectID, stream);
+		return true;
+	}
+
+	if (_name == "cityTerminal") {
+		TypeInfo<ManagedReference<CityTerminal* > >::parseFromBinaryStream(&cityTerminal, stream);
+		return true;
+	}
+
+	if (_name == "cityVoteTerminal") {
+		TypeInfo<ManagedReference<CityVoteTerminal* > >::parseFromBinaryStream(&cityVoteTerminal, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void CityHallObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CityHallObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CityHallObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "declaredCitizens";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&declaredCitizens, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "militiaMembers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&militiaMembers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "bannedPlayers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&bannedPlayers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityStructures";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&cityStructures, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "playerZoningRights";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned long long, unsigned int> >::toBinaryStream(&playerZoningRights, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "zoningEnabled";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&zoningEnabled, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityRegion";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<Region* > >::toBinaryStream(&cityRegion, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&cityName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityRank";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&cityRank, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "citySpecialization";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&citySpecialization, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "incomeTax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&incomeTax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "propertyTax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&propertyTax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "salesTax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&salesTax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nextCityUpdate";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&nextCityUpdate, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "mayorObjectID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&mayorObjectID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityTerminal";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CityTerminal* > >::toBinaryStream(&cityTerminal, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityVoteTerminal";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CityVoteTerminal* > >::toBinaryStream(&cityVoteTerminal, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 17 + BuildingObjectImplementation::writeObjectMembers(stream);
 }
 
 CityHallObjectImplementation::CityHallObjectImplementation() {

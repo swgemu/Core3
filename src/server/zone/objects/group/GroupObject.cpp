@@ -378,6 +378,7 @@ void GroupObjectImplementation::_initializeImplementation() {
 	_setClassHelper(GroupObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void GroupObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -426,9 +427,87 @@ void GroupObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("GroupObject");
 
-	addSerializableVariable("groupMembers", &groupMembers);
-	addSerializableVariable("chatRoom", &chatRoom);
-	addSerializableVariable("groupLevel", &groupLevel);
+}
+
+void GroupObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(GroupObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool GroupObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SceneObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "groupMembers") {
+		TypeInfo<GroupList >::parseFromBinaryStream(&groupMembers, stream);
+		return true;
+	}
+
+	if (_name == "chatRoom") {
+		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&chatRoom, stream);
+		return true;
+	}
+
+	if (_name == "groupLevel") {
+		TypeInfo<int >::parseFromBinaryStream(&groupLevel, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void GroupObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = GroupObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "groupMembers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<GroupList >::toBinaryStream(&groupMembers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "chatRoom";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ChatRoom* > >::toBinaryStream(&chatRoom, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "groupLevel";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&groupLevel, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 GroupObjectImplementation::GroupObjectImplementation() {

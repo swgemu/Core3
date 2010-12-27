@@ -1135,6 +1135,7 @@ void AiAgentImplementation::_initializeImplementation() {
 	_setClassHelper(AiAgentHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void AiAgentImplementation::_setStub(DistributedObjectStub* stub) {
@@ -1183,21 +1184,243 @@ void AiAgentImplementation::_serializationHelperMethod() {
 
 	_setClassName("AiAgent");
 
-	addSerializableVariable("skillCommands", &skillCommands);
-	addSerializableVariable("patrolPoints", &patrolPoints);
-	addSerializableVariable("homeLocation", &homeLocation);
-	addSerializableVariable("nextStepPosition", &nextStepPosition);
-	addSerializableVariable("damageMap", &damageMap);
-	addSerializableVariable("aiObserverMap", &aiObserverMap);
-	addSerializableVariable("weapons", &weapons);
-	addSerializableVariable("baby", &baby);
-	addSerializableVariable("currentSpeed", &currentSpeed);
-	addSerializableVariable("despawnOnNoPlayerInRange", &despawnOnNoPlayerInRange);
-	addSerializableVariable("followObject", &followObject);
-	addSerializableVariable("followState", &followState);
-	addSerializableVariable("fleeing", &fleeing);
-	addSerializableVariable("respawnTimer", &respawnTimer);
-	addSerializableVariable("numberOfPlayersInRange", &numberOfPlayersInRange);
+}
+
+void AiAgentImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(AiAgentImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (CreatureObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "skillCommands") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&skillCommands, stream);
+		return true;
+	}
+
+	if (_name == "patrolPoints") {
+		TypeInfo<PatrolPointsVector >::parseFromBinaryStream(&patrolPoints, stream);
+		return true;
+	}
+
+	if (_name == "homeLocation") {
+		TypeInfo<PatrolPoint >::parseFromBinaryStream(&homeLocation, stream);
+		return true;
+	}
+
+	if (_name == "nextStepPosition") {
+		TypeInfo<PatrolPoint >::parseFromBinaryStream(&nextStepPosition, stream);
+		return true;
+	}
+
+	if (_name == "damageMap") {
+		TypeInfo<DamageMap >::parseFromBinaryStream(&damageMap, stream);
+		return true;
+	}
+
+	if (_name == "aiObserverMap") {
+		TypeInfo<SortedVector<ManagedReference<AiObserver* > > >::parseFromBinaryStream(&aiObserverMap, stream);
+		return true;
+	}
+
+	if (_name == "weapons") {
+		TypeInfo<Vector<ManagedReference<WeaponObject* > > >::parseFromBinaryStream(&weapons, stream);
+		return true;
+	}
+
+	if (_name == "baby") {
+		TypeInfo<bool >::parseFromBinaryStream(&baby, stream);
+		return true;
+	}
+
+	if (_name == "currentSpeed") {
+		TypeInfo<float >::parseFromBinaryStream(&currentSpeed, stream);
+		return true;
+	}
+
+	if (_name == "despawnOnNoPlayerInRange") {
+		TypeInfo<bool >::parseFromBinaryStream(&despawnOnNoPlayerInRange, stream);
+		return true;
+	}
+
+	if (_name == "followObject") {
+		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&followObject, stream);
+		return true;
+	}
+
+	if (_name == "followState") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&followState, stream);
+		return true;
+	}
+
+	if (_name == "fleeing") {
+		TypeInfo<bool >::parseFromBinaryStream(&fleeing, stream);
+		return true;
+	}
+
+	if (_name == "respawnTimer") {
+		TypeInfo<float >::parseFromBinaryStream(&respawnTimer, stream);
+		return true;
+	}
+
+	if (_name == "numberOfPlayersInRange") {
+		TypeInfo<int >::parseFromBinaryStream(&numberOfPlayersInRange, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void AiAgentImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = AiAgentImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "skillCommands";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&skillCommands, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "patrolPoints";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<PatrolPointsVector >::toBinaryStream(&patrolPoints, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "homeLocation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<PatrolPoint >::toBinaryStream(&homeLocation, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nextStepPosition";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<PatrolPoint >::toBinaryStream(&nextStepPosition, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "damageMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DamageMap >::toBinaryStream(&damageMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "aiObserverMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<AiObserver* > > >::toBinaryStream(&aiObserverMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "weapons";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<WeaponObject* > > >::toBinaryStream(&weapons, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "baby";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&baby, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "currentSpeed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&currentSpeed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "despawnOnNoPlayerInRange";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&despawnOnNoPlayerInRange, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "followObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&followObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "followState";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&followState, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "fleeing";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&fleeing, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "respawnTimer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&respawnTimer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "numberOfPlayersInRange";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&numberOfPlayersInRange, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 15 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 AiAgentImplementation::AiAgentImplementation() {

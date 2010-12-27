@@ -112,6 +112,7 @@ void ElevatorTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(ElevatorTerminalHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ElevatorTerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -160,8 +161,74 @@ void ElevatorTerminalImplementation::_serializationHelperMethod() {
 
 	_setClassName("ElevatorTerminal");
 
-	addSerializableVariable("elevatorUp", &elevatorUp);
-	addSerializableVariable("elevatorDown", &elevatorDown);
+}
+
+void ElevatorTerminalImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ElevatorTerminalImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ElevatorTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TerminalImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "elevatorUp") {
+		TypeInfo<ManagedReference<ElevatorTerminal* > >::parseFromBinaryStream(&elevatorUp, stream);
+		return true;
+	}
+
+	if (_name == "elevatorDown") {
+		TypeInfo<ManagedReference<ElevatorTerminal* > >::parseFromBinaryStream(&elevatorDown, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ElevatorTerminalImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ElevatorTerminalImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ElevatorTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "elevatorUp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ElevatorTerminal* > >::toBinaryStream(&elevatorUp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "elevatorDown";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ElevatorTerminal* > >::toBinaryStream(&elevatorDown, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 ElevatorTerminalImplementation::ElevatorTerminalImplementation() {

@@ -129,6 +129,7 @@ void IntangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(IntangibleObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void IntangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -177,7 +178,61 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("IntangibleObject");
 
-	addSerializableVariable("status", &status);
+}
+
+void IntangibleObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(IntangibleObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool IntangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SceneObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "status") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&status, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void IntangibleObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = IntangibleObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int IntangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "status";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&status, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 IntangibleObjectImplementation::IntangibleObjectImplementation() {

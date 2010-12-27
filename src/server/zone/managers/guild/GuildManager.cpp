@@ -678,6 +678,7 @@ void GuildManagerImplementation::_initializeImplementation() {
 	_setClassHelper(GuildManagerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void GuildManagerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -726,10 +727,100 @@ void GuildManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("GuildManager");
 
-	addSerializableVariable("guildList", &guildList);
-	addSerializableVariable("requiredMembers", &requiredMembers);
-	addSerializableVariable("maximumMembers", &maximumMembers);
-	addSerializableVariable("guildUpdateInterval", &guildUpdateInterval);
+}
+
+void GuildManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(GuildManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool GuildManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "guildList") {
+		TypeInfo<DeltaSet<String, ManagedReference<GuildObject* > > >::parseFromBinaryStream(&guildList, stream);
+		return true;
+	}
+
+	if (_name == "requiredMembers") {
+		TypeInfo<int >::parseFromBinaryStream(&requiredMembers, stream);
+		return true;
+	}
+
+	if (_name == "maximumMembers") {
+		TypeInfo<int >::parseFromBinaryStream(&maximumMembers, stream);
+		return true;
+	}
+
+	if (_name == "guildUpdateInterval") {
+		TypeInfo<int >::parseFromBinaryStream(&guildUpdateInterval, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void GuildManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = GuildManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "guildList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DeltaSet<String, ManagedReference<GuildObject* > > >::toBinaryStream(&guildList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "requiredMembers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&requiredMembers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "maximumMembers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&maximumMembers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "guildUpdateInterval";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&guildUpdateInterval, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv, ZoneProcessServer* proc) {

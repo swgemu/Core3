@@ -234,6 +234,7 @@ void InstrumentImplementation::_initializeImplementation() {
 	_setClassHelper(InstrumentHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void InstrumentImplementation::_setStub(DistributedObjectStub* stub) {
@@ -282,10 +283,100 @@ void InstrumentImplementation::_serializationHelperMethod() {
 
 	_setClassName("Instrument");
 
-	addSerializableVariable("instrumentType", &instrumentType);
-	addSerializableVariable("beingUsed", &beingUsed);
-	addSerializableVariable("spawnedObject", &spawnedObject);
-	addSerializableVariable("spawnerPlayer", &spawnerPlayer);
+}
+
+void InstrumentImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(InstrumentImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool InstrumentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "instrumentType") {
+		TypeInfo<int >::parseFromBinaryStream(&instrumentType, stream);
+		return true;
+	}
+
+	if (_name == "beingUsed") {
+		TypeInfo<bool >::parseFromBinaryStream(&beingUsed, stream);
+		return true;
+	}
+
+	if (_name == "spawnedObject") {
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&spawnedObject, stream);
+		return true;
+	}
+
+	if (_name == "spawnerPlayer") {
+		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&spawnerPlayer, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void InstrumentImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = InstrumentImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int InstrumentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "instrumentType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&instrumentType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "beingUsed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&beingUsed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "spawnedObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&spawnedObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "spawnerPlayer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&spawnerPlayer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 InstrumentImplementation::InstrumentImplementation() {
