@@ -518,6 +518,7 @@ void BuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(BuildingObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void BuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -566,12 +567,126 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("BuildingObject");
 
-	addSerializableVariable("cells", &cells);
-	addSerializableVariable("totalCellNumber", &totalCellNumber);
-	addSerializableVariable("signObject", &signObject);
-	addSerializableVariable("deedObjectID", &deedObjectID);
-	addSerializableVariable("accessFee", &accessFee);
-	addSerializableVariable("publicStructure", &publicStructure);
+}
+
+void BuildingObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(BuildingObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (StructureObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "cells") {
+		TypeInfo<Vector<ManagedReference<CellObject* > > >::parseFromBinaryStream(&cells, stream);
+		return true;
+	}
+
+	if (_name == "totalCellNumber") {
+		TypeInfo<int >::parseFromBinaryStream(&totalCellNumber, stream);
+		return true;
+	}
+
+	if (_name == "signObject") {
+		TypeInfo<ManagedReference<SignObject* > >::parseFromBinaryStream(&signObject, stream);
+		return true;
+	}
+
+	if (_name == "deedObjectID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&deedObjectID, stream);
+		return true;
+	}
+
+	if (_name == "accessFee") {
+		TypeInfo<int >::parseFromBinaryStream(&accessFee, stream);
+		return true;
+	}
+
+	if (_name == "publicStructure") {
+		TypeInfo<bool >::parseFromBinaryStream(&publicStructure, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void BuildingObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = BuildingObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "cells";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<CellObject* > > >::toBinaryStream(&cells, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "totalCellNumber";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&totalCellNumber, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "signObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<SignObject* > >::toBinaryStream(&signObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "deedObjectID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&deedObjectID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "accessFee";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&accessFee, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "publicStructure";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&publicStructure, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 6 + StructureObjectImplementation::writeObjectMembers(stream);
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {

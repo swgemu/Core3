@@ -2604,6 +2604,7 @@ void SceneObjectImplementation::_initializeImplementation() {
 	_setClassHelper(SceneObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SceneObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -2652,25 +2653,295 @@ void SceneObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("SceneObject");
 
-	addSerializableVariable("zone", &zone);
-	addSerializableVariable("parent", &parent);
-	addSerializableVariable("slottedObjects", &slottedObjects);
-	addSerializableVariable("containerObjects", &containerObjects);
-	addSerializableVariable("outdoorChildObjects", &outdoorChildObjects);
-	addSerializableVariable("serverObjectCRC", &serverObjectCRC);
-	addSerializableVariable("clientObjectCRC", &clientObjectCRC);
-	addSerializableVariable("direction", &direction);
-	addSerializableVariable("movementCounter", &movementCounter);
-	addSerializableVariable("objectName", &objectName);
-	addSerializableVariable("detailedDescription", &detailedDescription);
-	addSerializableVariable("staticObject", &staticObject);
-	addSerializableVariable("activeAreas", &activeAreas);
-	addSerializableVariable("objectActiveSessions", &objectActiveSessions);
-	addSerializableVariable("containerType", &containerType);
-	addSerializableVariable("containerVolumeLimit", &containerVolumeLimit);
-	addSerializableVariable("gameObjectType", &gameObjectType);
-	addSerializableVariable("clientGameObjectType", &clientGameObjectType);
-	addSerializableVariable("containmentType", &containmentType);
+}
+
+void SceneObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SceneObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (QuadTreeEntryImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "zone") {
+		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
+		return true;
+	}
+
+	if (_name == "parent") {
+		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&parent, stream);
+		return true;
+	}
+
+	if (_name == "slottedObjects") {
+		TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&slottedObjects, stream);
+		return true;
+	}
+
+	if (_name == "containerObjects") {
+		TypeInfo<VectorMap<unsigned long long, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&containerObjects, stream);
+		return true;
+	}
+
+	if (_name == "outdoorChildObjects") {
+		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&outdoorChildObjects, stream);
+		return true;
+	}
+
+	if (_name == "serverObjectCRC") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&serverObjectCRC, stream);
+		return true;
+	}
+
+	if (_name == "clientObjectCRC") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&clientObjectCRC, stream);
+		return true;
+	}
+
+	if (_name == "direction") {
+		TypeInfo<Quaternion >::parseFromBinaryStream(&direction, stream);
+		return true;
+	}
+
+	if (_name == "movementCounter") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&movementCounter, stream);
+		return true;
+	}
+
+	if (_name == "objectName") {
+		TypeInfo<StringId >::parseFromBinaryStream(&objectName, stream);
+		return true;
+	}
+
+	if (_name == "detailedDescription") {
+		TypeInfo<StringId >::parseFromBinaryStream(&detailedDescription, stream);
+		return true;
+	}
+
+	if (_name == "staticObject") {
+		TypeInfo<bool >::parseFromBinaryStream(&staticObject, stream);
+		return true;
+	}
+
+	if (_name == "activeAreas") {
+		TypeInfo<SortedVector<ManagedReference<ActiveArea* > > >::parseFromBinaryStream(&activeAreas, stream);
+		return true;
+	}
+
+	if (_name == "objectActiveSessions") {
+		TypeInfo<VectorMap<unsigned int, ManagedReference<Facade* > > >::parseFromBinaryStream(&objectActiveSessions, stream);
+		return true;
+	}
+
+	if (_name == "containerType") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&containerType, stream);
+		return true;
+	}
+
+	if (_name == "containerVolumeLimit") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&containerVolumeLimit, stream);
+		return true;
+	}
+
+	if (_name == "gameObjectType") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&gameObjectType, stream);
+		return true;
+	}
+
+	if (_name == "clientGameObjectType") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&clientGameObjectType, stream);
+		return true;
+	}
+
+	if (_name == "containmentType") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&containmentType, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SceneObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SceneObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "zone";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "parent";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&parent, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "slottedObjects";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::toBinaryStream(&slottedObjects, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "containerObjects";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned long long, ManagedReference<SceneObject* > > >::toBinaryStream(&containerObjects, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "outdoorChildObjects";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&outdoorChildObjects, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "serverObjectCRC";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&serverObjectCRC, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "clientObjectCRC";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&clientObjectCRC, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "direction";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Quaternion >::toBinaryStream(&direction, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "movementCounter";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&movementCounter, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "objectName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<StringId >::toBinaryStream(&objectName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "detailedDescription";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<StringId >::toBinaryStream(&detailedDescription, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "staticObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&staticObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "activeAreas";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<ActiveArea* > > >::toBinaryStream(&activeAreas, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "objectActiveSessions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, ManagedReference<Facade* > > >::toBinaryStream(&objectActiveSessions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "containerType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&containerType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "containerVolumeLimit";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&containerVolumeLimit, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "gameObjectType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&gameObjectType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "clientGameObjectType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&clientGameObjectType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "containmentType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&containmentType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 19 + QuadTreeEntryImplementation::writeObjectMembers(stream);
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {

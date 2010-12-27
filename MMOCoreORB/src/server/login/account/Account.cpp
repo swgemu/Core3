@@ -259,6 +259,7 @@ void AccountImplementation::_initializeImplementation() {
 	_setClassHelper(AccountHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void AccountImplementation::_setStub(DistributedObjectStub* stub) {
@@ -307,12 +308,126 @@ void AccountImplementation::_serializationHelperMethod() {
 
 	_setClassName("Account");
 
-	addSerializableVariable("zoneSessions", &zoneSessions);
-	addSerializableVariable("username", &username);
-	addSerializableVariable("accountID", &accountID);
-	addSerializableVariable("stationID", &stationID);
-	addSerializableVariable("adminLevel", &adminLevel);
-	addSerializableVariable("created", &created);
+}
+
+void AccountImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(AccountImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool AccountImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "zoneSessions") {
+		TypeInfo<VectorMap<unsigned int, ManagedReference<ZoneClientSession* > > >::parseFromBinaryStream(&zoneSessions, stream);
+		return true;
+	}
+
+	if (_name == "username") {
+		TypeInfo<String >::parseFromBinaryStream(&username, stream);
+		return true;
+	}
+
+	if (_name == "accountID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
+		return true;
+	}
+
+	if (_name == "stationID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&stationID, stream);
+		return true;
+	}
+
+	if (_name == "adminLevel") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&adminLevel, stream);
+		return true;
+	}
+
+	if (_name == "created") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&created, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void AccountImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = AccountImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int AccountImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "zoneSessions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, ManagedReference<ZoneClientSession* > > >::toBinaryStream(&zoneSessions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "username";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&username, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "accountID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&accountID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "stationID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&stationID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "adminLevel";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&adminLevel, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "created";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&created, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 6 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 AccountImplementation::AccountImplementation(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid) {

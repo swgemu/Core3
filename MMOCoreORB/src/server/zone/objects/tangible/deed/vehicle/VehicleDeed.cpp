@@ -142,6 +142,7 @@ void VehicleDeedImplementation::_initializeImplementation() {
 	_setClassHelper(VehicleDeedHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void VehicleDeedImplementation::_setStub(DistributedObjectStub* stub) {
@@ -190,8 +191,74 @@ void VehicleDeedImplementation::_serializationHelperMethod() {
 
 	_setClassName("VehicleDeed");
 
-	addSerializableVariable("hitPoints", &hitPoints);
-	addSerializableVariable("controlDeviceObjectTemplate", &controlDeviceObjectTemplate);
+}
+
+void VehicleDeedImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(VehicleDeedImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool VehicleDeedImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (DeedImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "hitPoints") {
+		TypeInfo<int >::parseFromBinaryStream(&hitPoints, stream);
+		return true;
+	}
+
+	if (_name == "controlDeviceObjectTemplate") {
+		TypeInfo<String >::parseFromBinaryStream(&controlDeviceObjectTemplate, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void VehicleDeedImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = VehicleDeedImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int VehicleDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "hitPoints";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&hitPoints, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "controlDeviceObjectTemplate";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&controlDeviceObjectTemplate, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + DeedImplementation::writeObjectMembers(stream);
 }
 
 VehicleDeedImplementation::VehicleDeedImplementation() {

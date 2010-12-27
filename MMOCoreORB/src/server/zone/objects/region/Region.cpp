@@ -254,6 +254,7 @@ void RegionImplementation::_initializeImplementation() {
 	_setClassHelper(RegionHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void RegionImplementation::_setStub(DistributedObjectStub* stub) {
@@ -302,9 +303,87 @@ void RegionImplementation::_serializationHelperMethod() {
 
 	_setClassName("Region");
 
-	addSerializableVariable("bazaars", &bazaars);
-	addSerializableVariable("shuttleInstallation", &shuttleInstallation);
-	addSerializableVariable("cityHall", &cityHall);
+}
+
+void RegionImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(RegionImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool RegionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "bazaars") {
+		TypeInfo<VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > >::parseFromBinaryStream(&bazaars, stream);
+		return true;
+	}
+
+	if (_name == "shuttleInstallation") {
+		TypeInfo<ManagedReference<ShuttleInstallation* > >::parseFromBinaryStream(&shuttleInstallation, stream);
+		return true;
+	}
+
+	if (_name == "cityHall") {
+		TypeInfo<ManagedReference<CityHallObject* > >::parseFromBinaryStream(&cityHall, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void RegionImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = RegionImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "bazaars";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > >::toBinaryStream(&bazaars, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "shuttleInstallation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ShuttleInstallation* > >::toBinaryStream(&shuttleInstallation, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cityHall";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CityHallObject* > >::toBinaryStream(&cityHall, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {

@@ -493,6 +493,7 @@ void MissionManagerImplementation::_initializeImplementation() {
 	_setClassHelper(MissionManagerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void MissionManagerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -541,9 +542,87 @@ void MissionManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("MissionManager");
 
-	addSerializableVariable("server", &server);
-	addSerializableVariable("lairObjectTemplatesToSpawn", &lairObjectTemplatesToSpawn);
-	addSerializableVariable("npcObjectTemplatesToSpawn", &npcObjectTemplatesToSpawn);
+}
+
+void MissionManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(MissionManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool MissionManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ObserverImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "server") {
+		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
+		return true;
+	}
+
+	if (_name == "lairObjectTemplatesToSpawn") {
+		TypeInfo<LairObjectsToSpawnMap >::parseFromBinaryStream(&lairObjectTemplatesToSpawn, stream);
+		return true;
+	}
+
+	if (_name == "npcObjectTemplatesToSpawn") {
+		TypeInfo<SortedVector<unsigned int> >::parseFromBinaryStream(&npcObjectTemplatesToSpawn, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void MissionManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = MissionManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "server";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&server, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lairObjectTemplatesToSpawn";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<LairObjectsToSpawnMap >::toBinaryStream(&lairObjectTemplatesToSpawn, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "npcObjectTemplatesToSpawn";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<unsigned int> >::toBinaryStream(&npcObjectTemplatesToSpawn, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, ZoneProcessServer* impl) {

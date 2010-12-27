@@ -137,6 +137,7 @@ void DeedImplementation::_initializeImplementation() {
 	_setClassHelper(DeedHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void DeedImplementation::_setStub(DistributedObjectStub* stub) {
@@ -185,7 +186,61 @@ void DeedImplementation::_serializationHelperMethod() {
 
 	_setClassName("Deed");
 
-	addSerializableVariable("generatedObjectTemplate", &generatedObjectTemplate);
+}
+
+void DeedImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(DeedImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool DeedImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "generatedObjectTemplate") {
+		TypeInfo<String >::parseFromBinaryStream(&generatedObjectTemplate, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void DeedImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = DeedImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int DeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "generatedObjectTemplate";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&generatedObjectTemplate, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 DeedImplementation::DeedImplementation() {

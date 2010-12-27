@@ -68,6 +68,7 @@ void GarageAreaImplementation::_initializeImplementation() {
 	_setClassHelper(GarageAreaHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void GarageAreaImplementation::_setStub(DistributedObjectStub* stub) {
@@ -116,6 +117,48 @@ void GarageAreaImplementation::_serializationHelperMethod() {
 
 	_setClassName("GarageArea");
 
+}
+
+void GarageAreaImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(GarageAreaImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool GarageAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void GarageAreaImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = GarageAreaImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int GarageAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + ActiveAreaImplementation::writeObjectMembers(stream);
 }
 
 GarageAreaImplementation::GarageAreaImplementation() {

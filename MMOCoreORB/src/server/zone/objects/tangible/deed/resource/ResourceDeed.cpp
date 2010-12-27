@@ -124,6 +124,7 @@ void ResourceDeedImplementation::_initializeImplementation() {
 	_setClassHelper(ResourceDeedHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ResourceDeedImplementation::_setStub(DistributedObjectStub* stub) {
@@ -172,6 +173,48 @@ void ResourceDeedImplementation::_serializationHelperMethod() {
 
 	_setClassName("ResourceDeed");
 
+}
+
+void ResourceDeedImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ResourceDeedImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ResourceDeedImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (DeedImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void ResourceDeedImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ResourceDeedImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ResourceDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + DeedImplementation::writeObjectMembers(stream);
 }
 
 ResourceDeedImplementation::ResourceDeedImplementation() {

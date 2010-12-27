@@ -72,6 +72,7 @@ void DurationBuffImplementation::_initializeImplementation() {
 	_setClassHelper(DurationBuffHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void DurationBuffImplementation::_setStub(DistributedObjectStub* stub) {
@@ -120,6 +121,48 @@ void DurationBuffImplementation::_serializationHelperMethod() {
 
 	_setClassName("DurationBuff");
 
+}
+
+void DurationBuffImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(DurationBuffImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool DurationBuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (BuffImplementation::readObjectMember(stream, _name))
+		return true;
+
+
+	return false;
+}
+
+void DurationBuffImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = DurationBuffImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int DurationBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+
+	return 0 + BuffImplementation::writeObjectMembers(stream);
 }
 
 DurationBuffImplementation::DurationBuffImplementation(CreatureObject* creo, unsigned int buffcrc, float duration) : BuffImplementation(creo, buffcrc, duration, BuffType::FOOD) {

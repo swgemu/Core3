@@ -191,6 +191,7 @@ void JunkdealerCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(JunkdealerCreatureHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void JunkdealerCreatureImplementation::_setStub(DistributedObjectStub* stub) {
@@ -239,7 +240,61 @@ void JunkdealerCreatureImplementation::_serializationHelperMethod() {
 
 	_setClassName("JunkdealerCreature");
 
-	addSerializableVariable("location", &location);
+}
+
+void JunkdealerCreatureImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(JunkdealerCreatureImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool JunkdealerCreatureImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (CreatureObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "location") {
+		TypeInfo<String >::parseFromBinaryStream(&location, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void JunkdealerCreatureImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = JunkdealerCreatureImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int JunkdealerCreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "location";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&location, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 JunkdealerCreatureImplementation::JunkdealerCreatureImplementation() {

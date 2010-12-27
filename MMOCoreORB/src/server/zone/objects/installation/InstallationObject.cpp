@@ -575,6 +575,7 @@ void InstallationObjectImplementation::_initializeImplementation() {
 	_setClassHelper(InstallationObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void InstallationObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -623,14 +624,152 @@ void InstallationObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("InstallationObject");
 
-	addSerializableVariable("operating", &operating);
-	addSerializableVariable("operatorList", &operatorList);
-	addSerializableVariable("installationType", &installationType);
-	addSerializableVariable("resourceHopperTimestamp", &resourceHopperTimestamp);
-	addSerializableVariable("lastMaintenanceTime", &lastMaintenanceTime);
-	addSerializableVariable("resourceHopper", &resourceHopper);
-	addSerializableVariable("hopperSizeMax", &hopperSizeMax);
-	addSerializableVariable("extractionRate", &extractionRate);
+}
+
+void InstallationObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(InstallationObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (StructureObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "operating") {
+		TypeInfo<bool >::parseFromBinaryStream(&operating, stream);
+		return true;
+	}
+
+	if (_name == "operatorList") {
+		TypeInfo<SortedVector<ManagedReference<PlayerCreature* > > >::parseFromBinaryStream(&operatorList, stream);
+		return true;
+	}
+
+	if (_name == "installationType") {
+		TypeInfo<int >::parseFromBinaryStream(&installationType, stream);
+		return true;
+	}
+
+	if (_name == "resourceHopperTimestamp") {
+		TypeInfo<Time >::parseFromBinaryStream(&resourceHopperTimestamp, stream);
+		return true;
+	}
+
+	if (_name == "lastMaintenanceTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&lastMaintenanceTime, stream);
+		return true;
+	}
+
+	if (_name == "resourceHopper") {
+		TypeInfo<HopperList >::parseFromBinaryStream(&resourceHopper, stream);
+		return true;
+	}
+
+	if (_name == "hopperSizeMax") {
+		TypeInfo<float >::parseFromBinaryStream(&hopperSizeMax, stream);
+		return true;
+	}
+
+	if (_name == "extractionRate") {
+		TypeInfo<float >::parseFromBinaryStream(&extractionRate, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void InstallationObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = InstallationObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "operating";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&operating, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "operatorList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<PlayerCreature* > > >::toBinaryStream(&operatorList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "installationType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&installationType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "resourceHopperTimestamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&resourceHopperTimestamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastMaintenanceTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&lastMaintenanceTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "resourceHopper";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<HopperList >::toBinaryStream(&resourceHopper, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "hopperSizeMax";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&hopperSizeMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "extractionRate";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&extractionRate, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 8 + StructureObjectImplementation::writeObjectMembers(stream);
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {

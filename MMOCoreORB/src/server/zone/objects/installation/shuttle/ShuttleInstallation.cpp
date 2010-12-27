@@ -137,6 +137,7 @@ void ShuttleInstallationImplementation::_initializeImplementation() {
 	_setClassHelper(ShuttleInstallationHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ShuttleInstallationImplementation::_setStub(DistributedObjectStub* stub) {
@@ -185,9 +186,87 @@ void ShuttleInstallationImplementation::_serializationHelperMethod() {
 
 	_setClassName("ShuttleInstallation");
 
-	addSerializableVariable("shuttle", &shuttle);
-	addSerializableVariable("ticketCollector", &ticketCollector);
-	addSerializableVariable("travelTerminal", &travelTerminal);
+}
+
+void ShuttleInstallationImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ShuttleInstallationImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ShuttleInstallationImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (InstallationObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "shuttle") {
+		TypeInfo<ManagedReference<ShuttleCreature* > >::parseFromBinaryStream(&shuttle, stream);
+		return true;
+	}
+
+	if (_name == "ticketCollector") {
+		TypeInfo<ManagedReference<TicketCollector* > >::parseFromBinaryStream(&ticketCollector, stream);
+		return true;
+	}
+
+	if (_name == "travelTerminal") {
+		TypeInfo<ManagedReference<TravelTerminal* > >::parseFromBinaryStream(&travelTerminal, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ShuttleInstallationImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ShuttleInstallationImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ShuttleInstallationImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "shuttle";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ShuttleCreature* > >::toBinaryStream(&shuttle, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "ticketCollector";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<TicketCollector* > >::toBinaryStream(&ticketCollector, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "travelTerminal";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<TravelTerminal* > >::toBinaryStream(&travelTerminal, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + InstallationObjectImplementation::writeObjectMembers(stream);
 }
 
 ShuttleInstallationImplementation::ShuttleInstallationImplementation() {

@@ -135,6 +135,7 @@ void MigrateStatsSessionImplementation::_initializeImplementation() {
 	_setClassHelper(MigrateStatsSessionHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void MigrateStatsSessionImplementation::_setStub(DistributedObjectStub* stub) {
@@ -183,8 +184,74 @@ void MigrateStatsSessionImplementation::_serializationHelperMethod() {
 
 	_setClassName("MigrateStatsSession");
 
-	addSerializableVariable("creature", &creature);
-	addSerializableVariable("attributesToModify", &attributesToModify);
+}
+
+void MigrateStatsSessionImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(MigrateStatsSessionImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool MigrateStatsSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (FacadeImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "creature") {
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creature, stream);
+		return true;
+	}
+
+	if (_name == "attributesToModify") {
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&attributesToModify, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void MigrateStatsSessionImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = MigrateStatsSessionImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int MigrateStatsSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "creature";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&creature, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "attributesToModify";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<int> >::toBinaryStream(&attributesToModify, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + FacadeImplementation::writeObjectMembers(stream);
 }
 
 MigrateStatsSessionImplementation::MigrateStatsSessionImplementation(CreatureObject* parent) {

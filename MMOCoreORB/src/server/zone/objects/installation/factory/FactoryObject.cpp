@@ -277,6 +277,7 @@ void FactoryObjectImplementation::_initializeImplementation() {
 	_setClassHelper(FactoryObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void FactoryObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -325,10 +326,100 @@ void FactoryObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("FactoryObject");
 
-	addSerializableVariable("craftingTabsSupported", &craftingTabsSupported);
-	addSerializableVariable("timer", &timer);
-	addSerializableVariable("currentUserName", &currentUserName);
-	addSerializableVariable("currentRunCount", &currentRunCount);
+}
+
+void FactoryObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(FactoryObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool FactoryObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (InstallationObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "craftingTabsSupported") {
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&craftingTabsSupported, stream);
+		return true;
+	}
+
+	if (_name == "timer") {
+		TypeInfo<int >::parseFromBinaryStream(&timer, stream);
+		return true;
+	}
+
+	if (_name == "currentUserName") {
+		TypeInfo<String >::parseFromBinaryStream(&currentUserName, stream);
+		return true;
+	}
+
+	if (_name == "currentRunCount") {
+		TypeInfo<int >::parseFromBinaryStream(&currentRunCount, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void FactoryObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = FactoryObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "craftingTabsSupported";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<int> >::toBinaryStream(&craftingTabsSupported, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "timer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&timer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "currentUserName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&currentUserName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "currentRunCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&currentRunCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + InstallationObjectImplementation::writeObjectMembers(stream);
 }
 
 FactoryObjectImplementation::FactoryObjectImplementation() {

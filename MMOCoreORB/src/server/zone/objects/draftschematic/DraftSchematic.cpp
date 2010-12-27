@@ -460,6 +460,7 @@ void DraftSchematicImplementation::_initializeImplementation() {
 	_setClassHelper(DraftSchematicHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void DraftSchematicImplementation::_setStub(DistributedObjectStub* stub) {
@@ -508,8 +509,74 @@ void DraftSchematicImplementation::_serializationHelperMethod() {
 
 	_setClassName("DraftSchematic");
 
-	addSerializableVariable("schematicID", &schematicID);
-	addSerializableVariable("useCount", &useCount);
+}
+
+void DraftSchematicImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(DraftSchematicImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool DraftSchematicImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "schematicID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&schematicID, stream);
+		return true;
+	}
+
+	if (_name == "useCount") {
+		TypeInfo<int >::parseFromBinaryStream(&useCount, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void DraftSchematicImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = DraftSchematicImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int DraftSchematicImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "schematicID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&schematicID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "useCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&useCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 DraftSchematicImplementation::DraftSchematicImplementation() {

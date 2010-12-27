@@ -167,6 +167,7 @@ void MissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(MissionObjectiveHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void MissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
@@ -215,9 +216,87 @@ void MissionObjectiveImplementation::_serializationHelperMethod() {
 
 	_setClassName("MissionObjective");
 
-	addSerializableVariable("observers", &observers);
-	addSerializableVariable("mission", &mission);
-	addSerializableVariable("objectiveType", &objectiveType);
+}
+
+void MissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(MissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool MissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "observers") {
+		TypeInfo<SortedVector<ManagedReference<MissionObserver* > > >::parseFromBinaryStream(&observers, stream);
+		return true;
+	}
+
+	if (_name == "mission") {
+		TypeInfo<ManagedWeakReference<MissionObject* > >::parseFromBinaryStream(&mission, stream);
+		return true;
+	}
+
+	if (_name == "objectiveType") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&objectiveType, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void MissionObjectiveImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = MissionObjectiveImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "observers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<MissionObserver* > > >::toBinaryStream(&observers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "mission";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<MissionObject* > >::toBinaryStream(&mission, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "objectiveType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&objectiveType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* parent) {

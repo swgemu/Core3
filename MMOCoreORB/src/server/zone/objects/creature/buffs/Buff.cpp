@@ -534,6 +534,7 @@ void BuffImplementation::_initializeImplementation() {
 	_setClassHelper(BuffHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void BuffImplementation::_setStub(DistributedObjectStub* stub) {
@@ -582,19 +583,217 @@ void BuffImplementation::_serializationHelperMethod() {
 
 	_setClassName("Buff");
 
-	addSerializableVariable("creature", &creature);
-	addSerializableVariable("attributeModifiers", &attributeModifiers);
-	addSerializableVariable("skillModifiers", &skillModifiers);
-	addSerializableVariable("buffName", &buffName);
-	addSerializableVariable("buffDuration", &buffDuration);
-	addSerializableVariable("buffCRC", &buffCRC);
-	addSerializableVariable("buffType", &buffType);
-	addSerializableVariable("speedMultiplierMod", &speedMultiplierMod);
-	addSerializableVariable("accelerationMultiplierMod", &accelerationMultiplierMod);
-	addSerializableVariable("fillAttirbutesOnBuff", &fillAttirbutesOnBuff);
-	addSerializableVariable("startMessage", &startMessage);
-	addSerializableVariable("endMessage", &endMessage);
-	addSerializableVariable("nextExecutionTime", &nextExecutionTime);
+}
+
+void BuffImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(BuffImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool BuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "creature") {
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creature, stream);
+		return true;
+	}
+
+	if (_name == "attributeModifiers") {
+		TypeInfo<VectorMap<byte, int> >::parseFromBinaryStream(&attributeModifiers, stream);
+		return true;
+	}
+
+	if (_name == "skillModifiers") {
+		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&skillModifiers, stream);
+		return true;
+	}
+
+	if (_name == "buffName") {
+		TypeInfo<String >::parseFromBinaryStream(&buffName, stream);
+		return true;
+	}
+
+	if (_name == "buffDuration") {
+		TypeInfo<float >::parseFromBinaryStream(&buffDuration, stream);
+		return true;
+	}
+
+	if (_name == "buffCRC") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&buffCRC, stream);
+		return true;
+	}
+
+	if (_name == "buffType") {
+		TypeInfo<int >::parseFromBinaryStream(&buffType, stream);
+		return true;
+	}
+
+	if (_name == "speedMultiplierMod") {
+		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierMod, stream);
+		return true;
+	}
+
+	if (_name == "accelerationMultiplierMod") {
+		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierMod, stream);
+		return true;
+	}
+
+	if (_name == "fillAttirbutesOnBuff") {
+		TypeInfo<bool >::parseFromBinaryStream(&fillAttirbutesOnBuff, stream);
+		return true;
+	}
+
+	if (_name == "startMessage") {
+		TypeInfo<StringIdChatParameter >::parseFromBinaryStream(&startMessage, stream);
+		return true;
+	}
+
+	if (_name == "endMessage") {
+		TypeInfo<StringIdChatParameter >::parseFromBinaryStream(&endMessage, stream);
+		return true;
+	}
+
+	if (_name == "nextExecutionTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&nextExecutionTime, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void BuffImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = BuffImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "creature";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&creature, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "attributeModifiers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<byte, int> >::toBinaryStream(&attributeModifiers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "skillModifiers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<String, int> >::toBinaryStream(&skillModifiers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "buffName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&buffName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "buffDuration";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&buffDuration, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "buffCRC";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&buffCRC, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "buffType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&buffType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "speedMultiplierMod";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&speedMultiplierMod, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "accelerationMultiplierMod";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&accelerationMultiplierMod, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "fillAttirbutesOnBuff";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&fillAttirbutesOnBuff, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startMessage";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<StringIdChatParameter >::toBinaryStream(&startMessage, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "endMessage";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<StringIdChatParameter >::toBinaryStream(&endMessage, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "nextExecutionTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&nextExecutionTime, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 13 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) {

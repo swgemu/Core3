@@ -156,6 +156,7 @@ void WearableObjectImplementation::_initializeImplementation() {
 	_setClassHelper(WearableObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void WearableObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -204,9 +205,87 @@ void WearableObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("WearableObject");
 
-	addSerializableVariable("socketCount", &socketCount);
-	addSerializableVariable("socketsGenerated", &socketsGenerated);
-	addSerializableVariable("wearableSkillModMap", &wearableSkillModMap);
+}
+
+void WearableObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(WearableObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool WearableObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "socketCount") {
+		TypeInfo<int >::parseFromBinaryStream(&socketCount, stream);
+		return true;
+	}
+
+	if (_name == "socketsGenerated") {
+		TypeInfo<bool >::parseFromBinaryStream(&socketsGenerated, stream);
+		return true;
+	}
+
+	if (_name == "wearableSkillModMap") {
+		TypeInfo<WearableSkillModMap >::parseFromBinaryStream(&wearableSkillModMap, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void WearableObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = WearableObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "socketCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&socketCount, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "socketsGenerated";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&socketsGenerated, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "wearableSkillModMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<WearableSkillModMap >::toBinaryStream(&wearableSkillModMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 WearableObjectImplementation::WearableObjectImplementation() {

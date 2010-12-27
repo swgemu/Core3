@@ -187,6 +187,7 @@ void CurePackImplementation::_initializeImplementation() {
 	_setClassHelper(CurePackHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void CurePackImplementation::_setStub(DistributedObjectStub* stub) {
@@ -235,10 +236,100 @@ void CurePackImplementation::_serializationHelperMethod() {
 
 	_setClassName("CurePack");
 
-	addSerializableVariable("effectiveness", &effectiveness);
-	addSerializableVariable("area", &area);
-	addSerializableVariable("state", &state);
-	addSerializableVariable("commandToExecute", &commandToExecute);
+}
+
+void CurePackImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CurePackImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CurePackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "effectiveness") {
+		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
+		return true;
+	}
+
+	if (_name == "area") {
+		TypeInfo<float >::parseFromBinaryStream(&area, stream);
+		return true;
+	}
+
+	if (_name == "state") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&state, stream);
+		return true;
+	}
+
+	if (_name == "commandToExecute") {
+		TypeInfo<String >::parseFromBinaryStream(&commandToExecute, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void CurePackImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CurePackImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "effectiveness";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "area";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&area, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "state";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&state, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "commandToExecute";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&commandToExecute, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 }
 
 CurePackImplementation::CurePackImplementation() {

@@ -191,6 +191,7 @@ void LairObjectImplementation::_initializeImplementation() {
 	_setClassHelper(LairObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void LairObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -239,8 +240,74 @@ void LairObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("LairObject");
 
-	addSerializableVariable("spawnedCreatures", &spawnedCreatures);
-	addSerializableVariable("damageMap", &damageMap);
+}
+
+void LairObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(LairObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool LairObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "spawnedCreatures") {
+		TypeInfo<Vector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&spawnedCreatures, stream);
+		return true;
+	}
+
+	if (_name == "damageMap") {
+		TypeInfo<DamageMap >::parseFromBinaryStream(&damageMap, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void LairObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = LairObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int LairObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "spawnedCreatures";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<CreatureObject* > > >::toBinaryStream(&spawnedCreatures, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "damageMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DamageMap >::toBinaryStream(&damageMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 LairObjectImplementation::LairObjectImplementation() {

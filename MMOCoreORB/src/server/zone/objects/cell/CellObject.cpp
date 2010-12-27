@@ -217,6 +217,7 @@ void CellObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CellObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void CellObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -265,8 +266,74 @@ void CellObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("CellObject");
 
-	addSerializableVariable("cellNumber", &cellNumber);
-	addSerializableVariable("currentNumberOfItems", &currentNumberOfItems);
+}
+
+void CellObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CellObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CellObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SceneObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "cellNumber") {
+		TypeInfo<int >::parseFromBinaryStream(&cellNumber, stream);
+		return true;
+	}
+
+	if (_name == "currentNumberOfItems") {
+		TypeInfo<int >::parseFromBinaryStream(&currentNumberOfItems, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void CellObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CellObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CellObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "cellNumber";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&cellNumber, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "currentNumberOfItems";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&currentNumberOfItems, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 CellObjectImplementation::CellObjectImplementation() {

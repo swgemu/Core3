@@ -69,6 +69,7 @@ void SuiSlotMachineBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiSlotMachineBoxHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SuiSlotMachineBoxImplementation::_setStub(DistributedObjectStub* stub) {
@@ -117,7 +118,61 @@ void SuiSlotMachineBoxImplementation::_serializationHelperMethod() {
 
 	_setClassName("SuiSlotMachineBox");
 
-	addSerializableVariable("payoutBoxID", &payoutBoxID);
+}
+
+void SuiSlotMachineBoxImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SuiSlotMachineBoxImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SuiSlotMachineBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SuiListBoxImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "payoutBoxID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&payoutBoxID, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SuiSlotMachineBoxImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SuiSlotMachineBoxImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SuiSlotMachineBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "payoutBoxID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&payoutBoxID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
 SuiSlotMachineBoxImplementation::SuiSlotMachineBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBoxImplementation(player, windowType, listBoxType) {

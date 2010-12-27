@@ -114,6 +114,7 @@ void SuiTransferBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiTransferBoxHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SuiTransferBoxImplementation::_setStub(DistributedObjectStub* stub) {
@@ -162,14 +163,152 @@ void SuiTransferBoxImplementation::_serializationHelperMethod() {
 
 	_setClassName("SuiTransferBox");
 
-	addSerializableVariable("lblFrom", &lblFrom);
-	addSerializableVariable("lblStartingFrom", &lblStartingFrom);
-	addSerializableVariable("lblInputFrom", &lblInputFrom);
-	addSerializableVariable("lblTo", &lblTo);
-	addSerializableVariable("lblStartingTo", &lblStartingTo);
-	addSerializableVariable("lblInputTo", &lblInputTo);
-	addSerializableVariable("convertRatioFrom", &convertRatioFrom);
-	addSerializableVariable("convertRatioTo", &convertRatioTo);
+}
+
+void SuiTransferBoxImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SuiTransferBoxImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SuiTransferBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SuiBoxImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "lblFrom") {
+		TypeInfo<String >::parseFromBinaryStream(&lblFrom, stream);
+		return true;
+	}
+
+	if (_name == "lblStartingFrom") {
+		TypeInfo<String >::parseFromBinaryStream(&lblStartingFrom, stream);
+		return true;
+	}
+
+	if (_name == "lblInputFrom") {
+		TypeInfo<String >::parseFromBinaryStream(&lblInputFrom, stream);
+		return true;
+	}
+
+	if (_name == "lblTo") {
+		TypeInfo<String >::parseFromBinaryStream(&lblTo, stream);
+		return true;
+	}
+
+	if (_name == "lblStartingTo") {
+		TypeInfo<String >::parseFromBinaryStream(&lblStartingTo, stream);
+		return true;
+	}
+
+	if (_name == "lblInputTo") {
+		TypeInfo<String >::parseFromBinaryStream(&lblInputTo, stream);
+		return true;
+	}
+
+	if (_name == "convertRatioFrom") {
+		TypeInfo<String >::parseFromBinaryStream(&convertRatioFrom, stream);
+		return true;
+	}
+
+	if (_name == "convertRatioTo") {
+		TypeInfo<String >::parseFromBinaryStream(&convertRatioTo, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SuiTransferBoxImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SuiTransferBoxImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "lblFrom";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lblFrom, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lblStartingFrom";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lblStartingFrom, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lblInputFrom";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lblInputFrom, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lblTo";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lblTo, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lblStartingTo";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lblStartingTo, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lblInputTo";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lblInputTo, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "convertRatioFrom";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&convertRatioFrom, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "convertRatioTo";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&convertRatioTo, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 8 + SuiBoxImplementation::writeObjectMembers(stream);
 }
 
 SuiTransferBoxImplementation::SuiTransferBoxImplementation(PlayerCreature* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::TRANSFERBOX) {

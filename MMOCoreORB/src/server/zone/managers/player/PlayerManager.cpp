@@ -801,6 +801,7 @@ void PlayerManagerImplementation::_initializeImplementation() {
 	_setClassHelper(PlayerManagerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void PlayerManagerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -849,8 +850,74 @@ void PlayerManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("PlayerManager");
 
-	addSerializableVariable("server", &server);
-	addSerializableVariable("globalExpMultiplier", &globalExpMultiplier);
+}
+
+void PlayerManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(PlayerManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool PlayerManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ObserverImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "server") {
+		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
+		return true;
+	}
+
+	if (_name == "globalExpMultiplier") {
+		TypeInfo<float >::parseFromBinaryStream(&globalExpMultiplier, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void PlayerManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = PlayerManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "server";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&server, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "globalExpMultiplier";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&globalExpMultiplier, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + ObserverImplementation::writeObjectMembers(stream);
 }
 
 /*

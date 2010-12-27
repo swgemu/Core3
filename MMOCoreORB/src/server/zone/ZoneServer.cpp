@@ -950,6 +950,7 @@ void ZoneServerImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneServerHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void ZoneServerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -970,29 +971,347 @@ void ZoneServerImplementation::_serializationHelperMethod() {
 
 	_setClassName("ZoneServer");
 
-	addSerializableVariable("zones", &zones);
-	addSerializableVariable("playerManager", &playerManager);
-	addSerializableVariable("chatManager", &chatManager);
-	addSerializableVariable("radialManager", &radialManager);
-	addSerializableVariable("resourceManager", &resourceManager);
-	addSerializableVariable("craftingManager", &craftingManager);
-	addSerializableVariable("lootManager", &lootManager);
-	addSerializableVariable("bazaarManager", &bazaarManager);
-	addSerializableVariable("missionManager", &missionManager);
-	addSerializableVariable("guildManager", &guildManager);
-	addSerializableVariable("fishingManager", &fishingManager);
-	addSerializableVariable("gamblingManager", &gamblingManager);
-	addSerializableVariable("totalSentPackets", &totalSentPackets);
-	addSerializableVariable("totalResentPackets", &totalResentPackets);
-	addSerializableVariable("currentPlayers", &currentPlayers);
-	addSerializableVariable("maximumPlayers", &maximumPlayers);
-	addSerializableVariable("totalPlayers", &totalPlayers);
-	addSerializableVariable("totalDeletedPlayers", &totalDeletedPlayers);
-	addSerializableVariable("serverState", &serverState);
-	addSerializableVariable("name", &name);
-	addSerializableVariable("messageoftheDay", &messageoftheDay);
-	addSerializableVariable("galaxyID", &galaxyID);
-	addSerializableVariable("startTimestamp", &startTimestamp);
+}
+
+void ZoneServerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(ZoneServerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "zones") {
+		TypeInfo<Vector<ManagedReference<Zone* > > >::parseFromBinaryStream(&zones, stream);
+		return true;
+	}
+
+	if (_name == "playerManager") {
+		TypeInfo<ManagedReference<PlayerManager* > >::parseFromBinaryStream(&playerManager, stream);
+		return true;
+	}
+
+	if (_name == "chatManager") {
+		TypeInfo<ManagedReference<ChatManager* > >::parseFromBinaryStream(&chatManager, stream);
+		return true;
+	}
+
+	if (_name == "radialManager") {
+		TypeInfo<ManagedReference<RadialManager* > >::parseFromBinaryStream(&radialManager, stream);
+		return true;
+	}
+
+	if (_name == "resourceManager") {
+		TypeInfo<ManagedReference<ResourceManager* > >::parseFromBinaryStream(&resourceManager, stream);
+		return true;
+	}
+
+	if (_name == "craftingManager") {
+		TypeInfo<ManagedReference<CraftingManager* > >::parseFromBinaryStream(&craftingManager, stream);
+		return true;
+	}
+
+	if (_name == "lootManager") {
+		TypeInfo<ManagedReference<LootManager* > >::parseFromBinaryStream(&lootManager, stream);
+		return true;
+	}
+
+	if (_name == "bazaarManager") {
+		TypeInfo<ManagedReference<BazaarManager* > >::parseFromBinaryStream(&bazaarManager, stream);
+		return true;
+	}
+
+	if (_name == "missionManager") {
+		TypeInfo<ManagedReference<MissionManager* > >::parseFromBinaryStream(&missionManager, stream);
+		return true;
+	}
+
+	if (_name == "guildManager") {
+		TypeInfo<ManagedReference<GuildManager* > >::parseFromBinaryStream(&guildManager, stream);
+		return true;
+	}
+
+	if (_name == "fishingManager") {
+		TypeInfo<ManagedReference<FishingManager* > >::parseFromBinaryStream(&fishingManager, stream);
+		return true;
+	}
+
+	if (_name == "gamblingManager") {
+		TypeInfo<ManagedReference<GamblingManager* > >::parseFromBinaryStream(&gamblingManager, stream);
+		return true;
+	}
+
+	if (_name == "totalSentPackets") {
+		TypeInfo<int >::parseFromBinaryStream(&totalSentPackets, stream);
+		return true;
+	}
+
+	if (_name == "totalResentPackets") {
+		TypeInfo<int >::parseFromBinaryStream(&totalResentPackets, stream);
+		return true;
+	}
+
+	if (_name == "currentPlayers") {
+		TypeInfo<AtomicInteger >::parseFromBinaryStream(&currentPlayers, stream);
+		return true;
+	}
+
+	if (_name == "maximumPlayers") {
+		TypeInfo<AtomicInteger >::parseFromBinaryStream(&maximumPlayers, stream);
+		return true;
+	}
+
+	if (_name == "totalPlayers") {
+		TypeInfo<AtomicInteger >::parseFromBinaryStream(&totalPlayers, stream);
+		return true;
+	}
+
+	if (_name == "totalDeletedPlayers") {
+		TypeInfo<AtomicInteger >::parseFromBinaryStream(&totalDeletedPlayers, stream);
+		return true;
+	}
+
+	if (_name == "serverState") {
+		TypeInfo<int >::parseFromBinaryStream(&serverState, stream);
+		return true;
+	}
+
+	if (_name == "name") {
+		TypeInfo<String >::parseFromBinaryStream(&name, stream);
+		return true;
+	}
+
+	if (_name == "messageoftheDay") {
+		TypeInfo<String >::parseFromBinaryStream(&messageoftheDay, stream);
+		return true;
+	}
+
+	if (_name == "galaxyID") {
+		TypeInfo<int >::parseFromBinaryStream(&galaxyID, stream);
+		return true;
+	}
+
+	if (_name == "startTimestamp") {
+		TypeInfo<Time >::parseFromBinaryStream(&startTimestamp, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void ZoneServerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = ZoneServerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "zones";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<Zone* > > >::toBinaryStream(&zones, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "playerManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<PlayerManager* > >::toBinaryStream(&playerManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "chatManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ChatManager* > >::toBinaryStream(&chatManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "radialManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<RadialManager* > >::toBinaryStream(&radialManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "resourceManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ResourceManager* > >::toBinaryStream(&resourceManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "craftingManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<CraftingManager* > >::toBinaryStream(&craftingManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lootManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<LootManager* > >::toBinaryStream(&lootManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "bazaarManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<BazaarManager* > >::toBinaryStream(&bazaarManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "missionManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<MissionManager* > >::toBinaryStream(&missionManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "guildManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<GuildManager* > >::toBinaryStream(&guildManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "fishingManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<FishingManager* > >::toBinaryStream(&fishingManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "gamblingManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<GamblingManager* > >::toBinaryStream(&gamblingManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "totalSentPackets";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&totalSentPackets, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "totalResentPackets";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&totalResentPackets, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "currentPlayers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<AtomicInteger >::toBinaryStream(&currentPlayers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "maximumPlayers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<AtomicInteger >::toBinaryStream(&maximumPlayers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "totalPlayers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<AtomicInteger >::toBinaryStream(&totalPlayers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "totalDeletedPlayers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<AtomicInteger >::toBinaryStream(&totalDeletedPlayers, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "serverState";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&serverState, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "name";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&name, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "messageoftheDay";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&messageoftheDay, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "galaxyID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&galaxyID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startTimestamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&startTimestamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 23 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 void ZoneServerImplementation::fixScheduler() {

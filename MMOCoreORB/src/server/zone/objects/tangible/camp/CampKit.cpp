@@ -78,6 +78,7 @@ void CampKitImplementation::_initializeImplementation() {
 	_setClassHelper(CampKitHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void CampKitImplementation::_setStub(DistributedObjectStub* stub) {
@@ -126,9 +127,87 @@ void CampKitImplementation::_serializationHelperMethod() {
 
 	_setClassName("CampKit");
 
-	addSerializableVariable("exp", &exp);
-	addSerializableVariable("duration", &duration);
-	addSerializableVariable("campType", &campType);
+}
+
+void CampKitImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CampKitImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CampKitImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "exp") {
+		TypeInfo<unsigned short >::parseFromBinaryStream(&exp, stream);
+		return true;
+	}
+
+	if (_name == "duration") {
+		TypeInfo<unsigned short >::parseFromBinaryStream(&duration, stream);
+		return true;
+	}
+
+	if (_name == "campType") {
+		TypeInfo<unsigned short >::parseFromBinaryStream(&campType, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void CampKitImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CampKitImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CampKitImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "exp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned short >::toBinaryStream(&exp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "duration";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned short >::toBinaryStream(&duration, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "campType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned short >::toBinaryStream(&campType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 3 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 CampKitImplementation::CampKitImplementation() {

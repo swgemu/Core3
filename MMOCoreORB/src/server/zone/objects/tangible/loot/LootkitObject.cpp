@@ -140,6 +140,7 @@ void LootkitObjectImplementation::_initializeImplementation() {
 	_setClassHelper(LootkitObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void LootkitObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -188,11 +189,113 @@ void LootkitObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("LootkitObject");
 
-	addSerializableVariable("components", &components);
-	addSerializableVariable("attributes", &attributes);
-	addSerializableVariable("comps", &comps);
-	addSerializableVariable("reward", &reward);
-	addSerializableVariable("deleteComponents", &deleteComponents);
+}
+
+void LootkitObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(LootkitObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool LootkitObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "components") {
+		TypeInfo<VectorMap<unsigned int, bool> >::parseFromBinaryStream(&components, stream);
+		return true;
+	}
+
+	if (_name == "attributes") {
+		TypeInfo<VectorMap<unsigned int, String> >::parseFromBinaryStream(&attributes, stream);
+		return true;
+	}
+
+	if (_name == "comps") {
+		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&comps, stream);
+		return true;
+	}
+
+	if (_name == "reward") {
+		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&reward, stream);
+		return true;
+	}
+
+	if (_name == "deleteComponents") {
+		TypeInfo<bool >::parseFromBinaryStream(&deleteComponents, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void LootkitObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = LootkitObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int LootkitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "components";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, bool> >::toBinaryStream(&components, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "attributes";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, String> >::toBinaryStream(&attributes, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "comps";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<unsigned int> >::toBinaryStream(&comps, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "reward";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<unsigned int> >::toBinaryStream(&reward, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "deleteComponents";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&deleteComponents, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 5 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 LootkitObjectImplementation::LootkitObjectImplementation() {

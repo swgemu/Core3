@@ -92,6 +92,7 @@ void LootObjectImplementation::_initializeImplementation() {
 	_setClassHelper(LootObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void LootObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -140,11 +141,113 @@ void LootObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("LootObject");
 
-	addSerializableVariable("templateCRC", &templateCRC);
-	addSerializableVariable("lootGroup", &lootGroup);
-	addSerializableVariable("name", &name);
-	addSerializableVariable("lootObjectID", &lootObjectID);
-	addSerializableVariable("chance", &chance);
+}
+
+void LootObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(LootObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool LootObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "templateCRC") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&templateCRC, stream);
+		return true;
+	}
+
+	if (_name == "lootGroup") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&lootGroup, stream);
+		return true;
+	}
+
+	if (_name == "name") {
+		TypeInfo<String >::parseFromBinaryStream(&name, stream);
+		return true;
+	}
+
+	if (_name == "lootObjectID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&lootObjectID, stream);
+		return true;
+	}
+
+	if (_name == "chance") {
+		TypeInfo<int >::parseFromBinaryStream(&chance, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void LootObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = LootObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int LootObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "templateCRC";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&templateCRC, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lootGroup";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&lootGroup, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "name";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&name, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lootObjectID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&lootObjectID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "chance";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&chance, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 5 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 LootObjectImplementation::LootObjectImplementation(unsigned int loID, String& n, unsigned int tCRC, unsigned int lootG, int ch) {

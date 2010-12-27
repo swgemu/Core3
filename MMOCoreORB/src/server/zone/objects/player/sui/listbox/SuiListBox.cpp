@@ -217,6 +217,7 @@ void SuiListBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiListBoxHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void SuiListBoxImplementation::_setStub(DistributedObjectStub* stub) {
@@ -265,10 +266,100 @@ void SuiListBoxImplementation::_serializationHelperMethod() {
 
 	_setClassName("SuiListBox");
 
-	addSerializableVariable("menuItems", &menuItems);
-	addSerializableVariable("type", &type);
-	addSerializableVariable("next", &next);
-	addSerializableVariable("previous", &previous);
+}
+
+void SuiListBoxImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(SuiListBoxImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool SuiListBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (SuiBoxImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "menuItems") {
+		TypeInfo<Vector<ManagedReference<SuiListBoxMenuItem* > > >::parseFromBinaryStream(&menuItems, stream);
+		return true;
+	}
+
+	if (_name == "type") {
+		TypeInfo<int >::parseFromBinaryStream(&type, stream);
+		return true;
+	}
+
+	if (_name == "next") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&next, stream);
+		return true;
+	}
+
+	if (_name == "previous") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&previous, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void SuiListBoxImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = SuiListBoxImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "menuItems";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<ManagedReference<SuiListBoxMenuItem* > > >::toBinaryStream(&menuItems, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "type";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&type, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "next";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&next, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "previous";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&previous, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + SuiBoxImplementation::writeObjectMembers(stream);
 }
 
 SuiListBoxImplementation::SuiListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiBoxImplementation(player, windowType, SuiBox::LISTBOX) {

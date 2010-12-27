@@ -221,6 +221,7 @@ void PharmaceuticalObjectImplementation::_initializeImplementation() {
 	_setClassHelper(PharmaceuticalObjectHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void PharmaceuticalObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -269,7 +270,61 @@ void PharmaceuticalObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("PharmaceuticalObject");
 
-	addSerializableVariable("medicineUseRequired", &medicineUseRequired);
+}
+
+void PharmaceuticalObjectImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(PharmaceuticalObjectImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool PharmaceuticalObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "medicineUseRequired") {
+		TypeInfo<int >::parseFromBinaryStream(&medicineUseRequired, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void PharmaceuticalObjectImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int PharmaceuticalObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "medicineUseRequired";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&medicineUseRequired, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 PharmaceuticalObjectImplementation::PharmaceuticalObjectImplementation() {

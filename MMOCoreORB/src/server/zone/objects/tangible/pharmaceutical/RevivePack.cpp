@@ -190,6 +190,7 @@ void RevivePackImplementation::_initializeImplementation() {
 	_setClassHelper(RevivePackHelper::instance());
 
 	_serializationHelperMethod();
+	_serializationHelperMethod();
 }
 
 void RevivePackImplementation::_setStub(DistributedObjectStub* stub) {
@@ -238,12 +239,126 @@ void RevivePackImplementation::_serializationHelperMethod() {
 
 	_setClassName("RevivePack");
 
-	addSerializableVariable("healthWoundHealed", &healthWoundHealed);
-	addSerializableVariable("healthHealed", &healthHealed);
-	addSerializableVariable("actionWoundHealed", &actionWoundHealed);
-	addSerializableVariable("actionHealed", &actionHealed);
-	addSerializableVariable("mindWoundHealed", &mindWoundHealed);
-	addSerializableVariable("mindHealed", &mindHealed);
+}
+
+void RevivePackImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(RevivePackImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool RevivePackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "healthWoundHealed") {
+		TypeInfo<float >::parseFromBinaryStream(&healthWoundHealed, stream);
+		return true;
+	}
+
+	if (_name == "healthHealed") {
+		TypeInfo<float >::parseFromBinaryStream(&healthHealed, stream);
+		return true;
+	}
+
+	if (_name == "actionWoundHealed") {
+		TypeInfo<float >::parseFromBinaryStream(&actionWoundHealed, stream);
+		return true;
+	}
+
+	if (_name == "actionHealed") {
+		TypeInfo<float >::parseFromBinaryStream(&actionHealed, stream);
+		return true;
+	}
+
+	if (_name == "mindWoundHealed") {
+		TypeInfo<float >::parseFromBinaryStream(&mindWoundHealed, stream);
+		return true;
+	}
+
+	if (_name == "mindHealed") {
+		TypeInfo<float >::parseFromBinaryStream(&mindHealed, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void RevivePackImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = RevivePackImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int RevivePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "healthWoundHealed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&healthWoundHealed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "healthHealed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&healthHealed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "actionWoundHealed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&actionWoundHealed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "actionHealed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&actionHealed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "mindWoundHealed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&mindWoundHealed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "mindHealed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&mindHealed, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 6 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 }
 
 RevivePackImplementation::RevivePackImplementation() {
