@@ -46,35 +46,89 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-class TestTask : public Task {
-public :
-	void run() {
+class TestClass : public Object {
+	int values[1000];
 
+public:
+	TestClass(int value) {
+		for (int i = 0; i < 1000; ++i)
+			values[i] = value;
+	}
+
+	TestClass(TestClass& obj) {
+		for (int i = 0; i < 1000; ++i)
+			values[i] = obj.values[i];
+	}
+
+	void increment() {
+		for (int i = 0; i < 1000; ++i)
+			values[i] += 1;
+	}
+
+	int get() {
+		int value = values[0];
+
+		for (int i = 0; i < 1000; ++i) {
+			if (values[i] != value)
+				assert(0 && "inconsistency in object");
+		}
+
+		return value;
+	}
+
+	Object* clone() {
+		return new TestClass(*this);
+	}
+};
+
+class TestTask : public Task {
+	TransactionalObjectHeader<TestClass*>* reference1;
+	TransactionalObjectHeader<TestClass*>* reference2;
+
+public:
+	TestTask(TransactionalObjectHeader<TestClass*>* ref1, TransactionalObjectHeader<TestClass*>* ref2) {
+		reference1 = ref1;
+		reference2 = ref2;
+	}
+
+	void run() {
+		TestClass* object1 = reference1->getForUpdate();
+		TestClass* object2 = reference2->getForUpdate();
+
+		object1->increment();
+		object2->increment();
 	}
 };
 
 void testTransactions() {
-	ManagedReference<SceneObject*> scno = new SceneObject();
-	ManagedReference<SceneObject*> scno2 = new SceneObject();
+	TransactionalObjectHeader<TestClass*> reference1;
+	TransactionalObjectHeader<TestClass*> reference2;
+
+	reference1 = new TestClass(1);
+	reference2 = new TestClass(2);
 
 	Core::commitTask();
 
-	for (int i = 0; i < 50; ++i) {
-		String name = scno->getObjectName()->getDisplayedName();
-		uint64 id = scno2->getObjectID();
+	for (int i = 0; i < 100000; ++i) {
+		Task* task = new TestTask(&reference1, &reference2);
 
-		Task* task = new TestTask();
-
-		Core::getTaskManager()->scheduleTask(task, 1000);
-
-		scno->setParent(scno2);
-
-		Core::commitTask();
+		//Core::getTaskManager()->scheduleTask(task, 1000);
+		Core::getTaskManager()->executeTask(task);
 	}
 
-	Thread::sleep(10000);
+	Core::commitTask();
 
-	raise(SIGSEGV);
+	while(Core::getTaskManager()->getExecutingTaskSize() != 0) {
+		Thread::sleep(1000);
+	}
+
+	Thread::sleep(1000);
+
+	TestClass* object1 = reference1.get();
+	TestClass* object2 = reference2.get();
+
+	printf("%i\n", object1->get());
+	printf("%i\n", object2->get());
 }
 
 int main(int argc, char* argv[]) {
@@ -88,9 +142,9 @@ int main(int argc, char* argv[]) {
 
 		core.init();
 
-		//testTransactions();
-
 		core.run();
+
+		//testTransactions();
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
 		e.printStackTrace();
