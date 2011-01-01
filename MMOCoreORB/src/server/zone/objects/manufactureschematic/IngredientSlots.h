@@ -45,6 +45,7 @@ which carries forward this exception.
 #ifndef INGREDIENTSLOTS_H_
 #define INGREDIENTSLOTS_H_
 
+#include "ingredientslots/IngredientSlot.h"
 
 class IngredientSlots : public Vector<Reference<IngredientSlot* > >, public Logger {
 
