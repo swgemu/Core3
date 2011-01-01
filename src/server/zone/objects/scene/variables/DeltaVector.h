@@ -35,7 +35,7 @@ public:
 		addSerializableVariables();
 	}
 
-	DeltaVector(const DeltaVector& v) : Serializable() {
+	DeltaVector(const DeltaVector& v) : Object(), Serializable() {
 		vector = v.vector;
 		updateCounter = v.updateCounter;
 	}
