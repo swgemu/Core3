@@ -109,7 +109,8 @@ DistributedObjectServant* IntangibleObject::_getImplementation() {
 }
 
 void IntangibleObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	IntangibleObjectImplementation

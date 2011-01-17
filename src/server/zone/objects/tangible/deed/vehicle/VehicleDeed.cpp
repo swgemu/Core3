@@ -120,7 +120,8 @@ DistributedObjectServant* VehicleDeed::_getImplementation() {
 }
 
 void VehicleDeed::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	VehicleDeedImplementation

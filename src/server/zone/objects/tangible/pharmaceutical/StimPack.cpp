@@ -128,7 +128,8 @@ DistributedObjectServant* StimPack::_getImplementation() {
 }
 
 void StimPack::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	StimPackImplementation

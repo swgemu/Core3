@@ -513,7 +513,8 @@ DistributedObjectServant* PlanetManager::_getImplementation() {
 }
 
 void PlanetManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PlanetManagerImplementation

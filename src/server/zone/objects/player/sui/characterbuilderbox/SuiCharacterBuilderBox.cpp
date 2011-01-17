@@ -74,7 +74,8 @@ DistributedObjectServant* SuiCharacterBuilderBox::_getImplementation() {
 }
 
 void SuiCharacterBuilderBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiCharacterBuilderBoxImplementation

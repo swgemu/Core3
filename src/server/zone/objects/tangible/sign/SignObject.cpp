@@ -74,7 +74,8 @@ DistributedObjectServant* SignObject::_getImplementation() {
 }
 
 void SignObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SignObjectImplementation

@@ -47,7 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "server/zone/ZoneServer.h"
+
 #include "../MessageCallback.h"
+
 #include "server/chat/ChatManager.h"
 
 namespace server {

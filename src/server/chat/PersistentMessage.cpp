@@ -311,7 +311,8 @@ DistributedObjectServant* PersistentMessage::_getImplementation() {
 }
 
 void PersistentMessage::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PersistentMessageImplementation

@@ -160,7 +160,8 @@ DistributedObjectServant* EnhancePack::_getImplementation() {
 }
 
 void EnhancePack::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	EnhancePackImplementation

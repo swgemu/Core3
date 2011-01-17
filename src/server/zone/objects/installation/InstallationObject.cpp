@@ -553,7 +553,8 @@ DistributedObjectServant* InstallationObject::_getImplementation() {
 }
 
 void InstallationObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	InstallationObjectImplementation

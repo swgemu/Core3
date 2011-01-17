@@ -183,7 +183,8 @@ DistributedObjectServant* RangedStimPack::_getImplementation() {
 }
 
 void RangedStimPack::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	RangedStimPackImplementation

@@ -109,7 +109,8 @@ DistributedObjectServant* LootManager::_getImplementation() {
 }
 
 void LootManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	LootManagerImplementation

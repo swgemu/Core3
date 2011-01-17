@@ -91,7 +91,8 @@ DistributedObjectServant* FireworkObject::_getImplementation() {
 }
 
 void FireworkObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	FireworkObjectImplementation

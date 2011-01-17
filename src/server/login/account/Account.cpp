@@ -237,7 +237,8 @@ DistributedObjectServant* Account::_getImplementation() {
 }
 
 void Account::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	AccountImplementation

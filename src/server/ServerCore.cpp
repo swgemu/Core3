@@ -80,7 +80,7 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	features = NULL;
 }
 
-void ServerCore::init() {
+void ServerCore::initialize() {
 	info("starting up server..");
 
 	processConfig();
@@ -114,6 +114,53 @@ void ServerCore::init() {
 		if (configManager->getMakeStatus()) {
 			statusServer = new StatusServer(configManager, zoneServerRef);
 		}
+
+		ZoneServer* zoneServer = zoneServerRef.get();
+
+		if (loginServer != NULL) {
+			int loginPort = configManager->getLoginPort();
+			int loginAllowedConnections = configManager->getLoginAllowedConnections();
+
+			loginServer->start(loginPort, loginAllowedConnections);
+		}
+
+		if (zoneServer != NULL) {
+			int zonePort = 44463;
+			int zoneAllowedConnections = configManager->getZoneAllowedConnections();
+
+			ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+			dbManager->loadDatabases();
+
+			int galaxyID = configManager->getZoneGalaxyID();
+
+			String query = "SELECT port FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
+			ResultSet* result = database->instance()->executeQuery(query);
+
+			if (result != NULL && result->next()) {
+				zonePort = result->getInt(0);
+				delete result;
+			}
+
+			zoneServer->start(zonePort, zoneAllowedConnections);
+		}
+
+		if (statusServer != NULL) {
+			int statusPort = configManager->getStatusPort();
+			int statusAllowedConnections = configManager->getStatusAllowedConnections();
+
+			statusServer->start(statusPort);
+		}
+
+		if (pingServer != NULL) {
+			int pingPort = configManager->getPingPort();
+			int pingAllowedConnections = configManager->getPingAllowedConnections();
+
+			pingServer->start(pingPort, pingAllowedConnections);
+		}
+
+		ObjectManager::instance()->scheduleUpdateToDatabase();
+
+		info("initialized", true);
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -124,55 +171,6 @@ void ServerCore::init() {
 }
 
 void ServerCore::run() {
-	ZoneServer* zoneServer = zoneServerRef.get();
-
-	if (loginServer != NULL) {
-		int loginPort = configManager->getLoginPort();
-		int loginAllowedConnections = configManager->getLoginAllowedConnections();
-
-		loginServer->start(loginPort, loginAllowedConnections);
-	}
-
-	if (zoneServer != NULL) {
-		int zonePort = 44463;
-		int zoneAllowedConnections = configManager->getZoneAllowedConnections();
-
-		ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-		dbManager->loadDatabases();
-
-		int galaxyID = configManager->getZoneGalaxyID();
-
-		String query = "SELECT port FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
-		ResultSet* result = database->instance()->executeQuery(query);
-
-		if (result != NULL && result->next()) {
-			zonePort = result->getInt(0);
-			delete result;
-		}
-
-		zoneServer->start(zonePort, zoneAllowedConnections);
-	}
-
-	if (statusServer != NULL) {
-		int statusPort = configManager->getStatusPort();
-		int statusAllowedConnections = configManager->getStatusAllowedConnections();
-
-		statusServer->start(statusPort);
-	}
-
-	if (pingServer != NULL) {
-		int pingPort = configManager->getPingPort();
-		int pingAllowedConnections = configManager->getPingAllowedConnections();
-
-		pingServer->start(pingPort, pingAllowedConnections);
-	}
-
-	ObjectManager::instance()->scheduleUpdateToDatabase();
-
-	Core::initialize();
-
-	info("initialized", true);
-
 	handleCommands();
 
 	shutdown();
@@ -315,7 +313,7 @@ void ServerCore::handleCommands() {
 			System::out << "[ServerCore] unreported Exception caught\n";
 		}
 
-		Core::commitTask();
+		//Core::commitTask();
 	}
 }
 

@@ -92,7 +92,8 @@ DistributedObjectServant* SuiTransferBox::_getImplementation() {
 }
 
 void SuiTransferBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiTransferBoxImplementation

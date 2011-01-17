@@ -138,7 +138,8 @@ DistributedObjectServant* InstallationDeed::_getImplementation() {
 }
 
 void InstallationDeed::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	InstallationDeedImplementation

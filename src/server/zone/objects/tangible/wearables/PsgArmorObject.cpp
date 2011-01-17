@@ -81,7 +81,8 @@ DistributedObjectServant* PsgArmorObject::_getImplementation() {
 }
 
 void PsgArmorObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PsgArmorObjectImplementation

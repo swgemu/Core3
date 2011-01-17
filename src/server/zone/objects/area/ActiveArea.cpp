@@ -211,7 +211,8 @@ DistributedObjectServant* ActiveArea::_getImplementation() {
 }
 
 void ActiveArea::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ActiveAreaImplementation

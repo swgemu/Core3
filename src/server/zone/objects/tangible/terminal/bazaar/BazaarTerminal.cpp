@@ -103,7 +103,8 @@ DistributedObjectServant* BazaarTerminal::_getImplementation() {
 }
 
 void BazaarTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	BazaarTerminalImplementation

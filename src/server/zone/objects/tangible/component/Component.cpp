@@ -286,7 +286,8 @@ DistributedObjectServant* Component::_getImplementation() {
 }
 
 void Component::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ComponentImplementation

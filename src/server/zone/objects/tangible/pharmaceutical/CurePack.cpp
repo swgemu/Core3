@@ -165,7 +165,8 @@ DistributedObjectServant* CurePack::_getImplementation() {
 }
 
 void CurePack::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CurePackImplementation

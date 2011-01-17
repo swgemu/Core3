@@ -90,7 +90,8 @@ DistributedObjectServant* ReconMissionObjective::_getImplementation() {
 }
 
 void ReconMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ReconMissionObjectiveImplementation

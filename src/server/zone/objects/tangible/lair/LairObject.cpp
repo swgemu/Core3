@@ -169,7 +169,8 @@ DistributedObjectServant* LairObject::_getImplementation() {
 }
 
 void LairObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	LairObjectImplementation

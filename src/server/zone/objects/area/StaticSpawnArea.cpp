@@ -62,7 +62,8 @@ DistributedObjectServant* StaticSpawnArea::_getImplementation() {
 }
 
 void StaticSpawnArea::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	StaticSpawnAreaImplementation

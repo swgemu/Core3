@@ -116,7 +116,8 @@ DistributedObjectServant* PowerBoostBuff::_getImplementation() {
 }
 
 void PowerBoostBuff::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PowerBoostBuffImplementation

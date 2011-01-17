@@ -83,7 +83,8 @@ DistributedObjectServant* BankTerminal::_getImplementation() {
 }
 
 void BankTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	BankTerminalImplementation

@@ -55,7 +55,8 @@ DistributedObjectServant* StaticObject::_getImplementation() {
 }
 
 void StaticObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	StaticObjectImplementation

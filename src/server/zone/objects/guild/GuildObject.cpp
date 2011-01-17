@@ -496,7 +496,8 @@ DistributedObjectServant* GuildObject::_getImplementation() {
 }
 
 void GuildObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	GuildObjectImplementation

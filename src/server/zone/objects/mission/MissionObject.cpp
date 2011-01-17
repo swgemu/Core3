@@ -691,7 +691,8 @@ DistributedObjectServant* MissionObject::_getImplementation() {
 }
 
 void MissionObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	MissionObjectImplementation

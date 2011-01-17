@@ -200,7 +200,8 @@ DistributedObjectServant* TicketObject::_getImplementation() {
 }
 
 void TicketObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TicketObjectImplementation

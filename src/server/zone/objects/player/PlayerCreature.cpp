@@ -1917,7 +1917,8 @@ DistributedObjectServant* PlayerCreature::_getImplementation() {
 }
 
 void PlayerCreature::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PlayerCreatureImplementation

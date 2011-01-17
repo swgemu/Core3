@@ -1113,7 +1113,8 @@ DistributedObjectServant* AiAgent::_getImplementation() {
 }
 
 void AiAgent::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	AiAgentImplementation

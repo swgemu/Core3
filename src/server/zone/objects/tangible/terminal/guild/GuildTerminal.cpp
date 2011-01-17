@@ -121,7 +121,8 @@ DistributedObjectServant* GuildTerminal::_getImplementation() {
 }
 
 void GuildTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	GuildTerminalImplementation

@@ -62,7 +62,8 @@ DistributedObjectServant* MissionSpawnActiveArea::_getImplementation() {
 }
 
 void MissionSpawnActiveArea::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	MissionSpawnActiveAreaImplementation

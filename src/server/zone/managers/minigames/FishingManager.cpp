@@ -754,7 +754,8 @@ DistributedObjectServant* FishingManager::_getImplementation() {
 }
 
 void FishingManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	FishingManagerImplementation

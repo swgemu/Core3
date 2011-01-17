@@ -2584,7 +2584,8 @@ DistributedObjectServant* SceneObject::_getImplementation() {
 }
 
 void SceneObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SceneObjectImplementation

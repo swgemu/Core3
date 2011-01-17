@@ -820,7 +820,8 @@ DistributedObjectServant* StructureObject::_getImplementation() {
 }
 
 void StructureObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	StructureObjectImplementation

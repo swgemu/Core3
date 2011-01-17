@@ -79,7 +79,8 @@ DistributedObjectServant* TeachPlayerListBox::_getImplementation() {
 }
 
 void TeachPlayerListBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TeachPlayerListBoxImplementation

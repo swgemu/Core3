@@ -59,7 +59,8 @@ DistributedObjectServant* ClothingObject::_getImplementation() {
 }
 
 void ClothingObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ClothingObjectImplementation

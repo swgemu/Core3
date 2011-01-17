@@ -103,7 +103,8 @@ DistributedObjectServant* TutorialBuildingObject::_getImplementation() {
 }
 
 void TutorialBuildingObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TutorialBuildingObjectImplementation

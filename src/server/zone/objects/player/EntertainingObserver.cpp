@@ -47,7 +47,8 @@ DistributedObjectServant* EntertainingObserver::_getImplementation() {
 }
 
 void EntertainingObserver::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	EntertainingObserverImplementation

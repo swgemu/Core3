@@ -512,7 +512,8 @@ DistributedObjectServant* Buff::_getImplementation() {
 }
 
 void Buff::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	BuffImplementation

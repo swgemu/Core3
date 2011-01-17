@@ -781,7 +781,8 @@ DistributedObjectServant* PlayerManager::_getImplementation() {
 }
 
 void PlayerManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PlayerManagerImplementation

@@ -168,7 +168,8 @@ DistributedObjectServant* RevivePack::_getImplementation() {
 }
 
 void RevivePack::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	RevivePackImplementation

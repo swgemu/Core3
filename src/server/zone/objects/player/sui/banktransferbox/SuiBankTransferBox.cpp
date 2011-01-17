@@ -99,7 +99,8 @@ DistributedObjectServant* SuiBankTransferBox::_getImplementation() {
 }
 
 void SuiBankTransferBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiBankTransferBoxImplementation

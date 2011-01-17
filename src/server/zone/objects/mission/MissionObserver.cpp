@@ -64,7 +64,8 @@ DistributedObjectServant* MissionObserver::_getImplementation() {
 }
 
 void MissionObserver::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	MissionObserverImplementation

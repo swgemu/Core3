@@ -169,7 +169,8 @@ DistributedObjectServant* JunkdealerCreature::_getImplementation() {
 }
 
 void JunkdealerCreature::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	JunkdealerCreatureImplementation

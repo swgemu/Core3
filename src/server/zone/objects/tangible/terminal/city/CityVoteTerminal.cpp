@@ -94,7 +94,8 @@ DistributedObjectServant* CityVoteTerminal::_getImplementation() {
 }
 
 void CityVoteTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CityVoteTerminalImplementation

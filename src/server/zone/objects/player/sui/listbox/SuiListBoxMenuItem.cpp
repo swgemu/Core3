@@ -57,7 +57,8 @@ DistributedObjectServant* SuiListBoxMenuItem::_getImplementation() {
 }
 
 void SuiListBoxMenuItem::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiListBoxMenuItemImplementation

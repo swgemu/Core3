@@ -217,7 +217,8 @@ DistributedObjectServant* FactoryCrate::_getImplementation() {
 }
 
 void FactoryCrate::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	FactoryCrateImplementation

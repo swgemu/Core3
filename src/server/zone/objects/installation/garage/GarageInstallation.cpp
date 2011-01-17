@@ -57,7 +57,8 @@ DistributedObjectServant* GarageInstallation::_getImplementation() {
 }
 
 void GarageInstallation::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	GarageInstallationImplementation

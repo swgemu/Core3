@@ -288,7 +288,8 @@ DistributedObjectServant* CityManager::_getImplementation() {
 }
 
 void CityManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CityManagerImplementation

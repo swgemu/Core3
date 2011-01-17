@@ -556,7 +556,8 @@ DistributedObjectServant* ChatRoom::_getImplementation() {
 }
 
 void ChatRoom::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ChatRoomImplementation

@@ -57,7 +57,6 @@ namespace server {
 		   default:
 			   break;
 		   }
-
 	   }
 
    };
