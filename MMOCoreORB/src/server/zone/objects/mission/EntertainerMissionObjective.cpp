@@ -108,7 +108,8 @@ DistributedObjectServant* EntertainerMissionObjective::_getImplementation() {
 }
 
 void EntertainerMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	EntertainerMissionObjectiveImplementation

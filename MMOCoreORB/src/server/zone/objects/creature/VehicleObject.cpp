@@ -263,7 +263,8 @@ DistributedObjectServant* VehicleObject::_getImplementation() {
 }
 
 void VehicleObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	VehicleObjectImplementation

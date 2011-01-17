@@ -257,7 +257,8 @@ DistributedObjectServant* LoginServer::_getImplementation() {
 }
 
 void LoginServer::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	LoginServerImplementation

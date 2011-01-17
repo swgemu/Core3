@@ -225,7 +225,7 @@ void StructureManagerImplementation::loadStaticClientObjects() {
 
 			SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(serverTemplate.hashCode());
 
-			if (templateObject->getCollisionActionBlockFlags() != 255)
+			if (templateObject == NULL || templateObject->getCollisionActionBlockFlags() != 255)
 				continue;
 
 			SceneObject* savedObject = zoneServer->getObject(objectID);

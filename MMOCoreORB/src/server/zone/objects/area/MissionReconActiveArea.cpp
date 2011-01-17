@@ -62,7 +62,8 @@ DistributedObjectServant* MissionReconActiveArea::_getImplementation() {
 }
 
 void MissionReconActiveArea::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	MissionReconActiveAreaImplementation

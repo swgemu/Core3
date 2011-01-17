@@ -438,7 +438,8 @@ DistributedObjectServant* DraftSchematic::_getImplementation() {
 }
 
 void DraftSchematic::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	DraftSchematicImplementation

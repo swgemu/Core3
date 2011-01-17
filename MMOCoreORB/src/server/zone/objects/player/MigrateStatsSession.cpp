@@ -113,7 +113,8 @@ DistributedObjectServant* MigrateStatsSession::_getImplementation() {
 }
 
 void MigrateStatsSession::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	MigrateStatsSessionImplementation

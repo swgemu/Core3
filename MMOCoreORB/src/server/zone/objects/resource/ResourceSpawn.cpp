@@ -563,7 +563,8 @@ DistributedObjectServant* ResourceSpawn::_getImplementation() {
 }
 
 void ResourceSpawn::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ResourceSpawnImplementation

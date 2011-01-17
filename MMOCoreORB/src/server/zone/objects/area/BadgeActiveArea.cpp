@@ -73,7 +73,8 @@ DistributedObjectServant* BadgeActiveArea::_getImplementation() {
 }
 
 void BadgeActiveArea::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	BadgeActiveAreaImplementation

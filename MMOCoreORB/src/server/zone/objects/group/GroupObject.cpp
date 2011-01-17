@@ -356,7 +356,8 @@ DistributedObjectServant* GroupObject::_getImplementation() {
 }
 
 void GroupObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	GroupObjectImplementation

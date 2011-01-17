@@ -58,7 +58,8 @@ DistributedObjectServant* SuiMessageBox::_getImplementation() {
 }
 
 void SuiMessageBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiMessageBoxImplementation

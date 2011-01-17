@@ -469,7 +469,8 @@ DistributedObjectServant* ArmorObject::_getImplementation() {
 }
 
 void ArmorObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ArmorObjectImplementation

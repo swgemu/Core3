@@ -937,7 +937,8 @@ DistributedObjectServant* PlayerObject::_getImplementation() {
 }
 
 void PlayerObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PlayerObjectImplementation

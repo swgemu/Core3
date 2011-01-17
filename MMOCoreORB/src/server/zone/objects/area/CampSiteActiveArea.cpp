@@ -48,7 +48,8 @@ DistributedObjectServant* CampSiteActiveArea::_getImplementation() {
 }
 
 void CampSiteActiveArea::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CampSiteActiveAreaImplementation

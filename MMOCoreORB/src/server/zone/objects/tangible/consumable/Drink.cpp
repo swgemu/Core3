@@ -58,7 +58,8 @@ DistributedObjectServant* Drink::_getImplementation() {
 }
 
 void Drink::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	DrinkImplementation

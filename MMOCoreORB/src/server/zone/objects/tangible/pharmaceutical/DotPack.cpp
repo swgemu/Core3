@@ -243,7 +243,8 @@ DistributedObjectServant* DotPack::_getImplementation() {
 }
 
 void DotPack::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	DotPackImplementation

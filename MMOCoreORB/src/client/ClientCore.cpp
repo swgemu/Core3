@@ -52,7 +52,7 @@ ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("Cor
 	ClientCore::instances = instances;
 }
 
-void ClientCore::init() {
+void ClientCore::initialize() {
 	info("starting up client..");
 }
 
@@ -177,9 +177,7 @@ int main(int argc, char* argv[]) {
 
 		ClientCore core(instances);
 
-		core.init();
-
-		core.run();
+		core.start();
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
 		e.printStackTrace();

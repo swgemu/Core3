@@ -255,7 +255,8 @@ DistributedObjectServant* FactoryObject::_getImplementation() {
 }
 
 void FactoryObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	FactoryObjectImplementation

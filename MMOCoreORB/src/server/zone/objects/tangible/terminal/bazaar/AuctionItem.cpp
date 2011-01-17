@@ -468,7 +468,8 @@ DistributedObjectServant* AuctionItem::_getImplementation() {
 }
 
 void AuctionItem::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	AuctionItemImplementation

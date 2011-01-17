@@ -61,7 +61,8 @@ DistributedObjectServant* ArmorComponent::_getImplementation() {
 }
 
 void ArmorComponent::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ArmorComponentImplementation

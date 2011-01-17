@@ -496,7 +496,8 @@ DistributedObjectServant* BuildingObject::_getImplementation() {
 }
 
 void BuildingObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	BuildingObjectImplementation

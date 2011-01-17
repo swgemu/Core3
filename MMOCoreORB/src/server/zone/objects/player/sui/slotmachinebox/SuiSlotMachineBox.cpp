@@ -47,7 +47,8 @@ DistributedObjectServant* SuiSlotMachineBox::_getImplementation() {
 }
 
 void SuiSlotMachineBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiSlotMachineBoxImplementation

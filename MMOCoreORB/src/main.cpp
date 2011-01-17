@@ -47,31 +47,39 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 
 class TestClass : public Object {
-	int values[1000];
+	static const int ELEMENT_COUNT = 100;
+
+	int values[ELEMENT_COUNT];
 
 public:
 	TestClass(int value) {
-		for (int i = 0; i < 1000; ++i)
+		for (int i = 0; i < ELEMENT_COUNT; ++i)
 			values[i] = value;
 	}
 
-	TestClass(TestClass& obj) {
-		for (int i = 0; i < 1000; ++i)
+	TestClass(TestClass& obj) : Object() {
+		for (int i = 0; i < ELEMENT_COUNT; ++i)
 			values[i] = obj.values[i];
 	}
 
 	void increment() {
-		for (int i = 0; i < 1000; ++i)
+		for (int i = 0; i < ELEMENT_COUNT; ++i)
 			values[i] += 1;
 	}
 
 	int get() {
 		int value = values[0];
 
-		for (int i = 0; i < 1000; ++i) {
+		for (int i = 0; i < ELEMENT_COUNT; ++i) {
 			if (values[i] != value)
 				assert(0 && "inconsistency in object");
 		}
+
+		return value;
+	}
+
+	int getz() {
+		int value = values[0];
 
 		return value;
 	}
@@ -82,53 +90,65 @@ public:
 };
 
 class TestTask : public Task {
-	TransactionalObjectHeader<TestClass*>* reference1;
-	TransactionalObjectHeader<TestClass*>* reference2;
+	Vector<TransactionalObjectHeader<TestClass*>* >* references;
 
 public:
-	TestTask(TransactionalObjectHeader<TestClass*>* ref1, TransactionalObjectHeader<TestClass*>* ref2) {
-		reference1 = ref1;
-		reference2 = ref2;
+	TestTask(Vector<TransactionalObjectHeader<TestClass*>* >* refs) {
+		references = refs;
 	}
 
 	void run() {
-		TestClass* object1 = reference1->getForUpdate();
-		TestClass* object2 = reference2->getForUpdate();
+		Task* task = new TestTask(references);
 
-		object1->increment();
-		object2->increment();
+		for (int i = 0; i < references->size(); ++i) {
+			if (System::random(100) > 50)
+				continue;
+
+			TestClass* object = references->get(i)->getForUpdate();
+			if (object == NULL) {
+				printf("WTH\n");
+				continue;
+			}
+
+			char str[80];
+			sprintf(str, "values %i\n", object->getz());
+
+			Transaction::currentTransaction()->log(str);
+
+			object->increment();
+		}
 	}
 };
 
 void testTransactions() {
-	TransactionalObjectHeader<TestClass*> reference1;
-	TransactionalObjectHeader<TestClass*> reference2;
+	Vector<TransactionalObjectHeader<TestClass*>* > references;
 
-	reference1 = new TestClass(1);
-	reference2 = new TestClass(2);
-
-	Core::commitTask();
+	for (int i = 0; i < 10; ++i)
+		references.add(new TransactionalObjectHeader<TestClass*>(new TestClass(1)));
 
 	for (int i = 0; i < 100000; ++i) {
-		Task* task = new TestTask(&reference1, &reference2);
+		Task* task = new TestTask(&references);
 
 		//Core::getTaskManager()->scheduleTask(task, 1000);
 		Core::getTaskManager()->executeTask(task);
 	}
 
-	Core::commitTask();
+	TransactionalMemoryManager::commitPureTransaction();
 
 	while(Core::getTaskManager()->getExecutingTaskSize() != 0) {
+	//while(true) {
 		Thread::sleep(1000);
 	}
 
 	Thread::sleep(1000);
 
-	TestClass* object1 = reference1.get();
-	TestClass* object2 = reference2.get();
+	for (int i = 0; i < references.size(); ++i) {
+		TestClass* object = references.get(i)->get();
 
-	printf("%i\n", object1->get());
-	printf("%i\n", object2->get());
+		printf("%i\n", object->get());
+	}
+
+	exit(0);
 }
 
 int main(int argc, char* argv[]) {
@@ -140,9 +160,7 @@ int main(int argc, char* argv[]) {
 
 		ServerCore core;
 
-		core.init();
-
-		core.run();
+		core.start();
 
 		//testTransactions();
 	} catch (Exception& e) {

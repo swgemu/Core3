@@ -198,7 +198,8 @@ DistributedObjectServant* CreatureManager::_getImplementation() {
 }
 
 void CreatureManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CreatureManagerImplementation
@@ -219,6 +220,7 @@ void CreatureManagerImplementation::finalize() {
 void CreatureManagerImplementation::_initializeImplementation() {
 	_setClassHelper(CreatureManagerHelper::instance());
 
+	_serializationHelperMethod();
 	_serializationHelperMethod();
 }
 
@@ -268,8 +270,74 @@ void CreatureManagerImplementation::_serializationHelperMethod() {
 
 	_setClassName("CreatureManager");
 
-	addSerializableVariable("zone", &zone);
-	addSerializableVariable("spawnAreaMap", &spawnAreaMap);
+}
+
+void CreatureManagerImplementation::readObject(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint16 _varSize = stream->readShort();
+
+		int _currentOffset = stream->getOffset();
+
+		if(CreatureManagerImplementation::readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	initializeTransientMembers();
+}
+
+bool CreatureManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
+	if (ZoneManagerImplementation::readObjectMember(stream, _name))
+		return true;
+
+	if (_name == "zone") {
+		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
+		return true;
+	}
+
+	if (_name == "spawnAreaMap") {
+		TypeInfo<SpawnAreaMap >::parseFromBinaryStream(&spawnAreaMap, stream);
+		return true;
+	}
+
+
+	return false;
+}
+
+void CreatureManagerImplementation::writeObject(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = CreatureManagerImplementation::writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+}
+
+int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint16 _totalSize;
+	_name = "zone";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<Zone* > >::toBinaryStream(&zone, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "spawnAreaMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SpawnAreaMap >::toBinaryStream(&spawnAreaMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 2 + ZoneManagerImplementation::writeObjectMembers(stream);
 }
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : ZoneManagerImplementation("CreatureManager") {

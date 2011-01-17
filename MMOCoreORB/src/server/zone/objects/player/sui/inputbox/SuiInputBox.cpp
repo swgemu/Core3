@@ -99,7 +99,8 @@ DistributedObjectServant* SuiInputBox::_getImplementation() {
 }
 
 void SuiInputBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiInputBoxImplementation

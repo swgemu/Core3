@@ -38,9 +38,9 @@ void LoginSession::run() {
 
 	info("connected to login server", true);
 
-	#ifdef WITH_STM
-		Core::commitTask();
-	#endif
+#ifdef WITH_STM
+	TransactionalMemoryManager::commitPureTransaction();
+#endif
 
 	char userinput[32];
 	char passwordinput[32];

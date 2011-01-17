@@ -119,7 +119,8 @@ DistributedObjectServant* HarvesterObject::_getImplementation() {
 }
 
 void HarvesterObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	HarvesterObjectImplementation

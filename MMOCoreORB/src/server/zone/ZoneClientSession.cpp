@@ -249,7 +249,8 @@ DistributedObjectServant* ZoneClientSession::_getImplementation() {
 }
 
 void ZoneClientSession::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ZoneClientSessionImplementation

@@ -56,7 +56,8 @@ DistributedObjectServant* CampKit::_getImplementation() {
 }
 
 void CampKit::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CampKitImplementation

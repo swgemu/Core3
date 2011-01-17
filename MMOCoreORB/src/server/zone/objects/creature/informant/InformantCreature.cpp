@@ -124,7 +124,8 @@ DistributedObjectServant* InformantCreature::_getImplementation() {
 }
 
 void InformantCreature::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	InformantCreatureImplementation

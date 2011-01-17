@@ -97,7 +97,8 @@ DistributedObjectServant* GeneratorObject::_getImplementation() {
 }
 
 void GeneratorObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	GeneratorObjectImplementation

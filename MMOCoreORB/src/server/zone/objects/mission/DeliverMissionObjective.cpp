@@ -171,7 +171,8 @@ DistributedObjectServant* DeliverMissionObjective::_getImplementation() {
 }
 
 void DeliverMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	DeliverMissionObjectiveImplementation

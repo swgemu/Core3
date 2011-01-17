@@ -130,7 +130,8 @@ DistributedObjectServant* SpawnArea::_getImplementation() {
 }
 
 void SpawnArea::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SpawnAreaImplementation

@@ -80,7 +80,8 @@ DistributedObjectServant* TravelTerminal::_getImplementation() {
 }
 
 void TravelTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TravelTerminalImplementation

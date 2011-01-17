@@ -164,6 +164,8 @@ void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int minpool, int max
 	for (int i = 0; i < zoneids.size(); ++i) {
 
 		Zone* zone = server->getZoneServer()->getZone(zoneids.get(i));
+		if (zone == NULL)
+			continue;
 
 		SpawnDensityMap newMap(isType("ore"), concentration, zone->getMinX(),
 				zone->getMaxX(), zone->getMinY(), zone->getMaxY());

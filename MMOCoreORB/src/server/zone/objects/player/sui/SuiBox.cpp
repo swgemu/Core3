@@ -525,7 +525,8 @@ DistributedObjectServant* SuiBox::_getImplementation() {
 }
 
 void SuiBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiBoxImplementation

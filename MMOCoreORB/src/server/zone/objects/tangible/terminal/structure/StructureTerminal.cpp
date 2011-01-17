@@ -73,7 +73,8 @@ DistributedObjectServant* StructureTerminal::_getImplementation() {
 }
 
 void StructureTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	StructureTerminalImplementation

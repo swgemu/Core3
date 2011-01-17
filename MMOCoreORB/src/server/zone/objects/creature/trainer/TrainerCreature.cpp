@@ -248,7 +248,8 @@ DistributedObjectServant* TrainerCreature::_getImplementation() {
 }
 
 void TrainerCreature::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TrainerCreatureImplementation

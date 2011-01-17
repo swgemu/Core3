@@ -137,7 +137,8 @@ DistributedObjectServant* BazaarAuctionsMap::_getImplementation() {
 }
 
 void BazaarAuctionsMap::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	BazaarAuctionsMapImplementation

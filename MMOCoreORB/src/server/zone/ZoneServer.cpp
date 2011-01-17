@@ -928,7 +928,8 @@ DistributedObjectServant* ZoneServer::_getImplementation() {
 }
 
 void ZoneServer::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ZoneServerImplementation

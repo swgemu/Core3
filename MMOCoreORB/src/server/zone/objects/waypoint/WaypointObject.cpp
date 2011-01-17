@@ -227,7 +227,8 @@ DistributedObjectServant* WaypointObject::_getImplementation() {
 }
 
 void WaypointObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	WaypointObjectImplementation

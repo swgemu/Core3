@@ -195,7 +195,8 @@ DistributedObjectServant* SuiListBox::_getImplementation() {
 }
 
 void SuiListBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SuiListBoxImplementation

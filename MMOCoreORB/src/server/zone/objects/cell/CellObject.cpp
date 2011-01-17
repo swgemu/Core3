@@ -195,7 +195,8 @@ DistributedObjectServant* CellObject::_getImplementation() {
 }
 
 void CellObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CellObjectImplementation

@@ -363,7 +363,8 @@ DistributedObjectServant* SurveyTool::_getImplementation() {
 }
 
 void SurveyTool::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SurveyToolImplementation

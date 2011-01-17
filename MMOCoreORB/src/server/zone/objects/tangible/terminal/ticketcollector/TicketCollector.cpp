@@ -123,7 +123,8 @@ DistributedObjectServant* TicketCollector::_getImplementation() {
 }
 
 void TicketCollector::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TicketCollectorImplementation

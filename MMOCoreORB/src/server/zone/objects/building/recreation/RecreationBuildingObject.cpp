@@ -32,7 +32,8 @@ DistributedObjectServant* RecreationBuildingObject::_getImplementation() {
 }
 
 void RecreationBuildingObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	RecreationBuildingObjectImplementation

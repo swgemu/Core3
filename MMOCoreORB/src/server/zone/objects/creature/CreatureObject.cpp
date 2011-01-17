@@ -3208,7 +3208,8 @@ DistributedObjectServant* CreatureObject::_getImplementation() {
 }
 
 void CreatureObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CreatureObjectImplementation

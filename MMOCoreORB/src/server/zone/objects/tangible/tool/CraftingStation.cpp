@@ -185,7 +185,8 @@ DistributedObjectServant* CraftingStation::_getImplementation() {
 }
 
 void CraftingStation::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CraftingStationImplementation

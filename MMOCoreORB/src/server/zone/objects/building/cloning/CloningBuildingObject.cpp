@@ -63,7 +63,8 @@ DistributedObjectServant* CloningBuildingObject::_getImplementation() {
 }
 
 void CloningBuildingObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CloningBuildingObjectImplementation

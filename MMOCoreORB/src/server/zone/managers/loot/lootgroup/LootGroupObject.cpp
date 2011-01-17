@@ -138,7 +138,8 @@ DistributedObjectServant* LootGroupObject::_getImplementation() {
 }
 
 void LootGroupObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	LootGroupObjectImplementation

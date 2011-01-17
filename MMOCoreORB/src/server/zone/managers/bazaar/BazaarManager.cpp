@@ -327,7 +327,8 @@ DistributedObjectServant* BazaarManager::_getImplementation() {
 }
 
 void BazaarManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	BazaarManagerImplementation

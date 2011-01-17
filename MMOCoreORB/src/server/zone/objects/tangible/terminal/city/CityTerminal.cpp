@@ -94,7 +94,8 @@ DistributedObjectServant* CityTerminal::_getImplementation() {
 }
 
 void CityTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CityTerminalImplementation
