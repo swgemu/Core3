@@ -49,7 +49,8 @@ DistributedObjectServant* InstrumentObserver::_getImplementation() {
 }
 
 void InstrumentObserver::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	InstrumentObserverImplementation

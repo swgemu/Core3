@@ -59,7 +59,8 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	setGlobalLogging(true);
 
 	updateModifiedObjectsTask = new UpdateModifiedObjectsTask();
-	//updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
+	updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
+
 
 	for (int i = 0; i < INITIALUPDATEMODIFIEDOBJECTSTHREADS; ++i) {
 		createUpdateModifiedObjectsThread();
@@ -971,6 +972,10 @@ int ObjectManager::commitDestroyObjectToDB(uint64 objectID) {
 }
 
 void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
+#ifndef WITH_STM
+	return;
+#endif
+
 	//ObjectDatabaseManager::instance()->checkpoint();
 
 	if (objectUpdateInProcess) {

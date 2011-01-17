@@ -113,7 +113,8 @@ DistributedObjectServant* BuildingDeed::_getImplementation() {
 }
 
 void BuildingDeed::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	BuildingDeedImplementation

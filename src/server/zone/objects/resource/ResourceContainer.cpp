@@ -247,7 +247,8 @@ DistributedObjectServant* ResourceContainer::_getImplementation() {
 }
 
 void ResourceContainer::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ResourceContainerImplementation

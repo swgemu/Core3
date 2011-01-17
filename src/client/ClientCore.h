@@ -57,7 +57,7 @@ class ClientCore : public Core, public Logger {
 public:
 	ClientCore(int instances);
 
-	void init();
+	void initialize();
 
 	void run();
 

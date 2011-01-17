@@ -129,7 +129,8 @@ DistributedObjectServant* FishObject::_getImplementation() {
 }
 
 void FishObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	FishObjectImplementation

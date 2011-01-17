@@ -50,7 +50,8 @@ DistributedObjectServant* DurationBuff::_getImplementation() {
 }
 
 void DurationBuff::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	DurationBuffImplementation

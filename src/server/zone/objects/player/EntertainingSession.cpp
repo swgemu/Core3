@@ -580,7 +580,8 @@ DistributedObjectServant* EntertainingSession::_getImplementation() {
 }
 
 void EntertainingSession::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	EntertainingSessionImplementation

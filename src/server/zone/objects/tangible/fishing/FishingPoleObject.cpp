@@ -185,7 +185,8 @@ DistributedObjectServant* FishingPoleObject::_getImplementation() {
 }
 
 void FishingPoleObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	FishingPoleObjectImplementation

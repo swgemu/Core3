@@ -43,7 +43,8 @@ DistributedObjectServant* LairGroup::_getImplementation() {
 }
 
 void LairGroup::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	LairGroupImplementation

@@ -286,7 +286,8 @@ DistributedObjectServant* ShuttleCreature::_getImplementation() {
 }
 
 void ShuttleCreature::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ShuttleCreatureImplementation

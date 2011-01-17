@@ -186,7 +186,8 @@ DistributedObjectServant* MissionTerminal::_getImplementation() {
 }
 
 void MissionTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	MissionTerminalImplementation

@@ -79,7 +79,8 @@ DistributedObjectServant* SpiceBuff::_getImplementation() {
 }
 
 void SpiceBuff::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	SpiceBuffImplementation

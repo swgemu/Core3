@@ -99,7 +99,8 @@ DistributedObjectServant* Container::_getImplementation() {
 }
 
 void Container::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ContainerImplementation

@@ -115,7 +115,8 @@ DistributedObjectServant* CharacterBuilderTerminal::_getImplementation() {
 }
 
 void CharacterBuilderTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CharacterBuilderTerminalImplementation

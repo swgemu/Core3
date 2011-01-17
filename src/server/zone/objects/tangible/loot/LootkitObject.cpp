@@ -118,7 +118,8 @@ DistributedObjectServant* LootkitObject::_getImplementation() {
 }
 
 void LootkitObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	LootkitObjectImplementation

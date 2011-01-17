@@ -117,7 +117,8 @@ DistributedObjectServant* ObjectController::_getImplementation() {
 }
 
 void ObjectController::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ObjectControllerImplementation

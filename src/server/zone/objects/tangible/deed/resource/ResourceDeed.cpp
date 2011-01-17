@@ -102,7 +102,8 @@ DistributedObjectServant* ResourceDeed::_getImplementation() {
 }
 
 void ResourceDeed::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ResourceDeedImplementation

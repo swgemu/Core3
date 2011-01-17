@@ -78,7 +78,8 @@ DistributedObjectServant* PlayerLearnListBox::_getImplementation() {
 }
 
 void PlayerLearnListBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PlayerLearnListBoxImplementation

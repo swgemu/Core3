@@ -134,7 +134,8 @@ DistributedObjectServant* WearableObject::_getImplementation() {
 }
 
 void WearableObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	WearableObjectImplementation

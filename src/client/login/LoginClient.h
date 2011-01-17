@@ -59,7 +59,7 @@ public:
 		BaseClient::sendPacket((BasePacket*) msg);
 
 	#ifdef WITH_STM
-		Core::commitTask();
+		TransactionalMemoryManager::commitPureTransaction();
 	#endif
 	}
 

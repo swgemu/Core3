@@ -32,7 +32,8 @@ DistributedObjectServant* TravelBuildingObject::_getImplementation() {
 }
 
 void TravelBuildingObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TravelBuildingObjectImplementation

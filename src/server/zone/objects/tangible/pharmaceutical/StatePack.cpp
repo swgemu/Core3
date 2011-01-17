@@ -112,7 +112,8 @@ DistributedObjectServant* StatePack::_getImplementation() {
 }
 
 void StatePack::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	StatePackImplementation

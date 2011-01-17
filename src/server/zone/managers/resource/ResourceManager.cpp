@@ -291,7 +291,8 @@ DistributedObjectServant* ResourceManager::_getImplementation() {
 }
 
 void ResourceManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ResourceManagerImplementation

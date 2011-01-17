@@ -88,7 +88,8 @@ DistributedObjectServant* DelayedBuff::_getImplementation() {
 }
 
 void DelayedBuff::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	DelayedBuffImplementation

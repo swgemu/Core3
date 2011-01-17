@@ -227,7 +227,8 @@ DistributedObjectServant* CraftingManager::_getImplementation() {
 }
 
 void CraftingManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CraftingManagerImplementation

@@ -62,7 +62,8 @@ DistributedObjectServant* StartingLocationTerminal::_getImplementation() {
 }
 
 void StartingLocationTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	StartingLocationTerminalImplementation

@@ -45,7 +45,8 @@ DistributedObjectServant* MedicalBuildingObject::_getImplementation() {
 }
 
 void MedicalBuildingObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	MedicalBuildingObjectImplementation

@@ -68,7 +68,8 @@ DistributedObjectServant* RadialManager::_getImplementation() {
 }
 
 void RadialManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	RadialManagerImplementation

@@ -199,7 +199,8 @@ DistributedObjectServant* PharmaceuticalObject::_getImplementation() {
 }
 
 void PharmaceuticalObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PharmaceuticalObjectImplementation

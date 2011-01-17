@@ -890,7 +890,8 @@ DistributedObjectServant* TangibleObject::_getImplementation() {
 }
 
 void TangibleObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TangibleObjectImplementation

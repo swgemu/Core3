@@ -538,7 +538,8 @@ DistributedObjectServant* ManufactureSchematic::_getImplementation() {
 }
 
 void ManufactureSchematic::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ManufactureSchematicImplementation

@@ -182,7 +182,8 @@ DistributedObjectServant* StructureManager::_getImplementation() {
 }
 
 void StructureManager::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	StructureManagerImplementation

@@ -41,7 +41,8 @@ DistributedObjectServant* HerdGroup::_getImplementation() {
 }
 
 void HerdGroup::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	HerdGroupImplementation

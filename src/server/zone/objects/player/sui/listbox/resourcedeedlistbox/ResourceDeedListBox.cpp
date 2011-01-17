@@ -128,7 +128,8 @@ DistributedObjectServant* ResourceDeedListBox::_getImplementation() {
 }
 
 void ResourceDeedListBox::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ResourceDeedListBoxImplementation

@@ -111,7 +111,8 @@ DistributedObjectServant* Terminal::_getImplementation() {
 }
 
 void Terminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	TerminalImplementation

@@ -168,7 +168,8 @@ DistributedObjectServant* Consumable::_getImplementation() {
 }
 
 void Consumable::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ConsumableImplementation

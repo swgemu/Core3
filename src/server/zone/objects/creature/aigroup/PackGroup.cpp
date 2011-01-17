@@ -41,7 +41,8 @@ DistributedObjectServant* PackGroup::_getImplementation() {
 }
 
 void PackGroup::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	PackGroupImplementation

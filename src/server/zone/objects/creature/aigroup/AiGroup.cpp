@@ -139,7 +139,8 @@ DistributedObjectServant* AiGroup::_getImplementation() {
 }
 
 void AiGroup::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	AiGroupImplementation

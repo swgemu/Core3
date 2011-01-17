@@ -55,7 +55,8 @@ DistributedObjectServant* CloningTerminal::_getImplementation() {
 }
 
 void CloningTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CloningTerminalImplementation

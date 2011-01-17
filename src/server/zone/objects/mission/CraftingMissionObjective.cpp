@@ -108,7 +108,8 @@ DistributedObjectServant* CraftingMissionObjective::_getImplementation() {
 }
 
 void CraftingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CraftingMissionObjectiveImplementation

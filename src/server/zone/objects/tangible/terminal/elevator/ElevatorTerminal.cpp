@@ -90,7 +90,8 @@ DistributedObjectServant* ElevatorTerminal::_getImplementation() {
 }
 
 void ElevatorTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ElevatorTerminalImplementation

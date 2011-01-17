@@ -810,7 +810,8 @@ DistributedObjectServant* CityHallObject::_getImplementation() {
 }
 
 void CityHallObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CityHallObjectImplementation

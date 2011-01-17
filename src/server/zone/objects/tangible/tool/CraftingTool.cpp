@@ -470,7 +470,8 @@ DistributedObjectServant* CraftingTool::_getImplementation() {
 }
 
 void CraftingTool::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	CraftingToolImplementation

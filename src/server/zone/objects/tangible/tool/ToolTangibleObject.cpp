@@ -45,7 +45,8 @@ DistributedObjectServant* ToolTangibleObject::_getImplementation() {
 }
 
 void ToolTangibleObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ToolTangibleObjectImplementation

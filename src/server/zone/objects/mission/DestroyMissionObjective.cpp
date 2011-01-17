@@ -145,7 +145,8 @@ DistributedObjectServant* DestroyMissionObjective::_getImplementation() {
 }
 
 void DestroyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	DestroyMissionObjectiveImplementation

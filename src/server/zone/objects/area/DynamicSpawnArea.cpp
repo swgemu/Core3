@@ -201,7 +201,8 @@ DistributedObjectServant* DynamicSpawnArea::_getImplementation() {
 }
 
 void DynamicSpawnArea::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	DynamicSpawnAreaImplementation

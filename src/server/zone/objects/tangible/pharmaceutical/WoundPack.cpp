@@ -143,7 +143,8 @@ DistributedObjectServant* WoundPack::_getImplementation() {
 }
 
 void WoundPack::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	WoundPackImplementation

@@ -63,7 +63,8 @@ DistributedObjectServant* NonPlayerCreatureObject::_getImplementation() {
 }
 
 void NonPlayerCreatureObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	NonPlayerCreatureObjectImplementation

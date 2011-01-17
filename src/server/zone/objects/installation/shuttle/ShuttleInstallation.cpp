@@ -115,7 +115,8 @@ DistributedObjectServant* ShuttleInstallation::_getImplementation() {
 }
 
 void ShuttleInstallation::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	ShuttleInstallationImplementation

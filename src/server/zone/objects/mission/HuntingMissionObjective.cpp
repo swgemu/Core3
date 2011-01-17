@@ -108,7 +108,8 @@ DistributedObjectServant* HuntingMissionObjective::_getImplementation() {
 }
 
 void HuntingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	HuntingMissionObjectiveImplementation

@@ -525,7 +525,8 @@ DistributedObjectServant* GamblingTerminal::_getImplementation() {
 }
 
 void GamblingTerminal::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;}
+	_impl = servant;
+}
 
 /*
  *	GamblingTerminalImplementation
