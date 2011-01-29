@@ -260,7 +260,7 @@ int BazaarManagerImplementation::checkBidAuction(PlayerCreature* player, Auction
 		return BidAuctionResponseMessage::PRICEOVERFLOW;
 	}
 
-	if (price1 < 1 || price2 < 1) {
+	if (price1 < 1 || price2 < 1 || price1 < item->getPrice()) {
 		return BidAuctionResponseMessage::INVALIDPRICE;
 	}
 
