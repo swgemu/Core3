@@ -100,22 +100,15 @@ public:
 	void run() {
 		//Task* task = new TestTask(references);
 
-		for (int i = 0; i < references->size(); ++i) {
-			if (System::random(references->size()) > 25)
-				continue;
+		for (int i = 0; i < 25; ++i) {
+			TestClass* object = references->get(System::random(references->size() - 1)).getForUpdate();
 
-			/*TestClass* object = references->get(i).getForUpdate();
-			if (object == NULL) {
-				printf("WTH\n");
-				continue;
-			}
-
-			char str[80];
+			/*char str[80];
 			sprintf(str, "values %i\n", object->getz());
 
-			Transaction::currentTransaction()->log(str);
+			Transaction::currentTransaction()->log(str);*/
 
-			object->increment();*/
+			object->increment();
 		}
 	}
 };
@@ -123,10 +116,10 @@ public:
 void testTransactions() {
 	Vector<TransactionalReference<TestClass*> > references;
 
-	for (int i = 0; i < 1000; ++i)
+	for (int i = 0; i < 100000; ++i)
 		references.add(new TestClass(1));
 
-	for (int i = 0; i < 100000; ++i) {
+	for (int i = 0; i < 10000; ++i) {
 		Task* task = new TestTask(&references);
 
 		//Core::getTaskManager()->scheduleTask(task, 1000);
@@ -137,8 +130,18 @@ void testTransactions() {
 
 	Thread::sleep(3000);
 
-	while(Core::getTaskManager()->getExecutingTaskSize() > 10) {
+	while(true) {
+	//while(Core::getTaskManager()->getExecutingTaskSize() > 10) {
 		Thread::sleep(1000);
+
+		for (int i = 0; i < 10000; ++i) {
+			Task* task = new TestTask(&references);
+
+			//Core::getTaskManager()->scheduleTask(task, 1000);
+			Core::getTaskManager()->executeTask(task);
+		}
+
+		TransactionalMemoryManager::commitPureTransaction();
 	}
 
 	for (int i = 0; i < references.size(); ++i) {
