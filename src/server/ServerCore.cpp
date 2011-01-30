@@ -158,7 +158,9 @@ void ServerCore::initialize() {
 			pingServer->start(pingPort, pingAllowedConnections);
 		}
 
+	#ifndef WITH_STM
 		ObjectManager::instance()->scheduleUpdateToDatabase();
+	#endif
 
 		info("initialized", true);
 	} catch (ServiceException& e) {
