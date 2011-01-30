@@ -20,7 +20,16 @@ protected:
 	Vector<ManagedReference<DraftSchematic* > > limitedUseSchematics;
 
 public:
+	SchematicList() {
+
+	}
+
+	SchematicList(const SchematicList& list) : Object(), DeltaVector<ManagedReference<DraftSchematic* > >(list) {
+		limitedUseSchematics = list.limitedUseSchematics;
+	}
+
 	bool add(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
+
 
 	void awardLimitedUseSchematics();
 	bool updateUseCount(DraftSchematic* schematic);
