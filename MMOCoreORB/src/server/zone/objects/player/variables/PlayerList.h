@@ -18,6 +18,14 @@ public:
 
 public:
 
+	PlayerList() {
+
+	}
+
+	PlayerList(const PlayerList& list) : Object(), DeltaVector<String>(list) {
+
+	}
+
 	bool addPlayer(const String& player) {
 		String lowerCase = player.toLowerCase();
 
