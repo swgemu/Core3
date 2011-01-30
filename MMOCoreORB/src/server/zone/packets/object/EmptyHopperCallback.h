@@ -52,19 +52,19 @@ public:
 
 		InstallationObject* inso = (InstallationObject*) object.get();
 
-		if (!inso->isHarvesterObject())
+		/*if (!inso->isHarvesterObject())
 			return;
 
-		HarvesterObject* harvester = (HarvesterObject*) inso;
+		HarvesterObject* harvester = (HarvesterObject*) inso;*/
 
 		try {
-			Locker clocker(harvester, player);
+			Locker clocker(inso, player);
 
-			if (!harvester->isOnAdminList(player)) {
+			if (!inso->isOnAdminList(player)) {
 				return;
 			}
 
-			if (!harvester->isInRange(player, 20)) {
+			if (!inso->isInRange(player, 20)) {
 				player->sendSystemMessage("You are too far away");
 				return;
 			}
@@ -79,7 +79,7 @@ public:
 				return;
 			}
 
-			ManagedReference<ResourceContainer*> container = harvester->getContainerFromHopper(resourceSpawn);
+			ManagedReference<ResourceContainer*> container = inso->getContainerFromHopper(resourceSpawn);
 
 			if (container == NULL) {
 				player->error("null container");
@@ -92,15 +92,15 @@ public:
 			}
 
 			if (byte1 == 1) {
-				//harvester->removeResourceFromHopper(container);
+				//inso->removeResourceFromHopper(container);
 				int oldQuantity = container->getQuantity();
 				int newQuantity = oldQuantity - quantity;
 
-				harvester->updateResourceContainerQuantity(container, newQuantity, true);
+				inso->updateResourceContainerQuantity(container, newQuantity, true);
 			} else if (byte1 == 0) {
 				if (!inventory->hasFullContainerObjects()) {
 					container->split(quantity, player);
-					harvester->updateResourceContainerQuantity(container, container->getQuantity(), true);
+					inso->updateResourceContainerQuantity(container, container->getQuantity(), true);
 				} else {
 					StringIdChatParameter stringId("error_message", "inv_full");
 					player->sendSystemMessage(stringId);
@@ -108,9 +108,9 @@ public:
 			}
 
 			inventory->updateToDatabaseAllObjects(false);
-			harvester->updateToDatabaseAllObjects(false);
+			inso->updateToDatabaseAllObjects(false);
 
-			harvester->broadcastToOperators(new HarvesterObjectMessage7(harvester));
+			inso->broadcastToOperators(new HarvesterObjectMessage7(inso));
 
 		} catch (...) {
 			player->error("unreported exception caught in EmptyHopperCallback::run");

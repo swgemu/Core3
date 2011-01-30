@@ -24,9 +24,8 @@ void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* 
 			AiAgent* aio = (AiAgent*)creo;
 			if ((aio->getFerocity() <= 0 || getFerocity() <= 0) && aio->getLevel() >= getLevel())
 				return;
-		}
-
-		activateAwarenessEvent(creo);
+		} else
+			activateAwarenessEvent(creo);
 	}
 
 }
