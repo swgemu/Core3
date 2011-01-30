@@ -90,21 +90,21 @@ public:
 };
 
 class TestTask : public Task {
-	Vector<TransactionalObjectHeader<TestClass*>* >* references;
+	Vector<TransactionalReference<TestClass*> >* references;
 
 public:
-	TestTask(Vector<TransactionalObjectHeader<TestClass*>* >* refs) {
+	TestTask(Vector<TransactionalReference<TestClass*> >* refs) {
 		references = refs;
 	}
 
 	void run() {
-		Task* task = new TestTask(references);
+		//Task* task = new TestTask(references);
 
 		for (int i = 0; i < references->size(); ++i) {
-			if (System::random(100) > 50)
+			if (System::random(references->size()) > 25)
 				continue;
 
-			TestClass* object = references->get(i)->getForUpdate();
+			/*TestClass* object = references->get(i).getForUpdate();
 			if (object == NULL) {
 				printf("WTH\n");
 				continue;
@@ -115,16 +115,16 @@ public:
 
 			Transaction::currentTransaction()->log(str);
 
-			object->increment();
+			object->increment();*/
 		}
 	}
 };
 
 void testTransactions() {
-	Vector<TransactionalObjectHeader<TestClass*>* > references;
+	Vector<TransactionalReference<TestClass*> > references;
 
-	for (int i = 0; i < 10; ++i)
-		references.add(new TransactionalObjectHeader<TestClass*>(new TestClass(1)));
+	for (int i = 0; i < 1000; ++i)
+		references.add(new TestClass(1));
 
 	for (int i = 0; i < 100000; ++i) {
 		Task* task = new TestTask(&references);
@@ -135,18 +135,21 @@ void testTransactions() {
 
 	TransactionalMemoryManager::commitPureTransaction();
 
-	while(Core::getTaskManager()->getExecutingTaskSize() != 0) {
-	//while(true) {
+	Thread::sleep(3000);
+
+	while(Core::getTaskManager()->getExecutingTaskSize() > 10) {
 		Thread::sleep(1000);
 	}
 
-	Thread::sleep(1000);
-
 	for (int i = 0; i < references.size(); ++i) {
-		TestClass* object = references.get(i)->get();
+		TestClass* object = references.get(i);
 
 		printf("%i\n", object->get());
 	}
+
+	TransactionalMemoryManager::commitPureTransaction();
+
+	Thread::sleep(1000);
 
 	exit(0);
 }
