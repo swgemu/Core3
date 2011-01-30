@@ -972,7 +972,7 @@ int ObjectManager::commitDestroyObjectToDB(uint64 objectID) {
 }
 
 void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
-#ifndef WITH_STM
+#ifdef WITH_STM
 	return;
 #endif
 
