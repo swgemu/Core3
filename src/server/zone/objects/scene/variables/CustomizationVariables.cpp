@@ -64,6 +64,15 @@ CustomizationVariables::~CustomizationVariables() {
 	removeAll();
 }
 
+CustomizationVariables::CustomizationVariables(const CustomizationVariables& cv) :VectorMap<uint8, uint8>(cv) {
+	unknown = cv.unknown;
+	unknown2 = cv.unknown2;
+
+	female = cv.female;
+
+	keyIndex = cv.keyIndex;
+}
+
 CustomizationVariables& CustomizationVariables::operator=(const String& custString) {
 	parseFromClientString(custString);
 

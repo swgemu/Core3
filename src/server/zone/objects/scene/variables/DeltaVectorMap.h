@@ -33,6 +33,14 @@ public:
 		addSerializableVariables();
 	}
 
+	DeltaVectorMap(const DeltaVectorMap& ds) : Object(), Serializable() {
+		updateCounter = ds.updateCounter;
+		vectorMap.setAllowOverwriteInsertPlan();
+		vectorMap = ds.vectorMap;
+
+		addSerializableVariables();
+	}
+
 	inline void addSerializableVariables() {
 		addSerializableVariable("vectorMap", &vectorMap);
 		addSerializableVariable("updateCounter", &updateCounter);
