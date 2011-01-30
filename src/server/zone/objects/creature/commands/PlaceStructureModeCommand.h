@@ -134,10 +134,10 @@ public:
 
 		String planetName = zone->getPlanetName();
 
-		if (planetName == "rori" || planetName == "yavin4") {
+		/*if (planetName == "rori" || planetName == "yavin4") {
 			player->sendSystemMessage("Structure placement is currently disabled on this planet");
 			return GENERALERROR;
-		}
+		}*/
 
 		PlanetManager* planetManager = player->getZone()->getPlanetManager();
 		StringId errorStf;

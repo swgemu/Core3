@@ -119,8 +119,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected StringId objectName;
 
-	@dereferenced
-	protected StringId detailedDescription;
+/*	@dereferenced
+	protected StringId detailedDescription;*/
 	
 	@dereferenced
 	protected transient SortedVector<SceneObject> notifiedSentObjects;
@@ -1025,8 +1025,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@local
-	public StringId getDetailedDescription() {
-		return detailedDescription;
+	public string getDetailedDescription() {
+		return templateObject.getDetailedDescription();
 	}
 
 	public int getArrangementDescriptorSize() {

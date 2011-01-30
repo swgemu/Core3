@@ -37,9 +37,8 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 			AiAgent* aio = (AiAgent*)creo;
 			if ((aio->getFerocity() <= 0 || getFerocity() <= 0) && aio->getLevel() >= getLevel())
 				return;
-		}
-
-		activateAwarenessEvent(creo);
+		} else if (this->isAttackableBy(creo)) //no aigent<->aigent combat for now
+			activateAwarenessEvent(creo);
 	}
 
 }

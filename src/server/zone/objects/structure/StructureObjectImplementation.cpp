@@ -257,7 +257,11 @@ void StructureObjectImplementation::sendStatusTo(PlayerCreature* player) {
 
 	statusBox->setPromptText("@player_structure:structure_name_prompt " + full); //Structure Name:
 
-	ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) getZoneServer()->getObject(getOwnerObjectID());
+	ManagedReference<PlayerCreature*> playerCreature = dynamic_cast<PlayerCreature*>(getZoneServer()->getObject(getOwnerObjectID()));
+
+	if (playerCreature == NULL)
+		return;
+
 	statusBox->addMenuItem("@player_structure:owner_prompt  " + playerCreature->getFirstName());
 
 	if (isBuildingObject() && _this == player->getDeclaredResidence())
