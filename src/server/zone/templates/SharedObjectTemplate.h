@@ -186,7 +186,7 @@ public:
 		return containerVolumeLimit;
 	}
 
-    inline String getDetailedDescription() const {
+    inline String& getDetailedDescription() {
 		return detailedDescription;
 	}
 

@@ -49,10 +49,12 @@ void DestroyMissionObjectiveImplementation::activate() {
 		String planetName = Planet::getPlanetNameByCrc(startPlanetCRC);
 		int id = Planet::getPlanetID(planetName);
 
-		Zone* zone = Core::lookupObject<ZoneServer>("ZoneServer")->getZone(id);
-		spawnActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
-		spawnActiveArea->setRadius(128.f);
-		spawnActiveArea->insertToZone(zone);
+		if (id >= 0) {
+			Zone* zone = Core::lookupObject<ZoneServer>("ZoneServer")->getZone(id);
+			spawnActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
+			spawnActiveArea->setRadius(128.f);
+			spawnActiveArea->insertToZone(zone);
+		}
 
 		//info("inserting to zone " + zone->getPlanetName(), true);
 	}

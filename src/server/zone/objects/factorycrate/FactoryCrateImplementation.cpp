@@ -194,7 +194,8 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 		protoclone->setOptionsBitmask(0x2100);
 		protoclone->setUseCount(count, false);
 
-		parent->addObject(protoclone, -1, true);
+		if (parent != NULL)
+			parent->addObject(protoclone, -1, true);
 
 		setUseCount(getUseCount() - count, true);
 

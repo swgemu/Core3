@@ -75,16 +75,16 @@ public:
 
 		InstallationObject* inso = (InstallationObject*) object.get();
 
-		if (!inso->isHarvesterObject())
+	/*	if (!inso->isHarvesterObject())
 			return GENERALERROR;
 
-		HarvesterObject* harvester = (HarvesterObject*) inso;
+		HarvesterObject* harvester = (HarvesterObject*) inso;*/
 
 		try {
-			Locker clocker(harvester, player);
+			Locker clocker(inso, player);
 
-			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 20))
-				harvester->setOperating(true);
+			if (inso->isOnAdminList(player) && inso->isInRange(player, 20))
+				inso->setOperating(true);
 			else
 				player->sendSystemMessage("You are too far.");
 

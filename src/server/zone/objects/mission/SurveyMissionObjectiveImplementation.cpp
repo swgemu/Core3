@@ -36,9 +36,13 @@ void SurveyMissionObjectiveImplementation::abort() {
 
 	ManagedReference<MissionObserver*> observer = observers.get(0);
 
-	PlayerCreature* player = (PlayerCreature*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
+	if (mission != NULL) {
 
-	player->dropObserver(ObserverEventType::SAMPLE, observer);
+		PlayerCreature* player = (PlayerCreature*) mission->getParentRecursively(SceneObject::PLAYERCREATURE);
+
+		player->dropObserver(ObserverEventType::SAMPLE, observer);
+	}
+
 	observer->destroyObjectFromDatabase();
 
 	observers.drop(observer);

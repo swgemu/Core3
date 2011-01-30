@@ -594,6 +594,11 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 	// Increment the insert counter
 	insertCounter++;
 
+	if (ingredientSlot == NULL) {
+		sendSlotMessage(player, clientCounter, IngredientSlot::INVALIDINGREDIENT);
+		return;
+	}
+
 	if(ingredientSlot->add(player, tano)) {
 
 		sendIngredientAddSuccess(player, slot, clientCounter);

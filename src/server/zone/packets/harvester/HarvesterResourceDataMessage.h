@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class HarvesterResourceDataMessage : public ObjectControllerMessage {
 public:
-	HarvesterResourceDataMessage(PlayerCreature* player, HarvesterObject* hino)
+	HarvesterResourceDataMessage(PlayerCreature* player, InstallationObject* hino)
 		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0xEA) {
 
 		insertLong(hino->getObjectID()); // Harvester Object
@@ -67,7 +67,7 @@ public:
 
 	}
 
-	void insertResourceList(Vector<ManagedReference<ResourceSpawn*> >* list, HarvesterObject* hino) {
+	void insertResourceList(Vector<ManagedReference<ResourceSpawn*> >* list, InstallationObject* hino) {
 
 		//System::out << "insertResourceList size(): " << list->size() << endl;
 		insertInt(list->size()); // list size

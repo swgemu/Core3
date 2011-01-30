@@ -78,18 +78,18 @@ public:
 
 		InstallationObject* inso = (InstallationObject*) object.get();
 
-		if (!inso->isHarvesterObject())
-			return GENERALERROR;
+		/*if (!inso->isHarvesterObject())
+			return GENERALERROR;*/
 
 		uint64 spawnId = Long::valueOf(arguments.toString());
 
 		try {
 			Locker clocker(object, player);
 
-			HarvesterObject* harvester = (HarvesterObject*) inso;
+		//	HarvesterObject* harvester = (HarvesterObject*) inso;
 
-			if (harvester->isOnAdminList(player) && harvester->isInRange(player, 20))
-				harvester->changeActiveResourceID(spawnId);
+			if (inso->isOnAdminList(player) && inso->isInRange(player, 20))
+				inso->changeActiveResourceID(spawnId);
 			else
 				player->sendSystemMessage("You are too far.");
 

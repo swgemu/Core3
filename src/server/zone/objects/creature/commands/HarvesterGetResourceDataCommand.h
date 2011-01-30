@@ -77,13 +77,13 @@ public:
 
 		InstallationObject* inso = (InstallationObject*) object.get();
 
-		if (!inso->isHarvesterObject())
-			return GENERALERROR;
+		/*if (!inso->isHarvesterObject())
+			return GENERALERROR;*/
 
 		try {
 			Locker clocker(object, player);
 
-			HarvesterResourceDataMessage* msg = new HarvesterResourceDataMessage(player, (HarvesterObject*) inso);
+			HarvesterResourceDataMessage* msg = new HarvesterResourceDataMessage(player, inso);
 			player->sendMessage(msg);
 
 		} catch (...) {

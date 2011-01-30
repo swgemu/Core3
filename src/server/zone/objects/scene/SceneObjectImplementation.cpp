@@ -149,10 +149,13 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	slottedObjects.setNullValue(NULL);
 	objectName.setStringId(templateData->getObjectName());
 
-	detailedDescription.setStringId(templateData->getDetailedDescription());
+	//detailedDescription.setStringId(templateData->getDetailedDescription());
 
 	containerType = templateData->getContainerType();
 	containerVolumeLimit = templateData->getContainerVolumeLimit();
+
+	if (containerVolumeLimit == 0 || containerVolumeLimit == 1)
+		containerObjects.removeAll(1, 1);
 
 	gameObjectType = templateData->getGameObjectType();
 	clientGameObjectType = templateData->getClientGameObjectType();

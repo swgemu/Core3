@@ -105,18 +105,22 @@ void PlayerManagerImplementation::finalize() {
 void PlayerManagerImplementation::loadNameMap() {
 	info("loading character names");
 
-	String query = "SELECT * FROM characters";
+	try {
+		String query = "SELECT * FROM characters where character_oid > 16777216 order by character_oid asc";
 
-	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
-	while (res->next()) {
-		uint64 oid = res->getUnsignedLong(0);
-		String firstName = res->getString(3);
+		while (res->next()) {
+			uint64 oid = res->getUnsignedLong(0);
+			String firstName = res->getString(3);
 
-		nameMap->put(firstName.toLowerCase(), oid);
+			nameMap->put(firstName.toLowerCase(), oid);
+		}
+
+		delete res;
+	} catch (Exception& e) {
+		error(e.getMessage());
 	}
-
-	delete res;
 
 	StringBuffer msg;
 	msg << "loaded " << nameMap->size() << " character names in memory";
