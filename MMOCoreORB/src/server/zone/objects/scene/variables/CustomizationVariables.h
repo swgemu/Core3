@@ -178,6 +178,8 @@ public:
 	CustomizationVariables();
 	~CustomizationVariables();
 
+	CustomizationVariables(const CustomizationVariables& cv);
+
 	CustomizationVariables& operator=(const String& custString);
 
 	void setVariable(uint8 type, uint8 value);

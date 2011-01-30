@@ -38,6 +38,8 @@ public:
 	DeltaVector(const DeltaVector& v) : Object(), Serializable() {
 		vector = v.vector;
 		updateCounter = v.updateCounter;
+
+		addSerializableVariables();
 	}
 
 	DeltaVector& operator=(const DeltaVector& v) {

@@ -57,6 +57,16 @@ BuffList::BuffList() {
 	addSerializableVariable("buffList", &buffList);
 }
 
+BuffList::BuffList(const BuffList& bf) : Object(), Serializable() {
+	spiceActive = bf.spiceActive;
+	buffList = bf.buffList;
+
+	removedBuffs = bf.removedBuffs;
+
+	addSerializableVariable("spiceActive", &spiceActive);
+	addSerializableVariable("buffList", &buffList);
+}
+
 void BuffList::updateBuffsToDatabase() {
 	for (int i = 0; i < getBuffListSize(); ++i) {
 		ManagedReference<Buff*> buff = getBuffByIndex(i);

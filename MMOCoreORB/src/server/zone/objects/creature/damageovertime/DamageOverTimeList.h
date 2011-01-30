@@ -21,6 +21,13 @@ public:
 		setNoDuplicateInsertPlan();
 	}
 
+	DamageOverTimeList(const DamageOverTimeList& list) : VectorMap<uint64, Vector<DamageOverTime> >(list) {
+		setNoDuplicateInsertPlan();
+
+		nextTick = list.nextTick;
+		dot = list.dot;
+	}
+
 	uint64 activateDots(CreatureObject* victim);
 	uint32 addDot(CreatureObject* victim, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense);
 	bool healState(CreatureObject* victim, uint64 dotType, float reduction);

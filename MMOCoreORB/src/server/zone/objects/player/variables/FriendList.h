@@ -19,6 +19,10 @@ public:
 		addSerializableVariable("reverseTable", &reverseTable);
 	}
 
+	FriendList(const FriendList& list) : Object(), PlayerList<7>(list) {
+		reverseTable = list.reverseTable;
+	}
+
 	void addReversePlayer(const String& name) {
 		String low = name.toLowerCase();
 
