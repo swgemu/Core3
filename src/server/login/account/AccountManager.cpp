@@ -61,11 +61,17 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	Message* lct = new LoginClientToken(account, sessionID);
 	client->sendMessage(lct);
 
-	StringBuffer query;
-	query << "REPLACE INTO sessions (account_id, session_id) VALUES (" << account->getAccountID() << ", " << sessionID << ");";
+	uint32 accountID = account->getAccountID();
+
+	StringBuffer sessionQuery;
+	sessionQuery << "REPLACE INTO sessions (account_id, session_id) VALUES (" << accountID << ", " << sessionID << ");";
+
+	StringBuffer logQuery;
+	logQuery << "INSERT INTO account_log (account_id, ip_address) VALUES (" << accountID << ", " << client->getSession()->getAddress().getIPAddress() << ");";
 
 	try {
-		ServerDatabase::instance()->executeStatement(query);
+		ServerDatabase::instance()->executeStatement(sessionQuery);
+		ServerDatabase::instance()->executeStatement(logQuery);
 	} catch (DatabaseException& e) {
 		client->info(e.getMessage(), true);
 	}
