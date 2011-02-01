@@ -59,7 +59,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	setGlobalLogging(true);
 
 	updateModifiedObjectsTask = new UpdateModifiedObjectsTask();
-	updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
+	//updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
 
 
 	for (int i = 0; i < INITIALUPDATEMODIFIEDOBJECTSTHREADS; ++i) {
