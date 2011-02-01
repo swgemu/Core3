@@ -67,7 +67,7 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	sessionQuery << "REPLACE INTO sessions (account_id, session_id) VALUES (" << accountID << ", " << sessionID << ");";
 
 	StringBuffer logQuery;
-	logQuery << "INSERT INTO account_log (account_id, ip_address) VALUES (" << accountID << ", " << client->getSession()->getAddress().getIPAddress() << ");";
+	logQuery << "INSERT INTO account_log (account_id, ip_address) VALUES (" << accountID << ", '" << client->getSession()->getAddress().getIPAddress() << "');";
 
 	try {
 		ServerDatabase::instance()->executeStatement(sessionQuery);
