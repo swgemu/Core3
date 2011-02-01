@@ -15,7 +15,7 @@ CREATE TABLE  `account_bans` (
   `account_id` int(10) unsigned NOT NULL,
   `issuer_id` int(10) unsigned NOT NULL,
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `expires` timestamp NOT NULL default '0000-00-00 00:00:00',
+  `expires` int(10) unsigned NOT NULL default 0,
   `reason` tinytext NOT NULL,
   PRIMARY KEY  USING BTREE (`ban_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
