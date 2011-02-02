@@ -79,9 +79,9 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint32 duration, uint6
 
 	int oldStrength = getStrength(pool, dotType);
 
-	if (oldStrength >= strength)
+	/*if (oldStrength >= strength)
 		return strength;
-	else if (oldStrength > 0)
+	else */if (oldStrength > 0)
 		increasing = true;
 
 	float dotReductionMod = 1.0f;
