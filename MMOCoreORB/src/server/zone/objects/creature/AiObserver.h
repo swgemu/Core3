@@ -39,7 +39,7 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
-#include "engine/util/ObserverEventType.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "engine/util/Observer.h"
 

@@ -151,13 +151,15 @@ using namespace server::zone::objects::area;
 
 #include "engine/util/Facade.h"
 
-#include "engine/util/ObserverEventType.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/scene/TransferErrorCode.h"
 
 #include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/objects/scene/SessionFacadeType.h"
 
 #include "engine/log/Logger.h"
 
@@ -836,7 +838,7 @@ public:
 
 	String getObjectNameStringIdName();
 
-	StringId* getDetailedDescription();
+	String getDetailedDescription();
 
 	int getArrangementDescriptorSize();
 
@@ -1054,6 +1056,7 @@ protected:
 	virtual ~SceneObject();
 
 	String _return_getArrangementDescriptor;
+	String _return_getDetailedDescription;
 	String _return_getLoggingName;
 	String _return_getObjectNameStringIdFile;
 	String _return_getObjectNameStringIdName;
@@ -1099,8 +1102,6 @@ protected:
 	unsigned int movementCounter;
 
 	StringId objectName;
-
-	StringId detailedDescription;
 
 	SortedVector<ManagedReference<SceneObject* > > notifiedSentObjects;
 
@@ -1763,7 +1764,7 @@ public:
 
 	String getObjectNameStringIdName();
 
-	StringId* getDetailedDescription();
+	String getDetailedDescription();
 
 	int getArrangementDescriptorSize();
 
