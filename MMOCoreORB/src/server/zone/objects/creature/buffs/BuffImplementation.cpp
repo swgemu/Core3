@@ -293,7 +293,10 @@ void BuffImplementation::removeAttributeModifiers() {
 
 		if (currentVal >= attributemax) {
 			//creature->inflictDamage(creature, attribute, currentVal - attributemax, isSpiceBuff());
-			creature->inflictDamage(creature, attribute, currentVal - attributemax, false);
+
+			if (attribute % 3 == 0) {
+				creature->inflictDamage(creature, attribute, currentVal - attributemax, false);
+			} // else setMaxHam sets secondaries to max
 		}
 
 
