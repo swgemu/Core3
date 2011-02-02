@@ -53,7 +53,8 @@ import system.lang.ref.Reference;
 import engine.core.Task;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
-include engine.util.SessionFacadeType;
+include server.zone.objects.scene.ObserverEventType;
+include server.zone.objects.scene.SessionFacadeType;
 
 class MigrateStatsSession extends Facade {
 	@weakReference

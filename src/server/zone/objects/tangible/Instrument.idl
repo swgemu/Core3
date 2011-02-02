@@ -54,7 +54,7 @@ include server.zone.templates.tangible.InstrumentObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.managers.object.ObjectManager;
-include engine.util.ObserverEventType;
+include server.zone.objects.scene.ObserverEventType;
 import server.zone.objects.tangible.InstrumentObserver;
 
 class Instrument extends TangibleObject {

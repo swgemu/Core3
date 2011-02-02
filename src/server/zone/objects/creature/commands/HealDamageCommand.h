@@ -185,6 +185,9 @@ public:
 			return false;
 		}
 
+		if (creatureTarget->isDead())
+			return false;
+
 		return true;
 	}
 
@@ -367,6 +370,9 @@ public:
 
 				if (creatureTarget->isAttackableBy(creature))
 					continue;
+
+				/*if (creatureTarget->isDead() || creatureTarget->isIncapacitated())
+					continue;*/
 
 				zone->runlock();
 

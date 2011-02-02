@@ -66,7 +66,7 @@ import engine.core.Task;
 import engine.util.Vector3;
 include engine.util.Facade;
 import engine.util.Observable;
-include engine.util.ObserverEventType;
+include server.zone.objects.scene.ObserverEventType;
 
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneClientSession;
@@ -80,6 +80,7 @@ import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.variables.PendingTasksMap;
+include server.zone.objects.scene.SessionFacadeType;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
 

@@ -137,7 +137,7 @@ class FishingSession;
 
 using namespace server::zone::managers::minigames;
 
-#include "engine/util/ObserverEventType.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "engine/log/Logger.h"
 

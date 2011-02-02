@@ -117,7 +117,7 @@ using namespace server::zone::objects::tangible;
 
 #include "server/zone/templates/tangible/InstrumentObjectTemplate.h"
 
-#include "engine/util/ObserverEventType.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 

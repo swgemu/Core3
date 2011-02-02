@@ -124,6 +124,9 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* enhancer, CreatureObject* patient, EnhancePack* enhancePack) {
+		if (patient->isDead())
+			return false;
+
 		if (!enhancer->canTreatWounds()) {
 			enhancer->sendSystemMessage("healing_response", "enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
 			return false;

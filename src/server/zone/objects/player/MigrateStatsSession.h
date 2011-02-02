@@ -41,7 +41,9 @@ using namespace server::zone::objects::tangible;
 
 #include "engine/core/ManagedObject.h"
 
-#include "engine/util/SessionFacadeType.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
+
+#include "server/zone/objects/scene/SessionFacadeType.h"
 
 #include "engine/log/Logger.h"
 

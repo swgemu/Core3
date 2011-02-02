@@ -10,7 +10,7 @@
 #include "server/zone/managers/creature/StaticSpawnGroup.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
-#include "engine/util/ObserverEventType.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
