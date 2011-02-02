@@ -202,45 +202,49 @@ uint32 DamageOverTime::initDot(CreatureObject* victim) {
 }
 
 uint32 DamageOverTime::doBleedingTick(CreatureObject* victim) {
+	uint32 strengthToApply = strength;
 	uint32 attr = victim->getHAM(attribute);
 
-	if (attr < strength) {
+	if (attr < strengthToApply) {
 		//System::out << "setting strength to " << attr -1 << endl;
-		strength = attr - 1;
+		strengthToApply = attr - 1;
 	}
 
-	victim->inflictDamage(victim, attribute, strength, false);
+	victim->inflictDamage(victim, attribute, strengthToApply, false);
 
 	victim->playEffect("clienteffect/dot_bleeding.cef","");
 
-	return strength;
+	return strengthToApply;
 }
 
 uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
 	uint32 attr = victim->getHAM(attribute);
+	uint32 strengthToApply = strength;
+
 	victim->addWounds(attribute, strength, true);
 
-	if (attr < strength)
-		strength = attr - 1;
+	if (attr < strengthToApply)
+		strengthToApply = attr - 1;
 
-	victim->inflictDamage(victim, attribute, strength, true);
+	victim->inflictDamage(victim, attribute, strengthToApply, true);
 
 	victim->playEffect("clienteffect/dot_fire.cef","");
 
-	return strength;
+	return strengthToApply;
 }
 
 uint32 DamageOverTime::doPoisonTick(CreatureObject* victim) {
 	uint32 attr = victim->getHAM(attribute);
+	uint32 strengthToApply = strength;
 
-	if (attr < strength)
-		strength = attr - 1;
+	if (attr < strengthToApply)
+		strengthToApply = attr - 1;
 
-	victim->inflictDamage(victim, attribute, strength, false);
+	victim->inflictDamage(victim, attribute, strengthToApply, false);
 
 	victim->playEffect("clienteffect/dot_poisoned.cef","");
 
-	return strength;
+	return strengthToApply;
 }
 
 uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
