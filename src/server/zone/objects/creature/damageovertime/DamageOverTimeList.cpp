@@ -18,8 +18,6 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 		uint64 type = elementAt(i).getKey();
 		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
 
-		bool hasState = false;
-
 		for (int j = 0; j < vector->size(); ++j) {
 			DamageOverTime* dot = &vector->elementAt(j);
 
@@ -34,15 +32,13 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 
 			if (!dot->isPast()) {
 				states |= dot->getType();
-
-				hasState = hasState || true;
 			} else {
-				hasState = hasState || false;
-			//	victim->clearState(dot->getType());
+				vector->remove(j);
+				--j;
 			}
 		}
 
-		if (!hasState)
+		if ((states & type) == 0)
 			victim->clearState(type);
 	}
 
@@ -182,8 +178,21 @@ bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float
 	return false;
 }
 
-void DamageOverTimeList::clear() {
+void DamageOverTimeList::clear(CreatureObject* creature) {
 	dot = false;
+
+	for (int i = 0; i < size(); ++i) {
+		uint64 type = elementAt(i).getKey();
+
+		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
+
+		for (int j = 0; j < vector->size(); ++j) {
+			DamageOverTime* dot = &vector->elementAt(j);
+
+			creature->clearState(dot->getType());
+		}
+	}
+
 	removeAll();
 }
 
