@@ -59,7 +59,7 @@ import system.lang.ref.Reference;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.managers.minigames.FishingSession;
-include engine.util.ObserverEventType;
+include server.zone.objects.scene.ObserverEventType;
 
 class FishingManager extends Observer implements Logger {
 	@weakReference

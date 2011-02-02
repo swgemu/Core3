@@ -134,6 +134,9 @@ public:
 			return GENERALERROR;
 		}
 
+		if (creatureTarget->isDead())
+			return GENERALERROR;
+
 		if (creature->isProne()) {
 			creature->sendSystemMessage("You cannot Heal Mind while prone.");
 			return GENERALERROR;
