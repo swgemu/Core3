@@ -559,7 +559,7 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public void clearDots() {
-		damageOverTimeList.clear();
+		damageOverTimeList.clear(this);
 	}
 	
 	public boolean hasBuff(unsigned int buffcrc) {

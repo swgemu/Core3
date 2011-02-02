@@ -4056,8 +4056,8 @@ bool CreatureObjectImplementation::healDot(unsigned long long dotType, int reduc
 }
 
 void CreatureObjectImplementation::clearDots() {
-	// server/zone/objects/creature/CreatureObject.idl(562):  		damageOverTimeList.clear();
-	(&damageOverTimeList)->clear();
+	// server/zone/objects/creature/CreatureObject.idl(562):  		damageOverTimeList.clear(this);
+	(&damageOverTimeList)->clear(_this);
 }
 
 bool CreatureObjectImplementation::hasBuff(unsigned int buffcrc) {
