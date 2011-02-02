@@ -31,7 +31,7 @@ public:
 	uint64 activateDots(CreatureObject* victim);
 	uint32 addDot(CreatureObject* victim, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense);
 	bool healState(CreatureObject* victim, uint64 dotType, float reduction);
-	void clear();
+	void clear(CreatureObject* creature);
 
 	void sendStartMessage(CreatureObject* victim, uint64 type);
 	void sendStopMessage(CreatureObject* victim, uint64 type);
