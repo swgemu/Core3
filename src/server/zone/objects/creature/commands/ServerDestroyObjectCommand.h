@@ -98,15 +98,33 @@ public:
 		SceneObject* bank = creature->getSlottedObject("bank");
 
 		if (object->isASubChildOf(inventory) || object->isASubChildOf(datapad) || object->isASubChildOf(bank)) {
-			ManagedReference<SceneObject*> parent = object->getParent();
+			destroyObject(object, creature);
+		} else if (object->isASubChildOf(creature)) {
+			for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
+				String descriptor = object->getArrangementDescriptor(i);
 
-			parent->removeObject(object);
-			object->sendDestroyTo(creature);
+				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
+						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank")
+					return GENERALERROR;
+			}
 
-			object->destroyObjectFromDatabase(true);
+			destroyObject(object, creature);
 		}
 
 		return SUCCESS;
+	}
+
+	void destroyObject(SceneObject* object, CreatureObject* creature) {
+		ManagedReference<SceneObject*> parent = object->getParent();
+
+		parent->removeObject(object);
+
+		if (parent == creature)
+			creature->broadcastDestroy(object, true);
+		else
+			object->sendDestroyTo(creature);
+
+		object->destroyObjectFromDatabase(true);
 	}
 
 };
