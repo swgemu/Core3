@@ -266,6 +266,8 @@ public:
 
 	float getCollisionPoint(CreatureObject* creature);
 
+	void generateHologrindProfessions(PlayerCreature* player);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -416,6 +418,8 @@ public:
 
 	float getCollisionPoint(CreatureObject* creature);
 
+	void generateHologrindProfessions(PlayerCreature* player);
+
 	PlayerManager* _this;
 
 	operator const PlayerManager*();
@@ -552,6 +556,8 @@ public:
 	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel);
 
 	float getCollisionPoint(CreatureObject* creature);
+
+	void generateHologrindProfessions(PlayerCreature* player);
 
 protected:
 	String _param0_kickUser__String_String_;

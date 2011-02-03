@@ -97,6 +97,9 @@ class PlayerCreature extends CreatureObject {
 	protected BuildingObject cloningFacility;
 	
 	@dereferenced
+	protected Vector<byte> hologrindProfessions;
+	
+	@dereferenced
 	protected Time logoutTimeStamp;
 	
 	protected unsigned int clientLastMovementStamp;
@@ -869,4 +872,7 @@ class PlayerCreature extends CreatureObject {
 	public BuildingObject getCloningFacility() {
 		return cloningFacility;
 	}
+	
+	@local
+	public native void setHologrindProfessions(@dereferenced Vector<byte> profs);
 }
