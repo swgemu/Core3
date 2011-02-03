@@ -196,7 +196,7 @@ void PlayerCreatureImplementation::teleport(float newPositionX, float newPositio
 }
 
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
-	SceneObject* scno =(SceneObject*) entry;
+	SceneObject* scno = (SceneObject*) entry;
 
 	if (scno == NULL || scno == _this)
 		return;

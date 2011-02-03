@@ -12,11 +12,11 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/structure/StructureObject.h"
 
-#include "../../templates/tangible/SharedBuildingObjectTemplate.h"
-#include "../tangible/terminal/structure/StructureTerminal.h"
+#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
+#include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 
-#include "../player/sui/listbox/SuiListBox.h"
-#include "../player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
