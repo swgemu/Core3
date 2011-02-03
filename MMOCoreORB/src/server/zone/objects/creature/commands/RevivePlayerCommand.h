@@ -63,7 +63,7 @@ public:
 	RevivePlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		mindCost = 200;
-		range = 6;
+		range = 7;
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, RevivePack* revivePack) {

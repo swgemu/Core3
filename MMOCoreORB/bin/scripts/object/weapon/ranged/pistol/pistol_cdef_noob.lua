@@ -91,11 +91,10 @@ object_weapon_ranged_pistol_pistol_cdef_noob = object_weapon_ranged_pistol_share
 	pointBlankRange = 0,
 
 	idealRange = 15,
-	idealAccuracy = 25,
+	idealAccuracy = 15,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
-
+	maxRange = 45,
+	maxRangeAccuracy = 5,
 
 	minDamage = 12,
 	maxDamage = 29,

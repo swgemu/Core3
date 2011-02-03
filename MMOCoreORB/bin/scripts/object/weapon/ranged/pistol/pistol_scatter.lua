@@ -87,17 +87,15 @@ object_weapon_ranged_pistol_pistol_scatter = object_weapon_ranged_pistol_shared_
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
-	
+
+	idealRange = 15,
+	idealAccuracy = 15,
+
+	maxRange = 45,
+	maxRangeAccuracy = 5,
+
 	minDamage = 100,
 	maxDamage = 200,
-
-	idealRange = 0,
-	idealAccuracy = 0,
-
-	maxRange = 65,
-
-	minDamage = 49,
-	maxDamage = 56,
 
 	attackSpeed = 4.8
 }

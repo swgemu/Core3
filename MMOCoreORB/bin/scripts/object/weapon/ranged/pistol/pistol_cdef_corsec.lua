@@ -88,11 +88,11 @@ object_weapon_ranged_pistol_pistol_cdef_corsec = object_weapon_ranged_pistol_sha
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 15,
+	idealAccuracy = 15,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 45,
+	maxRangeAccuracy = 5,
 
 	minDamage = 17,
 	maxDamage = 35,
