@@ -109,6 +109,20 @@ public:
 		setLogging(false);
 	}
 
+	IngredientSlot(const IngredientSlot& slot) : Object(), Serializable(), Logger() {
+		craftingTool = slot.craftingTool;
+		type = slot.type;
+		requiredQuantity = slot.requiredQuantity;
+		slottype = slot.slottype;
+		serial = slot.serial;
+		previousParent = slot.previousParent;
+
+		requiresIdentical = slot.requiresIdentical;
+		optional = slot.optional;
+
+		setLogging(false);
+	}
+
 	~IngredientSlot(){
 		//info("Deleting Slot type " + String::valueOf(slottype));
 	}

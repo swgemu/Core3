@@ -78,6 +78,16 @@ public:
 		experimentalProperties = filler;
 	}
 
+	Values(const Values& val) {
+		values = val.values;
+		name = val.name;
+		minValue = val.minValue;
+		maxValue = val.maxValue;
+		precision = val.precision;
+		locked = val.locked;
+		experimentalProperties = val.experimentalProperties;
+	}
+
 	~Values(){
 		values.removeAll();
 	}
@@ -217,11 +227,20 @@ public:
 		valueList.setNullValue(NULL);
 		valueList.put(subtitle, values);
 
-		if(classTitle == "null" || classTitle == "" || (name == "")) {
+		if (classTitle == "null" || classTitle == "" || (name == "")) {
 			hidden = true;
-		}
-		else
+		} else
 			hidden = false;
+	}
+
+	Subclasses(const Subclasses& sub) {
+		valueList = sub.valueList;
+		valueList.setNullValue(NULL);
+		avePercentage = sub.avePercentage;
+		name = sub.name;
+		classTitle = sub.classTitle;
+
+		hidden = sub.hidden;
 	}
 
 	~Subclasses(){

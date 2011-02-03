@@ -56,6 +56,11 @@ public:
 		setLogging(false);
 	}
 
+	IngredientSlots(const IngredientSlots& slots) : Vector<Reference<IngredientSlot* > >(slots), Logger() {
+		setLoggingName("IngredientSlots");
+		setLogging(false);
+	}
+
 	~IngredientSlots() {
 		//info("Deleting IngredientSlots");
 	}
