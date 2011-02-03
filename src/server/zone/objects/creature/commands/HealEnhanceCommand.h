@@ -63,7 +63,7 @@ public:
 	HealEnhanceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		mindCost = 150;
-		range = 6;
+		range = 7;
 		defaultTime = 0;
 	}
 

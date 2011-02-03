@@ -27,7 +27,7 @@ protected:
 public:
 	CurePackCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-		range = 6;
+		range = 7;
 		mindCost = 100;
 	}
 
