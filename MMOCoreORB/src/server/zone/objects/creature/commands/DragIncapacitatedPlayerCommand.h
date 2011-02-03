@@ -55,7 +55,7 @@ public:
 	DragIncapacitatedPlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		defaultTime = 0;
-		maxRange = 20.0;
+		maxRange = 30.0;
 		maxMovement = 5.0;
 		needsConsent = true;
 	}
