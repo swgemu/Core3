@@ -788,6 +788,20 @@ float PlayerManager::getCollisionPoint(CreatureObject* creature) {
 		return _implementation->getCollisionPoint(creature);
 }
 
+void PlayerManager::generateHologrindProfessions(PlayerCreature* player) {
+	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 53);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->generateHologrindProfessions(player);
+}
+
 DistributedObjectServant* PlayerManager::_getImplementation() {
 
 	_updated = true;
@@ -1090,6 +1104,9 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 53:
 		resp->insertFloat(getCollisionPoint((CreatureObject*) inv->getObjectParameter()));
 		break;
+	case 54:
+		generateHologrindProfessions((PlayerCreature*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -1287,6 +1304,10 @@ void PlayerManagerAdapter::updateAdminLevel(PlayerCreature* player, const String
 
 float PlayerManagerAdapter::getCollisionPoint(CreatureObject* creature) {
 	return ((PlayerManagerImplementation*) impl)->getCollisionPoint(creature);
+}
+
+void PlayerManagerAdapter::generateHologrindProfessions(PlayerCreature* player) {
+	((PlayerManagerImplementation*) impl)->generateHologrindProfessions(player);
 }
 
 /*

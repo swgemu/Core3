@@ -211,4 +211,9 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native float getCollisionPoint(CreatureObject creature);
 	
+	/**
+	 * Generates 5 random hologrind professions for the player.
+	 * @param player The player whose hologrind professions should be set.
+	 */
+	public native void generateHologrindProfessions(PlayerCreature player);
 }

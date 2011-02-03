@@ -856,3 +856,7 @@ WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {
 
 	return NULL;
 }
+
+void PlayerCreatureImplementation::setHologrindProfessions(Vector<byte>& profs) {
+	hologrindProfessions = profs;
+}
