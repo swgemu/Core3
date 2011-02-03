@@ -367,6 +367,8 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	playerCreature->setCashCredits(10000000); // TODO: fix when not in testing / consider loading this from scripts
 	playerCreature->setBankCredits(10000000);
 
+	generateHologrindProfessions(playerCreature);
+
 	String playerCustomization;
 	callback->getCustomizationString(playerCustomization);
 	playerCreature->setCustomizationString(playerCustomization);
@@ -2472,4 +2474,28 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 
 	return true;
 
+}
+
+void PlayerManagerImplementation::generateHologrindProfessions(PlayerCreature* player) {
+	Vector<byte> hologrindProfessions;
+
+	while (hologrindProfessions.size() < 5) {
+		byte prof = System::random(31);
+
+		bool hasProfession = false;
+
+		for (byte i = 0; i < hologrindProfessions.size(); ++i) {
+			byte holoprof = hologrindProfessions.get(i);
+
+			if (holoprof == prof) {
+				hasProfession = true;
+				break;
+			}
+		}
+
+		if (!hasProfession)
+			hologrindProfessions.add(prof);
+	}
+
+	player->setHologrindProfessions(hologrindProfessions);
 }

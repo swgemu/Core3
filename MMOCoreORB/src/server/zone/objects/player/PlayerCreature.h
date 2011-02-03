@@ -618,6 +618,8 @@ public:
 
 	BuildingObject* getCloningFacility();
 
+	void setHologrindProfessions(Vector<byte>& profs);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -664,6 +666,8 @@ protected:
 	ManagedWeakReference<BuildingObject* > declaredResidence;
 
 	ManagedWeakReference<BuildingObject* > cloningFacility;
+
+	Vector<byte> hologrindProfessions;
 
 	Time logoutTimeStamp;
 
@@ -1031,6 +1035,8 @@ public:
 	void setCloningFacility(BuildingObject* cloningfac);
 
 	BuildingObject* getCloningFacility();
+
+	void setHologrindProfessions(Vector<byte>& profs);
 
 	PlayerCreature* _this;
 
