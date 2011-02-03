@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef UNINVITECOMMAND_H_
 #define UNINVITECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "../../player/PlayerCreature.h"
 

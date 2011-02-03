@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GMREVIVECOMMAND_H_
 #define GMREVIVECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GmReviveCommand : public QueueCommand {
 public:

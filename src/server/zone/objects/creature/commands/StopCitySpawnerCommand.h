@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STOPCITYSPAWNERCOMMAND_H_
 #define STOPCITYSPAWNERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class StopCitySpawnerCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef EMBOLDENPETSCOMMAND_H_
 #define EMBOLDENPETSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class EmboldenpetsCommand : public QueueCommand {
 public:

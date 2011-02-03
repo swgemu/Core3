@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CREATENPCCOMMAND_H_
 #define CREATENPCCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CreateNPCCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PERMISSIONLISTMODIFYCOMMAND_H_
 #define PERMISSIONLISTMODIFYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"

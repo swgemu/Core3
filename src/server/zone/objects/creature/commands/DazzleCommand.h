@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DAZZLECOMMAND_H_
 #define DAZZLECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DazzleCommand : public QueueCommand {
 public:

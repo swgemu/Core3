@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ANIMALATTACKCOMMAND_H_
 #define ANIMALATTACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class AnimalAttackCommand : public QueueCommand {
 public:

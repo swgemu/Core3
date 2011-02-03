@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GALLOPCOMMAND_H_
 #define GALLOPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GallopCommand : public QueueCommand {
 public:

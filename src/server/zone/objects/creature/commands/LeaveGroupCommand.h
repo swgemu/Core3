@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LEAVEGROUPCOMMAND_H_
 #define LEAVEGROUPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../../managers/group/GroupManager.h"
 #include "../../group/GroupObject.h"
 

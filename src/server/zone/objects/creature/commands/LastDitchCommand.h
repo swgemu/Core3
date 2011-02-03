@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LASTDITCHCOMMAND_H_
 #define LASTDITCHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class LastDitchCommand : public CombatQueueCommand {

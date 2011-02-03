@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETACCOUNTINFOCOMMAND_H_
 #define GETACCOUNTINFOCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetAccountInfoCommand : public QueueCommand {
 public:

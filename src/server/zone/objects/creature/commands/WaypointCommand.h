@@ -46,7 +46,7 @@ which carries forward this exception.
 #define WAYPOINTCOMMAND_H_
 
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../waypoint/WaypointObject.h"
 #include "../../player/PlayerObject.h"
 #include "../../../Zone.h"

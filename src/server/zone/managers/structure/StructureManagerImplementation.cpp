@@ -262,8 +262,6 @@ void StructureManagerImplementation::loadStaticClientObjects() {
 	}
 
 	delete result;
-
-
 }
 
 void StructureManagerImplementation::loadStaticGarages() {
@@ -1320,6 +1318,8 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 		BuildingObject* buildingObject = (BuildingObject*) structureObject;
 		buildingObject->createCellObjects();
 	}
+
+	//info("initializing position to z:" + String::valueOf(z), true);
 
 	//Finish setting up the structure.
 	structureObject->setPublicStructure(structureTemplate->isPublicStructure());

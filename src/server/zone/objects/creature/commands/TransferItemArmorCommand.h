@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TRANSFERITEMARMORCOMMAND_H_
 #define TRANSFERITEMARMORCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 

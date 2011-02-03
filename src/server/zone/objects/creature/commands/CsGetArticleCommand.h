@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CSGETARTICLECOMMAND_H_
 #define CSGETARTICLECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CsGetArticleCommand : public QueueCommand {
 public:

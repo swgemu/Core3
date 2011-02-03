@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RESTARTCRAFTINGSESSIONCOMMAND_H_
 #define RESTARTCRAFTINGSESSIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RestartCraftingSessionCommand : public QueueCommand {
 public:

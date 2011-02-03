@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GRANTPADAWANTRIALSELIGIBILITYCOMMAND_H_
 #define GRANTPADAWANTRIALSELIGIBILITYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GrantPadawanTrialsEligibilityCommand : public QueueCommand {
 public:

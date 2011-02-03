@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef UNSNOOPCOMMAND_H_
 #define UNSNOOPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class UnsnoopCommand : public QueueCommand {
 public:

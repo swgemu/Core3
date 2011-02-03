@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETMAXIMUMSPAWNTIMECOMMAND_H_
 #define SETMAXIMUMSPAWNTIMECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetMaximumSpawnTimeCommand : public QueueCommand {
 public:

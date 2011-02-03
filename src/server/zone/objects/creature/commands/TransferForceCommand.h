@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TRANSFERFORCECOMMAND_H_
 #define TRANSFERFORCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class TransferForceCommand : public QueueCommand {
 public:

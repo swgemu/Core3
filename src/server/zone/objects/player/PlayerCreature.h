@@ -299,8 +299,6 @@ using namespace server::zone::objects::structure;
 
 #include "server/zone/objects/player/TradeContainer.h"
 
-#include "server/zone/objects/player/LastMovementUpdatesBuffer.h"
-
 #include "server/zone/objects/player/ValidatedPosition.h"
 
 #include "system/lang/Time.h"
@@ -610,8 +608,6 @@ public:
 
 	bool isInvisible();
 
-	LastMovementUpdatesBuffer* getLastMovementUpdates();
-
 	void setInvisible(bool invis);
 
 	BuildingObject* getDeclaredResidence();
@@ -740,8 +736,6 @@ protected:
 	int centeredBonus;
 
 	TradeContainer tradeContainer;
-
-	LastMovementUpdatesBuffer lastMovementUpdates;
 
 public:
 	static const int ONLINE = 1;
@@ -1027,8 +1021,6 @@ public:
 	void setLastCraftingToolUsed(CraftingTool* tool);
 
 	bool isInvisible();
-
-	LastMovementUpdatesBuffer* getLastMovementUpdates();
 
 	void setInvisible(bool invis);
 

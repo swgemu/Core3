@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ENRAGEPETSCOMMAND_H_
 #define ENRAGEPETSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class EnragepetsCommand : public QueueCommand {
 public:

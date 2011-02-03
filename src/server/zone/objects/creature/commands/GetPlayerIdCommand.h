@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETPLAYERIDCOMMAND_H_
 #define GETPLAYERIDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetPlayerIdCommand : public QueueCommand {
 public:

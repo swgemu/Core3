@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SPATIALCHATCOMMAND_H_
 #define SPATIALCHATCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SpatialChatCommand : public QueueCommand {
 public:

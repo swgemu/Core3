@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STOPBANDCOMMAND_H_
 #define STOPBANDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class StopBandCommand : public QueueCommand {
 public:

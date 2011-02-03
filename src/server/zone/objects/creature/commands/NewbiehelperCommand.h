@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef NEWBIEHELPERCOMMAND_H_
 #define NEWBIEHELPERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 class NewbiehelperCommand : public QueueCommand {

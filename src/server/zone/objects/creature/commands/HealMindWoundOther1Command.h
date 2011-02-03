@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef HEALMINDWOUNDOTHER1COMMAND_H_
 #define HEALMINDWOUNDOTHER1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class HealMindWoundOther1Command : public QueueCommand {
 public:

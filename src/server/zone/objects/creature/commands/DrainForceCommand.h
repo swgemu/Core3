@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DRAINFORCECOMMAND_H_
 #define DRAINFORCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DrainForceCommand : public QueueCommand {
 public:

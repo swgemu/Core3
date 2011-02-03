@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ADDBANNEDPLAYERCOMMAND_H_
 #define ADDBANNEDPLAYERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class AddBannedPlayerCommand : public QueueCommand {
 public:

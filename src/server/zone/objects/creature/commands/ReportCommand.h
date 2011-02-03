@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REPORTCOMMAND_H_
 #define REPORTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ReportCommand : public QueueCommand {
 public:

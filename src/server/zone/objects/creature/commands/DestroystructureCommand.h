@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DESTROYSTRUCTURECOMMAND_H_
 #define DESTROYSTRUCTURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../structure/StructureObject.h"
 #include "../../building/BuildingObject.h"
 #include "../../cell/CellObject.h"

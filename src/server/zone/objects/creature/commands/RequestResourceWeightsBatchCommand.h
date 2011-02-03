@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REQUESTRESOURCEWEIGHTSBATCHCOMMAND_H_
 #define REQUESTRESOURCEWEIGHTSBATCHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
 class RequestResourceWeightsBatchCommand : public QueueCommand {

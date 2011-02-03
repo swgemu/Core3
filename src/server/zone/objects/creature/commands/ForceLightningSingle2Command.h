@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCELIGHTNINGSINGLE2COMMAND_H_
 #define FORCELIGHTNINGSINGLE2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceLightningSingle2Command : public QueueCommand {
 public:

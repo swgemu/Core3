@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETBIOGRAPHYADMINCOMMAND_H_
 #define SETBIOGRAPHYADMINCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetBiographyAdminCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SERVERSYSGROUPCOMMAND_H_
 #define SERVERSYSGROUPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ServerSysGroupCommand : public QueueCommand {
 public:

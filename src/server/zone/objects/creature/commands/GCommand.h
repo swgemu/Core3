@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GCOMMAND_H_
 #define GCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GCommand : public QueueCommand {
 public:

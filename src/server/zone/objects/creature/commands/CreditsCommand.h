@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CREDITSCOMMAND_H_
 #define CREDITSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CreditsCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REMOTECOMMAND_H_
 #define REMOTECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RemoteCommand : public QueueCommand {
 public:

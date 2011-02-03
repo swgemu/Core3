@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef HOLOEMOTECOMMAND_H_
 #define HOLOEMOTECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class HoloEmoteCommand : public QueueCommand {
 public:

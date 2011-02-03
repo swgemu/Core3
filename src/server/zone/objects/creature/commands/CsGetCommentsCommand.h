@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CSGETCOMMENTSCOMMAND_H_
 #define CSGETCOMMENTSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CsGetCommentsCommand : public QueueCommand {
 public:

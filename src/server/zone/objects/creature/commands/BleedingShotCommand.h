@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef BLEEDINGSHOTCOMMAND_H_
 #define BLEEDINGSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class BleedingShotCommand : public CombatQueueCommand {

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETATTRIBUTESBATCHCOMMAND_H_
 #define GETATTRIBUTESBATCHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/Zone.h"
 

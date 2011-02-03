@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CREATEMISSIONELEMENTCOMMAND_H_
 #define CREATEMISSIONELEMENTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CreateMissionElementCommand : public QueueCommand {
 public:

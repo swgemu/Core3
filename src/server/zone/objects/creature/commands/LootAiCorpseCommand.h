@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LOOTAICORPSECOMMAND_H_
 #define LOOTAICORPSECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class LootAiCorpseCommand : public QueueCommand {
 public:

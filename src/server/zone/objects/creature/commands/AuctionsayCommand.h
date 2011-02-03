@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef AUCTIONSAYCOMMAND_H_
 #define AUCTIONSAYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class AuctionsayCommand : public QueueCommand {
 public:

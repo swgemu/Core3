@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DUMPTARGETINFORMATIONCOMMAND_H_
 #define DUMPTARGETINFORMATIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DumpTargetInformationCommand : public QueueCommand {
 public:

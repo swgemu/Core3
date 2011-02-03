@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETSPEEDCOMMAND_H_
 #define SETSPEEDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetSpeedCommand : public QueueCommand {
 public:

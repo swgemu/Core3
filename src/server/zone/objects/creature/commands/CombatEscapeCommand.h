@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef COMBATESCAPECOMMAND_H_
 #define COMBATESCAPECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CombatEscapeCommand : public QueueCommand {
 public:

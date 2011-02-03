@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RESCUECOMMAND_H_
 #define RESCUECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RescueCommand : public QueueCommand {
 public:

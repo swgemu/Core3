@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ITEMROTATERIGHTCOMMAND_H_
 #define ITEMROTATERIGHTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ItemrotaterightCommand : public QueueCommand {
 public:

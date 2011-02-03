@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LAUNCHFIREWORKCOMMAND_H_
 #define LAUNCHFIREWORKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class LaunchFireworkCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CSSEARCHKNOWLEDGEBASECOMMAND_H_
 #define CSSEARCHKNOWLEDGEBASECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CsSearchKnowledgeBaseCommand : public QueueCommand {
 public:

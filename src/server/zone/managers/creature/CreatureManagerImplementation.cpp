@@ -18,15 +18,19 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/objects/creature/trainer/TrainerCreature.h"
 #include "server/zone/objects/creature/informant/InformantCreature.h"
+#include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "../../objects/area/StaticSpawnArea.h"
-#include "../../objects/area/SpawnArea.h"
+#include "server/zone/objects/area/StaticSpawnArea.h"
+#include "server/zone/objects/area/SpawnArea.h"
+#include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 void CreatureManagerImplementation::setCreatureTemplateManager() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
@@ -274,9 +278,10 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		destructor->unlock();
 
 	try {
-		PlayerCreature* player = copyDamageMap.getHighestDamagePlayer();
+		ManagedReference<PlayerCreature*> player = copyDamageMap.getHighestDamagePlayer();
 		if (player != NULL)
 			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+
 		destructedObject->setLootOwner(player);
 
 		if (playerManager != NULL)
@@ -531,4 +536,130 @@ void CreatureManagerImplementation::loadInformants() {
 	}
 
 	delete result;
+}
+
+void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
+	Zone* zone = creature->getZone();
+
+	if (zone == NULL)
+		return;
+
+	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
+
+	String restype = "";
+	int quantity = 0;
+
+	if (selectedID == 112) {
+		int type = System::random(2);
+
+		switch (type) {
+		case 0:
+			restype = creature->getMeatType();
+			quantity = creature->getMeatMax();
+			break;
+		case 1:
+			restype = creature->getHideType();
+			quantity = creature->getHideMax();
+			break;
+		case 2:
+			restype = creature->getBoneType();
+			quantity = creature->getBoneMax();
+			break;
+		default:
+			restype = creature->getHideType();
+			quantity = creature->getHideMax();
+			break;
+		}
+	}
+
+	if (selectedID == 234) {
+		restype = creature->getMeatType();
+		quantity = creature->getMeatMax();
+	}
+
+	if (selectedID == 235) {
+		restype = creature->getHideType();
+		quantity = creature->getHideMax();
+	}
+
+	if (selectedID == 236) {
+		restype = creature->getBoneType();
+		quantity = creature->getBoneMax();
+	}
+
+	int quantityExtracted = int(quantity * float(player->getSkillMod("creature_harvesting") / 100.0f));
+
+	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getZoneID());
+
+	if (resourceSpawn == NULL) {
+		player->sendSystemMessage("Error: Server cannot locate a current spawn of " + restype);
+		return;
+	}
+
+	float density = resourceSpawn->getDensityAt(player->getZone()->getZoneID(), player->getPositionX(), player->getPositionY());
+
+	String creatureHealth = "";
+
+	if (density > 0.80f) {
+		quantityExtracted = int(quantityExtracted * 1.25f);
+		creatureHealth = "creature_quality_fat";
+	} else if(density > 0.60f) {
+		quantityExtracted = int(quantityExtracted * 1.00f);
+		creatureHealth = "creature_quality_medium";
+	} else if(density > 0.40f) {
+		quantityExtracted = int(quantityExtracted * 0.75f);
+		creatureHealth = "creature_quality_skinny";
+	} else {
+		quantityExtracted = int(quantityExtracted * 0.50f);
+		creatureHealth = "creature_quality_scrawny";
+	}
+
+	int baseAmount = quantityExtracted;
+
+	float modifier = 1;
+
+	if (player->isGrouped()) {
+
+		modifier = player->getGroup()->getGroupHarvestModifier(player);
+
+		quantityExtracted = (int)(quantityExtracted * modifier);
+	}
+
+	resourceManager->harvestResourceToPlayer(player, resourceSpawn, baseAmount);
+
+	/// Send System Messages
+	StringIdChatParameter harvestMessage("skl_use", creatureHealth);
+
+	harvestMessage.setDI(quantityExtracted);
+	harvestMessage.setTU(resourceSpawn->getFinalClass());
+
+	player->sendSystemMessage(harvestMessage);
+
+	/// Send bonus message
+	if (modifier == 1.2f)
+		player->sendSystemMessage("skl_use", "group_harvest_bonus");
+	else if (modifier == 1.3f)
+		player->sendSystemMessage("skl_use", "group_harvest_bonus_ranger");
+	else if (modifier == 1.4f)
+		player->sendSystemMessage("skl_use", "group_harvest_bonus_masterranger");
+
+	/// Send group spam
+	if (player->isGrouped()) {
+		StringIdChatParameter bonusMessage("group", "notify_harvest_corpse");
+
+		bonusMessage.setTU(player->getFirstName());
+		bonusMessage.setDI(quantityExtracted);
+		bonusMessage.setTO(resourceSpawn->getFinalClass());
+		bonusMessage.setTT(creature->getObjectNameStringIdFile(), creature->getObjectNameStringIdName());
+
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(bonusMessage);
+		player->getGroup()->broadcastMessage(player, sysMessage, false);
+	}
+
+	if (!creature->hasLoot()) {
+		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(creature->getPendingTask("despawn"));
+		despawn->cancel();
+
+		despawn->reschedule(1000);
+	}
 }

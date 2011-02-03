@@ -209,4 +209,6 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native void updateAdminLevel(PlayerCreature player, final string targetName, int adminLevel = 1);
 	
+	public native float getCollisionPoint(CreatureObject creature);
+	
 }

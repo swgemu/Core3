@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETPERMISSIONCOMMAND_H_
 #define SETPERMISSIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetpermissionCommand : public QueueCommand {
 public:

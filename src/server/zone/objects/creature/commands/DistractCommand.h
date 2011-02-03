@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DISTRACTCOMMAND_H_
 #define DISTRACTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DistractCommand : public QueueCommand {
 public:

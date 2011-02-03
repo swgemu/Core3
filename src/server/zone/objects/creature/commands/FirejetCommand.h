@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FIREJETCOMMAND_H_
 #define FIREJETCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class FirejetCommand : public QueueCommand {
 public:

@@ -8,7 +8,7 @@
 #ifndef SQUADLEADERCOMMAND_H_
 #define SQUADLEADERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/ChatManager.h"
 #include "CombatQueueCommand.h"
 

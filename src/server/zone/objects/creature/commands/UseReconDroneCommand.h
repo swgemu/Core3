@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef USERECONDRONECOMMAND_H_
 #define USERECONDRONECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class UseReconDroneCommand : public QueueCommand {
 public:

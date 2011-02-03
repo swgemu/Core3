@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FIREHEAVYWEAPONCOMMAND_H_
 #define FIREHEAVYWEAPONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class FireHeavyWeaponCommand : public QueueCommand {
 public:

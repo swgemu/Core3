@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef NPCCONVERSATIONSTARTCOMMAND_H_
 #define NPCCONVERSATIONSTARTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class NpcConversationStartCommand : public QueueCommand {
 public:

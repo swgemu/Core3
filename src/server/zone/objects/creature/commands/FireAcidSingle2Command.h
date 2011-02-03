@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FIREACIDSINGLE2COMMAND_H_
 #define FIREACIDSINGLE2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class FireAcidSingle2Command : public QueueCommand {
 public:

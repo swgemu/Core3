@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GRANTTITLECOMMAND_H_
 #define GRANTTITLECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GrantTitleCommand : public QueueCommand {
 public:

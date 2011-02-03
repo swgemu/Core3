@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef UNDERHANDSHOTCOMMAND_H_
 #define UNDERHANDSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class UnderHandShotCommand : public CombatQueueCommand {

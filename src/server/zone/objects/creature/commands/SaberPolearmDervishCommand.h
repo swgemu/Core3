@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SABERPOLEARMDERVISHCOMMAND_H_
 #define SABERPOLEARMDERVISHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SaberPolearmDervishCommand : public QueueCommand {
 public:

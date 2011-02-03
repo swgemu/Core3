@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef INSERTITEMINTOSHIPCOMPONENTSLOTCOMMAND_H_
 #define INSERTITEMINTOSHIPCOMPONENTSLOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class InsertItemIntoShipComponentSlotCommand : public QueueCommand {
 public:

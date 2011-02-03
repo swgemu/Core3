@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef AIIGNORECOMMAND_H_
 #define AIIGNORECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class AiIgnoreCommand : public QueueCommand {
 public:

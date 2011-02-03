@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef HEALPETCOMMAND_H_
 #define HEALPETCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class HealPetCommand : public QueueCommand {
 public:

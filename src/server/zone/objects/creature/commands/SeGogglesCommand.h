@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SEGOGGLESCOMMAND_H_
 #define SEGOGGLESCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SeGogglesCommand : public QueueCommand {
 public:

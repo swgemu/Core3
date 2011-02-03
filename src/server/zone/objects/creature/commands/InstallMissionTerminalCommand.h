@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef INSTALLMISSIONTERMINALCOMMAND_H_
 #define INSTALLMISSIONTERMINALCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class InstallMissionTerminalCommand : public QueueCommand {
 public:

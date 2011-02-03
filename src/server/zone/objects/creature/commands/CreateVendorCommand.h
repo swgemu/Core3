@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CREATEVENDORCOMMAND_H_
 #define CREATEVENDORCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CreateVendorCommand : public QueueCommand {
 public:

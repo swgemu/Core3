@@ -7,7 +7,7 @@
 
 #include "SkillList.h"
 
-#include "../../creature/professions/Skill.h"
+#include "server/zone/objects/creature/professions/Skill.h"
 #include "server/zone/ZoneServer.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/professions/ProfessionManager.h"

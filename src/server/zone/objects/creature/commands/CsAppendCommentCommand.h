@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CSAPPENDCOMMENTCOMMAND_H_
 #define CSAPPENDCOMMENTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CsAppendCommentCommand : public QueueCommand {
 public:

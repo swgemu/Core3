@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETPUBLICSTATECOMMAND_H_
 #define SETPUBLICSTATECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetPublicStateCommand : public QueueCommand {
 public:

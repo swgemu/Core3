@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REQUESTWAYPOINTATPOSITIONCOMMAND_H_
 #define REQUESTWAYPOINTATPOSITIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RequestWaypointAtPositionCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef OBJECTCOMMAND_H_
 #define OBJECTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ObjectCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CITYBANCOMMAND_H_
 #define CITYBANCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../building/city/CityHallObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"

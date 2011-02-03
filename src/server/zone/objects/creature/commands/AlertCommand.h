@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ALERTCOMMAND_H_
 #define ALERTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class AlertCommand : public QueueCommand {
 public:

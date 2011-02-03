@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RESETJEDICOMMAND_H_
 #define RESETJEDICOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ResetJediCommand : public QueueCommand {
 public:

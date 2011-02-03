@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef EYESHOTCOMMAND_H_
 #define EYESHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class EyeShotCommand : public CombatQueueCommand {

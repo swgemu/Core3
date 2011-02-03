@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CHANNELFORCECOMMAND_H_
 #define CHANNELFORCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ChannelForceCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CREATEMANFSCHEMATICCOMMAND_H_
 #define CREATEMANFSCHEMATICCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CreateManfSchematicCommand : public QueueCommand {
 public:

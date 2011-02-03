@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETCHARGECOMMAND_H_
 #define SETCHARGECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetChargeCommand : public QueueCommand {
 public:

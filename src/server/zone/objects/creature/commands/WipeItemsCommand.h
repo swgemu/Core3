@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef WIPEITEMSCOMMAND_H_
 #define WIPEITEMSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class WipeItemsCommand : public QueueCommand {
 public:

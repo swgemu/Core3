@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CANCELCRAFTINGSESSIONCOMMAND_H_
 #define CANCELCRAFTINGSESSIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 
 class CancelCraftingSessionCommand : public QueueCommand {

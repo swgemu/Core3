@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RESENDLOGINMESSAGETOALLCOMMAND_H_
 #define RESENDLOGINMESSAGETOALLCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ResendLoginMessageToAllCommand : public QueueCommand {
 public:

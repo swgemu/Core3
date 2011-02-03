@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef NEWBIESELECTSTARTINGLOCATIONCOMMAND_H_
 #define NEWBIESELECTSTARTINGLOCATIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class NewbieSelectStartingLocationCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RETREATCOMMAND_H_
 #define RETREATCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "SquadLeaderCommand.h"
 
 class RetreatCommand : public SquadLeaderCommand {
