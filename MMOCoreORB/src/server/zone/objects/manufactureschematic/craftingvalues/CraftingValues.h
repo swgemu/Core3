@@ -65,6 +65,8 @@ public:
 
 public:
 	CraftingValues();
+	CraftingValues(const CraftingValues& values);
+
 	~CraftingValues();
 	// Experimental Titles
 	void addExperimentalProperty(const String& title, const String& subtitle,
