@@ -66,6 +66,12 @@ public:
 		optional = false;
 	}
 
+	ResourceSlot(const ResourceSlot& slot) : Object(), IngredientSlot(slot) {
+		contents = slot.contents;
+
+		setLoggingName("ResourceSlot");
+	}
+
 	~ResourceSlot() {
 
 		cleanup();

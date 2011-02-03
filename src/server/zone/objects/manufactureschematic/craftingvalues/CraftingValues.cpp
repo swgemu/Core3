@@ -52,6 +52,20 @@ CraftingValues::CraftingValues() {
 	setLogging(false);
 }
 
+
+CraftingValues::CraftingValues(const CraftingValues& values) : Object(), Serializable(), Logger() {
+	EMPTY = values.EMPTY;
+
+	experimentalValuesMap.setNullValue(NULL);
+	experimentalValuesMap = values.experimentalValuesMap;
+	doHide = values.doHide;
+	valuesToSend = values.valuesToSend;
+
+	setLoggingName("CraftingValues");
+	setLogging(false);
+}
+
+
 CraftingValues::~CraftingValues() {
 	for (int i = 0; i < experimentalValuesMap.size(); ++i) {
 		delete experimentalValuesMap.get(i);

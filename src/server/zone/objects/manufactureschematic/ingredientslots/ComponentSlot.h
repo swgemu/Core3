@@ -69,6 +69,14 @@ public:
 
 	}
 
+	ComponentSlot(const ComponentSlot& slot) : Object(), IngredientSlot(slot) {
+		contents = slot.contents;
+		contentsPreviousParent = slot.contentsPreviousParent;
+
+		setLoggingName("ComponentSlot");
+		setLogging(false);
+	}
+
 	~ComponentSlot() {
 
 		cleanup();
