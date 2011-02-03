@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef UNSTICKCOMMAND_H_
 #define UNSTICKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class UnstickCommand : public QueueCommand {
 public:

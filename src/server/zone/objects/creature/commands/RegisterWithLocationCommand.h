@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REGISTERWITHLOCATIONCOMMAND_H_
 #define REGISTERWITHLOCATIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RegisterWithLocationCommand : public QueueCommand {
 public:

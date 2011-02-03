@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCEWEAKEN2COMMAND_H_
 #define FORCEWEAKEN2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceWeaken2Command : public QueueCommand {
 public:

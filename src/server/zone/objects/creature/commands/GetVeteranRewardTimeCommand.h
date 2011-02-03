@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETVETERANREWARDTIMECOMMAND_H_
 #define GETVETERANREWARDTIMECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetVeteranRewardTimeCommand : public QueueCommand {
 public:

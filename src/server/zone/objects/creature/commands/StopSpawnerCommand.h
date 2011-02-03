@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STOPSPAWNERCOMMAND_H_
 #define STOPSPAWNERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class StopSpawnerCommand : public QueueCommand {
 public:

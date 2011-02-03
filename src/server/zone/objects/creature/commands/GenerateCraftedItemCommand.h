@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GENERATECRAFTEDITEMCOMMAND_H_
 #define GENERATECRAFTEDITEMCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"

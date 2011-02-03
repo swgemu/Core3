@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PAYMAINTENANCECOMMAND_H_
 #define PAYMAINTENANCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class PaymaintenanceCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CRAFTCOMMAND_H_
 #define CRAFTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CraftCommand : public QueueCommand {
 public:

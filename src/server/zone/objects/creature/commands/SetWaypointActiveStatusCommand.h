@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETWAYPOINTACTIVESTATUSCOMMAND_H_
 #define SETWAYPOINTACTIVESTATUSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetWaypointActiveStatusCommand : public QueueCommand {
 public:

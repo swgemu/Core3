@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef BOARDSHUTTLECOMMAND_H_
 #define BOARDSHUTTLECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class BoardShuttleCommand : public QueueCommand {
 public:

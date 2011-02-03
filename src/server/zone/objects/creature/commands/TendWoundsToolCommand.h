@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TENDWOUNDSTOOLCOMMAND_H_
 #define TENDWOUNDSTOOLCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class TendWoundsToolCommand : public QueueCommand {
 public:

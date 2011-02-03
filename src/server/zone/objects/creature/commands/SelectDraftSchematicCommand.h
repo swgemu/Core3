@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SELECTDRAFTSCHEMATICCOMMAND_H_
 #define SELECTDRAFTSCHEMATICCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SelectDraftSchematicCommand : public QueueCommand {
 public:

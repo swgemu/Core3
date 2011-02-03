@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETPRIVACYCOMMAND_H_
 #define SETPRIVACYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetprivacyCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FASTBLASTCOMMAND_H_
 #define FASTBLASTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class FastBlastCommand : public CombatQueueCommand {

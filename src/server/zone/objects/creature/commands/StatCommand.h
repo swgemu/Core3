@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STATCOMMAND_H_
 #define STATCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class StatCommand : public QueueCommand {
 public:

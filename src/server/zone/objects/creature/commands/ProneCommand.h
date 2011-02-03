@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PRONECOMMAND_H_
 #define PRONECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 
 class ProneCommand : public QueueCommand {

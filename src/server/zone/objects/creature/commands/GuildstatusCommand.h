@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GUILDSTATUSCOMMAND_H_
 #define GUILDSTATUSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/guild/GuildMemberInfo.h"

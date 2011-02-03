@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef KNEELCOMMAND_H_
 #define KNEELCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 

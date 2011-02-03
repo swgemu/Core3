@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef WOOKIEEROARCOMMAND_H_
 #define WOOKIEEROARCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class WookieeRoarCommand : public QueueCommand {
 public:

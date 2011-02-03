@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef MANUFACTURECOMMAND_H_
 #define MANUFACTURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ManufactureCommand : public QueueCommand {
 public:

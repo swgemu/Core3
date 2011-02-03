@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GROUPCHATCOMMAND_H_
 #define GROUPCHATCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../../../chat/ChatManager.h"
 
 

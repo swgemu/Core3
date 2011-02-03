@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CSDISCONNECTPLAYERCOMMAND_H_
 #define CSDISCONNECTPLAYERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CsDisconnectPlayerCommand : public QueueCommand {
 public:

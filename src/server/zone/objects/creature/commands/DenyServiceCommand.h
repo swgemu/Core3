@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DENYSERVICECOMMAND_H_
 #define DENYSERVICECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DenyServiceCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CLOSECONTAINERCOMMAND_H_
 #define CLOSECONTAINERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../player/PlayerCreature.h"
 #include "../../../managers/minigames/FishingManager.h"
 

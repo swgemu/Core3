@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STOPBLEEDINGCOMMAND_H_
 #define STOPBLEEDINGCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class StopBleedingCommand : public QueueCommand {
 public:

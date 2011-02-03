@@ -110,8 +110,6 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void harvest(PlayerCreature* player, byte selectedID);
-
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void scheduleDespawn();
@@ -167,8 +165,6 @@ namespace objects {
 namespace creature {
 
 class CreatureImplementation : public AiAgentImplementation {
-protected:
-	Vector<ManagedReference<CreatureObject* > > harvestList;
 
 public:
 	CreatureImplementation();
@@ -187,16 +183,10 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void harvest(PlayerCreature* player, byte selectedID);
-
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
 	void scheduleDespawn();
 
-private:
-	void createHarvestList();
-
-public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
@@ -267,8 +257,6 @@ public:
 	void runAway(CreatureObject* target);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void harvest(PlayerCreature* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 

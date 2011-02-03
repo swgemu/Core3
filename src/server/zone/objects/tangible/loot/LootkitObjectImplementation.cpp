@@ -7,10 +7,10 @@
 
 #include "LootkitObject.h"
 #include "../TangibleObject.h"
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "../../scene/variables/CustomizationVariables.h"
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/templates/tangible/LootkitObjectTemplate.h"

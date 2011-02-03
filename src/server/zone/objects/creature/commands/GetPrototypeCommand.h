@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETPROTOTYPECOMMAND_H_
 #define GETPROTOTYPECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetPrototypeCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCECHOKECOMMAND_H_
 #define FORCECHOKECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceChokeCommand : public QueueCommand {
 public:

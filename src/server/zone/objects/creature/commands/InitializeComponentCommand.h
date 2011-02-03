@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef INITIALIZECOMPONENTCOMMAND_H_
 #define INITIALIZECOMPONENTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class InitializeComponentCommand : public QueueCommand {
 public:

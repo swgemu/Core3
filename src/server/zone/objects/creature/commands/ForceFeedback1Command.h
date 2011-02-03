@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCEFEEDBACK1COMMAND_H_
 #define FORCEFEEDBACK1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceFeedback1Command : public QueueCommand {
 public:

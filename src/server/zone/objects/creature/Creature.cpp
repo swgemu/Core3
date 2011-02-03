@@ -100,28 +100,13 @@ int Creature::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void Creature::harvest(PlayerCreature* player, byte selectedID) {
-	CreatureImplementation* _implementation = (CreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addObjectParameter(player);
-		method.addByteParameter(selectedID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->harvest(player, selectedID);
-}
-
 void Creature::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
 	CreatureImplementation* _implementation = (CreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -136,7 +121,7 @@ void Creature::scheduleDespawn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 
 		method.executeWithVoidReturn();
 	} else
@@ -149,7 +134,7 @@ bool Creature::hasOrganics() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -162,7 +147,7 @@ bool Creature::canHarvestMe(CreatureObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -176,7 +161,7 @@ bool Creature::isBaby() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -189,7 +174,7 @@ float Creature::getTame() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -202,7 +187,7 @@ String Creature::getMeatType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 
 		method.executeWithAsciiReturn(_return_getMeatType);
 		return _return_getMeatType;
@@ -216,7 +201,7 @@ String Creature::getBoneType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 
 		method.executeWithAsciiReturn(_return_getBoneType);
 		return _return_getBoneType;
@@ -230,7 +215,7 @@ String Creature::getHideType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 
 		method.executeWithAsciiReturn(_return_getHideType);
 		return _return_getHideType;
@@ -244,7 +229,7 @@ float Creature::getMilk() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -257,7 +242,7 @@ float Creature::getHideMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -270,7 +255,7 @@ float Creature::getBoneMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -283,7 +268,7 @@ float Creature::getMeatMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -415,85 +400,85 @@ int CreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 CreatureImplementation::CreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/Creature.idl(63):  		Logger.setLoggingName("Creature");
+	// server/zone/objects/creature/Creature.idl(60):  		Logger.setLoggingName("Creature");
 	Logger::setLoggingName("Creature");
-	// server/zone/objects/creature/Creature.idl(64):  		Logger.setLogging(false);
+	// server/zone/objects/creature/Creature.idl(61):  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/Creature.idl(65):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/Creature.idl(62):  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 bool CreatureImplementation::isCreature() {
-	// server/zone/objects/creature/Creature.idl(69):  		return true;
+	// server/zone/objects/creature/Creature.idl(66):  		return true;
 	return true;
 }
 
 bool CreatureImplementation::isBaby() {
-	// server/zone/objects/creature/Creature.idl(106):  		return super.baby;
+	// server/zone/objects/creature/Creature.idl(99):  		return super.baby;
 	return AiAgentImplementation::baby;
 }
 
 float CreatureImplementation::getTame() {
-	// server/zone/objects/creature/Creature.idl(110):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(111):  			return 0;
+	// server/zone/objects/creature/Creature.idl(103):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(104):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(113):  super.npcTemplate.getTame();
+	// server/zone/objects/creature/Creature.idl(106):  super.npcTemplate.getTame();
 	return AiAgentImplementation::npcTemplate->getTame();
 }
 
 String CreatureImplementation::getMeatType() {
-	// server/zone/objects/creature/Creature.idl(117):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(118):  			return "";
+	// server/zone/objects/creature/Creature.idl(110):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(111):  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(120):  super.npcTemplate.getMeatType();
+	// server/zone/objects/creature/Creature.idl(113):  super.npcTemplate.getMeatType();
 	return AiAgentImplementation::npcTemplate->getMeatType();
 }
 
 String CreatureImplementation::getBoneType() {
-	// server/zone/objects/creature/Creature.idl(124):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(125):  			return "";
+	// server/zone/objects/creature/Creature.idl(117):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(118):  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(127):  super.npcTemplate.getBoneType();
+	// server/zone/objects/creature/Creature.idl(120):  super.npcTemplate.getBoneType();
 	return AiAgentImplementation::npcTemplate->getBoneType();
 }
 
 String CreatureImplementation::getHideType() {
-	// server/zone/objects/creature/Creature.idl(131):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(132):  			return "";
+	// server/zone/objects/creature/Creature.idl(124):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(125):  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(134):  super.npcTemplate.getHideType();
+	// server/zone/objects/creature/Creature.idl(127):  super.npcTemplate.getHideType();
 	return AiAgentImplementation::npcTemplate->getHideType();
 }
 
 float CreatureImplementation::getMilk() {
-	// server/zone/objects/creature/Creature.idl(138):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(139):  			return 0;
+	// server/zone/objects/creature/Creature.idl(131):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(132):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(141):  super.npcTemplate.getMilk();
+	// server/zone/objects/creature/Creature.idl(134):  super.npcTemplate.getMilk();
 	return AiAgentImplementation::npcTemplate->getMilk();
 }
 
 float CreatureImplementation::getHideMax() {
-	// server/zone/objects/creature/Creature.idl(145):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(146):  			return 0;
+	// server/zone/objects/creature/Creature.idl(138):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(139):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(148):  super.npcTemplate.getHideMax();
+	// server/zone/objects/creature/Creature.idl(141):  super.npcTemplate.getHideMax();
 	return AiAgentImplementation::npcTemplate->getHideMax();
 }
 
 float CreatureImplementation::getBoneMax() {
-	// server/zone/objects/creature/Creature.idl(152):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(153):  			return 0;
+	// server/zone/objects/creature/Creature.idl(145):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(146):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(155):  super.npcTemplate.getBoneMax();
+	// server/zone/objects/creature/Creature.idl(148):  super.npcTemplate.getBoneMax();
 	return AiAgentImplementation::npcTemplate->getBoneMax();
 }
 
 float CreatureImplementation::getMeatMax() {
-	// server/zone/objects/creature/Creature.idl(159):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(160):  			return 0;
+	// server/zone/objects/creature/Creature.idl(152):  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(153):  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(162):  super.npcTemplate.getMeatMax();
+	// server/zone/objects/creature/Creature.idl(155):  super.npcTemplate.getMeatMax();
 	return AiAgentImplementation::npcTemplate->getMeatMax();
 }
 
@@ -518,45 +503,42 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 9:
-		harvest((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter());
-		break;
-	case 10:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 11:
+	case 10:
 		scheduleDespawn();
 		break;
-	case 12:
+	case 11:
 		resp->insertBoolean(hasOrganics());
 		break;
-	case 13:
+	case 12:
 		resp->insertBoolean(canHarvestMe((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 14:
+	case 13:
 		resp->insertBoolean(isBaby());
 		break;
-	case 15:
+	case 14:
 		resp->insertFloat(getTame());
 		break;
-	case 16:
+	case 15:
 		resp->insertAscii(getMeatType());
 		break;
-	case 17:
+	case 16:
 		resp->insertAscii(getBoneType());
 		break;
-	case 18:
+	case 17:
 		resp->insertAscii(getHideType());
 		break;
-	case 19:
+	case 18:
 		resp->insertFloat(getMilk());
 		break;
-	case 20:
+	case 19:
 		resp->insertFloat(getHideMax());
 		break;
-	case 21:
+	case 20:
 		resp->insertFloat(getBoneMax());
 		break;
-	case 22:
+	case 21:
 		resp->insertFloat(getMeatMax());
 		break;
 	default:
@@ -576,10 +558,6 @@ void CreatureAdapter::runAway(CreatureObject* target) {
 
 int CreatureAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((CreatureImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
-}
-
-void CreatureAdapter::harvest(PlayerCreature* player, byte selectedID) {
-	((CreatureImplementation*) impl)->harvest(player, selectedID);
 }
 
 void CreatureAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {

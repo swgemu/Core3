@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LISTCOMPLETEDQUESTSCOMMAND_H_
 #define LISTCOMPLETEDQUESTSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ListCompletedQuestsCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LOWBLOWCOMMAND_H_
 #define LOWBLOWCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class LowBlowCommand : public CombatQueueCommand {

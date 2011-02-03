@@ -2129,12 +2129,9 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 	float allowedSpeedBase = player->getRunSpeed();
 	ManagedReference<SceneObject*> parent = player->getParent();
 	SpeedMultiplierModChanges* changeBuffer = player->getSpeedMultiplierModChanges();
-	Vector<Reference<MessageCallback*> >* lastMovementUpdates = player->getLastMovementUpdates();
 	Vector3 teleportPoint = teleportPosition.getPosition();
 	uint64 teleportParentID = teleportPosition.getParent();
 
-	/*if (lastMovementUpdates->size() < 5)
-		return 0;*/
 
 	if (parent != NULL && parent->isVehicleObject()) {
 		VehicleObject* vehicle = (VehicleObject*) parent.get();
@@ -2199,8 +2196,6 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(PlayerCreature* player,
 
 		return 1;
 	}
-
-	//lastMovementUpdates->removeAll();
 
 	return 0;
 }
@@ -2333,6 +2328,18 @@ bool PlayerManagerImplementation::checkLineOfSightInBuilding(SceneObject* object
 	return true;
 }
 
+float PlayerManagerImplementation::getCollisionPoint(CreatureObject* creature) {
+	float heightOrigin = creature->getHeight() - 0.3f;
+
+	if (creature->isProne() || creature->isKnockedDown() || creature->isIncapacitated()) {
+		heightOrigin = 0.3;
+	} else if (creature->isKneeling()) {
+		heightOrigin /= 2.f;
+	}
+
+	return heightOrigin;
+}
+
 bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
 
@@ -2342,7 +2349,6 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 	if (object2->getZone() != zone)
 		return false;
 
-	//For now only cell-cell, cell LOS for later
 	SceneObject* rootParent1 = object1->getRootParent();
 	SceneObject* rootParent2 = object2->getRootParent();
 
@@ -2353,16 +2359,24 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 			return false; //different buildings
 	}
 
-	//switching x<->y, adding 1.f for height(head), todo: get height from players
+	//switching x<->y, adding player height (head)
 	Vector3 rayOrigin = object1->getWorldPosition();
-	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + 1.f);
+
+	float heightOrigin = 1.f;
+	float heightEnd = 1.f;
+
+	if (object1->isCreatureObject())
+		heightOrigin = getCollisionPoint((CreatureObject*)object1);
+
+	if (object2->isCreatureObject())
+		heightEnd = getCollisionPoint((CreatureObject*)object2);
+
+	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + heightOrigin);
 
 	Vector3 rayEnd = object2->getWorldPosition();
-	rayEnd.set(rayEnd.getX(), rayEnd.getY(), rayEnd.getZ() + 1.f);
+	rayEnd.set(rayEnd.getX(), rayEnd.getY(), rayEnd.getZ() + heightEnd);
 
 	float dist = rayEnd.distanceTo(rayOrigin);
-
-	//Ray ray(rayOrigin, norm);
 
 	zone->rlock();
 

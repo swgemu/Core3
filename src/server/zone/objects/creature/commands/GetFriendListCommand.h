@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETFRIENDLISTCOMMAND_H_
 #define GETFRIENDLISTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetFriendListCommand : public QueueCommand {
 public:

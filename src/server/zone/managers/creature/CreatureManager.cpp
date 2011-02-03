@@ -16,6 +16,10 @@
 
 #include "server/zone/objects/creature/AiAgent.h"
 
+#include "server/zone/objects/creature/Creature.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 /*
@@ -191,6 +195,22 @@ void CreatureManager::loadInformants() {
 		_implementation->loadInformants();
 }
 
+void CreatureManager::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
+	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(selectedID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->harvest(creature, player, selectedID);
+}
+
 DistributedObjectServant* CreatureManager::_getImplementation() {
 
 	_updated = true;
@@ -342,22 +362,22 @@ int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : ZoneManagerImplementation("CreatureManager") {
 	_initializeImplementation();
-	// server/zone/managers/creature/CreatureManager.idl(29):  		zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl(31):  		zone = planet;
 	zone = planet;
 }
 
 void CreatureManagerImplementation::initialize() {
-	// server/zone/managers/creature/CreatureManager.idl(33):  		setCreatureTemplateManager();
+	// server/zone/managers/creature/CreatureManager.idl(35):  		setCreatureTemplateManager();
 	setCreatureTemplateManager();
-	// server/zone/managers/creature/CreatureManager.idl(34):  		loadSpawnAreas();
+	// server/zone/managers/creature/CreatureManager.idl(36):  		loadSpawnAreas();
 	loadSpawnAreas();
-	// server/zone/managers/creature/CreatureManager.idl(35):  		loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl(37):  		loadTrainers();
 	loadTrainers();
-	// server/zone/managers/creature/CreatureManager.idl(36):  		loadSingleSpawns();
+	// server/zone/managers/creature/CreatureManager.idl(38):  		loadSingleSpawns();
 	loadSingleSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(37):  		loadMissionSpawns();
+	// server/zone/managers/creature/CreatureManager.idl(39):  		loadMissionSpawns();
 	loadMissionSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(38):  		loadInformants();
+	// server/zone/managers/creature/CreatureManager.idl(40):  		loadInformants();
 	loadInformants();
 }
 
@@ -401,6 +421,9 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 15:
 		loadInformants();
+		break;
+	case 16:
+		harvest((Creature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -447,6 +470,10 @@ void CreatureManagerAdapter::loadMissionSpawns() {
 
 void CreatureManagerAdapter::loadInformants() {
 	((CreatureManagerImplementation*) impl)->loadInformants();
+}
+
+void CreatureManagerAdapter::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
+	((CreatureManagerImplementation*) impl)->harvest(creature, player, selectedID);
 }
 
 /*

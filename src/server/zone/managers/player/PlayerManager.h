@@ -264,6 +264,8 @@ public:
 
 	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel = 1);
 
+	float getCollisionPoint(CreatureObject* creature);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -412,6 +414,8 @@ public:
 
 	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel = 1);
 
+	float getCollisionPoint(CreatureObject* creature);
+
 	PlayerManager* _this;
 
 	operator const PlayerManager*();
@@ -546,6 +550,8 @@ public:
 	PlayerCreature* getPlayer(const String& name);
 
 	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel);
+
+	float getCollisionPoint(CreatureObject* creature);
 
 protected:
 	String _param0_kickUser__String_String_;

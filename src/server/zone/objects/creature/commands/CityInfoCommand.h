@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CITYINFOCOMMAND_H_
 #define CITYINFOCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CityInfoCommand : public QueueCommand {
 public:

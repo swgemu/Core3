@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FINDPLAYERCOMMAND_H_
 #define FINDPLAYERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../player/sui/messagebox/SuiMessageBox.h"
 
 class FindPlayerCommand : public QueueCommand {

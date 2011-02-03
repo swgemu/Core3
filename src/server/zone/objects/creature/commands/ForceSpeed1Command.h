@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCESPEED1COMMAND_H_
 #define FORCESPEED1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceSpeed1Command : public QueueCommand {
 public:

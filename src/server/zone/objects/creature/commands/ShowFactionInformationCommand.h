@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SHOWFACTIONINFORMATIONCOMMAND_H_
 #define SHOWFACTIONINFORMATIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ShowFactionInformationCommand : public QueueCommand {
 public:

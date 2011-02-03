@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef AVOIDINCAPACITATIONCOMMAND_H_
 #define AVOIDINCAPACITATIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class AvoidIncapacitationCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DETONATEDROIDCOMMAND_H_
 #define DETONATEDROIDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DetonateDroidCommand : public QueueCommand {
 public:

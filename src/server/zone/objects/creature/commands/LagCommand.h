@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LAGCOMMAND_H_
 #define LAGCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class LagCommand : public QueueCommand {
 public:

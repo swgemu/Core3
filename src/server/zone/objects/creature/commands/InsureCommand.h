@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef INSURECOMMAND_H_
 #define INSURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class InsureCommand : public QueueCommand {
 public:

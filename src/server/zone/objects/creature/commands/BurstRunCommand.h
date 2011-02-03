@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef BURSTRUNCOMMAND_H_
 #define BURSTRUNCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"

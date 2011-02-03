@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETINTIMIDATECOMMAND_H_
 #define SETINTIMIDATECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetIntimidateCommand : public QueueCommand {
 public:

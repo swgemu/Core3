@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TRANSFERITEMMISCCOMMAND_H_
 #define TRANSFERITEMMISCCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/building/BuildingObject.h"
 

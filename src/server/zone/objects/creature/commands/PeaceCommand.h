@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PEACECOMMAND_H_
 #define PEACECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 
 

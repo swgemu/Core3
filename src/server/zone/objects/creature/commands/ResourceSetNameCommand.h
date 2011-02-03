@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RESOURCESETNAMECOMMAND_H_
 #define RESOURCESETNAMECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ResourceSetNameCommand : public QueueCommand {
 public:

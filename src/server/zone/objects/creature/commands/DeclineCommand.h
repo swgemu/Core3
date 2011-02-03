@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DECLINECOMMAND_H_
 #define DECLINECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../player/PlayerCreature.h"
 #include "server/chat/StringIdChatParameter.h"
 

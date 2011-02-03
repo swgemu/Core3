@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETOBJVARSCOMMAND_H_
 #define GETOBJVARSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetObjVarsCommand : public QueueCommand {
 public:

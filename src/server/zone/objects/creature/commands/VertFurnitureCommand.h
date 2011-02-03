@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef VERTFURNITURECOMMAND_H_
 #define VERTFURNITURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class VertFurnitureCommand : public QueueCommand {
 public:

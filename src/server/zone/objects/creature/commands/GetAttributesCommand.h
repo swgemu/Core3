@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETATTRIBUTESCOMMAND_H_
 #define GETATTRIBUTESCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetAttributesCommand : public QueueCommand {
 public:

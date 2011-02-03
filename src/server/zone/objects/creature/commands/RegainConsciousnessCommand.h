@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REGAINCONSCIOUSNESSCOMMAND_H_
 #define REGAINCONSCIOUSNESSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RegainConsciousnessCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PLACESTRUCTURECOMMAND_H_
 #define PLACESTRUCTURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../player/PlayerCreature.h"
 #include "../../../managers/planet/PlanetManager.h"
 #include "../../../managers/structure/StructureManager.h"

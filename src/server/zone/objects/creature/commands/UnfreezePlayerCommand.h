@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef UNFREEZEPLAYERCOMMAND_H_
 #define UNFREEZEPLAYERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
 
 class UnfreezePlayerCommand : public QueueCommand {

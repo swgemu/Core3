@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CUICONSENTRESPONSECOMMAND_H_
 #define CUICONSENTRESPONSECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CuiConsentResponseCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TIPCOMMAND_H_
 #define TIPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class TipCommand : public QueueCommand {
 public:

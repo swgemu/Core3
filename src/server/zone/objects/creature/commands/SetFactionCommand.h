@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETFACTIONCOMMAND_H_
 #define SETFACTIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetFactionCommand : public QueueCommand {
 public:

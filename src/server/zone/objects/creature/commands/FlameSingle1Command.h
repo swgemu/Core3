@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FLAMESINGLE1COMMAND_H_
 #define FLAMESINGLE1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class FlameSingle1Command : public QueueCommand {
 public:

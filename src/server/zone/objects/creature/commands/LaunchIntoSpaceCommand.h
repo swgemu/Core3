@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LAUNCHINTOSPACECOMMAND_H_
 #define LAUNCHINTOSPACECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class LaunchIntoSpaceCommand : public QueueCommand {
 public:

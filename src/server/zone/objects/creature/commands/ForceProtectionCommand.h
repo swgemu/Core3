@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCEPROTECTIONCOMMAND_H_
 #define FORCEPROTECTIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceProtectionCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef MONEYCOMMAND_H_
 #define MONEYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class MoneyCommand : public QueueCommand {
 public:

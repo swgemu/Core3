@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SERVERDESTROYOBJECTCOMMAND_H_
 #define SERVERDESTROYOBJECTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 

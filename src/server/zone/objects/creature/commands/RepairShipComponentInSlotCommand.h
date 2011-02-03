@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REPAIRSHIPCOMPONENTINSLOTCOMMAND_H_
 #define REPAIRSHIPCOMPONENTINSLOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RepairShipComponentInSlotCommand : public QueueCommand {
 public:

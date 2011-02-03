@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETSPAWNDELAYSCOMMAND_H_
 #define GETSPAWNDELAYSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetSpawnDelaysCommand : public QueueCommand {
 public:

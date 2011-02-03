@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef OPENCONTAINERCOMMAND_H_
 #define OPENCONTAINERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class OpenContainerCommand : public QueueCommand {
 public:

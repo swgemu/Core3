@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETPERFORMANCEBUFFTARGETCOMMAND_H_
 #define SETPERFORMANCEBUFFTARGETCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetPerformanceBuffTargetCommand : public QueueCommand {
 public:

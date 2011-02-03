@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef NAMESTRUCTURECOMMAND_H_
 #define NAMESTRUCTURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class NameStructureCommand : public QueueCommand {
 public:

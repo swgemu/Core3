@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LISTACTIVEQUESTSCOMMAND_H_
 #define LISTACTIVEQUESTSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ListActiveQuestsCommand : public QueueCommand {
 public:

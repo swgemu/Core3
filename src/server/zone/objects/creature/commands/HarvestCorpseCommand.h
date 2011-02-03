@@ -45,8 +45,10 @@ which carries forward this exception.
 #ifndef HARVESTCORPSECOMMAND_H_
 #define HARVESTCORPSECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
-#include "../../creature/Creature.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/Zone.h"
 
 class HarvestCorpseCommand : public QueueCommand {
 public:
@@ -64,7 +66,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if(!creature->isPlayerCreature())
+		if (!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
 		ManagedReference<SceneObject* > object =
@@ -79,7 +81,7 @@ public:
 
 		CreatureObject* creo = (CreatureObject*) object.get();
 
-		if(!creo->isCreature())
+		if (!creo->isCreature())
 			return INVALIDTARGET;
 
 		Creature* cr = (Creature*) creo;
@@ -101,8 +103,16 @@ public:
 		else
 			type = System::random(2) + 234;
 
-		if(cr->canHarvestMe(player))
-			cr->harvest(player, type);
+		if (cr->canHarvestMe(player)) {
+			if (cr->getZone() == NULL)
+				return GENERALERROR;
+
+			Locker clocker(cr, player);
+
+			ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
+			manager->harvest(cr, player, type);
+		}
+
 
 		return SUCCESS;
 	}

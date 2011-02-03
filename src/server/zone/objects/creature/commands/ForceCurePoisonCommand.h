@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCECUREPOISONCOMMAND_H_
 #define FORCECUREPOISONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceCurePoisonCommand : public QueueCommand {
 public:

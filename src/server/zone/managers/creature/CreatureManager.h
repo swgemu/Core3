@@ -91,6 +91,34 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class Creature;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
 namespace managers {
 namespace creature {
 
@@ -139,6 +167,8 @@ public:
 	void loadMissionSpawns();
 
 	void loadInformants();
+
+	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -205,6 +235,8 @@ private:
 	void setCreatureTemplateManager();
 
 public:
+	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
+
 	CreatureManager* _this;
 
 	operator const CreatureManager*();
@@ -267,6 +299,8 @@ public:
 	void loadMissionSpawns();
 
 	void loadInformants();
+
+	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
 
 };
 

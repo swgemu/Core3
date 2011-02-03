@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RECRUITSKILLTRAINERCOMMAND_H_
 #define RECRUITSKILLTRAINERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RecruitSkillTrainerCommand : public QueueCommand {
 public:

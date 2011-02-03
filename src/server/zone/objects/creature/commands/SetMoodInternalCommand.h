@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETMOODINTERNALCOMMAND_H_
 #define SETMOODINTERNALCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetMoodInternalCommand : public QueueCommand {
 public:

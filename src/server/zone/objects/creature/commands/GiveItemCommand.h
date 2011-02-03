@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GIVEITEMCOMMAND_H_
 #define GIVEITEMCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "../../../managers/player/PlayerManager.h"
 

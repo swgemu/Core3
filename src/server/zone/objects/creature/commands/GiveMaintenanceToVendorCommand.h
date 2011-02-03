@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GIVEMAINTENANCETOVENDORCOMMAND_H_
 #define GIVEMAINTENANCETOVENDORCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GiveMaintenanceToVendorCommand : public QueueCommand {
 public:

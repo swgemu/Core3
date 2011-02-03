@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REVOKEBADGECOMMAND_H_
 #define REVOKEBADGECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RevokeBadgeCommand : public QueueCommand {
 public:

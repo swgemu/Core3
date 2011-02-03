@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DEACTIVATEQUESTCOMMAND_H_
 #define DEACTIVATEQUESTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DeactivateQuestCommand : public QueueCommand {
 public:

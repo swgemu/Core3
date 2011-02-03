@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REQUESTBIOGRAPHYCOMMAND_H_
 #define REQUESTBIOGRAPHYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/object/Biography.h"
 
 class RequestBiographyCommand : public QueueCommand {

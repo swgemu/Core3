@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REQUESTBADGESCOMMAND_H_
 #define REQUESTBADGESCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RequestBadgesCommand : public QueueCommand {
 public:

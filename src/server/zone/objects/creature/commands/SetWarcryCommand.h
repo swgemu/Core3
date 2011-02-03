@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETWARCRYCOMMAND_H_
 #define SETWARCRYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetWarcryCommand : public QueueCommand {
 public:

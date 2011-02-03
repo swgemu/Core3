@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CLAIMVETERANREWARDCOMMAND_H_
 #define CLAIMVETERANREWARDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ClaimVeteranRewardCommand : public QueueCommand {
 public:

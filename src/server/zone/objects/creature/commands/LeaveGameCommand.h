@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef LEAVEGAMECOMMAND_H_
 #define LEAVEGAMECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class LeaveGameCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CUSTOMIZEDROIDCOMMAND_H_
 #define CUSTOMIZEDROIDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CustomizeDroidCommand : public QueueCommand {
 public:

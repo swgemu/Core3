@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETFACTIONSTANDINGCOMMAND_H_
 #define SETFACTIONSTANDINGCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetFactionStandingCommand : public QueueCommand {
 public:

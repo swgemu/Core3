@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SPRAYSHOTCOMMAND_H_
 #define SPRAYSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class SprayShotCommand : public CombatQueueCommand {

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FINDFRIENDCOMMAND_H_
 #define FINDFRIENDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/terrain/PlanetNames.h"

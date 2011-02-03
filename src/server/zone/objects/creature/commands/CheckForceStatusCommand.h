@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CHECKFORCESTATUSCOMMAND_H_
 #define CHECKFORCESTATUSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CheckForceStatusCommand : public QueueCommand {
 public:

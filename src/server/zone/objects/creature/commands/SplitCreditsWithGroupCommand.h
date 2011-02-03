@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SPLITCREDITSWITHGROUPCOMMAND_H_
 #define SPLITCREDITSWITHGROUPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SplitCreditsWithGroupCommand : public QueueCommand {
 public:

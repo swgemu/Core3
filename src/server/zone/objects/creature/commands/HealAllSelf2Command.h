@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef HEALALLSELF2COMMAND_H_
 #define HEALALLSELF2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class HealAllSelf2Command : public QueueCommand {
 public:

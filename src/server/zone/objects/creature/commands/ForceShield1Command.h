@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCESHIELD1COMMAND_H_
 #define FORCESHIELD1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceShield1Command : public QueueCommand {
 public:

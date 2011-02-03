@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETIGNORELISTCOMMAND_H_
 #define GETIGNORELISTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetIgnoreListCommand : public QueueCommand {
 public:

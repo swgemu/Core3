@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STOPCRAFTINGSESSIONCOMMAND_H_
 #define STOPCRAFTINGSESSIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class StopCraftingSessionCommand : public QueueCommand {
 public:

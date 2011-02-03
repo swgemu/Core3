@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TAMECOMMAND_H_
 #define TAMECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class TameCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef KICKCOMMAND_H_
 #define KICKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class KickCommand : public QueueCommand {
 public:

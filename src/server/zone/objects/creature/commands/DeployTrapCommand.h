@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DEPLOYTRAPCOMMAND_H_
 #define DEPLOYTRAPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DeployTrapCommand : public QueueCommand {
 public:

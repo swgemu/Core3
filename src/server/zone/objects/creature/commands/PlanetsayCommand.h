@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PLANETSAYCOMMAND_H_
 #define PLANETSAYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class PlanetsayCommand : public QueueCommand {
 public:
