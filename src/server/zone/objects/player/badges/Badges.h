@@ -28,6 +28,32 @@ public:
 		addSerializableVariables();
 	}
 
+	Badges(const Badges& badges) : Object(), Serializable(), ReadWriteLock() {
+		for (int i = 0; i < 5; ++i) {
+			badgeBitmask[i] = badges.badgeBitmask[i];
+		}
+
+		for (int i = 0; i < 6; ++i)
+			badgeTypeCounts[i] = badges.badgeTypeCounts[i];
+
+		badgeTotal = badges.badgeTotal;
+
+		addSerializableVariables();
+	}
+
+	Badges& operator=(const Badges& badges) {
+		for (int i = 0; i < 5; ++i) {
+			badgeBitmask[i] = badges.badgeBitmask[i];
+		}
+
+		for (int i = 0; i < 6; ++i)
+			badgeTypeCounts[i] = badges.badgeTypeCounts[i];
+
+		badgeTotal = badges.badgeTotal;
+
+		return *this;
+	}
+
 	inline void addSerializableVariables() {
 		addSerializableVariable("badgeBitmask1", &badgeBitmask[0]);
 		addSerializableVariable("badgeBitmask2", &badgeBitmask[1]);
