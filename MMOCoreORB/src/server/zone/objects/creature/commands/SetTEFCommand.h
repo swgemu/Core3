@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETTEFCOMMAND_H_
 #define SETTEFCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetTEFCommand : public QueueCommand {
 public:

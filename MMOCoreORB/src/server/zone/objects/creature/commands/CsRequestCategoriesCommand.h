@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CSREQUESTCATEGORIESCOMMAND_H_
 #define CSREQUESTCATEGORIESCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CsRequestCategoriesCommand : public QueueCommand {
 public:

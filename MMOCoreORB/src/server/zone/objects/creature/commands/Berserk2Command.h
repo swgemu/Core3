@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef BERSERK2COMMAND_H_
 #define BERSERK2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class Berserk2Command : public QueueCommand {
 public:

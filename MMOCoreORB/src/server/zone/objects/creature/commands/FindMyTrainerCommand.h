@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FINDMYTRAINERCOMMAND_H_
 #define FINDMYTRAINERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class FindMyTrainerCommand : public QueueCommand {
 public:

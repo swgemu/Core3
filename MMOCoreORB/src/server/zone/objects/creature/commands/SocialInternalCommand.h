@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SOCIALINTERNALCOMMAND_H_
 #define SOCIALINTERNALCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SocialInternalCommand : public QueueCommand {
 public:

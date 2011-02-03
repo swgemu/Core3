@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FIRELIGHTNINGCONE2COMMAND_H_
 #define FIRELIGHTNINGCONE2COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class FireLightningCone2Command : public CombatQueueCommand {

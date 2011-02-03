@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ROTATEFURNITURECOMMAND_H_
 #define ROTATEFURNITURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RotateFurnitureCommand : public QueueCommand {
 public:

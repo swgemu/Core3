@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CLIENTQUALIFIEDFORSKILLCOMMAND_H_
 #define CLIENTQUALIFIEDFORSKILLCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ClientQualifiedForSkillCommand : public QueueCommand {
 public:

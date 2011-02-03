@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GRANTBADGECOMMAND_H_
 #define GRANTBADGECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GrantBadgeCommand : public QueueCommand {
 public:

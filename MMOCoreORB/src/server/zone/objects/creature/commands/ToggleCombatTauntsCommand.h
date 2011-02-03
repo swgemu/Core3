@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TOGGLECOMBATTAUNTSCOMMAND_H_
 #define TOGGLECOMBATTAUNTSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ToggleCombatTauntsCommand : public QueueCommand {
 public:

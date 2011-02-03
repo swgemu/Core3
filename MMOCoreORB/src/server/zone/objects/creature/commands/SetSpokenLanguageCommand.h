@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETSPOKENLANGUAGECOMMAND_H_
 #define SETSPOKENLANGUAGECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetSpokenLanguageCommand : public QueueCommand {
 public:

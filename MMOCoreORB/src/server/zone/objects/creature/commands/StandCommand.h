@@ -45,8 +45,8 @@ which carries forward this exception.
 #ifndef STANDCOMMAND_H_
 #define STANDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
-#include "../../creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 
 class StandCommand : public QueueCommand {
@@ -66,15 +66,6 @@ public:
 			return INVALIDPOSTURE;
 
 		StringTokenizer args(arguments.toString());
-
-		/*if (creature->isDizzied()) {
-			if (creature->getPosture() != CreaturePosture::UPRIGHT) {
-				creature->setPosture(CreaturePosture::KNOCKEDDOWN);
-				creature->sendSystemMessage("cbt_spam", "dizzy_fall_down_single");
-
-				return SUCCESS;
-			}
-		}*/
 
 		creature->setPosture(CreaturePosture::UPRIGHT);
 

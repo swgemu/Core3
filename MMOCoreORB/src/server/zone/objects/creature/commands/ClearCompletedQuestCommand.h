@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CLEARCOMPLETEDQUESTCOMMAND_H_
 #define CLEARCOMPLETEDQUESTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ClearCompletedQuestCommand : public QueueCommand {
 public:

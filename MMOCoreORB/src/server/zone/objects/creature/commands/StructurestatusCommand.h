@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STRUCTURESTATUSCOMMAND_H_
 #define STRUCTURESTATUSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class StructurestatusCommand : public QueueCommand {
 public:

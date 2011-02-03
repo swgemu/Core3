@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SAMPLEDNACOMMAND_H_
 #define SAMPLEDNACOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SampleDNACommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef COMBATSPAMCOMMAND_H_
 #define COMBATSPAMCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CombatSpamCommand : public QueueCommand {
 public:

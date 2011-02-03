@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef JOINCOMMAND_H_
 #define JOINCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../../managers/group/GroupManager.h"
 
 class JoinCommand : public QueueCommand {

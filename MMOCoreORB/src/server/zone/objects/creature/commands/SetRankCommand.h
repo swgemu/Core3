@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETRANKCOMMAND_H_
 #define SETRANKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetRankCommand : public QueueCommand {
 public:

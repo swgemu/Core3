@@ -9,7 +9,7 @@
 #define REQUESTQUESTTIMERSANDCOUNTERSCOMMAND_H_
 
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RequestQuestTimersAndCountersCommand : public QueueCommand {
 public:

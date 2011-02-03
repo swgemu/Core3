@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef COUNTERATTACKCOMMAND_H_
 #define COUNTERATTACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CounterAttackCommand : public QueueCommand {
 public:

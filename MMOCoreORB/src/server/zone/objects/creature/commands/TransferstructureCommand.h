@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TRANSFERSTRUCTURECOMMAND_H_
 #define TRANSFERSTRUCTURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 class TransferstructureCommand : public QueueCommand {

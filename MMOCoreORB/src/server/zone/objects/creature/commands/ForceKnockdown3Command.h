@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCEKNOCKDOWN3COMMAND_H_
 #define FORCEKNOCKDOWN3COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceKnockdown3Command : public QueueCommand {
 public:

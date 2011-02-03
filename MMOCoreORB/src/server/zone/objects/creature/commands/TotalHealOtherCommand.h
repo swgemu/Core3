@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TOTALHEALOTHERCOMMAND_H_
 #define TOTALHEALOTHERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class TotalHealOtherCommand : public QueueCommand {
 public:

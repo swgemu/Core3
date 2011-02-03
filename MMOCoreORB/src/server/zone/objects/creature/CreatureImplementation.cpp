@@ -15,7 +15,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
-#include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/combat/CombatManager.h"
 
@@ -124,10 +124,8 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 	if (checkInRangeGarage() && !isDestroyed())
 		menuResponse->addRadialMenuItem(62, 3, "Repair");*/
 
-	String skillBox = "outdoors_scout_novice";
-
 	if (player->isInRange(_this, 10.0f)
-			&& !player->isInCombat() && player->hasSkillBox(skillBox)
+			&& !player->isInCombat() && player->hasSkillBox("outdoors_scout_novice")
 			&& isDead() && canHarvestMe(player)) {
 
 		menuResponse->addRadialMenuItem(112, 3, "@sui:harvest_corpse");
@@ -149,137 +147,14 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 }
 
 int CreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (zone == NULL)
+		return 0;
 
-	if(selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236)
-		harvest(player, selectedID);
+	if (selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236) {
+		zone->getCreatureManager()->harvest(_this, player, selectedID);
+	}
 
 	return 0;
-}
-
-void CreatureImplementation::harvest(PlayerCreature* player, byte selectedID) {
-	if (zone == NULL)
-		return;
-
-	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
-	String restype = "";
-	int quantity = 0;
-
-	if (selectedID == 112) {
-		int type = System::random(2);
-
-		switch (type) {
-		case 0:
-			restype = getMeatType();
-			quantity = getMeatMax();
-			break;
-		case 1:
-			restype = getHideType();
-			quantity = getHideMax();
-			break;
-		case 2:
-			restype = getBoneType();
-			quantity = getBoneMax();
-			break;
-		default:
-			restype = getHideType();
-			quantity = getHideMax();
-			break;
-		}
-	}
-
-	if (selectedID == 234) {
-		restype = getMeatType();
-		quantity = getMeatMax();
-	}
-
-	if (selectedID == 235) {
-		restype = getHideType();
-		quantity = getHideMax();
-	}
-
-	if (selectedID == 236) {
-		restype = getBoneType();
-		quantity = getBoneMax();
-	}
-
-	int quantityExtracted = int(quantity * float(player->getSkillMod("creature_harvesting") / 100.0f));
-
-	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getZoneID());
-
-	if(resourceSpawn == NULL) {
-		player->sendSystemMessage("Error: Server cannot locate a current spawn of " + restype);
-		return;
-	}
-
-	float density = resourceSpawn->getDensityAt(player->getZone()->getZoneID(), player->getPositionX(), player->getPositionY());
-
-	String creatureHealth = "";
-
-	if(density > 0.80f) {
-		quantityExtracted = int(quantityExtracted * 1.25f);
-		creatureHealth = "creature_quality_fat";
-	} else if(density > 0.60f) {
-		quantityExtracted = int(quantityExtracted * 1.00f);
-		creatureHealth = "creature_quality_medium";
-	} else if(density > 0.40f) {
-		quantityExtracted = int(quantityExtracted * 0.75f);
-		creatureHealth = "creature_quality_skinny";
-	} else {
-		quantityExtracted = int(quantityExtracted * 0.50f);
-		creatureHealth = "creature_quality_scrawny";
-	}
-
-	int baseAmount = quantityExtracted;
-
-	float modifier = 1;
-
-	if(player->isGrouped()) {
-
-		modifier = player->getGroup()->getGroupHarvestModifier(player);
-
-		quantityExtracted = (int)(quantityExtracted * modifier);
-	}
-
-	resourceManager->harvestResourceToPlayer(player, resourceSpawn, baseAmount);
-
-	/// Send System Messages
-	StringIdChatParameter harvestMessage("skl_use", creatureHealth);
-
-	harvestMessage.setDI(quantityExtracted);
-	harvestMessage.setTU(resourceSpawn->getFinalClass());
-
-	ChatSystemMessage* sysMessage = new ChatSystemMessage(harvestMessage);
-	player->sendMessage(sysMessage);
-
-	/// Send bonus message
-	if (modifier == 1.2f)
-		player->sendSystemMessage("skl_use", "group_harvest_bonus");
-	else if (modifier == 1.3f)
-		player->sendSystemMessage("skl_use", "group_harvest_bonus_ranger");
-	else if (modifier == 1.4f)
-		player->sendSystemMessage("skl_use", "group_harvest_bonus_masterranger");
-
-	/// Send group spam
-	if(player->isGrouped()) {
-		StringIdChatParameter bonusMessage("group", "notify_harvest_corpse");
-
-		bonusMessage.setTU(player->getFirstName());
-		bonusMessage.setDI(quantityExtracted);
-		bonusMessage.setTO(resourceSpawn->getFinalClass());
-		bonusMessage.setTT(getObjectNameStringIdFile(), getObjectNameStringIdName());
-
-		sysMessage = new ChatSystemMessage(bonusMessage);
-		player->getGroup()->broadcastMessage(player, sysMessage, false);
-	}
-
-	harvestList.removeElement(player);
-
-	if(!hasLoot() && harvestList.size() == 0) {
-		Reference<DespawnCreatureTask*> despawn = (DespawnCreatureTask*) getPendingTask("despawn");
-		despawn->cancel();
-
-		despawn->reschedule(1000);
-	}
 }
 
 void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* player) {
@@ -383,62 +258,31 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Player
 }
 
 void CreatureImplementation::scheduleDespawn() {
-
-	createHarvestList();
-
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
 	despawn->schedule(300000); /// 5 minutes
 	addPendingTask("despawn", despawn);
 }
-
-void CreatureImplementation::createHarvestList() {
-	PlayerCreature* tempPlayer;
-	GroupObject* group;
-	PlayerCreature* owner = (PlayerCreature*) getLootOwner();
-
-	String skillBox = "outdoors_scout_novice";
-
-	if (owner == NULL || !hasOrganics())
-		return;
-
-	if(owner->hasSkillBox(skillBox))
-		harvestList.add(owner);
-
-	if (owner->isGrouped()) {
-
-		group = owner->getGroup();
-
-		for (int i = 0; i < group->getGroupSize(); ++i) {
-
-			SceneObject* groupMember = group->getGroupMember(i);
-
-			if(groupMember != NULL && groupMember->isPlayerCreature()) {
-
-				tempPlayer = (PlayerCreature*) groupMember;
-
-				if (tempPlayer->hasSkillBox(skillBox))
-					harvestList.add(tempPlayer);
-			}
-		}
-	}
-}
-
 
 bool CreatureImplementation::hasOrganics() {
 	return ((getHideMax() + getBoneMax() + getMeatMax()) > 0);
 }
 
 bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
-	if (!hasOrganics()){
+	if (!hasOrganics())
 		return false;
+
+	if (player != lootOwner && lootOwner != NULL) {
+		ManagedReference<GroupObject*> group = lootOwner->getGroup();
+
+		if (group == NULL)
+			return false;
+
+		if (!group->hasMember(player))
+			return false;
 	}
 
-	for (int i = 0; i < harvestList.size(); ++i){
-
-		if (harvestList.get(i) == player){
-			return true;
-		}
-	}
-
-	return false;
+	if (player->hasSkillBox("outdoors_scout_novice"))
+		return true;
+	else
+		return false;
 }

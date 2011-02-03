@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef MAXSTATSCOMMAND_H_
 #define MAXSTATSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class MaxStatsCommand : public QueueCommand {
 public:

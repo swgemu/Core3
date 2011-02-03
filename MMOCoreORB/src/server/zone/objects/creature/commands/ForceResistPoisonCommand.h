@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCERESISTPOISONCOMMAND_H_
 #define FORCERESISTPOISONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceResistPoisonCommand : public QueueCommand {
 public:

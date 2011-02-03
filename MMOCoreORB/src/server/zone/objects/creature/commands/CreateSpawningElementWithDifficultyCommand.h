@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
 #define CREATESPAWNINGELEMENTWITHDIFFICULTYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CreateSpawningElementWithDifficultyCommand : public QueueCommand {
 public:

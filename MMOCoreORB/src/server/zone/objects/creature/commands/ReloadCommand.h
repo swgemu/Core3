@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef RELOADCOMMAND_H_
 #define RELOADCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ReloadCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef HEALMINDCOMMAND_H_
 #define HEALMINDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class HealMindCommand : public QueueCommand {
 	float mindCost;

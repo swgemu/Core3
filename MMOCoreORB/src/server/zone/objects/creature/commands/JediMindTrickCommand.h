@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef JEDIMINDTRICKCOMMAND_H_
 #define JEDIMINDTRICKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class JediMindTrickCommand : public QueueCommand {
 public:

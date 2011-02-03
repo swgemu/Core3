@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SYNCHRONIZEDUILISTENCOMMAND_H_
 #define SYNCHRONIZEDUILISTENCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/ZoneServer.h"
 
 class SynchronizedUiListenCommand : public QueueCommand {

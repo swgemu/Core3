@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SURPRISESHOTCOMMAND_H_
 #define SURPRISESHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SurpriseShotCommand : public QueueCommand {
 public:

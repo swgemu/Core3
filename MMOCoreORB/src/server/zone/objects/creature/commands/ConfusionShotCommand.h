@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CONFUSIONSHOTCOMMAND_H_
 #define CONFUSIONSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class ConfusionShotCommand : public CombatQueueCommand {

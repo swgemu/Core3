@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SABER1HCOMBOHIT3COMMAND_H_
 #define SABER1HCOMBOHIT3COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class Saber1hComboHit3Command : public QueueCommand {
 public:

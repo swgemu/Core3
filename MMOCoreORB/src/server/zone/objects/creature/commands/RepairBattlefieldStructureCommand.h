@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REPAIRBATTLEFIELDSTRUCTURECOMMAND_H_
 #define REPAIRBATTLEFIELDSTRUCTURECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RepairBattlefieldStructureCommand : public QueueCommand {
 public:

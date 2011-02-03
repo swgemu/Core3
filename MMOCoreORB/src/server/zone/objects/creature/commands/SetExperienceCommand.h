@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETEXPERIENCECOMMAND_H_
 #define SETEXPERIENCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../player/PlayerCreature.h"
 #include "../../player/PlayerObject.h"
 #include "../../../managers/player/PlayerManager.h"

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PAUSEDANCECOMMAND_H_
 #define PAUSEDANCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class PauseDanceCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FISHCOMMAND_H_
 #define FISHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../player/PlayerCreature.h"
 #include "../../../managers/minigames/FishingManager.h"
 #include "../../../ZoneServer.h"

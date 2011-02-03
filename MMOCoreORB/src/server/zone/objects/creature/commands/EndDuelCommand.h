@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ENDDUELCOMMAND_H_
 #define ENDDUELCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class EndDuelCommand : public QueueCommand {
 public:

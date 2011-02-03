@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SCRIPTCOMMAND_H_
 #define SCRIPTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/Zone.h"

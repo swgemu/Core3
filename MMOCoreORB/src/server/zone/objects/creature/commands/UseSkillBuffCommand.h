@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef USESKILLBUFFCOMMAND_H_
 #define USESKILLBUFFCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class UseSkillBuffCommand : public QueueCommand {
 public:

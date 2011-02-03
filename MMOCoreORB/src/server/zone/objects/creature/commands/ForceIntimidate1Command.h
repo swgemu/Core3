@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCEINTIMIDATE1COMMAND_H_
 #define FORCEINTIMIDATE1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceIntimidate1Command : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DISMOUNTANDSTORECOMMAND_H_
 #define DISMOUNTANDSTORECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DismountandstoreCommand : public QueueCommand {
 public:

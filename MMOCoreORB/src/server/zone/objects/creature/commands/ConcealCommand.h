@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CONCEALCOMMAND_H_
 #define CONCEALCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ConcealCommand : public QueueCommand {
 public:

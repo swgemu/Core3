@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SPAWNSTATUSCOMMAND_H_
 #define SPAWNSTATUSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SpawnStatusCommand : public QueueCommand {
 public:

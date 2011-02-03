@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DECLARERESIDENCECOMMAND_H_
 #define DECLARERESIDENCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DeclareresidenceCommand : public QueueCommand {
 public:

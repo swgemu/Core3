@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ITEMMOVEBACKCOMMAND_H_
 #define ITEMMOVEBACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ItemmovebackCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef VOLLEYFIREATTACKCOMMAND_H_
 #define VOLLEYFIREATTACKCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "CombatQueueCommand.h"
 
 class VolleyFireAttackCommand : public CombatQueueCommand {

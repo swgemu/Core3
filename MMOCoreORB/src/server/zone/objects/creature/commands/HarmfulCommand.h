@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef HARMFULCOMMAND_H_
 #define HARMFULCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class HarmfulCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef HARVESTERTAKESURVEYCOMMAND_H_
 #define HARVESTERTAKESURVEYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class HarvesterTakeSurveyCommand : public QueueCommand {
 public:

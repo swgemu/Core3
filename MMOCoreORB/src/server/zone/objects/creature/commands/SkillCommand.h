@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SKILLCOMMAND_H_
 #define SKILLCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SkillCommand : public QueueCommand {
 public:

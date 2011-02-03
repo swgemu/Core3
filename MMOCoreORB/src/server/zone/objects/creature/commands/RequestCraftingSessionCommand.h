@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REQUESTCRAFTINGSESSIONCOMMAND_H_
 #define REQUESTCRAFTINGSESSIONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../tangible/tool/CraftingTool.h"
 #include "../../tangible/tool/CraftingStation.h"
 

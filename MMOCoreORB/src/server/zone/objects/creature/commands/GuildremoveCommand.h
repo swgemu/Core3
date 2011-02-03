@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GUILDREMOVECOMMAND_H_
 #define GUILDREMOVECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/guild/GuildManager.h"
 
 class GuildremoveCommand : public QueueCommand {

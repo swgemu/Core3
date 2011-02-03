@@ -774,6 +774,20 @@ void PlayerManager::updateAdminLevel(PlayerCreature* player, const String& targe
 		_implementation->updateAdminLevel(player, targetName, adminLevel);
 }
 
+float PlayerManager::getCollisionPoint(CreatureObject* creature) {
+	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 52);
+		method.addObjectParameter(creature);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getCollisionPoint(creature);
+}
+
 DistributedObjectServant* PlayerManager::_getImplementation() {
 
 	_updated = true;
@@ -1073,6 +1087,9 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 52:
 		updateAdminLevel((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_updateAdminLevel__PlayerCreature_String_int_), inv->getSignedIntParameter());
 		break;
+	case 53:
+		resp->insertFloat(getCollisionPoint((CreatureObject*) inv->getObjectParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -1266,6 +1283,10 @@ PlayerCreature* PlayerManagerAdapter::getPlayer(const String& name) {
 
 void PlayerManagerAdapter::updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel) {
 	((PlayerManagerImplementation*) impl)->updateAdminLevel(player, targetName, adminLevel);
+}
+
+float PlayerManagerAdapter::getCollisionPoint(CreatureObject* creature) {
+	return ((PlayerManagerImplementation*) impl)->getCollisionPoint(creature);
 }
 
 /*

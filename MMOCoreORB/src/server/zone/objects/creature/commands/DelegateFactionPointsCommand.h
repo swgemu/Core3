@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef DELEGATEFACTIONPOINTSCOMMAND_H_
 #define DELEGATEFACTIONPOINTSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class DelegateFactionPointsCommand : public QueueCommand {
 public:

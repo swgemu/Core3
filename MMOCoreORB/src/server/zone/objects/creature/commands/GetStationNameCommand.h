@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETSTATIONNAMECOMMAND_H_
 #define GETSTATIONNAMECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetStationNameCommand : public QueueCommand {
 public:

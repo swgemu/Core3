@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef BROADCASTCOMMAND_H_
 #define BROADCASTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class BroadcastCommand : public QueueCommand {
 public:

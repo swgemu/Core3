@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REQUESTMANFSCHEMATICSLOTSCOMMAND_H_
 #define REQUESTMANFSCHEMATICSLOTSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RequestManfSchematicSlotsCommand : public QueueCommand {
 public:

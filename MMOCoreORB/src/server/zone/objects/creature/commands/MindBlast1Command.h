@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef MINDBLAST1COMMAND_H_
 #define MINDBLAST1COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class MindBlast1Command : public QueueCommand {
 public:

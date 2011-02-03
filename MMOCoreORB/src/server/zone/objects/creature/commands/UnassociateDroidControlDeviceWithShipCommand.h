@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef UNASSOCIATEDROIDCONTROLDEVICEWITHSHIPCOMMAND_H_
 #define UNASSOCIATEDROIDCONTROLDEVICEWITHSHIPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class UnassociateDroidControlDeviceWithShipCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REQUESTSURVEYCOMMAND_H_
 #define REQUESTSURVEYCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../tangible/tool/SurveyTool.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"

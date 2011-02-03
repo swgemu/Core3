@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STARTTARGETSPAWNERCOMMAND_H_
 #define STARTTARGETSPAWNERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class StartTargetSpawnerCommand : public QueueCommand {
 public:

@@ -6,8 +6,8 @@
  */
 
 #include "FishingBaitObject.h"
-#include "../TangibleObject.h"
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 

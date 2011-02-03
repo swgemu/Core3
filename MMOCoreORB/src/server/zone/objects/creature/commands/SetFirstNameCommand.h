@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETFIRSTNAMECOMMAND_H_
 #define SETFIRSTNAMECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetFirstNameCommand : public QueueCommand {
 public:

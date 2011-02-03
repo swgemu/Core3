@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef TRANSFERITEMWEAPONCOMMAND_H_
 #define TRANSFERITEMWEAPONCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef THROWGRENADECOMMAND_H_
 #define THROWGRENADECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ThrowGrenadeCommand : public QueueCommand {
 public:

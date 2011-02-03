@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef NPCCONVERSATIONSTOPCOMMAND_H_
 #define NPCCONVERSATIONSTOPCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class NpcConversationStopCommand : public QueueCommand {
 public:

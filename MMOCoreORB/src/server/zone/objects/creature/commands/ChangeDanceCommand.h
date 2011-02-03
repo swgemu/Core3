@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CHANGEDANCECOMMAND_H_
 #define CHANGEDANCECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "StartDanceCommand.h"
 
 class ChangeDanceCommand : public QueueCommand {

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef REQUESTCHARACTERMATCHCOMMAND_H_
 #define REQUESTCHARACTERMATCHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class RequestCharacterMatchCommand : public QueueCommand {
 public:

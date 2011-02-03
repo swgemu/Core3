@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CSCANCELTICKETCOMMAND_H_
 #define CSCANCELTICKETCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CsCancelTicketCommand : public QueueCommand {
 public:

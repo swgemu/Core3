@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FIRSTAIDCOMMAND_H_
 #define FIRSTAIDCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class FirstAidCommand : public QueueCommand {
 	float mindCost;

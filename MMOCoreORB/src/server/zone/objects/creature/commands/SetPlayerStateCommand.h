@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETPLAYERSTATECOMMAND_H_
 #define SETPLAYERSTATECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetPlayerStateCommand : public QueueCommand {
 public:

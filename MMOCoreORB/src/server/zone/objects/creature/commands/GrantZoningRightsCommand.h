@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GRANTZONINGRIGHTSCOMMAND_H_
 #define GRANTZONINGRIGHTSCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "../../building/city/CityHallObject.h"
 
 class GrantZoningRightsCommand : public QueueCommand {

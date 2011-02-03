@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef IMAGEDESIGNCOMMAND_H_
 #define IMAGEDESIGNCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ImagedesignCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FINDOBJECTCOMMAND_H_
 #define FINDOBJECTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class FindObjectCommand : public QueueCommand {
 public:

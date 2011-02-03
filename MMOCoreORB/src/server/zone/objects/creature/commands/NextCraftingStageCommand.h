@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef NEXTCRAFTINGSTAGECOMMAND_H_
 #define NEXTCRAFTINGSTAGECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class NextCraftingStageCommand : public QueueCommand {
 public:

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETHUECOMMAND_H_
 #define SETHUECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetHueCommand : public QueueCommand {
 public:

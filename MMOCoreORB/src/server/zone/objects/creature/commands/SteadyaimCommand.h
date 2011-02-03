@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef STEADYAIMCOMMAND_H_
 #define STEADYAIMCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "SquadLeaderCommand.h"
 
 class SteadyaimCommand : public SquadLeaderCommand {

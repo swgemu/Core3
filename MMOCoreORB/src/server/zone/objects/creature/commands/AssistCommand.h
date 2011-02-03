@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef ASSISTCOMMAND_H_
 #define ASSISTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class AssistCommand : public QueueCommand {
 public:

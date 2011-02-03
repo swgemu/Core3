@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FEIGNDEATHCOMMAND_H_
 #define FEIGNDEATHCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class FeignDeathCommand : public QueueCommand {
 public:

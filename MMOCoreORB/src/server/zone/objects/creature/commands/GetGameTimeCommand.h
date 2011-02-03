@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef GETGAMETIMECOMMAND_H_
 #define GETGAMETIMECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class GetGameTimeCommand : public QueueCommand {
 public:

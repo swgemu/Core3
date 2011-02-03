@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETPLANETLIMITCOMMAND_H_
 #define SETPLANETLIMITCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetPlanetLimitCommand : public QueueCommand {
 public:

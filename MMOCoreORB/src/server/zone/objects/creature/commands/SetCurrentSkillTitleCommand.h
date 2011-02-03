@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SETCURRENTSKILLTITLECOMMAND_H_
 #define SETCURRENTSKILLTITLECOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class SetCurrentSkillTitleCommand : public QueueCommand {
 public:

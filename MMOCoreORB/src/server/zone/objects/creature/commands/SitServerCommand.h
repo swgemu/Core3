@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef SITSERVERCOMMAND_H_
 #define SITSERVERCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/packets/object/SitOnObject.h"
 #include "server/zone/objects/creature/CreatureState.h"

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORCERUN3COMMAND_H_
 #define FORCERUN3COMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ForceRun3Command : public QueueCommand {
 public:

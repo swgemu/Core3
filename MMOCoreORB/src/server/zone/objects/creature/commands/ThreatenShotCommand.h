@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef THREATENSHOTCOMMAND_H_
 #define THREATENSHOTCOMMAND_H_
 
-#include "../../scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class ThreatenShotCommand : public QueueCommand {
 public:
