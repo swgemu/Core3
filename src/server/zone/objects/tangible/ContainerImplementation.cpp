@@ -43,6 +43,10 @@ which carries forward this exception.
 */
 
 #include "Container.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -56,6 +60,47 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 
 void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
 	SceneObjectImplementation::sendContainerObjectsTo(player);
+}
+
+bool ContainerImplementation::checkPermission(PlayerCreature* player) {
+	if (!isASubChildOf(player)) {
+		if (parent == NULL || !parent->isCellObject())
+			return false;
+		else {
+			BuildingObject* building = (BuildingObject*) parent->getParent();
+
+			if (!building->isOnAdminList(player))
+				return false;
+		}
+	}
+
+	return true;
+}
+
+void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
+
+	if (checkPermission(player))
+		menuResponse->addRadialMenuItem(50, 1, "@base_player:set_name"); //Rotate
+}
+
+int ContainerImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (selectedID != 50 || !checkPermission(player))
+		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
+
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
+
+	inputBox->setPromptTitle("@sui:set_name_title");
+	inputBox->setPromptText("@sui:set_name_prompt");
+	inputBox->setUsingObject(_this);
+	inputBox->setMaxInputSize(255);
+
+	inputBox->setDefaultInput(objectName.getCustomString().toString());
+
+	player->addSuiBox(inputBox);
+	player->sendMessage(inputBox->generateMessage());
+
+	return 0;
 }
 
 int ContainerImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
