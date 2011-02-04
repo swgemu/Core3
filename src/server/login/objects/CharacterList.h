@@ -56,7 +56,7 @@ class CharacterList {
 public:
 	CharacterList(uint32 accountid) {
 		StringBuffer query;
-		query << "SELECT * FROM characters WHERE account_id = " << accountid;
+		query << "SELECT * FROM characters WHERE account_id = " << accountid << " order by character_oid desc";
 
 		try {
 			characters = ServerDatabase::instance()->executeQuery(query);
@@ -79,7 +79,7 @@ public:
 	}
 
 	uint32 getGalaxyID() {
-		return 2;
+		return (uint64) (characters->getInt(2));
 	}
 
 	void getCharacterName(UnicodeString& name) {
