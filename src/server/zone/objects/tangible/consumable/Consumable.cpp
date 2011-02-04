@@ -554,8 +554,8 @@ void ConsumableImplementation::updateCraftingValues(ManufactureSchematic* schema
 	if (!isSpice()){
 	// server/zone/objects/tangible/consumable/Consumable.idl(141):  			filling = (fillingMax - fillingMin) * craftingValues.getCurrentPercentage("filling") + fillingMin;
 	filling = (fillingMax - fillingMin) * craftingValues->getCurrentPercentage("filling") + fillingMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl(142):  			super.useCount = (quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin;
-	TangibleObjectImplementation::useCount = (quantityMax - quantityMin) * craftingValues->getCurrentPercentage("quantity") + quantityMin;
+	// server/zone/objects/tangible/consumable/Consumable.idl(142):  			super.setUseCount((quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin);
+	TangibleObjectImplementation::setUseCount((quantityMax - quantityMin) * craftingValues->getCurrentPercentage("quantity") + quantityMin);
 	// server/zone/objects/tangible/consumable/Consumable.idl(143):  			duration = (flavorMax - flavorMin) * craftingValues.getCurrentPercentage("flavor") + flavorMin;
 	duration = (flavorMax - flavorMin) * craftingValues->getCurrentPercentage("flavor") + flavorMin;
 	// server/zone/objects/tangible/consumable/Consumable.idl(144):  			nutrition = (nutritionMax - nutritionMin) * craftingValues.getCurrentPercentage("nutrition") + nutritionMin;
