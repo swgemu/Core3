@@ -28,7 +28,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		return;
 
 	if (followObject == NULL || followObject == scno) {
-		CreatureObject* creo = (CreatureObject*)scno;
+		CreatureObject* creo = (CreatureObject*) scno;
 
 		// TODO: determine if creature can be seen by this (mask scent, et. al.)
 
@@ -37,8 +37,9 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 			AiAgent* aio = (AiAgent*)creo;
 			if ((aio->getFerocity() <= 0 || getFerocity() <= 0) && aio->getLevel() >= getLevel())
 				return;
-		} else if (this->isAttackableBy(creo)) //no aigent<->aigent combat for now
+		} else if (this->isAttackableBy(creo) && isInRange(scno, 15)) { //no aigent<->aigent combat for now
 			activateAwarenessEvent(creo);
+		}
 	}
 
 }

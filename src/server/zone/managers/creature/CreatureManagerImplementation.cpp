@@ -603,10 +603,10 @@ void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* 
 	if (density > 0.80f) {
 		quantityExtracted = int(quantityExtracted * 1.25f);
 		creatureHealth = "creature_quality_fat";
-	} else if(density > 0.60f) {
+	} else if (density > 0.60f) {
 		quantityExtracted = int(quantityExtracted * 1.00f);
 		creatureHealth = "creature_quality_medium";
-	} else if(density > 0.40f) {
+	} else if (density > 0.40f) {
 		quantityExtracted = int(quantityExtracted * 0.75f);
 		creatureHealth = "creature_quality_skinny";
 	} else {
@@ -614,18 +614,16 @@ void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* 
 		creatureHealth = "creature_quality_scrawny";
 	}
 
+	float modifier = 1;
 	int baseAmount = quantityExtracted;
 
-	float modifier = 1;
-
 	if (player->isGrouped()) {
-
 		modifier = player->getGroup()->getGroupHarvestModifier(player);
 
 		quantityExtracted = (int)(quantityExtracted * modifier);
 	}
 
-	resourceManager->harvestResourceToPlayer(player, resourceSpawn, baseAmount);
+	resourceManager->harvestResourceToPlayer(player, resourceSpawn, quantityExtracted);
 
 	/// Send System Messages
 	StringIdChatParameter harvestMessage("skl_use", creatureHealth);
