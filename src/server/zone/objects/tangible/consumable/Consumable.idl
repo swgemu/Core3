@@ -139,7 +139,7 @@ class Consumable extends TangibleObject {
 
 		if (!isSpice()) {
 			filling = (fillingMax - fillingMin) * craftingValues.getCurrentPercentage("filling") + fillingMin;
-			super.useCount = (quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin;
+			super.setUseCount((quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin);
 			duration = (flavorMax - flavorMin) * craftingValues.getCurrentPercentage("flavor") + flavorMin;
 			nutrition = (nutritionMax - nutritionMin) * craftingValues.getCurrentPercentage("nutrition") + nutritionMin;
 		}
