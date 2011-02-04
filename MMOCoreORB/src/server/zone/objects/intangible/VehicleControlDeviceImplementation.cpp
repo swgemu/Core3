@@ -21,6 +21,26 @@ void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) 
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated())
 		return;
 
+	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+	if (datapad == NULL)
+		return;
+
+	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+		if (object->isControlDevice()) {
+			ControlDevice* device = (ControlDevice*) object.get();
+
+			ManagedReference<SceneObject*> vehicle = device->getControlledObject();
+
+			if (vehicle != NULL && vehicle->isInQuadTree()) {
+				player->sendSystemMessage("You can only generate one vehicle"); // TODO:find appropiate string id
+				return;
+			}
+		}
+	}
+
 	ZoneServer* zoneServer = getZoneServer();
 
 	Locker clocker(controlledObject, player);
