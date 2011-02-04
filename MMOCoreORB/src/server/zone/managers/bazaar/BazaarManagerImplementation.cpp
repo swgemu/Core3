@@ -462,12 +462,19 @@ int BazaarManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 ob
 	if (item->isSold() && item->getBuyerID() != player->getObjectID())
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
-	ActiveArea* area = terminal->getActiveRegion();
-	String region = area->getObjectName()->getStringID();
-	//String region = terminal->getBazaarRegion();
+	ManagedReference<ActiveArea*> area = terminal->getActiveRegion();
 
-	if (item->getLocation().indexOf(region) == -1)
-		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+	if (area != NULL) {
+		String region = area->getObjectName()->getStringID();
+		//String region = terminal->getBazaarRegion();
+
+		if (item->getLocation().indexOf(region) == -1)
+			return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+	} else {
+		StringBuffer msg;
+		msg << "null area for bazaar terminal at" << terminal->getPositionX() << " " << terminal->getPositionY() << " zone " << terminal->getZone()->getZoneID();
+		error(msg);
+	}
 
 	return 0;
 }

@@ -613,6 +613,9 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 			setPosture(CreaturePosture::UPRIGHT);
 	}
 
+	if (damageType % 3 != 0 && newValue < 0)
+		newValue = 0;
+
 	setHAM(damageType, newValue, notifyClient);
 
 	return returnValue;

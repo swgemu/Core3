@@ -34,12 +34,22 @@ void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
 void RegionImplementation::insertToZone(Zone* zone) {
 	ActiveAreaImplementation::insertToZone(zone);
 
+	Locker locker(_this);
+
 	if (!isInQuadTree())
 		return;
 
-	if (shuttleInstallation != NULL) {
-		shuttleInstallation->spawnShuttleObjects();
+	unlock();
+
+	try {
+		if (shuttleInstallation != NULL) {
+			shuttleInstallation->spawnShuttleObjects();
+		}
+	} catch (...) {
+
 	}
+
+	wlock();
 
 	zone->getPlanetManager()->addRegion(_this);
 }
