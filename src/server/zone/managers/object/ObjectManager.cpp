@@ -597,34 +597,37 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	uint32 serverObjectCRC = 0;
 	String className;
 
-	if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
-		object = instantiateSceneObject(serverObjectCRC, objectID);
+	try {
+		if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+			object = instantiateSceneObject(serverObjectCRC, objectID);
 
-		if (object == NULL) {
-			error("could not load object from database");
-			return NULL;
+			if (object == NULL) {
+				error("could not load object from database");
+				return NULL;
+			}
+
+			_locker.release();
+			deSerializeObject((SceneObject*)object, &objectData);
+
+			((SceneObject*)object)->info("loaded from db");
+
+		} else if (Serializable::getVariable<String>("_className", &className, &objectData)) {
+			object = createObject(className, false, "", objectID);
+
+			if (object == NULL) {
+				error("could not load object from database");
+				return NULL;
+			}
+
+			_locker.release();
+			deSerializeObject((ManagedObject*)object, &objectData);
+
+		} else {
+			error("could not load object from database, unknown template crc or class name");
 		}
-
-		_locker.release();
-		deSerializeObject((SceneObject*)object, &objectData);
-
-		((SceneObject*)object)->info("loaded from db");
-
-	} else if (Serializable::getVariable<String>("_className", &className, &objectData)) {
-		object = createObject(className, false, "", objectID);
-
-		if (object == NULL) {
-			error("could not load object from database");
-			return NULL;
-		}
-
-		_locker.release();
-		deSerializeObject((ManagedObject*)object, &objectData);
-
-	} else {
-		error("could not load object from database, unknown template crc or class name");
+	} catch (...) {
+		error("could not load object from database");
 	}
-
 
 	return object;
 }

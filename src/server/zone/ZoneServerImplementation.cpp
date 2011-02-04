@@ -219,8 +219,8 @@ void ZoneServerImplementation::startZones() {
 		if (zone != NULL) {
 			zone->startManagers();
 
-			Reference<Task*> task = new ZoneLoadManagersTask(zone);
-			Core::getTaskManager()->executeTask(task);
+			/*Reference<Task*> task = new ZoneLoadManagersTask(zone);
+			Core::getTaskManager()->executeTask(task);*/
 		}
 	}
 
@@ -241,7 +241,6 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	objectManager->updateObjectVersion();
 	objectManager->loadStaticObjects();
 
 	bazaarManager = new BazaarManager(_this);
