@@ -155,12 +155,12 @@ class DotPack extends PharmaceuticalObject {
 
 			msg.insertAttribute("duration", Math.getPrecision(duration, 0));
 
-			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
+			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
 		} else {
 
 			msg.insertAttribute("duration", Math.getPrecision(duration, 0));
 
-			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
+			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
 		}
 	}
 	
