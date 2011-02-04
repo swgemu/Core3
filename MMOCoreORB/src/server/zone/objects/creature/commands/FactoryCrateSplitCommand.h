@@ -73,6 +73,17 @@ public:
 
 		Locker locker(factoryCrate, creature);
 
+		ManagedReference<SceneObject*> objectsParent = factoryCrate->getParent();
+
+		if (objectsParent != NULL && objectsParent->isCellObject()) {
+
+			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
+
+			if (!building->isOnAdminList(creature)) {
+				return GENERALERROR;
+			}
+		}
+
 		factoryCrate->split(newStackSize);
 
 		return SUCCESS;
