@@ -106,6 +106,8 @@ which carries forward this exception.
 #include "server/zone/objects/guild/sui/GuildSponsoredOptionsCallback.h"
 
 #include "server/zone/objects/creature/sui/RepairVehicleCallback.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
+#include "server/zone/objects/creature/CreatureState.h"
 
 #include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeCallback.h"
 
@@ -748,6 +750,13 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 					}
 				}
 
+			} else if (templatePath == "apply_dots") {
+				player->addDotState(CreatureState::POISONED, 100, CreatureAttribute::HEALTH, 60, 80, 0);
+				player->addDotState(CreatureState::BLEEDING, 100, CreatureAttribute::ACTION, 60, 80, 0);
+				player->addDotState(CreatureState::DISEASED, 100, CreatureAttribute::ACTION, 60, 80, 0);
+				player->addDotState(CreatureState::ONFIRE, 100, CreatureAttribute::HEALTH, 60, 80, 0);
+			} else if (templatePath == "clear_dots") {
+				player->clearDots();
 			} else {
 
 				if (templatePath.length() > 0) {
