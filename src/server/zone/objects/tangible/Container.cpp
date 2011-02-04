@@ -10,6 +10,10 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
 /*
  *	ContainerStub
  */
@@ -49,13 +53,51 @@ void Container::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int Container::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+void Container::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->fillObjectMenuResponse(menuResponse, player);
+}
+
+int Container::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+bool Container::checkPermission(PlayerCreature* player) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->checkPermission(player);
+}
+
+int Container::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
@@ -71,7 +113,7 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -85,7 +127,7 @@ bool Container::isContainerOject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -217,12 +259,12 @@ int ContainerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ContainerImplementation::ContainerImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Container.idl(55):  		Logger.setLoggingName("Container");
+	// server/zone/objects/tangible/Container.idl(57):  		Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");
 }
 
 bool ContainerImplementation::isContainerOject() {
-	// server/zone/objects/tangible/Container.idl(77):  		return true;
+	// server/zone/objects/tangible/Container.idl(99):  		return true;
 	return true;
 }
 
@@ -241,12 +283,18 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializeTransientMembers();
 		break;
 	case 7:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case 8:
-		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+		resp->insertBoolean(checkPermission((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case 9:
+		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		break;
+	case 10:
+		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 11:
 		resp->insertBoolean(isContainerOject());
 		break;
 	default:
@@ -258,6 +306,14 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void ContainerAdapter::initializeTransientMembers() {
 	((ContainerImplementation*) impl)->initializeTransientMembers();
+}
+
+int ContainerAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((ContainerImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+bool ContainerAdapter::checkPermission(PlayerCreature* player) {
+	return ((ContainerImplementation*) impl)->checkPermission(player);
 }
 
 int ContainerAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
