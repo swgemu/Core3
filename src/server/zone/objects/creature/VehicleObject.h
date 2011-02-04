@@ -128,6 +128,8 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void setPosture(int newPosture, bool notifyClient = true);
+
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
@@ -192,6 +194,8 @@ public:
 	bool checkInRangeGarage();
 
 	void insertToZone(Zone* zone);
+
+	void setPosture(int newPosture, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
@@ -263,6 +267,8 @@ public:
 	bool checkInRangeGarage();
 
 	void insertToZone(Zone* zone);
+
+	void setPosture(int newPosture, bool notifyClient);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 

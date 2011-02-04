@@ -89,6 +89,18 @@ class VehicleObject extends CreatureObject {
 	public native void insertToZone(Zone zone);
 	
 	/**
+	 * Sets a new posture
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new posture set }
+	 * @param newPosture posture to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public void setPosture(int newPosture, boolean notifyClient = true) {
+		//vehicles should not change posture
+		return;
+	}
+	
+	/**
 	 * Inflicts damage into the object
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
