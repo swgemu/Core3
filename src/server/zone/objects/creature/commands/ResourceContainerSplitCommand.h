@@ -69,8 +69,19 @@ public:
 
 		ManagedReference<ResourceContainer* > resourceContainer = (ResourceContainer*) server->getZoneServer()->getObject(target);
 
-		if((resourceContainer == NULL || !resourceContainer->isResourceContainer() ||!creature->isPlayerCreature()))
+		if ((resourceContainer == NULL || !resourceContainer->isResourceContainer() ||!creature->isPlayerCreature()))
 			return INVALIDTARGET;
+
+		ManagedReference<SceneObject*> objectsParent = resourceContainer->getParent();
+
+		if (objectsParent != NULL && objectsParent->isCellObject()) {
+
+			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
+
+			if (!building->isOnAdminList(creature)) {
+				return GENERALERROR;
+			}
+		}
 
 		resourceContainer->split(newStackSize);
 
