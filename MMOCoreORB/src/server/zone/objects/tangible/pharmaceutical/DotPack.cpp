@@ -574,15 +574,15 @@ void DotPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerC
 	msg->insertAttribute("examine_heal_area", Math::getPrecision(area, 0));
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(156):  			msg.insertAttribute("duration", Math.getPrecision(duration, 0));
 	msg->insertAttribute("duration", Math::getPrecision(duration, 0));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(158):  			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
-	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::getMedicineUseRequired());
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(158):  			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
+	msg->insertAttribute("combat_healing_ability", PharmaceuticalObjectImplementation::getMedicineUseRequired());
 }
 
 	else {
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(161):  			msg.insertAttribute("duration", Math.getPrecision(duration, 0));
 	msg->insertAttribute("duration", Math::getPrecision(duration, 0));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(163):  			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
-	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::getMedicineUseRequired());
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(163):  			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
+	msg->insertAttribute("combat_healing_ability", PharmaceuticalObjectImplementation::getMedicineUseRequired());
 }
 }
 
