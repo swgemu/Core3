@@ -69,6 +69,9 @@ int TerrainManager::notifyPositionUpdate(CreatureObject* object) {
 		if (err < 0.2) {
 			//info("trying to set swimming state", true);
 			creature->setState(CreatureState::SWIMMING);
+
+			if (creature->hasState(CreatureState::ONFIRE))
+				creature->healDot(CreatureState::ONFIRE, 100);
 		} else {
 			creature->clearState(CreatureState::SWIMMING);
 		}

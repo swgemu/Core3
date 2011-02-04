@@ -1207,7 +1207,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Cleanse Character", "cleanse_character",
 			"Enhance Character", "enhance_character",
 			"Learn Languages", "language",
-			"Credits", "credits"
+			"Credits", "credits",
+			"Apply DOTs", "apply_dots",
+			"Clear DOTs", "clear_dots"
 		},
 		"Items",
 		{
