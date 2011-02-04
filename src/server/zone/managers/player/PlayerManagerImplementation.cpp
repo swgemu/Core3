@@ -828,16 +828,16 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	PlayerCreature* playerCreature = (PlayerCreature*) destructedObject;
 
+	int AI = playerCreature->getSkillMod("avoid_incapacitation");
+
+	if (AI > 0)
+		return 0;
+
 	if (playerCreature->isRidingMount()) {
 		playerCreature->executeObjectControllerAction(String("dismount").hashCode());
 	}
 
 	playerCreature->clearDots();
-
-	int AI = playerCreature->getSkillMod("avoid_incapacitation");
-
-	if (AI > 0)
-		return 0;
 
 	playerCreature->updateIncapacitationCounter();
 
