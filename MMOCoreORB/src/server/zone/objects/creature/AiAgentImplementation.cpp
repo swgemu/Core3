@@ -50,18 +50,20 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	//npcTemplate->getCreatureBitmask(); -- TODO: need to add a bitmask for AI (pack, herd, etc)
 	level = npcTemplate->getLevel();
 
-	Vector<String> wepgroups = npcTemplate->getWeapons();
-	for (int i = 0; i < wepgroups.size(); ++i) {
-		Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
-		uint32 crc = weptemps.get(System::random(weptemps.size() - 1)).hashCode();
-		ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
-		weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
-		weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
-		weapons.add(weao);
-	}
+	if (weapons.size() == 0) {
+		Vector<String> wepgroups = npcTemplate->getWeapons();
+		for (int i = 0; i < wepgroups.size(); ++i) {
+			Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
+			uint32 crc = weptemps.get(System::random(weptemps.size() - 1)).hashCode();
+			ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
+			weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
+			weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
+			weapons.add(weao);
+		}
 
-	// add the default weapon
-	weapons.add(getWeapon());
+		// add the default weapon
+		weapons.add(getWeapon());
+	}
 
 	// set the damage of the default weapon
 	getWeapon()->setMinDamage(npcTemplate->getDamageMin());
@@ -128,7 +130,7 @@ void AiAgentImplementation::doRecovery() {
 
 	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this))) {
 		//Locker clocker(target, _this);
-		CombatManager::instance()->attemptPeace(_this); //calling this on target will cause a deadlock, needs to be called in a new task
+		CombatManager::instance()->forcePeace(_this); //calling this on target will cause a deadlock, needs to be called in a new task
 		activateRecovery();
 		return;
 	}
@@ -143,7 +145,7 @@ void AiAgentImplementation::doRecovery() {
 
 	selectWeapon();
 
-	if (System::random(2) == 0 && npcTemplate != NULL) {
+	if (System::random(2) == 0 && npcTemplate != NULL && commandQueue.size() < 3) {
 		// do special attack
 		CreatureAttackMap* attackMap = npcTemplate->getAttacks();
 		int attackNum = attackMap->getRandomAttackNumber();
