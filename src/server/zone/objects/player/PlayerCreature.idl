@@ -544,6 +544,8 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void notifySceneReady();
 	
+	public native void notifySelfPositionUpdate();
+	
 	@local
 	public SortedVector<unsigned long> getPersistentMessages() {
 		return persistentMessages;

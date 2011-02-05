@@ -164,6 +164,10 @@ class AiAgent extends CreatureObject {
 	 */
 	public native void initializeTransientMembers();
 	
+	public void finalize() {
+		Logger.info("deleting from ram", true);
+	}
+	
 	public abstract native void activateRecovery();
 	
 	public abstract native void activateMovementEvent();

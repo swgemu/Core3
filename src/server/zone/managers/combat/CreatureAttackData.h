@@ -50,13 +50,14 @@ protected:
 
 public:
     CreatureAttackData(const UnicodeString & dataString, CombatQueueCommand *base);
+    CreatureAttackData(const CreatureAttackData& data);
     virtual ~CreatureAttackData() {}
 
     void fillFromBase();
-    void setVariable(String var, String val);
+    void setVariable(const String& var, const String& val);
 
-    String getCommandName();
-    uint32 getCommandCRC();
+    String getCommandName() const;
+    uint32 getCommandCRC() const;
 
     CombatQueueCommand* getCommand() const {
     	return baseCommand;

@@ -113,13 +113,23 @@ void AiAgentImplementation::doRecovery() {
 
 	CreatureObject* target = damageMap.getHighestThreatCreature();
 
-	if (target != NULL && !defenderList.contains(target))
+	if (target != NULL && !defenderList.contains(target) && !target->isDead())
 		addDefender(target);
 
 	if (target == NULL && defenderList.size() > 0) {
-		SceneObject* tarObj = defenderList.get(0);
-		if (tarObj->isCreatureObject())
-			target = (CreatureObject*)tarObj;
+		for (int i = 0; i < defenderList.size(); ++i) {
+			SceneObject* tarObj = defenderList.get(i);
+
+			if (tarObj->isCreatureObject()) {
+				CreatureObject* targetCreature = (CreatureObject*)tarObj;
+
+				if (!targetCreature->isDead()) {
+					target = targetCreature;
+
+					break;
+				}
+			}
+		}
 	}
 
 	if (!isInCombat() || defenderList.size() <= 0 || target == NULL) {
@@ -402,13 +412,8 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
-	if (respawnTimer == 0)
-		return;
-
 	if (objectTemplate == NULL || npcTemplate == NULL)
 		return;
-
-	Reference<Task*> task = new RespawnCreatureTask(_this, zone, level);
 
 	loadTemplateData(objectTemplate);
 	loadTemplateData(npcTemplate);
@@ -417,13 +422,23 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	shockWounds = 0;
 	damageMap.removeAll();
 
+	if (respawnTimer == 0) {
+		zone->getCreatureManager()->addToReservePool(_this);
+		return;
+	}
+
+	Reference<Task*> task = new RespawnCreatureTask(_this, zone, level);
 	task->schedule(respawnTimer * 1000);
 }
 
 void AiAgentImplementation::scheduleDespawn() {
+	if (getPendingTask("despawn") != NULL)
+		return;
 
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
-	despawn->schedule(10000);
+	//despawn->schedule(300000); /// 5 minutes
+	despawn->schedule(10000); /// 45 seconds
+	addPendingTask("despawn", despawn);
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {

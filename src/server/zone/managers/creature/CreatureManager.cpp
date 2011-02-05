@@ -195,7 +195,7 @@ void CreatureManager::loadInformants() {
 		_implementation->loadInformants();
 }
 
-void CreatureManager::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
+void CreatureManager::spawnRandomCreaturesAround(SceneObject* creature) {
 	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -203,12 +203,71 @@ void CreatureManager::harvest(Creature* creature, PlayerCreature* player, int se
 
 		DistributedMethod method(this, 16);
 		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->spawnRandomCreaturesAround(creature);
+}
+
+void CreatureManager::spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID) {
+	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addSignedIntParameter(number);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addUnsignedLongParameter(parentID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->spawnRandomCreature(number, x, z, y, parentID);
+}
+
+void CreatureManager::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
+	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(creature);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(selectedID);
 
 		method.executeWithVoidReturn();
 	} else
 		_implementation->harvest(creature, player, selectedID);
+}
+
+void CreatureManager::addToReservePool(AiAgent* agent) {
+	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addObjectParameter(agent);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addToReservePool(agent);
+}
+
+int CreatureManager::getSpawnedRandomCreatures() {
+	CreatureManagerImplementation* _implementation = (CreatureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getSpawnedRandomCreatures();
 }
 
 DistributedObjectServant* CreatureManager::_getImplementation() {
@@ -325,6 +384,16 @@ bool CreatureManagerImplementation::readObjectMember(ObjectInputStream* stream, 
 		return true;
 	}
 
+	if (_name == "reservePool") {
+		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&reservePool, stream);
+		return true;
+	}
+
+	if (_name == "spawnedRandomCreatures") {
+		TypeInfo<int >::parseFromBinaryStream(&spawnedRandomCreatures, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -356,29 +425,66 @@ int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "reservePool";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::toBinaryStream(&reservePool, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 2 + ZoneManagerImplementation::writeObjectMembers(stream);
+	_name = "spawnedRandomCreatures";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&spawnedRandomCreatures, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 4 + ZoneManagerImplementation::writeObjectMembers(stream);
 }
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : ZoneManagerImplementation("CreatureManager") {
 	_initializeImplementation();
-	// server/zone/managers/creature/CreatureManager.idl(31):  		zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl(36):  		zone = planet;
 	zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl(38):  		spawnedRandomCreatures = 0;
+	spawnedRandomCreatures = 0;
 }
 
 void CreatureManagerImplementation::initialize() {
-	// server/zone/managers/creature/CreatureManager.idl(35):  		setCreatureTemplateManager();
+	// server/zone/managers/creature/CreatureManager.idl(43):  		setCreatureTemplateManager();
 	setCreatureTemplateManager();
-	// server/zone/managers/creature/CreatureManager.idl(36):  		loadSpawnAreas();
+	// server/zone/managers/creature/CreatureManager.idl(44):  		loadSpawnAreas();
 	loadSpawnAreas();
-	// server/zone/managers/creature/CreatureManager.idl(37):  		loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl(45):  		loadTrainers();
 	loadTrainers();
-	// server/zone/managers/creature/CreatureManager.idl(38):  		loadSingleSpawns();
+	// server/zone/managers/creature/CreatureManager.idl(46):  		loadSingleSpawns();
 	loadSingleSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(39):  		loadMissionSpawns();
+	// server/zone/managers/creature/CreatureManager.idl(47):  		loadMissionSpawns();
 	loadMissionSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(40):  		loadInformants();
+	// server/zone/managers/creature/CreatureManager.idl(48):  		loadInformants();
 	loadInformants();
+}
+
+void CreatureManagerImplementation::addToReservePool(AiAgent* agent) {
+	Locker _locker(_this);
+	// server/zone/managers/creature/CreatureManager.idl(97):  
+	if (spawnedRandomCreatures > 0){
+	// server/zone/managers/creature/CreatureManager.idl(98):  			spawnedRandomCreatures = spawnedRandomCreatures - 1;
+	spawnedRandomCreatures = spawnedRandomCreatures - 1;
+}
+
+	else {
+}
+	// server/zone/managers/creature/CreatureManager.idl(103):  		reservePool.put(agent);
+	(&reservePool)->put(agent);
+}
+
+int CreatureManagerImplementation::getSpawnedRandomCreatures() {
+	// server/zone/managers/creature/CreatureManager.idl(107):  		return spawnedRandomCreatures;
+	return spawnedRandomCreatures;
 }
 
 /*
@@ -423,7 +529,19 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		loadInformants();
 		break;
 	case 16:
+		spawnRandomCreaturesAround((SceneObject*) inv->getObjectParameter());
+		break;
+	case 17:
+		spawnRandomCreature(inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 18:
 		harvest((Creature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		break;
+	case 19:
+		addToReservePool((AiAgent*) inv->getObjectParameter());
+		break;
+	case 20:
+		resp->insertSignedInt(getSpawnedRandomCreatures());
 		break;
 	default:
 		return NULL;
@@ -472,8 +590,24 @@ void CreatureManagerAdapter::loadInformants() {
 	((CreatureManagerImplementation*) impl)->loadInformants();
 }
 
+void CreatureManagerAdapter::spawnRandomCreaturesAround(SceneObject* creature) {
+	((CreatureManagerImplementation*) impl)->spawnRandomCreaturesAround(creature);
+}
+
+void CreatureManagerAdapter::spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID) {
+	((CreatureManagerImplementation*) impl)->spawnRandomCreature(number, x, z, y, parentID);
+}
+
 void CreatureManagerAdapter::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
 	((CreatureManagerImplementation*) impl)->harvest(creature, player, selectedID);
+}
+
+void CreatureManagerAdapter::addToReservePool(AiAgent* agent) {
+	((CreatureManagerImplementation*) impl)->addToReservePool(agent);
+}
+
+int CreatureManagerAdapter::getSpawnedRandomCreatures() {
+	return ((CreatureManagerImplementation*) impl)->getSpawnedRandomCreatures();
 }
 
 /*
