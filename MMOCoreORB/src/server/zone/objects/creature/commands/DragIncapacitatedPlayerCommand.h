@@ -55,7 +55,7 @@ public:
 	DragIncapacitatedPlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		defaultTime = 0;
-		maxRange = 30.0;
+		maxRange = 31.0;
 		maxMovement = 5.0;
 		needsConsent = true;
 	}
@@ -222,16 +222,16 @@ public:
 		}*/
 
 		//Determine the maximum drag range.
-		int skillMod = player->getSkillMod("healing_injury_speed");
+		/*int skillMod = player->getSkillMod("healing_injury_speed");
 
 		float actualRange = (float)skillMod / 3.75f;
 
 		if (actualRange > maxRange) {
 			actualRange = maxRange;
-		}
+		}*/
 
 		//Attempt to drag the target player.
-		drag(player, targetPlayer, actualRange, maxMovement, needsConsent, false);
+		drag(player, targetPlayer, maxRange, maxMovement, needsConsent, false);
 
 		return SUCCESS;
 	}
