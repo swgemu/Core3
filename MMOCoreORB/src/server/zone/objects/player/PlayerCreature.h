@@ -470,6 +470,8 @@ public:
 
 	void notifySceneReady();
 
+	void notifySelfPositionUpdate();
+
 	SortedVector<unsigned long long>* getPersistentMessages();
 
 	void addPersistentMessage(unsigned long long id);
@@ -888,6 +890,8 @@ public:
 
 	void notifySceneReady();
 
+	void notifySelfPositionUpdate();
+
 	SortedVector<unsigned long long>* getPersistentMessages();
 
 	void addPersistentMessage(unsigned long long id);
@@ -1198,6 +1202,8 @@ public:
 	int getDuelListSize();
 
 	void notifySceneReady();
+
+	void notifySelfPositionUpdate();
 
 	void addPersistentMessage(unsigned long long id);
 

@@ -44,6 +44,62 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	return creature;
 }
 
+void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* creature) {
+	if (spawnedRandomCreatures > 1000)
+		return;
+
+	float newX = creature->getPositionX() + (-20.f + (float)System::random(40));
+	float newY = creature->getPositionY() + (-20.f + (float)System::random(40));
+
+	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
+}
+
+void CreatureManagerImplementation::spawnRandomCreature(int number, float x, float z, float y, uint64 parentID) {
+	Locker locker(_this);
+
+	if (reservePool.size() != 0) {
+		int id = System::random(reservePool.size() - 1);
+		ManagedReference<AiAgent*> aiAgent = reservePool.get(id);
+		reservePool.remove(id);
+
+		locker.release();
+
+		placeCreature(aiAgent, x, z, y, parentID);
+
+		//aiAgent->info("respawning from reserve Pool", true);
+
+		++spawnedRandomCreatures;
+
+		return;
+	}
+
+	locker.release();
+
+	if (creatureTemplateManager->size() == 0)
+		return;
+
+	int max = creatureTemplateManager->size() - 1;
+
+	uint32 randomCreature = System::random(max);
+	uint32 randomTemplate = 0;
+	Reference<CreatureTemplate*> creoTempl = NULL;
+
+	HashTableIterator<uint32, Reference<CreatureTemplate*> > iterator(creatureTemplateManager);
+
+	for (int i = 0; i < randomCreature; ++i) {
+		iterator.getNextKeyAndValue(randomTemplate, creoTempl);
+		//randomTemplate = iterator.getNextKey();
+	}
+
+	if (creoTempl->getLevel() > 100)
+		return;
+
+	for (int i = 0; i < number; ++i) {
+		if (spawnCreature(randomTemplate, 0, x, z, y, parentID) != NULL)
+			++spawnedRandomCreatures;
+	}
+}
+
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID) {
 	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
 	if (creoTempl == NULL)
@@ -54,13 +110,15 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	if (objectCRC == 0) {
 		Vector<String> objTemps = creoTempl->getTemplates();
 
-		if (objTemps.size() > 0)
-			objectCRC = objTemps.get(System::random(objTemps.size()-1)).hashCode();
-		else {
+		if (objTemps.size() > 0) {
+			uint32 randomTemp = System::random(objTemps.size() - 1);
+			objectCRC = objTemps.get(randomTemp).hashCode();
+			//info("spawning " + objTemps.get(randomTemp), true);
+		} else {
 			StringBuffer errMsg;
 			errMsg << "could not spawn creature... no object templates in script " << creoTempl->getTemplateName();
 
-			error(errMsg.toString());
+			//error(errMsg.toString());
 			return NULL;
 		}
 	}
@@ -261,6 +319,9 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 }
 
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
+	if (destructedObject->isDead())
+		return 1;
+
 	destructedObject->setPosture(CreaturePosture::DEAD, true);
 
 	destructedObject->updateTimeOfDeath();

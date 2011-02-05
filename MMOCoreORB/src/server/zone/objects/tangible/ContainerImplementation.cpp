@@ -81,7 +81,7 @@ void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if (checkPermission(player))
-		menuResponse->addRadialMenuItem(50, 1, "@base_player:set_name"); //Rotate
+		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Rotate
 }
 
 int ContainerImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

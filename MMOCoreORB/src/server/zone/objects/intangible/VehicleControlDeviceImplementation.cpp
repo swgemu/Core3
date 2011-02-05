@@ -26,6 +26,8 @@ void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) 
 	if (datapad == NULL)
 		return;
 
+	int currentlySpawned = 0;
+
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
@@ -35,7 +37,9 @@ void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) 
 			ManagedReference<SceneObject*> vehicle = device->getControlledObject();
 
 			if (vehicle != NULL && vehicle->isInQuadTree()) {
-				player->sendSystemMessage("You can only generate one vehicle"); // TODO:find appropiate string id
+				if (++currentlySpawned > 2)
+					player->sendSystemMessage("You can only generate 3 vehicles"); // TODO:find appropiate string id
+
 				return;
 			}
 		}
@@ -62,7 +66,7 @@ void VehicleControlDeviceImplementation::storeObject(PlayerCreature* player) {
 	if (!controlledObject->isInQuadTree())
 		return;
 
-	if (player->isRidingMount()) {
+	if (player->isRidingMount() && player->getParent() == controlledObject) {
 		player->executeObjectControllerAction(String("dismount").hashCode());
 
 		if (player->isRidingMount())

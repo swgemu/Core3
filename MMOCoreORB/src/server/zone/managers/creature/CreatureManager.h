@@ -168,7 +168,15 @@ public:
 
 	void loadInformants();
 
+	void spawnRandomCreaturesAround(SceneObject* creature);
+
+	void spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID = 0);
+
 	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
+
+	void addToReservePool(AiAgent* agent);
+
+	int getSpawnedRandomCreatures();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -202,6 +210,10 @@ protected:
 
 	CreatureTemplateManager* creatureTemplateManager;
 
+	SortedVector<ManagedReference<AiAgent* > > reservePool;
+
+	int spawnedRandomCreatures;
+
 public:
 	CreatureManagerImplementation(Zone* planet);
 
@@ -232,10 +244,20 @@ public:
 private:
 	bool createCreatureChildrenObjects(CreatureObject* creature);
 
+public:
+	void spawnRandomCreaturesAround(SceneObject* creature);
+
+	void spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID = 0);
+
+private:
 	void setCreatureTemplateManager();
 
 public:
 	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
+
+	void addToReservePool(AiAgent* agent);
+
+	int getSpawnedRandomCreatures();
 
 	CreatureManager* _this;
 
@@ -300,7 +322,15 @@ public:
 
 	void loadInformants();
 
+	void spawnRandomCreaturesAround(SceneObject* creature);
+
+	void spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID);
+
 	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
+
+	void addToReservePool(AiAgent* agent);
+
+	int getSpawnedRandomCreatures();
 
 };
 

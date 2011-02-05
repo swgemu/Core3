@@ -530,6 +530,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void finalize();
+
 	virtual void activateRecovery();
 
 	virtual void activateMovementEvent();
@@ -700,8 +702,6 @@ public:
 protected:
 	virtual ~AiAgentImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -734,6 +734,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void finalize();
 
 	void activateRecovery();
 

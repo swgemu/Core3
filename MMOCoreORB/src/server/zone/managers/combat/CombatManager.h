@@ -76,7 +76,7 @@ public:
 	 * @return returns -1 on failure to start combat or damage on succesfull combat
 	 */
 	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
-	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data);
+	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data);
 
 	/**
 	 * Requests duel
@@ -120,10 +120,10 @@ protected:
 
 	const static uint32 defaultAttacks[9];
 
-	int doTargetCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, CreatureAttackData data);
-	int doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data);
-	int doTargetCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data);
-	bool attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CreatureAttackData data, int appliedDamage);
+	int doTargetCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, const CreatureAttackData& data);
+	int doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data);
+	int doTargetCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data);
+	bool attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage);
 
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
 
@@ -164,7 +164,7 @@ protected:
 
 	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage);
 	int applyDamage(CreatureObject* attacker, CreatureObject* defender, float damageMultiplier, int poolsToDamage);
-	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, CreatureAttackData data);
+	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data);
 
 	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
 	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, float damage, int poolsToDamage);
@@ -181,7 +181,7 @@ protected:
 	/**
 	 * returns false on insufficient
 	 */
-	bool applySpecialAttackCost(CreatureObject* attacker, CreatureAttackData data);
+	bool applySpecialAttackCost(CreatureObject* attacker, const CreatureAttackData& data);
 
 	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 

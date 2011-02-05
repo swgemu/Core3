@@ -20,7 +20,7 @@
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/managers/guild/GuildManager.h"
-
+#include "server/zone/managers/creature/CreatureManager.h"
 
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
@@ -859,4 +859,17 @@ WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {
 
 void PlayerCreatureImplementation::setHologrindProfessions(Vector<byte>& profs) {
 	hologrindProfessions = profs;
+}
+
+void PlayerCreatureImplementation::notifySelfPositionUpdate() {
+	CreatureObjectImplementation::notifySelfPositionUpdate();
+
+	if (zone == NULL)
+		return;
+
+	if (activeAreas.size() == 0 && inRangeObjectCount() < 20) {
+		if (parent != NULL && !parent->isCellObject() || parent == NULL) {
+			zone->getCreatureManager()->spawnRandomCreaturesAround(_this);
+		}
+	}
 }
