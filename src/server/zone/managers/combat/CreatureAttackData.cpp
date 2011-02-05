@@ -31,6 +31,42 @@ CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, CombatQu
 	}
 }
 
+CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
+	baseCommand = data.baseCommand;
+
+	damageMultiplier = data.damageMultiplier;
+	speedMultiplier = data.speedMultiplier;
+	poolsToDamage = data.poolsToDamage;
+
+	healthCostMultiplier = data.healthCostMultiplier;
+	actionCostMultiplier = data.actionCostMultiplier;
+	mindCostMultiplier = data.mindCostMultiplier;
+	forceCostMultiplier = data.forceCostMultiplier;
+
+	knockdownStateChance = data.knockdownStateChance;
+	postureDownStateChance = data.postureDownStateChance;
+	postureUpStateChance = data.postureUpStateChance;
+
+	dizzyStateChance = data.dizzyStateChance;
+	blindStateChance = data.blindStateChance;
+	stunStateChance = data.stunStateChance;
+	intimidateStateChance = data.intimidateStateChance;
+	nextAttackDelayChance = data.nextAttackDelayChance;
+	durationStateTime = data.durationStateTime;
+
+	dotDuration = data.dotDuration;
+	dotType = data.dotType;
+	dotPool = data.dotPool;
+	dotStrength = data.dotStrength;
+	dotPotency = data.dotPotency;
+
+	range = data.range;
+	coneAngle = data.coneAngle;
+	areaRange = data.areaRange;
+
+	animationCRC = data.animationCRC;
+}
+
 void CreatureAttackData::fillFromBase() {
 	damageMultiplier = baseCommand->getDamageMultiplier();
 	speedMultiplier = baseCommand->getSpeedMultiplier();
@@ -59,7 +95,7 @@ void CreatureAttackData::fillFromBase() {
 	animationCRC = baseCommand->getAnimationCRC();
 }
 
-void CreatureAttackData::setVariable(String var, String val) {
+void CreatureAttackData::setVariable(const String& var, const String& val) {
 	uint32 crc = var.hashCode();
 	switch(crc) {
 	case 0xA82FB287: // String("damageMultiplier").hashCode()
@@ -142,10 +178,10 @@ void CreatureAttackData::setVariable(String var, String val) {
 	}
 }
 
-String CreatureAttackData::getCommandName() {
+String CreatureAttackData::getCommandName() const {
 	return baseCommand->getName();
 }
 
-uint32 CreatureAttackData::getCommandCRC() {
+uint32 CreatureAttackData::getCommandCRC() const {
 	return baseCommand->getNameCRC();
 }

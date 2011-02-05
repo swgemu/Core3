@@ -68,6 +68,7 @@ which carries forward this exception.
 #include "server/zone/managers/mission/MissionManager.h"
 #include "managers/creature/CreatureTemplateManager.h"
 #include "managers/guild/GuildManager.h"
+#include "managers/creature/CreatureManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -545,6 +546,25 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	info(msg4, forcedLog);
 
 	ObjectManager::instance()->printInfo();
+
+	int totalCreatures = 0;
+
+	for (int i = 0; i < zones.size(); ++i) {
+		Zone* zone = zones.get(i);
+
+		if (zone != NULL) {
+			CreatureManager* manager = zone->getCreatureManager();
+
+			if (manager != NULL) {
+				totalCreatures += manager->getSpawnedRandomCreatures();
+				//creatureEvents += manager->creatureEventsSize();
+			}
+		}
+	}
+
+	StringBuffer msg5;
+	msg5 << dec << totalCreatures << " random creatures spawned";
+	info(msg5, forcedLog);
 
 	unlock();
 }

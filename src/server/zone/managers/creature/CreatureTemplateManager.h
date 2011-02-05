@@ -19,7 +19,7 @@ namespace zone {
 namespace managers {
 namespace creature {
 
-class CreatureTemplateManager : private HashTable<uint32, Reference<CreatureTemplate*> >, private HashTableIterator<uint32, Reference<CreatureTemplate*> >, private Lua, public Singleton<CreatureTemplateManager> {
+class CreatureTemplateManager : public HashTable<uint32, Reference<CreatureTemplate*> >, private Lua, public Singleton<CreatureTemplateManager> {
 protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
 	VectorMap<uint32, DynamicSpawnGroup*> dynamicGroupMap;
@@ -30,7 +30,7 @@ protected:
 	}
 
 public:
-	CreatureTemplateManager() : HashTable<uint32,Reference<CreatureTemplate*> >(3000), HashTableIterator<uint32, Reference<CreatureTemplate*> >(this), Lua(), Singleton<CreatureTemplateManager>() {
+	CreatureTemplateManager() : HashTable<uint32,Reference<CreatureTemplate*> >(3000), Lua(), Singleton<CreatureTemplateManager>() {
 		setLogging(false);
 		setGlobalLogging(true);
 		setLoggingName("CreatureTemplateManager");

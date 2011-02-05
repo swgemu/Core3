@@ -37,7 +37,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 			AiAgent* aio = (AiAgent*)creo;
 			if ((aio->getFerocity() <= 0 || getFerocity() <= 0) && aio->getLevel() >= getLevel())
 				return;
-		} else if (this->isAttackableBy(creo) && isInRange(scno, 15)) { //no aigent<->aigent combat for now
+		} else if (this->isAttackableBy(creo) && isInRange(scno, 15) && !creo->isDead()) { //no aigent<->aigent combat for now
 			activateAwarenessEvent(creo);
 		}
 	}
@@ -45,7 +45,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 }
 
 void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
-	if (isDead() || zone == NULL || time == 0)
+	if (isDead() || zone == NULL || time == 0 || target->isDead())
 		return;
 
 	// calculate average speed
@@ -259,8 +259,12 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Player
 }
 
 void CreatureImplementation::scheduleDespawn() {
+	if (getPendingTask("despawn") != NULL)
+		return;
+
 	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
-	despawn->schedule(300000); /// 5 minutes
+	//despawn->schedule(300000); /// 5 minutes
+	despawn->schedule(45000); /// 45 seconds
 	addPendingTask("despawn", despawn);
 }
 

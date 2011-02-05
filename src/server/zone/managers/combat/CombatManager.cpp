@@ -165,7 +165,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	return doCombatAction(attacker, defenderObject, CreatureAttackData("",command));
 }
 
-int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data) {
+int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	//info("entering doCombat action", true);
 
 	if (!startCombat(attacker, defenderObject))
@@ -226,7 +226,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	return damage;
 }
 
-int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject* tano, CreatureAttackData data) {
+int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject* tano, const CreatureAttackData& data) {
 	int damage = 0;
 
 	try {
@@ -253,7 +253,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	return damage;
 }
 
-int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject* defender, CreatureAttackData data) {
+int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data) {
 	if (defender->isEntertaining())
 		defender->stopEntertaining();
 
@@ -308,7 +308,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	return damage;
 }
 
-bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, CreatureAttackData data, int appliedDamage) {
+bool CombatManager::attemptApplyDot(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage) {
 	uint32 duration = data.getDotDuration();
 
 	if (duration == 0) {
@@ -970,7 +970,7 @@ void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender, 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }
 
-bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, CreatureAttackData data) {
+bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const CreatureAttackData& data) {
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
 	int health = (int) (weapon->getHealthAttackCost() * data.getHealthCostMultiplier());
@@ -1111,7 +1111,7 @@ void CombatManager::checkPostureUp(CreatureObject* creature, CreatureObject* tar
 		creature->sendSystemMessage("cbt_spam", "posture_change_fail");
 }
 
-void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, CreatureAttackData data) {
+void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data) {
 	// TODO: None of these equations seem correct except intimidate
 	int chance = 0;
 	if ((chance = data.getKnockdownStateChance()) > 0)
@@ -1257,7 +1257,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 	return damage;
 }
 
-int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data) {
+int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	float creatureVectorX = attacker->getPositionX();
 	float creatureVectorY = attacker->getPositionY();
 
@@ -1329,7 +1329,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				try {
 					damage += doTargetCombatAction(attacker, tano, data);
 				} catch (...) {
-					error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data) executing doTargetCombatAction");
+					error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) executing doTargetCombatAction");
 				}
 			}
 
@@ -1338,7 +1338,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 		zone->runlock();
 	} catch (...) {
-		error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CreatureAttackData data)");
+		error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data)");
 
 		zone->runlock();
 	}

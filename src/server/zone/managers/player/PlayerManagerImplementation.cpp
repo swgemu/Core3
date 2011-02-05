@@ -828,6 +828,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	PlayerCreature* playerCreature = (PlayerCreature*) destructedObject;
 
+	if (playerCreature->isIncapacitated() || playerCreature->isDead())
+		return 1;
+
 	int AI = playerCreature->getSkillMod("avoid_incapacitation");
 
 	if (AI > 0)
@@ -1144,9 +1147,9 @@ bool PlayerManagerImplementation::checkEncumbrancies(PlayerCreature* player, Arm
 
 
 void PlayerManagerImplementation::applyEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
-	int healthEncumb = armor->getHealthEncumbrance();
-	int actionEncumb = armor->getActionEncumbrance();
-	int mindEncumb = armor->getMindEncumbrance();
+	int healthEncumb = MAX(0, armor->getHealthEncumbrance());
+	int actionEncumb = MAX(0, armor->getActionEncumbrance());
+	int mindEncumb = MAX(0, armor->getMindEncumbrance());
 
 	player->addEncumbrance(CreatureEncumbrance::HEALTH, healthEncumb, true);
 	player->addEncumbrance(CreatureEncumbrance::ACTION, actionEncumb, true);
@@ -1172,9 +1175,9 @@ void PlayerManagerImplementation::applyEncumbrancies(PlayerCreature* player, Arm
 }
 
 void PlayerManagerImplementation::removeEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
-	int healthEncumb = armor->getHealthEncumbrance();
-	int actionEncumb = armor->getActionEncumbrance();
-	int mindEncumb = armor->getMindEncumbrance();
+	int healthEncumb = MAX(0, armor->getHealthEncumbrance());
+	int actionEncumb = MAX(0, armor->getActionEncumbrance());
+	int mindEncumb = MAX(0, armor->getMindEncumbrance());
 
 	player->addEncumbrance(CreatureEncumbrance::HEALTH, -healthEncumb, true);
 	player->addEncumbrance(CreatureEncumbrance::ACTION, -actionEncumb, true);

@@ -26,6 +26,8 @@ public:
 		if (zone == NULL)
 			return;
 
+		creature->removePendingTask("despawn");
+
 		creature->removeFromZone();
 		creature->notifyDespawn(zone);
 

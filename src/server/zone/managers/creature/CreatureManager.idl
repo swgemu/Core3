@@ -24,11 +24,19 @@ class CreatureManager extends ZoneManager {
 	protected SpawnAreaMap spawnAreaMap;
 	
 	protected transient CreatureTemplateManager creatureTemplateManager;
+	
+	@dereferenced
+	protected SortedVector<AiAgent> reservePool;
+	
+	protected int spawnedRandomCreatures;
 
 	public CreatureManager(Zone planet) {
 		super("CreatureManager");
 		
 		zone = planet;
+		
+		spawnedRandomCreatures = 0;
+		//reservePool.setAllowDuplicateInsertPlan();
 	}
 	
 	public void initialize() {
@@ -63,16 +71,15 @@ class CreatureManager extends ZoneManager {
 	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
 	
 	public native void loadSpawnAreas();
-	
 	public native void loadSingleSpawns();
-	
 	public native void loadTrainers();
-	
 	public native void loadMissionSpawns();
-	
 	public native void loadInformants();
 	
 	private native boolean createCreatureChildrenObjects(CreatureObject creature);
+	
+	public native void spawnRandomCreaturesAround(SceneObject creature);
+	public native void spawnRandomCreature(int number, float x, float z, float y, unsigned long parentID = 0);
 	
 	/*public synchronized void addCreatureToMap(CreatureObject creature) {
 		creatureMap.put(creature.getObjectID(), creature);
@@ -84,6 +91,19 @@ class CreatureManager extends ZoneManager {
 	
 	private native void setCreatureTemplateManager();
 	
-	
 	public native void harvest(Creature creature, PlayerCreature player, int selectedID);
+	
+	public synchronized void addToReservePool(AiAgent agent) {
+		if (spawnedRandomCreatures > 0) {
+			spawnedRandomCreatures = spawnedRandomCreatures - 1;
+		} else {
+			
+		}
+		
+		reservePool.put(agent);
+	}
+	
+	public int getSpawnedRandomCreatures() {
+		return spawnedRandomCreatures;
+	}
 }

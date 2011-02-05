@@ -221,7 +221,8 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
 	uint32 attr = victim->getHAM(attribute);
 	uint32 strengthToApply = strength;
 
-	victim->addWounds(attribute, strength, true);
+	if ((int)strength > 0)
+		victim->addWounds(attribute, strength, true);
 
 	if (attr < strengthToApply)
 		strengthToApply = attr - 1;
@@ -251,7 +252,8 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 	uint32 shockWounds = (uint32) victim->getShockWounds();
 	uint32 power = strength + (shockWounds * strength / 500);
 
-	victim->addWounds(attribute, power);
+	if ((int)power > 0)
+		victim->addWounds(attribute, power);
 
 	//victim->addDamage(attacker,power);
 

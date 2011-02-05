@@ -213,9 +213,6 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	}
 
 	lootGroup = creoData->getLootGroup();
-
-
-
 }
 
 void CreatureObjectImplementation::finalize() {
