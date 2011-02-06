@@ -120,6 +120,25 @@ public:
 				ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
 				resourceManager->givePlayerResource(player, resname, quantity);
 
+			} else if (itemtype.toLowerCase() == "object") {
+				if (!args.hasMoreTokens()) {
+					creature->sendSystemMessage( "Usage: /giveItem object path/to/object.iff");
+					return INVALIDPARAMETERS;
+				}
+
+				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+				String object;
+				args.getStringToken(object);
+
+				SceneObject* item = creature->getZoneServer()->createObject(object.hashCode(), 1);
+
+				if (item == NULL) {
+					player->sendSystemMessage("There was an error creating the requested item.");
+					return GENERALERROR;
+				}
+
+				inventory->addObject(item, -1);
+				item->sendTo(player, true);
 			}
 
 			return SUCCESS;
