@@ -82,11 +82,11 @@ namespace server {
 					return accountMap->get(accountID);
 				}
 
-				void addAccount(Account* account) {
+				int addAccount(Account* account) {
 					Locker lock(accountMap);
 					info("Adding account " + account->getUsername() + " to the accounts map.");
 
-					accountMap->put(account->getAccountID(), account);
+					return accountMap->put(account->getAccountID(), account);
 				}
 
 				inline void dropAccount(uint32 accountID) {

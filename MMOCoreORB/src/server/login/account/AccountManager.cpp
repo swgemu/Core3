@@ -126,7 +126,9 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 					account->setTimeCreated(created);
 					account->setAdminLevel(adminLevel);
 
-					addAccount(account);
+					if (addAccount(account) == -1) {
+						return getAccount(accountID);
+					}
 
 				} else {
 					String banReason = result->getString(4);
