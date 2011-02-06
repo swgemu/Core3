@@ -104,7 +104,7 @@ public:
 				String descriptor = object->getArrangementDescriptor(i);
 
 				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
-						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank")
+						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
 					return GENERALERROR;
 			}
 
