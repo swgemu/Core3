@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef WIPEITEMSCOMMAND_H_
 #define WIPEITEMSCOMMAND_H_
@@ -51,17 +51,73 @@ class WipeItemsCommand : public QueueCommand {
 public:
 
 	WipeItemsCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server)
+	{
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments)
+	{
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		try {
+
+			ManagedReference<SceneObject* > object =
+					server->getZoneServer()->getObject(target);
+
+			ManagedReference<PlayerCreature*> player = NULL;
+
+			StringTokenizer args(arguments.toString());
+
+			if (object == NULL || !object->isPlayerCreature())
+			{
+				String firstName;
+
+				if (args.hasMoreTokens()) {
+					args.getStringToken(firstName);
+					player = server->getZoneServer()->getChatManager()->getPlayer(
+							firstName);
+				}
+
+			} else
+			{
+				player = (PlayerCreature*) object.get();
+			}
+
+			if (player == NULL) {
+				creature->sendSystemMessage("Invalid arguments for /wipeItems. Usage: /wipeItems playerName");
+				return GENERALERROR;
+			}
+
+			Locker clocker(player, creature);
+
+			SceneObject* inventory = player->getSlottedObject("inventory");
+
+			if (inventory == NULL)
+				return GENERALERROR;
+
+			while (inventory->getContainerObjectsSize() > 0)
+			{
+				ManagedReference<SceneObject*> object = inventory->getContainerObject(0);
+
+				inventory->removeObject(object);
+				object->sendDestroyTo(player);
+				object->destroyObjectFromDatabase(true);
+			}
+
+			creature->sendSystemMessage(player->getFirstName() + "'s inventory has been wiped.");
+
+		}
+		catch (...)
+		{
+			creature->sendSystemMessage("Invalid arguments for /wipeItems. Usage: /wipeItems playerName");
+		}
+
 
 		return SUCCESS;
 	}
