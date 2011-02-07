@@ -40,12 +40,14 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef CREATESPAWNINGELEMENTCOMMAND_H_
 #define CREATESPAWNINGELEMENTCOMMAND_H_
 
+#include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "../../../managers/player/PlayerManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 
@@ -53,11 +55,12 @@ class CreateSpawningElementCommand : public QueueCommand {
 public:
 
 	CreateSpawningElementCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments)
+	{
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -65,58 +68,93 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
 		StringTokenizer tokenizer(arguments.toString());
 
-		try {
-			String templateString;
-			tokenizer.getStringToken(templateString);
+		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 
-			float x = tokenizer.getFloatToken();
-			float y = tokenizer.getFloatToken();
+		StringTokenizer args(arguments.toString());
 
-			uint64 cellid = 0;
+		PlayerCreature* player = (PlayerCreature*) creature;
 
-			if (tokenizer.hasMoreTokens())
-				cellid = tokenizer.getLongToken();
 
-			ZoneServer* zoneServer = server->getZoneServer();
+		if (player == NULL) {
+			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
+			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");
+			return GENERALERROR;
+		}
 
-			ManagedReference<SceneObject*> cell;
+		if (!args.hasMoreTokens()) {
+			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
+			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");
+			return INVALIDPARAMETERS;
+		}
 
-			if (cellid != 0)
-				cell = zoneServer->getObject(cellid);
+		String itemtype;
+		args.getStringToken(itemtype);
 
-			ManagedReference<SceneObject*> objectToSpawn = zoneServer->createObject(templateString.hashCode(), 0);
+		try
+		{
+			if (itemtype.toLowerCase() == "spawn")
+			{
+				ZoneServer* zserv = server->getZoneServer();
 
-			if (objectToSpawn == NULL) {
-				creature->sendSystemMessage("wrong template string");
-				return GENERALERROR;
+				String objectTemplate;
+				args.getStringToken(objectTemplate);
+
+				ManagedReference<SceneObject*> object =  zserv->createObject(objectTemplate.hashCode(), 0);
+
+				if (object == NULL)
+					return GENERALERROR;
+
+				if (object->isBuildingObject() || object->isIntangibleObject())
+					return GENERALERROR;
+
+				float x = creature->getPositionX();
+				float y = creature->getPositionY();
+				float z = creature->getPositionZ();
+
+				ManagedReference<SceneObject*> parent = creature->getParent();
+
+				if (parent != NULL && parent->isCellObject())
+					parent->addObject(object, -1);
+
+				object->initializePosition(x, z, y);
+				object->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
+				object->insertToZone(creature->getZone());
+
+				uint64 objectID = object->getObjectID();
+				creature->sendSystemMessage("oid: " + String::valueOf(objectID));
 			}
 
-			if (cell != NULL) {
-				if (cell->isCellObject())
-					cell->addObject(objectToSpawn, -1, false);
-				else {
-					creature->sendSystemMessage("wrong cell id");
+			else if (itemtype.toLowerCase() == "delete")
+			{
+				ZoneServer* zserv = server->getZoneServer();
+
+				String chatObjectID;
+				args.getStringToken(chatObjectID);
+				uint64 oid = UnsignedLong::valueOf(chatObjectID);
+
+				ManagedReference<SceneObject*> object = zserv->getObject(oid);
+
+				if (object == NULL)
+				{
+					creature->sendSystemMessage("Error: Trying to delete invalid oid.");
 					return GENERALERROR;
 				}
+
+				object->removeFromZone();
+
+				creature->sendSystemMessage("Object " + chatObjectID + " deleted.");
 			}
+		}
 
-			Zone* zone = creature->getZone();
-
-			if (zone == NULL)
-				return GENERALERROR;
-
-			objectToSpawn->initializePosition(x, zone->getHeight(x, y), y);
-
-			objectToSpawn->insertToZone(zone);
-
-			StringBuffer msg;
-			msg << "object spawned with object id " << objectToSpawn->getObjectID();
-			creature->sendSystemMessage(msg.toString());
-
-		} catch (...) {
-			creature->sendSystemMessage("/createSpawningElement templateString x y parentid(optional)");
+		catch (...)
+		{
+			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
+			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");
 		}
 
 		return SUCCESS;
