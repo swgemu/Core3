@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef GMREVIVECOMMAND_H_
 #define GMREVIVECOMMAND_H_
@@ -51,17 +51,74 @@ class GmReviveCommand : public QueueCommand {
 public:
 
 	GmReviveCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments)
+	{
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		try
+		{
+			StringTokenizer args(arguments.toString());
+			ManagedReference<PlayerCreature*> player = NULL;
+
+			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+			if (object != NULL && !object->isPlayerObject())
+			{
+				return INVALIDTARGET;
+			}
+
+			else if (object == NULL)
+			{
+				creature->sendSystemMessage("Error: Nothing selected.");
+				return GENERALERROR;
+			}
+
+			String firstName;
+			if (args.hasMoreTokens())
+			{
+				args.getStringToken(firstName);
+				player = server->getZoneServer()->getChatManager()->getPlayer(firstName);
+			}
+
+			else
+			{
+				player = (PlayerCreature*) object.get();
+			}
+
+			if (player == NULL)
+			{
+				creature->sendSystemMessage("Error: Nothing selected.");
+				return GENERALERROR;
+			}
+
+			Locker clocker(player, creature);
+
+			player->healDamage(creature, CreatureAttribute::HEALTH, 5000);
+			player->healDamage(creature, CreatureAttribute::ACTION, 5000);
+			player->healDamage(creature, CreatureAttribute::MIND, 5000);
+
+			player->setPosture(CreaturePosture::UPRIGHT);
+
+			player->addWounds(CreatureAttribute::HEALTH, -5000, true );
+			player->addWounds(CreatureAttribute::ACTION, -5000, true );
+			player->addWounds(CreatureAttribute::MIND, -5000, true );
+
+			creature->sendSystemMessage(player->getFirstName() + " has been resurrected.");
+		}
+
+		catch (...)
+		{
+
+		}
 
 		return SUCCESS;
 	}
