@@ -84,7 +84,12 @@ public:
 				return GENERALERROR;
 			}
 
-			if (player->isIncapacitated() && player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
+			if (!player->isIncapacitated()){
+				creature->sendSystemMessage("@error_message:target_not_incapacitated");
+				return GENERALERROR;
+			}
+
+			if (player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
 				playerManager->killPlayer(creature, player);
 			}
 
