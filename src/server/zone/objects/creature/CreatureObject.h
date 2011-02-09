@@ -648,6 +648,10 @@ public:
 
 	int getSpecies();
 
+	String getSpeciesName();
+
+	int getGender();
+
 	DeltaVector<int>* getBaseHAM();
 
 	SkillBoxList* getSkillBoxList();
@@ -749,6 +753,7 @@ protected:
 
 	String _return_getMoodString;
 	String _return_getPerformanceAnimation;
+	String _return_getSpeciesName;
 
 	UnicodeString _return_getCreatureName;
 
@@ -1286,6 +1291,10 @@ public:
 
 	int getSpecies();
 
+	String getSpeciesName();
+
+	int getGender();
+
 	DeltaVector<int>* getBaseHAM();
 
 	SkillBoxList* getSkillBoxList();
@@ -1772,6 +1781,10 @@ public:
 	float getHeight();
 
 	int getSpecies();
+
+	String getSpeciesName();
+
+	int getGender();
 
 	long long getSkillMod(const String& skillmod);
 

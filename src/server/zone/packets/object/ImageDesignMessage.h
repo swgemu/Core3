@@ -47,17 +47,18 @@ which carries forward this exception.
 
 
 #include "engine/engine.h"
+#include "ObjectControllerMessage.h"
 
 class ImageDesignStartMessage : public ObjectControllerMessage {
 public:
-	ImageDesignStartMessage(Player* object, Player* designer, Player* client, uint64 tent, int type = 0) 
+	ImageDesignStartMessage(PlayerCreature* object, PlayerCreature* designer, PlayerCreature* client, uint64 tent, int type = 0)
 		: ObjectControllerMessage(object->getObjectID(), 0x0B, 0x023A) {
 
-			
 		insertLong(designer->getObjectID()); // Image Designer?
 		insertLong(client->getObjectID()); // Image Design Target
 		insertLong(tent); // Boolish - in an ID tent? or a cell id?
 		insertShort(type); // 0 = designer, 1 = target
+
 	}
 };
 
@@ -71,6 +72,7 @@ public:
 		insertLong(client); // Image Design Target
 		insertLong(tent); // Boolish - in an ID tent? or a cell id?
 		insertByte(type); // 0 = designer, 1 = target
+
 	}
 };
 
@@ -84,6 +86,7 @@ public:
 		insertLong(client); // Image Design Target
 		insertLong(tent); // Boolish - in an ID tent? or a cell id?
 		insertByte(type); // 0 = designer, 1 = target
+
 	}
 
 

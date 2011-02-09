@@ -60,11 +60,11 @@ public:
 		creo = cr;
 	}
 
-	/*void updateCharacterAppearance() {
+	void updateCharacterAppearance() {
 		String appearance;
 		creo->getCustomizationString(appearance);
 		addAsciiUpdate(4, appearance);
-	}*/
+	}
 
 	void updateCreatureBitmask(uint32 value) {
 		addIntUpdate(0x06, value);
@@ -97,10 +97,10 @@ public:
 	void updateMaxCondition() {
 		addIntUpdate(9, creo->getMaxCondition());
 	}
-
+	*/
 	void updateHeight() {
 		addFloatUpdate(14, creo->getHeight());
-	}*/
+	}
 
 	void updateShockWounds() {
 		addIntUpdate(15, (int) creo->getShockWounds());
