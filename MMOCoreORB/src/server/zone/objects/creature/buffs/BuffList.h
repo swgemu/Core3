@@ -53,8 +53,6 @@ protected:
 	bool spiceActive;
 	VectorMap<uint32, ManagedReference<Buff*> > buffList;
 
-	Vector<ManagedReference<Buff*> > removedBuffs;
-
 public:
 	BuffList();
 	BuffList(const BuffList& bf);
