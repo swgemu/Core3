@@ -1195,6 +1195,35 @@ class CreatureObject extends TangibleObject {
 	public int getSpecies() {
 		return species;
 	}
+
+	public string getSpeciesName() {
+		if(species == 0)
+			return "human";
+		else if(species == 1)
+			return "rodian";
+		else if(species == 2)
+			return "trandoshan";
+		else if(species == 3)
+			return "moncal";
+		else if(species == 4)
+			return "wookiee";
+		else if(species == 5)
+			return "bothan";
+		else if(species == 6)
+			return "twilek";
+		else if(species == 7)
+			return "zabrak";
+		else if(species == 0x21)
+			return "ithorian";
+		else if(species == 0x31)
+			return "sullustan";
+		else
+			return "";
+	}
+
+	public int getGender() {
+		return gender;
+	}
 	
 	@local
 	public DeltaVector<int> getBaseHAM() {

@@ -268,6 +268,8 @@ public:
 
 	static const int CITYHALLBUILDING = 0x211;
 
+	static const int SALONBUILDING = 0x212;
+
 	static const int CREATURE = 0x400;
 
 	static const int NPCCREATURE = 0x401;
@@ -1189,6 +1191,8 @@ public:
 	static const int GARAGEBUILDING = 0x210;
 
 	static const int CITYHALLBUILDING = 0x211;
+
+	static const int SALONBUILDING = 0x212;
 
 	static const int CREATURE = 0x400;
 

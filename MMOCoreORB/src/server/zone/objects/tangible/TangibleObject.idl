@@ -355,6 +355,8 @@ class TangibleObject extends SceneObject {
 	 * Updates a customization variable
 	 */
 	public native void setCustomizationVariable(byte type, byte value, boolean notifyClient = true);
+
+	public native void setCustomizationVariable(final string type, byte value, boolean notifyClient = true);
 	
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	

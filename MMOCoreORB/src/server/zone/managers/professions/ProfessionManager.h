@@ -95,6 +95,7 @@ namespace server {
 using namespace server::zone::managers::objectcontroller;
 
 class PerformanceManager;
+class ImageDesignManager;
 
 namespace server {
  namespace zone {
@@ -108,6 +109,7 @@ namespace server {
 
 		ObjectController* objectController;
 		PerformanceManager* performanceManager;
+		ImageDesignManager* imageDesignManager;
 
 		VectorMap<String, Reference<SkillBox*> > skillBoxMap;
 		VectorMap<String, Reference<Certification*> > certificationMap;
@@ -187,6 +189,10 @@ namespace server {
 
 		inline PerformanceManager* getPerformanceManager() {
 			return performanceManager;
+		}
+
+		inline ImageDesignManager* getImageDesignManager() {
+			return imageDesignManager;
 		}
 
 		inline void setObjectController(ObjectController* objectControl) {

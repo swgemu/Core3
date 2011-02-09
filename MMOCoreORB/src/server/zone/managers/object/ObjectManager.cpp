@@ -163,6 +163,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BuildingObject>(SceneObject::UNIVERSITYBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObject::GARAGEBUILDING);
 	objectFactory.registerObject<CityHallObject>(SceneObject::CITYHALLBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::SALONBUILDING);
 
 
 	objectFactory.registerObject<InstallationObject>(SceneObject::INSTALLATION);

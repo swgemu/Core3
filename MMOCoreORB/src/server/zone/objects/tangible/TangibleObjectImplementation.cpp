@@ -260,6 +260,20 @@ void TangibleObjectImplementation::setCustomizationVariable(byte type, byte valu
 	broadcastMessage(dtano3, true);
 }
 
+void TangibleObjectImplementation::setCustomizationVariable(const String& type, byte value, bool notifyClient) {
+	customizationVariables.setVariable(type,value);
+
+	if(!notifyClient)
+		return;
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateCustomizationString();
+	dtano3->close();
+
+	broadcastMessage(dtano3, true);
+
+}
+
 void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyClient) {
 	if (useCount == newUseCount)
 		return;
