@@ -180,6 +180,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public static final int UNIVERSITYBUILDING = 0x20F;
 	public static final int GARAGEBUILDING = 0x210;
 	public static final int CITYHALLBUILDING = 0x211;
+	public static final int SALONBUILDING = 0x212;
 
 	public static final int CREATURE = 0x400;
 	public static final int NPCCREATURE = 0x401;

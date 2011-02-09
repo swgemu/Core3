@@ -44,6 +44,7 @@ which carries forward this exception.
 
 #include "ProfessionManager.h"
 #include "PerformanceManager.h"
+#include "ImageDesignManager.h"
 
 #include "server/db/ServerDatabase.h"
 
@@ -82,6 +83,7 @@ ProfessionManager::ProfessionManager()
 	certificationMap.setNullValue(NULL);
 
 	performanceManager = new PerformanceManager();
+	imageDesignManager = new ImageDesignManager();
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -90,6 +92,9 @@ ProfessionManager::ProfessionManager()
 ProfessionManager::~ProfessionManager() {
 	delete performanceManager;
 	performanceManager = NULL;
+
+	delete imageDesignManager;
+	imageDesignManager = NULL;
 }
 /*
 void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {

@@ -1,0 +1,255 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+ */
+
+package server.zone.objects.player;
+
+include engine.core.ManagedObject;
+
+import engine.log.Logger;
+import engine.core.ManagedReference;
+import engine.util.Facade;
+import system.lang.ref.Reference;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.player.PlayerCreature;
+import server.zone.objects.tangible.TangibleObject;
+include server.zone.objects.scene.SessionFacadeType;
+include server.zone.managers.professions.ImageDesignManager;
+import server.zone.objects.player.events.ImageDesignTimeoutEvent;
+include server.zone.objects.scene.variables.CustomizationVariables;
+
+class ImageDesignSession extends Facade {
+
+	protected string hairObject;
+	protected string ukstring1;
+	protected unsigned int ukint1;
+	protected unsigned int timestamp;
+	protected unsigned int requiredPayment;
+	protected unsigned int offeredPayment;
+	protected byte designerAccepted;
+	protected unsigned int targetAccepted;
+	protected byte statMigration;
+	protected unsigned int ukint4;
+	protected unsigned int ukint5;
+	protected unsigned int ukint6;
+	protected unsigned int ukint7;
+	protected unsigned int sizeFloatAttrs;
+	protected unsigned int attributesSize;
+	protected string holoEmote;
+
+	@dereferenced
+	protected VectorMap<string, float> floatMap;
+
+	@dereferenced
+	protected VectorMap<string, unsigned int> colorMap;
+
+	@weakReference
+	ImageDesignManager idMgr;
+
+	@weakReference
+	protected PlayerCreature designerCreature;
+
+	@weakReference
+	protected PlayerCreature targetCreature;
+
+	protected transient Reference<ImageDesignTimeoutEvent> idTimeoutEvent;
+	
+	public ImageDesignSession(CreatureObject parent) {
+	
+		Logger.setLoggingName("ImageDesignSession");
+		Logger.setLogging(true);
+		
+		initializeSession();
+
+		hairObject = "";
+		ukstring1 = "";
+		ukint1 = 0;
+ 		timestamp = 0;
+	 	requiredPayment = 0;
+	 	offeredPayment = 0;
+		designerAccepted = 0;
+	 	targetAccepted = 0;
+	 	statMigration = 0;
+	 	ukint4 = 0;
+	 	ukint5 = 0;
+	 	ukint6 = 0;
+	 	ukint7 = 0;
+	 	sizeFloatAttrs = 0;
+		attributesSize = 0;
+
+		designerCreature = null;
+		targetCreature = null;
+
+		floatMap.removeAll();
+		colorMap.removeAll();
+		
+	}
+	
+	@local
+	public native void startImageDesign(PlayerCreature object,PlayerCreature designer, PlayerCreature targetPlayer, unsigned long tent, int type = 0);
+	
+	public native void updateImageDesign
+		(unsigned long object, unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type = 0);
+
+	public native void cancelImageDesign
+		(unsigned long object, unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type = 0);	
+
+	public native int initializeSession();
+	
+	public int cancelSession() {
+		if (designerCreature == null) {
+			return 0;
+		} else {
+			designerCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
+		}
+
+		if (targetCreature == null) {
+			return 0;
+		} else {
+			targetCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
+		}
+
+		dequeueIdTimeoutEvent();
+
+		return 0;
+	}
+	
+	public int clearSession() {
+		return 0;
+	}
+
+	public void clearIdTimeoutEvent() {
+		idTimeoutEvent = null;
+	}
+
+	public void dequeueIdTimeoutEvent() {
+		if (idTimeoutEvent != null) {
+			idTimeoutEvent.cancel();
+			idTimeoutEvent = null;
+		}
+	}
+
+	public void sessionTimeout() {
+		if (designerCreature != null || targetCreature != null) {
+			sizeFloatAttrs = 0;
+			attributesSize = 0;
+			designerCreature.sendSystemMessage("Image Design Session has Timed Out. Changes Aborted.");
+			targetCreature.sendSystemMessage("Image Design Session has Timed Out. Changes Aborted.");
+			cancelImageDesign(designerCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0);
+			cancelImageDesign(targetCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0);
+		}
+	}
+
+	public void setHairObject(string hair) {
+		hairObject = hair;
+	}
+
+	public void setUkstring1(string uk1) {
+		ukstring1 = uk1;
+	}
+
+	public void setTimeStamp(unsigned int time) {
+		timestamp = time;
+	}
+
+	public void setRequiredPayment(unsigned int rp) {
+		requiredPayment = rp;
+	}
+
+	public void setOfferedPayment(unsigned int op) {
+		offeredPayment = op;
+	}
+
+	public void setDesignerAccepted(byte da) {
+		designerAccepted = da;
+	}
+
+	public void setTargetAccepted(unsigned int ta) {
+		targetAccepted = ta;
+	}
+
+	public void setStatMigration(byte sm) {
+		statMigration = sm;
+	}
+
+	public void setUnknownInt1(unsigned int value) {
+		ukint1 = value;
+	}
+
+	public void setUnknownInt4(unsigned int value) {
+		ukint4 = value;
+	}
+
+	public void setUnknownInt5(unsigned int value) {
+		ukint5 = value;
+	}
+
+	public void setUnknownInt6(unsigned int value) {
+		ukint6 = value;
+	}
+
+	public void setUnknownInt7(unsigned int value) {
+		ukint7 = value;
+	}
+
+	public void setSizeFloatAttrs(unsigned int sfa) {
+		sizeFloatAttrs = sfa;
+	}
+
+	public void setAttributesSize(unsigned int val) {
+		attributesSize = val;
+	}
+
+	public void setHoloEmote(string val) {
+		holoEmote = val;
+	}
+
+	public native int doPayment();
+
+	@local
+	public native void setFloatMap(@dereferenced VectorMap<string,float> map);
+
+	@local
+	public native void setColorMap(@dereferenced VectorMap<string,unsigned int> map);
+
+}

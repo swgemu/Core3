@@ -128,6 +128,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/player/EntertainingSession.cpp \
 				server/zone/objects/player/MigrateStatsSession.cpp \
+				server/zone/objects/player/ImageDesignSession.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
@@ -271,6 +272,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \
 		server/zone/managers/professions/PerformanceManager.cpp \
+		server/zone/managers/professions/ImageDesignManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
@@ -379,6 +381,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
 		server/zone/objects/player/ValidatedPosition.cpp \
 		server/zone/objects/player/EntertainingSessionImplementation.cpp \
+		server/zone/objects/player/ImageDesignSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
