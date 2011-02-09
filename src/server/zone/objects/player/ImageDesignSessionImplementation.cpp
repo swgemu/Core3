@@ -35,47 +35,48 @@ void ImageDesignSessionImplementation::startImageDesign(PlayerCreature* object, 
 
 void ImageDesignSessionImplementation::updateImageDesign(uint64 object, uint64 designer, uint64 targetPlayer, uint64 tent, int type)
 {
-	ImageDesignChangeMessage* msgDesigner = new ImageDesignChangeMessage(designer,designer,targetPlayer,tent,type);
-	ImageDesignChangeMessage* msgTarget = new ImageDesignChangeMessage(targetPlayer,designer,targetPlayer,tent,type);
 
-	msgDesigner->insertAscii(hairObject);
-	msgTarget->insertAscii(hairObject);
-
-	msgDesigner->insertAscii(ukstring1);
-	msgTarget->insertAscii(ukstring1);
-
-	msgDesigner->insertInt(ukint1);
-	msgTarget->insertInt(ukint1);
-	msgDesigner->insertInt(timestamp);
-	msgTarget->insertInt(timestamp);
-
-	msgDesigner->insertInt(requiredPayment);
-	msgTarget->insertInt(requiredPayment);
-	msgDesigner->insertInt(offeredPayment);
-	msgTarget->insertInt(offeredPayment);
-
-	msgDesigner->insertByte(designerAccepted);
-	msgTarget->insertByte(designerAccepted);
-	msgDesigner->insertInt(targetAccepted);
-	msgTarget->insertInt(targetAccepted);
-
-	msgDesigner->insertByte(statMigration);
-	msgTarget->insertByte(statMigration);
-
-	msgDesigner->insertInt(ukint4);
-	msgTarget->insertInt(ukint4);
-	msgDesigner->insertInt(ukint5);
-	msgTarget->insertInt(ukint5);
-	msgDesigner->insertInt(ukint6);
-	msgTarget->insertInt(ukint6);
-	msgDesigner->insertInt(ukint7);
-	msgTarget->insertInt(ukint7);
-
-	msgDesigner->insertInt(sizeFloatAttrs);
-	msgTarget->insertInt(sizeFloatAttrs);
-
-	if(targetCreature == NULL || designerCreature == NULL)
+	if (targetCreature == NULL || designerCreature == NULL)
 		return;
+
+	Locker locker(designerCreature);
+	Locker clocker(targetCreature, designerCreature);
+
+	ImageDesignChangeMessage* message = NULL;
+
+	if (designerCreature == targetCreature) {
+		// do not send packet!
+	} else if (object == designer) {
+		// Coming from the Designer, send to Target!
+		message = new ImageDesignChangeMessage(targetPlayer,designer,targetPlayer,tent,type);
+	} else if(object == targetPlayer) {
+		// Coming from the Target, send to the Designer!
+		message = new ImageDesignChangeMessage(designer,designer,targetPlayer,tent,type);;
+	}
+
+	if (message != NULL) {
+		message->insertAscii(hairObject);
+
+		message->insertAscii(ukstring1);
+
+		message->insertInt(ukint1);
+		message->insertInt(timestamp);
+
+		message->insertInt(requiredPayment);
+		message->insertInt(offeredPayment);
+
+		message->insertByte(designerAccepted);
+		message->insertInt(targetAccepted);
+
+		message->insertByte(statMigration);
+
+		message->insertInt(ukint4);
+		message->insertInt(ukint5);
+		message->insertInt(ukint6);
+		message->insertInt(ukint7);
+
+		message->insertInt(sizeFloatAttrs);
+	}
 
 	bool commitChanges = false;
 	//TODO: set XP Values
@@ -93,8 +94,7 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 object, uint64 d
 			commitChanges = true;
 	}
 
-	try{
-
+	try {
 		if (commitChanges)
 			idMgr = ProfessionManager::instance()->getImageDesignManager();
 
@@ -102,50 +102,49 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 object, uint64 d
 			String& key = floatMap.elementAt(i).getKey();
 			float value = floatMap.elementAt(i).getValue();
 
-			msgDesigner->insertAscii(key);
-			msgTarget->insertAscii(key);
-			msgDesigner->insertFloat(value);
-			msgTarget->insertFloat(value);
+			if (message != NULL) {
+				message->insertAscii(key);
+				message->insertFloat(value);
+			}
 
-			if(commitChanges)
+			if (commitChanges)
 				idMgr->updateCustomization(key,value, targetCreature);
 
 		}
 
-		msgDesigner->insertInt(attributesSize);
-		msgTarget->insertInt(attributesSize);
+		if (message != NULL)
+			message->insertInt(attributesSize);
 
 		for (int i = 0; i < colorMap.size(); ++i) {
 			String& key = colorMap.elementAt(i).getKey();
 			uint32 value = colorMap.elementAt(i).getValue();
 
-			msgDesigner->insertAscii(key.toCharArray());
-			msgTarget->insertAscii(key.toCharArray());
-			msgDesigner->insertInt(value);
-			msgTarget->insertInt(value);
+			if (message != NULL) {
+				message->insertAscii(key.toCharArray());
+				message->insertInt(value);
+			}
 
-			if(commitChanges)
+			if (commitChanges)
 				idMgr->updateCustomization(key,value,targetCreature);
 
 		}
 
-
-	} catch(...) {
+	} catch (...) {
 		System::out << "Error happened before packet sent in ImageDesignSessionImplementation.cpp" << endl;
 	}
 
-	msgDesigner->insertAscii(holoEmote);
-	msgTarget->insertAscii(holoEmote);
+	if (message != NULL)
+		message->insertAscii(holoEmote);
 
-	if (designerCreature == targetCreature) {
-		// do not send packet!
-	} else if(object == designer) {
-		// Coming from the Designer, send to Target!
-		targetCreature->sendMessage(msgTarget);
-
-	} else if(object == targetPlayer) {
-		// Coming from the Target, send to the Designer!
-		designerCreature->sendMessage(msgDesigner);
+	if (message != NULL) {
+		if (object == designer) {
+			// Coming from the Designer, send to Target!
+			targetCreature->sendMessage(message);
+		} else if (object == targetPlayer) {
+			// Coming from the Target, send to the Designer!
+			designerCreature->sendMessage(message);
+		} else
+			delete message;
 	}
 
 	if (commitChanges) {
@@ -186,91 +185,85 @@ int ImageDesignSessionImplementation::doPayment() {
 
 void ImageDesignSessionImplementation::cancelImageDesign(uint64 object, uint64 designer, uint64 targetPlayer, uint64 tent, int type) {
 	// Send reject Packet callback
-	ImageDesignRejectMessage* msgDesigner = new ImageDesignRejectMessage(designer,designer,targetPlayer,tent,type);
-	ImageDesignRejectMessage* msgTarget = new ImageDesignRejectMessage(targetPlayer,designer,targetPlayer,tent,type);
 
-	msgDesigner->insertAscii(hairObject);
-	msgTarget->insertAscii(hairObject);
+	if (targetCreature == NULL || designerCreature == NULL)
+			return;
 
-	msgDesigner->insertAscii(ukstring1);
-	msgTarget->insertAscii(ukstring1);
+	Locker locker(designerCreature);
 
-	msgDesigner->insertInt(ukint1);
-	msgTarget->insertInt(ukint1);
-	msgDesigner->insertInt(timestamp);
-	msgTarget->insertInt(timestamp);
+	Locker clocker(targetCreature, designerCreature);
 
-	msgDesigner->insertInt(requiredPayment);
-	msgTarget->insertInt(requiredPayment);
-	msgDesigner->insertInt(offeredPayment);
-	msgTarget->insertInt(offeredPayment);
-
-	msgDesigner->insertByte(designerAccepted);
-	msgTarget->insertByte(designerAccepted);
-	msgDesigner->insertInt(targetAccepted);
-	msgTarget->insertInt(targetAccepted);
-
-	msgDesigner->insertByte(statMigration);
-	msgTarget->insertByte(statMigration);
-
-	msgDesigner->insertInt(ukint4);
-	msgTarget->insertInt(ukint4);
-	msgDesigner->insertInt(ukint5);
-	msgTarget->insertInt(ukint5);
-	msgDesigner->insertInt(ukint6);
-	msgTarget->insertInt(ukint6);
-	msgDesigner->insertInt(ukint7);
-	msgTarget->insertInt(ukint7);
-
-	msgDesigner->insertInt(sizeFloatAttrs);
-	msgTarget->insertInt(sizeFloatAttrs);
-
-	if(targetCreature == NULL || designerCreature == NULL)
-		return;
-
-	try{
-
-		for (int i = 0; i < floatMap.size(); ++i) {
-			String& key = floatMap.elementAt(i).getKey();
-			float value = floatMap.elementAt(i).getValue();
-
-			msgDesigner->insertAscii(key);
-			msgTarget->insertAscii(key);
-			msgDesigner->insertFloat(value);
-			msgTarget->insertFloat(value);
-
-		}
-
-		msgDesigner->insertInt(attributesSize);
-		msgTarget->insertInt(attributesSize);
-
-		for (int i = 0; i < colorMap.size(); ++i) {
-			String& key = colorMap.elementAt(i).getKey();
-			uint32 value = colorMap.elementAt(i).getValue();
-
-			msgDesigner->insertAscii(key.toCharArray());
-			msgTarget->insertAscii(key.toCharArray());
-			msgDesigner->insertInt(value);
-			msgTarget->insertInt(value);
-
-		}
-
-	} catch(...) {
-		System::out << "Error happened before packet sent in ImageDesignSessionImplementation.cpp" << endl;
-	}
-
-	msgDesigner->insertAscii(holoEmote);
-	msgTarget->insertAscii(holoEmote);
+	ImageDesignRejectMessage* message = NULL;
 
 	if (designerCreature == targetCreature) {
 		// do not send packet!
 	} else if(object == designer) {
 		// Coming from the Designer, send to Target!
-		targetCreature->sendMessage(msgTarget);
+		message = new ImageDesignRejectMessage(targetPlayer,designer,targetPlayer,tent,type);
 
 	} else if(object == targetPlayer) {
 		// Coming from the Target, send to the Designer!
-		designerCreature->sendMessage(msgDesigner);
+		message = new ImageDesignRejectMessage(designer,designer,targetPlayer,tent,type);
+	}
+
+	if (message != NULL) {
+		message->insertAscii(hairObject);
+
+		message->insertAscii(ukstring1);
+
+		message->insertInt(ukint1);
+		message->insertInt(timestamp);
+
+		message->insertInt(requiredPayment);
+		message->insertInt(offeredPayment);
+
+		message->insertByte(designerAccepted);
+		message->insertInt(targetAccepted);
+
+		message->insertByte(statMigration);
+
+		message->insertInt(ukint4);
+		message->insertInt(ukint5);
+		message->insertInt(ukint6);
+		message->insertInt(ukint7);
+
+		message->insertInt(sizeFloatAttrs);
+
+		try {
+			for (int i = 0; i < floatMap.size(); ++i) {
+				String& key = floatMap.elementAt(i).getKey();
+				float value = floatMap.elementAt(i).getValue();
+
+				message->insertAscii(key);
+				message->insertFloat(value);
+			}
+
+			message->insertInt(attributesSize);
+
+			for (int i = 0; i < colorMap.size(); ++i) {
+				String& key = colorMap.elementAt(i).getKey();
+				uint32 value = colorMap.elementAt(i).getValue();
+
+				message->insertAscii(key.toCharArray());
+				message->insertInt(value);
+			}
+
+		} catch(...) {
+			System::out << "Error happened before packet sent in ImageDesignSessionImplementation.cpp" << endl;
+		}
+
+		message->insertAscii(holoEmote);
+
+		if (object == designer) {
+			// Coming from the Designer, send to Target!
+			targetCreature->sendMessage(message);
+
+		} else if (object == targetPlayer) {
+			// Coming from the Target, send to the Designer!
+			designerCreature->sendMessage(message);
+
+		} else
+			delete message;
 	}
 
 	_this->cancelSession();
