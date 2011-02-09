@@ -559,7 +559,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		return 0;
 	}
 
-	if (this->isIncapacitated())
+	if (this->isIncapacitated() || this->isDead())
 		return 0;
 
 	int currentValue = hamList.get(damageType);
@@ -588,6 +588,9 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 		error("incorrect damage type in CreatureObjectImplementation::healDamage");
 		return 0;
 	}
+
+	if (damage < 0 && (isDead() || isIncapacitated()))
+		return 0;
 
 	int returnValue = damage;
 
@@ -1598,10 +1601,7 @@ void CreatureObjectImplementation::removeBuff(Buff* buff) {
 }
 
 void CreatureObjectImplementation::clearBuffs(bool updateclient) {
-	while (creatureBuffs.getBuffListSize() > 0) {
-		Buff* buff = creatureBuffs.getBuffByIndex(0);
-		creatureBuffs.removeBuff(_this, buff);
-	}
+	creatureBuffs.clearBuffs(_this, updateclient);
 }
 
 void CreatureObjectImplementation::notifyPostureChange(int newPosture) {

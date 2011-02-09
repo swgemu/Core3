@@ -79,7 +79,7 @@ public:
 			else if (object == NULL)
 			{
 				creature->sendSystemMessage("Error: Nothing selected.");
-				return GENERALERROR;
+				object = creature;
 			}
 
 			String firstName;

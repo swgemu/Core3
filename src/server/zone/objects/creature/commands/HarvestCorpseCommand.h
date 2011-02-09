@@ -109,6 +109,9 @@ public:
 
 			Locker clocker(cr, player);
 
+			if (!cr->isDead())
+				return GENERALERROR;
+
 			ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
 			manager->harvest(cr, player, type);
 		}
