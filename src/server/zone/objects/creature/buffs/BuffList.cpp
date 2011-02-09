@@ -61,8 +61,6 @@ BuffList::BuffList(const BuffList& bf) : Object(), Serializable() {
 	spiceActive = bf.spiceActive;
 	buffList = bf.buffList;
 
-	removedBuffs = bf.removedBuffs;
-
 	addSerializableVariable("spiceActive", &spiceActive);
 	addSerializableVariable("buffList", &buffList);
 }
@@ -76,15 +74,6 @@ void BuffList::updateBuffsToDatabase() {
 		else
 			buff->updateToDatabase();
 	}
-
-	/*for (int i = 0; i < removedBuffs.size(); ++i) {
-		ManagedReference<Buff*> buff = removedBuffs.get(i);
-
-		if (buff->isPersistent())
-			ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
-	}*/
-
-	removedBuffs.removeAll();
 }
 
 void BuffList::sendTo(PlayerCreature* player) {
@@ -155,8 +144,6 @@ void BuffList::removeBuff(CreatureObject* creature, Buff* buff) {
 
 		buff->clearBuffEvent();
 
-		removedBuffs.add(buff);
-
 		buffList.drop(buffcrc);
 
 		//Already null checked the buff.
@@ -165,21 +152,22 @@ void BuffList::removeBuff(CreatureObject* creature, Buff* buff) {
 }
 
 void BuffList::clearBuffs(CreatureObject* creature, bool updateclient) {
-	for (int i = 0; i < buffList.size(); ++i) {
-		ManagedReference<Buff*> buff = buffList.get(i);
+	while (buffList.size() > 0) {
+		ManagedReference<Buff*> buff = buffList.get(0);
 
-		if (buff != NULL) {
-			if (buff->isActive()) {
-				//This can only get called if the buff event is scheduled and not currently being executed.
-				buff->clearBuffEvent();
-				buff->deactivate();
+		if (buff->isActive())
+			buff->clearBuffEvent();
 
-				removedBuffs.add(buff);
-			}
+		buff->clearBuffEvent();
 
-		}
+		buffList.remove(0);
+
+		//Already null checked the buff.
+		if (buff->isSpiceBuff())
+			buff->deactivate(false); // this wont create the downer
+		else
+			buff->deactivate();
 	}
 
 	spiceActive = false;
-	buffList.removeAll();
 }

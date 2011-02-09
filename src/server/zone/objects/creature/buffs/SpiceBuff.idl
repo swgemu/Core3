@@ -65,6 +65,8 @@ class SpiceBuff extends Buff {
 		super(creo, buffCRC, duration, BuffType.SPICE);
 		
 		super.buffName = name;
+		
+		Logger.setLoggingName("SpiceBuff " + name);
 	}
 	
 	public void activate(boolean applyModifiers) { 

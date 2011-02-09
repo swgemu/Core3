@@ -199,12 +199,14 @@ SpiceBuffImplementation::SpiceBuffImplementation(CreatureObject* creo, const Str
 	_initializeImplementation();
 	// server/zone/objects/creature/buffs/SpiceBuff.idl(67):  		super.buffName = name;
 	BuffImplementation::buffName = name;
+	// server/zone/objects/creature/buffs/SpiceBuff.idl(69):  		Logger.setLoggingName("SpiceBuff " + name);
+	Logger::setLoggingName("SpiceBuff " + name);
 }
 
 void SpiceBuffImplementation::activate(bool applyModifiers) {
-	// server/zone/objects/creature/buffs/SpiceBuff.idl(71):  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_consume");
+	// server/zone/objects/creature/buffs/SpiceBuff.idl(73):  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_consume");
 	BuffImplementation::creature.getForUpdate()->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_consume");
-	// server/zone/objects/creature/buffs/SpiceBuff.idl(73):  		super.activate(true);
+	// server/zone/objects/creature/buffs/SpiceBuff.idl(75):  		super.activate(true);
 	BuffImplementation::activate(true);
 }
 
@@ -256,7 +258,7 @@ SpiceBuffHelper* SpiceBuffHelper::staticInitializer = SpiceBuffHelper::instance(
 SpiceBuffHelper::SpiceBuffHelper() {
 	className = "SpiceBuff";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SpiceBuffHelper::finalizeHelper() {
