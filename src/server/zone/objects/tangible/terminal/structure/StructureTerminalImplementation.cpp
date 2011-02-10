@@ -5,6 +5,7 @@
  *      Author: crush
  */
 
+#include "engine/util/u3d/Vector3.h"
 
 #include "StructureTerminal.h"
 #include "server/zone/Zone.h"
@@ -16,7 +17,6 @@
 
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
-#include "engine/util/Vector3.h"
 
 void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	if (controlledObject == NULL || !controlledObject->isStructureObject())
