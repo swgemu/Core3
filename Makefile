@@ -46,7 +46,7 @@ IDL_CLASSPATH = ../MMOEngine/include
 
 IDL_DIRECTIVES = -cp $(IDL_CLASSPATH)
 
-all:
+all: build
 
 build: idl
 	cd src/trelib/src && make ../lib/libtreLib.a
@@ -55,7 +55,8 @@ build: idl
 	cp build/unix/src/core3* bin
 	rm -rf build/unix/src/client/core3*
 	rm -rf build/unix/src/core3*
-	cd bin/conf && cat motd.txt | sed "s/\\(^Revision=\\)\\(..*$\\)/\1`svnversion`/" > motd.txt
+	#cd bin/conf && cat motd.txt | sed "s/\\(^Revision=\\)\\(..*$\\)/\1`svnversion`/" > motd.txt
+	cd bin/conf && cat motd.txt | sed "s:\\(Revision=\\).*:\1`svnversion`:" > motd.txt
 	#done
 
 rebuild: clean build
