@@ -399,7 +399,7 @@ DestroyMissionObjectiveHelper* DestroyMissionObjectiveHelper::staticInitializer 
 DestroyMissionObjectiveHelper::DestroyMissionObjectiveHelper() {
 	className = "DestroyMissionObjective";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void DestroyMissionObjectiveHelper::finalizeHelper() {

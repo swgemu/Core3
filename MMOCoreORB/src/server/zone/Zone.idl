@@ -44,8 +44,8 @@ which carries forward this exception.
 
 package server.zone;
 
-import engine.util.QuadTree;
-import engine.util.QuadTreeEntry;
+import engine.util.u3d.QuadTree;
+import engine.util.u3d.QuadTreeEntry;
 
 import system.lang.Time;
 import engine.core.TaskManager;

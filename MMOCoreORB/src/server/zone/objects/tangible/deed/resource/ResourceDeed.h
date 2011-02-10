@@ -5,7 +5,7 @@
 #ifndef RESOURCEDEED_H_
 #define RESOURCEDEED_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

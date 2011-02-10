@@ -5,7 +5,7 @@
 #ifndef ACTIVEAREA_H_
 #define ACTIVEAREA_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -35,7 +35,7 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
-#include "engine/util/QuadTreeEntry.h"
+#include "engine/util/u3d/QuadTreeEntry.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 

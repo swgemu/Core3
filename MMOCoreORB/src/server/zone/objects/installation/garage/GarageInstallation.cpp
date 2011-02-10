@@ -233,7 +233,7 @@ GarageInstallationHelper* GarageInstallationHelper::staticInitializer = GarageIn
 GarageInstallationHelper::GarageInstallationHelper() {
 	className = "GarageInstallation";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void GarageInstallationHelper::finalizeHelper() {

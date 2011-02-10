@@ -1,3 +1,0 @@
-Welcome to the Official SWGEmu Test Center!
-Please help us identify outstanding issues, exploits, bugs, and missing features as you experience them by reporting them to our site at http://www.swgemu.com/bugs. This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com, and is in no way affiliated with any other server communities. If you are in need of assistance, or wish to report someone for harassment, please refer to http://www.swgemu.com/support. Thank you!
-Currently running SWGEmu r

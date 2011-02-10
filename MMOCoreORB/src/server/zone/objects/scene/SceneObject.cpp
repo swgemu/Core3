@@ -4861,7 +4861,7 @@ SceneObjectHelper* SceneObjectHelper::staticInitializer = SceneObjectHelper::ins
 SceneObjectHelper::SceneObjectHelper() {
 	className = "SceneObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SceneObjectHelper::finalizeHelper() {

@@ -275,7 +275,7 @@ TravelTerminalHelper* TravelTerminalHelper::staticInitializer = TravelTerminalHe
 TravelTerminalHelper::TravelTerminalHelper() {
 	className = "TravelTerminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void TravelTerminalHelper::finalizeHelper() {

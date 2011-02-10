@@ -46,8 +46,8 @@ package server.zone.objects.building;
 
 import server.zone.objects.structure.StructureObject;
 import engine.lua.LuaObject;
-import engine.util.QuadTree;
-import engine.util.QuadTreeEntry;
+import engine.util.u3d.QuadTree;
+import engine.util.u3d.QuadTreeEntry;
 import system.util.SortedVector;
 import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
@@ -58,7 +58,7 @@ import server.zone.objects.tangible.terminal.structure.StructureTerminal;
 import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
-import engine.util.Vector3;
+import engine.util.u3d.Vector3;
 
 include server.zone.objects.cell.CellObject;
 

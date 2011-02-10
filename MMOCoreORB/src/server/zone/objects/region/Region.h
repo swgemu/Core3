@@ -5,7 +5,7 @@
 #ifndef REGION_H_
 #define REGION_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

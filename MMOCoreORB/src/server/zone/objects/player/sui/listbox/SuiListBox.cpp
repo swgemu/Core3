@@ -552,7 +552,7 @@ SuiListBoxHelper* SuiListBoxHelper::staticInitializer = SuiListBoxHelper::instan
 SuiListBoxHelper::SuiListBoxHelper() {
 	className = "SuiListBox";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SuiListBoxHelper::finalizeHelper() {

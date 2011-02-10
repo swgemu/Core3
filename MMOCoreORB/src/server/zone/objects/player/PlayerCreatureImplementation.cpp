@@ -868,7 +868,7 @@ void PlayerCreatureImplementation::notifySelfPositionUpdate() {
 		return;
 
 	if (activeAreas.size() == 0 && inRangeObjectCount() < 20) {
-		if (parent != NULL && !parent->isCellObject() || parent == NULL) {
+		if ((parent != NULL && !parent->isCellObject()) || parent == NULL) {
 			zone->getCreatureManager()->spawnRandomCreaturesAround(_this);
 		}
 	}

@@ -283,7 +283,7 @@ CityVoteTerminalHelper* CityVoteTerminalHelper::staticInitializer = CityVoteTerm
 CityVoteTerminalHelper::CityVoteTerminalHelper() {
 	className = "CityVoteTerminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CityVoteTerminalHelper::finalizeHelper() {

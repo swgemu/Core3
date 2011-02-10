@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.managers.structure;
 
 import engine.core.ManagedService;
-import engine.util.Quaternion;
+import engine.util.u3d.Quaternion;
 import server.zone.Zone;
 import server.zone.ZoneProcessServer;
 import engine.log.Logger;

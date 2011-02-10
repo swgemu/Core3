@@ -365,7 +365,7 @@ BountyMissionObjectiveHelper* BountyMissionObjectiveHelper::staticInitializer = 
 BountyMissionObjectiveHelper::BountyMissionObjectiveHelper() {
 	className = "BountyMissionObjective";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void BountyMissionObjectiveHelper::finalizeHelper() {

@@ -216,7 +216,7 @@ EntertainingObserverHelper* EntertainingObserverHelper::staticInitializer = Ente
 EntertainingObserverHelper::EntertainingObserverHelper() {
 	className = "EntertainingObserver";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void EntertainingObserverHelper::finalizeHelper() {

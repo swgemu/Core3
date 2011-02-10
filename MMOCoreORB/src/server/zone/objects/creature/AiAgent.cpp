@@ -2312,7 +2312,7 @@ AiAgentHelper* AiAgentHelper::staticInitializer = AiAgentHelper::instance();
 AiAgentHelper::AiAgentHelper() {
 	className = "AiAgent";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void AiAgentHelper::finalizeHelper() {

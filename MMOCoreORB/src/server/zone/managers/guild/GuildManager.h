@@ -5,7 +5,7 @@
 #ifndef GUILDMANAGER_H_
 #define GUILDMANAGER_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

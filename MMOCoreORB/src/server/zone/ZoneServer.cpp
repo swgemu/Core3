@@ -1900,7 +1900,7 @@ ZoneServerHelper* ZoneServerHelper::staticInitializer = ZoneServerHelper::instan
 ZoneServerHelper::ZoneServerHelper() {
 	className = "ZoneServer";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ZoneServerHelper::finalizeHelper() {

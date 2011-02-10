@@ -5,7 +5,7 @@
 #ifndef WEAPONOBJECT_H_
 #define WEAPONOBJECT_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

@@ -309,7 +309,7 @@ CraftingMissionObjectiveHelper* CraftingMissionObjectiveHelper::staticInitialize
 CraftingMissionObjectiveHelper::CraftingMissionObjectiveHelper() {
 	className = "CraftingMissionObjective";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CraftingMissionObjectiveHelper::finalizeHelper() {

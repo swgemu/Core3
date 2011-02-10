@@ -51,7 +51,7 @@ import server.zone.objects.area.SpawnArea;
 import system.util.SortedVector;
 import system.util.Vector;
 import system.util.VectorMap;
-import engine.util.Vector3;
+import engine.util.u3d.Vector3;
 import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedObject;
 import server.zone.objects.creature.aigroup.AiGroup;

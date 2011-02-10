@@ -1527,7 +1527,7 @@ FishingManagerHelper* FishingManagerHelper::staticInitializer = FishingManagerHe
 FishingManagerHelper::FishingManagerHelper() {
 	className = "FishingManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void FishingManagerHelper::finalizeHelper() {

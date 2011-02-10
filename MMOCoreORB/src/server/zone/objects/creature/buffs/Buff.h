@@ -5,7 +5,7 @@
 #ifndef BUFF_H_
 #define BUFF_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

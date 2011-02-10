@@ -332,7 +332,7 @@ LootObjectHelper* LootObjectHelper::staticInitializer = LootObjectHelper::instan
 LootObjectHelper::LootObjectHelper() {
 	className = "LootObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void LootObjectHelper::finalizeHelper() {

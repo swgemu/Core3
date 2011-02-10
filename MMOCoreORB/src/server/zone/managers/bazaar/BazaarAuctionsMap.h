@@ -5,7 +5,7 @@
 #ifndef BAZAARAUCTIONSMAP_H_
 #define BAZAARAUCTIONSMAP_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

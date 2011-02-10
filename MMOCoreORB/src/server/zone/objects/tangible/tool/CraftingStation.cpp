@@ -467,7 +467,7 @@ CraftingStationHelper* CraftingStationHelper::staticInitializer = CraftingStatio
 CraftingStationHelper::CraftingStationHelper() {
 	className = "CraftingStation";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CraftingStationHelper::finalizeHelper() {

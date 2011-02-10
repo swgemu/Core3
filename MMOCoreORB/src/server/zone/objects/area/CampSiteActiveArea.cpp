@@ -408,7 +408,7 @@ CampSiteActiveAreaHelper* CampSiteActiveAreaHelper::staticInitializer = CampSite
 CampSiteActiveAreaHelper::CampSiteActiveAreaHelper() {
 	className = "CampSiteActiveArea";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CampSiteActiveAreaHelper::finalizeHelper() {

@@ -1184,7 +1184,7 @@ BuffHelper* BuffHelper::staticInitializer = BuffHelper::instance();
 BuffHelper::BuffHelper() {
 	className = "Buff";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void BuffHelper::finalizeHelper() {

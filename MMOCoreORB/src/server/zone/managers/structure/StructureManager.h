@@ -5,7 +5,7 @@
 #ifndef STRUCTUREMANAGER_H_
 #define STRUCTUREMANAGER_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -111,7 +111,7 @@ using namespace server::zone::managers::objectcontroller;
 
 #include "engine/core/ManagedService.h"
 
-#include "engine/util/Quaternion.h"
+#include "engine/util/u3d/Quaternion.h"
 
 #include "engine/log/Logger.h"
 
