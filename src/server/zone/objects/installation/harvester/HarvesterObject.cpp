@@ -317,7 +317,7 @@ HarvesterObjectHelper* HarvesterObjectHelper::staticInitializer = HarvesterObjec
 HarvesterObjectHelper::HarvesterObjectHelper() {
 	className = "HarvesterObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void HarvesterObjectHelper::finalizeHelper() {

@@ -278,7 +278,7 @@ CampKitHelper* CampKitHelper::staticInitializer = CampKitHelper::instance();
 CampKitHelper::CampKitHelper() {
 	className = "CampKit";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CampKitHelper::finalizeHelper() {

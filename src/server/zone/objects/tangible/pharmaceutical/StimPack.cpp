@@ -402,7 +402,7 @@ StimPackHelper* StimPackHelper::staticInitializer = StimPackHelper::instance();
 StimPackHelper::StimPackHelper() {
 	className = "StimPack";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void StimPackHelper::finalizeHelper() {

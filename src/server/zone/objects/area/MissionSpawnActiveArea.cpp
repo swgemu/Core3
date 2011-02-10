@@ -271,7 +271,7 @@ MissionSpawnActiveAreaHelper* MissionSpawnActiveAreaHelper::staticInitializer = 
 MissionSpawnActiveAreaHelper::MissionSpawnActiveAreaHelper() {
 	className = "MissionSpawnActiveArea";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void MissionSpawnActiveAreaHelper::finalizeHelper() {

@@ -5,7 +5,7 @@
 #ifndef DYNAMICSPAWNAREA_H_
 #define DYNAMICSPAWNAREA_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -115,7 +115,7 @@ using namespace server::zone::objects::area;
 
 #include "system/util/VectorMap.h"
 
-#include "engine/util/Vector3.h"
+#include "engine/util/u3d/Vector3.h"
 
 #include "engine/core/ManagedObject.h"
 

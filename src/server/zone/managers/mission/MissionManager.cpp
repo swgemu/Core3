@@ -865,7 +865,7 @@ MissionManagerHelper* MissionManagerHelper::staticInitializer = MissionManagerHe
 MissionManagerHelper::MissionManagerHelper() {
 	className = "MissionManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void MissionManagerHelper::finalizeHelper() {

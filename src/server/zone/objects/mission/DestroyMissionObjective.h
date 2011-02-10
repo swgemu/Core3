@@ -5,7 +5,7 @@
 #ifndef DESTROYMISSIONOBJECTIVE_H_
 #define DESTROYMISSIONOBJECTIVE_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

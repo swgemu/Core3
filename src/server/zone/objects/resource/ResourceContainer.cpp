@@ -595,7 +595,7 @@ ResourceContainerHelper* ResourceContainerHelper::staticInitializer = ResourceCo
 ResourceContainerHelper::ResourceContainerHelper() {
 	className = "ResourceContainer";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ResourceContainerHelper::finalizeHelper() {

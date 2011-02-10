@@ -5,7 +5,7 @@
 #ifndef PLAYERCREATURE_H_
 #define PLAYERCREATURE_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -307,9 +307,9 @@ using namespace server::zone::objects::structure;
 
 #include "system/util/VectorMap.h"
 
-#include "engine/util/QuadTreeEntry.h"
+#include "engine/util/u3d/QuadTreeEntry.h"
 
-#include "engine/util/Vector3.h"
+#include "engine/util/u3d/Vector3.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -319,7 +319,7 @@ using namespace server::zone::objects::structure;
 
 #include "system/lang/ref/Reference.h"
 
-#include "engine/util/Vector3.h"
+#include "engine/util/u3d/Vector3.h"
 
 namespace server {
 namespace zone {

@@ -22,7 +22,7 @@ LoginSession::LoginSession(int instance) : Logger("LoginSession" + String::value
 }
 
 void LoginSession::run() {
-	LoginClient* login = new LoginClient(44454);
+	LoginClient* login = new LoginClient(44453);
 	login->setLoginSession(this);
 	login->initialize();
 	login->setLoggingName("LoginClient" + String::valueOf(instance));
@@ -46,7 +46,7 @@ void LoginSession::run() {
 	char passwordinput[32];
 
 	info("insert user", true);
-	fgets(userinput, sizeof(userinput), stdin);
+	/*fgets(userinput, sizeof(userinput), stdin);
 
 	info("insert password", true);
 	fgets(passwordinput, sizeof(passwordinput), stdin);
@@ -56,9 +56,10 @@ void LoginSession::run() {
 	user = user.replaceFirst("\n", "");
 
 	password = passwordinput;
-	password = password.replaceFirst("\n", "");
+	password = password.replaceFirst("\n", "");*/
 
-	BaseMessage* acc = new AccountVersionMessage(user, password, "20050408-18:00");
+	//BaseMessage* acc = new AccountVersionMessage(user, password, "20050408-18:00");
+	BaseMessage* acc = new AccountVersionMessage("Akimaki", "4823848", "20050408-18:00");
 	login->sendMessage(acc);
 
 	info("sent account version message", true);

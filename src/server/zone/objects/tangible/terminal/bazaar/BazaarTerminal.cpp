@@ -326,7 +326,7 @@ BazaarTerminalHelper* BazaarTerminalHelper::staticInitializer = BazaarTerminalHe
 BazaarTerminalHelper::BazaarTerminalHelper() {
 	className = "BazaarTerminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void BazaarTerminalHelper::finalizeHelper() {

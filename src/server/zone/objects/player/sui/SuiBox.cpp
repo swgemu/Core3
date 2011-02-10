@@ -1348,7 +1348,7 @@ SuiBoxHelper* SuiBoxHelper::staticInitializer = SuiBoxHelper::instance();
 SuiBoxHelper::SuiBoxHelper() {
 	className = "SuiBox";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SuiBoxHelper::finalizeHelper() {

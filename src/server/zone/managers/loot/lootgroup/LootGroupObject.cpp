@@ -458,7 +458,7 @@ LootGroupObjectHelper* LootGroupObjectHelper::staticInitializer = LootGroupObjec
 LootGroupObjectHelper::LootGroupObjectHelper() {
 	className = "LootGroupObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void LootGroupObjectHelper::finalizeHelper() {

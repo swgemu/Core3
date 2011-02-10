@@ -5,7 +5,7 @@
 #ifndef CUREPACK_H_
 #define CUREPACK_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

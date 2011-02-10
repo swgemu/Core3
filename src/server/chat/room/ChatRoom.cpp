@@ -1388,7 +1388,7 @@ ChatRoomHelper* ChatRoomHelper::staticInitializer = ChatRoomHelper::instance();
 ChatRoomHelper::ChatRoomHelper() {
 	className = "ChatRoom";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ChatRoomHelper::finalizeHelper() {

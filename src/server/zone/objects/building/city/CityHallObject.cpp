@@ -1778,7 +1778,7 @@ CityHallObjectHelper* CityHallObjectHelper::staticInitializer = CityHallObjectHe
 CityHallObjectHelper::CityHallObjectHelper() {
 	className = "CityHallObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CityHallObjectHelper::finalizeHelper() {

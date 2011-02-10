@@ -54,9 +54,9 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
-import engine.util.AABBTree;
-import engine.util.AABBNode;
-import engine.util.Vector3;
+import engine.util.u3d.AABBTree;
+import engine.util.u3d.AABBNode;
+import engine.util.u3d.Vector3;
 
 include server.zone.packets.ui.CreateClientPathMessage;
 

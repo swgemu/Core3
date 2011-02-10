@@ -227,7 +227,7 @@ SpawnObserverHelper* SpawnObserverHelper::staticInitializer = SpawnObserverHelpe
 SpawnObserverHelper::SpawnObserverHelper() {
 	className = "SpawnObserver";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SpawnObserverHelper::finalizeHelper() {
