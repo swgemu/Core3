@@ -331,7 +331,7 @@ IntangibleObjectHelper* IntangibleObjectHelper::staticInitializer = IntangibleOb
 IntangibleObjectHelper::IntangibleObjectHelper() {
 	className = "IntangibleObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void IntangibleObjectHelper::finalizeHelper() {

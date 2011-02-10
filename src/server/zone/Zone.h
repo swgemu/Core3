@@ -5,7 +5,7 @@
 #ifndef ZONE_H_
 #define ZONE_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -143,9 +143,9 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/managers/planet/MapLocationTable.h"
 
-#include "engine/util/QuadTree.h"
+#include "engine/util/u3d/QuadTree.h"
 
-#include "engine/util/QuadTreeEntry.h"
+#include "engine/util/u3d/QuadTreeEntry.h"
 
 #include "system/lang/Time.h"
 

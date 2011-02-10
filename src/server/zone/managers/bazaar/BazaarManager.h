@@ -5,7 +5,7 @@
 #ifndef BAZAARMANAGER_H_
 #define BAZAARMANAGER_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

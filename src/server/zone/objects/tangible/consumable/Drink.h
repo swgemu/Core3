@@ -5,7 +5,7 @@
 #ifndef DRINK_H_
 #define DRINK_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

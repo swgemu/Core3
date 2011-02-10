@@ -281,7 +281,7 @@ TeachPlayerListBoxHelper* TeachPlayerListBoxHelper::staticInitializer = TeachPla
 TeachPlayerListBoxHelper::TeachPlayerListBoxHelper() {
 	className = "TeachPlayerListBox";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void TeachPlayerListBoxHelper::finalizeHelper() {

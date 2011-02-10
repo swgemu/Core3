@@ -597,7 +597,7 @@ ZoneClientSessionHelper* ZoneClientSessionHelper::staticInitializer = ZoneClient
 ZoneClientSessionHelper::ZoneClientSessionHelper() {
 	className = "ZoneClientSession";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ZoneClientSessionHelper::finalizeHelper() {

@@ -968,7 +968,7 @@ CraftingToolHelper* CraftingToolHelper::staticInitializer = CraftingToolHelper::
 CraftingToolHelper::CraftingToolHelper() {
 	className = "CraftingTool";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CraftingToolHelper::finalizeHelper() {

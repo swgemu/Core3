@@ -5,7 +5,7 @@
 #ifndef STRUCTUREOBJECT_H_
 #define STRUCTUREOBJECT_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -101,11 +101,11 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
-#include "engine/util/AABBTree.h"
+#include "engine/util/u3d/AABBTree.h"
 
-#include "engine/util/AABBNode.h"
+#include "engine/util/u3d/AABBNode.h"
 
-#include "engine/util/Vector3.h"
+#include "engine/util/u3d/Vector3.h"
 
 namespace server {
 namespace zone {

@@ -69,7 +69,7 @@ import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.player.PlayerObject;
 include server.zone.objects.player.ValidatedPosition;
-import engine.util.Vector3;
+import engine.util.u3d.Vector3;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;

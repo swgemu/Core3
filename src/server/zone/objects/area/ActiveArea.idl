@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.zone.objects.area;
 
-include engine.util.QuadTreeEntry;
+include engine.util.u3d.QuadTreeEntry;
 
 import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;

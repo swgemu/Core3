@@ -567,7 +567,7 @@ RangedStimPackHelper* RangedStimPackHelper::staticInitializer = RangedStimPackHe
 RangedStimPackHelper::RangedStimPackHelper() {
 	className = "RangedStimPack";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void RangedStimPackHelper::finalizeHelper() {

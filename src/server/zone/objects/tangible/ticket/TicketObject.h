@@ -5,7 +5,7 @@
 #ifndef TICKETOBJECT_H_
 #define TICKETOBJECT_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

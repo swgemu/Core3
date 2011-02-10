@@ -134,12 +134,12 @@ void testTransactions() {
 	//while(Core::getTaskManager()->getExecutingTaskSize() > 10) {
 		Thread::sleep(1000);
 
-		for (int i = 0; i < 10000; ++i) {
+		/*for (int i = 0; i < 10000; ++i) {
 			Task* task = new TestTask(&references);
 
 			//Core::getTaskManager()->scheduleTask(task, 1000);
 			Core::getTaskManager()->executeTask(task);
-		}
+		}*/
 
 		TransactionalMemoryManager::commitPureTransaction();
 	}

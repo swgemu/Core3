@@ -1168,7 +1168,7 @@ ZoneHelper* ZoneHelper::staticInitializer = ZoneHelper::instance();
 ZoneHelper::ZoneHelper() {
 	className = "Zone";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ZoneHelper::finalizeHelper() {

@@ -218,7 +218,7 @@ InstrumentObserverHelper* InstrumentObserverHelper::staticInitializer = Instrume
 InstrumentObserverHelper::InstrumentObserverHelper() {
 	className = "InstrumentObserver";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void InstrumentObserverHelper::finalizeHelper() {

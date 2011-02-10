@@ -225,7 +225,7 @@ SuiMessageBoxHelper* SuiMessageBoxHelper::staticInitializer = SuiMessageBoxHelpe
 SuiMessageBoxHelper::SuiMessageBoxHelper() {
 	className = "SuiMessageBox";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SuiMessageBoxHelper::finalizeHelper() {

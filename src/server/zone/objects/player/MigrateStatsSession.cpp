@@ -400,7 +400,7 @@ MigrateStatsSessionHelper* MigrateStatsSessionHelper::staticInitializer = Migrat
 MigrateStatsSessionHelper::MigrateStatsSessionHelper() {
 	className = "MigrateStatsSession";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void MigrateStatsSessionHelper::finalizeHelper() {

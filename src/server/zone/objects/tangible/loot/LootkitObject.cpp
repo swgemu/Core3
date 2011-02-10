@@ -374,7 +374,7 @@ LootkitObjectHelper* LootkitObjectHelper::staticInitializer = LootkitObjectHelpe
 LootkitObjectHelper::LootkitObjectHelper() {
 	className = "LootkitObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void LootkitObjectHelper::finalizeHelper() {

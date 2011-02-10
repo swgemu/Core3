@@ -5,7 +5,7 @@
 #ifndef SCENEOBJECT_H_
 #define SCENEOBJECT_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -167,7 +167,7 @@ using namespace server::zone::objects::area;
 
 #include "engine/util/Coordinate.h"
 
-#include "engine/util/QuadTreeEntry.h"
+#include "engine/util/u3d/QuadTreeEntry.h"
 
 #include "system/io/Serializable.h"
 
@@ -179,7 +179,7 @@ using namespace server::zone::objects::area;
 
 #include "system/util/VectorMap.h"
 
-#include "engine/util/Quaternion.h"
+#include "engine/util/u3d/Quaternion.h"
 
 #include "engine/service/proto/BasePacket.h"
 
@@ -193,7 +193,7 @@ using namespace server::zone::objects::area;
 
 #include "engine/core/Task.h"
 
-#include "engine/util/Vector3.h"
+#include "engine/util/u3d/Vector3.h"
 
 #include "engine/util/Observable.h"
 

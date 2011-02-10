@@ -621,7 +621,7 @@ CreatureHelper* CreatureHelper::staticInitializer = CreatureHelper::instance();
 CreatureHelper::CreatureHelper() {
 	className = "Creature";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CreatureHelper::finalizeHelper() {

@@ -237,7 +237,7 @@ AiObserverHelper* AiObserverHelper::staticInitializer = AiObserverHelper::instan
 AiObserverHelper::AiObserverHelper() {
 	className = "AiObserver";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void AiObserverHelper::finalizeHelper() {

@@ -5,7 +5,7 @@
 #ifndef CITYMANAGER_H_
 #define CITYMANAGER_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

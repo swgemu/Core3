@@ -1216,7 +1216,7 @@ ArmorObjectHelper* ArmorObjectHelper::staticInitializer = ArmorObjectHelper::ins
 ArmorObjectHelper::ArmorObjectHelper() {
 	className = "ArmorObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ArmorObjectHelper::finalizeHelper() {

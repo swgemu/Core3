@@ -448,7 +448,7 @@ FactoryCrateHelper* FactoryCrateHelper::staticInitializer = FactoryCrateHelper::
 FactoryCrateHelper::FactoryCrateHelper() {
 	className = "FactoryCrate";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void FactoryCrateHelper::finalizeHelper() {

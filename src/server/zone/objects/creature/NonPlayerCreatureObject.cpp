@@ -228,7 +228,7 @@ NonPlayerCreatureObjectHelper* NonPlayerCreatureObjectHelper::staticInitializer 
 NonPlayerCreatureObjectHelper::NonPlayerCreatureObjectHelper() {
 	className = "NonPlayerCreatureObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void NonPlayerCreatureObjectHelper::finalizeHelper() {

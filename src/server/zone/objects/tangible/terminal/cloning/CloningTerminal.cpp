@@ -211,7 +211,7 @@ CloningTerminalHelper* CloningTerminalHelper::staticInitializer = CloningTermina
 CloningTerminalHelper::CloningTerminalHelper() {
 	className = "CloningTerminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CloningTerminalHelper::finalizeHelper() {

@@ -242,7 +242,7 @@ MissionObserverHelper* MissionObserverHelper::staticInitializer = MissionObserve
 MissionObserverHelper::MissionObserverHelper() {
 	className = "MissionObserver";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void MissionObserverHelper::finalizeHelper() {

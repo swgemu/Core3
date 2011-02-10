@@ -303,7 +303,7 @@ DelayedBuffHelper* DelayedBuffHelper::staticInitializer = DelayedBuffHelper::ins
 DelayedBuffHelper::DelayedBuffHelper() {
 	className = "DelayedBuff";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void DelayedBuffHelper::finalizeHelper() {

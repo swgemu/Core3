@@ -602,7 +602,7 @@ CityManagerHelper* CityManagerHelper::staticInitializer = CityManagerHelper::ins
 CityManagerHelper::CityManagerHelper() {
 	className = "CityManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CityManagerHelper::finalizeHelper() {

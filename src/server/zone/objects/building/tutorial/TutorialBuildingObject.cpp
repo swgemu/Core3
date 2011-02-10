@@ -321,7 +321,7 @@ TutorialBuildingObjectHelper* TutorialBuildingObjectHelper::staticInitializer = 
 TutorialBuildingObjectHelper::TutorialBuildingObjectHelper() {
 	className = "TutorialBuildingObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void TutorialBuildingObjectHelper::finalizeHelper() {

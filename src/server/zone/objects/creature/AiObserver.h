@@ -5,7 +5,7 @@
 #ifndef AIOBSERVER_H_
 #define AIOBSERVER_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 
