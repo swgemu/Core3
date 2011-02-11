@@ -5,7 +5,7 @@
 #ifndef ENTERTAINERMISSIONOBJECTIVE_H_
 #define ENTERTAINERMISSIONOBJECTIVE_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

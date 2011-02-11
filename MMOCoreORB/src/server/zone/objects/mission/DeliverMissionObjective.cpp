@@ -467,7 +467,7 @@ DeliverMissionObjectiveHelper* DeliverMissionObjectiveHelper::staticInitializer 
 DeliverMissionObjectiveHelper::DeliverMissionObjectiveHelper() {
 	className = "DeliverMissionObjective";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void DeliverMissionObjectiveHelper::finalizeHelper() {

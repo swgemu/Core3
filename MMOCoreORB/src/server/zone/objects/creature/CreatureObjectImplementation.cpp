@@ -91,7 +91,7 @@ which carries forward this exception.
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
 #include "professions/SkillBox.h"
-#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

@@ -349,7 +349,7 @@ ResourceDeedListBoxHelper* ResourceDeedListBoxHelper::staticInitializer = Resour
 ResourceDeedListBoxHelper::ResourceDeedListBoxHelper() {
 	className = "ResourceDeedListBox";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ResourceDeedListBoxHelper::finalizeHelper() {

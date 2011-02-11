@@ -619,7 +619,7 @@ CreatureManagerHelper* CreatureManagerHelper::staticInitializer = CreatureManage
 CreatureManagerHelper::CreatureManagerHelper() {
 	className = "CreatureManager";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void CreatureManagerHelper::finalizeHelper() {

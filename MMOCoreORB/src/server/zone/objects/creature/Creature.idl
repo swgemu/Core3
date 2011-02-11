@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.creature;
 
 import engine.core.ManagedObject;
-import engine.util.Coordinate;
+import engine.util.u3d.Coordinate;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.group.GroupObject;

@@ -749,7 +749,7 @@ GroupObjectHelper* GroupObjectHelper::staticInitializer = GroupObjectHelper::ins
 GroupObjectHelper::GroupObjectHelper() {
 	className = "GroupObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void GroupObjectHelper::finalizeHelper() {

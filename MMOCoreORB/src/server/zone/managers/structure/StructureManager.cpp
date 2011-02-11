@@ -421,7 +421,7 @@ StructureManagerHelper* StructureManagerHelper::staticInitializer = StructureMan
 StructureManagerHelper::StructureManagerHelper() {
 	className = "StructureManager";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void StructureManagerHelper::finalizeHelper() {

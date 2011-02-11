@@ -354,7 +354,7 @@ ShuttleInstallationHelper* ShuttleInstallationHelper::staticInitializer = Shuttl
 ShuttleInstallationHelper::ShuttleInstallationHelper() {
 	className = "ShuttleInstallation";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ShuttleInstallationHelper::finalizeHelper() {

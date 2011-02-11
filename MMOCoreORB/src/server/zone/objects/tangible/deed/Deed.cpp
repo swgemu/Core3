@@ -325,7 +325,7 @@ DeedHelper* DeedHelper::staticInitializer = DeedHelper::instance();
 DeedHelper::DeedHelper() {
 	className = "Deed";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void DeedHelper::finalizeHelper() {

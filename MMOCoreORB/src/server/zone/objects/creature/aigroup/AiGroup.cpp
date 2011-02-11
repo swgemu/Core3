@@ -561,7 +561,7 @@ AiGroupHelper* AiGroupHelper::staticInitializer = AiGroupHelper::instance();
 AiGroupHelper::AiGroupHelper() {
 	className = "AiGroup";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void AiGroupHelper::finalizeHelper() {

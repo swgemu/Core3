@@ -1273,7 +1273,7 @@ AuctionItemHelper* AuctionItemHelper::staticInitializer = AuctionItemHelper::ins
 AuctionItemHelper::AuctionItemHelper() {
 	className = "AuctionItem";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void AuctionItemHelper::finalizeHelper() {

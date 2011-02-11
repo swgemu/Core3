@@ -279,7 +279,7 @@ ResourceDeedHelper* ResourceDeedHelper::staticInitializer = ResourceDeedHelper::
 ResourceDeedHelper::ResourceDeedHelper() {
 	className = "ResourceDeed";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ResourceDeedHelper::finalizeHelper() {

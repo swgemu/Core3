@@ -5,7 +5,7 @@
 #ifndef BAZAARTERMINAL_H_
 #define BAZAARTERMINAL_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

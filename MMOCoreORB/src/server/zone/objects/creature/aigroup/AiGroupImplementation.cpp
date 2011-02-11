@@ -9,7 +9,7 @@
 #include "AiGroupObserver.h"
 #include "server/zone/objects/creature/PatrolPoint.h"
 #include "server/zone/objects/creature/PatrolPointsVector.h"
-#include "engine/util/Coordinate.h"
+#include "engine/util/u3d/Coordinate.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/creature/SpawnGroup.h"

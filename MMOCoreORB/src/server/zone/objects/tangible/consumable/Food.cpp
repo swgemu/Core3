@@ -235,7 +235,7 @@ FoodHelper* FoodHelper::staticInitializer = FoodHelper::instance();
 FoodHelper::FoodHelper() {
 	className = "Food";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void FoodHelper::finalizeHelper() {

@@ -234,7 +234,7 @@ ClothingObjectHelper* ClothingObjectHelper::staticInitializer = ClothingObjectHe
 ClothingObjectHelper::ClothingObjectHelper() {
 	className = "ClothingObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ClothingObjectHelper::finalizeHelper() {

@@ -5,7 +5,7 @@
 #ifndef FISHOBJECT_H_
 #define FISHOBJECT_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

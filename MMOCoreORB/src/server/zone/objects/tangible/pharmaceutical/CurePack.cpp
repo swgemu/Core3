@@ -536,7 +536,7 @@ CurePackHelper* CurePackHelper::staticInitializer = CurePackHelper::instance();
 CurePackHelper::CurePackHelper() {
 	className = "CurePack";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void CurePackHelper::finalizeHelper() {

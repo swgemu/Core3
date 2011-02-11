@@ -512,7 +512,7 @@ EnhancePackHelper* EnhancePackHelper::staticInitializer = EnhancePackHelper::ins
 EnhancePackHelper::EnhancePackHelper() {
 	className = "EnhancePack";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void EnhancePackHelper::finalizeHelper() {

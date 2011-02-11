@@ -620,7 +620,7 @@ BazaarManagerHelper* BazaarManagerHelper::staticInitializer = BazaarManagerHelpe
 BazaarManagerHelper::BazaarManagerHelper() {
 	className = "BazaarManager";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void BazaarManagerHelper::finalizeHelper() {

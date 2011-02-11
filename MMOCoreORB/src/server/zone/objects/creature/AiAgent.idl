@@ -68,7 +68,7 @@ import server.zone.managers.creature.CreatureTemplate;
 include server.zone.objects.tangible.DamageMap;
 import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
 include server.zone.objects.creature.variables.CreatureAttackMap;
-import engine.util.Coordinate;
+import engine.util.u3d.Coordinate;
 import server.zone.objects.creature.commands.QueueCommand;
 import engine.util.Observable;
 import server.zone.objects.creature.AiObserver;

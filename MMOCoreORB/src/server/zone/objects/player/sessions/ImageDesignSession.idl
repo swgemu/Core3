@@ -54,7 +54,7 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.player.PlayerCreature;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.scene.SessionFacadeType;
-include server.zone.managers.professions.ImageDesignManager;
+include server.zone.managers.professions.imagedesign.ImageDesignManager;
 import server.zone.objects.player.events.ImageDesignTimeoutEvent;
 include server.zone.objects.scene.variables.CustomizationVariables;
 
@@ -138,13 +138,11 @@ class ImageDesignSession extends Facade {
 	
 	public int cancelSession() {
 		if (designerCreature == null) {
-			return 0;
 		} else {
 			designerCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
 		}
 
 		if (targetCreature == null) {
-			return 0;
 		} else {
 			targetCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
 		}

@@ -337,7 +337,7 @@ ContainerHelper* ContainerHelper::staticInitializer = ContainerHelper::instance(
 ContainerHelper::ContainerHelper() {
 	className = "Container";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ContainerHelper::finalizeHelper() {

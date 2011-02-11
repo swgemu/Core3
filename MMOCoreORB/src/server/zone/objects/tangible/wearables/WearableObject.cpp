@@ -400,7 +400,7 @@ WearableObjectHelper* WearableObjectHelper::staticInitializer = WearableObjectHe
 WearableObjectHelper::WearableObjectHelper() {
 	className = "WearableObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void WearableObjectHelper::finalizeHelper() {

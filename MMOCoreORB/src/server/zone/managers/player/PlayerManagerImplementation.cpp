@@ -38,7 +38,7 @@
 
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
 #include "server/zone/objects/player/events/MeditateTask.h"
-#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"

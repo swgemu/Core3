@@ -587,7 +587,7 @@ VehicleObjectHelper* VehicleObjectHelper::staticInitializer = VehicleObjectHelpe
 VehicleObjectHelper::VehicleObjectHelper() {
 	className = "VehicleObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void VehicleObjectHelper::finalizeHelper() {

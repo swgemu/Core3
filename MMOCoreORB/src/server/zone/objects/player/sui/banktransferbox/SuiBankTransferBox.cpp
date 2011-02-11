@@ -432,7 +432,7 @@ SuiBankTransferBoxHelper* SuiBankTransferBoxHelper::staticInitializer = SuiBankT
 SuiBankTransferBoxHelper::SuiBankTransferBoxHelper() {
 	className = "SuiBankTransferBox";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void SuiBankTransferBoxHelper::finalizeHelper() {

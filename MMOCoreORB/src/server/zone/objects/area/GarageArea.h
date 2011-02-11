@@ -5,7 +5,7 @@
 #ifndef GARAGEAREA_H_
 #define GARAGEAREA_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

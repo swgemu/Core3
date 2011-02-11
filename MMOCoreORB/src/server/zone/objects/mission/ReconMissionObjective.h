@@ -5,7 +5,7 @@
 #ifndef RECONMISSIONOBJECTIVE_H_
 #define RECONMISSIONOBJECTIVE_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

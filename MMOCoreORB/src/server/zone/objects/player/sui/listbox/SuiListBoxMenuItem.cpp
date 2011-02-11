@@ -258,7 +258,7 @@ SuiListBoxMenuItemHelper* SuiListBoxMenuItemHelper::staticInitializer = SuiListB
 SuiListBoxMenuItemHelper::SuiListBoxMenuItemHelper() {
 	className = "SuiListBoxMenuItem";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void SuiListBoxMenuItemHelper::finalizeHelper() {

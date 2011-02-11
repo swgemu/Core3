@@ -47,7 +47,7 @@ package server.zone.objects.tangible.tool;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import server.zone.objects.player.PlayerCreature;
 import engine.lua.LuaObject;
-import engine.util.Coordinate;
+import engine.util.u3d.Coordinate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.Zone;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;

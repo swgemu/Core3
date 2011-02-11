@@ -5,7 +5,7 @@
 #ifndef AIAGENT_H_
 #define AIAGENT_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -253,7 +253,7 @@ using namespace server::zone::objects::creature;
 
 #include "engine/core/ManagedObject.h"
 
-#include "engine/util/Coordinate.h"
+#include "engine/util/u3d/Coordinate.h"
 
 #include "engine/util/Observable.h"
 

@@ -507,7 +507,7 @@ PharmaceuticalObjectHelper* PharmaceuticalObjectHelper::staticInitializer = Phar
 PharmaceuticalObjectHelper::PharmaceuticalObjectHelper() {
 	className = "PharmaceuticalObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PharmaceuticalObjectHelper::finalizeHelper() {
