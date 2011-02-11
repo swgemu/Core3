@@ -344,7 +344,7 @@ TicketCollectorHelper* TicketCollectorHelper::staticInitializer = TicketCollecto
 TicketCollectorHelper::TicketCollectorHelper() {
 	className = "TicketCollector";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void TicketCollectorHelper::finalizeHelper() {

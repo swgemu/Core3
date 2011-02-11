@@ -661,7 +661,7 @@ AccountHelper* AccountHelper::staticInitializer = AccountHelper::instance();
 AccountHelper::AccountHelper() {
 	className = "Account";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void AccountHelper::finalizeHelper() {

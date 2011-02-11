@@ -243,7 +243,7 @@ StructureTerminalHelper* StructureTerminalHelper::staticInitializer = StructureT
 StructureTerminalHelper::StructureTerminalHelper() {
 	className = "StructureTerminal";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void StructureTerminalHelper::finalizeHelper() {

@@ -5,7 +5,7 @@
 #ifndef SUIMESSAGEBOX_H_
 #define SUIMESSAGEBOX_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

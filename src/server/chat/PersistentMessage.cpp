@@ -779,7 +779,7 @@ PersistentMessageHelper* PersistentMessageHelper::staticInitializer = Persistent
 PersistentMessageHelper::PersistentMessageHelper() {
 	className = "PersistentMessage";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PersistentMessageHelper::finalizeHelper() {

@@ -281,7 +281,7 @@ BadgeActiveAreaHelper* BadgeActiveAreaHelper::staticInitializer = BadgeActiveAre
 BadgeActiveAreaHelper::BadgeActiveAreaHelper() {
 	className = "BadgeActiveArea";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void BadgeActiveAreaHelper::finalizeHelper() {

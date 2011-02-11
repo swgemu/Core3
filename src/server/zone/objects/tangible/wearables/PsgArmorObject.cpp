@@ -256,7 +256,7 @@ PsgArmorObjectHelper* PsgArmorObjectHelper::staticInitializer = PsgArmorObjectHe
 PsgArmorObjectHelper::PsgArmorObjectHelper() {
 	className = "PsgArmorObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PsgArmorObjectHelper::finalizeHelper() {

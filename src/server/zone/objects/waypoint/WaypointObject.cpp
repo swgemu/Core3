@@ -623,7 +623,7 @@ WaypointObjectHelper* WaypointObjectHelper::staticInitializer = WaypointObjectHe
 WaypointObjectHelper::WaypointObjectHelper() {
 	className = "WaypointObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void WaypointObjectHelper::finalizeHelper() {

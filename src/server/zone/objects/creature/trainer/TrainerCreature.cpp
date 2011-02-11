@@ -585,7 +585,7 @@ TrainerCreatureHelper* TrainerCreatureHelper::staticInitializer = TrainerCreatur
 TrainerCreatureHelper::TrainerCreatureHelper() {
 	className = "TrainerCreature";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void TrainerCreatureHelper::finalizeHelper() {

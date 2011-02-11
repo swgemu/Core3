@@ -330,7 +330,7 @@ VehicleDeedHelper* VehicleDeedHelper::staticInitializer = VehicleDeedHelper::ins
 VehicleDeedHelper::VehicleDeedHelper() {
 	className = "VehicleDeed";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void VehicleDeedHelper::finalizeHelper() {

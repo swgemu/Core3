@@ -362,7 +362,7 @@ InformantCreatureHelper* InformantCreatureHelper::staticInitializer = InformantC
 InformantCreatureHelper::InformantCreatureHelper() {
 	className = "InformantCreature";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void InformantCreatureHelper::finalizeHelper() {

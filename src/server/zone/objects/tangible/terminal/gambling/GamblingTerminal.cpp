@@ -1235,7 +1235,7 @@ GamblingTerminalHelper* GamblingTerminalHelper::staticInitializer = GamblingTerm
 GamblingTerminalHelper::GamblingTerminalHelper() {
 	className = "GamblingTerminal";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void GamblingTerminalHelper::finalizeHelper() {

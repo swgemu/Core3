@@ -5,7 +5,7 @@
 #ifndef INFORMANTCREATURE_H_
 #define INFORMANTCREATURE_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

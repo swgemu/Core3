@@ -345,7 +345,7 @@ VehicleControlDeviceHelper* VehicleControlDeviceHelper::staticInitializer = Vehi
 VehicleControlDeviceHelper::VehicleControlDeviceHelper() {
 	className = "VehicleControlDevice";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void VehicleControlDeviceHelper::finalizeHelper() {

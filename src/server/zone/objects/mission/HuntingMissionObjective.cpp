@@ -322,7 +322,7 @@ HuntingMissionObjectiveHelper* HuntingMissionObjectiveHelper::staticInitializer 
 HuntingMissionObjectiveHelper::HuntingMissionObjectiveHelper() {
 	className = "HuntingMissionObjective";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void HuntingMissionObjectiveHelper::finalizeHelper() {

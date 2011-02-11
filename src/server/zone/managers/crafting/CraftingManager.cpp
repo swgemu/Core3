@@ -456,7 +456,7 @@ CraftingManagerHelper* CraftingManagerHelper::staticInitializer = CraftingManage
 CraftingManagerHelper::CraftingManagerHelper() {
 	className = "CraftingManager";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void CraftingManagerHelper::finalizeHelper() {

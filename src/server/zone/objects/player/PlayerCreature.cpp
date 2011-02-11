@@ -4063,7 +4063,7 @@ PlayerCreatureHelper* PlayerCreatureHelper::staticInitializer = PlayerCreatureHe
 PlayerCreatureHelper::PlayerCreatureHelper() {
 	className = "PlayerCreature";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PlayerCreatureHelper::finalizeHelper() {

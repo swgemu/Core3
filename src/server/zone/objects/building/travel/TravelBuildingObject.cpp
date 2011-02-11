@@ -181,7 +181,7 @@ TravelBuildingObjectHelper* TravelBuildingObjectHelper::staticInitializer = Trav
 TravelBuildingObjectHelper::TravelBuildingObjectHelper() {
 	className = "TravelBuildingObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void TravelBuildingObjectHelper::finalizeHelper() {

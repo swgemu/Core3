@@ -239,7 +239,7 @@ ArmorComponentHelper* ArmorComponentHelper::staticInitializer = ArmorComponentHe
 ArmorComponentHelper::ArmorComponentHelper() {
 	className = "ArmorComponent";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ArmorComponentHelper::finalizeHelper() {

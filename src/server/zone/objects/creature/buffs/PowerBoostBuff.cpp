@@ -380,7 +380,7 @@ PowerBoostBuffHelper* PowerBoostBuffHelper::staticInitializer = PowerBoostBuffHe
 PowerBoostBuffHelper::PowerBoostBuffHelper() {
 	className = "PowerBoostBuff";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PowerBoostBuffHelper::finalizeHelper() {

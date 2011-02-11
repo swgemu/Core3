@@ -346,7 +346,7 @@ FishingBaitObjectHelper* FishingBaitObjectHelper::staticInitializer = FishingBai
 FishingBaitObjectHelper::FishingBaitObjectHelper() {
 	className = "FishingBaitObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void FishingBaitObjectHelper::finalizeHelper() {

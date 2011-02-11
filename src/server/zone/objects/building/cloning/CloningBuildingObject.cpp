@@ -246,7 +246,7 @@ CloningBuildingObjectHelper* CloningBuildingObjectHelper::staticInitializer = Cl
 CloningBuildingObjectHelper::CloningBuildingObjectHelper() {
 	className = "CloningBuildingObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void CloningBuildingObjectHelper::finalizeHelper() {

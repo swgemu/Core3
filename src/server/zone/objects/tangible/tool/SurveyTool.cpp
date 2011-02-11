@@ -875,7 +875,7 @@ SurveyToolHelper* SurveyToolHelper::staticInitializer = SurveyToolHelper::instan
 SurveyToolHelper::SurveyToolHelper() {
 	className = "SurveyTool";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void SurveyToolHelper::finalizeHelper() {

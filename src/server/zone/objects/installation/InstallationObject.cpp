@@ -1111,7 +1111,7 @@ InstallationObjectHelper* InstallationObjectHelper::staticInitializer = Installa
 InstallationObjectHelper::InstallationObjectHelper() {
 	className = "InstallationObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void InstallationObjectHelper::finalizeHelper() {

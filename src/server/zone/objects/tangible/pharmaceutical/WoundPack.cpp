@@ -458,7 +458,7 @@ WoundPackHelper* WoundPackHelper::staticInitializer = WoundPackHelper::instance(
 WoundPackHelper::WoundPackHelper() {
 	className = "WoundPack";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void WoundPackHelper::finalizeHelper() {

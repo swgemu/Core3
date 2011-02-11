@@ -5,7 +5,7 @@
 #ifndef STARTINGLOCATIONTERMINAL_H_
 #define STARTINGLOCATIONTERMINAL_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

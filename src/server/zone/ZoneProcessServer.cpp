@@ -375,7 +375,7 @@ ZoneProcessServerHelper* ZoneProcessServerHelper::staticInitializer = ZoneProces
 ZoneProcessServerHelper::ZoneProcessServerHelper() {
 	className = "ZoneProcessServer";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ZoneProcessServerHelper::finalizeHelper() {

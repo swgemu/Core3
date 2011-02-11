@@ -1210,7 +1210,7 @@ GuildManagerHelper* GuildManagerHelper::staticInitializer = GuildManagerHelper::
 GuildManagerHelper::GuildManagerHelper() {
 	className = "GuildManager";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void GuildManagerHelper::finalizeHelper() {

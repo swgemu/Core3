@@ -243,7 +243,7 @@ StaticSpawnAreaHelper* StaticSpawnAreaHelper::staticInitializer = StaticSpawnAre
 StaticSpawnAreaHelper::StaticSpawnAreaHelper() {
 	className = "StaticSpawnArea";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void StaticSpawnAreaHelper::finalizeHelper() {

@@ -229,7 +229,7 @@ AiGroupObserverHelper* AiGroupObserverHelper::staticInitializer = AiGroupObserve
 AiGroupObserverHelper::AiGroupObserverHelper() {
 	className = "AiGroupObserver";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void AiGroupObserverHelper::finalizeHelper() {

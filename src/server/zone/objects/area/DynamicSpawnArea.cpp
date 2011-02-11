@@ -534,7 +534,7 @@ DynamicSpawnAreaHelper* DynamicSpawnAreaHelper::staticInitializer = DynamicSpawn
 DynamicSpawnAreaHelper::DynamicSpawnAreaHelper() {
 	className = "DynamicSpawnArea";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void DynamicSpawnAreaHelper::finalizeHelper() {

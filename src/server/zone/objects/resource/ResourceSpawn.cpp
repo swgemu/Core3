@@ -1357,7 +1357,7 @@ ResourceSpawnHelper* ResourceSpawnHelper::staticInitializer = ResourceSpawnHelpe
 ResourceSpawnHelper::ResourceSpawnHelper() {
 	className = "ResourceSpawn";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ResourceSpawnHelper::finalizeHelper() {

@@ -5,7 +5,7 @@
 #ifndef RESOURCESPAWN_H_
 #define RESOURCESPAWN_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

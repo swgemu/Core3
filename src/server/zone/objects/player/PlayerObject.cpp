@@ -1895,7 +1895,7 @@ PlayerObjectHelper* PlayerObjectHelper::staticInitializer = PlayerObjectHelper::
 PlayerObjectHelper::PlayerObjectHelper() {
 	className = "PlayerObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PlayerObjectHelper::finalizeHelper() {

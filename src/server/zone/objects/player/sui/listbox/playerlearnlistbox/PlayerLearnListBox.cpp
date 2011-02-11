@@ -285,7 +285,7 @@ PlayerLearnListBoxHelper* PlayerLearnListBoxHelper::staticInitializer = PlayerLe
 PlayerLearnListBoxHelper::PlayerLearnListBoxHelper() {
 	className = "PlayerLearnListBox";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PlayerLearnListBoxHelper::finalizeHelper() {

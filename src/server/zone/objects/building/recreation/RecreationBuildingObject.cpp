@@ -181,7 +181,7 @@ RecreationBuildingObjectHelper* RecreationBuildingObjectHelper::staticInitialize
 RecreationBuildingObjectHelper::RecreationBuildingObjectHelper() {
 	className = "RecreationBuildingObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void RecreationBuildingObjectHelper::finalizeHelper() {

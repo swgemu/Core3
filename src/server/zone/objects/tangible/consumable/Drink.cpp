@@ -235,7 +235,7 @@ DrinkHelper* DrinkHelper::staticInitializer = DrinkHelper::instance();
 DrinkHelper::DrinkHelper() {
 	className = "Drink";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void DrinkHelper::finalizeHelper() {

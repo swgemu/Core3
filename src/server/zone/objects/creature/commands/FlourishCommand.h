@@ -46,7 +46,7 @@ which carries forward this exception.
 #define FLOURISHCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 class FlourishCommand : public QueueCommand {
 public:

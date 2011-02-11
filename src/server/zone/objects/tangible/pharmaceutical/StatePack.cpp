@@ -375,7 +375,7 @@ StatePackHelper* StatePackHelper::staticInitializer = StatePackHelper::instance(
 StatePackHelper::StatePackHelper() {
 	className = "StatePack";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void StatePackHelper::finalizeHelper() {

@@ -10,7 +10,7 @@
 #include "server/zone/packets/object/ImageDesignMessage.h"
 #include "server/zone/packets/object/ImageDesignRejectMessageCallback.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
-#include "server/zone/managers/professions/ImageDesignManager.h"
+#include "server/zone/managers/professions/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
