@@ -5,7 +5,7 @@
 #ifndef DOTPACK_H_
 #define DOTPACK_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

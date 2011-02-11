@@ -49,12 +49,9 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 ImageDesignManager::ImageDesignManager() {
-
-	customizationData.setNullValue(NULL);
-	hairCustomization.setNullValue(NULL);
-
 	loadCustomizationData();
 }
 
@@ -232,53 +229,33 @@ void ImageDesignManager::updateCustomization(String customizationName, uint32 va
 }
 
 void ImageDesignManager::loadCustomizationData() {
-	customizationData.removeAll();
-	//customizationData.setNoDuplicateInsertPlan();
+	TemplateManager* templateManager = TemplateManager::instance();
 
-	try {
-		String query = "SELECT * FROM customization_data";
+	IffStream* iffStream = templateManager->openIffFile("datatables/customization/customization_data.iff");
 
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+	if (iffStream == NULL)
+		return;
 
-		while (res->next()) {
-			CustomizationData* customization = new CustomizationData();
+	iffStream->openForm('DTII');
+	iffStream->openForm('0001');
 
-			customization->setSpeciesGender(res->getString(0));
-			//customization->setCustomizationGroup(res->getString(1));
-			customization->setType(res->getString(2));
-			customization->setCustomizationName(res->getString(3));
-			customization->setVariables(res->getString(4));
-			//customization->setIsScale(res->getBoolean(5));
-			//customization->setReverse(res->getBoolean(6));
-			customization->setColorLinked(res->getString(7));
-			customization->setColorLinkedtoSelf0(res->getString(8));
-			customization->setColorLinkedtoSelf1(res->getString(9));
-			//customization->setCameraYaw(res->getInt(10));
-			//customization->setDiscrete(res->getBoolean(11));
-			//customization->setRandomizable(res->getBoolean(12));
-			//customization->setRandomizableGroup(res->getBoolean(13));
-			customization->setIsVarHairColor(res->getBoolean(14));
-			//customization->setImageDesignSkillMod(res->getString(15));
-			//customization->setSkillModValue(res->getInt(16));
-			//customization->setModificationType(res->getString(17));
-			customization->setMaxChoices(res->getInt(18));
-			customization->setMinScale(res->getFloat(19));
-			customization->setMaxScale(res->getFloat(20));
+	Chunk* chunk = iffStream->openChunk('COLS');
 
-			StringBuffer speciesGenderCustomization;
-			speciesGenderCustomization << customization->getSpeciesGender() << "_" << customization->getCustomizationName();
-			customizationData.put(speciesGenderCustomization.toString(), customization);
+	uint32 totalColumns = chunk->readInt();
 
-		}
+	for (int i = 0; i < totalColumns; ++i) {
+		String columnName;
+		chunk->readString(columnName);
 
-		delete res;
-
-	} catch(DatabaseException& e) {
-		System::out << e.getMessage() << endl;
-	} catch(...) {
-		System::out << "unreported exception caught in ImageDesignManager::loadCustomizationData()" << endl;
+		System::out << columnName << endl;
 	}
 
+	iffStream->closeChunk('COLS');
+	iffStream->closeForm('0001');
+	iffStream->closeForm('DTII');
+
+	delete iffStream;
+	iffStream = NULL;
 }
 
 CustomizationData* ImageDesignManager::getCustomizationData(String speciesGender, String customizationName) {

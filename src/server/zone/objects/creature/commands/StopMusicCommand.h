@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
-#include "server/zone/objects/player/EntertainingSession.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 
 class StopMusicCommand : public QueueCommand {

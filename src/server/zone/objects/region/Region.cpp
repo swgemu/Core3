@@ -600,7 +600,7 @@ RegionHelper* RegionHelper::staticInitializer = RegionHelper::instance();
 RegionHelper::RegionHelper() {
 	className = "Region";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void RegionHelper::finalizeHelper() {

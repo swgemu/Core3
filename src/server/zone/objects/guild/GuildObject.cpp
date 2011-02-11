@@ -1076,7 +1076,7 @@ GuildObjectHelper* GuildObjectHelper::staticInitializer = GuildObjectHelper::ins
 GuildObjectHelper::GuildObjectHelper() {
 	className = "GuildObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void GuildObjectHelper::finalizeHelper() {

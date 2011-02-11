@@ -5,7 +5,7 @@
 #ifndef SURVEYTOOL_H_
 #define SURVEYTOOL_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -67,7 +67,7 @@ using namespace server::zone::objects::manufactureschematic;
 
 #include "engine/lua/LuaObject.h"
 
-#include "engine/util/Coordinate.h"
+#include "engine/util/u3d/Coordinate.h"
 
 namespace server {
 namespace zone {

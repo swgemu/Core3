@@ -344,7 +344,7 @@ SuiInputBoxHelper* SuiInputBoxHelper::staticInitializer = SuiInputBoxHelper::ins
 SuiInputBoxHelper::SuiInputBoxHelper() {
 	className = "SuiInputBox";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void SuiInputBoxHelper::finalizeHelper() {

@@ -575,7 +575,7 @@ ResourceManagerHelper* ResourceManagerHelper::staticInitializer = ResourceManage
 ResourceManagerHelper::ResourceManagerHelper() {
 	className = "ResourceManager";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ResourceManagerHelper::finalizeHelper() {

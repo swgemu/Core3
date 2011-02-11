@@ -5,7 +5,7 @@
 #ifndef HUNTINGMISSIONOBJECTIVE_H_
 #define HUNTINGMISSIONOBJECTIVE_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

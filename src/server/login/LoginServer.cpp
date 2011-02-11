@@ -504,7 +504,7 @@ LoginServerHelper* LoginServerHelper::staticInitializer = LoginServerHelper::ins
 LoginServerHelper::LoginServerHelper() {
 	className = "LoginServer";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void LoginServerHelper::finalizeHelper() {

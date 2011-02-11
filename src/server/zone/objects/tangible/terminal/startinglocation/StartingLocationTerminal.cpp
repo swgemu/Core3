@@ -225,7 +225,7 @@ StartingLocationTerminalHelper* StartingLocationTerminalHelper::staticInitialize
 StartingLocationTerminalHelper::StartingLocationTerminalHelper() {
 	className = "StartingLocationTerminal";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void StartingLocationTerminalHelper::finalizeHelper() {

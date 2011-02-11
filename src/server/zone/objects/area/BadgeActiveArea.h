@@ -5,7 +5,7 @@
 #ifndef BADGEACTIVEAREA_H_
 #define BADGEACTIVEAREA_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

@@ -48,7 +48,7 @@ include engine.core.ManagedObject;
 
 import engine.log.Logger;
 import engine.core.ManagedReference;
-import engine.util.Coordinate;
+import engine.util.u3d.Coordinate;
 import engine.util.u3d.QuadTreeEntry;
 import system.io.Serializable;
 import engine.lua.Lua;

@@ -10,7 +10,7 @@
 
 #include "ObjectControllerMessageCallback.h"
 #include "ImageDesignMessage.h"
-#include "server/zone/objects/player/ImageDesignSession.h"
+#include "server/zone/objects/player/sessions/ImageDesignSession.h"
 
 class ImageDesignRejectMessageCallback : public MessageCallback {
 	uint64 designer;

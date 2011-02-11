@@ -349,7 +349,7 @@ GuildTerminalHelper* GuildTerminalHelper::staticInitializer = GuildTerminalHelpe
 GuildTerminalHelper::GuildTerminalHelper() {
 	className = "GuildTerminal";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void GuildTerminalHelper::finalizeHelper() {

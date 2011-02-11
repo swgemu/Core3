@@ -530,7 +530,7 @@ TicketObjectHelper* TicketObjectHelper::staticInitializer = TicketObjectHelper::
 TicketObjectHelper::TicketObjectHelper() {
 	className = "TicketObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void TicketObjectHelper::finalizeHelper() {

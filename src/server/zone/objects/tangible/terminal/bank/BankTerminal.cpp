@@ -295,7 +295,7 @@ BankTerminalHelper* BankTerminalHelper::staticInitializer = BankTerminalHelper::
 BankTerminalHelper::BankTerminalHelper() {
 	className = "BankTerminal";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void BankTerminalHelper::finalizeHelper() {

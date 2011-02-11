@@ -250,7 +250,7 @@ SuiCharacterBuilderBoxHelper* SuiCharacterBuilderBoxHelper::staticInitializer = 
 SuiCharacterBuilderBoxHelper::SuiCharacterBuilderBoxHelper() {
 	className = "SuiCharacterBuilderBox";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void SuiCharacterBuilderBoxHelper::finalizeHelper() {

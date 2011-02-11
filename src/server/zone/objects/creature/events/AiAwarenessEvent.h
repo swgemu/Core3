@@ -8,7 +8,7 @@
 #ifndef AIAWARENESSEVENT_H_
 #define AIAWARENESSEVENT_H_
 
-#include "engine/util/Coordinate.h"
+#include "engine/util/u3d/Coordinate.h"
 #include "../AiAgent.h"
 #include "../CreatureObject.h"
 

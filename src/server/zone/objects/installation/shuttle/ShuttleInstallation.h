@@ -5,7 +5,7 @@
 #ifndef SHUTTLEINSTALLATION_H_
 #define SHUTTLEINSTALLATION_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

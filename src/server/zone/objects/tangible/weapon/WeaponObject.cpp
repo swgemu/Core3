@@ -1835,7 +1835,7 @@ WeaponObjectHelper* WeaponObjectHelper::staticInitializer = WeaponObjectHelper::
 WeaponObjectHelper::WeaponObjectHelper() {
 	className = "WeaponObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void WeaponObjectHelper::finalizeHelper() {

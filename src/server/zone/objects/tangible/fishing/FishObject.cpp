@@ -398,7 +398,7 @@ FishObjectHelper* FishObjectHelper::staticInitializer = FishObjectHelper::instan
 FishObjectHelper::FishObjectHelper() {
 	className = "FishObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void FishObjectHelper::finalizeHelper() {

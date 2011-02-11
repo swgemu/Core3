@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/object/ImageDesignMessage.h"
-#include "server/zone/objects/player/ImageDesignSession.h"
+#include "server/zone/objects/player/sessions/ImageDesignSession.h"
 
 class ImagedesignCommand : public QueueCommand {
 public:

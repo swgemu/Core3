@@ -629,7 +629,7 @@ ComponentHelper* ComponentHelper::staticInitializer = ComponentHelper::instance(
 ComponentHelper::ComponentHelper() {
 	className = "Component";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void ComponentHelper::finalizeHelper() {

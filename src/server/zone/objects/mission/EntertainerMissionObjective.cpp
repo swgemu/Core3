@@ -309,7 +309,7 @@ EntertainerMissionObjectiveHelper* EntertainerMissionObjectiveHelper::staticInit
 EntertainerMissionObjectiveHelper::EntertainerMissionObjectiveHelper() {
 	className = "EntertainerMissionObjective";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void EntertainerMissionObjectiveHelper::finalizeHelper() {

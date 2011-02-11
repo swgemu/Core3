@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "ProfessionManager.h"
 #include "PerformanceManager.h"
-#include "ImageDesignManager.h"
+#include "imagedesign/ImageDesignManager.h"
 
 #include "server/db/ServerDatabase.h"
 

@@ -1059,7 +1059,7 @@ PlanetManagerHelper* PlanetManagerHelper::staticInitializer = PlanetManagerHelpe
 PlanetManagerHelper::PlanetManagerHelper() {
 	className = "PlanetManager";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PlanetManagerHelper::finalizeHelper() {

@@ -1761,7 +1761,7 @@ StructureObjectHelper* StructureObjectHelper::staticInitializer = StructureObjec
 StructureObjectHelper::StructureObjectHelper() {
 	className = "StructureObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void StructureObjectHelper::finalizeHelper() {

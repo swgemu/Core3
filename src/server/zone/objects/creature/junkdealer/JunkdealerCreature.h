@@ -5,7 +5,7 @@
 #ifndef JUNKDEALERCREATURE_H_
 #define JUNKDEALERCREATURE_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

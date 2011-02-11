@@ -5,7 +5,7 @@
 #ifndef CREATURE_H_
 #define CREATURE_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -85,7 +85,7 @@ using namespace server::zone::objects::player;
 
 #include "engine/core/ManagedObject.h"
 
-#include "engine/util/Coordinate.h"
+#include "engine/util/u3d/Coordinate.h"
 
 #include "server/zone/objects/creature/AiAgent.h"
 

@@ -212,7 +212,7 @@ GarageAreaHelper* GarageAreaHelper::staticInitializer = GarageAreaHelper::instan
 GarageAreaHelper::GarageAreaHelper() {
 	className = "GarageArea";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void GarageAreaHelper::finalizeHelper() {

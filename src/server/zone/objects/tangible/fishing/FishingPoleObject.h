@@ -5,7 +5,7 @@
 #ifndef FISHINGPOLEOBJECT_H_
 #define FISHINGPOLEOBJECT_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 

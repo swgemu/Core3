@@ -391,7 +391,7 @@ InstallationDeedHelper* InstallationDeedHelper::staticInitializer = Installation
 InstallationDeedHelper::InstallationDeedHelper() {
 	className = "InstallationDeed";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void InstallationDeedHelper::finalizeHelper() {

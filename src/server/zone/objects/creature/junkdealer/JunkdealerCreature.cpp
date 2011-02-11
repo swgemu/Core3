@@ -421,7 +421,7 @@ JunkdealerCreatureHelper* JunkdealerCreatureHelper::staticInitializer = Junkdeal
 JunkdealerCreatureHelper::JunkdealerCreatureHelper() {
 	className = "JunkdealerCreature";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void JunkdealerCreatureHelper::finalizeHelper() {

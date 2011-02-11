@@ -49,7 +49,7 @@ MakeStatus = 1
 
 ORB = ""
 
-DBHost = "192.168.1.100"
+DBHost = "127.0.0.1"
 DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
@@ -60,7 +60,7 @@ LoginProcessingThreads = 1
 LoginAllowedConnections = 3000
 LoginRequiredVersion = "20050408-18:00"
 
-MantisHost = "192.168.1.100"
+MantisHost = "127.0.0.1"
 MantisPort = 3306
 MantisName = "swgemu"
 MantisUser = "swgemu"

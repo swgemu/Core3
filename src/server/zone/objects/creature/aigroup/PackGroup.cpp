@@ -200,7 +200,7 @@ PackGroupHelper* PackGroupHelper::staticInitializer = PackGroupHelper::instance(
 PackGroupHelper::PackGroupHelper() {
 	className = "PackGroup";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void PackGroupHelper::finalizeHelper() {

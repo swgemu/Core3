@@ -1915,7 +1915,7 @@ TangibleObjectHelper* TangibleObjectHelper::staticInitializer = TangibleObjectHe
 TangibleObjectHelper::TangibleObjectHelper() {
 	className = "TangibleObject";
 
-	Core::getObjectBroker()->registerClass(className, this);
+	DistributedObjectBroker::instance()->registerClass(className, this);
 }
 
 void TangibleObjectHelper::finalizeHelper() {

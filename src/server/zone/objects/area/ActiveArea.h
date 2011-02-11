@@ -5,7 +5,7 @@
 #ifndef ACTIVEAREA_H_
 #define ACTIVEAREA_H_
 
-#include "engine/core/Core.h"
+#include "engine/orb/DistributedObjectBroker.h"
 
 #include "engine/core/ManagedReference.h"
 
