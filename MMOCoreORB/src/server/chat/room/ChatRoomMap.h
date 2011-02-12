@@ -54,14 +54,8 @@ namespace chat {
 namespace room {
 
 class ChatRoomMap : public HashTable<uint32, ChatRoom*>, public HashTableIterator<uint32, ChatRoom* > {
-	
-	int hash(const uint32& key) {
-        return key;
-	}
-
 public:
 	ChatRoomMap(int initsize) : HashTable<uint32, ChatRoom*>(initsize), HashTableIterator<uint32, ChatRoom*>(this) {
-		setNullValue(NULL);
 	}
 
 	void put(uint32 key, ChatRoom* room) {

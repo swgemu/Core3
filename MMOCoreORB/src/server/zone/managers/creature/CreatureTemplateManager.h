@@ -25,10 +25,6 @@ protected:
 	VectorMap<uint32, DynamicSpawnGroup*> dynamicGroupMap;
 	VectorMap<uint32, StaticSpawnGroup*> staticGroupMap;
 
-	int hash(const uint32& key) {
-		return Integer::hashCode(key);
-	}
-
 public:
 	CreatureTemplateManager() : HashTable<uint32,Reference<CreatureTemplate*> >(3000), Lua(), Singleton<CreatureTemplateManager>() {
 		setLogging(false);

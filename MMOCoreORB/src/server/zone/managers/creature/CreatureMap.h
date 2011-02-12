@@ -52,14 +52,9 @@ which carries forward this exception.
 class CreatureMap : public HashTable<uint64, ManagedReference<CreatureObject*>  >
 		, public HashTableIterator<uint64, ManagedReference<CreatureObject*> > {
 
-	int hash(const uint64& key) {
-        return Long::hashCode(key);
-	}
-
 public:
 	CreatureMap() : HashTable<uint64, ManagedReference<CreatureObject*> >(3000)
 			, HashTableIterator<uint64, ManagedReference<CreatureObject*> >(this) {
-		setNullValue(NULL);
 	}
 
 	void put(uint64 oid, CreatureObject* creature) {

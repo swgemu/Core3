@@ -51,32 +51,9 @@ which carries forward this exception.
 #include "server/zone/ZoneProcessServer.h"
 #include "Performance.h"
 
-class DanceAnimationMap : public HashTable<String, String> {
-	int hash(const String& k) {
-		return k.hashCode();
-	}
-
-public:
-	DanceAnimationMap() {
-
-	}
-};
-
-class InstrumentIdMap : public HashTable<String, int> {
-	int hash(const String& k) {
-		return k.hashCode();
-	}
-
-public:
-	InstrumentIdMap() {
-
-	}
-};
-
-
 class PerformanceManager {
-	DanceAnimationMap danceMap;
-	InstrumentIdMap	instrumentIdMap;
+	HashTable<String, String> danceMap;
+	HashTable<String, int> instrumentIdMap;
 
 	Vector<Performance*>* performances;
 	int loadedCount;

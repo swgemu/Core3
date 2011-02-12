@@ -1277,7 +1277,7 @@ EntertainingSessionHelper* EntertainingSessionHelper::staticInitializer = Entert
 EntertainingSessionHelper::EntertainingSessionHelper() {
 	className = "EntertainingSession";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void EntertainingSessionHelper::finalizeHelper() {

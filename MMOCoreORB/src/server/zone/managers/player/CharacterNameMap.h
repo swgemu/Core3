@@ -12,10 +12,6 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 
 class CharacterNameMap : public HashTable<String, uint64> {
-	int hash(const String& k) {
-		return k.hashCode();
-	}
-
 public:
 	CharacterNameMap() : HashTable<String, uint64>(3000) {
 
