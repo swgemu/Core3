@@ -18,17 +18,10 @@ namespace server {
 			public HashTableIterator<uint64, LoginClient*> {
 
 		int maxConnections;
-
-		int hash(const uint64& key) {
-	        return Long::hashCode(key);
-		}
-
 	public:
 		LoginSessionMap(int maxconn = 10000) : HashTable<uint64, LoginClient*>((int) (maxconn * 1.25f)),
 				HashTableIterator<uint64, LoginClient*>(this) {
 			maxConnections = maxconn;
-
-			setNullValue(NULL);
 		}
 
 		bool add(LoginClient* client) {

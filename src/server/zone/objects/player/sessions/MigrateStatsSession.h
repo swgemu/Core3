@@ -5,7 +5,7 @@
 #ifndef MIGRATESTATSSESSION_H_
 #define MIGRATESTATSSESSION_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

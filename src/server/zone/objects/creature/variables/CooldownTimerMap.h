@@ -90,10 +90,6 @@ public:
 };
 
 class CooldownTimerMap : public HashTable<String, CooldownTimer> {
-	int hash(const String& k) {
-		return k.hashCode();
-	}
-
 public:
 	CooldownTimerMap() : HashTable<String, CooldownTimer>() {
 		setNullValue(NULL);

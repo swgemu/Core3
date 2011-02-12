@@ -57,16 +57,10 @@ namespace server {
 
 		int maxConnections;
 
-		int hash(const uint64& key) {
-	        return Long::hashCode(key);
-		}
-
 	public:
 		ZoneSessionMap(int maxconn = 10000) : HashTable<uint64, ZoneClientSession*>((int) (maxconn * 1.25f)),
 				HashTableIterator<uint64, ZoneClientSession*>(this) {
 			maxConnections = maxconn;
-
-			setNullValue(NULL);
 		}
 
 		bool add(ZoneClientSession* client) {

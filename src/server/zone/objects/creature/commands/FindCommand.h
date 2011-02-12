@@ -57,21 +57,8 @@
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
-class ArgsMap: public HashTable<String, uint8> {
-
-	int hash(const String& key) {
-		return key.hashCode();
-	}
-
-public:
-	ArgsMap() {
-
-	}
-
-};
-
 class FindCommand: public QueueCommand {
-	ArgsMap argsHashMap;
+	HashTable<String, uint8> argsHashMap;
 
 public:
 

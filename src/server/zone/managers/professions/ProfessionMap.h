@@ -50,10 +50,6 @@ which carries forward this exception.
 #include "../../objects/creature/professions/Profession.h"
 
 class ProfessionMap : public HashTable<String, Reference<Profession*> > , public HashTableIterator<String, Reference<Profession*> > {
-	int hash(const String& key) {
-	    return key.hashCode();
-	}
-
 public:
 	ProfessionMap() : HashTable<String, Reference<Profession*> >(50) , HashTableIterator<String, Reference<Profession*> >(this) {
 		setNullValue(NULL);

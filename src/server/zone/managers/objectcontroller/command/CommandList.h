@@ -57,10 +57,6 @@ namespace command {
 
 
 class CommandList : public HashTable<uint32, Reference<QueueCommand*> > , public HashTableIterator<uint32, Reference<QueueCommand*> >, public Logger {
-	int hash(const uint32& key) {
-        return key;
-	}
-
 public:
 	CommandList() : HashTable<uint32, Reference<QueueCommand*> >(700), HashTableIterator<uint32, Reference<QueueCommand*> >(this) {
 		setNullValue(NULL);
