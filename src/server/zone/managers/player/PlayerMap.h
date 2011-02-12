@@ -57,10 +57,6 @@ namespace managers {
 namespace player {
 
 class PlayerMap : private HashTable<String, ManagedReference<PlayerCreature*> >, private HashTableIterator<String, ManagedReference<PlayerCreature*> >, public Mutex {
-	int hash(const String& key) {
-        return key.hashCode();
-	}
-
 public:
 	PlayerMap(int initsize) : HashTable<String, ManagedReference<PlayerCreature*> >(initsize), HashTableIterator<String, ManagedReference<PlayerCreature*> >(this), Mutex("PlayerMap") {
 		setNullValue(NULL);

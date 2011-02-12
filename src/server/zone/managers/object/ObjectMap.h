@@ -52,10 +52,6 @@ which carries forward this exception.
 class ObjectMap : public HashTable<uint64, ManagedReference<SceneObject*> >, public HashTableIterator<uint64, ManagedReference<SceneObject*> > {
 	int maxConnections;
 
-	int hash(const uint64& key) {
-        return Long::hashCode(key);
-	}
-
 public:
 	ObjectMap() {
 		ObjectMap(3000);
