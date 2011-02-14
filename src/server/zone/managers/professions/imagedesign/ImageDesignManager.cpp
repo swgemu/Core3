@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/templates/datatables/DataTableIff.h"
 
 ImageDesignManager::ImageDesignManager() {
 	loadCustomizationData();
@@ -236,23 +237,8 @@ void ImageDesignManager::loadCustomizationData() {
 	if (iffStream == NULL)
 		return;
 
-	iffStream->openForm('DTII');
-	iffStream->openForm('0001');
-
-	Chunk* chunk = iffStream->openChunk('COLS');
-
-	uint32 totalColumns = chunk->readInt();
-
-	for (int i = 0; i < totalColumns; ++i) {
-		String columnName;
-		chunk->readString(columnName);
-
-		System::out << columnName << endl;
-	}
-
-	iffStream->closeChunk('COLS');
-	iffStream->closeForm('0001');
-	iffStream->closeForm('DTII');
+	DataTableIff dataTable;
+	dataTable.readObject(iffStream);
 
 	delete iffStream;
 	iffStream = NULL;
