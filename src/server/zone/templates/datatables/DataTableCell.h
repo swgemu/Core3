@@ -36,6 +36,10 @@ public:
 	virtual void getValue(bool& out) {
 		out = false;
 	}
+
+	virtual byte getType() = 0;
+
+	virtual String toString() = 0;
 };
 
 class DataTableCellString : public DataTableCell {
@@ -51,6 +55,14 @@ public:
 
 	void getValue(String& out) {
 		out = value;
+	}
+
+	byte getType() {
+		return 's';
+	}
+
+	String toString() {
+		return value;
 	}
 };
 
@@ -69,6 +81,14 @@ public:
 	void getValue(int& out) {
 		out = value;
 	}
+
+	byte getType() {
+		return 'i';
+	}
+
+	String toString() {
+		return String::valueOf(value);
+	}
 };
 
 class DataTableCellHex : public DataTableCell {
@@ -86,6 +106,14 @@ public:
 	void getValue(uint32& out) {
 		out = value;
 	}
+
+	byte getType() {
+		return 'h';
+	}
+
+	String toString() {
+		return String::valueOf(value);
+	}
 };
 
 class DataTableCellFloat : public DataTableCell {
@@ -93,7 +121,7 @@ class DataTableCellFloat : public DataTableCell {
 
 public:
 	DataTableCellFloat() {
-			value = 0.f;
+		value = 0.f;
 	}
 
 	void parse(Chunk* chunk) {
@@ -102,6 +130,14 @@ public:
 
 	void getValue(float& out) {
 		out = value;
+	}
+
+	byte getType() {
+		return 'f';
+	}
+
+	String toString() {
+		return String::valueOf(value);
 	}
 };
 
@@ -119,6 +155,14 @@ public:
 
 	void getValue(bool& out) {
 		out = value;
+	}
+
+	byte getType() {
+		return 'b';
+	}
+
+	String toString() {
+		return String::valueOf(value);
 	}
 };
 
