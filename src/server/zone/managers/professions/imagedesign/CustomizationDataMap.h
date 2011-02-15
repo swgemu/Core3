@@ -18,7 +18,7 @@
 class CustomizationDataMap : public VectorMap<String, CustomizationData> {
 public:
 	CustomizationDataMap() {
-
+		setAllowDuplicateInsertPlan();
 	}
 
 	void parseFromIffStream(IffStream* iffStream) {

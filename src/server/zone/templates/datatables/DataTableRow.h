@@ -9,8 +9,7 @@
 #define DATATABLEROW_H_
 
 #include "engine/engine.h"
-
-class DataTableCell;
+#include "DataTableCell.h"
 
 class DataTableRow {
 	Vector<DataTableCell*> cells;
@@ -21,7 +20,12 @@ public:
 	}
 
 	~DataTableRow() {
+		while (cells.size() > 0) {
+			DataTableCell* cell = cells.remove(0);
 
+			delete cell;
+			cell = NULL;
+		}
 	}
 
 	void addCell(DataTableCell* c) {
