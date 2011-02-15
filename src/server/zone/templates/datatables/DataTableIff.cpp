@@ -108,3 +108,16 @@ void DataTableIff::readObject(IffStream* iffStream) {
 
 	iffStream->closeForm('DTII');
 }
+
+Vector<DataTableRow*> DataTableIff::getRowsByColumn(int columnIdx, const String& columnValue) {
+	Vector<DataTableRow*> rows;
+
+	for (int i = 0; i < rows.size(); ++i) {
+		DataTableRow* row = rows.get(i);
+
+		if (row->getCell(columnIdx)->toString() == columnValue)
+			rows.add(row);
+	}
+
+	return rows;
+}
