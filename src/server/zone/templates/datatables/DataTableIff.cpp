@@ -7,6 +7,7 @@
 
 #include "DataTableIff.h"
 #include "DataTableCell.h"
+#include "DataTableRow.h"
 
 DataTableIff::DataTableIff() {
 
@@ -56,6 +57,9 @@ void DataTableIff::readObject(IffStream* iffStream) {
 	uint32 totalRows = chunk->readInt();
 
 	for (int i = 0; i < totalRows; ++i) {
+		DataTableRow* row = NULL;
+		row = new DataTableRow();
+
 		for (int j = 0; j < totalColumns; ++j) {
 			byte type = columnTypes.get(j);
 
@@ -92,7 +96,8 @@ void DataTableIff::readObject(IffStream* iffStream) {
 				cell->parse(chunk);
 				break;
 			}
-
+			row->addCell(cell);
+			rows.add(row);
 			cells.add(cell);
 		}
 	}

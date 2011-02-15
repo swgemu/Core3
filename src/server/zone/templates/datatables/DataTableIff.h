@@ -12,17 +12,27 @@
 #include "../IffTemplate.h"
 
 class DataTableCell;
+class DataTableRow;
 
 class DataTableIff : public IffTemplate {
 	Vector<String> columns;
 	Vector<byte> columnTypes;
 	Vector<DataTableCell*> cells;
+	Vector<DataTableRow*> rows;
 
 public:
 	DataTableIff();
 	~DataTableIff();
 
 	void readObject(IffStream* iffStream);
+
+	DataTableRow* getRow(int idx) {
+		return rows.get(idx);
+	}
+
+	int getRowsSize() {
+		return rows.size();
+	}
 };
 
 
