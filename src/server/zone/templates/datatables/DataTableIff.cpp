@@ -14,11 +14,11 @@ DataTableIff::DataTableIff() {
 }
 
 DataTableIff::~DataTableIff() {
-	while (cells.size() > 0) {
-		DataTableCell* cell = cells.remove(0);
+	while (rows.size() > 0) {
+		DataTableRow* row = rows.remove(0);
 
-		delete cell;
-		cell = NULL;
+		delete row;
+		row = NULL;
 	}
 }
 
@@ -57,8 +57,7 @@ void DataTableIff::readObject(IffStream* iffStream) {
 	uint32 totalRows = chunk->readInt();
 
 	for (int i = 0; i < totalRows; ++i) {
-		DataTableRow* row = NULL;
-		row = new DataTableRow();
+		DataTableRow* row = new DataTableRow();
 
 		for (int j = 0; j < totalColumns; ++j) {
 			byte type = columnTypes.get(j);
@@ -96,10 +95,11 @@ void DataTableIff::readObject(IffStream* iffStream) {
 				cell->parse(chunk);
 				break;
 			}
+
 			row->addCell(cell);
-			rows.add(row);
-			cells.add(cell);
 		}
+
+		rows.add(row);
 	}
 
 	iffStream->closeChunk('ROWS');

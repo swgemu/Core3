@@ -236,12 +236,9 @@ void ImageDesignManager::loadCustomizationData() {
 
 	customizationMap.parseFromIffStream(iffStream);
 
-	CustomizationData* data = NULL;
-
-
 	// This is ALL TESTING...
 	for (int i = 0; i < customizationMap.size(); i++) {
-		data = &customizationMap.get(i);
+		CustomizationData* data = &customizationMap.get(i);
 
 		if (data == NULL)
 			return;
