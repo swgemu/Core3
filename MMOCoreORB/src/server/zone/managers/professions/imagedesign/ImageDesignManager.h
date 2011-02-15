@@ -16,31 +16,16 @@
 #include "CustomizationDataMap.h"
 
 class ImageDesignManager {
-	// THESE CANNOT BE HERE!!!!!!!!!!!!
-	String speciesGender;
-	String customizationName;
-	CreatureObject* creatureObject;
-	CustomizationVariables hairCustomization;
-
-	// ------------------------------------------
-
-	VectorMap<String, CustomizationData*> customizationData;
-
 	void loadCustomizationData();
-
-protected:
-	CustomizationDataMap customizationMap;
-	VectorMap<String, CustomizationDataMap*> testVectorMap;
 
 public:
 	ImageDesignManager();
 	~ImageDesignManager();
 
-	void updateCustomization(String customizationName, float value, CreatureObject* creo = NULL);
+	void updateCustomization(const String& customizationName, float value, CreatureObject* creo = NULL);
+	void updateCustomization(const String& customizationName, uint32 value, CreatureObject* creo = NULL);
 
-	void updateCustomization(String customizationName, uint32 value, CreatureObject* creo = NULL);
-
-	CustomizationData* getCustomizationData(String speciesGender, String customizationName);
+	CustomizationData* getCustomizationData(const String& speciesGender, const String& customizationName);
 
 	String getSpeciesGenderString(CreatureObject* creo = NULL);
 

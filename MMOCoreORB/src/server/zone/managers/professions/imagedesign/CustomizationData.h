@@ -8,8 +8,7 @@
 #ifndef CUSTOMIZATIONDATA_H_
 #define CUSTOMIZATIONDATA_H_
 
-class CustomizationData : public Serializable {
-	String speciesGender;
+class CustomizationData : public Object {
 	String customizationGroup;
 	String type;
 	String customizationName;
@@ -29,9 +28,7 @@ class CustomizationData : public Serializable {
 	String modificationType;
 
 public:
-
 	CustomizationData() {
-		/*speciesGender = 0;
 		customizationGroup = 0;
 		type = 0;
 		customizationName = 0;
@@ -48,13 +45,18 @@ public:
 		isVarHairColor = 0;
 		imageDesignSkillMod = 0;
 		skillModValue = 0;
-		modificationType = 0;*/
-
-		addSerializableVariables();
+		modificationType = 0;
 	}
 
-	CustomizationData(const CustomizationData& c) :	Object(), Serializable() {
-		speciesGender = c.speciesGender;
+	CustomizationData(DataTableRow* row) {
+		try {
+			row->getCell(0);
+		} catch (Exception& e) {
+			System::out << "CustomizationData() exception: " << e.getMessage() << endl;
+		}
+	}
+
+	CustomizationData(const CustomizationData& c) :	Object() {
 		customizationGroup = c.customizationGroup;
 		type = c.type;
 		customizationName = c.customizationName;
@@ -72,15 +74,12 @@ public:
 		imageDesignSkillMod = c.imageDesignSkillMod;
 		skillModValue = c.skillModValue;
 		modificationType = c.modificationType;
-
-		addSerializableVariables();
 	}
 
 	CustomizationData& operator=(const CustomizationData& c) {
 		if (this == &c)
 			return *this;
 
-		speciesGender = c.speciesGender;
 		customizationGroup = c.customizationGroup;
 		type = c.type;
 		customizationName = c.customizationName;
@@ -102,133 +101,71 @@ public:
 		return *this;
 	}
 
-	inline void addSerializableVariables() {
-		addSerializableVariable("speciesGender", &speciesGender);
-		addSerializableVariable("customizationGroup", &customizationGroup);
-		addSerializableVariable("type", &type);
-		addSerializableVariable("customizationName", &customizationName);
-		addSerializableVariable("isScale", &isScale);
-		addSerializableVariable("reverse", &reverse);
-		addSerializableVariable("colorLinked", &colorLinked);
-		addSerializableVariable("colorLinkedtoSelf0", &colorLinkedtoSelf0);
-		addSerializableVariable("colorLinkedtoSelf1", &colorLinkedtoSelf1);
-		addSerializableVariable("cameraYaw", &cameraYaw);
-		addSerializableVariable("discrete", &discrete);
-		addSerializableVariable("randomizable", &randomizable);
-		addSerializableVariable("randomizableGroup", &randomizableGroup);
-		addSerializableVariable("isVarHairColor", &isVarHairColor);
-		addSerializableVariable("imageDesignSkillMod", &imageDesignSkillMod);
-		addSerializableVariable("skillModValue", &skillModValue);
-		addSerializableVariable("modificationType", &modificationType);
-	}
-
-	inline void setSpeciesGender(String value) {
-		speciesGender = value;
-	}
-	inline void setCustomizationGroup(String value) {
-		customizationGroup = value;
-	}
-	inline void setType(String value) {
-		type = value;
-	}
-	inline void setCustomizationName(String value) {
-		customizationName = value;
-	}
-	inline void setVariables(String value) {
-		variables = value;
-	}
-	inline void setIsScale(bool value) {
-		isScale = value;
-	}
-	inline void setReverse(bool value) {
-		reverse = value;
-	}
-	inline void setColorLinked(String value) {
-		colorLinked = value;
-	}
-	inline void setColorLinkedtoSelf0(String value) {
-		colorLinkedtoSelf0 = value;
-	}
-	inline void setColorLinkedtoSelf1(String value) {
-		colorLinkedtoSelf1 = value;
-	}
-	inline void setCameraYaw(int value) {
-		cameraYaw = value;
-	}
-	inline void setDiscrete(bool value) {
-		discrete = value;
-	}
-	inline void setRandomizable(bool value) {
-		randomizable = value;
-	}
-	inline void setRandomizableGroup(bool value) {
-		randomizableGroup = value;
-	}
-	inline void setIsVarHairColor(bool value) {
-		isVarHairColor = value;
-	}
-	inline void setImageDesignSkillMod(String value) {
-		imageDesignSkillMod = value;
-	}
-	inline void setSkillModValue(int value) {
-		skillModValue = value;
-	}
-	inline void setModificationType(String value) {
-		modificationType = value;
-	}
-
-	inline String getSpeciesGender() {
-		return speciesGender;
-	}
-	inline String getCustomizationGroup() {
+	inline String& getCustomizationGroup() {
 		return customizationGroup;
 	}
-	inline String getType() {
+
+	inline String& getType() {
 		return type;
 	}
-	inline String getCustomizationName() {
+
+	inline String& getCustomizationName() {
 		return customizationName;
 	}
-	inline String getVariables() {
+
+	inline String& getVariables() {
 		return variables;
 	}
+
 	inline bool getIsScale() {
 		return isScale;
 	}
+
 	inline bool getReverse() {
 		return reverse;
 	}
-	inline String getColorLinked() {
+
+	inline String& getColorLinked() {
 		return colorLinked;
 	}
-	inline String getColorLinkedtoSelf0() {
+
+	inline String& getColorLinkedtoSelf0() {
 		return colorLinkedtoSelf0;
 	}
-	inline String getColorLinkedtoSelf1() {
+
+	inline String& getColorLinkedtoSelf1() {
 		return colorLinkedtoSelf1;
 	}
+
 	inline int getCameraYaw() {
 		return cameraYaw;
 	}
+
 	inline bool getDiscrete() {
 		return discrete;
 	}
+
 	inline bool getRandomizable() {
 		return randomizable;
 	}
+
 	inline bool getRandomizableGroup() {
 		return randomizableGroup;
 	}
+
 	inline bool getIsVarHairColor() {
 		return isVarHairColor;
 	}
-	inline String getImageDesignSkillMod() {
+
+	inline String& getImageDesignSkillMod() {
 		return imageDesignSkillMod;
 	}
+
 	inline int getSkillModValue() {
 		return skillModValue;
 	}
-	inline String getModificationType() {
+
+	inline String& getModificationType() {
 		return modificationType;
 	}
 };
