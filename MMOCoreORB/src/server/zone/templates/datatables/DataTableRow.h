@@ -23,6 +23,18 @@ public:
 	~DataTableRow() {
 
 	}
+
+	void addCell(DataTableCell* c) {
+		cells.add(c);
+	}
+
+	DataTableCell* getCell(int idx) {
+		return cells.get(idx);
+	}
+
+	int getCellsSize() {
+		return cells.size();
+	}
 };
 
 #endif /* DATATABLEROW_H_ */
