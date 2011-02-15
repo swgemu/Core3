@@ -50,12 +50,13 @@
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
 
 ImageDesignManager::ImageDesignManager() {
 	loadCustomizationData();
 }
 
-void ImageDesignManager::updateCustomization(String customizationName, float value, CreatureObject* creo) {
+void ImageDesignManager::updateCustomization(const String& customizationName, float value, CreatureObject* creo) {
 	/*if (creo == NULL)
 		return;
 
@@ -182,7 +183,7 @@ void ImageDesignManager::updateCustomization(String customizationName, float val
 */
 }
 
-void ImageDesignManager::updateCustomization(String customizationName, uint32 value, CreatureObject* creo) {
+void ImageDesignManager::updateCustomization(const String& customizationName, uint32 value, CreatureObject* creo) {
 	/*if (value > 255 || creo == NULL)
 		return;
 
@@ -234,21 +235,42 @@ void ImageDesignManager::loadCustomizationData() {
 	if (iffStream == NULL)
 		return;
 
-	customizationMap.parseFromIffStream(iffStream);
+	//Get the datatable, and parse it into a datatable object.
+	DataTableIff dataTable;
+	dataTable.readObject(iffStream);
 
-	// This is ALL TESTING...
-	for (int i = 0; i < customizationMap.size(); i++) {
-		CustomizationData* data = &customizationMap.get(i);
+	for (int i = 0; i < dataTable.getTotalRows(); i++) {
+		DataTableRow* dataRow = dataTable.getRow(i);
 
-		if (data == NULL)
-			return;
+		if (dataRow == NULL)
+			continue;
 
-		System::out << data->getVariables() << endl;
+		//Get the species gender
+		String speciesGender = dataRow->getCell(0)->toString();
+
+		uint32 templateCRC = String("object/creature/player/" + speciesGender + ".iff").hashCode();
+		PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
+
+		if (tmpl == NULL)
+			continue;
+
+		CustomizationDataMap* dataMap = tmpl->getCustomizationDataMap();
+
+		if (dataMap == NULL)
+			continue;
+
+		CustomizationData customizationData(dataRow);
+		dataMap->put(customizationData.getCustomizationName(), customizationData);
 	}
 
+	//Done with the stream, so delete it.
+	if (iffStream != NULL) {
+		delete iffStream;
+		iffStream = NULL;
+	}
 }
 
-CustomizationData* ImageDesignManager::getCustomizationData(String speciesGender, String customizationName) {
+CustomizationData* ImageDesignManager::getCustomizationData(const String& speciesGender, const String& customizationName) {
 
 	//StringBuffer speciesGenderCustomization;
 	//speciesGenderCustomization << speciesGender << "_" << customizationName;

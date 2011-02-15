@@ -24,11 +24,19 @@ public:
 
 	void readObject(IffStream* iffStream);
 
-	DataTableRow* getRow(int idx) {
+	/**
+	 * Returns a collection of rows whose column specified by the column index matches the specified column value.
+	 * @param columnIdx Which column to lookup.
+	 * @param columnValue What value should be compared.
+	 * @return Returns a collection of DataTableRow objects.
+	 */
+	Vector<DataTableRow*> getRowsByColumn(int columnIdx, const String& columnValue);
+
+	inline DataTableRow* getRow(int idx) {
 		return rows.get(idx);
 	}
 
-	int getRowsSize() {
+	inline int getTotalRows() {
 		return rows.size();
 	}
 };
