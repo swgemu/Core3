@@ -11,13 +11,11 @@
 #include "engine/engine.h"
 #include "../IffTemplate.h"
 
-class DataTableCell;
 class DataTableRow;
 
 class DataTableIff : public IffTemplate {
 	Vector<String> columns;
 	Vector<byte> columnTypes;
-	Vector<DataTableCell*> cells;
 	Vector<DataTableRow*> rows;
 
 public:
