@@ -208,7 +208,7 @@ ToolTangibleObjectHelper* ToolTangibleObjectHelper::staticInitializer = ToolTang
 ToolTangibleObjectHelper::ToolTangibleObjectHelper() {
 	className = "ToolTangibleObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ToolTangibleObjectHelper::finalizeHelper() {

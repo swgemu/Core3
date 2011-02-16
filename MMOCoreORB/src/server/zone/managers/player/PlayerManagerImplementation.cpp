@@ -449,32 +449,39 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 TangibleObject* PlayerManagerImplementation::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
 	TangibleObject* hairObject = NULL;
 
-	if (hairObjectFile.isEmpty()) {
-		info("hairObjectFile empty");
-		return NULL;
-	}
+	try {
 
-	//String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
+		if (hairObjectFile.isEmpty()) {
+			info("hairObjectFile empty");
+			return NULL;
+		}
 
-	info("trying to create hair object " + hairObjectFile);
-	SceneObject* hair = server->createObject(hairObjectFile.hashCode(), 1);
+		//String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
 
-	if (hair == NULL) {
-		info("objectManager returned NULL hair object");
-		return NULL;
-	}
+		info("trying to create hair object " + hairObjectFile);
+		SceneObject* hair = server->createObject(hairObjectFile.hashCode(), 1);
 
-	if (hair->getGameObjectType() != SceneObjectImplementation::GENERICITEM) {
-		info("wrong hair object type");
-		//hair->finalize();
+		if (hair == NULL) {
+			info("objectManager returned NULL hair object");
+			return NULL;
+		}
 
-		return NULL;
-	} else {
-		hairObject = (TangibleObject*) hair;
+		if (hair->getGameObjectType() != SceneObjectImplementation::GENERICITEM || hair->getArrangementDescriptor(0) != "hair") {
+			//info("wrong hair object type");
+			//hair->finalize();
 
-		hairObject->setCustomizationString(hairCustomization);
+			ManagedReference<SceneObject*> clearRef = hair;
 
-		info("hair object created successfully");
+			return NULL;
+		} else {
+			hairObject = (TangibleObject*) hair;
+
+			hairObject->setCustomizationString(hairCustomization);
+
+			info("hair object created successfully");
+		}
+	}catch (...) {
+		hairObject = NULL;
 	}
 
 	return hairObject;

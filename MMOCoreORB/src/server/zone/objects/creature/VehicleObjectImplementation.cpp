@@ -143,19 +143,21 @@ int VehicleObjectImplementation::healDamage(TangibleObject* healer, int damageTy
 int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	unlock();
 
-	try {
-		if (attacker != _this) {
-			Locker clocker(linkedCreature, attacker);
+	if (linkedCreature != NULL) {
+		try {
+			if (attacker != _this) {
+				Locker clocker(linkedCreature, attacker);
 
-			linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
-		} else {
-			Locker locker(linkedCreature);
+				linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
+			} else {
+				Locker locker(linkedCreature);
 
-			linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
+				linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
+			}
+
+
+		} catch (...) {
 		}
-
-
-	} catch (...) {
 	}
 
 	if (attacker != _this)

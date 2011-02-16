@@ -209,7 +209,7 @@ DurationBuffHelper* DurationBuffHelper::staticInitializer = DurationBuffHelper::
 DurationBuffHelper::DurationBuffHelper() {
 	className = "DurationBuff";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void DurationBuffHelper::finalizeHelper() {

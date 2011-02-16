@@ -5,7 +5,7 @@
 #ifndef MISSIONSPAWNACTIVEAREA_H_
 #define MISSIONSPAWNACTIVEAREA_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

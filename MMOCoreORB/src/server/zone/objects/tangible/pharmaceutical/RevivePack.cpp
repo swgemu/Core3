@@ -580,7 +580,7 @@ RevivePackHelper* RevivePackHelper::staticInitializer = RevivePackHelper::instan
 RevivePackHelper::RevivePackHelper() {
 	className = "RevivePack";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void RevivePackHelper::finalizeHelper() {

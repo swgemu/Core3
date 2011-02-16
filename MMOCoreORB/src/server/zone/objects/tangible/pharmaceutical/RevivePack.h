@@ -5,7 +5,7 @@
 #ifndef REVIVEPACK_H_
 #define REVIVEPACK_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

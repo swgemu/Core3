@@ -48,8 +48,8 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	if (spawnedRandomCreatures > 1000)
 		return;
 
-	float newX = creature->getPositionX() + (-20.f + (float)System::random(40));
-	float newY = creature->getPositionY() + (-20.f + (float)System::random(40));
+	float newX = creature->getPositionX() + (-80.f + (float)System::random(160));
+	float newY = creature->getPositionY() + (-80.f + (float)System::random(160));
 
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
@@ -91,7 +91,7 @@ void CreatureManagerImplementation::spawnRandomCreature(int number, float x, flo
 		//randomTemplate = iterator.getNextKey();
 	}
 
-	if (creoTempl->getLevel() > 100)
+	if (creoTempl == NULL || creoTempl->getLevel() > 100)
 		return;
 
 	for (int i = 0; i < number; ++i) {
@@ -717,8 +717,11 @@ void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* 
 
 	if (!creature->hasLoot()) {
 		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(creature->getPendingTask("despawn"));
-		despawn->cancel();
 
-		despawn->reschedule(1000);
+		if (despawn != NULL) {
+			despawn->cancel();
+
+			despawn->reschedule(1000);
+		}
 	}
 }

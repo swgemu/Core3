@@ -53,6 +53,7 @@ public:
 			uint32 sesskey = result->getUnsignedInt(0);
 
 			delete result;
+			result = NULL;
 
 			if (sesskey == sessionID) {
 				//Session was found
@@ -71,6 +72,8 @@ public:
 					BaseMessage* cpm = new ClientPermissionsMessage();
 					client->sendMessage(cpm);
 
+					return;
+
 					//return;
 				//} else {
 					//ErrorMessage* errMsg = new ErrorMessage("Login Error", "You already have the maximum number of characters logged in to this account.", 0x0);
@@ -79,6 +82,8 @@ public:
 				//}
 			}
 		}
+
+		delete result;
 
 		ErrorMessage* errMsg = new ErrorMessage("Login Error", "Your session key is invalid, or has expired. Please restart your client.", 0x0);
 		client->sendMessage(errMsg);

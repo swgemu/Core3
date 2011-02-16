@@ -299,7 +299,7 @@ CharacterBuilderTerminalHelper* CharacterBuilderTerminalHelper::staticInitialize
 CharacterBuilderTerminalHelper::CharacterBuilderTerminalHelper() {
 	className = "CharacterBuilderTerminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CharacterBuilderTerminalHelper::finalizeHelper() {

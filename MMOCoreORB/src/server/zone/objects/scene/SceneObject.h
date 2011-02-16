@@ -5,7 +5,7 @@
 #ifndef SCENEOBJECT_H_
 #define SCENEOBJECT_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

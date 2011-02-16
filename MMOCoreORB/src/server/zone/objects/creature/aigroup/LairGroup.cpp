@@ -215,7 +215,7 @@ LairGroupHelper* LairGroupHelper::staticInitializer = LairGroupHelper::instance(
 LairGroupHelper::LairGroupHelper() {
 	className = "LairGroup";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void LairGroupHelper::finalizeHelper() {

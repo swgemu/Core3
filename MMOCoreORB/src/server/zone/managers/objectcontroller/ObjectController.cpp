@@ -300,7 +300,7 @@ ObjectControllerHelper* ObjectControllerHelper::staticInitializer = ObjectContro
 ObjectControllerHelper::ObjectControllerHelper() {
 	className = "ObjectController";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ObjectControllerHelper::finalizeHelper() {

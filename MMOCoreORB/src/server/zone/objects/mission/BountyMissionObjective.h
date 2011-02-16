@@ -5,7 +5,7 @@
 #ifndef BOUNTYMISSIONOBJECTIVE_H_
 #define BOUNTYMISSIONOBJECTIVE_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

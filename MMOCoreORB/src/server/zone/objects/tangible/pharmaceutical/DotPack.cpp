@@ -790,7 +790,7 @@ DotPackHelper* DotPackHelper::staticInitializer = DotPackHelper::instance();
 DotPackHelper::DotPackHelper() {
 	className = "DotPack";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void DotPackHelper::finalizeHelper() {

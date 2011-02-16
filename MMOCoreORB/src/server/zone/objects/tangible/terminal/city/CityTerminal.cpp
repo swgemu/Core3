@@ -283,7 +283,7 @@ CityTerminalHelper* CityTerminalHelper::staticInitializer = CityTerminalHelper::
 CityTerminalHelper::CityTerminalHelper() {
 	className = "CityTerminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CityTerminalHelper::finalizeHelper() {
