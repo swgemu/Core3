@@ -100,11 +100,15 @@ public:
 
 	void setAccount(Account* acc);
 
+	void setAccountID(unsigned int acc);
+
 	BaseClientProxy* getSession();
 
 	SceneObject* getPlayer();
 
 	unsigned int getSessionID();
+
+	unsigned int getAccountID();
 
 	Account* getAccount();
 
@@ -140,6 +144,8 @@ protected:
 
 	ManagedReference<Account* > account;
 
+	unsigned int accountID;
+
 private:
 	bool disconnecting;
 
@@ -172,11 +178,15 @@ public:
 
 	void setAccount(Account* acc);
 
+	void setAccountID(unsigned int acc);
+
 	BaseClientProxy* getSession();
 
 	SceneObject* getPlayer();
 
 	unsigned int getSessionID();
+
+	unsigned int getAccountID();
 
 	Account* getAccount();
 
@@ -247,9 +257,13 @@ public:
 
 	void setAccount(Account* acc);
 
+	void setAccountID(unsigned int acc);
+
 	SceneObject* getPlayer();
 
 	unsigned int getSessionID();
+
+	unsigned int getAccountID();
 
 	Account* getAccount();
 

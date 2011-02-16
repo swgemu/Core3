@@ -295,10 +295,10 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
 	ZoneClientSession* client = data->getClient();
 
-	ManagedReference<Account*> account = client->getAccount();
+	/*ManagedReference<Account*> account = client->getAccount();
 
 	if (account == NULL)
-		return false;
+		return false;*/
 
 	String race;
 	callback->getRaceFile(race);
@@ -340,7 +340,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player.get();
 	playerCreature->setCustomObjectName(name, false);
-	playerCreature->setAccountID(account->getAccountID()); // TODO: Could this be a weak or managed rereference?
+	playerCreature->setAccountID(client->getAccountID()); // TODO: Could this be a weak or managed rereference?
 
 	if(!createAllPlayerObjects(playerCreature)) {
 		error("error creating all player objects");
@@ -350,14 +350,14 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	PlayerObject* ghost = playerCreature->getPlayerObject();
 
 	//Accounts with an admin level of > 0 are automatically given admin at character creation
-	if (account->getAdminLevel() > 0) {
+	/*if (account->getAdminLevel() > 0) {
 		ghost->setAdminLevel(account->getAdminLevel());
 
 		Vector<String> skills;
 		skills.add("admin");
 
 		ghost->addSkills(skills, false);
-	}
+	}*/
 
 	createAllPlayerObjects(playerCreature);
 	createDefaultPlayerItems(playerCreature, profession, race);
@@ -383,7 +383,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	try {
 		StringBuffer query;
 		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
-				<< " VALUES (" <<  playerCreature->getObjectID() << "," << account->getAccountID() <<  "," << 2 << ","
+				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
 				<< "'" << firstName.escapeString() << "','" << lastName.escapeString() << "'," << raceID << "," <<  0 << ",'" << race.escapeString() << "')";
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -422,7 +422,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	playerCreature->setClient(client);
 	client->setPlayer(player);
 
-	playerCreature->setAccountID(account->getAccountID());
+	playerCreature->setAccountID(client->getAccountID());
 
 	if (callback->getTutorialFlag()) {
 		createTutorialBuilding(playerCreature);

@@ -43,6 +43,7 @@ public:
 
 	void run() {
 		client->setSessionID(sessionID);
+		client->setAccountID(accountID);
 
 		StringBuffer query;
 		query << "SELECT session_id FROM sessions WHERE account_id = " << accountID << ";";
