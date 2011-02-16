@@ -431,7 +431,6 @@ bool CustomizationVariables::toString(String& ascii) {
 	return true;
 }
 
-
 bool CustomizationVariables::parseFromString(const String& str, int version) {
 	String data = str;
 	BinaryData cust(data);

@@ -65,6 +65,8 @@ using namespace server::zone::objects::player::events;
 
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
+#include "server/zone/objects/player/sessions/ImageDesignData.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -82,13 +84,15 @@ class ImageDesignSession : public Facade {
 public:
 	ImageDesignSession(CreatureObject* parent);
 
-	void startImageDesign(PlayerCreature* object, PlayerCreature* designer, PlayerCreature* targetPlayer, unsigned long long tent, int type = 0);
+	void startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer);
 
-	void updateImageDesign(unsigned long long object, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type = 0);
+	void updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
-	void cancelImageDesign(unsigned long long object, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type = 0);
+	void cancelImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
 	int initializeSession();
+
+	int doPayment();
 
 	int cancelSession();
 
@@ -99,44 +103,6 @@ public:
 	void dequeueIdTimeoutEvent();
 
 	void sessionTimeout();
-
-	void setHairObject(String& hair);
-
-	void setUkstring1(String& uk1);
-
-	void setTimeStamp(unsigned int time);
-
-	void setRequiredPayment(unsigned int rp);
-
-	void setOfferedPayment(unsigned int op);
-
-	void setDesignerAccepted(byte da);
-
-	void setTargetAccepted(unsigned int ta);
-
-	void setStatMigration(byte sm);
-
-	void setUnknownInt1(unsigned int value);
-
-	void setUnknownInt4(unsigned int value);
-
-	void setUnknownInt5(unsigned int value);
-
-	void setUnknownInt6(unsigned int value);
-
-	void setUnknownInt7(unsigned int value);
-
-	void setSizeFloatAttrs(unsigned int sfa);
-
-	void setAttributesSize(unsigned int val);
-
-	void setHoloEmote(String& val);
-
-	int doPayment();
-
-	void setFloatMap(VectorMap<String, float>& map);
-
-	void setColorMap(VectorMap<String, unsigned int>& map);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -163,50 +129,14 @@ namespace objects {
 namespace player {
 
 class ImageDesignSessionImplementation : public FacadeImplementation {
-protected:
-	String hairObject;
-
-	String ukstring1;
-
-	unsigned int ukint1;
-
-	unsigned int timestamp;
-
-	unsigned int requiredPayment;
-
-	unsigned int offeredPayment;
-
-	byte designerAccepted;
-
-	unsigned int targetAccepted;
-
-	byte statMigration;
-
-	unsigned int ukint4;
-
-	unsigned int ukint5;
-
-	unsigned int ukint6;
-
-	unsigned int ukint7;
-
-	unsigned int sizeFloatAttrs;
-
-	unsigned int attributesSize;
-
-	String holoEmote;
-
-	VectorMap<String, float> floatMap;
-
-	VectorMap<String, unsigned int> colorMap;
-
-private:
-	ImageDesignManager* idMgr;
+	ImageDesignManager* imageDesignManager;
 
 protected:
 	ManagedWeakReference<PlayerCreature* > designerCreature;
 
 	ManagedWeakReference<PlayerCreature* > targetCreature;
+
+	ImageDesignData imageDesignData;
 
 	Reference<ImageDesignTimeoutEvent*> idTimeoutEvent;
 
@@ -215,13 +145,15 @@ public:
 
 	ImageDesignSessionImplementation(DummyConstructorParameter* param);
 
-	void startImageDesign(PlayerCreature* object, PlayerCreature* designer, PlayerCreature* targetPlayer, unsigned long long tent, int type = 0);
+	void startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer);
 
-	void updateImageDesign(unsigned long long object, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type = 0);
+	void updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
-	void cancelImageDesign(unsigned long long object, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type = 0);
+	void cancelImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
 	int initializeSession();
+
+	int doPayment();
 
 	int cancelSession();
 
@@ -232,44 +164,6 @@ public:
 	void dequeueIdTimeoutEvent();
 
 	void sessionTimeout();
-
-	void setHairObject(String& hair);
-
-	void setUkstring1(String& uk1);
-
-	void setTimeStamp(unsigned int time);
-
-	void setRequiredPayment(unsigned int rp);
-
-	void setOfferedPayment(unsigned int op);
-
-	void setDesignerAccepted(byte da);
-
-	void setTargetAccepted(unsigned int ta);
-
-	void setStatMigration(byte sm);
-
-	void setUnknownInt1(unsigned int value);
-
-	void setUnknownInt4(unsigned int value);
-
-	void setUnknownInt5(unsigned int value);
-
-	void setUnknownInt6(unsigned int value);
-
-	void setUnknownInt7(unsigned int value);
-
-	void setSizeFloatAttrs(unsigned int sfa);
-
-	void setAttributesSize(unsigned int val);
-
-	void setHoloEmote(String& val);
-
-	int doPayment();
-
-	void setFloatMap(VectorMap<String, float>& map);
-
-	void setColorMap(VectorMap<String, unsigned int>& map);
 
 	ImageDesignSession* _this;
 
@@ -314,11 +208,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void updateImageDesign(unsigned long long object, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type);
-
-	void cancelImageDesign(unsigned long long object, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type);
-
 	int initializeSession();
+
+	int doPayment();
 
 	int cancelSession();
 
@@ -330,44 +222,6 @@ public:
 
 	void sessionTimeout();
 
-	void setHairObject(String& hair);
-
-	void setUkstring1(String& uk1);
-
-	void setTimeStamp(unsigned int time);
-
-	void setRequiredPayment(unsigned int rp);
-
-	void setOfferedPayment(unsigned int op);
-
-	void setDesignerAccepted(byte da);
-
-	void setTargetAccepted(unsigned int ta);
-
-	void setStatMigration(byte sm);
-
-	void setUnknownInt1(unsigned int value);
-
-	void setUnknownInt4(unsigned int value);
-
-	void setUnknownInt5(unsigned int value);
-
-	void setUnknownInt6(unsigned int value);
-
-	void setUnknownInt7(unsigned int value);
-
-	void setSizeFloatAttrs(unsigned int sfa);
-
-	void setAttributesSize(unsigned int val);
-
-	void setHoloEmote(String& val);
-
-	int doPayment();
-
-protected:
-	String _param0_setHairObject__String_;
-	String _param0_setUkstring1__String_;
-	String _param0_setHoloEmote__String_;
 };
 
 class ImageDesignSessionHelper : public DistributedObjectClassHelper, public Singleton<ImageDesignSessionHelper> {
