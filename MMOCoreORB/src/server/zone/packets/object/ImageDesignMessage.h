@@ -51,13 +51,13 @@ which carries forward this exception.
 
 class ImageDesignStartMessage : public ObjectControllerMessage {
 public:
-	ImageDesignStartMessage(PlayerCreature* object, PlayerCreature* designer, PlayerCreature* client, uint64 tent, int type = 0)
+	ImageDesignStartMessage(PlayerCreature* object, PlayerCreature* designer, PlayerCreature* targetPlayer, uint64 tentID, int type = 0)
 		: ObjectControllerMessage(object->getObjectID(), 0x0B, 0x023A) {
 
-		insertLong(designer->getObjectID()); // Image Designer?
-		insertLong(client->getObjectID()); // Image Design Target
-		insertLong(tent); // Boolish - in an ID tent? or a cell id?
-		insertShort(type); // 0 = designer, 1 = target
+		insertLong(designer->getObjectID()); // Image Designer
+		insertLong(targetPlayer->getObjectID()); // Image Design Target
+		insertLong(tentID);
+		insertShort(type); // 0 = designer, 1 = target <-- research this
 
 	}
 };
