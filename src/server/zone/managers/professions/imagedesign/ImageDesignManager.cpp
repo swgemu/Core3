@@ -259,7 +259,8 @@ void ImageDesignManager::loadCustomizationData() {
 		if (dataMap == NULL)
 			continue;
 
-		CustomizationData customizationData(dataRow);
+		CustomizationData customizationData;
+		customizationData.parseRow(dataRow);
 		dataMap->put(customizationData.getCustomizationName(), customizationData);
 	}
 
