@@ -279,7 +279,7 @@ GeneratorObjectHelper* GeneratorObjectHelper::staticInitializer = GeneratorObjec
 GeneratorObjectHelper::GeneratorObjectHelper() {
 	className = "GeneratorObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void GeneratorObjectHelper::finalizeHelper() {

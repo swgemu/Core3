@@ -238,7 +238,7 @@ RadialManagerHelper* RadialManagerHelper::staticInitializer = RadialManagerHelpe
 RadialManagerHelper::RadialManagerHelper() {
 	className = "RadialManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void RadialManagerHelper::finalizeHelper() {

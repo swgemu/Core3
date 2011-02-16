@@ -14,6 +14,8 @@
 #include "BugCategory.h"
 
 void HolocronManager::loadBugCategories() {
+	return;
+
 	String query = "SELECT `category` FROM `" + MantisDatabase::getTablePrefix() + "project_category_table` WHERE project_id = 1;";
 
 	ResultSet* result = NULL;

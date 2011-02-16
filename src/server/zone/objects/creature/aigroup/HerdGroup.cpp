@@ -200,7 +200,7 @@ HerdGroupHelper* HerdGroupHelper::staticInitializer = HerdGroupHelper::instance(
 HerdGroupHelper::HerdGroupHelper() {
 	className = "HerdGroup";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void HerdGroupHelper::finalizeHelper() {

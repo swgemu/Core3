@@ -249,7 +249,7 @@ SignObjectHelper* SignObjectHelper::staticInitializer = SignObjectHelper::instan
 SignObjectHelper::SignObjectHelper() {
 	className = "SignObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SignObjectHelper::finalizeHelper() {

@@ -5,7 +5,7 @@
 #ifndef PSGARMOROBJECT_H_
 #define PSGARMOROBJECT_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

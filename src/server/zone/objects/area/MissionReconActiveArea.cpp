@@ -273,7 +273,7 @@ MissionReconActiveAreaHelper* MissionReconActiveAreaHelper::staticInitializer = 
 MissionReconActiveAreaHelper::MissionReconActiveAreaHelper() {
 	className = "MissionReconActiveArea";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void MissionReconActiveAreaHelper::finalizeHelper() {

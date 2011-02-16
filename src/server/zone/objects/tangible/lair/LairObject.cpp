@@ -417,7 +417,7 @@ LairObjectHelper* LairObjectHelper::staticInitializer = LairObjectHelper::instan
 LairObjectHelper::LairObjectHelper() {
 	className = "LairObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void LairObjectHelper::finalizeHelper() {

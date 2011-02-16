@@ -308,7 +308,7 @@ LootManagerHelper* LootManagerHelper::staticInitializer = LootManagerHelper::ins
 LootManagerHelper::LootManagerHelper() {
 	className = "LootManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void LootManagerHelper::finalizeHelper() {

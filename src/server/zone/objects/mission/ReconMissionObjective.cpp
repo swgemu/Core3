@@ -299,7 +299,7 @@ ReconMissionObjectiveHelper* ReconMissionObjectiveHelper::staticInitializer = Re
 ReconMissionObjectiveHelper::ReconMissionObjectiveHelper() {
 	className = "ReconMissionObjective";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ReconMissionObjectiveHelper::finalizeHelper() {

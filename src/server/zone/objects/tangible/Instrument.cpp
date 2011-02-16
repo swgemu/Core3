@@ -569,7 +569,7 @@ InstrumentHelper* InstrumentHelper::staticInitializer = InstrumentHelper::instan
 InstrumentHelper::InstrumentHelper() {
 	className = "Instrument";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void InstrumentHelper::finalizeHelper() {

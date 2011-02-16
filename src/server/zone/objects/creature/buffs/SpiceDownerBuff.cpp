@@ -259,7 +259,7 @@ SpiceDownerBuffHelper* SpiceDownerBuffHelper::staticInitializer = SpiceDownerBuf
 SpiceDownerBuffHelper::SpiceDownerBuffHelper() {
 	className = "SpiceDownerBuff";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SpiceDownerBuffHelper::finalizeHelper() {

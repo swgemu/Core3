@@ -19,7 +19,7 @@
 #include "server/chat/StringIdChatParameter.h"
 
 void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
-	if (!obj->isPlayerCreature())
+	if (!obj->isPlayerCreature() || profession == NULL)
 		return;
 
 	PlayerCreature* player = (PlayerCreature*) obj;

@@ -1096,7 +1096,7 @@ ChatManagerHelper* ChatManagerHelper::staticInitializer = ChatManagerHelper::ins
 ChatManagerHelper::ChatManagerHelper() {
 	className = "ChatManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ChatManagerHelper::finalizeHelper() {

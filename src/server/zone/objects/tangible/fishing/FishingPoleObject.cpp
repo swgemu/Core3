@@ -437,7 +437,7 @@ FishingPoleObjectHelper* FishingPoleObjectHelper::staticInitializer = FishingPol
 FishingPoleObjectHelper::FishingPoleObjectHelper() {
 	className = "FishingPoleObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void FishingPoleObjectHelper::finalizeHelper() {

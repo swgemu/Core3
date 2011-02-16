@@ -494,7 +494,7 @@ MissionTerminalHelper* MissionTerminalHelper::staticInitializer = MissionTermina
 MissionTerminalHelper::MissionTerminalHelper() {
 	className = "MissionTerminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void MissionTerminalHelper::finalizeHelper() {

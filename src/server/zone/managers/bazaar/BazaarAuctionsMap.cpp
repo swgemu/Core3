@@ -424,7 +424,7 @@ BazaarAuctionsMapHelper* BazaarAuctionsMapHelper::staticInitializer = BazaarAuct
 BazaarAuctionsMapHelper::BazaarAuctionsMapHelper() {
 	className = "BazaarAuctionsMap";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void BazaarAuctionsMapHelper::finalizeHelper() {

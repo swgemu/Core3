@@ -67,6 +67,8 @@ public:
 
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
+			
+		return SUCCESS;
 
 		//DISABLE
 		return SUCCESS;
@@ -79,6 +81,8 @@ public:
 			playerTarget = designer;
 		} else
 			playerTarget = (PlayerCreature*) object.get();
+
+		Locker clocker(playerTarget, creature);
 
 		if (playerTarget->isDead()) {
 			designer->sendSystemMessage("image_designer", "target_dead");

@@ -1018,7 +1018,7 @@ BuildingObjectHelper* BuildingObjectHelper::staticInitializer = BuildingObjectHe
 BuildingObjectHelper::BuildingObjectHelper() {
 	className = "BuildingObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void BuildingObjectHelper::finalizeHelper() {

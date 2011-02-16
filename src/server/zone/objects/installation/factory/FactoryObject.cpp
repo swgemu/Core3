@@ -569,7 +569,7 @@ FactoryObjectHelper* FactoryObjectHelper::staticInitializer = FactoryObjectHelpe
 FactoryObjectHelper::FactoryObjectHelper() {
 	className = "FactoryObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void FactoryObjectHelper::finalizeHelper() {

@@ -302,7 +302,7 @@ FireworkObjectHelper* FireworkObjectHelper::staticInitializer = FireworkObjectHe
 FireworkObjectHelper::FireworkObjectHelper() {
 	className = "FireworkObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void FireworkObjectHelper::finalizeHelper() {
