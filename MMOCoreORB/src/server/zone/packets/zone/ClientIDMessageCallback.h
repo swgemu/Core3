@@ -59,24 +59,24 @@ public:
 				//We need to check how many characters this account has online already.
 				//We also need to store a reference to the Account object on the zoneSessionClient.
 
-				ManagedReference<Account*> account = server->getZoneServer()->getAccount(accountID);
+				//ManagedReference<Account*> account = server->getZoneServer()->getAccount(accountID);
 
-				if (account == NULL)
-					return;
+				//if (account == NULL)
+					//return;
 
-				if (!account->hasMaxOnlineCharacters()) {
-					client->setAccount(account);
-					account->addZoneSession(client);
+				//if (!account->hasMaxOnlineCharacters()) {
+					//client->setAccount(account);
+					//account->addZoneSession(client);
 
 					BaseMessage* cpm = new ClientPermissionsMessage();
 					client->sendMessage(cpm);
 
-					return;
-				} else {
-					ErrorMessage* errMsg = new ErrorMessage("Login Error", "You already have the maximum number of characters logged in to this account.", 0x0);
-					client->sendMessage(errMsg);
-					return;
-				}
+					//return;
+				//} else {
+					//ErrorMessage* errMsg = new ErrorMessage("Login Error", "You already have the maximum number of characters logged in to this account.", 0x0);
+					//client->sendMessage(errMsg);
+					//return;
+				//}
 			}
 		}
 
