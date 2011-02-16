@@ -77,15 +77,15 @@ public:
 		PlayerCreature* playerTarget = NULL;
 		PlayerCreature* designer = (PlayerCreature*) creature;
 
-		if (object == NULL || !object->isPlayerCreature()) {
+		if (object == NULL || !object->isPlayerCreature())
 			playerTarget = designer;
-		} else
+		else
 			playerTarget = (PlayerCreature*) object.get();
 
 		Locker clocker(playerTarget, creature);
 
 		if (playerTarget->isDead()) {
-			designer->sendSystemMessage("image_designer", "target_dead");
+			designer->sendSystemMessage("@image_designer:target_dead");
 			return GENERALERROR;
 		}
 
@@ -95,18 +95,11 @@ public:
 			stringIdNotGrp.setStringId("@image_designer:not_in_same_group");
 			stringIdNotGrp.setTT(playerTarget);
 
-			if (!designer->isGrouped()) {
+			if (!designer->isGrouped() || designer->getGroupID() != playerTarget->getGroupID()) {
 				//You must be within the same group as %TT in order to use your Image Design abilites.
 				designer->sendSystemMessage(stringIdNotGrp);
 				return GENERALERROR;
 			}
-
-			if (designer->getGroupID() != playerTarget->getGroupID()) {
-				//You must be within the same group as %TT in order to use your Image Design abilites.
-				designer->sendSystemMessage(stringIdNotGrp);
-				return GENERALERROR;
-			}
-
 		}
 
 		/*BuildingObject* buildingObj = (BuildingObject*) designer->getParentRecursively(SceneObject::SALONBUILDING);
@@ -128,34 +121,27 @@ public:
 			return GENERALERROR;
 		}*/
 
-		ManagedReference<Facade*> facade = designer->getActiveSession(SessionFacadeType::IMAGEDESIGN);
-		ManagedReference<ImageDesignSession*> session = dynamic_cast<ImageDesignSession*>(facade.get());
-
-		if (session != NULL || designer->containsActiveSession(SessionFacadeType::IMAGEDESIGN)) {
-			designer->sendSystemMessage("image_designer", "already_image_designing");
-			return GENERALERROR;
-		}
-
 		if (playerTarget->containsActiveSession(SessionFacadeType::IMAGEDESIGN) && playerTarget != designer) {
-
 			StringIdChatParameter stringId;
-			stringId.setStringId("@image_designer:outstanding_offer");
+			stringId.setStringId("@image_designer:outstanding_offer"); //%TT already has an outstanding Image Design offer.
 			stringId.setTT(playerTarget);
-			// %TT already has an outstanding Image Design offer.
+
 			designer->sendSystemMessage(stringId);
 
 			return GENERALERROR;
 		}
 
-		// -- Create Session
-		session = new ImageDesignSession(designer);
-		designer->addActiveSession(SessionFacadeType::IMAGEDESIGN, session);
-		session->startImageDesign(designer,designer,playerTarget,0);
+		ManagedReference<Facade*> facade = designer->getActiveSession(SessionFacadeType::IMAGEDESIGN);
+		ManagedReference<ImageDesignSession*> session = dynamic_cast<ImageDesignSession*>(facade.get());
 
-		if(playerTarget != designer) {
-			playerTarget->addActiveSession(SessionFacadeType::IMAGEDESIGN, session);
-			session->startImageDesign(playerTarget,designer,playerTarget,0);
+		if (session != NULL) {
+			designer->sendSystemMessage("@image_designer:already_image_designing");
+			return GENERALERROR;
 		}
+
+		//Create Session
+		session = new ImageDesignSession(designer);
+		session->startImageDesign(designer, playerTarget);
 
 		return SUCCESS;
 	}
