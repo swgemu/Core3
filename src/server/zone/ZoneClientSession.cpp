@@ -194,6 +194,20 @@ void ZoneClientSession::setAccount(Account* acc) {
 		_implementation->setAccount(acc);
 }
 
+void ZoneClientSession::setAccountID(unsigned int acc) {
+	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addUnsignedIntParameter(acc);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAccountID(acc);
+}
+
 BaseClientProxy* ZoneClientSession::getSession() {
 	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -209,7 +223,7 @@ SceneObject* ZoneClientSession::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -222,11 +236,24 @@ unsigned int ZoneClientSession::getSessionID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return _implementation->getSessionID();
+}
+
+unsigned int ZoneClientSession::getAccountID() {
+	ZoneClientSessionImplementation* _implementation = (ZoneClientSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getAccountID();
 }
 
 Account* ZoneClientSession::getAccount() {
@@ -235,7 +262,7 @@ Account* ZoneClientSession::getAccount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 
 		return (Account*) method.executeWithObjectReturn();
 	} else
@@ -361,6 +388,11 @@ bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream
 		return true;
 	}
 
+	if (_name == "accountID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
+		return true;
+	}
+
 	if (_name == "disconnecting") {
 		TypeInfo<bool >::parseFromBinaryStream(&disconnecting, stream);
 		return true;
@@ -405,6 +437,14 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "accountID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&accountID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "disconnecting";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -414,54 +454,65 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 5 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
-	// server/zone/ZoneClientSession.idl(100):  		player 
+	// server/zone/ZoneClientSession.idl(102):  		player 
 	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl(101):  
+	// server/zone/ZoneClientSession.idl(103):  
 	if (playerCreature == NULL && player != NULL){
-	// server/zone/ZoneClientSession.idl(102):  				ZoneServer zoneServer = player.getZoneServer();
+	// server/zone/ZoneClientSession.idl(104):  				ZoneServer zoneServer = player.getZoneServer();
 	ZoneServer* zoneServer = player->getZoneServer();
-	// server/zone/ZoneClientSession.idl(104):  				zoneServer.decreaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl(106):  				zoneServer.decreaseOnlinePlayers();
 	zoneServer->decreaseOnlinePlayers();
 }
 
-	else 	// server/zone/ZoneClientSession.idl(105):  		}
+	else 	// server/zone/ZoneClientSession.idl(107):  		}
 	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl(106):  				ZoneServer zoneServer = playerCreature.getZoneServer();
+	// server/zone/ZoneClientSession.idl(108):  				ZoneServer zoneServer = playerCreature.getZoneServer();
 	ZoneServer* zoneServer = playerCreature->getZoneServer();
-	// server/zone/ZoneClientSession.idl(108):  				zoneServer.increaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl(110):  				zoneServer.increaseOnlinePlayers();
 	zoneServer->increaseOnlinePlayers();
 }
 }
-	// server/zone/ZoneClientSession.idl(112):  = playerCreature;
+	// server/zone/ZoneClientSession.idl(114):  = playerCreature;
 	player = playerCreature;
 }
 
 void ZoneClientSessionImplementation::setSessionID(unsigned int id) {
-	// server/zone/ZoneClientSession.idl(116):  		sessionID = id;
+	// server/zone/ZoneClientSession.idl(118):  		sessionID = id;
 	sessionID = id;
 }
 
 void ZoneClientSessionImplementation::setAccount(Account* acc) {
-	// server/zone/ZoneClientSession.idl(120):  		account = acc;
+	// server/zone/ZoneClientSession.idl(122):  		account = acc;
 	account = acc;
 }
 
+void ZoneClientSessionImplementation::setAccountID(unsigned int acc) {
+	// server/zone/ZoneClientSession.idl(126):  		accountID = acc;
+	accountID = acc;
+}
+
 SceneObject* ZoneClientSessionImplementation::getPlayer() {
-	// server/zone/ZoneClientSession.idl(127):  		return player;
+	// server/zone/ZoneClientSession.idl(134):  		return player;
 	return player;
 }
 
 unsigned int ZoneClientSessionImplementation::getSessionID() {
-	// server/zone/ZoneClientSession.idl(131):  		return sessionID;
+	// server/zone/ZoneClientSession.idl(138):  		return sessionID;
 	return sessionID;
 }
 
+unsigned int ZoneClientSessionImplementation::getAccountID() {
+	// server/zone/ZoneClientSession.idl(142):  		return accountID;
+	return accountID;
+	// server/zone/ZoneClientSession.idl(142):  ;
+}
+
 Account* ZoneClientSessionImplementation::getAccount() {
-	// server/zone/ZoneClientSession.idl(135):  		return account;
+	// server/zone/ZoneClientSession.idl(146):  		return account;
 	return account;
 }
 
@@ -513,12 +564,18 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		setAccount((Account*) inv->getObjectParameter());
 		break;
 	case 18:
-		resp->insertLong(getPlayer()->_getObjectID());
+		setAccountID(inv->getUnsignedIntParameter());
 		break;
 	case 19:
-		resp->insertInt(getSessionID());
+		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	case 20:
+		resp->insertInt(getSessionID());
+		break;
+	case 21:
+		resp->insertInt(getAccountID());
+		break;
+	case 22:
 		resp->insertLong(getAccount()->_getObjectID());
 		break;
 	default:
@@ -576,12 +633,20 @@ void ZoneClientSessionAdapter::setAccount(Account* acc) {
 	((ZoneClientSessionImplementation*) impl)->setAccount(acc);
 }
 
+void ZoneClientSessionAdapter::setAccountID(unsigned int acc) {
+	((ZoneClientSessionImplementation*) impl)->setAccountID(acc);
+}
+
 SceneObject* ZoneClientSessionAdapter::getPlayer() {
 	return ((ZoneClientSessionImplementation*) impl)->getPlayer();
 }
 
 unsigned int ZoneClientSessionAdapter::getSessionID() {
 	return ((ZoneClientSessionImplementation*) impl)->getSessionID();
+}
+
+unsigned int ZoneClientSessionAdapter::getAccountID() {
+	return ((ZoneClientSessionImplementation*) impl)->getAccountID();
 }
 
 Account* ZoneClientSessionAdapter::getAccount() {

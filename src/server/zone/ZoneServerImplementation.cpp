@@ -218,10 +218,10 @@ void ZoneServerImplementation::startZones() {
 		Zone* zone = zones.get(i);
 
 		if (zone != NULL) {
-			zone->startManagers();
+			//zone->startManagers();
 
-			/*Reference<Task*> task = new ZoneLoadManagersTask(zone);
-			Core::getTaskManager()->executeTask(task);*/
+			Reference<Task*> task = new ZoneLoadManagersTask(zone);
+			Core::getTaskManager()->executeTask(task);
 		}
 	}
 
@@ -695,10 +695,12 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 }
 
 Account* ZoneServerImplementation::getAccount(uint32 accountID) {
-	ManagedReference<LoginServer*> loginServer = (LoginServer*) DistributedObjectBroker::instance()->lookUp("LoginServer");
+	/*ManagedReference<LoginServer*> loginServer = (LoginServer*) DistributedObjectBroker::instance()->lookUp("LoginServer");
 
 	if (loginServer == NULL)
 		return NULL;
 
-	return loginServer->getAccount(accountID);
+	return loginServer->getAccount(accountID);*/
+
+	return NULL;
 }

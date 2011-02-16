@@ -63,6 +63,8 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 	sessionID = 0;
 	account = NULL;
 
+	accountID = 0;
+
 	disconnecting = false;
 }
 
