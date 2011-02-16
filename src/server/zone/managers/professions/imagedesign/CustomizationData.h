@@ -30,7 +30,8 @@ class CustomizationData : public Object {
 	int skillModValue;
 	String modificationType;
 
-	void init() {
+public:
+	CustomizationData() {
 		isScale = false;
 		reverse = false;
 		cameraYaw = 0.f;
@@ -39,38 +40,6 @@ class CustomizationData : public Object {
 		randomizableGroup = false;
 		isVarHairColor = false;
 		skillModValue = 0;
-	}
-
-public:
-	CustomizationData() {
-		init();
-	}
-
-	CustomizationData(DataTableRow* row) {
-		init();
-
-		try {
-			//Skip cell 0. We don't need to store it.
-			row->getCell(1)->getValue(customizationGroup);
-			row->getCell(2)->getValue(type);
-			row->getCell(3)->getValue(customizationName);
-			row->getCell(4)->getValue(variables);
-			row->getCell(5)->getValue(isScale);
-			row->getCell(6)->getValue(reverse);
-			row->getCell(7)->getValue(colorLinked);
-			row->getCell(8)->getValue(colorLinkedtoSelf0);
-			row->getCell(9)->getValue(colorLinkedtoSelf1);
-			row->getCell(10)->getValue(cameraYaw);
-			row->getCell(11)->getValue(discrete);
-			row->getCell(12)->getValue(randomizable);
-			row->getCell(13)->getValue(randomizableGroup);
-			row->getCell(14)->getValue(isVarHairColor);
-			row->getCell(15)->getValue(imageDesignSkillMod);
-			row->getCell(16)->getValue(skillModValue);
-			row->getCell(17)->getValue(modificationType);
-		} catch (Exception& e) {
-			System::out << "CustomizationData() exception: " << e.getMessage() << endl;
-		}
 	}
 
 	CustomizationData(const CustomizationData& c) :	Object() {
@@ -116,6 +85,31 @@ public:
 		modificationType = c.modificationType;
 
 		return *this;
+	}
+
+	void parseRow(DataTableRow* row) {
+		try {
+			//Skip cell 0. We don't need to store it.
+			row->getCell(1)->getValue(customizationGroup);
+			row->getCell(2)->getValue(type);
+			row->getCell(3)->getValue(customizationName);
+			row->getCell(4)->getValue(variables);
+			row->getCell(5)->getValue(isScale);
+			row->getCell(6)->getValue(reverse);
+			row->getCell(7)->getValue(colorLinked);
+			row->getCell(8)->getValue(colorLinkedtoSelf0);
+			row->getCell(9)->getValue(colorLinkedtoSelf1);
+			row->getCell(10)->getValue(cameraYaw);
+			row->getCell(11)->getValue(discrete);
+			row->getCell(12)->getValue(randomizable);
+			row->getCell(13)->getValue(randomizableGroup);
+			row->getCell(14)->getValue(isVarHairColor);
+			row->getCell(15)->getValue(imageDesignSkillMod);
+			row->getCell(16)->getValue(skillModValue);
+			row->getCell(17)->getValue(modificationType);
+		} catch (Exception& e) {
+			System::out << "CustomizationData::parse() exception: " << e.getMessage() << endl;
+		}
 	}
 
 	inline String& getCustomizationGroup() {
@@ -184,6 +178,22 @@ public:
 
 	inline String& getModificationType() {
 		return modificationType;
+	}
+
+	inline bool isPhysicalModificationType() {
+		return (modificationType == "physical");
+	}
+
+	inline bool isCosmeticModificationType() {
+		return (modificationType == "cosmetic");
+	}
+
+	inline bool isHorizontalSlider() {
+		return (type == "hslider");
+	}
+
+	inline bool isColorPicker() {
+		return (type == "color");
 	}
 };
 
