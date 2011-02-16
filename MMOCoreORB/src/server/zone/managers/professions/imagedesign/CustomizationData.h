@@ -8,6 +8,9 @@
 #ifndef CUSTOMIZATIONDATA_H_
 #define CUSTOMIZATIONDATA_H_
 
+#include "engine/engine.h"
+#include "server/zone/templates/datatables/DataTableRow.h"
+
 class CustomizationData : public Object {
 	String customizationGroup;
 	String type;
@@ -18,7 +21,7 @@ class CustomizationData : public Object {
 	String colorLinked;
 	String colorLinkedtoSelf0;
 	String colorLinkedtoSelf1;
-	int cameraYaw;
+	float cameraYaw;
 	bool discrete;
 	bool randomizable;
 	bool randomizableGroup;
@@ -27,30 +30,44 @@ class CustomizationData : public Object {
 	int skillModValue;
 	String modificationType;
 
+	void init() {
+		isScale = false;
+		reverse = false;
+		cameraYaw = 0.f;
+		discrete = false;
+		randomizable = false;
+		randomizableGroup = false;
+		isVarHairColor = false;
+		skillModValue = 0;
+	}
+
 public:
 	CustomizationData() {
-		customizationGroup = 0;
-		type = 0;
-		customizationName = 0;
-		variables = 0;
-		isScale = 0;
-		reverse = 0;
-		colorLinked = 0;
-		colorLinkedtoSelf0 = 0;
-		colorLinkedtoSelf1 = 0;
-		cameraYaw = 0;
-		discrete = 0;
-		randomizable = 0;
-		randomizableGroup = 0;
-		isVarHairColor = 0;
-		imageDesignSkillMod = 0;
-		skillModValue = 0;
-		modificationType = 0;
+		init();
 	}
 
 	CustomizationData(DataTableRow* row) {
+		init();
+
 		try {
-			row->getCell(0);
+			//Skip cell 0. We don't need to store it.
+			row->getCell(1)->getValue(customizationGroup);
+			row->getCell(2)->getValue(type);
+			row->getCell(3)->getValue(customizationName);
+			row->getCell(4)->getValue(variables);
+			row->getCell(5)->getValue(isScale);
+			row->getCell(6)->getValue(reverse);
+			row->getCell(7)->getValue(colorLinked);
+			row->getCell(8)->getValue(colorLinkedtoSelf0);
+			row->getCell(9)->getValue(colorLinkedtoSelf1);
+			row->getCell(10)->getValue(cameraYaw);
+			row->getCell(11)->getValue(discrete);
+			row->getCell(12)->getValue(randomizable);
+			row->getCell(13)->getValue(randomizableGroup);
+			row->getCell(14)->getValue(isVarHairColor);
+			row->getCell(15)->getValue(imageDesignSkillMod);
+			row->getCell(16)->getValue(skillModValue);
+			row->getCell(17)->getValue(modificationType);
 		} catch (Exception& e) {
 			System::out << "CustomizationData() exception: " << e.getMessage() << endl;
 		}
@@ -137,7 +154,7 @@ public:
 		return colorLinkedtoSelf1;
 	}
 
-	inline int getCameraYaw() {
+	inline float getCameraYaw() {
 		return cameraYaw;
 	}
 

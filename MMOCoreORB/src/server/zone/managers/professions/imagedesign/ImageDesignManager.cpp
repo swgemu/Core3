@@ -315,6 +315,8 @@ void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObje
 	if (creo == NULL)
 		return;
 
+	/*
+
 	TangibleObject* hair = (TangibleObject*) creo->getSlottedObject("hair");
 
 	if (hair != NULL) {
@@ -335,17 +337,8 @@ void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObje
 	}
 
 	hairCustomization.removeAll();
-}
-
-void ImageDesignManager::setHairAttribute(String& type, uint8 value) {
-	hairCustomization.setVariable(type, value);
-}
-
-void ImageDesignManager::setHairAttribute(uint8 type, uint8 value) {
-	hairCustomization.setVariable(type, value);
+	*/
 }
 
 ImageDesignManager::~ImageDesignManager() {
-	customizationData.removeAll();
-	hairCustomization.removeAll();
 }

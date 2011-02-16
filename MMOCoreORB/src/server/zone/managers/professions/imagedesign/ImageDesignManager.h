@@ -33,9 +33,6 @@ public:
 
 	void updateHairObject(CreatureObject* creo, String& hairObject);
 
-	inline void setHairCustomizationString(String& cus) {
-		hairCustomization.parseFromClientString(cus);
-	}
 	void setHairAttribute(String& type, uint8 value);
 	void setHairAttribute(uint8 type, uint8 value);
 
