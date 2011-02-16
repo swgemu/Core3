@@ -74,6 +74,8 @@ class ZoneClientSession extends ManagedObject {
 	
 	protected Account account;
 	
+	protected unsigned int accountID;
+	
 	boolean disconnecting;
 	
 	public native ZoneClientSession(BaseClientProxy session);
@@ -119,6 +121,11 @@ class ZoneClientSession extends ManagedObject {
 	public void setAccount(Account acc) {
 		account = acc;
 	}
+	
+	public void setAccountID(unsigned int acc) {
+		accountID = acc;
+	}
+	 
 
 	@local
 	public native BaseClientProxy getSession();
@@ -129,6 +136,10 @@ class ZoneClientSession extends ManagedObject {
 
 	public unsigned int getSessionID() {
 		return sessionID;
+	}
+	
+	public unsigned int getAccountID() {
+		return accountID;;
 	}
 	
 	public native Account getAccount() {
