@@ -5,7 +5,7 @@
 #ifndef PLAYERCREATURE_H_
 #define PLAYERCREATURE_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

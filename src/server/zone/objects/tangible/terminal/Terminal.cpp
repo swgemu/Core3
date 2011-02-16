@@ -342,7 +342,7 @@ TerminalHelper* TerminalHelper::staticInitializer = TerminalHelper::instance();
 TerminalHelper::TerminalHelper() {
 	className = "Terminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void TerminalHelper::finalizeHelper() {

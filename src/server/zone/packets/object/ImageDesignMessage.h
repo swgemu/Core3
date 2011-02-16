@@ -79,7 +79,7 @@ public:
 class ImageDesignChangeMessage : public ObjectControllerMessage {
 	
 public:
-	ImageDesignChangeMessage(uint64 object, uint64 designer, uint64 client, uint64 tent, int type = 0) 
+	ImageDesignChangeMessage(uint64 object, uint64 designer, uint64 client, uint64 tent, int type = 0)
 		: ObjectControllerMessage(object, 0x0B, 0x0238) {
 
 		insertLong(designer); // Image Designer? 

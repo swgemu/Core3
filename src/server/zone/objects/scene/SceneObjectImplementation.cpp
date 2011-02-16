@@ -1075,16 +1075,6 @@ void SceneObjectImplementation::removeFromZone() {
 			activeAreas.remove(0);
 		}
 
-		while (objectActiveSessions.size()) {
-			ManagedReference<Facade*> facade = objectActiveSessions.get(0);
-
-			if (facade == NULL)
-				continue;
-
-			facade->cancelSession();
-			objectActiveSessions.remove(0);
-		}
-
 		//Remove all outdoor child objects from zone
 		for (int i = 0; i < outdoorChildObjects.size(); ++i) {
 			ManagedReference<SceneObject*> outdoorChild = outdoorChildObjects.get(i);
@@ -1108,6 +1098,16 @@ void SceneObjectImplementation::removeFromZone() {
 	}
 
 	notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, NULL, 0);
+
+	while (objectActiveSessions.size()) {
+		ManagedReference<Facade*> facade = objectActiveSessions.remove(0).getValue();
+
+		if (facade == NULL)
+			continue;
+
+		facade->cancelSession();
+		//objectActiveSessions.remove(0);
+	}
 
 	//activeAreas.removeAll();
 

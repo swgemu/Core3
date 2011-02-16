@@ -664,7 +664,7 @@ ConsumableHelper* ConsumableHelper::staticInitializer = ConsumableHelper::instan
 ConsumableHelper::ConsumableHelper() {
 	className = "Consumable";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ConsumableHelper::finalizeHelper() {

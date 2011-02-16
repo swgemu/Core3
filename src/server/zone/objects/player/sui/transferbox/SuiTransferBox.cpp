@@ -376,7 +376,7 @@ SuiTransferBoxHelper* SuiTransferBoxHelper::staticInitializer = SuiTransferBoxHe
 SuiTransferBoxHelper::SuiTransferBoxHelper() {
 	className = "SuiTransferBox";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SuiTransferBoxHelper::finalizeHelper() {

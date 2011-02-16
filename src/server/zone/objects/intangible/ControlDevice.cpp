@@ -370,7 +370,7 @@ ControlDeviceHelper* ControlDeviceHelper::staticInitializer = ControlDeviceHelpe
 ControlDeviceHelper::ControlDeviceHelper() {
 	className = "ControlDevice";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ControlDeviceHelper::finalizeHelper() {

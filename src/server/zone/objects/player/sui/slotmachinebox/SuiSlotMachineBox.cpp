@@ -221,7 +221,7 @@ SuiSlotMachineBoxHelper* SuiSlotMachineBoxHelper::staticInitializer = SuiSlotMac
 SuiSlotMachineBoxHelper::SuiSlotMachineBoxHelper() {
 	className = "SuiSlotMachineBox";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SuiSlotMachineBoxHelper::finalizeHelper() {

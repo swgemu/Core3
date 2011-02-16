@@ -5,7 +5,7 @@
 #ifndef SUIBANKTRANSFERBOX_H_
 #define SUIBANKTRANSFERBOX_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

@@ -220,7 +220,7 @@ StaticObjectHelper* StaticObjectHelper::staticInitializer = StaticObjectHelper::
 StaticObjectHelper::StaticObjectHelper() {
 	className = "StaticObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void StaticObjectHelper::finalizeHelper() {

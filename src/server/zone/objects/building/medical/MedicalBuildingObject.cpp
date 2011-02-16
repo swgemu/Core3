@@ -206,7 +206,7 @@ MedicalBuildingObjectHelper* MedicalBuildingObjectHelper::staticInitializer = Me
 MedicalBuildingObjectHelper::MedicalBuildingObjectHelper() {
 	className = "MedicalBuildingObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void MedicalBuildingObjectHelper::finalizeHelper() {

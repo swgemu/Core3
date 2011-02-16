@@ -5,7 +5,7 @@
 #ifndef BUILDINGOBJECT_H_
 #define BUILDINGOBJECT_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

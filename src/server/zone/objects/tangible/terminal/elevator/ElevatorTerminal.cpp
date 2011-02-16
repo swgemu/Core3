@@ -295,7 +295,7 @@ ElevatorTerminalHelper* ElevatorTerminalHelper::staticInitializer = ElevatorTerm
 ElevatorTerminalHelper::ElevatorTerminalHelper() {
 	className = "ElevatorTerminal";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ElevatorTerminalHelper::finalizeHelper() {

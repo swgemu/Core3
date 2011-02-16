@@ -31,10 +31,14 @@ public:
         databases = new Vector<Database*>();
 
         for (int i = 0; i < DEFAULT_SERVERDATABASE_INSTANCES; ++i) {
-        	Database* db = new engine::db::mysql::MySqlDatabase(String("MantisDatabase" + String::valueOf(i)), dbHost);
-        	db->connect(dbName, dbUser, dbPass, dbPort);
+        	try {
+        		Database* db = new engine::db::mysql::MySqlDatabase(String("MantisDatabase" + String::valueOf(i)), dbHost);
+        		db->connect(dbName, dbUser, dbPass, dbPort);
 
-        	databases->add(db);
+        		databases->add(db);
+        	} catch (...) {
+
+        	}
         }
 
 	}

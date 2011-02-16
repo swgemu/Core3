@@ -517,7 +517,7 @@ ActiveAreaHelper* ActiveAreaHelper::staticInitializer = ActiveAreaHelper::instan
 ActiveAreaHelper::ActiveAreaHelper() {
 	className = "ActiveArea";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ActiveAreaHelper::finalizeHelper() {

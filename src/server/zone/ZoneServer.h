@@ -5,7 +5,7 @@
 #ifndef ZONESERVER_H_
 #define ZONESERVER_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

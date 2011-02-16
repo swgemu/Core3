@@ -1319,7 +1319,7 @@ PlayerManagerHelper* PlayerManagerHelper::staticInitializer = PlayerManagerHelpe
 PlayerManagerHelper::PlayerManagerHelper() {
 	className = "PlayerManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void PlayerManagerHelper::finalizeHelper() {

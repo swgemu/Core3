@@ -428,7 +428,7 @@ SurveyMissionObjectiveHelper* SurveyMissionObjectiveHelper::staticInitializer = 
 SurveyMissionObjectiveHelper::SurveyMissionObjectiveHelper() {
 	className = "SurveyMissionObjective";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void SurveyMissionObjectiveHelper::finalizeHelper() {

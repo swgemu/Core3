@@ -735,7 +735,7 @@ ShuttleCreatureHelper* ShuttleCreatureHelper::staticInitializer = ShuttleCreatur
 ShuttleCreatureHelper::ShuttleCreatureHelper() {
 	className = "ShuttleCreature";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ShuttleCreatureHelper::finalizeHelper() {

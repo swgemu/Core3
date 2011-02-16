@@ -223,7 +223,7 @@ ZoneManagerHelper* ZoneManagerHelper::staticInitializer = ZoneManagerHelper::ins
 ZoneManagerHelper::ZoneManagerHelper() {
 	className = "ZoneManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ZoneManagerHelper::finalizeHelper() {

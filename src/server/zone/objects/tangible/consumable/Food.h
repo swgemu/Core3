@@ -5,7 +5,7 @@
 #ifndef FOOD_H_
 #define FOOD_H_
 
-#include "engine/orb/DistributedObjectBroker.h"
+#include "engine/core/Core.h"
 
 #include "engine/core/ManagedReference.h"
 

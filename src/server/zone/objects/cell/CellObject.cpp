@@ -466,7 +466,7 @@ CellObjectHelper* CellObjectHelper::staticInitializer = CellObjectHelper::instan
 CellObjectHelper::CellObjectHelper() {
 	className = "CellObject";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void CellObjectHelper::finalizeHelper() {

@@ -1212,7 +1212,7 @@ GamblingManagerHelper* GamblingManagerHelper::staticInitializer = GamblingManage
 GamblingManagerHelper::GamblingManagerHelper() {
 	className = "GamblingManager";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void GamblingManagerHelper::finalizeHelper() {

@@ -829,7 +829,7 @@ DraftSchematicHelper* DraftSchematicHelper::staticInitializer = DraftSchematicHe
 DraftSchematicHelper::DraftSchematicHelper() {
 	className = "DraftSchematic";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void DraftSchematicHelper::finalizeHelper() {

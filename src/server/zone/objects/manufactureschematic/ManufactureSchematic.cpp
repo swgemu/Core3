@@ -1297,7 +1297,7 @@ ManufactureSchematicHelper* ManufactureSchematicHelper::staticInitializer = Manu
 ManufactureSchematicHelper::ManufactureSchematicHelper() {
 	className = "ManufactureSchematic";
 
-	DistributedObjectBroker::instance()->registerClass(className, this);
+	Core::getObjectBroker()->registerClass(className, this);
 }
 
 void ManufactureSchematicHelper::finalizeHelper() {
