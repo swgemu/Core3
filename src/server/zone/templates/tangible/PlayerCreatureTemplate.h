@@ -33,7 +33,7 @@ public:
 		dataMap = map;
 	}
 
-	void readObject() {
+	void readObject(LuaObject* templateData) {
 		SharedCreatureObjectTemplate::readObject(templateData);
 	}
 };
