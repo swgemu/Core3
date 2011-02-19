@@ -55,7 +55,6 @@ include server.zone.packets.scene.AttributeListMessage;
 import server.zone.templates.SharedObjectTemplate;
 
 class VehicleDeed extends Deed {
-
 	protected int hitPoints;
 	protected string controlDeviceObjectTemplate;
 	

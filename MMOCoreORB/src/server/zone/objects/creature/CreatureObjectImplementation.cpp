@@ -589,8 +589,8 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer, int damageT
 		return 0;
 	}
 
-	if (damage < 0 && (isDead() || isIncapacitated()))
-		return 0;
+	/*if (damage < 0 && (isDead() || isIncapacitated()))
+		return 0;*/
 
 	int returnValue = damage;
 
