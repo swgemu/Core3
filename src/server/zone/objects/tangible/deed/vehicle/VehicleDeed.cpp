@@ -264,14 +264,14 @@ int VehicleDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 VehicleDeedImplementation::VehicleDeedImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/deed/vehicle/VehicleDeed.idl(63):  		Logger.setLoggingName("VehicleDeed");
+	// server/zone/objects/tangible/deed/vehicle/VehicleDeed.idl(62):  		Logger.setLoggingName("VehicleDeed");
 	Logger::setLoggingName("VehicleDeed");
-	// server/zone/objects/tangible/deed/vehicle/VehicleDeed.idl(64):  		hitPoints = 8000;
+	// server/zone/objects/tangible/deed/vehicle/VehicleDeed.idl(63):  		hitPoints = 8000;
 	hitPoints = 8000;
 }
 
 bool VehicleDeedImplementation::isVehicleDeedObject() {
-	// server/zone/objects/tangible/deed/vehicle/VehicleDeed.idl(95):  		return true;
+	// server/zone/objects/tangible/deed/vehicle/VehicleDeed.idl(94):  		return true;
 	return true;
 }
 
