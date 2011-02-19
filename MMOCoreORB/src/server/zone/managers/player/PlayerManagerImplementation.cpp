@@ -2321,6 +2321,7 @@ bool PlayerManagerImplementation::checkLineOfSightInBuilding(SceneObject* object
 	direction.normalize();
 
 	float distance = rayEnd.distanceTo(rayOrigin);
+	float intersectionDistance;
 
 	Ray ray(rayOrigin, direction);
 
@@ -2333,7 +2334,7 @@ bool PlayerManagerImplementation::checkLineOfSightInBuilding(SceneObject* object
 		if (aabbTree == NULL)
 			continue;
 
-		if (aabbTree->intersects(ray, distance, true))
+		if (aabbTree->intersects(ray, distance, intersectionDistance, true))
 			return false;
 	}
 
@@ -2389,6 +2390,7 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 	rayEnd.set(rayEnd.getX(), rayEnd.getY(), rayEnd.getZ() + heightEnd);
 
 	float dist = rayEnd.distanceTo(rayOrigin);
+	float intersectionDistance;
 
 	zone->rlock();
 
@@ -2468,7 +2470,7 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 
 				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
 
-				if (aabbTree->intersects(ray, dist, true)) {
+				if (aabbTree->intersects(ray, dist, intersectionDistance, true)) {
 					return false;
 				}
 			} catch (...) {
