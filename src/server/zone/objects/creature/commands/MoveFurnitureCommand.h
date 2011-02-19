@@ -103,10 +103,11 @@ public:
 		dir.normalize();
 
 		float distance = endPoint.distanceTo(startPoint);
+		float intersectionDistance;
 
 		Ray ray(startPoint, dir);
 
-		if (aabbTree->intersects(ray, distance, true))
+		if (aabbTree->intersects(ray, distance, intersectionDistance, true))
 			return false;
 
 		return true;
