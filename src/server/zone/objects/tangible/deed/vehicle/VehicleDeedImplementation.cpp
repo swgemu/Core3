@@ -58,6 +58,9 @@ int VehicleDeedImplementation::handleObjectMenuSelect(PlayerCreature* player, by
 	if (selectedID != 20) // not use object
 		return 1;
 
+	if (generated)
+		return 1;
+
 	if (player->isInCombat() || player->getParentRecursively(SceneObject::BUILDING) != NULL) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call_vehicle"); //You can only unpack vehicles while Outside and not in Combat.
 		return 1;
@@ -65,7 +68,7 @@ int VehicleDeedImplementation::handleObjectMenuSelect(PlayerCreature* player, by
 
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
-	if(datapad == NULL) {
+	if (datapad == NULL) {
 		player->sendSystemMessage("Datapad doesn't exist when trying to create vehicle");
 		return 1;
 	}
@@ -84,8 +87,12 @@ int VehicleDeedImplementation::handleObjectMenuSelect(PlayerCreature* player, by
 	//Remove the deed from it's container.
 	ManagedReference<SceneObject*> deedContainer = getParent();
 
-	if (deedContainer != NULL)
+	if (deedContainer != NULL) {
 		deedContainer->removeObject(_this, true);
+		broadcastDestroy(_this, false);
+	}
+
+	generated = true;
 
 	return 0;
 }

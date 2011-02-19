@@ -38,6 +38,9 @@ int ResourceDeedImplementation::useObject(PlayerCreature* player) {
 	if (player == NULL)
 		return 0;
 
+	if (generated)
+		return 0;
+
 	ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
 
 	ResourceDeedListBox* sui1 = new ResourceDeedListBox(player, SuiWindowType::FREE_RESOURCE, SuiListBox::HANDLETHREEBUTTON);//beginning of sui chain
@@ -62,9 +65,13 @@ int ResourceDeedImplementation::useObject(PlayerCreature* player) {
 }
 
 void ResourceDeedImplementation::destroyDeed() {
-	if (parent != NULL)
+	if (parent != NULL) {
 		parent->removeObject(_this, true);
+		broadcastDestroy(_this, false);
+	}
 
 	if (isPersistent())
 		destroyObjectFromDatabase(true);
+
+	generated = true;
 }

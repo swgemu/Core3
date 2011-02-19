@@ -53,9 +53,11 @@ import server.zone.templates.SharedObjectTemplate;
 
 class Deed extends TangibleObject {
 	protected string generatedObjectTemplate;
+	protected boolean generated;
 	
 	public Deed() {
 		Logger.setLoggingName("Deed");
+		generated = false;
 	}
 	
 	public native void initializeTransientMembers();

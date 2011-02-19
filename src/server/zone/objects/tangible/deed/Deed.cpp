@@ -217,6 +217,11 @@ bool DeedImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 		return true;
 	}
 
+	if (_name == "generated") {
+		TypeInfo<bool >::parseFromBinaryStream(&generated, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -240,33 +245,43 @@ int DeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "generated";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&generated, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
+
+	return 2 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 DeedImplementation::DeedImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/deed/Deed.idl(58):  		Logger.setLoggingName("Deed");
+	// server/zone/objects/tangible/deed/Deed.idl(59):  		Logger.setLoggingName("Deed");
 	Logger::setLoggingName("Deed");
+	// server/zone/objects/tangible/deed/Deed.idl(60):  		generated = false;
+	generated = false;
 }
 
 void DeedImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/deed/Deed.idl(77):  		error("Unhandled updateCraftingValues for this object type");
+	// server/zone/objects/tangible/deed/Deed.idl(79):  		error("Unhandled updateCraftingValues for this object type");
 	error("Unhandled updateCraftingValues for this object type");
 }
 
 void DeedImplementation::setGeneratedObjectTemplate(const String& templ) {
-	// server/zone/objects/tangible/deed/Deed.idl(85):  		generatedObjectTemplate = templ;
+	// server/zone/objects/tangible/deed/Deed.idl(87):  		generatedObjectTemplate = templ;
 	generatedObjectTemplate = templ;
 }
 
 String DeedImplementation::getGeneratedObjectTemplate() {
-	// server/zone/objects/tangible/deed/Deed.idl(92):  		return generatedObjectTemplate;
+	// server/zone/objects/tangible/deed/Deed.idl(94):  		return generatedObjectTemplate;
 	return generatedObjectTemplate;
 }
 
 bool DeedImplementation::isDeedObject() {
-	// server/zone/objects/tangible/deed/Deed.idl(96):  		return true;
+	// server/zone/objects/tangible/deed/Deed.idl(98):  		return true;
 	return true;
 }
 

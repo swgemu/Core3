@@ -107,6 +107,8 @@ class DeedImplementation : public TangibleObjectImplementation {
 protected:
 	String generatedObjectTemplate;
 
+	bool generated;
+
 public:
 	DeedImplementation();
 
