@@ -3046,7 +3046,7 @@ object_tangible_loot_misc_shared_palm_frond = SharedTangibleObjectTemplate:new {
 
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.8, 1.2},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slotDescriptors = {},

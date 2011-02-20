@@ -90,7 +90,7 @@ object_mobile_vendor_shared_aqualish_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.85, 0.9},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -168,7 +168,7 @@ object_mobile_vendor_shared_aqualish_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.89, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -246,7 +246,7 @@ object_mobile_vendor_shared_bith_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.75, 0.875},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -324,7 +324,7 @@ object_mobile_vendor_shared_bith_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.75, 0.875},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -402,7 +402,7 @@ object_mobile_vendor_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.76, 0.88},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -480,7 +480,7 @@ object_mobile_vendor_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.76, 0.88},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -558,7 +558,7 @@ object_mobile_vendor_shared_devaronian_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.8, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -792,7 +792,7 @@ object_mobile_vendor_shared_human_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -870,7 +870,7 @@ object_mobile_vendor_shared_ishi_tib_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.85, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -948,7 +948,7 @@ object_mobile_vendor_shared_ithorian_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.9, 1.3},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1026,7 +1026,7 @@ object_mobile_vendor_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.9, 1.3},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1104,7 +1104,7 @@ object_mobile_vendor_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.88, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1182,7 +1182,7 @@ object_mobile_vendor_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.88, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1260,7 +1260,7 @@ object_mobile_vendor_shared_nikto_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.8, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1416,7 +1416,7 @@ object_mobile_vendor_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.88, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1494,7 +1494,7 @@ object_mobile_vendor_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.88, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1572,7 +1572,7 @@ object_mobile_vendor_shared_sullustan_female = SharedCreatureObjectTemplate:new 
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1650,7 +1650,7 @@ object_mobile_vendor_shared_sullustan_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.76, 0.88},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1728,7 +1728,7 @@ object_mobile_vendor_shared_trandoshan_female = SharedCreatureObjectTemplate:new
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1.12, 1.24},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1806,7 +1806,7 @@ object_mobile_vendor_shared_trandoshan_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1.12, 1.24},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1884,7 +1884,7 @@ object_mobile_vendor_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1962,7 +1962,7 @@ object_mobile_vendor_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2040,7 +2040,7 @@ object_mobile_vendor_shared_weequay_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.75, 0.85},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2118,7 +2118,7 @@ object_mobile_vendor_shared_wookiee_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1.24, 1.36},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2196,7 +2196,7 @@ object_mobile_vendor_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1.24, 1.36},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2274,7 +2274,7 @@ object_mobile_vendor_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.94, 1.06},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2352,7 +2352,7 @@ object_mobile_vendor_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.94, 1.06},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
