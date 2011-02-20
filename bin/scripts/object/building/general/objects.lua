@@ -5618,7 +5618,7 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
-	totalCellNumber = 12,
+	totalCellNumber = 14,
 
 	useStructureFootprintOutline = 0,
 
@@ -6416,7 +6416,7 @@ object_building_general_shared_space_dungeon_corellian_corvette = SharedBuilding
 
 	targetable = 0,
 	terrainModificationFileName = "",
-	totalCellNumber = 0,
+	totalCellNumber = 66,
 
 	useStructureFootprintOutline = 0,
 
@@ -6473,7 +6473,7 @@ object_building_general_shared_space_dungeon_corellian_corvette_imperial = Share
 
 	targetable = 0,
 	terrainModificationFileName = "",
-	totalCellNumber = 0,
+	totalCellNumber = 66,
 
 	useStructureFootprintOutline = 0,
 
@@ -6530,7 +6530,7 @@ object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBu
 
 	targetable = 0,
 	terrainModificationFileName = "",
-	totalCellNumber = 0,
+	totalCellNumber = 66,
 
 	useStructureFootprintOutline = 0,
 
