@@ -259,12 +259,12 @@ int ContainerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ContainerImplementation::ContainerImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Container.idl(57):  		Logger.setLoggingName("Container");
+	// server/zone/objects/tangible/Container.idl():  		Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");
 }
 
 bool ContainerImplementation::isContainerOject() {
-	// server/zone/objects/tangible/Container.idl(99):  		return true;
+	// server/zone/objects/tangible/Container.idl():  		return true;
 	return true;
 }
 
@@ -275,26 +275,28 @@ bool ContainerImplementation::isContainerOject() {
 ContainerAdapter::ContainerAdapter(ContainerImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CHECKPERMISSION__PLAYERCREATURE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_ISCONTAINEROJECT__};
+
 Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_CHECKPERMISSION__PLAYERCREATURE_:
 		resp->insertBoolean(checkPermission((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 9:
+	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
-	case 10:
+	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_ISCONTAINEROJECT__:
 		resp->insertBoolean(isContainerOject());
 		break;
 	default:

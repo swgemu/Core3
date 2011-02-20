@@ -355,11 +355,11 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/ActiveArea.idl(58):  		radius = 0;
+	// server/zone/objects/area/ActiveArea.idl():  		radius = 0;
 	radius = 0;
-	// server/zone/objects/area/ActiveArea.idl(59):  		radius2 = 0;
+	// server/zone/objects/area/ActiveArea.idl():  		radius2 = 0;
 	radius2 = 0;
-	// server/zone/objects/area/ActiveArea.idl(61):  		Logger.setLoggingName("ActiveArea");
+	// server/zone/objects/area/ActiveArea.idl():  		Logger.setLoggingName("ActiveArea");
 	Logger::setLoggingName("ActiveArea");
 }
 
@@ -373,29 +373,29 @@ void ActiveAreaImplementation::notifyExit(SceneObject* object) {
 }
 
 bool ActiveAreaImplementation::isActiveArea() {
-	// server/zone/objects/area/ActiveArea.idl(87):  		return true;
+	// server/zone/objects/area/ActiveArea.idl():  		return true;
 	return true;
 }
 
 bool ActiveAreaImplementation::isRegion() {
-	// server/zone/objects/area/ActiveArea.idl(91):  		return false;
+	// server/zone/objects/area/ActiveArea.idl():  		return false;
 	return false;
 }
 
 float ActiveAreaImplementation::getRadius() {
-	// server/zone/objects/area/ActiveArea.idl(112):  		return radius;
+	// server/zone/objects/area/ActiveArea.idl():  		return radius;
 	return radius;
 }
 
 float ActiveAreaImplementation::getRadius2() {
-	// server/zone/objects/area/ActiveArea.idl(116):  		return radius2;
+	// server/zone/objects/area/ActiveArea.idl():  		return radius2;
 	return radius2;
 }
 
 void ActiveAreaImplementation::setRadius(float r) {
-	// server/zone/objects/area/ActiveArea.idl(120):  		radius = r;
+	// server/zone/objects/area/ActiveArea.idl():  		radius = r;
 	radius = r;
-	// server/zone/objects/area/ActiveArea.idl(121):  		radius2 = r * r;
+	// server/zone/objects/area/ActiveArea.idl():  		radius2 = r * r;
 	radius2 = r * r;
 }
 
@@ -406,47 +406,49 @@ void ActiveAreaImplementation::setRadius(float r) {
 ActiveAreaAdapter::ActiveAreaAdapter(ActiveAreaImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_SETRADIUS__FLOAT_};
+
 Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SENDTO__SCENEOBJECT_BOOL_:
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 7:
+	case RPC_ENQUEUEENTEREVENT__SCENEOBJECT_:
 		enqueueEnterEvent((SceneObject*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_ENQUEUEEXITEVENT__SCENEOBJECT_:
 		enqueueExitEvent((SceneObject*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_NOTIFYEXIT__SCENEOBJECT_:
 		notifyExit((SceneObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_ISACTIVEAREA__:
 		resp->insertBoolean(isActiveArea());
 		break;
-	case 12:
+	case RPC_ISREGION__:
 		resp->insertBoolean(isRegion());
 		break;
-	case 13:
+	case RPC_INSERTTOZONE__ZONE_:
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_REMOVEFROMZONE__:
 		removeFromZone();
 		break;
-	case 15:
+	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
-	case 16:
+	case RPC_GETRADIUS__:
 		resp->insertFloat(getRadius());
 		break;
-	case 17:
+	case RPC_GETRADIUS2__:
 		resp->insertFloat(getRadius2());
 		break;
-	case 18:
+	case RPC_SETRADIUS__FLOAT_:
 		setRadius(inv->getFloatParameter());
 		break;
 	default:

@@ -471,13 +471,13 @@ int BazaarManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) {
 	_initializeImplementation();
-	// server/zone/managers/bazaar/BazaarManager.idl(74):  		zoneServer = server;
+	// server/zone/managers/bazaar/BazaarManager.idl():  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/bazaar/BazaarManager.idl(76):  		Logger.setLoggingName("BazaarManager");
+	// server/zone/managers/bazaar/BazaarManager.idl():  		Logger.setLoggingName("BazaarManager");
 	Logger::setLoggingName("BazaarManager");
-	// server/zone/managers/bazaar/BazaarManager.idl(77):  		Logger.setLogging(false);
+	// server/zone/managers/bazaar/BazaarManager.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/managers/bazaar/BazaarManager.idl(78):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/bazaar/BazaarManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
@@ -488,56 +488,58 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) {
 BazaarManagerAdapter::BazaarManagerAdapter(BazaarManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_INITIALIZE__ = 6,RPC_CHECKAUCTIONS__,RPC_ADDSALEITEM__PLAYERCREATURE_LONG_LONG_UNICODESTRING_INT_INT_BOOL_,RPC_CREATEAUCTIONITEM__PLAYERCREATURE_SCENEOBJECT_BAZAARTERMINAL_UNICODESTRING_INT_INT_BOOL_,RPC_CHECKSALEITEM__PLAYERCREATURE_SCENEOBJECT_INT_,RPC_GETITEMATTRIBUTES__PLAYERCREATURE_LONG_,RPC_GETBAZAARDATA__PLAYERCREATURE_INT_LONG_INT_INT_INT_INT_,RPC_GETALLBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_GETPLANETBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_GETREGIONBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_CHECKRETRIEVE__PLAYERCREATURE_LONG_BAZAARTERMINAL_,RPC_RETRIEVEITEM__PLAYERCREATURE_LONG_LONG_,RPC_BUYITEM__PLAYERCREATURE_LONG_INT_INT_,RPC_DOAUCTIONBID__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__PLAYERCREATURE_AUCTIONITEM_INT_INT_,};
+
 Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 7:
+	case RPC_CHECKAUCTIONS__:
 		checkAuctions();
 		break;
-	case 8:
+	case RPC_ADDSALEITEM__PLAYERCREATURE_LONG_LONG_UNICODESTRING_INT_INT_BOOL_:
 		addSaleItem((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param3_addSaleItem__PlayerCreature_long_long_UnicodeString_int_int_bool_), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 9:
+	case RPC_CREATEAUCTIONITEM__PLAYERCREATURE_SCENEOBJECT_BAZAARTERMINAL_UNICODESTRING_INT_INT_BOOL_:
 		resp->insertLong(createAuctionItem((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), (BazaarTerminal*) inv->getObjectParameter(), inv->getUnicodeParameter(_param3_createAuctionItem__PlayerCreature_SceneObject_BazaarTerminal_UnicodeString_int_int_bool_), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
-	case 10:
+	case RPC_CHECKSALEITEM__PLAYERCREATURE_SCENEOBJECT_INT_:
 		resp->insertSignedInt(checkSaleItem((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 11:
+	case RPC_GETITEMATTRIBUTES__PLAYERCREATURE_LONG_:
 		getItemAttributes((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 12:
+	case RPC_GETBAZAARDATA__PLAYERCREATURE_INT_LONG_INT_INT_INT_INT_:
 		getBazaarData((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 13:
+	case RPC_GETALLBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_:
 		getAllBazaarData((PlayerCreature*) inv->getObjectParameter(), (BazaarTerminal*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 14:
+	case RPC_GETPLANETBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_:
 		getPlanetBazaarData((PlayerCreature*) inv->getObjectParameter(), (BazaarTerminal*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 15:
+	case RPC_GETREGIONBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_:
 		getRegionBazaarData((PlayerCreature*) inv->getObjectParameter(), (BazaarTerminal*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 16:
+	case RPC_CHECKRETRIEVE__PLAYERCREATURE_LONG_BAZAARTERMINAL_:
 		resp->insertSignedInt(checkRetrieve((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (BazaarTerminal*) inv->getObjectParameter()));
 		break;
-	case 17:
+	case RPC_RETRIEVEITEM__PLAYERCREATURE_LONG_LONG_:
 		retrieveItem((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 18:
+	case RPC_BUYITEM__PLAYERCREATURE_LONG_INT_INT_:
 		buyItem((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 19:
+	case RPC_DOAUCTIONBID__PLAYERCREATURE_AUCTIONITEM_INT_INT_:
 		doAuctionBid((PlayerCreature*) inv->getObjectParameter(), (AuctionItem*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 20:
+	case RPC_DOINSTANTBUY__PLAYERCREATURE_AUCTIONITEM_INT_INT_:
 		doInstantBuy((PlayerCreature*) inv->getObjectParameter(), (AuctionItem*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 21:
+	case RPC_CHECKBIDAUCTION__PLAYERCREATURE_AUCTIONITEM_INT_INT_:
 		resp->insertSignedInt(checkBidAuction((PlayerCreature*) inv->getObjectParameter(), (AuctionItem*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter()));
 		break;
 	default:

@@ -150,7 +150,7 @@ int TravelBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* s
 
 TravelBuildingObjectImplementation::TravelBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/travel/TravelBuildingObject.idl(55):  		Logger.setLoggingName("TravelBuildingObject");
+	// server/zone/objects/building/travel/TravelBuildingObject.idl():  		Logger.setLoggingName("TravelBuildingObject");
 	Logger::setLoggingName("TravelBuildingObject");
 }
 
@@ -160,6 +160,8 @@ TravelBuildingObjectImplementation::TravelBuildingObjectImplementation() {
 
 TravelBuildingObjectAdapter::TravelBuildingObjectAdapter(TravelBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
+
+enum {};
 
 Packet* TravelBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -956,155 +956,157 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 PlayerManagerAdapter::PlayerManagerAdapter(PlayerManagerImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_LOADNAMEMAP__ = 6,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_,RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_,RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_AWARDBADGE__PLAYERCREATURE_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_,RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_CHECKLINEOFSIGHT__SCENEOBJECT_SCENEOBJECT_,RPC_CHECKLINEOFSIGHTINBUILDING__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_,RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_,RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_,RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_,RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_,RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_,RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_,RPC_GETCOLLISIONPOINT__CREATUREOBJECT_,RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_};
+
 Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_LOADNAMEMAP__:
 		loadNameMap();
 		break;
-	case 7:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 8:
+	case RPC_KICKUSER__STRING_STRING_:
 		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__String_String_), inv->getAsciiParameter(_param1_kickUser__String_String_)));
 		break;
-	case 9:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 10:
+	case RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_:
 		resp->insertSignedInt(notifyDestruction((TangibleObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 11:
+	case RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_:
 		resp->insertSignedInt(notifyDefendersOfIncapacitation((TangibleObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter()));
 		break;
-	case 12:
+	case RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_:
 		killPlayer((TangibleObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_:
 		resp->insertByte(calculateIncapacitationTimer((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 14:
+	case RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_:
 		resp->insertBoolean(checkEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter()));
 		break;
-	case 15:
+	case RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_:
 		applyEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_:
 		removeEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_AWARDBADGE__PLAYERCREATURE_INT_:
 		awardBadge((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 18:
+	case RPC_SETEXPERIENCEMULTIPLIER__FLOAT_:
 		setExperienceMultiplier(inv->getFloatParameter());
 		break;
-	case 19:
+	case RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_:
 		awardExperience((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_awardExperience__PlayerCreature_String_int_bool_float_), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getFloatParameter());
 		break;
-	case 20:
+	case RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_:
 		handleAbortTradeMessage((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 21:
+	case RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_:
 		handleAddItemToTradeWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 22:
+	case RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_:
 		handleGiveMoneyMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 23:
+	case RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_:
 		handleAcceptTransactionMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 24:
+	case RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_:
 		handleUnAcceptTransactionMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 25:
+	case RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_:
 		handleVerifyTradeMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 26:
+	case RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_:
 		resp->insertBoolean(checkTradeItems((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 27:
+	case RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_:
 		resp->insertLong(getInRangeStructureWithAdminRights((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case 28:
+	case RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_:
 		sendBattleFatigueMessage((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 29:
+	case RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_:
 		resp->insertSignedInt(getMedicalFacilityRating((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 30:
+	case RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_:
 		stopWatch((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
-	case 31:
+	case RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_:
 		stopListen((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
-	case 32:
+	case RPC_STARTWATCH__CREATUREOBJECT_LONG_:
 		startWatch((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 33:
+	case RPC_STARTLISTEN__CREATUREOBJECT_LONG_:
 		startListen((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 34:
+	case RPC_CHECKLINEOFSIGHT__SCENEOBJECT_SCENEOBJECT_:
 		resp->insertBoolean(checkLineOfSight((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
 		break;
-	case 35:
+	case RPC_CHECKLINEOFSIGHTINBUILDING__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_:
 		resp->insertBoolean(checkLineOfSightInBuilding((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
 		break;
-	case 36:
+	case RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_:
 		resp->insertSignedInt(healEnhance((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getFloatParameter()));
 		break;
-	case 37:
+	case RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_:
 		resp->insertBoolean(squadLeaderCheck((PlayerCreature*) inv->getObjectParameter(), (GroupObject*) inv->getObjectParameter()));
 		break;
-	case 38:
+	case RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_:
 		awardSquadLeaderExperience((GroupObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
-	case 39:
+	case RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_:
 		sendMessageOfTheDay((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 40:
+	case RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_:
 		sendActivateCloneRequest((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 41:
+	case RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_:
 		sendPlayerToCloner((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 42:
+	case RPC_CHECKEXISTENTNAMEINDATABASE__STRING_:
 		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
 		break;
-	case 43:
+	case RPC_CREATEHAIROBJECT__STRING_STRING_:
 		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
 		break;
-	case 44:
+	case RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_:
 		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 45:
+	case RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_:
 		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
 		break;
-	case 46:
+	case RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_:
 		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 47:
+	case RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_:
 		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 48:
+	case RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_:
 		resp->insertSignedInt(checkSpeedHackSecondTest((PlayerCreature*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), (SceneObject*) inv->getObjectParameter()));
 		break;
-	case 49:
+	case RPC_EXISTSNAME__STRING_:
 		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
 		break;
-	case 50:
+	case RPC_GETOBJECTID__STRING_:
 		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
 		break;
-	case 51:
+	case RPC_GETPLAYER__STRING_:
 		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
-	case 52:
+	case RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_:
 		updateAdminLevel((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_updateAdminLevel__PlayerCreature_String_int_), inv->getSignedIntParameter());
 		break;
-	case 53:
+	case RPC_GETCOLLISIONPOINT__CREATUREOBJECT_:
 		resp->insertFloat(getCollisionPoint((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 54:
+	case RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_:
 		generateHologrindProfessions((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:

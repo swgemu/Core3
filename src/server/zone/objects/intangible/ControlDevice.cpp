@@ -251,53 +251,53 @@ int ControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 ControlDeviceImplementation::ControlDeviceImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/intangible/ControlDevice.idl(61):  		controlledObject = null;
+	// server/zone/objects/intangible/ControlDevice.idl():  		controlledObject = null;
 	controlledObject = NULL;
-	// server/zone/objects/intangible/ControlDevice.idl(63):  		Logger.setLoggingName("ControlDevice");
+	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.setLoggingName("ControlDevice");
 	Logger::setLoggingName("ControlDevice");
-	// server/zone/objects/intangible/ControlDevice.idl(64):  		Logger.setLogging(false);
+	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/intangible/ControlDevice.idl(65):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 void ControlDeviceImplementation::updateToDatabaseAllObjects(bool startTask) {
-	// server/zone/objects/intangible/ControlDevice.idl(75):  
+	// server/zone/objects/intangible/ControlDevice.idl():  		}
 	if (controlledObject != NULL){
-	// server/zone/objects/intangible/ControlDevice.idl(76):  			controlledObject.updateToDatabaseWithoutChildren();
+	// server/zone/objects/intangible/ControlDevice.idl():  			controlledObject.updateToDatabaseWithoutChildren();
 	controlledObject->updateToDatabaseWithoutChildren();
-	// server/zone/objects/intangible/ControlDevice.idl(78):  			super.updateToDatabaseAllObjects(startTask);
+	// server/zone/objects/intangible/ControlDevice.idl():  			super.updateToDatabaseAllObjects(startTask);
 	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
 }
 
 	else {
-	// server/zone/objects/intangible/ControlDevice.idl(80):  			super.updateToDatabaseAllObjects(startTask);
+	// server/zone/objects/intangible/ControlDevice.idl():  			super.updateToDatabaseAllObjects(startTask);
 	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
 }
 }
 
 void ControlDeviceImplementation::storeObject(PlayerCreature* player) {
-	// server/zone/objects/intangible/ControlDevice.idl(85):  		Logger.error("called storeObject on an abstract method");
+	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.error("called storeObject on an abstract method");
 	Logger::error("called storeObject on an abstract method");
 }
 
 void ControlDeviceImplementation::generateObject(PlayerCreature* player) {
-	// server/zone/objects/intangible/ControlDevice.idl(89):  		Logger.error("called generateObject on an abstract method");
+	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.error("called generateObject on an abstract method");
 	Logger::error("called generateObject on an abstract method");
 }
 
 void ControlDeviceImplementation::setControlledObject(CreatureObject* object) {
-	// server/zone/objects/intangible/ControlDevice.idl(93):  		controlledObject = object;
+	// server/zone/objects/intangible/ControlDevice.idl():  		controlledObject = object;
 	controlledObject = object;
 }
 
 CreatureObject* ControlDeviceImplementation::getControlledObject() {
-	// server/zone/objects/intangible/ControlDevice.idl(97):  		return controlledObject;
+	// server/zone/objects/intangible/ControlDevice.idl():  		return controlledObject;
 	return controlledObject;
 }
 
 bool ControlDeviceImplementation::isControlDevice() {
-	// server/zone/objects/intangible/ControlDevice.idl(101):  		return true;
+	// server/zone/objects/intangible/ControlDevice.idl():  		return true;
 	return true;
 }
 
@@ -308,26 +308,28 @@ bool ControlDeviceImplementation::isControlDevice() {
 ControlDeviceAdapter::ControlDeviceAdapter(ControlDeviceImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
+enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__PLAYERCREATURE_,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_SETCONTROLLEDOBJECT__CREATUREOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
+
 Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
 		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
-	case 7:
+	case RPC_STOREOBJECT__PLAYERCREATURE_:
 		storeObject((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_GENERATEOBJECT__PLAYERCREATURE_:
 		generateObject((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SETCONTROLLEDOBJECT__CREATUREOBJECT_:
 		setControlledObject((CreatureObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_GETCONTROLLEDOBJECT__:
 		resp->insertLong(getControlledObject()->_getObjectID());
 		break;
-	case 11:
+	case RPC_ISCONTROLDEVICE__:
 		resp->insertBoolean(isControlDevice());
 		break;
 	default:

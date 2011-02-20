@@ -533,96 +533,96 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 
 PersistentMessageImplementation::PersistentMessageImplementation() {
 	_initializeImplementation();
-	// server/chat/PersistentMessage.idl(77):  		timeStamp = System.getTime();
+	// server/chat/PersistentMessage.idl():  		timeStamp = System.getTime();
 	timeStamp = System::getTime();
-	// server/chat/PersistentMessage.idl(78):  		status = NEW;
+	// server/chat/PersistentMessage.idl():  		status = NEW;
 	status = NEW;
-	// server/chat/PersistentMessage.idl(80):  		receiverObjectID = 0;
+	// server/chat/PersistentMessage.idl():  		receiverObjectID = 0;
 	receiverObjectID = 0;
 }
 
 StringIdChatParameterVector* PersistentMessageImplementation::getStringIdParameters() {
-	// server/chat/PersistentMessage.idl(87):  		return stringIdParameters;
+	// server/chat/PersistentMessage.idl():  		return stringIdParameters;
 	return (&stringIdParameters);
 }
 
 WaypointChatParameterVector* PersistentMessageImplementation::getWaypointParameters() {
-	// server/chat/PersistentMessage.idl(92):  		return waypointParameters;
+	// server/chat/PersistentMessage.idl():  		return waypointParameters;
 	return (&waypointParameters);
 }
 
 String PersistentMessageImplementation::getSenderName() {
-	// server/chat/PersistentMessage.idl(100):  		return senderName;
+	// server/chat/PersistentMessage.idl():  		return senderName;
 	return senderName;
 }
 
 unsigned long long PersistentMessageImplementation::getReceiverObjectID() {
-	// server/chat/PersistentMessage.idl(104):  		return receiverObjectID;
+	// server/chat/PersistentMessage.idl():  		return receiverObjectID;
 	return receiverObjectID;
 }
 
 byte PersistentMessageImplementation::getStatus() {
-	// server/chat/PersistentMessage.idl(108):  		return status;
+	// server/chat/PersistentMessage.idl():  		return status;
 	return status;
 }
 
 int PersistentMessageImplementation::getTimeStamp() {
-	// server/chat/PersistentMessage.idl(112):  		return timeStamp;
+	// server/chat/PersistentMessage.idl():  		return timeStamp;
 	return timeStamp;
 }
 
 UnicodeString PersistentMessageImplementation::getBody() {
-	// server/chat/PersistentMessage.idl(116):  		return body;
+	// server/chat/PersistentMessage.idl():  		return body;
 	return body;
 }
 
 UnicodeString PersistentMessageImplementation::getSubject() {
-	// server/chat/PersistentMessage.idl(120):  		return subject;
+	// server/chat/PersistentMessage.idl():  		return subject;
 	return subject;
 }
 
 void PersistentMessageImplementation::setSenderName(const String& name) {
-	// server/chat/PersistentMessage.idl(124):  		senderName = name;
+	// server/chat/PersistentMessage.idl():  		senderName = name;
 	senderName = name;
 }
 
 void PersistentMessageImplementation::setReceiverObjectID(unsigned long long oid) {
-	// server/chat/PersistentMessage.idl(128):  		receiverObjectID = oid;
+	// server/chat/PersistentMessage.idl():  		receiverObjectID = oid;
 	receiverObjectID = oid;
 }
 
 void PersistentMessageImplementation::setStatus(byte stat) {
-	// server/chat/PersistentMessage.idl(132):  		status = stat;
+	// server/chat/PersistentMessage.idl():  		status = stat;
 	status = stat;
 }
 
 void PersistentMessageImplementation::setTimeStamp(int stamp) {
-	// server/chat/PersistentMessage.idl(136):  		timeStamp = stamp;
+	// server/chat/PersistentMessage.idl():  		timeStamp = stamp;
 	timeStamp = stamp;
 }
 
 void PersistentMessageImplementation::setBody(const UnicodeString& message) {
-	// server/chat/PersistentMessage.idl(140):  		body = message;
+	// server/chat/PersistentMessage.idl():  		body = message;
 	body = message;
 }
 
 void PersistentMessageImplementation::setSubject(const UnicodeString& subj) {
-	// server/chat/PersistentMessage.idl(144):  		subject = subj;
+	// server/chat/PersistentMessage.idl():  		subject = subj;
 	subject = subj;
 }
 
 bool PersistentMessageImplementation::isNew() {
-	// server/chat/PersistentMessage.idl(148):  		return status == NEW;
+	// server/chat/PersistentMessage.idl():  		return status == NEW;
 	return status == NEW;
 }
 
 bool PersistentMessageImplementation::isRead() {
-	// server/chat/PersistentMessage.idl(152):  		return status == READ;
+	// server/chat/PersistentMessage.idl():  		return status == READ;
 	return status == READ;
 }
 
 bool PersistentMessageImplementation::isUnread() {
-	// server/chat/PersistentMessage.idl(156):  		return status == UNREAD;
+	// server/chat/PersistentMessage.idl():  		return status == UNREAD;
 	return status == UNREAD;
 }
 
@@ -633,62 +633,64 @@ bool PersistentMessageImplementation::isUnread() {
 PersistentMessageAdapter::PersistentMessageAdapter(PersistentMessageImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_SENDTO__PLAYERCREATURE_BOOL_ = 6,RPC_GETMAILID__,RPC_GETOBJECTID__,RPC_GETSENDERNAME__,RPC_GETRECEIVEROBJECTID__,RPC_GETSTATUS__,RPC_GETTIMESTAMP__,RPC_GETBODY__,RPC_GETSUBJECT__,RPC_SETSENDERNAME__STRING_,RPC_SETRECEIVEROBJECTID__LONG_,RPC_SETSTATUS__BYTE_,RPC_SETTIMESTAMP__INT_,RPC_SETBODY__UNICODESTRING_,RPC_SETSUBJECT__UNICODESTRING_,RPC_ISNEW__,RPC_ISREAD__,RPC_ISUNREAD__,};
+
 Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SENDTO__PLAYERCREATURE_BOOL_:
 		sendTo((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 7:
+	case RPC_GETMAILID__:
 		resp->insertSignedInt(getMailID());
 		break;
-	case 8:
+	case RPC_GETOBJECTID__:
 		resp->insertLong(getObjectID());
 		break;
-	case 9:
+	case RPC_GETSENDERNAME__:
 		resp->insertAscii(getSenderName());
 		break;
-	case 10:
+	case RPC_GETRECEIVEROBJECTID__:
 		resp->insertLong(getReceiverObjectID());
 		break;
-	case 11:
+	case RPC_GETSTATUS__:
 		resp->insertByte(getStatus());
 		break;
-	case 12:
+	case RPC_GETTIMESTAMP__:
 		resp->insertSignedInt(getTimeStamp());
 		break;
-	case 13:
+	case RPC_GETBODY__:
 		resp->insertUnicode(getBody());
 		break;
-	case 14:
+	case RPC_GETSUBJECT__:
 		resp->insertUnicode(getSubject());
 		break;
-	case 15:
+	case RPC_SETSENDERNAME__STRING_:
 		setSenderName(inv->getAsciiParameter(_param0_setSenderName__String_));
 		break;
-	case 16:
+	case RPC_SETRECEIVEROBJECTID__LONG_:
 		setReceiverObjectID(inv->getUnsignedLongParameter());
 		break;
-	case 17:
+	case RPC_SETSTATUS__BYTE_:
 		setStatus(inv->getByteParameter());
 		break;
-	case 18:
+	case RPC_SETTIMESTAMP__INT_:
 		setTimeStamp(inv->getSignedIntParameter());
 		break;
-	case 19:
+	case RPC_SETBODY__UNICODESTRING_:
 		setBody(inv->getUnicodeParameter(_param0_setBody__UnicodeString_));
 		break;
-	case 20:
+	case RPC_SETSUBJECT__UNICODESTRING_:
 		setSubject(inv->getUnicodeParameter(_param0_setSubject__UnicodeString_));
 		break;
-	case 21:
+	case RPC_ISNEW__:
 		resp->insertBoolean(isNew());
 		break;
-	case 22:
+	case RPC_ISREAD__:
 		resp->insertBoolean(isRead());
 		break;
-	case 23:
+	case RPC_ISUNREAD__:
 		resp->insertBoolean(isUnread());
 		break;
 	default:

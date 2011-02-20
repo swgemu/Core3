@@ -163,12 +163,12 @@ int MedicalBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* 
 
 MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/medical/MedicalBuildingObject.idl(55):  		Logger.setLoggingName("MedicalBuildingObject");
+	// server/zone/objects/building/medical/MedicalBuildingObject.idl():  		Logger.setLoggingName("MedicalBuildingObject");
 	Logger::setLoggingName("MedicalBuildingObject");
 }
 
 bool MedicalBuildingObjectImplementation::isMedicalBuildingObject() {
-	// server/zone/objects/building/medical/MedicalBuildingObject.idl(59):  		return true;
+	// server/zone/objects/building/medical/MedicalBuildingObject.idl():  		return true;
 	return true;
 }
 
@@ -179,11 +179,13 @@ bool MedicalBuildingObjectImplementation::isMedicalBuildingObject() {
 MedicalBuildingObjectAdapter::MedicalBuildingObjectAdapter(MedicalBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
 
+enum {RPC_ISMEDICALBUILDINGOBJECT__ = 6};
+
 Packet* MedicalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ISMEDICALBUILDINGOBJECT__:
 		resp->insertBoolean(isMedicalBuildingObject());
 		break;
 	default:

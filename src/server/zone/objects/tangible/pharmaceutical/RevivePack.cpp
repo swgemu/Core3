@@ -364,136 +364,136 @@ int RevivePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 RevivePackImplementation::RevivePackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(69):  		setLoggingName("RevivePack");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		setLoggingName("RevivePack");
 	setLoggingName("RevivePack");
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(71):  		healthWoundHealed = 100;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		healthWoundHealed = 100;
 	healthWoundHealed = 100;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(72):  		healthHealed = 100;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		healthHealed = 100;
 	healthHealed = 100;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(73):  		actionWoundHealed = 100;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		actionWoundHealed = 100;
 	actionWoundHealed = 100;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(74):  		actionHealed = 100;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		actionHealed = 100;
 	actionHealed = 100;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(75):  		mindWoundHealed = 100;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		mindWoundHealed = 100;
 	mindWoundHealed = 100;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(76):  		mindHealed = 100;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		mindHealed = 100;
 	mindHealed = 100;
 }
 
 void RevivePackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(81):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
 	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(83):  		float effectiveness = craftingValues.getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		float effectiveness = craftingValues.getCurrentValue("power");
 	float effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(84):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(85):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
 	setUseCount(craftingValues->getCurrentValue("charges"));
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(87):  		craftingValues.setHidden("power");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		craftingValues.setHidden("power");
 	craftingValues->setHidden("power");
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(89):  		float health = 2 * effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		float health = 2 * effectiveness;
 	float health = 2 * effectiveness;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(90):  		healthWoundHealed = health;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		healthWoundHealed = health;
 	healthWoundHealed = health;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(91):  		healthHealed = 2 * effectiveness - health;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		healthHealed = 2 * effectiveness - health;
 	healthHealed = 2 * effectiveness - health;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(93):  		float action = 2 * effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		float action = 2 * effectiveness;
 	float action = 2 * effectiveness;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(94):  		action = System.random(action / 4);
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		action = System.random(action / 4);
 	action = System::random(action / 4);
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(95):  		action = action + effectiveness / 2;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		action = action + effectiveness / 2;
 	action = action + effectiveness / 2;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(97):  		actionWoundHealed = action;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		actionWoundHealed = action;
 	actionWoundHealed = action;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(98):  		actionHealed = 2 * effectiveness - action;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		actionHealed = 2 * effectiveness - action;
 	actionHealed = 2 * effectiveness - action;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(100):  		float mind = 1.5 * effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		float mind = 1.5 * effectiveness;
 	float mind = 1.5 * effectiveness;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(101):  		mind = System.random(mind / 4);
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		mind = System.random(mind / 4);
 	mind = System::random(mind / 4);
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(102):  		mind = mind + effectiveness / 2;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		mind = mind + effectiveness / 2;
 	mind = mind + effectiveness / 2;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(104):  		mindWoundHealed = mind;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		mindWoundHealed = mind;
 	mindWoundHealed = mind;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(105):  		mindHealed = 1.5 * effectiveness - mind;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		mindHealed = 1.5 * effectiveness - mind;
 	mindHealed = 1.5 * effectiveness - mind;
 }
 
 void RevivePackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(117):  		super.fillAttributeList(msg, object);
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(119):  		msg.insertAttribute("examine_heal_wound_health", Math.getPrecision(healthWoundHealed, 0));
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		msg.insertAttribute("examine_heal_wound_health", Math.getPrecision(healthWoundHealed, 0));
 	msg->insertAttribute("examine_heal_wound_health", Math::getPrecision(healthWoundHealed, 0));
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(120):  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(healthHealed, 0));
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(healthHealed, 0));
 	msg->insertAttribute("examine_heal_damage_health", Math::getPrecision(healthHealed, 0));
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(122):  		msg.insertAttribute("examine_heal_wound_mind", Math.getPrecision(mindWoundHealed, 0));
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		msg.insertAttribute("examine_heal_wound_mind", Math.getPrecision(mindWoundHealed, 0));
 	msg->insertAttribute("examine_heal_wound_mind", Math::getPrecision(mindWoundHealed, 0));
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(123):  		msg.insertAttribute("examine_heal_damage_mind", Math.getPrecision(mindHealed, 0));
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		msg.insertAttribute("examine_heal_damage_mind", Math.getPrecision(mindHealed, 0));
 	msg->insertAttribute("examine_heal_damage_mind", Math::getPrecision(mindHealed, 0));
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(125):  		msg.insertAttribute("examine_heal_wound_action", Math.getPrecision(actionWoundHealed, 0));
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		msg.insertAttribute("examine_heal_wound_action", Math.getPrecision(actionWoundHealed, 0));
 	msg->insertAttribute("examine_heal_wound_action", Math::getPrecision(actionWoundHealed, 0));
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(126):  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(actionHealed, 0));
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(actionHealed, 0));
 	msg->insertAttribute("examine_heal_damage_action", Math::getPrecision(actionHealed, 0));
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(128):  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::medicineUseRequired);
 }
 
 int RevivePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(140):  		if 
-	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(141):  			return 1;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		if 
+	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			return 1;
 	return 1;
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(143):  
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		}
 	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(144):  			player.sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
 	player->sendSystemMessage("error_message", "insufficient_skill");
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(146):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			return 0;
 	return 0;
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(148):  			string command = "/reviveplayer ";
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			string command = "/reviveplayer ";
 	String command = "/reviveplayer ";
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(149):  			command = command + String.valueOf(super.getObjectID());
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			command = command + String.valueOf(super.getObjectID());
 	command = command + String::valueOf(PharmaceuticalObjectImplementation::getObjectID());
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(151):  			player.sendExecuteConsoleCommand(command);
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			player.sendExecuteConsoleCommand(command);
 	player->sendExecuteConsoleCommand(command);
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(153):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			return 0;
 	return 0;
 }
 }
 
 float RevivePackImplementation::getHealthWoundHealed() {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(159):  		return healthWoundHealed;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		return healthWoundHealed;
 	return healthWoundHealed;
 }
 
 float RevivePackImplementation::getHealthHealed() {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(163):  		return healthHealed;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		return healthHealed;
 	return healthHealed;
 }
 
 float RevivePackImplementation::getActionWoundHealed() {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(167):  		return actionWoundHealed;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		return actionWoundHealed;
 	return actionWoundHealed;
 }
 
 float RevivePackImplementation::getActionHealed() {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(171):  		return actionHealed;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		return actionHealed;
 	return actionHealed;
 }
 
 float RevivePackImplementation::getMindWoundHealed() {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(175):  		return mindWoundHealed;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		return mindWoundHealed;
 	return mindWoundHealed;
 }
 
 float RevivePackImplementation::getMindHealed() {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(179):  		return mindHealed;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		return mindHealed;
 	return mindHealed;
 }
 
 bool RevivePackImplementation::isRevivePack() {
-	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl(183):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		return true;
 	return true;
 }
 
@@ -504,32 +504,34 @@ bool RevivePackImplementation::isRevivePack() {
 RevivePackAdapter::RevivePackAdapter(RevivePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETHEALTHWOUNDHEALED__,RPC_GETHEALTHHEALED__,RPC_GETACTIONWOUNDHEALED__,RPC_GETACTIONHEALED__,RPC_GETMINDWOUNDHEALED__,RPC_GETMINDHEALED__,RPC_ISREVIVEPACK__};
+
 Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 7:
+	case RPC_GETHEALTHWOUNDHEALED__:
 		resp->insertFloat(getHealthWoundHealed());
 		break;
-	case 8:
+	case RPC_GETHEALTHHEALED__:
 		resp->insertFloat(getHealthHealed());
 		break;
-	case 9:
+	case RPC_GETACTIONWOUNDHEALED__:
 		resp->insertFloat(getActionWoundHealed());
 		break;
-	case 10:
+	case RPC_GETACTIONHEALED__:
 		resp->insertFloat(getActionHealed());
 		break;
-	case 11:
+	case RPC_GETMINDWOUNDHEALED__:
 		resp->insertFloat(getMindWoundHealed());
 		break;
-	case 12:
+	case RPC_GETMINDHEALED__:
 		resp->insertFloat(getMindHealed());
 		break;
-	case 13:
+	case RPC_ISREVIVEPACK__:
 		resp->insertBoolean(isRevivePack());
 		break;
 	default:

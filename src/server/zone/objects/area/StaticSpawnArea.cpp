@@ -193,12 +193,12 @@ int StaticSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 StaticSpawnAreaImplementation::StaticSpawnAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/StaticSpawnArea.idl(61):  		Logger.setLoggingName("StaticSpawnArea");
+	// server/zone/objects/area/StaticSpawnArea.idl():  		Logger.setLoggingName("StaticSpawnArea");
 	Logger::setLoggingName("StaticSpawnArea");
 }
 
 bool StaticSpawnAreaImplementation::isStaticArea() {
-	// server/zone/objects/area/StaticSpawnArea.idl(67):  		return true;
+	// server/zone/objects/area/StaticSpawnArea.idl():  		return true;
 	return true;
 }
 
@@ -209,14 +209,16 @@ bool StaticSpawnAreaImplementation::isStaticArea() {
 StaticSpawnAreaAdapter::StaticSpawnAreaAdapter(StaticSpawnAreaImplementation* obj) : SpawnAreaAdapter(obj) {
 }
 
+enum {RPC_SPAWNCREATURES__ = 6,RPC_ISSTATICAREA__};
+
 Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SPAWNCREATURES__:
 		spawnCreatures();
 		break;
-	case 7:
+	case RPC_ISSTATICAREA__:
 		resp->insertBoolean(isStaticArea());
 		break;
 	default:

@@ -171,7 +171,7 @@ DurationBuffImplementation::DurationBuffImplementation(CreatureObject* creo, uns
 }
 
 void DurationBuffImplementation::activate(bool applyModifiers) {
-	// server/zone/objects/creature/buffs/DurationBuff.idl(70):  		super.activate(false);
+	// server/zone/objects/creature/buffs/DurationBuff.idl():  		super.activate(false);
 	BuffImplementation::activate(false);
 }
 
@@ -182,11 +182,13 @@ void DurationBuffImplementation::activate(bool applyModifiers) {
 DurationBuffAdapter::DurationBuffAdapter(DurationBuffImplementation* obj) : BuffAdapter(obj) {
 }
 
+enum {RPC_ACTIVATE__BOOL_ = 6};
+
 Packet* DurationBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ACTIVATE__BOOL_:
 		activate(inv->getBooleanParameter());
 		break;
 	default:

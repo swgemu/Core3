@@ -222,35 +222,35 @@ int FireworkObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 FireworkObjectImplementation::FireworkObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/firework/FireworkObject.idl(62):  		Logger.setLoggingName("FireworkObject");
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		Logger.setLoggingName("FireworkObject");
 	Logger::setLoggingName("FireworkObject");
-	// server/zone/objects/tangible/firework/FireworkObject.idl(64):  		fireworkObject = "object/static/firework/fx_01.iff";
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		fireworkObject = "object/static/firework/fx_01.iff";
 	fireworkObject = "object/static/firework/fx_01.iff";
 }
 
 void FireworkObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/firework/FireworkObject.idl(68):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/firework/FireworkObject.idl(70):  		Logger.setLoggingName("FireworkObject");
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		Logger.setLoggingName("FireworkObject");
 	Logger::setLoggingName("FireworkObject");
 }
 
 void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/firework/FireworkObject.idl(89):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		super.loadTemplateData(templateData);
 	TangibleObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/firework/FireworkObject.idl(91):  		FireworkObjectTemplate 
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		FireworkObjectTemplate 
 	if (!templateData->isFireworkObjectTemplate()){
-	// server/zone/objects/tangible/firework/FireworkObject.idl(92):  			error("critical error");
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  			error("critical error");
 	error("critical error");
-	// server/zone/objects/tangible/firework/FireworkObject.idl(93):  			return;
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  			return;
 	return;
 }
-	// server/zone/objects/tangible/firework/FireworkObject.idl(96):  templ = (FireworkObjectTemplate) templateData;
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		FireworkObjectTemplate templ = (FireworkObjectTemplate) templateData;
 	FireworkObjectTemplate* templ = (FireworkObjectTemplate*) templateData;
-	// server/zone/objects/tangible/firework/FireworkObject.idl(98):  		fireworkObject 
-	if (templ == NULL)	// server/zone/objects/tangible/firework/FireworkObject.idl(99):  			return;
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		fireworkObject 
+	if (templ == NULL)	// server/zone/objects/tangible/firework/FireworkObject.idl():  			return;
 	return;
-	// server/zone/objects/tangible/firework/FireworkObject.idl(101):  = templ.getFireworkObject();
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		fireworkObject = templ.getFireworkObject();
 	fireworkObject = templ->getFireworkObject();
 }
 
@@ -261,17 +261,19 @@ void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 FireworkObjectAdapter::FireworkObjectAdapter(FireworkObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_LAUNCH__PLAYERCREATURE_};
+
 Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_LAUNCH__PLAYERCREATURE_:
 		launch((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:

@@ -1095,180 +1095,180 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 MissionObjectImplementation::MissionObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObject.idl(114):  		typeCRC = SURVEY;
+	// server/zone/objects/mission/MissionObject.idl():  		typeCRC = SURVEY;
 	typeCRC = SURVEY;
-	// server/zone/objects/mission/MissionObject.idl(116):  		refreshCounter = 0;
+	// server/zone/objects/mission/MissionObject.idl():  		refreshCounter = 0;
 	refreshCounter = 0;
-	// server/zone/objects/mission/MissionObject.idl(121):  		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
+	// server/zone/objects/mission/MissionObject.idl():  		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
 	(&missionDescription)->setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
-	// server/zone/objects/mission/MissionObject.idl(122):  		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
+	// server/zone/objects/mission/MissionObject.idl():  		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
 	(&missionTitle)->setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
-	// server/zone/objects/mission/MissionObject.idl(123):  		targetName = "Testing target name";
+	// server/zone/objects/mission/MissionObject.idl():  		targetName = "Testing target name";
 	targetName = "Testing target name";
-	// server/zone/objects/mission/MissionObject.idl(124):  		difficultyLevel = 50;
+	// server/zone/objects/mission/MissionObject.idl():  		difficultyLevel = 50;
 	difficultyLevel = 50;
-	// server/zone/objects/mission/MissionObject.idl(126):  		rewardCredits = 100;
+	// server/zone/objects/mission/MissionObject.idl():  		rewardCredits = 100;
 	rewardCredits = 100;
-	// server/zone/objects/mission/MissionObject.idl(128):  		startPositionX = 0;
+	// server/zone/objects/mission/MissionObject.idl():  		startPositionX = 0;
 	startPositionX = 0;
-	// server/zone/objects/mission/MissionObject.idl(129):  		startPositionY = 0;
+	// server/zone/objects/mission/MissionObject.idl():  		startPositionY = 0;
 	startPositionY = 0;
-	// server/zone/objects/mission/MissionObject.idl(130):  		startPlanetCRC = 0;
+	// server/zone/objects/mission/MissionObject.idl():  		startPlanetCRC = 0;
 	startPlanetCRC = 0;
-	// server/zone/objects/mission/MissionObject.idl(132):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/MissionObject.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
 }
 
 void MissionObjectImplementation::abort() {
-	// server/zone/objects/mission/MissionObject.idl(173):  	}
-	if (missionObjective != NULL)	// server/zone/objects/mission/MissionObject.idl(174):  			missionObjective.abort();
+	// server/zone/objects/mission/MissionObject.idl():  	}
+	if (missionObjective != NULL)	// server/zone/objects/mission/MissionObject.idl():  			missionObjective.abort();
 	missionObjective->abort();
 }
 
 void MissionObjectImplementation::setMissionObjective(MissionObjective* obj) {
-	// server/zone/objects/mission/MissionObject.idl(178):  		missionObjective = obj;
+	// server/zone/objects/mission/MissionObject.idl():  		missionObjective = obj;
 	missionObjective = obj;
 }
 
 void MissionObjectImplementation::setStartPlanetCRC(unsigned int crc) {
-	// server/zone/objects/mission/MissionObject.idl(182):  		startPlanetCRC = crc;
+	// server/zone/objects/mission/MissionObject.idl():  		startPlanetCRC = crc;
 	startPlanetCRC = crc;
 }
 
 void MissionObjectImplementation::setEndPlanetCRC(unsigned int crc) {
-	// server/zone/objects/mission/MissionObject.idl(186):  		endPlanetCRC = crc;
+	// server/zone/objects/mission/MissionObject.idl():  		endPlanetCRC = crc;
 	endPlanetCRC = crc;
 }
 
 void MissionObjectImplementation::setMissionTarget(SceneObject* target) {
-	// server/zone/objects/mission/MissionObject.idl(190):  		missionTarget = target;
+	// server/zone/objects/mission/MissionObject.idl():  		missionTarget = target;
 	missionTarget = target;
 }
 
 void MissionObjectImplementation::setMissionTargetDest(SceneObject* target) {
-	// server/zone/objects/mission/MissionObject.idl(194):  		missionTargetDest = target;
+	// server/zone/objects/mission/MissionObject.idl():  		missionTargetDest = target;
 	missionTargetDest = target;
 }
 
 void MissionObjectImplementation::setMissionNumber(int num) {
-	// server/zone/objects/mission/MissionObject.idl(198):  		missionNumber = num;
+	// server/zone/objects/mission/MissionObject.idl():  		missionNumber = num;
 	missionNumber = num;
 }
 
 void MissionObjectImplementation::setTemplateStrings(const String& temp1, const String& temp2) {
-	// server/zone/objects/mission/MissionObject.idl(202):  		templateString1 = temp1;
+	// server/zone/objects/mission/MissionObject.idl():  		templateString1 = temp1;
 	templateString1 = temp1;
-	// server/zone/objects/mission/MissionObject.idl(203):  		templateString2 = temp2;
+	// server/zone/objects/mission/MissionObject.idl():  		templateString2 = temp2;
 	templateString2 = temp2;
 }
 
 float MissionObjectImplementation::getStartPositionX() {
-	// server/zone/objects/mission/MissionObject.idl(207):  		return startPositionX;
+	// server/zone/objects/mission/MissionObject.idl():  		return startPositionX;
 	return startPositionX;
 }
 
 float MissionObjectImplementation::getStartPositionY() {
-	// server/zone/objects/mission/MissionObject.idl(211):  		return startPositionY;
+	// server/zone/objects/mission/MissionObject.idl():  		return startPositionY;
 	return startPositionY;
 }
 
 unsigned int MissionObjectImplementation::getStartPlanetCRC() {
-	// server/zone/objects/mission/MissionObject.idl(215):  		return startPlanetCRC;
+	// server/zone/objects/mission/MissionObject.idl():  		return startPlanetCRC;
 	return startPlanetCRC;
 }
 
 float MissionObjectImplementation::getEndPositionX() {
-	// server/zone/objects/mission/MissionObject.idl(219):  		return endPositionX;
+	// server/zone/objects/mission/MissionObject.idl():  		return endPositionX;
 	return endPositionX;
 }
 
 float MissionObjectImplementation::getEndPositionY() {
-	// server/zone/objects/mission/MissionObject.idl(223):  		return endPositionY;
+	// server/zone/objects/mission/MissionObject.idl():  		return endPositionY;
 	return endPositionY;
 }
 
 unsigned int MissionObjectImplementation::getEndPlanetCRC() {
-	// server/zone/objects/mission/MissionObject.idl(227):  		return endPlanetCRC;
+	// server/zone/objects/mission/MissionObject.idl():  		return endPlanetCRC;
 	return endPlanetCRC;
 }
 
 WaypointObject* MissionObjectImplementation::getWaypointToMission() {
-	// server/zone/objects/mission/MissionObject.idl(231):  		return waypointToMission;
+	// server/zone/objects/mission/MissionObject.idl():  		return waypointToMission;
 	return waypointToMission;
 }
 
 SceneObject* MissionObjectImplementation::getMissionTarget() {
-	// server/zone/objects/mission/MissionObject.idl(235):  		return missionTarget;
+	// server/zone/objects/mission/MissionObject.idl():  		return missionTarget;
 	return missionTarget;
 }
 
 SceneObject* MissionObjectImplementation::getMissionTargetDest() {
-	// server/zone/objects/mission/MissionObject.idl(239):  		return missionTargetDest;
+	// server/zone/objects/mission/MissionObject.idl():  		return missionTargetDest;
 	return missionTargetDest;
 }
 
 unsigned int MissionObjectImplementation::getTypeCRC() {
-	// server/zone/objects/mission/MissionObject.idl(243):  		return typeCRC;
+	// server/zone/objects/mission/MissionObject.idl():  		return typeCRC;
 	return typeCRC;
 }
 
 int MissionObjectImplementation::getRewardCredits() {
-	// server/zone/objects/mission/MissionObject.idl(247):  		return rewardCredits;
+	// server/zone/objects/mission/MissionObject.idl():  		return rewardCredits;
 	return rewardCredits;
 }
 
 UnicodeString MissionObjectImplementation::getCreatorName() {
-	// server/zone/objects/mission/MissionObject.idl(251):  		return creatorName;
+	// server/zone/objects/mission/MissionObject.idl():  		return creatorName;
 	return creatorName;
 }
 
 int MissionObjectImplementation::getDifficultyLevel() {
-	// server/zone/objects/mission/MissionObject.idl(255):  		return difficultyLevel;
+	// server/zone/objects/mission/MissionObject.idl():  		return difficultyLevel;
 	return difficultyLevel;
 }
 
 StringId* MissionObjectImplementation::getMissionDescription() {
-	// server/zone/objects/mission/MissionObject.idl(260):  		return missionDescription;
+	// server/zone/objects/mission/MissionObject.idl():  		return missionDescription;
 	return (&missionDescription);
 }
 
 StringId* MissionObjectImplementation::getMissionTitle() {
-	// server/zone/objects/mission/MissionObject.idl(265):  		return missionTitle;
+	// server/zone/objects/mission/MissionObject.idl():  		return missionTitle;
 	return (&missionTitle);
 }
 
 String MissionObjectImplementation::getTargetName() {
-	// server/zone/objects/mission/MissionObject.idl(269):  		return targetName;
+	// server/zone/objects/mission/MissionObject.idl():  		return targetName;
 	return targetName;
 }
 
 int MissionObjectImplementation::getRefreshCounter() {
-	// server/zone/objects/mission/MissionObject.idl(273):  		return refreshCounter;
+	// server/zone/objects/mission/MissionObject.idl():  		return refreshCounter;
 	return refreshCounter;
 }
 
 int MissionObjectImplementation::getMissionNumber() {
-	// server/zone/objects/mission/MissionObject.idl(277):  		return missionNumber;
+	// server/zone/objects/mission/MissionObject.idl():  		return missionNumber;
 	return missionNumber;
 }
 
 bool MissionObjectImplementation::isSurveyMission() {
-	// server/zone/objects/mission/MissionObject.idl(284):  		return typeCRC == this.SURVEY;
+	// server/zone/objects/mission/MissionObject.idl():  		return typeCRC == this.SURVEY;
 	return typeCRC == _this->SURVEY;
 }
 
 bool MissionObjectImplementation::isMissionObject() {
-	// server/zone/objects/mission/MissionObject.idl(288):  		return true;
+	// server/zone/objects/mission/MissionObject.idl():  		return true;
 	return true;
 }
 
 String MissionObjectImplementation::getTemplateString1() {
-	// server/zone/objects/mission/MissionObject.idl(292):  		return templateString1;
+	// server/zone/objects/mission/MissionObject.idl():  		return templateString1;
 	return templateString1;
 }
 
 String MissionObjectImplementation::getTemplateString2() {
-	// server/zone/objects/mission/MissionObject.idl(296):  		return templateString2;
+	// server/zone/objects/mission/MissionObject.idl():  		return templateString2;
 	return templateString2;
 }
 
@@ -1279,140 +1279,142 @@ String MissionObjectImplementation::getTemplateString2() {
 MissionObjectAdapter::MissionObjectAdapter(MissionObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
+enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANETCRC__INT_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__SCENEOBJECT_,RPC_SETMISSIONTARGETDEST__SCENEOBJECT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETSTARTPLANETCRC__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
+
 Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_CREATEWAYPOINT__:
 		resp->insertLong(createWaypoint()->_getObjectID());
 		break;
-	case 7:
+	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case 8:
+	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
 		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
-	case 9:
+	case RPC_SETREFRESHCOUNTER__INT_BOOL_:
 		setRefreshCounter(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 10:
+	case RPC_SETTYPECRC__INT_BOOL_:
 		setTypeCRC(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 11:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 12:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_:
 		setMissionDescription(inv->getAsciiParameter(_param0_setMissionDescription__String_String_bool_), inv->getAsciiParameter(_param1_setMissionDescription__String_String_bool_), inv->getBooleanParameter());
 		break;
-	case 14:
+	case RPC_SETMISSIONTITLE__STRING_STRING_BOOL_:
 		setMissionTitle(inv->getAsciiParameter(_param0_setMissionTitle__String_String_bool_), inv->getAsciiParameter(_param1_setMissionTitle__String_String_bool_), inv->getBooleanParameter());
 		break;
-	case 15:
+	case RPC_SETMISSIONTARGETNAME__STRING_BOOL_:
 		setMissionTargetName(inv->getAsciiParameter(_param0_setMissionTargetName__String_bool_), inv->getBooleanParameter());
 		break;
-	case 16:
+	case RPC_SETMISSIONDIFFICULTY__INT_BOOL_:
 		setMissionDifficulty(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 17:
+	case RPC_SETREWARDCREDITS__INT_BOOL_:
 		setRewardCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 18:
+	case RPC_SETSTARTPOSITION__FLOAT_FLOAT_INT_BOOL_:
 		setStartPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 19:
+	case RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_:
 		setEndPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 20:
+	case RPC_SETCREATORNAME__STRING_BOOL_:
 		setCreatorName(inv->getAsciiParameter(_param0_setCreatorName__String_bool_), inv->getBooleanParameter());
 		break;
-	case 21:
+	case RPC_UPDATEMISSIONLOCATION__:
 		updateMissionLocation();
 		break;
-	case 22:
+	case RPC_ABORT__:
 		abort();
 		break;
-	case 23:
+	case RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_:
 		setMissionObjective((MissionObjective*) inv->getObjectParameter());
 		break;
-	case 24:
+	case RPC_SETSTARTPLANETCRC__INT_:
 		setStartPlanetCRC(inv->getUnsignedIntParameter());
 		break;
-	case 25:
+	case RPC_SETENDPLANETCRC__INT_:
 		setEndPlanetCRC(inv->getUnsignedIntParameter());
 		break;
-	case 26:
+	case RPC_SETMISSIONTARGET__SCENEOBJECT_:
 		setMissionTarget((SceneObject*) inv->getObjectParameter());
 		break;
-	case 27:
+	case RPC_SETMISSIONTARGETDEST__SCENEOBJECT_:
 		setMissionTargetDest((SceneObject*) inv->getObjectParameter());
 		break;
-	case 28:
+	case RPC_SETMISSIONNUMBER__INT_:
 		setMissionNumber(inv->getSignedIntParameter());
 		break;
-	case 29:
+	case RPC_SETTEMPLATESTRINGS__STRING_STRING_:
 		setTemplateStrings(inv->getAsciiParameter(_param0_setTemplateStrings__String_String_), inv->getAsciiParameter(_param1_setTemplateStrings__String_String_));
 		break;
-	case 30:
+	case RPC_GETSTARTPOSITIONX__:
 		resp->insertFloat(getStartPositionX());
 		break;
-	case 31:
+	case RPC_GETSTARTPOSITIONY__:
 		resp->insertFloat(getStartPositionY());
 		break;
-	case 32:
+	case RPC_GETSTARTPLANETCRC__:
 		resp->insertInt(getStartPlanetCRC());
 		break;
-	case 33:
+	case RPC_GETENDPOSITIONX__:
 		resp->insertFloat(getEndPositionX());
 		break;
-	case 34:
+	case RPC_GETENDPOSITIONY__:
 		resp->insertFloat(getEndPositionY());
 		break;
-	case 35:
+	case RPC_GETENDPLANETCRC__:
 		resp->insertInt(getEndPlanetCRC());
 		break;
-	case 36:
+	case RPC_GETWAYPOINTTOMISSION__:
 		resp->insertLong(getWaypointToMission()->_getObjectID());
 		break;
-	case 37:
+	case RPC_GETMISSIONTARGET__:
 		resp->insertLong(getMissionTarget()->_getObjectID());
 		break;
-	case 38:
+	case RPC_GETMISSIONTARGETDEST__:
 		resp->insertLong(getMissionTargetDest()->_getObjectID());
 		break;
-	case 39:
+	case RPC_GETTYPECRC__:
 		resp->insertInt(getTypeCRC());
 		break;
-	case 40:
+	case RPC_GETREWARDCREDITS__:
 		resp->insertSignedInt(getRewardCredits());
 		break;
-	case 41:
+	case RPC_GETCREATORNAME__:
 		resp->insertUnicode(getCreatorName());
 		break;
-	case 42:
+	case RPC_GETDIFFICULTYLEVEL__:
 		resp->insertSignedInt(getDifficultyLevel());
 		break;
-	case 43:
+	case RPC_GETTARGETNAME__:
 		resp->insertAscii(getTargetName());
 		break;
-	case 44:
+	case RPC_GETREFRESHCOUNTER__:
 		resp->insertSignedInt(getRefreshCounter());
 		break;
-	case 45:
+	case RPC_GETMISSIONNUMBER__:
 		resp->insertSignedInt(getMissionNumber());
 		break;
-	case 46:
+	case RPC_ISSURVEYMISSION__:
 		resp->insertBoolean(isSurveyMission());
 		break;
-	case 47:
+	case RPC_ISMISSIONOBJECT__:
 		resp->insertBoolean(isMissionObject());
 		break;
-	case 48:
+	case RPC_GETTEMPLATESTRING1__:
 		resp->insertAscii(getTemplateString1());
 		break;
-	case 49:
+	case RPC_GETTEMPLATESTRING2__:
 		resp->insertAscii(getTemplateString2());
 		break;
 	default:

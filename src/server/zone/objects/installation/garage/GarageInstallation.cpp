@@ -188,7 +188,7 @@ int GarageInstallationImplementation::writeObjectMembers(ObjectOutputStream* str
 
 GarageInstallationImplementation::GarageInstallationImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/garage/GarageInstallation.idl(54):  		setLoggingName("ShuttleInstallation");
+	// server/zone/objects/installation/garage/GarageInstallation.idl():  		setLoggingName("ShuttleInstallation");
 	setLoggingName("ShuttleInstallation");
 }
 
@@ -199,14 +199,16 @@ GarageInstallationImplementation::GarageInstallationImplementation() {
 GarageInstallationAdapter::GarageInstallationAdapter(GarageInstallationImplementation* obj) : InstallationObjectAdapter(obj) {
 }
 
+enum {RPC_CREATECHILDOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_};
+
 Packet* GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
 		break;
-	case 7:
+	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
 	default:

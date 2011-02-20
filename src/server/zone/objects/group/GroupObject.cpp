@@ -513,51 +513,51 @@ int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 GroupObjectImplementation::GroupObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/group/GroupObject.idl(66):  		groupLevel = 0;
+	// server/zone/objects/group/GroupObject.idl():  		groupLevel = 0;
 	groupLevel = 0;
-	// server/zone/objects/group/GroupObject.idl(68):  		Logger.setLoggingName("GroupObject");
+	// server/zone/objects/group/GroupObject.idl():  		Logger.setLoggingName("GroupObject");
 	Logger::setLoggingName("GroupObject");
-	// server/zone/objects/group/GroupObject.idl(70):  		chatRoom = null;
+	// server/zone/objects/group/GroupObject.idl():  		chatRoom = null;
 	chatRoom = NULL;
 }
 
 int GroupObjectImplementation::getGroupLevel() {
-	// server/zone/objects/group/GroupObject.idl(101):  		return groupLevel;
+	// server/zone/objects/group/GroupObject.idl():  		return groupLevel;
 	return groupLevel;
 }
 
 ChatRoom* GroupObjectImplementation::getGroupChannel() {
-	// server/zone/objects/group/GroupObject.idl(105):  		return chatRoom;
+	// server/zone/objects/group/GroupObject.idl():  		return chatRoom;
 	return chatRoom;
 }
 
 int GroupObjectImplementation::getGroupSize() {
-	// server/zone/objects/group/GroupObject.idl(109):  		return groupMembers.size();
+	// server/zone/objects/group/GroupObject.idl():  		return groupMembers.size();
 	return (&groupMembers)->size();
 }
 
 SceneObject* GroupObjectImplementation::getGroupMember(int index) {
-	// server/zone/objects/group/GroupObject.idl(113):  		return groupMembers.get(index);
+	// server/zone/objects/group/GroupObject.idl():  		return groupMembers.get(index);
 	return (&groupMembers)->get(index);
 }
 
 void GroupObjectImplementation::initializeLeader(SceneObject* player) {
-	// server/zone/objects/group/GroupObject.idl(117):  		groupMembers.add(player);
+	// server/zone/objects/group/GroupObject.idl():  		groupMembers.add(player);
 	(&groupMembers)->add(player);
 }
 
 SceneObject* GroupObjectImplementation::getLeader() {
-	// server/zone/objects/group/GroupObject.idl(121):  		return groupMembers.get(0);
+	// server/zone/objects/group/GroupObject.idl():  		return groupMembers.get(0);
 	return (&groupMembers)->get(0);
 }
 
 GroupList* GroupObjectImplementation::getGroupList() {
-	// server/zone/objects/group/GroupObject.idl(126):  		return groupMembers;
+	// server/zone/objects/group/GroupObject.idl():  		return groupMembers;
 	return (&groupMembers);
 }
 
 bool GroupObjectImplementation::isGroupObject() {
-	// server/zone/objects/group/GroupObject.idl(130):  		return true;
+	// server/zone/objects/group/GroupObject.idl():  		return true;
 	return true;
 }
 
@@ -568,77 +568,79 @@ bool GroupObjectImplementation::isGroupObject() {
 GroupObjectAdapter::GroupObjectAdapter(GroupObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__PLAYERCREATURE_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__PLAYERCREATURE_,RPC_REMOVEGROUPMODIFIERS__PLAYERCREATURE_};
+
 Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_:
 		broadcastMessage((PlayerCreature*) inv->getObjectParameter(), (BaseMessage*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 9:
+	case RPC_ADDMEMBER__SCENEOBJECT_:
 		addMember((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_REMOVEMEMBER__SCENEOBJECT_:
 		removeMember((SceneObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_DISBAND__:
 		disband();
 		break;
-	case 12:
+	case RPC_MAKELEADER__SCENEOBJECT_:
 		makeLeader((SceneObject*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_HASMEMBER__SCENEOBJECT_:
 		resp->insertBoolean(hasMember((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 14:
+	case RPC_STARTCHATROOM__:
 		startChatRoom();
 		break;
-	case 15:
+	case RPC_DESTROYCHATROOM__:
 		destroyChatRoom();
 		break;
-	case 16:
+	case RPC_GETGROUPHARVESTMODIFIER__PLAYERCREATURE_:
 		resp->insertFloat(getGroupHarvestModifier((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 17:
+	case RPC_GETGROUPLEVEL__:
 		resp->insertSignedInt(getGroupLevel());
 		break;
-	case 18:
+	case RPC_GETGROUPCHANNEL__:
 		resp->insertLong(getGroupChannel()->_getObjectID());
 		break;
-	case 19:
+	case RPC_GETGROUPSIZE__:
 		resp->insertSignedInt(getGroupSize());
 		break;
-	case 20:
+	case RPC_GETGROUPMEMBER__INT_:
 		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 21:
+	case RPC_INITIALIZELEADER__SCENEOBJECT_:
 		initializeLeader((SceneObject*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_GETLEADER__:
 		resp->insertLong(getLeader()->_getObjectID());
 		break;
-	case 23:
+	case RPC_ISGROUPOBJECT__:
 		resp->insertBoolean(isGroupObject());
 		break;
-	case 24:
+	case RPC_HASSQUADLEADER__:
 		resp->insertBoolean(hasSquadLeader());
 		break;
-	case 25:
+	case RPC_ADDGROUPMODIFIERS__:
 		addGroupModifiers();
 		break;
-	case 26:
+	case RPC_REMOVEGROUPMODIFIERS__:
 		removeGroupModifiers();
 		break;
-	case 27:
+	case RPC_ADDGROUPMODIFIERS__PLAYERCREATURE_:
 		addGroupModifiers((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 28:
+	case RPC_REMOVEGROUPMODIFIERS__PLAYERCREATURE_:
 		removeGroupModifiers((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:

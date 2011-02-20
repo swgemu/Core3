@@ -436,72 +436,72 @@ int WaypointObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 WaypointObjectImplementation::WaypointObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/waypoint/WaypointObject.idl(38):  		Logger.setLoggingName("WaypointObject");
+	// server/zone/objects/waypoint/WaypointObject.idl():  		Logger.setLoggingName("WaypointObject");
 	Logger::setLoggingName("WaypointObject");
 }
 
 void WaypointObjectImplementation::setCellID(unsigned int id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(48):  		cellID = id;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		cellID = id;
 	cellID = id;
 }
 
 void WaypointObjectImplementation::setPlanetCRC(unsigned int crc) {
-	// server/zone/objects/waypoint/WaypointObject.idl(52):  		planetCRC = crc;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		planetCRC = crc;
 	planetCRC = crc;
 }
 
 unsigned int WaypointObjectImplementation::getPlanetCRC() {
-	// server/zone/objects/waypoint/WaypointObject.idl(56):  		return planetCRC;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		return planetCRC;
 	return planetCRC;
 }
 
 void WaypointObjectImplementation::setCustomName(const UnicodeString& name) {
-	// server/zone/objects/waypoint/WaypointObject.idl(60):  		customName = name;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		customName = name;
 	customName = name;
 }
 
 UnicodeString WaypointObjectImplementation::getCustomName() {
-	// server/zone/objects/waypoint/WaypointObject.idl(64):  		return customName;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		return customName;
 	return customName;
 }
 
 void WaypointObjectImplementation::setColor(byte newColor) {
-	// server/zone/objects/waypoint/WaypointObject.idl(68):  		color = newColor;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		color = newColor;
 	color = newColor;
 }
 
 void WaypointObjectImplementation::setActive(byte newStatus) {
-	// server/zone/objects/waypoint/WaypointObject.idl(72):  		active = newStatus;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		active = newStatus;
 	active = newStatus;
 }
 
 void WaypointObjectImplementation::setUnknown(unsigned long long id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(76):  		unknown = id;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		unknown = id;
 	unknown = id;
 }
 
 void WaypointObjectImplementation::setSpecialTypeID(int id) {
-	// server/zone/objects/waypoint/WaypointObject.idl(80):  		specialTypeID = id;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		specialTypeID = id;
 	specialTypeID = id;
 }
 
 int WaypointObjectImplementation::getSpecialTypeID() {
-	// server/zone/objects/waypoint/WaypointObject.idl(84):  		return specialTypeID;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		return specialTypeID;
 	return specialTypeID;
 }
 
 void WaypointObjectImplementation::toggleStatus() {
-	// server/zone/objects/waypoint/WaypointObject.idl(88):  		active = !active;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		active = !active;
 	active = !active;
 }
 
 bool WaypointObjectImplementation::isActive() {
-	// server/zone/objects/waypoint/WaypointObject.idl(92):  		return active;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		return active;
 	return active;
 }
 
 byte WaypointObjectImplementation::getColor() {
-	// server/zone/objects/waypoint/WaypointObject.idl(96):  		return color;
+	// server/zone/objects/waypoint/WaypointObject.idl():  		return color;
 	return color;
 }
 
@@ -512,47 +512,49 @@ byte WaypointObjectImplementation::getColor() {
 WaypointObjectAdapter::WaypointObjectAdapter(WaypointObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
+enum {RPC_SETCELLID__INT_,RPC_SETPLANETCRC__INT_,RPC_GETPLANETCRC__,RPC_SETCUSTOMNAME__UNICODESTRING_,RPC_GETCUSTOMNAME__,RPC_SETCOLOR__BYTE_,RPC_SETACTIVE__BYTE_,RPC_SETUNKNOWN__LONG_,RPC_SETSPECIALTYPEID__INT_,RPC_GETSPECIALTYPEID__,RPC_TOGGLESTATUS__,RPC_ISACTIVE__,RPC_GETCOLOR__};
+
 Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SETCELLID__INT_:
 		setCellID(inv->getUnsignedIntParameter());
 		break;
-	case 7:
+	case RPC_SETPLANETCRC__INT_:
 		setPlanetCRC(inv->getUnsignedIntParameter());
 		break;
-	case 8:
+	case RPC_GETPLANETCRC__:
 		resp->insertInt(getPlanetCRC());
 		break;
-	case 9:
+	case RPC_SETCUSTOMNAME__UNICODESTRING_:
 		setCustomName(inv->getUnicodeParameter(_param0_setCustomName__UnicodeString_));
 		break;
-	case 10:
+	case RPC_GETCUSTOMNAME__:
 		resp->insertUnicode(getCustomName());
 		break;
-	case 11:
+	case RPC_SETCOLOR__BYTE_:
 		setColor(inv->getByteParameter());
 		break;
-	case 12:
+	case RPC_SETACTIVE__BYTE_:
 		setActive(inv->getByteParameter());
 		break;
-	case 13:
+	case RPC_SETUNKNOWN__LONG_:
 		setUnknown(inv->getUnsignedLongParameter());
 		break;
-	case 14:
+	case RPC_SETSPECIALTYPEID__INT_:
 		setSpecialTypeID(inv->getSignedIntParameter());
 		break;
-	case 15:
+	case RPC_GETSPECIALTYPEID__:
 		resp->insertSignedInt(getSpecialTypeID());
 		break;
-	case 16:
+	case RPC_TOGGLESTATUS__:
 		toggleStatus();
 		break;
-	case 17:
+	case RPC_ISACTIVE__:
 		resp->insertBoolean(isActive());
 		break;
-	case 18:
+	case RPC_GETCOLOR__:
 		resp->insertByte(getColor());
 		break;
 	default:

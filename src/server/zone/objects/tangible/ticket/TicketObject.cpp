@@ -370,59 +370,59 @@ int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 TicketObjectImplementation::TicketObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/ticket/TicketObject.idl(63):  		Logger.setLoggingName("TicketObject");
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		Logger.setLoggingName("TicketObject");
 	Logger::setLoggingName("TicketObject");
 }
 
 void TicketObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(67):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/ticket/TicketObject.idl(69):  		Logger.setLoggingName("TicketObject");
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		Logger.setLoggingName("TicketObject");
 	Logger::setLoggingName("TicketObject");
 }
 
 void TicketObjectImplementation::setDeparturePlanet(const String& departureplanet) {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(90):  		departurePlanet = departureplanet;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		departurePlanet = departureplanet;
 	departurePlanet = departureplanet;
 }
 
 void TicketObjectImplementation::setDeparturePoint(const String& departurepoint) {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(94):  		departurePoint = departurepoint;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		departurePoint = departurepoint;
 	departurePoint = departurepoint;
 }
 
 void TicketObjectImplementation::setArrivalPlanet(const String& arrival) {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(98):  		arrivalPlanet = arrival;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		arrivalPlanet = arrival;
 	arrivalPlanet = arrival;
 }
 
 void TicketObjectImplementation::setArrivalPoint(const String& arrival) {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(102):  		arrivalPoint = arrival;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		arrivalPoint = arrival;
 	arrivalPoint = arrival;
 }
 
 String TicketObjectImplementation::getDeparturePlanet() {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(106):  		return departurePlanet;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		return departurePlanet;
 	return departurePlanet;
 }
 
 String TicketObjectImplementation::getDeparturePoint() {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(110):  		return departurePoint;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		return departurePoint;
 	return departurePoint;
 }
 
 String TicketObjectImplementation::getArrivalPlanet() {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(114):  		return arrivalPlanet;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		return arrivalPlanet;
 	return arrivalPlanet;
 }
 
 String TicketObjectImplementation::getArrivalPoint() {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(118):  		return arrivalPoint;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		return arrivalPoint;
 	return arrivalPoint;
 }
 
 bool TicketObjectImplementation::isTicketObject() {
-	// server/zone/objects/tangible/ticket/TicketObject.idl(122):  		return true;
+	// server/zone/objects/tangible/ticket/TicketObject.idl():  		return true;
 	return true;
 }
 
@@ -433,41 +433,43 @@ bool TicketObjectImplementation::isTicketObject() {
 TicketObjectAdapter::TicketObjectAdapter(TicketObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETDEPARTUREPLANET__STRING_,RPC_SETDEPARTUREPOINT__STRING_,RPC_SETARRIVALPLANET__STRING_,RPC_SETARRIVALPOINT__STRING_,RPC_GETDEPARTUREPLANET__,RPC_GETDEPARTUREPOINT__,RPC_GETARRIVALPLANET__,RPC_GETARRIVALPOINT__,RPC_ISTICKETOBJECT__};
+
 Packet* TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_SETDEPARTUREPLANET__STRING_:
 		setDeparturePlanet(inv->getAsciiParameter(_param0_setDeparturePlanet__String_));
 		break;
-	case 9:
+	case RPC_SETDEPARTUREPOINT__STRING_:
 		setDeparturePoint(inv->getAsciiParameter(_param0_setDeparturePoint__String_));
 		break;
-	case 10:
+	case RPC_SETARRIVALPLANET__STRING_:
 		setArrivalPlanet(inv->getAsciiParameter(_param0_setArrivalPlanet__String_));
 		break;
-	case 11:
+	case RPC_SETARRIVALPOINT__STRING_:
 		setArrivalPoint(inv->getAsciiParameter(_param0_setArrivalPoint__String_));
 		break;
-	case 12:
+	case RPC_GETDEPARTUREPLANET__:
 		resp->insertAscii(getDeparturePlanet());
 		break;
-	case 13:
+	case RPC_GETDEPARTUREPOINT__:
 		resp->insertAscii(getDeparturePoint());
 		break;
-	case 14:
+	case RPC_GETARRIVALPLANET__:
 		resp->insertAscii(getArrivalPlanet());
 		break;
-	case 15:
+	case RPC_GETARRIVALPOINT__:
 		resp->insertAscii(getArrivalPoint());
 		break;
-	case 16:
+	case RPC_ISTICKETOBJECT__:
 		resp->insertBoolean(isTicketObject());
 		break;
 	default:

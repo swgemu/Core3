@@ -269,47 +269,47 @@ int ZoneProcessServerImplementation::writeObjectMembers(ObjectOutputStream* stre
 }
 
 ZoneServer* ZoneProcessServerImplementation::getZoneServer() {
-	// server/zone/ZoneProcessServer.idl(95):  		return zoneServer;
+	// server/zone/ZoneProcessServer.idl():  		return zoneServer;
 	return zoneServer;
 }
 
 ZonePacketHandler* ZoneProcessServerImplementation::getPacketHandler() {
-	// server/zone/ZoneProcessServer.idl(100):  		return zonePacketHandler;
+	// server/zone/ZoneProcessServer.idl():  		return zonePacketHandler;
 	return zonePacketHandler;
 }
 
 ProfessionManager* ZoneProcessServerImplementation::getProfessionManager() {
-	// server/zone/ZoneProcessServer.idl(105):  		return professionManager;
+	// server/zone/ZoneProcessServer.idl():  		return professionManager;
 	return professionManager;
 }
 
 ObjectController* ZoneProcessServerImplementation::getObjectController() {
-	// server/zone/ZoneProcessServer.idl(110):  		return objectController;
+	// server/zone/ZoneProcessServer.idl():  		return objectController;
 	return objectController;
 }
 
 PlayerManager* ZoneProcessServerImplementation::getPlayerManager() {
-	// server/zone/ZoneProcessServer.idl(114):  		return zoneServer.getPlayerManager();
+	// server/zone/ZoneProcessServer.idl():  		return zoneServer.getPlayerManager();
 	return zoneServer->getPlayerManager();
 }
 
 NameManager* ZoneProcessServerImplementation::getNameManager() {
-	// server/zone/ZoneProcessServer.idl(119):  		return nameManager;
+	// server/zone/ZoneProcessServer.idl():  		return nameManager;
 	return nameManager;
 }
 
 HolocronManager* ZoneProcessServerImplementation::getHolocronManager() {
-	// server/zone/ZoneProcessServer.idl(124):  		return holocronManager;
+	// server/zone/ZoneProcessServer.idl():  		return holocronManager;
 	return holocronManager;
 }
 
 ChatManager* ZoneProcessServerImplementation::getChatManager() {
-	// server/zone/ZoneProcessServer.idl(128):  		return zoneServer.getChatManager();
+	// server/zone/ZoneProcessServer.idl():  		return zoneServer.getChatManager();
 	return zoneServer->getChatManager();
 }
 
 SuiManager* ZoneProcessServerImplementation::getSuiManager() {
-	// server/zone/ZoneProcessServer.idl(133):  		return suiManager;
+	// server/zone/ZoneProcessServer.idl():  		return suiManager;
 	return suiManager;
 }
 
@@ -320,23 +320,25 @@ SuiManager* ZoneProcessServerImplementation::getSuiManager() {
 ZoneProcessServerAdapter::ZoneProcessServerAdapter(ZoneProcessServerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_GETZONESERVER__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,};
+
 Packet* ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 7:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 8:
+	case RPC_GETZONESERVER__:
 		resp->insertLong(getZoneServer()->_getObjectID());
 		break;
-	case 9:
+	case RPC_GETPLAYERMANAGER__:
 		resp->insertLong(getPlayerManager()->_getObjectID());
 		break;
-	case 10:
+	case RPC_GETCHATMANAGER__:
 		resp->insertLong(getChatManager()->_getObjectID());
 		break;
 	default:

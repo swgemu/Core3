@@ -339,26 +339,26 @@ int CellObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 CellObjectImplementation::CellObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/cell/CellObject.idl(59):  		Logger.setLoggingName("CellObject");
+	// server/zone/objects/cell/CellObject.idl():  		Logger.setLoggingName("CellObject");
 	Logger::setLoggingName("CellObject");
-	// server/zone/objects/cell/CellObject.idl(61):  		cellNumber = 0;
+	// server/zone/objects/cell/CellObject.idl():  		cellNumber = 0;
 	cellNumber = 0;
-	// server/zone/objects/cell/CellObject.idl(63):  		currentNumberOfItems = 0;
+	// server/zone/objects/cell/CellObject.idl():  		currentNumberOfItems = 0;
 	currentNumberOfItems = 0;
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(135):  		return cellNumber;
+	// server/zone/objects/cell/CellObject.idl():  		return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(139):  		cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl():  		cellNumber = number;
 	cellNumber = number;
 }
 
 bool CellObjectImplementation::isCellObject() {
-	// server/zone/objects/cell/CellObject.idl(143):  		return true;
+	// server/zone/objects/cell/CellObject.idl():  		return true;
 	return true;
 }
 
@@ -369,41 +369,43 @@ bool CellObjectImplementation::isCellObject() {
 CellObjectAdapter::CellObjectAdapter(CellObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
+
 Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
-	case 7:
+	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
-	case 9:
+	case RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_:
 		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 10:
+	case RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_:
 		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
-	case 11:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 12:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_GETCURRENTNUMEROFPLAYERITEMS__:
 		resp->insertSignedInt(getCurrentNumerOfPlayerItems());
 		break;
-	case 14:
+	case RPC_GETCELLNUMBER__:
 		resp->insertSignedInt(getCellNumber());
 		break;
-	case 15:
+	case RPC_SETCELLNUMBER__INT_:
 		setCellNumber(inv->getSignedIntParameter());
 		break;
-	case 16:
+	case RPC_ISCELLOBJECT__:
 		resp->insertBoolean(isCellObject());
 		break;
 	default:

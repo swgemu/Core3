@@ -199,12 +199,12 @@ int PsgArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 PsgArmorObjectImplementation::PsgArmorObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/PsgArmorObject.idl(54):  		Logger.setLoggingName("PsgArmorObject");
+	// server/zone/objects/tangible/wearables/PsgArmorObject.idl():  		Logger.setLoggingName("PsgArmorObject");
 	Logger::setLoggingName("PsgArmorObject");
 }
 
 bool PsgArmorObjectImplementation::isPsgArmorObject() {
-	// server/zone/objects/tangible/wearables/PsgArmorObject.idl(60):  		return true;
+	// server/zone/objects/tangible/wearables/PsgArmorObject.idl():  		return true;
 	return true;
 }
 
@@ -215,17 +215,19 @@ bool PsgArmorObjectImplementation::isPsgArmorObject() {
 PsgArmorObjectAdapter::PsgArmorObjectAdapter(PsgArmorObjectImplementation* obj) : WearableObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISPSGARMOROBJECT__,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+
 Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_ISPSGARMOROBJECT__:
 		resp->insertBoolean(isPsgArmorObject());
 		break;
-	case 8:
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
 	default:

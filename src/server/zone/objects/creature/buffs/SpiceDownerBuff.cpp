@@ -180,41 +180,41 @@ int SpiceDownerBuffImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 SpiceDownerBuffImplementation::SpiceDownerBuffImplementation(CreatureObject* creo, const String& name, unsigned int buffCRC, int duration) : BuffImplementation(creo, buffCRC, duration, BuffType::SPICE) {
 	_initializeImplementation();
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(64):  		super.buffName = name;
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.buffName = name;
 	BuffImplementation::buffName = name;
 }
 
 void SpiceDownerBuffImplementation::activate(bool applyModifiers) {
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(68):  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_downer");
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_downer");
 	BuffImplementation::creature.getForUpdate()->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_downer");
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(70):  
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		}
 	if (BuffImplementation::creature.getForUpdate()->hasBuff(BuffCRC::FOOD_REDUCE_SPICE_DOWNTIME)){
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(71):  			Buff buff = super.creature.getBuff(BuffCRC.FOOD_REDUCE_SPICE_DOWNTIME);
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			Buff buff = super.creature.getBuff(BuffCRC.FOOD_REDUCE_SPICE_DOWNTIME);
 	Buff* buff = BuffImplementation::creature.getForUpdate()->getBuff(BuffCRC::FOOD_REDUCE_SPICE_DOWNTIME);
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(73):  
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			}
 	if (buff != NULL){
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(74):  				super.buffDuration = super.buffDuration * (100.0 - buff.getSkillModifierValue("reduce_spice_downtime")) / 100.0;
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  				super.buffDuration = super.buffDuration * (100.0 - buff.getSkillModifierValue("reduce_spice_downtime")) / 100.0;
 	BuffImplementation::buffDuration = BuffImplementation::buffDuration * (100.0 - buff->getSkillModifierValue("reduce_spice_downtime")) / 100.0;
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(76):  				super.creature.removeBuff(buff);
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  				super.creature.removeBuff(buff);
 	BuffImplementation::creature.getForUpdate()->removeBuff(buff);
 }
 
 	else {
 }
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(81):  			super.activate(applyModifiers);
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			super.activate(applyModifiers);
 	BuffImplementation::activate(applyModifiers);
 }
 
 	else {
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(83):  			super.activate(applyModifiers);
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			super.activate(applyModifiers);
 	BuffImplementation::activate(applyModifiers);
 }
 }
 
 void SpiceDownerBuffImplementation::deactivate(bool applyModifiers) {
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(88):  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_done");
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_done");
 	BuffImplementation::creature.getForUpdate()->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_done");
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl(90):  		super.deactivate(applyModifiers);
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.deactivate(applyModifiers);
 	BuffImplementation::deactivate(applyModifiers);
 }
 
@@ -225,14 +225,16 @@ void SpiceDownerBuffImplementation::deactivate(bool applyModifiers) {
 SpiceDownerBuffAdapter::SpiceDownerBuffAdapter(SpiceDownerBuffImplementation* obj) : BuffAdapter(obj) {
 }
 
+enum {RPC_ACTIVATE__BOOL_ = 6,RPC_DEACTIVATE__BOOL_};
+
 Packet* SpiceDownerBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ACTIVATE__BOOL_:
 		activate(inv->getBooleanParameter());
 		break;
-	case 7:
+	case RPC_DEACTIVATE__BOOL_:
 		deactivate(inv->getBooleanParameter());
 		break;
 	default:

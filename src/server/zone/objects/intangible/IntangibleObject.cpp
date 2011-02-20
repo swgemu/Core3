@@ -238,9 +238,9 @@ int IntangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* strea
 
 IntangibleObjectImplementation::IntangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/intangible/IntangibleObject.idl(56):  		Logger.setLoggingName("IntangibleObject");
+	// server/zone/objects/intangible/IntangibleObject.idl():  		Logger.setLoggingName("IntangibleObject");
 	Logger::setLoggingName("IntangibleObject");
-	// server/zone/objects/intangible/IntangibleObject.idl(58):  		status = 0;
+	// server/zone/objects/intangible/IntangibleObject.idl():  		status = 0;
 	status = 0;
 }
 
@@ -248,17 +248,17 @@ void IntangibleObjectImplementation::finalize() {
 }
 
 void IntangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/intangible/IntangibleObject.idl(75):  		super.loadTemplateData(templateData);
+	// server/zone/objects/intangible/IntangibleObject.idl():  		super.loadTemplateData(templateData);
 	SceneObjectImplementation::loadTemplateData(templateData);
 }
 
 bool IntangibleObjectImplementation::isIntangibleObject() {
-	// server/zone/objects/intangible/IntangibleObject.idl(79):  		return true;
+	// server/zone/objects/intangible/IntangibleObject.idl():  		return true;
 	return true;
 }
 
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(86):  		return status;
+	// server/zone/objects/intangible/IntangibleObject.idl():  		return status;
 	return status;
 }
 
@@ -269,26 +269,28 @@ unsigned int IntangibleObjectImplementation::getStatus() {
 IntangibleObjectAdapter::IntangibleObjectAdapter(IntangibleObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ISINTANGIBLEOBJECT__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_UPDATESTATUS__INT_BOOL_,RPC_GETSTATUS__};
+
 Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_ISINTANGIBLEOBJECT__:
 		resp->insertBoolean(isIntangibleObject());
 		break;
-	case 9:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_UPDATESTATUS__INT_BOOL_:
 		updateStatus(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 11:
+	case RPC_GETSTATUS__:
 		resp->insertInt(getStatus());
 		break;
 	default:

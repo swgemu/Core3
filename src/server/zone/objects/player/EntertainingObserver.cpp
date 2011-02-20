@@ -165,20 +165,20 @@ int EntertainingObserverImplementation::writeObjectMembers(ObjectOutputStream* s
 
 EntertainingObserverImplementation::EntertainingObserverImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/player/EntertainingObserver.idl(62):  		;
+	// server/zone/objects/player/EntertainingObserver.idl():  		;
 }
 
 int EntertainingObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/player/EntertainingObserver.idl(66):  		CreatureObject 
+	// server/zone/objects/player/EntertainingObserver.idl():  		CreatureObject 
 	if (eventType != ObserverEventType::POSTURECHANGED){
-	// server/zone/objects/player/EntertainingObserver.idl(67):  			return 1;
+	// server/zone/objects/player/EntertainingObserver.idl():  			return 1;
 	return 1;
 }
-	// server/zone/objects/player/EntertainingObserver.idl(70):  creature = (CreatureObject) observable;
+	// server/zone/objects/player/EntertainingObserver.idl():  		CreatureObject creature = (CreatureObject) observable;
 	CreatureObject* creature = (CreatureObject*) observable;
-	// server/zone/objects/player/EntertainingObserver.idl(71):  		creature.stopEntertaining();
+	// server/zone/objects/player/EntertainingObserver.idl():  		creature.stopEntertaining();
 	creature->stopEntertaining();
-	// server/zone/objects/player/EntertainingObserver.idl(73):  		return 1;
+	// server/zone/objects/player/EntertainingObserver.idl():  		return 1;
 	return 1;
 }
 
@@ -189,11 +189,13 @@ int EntertainingObserverImplementation::notifyObserverEvent(unsigned int eventTy
 EntertainingObserverAdapter::EntertainingObserverAdapter(EntertainingObserverImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 Packet* EntertainingObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:

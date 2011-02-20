@@ -213,34 +213,34 @@ int CampKitImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 CampKitImplementation::CampKitImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/camp/CampKit.idl(61):  		exp = 0;
+	// server/zone/objects/tangible/camp/CampKit.idl():  		exp = 0;
 	exp = 0;
-	// server/zone/objects/tangible/camp/CampKit.idl(62):  		duration = 0;
+	// server/zone/objects/tangible/camp/CampKit.idl():  		duration = 0;
 	duration = 0;
-	// server/zone/objects/tangible/camp/CampKit.idl(63):  		campType = 0;
+	// server/zone/objects/tangible/camp/CampKit.idl():  		campType = 0;
 	campType = 0;
-	// server/zone/objects/tangible/camp/CampKit.idl(65):  		Logger.setLoggingName("CampKit");
+	// server/zone/objects/tangible/camp/CampKit.idl():  		Logger.setLoggingName("CampKit");
 	Logger::setLoggingName("CampKit");
 }
 
 void CampKitImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/camp/CampKit.idl(70):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/camp/CampKit.idl():  		super.loadTemplateData(templateData);
 	TangibleObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/camp/CampKit.idl(72):  		CampKitTemplate 
-	if (!templateData->isCampKitTemplate())	// server/zone/objects/tangible/camp/CampKit.idl(73):  			return;
+	// server/zone/objects/tangible/camp/CampKit.idl():  		CampKitTemplate 
+	if (!templateData->isCampKitTemplate())	// server/zone/objects/tangible/camp/CampKit.idl():  			return;
 	return;
-	// server/zone/objects/tangible/camp/CampKit.idl(75):  campTemplate = (CampKitTemplate) templateData;
+	// server/zone/objects/tangible/camp/CampKit.idl():  		CampKitTemplate campTemplate = (CampKitTemplate) templateData;
 	CampKitTemplate* campTemplate = (CampKitTemplate*) templateData;
-	// server/zone/objects/tangible/camp/CampKit.idl(77):  		exp = campTemplate.getExp();
+	// server/zone/objects/tangible/camp/CampKit.idl():  		exp = campTemplate.getExp();
 	exp = campTemplate->getExp();
-	// server/zone/objects/tangible/camp/CampKit.idl(78):  		duration = campTemplate.getDuration();
+	// server/zone/objects/tangible/camp/CampKit.idl():  		duration = campTemplate.getDuration();
 	duration = campTemplate->getDuration();
-	// server/zone/objects/tangible/camp/CampKit.idl(79):  		campType = campTemplate.getCampType();
+	// server/zone/objects/tangible/camp/CampKit.idl():  		campType = campTemplate.getCampType();
 	campType = campTemplate->getCampType();
 }
 
 bool CampKitImplementation::isCampKitOject() {
-	// server/zone/objects/tangible/camp/CampKit.idl(83):  		return true;
+	// server/zone/objects/tangible/camp/CampKit.idl():  		return true;
 	return true;
 }
 
@@ -251,11 +251,13 @@ bool CampKitImplementation::isCampKitOject() {
 CampKitAdapter::CampKitAdapter(CampKitImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_ISCAMPKITOJECT__};
+
 Packet* CampKitAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ISCAMPKITOJECT__:
 		resp->insertBoolean(isCampKitOject());
 		break;
 	default:

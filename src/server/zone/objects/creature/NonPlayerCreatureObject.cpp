@@ -181,16 +181,16 @@ int NonPlayerCreatureObjectImplementation::writeObjectMembers(ObjectOutputStream
 
 NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(56):  		Logger.setLoggingName("NonPlayerCreatureObject");
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl():  		Logger.setLoggingName("NonPlayerCreatureObject");
 	Logger::setLoggingName("NonPlayerCreatureObject");
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(57):  		Logger.setLogging(false);
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(58):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 bool NonPlayerCreatureObjectImplementation::isNonPlayerCreature() {
-	// server/zone/objects/creature/NonPlayerCreatureObject.idl(62):  		return true;
+	// server/zone/objects/creature/NonPlayerCreatureObject.idl():  		return true;
 	return true;
 }
 
@@ -201,11 +201,13 @@ bool NonPlayerCreatureObjectImplementation::isNonPlayerCreature() {
 NonPlayerCreatureObjectAdapter::NonPlayerCreatureObjectAdapter(NonPlayerCreatureObjectImplementation* obj) : AiAgentAdapter(obj) {
 }
 
+enum {RPC_ISNONPLAYERCREATURE__ = 6,};
+
 Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ISNONPLAYERCREATURE__:
 		resp->insertBoolean(isNonPlayerCreature());
 		break;
 	default:

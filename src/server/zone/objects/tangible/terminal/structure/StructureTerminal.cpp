@@ -191,14 +191,14 @@ int StructureTerminalImplementation::writeObjectMembers(ObjectOutputStream* stre
 
 StructureTerminalImplementation::StructureTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(56):  		Logger.setLoggingName("StructureTerminal");
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl():  		Logger.setLoggingName("StructureTerminal");
 	Logger::setLoggingName("StructureTerminal");
 }
 
 void StructureTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(69):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl():  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl(71):  		Logger.setLoggingName("StructureTerminal");
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl():  		Logger.setLoggingName("StructureTerminal");
 	Logger::setLoggingName("StructureTerminal");
 }
 
@@ -209,14 +209,16 @@ void StructureTerminalImplementation::initializeTransientMembers() {
 StructureTerminalAdapter::StructureTerminalAdapter(StructureTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,};
+
 Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:

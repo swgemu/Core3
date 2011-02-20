@@ -447,43 +447,43 @@ int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : ZoneManagerImplementation("CreatureManager") {
 	_initializeImplementation();
-	// server/zone/managers/creature/CreatureManager.idl(36):  		zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl():  		zone = planet;
 	zone = planet;
-	// server/zone/managers/creature/CreatureManager.idl(38):  		spawnedRandomCreatures = 0;
+	// server/zone/managers/creature/CreatureManager.idl():  		spawnedRandomCreatures = 0;
 	spawnedRandomCreatures = 0;
 }
 
 void CreatureManagerImplementation::initialize() {
-	// server/zone/managers/creature/CreatureManager.idl(43):  		setCreatureTemplateManager();
+	// server/zone/managers/creature/CreatureManager.idl():  		setCreatureTemplateManager();
 	setCreatureTemplateManager();
-	// server/zone/managers/creature/CreatureManager.idl(44):  		loadSpawnAreas();
+	// server/zone/managers/creature/CreatureManager.idl():  		loadSpawnAreas();
 	loadSpawnAreas();
-	// server/zone/managers/creature/CreatureManager.idl(45):  		loadTrainers();
+	// server/zone/managers/creature/CreatureManager.idl():  		loadTrainers();
 	loadTrainers();
-	// server/zone/managers/creature/CreatureManager.idl(46):  		loadSingleSpawns();
+	// server/zone/managers/creature/CreatureManager.idl():  		loadSingleSpawns();
 	loadSingleSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(47):  		loadMissionSpawns();
+	// server/zone/managers/creature/CreatureManager.idl():  		loadMissionSpawns();
 	loadMissionSpawns();
-	// server/zone/managers/creature/CreatureManager.idl(48):  		loadInformants();
+	// server/zone/managers/creature/CreatureManager.idl():  		loadInformants();
 	loadInformants();
 }
 
 void CreatureManagerImplementation::addToReservePool(AiAgent* agent) {
 	Locker _locker(_this);
-	// server/zone/managers/creature/CreatureManager.idl(97):  
+	// server/zone/managers/creature/CreatureManager.idl():  		}
 	if (spawnedRandomCreatures > 0){
-	// server/zone/managers/creature/CreatureManager.idl(98):  			spawnedRandomCreatures = spawnedRandomCreatures - 1;
+	// server/zone/managers/creature/CreatureManager.idl():  			spawnedRandomCreatures = spawnedRandomCreatures - 1;
 	spawnedRandomCreatures = spawnedRandomCreatures - 1;
 }
 
 	else {
 }
-	// server/zone/managers/creature/CreatureManager.idl(103):  		reservePool.put(agent);
+	// server/zone/managers/creature/CreatureManager.idl():  		reservePool.put(agent);
 	(&reservePool)->put(agent);
 }
 
 int CreatureManagerImplementation::getSpawnedRandomCreatures() {
-	// server/zone/managers/creature/CreatureManager.idl(107):  		return spawnedRandomCreatures;
+	// server/zone/managers/creature/CreatureManager.idl():  		return spawnedRandomCreatures;
 	return spawnedRandomCreatures;
 }
 
@@ -494,53 +494,55 @@ int CreatureManagerImplementation::getSpawnedRandomCreatures() {
 CreatureManagerAdapter::CreatureManagerAdapter(CreatureManagerImplementation* obj) : ZoneManagerAdapter(obj) {
 }
 
+enum {RPC_INITIALIZE__ = 6,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_CREATECREATURE__INT_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_PLAYERCREATURE_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__};
+
 Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 7:
+	case RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_:
 		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case 8:
+	case RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_:
 		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case 9:
+	case RPC_CREATECREATURE__INT_:
 		resp->insertLong(createCreature(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case 10:
+	case RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_:
 		placeCreature((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 11:
+	case RPC_LOADSPAWNAREAS__:
 		loadSpawnAreas();
 		break;
-	case 12:
+	case RPC_LOADSINGLESPAWNS__:
 		loadSingleSpawns();
 		break;
-	case 13:
+	case RPC_LOADTRAINERS__:
 		loadTrainers();
 		break;
-	case 14:
+	case RPC_LOADMISSIONSPAWNS__:
 		loadMissionSpawns();
 		break;
-	case 15:
+	case RPC_LOADINFORMANTS__:
 		loadInformants();
 		break;
-	case 16:
+	case RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_:
 		spawnRandomCreaturesAround((SceneObject*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_:
 		spawnRandomCreature(inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 18:
+	case RPC_HARVEST__CREATURE_PLAYERCREATURE_INT_:
 		harvest((Creature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 19:
+	case RPC_ADDTORESERVEPOOL__AIAGENT_:
 		addToReservePool((AiAgent*) inv->getObjectParameter());
 		break;
-	case 20:
+	case RPC_GETSPAWNEDRANDOMCREATURES__:
 		resp->insertSignedInt(getSpawnedRandomCreatures());
 		break;
 	default:

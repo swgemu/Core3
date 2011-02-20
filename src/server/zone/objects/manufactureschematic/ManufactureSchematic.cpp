@@ -890,138 +890,138 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(97):  		Logger.setLoggingName("ManufactureSchematic");
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		Logger.setLoggingName("ManufactureSchematic");
 	Logger::setLoggingName("ManufactureSchematic");
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(98):  		prototype = null;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		prototype = null;
 	prototype = NULL;
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(99):  		firstCraftingUpdate = true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		firstCraftingUpdate = true;
 	firstCraftingUpdate = true;
 }
 
 void ManufactureSchematicImplementation::initializeTransientMembers() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(103):  		super.initializeTransientMembers();
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		super.initializeTransientMembers();
 	IntangibleObjectImplementation::initializeTransientMembers();
 }
 
 bool ManufactureSchematicImplementation::isManufactureSchematic() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(155):  		return true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return true;
 	return true;
 }
 
 DraftSchematic* ManufactureSchematicImplementation::getDraftSchematic() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(165):  		return draftSchematic;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return draftSchematic;
 	return draftSchematic;
 }
 
 void ManufactureSchematicImplementation::increaseComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(175):  		complexity++;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		complexity++;
 	complexity ++;
 }
 
 void ManufactureSchematicImplementation::decreaseComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(179):  	}
-	if (complexity > 1)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(180):  			complexity = complexity - 1;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  	}
+	if (complexity > 1)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  			complexity = complexity - 1;
 	complexity = complexity - 1;
 }
 
 float ManufactureSchematicImplementation::getComplexity() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(184):  		return complexity;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return complexity;
 	return complexity;
 }
 
 bool ManufactureSchematicImplementation::isFirstCraftingUpdate() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(188):  		return firstCraftingUpdate;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return firstCraftingUpdate;
 	return firstCraftingUpdate;
 }
 
 void ManufactureSchematicImplementation::setFirstCraftingUpdateComplete() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(192):  		firstCraftingUpdate = false;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		firstCraftingUpdate = false;
 	firstCraftingUpdate = false;
 }
 
 void ManufactureSchematicImplementation::setAssembled() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(198):  		assembled = true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		assembled = true;
 	assembled = true;
 }
 
 bool ManufactureSchematicImplementation::isAssembled() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(202):  		return assembled;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return assembled;
 	return assembled;
 }
 
 void ManufactureSchematicImplementation::setCompleted() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(206):  		completed = true;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		completed = true;
 	completed = true;
 }
 
 bool ManufactureSchematicImplementation::isCompleted() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(210):  		return completed;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return completed;
 	return completed;
 }
 
 void ManufactureSchematicImplementation::setCrafter(PlayerCreature* player) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(214):  		crafter = player;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		crafter = player;
 	crafter = player;
 }
 
 PlayerCreature* ManufactureSchematicImplementation::getCrafter() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(218):  		return crafter;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return crafter;
 	return crafter;
 }
 
 CraftingValues* ManufactureSchematicImplementation::getCraftingValues() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(223):  		return craftingValues;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return craftingValues;
 	return (&craftingValues);
 }
 
 void ManufactureSchematicImplementation::setExperimentingCounter(int value) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(227):  		experimentingCounterPrevious = experimentingCounter;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		experimentingCounterPrevious = experimentingCounter;
 	experimentingCounterPrevious = experimentingCounter;
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(228):  		experimentingCounter = value;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		experimentingCounter = value;
 	experimentingCounter = value;
 }
 
 int ManufactureSchematicImplementation::getExperimentingCounter() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(232):  		return experimentingCounter;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return experimentingCounter;
 	return experimentingCounter;
 }
 
 int ManufactureSchematicImplementation::getExperimentingCounterPrevious() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(236):  		return experimentingCounterPrevious;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return experimentingCounterPrevious;
 	return experimentingCounterPrevious;
 }
 
 void ManufactureSchematicImplementation::setManufactureLimit(int limit) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(240):  		manufactureLimit = limit;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		manufactureLimit = limit;
 	manufactureLimit = limit;
 }
 
 int ManufactureSchematicImplementation::getManufactureLimit() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(244):  		return manufactureLimit;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return manufactureLimit;
 	return manufactureLimit;
 }
 
 TangibleObject* ManufactureSchematicImplementation::getPrototype() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(250):  		return prototype;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return prototype;
 	return prototype;
 }
 
 int ManufactureSchematicImplementation::getFactoryIngredientsSize() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(256):  		return factoryIngredients.size();
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return factoryIngredients.size();
 	return (&factoryIngredients)->size();
 }
 
 SceneObject* ManufactureSchematicImplementation::getFactoryIngredient(int i) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(260):  		return factoryIngredients.get(i);
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return factoryIngredients.get(i);
 	return (&factoryIngredients)->get(i);
 }
 
 int ManufactureSchematicImplementation::getFactoryIngredientSlotType(int i) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(264):  
-	if ((&factoryIngredientSlotType)->size() > i)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(265):  			return factoryIngredientSlotType.get(i);
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  			return 0;
+	if ((&factoryIngredientSlotType)->size() > i)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  			return factoryIngredientSlotType.get(i);
 	return (&factoryIngredientSlotType)->get(i);
 
-	else 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl(267):  			return 0;
+	else 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  			return 0;
 	return 0;
 }
 
@@ -1032,113 +1032,115 @@ int ManufactureSchematicImplementation::getFactoryIngredientSlotType(int i) {
 ManufactureSchematicAdapter::ManufactureSchematicAdapter(ManufactureSchematicImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__PLAYERCREATURE_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_INITIALIZEFACTORYINGREDIENTS__,RPC_GETFACTORYINGREDIENTSSIZE__,RPC_GETFACTORYINGREDIENT__INT_,RPC_GETFACTORYINGREDIENTSLOTTYPE__INT_};
+
 Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_SENDTO__SCENEOBJECT_BOOL_:
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 8:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
 		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 10:
+	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
 		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 11:
+	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
 		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
-	case 12:
+	case RPC_ISMANUFACTURESCHEMATIC__:
 		resp->insertBoolean(isManufactureSchematic());
 		break;
-	case 13:
+	case RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_:
 		setDraftSchematic((SceneObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_:
 		initializeIngredientSlots((SceneObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_CLEANUPINGREDIENTSLOTS__:
 		cleanupIngredientSlots();
 		break;
-	case 16:
+	case RPC_GETDRAFTSCHEMATIC__:
 		resp->insertLong(getDraftSchematic()->_getObjectID());
 		break;
-	case 17:
+	case RPC_GETSLOTCOUNT__:
 		resp->insertSignedInt(getSlotCount());
 		break;
-	case 18:
+	case RPC_INCREASECOMPLEXITY__:
 		increaseComplexity();
 		break;
-	case 19:
+	case RPC_DECREASECOMPLEXITY__:
 		decreaseComplexity();
 		break;
-	case 20:
+	case RPC_GETCOMPLEXITY__:
 		resp->insertFloat(getComplexity());
 		break;
-	case 21:
+	case RPC_ISFIRSTCRAFTINGUPDATE__:
 		resp->insertBoolean(isFirstCraftingUpdate());
 		break;
-	case 22:
+	case RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__:
 		setFirstCraftingUpdateComplete();
 		break;
-	case 23:
+	case RPC_ISREADYFORASSEMBLY__:
 		resp->insertBoolean(isReadyForAssembly());
 		break;
-	case 24:
+	case RPC_SETASSEMBLED__:
 		setAssembled();
 		break;
-	case 25:
+	case RPC_ISASSEMBLED__:
 		resp->insertBoolean(isAssembled());
 		break;
-	case 26:
+	case RPC_SETCOMPLETED__:
 		setCompleted();
 		break;
-	case 27:
+	case RPC_ISCOMPLETED__:
 		resp->insertBoolean(isCompleted());
 		break;
-	case 28:
+	case RPC_SETCRAFTER__PLAYERCREATURE_:
 		setCrafter((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 29:
+	case RPC_GETCRAFTER__:
 		resp->insertLong(getCrafter()->_getObjectID());
 		break;
-	case 30:
+	case RPC_SETEXPERIMENTINGCOUNTER__INT_:
 		setExperimentingCounter(inv->getSignedIntParameter());
 		break;
-	case 31:
+	case RPC_GETEXPERIMENTINGCOUNTER__:
 		resp->insertSignedInt(getExperimentingCounter());
 		break;
-	case 32:
+	case RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__:
 		resp->insertSignedInt(getExperimentingCounterPrevious());
 		break;
-	case 33:
+	case RPC_SETMANUFACTURELIMIT__INT_:
 		setManufactureLimit(inv->getSignedIntParameter());
 		break;
-	case 34:
+	case RPC_GETMANUFACTURELIMIT__:
 		resp->insertSignedInt(getManufactureLimit());
 		break;
-	case 35:
+	case RPC_SETPROTOTYPE__TANGIBLEOBJECT_:
 		setPrototype((TangibleObject*) inv->getObjectParameter());
 		break;
-	case 36:
+	case RPC_GETPROTOTYPE__:
 		resp->insertLong(getPrototype()->_getObjectID());
 		break;
-	case 37:
+	case RPC_INITIALIZEFACTORYINGREDIENTS__:
 		initializeFactoryIngredients();
 		break;
-	case 38:
+	case RPC_GETFACTORYINGREDIENTSSIZE__:
 		resp->insertSignedInt(getFactoryIngredientsSize());
 		break;
-	case 39:
+	case RPC_GETFACTORYINGREDIENT__INT_:
 		resp->insertLong(getFactoryIngredient(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 40:
+	case RPC_GETFACTORYINGREDIENTSLOTTYPE__INT_:
 		resp->insertSignedInt(getFactoryIngredientSlotType(inv->getSignedIntParameter()));
 		break;
 	default:

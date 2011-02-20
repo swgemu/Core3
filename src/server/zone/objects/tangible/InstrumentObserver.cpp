@@ -180,7 +180,7 @@ int InstrumentObserverImplementation::writeObjectMembers(ObjectOutputStream* str
 
 InstrumentObserverImplementation::InstrumentObserverImplementation(Instrument* instr) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/InstrumentObserver.idl(65):  		instrument = instr;
+	// server/zone/objects/tangible/InstrumentObserver.idl():  		instrument = instr;
 	instrument = instr;
 }
 
@@ -191,11 +191,13 @@ InstrumentObserverImplementation::InstrumentObserverImplementation(Instrument* i
 InstrumentObserverAdapter::InstrumentObserverAdapter(InstrumentObserverImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 Packet* InstrumentObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:

@@ -846,186 +846,186 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(88):  		auctionedItemObjectID = objectid;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		auctionedItemObjectID = objectid;
 	auctionedItemObjectID = objectid;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(89):  		itemType = 0;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		itemType = 0;
 	itemType = 0;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(91):  		ownerID = 0;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		ownerID = 0;
 	ownerID = 0;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(92):  		planet = 0;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		planet = 0;
 	planet = 0;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(94):  		price = 0;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		price = 0;
 	price = 0;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(96):  		auction = true;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		auction = true;
 	auction = true;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(97):  		sold = false;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		sold = false;
 	sold = false;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(98):  		ownerRemove = false;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		ownerRemove = false;
 	ownerRemove = false;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(100):  		buyerID = 0;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		buyerID = 0;
 	buyerID = 0;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(101):  		expireTime = 0;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		expireTime = 0;
 	expireTime = 0;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(102):  		remainingTime = 0;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		remainingTime = 0;
 	remainingTime = 0;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(104):  		updated = false;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		updated = false;
 	updated = false;
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(106):  		bazaarTerminal = null;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		bazaarTerminal = null;
 	bazaarTerminal = NULL;
 }
 
 void AuctionItemImplementation::setItemName(const String& name) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(114):  		itemName = name;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		itemName = name;
 	itemName = name;
 }
 
 void AuctionItemImplementation::setItemDescription(const String& descr) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(118):  		itemDescription = descr;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		itemDescription = descr;
 	itemDescription = descr;
 }
 
 void AuctionItemImplementation::setPrice(int newPrice) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(122):  		price = newPrice;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		price = newPrice;
 	price = newPrice;
 }
 
 void AuctionItemImplementation::setAuctionedItemObjectID(unsigned long long objectID) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(126):  		auctionedItemObjectID = objectID;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		auctionedItemObjectID = objectID;
 	auctionedItemObjectID = objectID;
 }
 
 void AuctionItemImplementation::setItemType(int type) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(130):  		itemType = type;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		itemType = type;
 	itemType = type;
 }
 
 void AuctionItemImplementation::setOwnerID(unsigned long long ownerObjectID) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(134):  		ownerID = ownerObjectID;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		ownerID = ownerObjectID;
 	ownerID = ownerObjectID;
 }
 
 void AuctionItemImplementation::setBidderName(const String& name) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(138):  		bidderName = name;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		bidderName = name;
 	bidderName = name;
 }
 
 void AuctionItemImplementation::setPlanet(unsigned short planetid) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(143):  		planet = planetid;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		planet = planetid;
 	planet = planetid;
 }
 
 void AuctionItemImplementation::setOwnerName(const String& name) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(147):  		ownerName = name;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		ownerName = name;
 	ownerName = name;
 }
 
 void AuctionItemImplementation::setBazaarTerminal(BazaarTerminal* term) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(151):  		bazaarTerminal = term;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		bazaarTerminal = term;
 	bazaarTerminal = term;
 }
 
 void AuctionItemImplementation::setAuction(bool isAuction) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(155):  		auction = isAuction;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		auction = isAuction;
 	auction = isAuction;
 }
 
 void AuctionItemImplementation::setSold(bool isSold) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(159):  		sold = isSold;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		sold = isSold;
 	sold = isSold;
 }
 
 void AuctionItemImplementation::setRemovedByOwner(bool isRemovedByOwner) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(163):  		ownerRemove = isRemovedByOwner;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		ownerRemove = isRemovedByOwner;
 	ownerRemove = isRemovedByOwner;
 }
 
 void AuctionItemImplementation::setExpireTime(int time) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(167):  		expireTime = time;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		expireTime = time;
 	expireTime = time;
 }
 
 void AuctionItemImplementation::setBuyerID(unsigned long long id) {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(171):  		buyerID = id;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		buyerID = id;
 	buyerID = id;
 }
 
 BazaarTerminal* AuctionItemImplementation::getBazaarTerminal() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(175):  		return bazaarTerminal;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return bazaarTerminal;
 	return bazaarTerminal;
 }
 
 bool AuctionItemImplementation::isSold() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(179):  		return sold;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return sold;
 	return sold;
 }
 
 bool AuctionItemImplementation::isAuction() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(183):  		return auction;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return auction;
 	return auction;
 }
 
 bool AuctionItemImplementation::isRemovedByOwner() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(187):  		return ownerRemove;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return ownerRemove;
 	return ownerRemove;
 }
 
 unsigned long long AuctionItemImplementation::getAuctionedItemObjectID() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(191):  		return auctionedItemObjectID;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return auctionedItemObjectID;
 	return auctionedItemObjectID;
 }
 
 unsigned long long AuctionItemImplementation::getOwnerID() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(195):  		return ownerID;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return ownerID;
 	return ownerID;
 }
 
 String AuctionItemImplementation::getTerminalTitle() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(199):  		return terminalTitle;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return terminalTitle;
 	return terminalTitle;
 }
 
 String AuctionItemImplementation::getOwnerName() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(203):  		return ownerName;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return ownerName;
 	return ownerName;
 }
 
 String AuctionItemImplementation::getItemName() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(207):  		return itemName;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return itemName;
 	return itemName;
 }
 
 int AuctionItemImplementation::getExpireTime() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(211):  		return expireTime;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return expireTime;
 	return expireTime;
 }
 
 int AuctionItemImplementation::getPrice() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(215):  		return price;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return price;
 	return price;
 }
 
 int AuctionItemImplementation::getItemType() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(219):  		return itemType;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return itemType;
 	return itemType;
 }
 
 unsigned long long AuctionItemImplementation::getBuyerID() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(223):  		return buyerID;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return buyerID;
 	return buyerID;
 }
 
 String AuctionItemImplementation::getBidderName() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(227):  		return bidderName;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return bidderName;
 	return bidderName;
 }
 
 String AuctionItemImplementation::getItemDescription() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(231):  		return itemDescription;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return itemDescription;
 	return itemDescription;
 }
 
 String AuctionItemImplementation::getLocation() {
-	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl(235):  		return location;
+	// server/zone/objects/tangible/terminal/bazaar/AuctionItem.idl():  		return location;
 	return location;
 }
 
@@ -1036,101 +1036,103 @@ String AuctionItemImplementation::getLocation() {
 AuctionItemAdapter::AuctionItemAdapter(AuctionItemImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_ = 6,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETBAZAARTERMINAL__BAZAARTERMINAL_,RPC_SETAUCTION__BOOL_,RPC_SETSOLD__BOOL_,RPC_SETREMOVEDBYOWNER__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_GETBAZAARTERMINAL__,RPC_ISSOLD__,RPC_ISAUCTION__,RPC_ISREMOVEDBYOWNER__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETTERMINALTITLE__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETLOCATION__};
+
 Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_:
 		setLocation(inv->getAsciiParameter(_param0_setLocation__String_String_long_int_int_bool_), inv->getAsciiParameter(_param1_setLocation__String_String_long_int_int_bool_), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 7:
+	case RPC_SETITEMNAME__STRING_:
 		setItemName(inv->getAsciiParameter(_param0_setItemName__String_));
 		break;
-	case 8:
+	case RPC_SETITEMDESCRIPTION__STRING_:
 		setItemDescription(inv->getAsciiParameter(_param0_setItemDescription__String_));
 		break;
-	case 9:
+	case RPC_SETPRICE__INT_:
 		setPrice(inv->getSignedIntParameter());
 		break;
-	case 10:
+	case RPC_SETAUCTIONEDITEMOBJECTID__LONG_:
 		setAuctionedItemObjectID(inv->getUnsignedLongParameter());
 		break;
-	case 11:
+	case RPC_SETITEMTYPE__INT_:
 		setItemType(inv->getSignedIntParameter());
 		break;
-	case 12:
+	case RPC_SETOWNERID__LONG_:
 		setOwnerID(inv->getUnsignedLongParameter());
 		break;
-	case 13:
+	case RPC_SETBIDDERNAME__STRING_:
 		setBidderName(inv->getAsciiParameter(_param0_setBidderName__String_));
 		break;
-	case 14:
+	case RPC_SETOWNERNAME__STRING_:
 		setOwnerName(inv->getAsciiParameter(_param0_setOwnerName__String_));
 		break;
-	case 15:
+	case RPC_SETBAZAARTERMINAL__BAZAARTERMINAL_:
 		setBazaarTerminal((BazaarTerminal*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_SETAUCTION__BOOL_:
 		setAuction(inv->getBooleanParameter());
 		break;
-	case 17:
+	case RPC_SETSOLD__BOOL_:
 		setSold(inv->getBooleanParameter());
 		break;
-	case 18:
+	case RPC_SETREMOVEDBYOWNER__BOOL_:
 		setRemovedByOwner(inv->getBooleanParameter());
 		break;
-	case 19:
+	case RPC_SETEXPIRETIME__INT_:
 		setExpireTime(inv->getSignedIntParameter());
 		break;
-	case 20:
+	case RPC_SETBUYERID__LONG_:
 		setBuyerID(inv->getUnsignedLongParameter());
 		break;
-	case 21:
+	case RPC_GETBAZAARTERMINAL__:
 		resp->insertLong(getBazaarTerminal()->_getObjectID());
 		break;
-	case 22:
+	case RPC_ISSOLD__:
 		resp->insertBoolean(isSold());
 		break;
-	case 23:
+	case RPC_ISAUCTION__:
 		resp->insertBoolean(isAuction());
 		break;
-	case 24:
+	case RPC_ISREMOVEDBYOWNER__:
 		resp->insertBoolean(isRemovedByOwner());
 		break;
-	case 25:
+	case RPC_GETAUCTIONEDITEMOBJECTID__:
 		resp->insertLong(getAuctionedItemObjectID());
 		break;
-	case 26:
+	case RPC_GETOWNERID__:
 		resp->insertLong(getOwnerID());
 		break;
-	case 27:
+	case RPC_GETTERMINALTITLE__:
 		resp->insertAscii(getTerminalTitle());
 		break;
-	case 28:
+	case RPC_GETOWNERNAME__:
 		resp->insertAscii(getOwnerName());
 		break;
-	case 29:
+	case RPC_GETITEMNAME__:
 		resp->insertAscii(getItemName());
 		break;
-	case 30:
+	case RPC_GETEXPIRETIME__:
 		resp->insertSignedInt(getExpireTime());
 		break;
-	case 31:
+	case RPC_GETPRICE__:
 		resp->insertSignedInt(getPrice());
 		break;
-	case 32:
+	case RPC_GETITEMTYPE__:
 		resp->insertSignedInt(getItemType());
 		break;
-	case 33:
+	case RPC_GETBUYERID__:
 		resp->insertLong(getBuyerID());
 		break;
-	case 34:
+	case RPC_GETBIDDERNAME__:
 		resp->insertAscii(getBidderName());
 		break;
-	case 35:
+	case RPC_GETITEMDESCRIPTION__:
 		resp->insertAscii(getItemDescription());
 		break;
-	case 36:
+	case RPC_GETLOCATION__:
 		resp->insertAscii(getLocation());
 		break;
 	default:

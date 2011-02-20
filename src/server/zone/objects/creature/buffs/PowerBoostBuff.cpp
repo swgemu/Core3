@@ -299,15 +299,15 @@ int PowerBoostBuffImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo, const String& name, unsigned int buffCRC, int value, int duration) : BuffImplementation(creo, buffCRC, duration, BuffType::SKILL) {
 	_initializeImplementation();
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(77):  		super.buffName = name;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl():  		super.buffName = name;
 	BuffImplementation::buffName = name;
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(78):  		pbBonus = value;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl():  		pbBonus = value;
 	pbBonus = value;
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(79):  		pbTick = value/20;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl():  		pbTick = value/20;
 	pbTick = value / 20;
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(80):  		time = duration * 1000;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl():  		time = duration * 1000;
 	time = duration * 1000;
-	// server/zone/objects/creature/buffs/PowerBoostBuff.idl(81):  		counter = 0;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl():  		counter = 0;
 	counter = 0;
 }
 
@@ -318,26 +318,28 @@ PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo,
 PowerBoostBuffAdapter::PowerBoostBuffAdapter(PowerBoostBuffImplementation* obj) : BuffAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_DOHEALTHANDACTIONTICK__BOOL_,RPC_DOMINDTICK__BOOL_,RPC_CLEARBUFFEVENT__};
+
 Packet* PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_ACTIVATE__BOOL_:
 		activate(inv->getBooleanParameter());
 		break;
-	case 8:
+	case RPC_DEACTIVATE__BOOL_:
 		deactivate(inv->getBooleanParameter());
 		break;
-	case 9:
+	case RPC_DOHEALTHANDACTIONTICK__BOOL_:
 		doHealthAndActionTick(inv->getBooleanParameter());
 		break;
-	case 10:
+	case RPC_DOMINDTICK__BOOL_:
 		doMindTick(inv->getBooleanParameter());
 		break;
-	case 11:
+	case RPC_CLEARBUFFEVENT__:
 		clearBuffEvent();
 		break;
 	default:

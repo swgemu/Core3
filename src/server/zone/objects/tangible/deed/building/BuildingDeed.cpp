@@ -244,24 +244,24 @@ int BuildingDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 BuildingDeedImplementation::BuildingDeedImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/deed/building/BuildingDeed.idl(58):  		Logger.setLoggingName("BuildingDeed");
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  		Logger.setLoggingName("BuildingDeed");
 	Logger::setLoggingName("BuildingDeed");
-	// server/zone/objects/tangible/deed/building/BuildingDeed.idl(60):  		surplusMaintenance = 0;
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  		surplusMaintenance = 0;
 	surplusMaintenance = 0;
 }
 
 void BuildingDeedImplementation::setSurplusMaintenance(unsigned int surplusMaint) {
-	// server/zone/objects/tangible/deed/building/BuildingDeed.idl(77):  		surplusMaintenance = surplusMaint;
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  		surplusMaintenance = surplusMaint;
 	surplusMaintenance = surplusMaint;
 }
 
 unsigned int BuildingDeedImplementation::getSurplusMaintenance() {
-	// server/zone/objects/tangible/deed/building/BuildingDeed.idl(81):  		return surplusMaintenance;
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  		return surplusMaintenance;
 	return surplusMaintenance;
 }
 
 bool BuildingDeedImplementation::isBuildingDeed() {
-	// server/zone/objects/tangible/deed/building/BuildingDeed.idl(85):  		return true;
+	// server/zone/objects/tangible/deed/building/BuildingDeed.idl():  		return true;
 	return true;
 }
 
@@ -272,23 +272,25 @@ bool BuildingDeedImplementation::isBuildingDeed() {
 BuildingDeedAdapter::BuildingDeedAdapter(BuildingDeedImplementation* obj) : DeedAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_ISBUILDINGDEED__};
+
 Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getUnsignedIntParameter());
 		break;
-	case 9:
+	case RPC_GETSURPLUSMAINTENANCE__:
 		resp->insertInt(getSurplusMaintenance());
 		break;
-	case 10:
+	case RPC_ISBUILDINGDEED__:
 		resp->insertBoolean(isBuildingDeed());
 		break;
 	default:

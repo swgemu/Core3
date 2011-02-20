@@ -365,79 +365,79 @@ int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 SuiListBoxImplementation::SuiListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiBoxImplementation(player, windowType, SuiBox::LISTBOX) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(73):  		type = listBoxType;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		type = listBoxType;
 	type = listBoxType;
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(75):  		init();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		init();
 	init();
 }
 
 void SuiListBoxImplementation::init() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(79):  		next = 0;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		next = 0;
 	next = 0;
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(80):  		previous = 0;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		previous = 0;
 	previous = 0;
 }
 
 void SuiListBoxImplementation::addMenuItem(const String& name, unsigned long long objectID) {
 	ManagedReference<SuiListBoxMenuItem*> _ref0;
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(87):  		SuiListBoxMenuItem item = new SuiListBoxMenuItem(name, objectID);
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		SuiListBoxMenuItem item = new SuiListBoxMenuItem(name, objectID);
 	SuiListBoxMenuItem* item = _ref0 = new SuiListBoxMenuItem(name, objectID);
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(88):  		menuItems.add(item);
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		menuItems.add(item);
 	(&menuItems)->add(item);
 }
 
 String SuiListBoxImplementation::getMenuItemName(int index) {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(92):  		SuiListBoxMenuItem menuItem = menuItems.get(index);
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		SuiListBoxMenuItem menuItem = menuItems.get(index);
 	SuiListBoxMenuItem* menuItem = (&menuItems)->get(index);
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(94):  		return menuItem.getOptionName();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return menuItem.getOptionName();
 	return menuItem->getOptionName();
 }
 
 void SuiListBoxImplementation::removeAllMenuItems() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(102):  		menuItems.removeAll();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		menuItems.removeAll();
 	(&menuItems)->removeAll();
 }
 
 unsigned long long SuiListBoxImplementation::getMenuObjectID(unsigned int idx) {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(106):  		return 
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return 
 	if (idx < (&menuItems)->size()){
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(108):  			SuiListBoxMenuItem menuItem = menuItems.get(idx);
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  			SuiListBoxMenuItem menuItem = menuItems.get(idx);
 	SuiListBoxMenuItem* menuItem = (&menuItems)->get(idx);
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(110):  		}
-	if (menuItem != NULL)	// server/zone/objects/player/sui/listbox/SuiListBox.idl(111):  				return menuItem.getObjectID();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		}
+	if (menuItem != NULL)	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  				return menuItem.getObjectID();
 	return menuItem->getObjectID();
 }
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(114):  0;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return 0;
 	return 0;
 }
 
 int SuiListBoxImplementation::getMenuSize() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(118):  		return menuItems.size();
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return menuItems.size();
 	return (&menuItems)->size();
 }
 
 void SuiListBoxImplementation::setNextBox(unsigned int boxID) {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(124):  		next = boxID;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		next = boxID;
 	next = boxID;
 }
 
 void SuiListBoxImplementation::setPreviousBox(unsigned int boxID) {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(128):  		previous = boxID;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		previous = boxID;
 	previous = boxID;
 }
 
 unsigned long long SuiListBoxImplementation::getNextBox() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(132):  		return next;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return next;
 	return next;
 }
 
 unsigned long long SuiListBoxImplementation::getPreviousBox() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(136):  		return previous;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return previous;
 	return previous;
 }
 
 bool SuiListBoxImplementation::isListBox() {
-	// server/zone/objects/player/sui/listbox/SuiListBox.idl(140):  		return true;
+	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return true;
 	return true;
 }
 
@@ -448,44 +448,46 @@ bool SuiListBoxImplementation::isListBox() {
 SuiListBoxAdapter::SuiListBoxAdapter(SuiListBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
 
+enum {RPC_INIT__ = 6,RPC_ADDMENUITEM__STRING_LONG_,RPC_GETMENUITEMNAME__INT_,RPC_REMOVEALLMENUITEMS__,RPC_GETMENUOBJECTID__INT_,RPC_GETMENUSIZE__,RPC_GENERATEMESSAGE__,RPC_SETNEXTBOX__INT_,RPC_SETPREVIOUSBOX__INT_,RPC_GETNEXTBOX__,RPC_GETPREVIOUSBOX__,RPC_ISLISTBOX__};
+
 Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INIT__:
 		init();
 		break;
-	case 7:
+	case RPC_ADDMENUITEM__STRING_LONG_:
 		addMenuItem(inv->getAsciiParameter(_param0_addMenuItem__String_long_), inv->getUnsignedLongParameter());
 		break;
-	case 8:
+	case RPC_GETMENUITEMNAME__INT_:
 		resp->insertAscii(getMenuItemName(inv->getSignedIntParameter()));
 		break;
-	case 9:
+	case RPC_REMOVEALLMENUITEMS__:
 		removeAllMenuItems();
 		break;
-	case 10:
+	case RPC_GETMENUOBJECTID__INT_:
 		resp->insertLong(getMenuObjectID(inv->getUnsignedIntParameter()));
 		break;
-	case 11:
+	case RPC_GETMENUSIZE__:
 		resp->insertSignedInt(getMenuSize());
 		break;
-	case 12:
+	case RPC_GENERATEMESSAGE__:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
-	case 13:
+	case RPC_SETNEXTBOX__INT_:
 		setNextBox(inv->getUnsignedIntParameter());
 		break;
-	case 14:
+	case RPC_SETPREVIOUSBOX__INT_:
 		setPreviousBox(inv->getUnsignedIntParameter());
 		break;
-	case 15:
+	case RPC_GETNEXTBOX__:
 		resp->insertLong(getNextBox());
 		break;
-	case 16:
+	case RPC_GETPREVIOUSBOX__:
 		resp->insertLong(getPreviousBox());
 		break;
-	case 17:
+	case RPC_ISLISTBOX__:
 		resp->insertBoolean(isListBox());
 		break;
 	default:

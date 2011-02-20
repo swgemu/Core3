@@ -259,29 +259,29 @@ int DeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 DeedImplementation::DeedImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/deed/Deed.idl(59):  		Logger.setLoggingName("Deed");
+	// server/zone/objects/tangible/deed/Deed.idl():  		Logger.setLoggingName("Deed");
 	Logger::setLoggingName("Deed");
-	// server/zone/objects/tangible/deed/Deed.idl(60):  		generated = false;
+	// server/zone/objects/tangible/deed/Deed.idl():  		generated = false;
 	generated = false;
 }
 
 void DeedImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/deed/Deed.idl(79):  		error("Unhandled updateCraftingValues for this object type");
+	// server/zone/objects/tangible/deed/Deed.idl():  		error("Unhandled updateCraftingValues for this object type");
 	error("Unhandled updateCraftingValues for this object type");
 }
 
 void DeedImplementation::setGeneratedObjectTemplate(const String& templ) {
-	// server/zone/objects/tangible/deed/Deed.idl(87):  		generatedObjectTemplate = templ;
+	// server/zone/objects/tangible/deed/Deed.idl():  		generatedObjectTemplate = templ;
 	generatedObjectTemplate = templ;
 }
 
 String DeedImplementation::getGeneratedObjectTemplate() {
-	// server/zone/objects/tangible/deed/Deed.idl(94):  		return generatedObjectTemplate;
+	// server/zone/objects/tangible/deed/Deed.idl():  		return generatedObjectTemplate;
 	return generatedObjectTemplate;
 }
 
 bool DeedImplementation::isDeedObject() {
-	// server/zone/objects/tangible/deed/Deed.idl(98):  		return true;
+	// server/zone/objects/tangible/deed/Deed.idl():  		return true;
 	return true;
 }
 
@@ -292,20 +292,22 @@ bool DeedImplementation::isDeedObject() {
 DeedAdapter::DeedAdapter(DeedImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETGENERATEDOBJECTTEMPLATE__STRING_,RPC_GETGENERATEDOBJECTTEMPLATE__,RPC_ISDEEDOBJECT__};
+
 Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_SETGENERATEDOBJECTTEMPLATE__STRING_:
 		setGeneratedObjectTemplate(inv->getAsciiParameter(_param0_setGeneratedObjectTemplate__String_));
 		break;
-	case 8:
+	case RPC_GETGENERATEDOBJECTTEMPLATE__:
 		resp->insertAscii(getGeneratedObjectTemplate());
 		break;
-	case 9:
+	case RPC_ISDEEDOBJECT__:
 		resp->insertBoolean(isDeedObject());
 		break;
 	default:

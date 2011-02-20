@@ -1105,207 +1105,207 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 StructureObjectImplementation::StructureObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/structure/StructureObject.idl(93):  		Logger.setLoggingName("StructureObject");
+	// server/zone/objects/structure/StructureObject.idl():  		Logger.setLoggingName("StructureObject");
 	Logger::setLoggingName("StructureObject");
-	// server/zone/objects/structure/StructureObject.idl(95):  		super.staticObject = false;
+	// server/zone/objects/structure/StructureObject.idl():  		super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
-	// server/zone/objects/structure/StructureObject.idl(97):  		lotSize = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		lotSize = 0;
 	lotSize = 0;
-	// server/zone/objects/structure/StructureObject.idl(99):  		ownerObjectID = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		ownerObjectID = 0;
 	ownerObjectID = 0;
-	// server/zone/objects/structure/StructureObject.idl(101):  		deedObjectID = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		deedObjectID = 0;
 	deedObjectID = 0;
-	// server/zone/objects/structure/StructureObject.idl(103):  		destroyCode = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		destroyCode = 0;
 	destroyCode = 0;
-	// server/zone/objects/structure/StructureObject.idl(105):  		baseMaintenanceRate = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		baseMaintenanceRate = 0;
 	baseMaintenanceRate = 0;
-	// server/zone/objects/structure/StructureObject.idl(107):  		basePowerRate = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		basePowerRate = 0;
 	basePowerRate = 0;
-	// server/zone/objects/structure/StructureObject.idl(109):  		surplusMaintenance = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		surplusMaintenance = 0;
 	surplusMaintenance = 0;
-	// server/zone/objects/structure/StructureObject.idl(111):  		surplusPower = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		surplusPower = 0;
 	surplusPower = 0;
-	// server/zone/objects/structure/StructureObject.idl(113):  		length = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		length = 0;
 	length = 0;
-	// server/zone/objects/structure/StructureObject.idl(115):  		width = 0;
+	// server/zone/objects/structure/StructureObject.idl():  		width = 0;
 	width = 0;
-	// server/zone/objects/structure/StructureObject.idl(117):  		structureMaintenanceTask = null;
+	// server/zone/objects/structure/StructureObject.idl():  		structureMaintenanceTask = null;
 	structureMaintenanceTask = NULL;
 }
 
 void StructureObjectImplementation::createChildObjects() {
-	// server/zone/objects/structure/StructureObject.idl(134):  		super.createChildObjects();
+	// server/zone/objects/structure/StructureObject.idl():  		super.createChildObjects();
 	TangibleObjectImplementation::createChildObjects();
 }
 
 int StructureObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
-	// server/zone/objects/structure/StructureObject.idl(141):  		return 0;
+	// server/zone/objects/structure/StructureObject.idl():  		return 0;
 	return 0;
 }
 
 bool StructureObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
-	// server/zone/objects/structure/StructureObject.idl(145):  		return true;
+	// server/zone/objects/structure/StructureObject.idl():  		return true;
 	return true;
 }
 
 unsigned int StructureObjectImplementation::generateDestroyCode() {
-	// server/zone/objects/structure/StructureObject.idl(161):  		destroyCode = System.random(899999) + 100000;
+	// server/zone/objects/structure/StructureObject.idl():  		destroyCode = System.random(899999) + 100000;
 	destroyCode = System::random(899999) + 100000;
-	// server/zone/objects/structure/StructureObject.idl(162):  		return destroyCode;
+	// server/zone/objects/structure/StructureObject.idl():  		return destroyCode;
 	return destroyCode;
 }
 
 bool StructureObjectImplementation::isValidDestroyCode(unsigned int code) {
-	// server/zone/objects/structure/StructureObject.idl(166):  		return (destroyCode == code);
+	// server/zone/objects/structure/StructureObject.idl():  		return (destroyCode == code);
 	return (destroyCode == code);
 }
 
 bool StructureObjectImplementation::isOnAdminList(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(177):  		return structurePermissionList.isOnAdminList(obj.getObjectID());
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnAdminList(obj.getObjectID());
 	return (&structurePermissionList)->isOnAdminList(obj->getObjectID());
 }
 
 bool StructureObjectImplementation::isOnAdminList(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(181):  		return structurePermissionList.isOnAdminList(oid);
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnAdminList(oid);
 	return (&structurePermissionList)->isOnAdminList(oid);
 }
 
 bool StructureObjectImplementation::isOnEntryList(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(185):  		return structurePermissionList.isOnEntryList(obj.getObjectID());
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnEntryList(obj.getObjectID());
 	return (&structurePermissionList)->isOnEntryList(obj->getObjectID());
 }
 
 bool StructureObjectImplementation::isOnEntryList(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(189):  		return structurePermissionList.isOnEntryList(oid);
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnEntryList(oid);
 	return (&structurePermissionList)->isOnEntryList(oid);
 }
 
 bool StructureObjectImplementation::isOnBanList(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(193):  		return structurePermissionList.isOnBanList(obj.getObjectID());
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnBanList(obj.getObjectID());
 	return (&structurePermissionList)->isOnBanList(obj->getObjectID());
 }
 
 bool StructureObjectImplementation::isOnBanList(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(197):  		return structurePermissionList.isOnBanList(oid);
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnBanList(oid);
 	return (&structurePermissionList)->isOnBanList(oid);
 }
 
 bool StructureObjectImplementation::isOnAccessList(SceneObject* obj) {
-	// server/zone/objects/structure/StructureObject.idl(205):  		return false;
+	// server/zone/objects/structure/StructureObject.idl():  		return false;
 	return false;
 }
 
 bool StructureObjectImplementation::isOnAccessList(unsigned long long oid) {
-	// server/zone/objects/structure/StructureObject.idl(210):  		return false;
+	// server/zone/objects/structure/StructureObject.idl():  		return false;
 	return false;
 }
 
 void StructureObjectImplementation::sendPermissionListTo(PlayerCreature* player, const String& listName) {
-	// server/zone/objects/structure/StructureObject.idl(214):  		structurePermissionList.sendTo(player, listName);
+	// server/zone/objects/structure/StructureObject.idl():  		structurePermissionList.sendTo(player, listName);
 	(&structurePermissionList)->sendTo(player, listName);
 }
 
 int StructureObjectImplementation::getRedeedCost() {
-	// server/zone/objects/structure/StructureObject.idl(227):  		return (baseMaintenanceRate * 50);
+	// server/zone/objects/structure/StructureObject.idl():  		return (baseMaintenanceRate * 50);
 	return (baseMaintenanceRate * 50);
 }
 
 unsigned long long StructureObjectImplementation::getOwnerObjectID() {
-	// server/zone/objects/structure/StructureObject.idl(231):  		return ownerObjectID;
+	// server/zone/objects/structure/StructureObject.idl():  		return ownerObjectID;
 	return ownerObjectID;
 }
 
 unsigned long long StructureObjectImplementation::getDeedObjectID() {
-	// server/zone/objects/structure/StructureObject.idl(235):  		return deedObjectID;
+	// server/zone/objects/structure/StructureObject.idl():  		return deedObjectID;
 	return deedObjectID;
 }
 
 int StructureObjectImplementation::getLotSize() {
-	// server/zone/objects/structure/StructureObject.idl(239):  		return lotSize;
+	// server/zone/objects/structure/StructureObject.idl():  		return lotSize;
 	return lotSize;
 }
 
 unsigned int StructureObjectImplementation::getDestroyCode() {
-	// server/zone/objects/structure/StructureObject.idl(243):  		return destroyCode;
+	// server/zone/objects/structure/StructureObject.idl():  		return destroyCode;
 	return destroyCode;
 }
 
 int StructureObjectImplementation::getBaseMaintenanceRate() {
-	// server/zone/objects/structure/StructureObject.idl(247):  		return baseMaintenanceRate;
+	// server/zone/objects/structure/StructureObject.idl():  		return baseMaintenanceRate;
 	return baseMaintenanceRate;
 }
 
 int StructureObjectImplementation::getBasePowerRate() {
-	// server/zone/objects/structure/StructureObject.idl(251):  		return basePowerRate;
+	// server/zone/objects/structure/StructureObject.idl():  		return basePowerRate;
 	return basePowerRate;
 }
 
 int StructureObjectImplementation::getSurplusMaintenance() {
-	// server/zone/objects/structure/StructureObject.idl(255):  		return surplusMaintenance;
+	// server/zone/objects/structure/StructureObject.idl():  		return surplusMaintenance;
 	return surplusMaintenance;
 }
 
 int StructureObjectImplementation::getSurplusPower() {
-	// server/zone/objects/structure/StructureObject.idl(259):  		return surplusPower;
+	// server/zone/objects/structure/StructureObject.idl():  		return surplusPower;
 	return surplusPower;
 }
 
 bool StructureObjectImplementation::isPublicStructure() {
-	// server/zone/objects/structure/StructureObject.idl(263):  		return false;
+	// server/zone/objects/structure/StructureObject.idl():  		return false;
 	return false;
 }
 
 void StructureObjectImplementation::setOwnerObjectID(unsigned long long objectID) {
-	// server/zone/objects/structure/StructureObject.idl(268):  		structurePermissionList.removePermission(ownerObjectID, StructurePermissionList.OWNER);
+	// server/zone/objects/structure/StructureObject.idl():  		structurePermissionList.removePermission(ownerObjectID, StructurePermissionList.OWNER);
 	(&structurePermissionList)->removePermission(ownerObjectID, StructurePermissionList::OWNER);
-	// server/zone/objects/structure/StructureObject.idl(273):  		ownerObjectID = objectID;
+	// server/zone/objects/structure/StructureObject.idl():  		ownerObjectID = objectID;
 	ownerObjectID = objectID;
-	// server/zone/objects/structure/StructureObject.idl(275):  		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
+	// server/zone/objects/structure/StructureObject.idl():  		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
 	(&structurePermissionList)->addPermission(objectID, StructurePermissionList::OWNER);
 }
 
 void StructureObjectImplementation::setDeedObjectID(unsigned long long deedID) {
-	// server/zone/objects/structure/StructureObject.idl(279):  		deedObjectID = deedID;
+	// server/zone/objects/structure/StructureObject.idl():  		deedObjectID = deedID;
 	deedObjectID = deedID;
 }
 
 void StructureObjectImplementation::setLotSize(int lots) {
-	// server/zone/objects/structure/StructureObject.idl(283):  		lotSize = lots;
+	// server/zone/objects/structure/StructureObject.idl():  		lotSize = lots;
 	lotSize = lots;
 }
 
 void StructureObjectImplementation::setDestroyCode(unsigned int code) {
-	// server/zone/objects/structure/StructureObject.idl(287):  		destroyCode = code;
+	// server/zone/objects/structure/StructureObject.idl():  		destroyCode = code;
 	destroyCode = code;
 }
 
 void StructureObjectImplementation::setBaseMaintenanceRate(int rate) {
-	// server/zone/objects/structure/StructureObject.idl(291):  		baseMaintenanceRate = rate;
+	// server/zone/objects/structure/StructureObject.idl():  		baseMaintenanceRate = rate;
 	baseMaintenanceRate = rate;
 }
 
 void StructureObjectImplementation::setBasePowerRate(int rate) {
-	// server/zone/objects/structure/StructureObject.idl(295):  		basePowerRate = rate;
+	// server/zone/objects/structure/StructureObject.idl():  		basePowerRate = rate;
 	basePowerRate = rate;
 }
 
 void StructureObjectImplementation::setSurplusMaintenance(int surplus) {
-	// server/zone/objects/structure/StructureObject.idl(299):  		surplusMaintenance = surplus;
+	// server/zone/objects/structure/StructureObject.idl():  		surplusMaintenance = surplus;
 	surplusMaintenance = surplus;
 }
 
 void StructureObjectImplementation::addMaintenance(int add) {
-	// server/zone/objects/structure/StructureObject.idl(303):  		surplusMaintenance += add;
+	// server/zone/objects/structure/StructureObject.idl():  		surplusMaintenance += add;
 	surplusMaintenance += add;
 }
 
 void StructureObjectImplementation::setSurplusPower(int surplus) {
-	// server/zone/objects/structure/StructureObject.idl(307):  		surplusPower = surplus;
+	// server/zone/objects/structure/StructureObject.idl():  		surplusPower = surplus;
 	surplusPower = surplus;
 }
 
 void StructureObjectImplementation::addPower(int add) {
-	// server/zone/objects/structure/StructureObject.idl(311):  		surplusPower += add;
+	// server/zone/objects/structure/StructureObject.idl():  		surplusPower += add;
 	surplusPower += add;
 }
 
@@ -1313,32 +1313,32 @@ void StructureObjectImplementation::setPublicStructure(bool privacy) {
 }
 
 bool StructureObjectImplementation::isStructureObject() {
-	// server/zone/objects/structure/StructureObject.idl(319):  		return true;
+	// server/zone/objects/structure/StructureObject.idl():  		return true;
 	return true;
 }
 
 bool StructureObjectImplementation::isRedeedable() {
-	// server/zone/objects/structure/StructureObject.idl(324):  		return (getRedeedCost() < (surplusMaintenance + 1));
+	// server/zone/objects/structure/StructureObject.idl():  		return (getRedeedCost() < (surplusMaintenance + 1));
 	return (getRedeedCost() < (surplusMaintenance + 1));
 }
 
 int StructureObjectImplementation::getLength() {
-	// server/zone/objects/structure/StructureObject.idl(328):  		return length;
+	// server/zone/objects/structure/StructureObject.idl():  		return length;
 	return length;
 }
 
 void StructureObjectImplementation::setLength(int len) {
-	// server/zone/objects/structure/StructureObject.idl(335):  		length = len;
+	// server/zone/objects/structure/StructureObject.idl():  		length = len;
 	length = len;
 }
 
 int StructureObjectImplementation::getWidth() {
-	// server/zone/objects/structure/StructureObject.idl(339):  		return width;
+	// server/zone/objects/structure/StructureObject.idl():  		return width;
 	return width;
 }
 
 void StructureObjectImplementation::setWidth(int wid) {
-	// server/zone/objects/structure/StructureObject.idl(343):  		width = wid;
+	// server/zone/objects/structure/StructureObject.idl():  		width = wid;
 	width = wid;
 }
 
@@ -1349,176 +1349,178 @@ void StructureObjectImplementation::setWidth(int wid) {
 StructureObjectAdapter::StructureObjectAdapter(StructureObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_,RPC_SENDDESTROYCODETO__PLAYERCREATURE_,RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_GETTIMESTRING__INT_,RPC_GENERATEDESTROYCODE__,RPC_ISVALIDDESTROYCODE__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETDESTROYCODE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETLOTSIZE__INT_,RPC_SETDESTROYCODE__INT_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,RPC_GETLENGTH__,RPC_SETLENGTH__INT_,RPC_GETWIDTH__,RPC_SETWIDTH__INT_};
+
 Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 8:
+	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
 		break;
-	case 9:
+	case RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_:
 		resp->insertSignedInt(notifyStructurePlaced((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 10:
+	case RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_:
 		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 11:
+	case RPC_SENDSTATUSTO__PLAYERCREATURE_:
 		sendStatusTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 12:
+	case RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_:
 		sendDestroyConfirmTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_SENDDESTROYCODETO__PLAYERCREATURE_:
 		sendDestroyCodeTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_:
 		sendManageMaintenanceTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_:
 		sendChangeNamePromptTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_GETTIMESTRING__INT_:
 		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
 		break;
-	case 17:
+	case RPC_GENERATEDESTROYCODE__:
 		resp->insertInt(generateDestroyCode());
 		break;
-	case 18:
+	case RPC_ISVALIDDESTROYCODE__INT_:
 		resp->insertBoolean(isValidDestroyCode(inv->getUnsignedIntParameter()));
 		break;
-	case 19:
+	case RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__:
 		scheduleMaintenanceExpirationEvent();
 		break;
-	case 20:
+	case RPC_ISONADMINLIST__SCENEOBJECT_:
 		resp->insertBoolean(isOnAdminList((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 21:
+	case RPC_ISONADMINLIST__LONG_:
 		resp->insertBoolean(isOnAdminList(inv->getUnsignedLongParameter()));
 		break;
-	case 22:
+	case RPC_ISONENTRYLIST__SCENEOBJECT_:
 		resp->insertBoolean(isOnEntryList((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 23:
+	case RPC_ISONENTRYLIST__LONG_:
 		resp->insertBoolean(isOnEntryList(inv->getUnsignedLongParameter()));
 		break;
-	case 24:
+	case RPC_ISONBANLIST__SCENEOBJECT_:
 		resp->insertBoolean(isOnBanList((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 25:
+	case RPC_ISONBANLIST__LONG_:
 		resp->insertBoolean(isOnBanList(inv->getUnsignedLongParameter()));
 		break;
-	case 26:
+	case RPC_ISOWNEROF__SCENEOBJECT_:
 		resp->insertBoolean(isOwnerOf((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 27:
+	case RPC_ISOWNEROF__LONG_:
 		resp->insertBoolean(isOwnerOf(inv->getUnsignedLongParameter()));
 		break;
-	case 28:
+	case RPC_ISONACCESSLIST__SCENEOBJECT_:
 		resp->insertBoolean(isOnAccessList((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 29:
+	case RPC_ISONACCESSLIST__LONG_:
 		resp->insertBoolean(isOnAccessList(inv->getUnsignedLongParameter()));
 		break;
-	case 30:
+	case RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_:
 		sendPermissionListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__PlayerCreature_String_));
 		break;
-	case 31:
+	case RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_:
 		resp->insertBoolean(addPermission((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addPermission__PlayerCreature_PlayerCreature_String_)));
 		break;
-	case 32:
+	case RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_:
 		resp->insertBoolean(addPermission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addPermission__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_addPermission__PlayerCreature_String_String_)));
 		break;
-	case 33:
+	case RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_:
 		resp->insertBoolean(removePermission((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_removePermission__PlayerCreature_PlayerCreature_String_)));
 		break;
-	case 34:
+	case RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_:
 		resp->insertBoolean(removePermission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_removePermission__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_removePermission__PlayerCreature_String_String_)));
 		break;
-	case 35:
+	case RPC_GETREDEEDCOST__:
 		resp->insertSignedInt(getRedeedCost());
 		break;
-	case 36:
+	case RPC_GETOWNEROBJECTID__:
 		resp->insertLong(getOwnerObjectID());
 		break;
-	case 37:
+	case RPC_GETDEEDOBJECTID__:
 		resp->insertLong(getDeedObjectID());
 		break;
-	case 38:
+	case RPC_GETLOTSIZE__:
 		resp->insertSignedInt(getLotSize());
 		break;
-	case 39:
+	case RPC_GETDESTROYCODE__:
 		resp->insertInt(getDestroyCode());
 		break;
-	case 40:
+	case RPC_GETBASEMAINTENANCERATE__:
 		resp->insertSignedInt(getBaseMaintenanceRate());
 		break;
-	case 41:
+	case RPC_GETBASEPOWERRATE__:
 		resp->insertSignedInt(getBasePowerRate());
 		break;
-	case 42:
+	case RPC_GETSURPLUSMAINTENANCE__:
 		resp->insertSignedInt(getSurplusMaintenance());
 		break;
-	case 43:
+	case RPC_GETSURPLUSPOWER__:
 		resp->insertSignedInt(getSurplusPower());
 		break;
-	case 44:
+	case RPC_ISPUBLICSTRUCTURE__:
 		resp->insertBoolean(isPublicStructure());
 		break;
-	case 45:
+	case RPC_SETOWNEROBJECTID__LONG_:
 		setOwnerObjectID(inv->getUnsignedLongParameter());
 		break;
-	case 46:
+	case RPC_SETDEEDOBJECTID__LONG_:
 		setDeedObjectID(inv->getUnsignedLongParameter());
 		break;
-	case 47:
+	case RPC_SETLOTSIZE__INT_:
 		setLotSize(inv->getSignedIntParameter());
 		break;
-	case 48:
+	case RPC_SETDESTROYCODE__INT_:
 		setDestroyCode(inv->getUnsignedIntParameter());
 		break;
-	case 49:
+	case RPC_SETBASEMAINTENANCERATE__INT_:
 		setBaseMaintenanceRate(inv->getSignedIntParameter());
 		break;
-	case 50:
+	case RPC_SETBASEPOWERRATE__INT_:
 		setBasePowerRate(inv->getSignedIntParameter());
 		break;
-	case 51:
+	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getSignedIntParameter());
 		break;
-	case 52:
+	case RPC_ADDMAINTENANCE__INT_:
 		addMaintenance(inv->getSignedIntParameter());
 		break;
-	case 53:
+	case RPC_SETSURPLUSPOWER__INT_:
 		setSurplusPower(inv->getSignedIntParameter());
 		break;
-	case 54:
+	case RPC_ADDPOWER__INT_:
 		addPower(inv->getSignedIntParameter());
 		break;
-	case 55:
+	case RPC_SETPUBLICSTRUCTURE__BOOL_:
 		setPublicStructure(inv->getBooleanParameter());
 		break;
-	case 56:
+	case RPC_ISSTRUCTUREOBJECT__:
 		resp->insertBoolean(isStructureObject());
 		break;
-	case 57:
+	case RPC_ISREDEEDABLE__:
 		resp->insertBoolean(isRedeedable());
 		break;
-	case 58:
+	case RPC_GETLENGTH__:
 		resp->insertSignedInt(getLength());
 		break;
-	case 59:
+	case RPC_SETLENGTH__INT_:
 		setLength(inv->getSignedIntParameter());
 		break;
-	case 60:
+	case RPC_GETWIDTH__:
 		resp->insertSignedInt(getWidth());
 		break;
-	case 61:
+	case RPC_SETWIDTH__INT_:
 		setWidth(inv->getSignedIntParameter());
 		break;
 	default:

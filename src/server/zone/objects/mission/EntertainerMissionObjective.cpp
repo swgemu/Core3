@@ -224,7 +224,7 @@ int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputSt
 
 EntertainerMissionObjectiveImplementation::EntertainerMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/EntertainerMissionObjective.idl(61):  		Logger.setLoggingName("EntertainerMissionObjective");
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		Logger.setLoggingName("EntertainerMissionObjective");
 	Logger::setLoggingName("EntertainerMissionObjective");
 }
 
@@ -232,11 +232,11 @@ void EntertainerMissionObjectiveImplementation::finalize() {
 }
 
 void EntertainerMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/EntertainerMissionObjective.idl(69):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/EntertainerMissionObjective.idl(71):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/EntertainerMissionObjective.idl(73):  		activate();
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		activate();
 	activate();
 }
 
@@ -247,26 +247,28 @@ void EntertainerMissionObjectiveImplementation::initializeTransientMembers() {
 EntertainerMissionObjectiveAdapter::EntertainerMissionObjectiveAdapter(EntertainerMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
+
 Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_ACTIVATE__:
 		activate();
 		break;
-	case 9:
+	case RPC_ABORT__:
 		abort();
 		break;
-	case 10:
+	case RPC_COMPLETE__:
 		complete();
 		break;
-	case 11:
+	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:

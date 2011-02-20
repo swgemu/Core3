@@ -162,7 +162,7 @@ PackGroupImplementation::PackGroupImplementation() : AiGroupImplementation() {
 }
 
 bool PackGroupImplementation::isPackGroup() {
-	// server/zone/objects/creature/aigroup/PackGroup.idl(56):  		return true;
+	// server/zone/objects/creature/aigroup/PackGroup.idl():  		return true;
 	return true;
 }
 
@@ -173,11 +173,13 @@ bool PackGroupImplementation::isPackGroup() {
 PackGroupAdapter::PackGroupAdapter(PackGroupImplementation* obj) : AiGroupAdapter(obj) {
 }
 
+enum {RPC_ISPACKGROUP__ = 6};
+
 Packet* PackGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ISPACKGROUP__:
 		resp->insertBoolean(isPackGroup());
 		break;
 	default:

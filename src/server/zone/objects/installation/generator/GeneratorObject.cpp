@@ -215,12 +215,12 @@ int GeneratorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 GeneratorObjectImplementation::GeneratorObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/generator/GeneratorObject.idl(8):  		Logger.setLoggingName("GeneratorObject");
+	// server/zone/objects/installation/generator/GeneratorObject.idl():  		Logger.setLoggingName("GeneratorObject");
 	Logger::setLoggingName("GeneratorObject");
 }
 
 bool GeneratorObjectImplementation::isGeneratorObject() {
-	// server/zone/objects/installation/generator/GeneratorObject.idl(49):  		return true;
+	// server/zone/objects/installation/generator/GeneratorObject.idl():  		return true;
 	return true;
 }
 
@@ -231,20 +231,22 @@ bool GeneratorObjectImplementation::isGeneratorObject() {
 GeneratorObjectAdapter::GeneratorObjectAdapter(GeneratorObjectImplementation* obj) : InstallationObjectAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISGENERATOROBJECT__};
+
 Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 7:
+	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
 		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 8:
+	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
 		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 9:
+	case RPC_ISGENERATOROBJECT__:
 		resp->insertBoolean(isGeneratorObject());
 		break;
 	default:

@@ -300,7 +300,7 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 
 DestroyMissionObjectiveImplementation::DestroyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/DestroyMissionObjective.idl(69):  		Logger.setLoggingName("DestroyMissionObjective");
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		Logger.setLoggingName("DestroyMissionObjective");
 	Logger::setLoggingName("DestroyMissionObjective");
 }
 
@@ -308,11 +308,11 @@ void DestroyMissionObjectiveImplementation::finalize() {
 }
 
 void DestroyMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/DestroyMissionObjective.idl(77):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/DestroyMissionObjective.idl(79):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/DestroyMissionObjective.idl(81):  		activate();
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		activate();
 	activate();
 }
 
@@ -323,32 +323,34 @@ void DestroyMissionObjectiveImplementation::initializeTransientMembers() {
 DestroyMissionObjectiveAdapter::DestroyMissionObjectiveAdapter(DestroyMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNLAIR__,RPC_DESTROYOBJECTFROMDATABASE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,};
+
 Packet* DestroyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_ACTIVATE__:
 		activate();
 		break;
-	case 9:
+	case RPC_ABORT__:
 		abort();
 		break;
-	case 10:
+	case RPC_COMPLETE__:
 		complete();
 		break;
-	case 11:
+	case RPC_SPAWNLAIR__:
 		spawnLair();
 		break;
-	case 12:
+	case RPC_DESTROYOBJECTFROMDATABASE__:
 		destroyObjectFromDatabase();
 		break;
-	case 13:
+	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:

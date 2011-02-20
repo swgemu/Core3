@@ -1245,30 +1245,30 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 TangibleObjectImplementation::TangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/TangibleObject.idl(141):  		Logger.setLoggingName("TangibleObject");
+	// server/zone/objects/tangible/TangibleObject.idl():  		Logger.setLoggingName("TangibleObject");
 	Logger::setLoggingName("TangibleObject");
-	// server/zone/objects/tangible/TangibleObject.idl(143):  		initializeMembers();
+	// server/zone/objects/tangible/TangibleObject.idl():  		initializeMembers();
 	initializeMembers();
 }
 
 void TangibleObjectImplementation::initializeMembers() {
-	// server/zone/objects/tangible/TangibleObject.idl(147):  		faction = 0;
+	// server/zone/objects/tangible/TangibleObject.idl():  		faction = 0;
 	faction = 0;
-	// server/zone/objects/tangible/TangibleObject.idl(148):  		level = 1;
+	// server/zone/objects/tangible/TangibleObject.idl():  		level = 1;
 	level = 1;
-	// server/zone/objects/tangible/TangibleObject.idl(149):  		useCount = 1;
+	// server/zone/objects/tangible/TangibleObject.idl():  		useCount = 1;
 	useCount = 1;
-	// server/zone/objects/tangible/TangibleObject.idl(151):  		complexity = 100.f;
+	// server/zone/objects/tangible/TangibleObject.idl():  		complexity = 100.f;
 	complexity = 100.f;
-	// server/zone/objects/tangible/TangibleObject.idl(153):  		volume = 1;
+	// server/zone/objects/tangible/TangibleObject.idl():  		volume = 1;
 	volume = 1;
-	// server/zone/objects/tangible/TangibleObject.idl(155):  		unknownByte = 1;
+	// server/zone/objects/tangible/TangibleObject.idl():  		unknownByte = 1;
 	unknownByte = 1;
-	// server/zone/objects/tangible/TangibleObject.idl(157):  		useCount = 1;
+	// server/zone/objects/tangible/TangibleObject.idl():  		useCount = 1;
 	useCount = 1;
-	// server/zone/objects/tangible/TangibleObject.idl(159):  		conditionDamage = 0;
+	// server/zone/objects/tangible/TangibleObject.idl():  		conditionDamage = 0;
 	conditionDamage = 0;
-	// server/zone/objects/tangible/TangibleObject.idl(161):  		sliced = false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		sliced = false;
 	sliced = false;
 }
 
@@ -1276,202 +1276,202 @@ void TangibleObjectImplementation::setCombatState() {
 }
 
 void TangibleObjectImplementation::clearCombatState(bool clearDefenders) {
-	// server/zone/objects/tangible/TangibleObject.idl(283):  	}
-	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl(284):  			removeDefenders();
+	// server/zone/objects/tangible/TangibleObject.idl():  	}
+	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl():  			removeDefenders();
 	removeDefenders();
 }
 
 bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
-	// server/zone/objects/tangible/TangibleObject.idl(294):  
-	for (	// server/zone/objects/tangible/TangibleObject.idl(294):  		for (int i = 0;
+	// server/zone/objects/tangible/TangibleObject.idl():  		}
+	for (	// server/zone/objects/tangible/TangibleObject.idl():  		for (int i = 0;
 	int i = 0;
 	i < (&defenderList)->size();
  ++i) {
-	// server/zone/objects/tangible/TangibleObject.idl(295):  		}
-	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl(296):  				return true;
+	// server/zone/objects/tangible/TangibleObject.idl():  		}
+	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl():  				return true;
 	return true;
 }
-	// server/zone/objects/tangible/TangibleObject.idl(299):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/TangibleObject.idl(309):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isAggressiveTo(PlayerCreature* object) {
-	// server/zone/objects/tangible/TangibleObject.idl(319):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
 }
 
 void TangibleObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/TangibleObject.idl(365):  		error("Unhandled updateCraftingValues for this object type");
+	// server/zone/objects/tangible/TangibleObject.idl():  		error("Unhandled updateCraftingValues for this object type");
 	error("Unhandled updateCraftingValues for this object type");
 }
 
 byte TangibleObjectImplementation::getUnknownByte() {
-	// server/zone/objects/tangible/TangibleObject.idl(371):  		return unknownByte;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return unknownByte;
 	return unknownByte;
 }
 
 bool TangibleObjectImplementation::isTicketCollector() {
-	// server/zone/objects/tangible/TangibleObject.idl(375):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
 }
 
 bool TangibleObjectImplementation::isTicketObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(379):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
 }
 
 CustomizationVariables* TangibleObjectImplementation::getCustomizationVariables() {
-	// server/zone/objects/tangible/TangibleObject.idl(384):  		return customizationVariables;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return customizationVariables;
 	return (&customizationVariables);
 }
 
 int TangibleObjectImplementation::getUseCount() {
-	// server/zone/objects/tangible/TangibleObject.idl(388):  		return useCount;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return useCount;
 	return useCount;
 }
 
 int TangibleObjectImplementation::getMaxCondition() {
-	// server/zone/objects/tangible/TangibleObject.idl(392):  		return maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return maxCondition;
 	return maxCondition;
 }
 
 void TangibleObjectImplementation::setMaxCondition(int maxCond) {
-	// server/zone/objects/tangible/TangibleObject.idl(396):  		maxCondition = maxCond;
+	// server/zone/objects/tangible/TangibleObject.idl():  		maxCondition = maxCond;
 	maxCondition = maxCond;
 }
 
 int TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl(400):  		return conditionDamage;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return conditionDamage;
 	return conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
-	// server/zone/objects/tangible/TangibleObject.idl(404):  		return volume;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return volume;
 	return volume;
 }
 
 float TangibleObjectImplementation::getComplexity() {
-	// server/zone/objects/tangible/TangibleObject.idl(408):  		return complexity;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return complexity;
 	return complexity;
 }
 
 unsigned int TangibleObjectImplementation::getOptionsBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(412):  		return optionsBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return optionsBitmask;
 	return optionsBitmask;
 }
 
 int TangibleObjectImplementation::getLevel() {
-	// server/zone/objects/tangible/TangibleObject.idl(416):  		return level;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return level;
 	return level;
 }
 
 unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(420):  		return pvpStatusBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return pvpStatusBitmask;
 	return pvpStatusBitmask;
 }
 
 bool TangibleObjectImplementation::isTangibleObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(424):  		return true;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return true;
 	return true;
 }
 
 void TangibleObjectImplementation::getCustomizationString(String& variables) {
-	// server/zone/objects/tangible/TangibleObject.idl(428):  		customizationVariables.getData(variables);
+	// server/zone/objects/tangible/TangibleObject.idl():  		customizationVariables.getData(variables);
 	(&customizationVariables)->getData(variables);
 }
 
 DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::getDefenderList() {
-	// server/zone/objects/tangible/TangibleObject.idl(433):  		return defenderList;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return defenderList;
 	return (&defenderList);
 }
 
 SceneObject* TangibleObjectImplementation::getMainDefender() {
-	// server/zone/objects/tangible/TangibleObject.idl(437):  		return defenderList.get(0);
+	// server/zone/objects/tangible/TangibleObject.idl():  		return defenderList.get(0);
 	return (&defenderList)->get(0);
 }
 
 bool TangibleObjectImplementation::isDestroyed() {
-	// server/zone/objects/tangible/TangibleObject.idl(441):  		return conditionDamage > maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return conditionDamage > maxCondition;
 	return conditionDamage > maxCondition;
 }
 
 unsigned int TangibleObjectImplementation::getPlayerUseMask() {
-	// server/zone/objects/tangible/TangibleObject.idl(445):  		return playerUseMask;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return playerUseMask;
 	return playerUseMask;
 }
 
 int TangibleObjectImplementation::getFaction() {
-	// server/zone/objects/tangible/TangibleObject.idl(449):  		return faction;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return faction;
 	return faction;
 }
 
 bool TangibleObjectImplementation::isRebel() {
-	// server/zone/objects/tangible/TangibleObject.idl(453):  		return faction == 0x16148850;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return faction == 0x16148850;
 	return faction == 0x16148850;
 }
 
 bool TangibleObjectImplementation::isImperial() {
-	// server/zone/objects/tangible/TangibleObject.idl(457):  		return faction == 0xDB4ACC54;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return faction == 0xDB4ACC54;
 	return faction == 0xDB4ACC54;
 }
 
 bool TangibleObjectImplementation::isNeutral() {
-	// server/zone/objects/tangible/TangibleObject.idl(461):  		return faction == 0;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return faction == 0;
 	return faction == 0;
 }
 
 bool TangibleObjectImplementation::isSliced() {
-	// server/zone/objects/tangible/TangibleObject.idl(465):  		return sliced;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return sliced;
 	return sliced;
 }
 
 bool TangibleObjectImplementation::isPharmaceuticalObject() {
-	// server/zone/objects/tangible/TangibleObject.idl(469):  		return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
 }
 
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
-	// server/zone/objects/tangible/TangibleObject.idl(473):  		customizationVariables.parseFromClientString(vars);
+	// server/zone/objects/tangible/TangibleObject.idl():  		customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
 }
 
 void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask) {
-	// server/zone/objects/tangible/TangibleObject.idl(477):  		pvpStatusBitmask = bitmask;
+	// server/zone/objects/tangible/TangibleObject.idl():  		pvpStatusBitmask = bitmask;
 	pvpStatusBitmask = bitmask;
 }
 
 void TangibleObjectImplementation::setCraftersName(String& name) {
-	// server/zone/objects/tangible/TangibleObject.idl(481):  		craftersName = name;
+	// server/zone/objects/tangible/TangibleObject.idl():  		craftersName = name;
 	craftersName = name;
 }
 
 String TangibleObjectImplementation::getCraftersName() {
-	// server/zone/objects/tangible/TangibleObject.idl(485):  		return craftersName;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return craftersName;
 	return craftersName;
 }
 
 void TangibleObjectImplementation::setCraftersSerial(String& serial) {
-	// server/zone/objects/tangible/TangibleObject.idl(489):  		craftersSerial = serial;
+	// server/zone/objects/tangible/TangibleObject.idl():  		craftersSerial = serial;
 	craftersSerial = serial;
 }
 
 void TangibleObjectImplementation::setLevel(int lev) {
-	// server/zone/objects/tangible/TangibleObject.idl(493):  		level = lev;
+	// server/zone/objects/tangible/TangibleObject.idl():  		level = lev;
 	level = lev;
 }
 
 String TangibleObjectImplementation::getCraftersSerial() {
-	// server/zone/objects/tangible/TangibleObject.idl(497):  		return craftersSerial;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return craftersSerial;
 	return craftersSerial;
 }
 
 bool TangibleObjectImplementation::isFromFactoryCrate() {
-	// server/zone/objects/tangible/TangibleObject.idl(501):  		return optionsBitmask & 0x2100;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return optionsBitmask & 0x2100;
 	return optionsBitmask & 0x2100;
 }
 
@@ -1482,185 +1482,187 @@ bool TangibleObjectImplementation::isFromFactoryCrate() {
 TangibleObjectAdapter::TangibleObjectAdapter(TangibleObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__PLAYERCREATURE_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__PLAYERCREATURE_,RPC_SENDPVPSTATUSTO__PLAYERCREATURE_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_GETUNKNOWNBYTE__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_GETPLAYERUSEMASK__,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICED__,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETCRAFTERSSERIAL__STRING_,RPC_SETLEVEL__INT_,RPC_GETCRAFTERSSERIAL__,RPC_ISFROMFACTORYCRATE__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
+
 Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZEMEMBERS__:
 		initializeMembers();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_:
 		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
 		break;
-	case 9:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
 		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 11:
+	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
 		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 12:
+	case RPC_SETDEFENDER__SCENEOBJECT_:
 		setDefender((SceneObject*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_ADDDEFENDER__SCENEOBJECT_:
 		addDefender((SceneObject*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_REMOVEDEFENDER__SCENEOBJECT_:
 		removeDefender((SceneObject*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_REMOVEDEFENDERS__:
 		removeDefenders();
 		break;
-	case 16:
+	case RPC_SETCOMBATSTATE__:
 		setCombatState();
 		break;
-	case 17:
+	case RPC_SETUSECOUNT__INT_BOOL_:
 		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 18:
+	case RPC_DECREASEUSECOUNT__PLAYERCREATURE_:
 		decreaseUseCount((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 19:
+	case RPC_CLEARCOMBATSTATE__BOOL_:
 		clearCombatState(inv->getBooleanParameter());
 		break;
-	case 20:
+	case RPC_HASDEFENDER__SCENEOBJECT_:
 		resp->insertBoolean(hasDefender((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 21:
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 22:
+	case RPC_ISAGGRESSIVETO__PLAYERCREATURE_:
 		resp->insertBoolean(isAggressiveTo((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 23:
+	case RPC_SENDPVPSTATUSTO__PLAYERCREATURE_:
 		sendPvpStatusTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 24:
+	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
 		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
-	case 25:
+	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_:
 		resp->insertSignedInt(healDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 26:
+	case RPC_SETCONDITIONDAMAGE__INT_BOOL_:
 		setConditionDamage(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 27:
+	case RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_:
 		setCustomizationVariable(inv->getByteParameter(), inv->getByteParameter(), inv->getBooleanParameter());
 		break;
-	case 28:
+	case RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_:
 		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__String_byte_bool_), inv->getByteParameter(), inv->getBooleanParameter());
 		break;
-	case 29:
+	case RPC_SETOPTIONSBITMASK__INT_BOOL_:
 		setOptionsBitmask(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 30:
+	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
 		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 31:
+	case RPC_GETUNKNOWNBYTE__:
 		resp->insertByte(getUnknownByte());
 		break;
-	case 32:
+	case RPC_ISTICKETCOLLECTOR__:
 		resp->insertBoolean(isTicketCollector());
 		break;
-	case 33:
+	case RPC_ISTICKETOBJECT__:
 		resp->insertBoolean(isTicketObject());
 		break;
-	case 34:
+	case RPC_GETUSECOUNT__:
 		resp->insertSignedInt(getUseCount());
 		break;
-	case 35:
+	case RPC_GETMAXCONDITION__:
 		resp->insertSignedInt(getMaxCondition());
 		break;
-	case 36:
+	case RPC_SETMAXCONDITION__INT_:
 		setMaxCondition(inv->getSignedIntParameter());
 		break;
-	case 37:
+	case RPC_GETCONDITIONDAMAGE__:
 		resp->insertSignedInt(getConditionDamage());
 		break;
-	case 38:
+	case RPC_GETVOLUME__:
 		resp->insertSignedInt(getVolume());
 		break;
-	case 39:
+	case RPC_GETCOMPLEXITY__:
 		resp->insertFloat(getComplexity());
 		break;
-	case 40:
+	case RPC_GETOPTIONSBITMASK__:
 		resp->insertInt(getOptionsBitmask());
 		break;
-	case 41:
+	case RPC_GETLEVEL__:
 		resp->insertSignedInt(getLevel());
 		break;
-	case 42:
+	case RPC_GETPVPSTATUSBITMASK__:
 		resp->insertInt(getPvpStatusBitmask());
 		break;
-	case 43:
+	case RPC_ISTANGIBLEOBJECT__:
 		resp->insertBoolean(isTangibleObject());
 		break;
-	case 44:
+	case RPC_GETCUSTOMIZATIONSTRING__STRING_:
 		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
 		break;
-	case 45:
+	case RPC_GETMAINDEFENDER__:
 		resp->insertLong(getMainDefender()->_getObjectID());
 		break;
-	case 46:
+	case RPC_ISDESTROYED__:
 		resp->insertBoolean(isDestroyed());
 		break;
-	case 47:
+	case RPC_GETPLAYERUSEMASK__:
 		resp->insertInt(getPlayerUseMask());
 		break;
-	case 48:
+	case RPC_GETFACTION__:
 		resp->insertSignedInt(getFaction());
 		break;
-	case 49:
+	case RPC_ISREBEL__:
 		resp->insertBoolean(isRebel());
 		break;
-	case 50:
+	case RPC_ISIMPERIAL__:
 		resp->insertBoolean(isImperial());
 		break;
-	case 51:
+	case RPC_ISNEUTRAL__:
 		resp->insertBoolean(isNeutral());
 		break;
-	case 52:
+	case RPC_ISSLICED__:
 		resp->insertBoolean(isSliced());
 		break;
-	case 53:
+	case RPC_ISPHARMACEUTICALOBJECT__:
 		resp->insertBoolean(isPharmaceuticalObject());
 		break;
-	case 54:
+	case RPC_SETCUSTOMIZATIONSTRING__STRING_:
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
-	case 55:
+	case RPC_SETPVPSTATUSBITMASK__INT_:
 		setPvpStatusBitmask(inv->getSignedIntParameter());
 		break;
-	case 56:
+	case RPC_SETCRAFTERSNAME__STRING_:
 		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
 		break;
-	case 57:
+	case RPC_GETCRAFTERSNAME__:
 		resp->insertAscii(getCraftersName());
 		break;
-	case 58:
+	case RPC_SETCRAFTERSSERIAL__STRING_:
 		setCraftersSerial(inv->getAsciiParameter(_param0_setCraftersSerial__String_));
 		break;
-	case 59:
+	case RPC_SETLEVEL__INT_:
 		setLevel(inv->getSignedIntParameter());
 		break;
-	case 60:
+	case RPC_GETCRAFTERSSERIAL__:
 		resp->insertAscii(getCraftersSerial());
 		break;
-	case 61:
+	case RPC_ISFROMFACTORYCRATE__:
 		resp->insertBoolean(isFromFactoryCrate());
 		break;
-	case 62:
+	case RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_:
 		setInitialCraftingValues((ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 63:
+	case RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_:
 		resp->insertBoolean(applyComponentStats((ManufactureSchematic*) inv->getObjectParameter()));
 		break;
-	case 64:
+	case RPC_CREATEFACTORYCRATE__BOOL_:
 		resp->insertLong(createFactoryCrate(inv->getBooleanParameter())->_getObjectID());
 		break;
 	default:

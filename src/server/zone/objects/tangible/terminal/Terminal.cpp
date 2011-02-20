@@ -242,34 +242,34 @@ int TerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 TerminalImplementation::TerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/Terminal.idl(57):  		Logger.setLoggingName("Terminal");
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		Logger.setLoggingName("Terminal");
 	Logger::setLoggingName("Terminal");
-	// server/zone/objects/tangible/terminal/Terminal.idl(59):  		controlledObject = null;
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		controlledObject = null;
 	controlledObject = NULL;
 }
 
 bool TerminalImplementation::isTerminal() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(65):  		return true;
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		return true;
 	return true;
 }
 
 bool TerminalImplementation::isGuildTerminal() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(69):  		return false;
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		return false;
 	return false;
 }
 
 void TerminalImplementation::setControlledObject(SceneObject* obj) {
-	// server/zone/objects/tangible/terminal/Terminal.idl(73):  		controlledObject = obj;
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		controlledObject = obj;
 	controlledObject = obj;
 }
 
 SceneObject* TerminalImplementation::getControlledObject() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(77):  		return controlledObject;
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		return controlledObject;
 	return controlledObject;
 }
 
 bool TerminalImplementation::isElevatorTerminal() {
-	// server/zone/objects/tangible/terminal/Terminal.idl(81):  		return false;
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		return false;
 	return false;
 }
 
@@ -280,26 +280,28 @@ bool TerminalImplementation::isElevatorTerminal() {
 TerminalAdapter::TerminalAdapter(TerminalImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISTERMINAL__,RPC_ISGUILDTERMINAL__,RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISELEVATORTERMINAL__};
+
 Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_ISTERMINAL__:
 		resp->insertBoolean(isTerminal());
 		break;
-	case 8:
+	case RPC_ISGUILDTERMINAL__:
 		resp->insertBoolean(isGuildTerminal());
 		break;
-	case 9:
+	case RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_:
 		setControlledObject((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_GETCONTROLLEDOBJECT__:
 		resp->insertLong(getControlledObject()->_getObjectID());
 		break;
-	case 11:
+	case RPC_ISELEVATORTERMINAL__:
 		resp->insertBoolean(isElevatorTerminal());
 		break;
 	default:

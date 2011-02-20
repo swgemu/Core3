@@ -312,29 +312,29 @@ int StructureManagerImplementation::writeObjectMembers(ObjectOutputStream* strea
 }
 
 void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl(101):  		Logger.info("loading structures...", true);
+	// server/zone/managers/structure/StructureManager.idl():  		Logger.info("loading structures...", true);
 	Logger::info("loading structures...", true);
-	// server/zone/managers/structure/StructureManager.idl(103):  		listOfStaticBuildings.setNoDuplicateInsertPlan();
+	// server/zone/managers/structure/StructureManager.idl():  		listOfStaticBuildings.setNoDuplicateInsertPlan();
 	(&listOfStaticBuildings)->setNoDuplicateInsertPlan();
-	// server/zone/managers/structure/StructureManager.idl(105):  		loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticBuildings();
 	loadStaticBuildings();
-	// server/zone/managers/structure/StructureManager.idl(106):  		loadPlayerStructures();
+	// server/zone/managers/structure/StructureManager.idl():  		loadPlayerStructures();
 	loadPlayerStructures();
-	// server/zone/managers/structure/StructureManager.idl(107):  		loadStaticBanks();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticBanks();
 	loadStaticBanks();
-	// server/zone/managers/structure/StructureManager.idl(108):  		loadStaticBazaars();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticBazaars();
 	loadStaticBazaars();
-	// server/zone/managers/structure/StructureManager.idl(109):  		loadStaticMissionTerminals();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticMissionTerminals();
 	loadStaticMissionTerminals();
-	// server/zone/managers/structure/StructureManager.idl(110):  		loadStaticGamblingTerminals();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticGamblingTerminals();
 	loadStaticGamblingTerminals();
-	// server/zone/managers/structure/StructureManager.idl(111):  		loadStaticCraftingStations();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticCraftingStations();
 	loadStaticCraftingStations();
-	// server/zone/managers/structure/StructureManager.idl(112):  		loadStaticElevatorTerminals();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticElevatorTerminals();
 	loadStaticElevatorTerminals();
-	// server/zone/managers/structure/StructureManager.idl(113):  		loadStaticGarages();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticGarages();
 	loadStaticGarages();
-	// server/zone/managers/structure/StructureManager.idl(114):  		loadStaticClientObjects();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticClientObjects();
 	loadStaticClientObjects();
 }
 
@@ -345,32 +345,34 @@ void StructureManagerImplementation::loadStructures() {
 StructureManagerAdapter::StructureManagerAdapter(StructureManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
+
 Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_LOADSTRUCTURES__:
 		loadStructures();
 		break;
-	case 7:
+	case RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_:
 		resp->insertSignedInt(placeStructureFromDeed((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
 		break;
-	case 8:
+	case RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_:
 		resp->insertSignedInt(destroyStructure((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
 		break;
-	case 9:
+	case RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_:
 		resp->insertSignedInt(redeedStructure((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
-	case 10:
+	case RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_:
 		resp->insertSignedInt(declareResidence((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
 		break;
-	case 11:
+	case RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_:
 		resp->insertSignedInt(changePrivacy((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
 		break;
-	case 12:
+	case RPC_GETTIMESTRING__INT_:
 		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
 		break;
-	case 13:
+	case RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_:
 		resp->insertLong(getInRangeParkingGarage((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:

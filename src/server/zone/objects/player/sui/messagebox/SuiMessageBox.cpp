@@ -176,11 +176,11 @@ int SuiMessageBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 SuiMessageBoxImplementation::SuiMessageBoxImplementation(PlayerCreature* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::MESSAGEBOX) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/messagebox/SuiMessageBox.idl(59):  		;
+	// server/zone/objects/player/sui/messagebox/SuiMessageBox.idl():  		;
 }
 
 bool SuiMessageBoxImplementation::isMessageBox() {
-	// server/zone/objects/player/sui/messagebox/SuiMessageBox.idl(65):  		return true;
+	// server/zone/objects/player/sui/messagebox/SuiMessageBox.idl():  		return true;
 	return true;
 }
 
@@ -191,14 +191,16 @@ bool SuiMessageBoxImplementation::isMessageBox() {
 SuiMessageBoxAdapter::SuiMessageBoxAdapter(SuiMessageBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
 
+enum {RPC_GENERATEMESSAGE__ = 6,RPC_ISMESSAGEBOX__};
+
 Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GENERATEMESSAGE__:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
-	case 7:
+	case RPC_ISMESSAGEBOX__:
 		resp->insertBoolean(isMessageBox());
 		break;
 	default:

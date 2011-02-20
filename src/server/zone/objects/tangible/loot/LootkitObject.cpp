@@ -301,14 +301,14 @@ int LootkitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 LootkitObjectImplementation::LootkitObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/loot/LootkitObject.idl(76):  		Logger.setLoggingName("LootKitObject");
+	// server/zone/objects/tangible/loot/LootkitObject.idl():  		Logger.setLoggingName("LootKitObject");
 	Logger::setLoggingName("LootKitObject");
 }
 
 void LootkitObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/loot/LootkitObject.idl(80):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/loot/LootkitObject.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/loot/LootkitObject.idl(82):  		Logger.setLoggingName("LootKitObject");
+	// server/zone/objects/tangible/loot/LootkitObject.idl():  		Logger.setLoggingName("LootKitObject");
 	Logger::setLoggingName("LootKitObject");
 }
 
@@ -319,23 +319,25 @@ void LootkitObjectImplementation::initializeTransientMembers() {
 LootkitObjectAdapter::LootkitObjectAdapter(LootkitObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_GETPLAYER__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_};
+
 Packet* LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
-	case 8:
+	case RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_:
 		resp->insertSignedInt(notifyObjectInserted((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 9:
+	case RPC_GETPLAYER__:
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
-	case 10:
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:

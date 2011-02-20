@@ -374,22 +374,22 @@ int LoginServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 }
 
 AccountManager* LoginServerImplementation::getAccountManager() {
-	// server/login/LoginServer.idl(74):  		return accountManager;
+	// server/login/LoginServer.idl():  		return accountManager;
 	return accountManager;
 }
 
 Account* LoginServerImplementation::getAccount(unsigned int accountID) {
-	// server/login/LoginServer.idl(78):  		return accountManager.getAccount(accountID);
+	// server/login/LoginServer.idl():  		return accountManager.getAccount(accountID);
 	return accountManager->getAccount(accountID);
 }
 
 LoginEnumCluster* LoginServerImplementation::getLoginEnumClusterMessage() {
-	// server/login/LoginServer.idl(85):  		return (LoginEnumCluster) enumClusterMessage.clone();
+	// server/login/LoginServer.idl():  		return (LoginEnumCluster) enumClusterMessage.clone();
 	return (LoginEnumCluster*) enumClusterMessage->clone();
 }
 
 LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
-	// server/login/LoginServer.idl(89):  		return (LoginClusterStatus) clusterStatusMessage.clone();
+	// server/login/LoginServer.idl():  		return (LoginClusterStatus) clusterStatusMessage.clone();
 	return (LoginClusterStatus*) clusterStatusMessage->clone();
 }
 
@@ -400,44 +400,46 @@ LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
 LoginServerAdapter::LoginServerAdapter(LoginServerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_PRINTINFO__,RPC_POPULATEGALAXYLIST__,RPC_GETACCOUNT__INT_,RPC_GETLOGINENUMCLUSTERMESSAGE__,RPC_GETLOGINCLUSTERSTATUSMESSAGE__};
+
 Packet* LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 8:
+	case RPC_SHUTDOWN__:
 		shutdown();
 		break;
-	case 9:
+	case RPC_STARTMANAGERS__:
 		startManagers();
 		break;
-	case 10:
+	case RPC_STOPMANAGERS__:
 		stopManagers();
 		break;
-	case 11:
+	case RPC_START__INT_INT_:
 		start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 12:
+	case RPC_STOP__:
 		stop();
 		break;
-	case 13:
+	case RPC_PRINTINFO__:
 		printInfo();
 		break;
-	case 14:
+	case RPC_POPULATEGALAXYLIST__:
 		populateGalaxyList();
 		break;
-	case 15:
+	case RPC_GETACCOUNT__INT_:
 		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case 16:
+	case RPC_GETLOGINENUMCLUSTERMESSAGE__:
 		resp->insertLong(getLoginEnumClusterMessage()->_getObjectID());
 		break;
-	case 17:
+	case RPC_GETLOGINCLUSTERSTATUSMESSAGE__:
 		resp->insertLong(getLoginClusterStatusMessage()->_getObjectID());
 		break;
 	default:

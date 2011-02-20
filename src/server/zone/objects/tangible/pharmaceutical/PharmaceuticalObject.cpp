@@ -330,69 +330,69 @@ int PharmaceuticalObjectImplementation::writeObjectMembers(ObjectOutputStream* s
 
 PharmaceuticalObjectImplementation::PharmaceuticalObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(61):  		setLoggingName("PharmaceuticalObject");
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		setLoggingName("PharmaceuticalObject");
 	setLoggingName("PharmaceuticalObject");
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(63):  		medicineUseRequired = 0;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		medicineUseRequired = 0;
 	medicineUseRequired = 0;
 }
 
 int PharmaceuticalObjectImplementation::getMedicineUseRequired() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(67):  		return medicineUseRequired;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return medicineUseRequired;
 	return medicineUseRequired;
 }
 
 float PharmaceuticalObjectImplementation::getRange(CreatureObject* creature) {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(71):  		return 5;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return 5;
 	return 5;
 }
 
 bool PharmaceuticalObjectImplementation::isArea() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(75):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return false;
 	return false;
 }
 
 float PharmaceuticalObjectImplementation::getArea() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(79):  		return 0;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return 0;
 	return 0;
 }
 
 bool PharmaceuticalObjectImplementation::isPharmaceuticalObject() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(83):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return true;
 	return true;
 }
 
 bool PharmaceuticalObjectImplementation::isStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(87):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isRangedStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(91):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isEnhancePack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(95):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isWoundPack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(99):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isCurePack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(103):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isStatePack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(107):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return false;
 	return false;
 }
 
 bool PharmaceuticalObjectImplementation::isRevivePack() {
-	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl(111):  		return false;
+	// server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.idl():  		return false;
 	return false;
 }
 
@@ -403,44 +403,46 @@ bool PharmaceuticalObjectImplementation::isRevivePack() {
 PharmaceuticalObjectAdapter::PharmaceuticalObjectAdapter(PharmaceuticalObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_GETMEDICINEUSEREQUIRED__ = 6,RPC_GETRANGE__CREATUREOBJECT_,RPC_ISAREA__,RPC_GETAREA__,RPC_ISPHARMACEUTICALOBJECT__,RPC_ISSTIMPACK__,RPC_ISRANGEDSTIMPACK__,RPC_ISENHANCEPACK__,RPC_ISWOUNDPACK__,RPC_ISCUREPACK__,RPC_ISSTATEPACK__,RPC_ISREVIVEPACK__};
+
 Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GETMEDICINEUSEREQUIRED__:
 		resp->insertSignedInt(getMedicineUseRequired());
 		break;
-	case 7:
+	case RPC_GETRANGE__CREATUREOBJECT_:
 		resp->insertFloat(getRange((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 8:
+	case RPC_ISAREA__:
 		resp->insertBoolean(isArea());
 		break;
-	case 9:
+	case RPC_GETAREA__:
 		resp->insertFloat(getArea());
 		break;
-	case 10:
+	case RPC_ISPHARMACEUTICALOBJECT__:
 		resp->insertBoolean(isPharmaceuticalObject());
 		break;
-	case 11:
+	case RPC_ISSTIMPACK__:
 		resp->insertBoolean(isStimPack());
 		break;
-	case 12:
+	case RPC_ISRANGEDSTIMPACK__:
 		resp->insertBoolean(isRangedStimPack());
 		break;
-	case 13:
+	case RPC_ISENHANCEPACK__:
 		resp->insertBoolean(isEnhancePack());
 		break;
-	case 14:
+	case RPC_ISWOUNDPACK__:
 		resp->insertBoolean(isWoundPack());
 		break;
-	case 15:
+	case RPC_ISCUREPACK__:
 		resp->insertBoolean(isCurePack());
 		break;
-	case 16:
+	case RPC_ISSTATEPACK__:
 		resp->insertBoolean(isStatePack());
 		break;
-	case 17:
+	case RPC_ISREVIVEPACK__:
 		resp->insertBoolean(isRevivePack());
 		break;
 	default:

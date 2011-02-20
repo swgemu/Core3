@@ -348,29 +348,29 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 
 CampSiteActiveAreaImplementation::CampSiteActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/CampSiteActiveArea.idl(86):  		currentXP = 0;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		currentXP = 0;
 	currentXP = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl(87):  		campType = 0;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		campType = 0;
 	campType = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl(88):  		aggroMod = 0;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		aggroMod = 0;
 	aggroMod = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl(89):  		areaRange = 0;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		areaRange = 0;
 	areaRange = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl(91):  		abandoned = false;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		abandoned = false;
 	abandoned = false;
-	// server/zone/objects/area/CampSiteActiveArea.idl(92):  		maxXP = 0;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		maxXP = 0;
 	maxXP = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl(93):  		campModifier = 0;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		campModifier = 0;
 	campModifier = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl(94):  		duration = 0;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		duration = 0;
 	duration = 0;
-	// server/zone/objects/area/CampSiteActiveArea.idl(95):  		Logger.setLoggingName("CampsiteActiveArea");
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		Logger.setLoggingName("CampsiteActiveArea");
 	Logger::setLoggingName("CampsiteActiveArea");
 }
 
 void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* player) {
-	// server/zone/objects/area/CampSiteActiveArea.idl(99):  	}
-	if (!player->isPlayerCreature())	// server/zone/objects/area/CampSiteActiveArea.idl(100):  			return;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  	}
+	if (!player->isPlayerCreature())	// server/zone/objects/area/CampSiteActiveArea.idl():  			return;
 	return;
 }
 
@@ -381,11 +381,13 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* player) {
 CampSiteActiveAreaAdapter::CampSiteActiveAreaAdapter(CampSiteActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6};
+
 Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
 	default:

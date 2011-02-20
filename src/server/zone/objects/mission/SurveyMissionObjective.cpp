@@ -303,38 +303,38 @@ int SurveyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 
 SurveyMissionObjectiveImplementation::SurveyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/SurveyMissionObjective.idl(63):  		Logger.setLoggingName("SurveyMissionObjective");
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		Logger.setLoggingName("SurveyMissionObjective");
 	Logger::setLoggingName("SurveyMissionObjective");
-	// server/zone/objects/mission/SurveyMissionObjective.idl(65):  		efficiency = 0;
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		efficiency = 0;
 	efficiency = 0;
 }
 
 void SurveyMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/SurveyMissionObjective.idl(69):  		Logger.info("deleting from memory", true);
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		Logger.info("deleting from memory", true);
 	Logger::info("deleting from memory", true);
 }
 
 void SurveyMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/SurveyMissionObjective.idl(73):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/SurveyMissionObjective.idl(75):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/SurveyMissionObjective.idl(77):  		activate();
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		activate();
 	activate();
 }
 
 void SurveyMissionObjectiveImplementation::setSpawn(ResourceSpawn* sp) {
-	// server/zone/objects/mission/SurveyMissionObjective.idl(87):  		spawn = sp;
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		spawn = sp;
 	spawn = sp;
 }
 
 void SurveyMissionObjectiveImplementation::setMissionGiver(SceneObject* object) {
-	// server/zone/objects/mission/SurveyMissionObjective.idl(91):  		missionGiver = object;
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		missionGiver = object;
 	missionGiver = object;
 }
 
 void SurveyMissionObjectiveImplementation::setEfficiency(unsigned int eff) {
-	// server/zone/objects/mission/SurveyMissionObjective.idl(95):  		efficiency = eff;
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		efficiency = eff;
 	efficiency = eff;
 }
 
@@ -345,35 +345,37 @@ void SurveyMissionObjectiveImplementation::setEfficiency(unsigned int eff) {
 SurveyMissionObjectiveAdapter::SurveyMissionObjectiveAdapter(SurveyMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETSPAWN__RESOURCESPAWN_,RPC_SETMISSIONGIVER__SCENEOBJECT_,RPC_SETEFFICIENCY__INT_};
+
 Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_ACTIVATE__:
 		activate();
 		break;
-	case 9:
+	case RPC_ABORT__:
 		abort();
 		break;
-	case 10:
+	case RPC_COMPLETE__:
 		complete();
 		break;
-	case 11:
+	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 12:
+	case RPC_SETSPAWN__RESOURCESPAWN_:
 		setSpawn((ResourceSpawn*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_SETMISSIONGIVER__SCENEOBJECT_:
 		setMissionGiver((SceneObject*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_SETEFFICIENCY__INT_:
 		setEfficiency(inv->getUnsignedIntParameter());
 		break;
 	default:
