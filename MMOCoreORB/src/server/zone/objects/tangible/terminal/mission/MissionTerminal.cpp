@@ -317,76 +317,76 @@ int MissionTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 MissionTerminalImplementation::MissionTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(58):  		Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 
 void MissionTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(69):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		super.loadTemplateData(templateData);
 	TerminalImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(71):  		MissionTerminalTemplate 
-	if (!templateData->isMissionTerminalTemplate())	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(72):  			return;
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		MissionTerminalTemplate 
+	if (!templateData->isMissionTerminalTemplate())	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  			return;
 	return;
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(74):  templ = (MissionTerminalTemplate) templateData;
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		MissionTerminalTemplate templ = (MissionTerminalTemplate) templateData;
 	MissionTerminalTemplate* templ = (MissionTerminalTemplate*) templateData;
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(76):  		terminalType = templ.getMissionTerminalType();
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		terminalType = templ.getMissionTerminalType();
 	terminalType = templ->getMissionTerminalType();
 }
 
 void MissionTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(80):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(82):  		Logger.setLoggingName("MissionTerminal");
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");
 }
 
 bool MissionTerminalImplementation::isMissionTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(86):  		return true;
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return true;
 	return true;
 }
 
 bool MissionTerminalImplementation::isArtisanTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(90):  		return terminalType == "artisan";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "artisan";
 	return terminalType == "artisan";
 }
 
 bool MissionTerminalImplementation::isGeneralTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(94):  		return terminalType == "general";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "general";
 	return terminalType == "general";
 }
 
 bool MissionTerminalImplementation::isBountyTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(98):  		return terminalType == "bounty";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "bounty";
 	return terminalType == "bounty";
 }
 
 bool MissionTerminalImplementation::isEntertainerTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(102):  		return terminalType == "entertainer";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "entertainer";
 	return terminalType == "entertainer";
 }
 
 bool MissionTerminalImplementation::isImperialTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(106):  		return terminalType == "imperial";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "imperial";
 	return terminalType == "imperial";
 }
 
 bool MissionTerminalImplementation::isNewbieTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(110):  		return terminalType == "newbie";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "newbie";
 	return terminalType == "newbie";
 }
 
 bool MissionTerminalImplementation::isRebelTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(114):  		return terminalType == "rebel";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "rebel";
 	return terminalType == "rebel";
 }
 
 bool MissionTerminalImplementation::isScoutTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(118):  		return terminalType == "scout";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "scout";
 	return terminalType == "scout";
 }
 
 bool MissionTerminalImplementation::isStatueTerminal() {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(122):  		return terminalType == "statue";
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		return terminalType == "statue";
 	return terminalType == "statue";
 }
 
@@ -397,41 +397,43 @@ bool MissionTerminalImplementation::isStatueTerminal() {
 MissionTerminalAdapter::MissionTerminalAdapter(MissionTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__};
+
 Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_ISMISSIONTERMINAL__:
 		resp->insertBoolean(isMissionTerminal());
 		break;
-	case 8:
+	case RPC_ISARTISANTERMINAL__:
 		resp->insertBoolean(isArtisanTerminal());
 		break;
-	case 9:
+	case RPC_ISGENERALTERMINAL__:
 		resp->insertBoolean(isGeneralTerminal());
 		break;
-	case 10:
+	case RPC_ISBOUNTYTERMINAL__:
 		resp->insertBoolean(isBountyTerminal());
 		break;
-	case 11:
+	case RPC_ISENTERTAINERTERMINAL__:
 		resp->insertBoolean(isEntertainerTerminal());
 		break;
-	case 12:
+	case RPC_ISIMPERIALTERMINAL__:
 		resp->insertBoolean(isImperialTerminal());
 		break;
-	case 13:
+	case RPC_ISNEWBIETERMINAL__:
 		resp->insertBoolean(isNewbieTerminal());
 		break;
-	case 14:
+	case RPC_ISREBELTERMINAL__:
 		resp->insertBoolean(isRebelTerminal());
 		break;
-	case 15:
+	case RPC_ISSCOUTTERMINAL__:
 		resp->insertBoolean(isScoutTerminal());
 		break;
-	case 16:
+	case RPC_ISSTATUETERMINAL__:
 		resp->insertBoolean(isStatueTerminal());
 		break;
 	default:

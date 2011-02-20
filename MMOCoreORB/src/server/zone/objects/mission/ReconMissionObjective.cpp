@@ -219,21 +219,21 @@ int ReconMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* 
 
 ReconMissionObjectiveImplementation::ReconMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/ReconMissionObjective.idl(63):  		Logger.setLoggingName("ReconMissionObjective");
+	// server/zone/objects/mission/ReconMissionObjective.idl():  		Logger.setLoggingName("ReconMissionObjective");
 	Logger::setLoggingName("ReconMissionObjective");
 }
 
 void ReconMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/ReconMissionObjective.idl(67):  		Logger.info("deleting from memory", true);
+	// server/zone/objects/mission/ReconMissionObjective.idl():  		Logger.info("deleting from memory", true);
 	Logger::info("deleting from memory", true);
 }
 
 void ReconMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/ReconMissionObjective.idl(71):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/ReconMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/ReconMissionObjective.idl(73):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/ReconMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/ReconMissionObjective.idl(75):  		activate();
+	// server/zone/objects/mission/ReconMissionObjective.idl():  		activate();
 	activate();
 }
 
@@ -244,23 +244,25 @@ void ReconMissionObjectiveImplementation::initializeTransientMembers() {
 ReconMissionObjectiveAdapter::ReconMissionObjectiveAdapter(ReconMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__};
+
 Packet* ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_ACTIVATE__:
 		activate();
 		break;
-	case 9:
+	case RPC_ABORT__:
 		abort();
 		break;
-	case 10:
+	case RPC_COMPLETE__:
 		complete();
 		break;
 	default:

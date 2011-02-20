@@ -248,32 +248,32 @@ int FishingBaitObjectImplementation::writeObjectMembers(ObjectOutputStream* stre
 
 FishingBaitObjectImplementation::FishingBaitObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(58):  		Logger.setLoggingName("FishingBaitObject");
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl():  		Logger.setLoggingName("FishingBaitObject");
 	Logger::setLoggingName("FishingBaitObject");
-	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(59):  		freshness = 0;
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl():  		freshness = 0;
 	freshness = 0;
 }
 
 void FishingBaitObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(63):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(65):  		Logger.setLoggingName("FishingBaitObject");
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl():  		Logger.setLoggingName("FishingBaitObject");
 	Logger::setLoggingName("FishingBaitObject");
 }
 
 int FishingBaitObjectImplementation::getFreshness() {
-	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(69):  		return freshness;
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl():  		return freshness;
 	return freshness;
 }
 
 void FishingBaitObjectImplementation::setFreshness(int value) {
-	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(73):  	}
-	if ((value > -1) && (value < 10))	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(74):  			freshness = value;
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl():  	}
+	if ((value > -1) && (value < 10))	// server/zone/objects/tangible/fishing/FishingBaitObject.idl():  			freshness = value;
 	freshness = value;
 }
 
 void FishingBaitObjectImplementation::lessFresh() {
-	// server/zone/objects/tangible/fishing/FishingBaitObject.idl(78):  		freshness += 1;
+	// server/zone/objects/tangible/fishing/FishingBaitObject.idl():  		freshness += 1;
 	freshness += 1;
 }
 
@@ -284,26 +284,28 @@ void FishingBaitObjectImplementation::lessFresh() {
 FishingBaitObjectAdapter::FishingBaitObjectAdapter(FishingBaitObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETFRESHNESS__,RPC_SETFRESHNESS__INT_,RPC_LESSFRESH__,RPC_GETUSECOUNT__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_};
+
 Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_GETFRESHNESS__:
 		resp->insertSignedInt(getFreshness());
 		break;
-	case 8:
+	case RPC_SETFRESHNESS__INT_:
 		setFreshness(inv->getSignedIntParameter());
 		break;
-	case 9:
+	case RPC_LESSFRESH__:
 		lessFresh();
 		break;
-	case 10:
+	case RPC_GETUSECOUNT__:
 		resp->insertSignedInt(getUseCount());
 		break;
-	case 11:
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:

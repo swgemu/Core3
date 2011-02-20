@@ -164,16 +164,16 @@ int GarageAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 GarageAreaImplementation::GarageAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/GarageArea.idl(54):  		Logger.setLoggingName("GarageArea");
+	// server/zone/objects/area/GarageArea.idl():  		Logger.setLoggingName("GarageArea");
 	Logger::setLoggingName("GarageArea");
 }
 
 void GarageAreaImplementation::notifyEnter(SceneObject* player) {
-	// server/zone/objects/area/GarageArea.idl(58):  	}
+	// server/zone/objects/area/GarageArea.idl():  	}
 	if (player->isPlayerCreature()){
-	// server/zone/objects/area/GarageArea.idl(59):  			PlayerCreature playerCreature = (PlayerCreature) player;
+	// server/zone/objects/area/GarageArea.idl():  			PlayerCreature playerCreature = (PlayerCreature) player;
 	PlayerCreature* playerCreature = (PlayerCreature*) player;
-	// server/zone/objects/area/GarageArea.idl(60):  			playerCreature.sendSystemMessage("@pet/pet_menu:garage_proximity");
+	// server/zone/objects/area/GarageArea.idl():  			playerCreature.sendSystemMessage("@pet/pet_menu:garage_proximity");
 	playerCreature->sendSystemMessage("@pet/pet_menu:garage_proximity");
 }
 }
@@ -185,11 +185,13 @@ void GarageAreaImplementation::notifyEnter(SceneObject* player) {
 GarageAreaAdapter::GarageAreaAdapter(GarageAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6};
+
 Packet* GarageAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
 	default:

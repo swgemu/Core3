@@ -681,144 +681,144 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
 	_initializeImplementation();
-	// server/zone/managers/planet/PlanetManager.idl(108):  		zone = planet;
+	// server/zone/managers/planet/PlanetManager.idl():  		zone = planet;
 	zone = planet;
-	// server/zone/managers/planet/PlanetManager.idl(109):  		server = srv;
+	// server/zone/managers/planet/PlanetManager.idl():  		server = srv;
 	server = srv;
-	// server/zone/managers/planet/PlanetManager.idl(111):  		Logger.setLoggingName("PlanetManager");
+	// server/zone/managers/planet/PlanetManager.idl():  		Logger.setLoggingName("PlanetManager");
 	Logger::setLoggingName("PlanetManager");
-	// server/zone/managers/planet/PlanetManager.idl(112):  		Logger.setLogging(false);
+	// server/zone/managers/planet/PlanetManager.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/managers/planet/PlanetManager.idl(113):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/planet/PlanetManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/planet/PlanetManager.idl(115):  		terrainManager = null;
+	// server/zone/managers/planet/PlanetManager.idl():  		terrainManager = null;
 	terrainManager = NULL;
-	// server/zone/managers/planet/PlanetManager.idl(117):  		numberOfCities = 0;
+	// server/zone/managers/planet/PlanetManager.idl():  		numberOfCities = 0;
 	numberOfCities = 0;
-	// server/zone/managers/planet/PlanetManager.idl(119):  		structureManager = null;
+	// server/zone/managers/planet/PlanetManager.idl():  		structureManager = null;
 	structureManager = NULL;
 }
 
 ShuttleCreature* PlanetManagerImplementation::getShuttle(const String& arrivalPoint) {
 	Locker _locker(_this);
-	// server/zone/managers/planet/PlanetManager.idl(138):  		return shuttleMap.get(arrivalPoint);
+	// server/zone/managers/planet/PlanetManager.idl():  		return shuttleMap.get(arrivalPoint);
 	return (&shuttleMap)->get(arrivalPoint);
 }
 
 void PlanetManagerImplementation::addShuttle(const String& city, ShuttleCreature* shuttle) {
 	Locker _locker(_this);
-	// server/zone/managers/planet/PlanetManager.idl(142):  		shuttleMap.put(city, shuttle);
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttleMap.put(city, shuttle);
 	(&shuttleMap)->put(city, shuttle);
 }
 
 void PlanetManagerImplementation::dropShuttle(const String& city) {
 	Locker _locker(_this);
-	// server/zone/managers/planet/PlanetManager.idl(146):  		shuttleMap.remove(city);
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttleMap.remove(city);
 	(&shuttleMap)->remove(city);
 }
 
 Vector<ManagedReference<Region* > > PlanetManagerImplementation::getRegions(StringId& regionName) {
-	// server/zone/managers/planet/PlanetManager.idl(164):  		return regionMap.getRegions(regionName);
+	// server/zone/managers/planet/PlanetManager.idl():  		return regionMap.getRegions(regionName);
 	return (&regionMap)->getRegions((&regionName));
 }
 
 StructureManager* PlanetManagerImplementation::getStructureManager() {
-	// server/zone/managers/planet/PlanetManager.idl(168):  		return structureManager;
+	// server/zone/managers/planet/PlanetManager.idl():  		return structureManager;
 	return structureManager;
 }
 
 TerrainManager* PlanetManagerImplementation::getTerrainManager() {
-	// server/zone/managers/planet/PlanetManager.idl(173):  		return terrainManager;
+	// server/zone/managers/planet/PlanetManager.idl():  		return terrainManager;
 	return terrainManager;
 }
 
 Region* PlanetManagerImplementation::getRegion(float x, float y) {
-	// server/zone/managers/planet/PlanetManager.idl(177):  		return regionMap.getRegion(x, y);
+	// server/zone/managers/planet/PlanetManager.idl():  		return regionMap.getRegion(x, y);
 	return (&regionMap)->getRegion(x, y);
 }
 
 int PlanetManagerImplementation::getRegionCount() {
-	// server/zone/managers/planet/PlanetManager.idl(181):  		return regionMap.size();
+	// server/zone/managers/planet/PlanetManager.idl():  		return regionMap.size();
 	return (&regionMap)->size();
 }
 
 int PlanetManagerImplementation::getNumberOfCities() {
-	// server/zone/managers/planet/PlanetManager.idl(185):  		return numberOfCities;
+	// server/zone/managers/planet/PlanetManager.idl():  		return numberOfCities;
 	return numberOfCities;
 }
 
 void PlanetManagerImplementation::increaseNumberOfCities() {
-	// server/zone/managers/planet/PlanetManager.idl(189):  		numberOfCities = numberOfCities + 1;
+	// server/zone/managers/planet/PlanetManager.idl():  		numberOfCities = numberOfCities + 1;
 	numberOfCities = numberOfCities + 1;
 }
 
 Region* PlanetManagerImplementation::getRegion(int index) {
-	// server/zone/managers/planet/PlanetManager.idl(193):  		return regionMap.getRegion(index);
+	// server/zone/managers/planet/PlanetManager.idl():  		return regionMap.getRegion(index);
 	return (&regionMap)->getRegion(index);
 }
 
 void PlanetManagerImplementation::addRegion(Region* region) {
-	// server/zone/managers/planet/PlanetManager.idl(197):  		regionMap.addRegion(region);
+	// server/zone/managers/planet/PlanetManager.idl():  		regionMap.addRegion(region);
 	(&regionMap)->addRegion(region);
 }
 
 void PlanetManagerImplementation::dropRegion(Region* region) {
-	// server/zone/managers/planet/PlanetManager.idl(201):  		regionMap.dropRegion(region);
+	// server/zone/managers/planet/PlanetManager.idl():  		regionMap.dropRegion(region);
 	(&regionMap)->dropRegion(region);
 }
 
 bool PlanetManagerImplementation::hasRegion(const String& name) {
-	// server/zone/managers/planet/PlanetManager.idl(205):  		return regionMap.containsRegion(name);
+	// server/zone/managers/planet/PlanetManager.idl():  		return regionMap.containsRegion(name);
 	return (&regionMap)->containsRegion(name);
 }
 
 void PlanetManagerImplementation::addPerformanceLocation(SceneObject* obj) {
-	// server/zone/managers/planet/PlanetManager.idl(209):  		performanceLocations.add(obj);
+	// server/zone/managers/planet/PlanetManager.idl():  		performanceLocations.add(obj);
 	(&performanceLocations)->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getPerformanceLocations() {
-	// server/zone/managers/planet/PlanetManager.idl(214):  		return performanceLocations;
+	// server/zone/managers/planet/PlanetManager.idl():  		return performanceLocations;
 	return (&performanceLocations);
 }
 
 void PlanetManagerImplementation::addMissionNpc(SceneObject* npc) {
-	// server/zone/managers/planet/PlanetManager.idl(218):  		missionNpcs.add(npc);
+	// server/zone/managers/planet/PlanetManager.idl():  		missionNpcs.add(npc);
 	(&missionNpcs)->add(npc);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getMissionNpcs() {
-	// server/zone/managers/planet/PlanetManager.idl(223):  		return missionNpcs;
+	// server/zone/managers/planet/PlanetManager.idl():  		return missionNpcs;
 	return (&missionNpcs);
 }
 
 void PlanetManagerImplementation::addHuntingTargetTemplate(const String& temp1, const String& temp2, int level) {
-	// server/zone/managers/planet/PlanetManager.idl(227):  		huntingTargets.addTarget(temp1, temp2, level);
+	// server/zone/managers/planet/PlanetManager.idl():  		huntingTargets.addTarget(temp1, temp2, level);
 	(&huntingTargets)->addTarget(temp1, temp2, level);
 }
 
 HuntingTargetEntry* PlanetManagerImplementation::getHuntingTargetTemplate(int level) {
-	// server/zone/managers/planet/PlanetManager.idl(232):  		return huntingTargets.getRandomTarget(level);
+	// server/zone/managers/planet/PlanetManager.idl():  		return huntingTargets.getRandomTarget(level);
 	return (&huntingTargets)->getRandomTarget(level);
 }
 
 void PlanetManagerImplementation::addReconLoc(SceneObject* obj) {
-	// server/zone/managers/planet/PlanetManager.idl(236):  		reconLocs.add(obj);
+	// server/zone/managers/planet/PlanetManager.idl():  		reconLocs.add(obj);
 	(&reconLocs)->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getReconLocs() {
-	// server/zone/managers/planet/PlanetManager.idl(241):  		return reconLocs;
+	// server/zone/managers/planet/PlanetManager.idl():  		return reconLocs;
 	return (&reconLocs);
 }
 
 void PlanetManagerImplementation::addInformant(SceneObject* obj) {
-	// server/zone/managers/planet/PlanetManager.idl(245):  		informants.add(obj);
+	// server/zone/managers/planet/PlanetManager.idl():  		informants.add(obj);
 	(&informants)->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getInformants() {
-	// server/zone/managers/planet/PlanetManager.idl(250):  		return informants;
+	// server/zone/managers/planet/PlanetManager.idl():  		return informants;
 	return (&informants);
 }
 
@@ -829,98 +829,100 @@ MissionTargetMap* PlanetManagerImplementation::getInformants() {
 PlanetManagerAdapter::PlanetManagerAdapter(PlanetManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADSHUTTLES__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETSHUTTLE__STRING_,RPC_ADDSHUTTLE__STRING_SHUTTLECREATURE_,RPC_DROPSHUTTLE__STRING_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,};
+
 Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 8:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 9:
+	case RPC_LOADREGIONS__:
 		loadRegions();
 		break;
-	case 10:
+	case RPC_LOADPLAYERREGIONS__:
 		loadPlayerRegions();
 		break;
-	case 11:
+	case RPC_LOADNOBUILDAREAS__:
 		loadNoBuildAreas();
 		break;
-	case 12:
+	case RPC_LOADSHUTTLES__:
 		loadShuttles();
 		break;
-	case 13:
+	case RPC_LOADBADGEAREAS__:
 		loadBadgeAreas();
 		break;
-	case 14:
+	case RPC_LOADPERFORMANCELOCATIONS__:
 		loadPerformanceLocations();
 		break;
-	case 15:
+	case RPC_LOADHUNTINGTARGETS__:
 		loadHuntingTargets();
 		break;
-	case 16:
+	case RPC_LOADRECONLOCATIONS__:
 		loadReconLocations();
 		break;
-	case 17:
+	case RPC_GETSHUTTLE__STRING_:
 		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__String_))->_getObjectID());
 		break;
-	case 18:
+	case RPC_ADDSHUTTLE__STRING_SHUTTLECREATURE_:
 		addShuttle(inv->getAsciiParameter(_param0_addShuttle__String_ShuttleCreature_), (ShuttleCreature*) inv->getObjectParameter());
 		break;
-	case 19:
+	case RPC_DROPSHUTTLE__STRING_:
 		dropShuttle(inv->getAsciiParameter(_param0_dropShuttle__String_));
 		break;
-	case 20:
+	case RPC_GETTRAVELFARE__STRING_STRING_:
 		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_String_), inv->getAsciiParameter(_param1_getTravelFare__String_String_)));
 		break;
-	case 21:
+	case RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_:
 		sendPlanetTravelPointListResponse((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_GETSTRUCTUREMANAGER__:
 		resp->insertLong(getStructureManager()->_getObjectID());
 		break;
-	case 23:
+	case RPC_GETREGION__FLOAT_FLOAT_:
 		resp->insertLong(getRegion(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
-	case 24:
+	case RPC_GETREGIONCOUNT__:
 		resp->insertSignedInt(getRegionCount());
 		break;
-	case 25:
+	case RPC_GETNUMBEROFCITIES__:
 		resp->insertSignedInt(getNumberOfCities());
 		break;
-	case 26:
+	case RPC_INCREASENUMBEROFCITIES__:
 		increaseNumberOfCities();
 		break;
-	case 27:
+	case RPC_GETREGION__INT_:
 		resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 28:
+	case RPC_ADDREGION__REGION_:
 		addRegion((Region*) inv->getObjectParameter());
 		break;
-	case 29:
+	case RPC_DROPREGION__REGION_:
 		dropRegion((Region*) inv->getObjectParameter());
 		break;
-	case 30:
+	case RPC_HASREGION__STRING_:
 		resp->insertBoolean(hasRegion(inv->getAsciiParameter(_param0_hasRegion__String_)));
 		break;
-	case 31:
+	case RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_:
 		addPerformanceLocation((SceneObject*) inv->getObjectParameter());
 		break;
-	case 32:
+	case RPC_ADDMISSIONNPC__SCENEOBJECT_:
 		addMissionNpc((SceneObject*) inv->getObjectParameter());
 		break;
-	case 33:
+	case RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_:
 		addHuntingTargetTemplate(inv->getAsciiParameter(_param0_addHuntingTargetTemplate__String_String_int_), inv->getAsciiParameter(_param1_addHuntingTargetTemplate__String_String_int_), inv->getSignedIntParameter());
 		break;
-	case 34:
+	case RPC_ADDRECONLOC__SCENEOBJECT_:
 		addReconLoc((SceneObject*) inv->getObjectParameter());
 		break;
-	case 35:
+	case RPC_ADDINFORMANT__SCENEOBJECT_:
 		addInformant((SceneObject*) inv->getObjectParameter());
 		break;
 	default:

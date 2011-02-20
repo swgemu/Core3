@@ -812,101 +812,107 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 }
 
 QuadTree* ZoneImplementation::getRegionTree() {
-	// server/zone/Zone.idl(123):  		return regionTree;
+	// server/zone/Zone.idl():  		return regionTree;
 	return regionTree;
 }
 
 int ZoneImplementation::getZoneID() {
-	// server/zone/Zone.idl(164):  		return zoneID;
+	// server/zone/Zone.idl():  		return zoneID;
 	return zoneID;
 }
 
 PlanetManager* ZoneImplementation::getPlanetManager() {
-	// server/zone/Zone.idl(172):  		return planetManager;
+	// server/zone/Zone.idl():  		return planetManager;
 	return planetManager;
 }
 
 CityManager* ZoneImplementation::getCityManager() {
-	// server/zone/Zone.idl(176):  		return cityManager;
+	// server/zone/Zone.idl():  		return cityManager;
 	return cityManager;
 }
 
 ZoneServer* ZoneImplementation::getZoneServer() {
-	// server/zone/Zone.idl(180):  		return server;
+	// server/zone/Zone.idl():  		return server;
 	return server;
 }
 
 CreatureManager* ZoneImplementation::getCreatureManager() {
-	// server/zone/Zone.idl(184):  		return creatureManager;
+	// server/zone/Zone.idl():  		return creatureManager;
 	return creatureManager;
 }
 
 unsigned long long ZoneImplementation::getGalacticTime() {
-	// server/zone/Zone.idl(188):  		return galacticTime.miliDifference() / 1000;
+	// server/zone/Zone.idl():  		return galacticTime.miliDifference() / 1000;
 	return (&galacticTime)->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {
-	// server/zone/Zone.idl(192):  		return weatherID;
+	// server/zone/Zone.idl():  		if 
+	if (server != NULL)	// server/zone/Zone.idl():  			server.increaseOnlinePlayers();
+	server->increaseOnlinePlayers();
+	// server/zone/Zone.idl():  		return 
+	if (server == NULL)	// server/zone/Zone.idl():  			server.decreaseOnlinePlayers();
+	server->decreaseOnlinePlayers();
+	// server/zone/Zone.idl():  		return weatherID;
 	return weatherID;
 }
 
 void ZoneImplementation::setWeatherID(unsigned int value) {
-	// server/zone/Zone.idl(196):  		weatherID = value;
+	// server/zone/Zone.idl():  		weatherID = value;
 	weatherID = value;
 }
 
 void ZoneImplementation::changeWeatherID(int value) {
-	// server/zone/Zone.idl(200):  		weatherID 
+	// server/zone/Zone.idl():  		weatherID 
 	if (weatherID == 0 && value < 0){
-	// server/zone/Zone.idl(201):  			weatherID = 0;
+	// server/zone/Zone.idl():  			weatherID = 0;
 	weatherID = 0;
-	// server/zone/Zone.idl(202):  			return;
+	// server/zone/Zone.idl():  			return;
 	return;
 }
-	// server/zone/Zone.idl(205):  += value;
+	// server/zone/Zone.idl():  		weatherID += value;
 	weatherID += value;
-	// server/zone/Zone.idl(207):  	}
+	// server/zone/Zone.idl():  	}
 	if (weatherID > 4){
-	// server/zone/Zone.idl(208):  			weatherID = 4;
+	// server/zone/Zone.idl():  			weatherID = 4;
 	weatherID = 4;
-	// server/zone/Zone.idl(209):  			return;
+	// server/zone/Zone.idl():  			return;
 	return;
 }
 }
 
 bool ZoneImplementation::isWeatherEnabled() {
-	// server/zone/Zone.idl(214):  		return weatherEnabled;
+	// server/zone/Zone.idl():  		return weatherEnabled;
 	return weatherEnabled;
 }
 
 bool ZoneImplementation::hasManagersStarted() {
-	// server/zone/Zone.idl(218):  		return managersStarted;
+	// server/zone/Zone.idl():  		return managersStarted;
 	return managersStarted;
 }
 
 void ZoneImplementation::setWeatherEnabled(bool value) {
-	// server/zone/Zone.idl(222):  		weatherEnabled = value;
+	// server/zone/Zone.idl():  		weatherEnabled = value;
 	weatherEnabled = value;
 }
 
 void ZoneImplementation::setWeatherWindX(float value) {
-	// server/zone/Zone.idl(226):  		weatherWindX = value;
+	// server/zone/Zone.idl():  		weatherWindX = value;
 	weatherWindX = value;
 }
 
 void ZoneImplementation::setWeatherWindY(float value) {
-	// server/zone/Zone.idl(230):  		weatherWindY = value;
+	// server/zone/Zone.idl():  		weatherWindY = value;
 	weatherWindY = value;
 }
 
 float ZoneImplementation::getWeatherWindX() {
-	// server/zone/Zone.idl(234):  		return weatherWindX;
+	// server/zone/Zone.idl():  		return weatherWindX;
 	return weatherWindX;
 }
 
 float ZoneImplementation::getWeatherWindY() {
-	// server/zone/Zone.idl(238):  		return weatherWindY;
+	// server/zone/Zone.idl():  		return weatherWindY;
 	return weatherWindY;
 }
 
@@ -917,107 +923,109 @@ float ZoneImplementation::getWeatherWindY() {
 ZoneAdapter::ZoneAdapter(ZoneImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__STRING_SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETZONEID__,RPC_GETPLANETNAME__,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_GETWEATHERID__,RPC_SETWEATHERID__INT_,RPC_CHANGEWEATHERID__INT_,RPC_ISWEATHERENABLED__,RPC_HASMANAGERSSTARTED__,RPC_SETWEATHERENABLED__BOOL_,RPC_SETWEATHERWINDX__FLOAT_,RPC_SETWEATHERWINDY__FLOAT_,RPC_GETWEATHERWINDX__,RPC_GETWEATHERWINDY__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__};
+
 Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 8:
+	case RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_:
 		resp->insertLong(getNearestCloningBuilding((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case 9:
+	case RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_:
 		resp->insertLong(getNearestPlanetaryObject((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case 10:
+	case RPC_INITIALIZEPRIVATEDATA__:
 		initializePrivateData();
 		break;
-	case 11:
+	case RPC_UPDATEACTIVEAREAS__SCENEOBJECT_:
 		updateActiveAreas((SceneObject*) inv->getObjectParameter());
 		break;
-	case 12:
+	case RPC_STARTMANAGERS__:
 		startManagers();
 		break;
-	case 13:
+	case RPC_STOPMANAGERS__:
 		stopManagers();
 		break;
-	case 14:
+	case RPC_GETHEIGHT__FLOAT_FLOAT_:
 		resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
-	case 15:
+	case RPC_ADDSCENEOBJECT__SCENEOBJECT_:
 		addSceneObject((SceneObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_SENDMAPLOCATIONSTO__STRING_SCENEOBJECT_:
 		sendMapLocationsTo(inv->getAsciiParameter(_param0_sendMapLocationsTo__String_SceneObject_), (SceneObject*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_DROPSCENEOBJECT__SCENEOBJECT_:
 		dropSceneObject((SceneObject*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_GETZONEID__:
 		resp->insertSignedInt(getZoneID());
 		break;
-	case 19:
+	case RPC_GETPLANETNAME__:
 		resp->insertAscii(getPlanetName());
 		break;
-	case 20:
+	case RPC_GETPLANETMANAGER__:
 		resp->insertLong(getPlanetManager()->_getObjectID());
 		break;
-	case 21:
+	case RPC_GETCITYMANAGER__:
 		resp->insertLong(getCityManager()->_getObjectID());
 		break;
-	case 22:
+	case RPC_GETZONESERVER__:
 		resp->insertLong(getZoneServer()->_getObjectID());
 		break;
-	case 23:
+	case RPC_GETCREATUREMANAGER__:
 		resp->insertLong(getCreatureManager()->_getObjectID());
 		break;
-	case 24:
+	case RPC_GETGALACTICTIME__:
 		resp->insertLong(getGalacticTime());
 		break;
-	case 25:
+	case RPC_GETWEATHERID__:
 		resp->insertInt(getWeatherID());
 		break;
-	case 26:
+	case RPC_SETWEATHERID__INT_:
 		setWeatherID(inv->getUnsignedIntParameter());
 		break;
-	case 27:
+	case RPC_CHANGEWEATHERID__INT_:
 		changeWeatherID(inv->getSignedIntParameter());
 		break;
-	case 28:
+	case RPC_ISWEATHERENABLED__:
 		resp->insertBoolean(isWeatherEnabled());
 		break;
-	case 29:
+	case RPC_HASMANAGERSSTARTED__:
 		resp->insertBoolean(hasManagersStarted());
 		break;
-	case 30:
+	case RPC_SETWEATHERENABLED__BOOL_:
 		setWeatherEnabled(inv->getBooleanParameter());
 		break;
-	case 31:
+	case RPC_SETWEATHERWINDX__FLOAT_:
 		setWeatherWindX(inv->getFloatParameter());
 		break;
-	case 32:
+	case RPC_SETWEATHERWINDY__FLOAT_:
 		setWeatherWindY(inv->getFloatParameter());
 		break;
-	case 33:
+	case RPC_GETWEATHERWINDX__:
 		resp->insertFloat(getWeatherWindX());
 		break;
-	case 34:
+	case RPC_GETWEATHERWINDY__:
 		resp->insertFloat(getWeatherWindY());
 		break;
-	case 35:
+	case RPC_GETMINX__:
 		resp->insertFloat(getMinX());
 		break;
-	case 36:
+	case RPC_GETMAXX__:
 		resp->insertFloat(getMaxX());
 		break;
-	case 37:
+	case RPC_GETMINY__:
 		resp->insertFloat(getMinY());
 		break;
-	case 38:
+	case RPC_GETMAXY__:
 		resp->insertFloat(getMaxY());
 		break;
 	default:

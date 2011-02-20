@@ -211,19 +211,19 @@ int TravelTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 TravelTerminalImplementation::TravelTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl(59):  		Logger.setLoggingName("TravelTerminal");
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Logger.setLoggingName("TravelTerminal");
 	Logger::setLoggingName("TravelTerminal");
 }
 
 void TravelTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl(63):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl(65):  		Logger.setLoggingName("TravelTerminal");
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Logger.setLoggingName("TravelTerminal");
 	Logger::setLoggingName("TravelTerminal");
 }
 
 void TravelTerminalImplementation::setShuttle(ShuttleCreature* shut) {
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl(78):  		shuttle = shut;
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		shuttle = shut;
 	shuttle = shut;
 }
 
@@ -234,17 +234,19 @@ void TravelTerminalImplementation::setShuttle(ShuttleCreature* shut) {
 TravelTerminalAdapter::TravelTerminalAdapter(TravelTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSHUTTLE__SHUTTLECREATURE_};
+
 Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_SETSHUTTLE__SHUTTLECREATURE_:
 		setShuttle((ShuttleCreature*) inv->getObjectParameter());
 		break;
 	default:

@@ -624,32 +624,32 @@ int SurveyToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 SurveyToolImplementation::SurveyToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(89):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
-	// server/zone/objects/tangible/tool/SurveyTool.idl(90):  		radioactiveOk = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		radioactiveOk = false;
 	radioactiveOk = false;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(91):  		range = 0;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		range = 0;
 	range = 0;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(92):  		doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		doGamble = false;
 	doGamble = false;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(93):  		points = 0;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		points = 0;
 	points = 0;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(94):  		points = 0;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		points = 0;
 	points = 0;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(95):  		richSampleLocation = null;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		richSampleLocation = null;
 	richSampleLocation = NULL;
 }
 
 void SurveyToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(99):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/SurveyTool.idl(101):  		richSampleLocation = null;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		richSampleLocation = null;
 	richSampleLocation = NULL;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(102):  		doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		doGamble = false;
 	doGamble = false;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(103):  		inUse = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		inUse = false;
 	inUse = false;
-	// server/zone/objects/tangible/tool/SurveyTool.idl(104):  		Logger.setLoggingName("SurveyTool");
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		Logger.setLoggingName("SurveyTool");
 	Logger::setLoggingName("SurveyTool");
 }
 
@@ -657,47 +657,47 @@ void SurveyToolImplementation::updateCraftingValues(ManufactureSchematic* schema
 }
 
 int SurveyToolImplementation::getRange() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(126):  		return range;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		return range;
 	return range;
 }
 
 int SurveyToolImplementation::getPoints() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(130):  		return points;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		return points;
 	return points;
 }
 
 bool SurveyToolImplementation::canSampleRadioactive() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(134):  		return radioactiveOk;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		return radioactiveOk;
 	return radioactiveOk;
 }
 
 bool SurveyToolImplementation::tryGamble() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(138):  		return doGamble == true;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		return doGamble == true;
 	return doGamble == true;
 }
 
 void SurveyToolImplementation::clearGamble() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(142):  		doGamble = false;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		doGamble = false;
 	doGamble = false;
 }
 
 Coordinate* SurveyToolImplementation::getRichSampleLocation() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(156):  		return richSampleLocation;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		return richSampleLocation;
 	return richSampleLocation;
 }
 
 void SurveyToolImplementation::clearRichSampleLocation() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(160):  		richSampleLocation = null;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		richSampleLocation = null;
 	richSampleLocation = NULL;
 }
 
 void SurveyToolImplementation::setInUse(bool use) {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(164):  		inUse = use;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		inUse = use;
 	inUse = use;
 }
 
 bool SurveyToolImplementation::isInUse() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl(168):  		return inUse;
+	// server/zone/objects/tangible/tool/SurveyTool.idl():  		return inUse;
 	return inUse;
 }
 
@@ -708,71 +708,73 @@ bool SurveyToolImplementation::isInUse() {
 SurveyToolAdapter::SurveyToolAdapter(SurveyToolImplementation* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETRANGE__INT_,RPC_GETRANGE__,RPC_GETPOINTS__,RPC_CANSAMPLERADIOACTIVE__,RPC_TRYGAMBLE__,RPC_CLEARGAMBLE__,RPC_CONSENTRADIOACTIVESAMPLE__PLAYERCREATURE_,RPC_SENDRADIOACTIVEWARNING__PLAYERCREATURE_,RPC_SENDRANGESUI__PLAYERCREATURE_,RPC_SURVEYCNODEMINIGAMESUI__PLAYERCREATURE_,RPC_SURVEYCNODEMINIGAME__PLAYERCREATURE_INT_,RPC_CLEARRICHSAMPLELOCATION__,RPC_SETINUSE__BOOL_,RPC_ISINUSE__,RPC_SURVEYGNODEMINIGAMESUI__PLAYERCREATURE_,RPC_SURVEYGNODEMINIGAME__PLAYERCREATURE_INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDRESOURCELISTTO__PLAYERCREATURE_,RPC_SENDSURVEYTO__PLAYERCREATURE_STRING_,RPC_SENDSAMPLETO__PLAYERCREATURE_STRING_};
+
 Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_SETRANGE__INT_:
 		setRange(inv->getSignedIntParameter());
 		break;
-	case 8:
+	case RPC_GETRANGE__:
 		resp->insertSignedInt(getRange());
 		break;
-	case 9:
+	case RPC_GETPOINTS__:
 		resp->insertSignedInt(getPoints());
 		break;
-	case 10:
+	case RPC_CANSAMPLERADIOACTIVE__:
 		resp->insertBoolean(canSampleRadioactive());
 		break;
-	case 11:
+	case RPC_TRYGAMBLE__:
 		resp->insertBoolean(tryGamble());
 		break;
-	case 12:
+	case RPC_CLEARGAMBLE__:
 		clearGamble();
 		break;
-	case 13:
+	case RPC_CONSENTRADIOACTIVESAMPLE__PLAYERCREATURE_:
 		consentRadioactiveSample((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_SENDRADIOACTIVEWARNING__PLAYERCREATURE_:
 		sendRadioactiveWarning((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_SENDRANGESUI__PLAYERCREATURE_:
 		sendRangeSui((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_SURVEYCNODEMINIGAMESUI__PLAYERCREATURE_:
 		surveyCnodeMinigameSui((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_SURVEYCNODEMINIGAME__PLAYERCREATURE_INT_:
 		surveyCnodeMinigame((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 18:
+	case RPC_CLEARRICHSAMPLELOCATION__:
 		clearRichSampleLocation();
 		break;
-	case 19:
+	case RPC_SETINUSE__BOOL_:
 		setInUse(inv->getBooleanParameter());
 		break;
-	case 20:
+	case RPC_ISINUSE__:
 		resp->insertBoolean(isInUse());
 		break;
-	case 21:
+	case RPC_SURVEYGNODEMINIGAMESUI__PLAYERCREATURE_:
 		surveyGnodeMinigameSui((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_SURVEYGNODEMINIGAME__PLAYERCREATURE_INT_:
 		surveyGnodeMinigame((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 23:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 24:
+	case RPC_SENDRESOURCELISTTO__PLAYERCREATURE_:
 		sendResourceListTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 25:
+	case RPC_SENDSURVEYTO__PLAYERCREATURE_STRING_:
 		sendSurveyTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__PlayerCreature_String_));
 		break;
-	case 26:
+	case RPC_SENDSAMPLETO__PLAYERCREATURE_STRING_:
 		sendSampleTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleTo__PlayerCreature_String_));
 		break;
 	default:

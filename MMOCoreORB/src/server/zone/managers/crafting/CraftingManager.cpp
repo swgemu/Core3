@@ -348,7 +348,7 @@ CraftingManagerImplementation::CraftingManagerImplementation() : ZoneManagerImpl
 }
 
 DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schematicID) {
-	// server/zone/managers/crafting/CraftingManager.idl(102):  		return schematicMap.get(schematicID);
+	// server/zone/managers/crafting/CraftingManager.idl():  		return schematicMap.get(schematicID);
 	return schematicMap->get(schematicID);
 }
 
@@ -359,41 +359,43 @@ DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schemat
 CraftingManagerAdapter::CraftingManagerAdapter(CraftingManagerImplementation* obj) : ZoneManagerAdapter(obj) {
 }
 
+enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_,RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_INT_,RPC_CALCULATEASSEMBLYSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_,RPC_GETASSEMBLYPERCENTAGE__FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__PLAYERCREATURE_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_,RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_,RPC_GENERATESERIAL__};
+
 Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GETSCHEMATIC__INT_:
 		resp->insertLong(getSchematic(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case 7:
+	case RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_:
 		sendDraftSlotsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 8:
+	case RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_INT_:
 		sendResourceWeightsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 9:
+	case RPC_CALCULATEASSEMBLYSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_:
 		resp->insertSignedInt(calculateAssemblySuccess((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
 		break;
-	case 10:
+	case RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_:
 		resp->insertFloat(calculateAssemblyValueModifier(inv->getSignedIntParameter()));
 		break;
-	case 11:
+	case RPC_GETASSEMBLYPERCENTAGE__FLOAT_:
 		resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
 		break;
-	case 12:
+	case RPC_CALCULATEEXPERIMENTATIONFAILURERATE__PLAYERCREATURE_MANUFACTURESCHEMATIC_INT_:
 		resp->insertSignedInt(calculateExperimentationFailureRate((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 13:
+	case RPC_CALCULATEEXPERIMENTATIONSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_:
 		resp->insertSignedInt(calculateExperimentationSuccess((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
 		break;
-	case 14:
+	case RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_:
 		resp->insertFloat(calculateExperimentationValueModifier(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
 		break;
-	case 15:
+	case RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_:
 		resp->insertFloat(getWeightedValue((ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 16:
+	case RPC_GENERATESERIAL__:
 		resp->insertAscii(generateSerial());
 		break;
 	default:

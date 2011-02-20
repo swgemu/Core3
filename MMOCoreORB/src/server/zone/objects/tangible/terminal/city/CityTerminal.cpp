@@ -212,19 +212,19 @@ int CityTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 CityTerminalImplementation::CityTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(57):  		Logger.setLoggingName("CityTerminal");
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl():  		Logger.setLoggingName("CityTerminal");
 	Logger::setLoggingName("CityTerminal");
 }
 
 void CityTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(60):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl():  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(62):  		Logger.setLoggingName("CityTerminal");
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl():  		Logger.setLoggingName("CityTerminal");
 	Logger::setLoggingName("CityTerminal");
 }
 
 bool CityTerminalImplementation::isCityTerminal() {
-	// server/zone/objects/tangible/terminal/city/CityTerminal.idl(70):  		return true;
+	// server/zone/objects/tangible/terminal/city/CityTerminal.idl():  		return true;
 	return true;
 }
 
@@ -235,20 +235,22 @@ bool CityTerminalImplementation::isCityTerminal() {
 CityTerminalAdapter::CityTerminalAdapter(CityTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISCITYTERMINAL__};
+
 Packet* CityTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
 		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 9:
+	case RPC_ISCITYTERMINAL__:
 		resp->insertBoolean(isCityTerminal());
 		break;
 	default:

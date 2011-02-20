@@ -94,6 +94,8 @@ void ClientCore::handleCommands() {
 
 			Thread::sleep(500);
 
+			continue;
+
 			System::out << "> ";
 
 			char line[256];

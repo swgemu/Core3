@@ -335,12 +335,12 @@ int FactoryCrateImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 FactoryCrateImplementation::FactoryCrateImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/factorycrate/FactoryCrate.idl(63):  		Logger.setLoggingName("FactoryCrate");
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		Logger.setLoggingName("FactoryCrate");
 	Logger::setLoggingName("FactoryCrate");
 }
 
 bool FactoryCrateImplementation::isFactoryCrate() {
-	// server/zone/objects/factorycrate/FactoryCrate.idl(103):  		return true;
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		return true;
 	return true;
 }
 
@@ -351,41 +351,43 @@ bool FactoryCrateImplementation::isFactoryCrate() {
 FactoryCrateAdapter::FactoryCrateAdapter(FactoryCrateImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISFACTORYCRATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETCRAFTERSSERIAL__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
+
 Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 9:
+	case RPC_ISFACTORYCRATE__:
 		resp->insertBoolean(isFactoryCrate());
 		break;
-	case 10:
+	case RPC_SETUSECOUNT__INT_BOOL_:
 		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 11:
+	case RPC_GETPROTOTYPE__:
 		resp->insertLong(getPrototype()->_getObjectID());
 		break;
-	case 12:
+	case RPC_GETCRAFTERSNAME__:
 		resp->insertAscii(getCraftersName());
 		break;
-	case 13:
+	case RPC_GETCRAFTERSSERIAL__:
 		resp->insertAscii(getCraftersSerial());
 		break;
-	case 14:
+	case RPC_EXTRACTOBJECTTOPARENT__:
 		resp->insertBoolean(extractObjectToParent());
 		break;
-	case 15:
+	case RPC_EXTRACTOBJECT__INT_:
 		resp->insertLong(extractObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 16:
+	case RPC_SPLIT__INT_:
 		split(inv->getSignedIntParameter());
 		break;
 	default:

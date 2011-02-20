@@ -433,99 +433,99 @@ int AccountImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 AccountImplementation::AccountImplementation(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid) {
 	_initializeImplementation();
-	// server/login/account/Account.idl(25):  		username = usern;
+	// server/login/account/Account.idl():  		username = usern;
 	username = usern;
-	// server/login/account/Account.idl(26):  		accountID = accountid;
+	// server/login/account/Account.idl():  		accountID = accountid;
 	accountID = accountid;
-	// server/login/account/Account.idl(27):  		stationID = stationid;
+	// server/login/account/Account.idl():  		stationID = stationid;
 	stationID = stationid;
-	// server/login/account/Account.idl(29):  		accountManager = accManage;
+	// server/login/account/Account.idl():  		accountManager = accManage;
 	accountManager = accManage;
-	// server/login/account/Account.idl(31):  		adminLevel = 0;
+	// server/login/account/Account.idl():  		adminLevel = 0;
 	adminLevel = 0;
-	// server/login/account/Account.idl(33):  		created = System.getTime();
+	// server/login/account/Account.idl():  		created = System.getTime();
 	created = System::getTime();
-	// server/login/account/Account.idl(35):  		zoneSessions.setInsertPlan(2);
+	// server/login/account/Account.idl():  		zoneSessions.setInsertPlan(2);
 	(&zoneSessions)->setInsertPlan(2);
-	// server/login/account/Account.idl(36):  		zoneSessions.setNullValue(null);
+	// server/login/account/Account.idl():  		zoneSessions.setNullValue(null);
 	(&zoneSessions)->setNullValue(NULL);
 }
 
 bool AccountImplementation::hasMaxOnlineCharacters() {
-	// server/login/account/Account.idl(40):  		return zoneSessions.size() + 1 > accountManager.getMaxOnlineCharacters();
+	// server/login/account/Account.idl():  		return zoneSessions.size() + 1 > accountManager.getMaxOnlineCharacters();
 	return (&zoneSessions)->size() + 1 > accountManager->getMaxOnlineCharacters();
 }
 
 ZoneClientSession* AccountImplementation::getZoneSession(unsigned int sessionID) {
-	// server/login/account/Account.idl(44):  		return zoneSessions.get(sessionID);
+	// server/login/account/Account.idl():  		return zoneSessions.get(sessionID);
 	return (&zoneSessions)->get(sessionID);
 }
 
 bool AccountImplementation::containsZoneSession(unsigned int sessionID) {
-	// server/login/account/Account.idl(48):  		return zoneSessions.contains(sessionID);
+	// server/login/account/Account.idl():  		return zoneSessions.contains(sessionID);
 	return (&zoneSessions)->contains(sessionID);
 }
 
 void AccountImplementation::addZoneSession(ZoneClientSession* client) {
-	// server/login/account/Account.idl(52):  		zoneSessions.put(client.getSessionID(), client);
+	// server/login/account/Account.idl():  		zoneSessions.put(client.getSessionID(), client);
 	(&zoneSessions)->put(client->getSessionID(), client);
 }
 
 void AccountImplementation::removeZoneSession(unsigned int sessionID) {
-	// server/login/account/Account.idl(56):  		zoneSessions.drop(sessionID);
+	// server/login/account/Account.idl():  		zoneSessions.drop(sessionID);
 	(&zoneSessions)->drop(sessionID);
-	// server/login/account/Account.idl(58):  	}
-	if ((&zoneSessions)->size() < 1)	// server/login/account/Account.idl(59):  			accountManager.dropAccount(accountID);
+	// server/login/account/Account.idl():  	}
+	if ((&zoneSessions)->size() < 1)	// server/login/account/Account.idl():  			accountManager.dropAccount(accountID);
 	accountManager->dropAccount(accountID);
 }
 
 void AccountImplementation::setAccountID(unsigned int accountid) {
-	// server/login/account/Account.idl(63):  		accountID = accountid;
+	// server/login/account/Account.idl():  		accountID = accountid;
 	accountID = accountid;
 }
 
 void AccountImplementation::setStationID(unsigned int stationid) {
-	// server/login/account/Account.idl(67):  		stationID = stationid;
+	// server/login/account/Account.idl():  		stationID = stationid;
 	stationID = stationid;
 }
 
 void AccountImplementation::setAdminLevel(unsigned int adminlvl) {
-	// server/login/account/Account.idl(71):  		adminLevel = adminlvl;
+	// server/login/account/Account.idl():  		adminLevel = adminlvl;
 	adminLevel = adminlvl;
 }
 
 void AccountImplementation::setUsername(const String& usern) {
-	// server/login/account/Account.idl(75):  		username = usern;
+	// server/login/account/Account.idl():  		username = usern;
 	username = usern;
 }
 
 void AccountImplementation::setTimeCreated(unsigned int seconds) {
-	// server/login/account/Account.idl(79):  		created = seconds;
+	// server/login/account/Account.idl():  		created = seconds;
 	created = seconds;
 }
 
 unsigned int AccountImplementation::getAccountID() {
-	// server/login/account/Account.idl(83):  		return accountID;
+	// server/login/account/Account.idl():  		return accountID;
 	return accountID;
 }
 
 unsigned int AccountImplementation::getStationID() {
-	// server/login/account/Account.idl(87):  		return stationID;
+	// server/login/account/Account.idl():  		return stationID;
 	return stationID;
 }
 
 unsigned int AccountImplementation::getAdminLevel() {
-	// server/login/account/Account.idl(91):  		return adminLevel;
+	// server/login/account/Account.idl():  		return adminLevel;
 	return adminLevel;
 }
 
 String AccountImplementation::getUsername() {
-	// server/login/account/Account.idl(95):  		return username;
+	// server/login/account/Account.idl():  		return username;
 	return username;
 }
 
 unsigned int AccountImplementation::getTimeCreated() {
-	// server/login/account/Account.idl(99):  		return created;
+	// server/login/account/Account.idl():  		return created;
 	return created;
 }
 
@@ -536,53 +536,55 @@ unsigned int AccountImplementation::getTimeCreated() {
 AccountAdapter::AccountAdapter(AccountImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_HASMAXONLINECHARACTERS__ = 6,RPC_GETZONESESSION__INT_,RPC_CONTAINSZONESESSION__INT_,RPC_ADDZONESESSION__ZONECLIENTSESSION_,RPC_REMOVEZONESESSION__INT_,RPC_SETACCOUNTID__INT_,RPC_SETSTATIONID__INT_,RPC_SETADMINLEVEL__INT_,RPC_SETUSERNAME__STRING_,RPC_SETTIMECREATED__INT_,RPC_GETACCOUNTID__,RPC_GETSTATIONID__,RPC_GETADMINLEVEL__,RPC_GETUSERNAME__,RPC_GETTIMECREATED__};
+
 Packet* AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HASMAXONLINECHARACTERS__:
 		resp->insertBoolean(hasMaxOnlineCharacters());
 		break;
-	case 7:
+	case RPC_GETZONESESSION__INT_:
 		resp->insertLong(getZoneSession(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case 8:
+	case RPC_CONTAINSZONESESSION__INT_:
 		resp->insertBoolean(containsZoneSession(inv->getUnsignedIntParameter()));
 		break;
-	case 9:
+	case RPC_ADDZONESESSION__ZONECLIENTSESSION_:
 		addZoneSession((ZoneClientSession*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_REMOVEZONESESSION__INT_:
 		removeZoneSession(inv->getUnsignedIntParameter());
 		break;
-	case 11:
+	case RPC_SETACCOUNTID__INT_:
 		setAccountID(inv->getUnsignedIntParameter());
 		break;
-	case 12:
+	case RPC_SETSTATIONID__INT_:
 		setStationID(inv->getUnsignedIntParameter());
 		break;
-	case 13:
+	case RPC_SETADMINLEVEL__INT_:
 		setAdminLevel(inv->getUnsignedIntParameter());
 		break;
-	case 14:
+	case RPC_SETUSERNAME__STRING_:
 		setUsername(inv->getAsciiParameter(_param0_setUsername__String_));
 		break;
-	case 15:
+	case RPC_SETTIMECREATED__INT_:
 		setTimeCreated(inv->getUnsignedIntParameter());
 		break;
-	case 16:
+	case RPC_GETACCOUNTID__:
 		resp->insertInt(getAccountID());
 		break;
-	case 17:
+	case RPC_GETSTATIONID__:
 		resp->insertInt(getStationID());
 		break;
-	case 18:
+	case RPC_GETADMINLEVEL__:
 		resp->insertInt(getAdminLevel());
 		break;
-	case 19:
+	case RPC_GETUSERNAME__:
 		resp->insertAscii(getUsername());
 		break;
-	case 20:
+	case RPC_GETTIMECREATED__:
 		resp->insertInt(getTimeCreated());
 		break;
 	default:

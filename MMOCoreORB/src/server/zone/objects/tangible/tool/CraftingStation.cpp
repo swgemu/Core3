@@ -342,38 +342,38 @@ int CraftingStationImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 CraftingStationImplementation::CraftingStationImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingStation.idl(62):  		Logger.setLoggingName("CraftingStation");
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		Logger.setLoggingName("CraftingStation");
 	Logger::setLoggingName("CraftingStation");
-	// server/zone/objects/tangible/tool/CraftingStation.idl(63):  		complexityLevel = 0;
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		complexityLevel = 0;
 	complexityLevel = 0;
-	// server/zone/objects/tangible/tool/CraftingStation.idl(64):  		effectiveness = 25;
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		effectiveness = 25;
 	effectiveness = 25;
 }
 
 void CraftingStationImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(68):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingStation.idl(70):  		Logger.setLoggingName("CraftingStation");
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		Logger.setLoggingName("CraftingStation");
 	Logger::setLoggingName("CraftingStation");
 }
 
 bool CraftingStationImplementation::isCraftingStation() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(100):  		return true;
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		return true;
 	return true;
 }
 
 int CraftingStationImplementation::getComplexityLevel() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(104):  		return complexityLevel;
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		return complexityLevel;
 	return complexityLevel;
 }
 
 int CraftingStationImplementation::getStationType() {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(108):  		return type;
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		return type;
 	return type;
 }
 
 void CraftingStationImplementation::setComplexityLevel(int level) {
-	// server/zone/objects/tangible/tool/CraftingStation.idl(112):  		complexityLevel = level;
+	// server/zone/objects/tangible/tool/CraftingStation.idl():  		complexityLevel = level;
 	complexityLevel = level;
 }
 
@@ -384,35 +384,37 @@ void CraftingStationImplementation::setComplexityLevel(int level) {
 CraftingStationAdapter::CraftingStationAdapter(CraftingStationImplementation* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__PLAYERCREATURE_,RPC_CREATECHILDOBJECTS__};
+
 Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_ISCRAFTINGSTATION__:
 		resp->insertBoolean(isCraftingStation());
 		break;
-	case 10:
+	case RPC_GETCOMPLEXITYLEVEL__:
 		resp->insertSignedInt(getComplexityLevel());
 		break;
-	case 11:
+	case RPC_GETSTATIONTYPE__:
 		resp->insertSignedInt(getStationType());
 		break;
-	case 12:
+	case RPC_SETCOMPLEXITYLEVEL__INT_:
 		setComplexityLevel(inv->getSignedIntParameter());
 		break;
-	case 13:
+	case RPC_FINDCRAFTINGTOOL__PLAYERCREATURE_:
 		resp->insertLong(findCraftingTool((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case 14:
+	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
 		break;
 	default:

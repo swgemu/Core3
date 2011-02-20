@@ -313,24 +313,24 @@ int LairObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 LairObjectImplementation::LairObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/lair/LairObject.idl(72):  		lairTemplate = null;
+	// server/zone/objects/tangible/lair/LairObject.idl():  		lairTemplate = null;
 	lairTemplate = NULL;
-	// server/zone/objects/tangible/lair/LairObject.idl(74):  		Logger.setLoggingName("LairObject");
+	// server/zone/objects/tangible/lair/LairObject.idl():  		Logger.setLoggingName("LairObject");
 	Logger::setLoggingName("LairObject");
 }
 
 bool LairObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/lair/LairObject.idl(110):  		return true;
+	// server/zone/objects/tangible/lair/LairObject.idl():  		return true;
 	return true;
 }
 
 int LairObjectImplementation::getMaxObjectsToSpawn() {
-	// server/zone/objects/tangible/lair/LairObject.idl(114):  		return lairTemplate.getMaxObjectsToSpawn();
+	// server/zone/objects/tangible/lair/LairObject.idl():  		return lairTemplate.getMaxObjectsToSpawn();
 	return lairTemplate->getMaxObjectsToSpawn();
 }
 
 SortedVector<unsigned int>* LairObjectImplementation::getObjectsToSpawn() {
-	// server/zone/objects/tangible/lair/LairObject.idl(119):  		return lairTemplate.getObjectsToSpawn();
+	// server/zone/objects/tangible/lair/LairObject.idl():  		return lairTemplate.getObjectsToSpawn();
 	return lairTemplate->getObjectsToSpawn();
 }
 
@@ -341,32 +341,34 @@ SortedVector<unsigned int>* LairObjectImplementation::getObjectsToSpawn() {
 LairObjectAdapter::LairObjectAdapter(LairObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_CHECKFORNEWSPAWNS__,RPC_CHECKFORHEAL__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_GETMAXOBJECTSTOSPAWN__,};
+
 Packet* LairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
 		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
-	case 8:
+	case RPC_CHECKFORNEWSPAWNS__:
 		checkForNewSpawns();
 		break;
-	case 9:
+	case RPC_CHECKFORHEAL__TANGIBLEOBJECT_BOOL_:
 		checkForHeal((TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 10:
+	case RPC_HEALLAIR__TANGIBLEOBJECT_:
 		healLair((TangibleObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
 		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 12:
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 13:
+	case RPC_GETMAXOBJECTSTOSPAWN__:
 		resp->insertSignedInt(getMaxObjectsToSpawn());
 		break;
 	default:

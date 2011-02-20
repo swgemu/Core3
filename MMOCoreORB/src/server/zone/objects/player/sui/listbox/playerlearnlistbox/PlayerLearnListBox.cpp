@@ -225,22 +225,22 @@ PlayerLearnListBoxImplementation::PlayerLearnListBoxImplementation(PlayerCreatur
 }
 
 void PlayerLearnListBoxImplementation::setTeacher(PlayerCreature* teacher) {
-	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl(65):   teacherPlayer = teacher;
+	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl():   teacherPlayer = teacher;
 	teacherPlayer = teacher;
 }
 
 PlayerCreature* PlayerLearnListBoxImplementation::getTeacher() {
-	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl(70):   return teacherPlayer;
+	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl():   return teacherPlayer;
 	return teacherPlayer;
 }
 
 void PlayerLearnListBoxImplementation::setTeachingOffer(const String& name) {
-	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl(74):   teachingOffer = name;
+	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl():   teachingOffer = name;
 	teachingOffer = name;
 }
 
 const String PlayerLearnListBoxImplementation::getTeachingOffer() {
-	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl(79):   return teachingOffer;
+	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl():   return teachingOffer;
 	return teachingOffer;
 }
 
@@ -251,14 +251,16 @@ const String PlayerLearnListBoxImplementation::getTeachingOffer() {
 PlayerLearnListBoxAdapter::PlayerLearnListBoxAdapter(PlayerLearnListBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
 
+enum {RPC_SETTEACHER__PLAYERCREATURE_,RPC_SETTEACHINGOFFER__STRING_,};
+
 Packet* PlayerLearnListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SETTEACHER__PLAYERCREATURE_:
 		setTeacher((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_SETTEACHINGOFFER__STRING_:
 		setTeachingOffer(inv->getAsciiParameter(_param0_setTeachingOffer__String_));
 		break;
 	default:

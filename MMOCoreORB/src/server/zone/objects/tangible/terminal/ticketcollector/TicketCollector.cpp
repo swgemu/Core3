@@ -254,24 +254,24 @@ int TicketCollectorImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 TicketCollectorImplementation::TicketCollectorImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl(59):  		Logger.setLoggingName("TicketCollector");
+	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl():  		Logger.setLoggingName("TicketCollector");
 	Logger::setLoggingName("TicketCollector");
 }
 
 void TicketCollectorImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl(63):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl():  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl(65):  		Logger.setLoggingName("TicketCollector");
+	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl():  		Logger.setLoggingName("TicketCollector");
 	Logger::setLoggingName("TicketCollector");
 }
 
 bool TicketCollectorImplementation::isTicketCollector() {
-	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl(81):  		return true;
+	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl():  		return true;
 	return true;
 }
 
 void TicketCollectorImplementation::setShuttle(ShuttleCreature* shut) {
-	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl(85):  		shuttle = shut;
+	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl():  		shuttle = shut;
 	shuttle = shut;
 }
 
@@ -282,26 +282,28 @@ void TicketCollectorImplementation::setShuttle(ShuttleCreature* shut) {
 TicketCollectorAdapter::TicketCollectorAdapter(TicketCollectorImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_,RPC_CHECKTIME__SHUTTLECREATURE_PLAYERCREATURE_,RPC_ISTICKETCOLLECTOR__,RPC_SETSHUTTLE__SHUTTLECREATURE_};
+
 Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_:
 		useTicket((PlayerCreature*) inv->getObjectParameter(), (TicketObject*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_CHECKTIME__SHUTTLECREATURE_PLAYERCREATURE_:
 		resp->insertBoolean(checkTime((ShuttleCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 10:
+	case RPC_ISTICKETCOLLECTOR__:
 		resp->insertBoolean(isTicketCollector());
 		break;
-	case 11:
+	case RPC_SETSHUTTLE__SHUTTLECREATURE_:
 		setShuttle((ShuttleCreature*) inv->getObjectParameter());
 		break;
 	default:

@@ -247,22 +247,22 @@ ResourceDeedListBoxImplementation::ResourceDeedListBoxImplementation(PlayerCreat
 }
 
 void ResourceDeedListBoxImplementation::addBox(const String& name) {
-	// server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.idl(67):  		boxes.add(name);
+	// server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.idl():  		boxes.add(name);
 	(&boxes)->add(name);
 }
 
 int ResourceDeedListBoxImplementation::getBoxCount() {
-	// server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.idl(71):  		return boxes.size();
+	// server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.idl():  		return boxes.size();
 	return (&boxes)->size();
 }
 
 String ResourceDeedListBoxImplementation::getBox(int index) {
-	// server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.idl(75):  		return boxes.get(index);
+	// server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.idl():  		return boxes.get(index);
 	return (&boxes)->get(index);
 }
 
 String ResourceDeedListBoxImplementation::getCurrentBox() {
-	// server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.idl(81):  		return boxes.get(boxes.size() - 1);
+	// server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.idl():  		return boxes.get(boxes.size() - 1);
 	return (&boxes)->get((&boxes)->size() - 1);
 }
 
@@ -273,32 +273,34 @@ String ResourceDeedListBoxImplementation::getCurrentBox() {
 ResourceDeedListBoxAdapter::ResourceDeedListBoxAdapter(ResourceDeedListBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ADDBOX__STRING_,RPC_GETBOXCOUNT__,RPC_GETBOX__INT_,RPC_REMOVEBOX__,RPC_GETCURRENTBOX__,RPC_GETPREVIOUSBOX__};
+
 Packet* ResourceDeedListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_ADDBOX__STRING_:
 		addBox(inv->getAsciiParameter(_param0_addBox__String_));
 		break;
-	case 9:
+	case RPC_GETBOXCOUNT__:
 		resp->insertSignedInt(getBoxCount());
 		break;
-	case 10:
+	case RPC_GETBOX__INT_:
 		resp->insertAscii(getBox(inv->getSignedIntParameter()));
 		break;
-	case 11:
+	case RPC_REMOVEBOX__:
 		removeBox();
 		break;
-	case 12:
+	case RPC_GETCURRENTBOX__:
 		resp->insertAscii(getCurrentBox());
 		break;
-	case 13:
+	case RPC_GETPREVIOUSBOX__:
 		resp->insertAscii(getPreviousBox());
 		break;
 	default:

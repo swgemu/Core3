@@ -888,40 +888,40 @@ int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 SuiBoxImplementation::SuiBoxImplementation(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/SuiBox.idl(107):  		player = play;
+	// server/zone/objects/player/sui/SuiBox.idl():  		player = play;
 	player = play;
-	// server/zone/objects/player/sui/SuiBox.idl(109):  		forceCloseDistance = 32;
+	// server/zone/objects/player/sui/SuiBox.idl():  		forceCloseDistance = 32;
 	forceCloseDistance = 32;
-	// server/zone/objects/player/sui/SuiBox.idl(111):  		boxType = boxtype;
+	// server/zone/objects/player/sui/SuiBox.idl():  		boxType = boxtype;
 	boxType = boxtype;
-	// server/zone/objects/player/sui/SuiBox.idl(113):  		windowType = windowtype;
+	// server/zone/objects/player/sui/SuiBox.idl():  		windowType = windowtype;
 	windowType = windowtype;
-	// server/zone/objects/player/sui/SuiBox.idl(115):  		initialize();
+	// server/zone/objects/player/sui/SuiBox.idl():  		initialize();
 	initialize();
 }
 
 void SuiBoxImplementation::initialize() {
-	// server/zone/objects/player/sui/SuiBox.idl(119):  		Logger.setLoggingName("SuiBox");
+	// server/zone/objects/player/sui/SuiBox.idl():  		Logger.setLoggingName("SuiBox");
 	Logger::setLoggingName("SuiBox");
-	// server/zone/objects/player/sui/SuiBox.idl(121):  		boxID = player.getNewSuiBoxID(windowType);
+	// server/zone/objects/player/sui/SuiBox.idl():  		boxID = player.getNewSuiBoxID(windowType);
 	boxID = player->getNewSuiBoxID(windowType);
-	// server/zone/objects/player/sui/SuiBox.idl(123):  		handlerStr = "msgSelected";
+	// server/zone/objects/player/sui/SuiBox.idl():  		handlerStr = "msgSelected";
 	handlerStr = "msgSelected";
-	// server/zone/objects/player/sui/SuiBox.idl(125):  		cancelButtonText = "@cancel";
+	// server/zone/objects/player/sui/SuiBox.idl():  		cancelButtonText = "@cancel";
 	cancelButtonText = "@cancel";
-	// server/zone/objects/player/sui/SuiBox.idl(126):  		cancelButton = false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		cancelButton = false;
 	cancelButton = false;
-	// server/zone/objects/player/sui/SuiBox.idl(128):  		otherButtonText = "@back";
+	// server/zone/objects/player/sui/SuiBox.idl():  		otherButtonText = "@back";
 	otherButtonText = "@back";
-	// server/zone/objects/player/sui/SuiBox.idl(129):  		otherButton = false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		otherButton = false;
 	otherButton = false;
-	// server/zone/objects/player/sui/SuiBox.idl(131):  		okButtonText = "@ok";
+	// server/zone/objects/player/sui/SuiBox.idl():  		okButtonText = "@ok";
 	okButtonText = "@ok";
-	// server/zone/objects/player/sui/SuiBox.idl(132):  		okButton = true;
+	// server/zone/objects/player/sui/SuiBox.idl():  		okButton = true;
 	okButton = true;
-	// server/zone/objects/player/sui/SuiBox.idl(134):  		hdrOptCount = 0;
+	// server/zone/objects/player/sui/SuiBox.idl():  		hdrOptCount = 0;
 	hdrOptCount = 0;
-	// server/zone/objects/player/sui/SuiBox.idl(135):  		hasGenerated = false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		hasGenerated = false;
 	hasGenerated = false;
 }
 
@@ -929,136 +929,136 @@ void SuiBoxImplementation::finalize() {
 }
 
 void SuiBoxImplementation::initializeTransientMembers() {
-	// server/zone/objects/player/sui/SuiBox.idl(143):  		super.initializeTransientMembers();
+	// server/zone/objects/player/sui/SuiBox.idl():  		super.initializeTransientMembers();
 	ManagedObjectImplementation::initializeTransientMembers();
 }
 
 BaseMessage* SuiBoxImplementation::generateMessage() {
-	// server/zone/objects/player/sui/SuiBox.idl(176):  		return null;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return null;
 	return NULL;
 }
 
 void SuiBoxImplementation::clearOptions() {
-	// server/zone/objects/player/sui/SuiBox.idl(208):  		headerSets.removeAll();
+	// server/zone/objects/player/sui/SuiBox.idl():  		headerSets.removeAll();
 	(&headerSets)->removeAll();
-	// server/zone/objects/player/sui/SuiBox.idl(209):  		hdrOptCount = 0;
+	// server/zone/objects/player/sui/SuiBox.idl():  		hdrOptCount = 0;
 	hdrOptCount = 0;
-	// server/zone/objects/player/sui/SuiBox.idl(210):  		optionSets.removeAll();
+	// server/zone/objects/player/sui/SuiBox.idl():  		optionSets.removeAll();
 	(&optionSets)->removeAll();
 }
 
 int SuiBoxImplementation::compareTo(SuiBox* obj) {
-	// server/zone/objects/player/sui/SuiBox.idl(214):  		unsigned int id = obj.getBoxID();
+	// server/zone/objects/player/sui/SuiBox.idl():  		unsigned int id = obj.getBoxID();
 	unsigned int id = obj->getBoxID();
-	// server/zone/objects/player/sui/SuiBox.idl(216):  
-	if (boxID < id)	// server/zone/objects/player/sui/SuiBox.idl(217):  			return 1;
+	// server/zone/objects/player/sui/SuiBox.idl():  			return 0;
+	if (boxID < id)	// server/zone/objects/player/sui/SuiBox.idl():  			return 1;
 	return 1;
 
-	else 	// server/zone/objects/player/sui/SuiBox.idl(218):  
-	if (boxID > id)	// server/zone/objects/player/sui/SuiBox.idl(219):  			return -1;
+	else 	// server/zone/objects/player/sui/SuiBox.idl():  			return 0;
+	if (boxID > id)	// server/zone/objects/player/sui/SuiBox.idl():  			return -1;
 	return -1;
 
-	else 	// server/zone/objects/player/sui/SuiBox.idl(221):  			return 0;
+	else 	// server/zone/objects/player/sui/SuiBox.idl():  			return 0;
 	return 0;
 }
 
 bool SuiBoxImplementation::hasGeneratedMessage() {
-	// server/zone/objects/player/sui/SuiBox.idl(225):  		return hasGenerated;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return hasGenerated;
 	return hasGenerated;
 }
 
 void SuiBoxImplementation::setPromptTitle(const String& name) {
-	// server/zone/objects/player/sui/SuiBox.idl(229):  		promptTitle = name;
+	// server/zone/objects/player/sui/SuiBox.idl():  		promptTitle = name;
 	promptTitle = name;
 }
 
 void SuiBoxImplementation::setPromptText(const String& name) {
-	// server/zone/objects/player/sui/SuiBox.idl(233):  		promptText = name;
+	// server/zone/objects/player/sui/SuiBox.idl():  		promptText = name;
 	promptText = name;
 }
 
 String SuiBoxImplementation::getPromptTitle() {
-	// server/zone/objects/player/sui/SuiBox.idl(237):  		return promptTitle;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return promptTitle;
 	return promptTitle;
 }
 
 void SuiBoxImplementation::setHandlerText(const String& text) {
-	// server/zone/objects/player/sui/SuiBox.idl(241):  		handlerStr = text;
+	// server/zone/objects/player/sui/SuiBox.idl():  		handlerStr = text;
 	handlerStr = text;
 }
 
 void SuiBoxImplementation::setWindowType(unsigned int type) {
-	// server/zone/objects/player/sui/SuiBox.idl(245):  		windowType = type;
+	// server/zone/objects/player/sui/SuiBox.idl():  		windowType = type;
 	windowType = type;
 }
 
 void SuiBoxImplementation::setBoxType(int type) {
-	// server/zone/objects/player/sui/SuiBox.idl(249):  		boxType = type;
+	// server/zone/objects/player/sui/SuiBox.idl():  		boxType = type;
 	boxType = type;
 }
 
 bool SuiBoxImplementation::isInputBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(253):  		return false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return false;
 	return false;
 }
 
 bool SuiBoxImplementation::isListBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(257):  		return false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return false;
 	return false;
 }
 
 bool SuiBoxImplementation::isMessageBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(261):  		return false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return false;
 	return false;
 }
 
 bool SuiBoxImplementation::isTransferBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(265):  		return false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return false;
 	return false;
 }
 
 bool SuiBoxImplementation::isBankTransferBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(269):  		return false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return false;
 	return false;
 }
 
 bool SuiBoxImplementation::isSlicingBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(273):  		return false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return false;
 	return false;
 }
 
 bool SuiBoxImplementation::isCharacterBuilderBox() {
-	// server/zone/objects/player/sui/SuiBox.idl(277):  		return false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return false;
 	return false;
 }
 
 bool SuiBoxImplementation::isColorPicker() {
-	// server/zone/objects/player/sui/SuiBox.idl(281):  		return false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return false;
 	return false;
 }
 
 PlayerCreature* SuiBoxImplementation::getPlayer() {
-	// server/zone/objects/player/sui/SuiBox.idl(295):  		return player;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return player;
 	return player;
 }
 
 unsigned int SuiBoxImplementation::getBoxID() {
-	// server/zone/objects/player/sui/SuiBox.idl(299):  		return boxID;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return boxID;
 	return boxID;
 }
 
 int SuiBoxImplementation::getWindowType() {
-	// server/zone/objects/player/sui/SuiBox.idl(303):  		return windowType;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return windowType;
 	return windowType;
 }
 
 SceneObject* SuiBoxImplementation::getUsingObject() {
-	// server/zone/objects/player/sui/SuiBox.idl(307):  		return usingObject;
+	// server/zone/objects/player/sui/SuiBox.idl():  		return usingObject;
 	return usingObject;
 }
 
 void SuiBoxImplementation::setUsingObject(SceneObject* object) {
-	// server/zone/objects/player/sui/SuiBox.idl(311):  		usingObject = object;
+	// server/zone/objects/player/sui/SuiBox.idl():  		usingObject = object;
 	usingObject = object;
 }
 
@@ -1069,119 +1069,121 @@ void SuiBoxImplementation::setUsingObject(SceneObject* object) {
 SuiBoxAdapter::SuiBoxAdapter(SuiBoxImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_,RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_,RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_,RPC_GENERATEMESSAGE__,RPC_GENERATECLOSEMESSAGE__,RPC_ADDSETTING__STRING_STRING_STRING_STRING_,RPC_ADDHEADER__STRING_STRING_,RPC_CLEAROPTIONS__,RPC_COMPARETO__SUIBOX_,RPC_HASGENERATEDMESSAGE__,RPC_SETPROMPTTITLE__STRING_,RPC_SETPROMPTTEXT__STRING_,RPC_GETPROMPTTITLE__,RPC_SETHANDLERTEXT__STRING_,RPC_SETWINDOWTYPE__INT_,RPC_SETBOXTYPE__INT_,RPC_ISINPUTBOX__,RPC_ISLISTBOX__,RPC_ISMESSAGEBOX__,RPC_ISTRANSFERBOX__,RPC_ISBANKTRANSFERBOX__,RPC_ISSLICINGBOX__,RPC_ISCHARACTERBUILDERBOX__,RPC_ISCOLORPICKER__,RPC_SETCANCELBUTTON__BOOL_STRING_,RPC_SETOTHERBUTTON__BOOL_STRING_,RPC_SETOKBUTTON__BOOL_STRING_,RPC_SETFORCECLOSEDISTANCE__FLOAT_,RPC_SETFORCECLOSEDISABLED__,RPC_GETPLAYER__,RPC_GETBOXID__,RPC_GETWINDOWTYPE__,RPC_GETUSINGOBJECT__,RPC_SETUSINGOBJECT__SCENEOBJECT_};
+
 Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 7:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 8:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 9:
+	case RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_:
 		generateHeader((SuiCreatePageMessage*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_:
 		generateBody((SuiCreatePageMessage*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_:
 		generateFooter((SuiCreatePageMessage*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 12:
+	case RPC_GENERATEMESSAGE__:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
-	case 13:
+	case RPC_GENERATECLOSEMESSAGE__:
 		resp->insertLong(generateCloseMessage()->_getObjectID());
 		break;
-	case 14:
+	case RPC_ADDSETTING__STRING_STRING_STRING_STRING_:
 		addSetting(inv->getAsciiParameter(_param0_addSetting__String_String_String_String_), inv->getAsciiParameter(_param1_addSetting__String_String_String_String_), inv->getAsciiParameter(_param2_addSetting__String_String_String_String_), inv->getAsciiParameter(_param3_addSetting__String_String_String_String_));
 		break;
-	case 15:
+	case RPC_ADDHEADER__STRING_STRING_:
 		addHeader(inv->getAsciiParameter(_param0_addHeader__String_String_), inv->getAsciiParameter(_param1_addHeader__String_String_));
 		break;
-	case 16:
+	case RPC_CLEAROPTIONS__:
 		clearOptions();
 		break;
-	case 17:
+	case RPC_COMPARETO__SUIBOX_:
 		resp->insertSignedInt(compareTo((SuiBox*) inv->getObjectParameter()));
 		break;
-	case 18:
+	case RPC_HASGENERATEDMESSAGE__:
 		resp->insertBoolean(hasGeneratedMessage());
 		break;
-	case 19:
+	case RPC_SETPROMPTTITLE__STRING_:
 		setPromptTitle(inv->getAsciiParameter(_param0_setPromptTitle__String_));
 		break;
-	case 20:
+	case RPC_SETPROMPTTEXT__STRING_:
 		setPromptText(inv->getAsciiParameter(_param0_setPromptText__String_));
 		break;
-	case 21:
+	case RPC_GETPROMPTTITLE__:
 		resp->insertAscii(getPromptTitle());
 		break;
-	case 22:
+	case RPC_SETHANDLERTEXT__STRING_:
 		setHandlerText(inv->getAsciiParameter(_param0_setHandlerText__String_));
 		break;
-	case 23:
+	case RPC_SETWINDOWTYPE__INT_:
 		setWindowType(inv->getUnsignedIntParameter());
 		break;
-	case 24:
+	case RPC_SETBOXTYPE__INT_:
 		setBoxType(inv->getSignedIntParameter());
 		break;
-	case 25:
+	case RPC_ISINPUTBOX__:
 		resp->insertBoolean(isInputBox());
 		break;
-	case 26:
+	case RPC_ISLISTBOX__:
 		resp->insertBoolean(isListBox());
 		break;
-	case 27:
+	case RPC_ISMESSAGEBOX__:
 		resp->insertBoolean(isMessageBox());
 		break;
-	case 28:
+	case RPC_ISTRANSFERBOX__:
 		resp->insertBoolean(isTransferBox());
 		break;
-	case 29:
+	case RPC_ISBANKTRANSFERBOX__:
 		resp->insertBoolean(isBankTransferBox());
 		break;
-	case 30:
+	case RPC_ISSLICINGBOX__:
 		resp->insertBoolean(isSlicingBox());
 		break;
-	case 31:
+	case RPC_ISCHARACTERBUILDERBOX__:
 		resp->insertBoolean(isCharacterBuilderBox());
 		break;
-	case 32:
+	case RPC_ISCOLORPICKER__:
 		resp->insertBoolean(isColorPicker());
 		break;
-	case 33:
+	case RPC_SETCANCELBUTTON__BOOL_STRING_:
 		setCancelButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setCancelButton__bool_String_));
 		break;
-	case 34:
+	case RPC_SETOTHERBUTTON__BOOL_STRING_:
 		setOtherButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOtherButton__bool_String_));
 		break;
-	case 35:
+	case RPC_SETOKBUTTON__BOOL_STRING_:
 		setOkButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOkButton__bool_String_));
 		break;
-	case 36:
+	case RPC_SETFORCECLOSEDISTANCE__FLOAT_:
 		setForceCloseDistance(inv->getFloatParameter());
 		break;
-	case 37:
+	case RPC_SETFORCECLOSEDISABLED__:
 		setForceCloseDisabled();
 		break;
-	case 38:
+	case RPC_GETPLAYER__:
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
-	case 39:
+	case RPC_GETBOXID__:
 		resp->insertInt(getBoxID());
 		break;
-	case 40:
+	case RPC_GETWINDOWTYPE__:
 		resp->insertSignedInt(getWindowType());
 		break;
-	case 41:
+	case RPC_GETUSINGOBJECT__:
 		resp->insertLong(getUsingObject()->_getObjectID());
 		break;
-	case 42:
+	case RPC_SETUSINGOBJECT__SCENEOBJECT_:
 		setUsingObject((SceneObject*) inv->getObjectParameter());
 		break;
 	default:

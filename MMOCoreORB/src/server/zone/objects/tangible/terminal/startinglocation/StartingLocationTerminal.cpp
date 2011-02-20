@@ -180,7 +180,7 @@ int StartingLocationTerminalImplementation::writeObjectMembers(ObjectOutputStrea
 
 StartingLocationTerminalImplementation::StartingLocationTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(57):  		Logger.setLoggingName("StartingLocationTerminal");
+	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl():  		Logger.setLoggingName("StartingLocationTerminal");
 	Logger::setLoggingName("StartingLocationTerminal");
 }
 
@@ -191,14 +191,16 @@ StartingLocationTerminalImplementation::StartingLocationTerminalImplementation()
 StartingLocationTerminalAdapter::StartingLocationTerminalAdapter(StartingLocationTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_};
+
 Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:

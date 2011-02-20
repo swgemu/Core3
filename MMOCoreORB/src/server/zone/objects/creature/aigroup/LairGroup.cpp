@@ -177,7 +177,7 @@ LairGroupImplementation::LairGroupImplementation() : AiGroupImplementation() {
 }
 
 bool LairGroupImplementation::isLairGroup() {
-	// server/zone/objects/creature/aigroup/LairGroup.idl(58):  		return true;
+	// server/zone/objects/creature/aigroup/LairGroup.idl():  		return true;
 	return true;
 }
 
@@ -188,11 +188,13 @@ bool LairGroupImplementation::isLairGroup() {
 LairGroupAdapter::LairGroupAdapter(LairGroupImplementation* obj) : AiGroupAdapter(obj) {
 }
 
+enum {RPC_ISLAIRGROUP__ = 6};
+
 Packet* LairGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ISLAIRGROUP__:
 		resp->insertBoolean(isLairGroup());
 		break;
 	default:

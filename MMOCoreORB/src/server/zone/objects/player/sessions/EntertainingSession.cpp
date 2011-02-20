@@ -878,31 +878,31 @@ int EntertainingSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 
 EntertainingSessionImplementation::EntertainingSessionImplementation(CreatureObject* ent) {
 	_initializeImplementation();
-	// server/zone/objects/player/sessions/EntertainingSession.idl(93):  		entertainer = ent;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		entertainer = ent;
 	entertainer = ent;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(95):  		flourishXp = 0;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishXp = 0;
 	flourishXp = 0;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(96):  		healingXp = 0;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		healingXp = 0;
 	healingXp = 0;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(97):  		flourishCount = 0;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishCount = 0;
 	flourishCount = 0;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(99):  		observer = null;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		observer = null;
 	observer = NULL;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(101):  		dancing = false;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		dancing = false;
 	dancing = false;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(102):  		playingMusic = false;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		playingMusic = false;
 	playingMusic = false;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(103):  		acceptingBandFlourishes = true;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		acceptingBandFlourishes = true;
 	acceptingBandFlourishes = true;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(104):  		targetInstrument = false;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		targetInstrument = false;
 	targetInstrument = false;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(106):  		watchers.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		watchers.setNoDuplicateInsertPlan();
 	(&watchers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/sessions/EntertainingSession.idl(107):  		listeners.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		listeners.setNoDuplicateInsertPlan();
 	(&listeners)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/sessions/EntertainingSession.idl(109):  		Logger.setLoggingName("EntertainingSession");
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		Logger.setLoggingName("EntertainingSession");
 	Logger::setLoggingName("EntertainingSession");
-	// server/zone/objects/player/sessions/EntertainingSession.idl(110):  		Logger.setLogging(false);
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
 }
 
@@ -910,84 +910,84 @@ void EntertainingSessionImplementation::finalize() {
 }
 
 void EntertainingSessionImplementation::addFlourishXp(int xp) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(135):  		flourishXp 
-	if (flourishCount > 2)	// server/zone/objects/player/sessions/EntertainingSession.idl(136):  			return;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishXp 
+	if (flourishCount > 2)	// server/zone/objects/player/sessions/EntertainingSession.idl():  			return;
 	return;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(138):  = flourishXp + xp;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishXp = flourishXp + xp;
 	flourishXp = flourishXp + xp;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(140):  		flourishCount 
-	if (flourishXp > 2 * xp)	// server/zone/objects/player/sessions/EntertainingSession.idl(141):  			flourishXp = 2 * xp;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishCount 
+	if (flourishXp > 2 * xp)	// server/zone/objects/player/sessions/EntertainingSession.idl():  			flourishXp = 2 * xp;
 	flourishXp = 2 * xp;
-	// server/zone/objects/player/sessions/EntertainingSession.idl(143):  = flourishCount + 1;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishCount = flourishCount + 1;
 	flourishCount = flourishCount + 1;
 }
 
 void EntertainingSessionImplementation::addHealingXp(int xp) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(147):  		healingXp = healingXp + xp;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		healingXp = healingXp + xp;
 	healingXp = healingXp + xp;
 }
 
 int EntertainingSessionImplementation::initializeSession() {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(151):  		return 0;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		return 0;
 	return 0;
 }
 
 int EntertainingSessionImplementation::cancelSession() {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(155):  		stopPlayingMusic();
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		stopPlayingMusic();
 	stopPlayingMusic();
-	// server/zone/objects/player/sessions/EntertainingSession.idl(156):  		stopDancing();
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		stopDancing();
 	stopDancing();
-	// server/zone/objects/player/sessions/EntertainingSession.idl(158):  		return 0;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		return 0;
 	return 0;
 }
 
 int EntertainingSessionImplementation::clearSession() {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(162):  		return 0;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		return 0;
 	return 0;
 }
 
 bool EntertainingSessionImplementation::isDancing() {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(197):  		return dancing;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		return dancing;
 	return dancing;
 }
 
 bool EntertainingSessionImplementation::isPlayingMusic() {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(201):  		return playingMusic;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		return playingMusic;
 	return playingMusic;
 }
 
 bool EntertainingSessionImplementation::isAcceptingBandFlourishes() {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(205):  		return acceptingBandFlourishes;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		return acceptingBandFlourishes;
 	return acceptingBandFlourishes;
 }
 
 void EntertainingSessionImplementation::setAcceptingBandFlourishes(bool val) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(209):  		acceptingBandFlourishes = val;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		acceptingBandFlourishes = val;
 	acceptingBandFlourishes = val;
 }
 
 void EntertainingSessionImplementation::removeWatcher(CreatureObject* creature) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(213):  		watchers.drop(creature);
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		watchers.drop(creature);
 	(&watchers)->drop(creature);
 }
 
 void EntertainingSessionImplementation::removeListener(CreatureObject* creature) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(217):  		listeners.drop(creature);
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		listeners.drop(creature);
 	(&listeners)->drop(creature);
 }
 
 void EntertainingSessionImplementation::setPerformanceName(const String& name) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(221):  		performanceName = name;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		performanceName = name;
 	performanceName = name;
 }
 
 void EntertainingSessionImplementation::setDancing(bool val) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(225):  		dancing = val;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		dancing = val;
 	dancing = val;
 }
 
 void EntertainingSessionImplementation::setTargetInstrument(bool var) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl(229):  		targetInstrument = var;
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		targetInstrument = var;
 	targetInstrument = var;
 }
 
@@ -998,119 +998,121 @@ void EntertainingSessionImplementation::setTargetInstrument(bool var) {
 EntertainingSessionAdapter::EntertainingSessionAdapter(EntertainingSessionImplementation* obj) : FacadeAdapter(obj) {
 }
 
+enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_};
+
 Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_DOENTERTAINERPATRONEFFECTS__:
 		doEntertainerPatronEffects();
 		break;
-	case 7:
+	case RPC_DOPERFORMANCEACTION__:
 		doPerformanceAction();
 		break;
-	case 8:
+	case RPC_ADDENTERTAINERFLOURISHBUFF__:
 		addEntertainerFlourishBuff();
 		break;
-	case 9:
+	case RPC_STARTDANCING__STRING_STRING_:
 		startDancing(inv->getAsciiParameter(_param0_startDancing__String_String_), inv->getAsciiParameter(_param1_startDancing__String_String_));
 		break;
-	case 10:
+	case RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_:
 		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__String_String_int_), inv->getAsciiParameter(_param1_startPlayingMusic__String_String_int_), inv->getSignedIntParameter());
 		break;
-	case 11:
+	case RPC_STARTENTERTAINING__:
 		startEntertaining();
 		break;
-	case 12:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 13:
+	case RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_:
 		healWounds((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
-	case 14:
+	case RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_:
 		resp->insertBoolean(isInEntertainingBuilding((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 15:
+	case RPC_DOFLOURISH__INT_:
 		doFlourish(inv->getSignedIntParameter());
 		break;
-	case 16:
+	case RPC_CANGIVEENTERTAINBUFF__:
 		resp->insertBoolean(canGiveEntertainBuff());
 		break;
-	case 17:
+	case RPC_ADDFLOURISHXP__INT_:
 		addFlourishXp(inv->getSignedIntParameter());
 		break;
-	case 18:
+	case RPC_ADDHEALINGXP__INT_:
 		addHealingXp(inv->getSignedIntParameter());
 		break;
-	case 19:
+	case RPC_INITIALIZESESSION__:
 		resp->insertSignedInt(initializeSession());
 		break;
-	case 20:
+	case RPC_CANCELSESSION__:
 		resp->insertSignedInt(cancelSession());
 		break;
-	case 21:
+	case RPC_CLEARSESSION__:
 		resp->insertSignedInt(clearSession());
 		break;
-	case 22:
+	case RPC_STOPPLAYINGMUSIC__:
 		stopPlayingMusic();
 		break;
-	case 23:
+	case RPC_STOPDANCING__:
 		stopDancing();
 		break;
-	case 24:
+	case RPC_ACTIVATEACTION__:
 		activateAction();
 		break;
-	case 25:
+	case RPC_STARTTICKTASK__:
 		startTickTask();
 		break;
-	case 26:
+	case RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_:
 		resp->insertSignedInt(getEntertainerBuffStrength((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 27:
+	case RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_:
 		resp->insertSignedInt(getEntertainerBuffDuration((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 28:
+	case RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_:
 		sendEntertainingUpdate((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 29:
+	case RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_:
 		sendEntertainmentUpdate((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param2_sendEntertainmentUpdate__CreatureObject_long_String_bool_), inv->getBooleanParameter());
 		break;
-	case 30:
+	case RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_:
 		activateEntertainerBuff((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 31:
+	case RPC_GETINSTRUMENT__CREATUREOBJECT_:
 		resp->insertLong(getInstrument((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case 32:
+	case RPC_ADDWATCHER__CREATUREOBJECT_:
 		addWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
-	case 33:
+	case RPC_ADDLISTENER__CREATUREOBJECT_:
 		addListener((CreatureObject*) inv->getObjectParameter());
 		break;
-	case 34:
+	case RPC_ISDANCING__:
 		resp->insertBoolean(isDancing());
 		break;
-	case 35:
+	case RPC_ISPLAYINGMUSIC__:
 		resp->insertBoolean(isPlayingMusic());
 		break;
-	case 36:
+	case RPC_ISACCEPTINGBANDFLOURISHES__:
 		resp->insertBoolean(isAcceptingBandFlourishes());
 		break;
-	case 37:
+	case RPC_SETACCEPTINGBANDFLOURISHES__BOOL_:
 		setAcceptingBandFlourishes(inv->getBooleanParameter());
 		break;
-	case 38:
+	case RPC_REMOVEWATCHER__CREATUREOBJECT_:
 		removeWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
-	case 39:
+	case RPC_REMOVELISTENER__CREATUREOBJECT_:
 		removeListener((CreatureObject*) inv->getObjectParameter());
 		break;
-	case 40:
+	case RPC_SETPERFORMANCENAME__STRING_:
 		setPerformanceName(inv->getAsciiParameter(_param0_setPerformanceName__String_));
 		break;
-	case 41:
+	case RPC_SETDANCING__BOOL_:
 		setDancing(inv->getBooleanParameter());
 		break;
-	case 42:
+	case RPC_SETTARGETINSTRUMENT__BOOL_:
 		setTargetInstrument(inv->getBooleanParameter());
 		break;
 	default:

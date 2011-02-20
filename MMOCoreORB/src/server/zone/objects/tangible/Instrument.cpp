@@ -382,86 +382,86 @@ int InstrumentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 InstrumentImplementation::InstrumentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/Instrument.idl(94):  		instrumentType = 0;
+	// server/zone/objects/tangible/Instrument.idl():  		instrumentType = 0;
 	instrumentType = 0;
-	// server/zone/objects/tangible/Instrument.idl(96):  		beingUsed = false;
+	// server/zone/objects/tangible/Instrument.idl():  		beingUsed = false;
 	beingUsed = false;
-	// server/zone/objects/tangible/Instrument.idl(98):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl():  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/Instrument.idl(102):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/Instrument.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/Instrument.idl(104):  		Logger.setLoggingName("Instrument");
+	// server/zone/objects/tangible/Instrument.idl():  		Logger.setLoggingName("Instrument");
 	Logger::setLoggingName("Instrument");
 }
 
 void InstrumentImplementation::notifyLoadFromDatabase() {
-	// server/zone/objects/tangible/Instrument.idl(108):  		super.notifyLoadFromDatabase();
+	// server/zone/objects/tangible/Instrument.idl():  		super.notifyLoadFromDatabase();
 	TangibleObjectImplementation::notifyLoadFromDatabase();
-	// server/zone/objects/tangible/Instrument.idl(110):  		beingUsed = false;
+	// server/zone/objects/tangible/Instrument.idl():  		beingUsed = false;
 	beingUsed = false;
-	// server/zone/objects/tangible/Instrument.idl(112):  	}
-	if (spawnedObject != NULL)	// server/zone/objects/tangible/Instrument.idl(113):  			spawnedObject.removeFromZone();
+	// server/zone/objects/tangible/Instrument.idl():  	}
+	if (spawnedObject != NULL)	// server/zone/objects/tangible/Instrument.idl():  			spawnedObject.removeFromZone();
 	spawnedObject->removeFromZone();
 }
 
 void InstrumentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/Instrument.idl(118):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/Instrument.idl():  		super.loadTemplateData(templateData);
 	TangibleObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/Instrument.idl(120):  		InstrumentObjectTemplate 
-	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl(121):  			return;
+	// server/zone/objects/tangible/Instrument.idl():  		InstrumentObjectTemplate 
+	if (!templateData->isInstrumentObjectTemplate())	// server/zone/objects/tangible/Instrument.idl():  			return;
 	return;
-	// server/zone/objects/tangible/Instrument.idl(123):  templ = (InstrumentObjectTemplate) templateData;
+	// server/zone/objects/tangible/Instrument.idl():  		InstrumentObjectTemplate templ = (InstrumentObjectTemplate) templateData;
 	InstrumentObjectTemplate* templ = (InstrumentObjectTemplate*) templateData;
-	// server/zone/objects/tangible/Instrument.idl(125):  		instrumentType = templ.getInstrumentType();
+	// server/zone/objects/tangible/Instrument.idl():  		instrumentType = templ.getInstrumentType();
 	instrumentType = templ->getInstrumentType();
 }
 
 void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	// server/zone/objects/tangible/Instrument.idl(136):  		super.fillObjectMenuResponse(menuResponse, player);
+	// server/zone/objects/tangible/Instrument.idl():  		super.fillObjectMenuResponse(menuResponse, player);
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
-	// server/zone/objects/tangible/Instrument.idl(138):  		if 
+	// server/zone/objects/tangible/Instrument.idl():  		if 
 	if (instrumentType != OMNIBOX && instrumentType != NALARGON){
-	// server/zone/objects/tangible/Instrument.idl(139):  			return;
+	// server/zone/objects/tangible/Instrument.idl():  			return;
 	return;
 }
-	// server/zone/objects/tangible/Instrument.idl(142):  
+	// server/zone/objects/tangible/Instrument.idl():  	}
 	if (beingUsed){
-	// server/zone/objects/tangible/Instrument.idl(143):  			return;
+	// server/zone/objects/tangible/Instrument.idl():  			return;
 	return;
 }
 
-	else 	// server/zone/objects/tangible/Instrument.idl(144):  	}
+	else 	// server/zone/objects/tangible/Instrument.idl():  	}
 	if (!isInQuadTree()){
-	// server/zone/objects/tangible/Instrument.idl(145):  			menuResponse.addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
+	// server/zone/objects/tangible/Instrument.idl():  			menuResponse.addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
 	menuResponse->addRadialMenuItem(69, 3, "@radial_performance:play_instrument");
 }
 }
 
 int InstrumentImplementation::getInstrumentType() {
-	// server/zone/objects/tangible/Instrument.idl(164):  		return instrumentType;
+	// server/zone/objects/tangible/Instrument.idl():  		return instrumentType;
 	return instrumentType;
 }
 
 PlayerCreature* InstrumentImplementation::getSpawnerPlayer() {
-	// server/zone/objects/tangible/Instrument.idl(168):  		return spawnerPlayer;
+	// server/zone/objects/tangible/Instrument.idl():  		return spawnerPlayer;
 	return spawnerPlayer;
 }
 
 void InstrumentImplementation::setSpawnerPlayer(PlayerCreature* pla) {
-	// server/zone/objects/tangible/Instrument.idl(172):  		spawnerPlayer = pla;
+	// server/zone/objects/tangible/Instrument.idl():  		spawnerPlayer = pla;
 	spawnerPlayer = pla;
 }
 
 bool InstrumentImplementation::isBeingUsed() {
-	// server/zone/objects/tangible/Instrument.idl(176):  		return beingUsed;
+	// server/zone/objects/tangible/Instrument.idl():  		return beingUsed;
 	return beingUsed;
 }
 
 void InstrumentImplementation::setBeingUsed(bool val) {
-	// server/zone/objects/tangible/Instrument.idl(180):  		beingUsed = val;
+	// server/zone/objects/tangible/Instrument.idl():  		beingUsed = val;
 	beingUsed = val;
 }
 
@@ -472,41 +472,43 @@ void InstrumentImplementation::setBeingUsed(bool val) {
 InstrumentAdapter::InstrumentAdapter(InstrumentImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SPAWNINFOREIGNCELL__PLAYERCREATURE_,RPC_SPAWNINADMINCELL__PLAYERCREATURE_,RPC_SPAWNOUTSIDE__PLAYERCREATURE_,RPC_GETINSTRUMENTTYPE__,RPC_GETSPAWNERPLAYER__,RPC_SETSPAWNERPLAYER__PLAYERCREATURE_,RPC_ISBEINGUSED__,RPC_SETBEINGUSED__BOOL_};
+
 Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
-	case 8:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 9:
+	case RPC_SPAWNINFOREIGNCELL__PLAYERCREATURE_:
 		spawnInForeignCell((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_SPAWNINADMINCELL__PLAYERCREATURE_:
 		spawnInAdminCell((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_SPAWNOUTSIDE__PLAYERCREATURE_:
 		spawnOutside((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 12:
+	case RPC_GETINSTRUMENTTYPE__:
 		resp->insertSignedInt(getInstrumentType());
 		break;
-	case 13:
+	case RPC_GETSPAWNERPLAYER__:
 		resp->insertLong(getSpawnerPlayer()->_getObjectID());
 		break;
-	case 14:
+	case RPC_SETSPAWNERPLAYER__PLAYERCREATURE_:
 		setSpawnerPlayer((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_ISBEINGUSED__:
 		resp->insertBoolean(isBeingUsed());
 		break;
-	case 16:
+	case RPC_SETBEINGUSED__BOOL_:
 		setBeingUsed(inv->getBooleanParameter());
 		break;
 	default:

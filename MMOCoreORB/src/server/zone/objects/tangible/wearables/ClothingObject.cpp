@@ -177,19 +177,19 @@ int ClothingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 ClothingObjectImplementation::ClothingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(54):  		Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl():  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 
 void ClothingObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(58):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/wearables/ClothingObject.idl():  		super.initializeTransientMembers();
 	WearableObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(60):  		Logger.setLoggingName("ClothingObject");
+	// server/zone/objects/tangible/wearables/ClothingObject.idl():  		Logger.setLoggingName("ClothingObject");
 	Logger::setLoggingName("ClothingObject");
 }
 
 void ClothingObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/wearables/ClothingObject.idl(64):  		super.updateCraftingValues(schematic);
+	// server/zone/objects/tangible/wearables/ClothingObject.idl():  		super.updateCraftingValues(schematic);
 	WearableObjectImplementation::updateCraftingValues(schematic);
 }
 
@@ -200,14 +200,16 @@ void ClothingObjectImplementation::updateCraftingValues(ManufactureSchematic* sc
 ClothingObjectAdapter::ClothingObjectAdapter(ClothingObjectImplementation* obj) : WearableObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+
 Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
 	default:

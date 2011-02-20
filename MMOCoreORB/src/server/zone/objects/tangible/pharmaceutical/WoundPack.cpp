@@ -287,112 +287,112 @@ int WoundPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 WoundPackImplementation::WoundPackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(67):  		setLoggingName("WoundPack");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		setLoggingName("WoundPack");
 	setLoggingName("WoundPack");
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(69):  		effectiveness = 0;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		effectiveness = 0;
 	effectiveness = 0;
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(70):  		attribute = 0;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		attribute = 0;
 	attribute = 0;
 }
 
 void WoundPackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(75):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
 	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(77):  		effectiveness = craftingValues.getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
 	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(78):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(79):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
 	setUseCount(craftingValues->getCurrentValue("charges"));
 }
 
 void WoundPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(90):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		super.loadTemplateData(templateData);
 	PharmaceuticalObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(92):  		WoundPackTemplate 
-	if (!templateData->isWoundPackTemplate())	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(93):  			return;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		WoundPackTemplate 
+	if (!templateData->isWoundPackTemplate())	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			return;
 	return;
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(95):  stimPackTemplate = (WoundPackTemplate) templateData;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		WoundPackTemplate stimPackTemplate = (WoundPackTemplate) templateData;
 	WoundPackTemplate* stimPackTemplate = (WoundPackTemplate*) templateData;
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(97):  		effectiveness = stimPackTemplate.getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		effectiveness = stimPackTemplate.getEffectiveness();
 	effectiveness = stimPackTemplate->getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(98):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 	PharmaceuticalObjectImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(99):  		attribute = stimPackTemplate.getAttribute();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		attribute = stimPackTemplate.getAttribute();
 	attribute = stimPackTemplate->getAttribute();
 }
 
 void WoundPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(111):  		super.fillAttributeList(msg, object);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(113):  		msg.insertAttribute("examine_heal_wound_" + CreatureAttribute.getName(attribute), Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		msg.insertAttribute("examine_heal_wound_" + CreatureAttribute.getName(attribute), Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_wound_" + CreatureAttribute::getName(attribute), Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(114):  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::medicineUseRequired);
 }
 
 int WoundPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(126):  		if 
-	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(127):  			return 1;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		if 
+	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			return 1;
 	return 1;
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(129):  
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		}
 	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(130):  			player.sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
 	player->sendSystemMessage("error_message", "insufficient_skill");
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(132):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			return 0;
 	return 0;
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(134):  			string command = "/healwound ";
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			string command = "/healwound ";
 	String command = "/healwound ";
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(135):  			command = command + CreatureAttribute.getName(attribute);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			command = command + CreatureAttribute.getName(attribute);
 	command = command + CreatureAttribute::getName(attribute);
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(136):  			command = command + "|";
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			command = command + "|";
 	command = command + "|";
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(137):  			command = command + String.valueOf(super.getObjectID());
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			command = command + String.valueOf(super.getObjectID());
 	command = command + String::valueOf(PharmaceuticalObjectImplementation::getObjectID());
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(139):  			player.sendExecuteConsoleCommand(command);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			player.sendExecuteConsoleCommand(command);
 	player->sendExecuteConsoleCommand(command);
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(141):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			return 0;
 	return 0;
 }
 }
 
 unsigned int WoundPackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(147):  		float power = getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float power = getEffectiveness();
 	float power = getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(149):  		ZoneServer 
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		ZoneServer 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(150):  			power = power - power * patient.calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			power = power - power * patient.calculateBFRatio();
 	power = power - power * patient->calculateBFRatio();
 }
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(153):  zoneServer = super.getZoneServer();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		ZoneServer zoneServer = super.getZoneServer();
 	ZoneServer* zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(154):  		PlayerManager playerManager = zoneServer.getPlayerManager();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(156):  		float modEnvironment = playerManager.getMedicalFacilityRating(healer);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modEnvironment = playerManager.getMedicalFacilityRating(healer);
 	float modEnvironment = playerManager->getMedicalFacilityRating(healer);
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(158):  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(159):  		float modCityBonus = 1;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modCityBonus = 1;
 	float modCityBonus = 1;
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(161):  		return (power * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		return (power * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
 	return (power * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
 }
 
 float WoundPackImplementation::getEffectiveness() {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(165):  		return effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		return effectiveness;
 	return effectiveness;
 }
 
 bool WoundPackImplementation::isWoundPack() {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(169):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		return true;
 	return true;
 }
 
 byte WoundPackImplementation::getAttribute() {
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl(173):  		return attribute;
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		return attribute;
 	return attribute;
 }
 
@@ -403,23 +403,25 @@ byte WoundPackImplementation::getAttribute() {
 WoundPackAdapter::WoundPackAdapter(WoundPackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETEFFECTIVENESS__,RPC_ISWOUNDPACK__,RPC_GETATTRIBUTE__};
+
 Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 7:
+	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
 		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
-	case 8:
+	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
 		break;
-	case 9:
+	case RPC_ISWOUNDPACK__:
 		resp->insertBoolean(isWoundPack());
 		break;
-	case 10:
+	case RPC_GETATTRIBUTE__:
 		resp->insertByte(getAttribute());
 		break;
 	default:

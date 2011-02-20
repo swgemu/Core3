@@ -400,85 +400,85 @@ int CreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 CreatureImplementation::CreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/Creature.idl(60):  		Logger.setLoggingName("Creature");
+	// server/zone/objects/creature/Creature.idl():  		Logger.setLoggingName("Creature");
 	Logger::setLoggingName("Creature");
-	// server/zone/objects/creature/Creature.idl(61):  		Logger.setLogging(false);
+	// server/zone/objects/creature/Creature.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/Creature.idl(62):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/Creature.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 bool CreatureImplementation::isCreature() {
-	// server/zone/objects/creature/Creature.idl(66):  		return true;
+	// server/zone/objects/creature/Creature.idl():  		return true;
 	return true;
 }
 
 bool CreatureImplementation::isBaby() {
-	// server/zone/objects/creature/Creature.idl(99):  		return super.baby;
+	// server/zone/objects/creature/Creature.idl():  		return super.baby;
 	return AiAgentImplementation::baby;
 }
 
 float CreatureImplementation::getTame() {
-	// server/zone/objects/creature/Creature.idl(103):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(104):  			return 0;
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(106):  super.npcTemplate.getTame();
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getTame();
 	return AiAgentImplementation::npcTemplate->getTame();
 }
 
 String CreatureImplementation::getMeatType() {
-	// server/zone/objects/creature/Creature.idl(110):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(111):  			return "";
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(113):  super.npcTemplate.getMeatType();
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getMeatType();
 	return AiAgentImplementation::npcTemplate->getMeatType();
 }
 
 String CreatureImplementation::getBoneType() {
-	// server/zone/objects/creature/Creature.idl(117):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(118):  			return "";
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(120):  super.npcTemplate.getBoneType();
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getBoneType();
 	return AiAgentImplementation::npcTemplate->getBoneType();
 }
 
 String CreatureImplementation::getHideType() {
-	// server/zone/objects/creature/Creature.idl(124):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(125):  			return "";
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return "";
 	return "";
-	// server/zone/objects/creature/Creature.idl(127):  super.npcTemplate.getHideType();
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getHideType();
 	return AiAgentImplementation::npcTemplate->getHideType();
 }
 
 float CreatureImplementation::getMilk() {
-	// server/zone/objects/creature/Creature.idl(131):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(132):  			return 0;
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(134):  super.npcTemplate.getMilk();
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getMilk();
 	return AiAgentImplementation::npcTemplate->getMilk();
 }
 
 float CreatureImplementation::getHideMax() {
-	// server/zone/objects/creature/Creature.idl(138):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(139):  			return 0;
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(141):  super.npcTemplate.getHideMax();
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getHideMax();
 	return AiAgentImplementation::npcTemplate->getHideMax();
 }
 
 float CreatureImplementation::getBoneMax() {
-	// server/zone/objects/creature/Creature.idl(145):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(146):  			return 0;
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(148):  super.npcTemplate.getBoneMax();
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getBoneMax();
 	return AiAgentImplementation::npcTemplate->getBoneMax();
 }
 
 float CreatureImplementation::getMeatMax() {
-	// server/zone/objects/creature/Creature.idl(152):  		return 
-	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl(153):  			return 0;
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/Creature.idl(155):  super.npcTemplate.getMeatMax();
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getMeatMax();
 	return AiAgentImplementation::npcTemplate->getMeatMax();
 }
 
@@ -489,56 +489,58 @@ float CreatureImplementation::getMeatMax() {
 CreatureAdapter::CreatureAdapter(CreatureImplementation* obj) : AiAgentAdapter(obj) {
 }
 
+enum {RPC_ISCREATURE__ = 6,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+
 Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ISCREATURE__:
 		resp->insertBoolean(isCreature());
 		break;
-	case 7:
+	case RPC_RUNAWAY__CREATUREOBJECT_:
 		runAway((CreatureObject*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 9:
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_SCHEDULEDESPAWN__:
 		scheduleDespawn();
 		break;
-	case 11:
+	case RPC_HASORGANICS__:
 		resp->insertBoolean(hasOrganics());
 		break;
-	case 12:
+	case RPC_CANHARVESTME__CREATUREOBJECT_:
 		resp->insertBoolean(canHarvestMe((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 13:
+	case RPC_ISBABY__:
 		resp->insertBoolean(isBaby());
 		break;
-	case 14:
+	case RPC_GETTAME__:
 		resp->insertFloat(getTame());
 		break;
-	case 15:
+	case RPC_GETMEATTYPE__:
 		resp->insertAscii(getMeatType());
 		break;
-	case 16:
+	case RPC_GETBONETYPE__:
 		resp->insertAscii(getBoneType());
 		break;
-	case 17:
+	case RPC_GETHIDETYPE__:
 		resp->insertAscii(getHideType());
 		break;
-	case 18:
+	case RPC_GETMILK__:
 		resp->insertFloat(getMilk());
 		break;
-	case 19:
+	case RPC_GETHIDEMAX__:
 		resp->insertFloat(getHideMax());
 		break;
-	case 20:
+	case RPC_GETBONEMAX__:
 		resp->insertFloat(getBoneMax());
 		break;
-	case 21:
+	case RPC_GETMEATMAX__:
 		resp->insertFloat(getMeatMax());
 		break;
 	default:

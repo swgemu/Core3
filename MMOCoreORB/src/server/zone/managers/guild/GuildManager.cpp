@@ -826,80 +826,80 @@ int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv, ZoneProcessServer* proc) {
 	_initializeImplementation();
-	// server/zone/managers/guild/GuildManager.idl(82):  		Logger.setLoggingName("GuildManager");
+	// server/zone/managers/guild/GuildManager.idl():  		Logger.setLoggingName("GuildManager");
 	Logger::setLoggingName("GuildManager");
-	// server/zone/managers/guild/GuildManager.idl(83):  		Logger.setLogging(true);
+	// server/zone/managers/guild/GuildManager.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/guild/GuildManager.idl(84):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/guild/GuildManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/guild/GuildManager.idl(86):  		pendingGuilds.setNoDuplicateInsertPlan();
+	// server/zone/managers/guild/GuildManager.idl():  		pendingGuilds.setNoDuplicateInsertPlan();
 	(&pendingGuilds)->setNoDuplicateInsertPlan();
-	// server/zone/managers/guild/GuildManager.idl(88):  		sponsoredPlayers.setNoDuplicateInsertPlan();
+	// server/zone/managers/guild/GuildManager.idl():  		sponsoredPlayers.setNoDuplicateInsertPlan();
 	(&sponsoredPlayers)->setNoDuplicateInsertPlan();
-	// server/zone/managers/guild/GuildManager.idl(89):  		sponsoredPlayers.setNullValue(null);
+	// server/zone/managers/guild/GuildManager.idl():  		sponsoredPlayers.setNullValue(null);
 	(&sponsoredPlayers)->setNullValue(NULL);
-	// server/zone/managers/guild/GuildManager.idl(91):  		server = serv;
+	// server/zone/managers/guild/GuildManager.idl():  		server = serv;
 	server = serv;
-	// server/zone/managers/guild/GuildManager.idl(92):  		processor = proc;
+	// server/zone/managers/guild/GuildManager.idl():  		processor = proc;
 	processor = proc;
-	// server/zone/managers/guild/GuildManager.idl(94):  		requiredMembers = 5;
+	// server/zone/managers/guild/GuildManager.idl():  		requiredMembers = 5;
 	requiredMembers = 5;
-	// server/zone/managers/guild/GuildManager.idl(95):  		maximumMembers = 500;
+	// server/zone/managers/guild/GuildManager.idl():  		maximumMembers = 500;
 	maximumMembers = 500;
-	// server/zone/managers/guild/GuildManager.idl(96):  		guildUpdateInterval = 1440;
+	// server/zone/managers/guild/GuildManager.idl():  		guildUpdateInterval = 1440;
 	guildUpdateInterval = 1440;
 }
 
 void GuildManagerImplementation::setChatManager(ChatManager* chatmanager) {
-	// server/zone/managers/guild/GuildManager.idl(100):  		chatManager = chatmanager;
+	// server/zone/managers/guild/GuildManager.idl():  		chatManager = chatmanager;
 	chatManager = chatmanager;
 }
 
 void GuildManagerImplementation::addPendingGuild(unsigned long long playerID, const String& guildName) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(106):  		pendingGuilds.put(playerID, guildName);
+	// server/zone/managers/guild/GuildManager.idl():  		pendingGuilds.put(playerID, guildName);
 	(&pendingGuilds)->put(playerID, guildName);
 }
 
 void GuildManagerImplementation::removePendingGuild(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(110):  		pendingGuilds.drop(playerID);
+	// server/zone/managers/guild/GuildManager.idl():  		pendingGuilds.drop(playerID);
 	(&pendingGuilds)->drop(playerID);
 }
 
 String GuildManagerImplementation::getPendingGuildName(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(114):  		return pendingGuilds.get(playerID);
+	// server/zone/managers/guild/GuildManager.idl():  		return pendingGuilds.get(playerID);
 	return (&pendingGuilds)->get(playerID);
 }
 
 void GuildManagerImplementation::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(118):  		sponsoredPlayers.put(playerID, guild);
+	// server/zone/managers/guild/GuildManager.idl():  		sponsoredPlayers.put(playerID, guild);
 	(&sponsoredPlayers)->put(playerID, guild);
 }
 
 void GuildManagerImplementation::removeSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(122):  		sponsoredPlayers.drop(playerID);
+	// server/zone/managers/guild/GuildManager.idl():  		sponsoredPlayers.drop(playerID);
 	(&sponsoredPlayers)->drop(playerID);
 }
 
 bool GuildManagerImplementation::isCreatingGuild(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(126):  		return pendingGuilds.contains(playerID);
+	// server/zone/managers/guild/GuildManager.idl():  		return pendingGuilds.contains(playerID);
 	return (&pendingGuilds)->contains(playerID);
 }
 
 bool GuildManagerImplementation::isSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(130):  		return sponsoredPlayers.contains(playerID);
+	// server/zone/managers/guild/GuildManager.idl():  		return sponsoredPlayers.contains(playerID);
 	return (&sponsoredPlayers)->contains(playerID);
 }
 
 GuildObject* GuildManagerImplementation::getSponsoredGuild(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/managers/guild/GuildManager.idl(134):  		return sponsoredPlayers.get(playerID);
+	// server/zone/managers/guild/GuildManager.idl():  		return sponsoredPlayers.get(playerID);
 	return (&sponsoredPlayers)->get(playerID);
 }
 
@@ -910,128 +910,130 @@ GuildObject* GuildManagerImplementation::getSponsoredGuild(unsigned long long pl
 GuildManagerAdapter::GuildManagerAdapter(GuildManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_SETCHATMANAGER__CHATMANAGER_ = 6,RPC_SENDGUILDLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPENDINGGUILD__LONG_STRING_,RPC_REMOVEPENDINGGUILD__LONG_,RPC_GETPENDINGGUILDNAME__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_ISCREATINGGUILD__LONG_,RPC_ISSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDGUILD__LONG_,RPC_SENDBASELINESTO__PLAYERCREATURE_,RPC_LOADGUILDS__,RPC_SENDGUILDCREATENAMETO__PLAYERCREATURE_GUILDTERMINAL_,RPC_SENDGUILDCREATEABBREVTO__PLAYERCREATURE_GUILDTERMINAL_,RPC_SENDGUILDINFORMATIONTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBERLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBEROPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDDISBANDCONFIRMTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDOPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDSPONSORTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSORVERIFYTO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDGUILDKICKPROMPTTO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDGUILDSETTITLETO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDMEMBERPERMISSIONSTO__PLAYERCREATURE_LONG_GUILDTERMINAL_,RPC_VALIDATEGUILDNAME__PLAYERCREATURE_STRING_,RPC_VALIDATEGUILDABBREV__PLAYERCREATURE_STRING_,RPC_GUILDNAMEEXISTS__STRING_,RPC_GUILDABBREVEXISTS__STRING_,RPC_CREATEGUILD__PLAYERCREATURE_GUILDTERMINAL_STRING_STRING_,RPC_DISBANDGUILD__PLAYERCREATURE_GUILDOBJECT_,RPC_SPONSORPLAYER__PLAYERCREATURE_GUILDTERMINAL_STRING_,RPC_ACCEPTSPONSORSHIPREQUEST__PLAYERCREATURE_PLAYERCREATURE_,RPC_ACCEPTSPONSOREDPLAYER__PLAYERCREATURE_LONG_,RPC_KICKMEMBER__PLAYERCREATURE_PLAYERCREATURE_,RPC_LEAVEGUILD__PLAYERCREATURE_GUILDOBJECT_,RPC_SETMEMBERTITLE__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_SETALLEGIANCETO__PLAYERCREATURE_LONG_GUILDTERMINAL_,RPC_TOGGLEGUILDPERMISSION__PLAYERCREATURE_LONG_INT_GUILDTERMINAL_,RPC_CREATEGUILDCHANNELS__GUILDOBJECT_,};
+
 Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SETCHATMANAGER__CHATMANAGER_:
 		setChatManager((ChatManager*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_SENDGUILDLISTTO__PLAYERCREATURE_STRING_:
 		sendGuildListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendGuildListTo__PlayerCreature_String_));
 		break;
-	case 8:
+	case RPC_ADDPENDINGGUILD__LONG_STRING_:
 		addPendingGuild(inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param1_addPendingGuild__long_String_));
 		break;
-	case 9:
+	case RPC_REMOVEPENDINGGUILD__LONG_:
 		removePendingGuild(inv->getUnsignedLongParameter());
 		break;
-	case 10:
+	case RPC_GETPENDINGGUILDNAME__LONG_:
 		resp->insertAscii(getPendingGuildName(inv->getUnsignedLongParameter()));
 		break;
-	case 11:
+	case RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_:
 		addSponsoredPlayer(inv->getUnsignedLongParameter(), (GuildObject*) inv->getObjectParameter());
 		break;
-	case 12:
+	case RPC_REMOVESPONSOREDPLAYER__LONG_:
 		removeSponsoredPlayer(inv->getUnsignedLongParameter());
 		break;
-	case 13:
+	case RPC_ISCREATINGGUILD__LONG_:
 		resp->insertBoolean(isCreatingGuild(inv->getUnsignedLongParameter()));
 		break;
-	case 14:
+	case RPC_ISSPONSOREDPLAYER__LONG_:
 		resp->insertBoolean(isSponsoredPlayer(inv->getUnsignedLongParameter()));
 		break;
-	case 15:
+	case RPC_GETSPONSOREDGUILD__LONG_:
 		resp->insertLong(getSponsoredGuild(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case 16:
+	case RPC_SENDBASELINESTO__PLAYERCREATURE_:
 		sendBaselinesTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_LOADGUILDS__:
 		loadGuilds();
 		break;
-	case 18:
+	case RPC_SENDGUILDCREATENAMETO__PLAYERCREATURE_GUILDTERMINAL_:
 		sendGuildCreateNameTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 19:
+	case RPC_SENDGUILDCREATEABBREVTO__PLAYERCREATURE_GUILDTERMINAL_:
 		sendGuildCreateAbbrevTo((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 20:
+	case RPC_SENDGUILDINFORMATIONTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_:
 		sendGuildInformationTo((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 21:
+	case RPC_SENDGUILDMEMBERLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_:
 		sendGuildMemberListTo((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_SENDGUILDMEMBEROPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_:
 		sendGuildMemberOptionsTo((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 23:
+	case RPC_SENDGUILDDISBANDCONFIRMTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_:
 		sendGuildDisbandConfirmTo((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 24:
+	case RPC_SENDGUILDSPONSOREDLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_:
 		sendGuildSponsoredListTo((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 25:
+	case RPC_SENDGUILDSPONSOREDOPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_:
 		sendGuildSponsoredOptionsTo((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 26:
+	case RPC_SENDGUILDSPONSORTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_:
 		sendGuildSponsorTo((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 27:
+	case RPC_SENDGUILDSPONSORVERIFYTO__PLAYERCREATURE_PLAYERCREATURE_:
 		sendGuildSponsorVerifyTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 28:
+	case RPC_SENDGUILDKICKPROMPTTO__PLAYERCREATURE_PLAYERCREATURE_:
 		sendGuildKickPromptTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 29:
+	case RPC_SENDGUILDSETTITLETO__PLAYERCREATURE_PLAYERCREATURE_:
 		sendGuildSetTitleTo((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 30:
+	case RPC_SENDMEMBERPERMISSIONSTO__PLAYERCREATURE_LONG_GUILDTERMINAL_:
 		sendMemberPermissionsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 31:
+	case RPC_VALIDATEGUILDNAME__PLAYERCREATURE_STRING_:
 		resp->insertBoolean(validateGuildName((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildName__PlayerCreature_String_)));
 		break;
-	case 32:
+	case RPC_VALIDATEGUILDABBREV__PLAYERCREATURE_STRING_:
 		resp->insertBoolean(validateGuildAbbrev((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_validateGuildAbbrev__PlayerCreature_String_)));
 		break;
-	case 33:
+	case RPC_GUILDNAMEEXISTS__STRING_:
 		resp->insertBoolean(guildNameExists(inv->getAsciiParameter(_param0_guildNameExists__String_)));
 		break;
-	case 34:
+	case RPC_GUILDABBREVEXISTS__STRING_:
 		resp->insertBoolean(guildAbbrevExists(inv->getAsciiParameter(_param0_guildAbbrevExists__String_)));
 		break;
-	case 35:
+	case RPC_CREATEGUILD__PLAYERCREATURE_GUILDTERMINAL_STRING_STRING_:
 		resp->insertLong(createGuild((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_createGuild__PlayerCreature_GuildTerminal_String_String_), inv->getAsciiParameter(_param3_createGuild__PlayerCreature_GuildTerminal_String_String_))->_getObjectID());
 		break;
-	case 36:
+	case RPC_DISBANDGUILD__PLAYERCREATURE_GUILDOBJECT_:
 		resp->insertBoolean(disbandGuild((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter()));
 		break;
-	case 37:
+	case RPC_SPONSORPLAYER__PLAYERCREATURE_GUILDTERMINAL_STRING_:
 		sponsorPlayer((PlayerCreature*) inv->getObjectParameter(), (GuildTerminal*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_sponsorPlayer__PlayerCreature_GuildTerminal_String_));
 		break;
-	case 38:
+	case RPC_ACCEPTSPONSORSHIPREQUEST__PLAYERCREATURE_PLAYERCREATURE_:
 		acceptSponsorshipRequest((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 39:
+	case RPC_ACCEPTSPONSOREDPLAYER__PLAYERCREATURE_LONG_:
 		acceptSponsoredPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 40:
+	case RPC_KICKMEMBER__PLAYERCREATURE_PLAYERCREATURE_:
 		kickMember((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 41:
+	case RPC_LEAVEGUILD__PLAYERCREATURE_GUILDOBJECT_:
 		leaveGuild((PlayerCreature*) inv->getObjectParameter(), (GuildObject*) inv->getObjectParameter());
 		break;
-	case 42:
+	case RPC_SETMEMBERTITLE__PLAYERCREATURE_PLAYERCREATURE_STRING_:
 		setMemberTitle((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_setMemberTitle__PlayerCreature_PlayerCreature_String_));
 		break;
-	case 43:
+	case RPC_SETALLEGIANCETO__PLAYERCREATURE_LONG_GUILDTERMINAL_:
 		setAllegianceTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 44:
+	case RPC_TOGGLEGUILDPERMISSION__PLAYERCREATURE_LONG_INT_GUILDTERMINAL_:
 		toggleGuildPermission((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), (GuildTerminal*) inv->getObjectParameter());
 		break;
-	case 45:
+	case RPC_CREATEGUILDCHANNELS__GUILDOBJECT_:
 		resp->insertLong(createGuildChannels((GuildObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	default:

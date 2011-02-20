@@ -405,20 +405,20 @@ int TrainerCreatureImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 TrainerCreatureImplementation::TrainerCreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(68):  		Logger.setLoggingName("TrainerCreature");
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		Logger.setLoggingName("TrainerCreature");
 	Logger::setLoggingName("TrainerCreature");
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(70):  		profession.setProfession(null);
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		profession.setProfession(null);
 	(&profession)->setProfession(NULL);
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(71):  		trainerID = 0;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		trainerID = 0;
 	trainerID = 0;
 }
 
 void TrainerCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(76):  		super.loadTemplateData(templateData);
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		super.loadTemplateData(templateData);
 	CreatureObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(78):  		super.optionsBitmask = 0x108;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		super.optionsBitmask = 0x108;
 	CreatureObjectImplementation::optionsBitmask = 0x108;
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(79):  		super.pvpStatusBitmask = 0;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		super.pvpStatusBitmask = 0;
 	CreatureObjectImplementation::pvpStatusBitmask = 0;
 }
 
@@ -426,37 +426,37 @@ void TrainerCreatureImplementation::activateRecovery() {
 }
 
 void TrainerCreatureImplementation::setTrainerID(int id) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(136):  		trainerID = id;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		trainerID = id;
 	trainerID = id;
 }
 
 void TrainerCreatureImplementation::setProfession(Profession* prof) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(141):  		profession.setProfession(prof);
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		profession.setProfession(prof);
 	(&profession)->setProfession(prof);
 }
 
 int TrainerCreatureImplementation::getTrainerID() {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(145):  		return trainerID;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		return trainerID;
 	return trainerID;
 }
 
 String TrainerCreatureImplementation::getLocation() {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(149):  		return location;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		return location;
 	return location;
 }
 
 void TrainerCreatureImplementation::setLocation(const String& loc) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(153):  		location = loc;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		location = loc;
 	location = loc;
 }
 
 bool TrainerCreatureImplementation::isTrainerCreature() {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(157):  		return true;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		return true;
 	return true;
 }
 
 bool TrainerCreatureImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/trainer/TrainerCreature.idl(161):  		return false;
+	// server/zone/objects/creature/trainer/TrainerCreature.idl():  		return false;
 	return false;
 }
 
@@ -467,50 +467,52 @@ bool TrainerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 TrainerCreatureAdapter::TrainerCreatureAdapter(TrainerCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
 }
 
+enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__PLAYERCREATURE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDSKILLBOXES__PLAYERCREATURE_BOOL_,RPC_SENDSKILLBOXLIST__PLAYERCREATURE_BOOL_,RPC_SENDCONFIRMATION__PLAYERCREATURE_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SETTRAINERID__INT_,RPC_GETTRAINERID__,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISTRAINERCREATURE__,RPC_ISATTACKABLEBY__CREATUREOBJECT_};
+
 Packet* TrainerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ACTIVATERECOVERY__:
 		activateRecovery();
 		break;
-	case 7:
+	case RPC_SENDINITIALMESSAGE__PLAYERCREATURE_:
 		sendInitialMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_SENDINITIALCHOICES__PLAYERCREATURE_:
 		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
 		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_SENDSKILLBOXES__PLAYERCREATURE_BOOL_:
 		sendSkillBoxes((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 11:
+	case RPC_SENDSKILLBOXLIST__PLAYERCREATURE_BOOL_:
 		sendSkillBoxList((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 12:
+	case RPC_SENDCONFIRMATION__PLAYERCREATURE_:
 		sendConfirmation((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_SETTRAINERID__INT_:
 		setTrainerID(inv->getSignedIntParameter());
 		break;
-	case 15:
+	case RPC_GETTRAINERID__:
 		resp->insertSignedInt(getTrainerID());
 		break;
-	case 16:
+	case RPC_GETLOCATION__:
 		resp->insertAscii(getLocation());
 		break;
-	case 17:
+	case RPC_SETLOCATION__STRING_:
 		setLocation(inv->getAsciiParameter(_param0_setLocation__String_));
 		break;
-	case 18:
+	case RPC_ISTRAINERCREATURE__:
 		resp->insertBoolean(isTrainerCreature());
 		break;
-	case 19:
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	default:

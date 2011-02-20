@@ -391,75 +391,75 @@ int ResourceContainerImplementation::writeObjectMembers(ObjectOutputStream* stre
 
 ResourceContainerImplementation::ResourceContainerImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/resource/ResourceContainer.idl(65):   	stackQuantity = 0;
+	// server/zone/objects/resource/ResourceContainer.idl():   	stackQuantity = 0;
 	stackQuantity = 0;
-	// server/zone/objects/resource/ResourceContainer.idl(67):   	setLoggingName("ResourceContainer");
+	// server/zone/objects/resource/ResourceContainer.idl():   	setLoggingName("ResourceContainer");
 	setLoggingName("ResourceContainer");
 }
 
 void ResourceContainerImplementation::initializeTransientMembers() {
-	// server/zone/objects/resource/ResourceContainer.idl(71):  		super.initializeTransientMembers();
+	// server/zone/objects/resource/ResourceContainer.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/resource/ResourceContainer.idl(73):  		Logger.setLoggingName("ResourceContainer");
+	// server/zone/objects/resource/ResourceContainer.idl():  		Logger.setLoggingName("ResourceContainer");
 	Logger::setLoggingName("ResourceContainer");
 }
 
 bool ResourceContainerImplementation::isResourceContainer() {
-	// server/zone/objects/resource/ResourceContainer.idl(105):  		return true;
+	// server/zone/objects/resource/ResourceContainer.idl():  		return true;
 	return true;
 }
 
 int ResourceContainerImplementation::getQuantity() {
-	// server/zone/objects/resource/ResourceContainer.idl(109):  		return stackQuantity;
+	// server/zone/objects/resource/ResourceContainer.idl():  		return stackQuantity;
 	return stackQuantity;
 }
 
 int ResourceContainerImplementation::getUseCount() {
-	// server/zone/objects/resource/ResourceContainer.idl(113):  		return getQuantity();
+	// server/zone/objects/resource/ResourceContainer.idl():  		return getQuantity();
 	return getQuantity();
 }
 
 void ResourceContainerImplementation::setSpawnObject(ResourceSpawn* spawn) {
-	// server/zone/objects/resource/ResourceContainer.idl(117):  		spawnObject = spawn;
+	// server/zone/objects/resource/ResourceContainer.idl():  		spawnObject = spawn;
 	spawnObject = spawn;
 }
 
 String ResourceContainerImplementation::getSpawnName() {
 	String ret;
-	// server/zone/objects/resource/ResourceContainer.idl(123):  		return 
+	// server/zone/objects/resource/ResourceContainer.idl():  		return 
 	if (spawnObject != NULL){
-	// server/zone/objects/resource/ResourceContainer.idl(124):  			ret = spawnObject.getName();
+	// server/zone/objects/resource/ResourceContainer.idl():  			ret = spawnObject.getName();
 	ret = spawnObject->getName();
 }
-	// server/zone/objects/resource/ResourceContainer.idl(127):  ret;
+	// server/zone/objects/resource/ResourceContainer.idl():  		return ret;
 	return ret;
 }
 
 String ResourceContainerImplementation::getSpawnType() {
 	String ret;
-	// server/zone/objects/resource/ResourceContainer.idl(133):  		return 
+	// server/zone/objects/resource/ResourceContainer.idl():  		return 
 	if (spawnObject != NULL){
-	// server/zone/objects/resource/ResourceContainer.idl(134):  			ret = spawnObject.getType();
+	// server/zone/objects/resource/ResourceContainer.idl():  			ret = spawnObject.getType();
 	ret = spawnObject->getType();
 }
-	// server/zone/objects/resource/ResourceContainer.idl(137):  ret;
+	// server/zone/objects/resource/ResourceContainer.idl():  		return ret;
 	return ret;
 }
 
 unsigned long long ResourceContainerImplementation::getSpawnID() {
-	// server/zone/objects/resource/ResourceContainer.idl(141):  		unsigned long id = 0;
+	// server/zone/objects/resource/ResourceContainer.idl():  		unsigned long id = 0;
 	unsigned long long id = 0;
-	// server/zone/objects/resource/ResourceContainer.idl(143):  		return 
+	// server/zone/objects/resource/ResourceContainer.idl():  		return 
 	if (spawnObject != NULL){
-	// server/zone/objects/resource/ResourceContainer.idl(144):  			id = spawnObject.getObjectID();
+	// server/zone/objects/resource/ResourceContainer.idl():  			id = spawnObject.getObjectID();
 	id = spawnObject->getObjectID();
 }
-	// server/zone/objects/resource/ResourceContainer.idl(147):  id;
+	// server/zone/objects/resource/ResourceContainer.idl():  		return id;
 	return id;
 }
 
 ResourceSpawn* ResourceContainerImplementation::getSpawnObject() {
-	// server/zone/objects/resource/ResourceContainer.idl(151):  		return spawnObject;
+	// server/zone/objects/resource/ResourceContainer.idl():  		return spawnObject;
 	return spawnObject;
 }
 
@@ -470,53 +470,55 @@ ResourceSpawn* ResourceContainerImplementation::getSpawnObject() {
 ResourceContainerAdapter::ResourceContainerAdapter(ResourceContainerImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETQUANTITY__INT_BOOL_,RPC_ISRESOURCECONTAINER__,RPC_GETQUANTITY__,RPC_GETUSECOUNT__,RPC_SETSPAWNOBJECT__RESOURCESPAWN_,RPC_GETSPAWNNAME__,RPC_GETSPAWNTYPE__,RPC_GETSPAWNID__,RPC_GETSPAWNOBJECT__,RPC_SPLIT__INT_,RPC_SPLIT__INT_PLAYERCREATURE_,RPC_COMBINE__RESOURCECONTAINER_};
+
 Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case 8:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SETQUANTITY__INT_BOOL_:
 		setQuantity(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 10:
+	case RPC_ISRESOURCECONTAINER__:
 		resp->insertBoolean(isResourceContainer());
 		break;
-	case 11:
+	case RPC_GETQUANTITY__:
 		resp->insertSignedInt(getQuantity());
 		break;
-	case 12:
+	case RPC_GETUSECOUNT__:
 		resp->insertSignedInt(getUseCount());
 		break;
-	case 13:
+	case RPC_SETSPAWNOBJECT__RESOURCESPAWN_:
 		setSpawnObject((ResourceSpawn*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_GETSPAWNNAME__:
 		resp->insertAscii(getSpawnName());
 		break;
-	case 15:
+	case RPC_GETSPAWNTYPE__:
 		resp->insertAscii(getSpawnType());
 		break;
-	case 16:
+	case RPC_GETSPAWNID__:
 		resp->insertLong(getSpawnID());
 		break;
-	case 17:
+	case RPC_GETSPAWNOBJECT__:
 		resp->insertLong(getSpawnObject()->_getObjectID());
 		break;
-	case 18:
+	case RPC_SPLIT__INT_:
 		split(inv->getSignedIntParameter());
 		break;
-	case 19:
+	case RPC_SPLIT__INT_PLAYERCREATURE_:
 		split(inv->getSignedIntParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 20:
+	case RPC_COMBINE__RESOURCECONTAINER_:
 		combine((ResourceContainer*) inv->getObjectParameter());
 		break;
 	default:

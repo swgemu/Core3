@@ -705,50 +705,50 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 CraftingToolImplementation::CraftingToolImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(95):  		Logger.setLoggingName("CraftingTool");
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		Logger.setLoggingName("CraftingTool");
 	Logger::setLoggingName("CraftingTool");
-	// server/zone/objects/tangible/tool/CraftingTool.idl(96):  		status = "@crafting:tool_status_ready";
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		status = "@crafting:tool_status_ready";
 	status = "@crafting:tool_status_ready";
-	// server/zone/objects/tangible/tool/CraftingTool.idl(97):  		state = 1;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		state = 1;
 	state = 1;
-	// server/zone/objects/tangible/tool/CraftingTool.idl(98):  		effectiveness = -15;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		effectiveness = -15;
 	effectiveness = -15;
 }
 
 void CraftingToolImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(102):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		super.initializeTransientMembers();
 	ToolTangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/CraftingTool.idl(103):  		lastExperimentationTimestamp = 0;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		lastExperimentationTimestamp = 0;
 	lastExperimentationTimestamp = 0;
 }
 
 bool CraftingToolImplementation::isCraftingTool() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(133):  		return true;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return true;
 	return true;
 }
 
 bool CraftingToolImplementation::isReady() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(137):  		return status == "@crafting:tool_status_ready";
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return status == "@crafting:tool_status_ready";
 	return status == "@crafting:tool_status_ready";
 }
 
 int CraftingToolImplementation::getToolType() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(141):  		return type;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return type;
 	return type;
 }
 
 ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(147):  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
 	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
 }
 
 unsigned long long CraftingToolImplementation::getLastExperimentationTimestamp() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(214):  		return lastExperimentationTimestamp;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return lastExperimentationTimestamp;
 	return lastExperimentationTimestamp;
 }
 
 int CraftingToolImplementation::getExperimentationResult() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl(218):  		return experimentationResult;
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return experimentationResult;
 	return experimentationResult;
 }
 
@@ -759,89 +759,91 @@ int CraftingToolImplementation::getExperimentationResult() {
 CraftingToolAdapter::CraftingToolAdapter(CraftingToolImplementation* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__PLAYERCREATURE_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__PLAYERCREATURE_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__PLAYERCREATURE_INT_,RPC_CREATESESSIONOBJECTS__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__PLAYERCREATURE_,RPC_ADDINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__PLAYERCREATURE_INT_,RPC_EXPERIMENT__PLAYERCREATURE_INT_STRING_INT_,RPC_CUSTOMIZATION__PLAYERCREATURE_STRING_INT_STRING_,RPC_CREATEPROTOTYPE__PLAYERCREATURE_INT_INT_,RPC_CREATEMANFSCHEMATIC__PLAYERCREATURE_INT_,RPC_CREATEOBJECT__PLAYERCREATURE_INT_BOOL_,RPC_DEPOSITOBJECT__PLAYERCREATURE_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
+
 Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_ISCRAFTINGTOOL__:
 		resp->insertBoolean(isCraftingTool());
 		break;
-	case 10:
+	case RPC_ISREADY__:
 		resp->insertBoolean(isReady());
 		break;
-	case 11:
+	case RPC_GETTOOLTYPE__:
 		resp->insertSignedInt(getToolType());
 		break;
-	case 12:
+	case RPC_GETPROTOTYPE__:
 		resp->insertLong(getPrototype()->_getObjectID());
 		break;
-	case 13:
+	case RPC_GETMANUFACTURESCHEMATIC__:
 		resp->insertLong(getManufactureSchematic()->_getObjectID());
 		break;
-	case 14:
+	case RPC_REQUESTCRAFTINGSESSION__PLAYERCREATURE_CRAFTINGSTATION_:
 		requestCraftingSession((PlayerCreature*) inv->getObjectParameter(), (CraftingStation*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_CANCELCRAFTINGSESSION__PLAYERCREATURE_:
 		cancelCraftingSession((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_CLEARCRAFTINGSESSION__:
 		clearCraftingSession();
 		break;
-	case 17:
+	case RPC_SELECTDRAFTSCHEMATIC__PLAYERCREATURE_INT_:
 		selectDraftSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 18:
+	case RPC_CREATESESSIONOBJECTS__PLAYERCREATURE_DRAFTSCHEMATIC_:
 		resp->insertBoolean(createSessionObjects((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
 		break;
-	case 19:
+	case RPC_CREATEMANUFACTURESCHEMATIC__PLAYERCREATURE_DRAFTSCHEMATIC_:
 		resp->insertBoolean(createManufactureSchematic((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
 		break;
-	case 20:
+	case RPC_CREATEPROTOTYPE__PLAYERCREATURE_DRAFTSCHEMATIC_:
 		resp->insertBoolean(createPrototype((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
 		break;
-	case 21:
+	case RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__PLAYERCREATURE_:
 		synchronizedUIListenForSchematic((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_ADDINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_:
 		addIngredient((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 23:
+	case RPC_REMOVEINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_:
 		removeIngredient((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 24:
+	case RPC_NEXTCRAFTINGSTAGE__PLAYERCREATURE_INT_:
 		nextCraftingStage((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 25:
+	case RPC_EXPERIMENT__PLAYERCREATURE_INT_STRING_INT_:
 		experiment((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_experiment__PlayerCreature_int_String_int_), inv->getSignedIntParameter());
 		break;
-	case 26:
+	case RPC_CUSTOMIZATION__PLAYERCREATURE_STRING_INT_STRING_:
 		customization((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__PlayerCreature_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__PlayerCreature_String_int_String_));
 		break;
-	case 27:
+	case RPC_CREATEPROTOTYPE__PLAYERCREATURE_INT_INT_:
 		createPrototype((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 28:
+	case RPC_CREATEMANFSCHEMATIC__PLAYERCREATURE_INT_:
 		createManfSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 29:
+	case RPC_CREATEOBJECT__PLAYERCREATURE_INT_BOOL_:
 		createObject((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 30:
+	case RPC_DEPOSITOBJECT__PLAYERCREATURE_BOOL_:
 		depositObject((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 31:
+	case RPC_GETLASTEXPERIMENTATIONTIMESTAMP__:
 		resp->insertLong(getLastExperimentationTimestamp());
 		break;
-	case 32:
+	case RPC_GETEXPERIMENTATIONRESULT__:
 		resp->insertSignedInt(getExperimentationResult());
 		break;
 	default:

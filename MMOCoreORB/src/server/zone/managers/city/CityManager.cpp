@@ -432,34 +432,34 @@ int CityManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 CityManagerImplementation::CityManagerImplementation(Zone* zne) {
 	_initializeImplementation();
-	// server/zone/managers/city/CityManager.idl(84):  		Logger.setLoggingName("CityManager");
+	// server/zone/managers/city/CityManager.idl():  		Logger.setLoggingName("CityManager");
 	Logger::setLoggingName("CityManager");
-	// server/zone/managers/city/CityManager.idl(85):  		Logger.setLogging(false);
+	// server/zone/managers/city/CityManager.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/managers/city/CityManager.idl(86):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/city/CityManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/city/CityManager.idl(88):  		zone = zne;
+	// server/zone/managers/city/CityManager.idl():  		zone = zne;
 	zone = zne;
-	// server/zone/managers/city/CityManager.idl(90):  		cities.setNullValue(null);
+	// server/zone/managers/city/CityManager.idl():  		cities.setNullValue(null);
 	(&cities)->setNullValue(NULL);
-	// server/zone/managers/city/CityManager.idl(91):  		cities.setInsertPlan(3);
+	// server/zone/managers/city/CityManager.idl():  		cities.setInsertPlan(3);
 	(&cities)->setInsertPlan(3);
 }
 
 byte CityManagerImplementation::getCitiesAllowed(byte rank) {
-	// server/zone/managers/city/CityManager.idl(197):  		return citiesAllowedPerRank.get(rank);
+	// server/zone/managers/city/CityManager.idl():  		return citiesAllowedPerRank.get(rank);
 	return (&citiesAllowedPerRank)->get(rank);
 }
 
 void CityManagerImplementation::addCity(CityHallObject* city) {
 	Locker _locker(_this);
-	// server/zone/managers/city/CityManager.idl(205):  		cities.put(city.getObjectID(), city);
+	// server/zone/managers/city/CityManager.idl():  		cities.put(city.getObjectID(), city);
 	(&cities)->put(city->getObjectID(), city);
 }
 
 int CityManagerImplementation::getTotalCities() {
 	Locker _locker(_this);
-	// server/zone/managers/city/CityManager.idl(209):  		return cities.size();
+	// server/zone/managers/city/CityManager.idl():  		return cities.size();
 	return (&cities)->size();
 }
 
@@ -470,56 +470,58 @@ int CityManagerImplementation::getTotalCities() {
 CityManagerAdapter::CityManagerAdapter(CityManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_LOADLUACONFIG__ = 6,RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_CHANGECITYNAME__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_VALIDATECITYNAME__STRING_,RPC_HANDLECITYADVANCEMENT__CITYHALLOBJECT_,RPC_EXPANDCITY__CITYHALLOBJECT_,RPC_CONTRACTCITY__CITYHALLOBJECT_,RPC_DESTROYCITY__CITYHALLOBJECT_,RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_,RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_,RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_LONG_,RPC_CHECKCITIESCAPPEDATRANK__BYTE_,RPC_GETCITIESALLOWED__BYTE_,RPC_ADDCITY__CITYHALLOBJECT_,RPC_GETTOTALCITIES__};
+
 Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_LOADLUACONFIG__:
 		loadLuaConfig();
 		break;
-	case 7:
+	case RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_STRING_:
 		createNewCity((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_createNewCity__CityHallObject_PlayerCreature_String_));
 		break;
-	case 8:
+	case RPC_CHANGECITYNAME__CITYHALLOBJECT_PLAYERCREATURE_STRING_:
 		changeCityName((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_changeCityName__CityHallObject_PlayerCreature_String_));
 		break;
-	case 9:
+	case RPC_VALIDATECITYNAME__STRING_:
 		resp->insertBoolean(validateCityName(inv->getAsciiParameter(_param0_validateCityName__String_)));
 		break;
-	case 10:
+	case RPC_HANDLECITYADVANCEMENT__CITYHALLOBJECT_:
 		handleCityAdvancement((CityHallObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_EXPANDCITY__CITYHALLOBJECT_:
 		expandCity((CityHallObject*) inv->getObjectParameter());
 		break;
-	case 12:
+	case RPC_CONTRACTCITY__CITYHALLOBJECT_:
 		contractCity((CityHallObject*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_DESTROYCITY__CITYHALLOBJECT_:
 		destroyCity((CityHallObject*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_:
 		declareCitizenship((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 15:
+	case RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_:
 		revokeCitizenship((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 16:
+	case RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_STRING_:
 		addMilitiaMember((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addMilitiaMember__CityHallObject_PlayerCreature_String_));
 		break;
-	case 17:
+	case RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_LONG_:
 		removeMilitiaMember((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 18:
+	case RPC_CHECKCITIESCAPPEDATRANK__BYTE_:
 		resp->insertBoolean(checkCitiesCappedAtRank(inv->getByteParameter()));
 		break;
-	case 19:
+	case RPC_GETCITIESALLOWED__BYTE_:
 		resp->insertByte(getCitiesAllowed(inv->getByteParameter()));
 		break;
-	case 20:
+	case RPC_ADDCITY__CITYHALLOBJECT_:
 		addCity((CityHallObject*) inv->getObjectParameter());
 		break;
-	case 21:
+	case RPC_GETTOTALCITIES__:
 		resp->insertSignedInt(getTotalCities());
 		break;
 	default:

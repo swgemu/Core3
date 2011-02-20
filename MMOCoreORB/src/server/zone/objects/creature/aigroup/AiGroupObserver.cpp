@@ -180,18 +180,18 @@ int AiGroupObserverImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 AiGroupObserverImplementation::AiGroupObserverImplementation(AiGroup* group) {
 	_initializeImplementation();
-	// server/zone/objects/creature/aigroup/AiGroupObserver.idl(56):  		aiGroup = group;
+	// server/zone/objects/creature/aigroup/AiGroupObserver.idl():  		aiGroup = group;
 	aiGroup = group;
-	// server/zone/objects/creature/aigroup/AiGroupObserver.idl(58):  		Logger.setLoggingName("AiGroupObserver");
+	// server/zone/objects/creature/aigroup/AiGroupObserver.idl():  		Logger.setLoggingName("AiGroupObserver");
 	Logger::setLoggingName("AiGroupObserver");
 }
 
 int AiGroupObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/creature/aigroup/AiGroupObserver.idl(62):  
-	if (aiGroup == NULL)	// server/zone/objects/creature/aigroup/AiGroupObserver.idl(63):  			return 0;
+	// server/zone/objects/creature/aigroup/AiGroupObserver.idl():  			return aiGroup.notifyObserverEvent(eventType, observable, arg1, arg2);
+	if (aiGroup == NULL)	// server/zone/objects/creature/aigroup/AiGroupObserver.idl():  			return 0;
 	return 0;
 
-	else 	// server/zone/objects/creature/aigroup/AiGroupObserver.idl(65):  			return aiGroup.notifyObserverEvent(eventType, observable, arg1, arg2);
+	else 	// server/zone/objects/creature/aigroup/AiGroupObserver.idl():  			return aiGroup.notifyObserverEvent(eventType, observable, arg1, arg2);
 	return aiGroup->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
@@ -202,11 +202,13 @@ int AiGroupObserverImplementation::notifyObserverEvent(unsigned int eventType, O
 AiGroupObserverAdapter::AiGroupObserverAdapter(AiGroupObserverImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 Packet* AiGroupObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:

@@ -282,36 +282,36 @@ int InstallationDeedImplementation::writeObjectMembers(ObjectOutputStream* strea
 
 InstallationDeedImplementation::InstallationDeedImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(58):  		Logger.setLoggingName("InstallationDeed");
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		Logger.setLoggingName("InstallationDeed");
 	Logger::setLoggingName("InstallationDeed");
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(60):  		surplusMaintenance = 0;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		surplusMaintenance = 0;
 	surplusMaintenance = 0;
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(61):  		surplusPower = 0;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		surplusPower = 0;
 	surplusPower = 0;
 }
 
 void InstallationDeedImplementation::setSurplusMaintenance(unsigned int surplusMaint) {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(78):  		surplusMaintenance = surplusMaint;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		surplusMaintenance = surplusMaint;
 	surplusMaintenance = surplusMaint;
 }
 
 unsigned int InstallationDeedImplementation::getSurplusMaintenance() {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(82):  		return surplusMaintenance;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		return surplusMaintenance;
 	return surplusMaintenance;
 }
 
 unsigned int InstallationDeedImplementation::getSurplusPower() {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(86):  		return surplusPower;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		return surplusPower;
 	return surplusPower;
 }
 
 void InstallationDeedImplementation::setSurplusPower(unsigned int power) {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(90):  		surplusPower = power;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		surplusPower = power;
 	surplusPower = power;
 }
 
 bool InstallationDeedImplementation::isInstallationDeed() {
-	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl(94):  		return true;
+	// server/zone/objects/tangible/deed/installation/InstallationDeed.idl():  		return true;
 	return true;
 }
 
@@ -322,29 +322,31 @@ bool InstallationDeedImplementation::isInstallationDeed() {
 InstallationDeedAdapter::InstallationDeedAdapter(InstallationDeedImplementation* obj) : DeedAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__};
+
 Packet* InstallationDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getUnsignedIntParameter());
 		break;
-	case 9:
+	case RPC_GETSURPLUSMAINTENANCE__:
 		resp->insertInt(getSurplusMaintenance());
 		break;
-	case 10:
+	case RPC_GETSURPLUSPOWER__:
 		resp->insertInt(getSurplusPower());
 		break;
-	case 11:
+	case RPC_SETSURPLUSPOWER__INT_:
 		setSurplusPower(inv->getUnsignedIntParameter());
 		break;
-	case 12:
+	case RPC_ISINSTALLATIONDEED__:
 		resp->insertBoolean(isInstallationDeed());
 		break;
 	default:

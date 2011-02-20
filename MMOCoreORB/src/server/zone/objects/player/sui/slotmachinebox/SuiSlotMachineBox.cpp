@@ -178,12 +178,12 @@ int SuiSlotMachineBoxImplementation::writeObjectMembers(ObjectOutputStream* stre
 
 SuiSlotMachineBoxImplementation::SuiSlotMachineBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBoxImplementation(player, windowType, listBoxType) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.idl(65):  		payoutBoxID = payoutBox;
+	// server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.idl():  		payoutBoxID = payoutBox;
 	payoutBoxID = payoutBox;
 }
 
 unsigned int SuiSlotMachineBoxImplementation::getPayoutBoxID() {
-	// server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.idl(69):  		return payoutBoxID;
+	// server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.idl():  		return payoutBoxID;
 	return payoutBoxID;
 }
 
@@ -194,11 +194,13 @@ unsigned int SuiSlotMachineBoxImplementation::getPayoutBoxID() {
 SuiSlotMachineBoxAdapter::SuiSlotMachineBoxAdapter(SuiSlotMachineBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
 
+enum {RPC_GETPAYOUTBOXID__ = 6};
+
 Packet* SuiSlotMachineBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GETPAYOUTBOXID__:
 		resp->insertInt(getPayoutBoxID());
 		break;
 	default:

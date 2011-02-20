@@ -272,23 +272,23 @@ int ShuttleInstallationImplementation::writeObjectMembers(ObjectOutputStream* st
 
 ShuttleInstallationImplementation::ShuttleInstallationImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(70):  		setLoggingName("ShuttleInstallation");
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		setLoggingName("ShuttleInstallation");
 	setLoggingName("ShuttleInstallation");
 }
 
 void ShuttleInstallationImplementation::insertToZone(Zone* zone) {
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(80):  		super.insertToZone(zone);
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		super.insertToZone(zone);
 	InstallationObjectImplementation::insertToZone(zone);
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(82):  		spawnShuttleObjects();
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		spawnShuttleObjects();
 	spawnShuttleObjects();
 }
 
 void ShuttleInstallationImplementation::removeFromZone() {
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(86):  		despawnShuttleObjects();
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		despawnShuttleObjects();
 	despawnShuttleObjects();
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(88):  		super.removeFromZone();
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		super.removeFromZone();
 	InstallationObjectImplementation::removeFromZone();
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl(90):  		updateToDatabaseWithoutChildren();
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		updateToDatabaseWithoutChildren();
 	updateToDatabaseWithoutChildren();
 }
 
@@ -299,23 +299,25 @@ void ShuttleInstallationImplementation::removeFromZone() {
 ShuttleInstallationAdapter::ShuttleInstallationAdapter(ShuttleInstallationImplementation* obj) : InstallationObjectAdapter(obj) {
 }
 
+enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_SPAWNSHUTTLEOBJECTS__,RPC_DESPAWNSHUTTLEOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_};
+
 Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INSERTTOZONE__ZONE_:
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_REMOVEFROMZONE__:
 		removeFromZone();
 		break;
-	case 8:
+	case RPC_SPAWNSHUTTLEOBJECTS__:
 		spawnShuttleObjects();
 		break;
-	case 9:
+	case RPC_DESPAWNSHUTTLEOBJECTS__:
 		despawnShuttleObjects();
 		break;
-	case 10:
+	case RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_:
 		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	default:

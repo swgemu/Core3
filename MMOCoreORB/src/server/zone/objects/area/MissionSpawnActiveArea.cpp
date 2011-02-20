@@ -193,40 +193,40 @@ int MissionSpawnActiveAreaImplementation::writeObjectMembers(ObjectOutputStream*
 
 MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(57):  		destroyMissionObjective = null;
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  		destroyMissionObjective = null;
 	destroyMissionObjective = NULL;
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(59):  		Logger.setLoggingName("MissionSpawnActiveArea");
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  		Logger.setLoggingName("MissionSpawnActiveArea");
 	Logger::setLoggingName("MissionSpawnActiveArea");
 }
 
 void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(65):  
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  		}
 	if (!player->isPlayerCreature()){
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(66):  			return;
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			return;
 	return;
 }
 
 	else {
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(68):  
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			}
 	if (destroyMissionObjective != NULL){
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(71):  				PlayerCreature missionOwner = destroyMissionObjective.getPlayerOwner();
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				PlayerCreature missionOwner = destroyMissionObjective.getPlayerOwner();
 	PlayerCreature* missionOwner = destroyMissionObjective->getPlayerOwner();
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(73):  			}
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			}
 	if ((PlayerCreature*) player == missionOwner){
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(75):  					destroyMissionObjective.spawnLair();
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  					destroyMissionObjective.spawnLair();
 	destroyMissionObjective->spawnLair();
 }
 }
 
 	else {
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(80):  				super.removeFromZone();
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				super.removeFromZone();
 	ActiveAreaImplementation::removeFromZone();
 }
 }
 }
 
 void MissionSpawnActiveAreaImplementation::setMissionObjective(DestroyMissionObjective* mission) {
-	// server/zone/objects/area/MissionSpawnActiveArea.idl(86):  		destroyMissionObjective = mission;
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  		destroyMissionObjective = mission;
 	destroyMissionObjective = mission;
 }
 
@@ -237,14 +237,16 @@ void MissionSpawnActiveAreaImplementation::setMissionObjective(DestroyMissionObj
 MissionSpawnActiveAreaAdapter::MissionSpawnActiveAreaAdapter(MissionSpawnActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETMISSIONOBJECTIVE__DESTROYMISSIONOBJECTIVE_};
+
 Packet* MissionSpawnActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_SETMISSIONOBJECTIVE__DESTROYMISSIONOBJECTIVE_:
 		setMissionObjective((DestroyMissionObjective*) inv->getObjectParameter());
 		break;
 	default:

@@ -281,70 +281,70 @@ int BazaarAuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stre
 
 BazaarAuctionsMapImplementation::BazaarAuctionsMapImplementation() {
 	_initializeImplementation();
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(59):  		auctions.setNullValue(null);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		auctions.setNullValue(null);
 	(&auctions)->setNullValue(NULL);
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(60):  		auctions.setNoDuplicateInsertPlan();
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		auctions.setNoDuplicateInsertPlan();
 	(&auctions)->setNoDuplicateInsertPlan();
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(62):  		playerAuctionCount.setNullValue(0);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		playerAuctionCount.setNullValue(0);
 	(&playerAuctionCount)->setNullValue(0);
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(63):  		playerAuctionCount.setAllowOverwriteInsertPlan();
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		playerAuctionCount.setAllowOverwriteInsertPlan();
 	(&playerAuctionCount)->setAllowOverwriteInsertPlan();
 }
 
 int BazaarAuctionsMapImplementation::getAuctionCount() {
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(67):  		return auctions.size();
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		return auctions.size();
 	return (&auctions)->size();
 }
 
 bool BazaarAuctionsMapImplementation::containsAuction(unsigned long long objectID) {
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(71):  		return auctions.contains(objectID);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		return auctions.contains(objectID);
 	return (&auctions)->contains(objectID);
 }
 
 void BazaarAuctionsMapImplementation::addAuction(unsigned long long objectID, AuctionItem* item) {
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(75):  		auctions.put(objectID, item);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		auctions.put(objectID, item);
 	(&auctions)->put(objectID, item);
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(76):  		playerAuctionCount.put(item.getOwnerID(), playerAuctionCount.get(item.getOwnerID()) + 1);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		playerAuctionCount.put(item.getOwnerID(), playerAuctionCount.get(item.getOwnerID()) + 1);
 	(&playerAuctionCount)->put(item->getOwnerID(), (&playerAuctionCount)->get(item->getOwnerID()) + 1);
 }
 
 int BazaarAuctionsMapImplementation::getPlayerAuctionCount(unsigned long long objectID) {
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(80):  		return playerAuctionCount.get(objectID);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		return playerAuctionCount.get(objectID);
 	return (&playerAuctionCount)->get(objectID);
 }
 
 void BazaarAuctionsMapImplementation::dropAuction(unsigned long long objectID) {
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(84):  		AuctionItem item = auctions.get(objectID);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		AuctionItem item = auctions.get(objectID);
 	AuctionItem* item = (&auctions)->get(objectID);
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(86):  		int 
-	if (item == NULL)	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(87):  			return;
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		int 
+	if (item == NULL)	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  			return;
 	return;
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(89):  count = playerAuctionCount.get(item.getOwnerID());
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		int count = playerAuctionCount.get(item.getOwnerID());
 	int count = (&playerAuctionCount)->get(item->getOwnerID());
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(91):  		count = count - 1;
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		count = count - 1;
 	count = count - 1;
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(93):  
-	if (count < 1)	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(94):  			playerAuctionCount.drop(item.getOwnerID());
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  			playerAuctionCount.put(item.getOwnerID(), count);
+	if (count < 1)	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  			playerAuctionCount.drop(item.getOwnerID());
 	(&playerAuctionCount)->drop(item->getOwnerID());
 
-	else 	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(96):  			playerAuctionCount.put(item.getOwnerID(), count);
+	else 	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  			playerAuctionCount.put(item.getOwnerID(), count);
 	(&playerAuctionCount)->put(item->getOwnerID(), count);
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(98):  		auctions.drop(objectID);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		auctions.drop(objectID);
 	(&auctions)->drop(objectID);
 }
 
 AuctionItem* BazaarAuctionsMapImplementation::getAuction(unsigned long long objectID) {
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(102):  		return auctions.get(objectID);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		return auctions.get(objectID);
 	return (&auctions)->get(objectID);
 }
 
 AuctionItem* BazaarAuctionsMapImplementation::getAuction(int index) {
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(106):  		return auctions.get(index);
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		return auctions.get(index);
 	return (&auctions)->get(index);
 }
 
 VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsMapImplementation::getAuctions() {
-	// server/zone/managers/bazaar/BazaarAuctionsMap.idl(111):  		return auctions;
+	// server/zone/managers/bazaar/BazaarAuctionsMap.idl():  		return auctions;
 	return (&auctions);
 }
 
@@ -355,29 +355,31 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsM
 BazaarAuctionsMapAdapter::BazaarAuctionsMapAdapter(BazaarAuctionsMapImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_GETAUCTIONCOUNT__ = 6,RPC_CONTAINSAUCTION__LONG_,RPC_ADDAUCTION__LONG_AUCTIONITEM_,RPC_GETPLAYERAUCTIONCOUNT__LONG_,RPC_DROPAUCTION__LONG_,RPC_GETAUCTION__LONG_,RPC_GETAUCTION__INT_,};
+
 Packet* BazaarAuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GETAUCTIONCOUNT__:
 		resp->insertSignedInt(getAuctionCount());
 		break;
-	case 7:
+	case RPC_CONTAINSAUCTION__LONG_:
 		resp->insertBoolean(containsAuction(inv->getUnsignedLongParameter()));
 		break;
-	case 8:
+	case RPC_ADDAUCTION__LONG_AUCTIONITEM_:
 		addAuction(inv->getUnsignedLongParameter(), (AuctionItem*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_GETPLAYERAUCTIONCOUNT__LONG_:
 		resp->insertSignedInt(getPlayerAuctionCount(inv->getUnsignedLongParameter()));
 		break;
-	case 10:
+	case RPC_DROPAUCTION__LONG_:
 		dropAuction(inv->getUnsignedLongParameter());
 		break;
-	case 11:
+	case RPC_GETAUCTION__LONG_:
 		resp->insertLong(getAuction(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case 12:
+	case RPC_GETAUCTION__INT_:
 		resp->insertLong(getAuction(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:

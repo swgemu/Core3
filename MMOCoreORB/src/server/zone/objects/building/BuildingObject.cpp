@@ -692,58 +692,58 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/BuildingObject.idl(82):  		Logger.setLoggingName("BuildingObject");
+	// server/zone/objects/building/BuildingObject.idl():  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl(84):  		QuadTree.setSize(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl():  		QuadTree.setSize(-1024, -1024, 1024, 1024);
 	QuadTree::setSize(-1024, -1024, 1024, 1024);
-	// server/zone/objects/building/BuildingObject.idl(86):  		super.staticObject = false;
+	// server/zone/objects/building/BuildingObject.idl():  		super.staticObject = false;
 	StructureObjectImplementation::staticObject = false;
-	// server/zone/objects/building/BuildingObject.idl(88):  		super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/building/BuildingObject.idl():  		super.containerVolumeLimit = 0xFFFFFFFF;
 	StructureObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl(90):  		super.containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl():  		super.containerType = 2;
 	StructureObjectImplementation::containerType = 2;
-	// server/zone/objects/building/BuildingObject.idl(92):  		totalCellNumber = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		totalCellNumber = 0;
 	totalCellNumber = 0;
-	// server/zone/objects/building/BuildingObject.idl(94):  		accessFee = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		accessFee = 0;
 	accessFee = 0;
-	// server/zone/objects/building/BuildingObject.idl(96):  		deedObjectID = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		deedObjectID = 0;
 	deedObjectID = 0;
-	// server/zone/objects/building/BuildingObject.idl(98):  		publicStructure = true;
+	// server/zone/objects/building/BuildingObject.idl():  		publicStructure = true;
 	publicStructure = true;
 }
 
 void BuildingObjectImplementation::createCellObjects() {
-	// server/zone/objects/building/BuildingObject.idl(102):  
-	for (	// server/zone/objects/building/BuildingObject.idl(102):  		for (int i = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		}
+	for (	// server/zone/objects/building/BuildingObject.idl():  		for (int i = 0;
 	int i = 0;
 	i < totalCellNumber;
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(103):  			SceneObject newCell = getZoneServer().createObject(0xAD431713, 2);
+	// server/zone/objects/building/BuildingObject.idl():  			SceneObject newCell = getZoneServer().createObject(0xAD431713, 2);
 	SceneObject* newCell = getZoneServer()->createObject(0xAD431713, 2);
-	// server/zone/objects/building/BuildingObject.idl(105):  			addCell((CellObject)newCell);
+	// server/zone/objects/building/BuildingObject.idl():  			addCell((CellObject)newCell);
 	addCell((CellObject*) newCell);
 }
-	// server/zone/objects/building/BuildingObject.idl(108):  		updateToDatabase();
+	// server/zone/objects/building/BuildingObject.idl():  		updateToDatabase();
 	updateToDatabase();
 }
 
 int BuildingObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
-	// server/zone/objects/building/BuildingObject.idl(136):  		return 0;
+	// server/zone/objects/building/BuildingObject.idl():  		return 0;
 	return 0;
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(185):  		return super.staticObject;
+	// server/zone/objects/building/BuildingObject.idl():  		return super.staticObject;
 	return StructureObjectImplementation::staticObject;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(189):  		return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl():  		return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 int BuildingObjectImplementation::getTotalCellNumber() {
-	// server/zone/objects/building/BuildingObject.idl(193):  		return totalCellNumber;
+	// server/zone/objects/building/BuildingObject.idl():  		return totalCellNumber;
 	return totalCellNumber;
 }
 
@@ -751,47 +751,47 @@ void BuildingObjectImplementation::onExit(PlayerCreature* player) {
 }
 
 bool BuildingObjectImplementation::isBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(221):  		return true;
+	// server/zone/objects/building/BuildingObject.idl():  		return true;
 	return true;
 }
 
 bool BuildingObjectImplementation::isMedicalBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl(225):  		return false;
+	// server/zone/objects/building/BuildingObject.idl():  		return false;
 	return false;
 }
 
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
-	// server/zone/objects/building/BuildingObject.idl(229):  		signObject = sign;
+	// server/zone/objects/building/BuildingObject.idl():  		signObject = sign;
 	signObject = sign;
 }
 
 SignObject* BuildingObjectImplementation::getSignObject() {
-	// server/zone/objects/building/BuildingObject.idl(233):  		return signObject;
+	// server/zone/objects/building/BuildingObject.idl():  		return signObject;
 	return signObject;
 }
 
 bool BuildingObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(237):  		return false;
+	// server/zone/objects/building/BuildingObject.idl():  		return false;
 	return false;
 }
 
 void BuildingObjectImplementation::setAccessFee(int fee) {
-	// server/zone/objects/building/BuildingObject.idl(241):  		accessFee = fee;
+	// server/zone/objects/building/BuildingObject.idl():  		accessFee = fee;
 	accessFee = fee;
 }
 
 int BuildingObjectImplementation::getAccessFee() {
-	// server/zone/objects/building/BuildingObject.idl(245):  		return accessFee;
+	// server/zone/objects/building/BuildingObject.idl():  		return accessFee;
 	return accessFee;
 }
 
 bool BuildingObjectImplementation::isPublicStructure() {
-	// server/zone/objects/building/BuildingObject.idl(249):  		return publicStructure;
+	// server/zone/objects/building/BuildingObject.idl():  		return publicStructure;
 	return publicStructure;
 }
 
 void BuildingObjectImplementation::setPublicStructure(bool privacy) {
-	// server/zone/objects/building/BuildingObject.idl(253):  		publicStructure = privacy;
+	// server/zone/objects/building/BuildingObject.idl():  		publicStructure = privacy;
 	publicStructure = privacy;
 }
 
@@ -802,92 +802,94 @@ void BuildingObjectImplementation::setPublicStructure(bool privacy) {
 BuildingObjectAdapter::BuildingObjectAdapter(BuildingObjectImplementation* obj) : StructureObjectAdapter(obj) {
 }
 
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+
 Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_CREATECELLOBJECTS__:
 		createCellObjects();
 		break;
-	case 7:
+	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case 8:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 9:
+	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_:
 		updateCellPermissionsTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_:
 		resp->insertSignedInt(notifyStructurePlaced((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 12:
+	case RPC_REMOVEFROMZONE__:
 		removeFromZone();
 		break;
-	case 13:
+	case RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_:
 		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_SENDTO__SCENEOBJECT_BOOL_:
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 15:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_SENDDESTROYTO__SCENEOBJECT_:
 		sendDestroyTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_ADDCELL__CELLOBJECT_:
 		addCell((CellObject*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_ISSTATICBUILDING__:
 		resp->insertBoolean(isStaticBuilding());
 		break;
-	case 19:
+	case RPC_GETCELL__INT_:
 		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 20:
+	case RPC_GETTOTALCELLNUMBER__:
 		resp->insertSignedInt(getTotalCellNumber());
 		break;
-	case 21:
+	case RPC_GETCURRENTNUMEROFPLAYERITEMS__:
 		resp->insertSignedInt(getCurrentNumerOfPlayerItems());
 		break;
-	case 22:
+	case RPC_ONENTER__PLAYERCREATURE_:
 		onEnter((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 23:
+	case RPC_ONEXIT__PLAYERCREATURE_:
 		onExit((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 24:
+	case RPC_ISBUILDINGOBJECT__:
 		resp->insertBoolean(isBuildingObject());
 		break;
-	case 25:
+	case RPC_ISMEDICALBUILDINGOBJECT__:
 		resp->insertBoolean(isMedicalBuildingObject());
 		break;
-	case 26:
+	case RPC_SETSIGNOBJECT__SIGNOBJECT_:
 		setSignObject((SignObject*) inv->getObjectParameter());
 		break;
-	case 27:
+	case RPC_GETSIGNOBJECT__:
 		resp->insertLong(getSignObject()->_getObjectID());
 		break;
-	case 28:
+	case RPC_ISCITYHALLBUILDING__:
 		resp->insertBoolean(isCityHallBuilding());
 		break;
-	case 29:
+	case RPC_SETACCESSFEE__INT_:
 		setAccessFee(inv->getSignedIntParameter());
 		break;
-	case 30:
+	case RPC_GETACCESSFEE__:
 		resp->insertSignedInt(getAccessFee());
 		break;
-	case 31:
+	case RPC_ISPUBLICSTRUCTURE__:
 		resp->insertBoolean(isPublicStructure());
 		break;
-	case 32:
+	case RPC_SETPUBLICSTRUCTURE__BOOL_:
 		setPublicStructure(inv->getBooleanParameter());
 		break;
-	case 33:
+	case RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__:
 		resp->insertInt(getMaximumNumberOfPlayerItems());
 		break;
 	default:

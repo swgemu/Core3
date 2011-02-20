@@ -176,21 +176,21 @@ int FoodImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 FoodImplementation::FoodImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/consumable/Food.idl(54):  		Logger.setLoggingName("Food");
+	// server/zone/objects/tangible/consumable/Food.idl():  		Logger.setLoggingName("Food");
 	Logger::setLoggingName("Food");
-	// server/zone/objects/tangible/consumable/Food.idl(56):  		initializePrivateData();
+	// server/zone/objects/tangible/consumable/Food.idl():  		initializePrivateData();
 	initializePrivateData();
 }
 
 void FoodImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/consumable/Food.idl(60):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/consumable/Food.idl():  		super.initializeTransientMembers();
 	ConsumableImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/consumable/Food.idl(62):  		Logger.setLoggingName("Food");
+	// server/zone/objects/tangible/consumable/Food.idl():  		Logger.setLoggingName("Food");
 	Logger::setLoggingName("Food");
 }
 
 void FoodImplementation::initializePrivateData() {
-	// server/zone/objects/tangible/consumable/Food.idl(66):  		super.consumableType = super.FOOD;
+	// server/zone/objects/tangible/consumable/Food.idl():  		super.consumableType = super.FOOD;
 	ConsumableImplementation::consumableType = ConsumableImplementation::FOOD;
 }
 
@@ -201,14 +201,16 @@ void FoodImplementation::initializePrivateData() {
 FoodAdapter::FoodAdapter(FoodImplementation* obj) : ConsumableAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEPRIVATEDATA__};
+
 Packet* FoodAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_INITIALIZEPRIVATEDATA__:
 		initializePrivateData();
 		break;
 	default:

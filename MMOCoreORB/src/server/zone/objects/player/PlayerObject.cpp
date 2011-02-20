@@ -1300,9 +1300,9 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/player/PlayerObject.idl(124):  		commandMessageStrings.setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerObject.idl():  		commandMessageStrings.setNoDuplicateInsertPlan();
 	(&commandMessageStrings)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/PlayerObject.idl(126):  		Logger.setLoggingName("PlayerObject");
+	// server/zone/objects/player/PlayerObject.idl():  		Logger.setLoggingName("PlayerObject");
 	Logger::setLoggingName("PlayerObject");
 }
 
@@ -1310,190 +1310,190 @@ void PlayerObjectImplementation::finalize() {
 }
 
 void PlayerObjectImplementation::setCommandMessageString(unsigned int actionCRC, String& message) {
-	// server/zone/objects/player/PlayerObject.idl(295):  		commandMessageStrings.put(actionCRC, message);
+	// server/zone/objects/player/PlayerObject.idl():  		commandMessageStrings.put(actionCRC, message);
 	(&commandMessageStrings)->put(actionCRC, message);
 }
 
 void PlayerObjectImplementation::removeCommandMessageString(unsigned int actionCRC) {
-	// server/zone/objects/player/PlayerObject.idl(299):  		commandMessageStrings.drop(actionCRC);
+	// server/zone/objects/player/PlayerObject.idl():  		commandMessageStrings.drop(actionCRC);
 	(&commandMessageStrings)->drop(actionCRC);
 }
 
 bool PlayerObjectImplementation::isDigesting() {
-	// server/zone/objects/player/PlayerObject.idl(312):  
+	// server/zone/objects/player/PlayerObject.idl():  		}
 	if (getDrinkFilling() > 0 || getFoodFilling() > 0){
-	// server/zone/objects/player/PlayerObject.idl(313):  			return true;
+	// server/zone/objects/player/PlayerObject.idl():  			return true;
 	return true;
 }
 
 	else {
-	// server/zone/objects/player/PlayerObject.idl(315):  			return false;
+	// server/zone/objects/player/PlayerObject.idl():  			return false;
 	return false;
 }
 }
 
 bool PlayerObjectImplementation::hasFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(327):  		return friendList.contains(name);
+	// server/zone/objects/player/PlayerObject.idl():  		return friendList.contains(name);
 	return (&friendList)->contains(name);
 }
 
 bool PlayerObjectImplementation::isIgnoring(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(331):  		return ignoreList.contains(name);
+	// server/zone/objects/player/PlayerObject.idl():  		return ignoreList.contains(name);
 	return (&ignoreList)->contains(name);
 }
 
 void PlayerObjectImplementation::addReverseFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(335):  		friendList.addReversePlayer(name);
+	// server/zone/objects/player/PlayerObject.idl():  		friendList.addReversePlayer(name);
 	(&friendList)->addReversePlayer(name);
 }
 
 void PlayerObjectImplementation::removeReverseFriend(const String& name) {
-	// server/zone/objects/player/PlayerObject.idl(339):  		friendList.removeReversePlayer(name);
+	// server/zone/objects/player/PlayerObject.idl():  		friendList.removeReversePlayer(name);
 	(&friendList)->removeReversePlayer(name);
 }
 
 bool PlayerObjectImplementation::hasWaypoint(unsigned long long objectID) {
-	// server/zone/objects/player/PlayerObject.idl(345):  		return waypointList.contains(objectID);
+	// server/zone/objects/player/PlayerObject.idl():  		return waypointList.contains(objectID);
 	return (&waypointList)->contains(objectID);
 }
 
 bool PlayerObjectImplementation::hasSkill(const String& skill) {
-	// server/zone/objects/player/PlayerObject.idl(350):  		return skillList.contains(skill);
+	// server/zone/objects/player/PlayerObject.idl():  		return skillList.contains(skill);
 	return (&skillList)->contains(skill);
 }
 
 bool PlayerObjectImplementation::hasCommandMessageString(unsigned int actionCRC) {
-	// server/zone/objects/player/PlayerObject.idl(354):  		return commandMessageStrings.contains(actionCRC);
+	// server/zone/objects/player/PlayerObject.idl():  		return commandMessageStrings.contains(actionCRC);
 	return (&commandMessageStrings)->contains(actionCRC);
 }
 
 unsigned int PlayerObjectImplementation::getCharacterBitmask() {
-	// server/zone/objects/player/PlayerObject.idl(358):  		return characterBitmask;
+	// server/zone/objects/player/PlayerObject.idl():  		return characterBitmask;
 	return characterBitmask;
 }
 
 String PlayerObjectImplementation::getTitle() {
-	// server/zone/objects/player/PlayerObject.idl(362):  		return title;
+	// server/zone/objects/player/PlayerObject.idl():  		return title;
 	return title;
 }
 
 unsigned int PlayerObjectImplementation::getAdminLevel() {
-	// server/zone/objects/player/PlayerObject.idl(366):  		return adminLevel;
+	// server/zone/objects/player/PlayerObject.idl():  		return adminLevel;
 	return adminLevel;
 }
 
 void PlayerObjectImplementation::setAdminLevel(unsigned int adminlvl) {
-	// server/zone/objects/player/PlayerObject.idl(370):  		adminLevel = adminlvl;
+	// server/zone/objects/player/PlayerObject.idl():  		adminLevel = adminlvl;
 	adminLevel = adminlvl;
 }
 
 bool PlayerObjectImplementation::isDeveloper() {
-	// server/zone/objects/player/PlayerObject.idl(374):  		return adminLevel == DEV;
+	// server/zone/objects/player/PlayerObject.idl():  		return adminLevel == DEV;
 	return adminLevel == DEV;
 }
 
 bool PlayerObjectImplementation::isCSR() {
-	// server/zone/objects/player/PlayerObject.idl(378):  		return adminLevel == CSR;
+	// server/zone/objects/player/PlayerObject.idl():  		return adminLevel == CSR;
 	return adminLevel == CSR;
 }
 
 bool PlayerObjectImplementation::isPrivileged() {
-	// server/zone/objects/player/PlayerObject.idl(382):  		return adminLevel > 0;
+	// server/zone/objects/player/PlayerObject.idl():  		return adminLevel > 0;
 	return adminLevel > 0;
 }
 
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
-	// server/zone/objects/player/PlayerObject.idl(386):  		characterBitmask = bitmask;
+	// server/zone/objects/player/PlayerObject.idl():  		characterBitmask = bitmask;
 	characterBitmask = bitmask;
 }
 
 VectorMap<String, int>* PlayerObjectImplementation::getXpTypeCapList() {
-	// server/zone/objects/player/PlayerObject.idl(395):  	 return xpTypeCapList;
+	// server/zone/objects/player/PlayerObject.idl():  	 return xpTypeCapList;
 	return (&xpTypeCapList);
 }
 
 DeltaVectorMap<String, int>* PlayerObjectImplementation::getExperienceList() {
-	// server/zone/objects/player/PlayerObject.idl(400):  		return experienceList;
+	// server/zone/objects/player/PlayerObject.idl():  		return experienceList;
 	return (&experienceList);
 }
 
 int PlayerObjectImplementation::getForcePower() {
-	// server/zone/objects/player/PlayerObject.idl(404):  		return forcePower;
+	// server/zone/objects/player/PlayerObject.idl():  		return forcePower;
 	return forcePower;
 }
 
 int PlayerObjectImplementation::getForcePowerMax() {
-	// server/zone/objects/player/PlayerObject.idl(408):  		return forcePowerMax;
+	// server/zone/objects/player/PlayerObject.idl():  		return forcePowerMax;
 	return forcePowerMax;
 }
 
 WaypointList* PlayerObjectImplementation::getWaypointList() {
-	// server/zone/objects/player/PlayerObject.idl(413):  		return waypointList;
+	// server/zone/objects/player/PlayerObject.idl():  		return waypointList;
 	return (&waypointList);
 }
 
 SkillList* PlayerObjectImplementation::getSkills() {
-	// server/zone/objects/player/PlayerObject.idl(418):  		return skillList;
+	// server/zone/objects/player/PlayerObject.idl():  		return skillList;
 	return (&skillList);
 }
 
 SchematicList* PlayerObjectImplementation::getSchematics() {
-	// server/zone/objects/player/PlayerObject.idl(423):  		return schematicList;
+	// server/zone/objects/player/PlayerObject.idl():  		return schematicList;
 	return (&schematicList);
 }
 
 DraftSchematic* PlayerObjectImplementation::getSchematic(int i) {
-	// server/zone/objects/player/PlayerObject.idl(427):  		return schematicList.get(i);
+	// server/zone/objects/player/PlayerObject.idl():  		return schematicList.get(i);
 	return (&schematicList)->get(i);
 }
 
 int PlayerObjectImplementation::getFoodFilling() {
-	// server/zone/objects/player/PlayerObject.idl(435):  		return foodFilling;
+	// server/zone/objects/player/PlayerObject.idl():  		return foodFilling;
 	return foodFilling;
 }
 
 int PlayerObjectImplementation::getFoodFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(439):  		return foodFillingMax;
+	// server/zone/objects/player/PlayerObject.idl():  		return foodFillingMax;
 	return foodFillingMax;
 }
 
 int PlayerObjectImplementation::getDrinkFilling() {
-	// server/zone/objects/player/PlayerObject.idl(443):  		return drinkFilling;
+	// server/zone/objects/player/PlayerObject.idl():  		return drinkFilling;
 	return drinkFilling;
 }
 
 int PlayerObjectImplementation::getDrinkFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(447):  		return drinkFillingMax;
+	// server/zone/objects/player/PlayerObject.idl():  		return drinkFillingMax;
 	return drinkFillingMax;
 }
 
 int PlayerObjectImplementation::getJediState() {
-	// server/zone/objects/player/PlayerObject.idl(451):  		return jediState;
+	// server/zone/objects/player/PlayerObject.idl():  		return jediState;
 	return jediState;
 }
 
 byte PlayerObjectImplementation::getLanguageID() {
-	// server/zone/objects/player/PlayerObject.idl(455):  		return languageID;
+	// server/zone/objects/player/PlayerObject.idl():  		return languageID;
 	return languageID;
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getFriendList() {
-	// server/zone/objects/player/PlayerObject.idl(460):  		return friendList;
+	// server/zone/objects/player/PlayerObject.idl():  		return friendList;
 	return (&friendList);
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getIgnoreList() {
-	// server/zone/objects/player/PlayerObject.idl(465):  		return ignoreList;
+	// server/zone/objects/player/PlayerObject.idl():  		return ignoreList;
 	return (&ignoreList);
 }
 
 int PlayerObjectImplementation::getExperience(const String& xp) {
-	// server/zone/objects/player/PlayerObject.idl(469):  		return experienceList.get(xp);
+	// server/zone/objects/player/PlayerObject.idl():  		return experienceList.get(xp);
 	return (&experienceList)->get(xp);
 }
 
 String PlayerObjectImplementation::getCommandMessageString(unsigned int actionCRC) {
-	// server/zone/objects/player/PlayerObject.idl(473):  		return commandMessageStrings.get(actionCRC);
+	// server/zone/objects/player/PlayerObject.idl():  		return commandMessageStrings.get(actionCRC);
 	return (&commandMessageStrings)->get(actionCRC);
 }
 
@@ -1504,167 +1504,169 @@ String PlayerObjectImplementation::getCommandMessageString(unsigned int actionCR
 PlayerObjectAdapter::PlayerObjectAdapter(PlayerObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_NOTIFYOFFLINE__,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_};
+
 Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SENDMESSAGE__BASEPACKET_:
 		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_ADDEXPERIENCE__STRING_INT_BOOL_:
 		resp->insertSignedInt(addExperience(inv->getAsciiParameter(_param0_addExperience__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 11:
+	case RPC_REMOVEEXPERIENCE__STRING_BOOL_:
 		removeExperience(inv->getAsciiParameter(_param0_removeExperience__String_bool_), inv->getBooleanParameter());
 		break;
-	case 12:
+	case RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_:
 		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
-	case 13:
+	case RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_:
 		setWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 14:
+	case RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_:
 		addWaypoint(inv->getAsciiParameter(_param0_addWaypoint__String_float_float_bool_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter());
 		break;
-	case 15:
+	case RPC_REMOVEWAYPOINT__LONG_BOOL_:
 		removeWaypoint(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
-	case 16:
+	case RPC_SETLANGUAGEID__BYTE_BOOL_:
 		setLanguageID(inv->getByteParameter(), inv->getBooleanParameter());
 		break;
-	case 17:
+	case RPC_ADDFRIEND__STRING_BOOL_:
 		addFriend(inv->getAsciiParameter(_param0_addFriend__String_bool_), inv->getBooleanParameter());
 		break;
-	case 18:
+	case RPC_REMOVEFRIEND__STRING_BOOL_:
 		removeFriend(inv->getAsciiParameter(_param0_removeFriend__String_bool_), inv->getBooleanParameter());
 		break;
-	case 19:
+	case RPC_ADDIGNORE__STRING_BOOL_:
 		addIgnore(inv->getAsciiParameter(_param0_addIgnore__String_bool_), inv->getBooleanParameter());
 		break;
-	case 20:
+	case RPC_REMOVEIGNORE__STRING_BOOL_:
 		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__String_bool_), inv->getBooleanParameter());
 		break;
-	case 21:
+	case RPC_SETTITLE__STRING_BOOL_:
 		setTitle(inv->getAsciiParameter(_param0_setTitle__String_bool_), inv->getBooleanParameter());
 		break;
-	case 22:
+	case RPC_SETFOODFILLING__INT_BOOL_:
 		setFoodFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 23:
+	case RPC_SETDRINKFILLING__INT_BOOL_:
 		setDrinkFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 24:
+	case RPC_SETCOMMANDMESSAGESTRING__INT_STRING_:
 		setCommandMessageString(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_setCommandMessageString__int_String_));
 		break;
-	case 25:
+	case RPC_REMOVECOMMANDMESSAGESTRING__INT_:
 		removeCommandMessageString(inv->getUnsignedIntParameter());
 		break;
-	case 26:
+	case RPC_NOTIFYONLINE__:
 		notifyOnline();
 		break;
-	case 27:
+	case RPC_DODIGEST__:
 		doDigest();
 		break;
-	case 28:
+	case RPC_ISDIGESTING__:
 		resp->insertBoolean(isDigesting());
 		break;
-	case 29:
+	case RPC_NOTIFYOFFLINE__:
 		notifyOffline();
 		break;
-	case 30:
+	case RPC_HASFRIEND__STRING_:
 		resp->insertBoolean(hasFriend(inv->getAsciiParameter(_param0_hasFriend__String_)));
 		break;
-	case 31:
+	case RPC_ISIGNORING__STRING_:
 		resp->insertBoolean(isIgnoring(inv->getAsciiParameter(_param0_isIgnoring__String_)));
 		break;
-	case 32:
+	case RPC_ADDREVERSEFRIEND__STRING_:
 		addReverseFriend(inv->getAsciiParameter(_param0_addReverseFriend__String_));
 		break;
-	case 33:
+	case RPC_REMOVEREVERSEFRIEND__STRING_:
 		removeReverseFriend(inv->getAsciiParameter(_param0_removeReverseFriend__String_));
 		break;
-	case 34:
+	case RPC_SENDFRIENDLISTS__:
 		sendFriendLists();
 		break;
-	case 35:
+	case RPC_HASWAYPOINT__LONG_:
 		resp->insertBoolean(hasWaypoint(inv->getUnsignedLongParameter()));
 		break;
-	case 36:
+	case RPC_HASCOMMANDMESSAGESTRING__INT_:
 		resp->insertBoolean(hasCommandMessageString(inv->getUnsignedIntParameter()));
 		break;
-	case 37:
+	case RPC_GETCHARACTERBITMASK__:
 		resp->insertInt(getCharacterBitmask());
 		break;
-	case 38:
+	case RPC_GETTITLE__:
 		resp->insertAscii(getTitle());
 		break;
-	case 39:
+	case RPC_GETADMINLEVEL__:
 		resp->insertInt(getAdminLevel());
 		break;
-	case 40:
+	case RPC_SETADMINLEVEL__INT_:
 		setAdminLevel(inv->getUnsignedIntParameter());
 		break;
-	case 41:
+	case RPC_ISDEVELOPER__:
 		resp->insertBoolean(isDeveloper());
 		break;
-	case 42:
+	case RPC_ISCSR__:
 		resp->insertBoolean(isCSR());
 		break;
-	case 43:
+	case RPC_ISPRIVILEGED__:
 		resp->insertBoolean(isPrivileged());
 		break;
-	case 44:
+	case RPC_SETCHARACTERBITMASK__INT_:
 		setCharacterBitmask(inv->getUnsignedIntParameter());
 		break;
-	case 45:
+	case RPC_SETCHARACTERBIT__INT_BOOL_:
 		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 46:
+	case RPC_CLEARCHARACTERBIT__INT_BOOL_:
 		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 47:
+	case RPC_TOGGLECHARACTERBIT__INT_:
 		toggleCharacterBit(inv->getUnsignedIntParameter());
 		break;
-	case 48:
+	case RPC_GETFORCEPOWER__:
 		resp->insertSignedInt(getForcePower());
 		break;
-	case 49:
+	case RPC_GETFORCEPOWERMAX__:
 		resp->insertSignedInt(getForcePowerMax());
 		break;
-	case 50:
+	case RPC_GETSCHEMATIC__INT_:
 		resp->insertLong(getSchematic(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 51:
+	case RPC_GETFOODFILLING__:
 		resp->insertSignedInt(getFoodFilling());
 		break;
-	case 52:
+	case RPC_GETFOODFILLINGMAX__:
 		resp->insertSignedInt(getFoodFillingMax());
 		break;
-	case 53:
+	case RPC_GETDRINKFILLING__:
 		resp->insertSignedInt(getDrinkFilling());
 		break;
-	case 54:
+	case RPC_GETDRINKFILLINGMAX__:
 		resp->insertSignedInt(getDrinkFillingMax());
 		break;
-	case 55:
+	case RPC_GETJEDISTATE__:
 		resp->insertSignedInt(getJediState());
 		break;
-	case 56:
+	case RPC_GETLANGUAGEID__:
 		resp->insertByte(getLanguageID());
 		break;
-	case 57:
+	case RPC_GETEXPERIENCE__STRING_:
 		resp->insertSignedInt(getExperience(inv->getAsciiParameter(_param0_getExperience__String_)));
 		break;
-	case 58:
+	case RPC_GETCOMMANDMESSAGESTRING__INT_:
 		resp->insertAscii(getCommandMessageString(inv->getUnsignedIntParameter()));
 		break;
 	default:

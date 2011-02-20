@@ -198,7 +198,11 @@ void ZoneServerImplementation::startZones() {
 	for (int i = 0; i < 45; ++i) {
 		Zone* zone = NULL;
 
+#ifndef WITH_STM
 		if (i <= 10 || i == 42) {
+#else
+		if (i <= 0 || i == 42) {
+#endif
 			zone = new Zone(processor, i);
 			zone->initializePrivateData();
 			uint64 zoneObjectID = 0;

@@ -237,7 +237,7 @@ int HuntingMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 
 HuntingMissionObjectiveImplementation::HuntingMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/HuntingMissionObjective.idl(63):  		Logger.setLoggingName("HuntingMissionObjective");
+	// server/zone/objects/mission/HuntingMissionObjective.idl():  		Logger.setLoggingName("HuntingMissionObjective");
 	Logger::setLoggingName("HuntingMissionObjective");
 }
 
@@ -245,11 +245,11 @@ void HuntingMissionObjectiveImplementation::finalize() {
 }
 
 void HuntingMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/HuntingMissionObjective.idl(71):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/HuntingMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/HuntingMissionObjective.idl(73):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/HuntingMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/HuntingMissionObjective.idl(75):  		activate();
+	// server/zone/objects/mission/HuntingMissionObjective.idl():  		activate();
 	activate();
 }
 
@@ -260,26 +260,28 @@ void HuntingMissionObjectiveImplementation::initializeTransientMembers() {
 HuntingMissionObjectiveAdapter::HuntingMissionObjectiveAdapter(HuntingMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
+
 Packet* HuntingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_ACTIVATE__:
 		activate();
 		break;
-	case 9:
+	case RPC_ABORT__:
 		abort();
 		break;
-	case 10:
+	case RPC_COMPLETE__:
 		complete();
 		break;
-	case 11:
+	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:

@@ -410,30 +410,30 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 
 DynamicSpawnAreaImplementation::DynamicSpawnAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/DynamicSpawnArea.idl(84):  		Logger.setLoggingName("DynamicSpawnArea");
+	// server/zone/objects/area/DynamicSpawnArea.idl():  		Logger.setLoggingName("DynamicSpawnArea");
 	Logger::setLoggingName("DynamicSpawnArea");
-	// server/zone/objects/area/DynamicSpawnArea.idl(85):  		maxCreaturesToSpawn = 1;
+	// server/zone/objects/area/DynamicSpawnArea.idl():  		maxCreaturesToSpawn = 1;
 	maxCreaturesToSpawn = 1;
-	// server/zone/objects/area/DynamicSpawnArea.idl(87):  		playerOccupants.setNoDuplicateInsertPlan();
+	// server/zone/objects/area/DynamicSpawnArea.idl():  		playerOccupants.setNoDuplicateInsertPlan();
 	(&playerOccupants)->setNoDuplicateInsertPlan();
-	// server/zone/objects/area/DynamicSpawnArea.idl(88):  		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
+	// server/zone/objects/area/DynamicSpawnArea.idl():  		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
 	(&excludedPlayerOccupants)->setAllowDuplicateInsertPlan();
-	// server/zone/objects/area/DynamicSpawnArea.idl(90):  		registerObservers();
+	// server/zone/objects/area/DynamicSpawnArea.idl():  		registerObservers();
 	registerObservers();
 }
 
 void DynamicSpawnAreaImplementation::setMaxCreaturesToSpawn(int num) {
-	// server/zone/objects/area/DynamicSpawnArea.idl(113):  		maxCreaturesToSpawn = num;
+	// server/zone/objects/area/DynamicSpawnArea.idl():  		maxCreaturesToSpawn = num;
 	maxCreaturesToSpawn = num;
 }
 
 void DynamicSpawnAreaImplementation::addNoSpawnArea(SpawnArea* area) {
-	// server/zone/objects/area/DynamicSpawnArea.idl(117):  		noSpawnAreas.add(area);
+	// server/zone/objects/area/DynamicSpawnArea.idl():  		noSpawnAreas.add(area);
 	(&noSpawnAreas)->add(area);
 }
 
 bool DynamicSpawnAreaImplementation::isDynamicArea() {
-	// server/zone/objects/area/DynamicSpawnArea.idl(121):  		return true;
+	// server/zone/objects/area/DynamicSpawnArea.idl():  		return true;
 	return true;
 }
 
@@ -444,38 +444,40 @@ bool DynamicSpawnAreaImplementation::isDynamicArea() {
 DynamicSpawnAreaAdapter::DynamicSpawnAreaAdapter(DynamicSpawnAreaImplementation* obj) : SpawnAreaAdapter(obj) {
 }
 
+enum {RPC_REGISTEROBSERVERS__ = 6,RPC_SPAWNCREATURE__INT_PLAYEROBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_DOSPAWNEVENT__PLAYEROBJECT_,RPC_DODESPAWNEVENT__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETMAXCREATURESTOSPAWN__INT_,RPC_ADDNOSPAWNAREA__SPAWNAREA_,RPC_ISDYNAMICAREA__};
+
 Packet* DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_REGISTEROBSERVERS__:
 		registerObservers();
 		break;
-	case 7:
+	case RPC_SPAWNCREATURE__INT_PLAYEROBJECT_:
 		spawnCreature(inv->getUnsignedIntParameter(), (PlayerObject*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_NOTIFYEXIT__SCENEOBJECT_:
 		notifyExit((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_DOSPAWNEVENT__PLAYEROBJECT_:
 		doSpawnEvent((PlayerObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_DODESPAWNEVENT__:
 		doDespawnEvent();
 		break;
-	case 12:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 13:
+	case RPC_SETMAXCREATURESTOSPAWN__INT_:
 		setMaxCreaturesToSpawn(inv->getSignedIntParameter());
 		break;
-	case 14:
+	case RPC_ADDNOSPAWNAREA__SPAWNAREA_:
 		addNoSpawnArea((SpawnArea*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_ISDYNAMICAREA__:
 		resp->insertBoolean(isDynamicArea());
 		break;
 	default:

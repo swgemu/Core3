@@ -173,16 +173,16 @@ int StaticObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 StaticObjectImplementation::StaticObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/staticobject/StaticObject.idl(54):  		Logger.setLoggingName("StaticObject");
+	// server/zone/objects/staticobject/StaticObject.idl():  		Logger.setLoggingName("StaticObject");
 	Logger::setLoggingName("StaticObject");
-	// server/zone/objects/staticobject/StaticObject.idl(55):  		Logger.setLogging(false);
+	// server/zone/objects/staticobject/StaticObject.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/staticobject/StaticObject.idl(56):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/staticobject/StaticObject.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 void StaticObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/staticobject/StaticObject.idl(67):  		super.loadTemplateData(templateData);
+	// server/zone/objects/staticobject/StaticObject.idl():  		super.loadTemplateData(templateData);
 	SceneObjectImplementation::loadTemplateData(templateData);
 }
 
@@ -193,11 +193,13 @@ void StaticObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 StaticObjectAdapter::StaticObjectAdapter(StaticObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_};
+
 Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	default:

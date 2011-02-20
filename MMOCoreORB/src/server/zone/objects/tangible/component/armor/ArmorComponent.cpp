@@ -192,9 +192,9 @@ int ArmorComponentImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 ArmorComponentImplementation::ArmorComponentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/component/armor/ArmorComponent.idl(58):  		Logger.setLoggingName("ArmorComponent");
+	// server/zone/objects/tangible/component/armor/ArmorComponent.idl():  		Logger.setLoggingName("ArmorComponent");
 	Logger::setLoggingName("ArmorComponent");
-	// server/zone/objects/tangible/component/armor/ArmorComponent.idl(59):  		specialResists = 0;
+	// server/zone/objects/tangible/component/armor/ArmorComponent.idl():  		specialResists = 0;
 	specialResists = 0;
 }
 
@@ -205,14 +205,16 @@ ArmorComponentImplementation::ArmorComponentImplementation() {
 ArmorComponentAdapter::ArmorComponentAdapter(ArmorComponentImplementation* obj) : ComponentAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+
 Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
 	default:

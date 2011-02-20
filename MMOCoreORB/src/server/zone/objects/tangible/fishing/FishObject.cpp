@@ -299,33 +299,33 @@ int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 FishObjectImplementation::FishObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/fishing/FishObject.idl(64):  		Logger.setLoggingName("FishObject");
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		Logger.setLoggingName("FishObject");
 	Logger::setLoggingName("FishObject");
-	// server/zone/objects/tangible/fishing/FishObject.idl(66):  		player = "";
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		player = "";
 	player = "";
-	// server/zone/objects/tangible/fishing/FishObject.idl(67):  		planet = 0;
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		planet = 0;
 	planet = 0;
-	// server/zone/objects/tangible/fishing/FishObject.idl(68):  		timeCaught = "";
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		timeCaught = "";
 	timeCaught = "";
-	// server/zone/objects/tangible/fishing/FishObject.idl(69):  		length = 0.0;
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		length = 0.0;
 	length = 0.0;
 }
 
 void FishObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/fishing/FishObject.idl(73):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/fishing/FishObject.idl(75):  		Logger.setLoggingName("FishObject");
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		Logger.setLoggingName("FishObject");
 	Logger::setLoggingName("FishObject");
 }
 
 void FishObjectImplementation::setAttributes(String& playerName, int planetID, String& timestamp, float fishLength) {
-	// server/zone/objects/tangible/fishing/FishObject.idl(80):  		player = playerName;
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		player = playerName;
 	player = playerName;
-	// server/zone/objects/tangible/fishing/FishObject.idl(81):  		planet = planetID;
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		planet = planetID;
 	planet = planetID;
-	// server/zone/objects/tangible/fishing/FishObject.idl(82):  		timeCaught = timestamp;
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		timeCaught = timestamp;
 	timeCaught = timestamp;
-	// server/zone/objects/tangible/fishing/FishObject.idl(83):  		length = fishLength;
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		length = fishLength;
 	length = fishLength;
 }
 
@@ -336,26 +336,28 @@ void FishObjectImplementation::setAttributes(String& playerName, int planetID, S
 FishObjectAdapter::FishObjectAdapter(FishObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETATTRIBUTES__STRING_INT_STRING_FLOAT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_FILET__PLAYERCREATURE_};
+
 Packet* FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_SETATTRIBUTES__STRING_INT_STRING_FLOAT_:
 		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_int_String_float_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_setAttributes__String_int_String_float_), inv->getFloatParameter());
 		break;
-	case 8:
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
 		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 10:
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_FILET__PLAYERCREATURE_:
 		filet((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:

@@ -233,15 +233,15 @@ int ObjectControllerImplementation::writeObjectMembers(ObjectOutputStream* strea
 
 ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer* srv) {
 	_initializeImplementation();
-	// server/zone/managers/objectcontroller/ObjectController.idl(65):  		server = srv;
+	// server/zone/managers/objectcontroller/ObjectController.idl():  		server = srv;
 	server = srv;
-	// server/zone/managers/objectcontroller/ObjectController.idl(67):  		Logger.setLoggingName("ObjectController");
+	// server/zone/managers/objectcontroller/ObjectController.idl():  		Logger.setLoggingName("ObjectController");
 	Logger::setLoggingName("ObjectController");
-	// server/zone/managers/objectcontroller/ObjectController.idl(69):  		Logger.setLogging(true);
+	// server/zone/managers/objectcontroller/ObjectController.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/objectcontroller/ObjectController.idl(70):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/objectcontroller/ObjectController.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/objectcontroller/ObjectController.idl(72):  		loadCommands();
+	// server/zone/managers/objectcontroller/ObjectController.idl():  		loadCommands();
 	loadCommands();
 }
 
@@ -252,20 +252,22 @@ ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer
 ObjectControllerAdapter::ObjectControllerAdapter(ObjectControllerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_LOADCOMMANDS__,RPC_TRANSFEROBJECT__SCENEOBJECT_SCENEOBJECT_INT_BOOL_,RPC_ACTIVATECOMMAND__CREATUREOBJECT_INT_INT_LONG_UNICODESTRING_,};
+
 Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_LOADCOMMANDS__:
 		loadCommands();
 		break;
-	case 8:
+	case RPC_TRANSFEROBJECT__SCENEOBJECT_SCENEOBJECT_INT_BOOL_:
 		resp->insertBoolean(transferObject((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 9:
+	case RPC_ACTIVATECOMMAND__CREATUREOBJECT_INT_INT_LONG_UNICODESTRING_:
 		resp->insertFloat(activateCommand((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_activateCommand__CreatureObject_int_int_long_UnicodeString_)));
 		break;
 	default:

@@ -180,26 +180,26 @@ int AiObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 AiObserverImplementation::AiObserverImplementation(AiAgent* agent) {
 	_initializeImplementation();
-	// server/zone/objects/creature/AiObserver.idl(57):  		aiAgent = agent;
+	// server/zone/objects/creature/AiObserver.idl():  		aiAgent = agent;
 	aiAgent = agent;
-	// server/zone/objects/creature/AiObserver.idl(59):  		Logger.setLoggingName("AiObserver");
+	// server/zone/objects/creature/AiObserver.idl():  		Logger.setLoggingName("AiObserver");
 	Logger::setLoggingName("AiObserver");
 }
 
 int AiObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/creature/AiObserver.idl(63):  
-	if (aiAgent == NULL)	// server/zone/objects/creature/AiObserver.idl(64):  			return 0;
+	// server/zone/objects/creature/AiObserver.idl():  			return 0;
+	if (aiAgent == NULL)	// server/zone/objects/creature/AiObserver.idl():  			return 0;
 	return 0;
 
-	else 	// server/zone/objects/creature/AiObserver.idl(65):  
-	if (eventType == ObserverEventType::SPECIALATTACK)	// server/zone/objects/creature/AiObserver.idl(66):  			return aiAgent.notifyAttack(observable);
+	else 	// server/zone/objects/creature/AiObserver.idl():  			return 0;
+	if (eventType == ObserverEventType::SPECIALATTACK)	// server/zone/objects/creature/AiObserver.idl():  			return aiAgent.notifyAttack(observable);
 	return aiAgent->notifyAttack(observable);
 
-	else 	// server/zone/objects/creature/AiObserver.idl(67):  
-	if (eventType == ObserverEventType::CALLFORHELP)	// server/zone/objects/creature/AiObserver.idl(68):  			return aiAgent.notifyCallForHelp(observable, arg1);
+	else 	// server/zone/objects/creature/AiObserver.idl():  			return 0;
+	if (eventType == ObserverEventType::CALLFORHELP)	// server/zone/objects/creature/AiObserver.idl():  			return aiAgent.notifyCallForHelp(observable, arg1);
 	return aiAgent->notifyCallForHelp(observable, arg1);
 
-	else 	// server/zone/objects/creature/AiObserver.idl(70):  			return 0;
+	else 	// server/zone/objects/creature/AiObserver.idl():  			return 0;
 	return 0;
 }
 
@@ -210,11 +210,13 @@ int AiObserverImplementation::notifyObserverEvent(unsigned int eventType, Observ
 AiObserverAdapter::AiObserverAdapter(AiObserverImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 Packet* AiObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:

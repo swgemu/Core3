@@ -409,27 +409,27 @@ int VehicleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 VehicleObjectImplementation::VehicleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/VehicleObject.idl(63):  		vehicleType = SceneObject.HOVERVEHICLE;
+	// server/zone/objects/creature/VehicleObject.idl():  		vehicleType = SceneObject.HOVERVEHICLE;
 	vehicleType = SceneObject::HOVERVEHICLE;
-	// server/zone/objects/creature/VehicleObject.idl(65):  		Logger.setLoggingName("VehicleObject");
+	// server/zone/objects/creature/VehicleObject.idl():  		Logger.setLoggingName("VehicleObject");
 	Logger::setLoggingName("VehicleObject");
-	// server/zone/objects/creature/VehicleObject.idl(66):  		Logger.setLogging(false);
+	// server/zone/objects/creature/VehicleObject.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/creature/VehicleObject.idl(67):  		Logger.setGlobalLogging(true);
+	// server/zone/objects/creature/VehicleObject.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 void VehicleObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/creature/VehicleObject.idl(72):  		super.loadTemplateData(templateData);
+	// server/zone/objects/creature/VehicleObject.idl():  		super.loadTemplateData(templateData);
 	CreatureObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/creature/VehicleObject.idl(74):  		super.optionsBitmask = 0x1080;
+	// server/zone/objects/creature/VehicleObject.idl():  		super.optionsBitmask = 0x1080;
 	CreatureObjectImplementation::optionsBitmask = 0x1080;
-	// server/zone/objects/creature/VehicleObject.idl(75):  		super.pvpStatusBitmask = 0;
+	// server/zone/objects/creature/VehicleObject.idl():  		super.pvpStatusBitmask = 0;
 	CreatureObjectImplementation::pvpStatusBitmask = 0;
 }
 
 void VehicleObjectImplementation::setPosture(int newPosture, bool notifyClient) {
-	// server/zone/objects/creature/VehicleObject.idl(100):  		return;
+	// server/zone/objects/creature/VehicleObject.idl():  		return;
 	return;
 }
 
@@ -443,15 +443,15 @@ void VehicleObjectImplementation::setDefender(SceneObject* defender) {
 }
 
 bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/VehicleObject.idl(155):  		return 
-	if (CreatureObjectImplementation::linkedCreature.getForUpdate() == NULL)	// server/zone/objects/creature/VehicleObject.idl(156):  			return false;
+	// server/zone/objects/creature/VehicleObject.idl():  		return 
+	if (CreatureObjectImplementation::linkedCreature.getForUpdate() == NULL)	// server/zone/objects/creature/VehicleObject.idl():  			return false;
 	return false;
-	// server/zone/objects/creature/VehicleObject.idl(158):  super.linkedCreature.isAttackableBy(object);
+	// server/zone/objects/creature/VehicleObject.idl():  		return super.linkedCreature.isAttackableBy(object);
 	return CreatureObjectImplementation::linkedCreature.getForUpdate()->isAttackableBy(object);
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {
-	// server/zone/objects/creature/VehicleObject.idl(192):  		return true;
+	// server/zone/objects/creature/VehicleObject.idl():  		return true;
 	return true;
 }
 
@@ -462,53 +462,55 @@ bool VehicleObjectImplementation::isVehicleObject() {
 VehicleObjectAdapter::VehicleObjectAdapter(VehicleObjectImplementation* obj) : CreatureObjectAdapter(obj) {
 }
 
+enum {RPC_CHECKINRANGEGARAGE__,RPC_INSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_REPAIRVEHICLE__PLAYERCREATURE_,RPC_CALCULATEREPAIRCOST__PLAYERCREATURE_,RPC_SENDREPAIRCONFIRMTO__PLAYERCREATURE_,RPC_ISVEHICLEOBJECT__};
+
 Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_CHECKINRANGEGARAGE__:
 		resp->insertBoolean(checkInRangeGarage());
 		break;
-	case 7:
+	case RPC_INSERTTOZONE__ZONE_:
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_SETPOSTURE__INT_BOOL_:
 		setPosture(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 9:
+	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
 		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
-	case 10:
+	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_:
 		resp->insertSignedInt(healDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 11:
+	case RPC_ADDDEFENDER__SCENEOBJECT_:
 		addDefender((SceneObject*) inv->getObjectParameter());
 		break;
-	case 12:
+	case RPC_REMOVEDEFENDER__SCENEOBJECT_:
 		removeDefender((SceneObject*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_SETDEFENDER__SCENEOBJECT_:
 		setDefender((SceneObject*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 15:
+	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
 		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 16:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 17:
+	case RPC_REPAIRVEHICLE__PLAYERCREATURE_:
 		repairVehicle((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_CALCULATEREPAIRCOST__PLAYERCREATURE_:
 		resp->insertSignedInt(calculateRepairCost((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 19:
+	case RPC_SENDREPAIRCONFIRMTO__PLAYERCREATURE_:
 		sendRepairConfirmTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 20:
+	case RPC_ISVEHICLEOBJECT__:
 		resp->insertBoolean(isVehicleObject());
 		break;
 	default:

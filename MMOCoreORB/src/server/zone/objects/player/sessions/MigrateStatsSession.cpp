@@ -257,77 +257,77 @@ int MigrateStatsSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 
 MigrateStatsSessionImplementation::MigrateStatsSessionImplementation(CreatureObject* parent) {
 	_initializeImplementation();
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(67):  		creature = parent;
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		creature = parent;
 	creature = parent;
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(69):  		Logger.setLoggingName("MigrateStatsSession");
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		Logger.setLoggingName("MigrateStatsSession");
 	Logger::setLoggingName("MigrateStatsSession");
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(70):  		Logger.setLogging(false);
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(72):  
-	for (	// server/zone/objects/player/sessions/MigrateStatsSession.idl(72):  		for (int i = 0;
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		}
+	for (	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		for (int i = 0;
 	int i = 0;
 	i < 9;
 i = i + 1) {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(73):  			attributesToModify.add(0);
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			attributesToModify.add(0);
 	(&attributesToModify)->add(0);
 }
 }
 
 int MigrateStatsSessionImplementation::initializeSession() {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(78):  		return 0;
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		return 0;
 	return 0;
 }
 
 int MigrateStatsSessionImplementation::cancelSession() {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(82):  
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		}
 	if (creature == NULL){
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(83):  			return 0;
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			return 0;
 	return 0;
 }
 
 	else {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(85):  			creature.dropActiveSession(SessionFacadeType.MIGRATESTATS);
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			creature.dropActiveSession(SessionFacadeType.MIGRATESTATS);
 	creature->dropActiveSession(SessionFacadeType::MIGRATESTATS);
 }
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(88):  		return 0;
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		return 0;
 	return 0;
 }
 
 int MigrateStatsSessionImplementation::clearSession() {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(92):  		attributesToModify.removeAll();
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		attributesToModify.removeAll();
 	(&attributesToModify)->removeAll();
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(94):  		return 0;
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		return 0;
 	return 0;
 }
 
 void MigrateStatsSessionImplementation::setAttributeToModify(int attribute, int value) {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(98):  		attributesToModify.set(attribute, value);
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		attributesToModify.set(attribute, value);
 	(&attributesToModify)->set(attribute, value);
 }
 
 int MigrateStatsSessionImplementation::getAttribtueToModify(int attribute) {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(102):  		return attributesToModify.get(attribute);
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		return attributesToModify.get(attribute);
 	return (&attributesToModify)->get(attribute);
 }
 
 void MigrateStatsSessionImplementation::migrateStats() {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(106):  
-	for (	// server/zone/objects/player/sessions/MigrateStatsSession.idl(106):  		for (int i = 0;
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		}
+	for (	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		for (int i = 0;
 	int i = 0;
 	i < 9;
 i = i + 1) {
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(107):  			int newValue = attributesToModify.get(i);
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			int newValue = attributesToModify.get(i);
 	int newValue = (&attributesToModify)->get(i);
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(109):  			int originalAmount = creature.getBaseHAM(i);
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			int originalAmount = creature.getBaseHAM(i);
 	int originalAmount = creature->getBaseHAM(i);
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(111):  			creature.setBaseHAM(i, newValue);
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			creature.setBaseHAM(i, newValue);
 	creature->setBaseHAM(i, newValue);
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(112):  			creature.setHAM(i, creature.getHAM(i) + (newValue - originalAmount));
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			creature.setHAM(i, creature.getHAM(i) + (newValue - originalAmount));
 	creature->setHAM(i, creature->getHAM(i) + (newValue - originalAmount));
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(113):  			creature.setMaxHAM(i, creature.getMaxHAM(i) + (newValue - originalAmount));
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			creature.setMaxHAM(i, creature.getMaxHAM(i) + (newValue - originalAmount));
 	creature->setMaxHAM(i, creature->getMaxHAM(i) + (newValue - originalAmount));
 }
-	// server/zone/objects/player/sessions/MigrateStatsSession.idl(119):  		cancelSession();
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		cancelSession();
 	cancelSession();
 }
 
@@ -338,26 +338,28 @@ i = i + 1) {
 MigrateStatsSessionAdapter::MigrateStatsSessionAdapter(MigrateStatsSessionImplementation* obj) : FacadeAdapter(obj) {
 }
 
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_SETATTRIBUTETOMODIFY__INT_INT_,RPC_GETATTRIBTUETOMODIFY__INT_,RPC_MIGRATESTATS__};
+
 Packet* MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZESESSION__:
 		resp->insertSignedInt(initializeSession());
 		break;
-	case 7:
+	case RPC_CANCELSESSION__:
 		resp->insertSignedInt(cancelSession());
 		break;
-	case 8:
+	case RPC_CLEARSESSION__:
 		resp->insertSignedInt(clearSession());
 		break;
-	case 9:
+	case RPC_SETATTRIBUTETOMODIFY__INT_INT_:
 		setAttributeToModify(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 10:
+	case RPC_GETATTRIBTUETOMODIFY__INT_:
 		resp->insertSignedInt(getAttribtueToModify(inv->getSignedIntParameter()));
 		break;
-	case 11:
+	case RPC_MIGRATESTATS__:
 		migrateStats();
 		break;
 	default:
