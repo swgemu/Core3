@@ -300,9 +300,9 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 SpawnAreaImplementation::SpawnAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/SpawnArea.idl(65):  		spawnConstant = 0;
+	// server/zone/objects/area/SpawnArea.idl():  		spawnConstant = 0;
 	spawnConstant = 0;
-	// server/zone/objects/area/SpawnArea.idl(66):  		Logger.setLoggingName("SpawnArea");
+	// server/zone/objects/area/SpawnArea.idl():  		Logger.setLoggingName("SpawnArea");
 	Logger::setLoggingName("SpawnArea");
 }
 
@@ -310,32 +310,32 @@ void SpawnAreaImplementation::registerObservers() {
 }
 
 int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/area/SpawnArea.idl(73):  		return 1;
+	// server/zone/objects/area/SpawnArea.idl():  		return 1;
 	return 1;
 }
 
 void SpawnAreaImplementation::addTemplate(unsigned int tempCRC) {
-	// server/zone/objects/area/SpawnArea.idl(77):  		spawnCreatureTemplates.add(tempCRC);
+	// server/zone/objects/area/SpawnArea.idl():  		spawnCreatureTemplates.add(tempCRC);
 	(&spawnCreatureTemplates)->add(tempCRC);
 }
 
 void SpawnAreaImplementation::setTier(int n) {
-	// server/zone/objects/area/SpawnArea.idl(81):  		tier = n;
+	// server/zone/objects/area/SpawnArea.idl():  		tier = n;
 	tier = n;
 }
 
 void SpawnAreaImplementation::setSpawnConstant(int n) {
-	// server/zone/objects/area/SpawnArea.idl(85):  		spawnConstant = n;
+	// server/zone/objects/area/SpawnArea.idl():  		spawnConstant = n;
 	spawnConstant = n;
 }
 
 bool SpawnAreaImplementation::isStaticArea() {
-	// server/zone/objects/area/SpawnArea.idl(89):  		return false;
+	// server/zone/objects/area/SpawnArea.idl():  		return false;
 	return false;
 }
 
 bool SpawnAreaImplementation::isDynamicArea() {
-	// server/zone/objects/area/SpawnArea.idl(93):  		return false;
+	// server/zone/objects/area/SpawnArea.idl():  		return false;
 	return false;
 }
 
@@ -346,29 +346,31 @@ bool SpawnAreaImplementation::isDynamicArea() {
 SpawnAreaAdapter::SpawnAreaAdapter(SpawnAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
 
+enum {RPC_REGISTEROBSERVERS__ = 6,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDTEMPLATE__INT_,RPC_SETTIER__INT_,RPC_SETSPAWNCONSTANT__INT_,RPC_ISSTATICAREA__,RPC_ISDYNAMICAREA__};
+
 Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_REGISTEROBSERVERS__:
 		registerObservers();
 		break;
-	case 7:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 8:
+	case RPC_ADDTEMPLATE__INT_:
 		addTemplate(inv->getUnsignedIntParameter());
 		break;
-	case 9:
+	case RPC_SETTIER__INT_:
 		setTier(inv->getSignedIntParameter());
 		break;
-	case 10:
+	case RPC_SETSPAWNCONSTANT__INT_:
 		setSpawnConstant(inv->getSignedIntParameter());
 		break;
-	case 11:
+	case RPC_ISSTATICAREA__:
 		resp->insertBoolean(isStaticArea());
 		break;
-	case 12:
+	case RPC_ISDYNAMICAREA__:
 		resp->insertBoolean(isDynamicArea());
 		break;
 	default:

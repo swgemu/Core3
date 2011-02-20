@@ -799,202 +799,202 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 
 GamblingTerminalImplementation::GamblingTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(131):  		state = NOGAMERUNNING;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		state = NOGAMERUNNING;
 	state = NOGAMERUNNING;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(132):  		first = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		first = 0;
 	first = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(133):  		second = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		second = 0;
 	second = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(134):  		third = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		third = 0;
 	third = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(135):  		gameCount = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		gameCount = 0;
 	gameCount = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(136):  		minBet = 1;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		minBet = 1;
 	minBet = 1;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(137):  		maxBet = 10000;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		maxBet = 10000;
 	maxBet = 10000;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(138):  		Logger.setLoggingName("GamblingTerminal");
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		Logger.setLoggingName("GamblingTerminal");
 	Logger::setLoggingName("GamblingTerminal");
 }
 
 void GamblingTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(142):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(144):  		Logger.setLoggingName("GamblingTerminal");
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		Logger.setLoggingName("GamblingTerminal");
 	Logger::setLoggingName("GamblingTerminal");
 }
 
 void GamblingTerminalImplementation::reset() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(148):  		state = NOGAMERUNNING;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		state = NOGAMERUNNING;
 	state = NOGAMERUNNING;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(149):  		first = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		first = 0;
 	first = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(150):  		second = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		second = 0;
 	second = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(151):  		third = 0;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		third = 0;
 	third = 0;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(152):  		playersWindows.removeAll();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		playersWindows.removeAll();
 	(&playersWindows)->removeAll();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(153):  		winnings.removeAll();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		winnings.removeAll();
 	(&winnings)->removeAll();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(154):  		bets.removeAll();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		bets.removeAll();
 	(&bets)->removeAll();
 }
 
 Vector<GamblingBet*>* GamblingTerminalImplementation::getBets() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(159):  		return bets;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return bets;
 	return (&bets);
 }
 
 VectorMap<ManagedReference<PlayerCreature* >, unsigned int>* GamblingTerminalImplementation::getPlayersWindows() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(164):  		return playersWindows;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return playersWindows;
 	return (&playersWindows);
 }
 
 VectorMap<ManagedReference<PlayerCreature* >, int>* GamblingTerminalImplementation::getWinnings() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(169):  		return winnings;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return winnings;
 	return (&winnings);
 }
 
 int GamblingTerminalImplementation::getFirst() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(173):  		return first;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return first;
 	return first;
 }
 
 int GamblingTerminalImplementation::getSecond() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(177):  		return second;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return second;
 	return second;
 }
 
 int GamblingTerminalImplementation::getThird() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(181):  		return third;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return third;
 	return third;
 }
 
 void GamblingTerminalImplementation::setFirst(int value) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(185):  		first = value;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		first = value;
 	first = value;
 }
 
 void GamblingTerminalImplementation::setSecond(int value) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(189):  		second = value;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		second = value;
 	second = value;
 }
 
 void GamblingTerminalImplementation::setThird(int value) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(193):  		third = value;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		third = value;
 	third = value;
 }
 
 int GamblingTerminalImplementation::getMinBet() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(197):  		return minBet;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return minBet;
 	return minBet;
 }
 
 int GamblingTerminalImplementation::getMaxBet() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(201):  		return maxBet;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return maxBet;
 	return maxBet;
 }
 
 int GamblingTerminalImplementation::getState() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(205):  		return state;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return state;
 	return state;
 }
 
 void GamblingTerminalImplementation::setState(int value) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(209):  		state = value;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		state = value;
 	state = value;
 }
 
 int GamblingTerminalImplementation::getMachineType() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(213):  		return machineType;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return machineType;
 	return machineType;
 }
 
 GamblingEvent* GamblingTerminalImplementation::getEvent() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(218):  		return event.get();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return event.get();
 	return (&event)->get();
 }
 
 void GamblingTerminalImplementation::incGameCount() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(225):  		gameCount = gameCount + 1;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		gameCount = gameCount + 1;
 	gameCount = gameCount + 1;
 }
 
 int GamblingTerminalImplementation::getGameCount() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(229):  		return gameCount;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return gameCount;
 	return gameCount;
 }
 
 bool GamblingTerminalImplementation::isGoneEmpty() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(233):  		return 
-	if ((&playersWindows)->size() == 0)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(234):  			return true;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return 
+	if ((&playersWindows)->size() == 0)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return true;
 	return true;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(235):  false;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return false;
 	return false;
 }
 
 String GamblingTerminalImplementation::getMachineTypeText() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(239):  
-	if (machineType == ROULETTEMACHINE)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(240):  			return "@gambling/game_n:roulette";
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return "Sabacc";
+	if (machineType == ROULETTEMACHINE)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return "@gambling/game_n:roulette";
 	return "@gambling/game_n:roulette";
 
-	else 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(241):  
-	if (machineType == SLOTMACHINE)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(242):  			return "@gambling/game_n:slot_standard";
+	else 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return "Sabacc";
+	if (machineType == SLOTMACHINE)	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return "@gambling/game_n:slot_standard";
 	return "@gambling/game_n:slot_standard";
 
-	else 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(244):  			return "Sabacc";
+	else 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return "Sabacc";
 	return "Sabacc";
 }
 
 void GamblingTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(255):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		super.loadTemplateData(templateData);
 	TerminalImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(257):  		GamblingTerminalTemplate 
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		GamblingTerminalTemplate 
 	if (!templateData->isGamblingTerminalTemplate()){
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(258):  			error("critical error");
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			error("critical error");
 	error("critical error");
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(259):  			return;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return;
 	return;
 }
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(262):  templ = (GamblingTerminalTemplate) templateData;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		GamblingTerminalTemplate templ = (GamblingTerminalTemplate) templateData;
 	GamblingTerminalTemplate* templ = (GamblingTerminalTemplate*) templateData;
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(264):  		machineType = templ.getMachineType();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		machineType = templ.getMachineType();
 	machineType = templ->getMachineType();
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(266):  	}
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  	}
 	if (machineType == SLOTMACHINE){
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(267):  			maxBet = 3;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			maxBet = 3;
 	maxBet = 3;
 }
 }
 
 String GamblingTerminalImplementation::getText(PlayerCreature* player) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(280):  		return 
-	if ((&playersWindows)->contains(player))	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(281):  			return "@gambling/default_interface:mnu_leave";
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return 
+	if ((&playersWindows)->contains(player))	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return "@gambling/default_interface:mnu_leave";
 	return "@gambling/default_interface:mnu_leave";
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(282):  "@gambling/default_interface:mnu_join";
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return "@gambling/default_interface:mnu_join";
 	return "@gambling/default_interface:mnu_join";
 }
 
 void GamblingTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(292):  		string text = getText(player);
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		string text = getText(player);
 	String text = getText(player);
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(293):  		menuResponse.addRadialMenuItem(245, 3, text);
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		menuResponse.addRadialMenuItem(245, 3, text);
 	menuResponse->addRadialMenuItem(245, 3, text);
 }
 
 void GamblingTerminalImplementation::setGamblingRegion(const String& region) {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(305):  		gamblingRegion = region;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		gamblingRegion = region;
 	gamblingRegion = region;
 }
 
 String GamblingTerminalImplementation::getGamblingRegion() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(309):  		return gamblingRegion;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return gamblingRegion;
 	return gamblingRegion;
 }
 
 bool GamblingTerminalImplementation::gameRunning() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl(313):  		return state != NOGAMERUNNING;
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return state != NOGAMERUNNING;
 	return state != NOGAMERUNNING;
 }
 
@@ -1005,98 +1005,100 @@ bool GamblingTerminalImplementation::gameRunning() {
 GamblingTerminalAdapter::GamblingTerminalAdapter(GamblingTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_RESET__,RPC_GETFIRST__,RPC_GETSECOND__,RPC_GETTHIRD__,RPC_SETFIRST__INT_,RPC_SETSECOND__INT_,RPC_SETTHIRD__INT_,RPC_GETMINBET__,RPC_GETMAXBET__,RPC_GETSTATE__,RPC_SETSTATE__INT_,RPC_GETMACHINETYPE__,RPC_INCGAMECOUNT__,RPC_GETGAMECOUNT__,RPC_ISGONEEMPTY__,RPC_GETMACHINETYPETEXT__,RPC_GETTEXT__PLAYERCREATURE_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETGAMBLINGREGION__STRING_,RPC_GETGAMBLINGREGION__,RPC_GAMERUNNING__,RPC_CHECKJOIN__PLAYERCREATURE_,RPC_JOINTERMINAL__PLAYERCREATURE_,RPC_LEAVETERMINAL__PLAYERCREATURE_,RPC_CLOSEMENU__PLAYERCREATURE_BOOL_,RPC_CLOSEALLMENUS__,RPC_STATUSUPDATE__PLAYERCREATURE_INT_,RPC_STATUSUPDATE__INT_,};
+
 Packet* GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_RESET__:
 		reset();
 		break;
-	case 8:
+	case RPC_GETFIRST__:
 		resp->insertSignedInt(getFirst());
 		break;
-	case 9:
+	case RPC_GETSECOND__:
 		resp->insertSignedInt(getSecond());
 		break;
-	case 10:
+	case RPC_GETTHIRD__:
 		resp->insertSignedInt(getThird());
 		break;
-	case 11:
+	case RPC_SETFIRST__INT_:
 		setFirst(inv->getSignedIntParameter());
 		break;
-	case 12:
+	case RPC_SETSECOND__INT_:
 		setSecond(inv->getSignedIntParameter());
 		break;
-	case 13:
+	case RPC_SETTHIRD__INT_:
 		setThird(inv->getSignedIntParameter());
 		break;
-	case 14:
+	case RPC_GETMINBET__:
 		resp->insertSignedInt(getMinBet());
 		break;
-	case 15:
+	case RPC_GETMAXBET__:
 		resp->insertSignedInt(getMaxBet());
 		break;
-	case 16:
+	case RPC_GETSTATE__:
 		resp->insertSignedInt(getState());
 		break;
-	case 17:
+	case RPC_SETSTATE__INT_:
 		setState(inv->getSignedIntParameter());
 		break;
-	case 18:
+	case RPC_GETMACHINETYPE__:
 		resp->insertSignedInt(getMachineType());
 		break;
-	case 19:
+	case RPC_INCGAMECOUNT__:
 		incGameCount();
 		break;
-	case 20:
+	case RPC_GETGAMECOUNT__:
 		resp->insertSignedInt(getGameCount());
 		break;
-	case 21:
+	case RPC_ISGONEEMPTY__:
 		resp->insertBoolean(isGoneEmpty());
 		break;
-	case 22:
+	case RPC_GETMACHINETYPETEXT__:
 		resp->insertAscii(getMachineTypeText());
 		break;
-	case 23:
+	case RPC_GETTEXT__PLAYERCREATURE_:
 		resp->insertAscii(getText((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 24:
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
 		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 25:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 26:
+	case RPC_SETGAMBLINGREGION__STRING_:
 		setGamblingRegion(inv->getAsciiParameter(_param0_setGamblingRegion__String_));
 		break;
-	case 27:
+	case RPC_GETGAMBLINGREGION__:
 		resp->insertAscii(getGamblingRegion());
 		break;
-	case 28:
+	case RPC_GAMERUNNING__:
 		resp->insertBoolean(gameRunning());
 		break;
-	case 29:
+	case RPC_CHECKJOIN__PLAYERCREATURE_:
 		resp->insertBoolean(checkJoin((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 30:
+	case RPC_JOINTERMINAL__PLAYERCREATURE_:
 		joinTerminal((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 31:
+	case RPC_LEAVETERMINAL__PLAYERCREATURE_:
 		leaveTerminal((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 32:
+	case RPC_CLOSEMENU__PLAYERCREATURE_BOOL_:
 		closeMenu((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 33:
+	case RPC_CLOSEALLMENUS__:
 		closeAllMenus();
 		break;
-	case 34:
+	case RPC_STATUSUPDATE__PLAYERCREATURE_INT_:
 		statusUpdate((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 35:
+	case RPC_STATUSUPDATE__INT_:
 		statusUpdate(inv->getSignedIntParameter());
 		break;
 	default:

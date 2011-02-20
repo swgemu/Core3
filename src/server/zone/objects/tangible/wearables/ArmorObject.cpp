@@ -795,180 +795,180 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ArmorObjectImplementation::ArmorObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(80):  		healthEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		healthEncumbrance = 100;
 	healthEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(81):  		actionEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		actionEncumbrance = 100;
 	actionEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(82):  		mindEncumbrance = 100;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		mindEncumbrance = 100;
 	mindEncumbrance = 100;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(84):  		rating = LIGHT;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		rating = LIGHT;
 	rating = LIGHT;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(86):  		kinetic = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		kinetic = 0;
 	kinetic = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(87):  		energy = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		energy = 0;
 	energy = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(88):  		electricity = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		electricity = 0;
 	electricity = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(89):  		stun = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		stun = 0;
 	stun = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(90):  		blast = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		blast = 0;
 	blast = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(91):  		heat = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		heat = 0;
 	heat = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(92):  		cold = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		cold = 0;
 	cold = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(93):  		acid = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		acid = 0;
 	acid = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(94):  		lightSaber = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		lightSaber = 0;
 	lightSaber = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(96):  		specialResists = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		specialResists = 0;
 	specialResists = 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(102):  		Logger.setLoggingName("ArmorObject");
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");
 }
 
 bool ArmorObjectImplementation::isSpecial(int type) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(138):  		return specialResists & type;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return specialResists & type;
 	return specialResists & type;
 }
 
 bool ArmorObjectImplementation::isVulnerable(int type) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(142):  		return vulnerabilites & type;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return vulnerabilites & type;
 	return vulnerabilites & type;
 }
 
 bool ArmorObjectImplementation::isArmorObject() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(146):  		return true;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return true;
 	return true;
 }
 
 void ArmorObjectImplementation::setRating(int rate) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(151):  		rating = rate;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		rating = rate;
 	rating = rate;
 }
 
 int ArmorObjectImplementation::getRating() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(155):  		return rating;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return rating;
 	return rating;
 }
 
 float ArmorObjectImplementation::getKinetic() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(159):  		return kinetic;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return kinetic;
 	return kinetic;
 }
 
 void ArmorObjectImplementation::setKinetic(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(163):  		kinetic = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		kinetic = value;
 	kinetic = value;
 }
 
 float ArmorObjectImplementation::getEnergy() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(167):  		return energy;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return energy;
 	return energy;
 }
 
 void ArmorObjectImplementation::setEnergy(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(171):  		energy = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		energy = value;
 	energy = value;
 }
 
 float ArmorObjectImplementation::getElectricity() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(175):  		return electricity;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return electricity;
 	return electricity;
 }
 
 void ArmorObjectImplementation::setElectricity(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(179):  		electricity = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		electricity = value;
 	electricity = value;
 }
 
 float ArmorObjectImplementation::getStun() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(183):  		return stun;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return stun;
 	return stun;
 }
 
 void ArmorObjectImplementation::setStun(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(187):  		stun = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		stun = value;
 	stun = value;
 }
 
 float ArmorObjectImplementation::getBlast() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(191):  		return blast;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return blast;
 	return blast;
 }
 
 void ArmorObjectImplementation::setBlast(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(195):  		blast = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		blast = value;
 	blast = value;
 }
 
 float ArmorObjectImplementation::getHeat() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(199):  		return heat;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return heat;
 	return heat;
 }
 
 void ArmorObjectImplementation::setHeat(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(203):  		heat = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		heat = value;
 	heat = value;
 }
 
 float ArmorObjectImplementation::getCold() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(207):  		return cold;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return cold;
 	return cold;
 }
 
 void ArmorObjectImplementation::setCold(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(211):  		cold = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		cold = value;
 	cold = value;
 }
 
 float ArmorObjectImplementation::getAcid() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(215):  		return acid;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return acid;
 	return acid;
 }
 
 void ArmorObjectImplementation::setAcid(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(219):  		acid = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		acid = value;
 	acid = value;
 }
 
 float ArmorObjectImplementation::getLightSaber() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(223):  		return lightSaber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return lightSaber;
 	return lightSaber;
 }
 
 void ArmorObjectImplementation::setLightSaber(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(227):  		lightSaber = value;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		lightSaber = value;
 	lightSaber = value;
 }
 
 int ArmorObjectImplementation::getHealthEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(231):  		return healthEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return healthEncumbrance;
 	return healthEncumbrance;
 }
 
 void ArmorObjectImplementation::setHealthEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(235):  		healthEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		healthEncumbrance = encumber;
 	healthEncumbrance = encumber;
 }
 
 int ArmorObjectImplementation::getActionEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(239):  		return actionEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return actionEncumbrance;
 	return actionEncumbrance;
 }
 
 void ArmorObjectImplementation::setActionEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(243):  		actionEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		actionEncumbrance = encumber;
 	actionEncumbrance = encumber;
 }
 
 int ArmorObjectImplementation::getMindEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(247):  		return mindEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return mindEncumbrance;
 	return mindEncumbrance;
 }
 
 void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl(251):  		mindEncumbrance = encumber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		mindEncumbrance = encumber;
 	mindEncumbrance = encumber;
 }
 
@@ -979,101 +979,103 @@ void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
 ArmorObjectAdapter::ArmorObjectAdapter(ArmorObjectImplementation* obj) : WearableObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_};
+
 Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_ISSPECIAL__INT_:
 		resp->insertBoolean(isSpecial(inv->getSignedIntParameter()));
 		break;
-	case 9:
+	case RPC_ISVULNERABLE__INT_:
 		resp->insertBoolean(isVulnerable(inv->getSignedIntParameter()));
 		break;
-	case 10:
+	case RPC_ISARMOROBJECT__:
 		resp->insertBoolean(isArmorObject());
 		break;
-	case 11:
+	case RPC_SETRATING__INT_:
 		setRating(inv->getSignedIntParameter());
 		break;
-	case 12:
+	case RPC_GETRATING__:
 		resp->insertSignedInt(getRating());
 		break;
-	case 13:
+	case RPC_GETKINETIC__:
 		resp->insertFloat(getKinetic());
 		break;
-	case 14:
+	case RPC_SETKINETIC__FLOAT_:
 		setKinetic(inv->getFloatParameter());
 		break;
-	case 15:
+	case RPC_GETENERGY__:
 		resp->insertFloat(getEnergy());
 		break;
-	case 16:
+	case RPC_SETENERGY__FLOAT_:
 		setEnergy(inv->getFloatParameter());
 		break;
-	case 17:
+	case RPC_GETELECTRICITY__:
 		resp->insertFloat(getElectricity());
 		break;
-	case 18:
+	case RPC_SETELECTRICITY__FLOAT_:
 		setElectricity(inv->getFloatParameter());
 		break;
-	case 19:
+	case RPC_GETSTUN__:
 		resp->insertFloat(getStun());
 		break;
-	case 20:
+	case RPC_SETSTUN__FLOAT_:
 		setStun(inv->getFloatParameter());
 		break;
-	case 21:
+	case RPC_GETBLAST__:
 		resp->insertFloat(getBlast());
 		break;
-	case 22:
+	case RPC_SETBLAST__FLOAT_:
 		setBlast(inv->getFloatParameter());
 		break;
-	case 23:
+	case RPC_GETHEAT__:
 		resp->insertFloat(getHeat());
 		break;
-	case 24:
+	case RPC_SETHEAT__FLOAT_:
 		setHeat(inv->getFloatParameter());
 		break;
-	case 25:
+	case RPC_GETCOLD__:
 		resp->insertFloat(getCold());
 		break;
-	case 26:
+	case RPC_SETCOLD__FLOAT_:
 		setCold(inv->getFloatParameter());
 		break;
-	case 27:
+	case RPC_GETACID__:
 		resp->insertFloat(getAcid());
 		break;
-	case 28:
+	case RPC_SETACID__FLOAT_:
 		setAcid(inv->getFloatParameter());
 		break;
-	case 29:
+	case RPC_GETLIGHTSABER__:
 		resp->insertFloat(getLightSaber());
 		break;
-	case 30:
+	case RPC_SETLIGHTSABER__FLOAT_:
 		setLightSaber(inv->getFloatParameter());
 		break;
-	case 31:
+	case RPC_GETHEALTHENCUMBRANCE__:
 		resp->insertSignedInt(getHealthEncumbrance());
 		break;
-	case 32:
+	case RPC_SETHEALTHENCUMBRANCE__INT_:
 		setHealthEncumbrance(inv->getSignedIntParameter());
 		break;
-	case 33:
+	case RPC_GETACTIONENCUMBRANCE__:
 		resp->insertSignedInt(getActionEncumbrance());
 		break;
-	case 34:
+	case RPC_SETACTIONENCUMBRANCE__INT_:
 		setActionEncumbrance(inv->getSignedIntParameter());
 		break;
-	case 35:
+	case RPC_GETMINDENCUMBRANCE__:
 		resp->insertSignedInt(getMindEncumbrance());
 		break;
-	case 36:
+	case RPC_SETMINDENCUMBRANCE__INT_:
 		setMindEncumbrance(inv->getSignedIntParameter());
 		break;
 	default:

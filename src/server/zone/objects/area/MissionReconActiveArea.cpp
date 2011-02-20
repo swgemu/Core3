@@ -193,42 +193,42 @@ int MissionReconActiveAreaImplementation::writeObjectMembers(ObjectOutputStream*
 
 MissionReconActiveAreaImplementation::MissionReconActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/MissionReconActiveArea.idl(57):  		missionObjective = null;
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		missionObjective = null;
 	missionObjective = NULL;
-	// server/zone/objects/area/MissionReconActiveArea.idl(59):  		Logger.setLoggingName("MissionReconActiveArea");
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		Logger.setLoggingName("MissionReconActiveArea");
 	Logger::setLoggingName("MissionReconActiveArea");
 }
 
 void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
-	// server/zone/objects/area/MissionReconActiveArea.idl(63):  		Logger.info("notifyEnter mission recon", true);
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		Logger.info("notifyEnter mission recon", true);
 	Logger::info("notifyEnter mission recon", true);
-	// server/zone/objects/area/MissionReconActiveArea.idl(65):  
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		}
 	if (!player->isPlayerCreature()){
-	// server/zone/objects/area/MissionReconActiveArea.idl(66):  			return;
+	// server/zone/objects/area/MissionReconActiveArea.idl():  			return;
 	return;
 }
 
 	else {
-	// server/zone/objects/area/MissionReconActiveArea.idl(68):  
+	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if (missionObjective != NULL){
-	// server/zone/objects/area/MissionReconActiveArea.idl(69):  				PlayerCreature missionOwner = missionObjective.getPlayerOwner();
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				PlayerCreature missionOwner = missionObjective.getPlayerOwner();
 	PlayerCreature* missionOwner = missionObjective->getPlayerOwner();
-	// server/zone/objects/area/MissionReconActiveArea.idl(71):  			}
+	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if ((PlayerCreature*) player == missionOwner){
-	// server/zone/objects/area/MissionReconActiveArea.idl(72):  					missionObjective.complete();
+	// server/zone/objects/area/MissionReconActiveArea.idl():  					missionObjective.complete();
 	missionObjective->complete();
 }
 }
 
 	else {
-	// server/zone/objects/area/MissionReconActiveArea.idl(75):  				super.removeFromZone();
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				super.removeFromZone();
 	ActiveAreaImplementation::removeFromZone();
 }
 }
 }
 
 void MissionReconActiveAreaImplementation::setMissionObjective(ReconMissionObjective* mission) {
-	// server/zone/objects/area/MissionReconActiveArea.idl(81):  		missionObjective = mission;
+	// server/zone/objects/area/MissionReconActiveArea.idl():  		missionObjective = mission;
 	missionObjective = mission;
 }
 
@@ -239,14 +239,16 @@ void MissionReconActiveAreaImplementation::setMissionObjective(ReconMissionObjec
 MissionReconActiveAreaAdapter::MissionReconActiveAreaAdapter(MissionReconActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_};
+
 Packet* MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_:
 		setMissionObjective((ReconMissionObjective*) inv->getObjectParameter());
 		break;
 	default:

@@ -44,6 +44,9 @@ which carries forward this exception.
 
 package server.zone.objects.player;
 
+include system.util.Vector;
+include system.util.VectorMap;
+
 include engine.core.ManagedObject;
 
 import engine.log.Logger;
@@ -57,71 +60,91 @@ include server.zone.objects.scene.SessionFacadeType;
 include server.zone.managers.professions.imagedesign.ImageDesignManager;
 import server.zone.objects.player.events.ImageDesignTimeoutEvent;
 include server.zone.objects.scene.variables.CustomizationVariables;
-include server.zone.objects.player.sessions.ImageDesignData;
 
 class ImageDesignSession extends Facade {
+
+	protected string hairObject;
+	protected string ukstring1;
+	protected unsigned int ukint1;
+	protected unsigned int timestamp;
+	protected unsigned int requiredPayment;
+	protected unsigned int offeredPayment;
+	protected byte designerAccepted;
+	protected unsigned int targetAccepted;
+	protected byte statMigration;
+	protected unsigned int ukint4;
+	protected unsigned int ukint5;
+	protected unsigned int ukint6;
+	protected unsigned int ukint7;
+	protected unsigned int sizeFloatAttrs;
+	protected unsigned int attributesSize;
+	protected string holoEmote;
+
+	@dereferenced
+	protected VectorMap<string, float> floatMap;
+
+	@dereferenced
+	protected VectorMap<string, unsigned int> colorMap;
+
 	@weakReference
-	ImageDesignManager imageDesignManager;
+	ImageDesignManager idMgr;
 
 	@weakReference
 	protected PlayerCreature designerCreature;
 
 	@weakReference
 	protected PlayerCreature targetCreature;
-	
-	@dereferenced
-	protected ImageDesignData imageDesignData;
 
 	protected transient Reference<ImageDesignTimeoutEvent> idTimeoutEvent;
 	
 	public ImageDesignSession(CreatureObject parent) {
+	
 		Logger.setLoggingName("ImageDesignSession");
 		Logger.setLogging(true);
 		
 		initializeSession();
 
+		hairObject = "";
+		ukstring1 = "";
+		ukint1 = 0;
+ 		timestamp = 0;
+	 	requiredPayment = 0;
+	 	offeredPayment = 0;
+		designerAccepted = 0;
+	 	targetAccepted = 0;
+	 	statMigration = 0;
+	 	ukint4 = 0;
+	 	ukint5 = 0;
+	 	ukint6 = 0;
+	 	ukint7 = 0;
+	 	sizeFloatAttrs = 0;
+		attributesSize = 0;
+
 		designerCreature = null;
 		targetCreature = null;
-		imageDesignManager = null;
+
+		floatMap.removeAll();
+		colorMap.removeAll();
+		
 	}
 	
-	/**
-	 * Starts an ImageDesign session between the designer and the target player.
-	 * @param designer The image designer.
-	 * @param targetPlayer The recipient of the image designing.
-	 * @param type Unknown type specifier (needs more research)
-	 */
 	@local
-	public native void startImageDesign(PlayerCreature designer, PlayerCreature targetPlayer);
+	public native void startImageDesign(PlayerCreature object,PlayerCreature designer, PlayerCreature targetPlayer, unsigned long tent, int type = 0);
 	
-	/**
-	 * When a change is made by the designer, the target's window needs to be notified, and vice versa.
-	 * @param designer The object id of the designer.
-	 * @param targetPlayer The target player's object id.
-	 * @param tent The object id of the salon tent being used.
-	 * @param type The type of something - unknown atm.
-	 * @param data The image design data associated with this update request.
-	 */
-	@local
-	public native void updateImageDesign(unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);
-	
-	@local
-	public native void cancelImageDesign(unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);	
+	public native void updateImageDesign
+		(unsigned long object, unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type = 0);
+
+	public native void cancelImageDesign
+		(unsigned long object, unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type = 0);	
 
 	public native int initializeSession();
 	
-	public native int doPayment();
-	
 	public int cancelSession() {
-		if (designerCreature != null) {
+		if (designerCreature != null)
 			designerCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
-		} else {
-		}
 
-		if (targetCreature != null) {
+		if (targetCreature != null)
 			targetCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
-		} else {
-		}
 
 		dequeueIdTimeoutEvent();
 
@@ -144,18 +167,86 @@ class ImageDesignSession extends Facade {
 	}
 
 	public void sessionTimeout() {
-		if (designerCreature != null) {
-			designerCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
-		} else {
+		if (designerCreature != null || targetCreature != null) {
+			sizeFloatAttrs = 0;
+			attributesSize = 0;
+			designerCreature.sendSystemMessage("Image Design Session has Timed Out. Changes Aborted.");
+			targetCreature.sendSystemMessage("Image Design Session has Timed Out. Changes Aborted.");
+			cancelImageDesign(designerCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0);
+			cancelImageDesign(targetCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0);
 		}
-		
-		if (targetCreature != null) {			
-			targetCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
-		} else {
-		}
-		
-		//TODO: Something needs doing here.
-		//cancelImageDesign(designerCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0);
-		//cancelImageDesign(targetCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0);
 	}
+
+	public void setHairObject(string hair) {
+		hairObject = hair;
+	}
+
+	public void setUkstring1(string uk1) {
+		ukstring1 = uk1;
+	}
+
+	public void setTimeStamp(unsigned int time) {
+		timestamp = time;
+	}
+
+	public void setRequiredPayment(unsigned int rp) {
+		requiredPayment = rp;
+	}
+
+	public void setOfferedPayment(unsigned int op) {
+		offeredPayment = op;
+	}
+
+	public void setDesignerAccepted(byte da) {
+		designerAccepted = da;
+	}
+
+	public void setTargetAccepted(unsigned int ta) {
+		targetAccepted = ta;
+	}
+
+	public void setStatMigration(byte sm) {
+		statMigration = sm;
+	}
+
+	public void setUnknownInt1(unsigned int value) {
+		ukint1 = value;
+	}
+
+	public void setUnknownInt4(unsigned int value) {
+		ukint4 = value;
+	}
+
+	public void setUnknownInt5(unsigned int value) {
+		ukint5 = value;
+	}
+
+	public void setUnknownInt6(unsigned int value) {
+		ukint6 = value;
+	}
+
+	public void setUnknownInt7(unsigned int value) {
+		ukint7 = value;
+	}
+
+	public void setSizeFloatAttrs(unsigned int sfa) {
+		sizeFloatAttrs = sfa;
+	}
+
+	public void setAttributesSize(unsigned int val) {
+		attributesSize = val;
+	}
+
+	public void setHoloEmote(string val) {
+		holoEmote = val;
+	}
+
+	public native int doPayment();
+
+	@local
+	public native void setFloatMap(@dereferenced VectorMap<string,float> map);
+
+	@local
+	public native void setColorMap(@dereferenced VectorMap<string,unsigned int> map);
+
 }

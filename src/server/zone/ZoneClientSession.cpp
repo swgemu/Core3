@@ -458,61 +458,61 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
-	// server/zone/ZoneClientSession.idl(102):  		player 
+	// server/zone/ZoneClientSession.idl():  		player 
 	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl(103):  
+	// server/zone/ZoneClientSession.idl():  		}
 	if (playerCreature == NULL && player != NULL){
-	// server/zone/ZoneClientSession.idl(104):  				ZoneServer zoneServer = player.getZoneServer();
+	// server/zone/ZoneClientSession.idl():  				ZoneServer zoneServer = player.getZoneServer();
 	ZoneServer* zoneServer = player->getZoneServer();
-	// server/zone/ZoneClientSession.idl(106):  				zoneServer.decreaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl():  				zoneServer.decreaseOnlinePlayers();
 	zoneServer->decreaseOnlinePlayers();
 }
 
-	else 	// server/zone/ZoneClientSession.idl(107):  		}
+	else 	// server/zone/ZoneClientSession.idl():  		}
 	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl(108):  				ZoneServer zoneServer = playerCreature.getZoneServer();
+	// server/zone/ZoneClientSession.idl():  				ZoneServer zoneServer = playerCreature.getZoneServer();
 	ZoneServer* zoneServer = playerCreature->getZoneServer();
-	// server/zone/ZoneClientSession.idl(110):  				zoneServer.increaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl():  				zoneServer.increaseOnlinePlayers();
 	zoneServer->increaseOnlinePlayers();
 }
 }
-	// server/zone/ZoneClientSession.idl(114):  = playerCreature;
+	// server/zone/ZoneClientSession.idl():  		player = playerCreature;
 	player = playerCreature;
 }
 
 void ZoneClientSessionImplementation::setSessionID(unsigned int id) {
-	// server/zone/ZoneClientSession.idl(118):  		sessionID = id;
+	// server/zone/ZoneClientSession.idl():  		sessionID = id;
 	sessionID = id;
 }
 
 void ZoneClientSessionImplementation::setAccount(Account* acc) {
-	// server/zone/ZoneClientSession.idl(122):  		account = acc;
+	// server/zone/ZoneClientSession.idl():  		account = acc;
 	account = acc;
 }
 
 void ZoneClientSessionImplementation::setAccountID(unsigned int acc) {
-	// server/zone/ZoneClientSession.idl(126):  		accountID = acc;
+	// server/zone/ZoneClientSession.idl():  		accountID = acc;
 	accountID = acc;
 }
 
 SceneObject* ZoneClientSessionImplementation::getPlayer() {
-	// server/zone/ZoneClientSession.idl(134):  		return player;
+	// server/zone/ZoneClientSession.idl():  		return player;
 	return player;
 }
 
 unsigned int ZoneClientSessionImplementation::getSessionID() {
-	// server/zone/ZoneClientSession.idl(138):  		return sessionID;
+	// server/zone/ZoneClientSession.idl():  		return sessionID;
 	return sessionID;
 }
 
 unsigned int ZoneClientSessionImplementation::getAccountID() {
-	// server/zone/ZoneClientSession.idl(142):  		return accountID;
+	// server/zone/ZoneClientSession.idl():  		return accountID;
 	return accountID;
-	// server/zone/ZoneClientSession.idl(142):  ;
+	// server/zone/ZoneClientSession.idl():  		return accountID;;
 }
 
 Account* ZoneClientSessionImplementation::getAccount() {
-	// server/zone/ZoneClientSession.idl(146):  		return account;
+	// server/zone/ZoneClientSession.idl():  		return account;
 	return account;
 }
 
@@ -523,59 +523,61 @@ Account* ZoneClientSessionImplementation::getAccount() {
 ZoneClientSessionAdapter::ZoneClientSessionAdapter(ZoneClientSessionImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNT__ACCOUNT_,RPC_SETACCOUNTID__INT_,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_GETACCOUNT__};
+
 Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_DISCONNECT__:
 		disconnect();
 		break;
-	case 7:
+	case RPC_DISCONNECT__BOOL_:
 		disconnect(inv->getBooleanParameter());
 		break;
-	case 8:
+	case RPC_SENDMESSAGE__BASEPACKET_:
 		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_BALANCEPACKETCHECKUPTIME__:
 		balancePacketCheckupTime();
 		break;
-	case 10:
+	case RPC_RESETPACKETCHECKUPTIME__:
 		resetPacketCheckupTime();
 		break;
-	case 11:
+	case RPC_CLOSECONNECTION__BOOL_BOOL_:
 		closeConnection(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
-	case 12:
+	case RPC_INFO__STRING_BOOL_:
 		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
 		break;
-	case 13:
+	case RPC_ERROR__STRING_:
 		error(inv->getAsciiParameter(_param0_error__String_));
 		break;
-	case 14:
+	case RPC_GETADDRESS__:
 		resp->insertAscii(getAddress());
 		break;
-	case 15:
+	case RPC_SETPLAYER__SCENEOBJECT_:
 		setPlayer((SceneObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_SETSESSIONID__INT_:
 		setSessionID(inv->getUnsignedIntParameter());
 		break;
-	case 17:
+	case RPC_SETACCOUNT__ACCOUNT_:
 		setAccount((Account*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_SETACCOUNTID__INT_:
 		setAccountID(inv->getUnsignedIntParameter());
 		break;
-	case 19:
+	case RPC_GETPLAYER__:
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
-	case 20:
+	case RPC_GETSESSIONID__:
 		resp->insertInt(getSessionID());
 		break;
-	case 21:
+	case RPC_GETACCOUNTID__:
 		resp->insertInt(getAccountID());
 		break;
-	case 22:
+	case RPC_GETACCOUNT__:
 		resp->insertLong(getAccount()->_getObjectID());
 		break;
 	default:

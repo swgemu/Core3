@@ -687,298 +687,298 @@ int GamblingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 GamblingManagerImplementation::GamblingManagerImplementation(ZoneServer* server) {
 	_initializeImplementation();
-	// server/zone/managers/minigames/GamblingManager.idl(91):  		zoneServer = server;
+	// server/zone/managers/minigames/GamblingManager.idl():  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/minigames/GamblingManager.idl(93):  		initializeRoulette();
+	// server/zone/managers/minigames/GamblingManager.idl():  		initializeRoulette();
 	initializeRoulette();
-	// server/zone/managers/minigames/GamblingManager.idl(94):  		initializeRouletteRed();
+	// server/zone/managers/minigames/GamblingManager.idl():  		initializeRouletteRed();
 	initializeRouletteRed();
-	// server/zone/managers/minigames/GamblingManager.idl(95):  		initializeSlots();
+	// server/zone/managers/minigames/GamblingManager.idl():  		initializeSlots();
 	initializeSlots();
-	// server/zone/managers/minigames/GamblingManager.idl(97):  		initializeSlotTimer();
+	// server/zone/managers/minigames/GamblingManager.idl():  		initializeSlotTimer();
 	initializeSlotTimer();
-	// server/zone/managers/minigames/GamblingManager.idl(99):  		initializeRouletteTimer();
+	// server/zone/managers/minigames/GamblingManager.idl():  		initializeRouletteTimer();
 	initializeRouletteTimer();
-	// server/zone/managers/minigames/GamblingManager.idl(101):  		Logger.setLoggingName("GamblingManager");
+	// server/zone/managers/minigames/GamblingManager.idl():  		Logger.setLoggingName("GamblingManager");
 	Logger::setLoggingName("GamblingManager");
-	// server/zone/managers/minigames/GamblingManager.idl(102):  		Logger.setLogging(true);
+	// server/zone/managers/minigames/GamblingManager.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
 }
 
 Vector<String>* GamblingManagerImplementation::getRoulette() {
-	// server/zone/managers/minigames/GamblingManager.idl(107):  		return roulette;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return roulette;
 	return (&roulette);
 }
 
 void GamblingManagerImplementation::initializeSlotTimer() {
-	// server/zone/managers/minigames/GamblingManager.idl(111):  		slotTimer.add(6);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slotTimer.add(6);
 	(&slotTimer)->add(6);
-	// server/zone/managers/minigames/GamblingManager.idl(112):  		slotTimer.add(4);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slotTimer.add(4);
 	(&slotTimer)->add(4);
-	// server/zone/managers/minigames/GamblingManager.idl(113):  		slotTimer.add(4);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slotTimer.add(4);
 	(&slotTimer)->add(4);
-	// server/zone/managers/minigames/GamblingManager.idl(114):  		slotTimer.add(4);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slotTimer.add(4);
 	(&slotTimer)->add(4);
-	// server/zone/managers/minigames/GamblingManager.idl(115):  		slotTimer.add(1);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slotTimer.add(1);
 	(&slotTimer)->add(1);
-	// server/zone/managers/minigames/GamblingManager.idl(116):  		slotTimer.add(1);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slotTimer.add(1);
 	(&slotTimer)->add(1);
 }
 
 void GamblingManagerImplementation::initializeRouletteTimer() {
-	// server/zone/managers/minigames/GamblingManager.idl(120):  		rouletteTimer.add(30);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(30);
 	(&rouletteTimer)->add(30);
-	// server/zone/managers/minigames/GamblingManager.idl(121):  		rouletteTimer.add(30);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(30);
 	(&rouletteTimer)->add(30);
-	// server/zone/managers/minigames/GamblingManager.idl(122):  		rouletteTimer.add(30);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(30);
 	(&rouletteTimer)->add(30);
-	// server/zone/managers/minigames/GamblingManager.idl(123):  		rouletteTimer.add(10);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(10);
 	(&rouletteTimer)->add(10);
-	// server/zone/managers/minigames/GamblingManager.idl(124):  		rouletteTimer.add(5);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(5);
 	(&rouletteTimer)->add(5);
-	// server/zone/managers/minigames/GamblingManager.idl(125):  		rouletteTimer.add(5);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(5);
 	(&rouletteTimer)->add(5);
-	// server/zone/managers/minigames/GamblingManager.idl(126):  		rouletteTimer.add(5);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(5);
 	(&rouletteTimer)->add(5);
-	// server/zone/managers/minigames/GamblingManager.idl(127):  		rouletteTimer.add(5);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(5);
 	(&rouletteTimer)->add(5);
-	// server/zone/managers/minigames/GamblingManager.idl(128):  		rouletteTimer.add(10);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(10);
 	(&rouletteTimer)->add(10);
-	// server/zone/managers/minigames/GamblingManager.idl(129):  		rouletteTimer.add(5);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(5);
 	(&rouletteTimer)->add(5);
-	// server/zone/managers/minigames/GamblingManager.idl(130):  		rouletteTimer.add(5);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(5);
 	(&rouletteTimer)->add(5);
-	// server/zone/managers/minigames/GamblingManager.idl(131):  		rouletteTimer.add(2);
+	// server/zone/managers/minigames/GamblingManager.idl():  		rouletteTimer.add(2);
 	(&rouletteTimer)->add(2);
 }
 
 void GamblingManagerImplementation::initializeSlots() {
-	// server/zone/managers/minigames/GamblingManager.idl(135):  		slot.add(4);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slot.add(4);
 	(&slot)->add(4);
-	// server/zone/managers/minigames/GamblingManager.idl(136):  		slot.add(50);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slot.add(50);
 	(&slot)->add(50);
-	// server/zone/managers/minigames/GamblingManager.idl(137):  		slot.add(75);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slot.add(75);
 	(&slot)->add(75);
-	// server/zone/managers/minigames/GamblingManager.idl(138):  		slot.add(100);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slot.add(100);
 	(&slot)->add(100);
-	// server/zone/managers/minigames/GamblingManager.idl(139):  		slot.add(250);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slot.add(250);
 	(&slot)->add(250);
-	// server/zone/managers/minigames/GamblingManager.idl(140):  		slot.add(500);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slot.add(500);
 	(&slot)->add(500);
-	// server/zone/managers/minigames/GamblingManager.idl(141):  		slot.add(1000);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slot.add(1000);
 	(&slot)->add(1000);
-	// server/zone/managers/minigames/GamblingManager.idl(142):  		slot.add(1500);
+	// server/zone/managers/minigames/GamblingManager.idl():  		slot.add(1500);
 	(&slot)->add(1500);
 }
 
 void GamblingManagerImplementation::initializeRouletteRed() {
-	// server/zone/managers/minigames/GamblingManager.idl(146):  		red.add("1");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("1");
 	(&red)->add("1");
-	// server/zone/managers/minigames/GamblingManager.idl(147):  		red.add("3");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("3");
 	(&red)->add("3");
-	// server/zone/managers/minigames/GamblingManager.idl(148):  		red.add("5");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("5");
 	(&red)->add("5");
-	// server/zone/managers/minigames/GamblingManager.idl(149):  		red.add("7");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("7");
 	(&red)->add("7");
-	// server/zone/managers/minigames/GamblingManager.idl(150):  		red.add("9");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("9");
 	(&red)->add("9");
-	// server/zone/managers/minigames/GamblingManager.idl(151):  		red.add("12");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("12");
 	(&red)->add("12");
-	// server/zone/managers/minigames/GamblingManager.idl(152):  		red.add("14");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("14");
 	(&red)->add("14");
-	// server/zone/managers/minigames/GamblingManager.idl(153):  		red.add("16");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("16");
 	(&red)->add("16");
-	// server/zone/managers/minigames/GamblingManager.idl(154):  		red.add("18");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("18");
 	(&red)->add("18");
-	// server/zone/managers/minigames/GamblingManager.idl(155):  		red.add("19");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("19");
 	(&red)->add("19");
-	// server/zone/managers/minigames/GamblingManager.idl(156):  		red.add("21");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("21");
 	(&red)->add("21");
-	// server/zone/managers/minigames/GamblingManager.idl(157):  		red.add("23");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("23");
 	(&red)->add("23");
-	// server/zone/managers/minigames/GamblingManager.idl(158):  		red.add("25");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("25");
 	(&red)->add("25");
-	// server/zone/managers/minigames/GamblingManager.idl(159):  		red.add("27");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("27");
 	(&red)->add("27");
-	// server/zone/managers/minigames/GamblingManager.idl(160):  		red.add("30");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("30");
 	(&red)->add("30");
-	// server/zone/managers/minigames/GamblingManager.idl(161):  		red.add("32");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("32");
 	(&red)->add("32");
-	// server/zone/managers/minigames/GamblingManager.idl(162):  		red.add("34");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("34");
 	(&red)->add("34");
-	// server/zone/managers/minigames/GamblingManager.idl(163):  		red.add("36");
+	// server/zone/managers/minigames/GamblingManager.idl():  		red.add("36");
 	(&red)->add("36");
 }
 
 void GamblingManagerImplementation::initializeRoulette() {
-	// server/zone/managers/minigames/GamblingManager.idl(167):  		roulette.add("0");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("0");
 	(&roulette)->add("0");
-	// server/zone/managers/minigames/GamblingManager.idl(168):  		roulette.add("1");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("1");
 	(&roulette)->add("1");
-	// server/zone/managers/minigames/GamblingManager.idl(169):  		roulette.add("2");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("2");
 	(&roulette)->add("2");
-	// server/zone/managers/minigames/GamblingManager.idl(170):  		roulette.add("3");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("3");
 	(&roulette)->add("3");
-	// server/zone/managers/minigames/GamblingManager.idl(171):  		roulette.add("4");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("4");
 	(&roulette)->add("4");
-	// server/zone/managers/minigames/GamblingManager.idl(172):  		roulette.add("5");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("5");
 	(&roulette)->add("5");
-	// server/zone/managers/minigames/GamblingManager.idl(173):  		roulette.add("6");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("6");
 	(&roulette)->add("6");
-	// server/zone/managers/minigames/GamblingManager.idl(174):  		roulette.add("7");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("7");
 	(&roulette)->add("7");
-	// server/zone/managers/minigames/GamblingManager.idl(175):  		roulette.add("8");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("8");
 	(&roulette)->add("8");
-	// server/zone/managers/minigames/GamblingManager.idl(176):  		roulette.add("9");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("9");
 	(&roulette)->add("9");
-	// server/zone/managers/minigames/GamblingManager.idl(177):  		roulette.add("10");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("10");
 	(&roulette)->add("10");
-	// server/zone/managers/minigames/GamblingManager.idl(178):  		roulette.add("11");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("11");
 	(&roulette)->add("11");
-	// server/zone/managers/minigames/GamblingManager.idl(179):  		roulette.add("12");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("12");
 	(&roulette)->add("12");
-	// server/zone/managers/minigames/GamblingManager.idl(180):  		roulette.add("13");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("13");
 	(&roulette)->add("13");
-	// server/zone/managers/minigames/GamblingManager.idl(181):  		roulette.add("14");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("14");
 	(&roulette)->add("14");
-	// server/zone/managers/minigames/GamblingManager.idl(182):  		roulette.add("15");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("15");
 	(&roulette)->add("15");
-	// server/zone/managers/minigames/GamblingManager.idl(183):  		roulette.add("16");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("16");
 	(&roulette)->add("16");
-	// server/zone/managers/minigames/GamblingManager.idl(184):  		roulette.add("17");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("17");
 	(&roulette)->add("17");
-	// server/zone/managers/minigames/GamblingManager.idl(185):  		roulette.add("18");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("18");
 	(&roulette)->add("18");
-	// server/zone/managers/minigames/GamblingManager.idl(186):  		roulette.add("19");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("19");
 	(&roulette)->add("19");
-	// server/zone/managers/minigames/GamblingManager.idl(187):  		roulette.add("20");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("20");
 	(&roulette)->add("20");
-	// server/zone/managers/minigames/GamblingManager.idl(188):  		roulette.add("21");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("21");
 	(&roulette)->add("21");
-	// server/zone/managers/minigames/GamblingManager.idl(189):  		roulette.add("22");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("22");
 	(&roulette)->add("22");
-	// server/zone/managers/minigames/GamblingManager.idl(190):  		roulette.add("23");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("23");
 	(&roulette)->add("23");
-	// server/zone/managers/minigames/GamblingManager.idl(191):  		roulette.add("24");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("24");
 	(&roulette)->add("24");
-	// server/zone/managers/minigames/GamblingManager.idl(192):  		roulette.add("25");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("25");
 	(&roulette)->add("25");
-	// server/zone/managers/minigames/GamblingManager.idl(193):  		roulette.add("26");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("26");
 	(&roulette)->add("26");
-	// server/zone/managers/minigames/GamblingManager.idl(194):  		roulette.add("27");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("27");
 	(&roulette)->add("27");
-	// server/zone/managers/minigames/GamblingManager.idl(195):  		roulette.add("28");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("28");
 	(&roulette)->add("28");
-	// server/zone/managers/minigames/GamblingManager.idl(196):  		roulette.add("29");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("29");
 	(&roulette)->add("29");
-	// server/zone/managers/minigames/GamblingManager.idl(197):  		roulette.add("30");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("30");
 	(&roulette)->add("30");
-	// server/zone/managers/minigames/GamblingManager.idl(198):  		roulette.add("31");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("31");
 	(&roulette)->add("31");
-	// server/zone/managers/minigames/GamblingManager.idl(199):  		roulette.add("32");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("32");
 	(&roulette)->add("32");
-	// server/zone/managers/minigames/GamblingManager.idl(200):  		roulette.add("33");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("33");
 	(&roulette)->add("33");
-	// server/zone/managers/minigames/GamblingManager.idl(201):  		roulette.add("34");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("34");
 	(&roulette)->add("34");
-	// server/zone/managers/minigames/GamblingManager.idl(202):  		roulette.add("35");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("35");
 	(&roulette)->add("35");
-	// server/zone/managers/minigames/GamblingManager.idl(203):  		roulette.add("36");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("36");
 	(&roulette)->add("36");
-	// server/zone/managers/minigames/GamblingManager.idl(204):  		roulette.add("00");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("00");
 	(&roulette)->add("00");
-	// server/zone/managers/minigames/GamblingManager.idl(205):  		roulette.add("odd");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("odd");
 	(&roulette)->add("odd");
-	// server/zone/managers/minigames/GamblingManager.idl(206):  		roulette.add("even");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("even");
 	(&roulette)->add("even");
-	// server/zone/managers/minigames/GamblingManager.idl(207):  		roulette.add("high");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("high");
 	(&roulette)->add("high");
-	// server/zone/managers/minigames/GamblingManager.idl(208):  		roulette.add("low");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("low");
 	(&roulette)->add("low");
-	// server/zone/managers/minigames/GamblingManager.idl(209):  		roulette.add("red");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("red");
 	(&roulette)->add("red");
-	// server/zone/managers/minigames/GamblingManager.idl(210):  		roulette.add("black");
+	// server/zone/managers/minigames/GamblingManager.idl():  		roulette.add("black");
 	(&roulette)->add("black");
 }
 
 int GamblingManagerImplementation::notify(SceneObject* sceneObject) {
-	// server/zone/managers/minigames/GamblingManager.idl(214):  		return 
-	if (sceneObject->isPlayerCreature())	// server/zone/managers/minigames/GamblingManager.idl(215):  			return 1;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return 
+	if (sceneObject->isPlayerCreature())	// server/zone/managers/minigames/GamblingManager.idl():  			return 1;
 	return 1;
-	// server/zone/managers/minigames/GamblingManager.idl(217):  0;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return 0;
 	return 0;
 }
 
 bool GamblingManagerImplementation::isHigh(int value) {
-	// server/zone/managers/minigames/GamblingManager.idl(221):  		return 
-	if ((value > 18) && (value != 37))	// server/zone/managers/minigames/GamblingManager.idl(222):  			return true;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return 
+	if ((value > 18) && (value != 37))	// server/zone/managers/minigames/GamblingManager.idl():  			return true;
 	return true;
-	// server/zone/managers/minigames/GamblingManager.idl(223):  false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return false;
 	return false;
 }
 
 bool GamblingManagerImplementation::isLow(int value) {
-	// server/zone/managers/minigames/GamblingManager.idl(227):  		return 
-	if ((value > 0) && (value < 19))	// server/zone/managers/minigames/GamblingManager.idl(228):  			return true;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return 
+	if ((value > 0) && (value < 19))	// server/zone/managers/minigames/GamblingManager.idl():  			return true;
 	return true;
-	// server/zone/managers/minigames/GamblingManager.idl(229):  false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return false;
 	return false;
 }
 
 bool GamblingManagerImplementation::isEven(int value) {
-	// server/zone/managers/minigames/GamblingManager.idl(233):  		if 
-	if ((value == 0) || (value == 37))	// server/zone/managers/minigames/GamblingManager.idl(234):  			return false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		if 
+	if ((value == 0) || (value == 37))	// server/zone/managers/minigames/GamblingManager.idl():  			return false;
 	return false;
-	// server/zone/managers/minigames/GamblingManager.idl(235):  		return 
-	if ((value % 2) == 0)	// server/zone/managers/minigames/GamblingManager.idl(236):  			return true;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return 
+	if ((value % 2) == 0)	// server/zone/managers/minigames/GamblingManager.idl():  			return true;
 	return true;
-	// server/zone/managers/minigames/GamblingManager.idl(237):  false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return false;
 	return false;
 }
 
 bool GamblingManagerImplementation::isOdd(int value) {
-	// server/zone/managers/minigames/GamblingManager.idl(241):  		if 
-	if ((value == 0) || (value == 37))	// server/zone/managers/minigames/GamblingManager.idl(242):  			return false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		if 
+	if ((value == 0) || (value == 37))	// server/zone/managers/minigames/GamblingManager.idl():  			return false;
 	return false;
-	// server/zone/managers/minigames/GamblingManager.idl(243):  		return 
-	if ((value % 2) == 1)	// server/zone/managers/minigames/GamblingManager.idl(244):  			return true;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return 
+	if ((value % 2) == 1)	// server/zone/managers/minigames/GamblingManager.idl():  			return true;
 	return true;
-	// server/zone/managers/minigames/GamblingManager.idl(245):  false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return false;
 	return false;
 }
 
 bool GamblingManagerImplementation::isBlack(int value) {
-	// server/zone/managers/minigames/GamblingManager.idl(249):  		if 
-	if ((&roulette)->get(value) == "0" || (&roulette)->get(value) == "00")	// server/zone/managers/minigames/GamblingManager.idl(250):  			return false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		if 
+	if ((&roulette)->get(value) == "0" || (&roulette)->get(value) == "00")	// server/zone/managers/minigames/GamblingManager.idl():  			return false;
 	return false;
-	// server/zone/managers/minigames/GamblingManager.idl(251):  		return 
-	if (isRed(value))	// server/zone/managers/minigames/GamblingManager.idl(252):  			return false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return 
+	if (isRed(value))	// server/zone/managers/minigames/GamblingManager.idl():  			return false;
 	return false;
-	// server/zone/managers/minigames/GamblingManager.idl(253):  true;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return true;
 	return true;
 }
 
 bool GamblingManagerImplementation::isRed(int value) {
-	// server/zone/managers/minigames/GamblingManager.idl(257):  		for 
-	if ((&roulette)->get(value) == "0" || (&roulette)->get(value) == "00")	// server/zone/managers/minigames/GamblingManager.idl(258):  			return false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		for 
+	if ((&roulette)->get(value) == "0" || (&roulette)->get(value) == "00")	// server/zone/managers/minigames/GamblingManager.idl():  			return false;
 	return false;
-	// server/zone/managers/minigames/GamblingManager.idl(259):  
-	for (	// server/zone/managers/minigames/GamblingManager.idl(259):  (int i = 0;
+	// server/zone/managers/minigames/GamblingManager.idl():  		}
+	for (	// server/zone/managers/minigames/GamblingManager.idl():  		for (int i = 0;
 	int i = 0;
 	i < (&red)->size();
  ++i) {
-	// server/zone/managers/minigames/GamblingManager.idl(260):  		}
+	// server/zone/managers/minigames/GamblingManager.idl():  		}
 	if ((&red)->get(i) == (&roulette)->get(value)){
-	// server/zone/managers/minigames/GamblingManager.idl(261):  				return true;
+	// server/zone/managers/minigames/GamblingManager.idl():  				return true;
 	return true;
 }
 }
-	// server/zone/managers/minigames/GamblingManager.idl(264):  		return false;
+	// server/zone/managers/minigames/GamblingManager.idl():  		return false;
 	return false;
 }
 
 bool GamblingManagerImplementation::isPlaying(PlayerCreature* player) {
-	// server/zone/managers/minigames/GamblingManager.idl(430):  		return (slotGames.contains(player) || rouletteGames.contains(player));
+	// server/zone/managers/minigames/GamblingManager.idl():  		return (slotGames.contains(player) || rouletteGames.contains(player));
 	return ((&slotGames)->contains(player) || (&rouletteGames)->contains(player));
 }
 
@@ -989,95 +989,97 @@ bool GamblingManagerImplementation::isPlaying(PlayerCreature* player) {
 GamblingManagerAdapter::GamblingManagerAdapter(GamblingManagerImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_INITIALIZESLOTTIMER__,RPC_INITIALIZEROULETTETIMER__,RPC_INITIALIZESLOTS__,RPC_INITIALIZEROULETTERED__,RPC_INITIALIZEROULETTE__,RPC_NOTIFY__SCENEOBJECT_,RPC_ISHIGH__INT_,RPC_ISLOW__INT_,RPC_ISEVEN__INT_,RPC_ISODD__INT_,RPC_ISBLACK__INT_,RPC_ISRED__INT_,RPC_HANDLESLOT__PLAYERCREATURE_BOOL_BOOL_,RPC_BET__PLAYERCREATURE_INT_INT_INT_,RPC_BET__GAMBLINGTERMINAL_PLAYERCREATURE_INT_INT_,RPC_STARTGAME__PLAYERCREATURE_INT_,RPC_STARTGAME__GAMBLINGTERMINAL_,RPC_LEAVETERMINAL__PLAYERCREATURE_INT_,RPC_REGISTERPLAYER__GAMBLINGTERMINAL_PLAYERCREATURE_,RPC_REFRESHROULETTEMENU__PLAYERCREATURE_,RPC_CONTINUEGAME__GAMBLINGTERMINAL_,RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_,RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_,RPC_CREATEWINDOW__GAMBLINGTERMINAL_PLAYERCREATURE_,RPC_CREATEPAYOUTWINDOW__PLAYERCREATURE_,RPC_CREATESLOTWINDOW__PLAYERCREATURE_INT_,RPC_CREATEROULETTEWINDOW__PLAYERCREATURE_,RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_,RPC_ISPLAYING__PLAYERCREATURE_};
+
 Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZESLOTTIMER__:
 		initializeSlotTimer();
 		break;
-	case 7:
+	case RPC_INITIALIZEROULETTETIMER__:
 		initializeRouletteTimer();
 		break;
-	case 8:
+	case RPC_INITIALIZESLOTS__:
 		initializeSlots();
 		break;
-	case 9:
+	case RPC_INITIALIZEROULETTERED__:
 		initializeRouletteRed();
 		break;
-	case 10:
+	case RPC_INITIALIZEROULETTE__:
 		initializeRoulette();
 		break;
-	case 11:
+	case RPC_NOTIFY__SCENEOBJECT_:
 		resp->insertSignedInt(notify((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 12:
+	case RPC_ISHIGH__INT_:
 		resp->insertBoolean(isHigh(inv->getSignedIntParameter()));
 		break;
-	case 13:
+	case RPC_ISLOW__INT_:
 		resp->insertBoolean(isLow(inv->getSignedIntParameter()));
 		break;
-	case 14:
+	case RPC_ISEVEN__INT_:
 		resp->insertBoolean(isEven(inv->getSignedIntParameter()));
 		break;
-	case 15:
+	case RPC_ISODD__INT_:
 		resp->insertBoolean(isOdd(inv->getSignedIntParameter()));
 		break;
-	case 16:
+	case RPC_ISBLACK__INT_:
 		resp->insertBoolean(isBlack(inv->getSignedIntParameter()));
 		break;
-	case 17:
+	case RPC_ISRED__INT_:
 		resp->insertBoolean(isRed(inv->getSignedIntParameter()));
 		break;
-	case 18:
+	case RPC_HANDLESLOT__PLAYERCREATURE_BOOL_BOOL_:
 		handleSlot((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
-	case 19:
+	case RPC_BET__PLAYERCREATURE_INT_INT_INT_:
 		bet((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 20:
+	case RPC_BET__GAMBLINGTERMINAL_PLAYERCREATURE_INT_INT_:
 		bet((GamblingTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 21:
+	case RPC_STARTGAME__PLAYERCREATURE_INT_:
 		startGame((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 22:
+	case RPC_STARTGAME__GAMBLINGTERMINAL_:
 		startGame((GamblingTerminal*) inv->getObjectParameter());
 		break;
-	case 23:
+	case RPC_LEAVETERMINAL__PLAYERCREATURE_INT_:
 		leaveTerminal((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 24:
+	case RPC_REGISTERPLAYER__GAMBLINGTERMINAL_PLAYERCREATURE_:
 		registerPlayer((GamblingTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 25:
+	case RPC_REFRESHROULETTEMENU__PLAYERCREATURE_:
 		refreshRouletteMenu((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 26:
+	case RPC_CONTINUEGAME__GAMBLINGTERMINAL_:
 		continueGame((GamblingTerminal*) inv->getObjectParameter());
 		break;
-	case 27:
+	case RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_:
 		stopGame((GamblingTerminal*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 28:
+	case RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_:
 		calculateOutcome((GamblingTerminal*) inv->getObjectParameter());
 		break;
-	case 29:
+	case RPC_CREATEWINDOW__GAMBLINGTERMINAL_PLAYERCREATURE_:
 		resp->insertInt(createWindow((GamblingTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 30:
+	case RPC_CREATEPAYOUTWINDOW__PLAYERCREATURE_:
 		resp->insertInt(createPayoutWindow((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 31:
+	case RPC_CREATESLOTWINDOW__PLAYERCREATURE_INT_:
 		resp->insertInt(createSlotWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
 		break;
-	case 32:
+	case RPC_CREATEROULETTEWINDOW__PLAYERCREATURE_:
 		resp->insertInt(createRouletteWindow((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 33:
+	case RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_:
 		createEvent((GamblingTerminal*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 34:
+	case RPC_ISPLAYING__PLAYERCREATURE_:
 		resp->insertBoolean(isPlaying((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	default:

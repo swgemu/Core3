@@ -192,12 +192,12 @@ int SignObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 SignObjectImplementation::SignObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/sign/SignObject.idl(54):  		Logger.setLoggingName("SignObject");
+	// server/zone/objects/tangible/sign/SignObject.idl():  		Logger.setLoggingName("SignObject");
 	Logger::setLoggingName("SignObject");
 }
 
 bool SignObjectImplementation::isSignObject() {
-	// server/zone/objects/tangible/sign/SignObject.idl(79):  		return true;
+	// server/zone/objects/tangible/sign/SignObject.idl():  		return true;
 	return true;
 }
 
@@ -208,17 +208,19 @@ bool SignObjectImplementation::isSignObject() {
 SignObjectAdapter::SignObjectAdapter(SignObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__};
+
 Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 7:
+	case RPC_SENDSIGNNAMETO__PLAYERCREATURE_:
 		sendSignNameTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_ISSIGNOBJECT__:
 		resp->insertBoolean(isSignObject());
 		break;
 	default:

@@ -166,26 +166,26 @@ int ZoneManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ZoneManagerImplementation::ZoneManagerImplementation(const String& name) {
 	_initializeImplementation();
-	// server/zone/managers/ZoneManager.idl(63):  		Logger.setLoggingName(name);
+	// server/zone/managers/ZoneManager.idl():  		Logger.setLoggingName(name);
 	Logger::setLoggingName(name);
-	// server/zone/managers/ZoneManager.idl(65):  		Logger.setLogging(true);
+	// server/zone/managers/ZoneManager.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/ZoneManager.idl(66):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/ZoneManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/ZoneManager.idl(68):  		zoneServer = null;
+	// server/zone/managers/ZoneManager.idl():  		zoneServer = null;
 	zoneServer = NULL;
-	// server/zone/managers/ZoneManager.idl(69):  		zoneProcessor = null;
+	// server/zone/managers/ZoneManager.idl():  		zoneProcessor = null;
 	zoneProcessor = NULL;
-	// server/zone/managers/ZoneManager.idl(70):  		objectManager = null;
+	// server/zone/managers/ZoneManager.idl():  		objectManager = null;
 	objectManager = NULL;
 }
 
 void ZoneManagerImplementation::setZoneProcessor(ZoneProcessServer* server) {
-	// server/zone/managers/ZoneManager.idl(74):  		zoneServer = server.getZoneServer();
+	// server/zone/managers/ZoneManager.idl():  		zoneServer = server.getZoneServer();
 	zoneServer = server->getZoneServer();
-	// server/zone/managers/ZoneManager.idl(75):  		zoneProcessor = server;
+	// server/zone/managers/ZoneManager.idl():  		zoneProcessor = server;
 	zoneProcessor = server;
-	// server/zone/managers/ZoneManager.idl(76):  		objectManager = zoneServer.getObjectManager();
+	// server/zone/managers/ZoneManager.idl():  		objectManager = zoneServer.getObjectManager();
 	objectManager = zoneServer->getObjectManager();
 }
 
@@ -196,11 +196,13 @@ void ZoneManagerImplementation::setZoneProcessor(ZoneProcessServer* server) {
 ZoneManagerAdapter::ZoneManagerAdapter(ZoneManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_SETZONEPROCESSOR__ZONEPROCESSSERVER_ = 6};
+
 Packet* ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SETZONEPROCESSOR__ZONEPROCESSSERVER_:
 		setZoneProcessor((ZoneProcessServer*) inv->getObjectParameter());
 		break;
 	default:

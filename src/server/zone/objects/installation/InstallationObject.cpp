@@ -775,28 +775,28 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/InstallationObject.idl(91):  		Logger.setLoggingName("InstallationObject");
+	// server/zone/objects/installation/InstallationObject.idl():  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
-	// server/zone/objects/installation/InstallationObject.idl(93):  		operating = false;
+	// server/zone/objects/installation/InstallationObject.idl():  		operating = false;
 	operating = false;
-	// server/zone/objects/installation/InstallationObject.idl(95):  		installationType = 0;
+	// server/zone/objects/installation/InstallationObject.idl():  		installationType = 0;
 	installationType = 0;
-	// server/zone/objects/installation/InstallationObject.idl(97):  		operatorList.setNoDuplicateInsertPlan();
+	// server/zone/objects/installation/InstallationObject.idl():  		operatorList.setNoDuplicateInsertPlan();
 	(&operatorList)->setNoDuplicateInsertPlan();
-	// server/zone/objects/installation/InstallationObject.idl(99):  		hopperSizeMax = 10000;
+	// server/zone/objects/installation/InstallationObject.idl():  		hopperSizeMax = 10000;
 	hopperSizeMax = 10000;
-	// server/zone/objects/installation/InstallationObject.idl(100):  		extractionRate = 100;
+	// server/zone/objects/installation/InstallationObject.idl():  		extractionRate = 100;
 	extractionRate = 100;
 }
 
 void InstallationObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/installation/InstallationObject.idl(104):  		super.initializeTransientMembers();
+	// server/zone/objects/installation/InstallationObject.idl():  		super.initializeTransientMembers();
 	StructureObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/installation/InstallationObject.idl(106):  		super.staticObject = false;
+	// server/zone/objects/installation/InstallationObject.idl():  		super.staticObject = false;
 	StructureObjectImplementation::staticObject = false;
-	// server/zone/objects/installation/InstallationObject.idl(108):  		operatorList.setNoDuplicateInsertPlan();
+	// server/zone/objects/installation/InstallationObject.idl():  		operatorList.setNoDuplicateInsertPlan();
 	(&operatorList)->setNoDuplicateInsertPlan();
-	// server/zone/objects/installation/InstallationObject.idl(110):  		Logger.setLoggingName("InstallationObject");
+	// server/zone/objects/installation/InstallationObject.idl():  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
 }
 
@@ -804,52 +804,52 @@ void InstallationObjectImplementation::updateOperators() {
 }
 
 void InstallationObjectImplementation::addOperator(PlayerCreature* player) {
-	// server/zone/objects/installation/InstallationObject.idl(225):  		operatorList.put(player);
+	// server/zone/objects/installation/InstallationObject.idl():  		operatorList.put(player);
 	(&operatorList)->put(player);
 }
 
 void InstallationObjectImplementation::removeOperator(PlayerCreature* player) {
-	// server/zone/objects/installation/InstallationObject.idl(229):  		operatorList.drop(player);
+	// server/zone/objects/installation/InstallationObject.idl():  		operatorList.drop(player);
 	(&operatorList)->drop(player);
 }
 
 bool InstallationObjectImplementation::isInstallationObject() {
-	// server/zone/objects/installation/InstallationObject.idl(237):  		return true;
+	// server/zone/objects/installation/InstallationObject.idl():  		return true;
 	return true;
 }
 
 bool InstallationObjectImplementation::isOperating() {
-	// server/zone/objects/installation/InstallationObject.idl(241):  		return operating;
+	// server/zone/objects/installation/InstallationObject.idl():  		return operating;
 	return operating;
 }
 
 int InstallationObjectImplementation::getInstallationType() {
-	// server/zone/objects/installation/InstallationObject.idl(245):  		return installationType;
+	// server/zone/objects/installation/InstallationObject.idl():  		return installationType;
 	return installationType;
 }
 
 float InstallationObjectImplementation::getExtractionRate() {
-	// server/zone/objects/installation/InstallationObject.idl(249):  		return extractionRate;
+	// server/zone/objects/installation/InstallationObject.idl():  		return extractionRate;
 	return extractionRate;
 }
 
 float InstallationObjectImplementation::getHopperSizeMax() {
-	// server/zone/objects/installation/InstallationObject.idl(253):  		return hopperSizeMax;
+	// server/zone/objects/installation/InstallationObject.idl():  		return hopperSizeMax;
 	return hopperSizeMax;
 }
 
 HopperList* InstallationObjectImplementation::getHopperList() {
-	// server/zone/objects/installation/InstallationObject.idl(258):  		return resourceHopper;
+	// server/zone/objects/installation/InstallationObject.idl():  		return resourceHopper;
 	return (&resourceHopper);
 }
 
 bool InstallationObjectImplementation::isHarvesterObject() {
-	// server/zone/objects/installation/InstallationObject.idl(262):  		return false;
+	// server/zone/objects/installation/InstallationObject.idl():  		return false;
 	return false;
 }
 
 bool InstallationObjectImplementation::isGeneratorObject() {
-	// server/zone/objects/installation/InstallationObject.idl(266):  		return false;
+	// server/zone/objects/installation/InstallationObject.idl():  		return false;
 	return false;
 }
 
@@ -860,107 +860,109 @@ bool InstallationObjectImplementation::isGeneratorObject() {
 InstallationObjectAdapter::InstallationObjectAdapter(InstallationObjectImplementation* obj) : StructureObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__PLAYERCREATURE_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__PLAYERCREATURE_,RPC_REMOVEOPERATOR__PLAYERCREATURE_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__};
+
 Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case 8:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 9:
+	case RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_:
 		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 10:
+	case RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_:
 		updateResourceContainerQuantity((ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 11:
+	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
 		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
-	case 12:
+	case RPC_SETOPERATING__BOOL_BOOL_:
 		setOperating(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
-	case 13:
+	case RPC_ACTIVATEUISYNC__:
 		activateUiSync();
 		break;
-	case 14:
+	case RPC_UPDATEOPERATORS__:
 		updateOperators();
 		break;
-	case 15:
+	case RPC_VERIFYOPERATORS__:
 		verifyOperators();
 		break;
-	case 16:
+	case RPC_UPDATEINSTALLATIONWORK__:
 		updateInstallationWork();
 		break;
-	case 17:
+	case RPC_HANDLESTRUCTUREADDENERGY__PLAYERCREATURE_:
 		handleStructureAddEnergy((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_SETACTIVERESOURCE__RESOURCECONTAINER_:
 		setActiveResource((ResourceContainer*) inv->getObjectParameter());
 		break;
-	case 19:
+	case RPC_CHANGEACTIVERESOURCEID__LONG_:
 		changeActiveResourceID(inv->getUnsignedLongParameter());
 		break;
-	case 20:
+	case RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_:
 		addResourceToHopper((ResourceContainer*) inv->getObjectParameter());
 		break;
-	case 21:
+	case RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_:
 		removeResourceFromHopper((ResourceContainer*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_CLEARRESOURCEHOPPER__:
 		clearResourceHopper();
 		break;
-	case 23:
+	case RPC_GETHOPPERSIZE__:
 		resp->insertFloat(getHopperSize());
 		break;
-	case 24:
+	case RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_:
 		resp->insertSignedInt(getHopperItemQuantity((ResourceSpawn*) inv->getObjectParameter()));
 		break;
-	case 25:
+	case RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_:
 		resp->insertLong(getContainerFromHopper((ResourceSpawn*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case 26:
+	case RPC_GETACTIVERESOURCESPAWNID__:
 		resp->insertLong(getActiveResourceSpawnID());
 		break;
-	case 27:
+	case RPC_GETACTUALRATE__:
 		resp->insertFloat(getActualRate());
 		break;
-	case 28:
+	case RPC_BROADCASTTOOPERATORS__BASEPACKET_:
 		broadcastToOperators((BasePacket*) inv->getObjectParameter());
 		break;
-	case 29:
+	case RPC_ADDOPERATOR__PLAYERCREATURE_:
 		addOperator((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 30:
+	case RPC_REMOVEOPERATOR__PLAYERCREATURE_:
 		removeOperator((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 31:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 32:
+	case RPC_ISINSTALLATIONOBJECT__:
 		resp->insertBoolean(isInstallationObject());
 		break;
-	case 33:
+	case RPC_ISOPERATING__:
 		resp->insertBoolean(isOperating());
 		break;
-	case 34:
+	case RPC_GETINSTALLATIONTYPE__:
 		resp->insertSignedInt(getInstallationType());
 		break;
-	case 35:
+	case RPC_GETEXTRACTIONRATE__:
 		resp->insertFloat(getExtractionRate());
 		break;
-	case 36:
+	case RPC_GETHOPPERSIZEMAX__:
 		resp->insertFloat(getHopperSizeMax());
 		break;
-	case 37:
+	case RPC_ISHARVESTEROBJECT__:
 		resp->insertBoolean(isHarvesterObject());
 		break;
-	case 38:
+	case RPC_ISGENERATOROBJECT__:
 		resp->insertBoolean(isGeneratorObject());
 		break;
 	default:

@@ -317,7 +317,7 @@ SuiTransferBoxImplementation::SuiTransferBoxImplementation(PlayerCreature* playe
 }
 
 bool SuiTransferBoxImplementation::isTransferBox() {
-	// server/zone/objects/player/sui/transferbox/SuiTransferBox.idl(76):  		return true;
+	// server/zone/objects/player/sui/transferbox/SuiTransferBox.idl():  		return true;
 	return true;
 }
 
@@ -328,20 +328,22 @@ bool SuiTransferBoxImplementation::isTransferBox() {
 SuiTransferBoxAdapter::SuiTransferBoxAdapter(SuiTransferBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
 
+enum {RPC_GENERATEMESSAGE__ = 6,RPC_ADDFROM__STRING_STRING_STRING_STRING_,RPC_ADDTO__STRING_STRING_STRING_STRING_,RPC_ISTRANSFERBOX__};
+
 Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GENERATEMESSAGE__:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
-	case 7:
+	case RPC_ADDFROM__STRING_STRING_STRING_STRING_:
 		addFrom(inv->getAsciiParameter(_param0_addFrom__String_String_String_String_), inv->getAsciiParameter(_param1_addFrom__String_String_String_String_), inv->getAsciiParameter(_param2_addFrom__String_String_String_String_), inv->getAsciiParameter(_param3_addFrom__String_String_String_String_));
 		break;
-	case 8:
+	case RPC_ADDTO__STRING_STRING_STRING_STRING_:
 		addTo(inv->getAsciiParameter(_param0_addTo__String_String_String_String_), inv->getAsciiParameter(_param1_addTo__String_String_String_String_), inv->getAsciiParameter(_param2_addTo__String_String_String_String_), inv->getAsciiParameter(_param3_addTo__String_String_String_String_));
 		break;
-	case 9:
+	case RPC_ISTRANSFERBOX__:
 		resp->insertBoolean(isTransferBox());
 		break;
 	default:

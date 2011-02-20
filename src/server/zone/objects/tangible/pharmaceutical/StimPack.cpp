@@ -259,91 +259,91 @@ int StimPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 StimPackImplementation::StimPackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(66):  		setLoggingName("StimPack");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		setLoggingName("StimPack");
 	setLoggingName("StimPack");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(68):  		effectiveness = 0;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		effectiveness = 0;
 	effectiveness = 0;
 }
 
 void StimPackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(73):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
 	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(75):  		effectiveness = craftingValues.getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
 	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(76):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(77):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
 	setUseCount(craftingValues->getCurrentValue("charges"));
 }
 
 void StimPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(88):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		super.loadTemplateData(templateData);
 	PharmaceuticalObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(90):  		StimPackTemplate 
-	if (!templateData->isStimPackTemplate())	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(91):  			return;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		StimPackTemplate 
+	if (!templateData->isStimPackTemplate())	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			return;
 	return;
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(93):  stimPackTemplate = (StimPackTemplate) templateData;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		StimPackTemplate stimPackTemplate = (StimPackTemplate) templateData;
 	StimPackTemplate* stimPackTemplate = (StimPackTemplate*) templateData;
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(95):  		effectiveness = stimPackTemplate.getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		effectiveness = stimPackTemplate.getEffectiveness();
 	effectiveness = stimPackTemplate->getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(96):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 	PharmaceuticalObjectImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
 }
 
 unsigned int StimPackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(100):  		float power = getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float power = getEffectiveness();
 	float power = getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(102):  		float 
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(103):  			power = power - power * patient.calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			power = power - power * patient.calculateBFRatio();
 	power = power - power * patient->calculateBFRatio();
 }
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(106):  modSkill = (float) healer.getSkillMod("healing_injury_treatment");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_injury_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_injury_treatment");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(108):  		return (100 + modSkill) / 100 * power;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		return (100 + modSkill) / 100 * power;
 	return (100 + modSkill) / 100 * power;
 }
 
 int StimPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(120):  		if 
-	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(121):  			return 1;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		if 
+	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			return 1;
 	return 1;
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(123):  
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		}
 	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(124):  			player.sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
 	player->sendSystemMessage("error_message", "insufficient_skill");
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(126):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			return 0;
 	return 0;
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(128):  			string command = "/healdamage ";
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			string command = "/healdamage ";
 	String command = "/healdamage ";
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(129):  			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
 	player->sendExecuteConsoleCommand(command + String::valueOf(PharmaceuticalObjectImplementation::getObjectID()));
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(131):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			return 0;
 	return 0;
 }
 }
 
 void StimPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(145):  		super.fillAttributeList(msg, object);
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(147):  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_health", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(148):  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_action", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(149):  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::medicineUseRequired);
 }
 
 float StimPackImplementation::getEffectiveness() {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(153):  		return effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		return effectiveness;
 	return effectiveness;
 }
 
 bool StimPackImplementation::isStimPack() {
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl(157):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		return true;
 	return true;
 }
 
@@ -354,20 +354,22 @@ bool StimPackImplementation::isStimPack() {
 StimPackAdapter::StimPackAdapter(StimPackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
+enum {RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETEFFECTIVENESS__,RPC_ISSTIMPACK__};
+
 Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
 		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
 		break;
-	case 9:
+	case RPC_ISSTIMPACK__:
 		resp->insertBoolean(isStimPack());
 		break;
 	default:

@@ -339,7 +339,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 
 DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/DeliverMissionObjective.idl(71):  		Logger.setLoggingName("DeliverMissionObjective");
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		Logger.setLoggingName("DeliverMissionObjective");
 	Logger::setLoggingName("DeliverMissionObjective");
 }
 
@@ -347,26 +347,26 @@ void DeliverMissionObjectiveImplementation::finalize() {
 }
 
 void DeliverMissionObjectiveImplementation::initializeTransientMembers() {
-	// server/zone/objects/mission/DeliverMissionObjective.idl(79):  		super.initializeTransientMembers();
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/DeliverMissionObjective.idl(81):  		Logger.setLoggingName("MissionObject");
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");
-	// server/zone/objects/mission/DeliverMissionObjective.idl(83):  		activate();
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		activate();
 	activate();
 }
 
 void DeliverMissionObjectiveImplementation::setTarget(AiAgent* t) {
-	// server/zone/objects/mission/DeliverMissionObjective.idl(87):  		target = t;
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		target = t;
 	target = t;
 }
 
 void DeliverMissionObjectiveImplementation::setTargetDest(AiAgent* t) {
-	// server/zone/objects/mission/DeliverMissionObjective.idl(91):  		targetDest = t;
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		targetDest = t;
 	targetDest = t;
 }
 
 TangibleObject* DeliverMissionObjectiveImplementation::getItem() {
-	// server/zone/objects/mission/DeliverMissionObjective.idl(95):  		return item;
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		return item;
 	return item;
 }
 
@@ -377,38 +377,40 @@ TangibleObject* DeliverMissionObjectiveImplementation::getItem() {
 DeliverMissionObjectiveAdapter::DeliverMissionObjectiveAdapter(DeliverMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETTARGET__AIAGENT_,RPC_SETTARGETDEST__AIAGENT_,RPC_GETITEM__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_};
+
 Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_SETTARGET__AIAGENT_:
 		setTarget((AiAgent*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SETTARGETDEST__AIAGENT_:
 		setTargetDest((AiAgent*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_GETITEM__:
 		resp->insertLong(getItem()->_getObjectID());
 		break;
-	case 11:
+	case RPC_ACTIVATE__:
 		activate();
 		break;
-	case 12:
+	case RPC_ABORT__:
 		abort();
 		break;
-	case 13:
+	case RPC_COMPLETE__:
 		complete();
 		break;
-	case 14:
+	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 15:
+	case RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_:
 		resp->insertBoolean(updateMissionTarget((CreatureObject*) inv->getObjectParameter()));
 		break;
 	default:

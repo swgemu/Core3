@@ -226,17 +226,17 @@ TeachPlayerListBoxImplementation::TeachPlayerListBoxImplementation(PlayerCreatur
 }
 
 void TeachPlayerListBoxImplementation::setStudent(PlayerCreature* student) {
-	// server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.idl(66):   studentPlayer = student;
+	// server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.idl():   studentPlayer = student;
 	studentPlayer = student;
 }
 
 PlayerCreature* TeachPlayerListBoxImplementation::getStudent() {
-	// server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.idl(71):   return studentPlayer;
+	// server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.idl():   return studentPlayer;
 	return studentPlayer;
 }
 
 const String TeachPlayerListBoxImplementation::getTeachingSkillOption(int index) {
-	// server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.idl(76):   return teachingSkillOptions.get(index).getName();
+	// server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.idl():   return teachingSkillOptions.get(index).getName();
 	return (&teachingSkillOptions)->get(index)->getName();
 }
 
@@ -247,14 +247,16 @@ const String TeachPlayerListBoxImplementation::getTeachingSkillOption(int index)
 TeachPlayerListBoxAdapter::TeachPlayerListBoxAdapter(TeachPlayerListBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
 
+enum {RPC_SETSTUDENT__PLAYERCREATURE_,RPC_GENERATESKILLLIST__PLAYERCREATURE_PLAYERCREATURE_};
+
 Packet* TeachPlayerListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SETSTUDENT__PLAYERCREATURE_:
 		setStudent((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_GENERATESKILLLIST__PLAYERCREATURE_PLAYERCREATURE_:
 		resp->insertBoolean(generateSkillList((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
 		break;
 	default:

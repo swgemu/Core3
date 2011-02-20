@@ -478,197 +478,197 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 DotPackImplementation::DotPackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(75):  		area = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		area = 0;
 	area = 0;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(76):  		range = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		range = 0;
 	range = 0;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(77):  		rangeMod = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		rangeMod = 0;
 	rangeMod = 0;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(78):  		potency = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		potency = 0;
 	potency = 0;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(79):  		duration = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		duration = 0;
 	duration = 0;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(80):  		pool = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		pool = 0;
 	pool = 0;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(81):  		dotType = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		dotType = 0;
 	dotType = 0;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(82):  		effectiveness = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		effectiveness = 0;
 	effectiveness = 0;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(84):  		setLoggingName("DotPack");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		setLoggingName("DotPack");
 	setLoggingName("DotPack");
 }
 
 void DotPackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(89):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
 	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(91):  		effectiveness = craftingValues.getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
 	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(92):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(93):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
 	setUseCount(craftingValues->getCurrentValue("charges"));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(95):  		range = craftingValues.getCurrentValue("range");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		range = craftingValues.getCurrentValue("range");
 	range = craftingValues->getCurrentValue("range");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(96):  		area = craftingValues.getCurrentValue("area");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		area = craftingValues.getCurrentValue("area");
 	area = craftingValues->getCurrentValue("area");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(97):  		potency = craftingValues.getCurrentValue("potency");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		potency = craftingValues.getCurrentValue("potency");
 	potency = craftingValues->getCurrentValue("potency");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(98):  		duration = craftingValues.getCurrentValue("duration");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		duration = craftingValues.getCurrentValue("duration");
 	duration = craftingValues->getCurrentValue("duration");
 }
 
 void DotPackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(109):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		super.loadTemplateData(templateData);
 	PharmaceuticalObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(111):  		DotPackTemplate 
-	if (!templateData->isDotPackTemplate())	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(112):  			return;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		DotPackTemplate 
+	if (!templateData->isDotPackTemplate())	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			return;
 	return;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(114):  stimPackTemplate = (DotPackTemplate) templateData;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		DotPackTemplate stimPackTemplate = (DotPackTemplate) templateData;
 	DotPackTemplate* stimPackTemplate = (DotPackTemplate*) templateData;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(116):  		effectiveness = stimPackTemplate.getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		effectiveness = stimPackTemplate.getEffectiveness();
 	effectiveness = stimPackTemplate->getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(117):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 	PharmaceuticalObjectImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(118):  		duration = stimPackTemplate.getDuration();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		duration = stimPackTemplate.getDuration();
 	duration = stimPackTemplate->getDuration();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(119):  		area = stimPackTemplate.getArea();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		area = stimPackTemplate.getArea();
 	area = stimPackTemplate->getArea();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(120):  		range = stimPackTemplate.getRange();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		range = stimPackTemplate.getRange();
 	range = stimPackTemplate->getRange();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(121):  		rangeMod = stimPackTemplate.getRangeMod();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		rangeMod = stimPackTemplate.getRangeMod();
 	rangeMod = stimPackTemplate->getRangeMod();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(122):  		pool = stimPackTemplate.getPool();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		pool = stimPackTemplate.getPool();
 	pool = stimPackTemplate->getPool();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(123):  		dotType = stimPackTemplate.getDotType();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		dotType = stimPackTemplate.getDotType();
 	dotType = stimPackTemplate->getDotType();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(124):  		potency = stimPackTemplate.getPotency();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		potency = stimPackTemplate.getPotency();
 	potency = stimPackTemplate->getPotency();
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(125):  		commandToExecute = stimPackTemplate.getCommandToExecute();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		commandToExecute = stimPackTemplate.getCommandToExecute();
 	commandToExecute = stimPackTemplate->getCommandToExecute();
 }
 
 void DotPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(137):  		super.fillAttributeList(msg, object);
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(139):  		msg.insertAttribute("examine_dot_attribute", CreatureAttribute.getName(pool, true));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		msg.insertAttribute("examine_dot_attribute", CreatureAttribute.getName(pool, true));
 	msg->insertAttribute("examine_dot_attribute", CreatureAttribute::getName(pool, true));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(141):  		msg.insertAttribute("examine_dot_apply_power", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		msg.insertAttribute("examine_dot_apply_power", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_dot_apply_power", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(143):  
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		}
 	if (isPoisonDeliveryUnit()){
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(144):  			msg.insertAttribute("examine_dot_apply", "Poison");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			msg.insertAttribute("examine_dot_apply", "Poison");
 	msg->insertAttribute("examine_dot_apply", "Poison");
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(146):  			msg.insertAttribute("examine_dot_apply", "Diseased");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			msg.insertAttribute("examine_dot_apply", "Diseased");
 	msg->insertAttribute("examine_dot_apply", "Diseased");
 }
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(149):  		msg.insertAttribute("examine_dot_potency", Math.getPrecision(potency, 0));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		msg.insertAttribute("examine_dot_potency", Math.getPrecision(potency, 0));
 	msg->insertAttribute("examine_dot_potency", Math::getPrecision(potency, 0));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(151):  		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
 	msg->insertAttribute("examine_heal_range", Math::getPrecision(range, 0));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(153):  
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		}
 	if (isArea()){
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(154):  			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
 	msg->insertAttribute("examine_heal_area", Math::getPrecision(area, 0));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(156):  			msg.insertAttribute("duration", Math.getPrecision(duration, 0));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			msg.insertAttribute("duration", Math.getPrecision(duration, 0));
 	msg->insertAttribute("duration", Math::getPrecision(duration, 0));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(158):  			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
 	msg->insertAttribute("combat_healing_ability", PharmaceuticalObjectImplementation::getMedicineUseRequired());
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(161):  			msg.insertAttribute("duration", Math.getPrecision(duration, 0));
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			msg.insertAttribute("duration", Math.getPrecision(duration, 0));
 	msg->insertAttribute("duration", Math::getPrecision(duration, 0));
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(163):  			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			msg.insertAttribute("combat_healing_ability", super.getMedicineUseRequired());
 	msg->insertAttribute("combat_healing_ability", PharmaceuticalObjectImplementation::getMedicineUseRequired());
 }
 }
 
 int DotPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(176):  		if 
-	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(177):  			return 1;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		if 
+	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			return 1;
 	return 1;
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(179):  
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		}
 	if (player->getSkillMod("combat_healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(180):  			player.sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
 	player->sendSystemMessage("error_message", "insufficient_skill");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(182):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			return 0;
 	return 0;
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(184):  			string command = commandToExecute + " ";
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			string command = commandToExecute + " ";
 	String command = commandToExecute + " ";
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(185):  			command = command + String.valueOf(super.getObjectID());
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			command = command + String.valueOf(super.getObjectID());
 	command = command + String::valueOf(PharmaceuticalObjectImplementation::getObjectID());
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(187):  			player.sendExecuteConsoleCommand(command);
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			player.sendExecuteConsoleCommand(command);
 	player->sendExecuteConsoleCommand(command);
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(189):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			return 0;
 	return 0;
 }
 }
 
 int DotPackImplementation::calculatePower(CreatureObject* creature) {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(195):  		float modSkill = (float) creature.getSkillMod("combat_medic_effectiveness");
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		float modSkill = (float) creature.getSkillMod("combat_medic_effectiveness");
 	float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(196):  		return ((100 + modSkill) / 100 * effectiveness);
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return ((100 + modSkill) / 100 * effectiveness);
 	return ((100 + modSkill) / 100 * effectiveness);
 }
 
 bool DotPackImplementation::isPoisonDeliveryUnit() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(200):  		return dotType == CreatureState.POISONED;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return dotType == CreatureState.POISONED;
 	return dotType == CreatureState::POISONED;
 }
 
 bool DotPackImplementation::isDiseaseDeliveryUnit() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(204):  		return dotType == CreatureState.DISEASED;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return dotType == CreatureState.DISEASED;
 	return dotType == CreatureState::DISEASED;
 }
 
 float DotPackImplementation::getEffectiveness() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(208):  		return effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return effectiveness;
 	return effectiveness;
 }
 
 float DotPackImplementation::getRange() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(212):  		return range;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return range;
 	return range;
 }
 
 float DotPackImplementation::getArea() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(216):  		return area;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return area;
 	return area;
 }
 
 float DotPackImplementation::getRangeMod() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(220):  		return rangeMod;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return rangeMod;
 	return rangeMod;
 }
 
 float DotPackImplementation::getPotency() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(224):  		return potency;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return potency;
 	return potency;
 }
 
 unsigned int DotPackImplementation::getDuration() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(228):  		return duration;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return duration;
 	return duration;
 }
 
 bool DotPackImplementation::isArea() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(232):  		return area != 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return area != 0;
 	return area != 0;
 }
 
 unsigned int DotPackImplementation::getPool() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(236):  		return pool;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return pool;
 	return pool;
 }
 
 unsigned int DotPackImplementation::getDotType() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl(240):  		return dotType;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return dotType;
 	return dotType;
 }
 
@@ -679,47 +679,49 @@ unsigned int DotPackImplementation::getDotType() {
 DotPackAdapter::DotPackAdapter(DotPackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISPOISONDELIVERYUNIT__,RPC_ISDISEASEDELIVERYUNIT__,RPC_GETEFFECTIVENESS__,RPC_GETRANGE__,RPC_GETAREA__,RPC_GETRANGEMOD__,RPC_GETPOTENCY__,RPC_GETDURATION__,RPC_ISAREA__,RPC_GETPOOL__,RPC_GETDOTTYPE__};
+
 Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 7:
+	case RPC_CALCULATEPOWER__CREATUREOBJECT_:
 		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 8:
+	case RPC_ISPOISONDELIVERYUNIT__:
 		resp->insertBoolean(isPoisonDeliveryUnit());
 		break;
-	case 9:
+	case RPC_ISDISEASEDELIVERYUNIT__:
 		resp->insertBoolean(isDiseaseDeliveryUnit());
 		break;
-	case 10:
+	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
 		break;
-	case 11:
+	case RPC_GETRANGE__:
 		resp->insertFloat(getRange());
 		break;
-	case 12:
+	case RPC_GETAREA__:
 		resp->insertFloat(getArea());
 		break;
-	case 13:
+	case RPC_GETRANGEMOD__:
 		resp->insertFloat(getRangeMod());
 		break;
-	case 14:
+	case RPC_GETPOTENCY__:
 		resp->insertFloat(getPotency());
 		break;
-	case 15:
+	case RPC_GETDURATION__:
 		resp->insertInt(getDuration());
 		break;
-	case 16:
+	case RPC_ISAREA__:
 		resp->insertBoolean(isArea());
 		break;
-	case 17:
+	case RPC_GETPOOL__:
 		resp->insertInt(getPool());
 		break;
-	case 18:
+	case RPC_GETDOTTYPE__:
 		resp->insertInt(getDotType());
 		break;
 	default:

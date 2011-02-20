@@ -255,18 +255,18 @@ int InformantCreatureImplementation::writeObjectMembers(ObjectOutputStream* stre
 
 InformantCreatureImplementation::InformantCreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/informant/InformantCreature.idl(57):  		Logger.setLoggingName("InformantCreature");
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		Logger.setLoggingName("InformantCreature");
 	Logger::setLoggingName("InformantCreature");
-	// server/zone/objects/creature/informant/InformantCreature.idl(58):  		level = 0;
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		level = 0;
 	level = 0;
 }
 
 void InformantCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/creature/informant/InformantCreature.idl(63):  		super.loadTemplateData(templateData);
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		super.loadTemplateData(templateData);
 	AiAgentImplementation::loadTemplateData(templateData);
-	// server/zone/objects/creature/informant/InformantCreature.idl(65):  		super.optionsBitmask = 0x108;
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		super.optionsBitmask = 0x108;
 	AiAgentImplementation::optionsBitmask = 0x108;
-	// server/zone/objects/creature/informant/InformantCreature.idl(66):  		super.pvpStatusBitmask = 0;
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		super.pvpStatusBitmask = 0;
 	AiAgentImplementation::pvpStatusBitmask = 0;
 }
 
@@ -274,22 +274,22 @@ void InformantCreatureImplementation::activateRecovery() {
 }
 
 void InformantCreatureImplementation::setLevel(int l) {
-	// server/zone/objects/creature/informant/InformantCreature.idl(74):  		level = l;
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		level = l;
 	level = l;
 }
 
 int InformantCreatureImplementation::getLevel() {
-	// server/zone/objects/creature/informant/InformantCreature.idl(78):  		return level;
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		return level;
 	return level;
 }
 
 bool InformantCreatureImplementation::isInformantCreature() {
-	// server/zone/objects/creature/informant/InformantCreature.idl(82):  		return true;
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		return true;
 	return true;
 }
 
 bool InformantCreatureImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/informant/InformantCreature.idl(86):  		return false;
+	// server/zone/objects/creature/informant/InformantCreature.idl():  		return false;
 	return false;
 }
 
@@ -300,26 +300,28 @@ bool InformantCreatureImplementation::isAttackableBy(CreatureObject* object) {
 InformantCreatureAdapter::InformantCreatureAdapter(InformantCreatureImplementation* obj) : AiAgentAdapter(obj) {
 }
 
+enum {RPC_ACTIVATERECOVERY__,RPC_SETLEVEL__INT_,RPC_GETLEVEL__,RPC_ISINFORMANTCREATURE__,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_};
+
 Packet* InformantCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ACTIVATERECOVERY__:
 		activateRecovery();
 		break;
-	case 7:
+	case RPC_SETLEVEL__INT_:
 		setLevel(inv->getSignedIntParameter());
 		break;
-	case 8:
+	case RPC_GETLEVEL__:
 		resp->insertSignedInt(getLevel());
 		break;
-	case 9:
+	case RPC_ISINFORMANTCREATURE__:
 		resp->insertBoolean(isInformantCreature());
 		break;
-	case 10:
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 11:
+	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
 		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
 		break;
 	default:

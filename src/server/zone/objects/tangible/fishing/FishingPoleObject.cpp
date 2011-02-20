@@ -316,27 +316,27 @@ int FishingPoleObjectImplementation::writeObjectMembers(ObjectOutputStream* stre
 
 FishingPoleObjectImplementation::FishingPoleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(60):  		Logger.setLoggingName("FishingPoleObject");
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl():  		Logger.setLoggingName("FishingPoleObject");
 	Logger::setLoggingName("FishingPoleObject");
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(61):  		quality = 50;
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl():  		quality = 50;
 	quality = 50;
 }
 
 void FishingPoleObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(65):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(67):  		Logger.setLoggingName("FishingPoleObject");
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl():  		Logger.setLoggingName("FishingPoleObject");
 	Logger::setLoggingName("FishingPoleObject");
 }
 
 int FishingPoleObjectImplementation::getQuality() {
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(71):  		return quality;
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl():  		return quality;
 	return quality;
 }
 
 void FishingPoleObjectImplementation::setQuality(int value) {
-	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(75):  	}
-	if ((value > -1) && (value < 101))	// server/zone/objects/tangible/fishing/FishingPoleObject.idl(76):  			quality = value;
+	// server/zone/objects/tangible/fishing/FishingPoleObject.idl():  	}
+	if ((value > -1) && (value < 101))	// server/zone/objects/tangible/fishing/FishingPoleObject.idl():  			quality = value;
 	quality = value;
 }
 
@@ -347,38 +347,40 @@ void FishingPoleObjectImplementation::setQuality(int value) {
 FishingPoleObjectAdapter::FishingPoleObjectAdapter(FishingPoleObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETQUALITY__,RPC_SETQUALITY__INT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_DOFISHING__PLAYERCREATURE_,RPC_GETTEXT__PLAYERCREATURE_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_};
+
 Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_GETQUALITY__:
 		resp->insertSignedInt(getQuality());
 		break;
-	case 8:
+	case RPC_SETQUALITY__INT_:
 		setQuality(inv->getSignedIntParameter());
 		break;
-	case 9:
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
 		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 11:
+	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
-	case 12:
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
 		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_DOFISHING__PLAYERCREATURE_:
 		doFishing((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_GETTEXT__PLAYERCREATURE_:
 		resp->insertAscii(getText((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 15:
+	case RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_:
 		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	default:

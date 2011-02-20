@@ -163,14 +163,14 @@ int ToolTangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 
 ToolTangibleObjectImplementation::ToolTangibleObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(54):  		Logger.setLoggingName("ToolTangibleObject");
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl():  		Logger.setLoggingName("ToolTangibleObject");
 	Logger::setLoggingName("ToolTangibleObject");
 }
 
 void ToolTangibleObjectImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(58):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl():  		super.initializeTransientMembers();
 	TangibleObjectImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/tool/ToolTangibleObject.idl(60):  		Logger.setLoggingName("ToolTangibleObject");
+	// server/zone/objects/tangible/tool/ToolTangibleObject.idl():  		Logger.setLoggingName("ToolTangibleObject");
 	Logger::setLoggingName("ToolTangibleObject");
 }
 
@@ -181,11 +181,13 @@ void ToolTangibleObjectImplementation::initializeTransientMembers() {
 ToolTangibleObjectAdapter::ToolTangibleObjectAdapter(ToolTangibleObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6};
+
 Packet* ToolTangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
 	default:

@@ -70,12 +70,12 @@ void Zone::run() {
 		client->info("sent client id message", true);
 
 		if (characterID == 0) {
-			client->info("enter new Character Name to create", true);
-			char name[256];
-			fgets(name, sizeof(name), stdin);
+			//client->info("enter new Character Name to create", true);
+			/*char name[256];
+			fgets(name, sizeof(name), stdin);*/
 
-			/*String name = "test";
-			name += String::valueOf(++createdChar);*/
+			String name = "character";
+			name += ('a' + ++createdChar);
 
 			String charName = name;
 			charName = charName.replaceFirst("\n", "");

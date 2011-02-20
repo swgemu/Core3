@@ -334,51 +334,51 @@ int LootGroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 LootGroupObjectImplementation::LootGroupObjectImplementation(unsigned int group, int w, int max) {
 	_initializeImplementation();
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(68):  		lootObjects.setNullValue(null);
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		lootObjects.setNullValue(null);
 	(&lootObjects)->setNullValue(NULL);
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(70):  		lootGroup = group;
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		lootGroup = group;
 	lootGroup = group;
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(71):  		weight = w;
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		weight = w;
 	weight = w;
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(72):  		maxDrop = max;
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		maxDrop = max;
 	maxDrop = max;
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(73):  		maxChance = 0;
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		maxChance = 0;
 	maxChance = 0;
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(75):  		Logger.setLoggingName("LootGroup");
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		Logger.setLoggingName("LootGroup");
 	Logger::setLoggingName("LootGroup");
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(77):  		Logger.setLogging(true);
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(78):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
 }
 
 bool LootGroupObjectImplementation::contains(unsigned int objIndex) {
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(82):  		return lootObjects.contains(objIndex);
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		return lootObjects.contains(objIndex);
 	return (&lootObjects)->contains(objIndex);
 }
 
 LootObject* LootGroupObjectImplementation::get(unsigned int lootObjectID) {
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(86):  		return lootObjects.get(lootObjectID);
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		return lootObjects.get(lootObjectID);
 	return (&lootObjects)->get(lootObjectID);
 }
 
 int LootGroupObjectImplementation::size() {
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(95):  		return lootObjects.size();
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		return lootObjects.size();
 	return (&lootObjects)->size();
 }
 
 int LootGroupObjectImplementation::getMaxDrop() {
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(99):  		return maxDrop;
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		return maxDrop;
 	return maxDrop;
 }
 
 int LootGroupObjectImplementation::getWeight() {
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(103):  		return weight;
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		return weight;
 	return weight;
 }
 
 unsigned int LootGroupObjectImplementation::getLootGroup() {
-	// server/zone/managers/loot/lootgroup/LootGroupObject.idl(107):  		return lootGroup;
+	// server/zone/managers/loot/lootgroup/LootGroupObject.idl():  		return lootGroup;
 	return lootGroup;
 }
 
@@ -389,29 +389,31 @@ unsigned int LootGroupObjectImplementation::getLootGroup() {
 LootGroupObjectAdapter::LootGroupObjectAdapter(LootGroupObjectImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_CONTAINS__INT_ = 6,RPC_GET__INT_,RPC_PUT__INT_LOOTOBJECT_,RPC_SIZE__,RPC_GETMAXDROP__,RPC_GETWEIGHT__,RPC_GETLOOTGROUP__};
+
 Packet* LootGroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_CONTAINS__INT_:
 		resp->insertBoolean(contains(inv->getUnsignedIntParameter()));
 		break;
-	case 7:
+	case RPC_GET__INT_:
 		resp->insertLong(get(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case 8:
+	case RPC_PUT__INT_LOOTOBJECT_:
 		put(inv->getUnsignedIntParameter(), (LootObject*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SIZE__:
 		resp->insertSignedInt(size());
 		break;
-	case 10:
+	case RPC_GETMAXDROP__:
 		resp->insertSignedInt(getMaxDrop());
 		break;
-	case 11:
+	case RPC_GETWEIGHT__:
 		resp->insertSignedInt(getWeight());
 		break;
-	case 12:
+	case RPC_GETLOOTGROUP__:
 		resp->insertInt(getLootGroup());
 		break;
 	default:

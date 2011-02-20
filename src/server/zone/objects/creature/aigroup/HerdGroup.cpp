@@ -162,7 +162,7 @@ HerdGroupImplementation::HerdGroupImplementation() : AiGroupImplementation() {
 }
 
 bool HerdGroupImplementation::isHerdGroup() {
-	// server/zone/objects/creature/aigroup/HerdGroup.idl(56):  		return true;
+	// server/zone/objects/creature/aigroup/HerdGroup.idl():  		return true;
 	return true;
 }
 
@@ -173,11 +173,13 @@ bool HerdGroupImplementation::isHerdGroup() {
 HerdGroupAdapter::HerdGroupAdapter(HerdGroupImplementation* obj) : AiGroupAdapter(obj) {
 }
 
+enum {RPC_ISHERDGROUP__ = 6};
+
 Packet* HerdGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ISHERDGROUP__:
 		resp->insertBoolean(isHerdGroup());
 		break;
 	default:

@@ -220,7 +220,7 @@ int ResourceDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ResourceDeedImplementation::ResourceDeedImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/deed/resource/ResourceDeed.idl(58):  		Logger.setLoggingName("ResourceDeed");
+	// server/zone/objects/tangible/deed/resource/ResourceDeed.idl():  		Logger.setLoggingName("ResourceDeed");
 	Logger::setLoggingName("ResourceDeed");
 }
 
@@ -231,20 +231,22 @@ ResourceDeedImplementation::ResourceDeedImplementation() {
 ResourceDeedAdapter::ResourceDeedAdapter(ResourceDeedImplementation* obj) : DeedAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USEOBJECT__PLAYERCREATURE_,RPC_DESTROYDEED__};
+
 Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_USEOBJECT__PLAYERCREATURE_:
 		resp->insertSignedInt(useObject((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 9:
+	case RPC_DESTROYDEED__:
 		destroyDeed();
 		break;
 	default:

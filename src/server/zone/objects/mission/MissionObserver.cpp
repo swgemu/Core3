@@ -195,9 +195,9 @@ int MissionObserverImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 MissionObserverImplementation::MissionObserverImplementation(MissionObjective* objective) {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObserver.idl(58):  		missionObjective = objective;
+	// server/zone/objects/mission/MissionObserver.idl():  		missionObjective = objective;
 	missionObjective = objective;
-	// server/zone/objects/mission/MissionObserver.idl(60):  		Logger.setLoggingName("MissionObserver");
+	// server/zone/objects/mission/MissionObserver.idl():  		Logger.setLoggingName("MissionObserver");
 	Logger::setLoggingName("MissionObserver");
 }
 
@@ -208,14 +208,16 @@ MissionObserverImplementation::MissionObserverImplementation(MissionObjective* o
 MissionObserverAdapter::MissionObserverAdapter(MissionObserverImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_DESTROYOBJECTFROMDATABASE__};
+
 Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 7:
+	case RPC_DESTROYOBJECTFROMDATABASE__:
 		destroyObjectFromDatabase();
 		break;
 	default:

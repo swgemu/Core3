@@ -302,14 +302,14 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 
 MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* parent) {
 	_initializeImplementation();
-	// server/zone/objects/mission/MissionObjective.idl(65):  		mission = parent;
+	// server/zone/objects/mission/MissionObjective.idl():  		mission = parent;
 	mission = parent;
-	// server/zone/objects/mission/MissionObjective.idl(67):  		Logger.setLoggingName("MissionObjective");
+	// server/zone/objects/mission/MissionObjective.idl():  		Logger.setLoggingName("MissionObjective");
 	Logger::setLoggingName("MissionObjective");
 }
 
 int MissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/mission/MissionObjective.idl(78):  		return 1;
+	// server/zone/objects/mission/MissionObjective.idl():  		return 1;
 	return 1;
 }
 
@@ -323,12 +323,12 @@ void MissionObjectiveImplementation::complete() {
 }
 
 MissionObject* MissionObjectiveImplementation::getMissionObject() {
-	// server/zone/objects/mission/MissionObjective.idl(94):  		return mission;
+	// server/zone/objects/mission/MissionObjective.idl():  		return mission;
 	return mission;
 }
 
 unsigned int MissionObjectiveImplementation::getObjectiveType() {
-	// server/zone/objects/mission/MissionObjective.idl(98):  		return objectiveType;
+	// server/zone/objects/mission/MissionObjective.idl():  		return objectiveType;
 	return objectiveType;
 }
 
@@ -339,32 +339,34 @@ unsigned int MissionObjectiveImplementation::getObjectiveType() {
 MissionObjectiveAdapter::MissionObjectiveAdapter(MissionObjectiveImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__};
+
 Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_DESTROYOBJECTFROMDATABASE__:
 		destroyObjectFromDatabase();
 		break;
-	case 7:
+	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 8:
+	case RPC_ACTIVATE__:
 		activate();
 		break;
-	case 9:
+	case RPC_ABORT__:
 		abort();
 		break;
-	case 10:
+	case RPC_COMPLETE__:
 		complete();
 		break;
-	case 11:
+	case RPC_GETMISSIONOBJECT__:
 		resp->insertLong(getMissionObject()->_getObjectID());
 		break;
-	case 12:
+	case RPC_GETOBJECTIVETYPE__:
 		resp->insertInt(getObjectiveType());
 		break;
-	case 13:
+	case RPC_GETPLAYEROWNER__:
 		resp->insertLong(getPlayerOwner()->_getObjectID());
 		break;
 	default:

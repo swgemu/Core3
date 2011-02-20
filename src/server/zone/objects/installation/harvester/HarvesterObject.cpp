@@ -237,21 +237,21 @@ int HarvesterObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 HarvesterObjectImplementation::HarvesterObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(52):  		Logger.setLoggingName("HarvesterObject");
+	// server/zone/objects/installation/harvester/HarvesterObject.idl():  		Logger.setLoggingName("HarvesterObject");
 	Logger::setLoggingName("HarvesterObject");
 }
 
 void HarvesterObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(63):  		super.loadTemplateData(templateData);
+	// server/zone/objects/installation/harvester/HarvesterObject.idl():  		super.loadTemplateData(templateData);
 	InstallationObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(65):  		super.surplusPower = 1000;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl():  		super.surplusPower = 1000;
 	InstallationObjectImplementation::surplusPower = 1000;
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(66):  		super.basePowerRate = 100;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl():  		super.basePowerRate = 100;
 	InstallationObjectImplementation::basePowerRate = 100;
 }
 
 bool HarvesterObjectImplementation::isHarvesterObject() {
-	// server/zone/objects/installation/harvester/HarvesterObject.idl(110):  		return true;
+	// server/zone/objects/installation/harvester/HarvesterObject.idl():  		return true;
 	return true;
 }
 
@@ -262,23 +262,25 @@ bool HarvesterObjectImplementation::isHarvesterObject() {
 HarvesterObjectAdapter::HarvesterObjectAdapter(HarvesterObjectImplementation* obj) : InstallationObjectAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__};
+
 Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 7:
+	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
 		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 8:
+	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
 		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 9:
+	case RPC_UPDATEOPERATORS__:
 		updateOperators();
 		break;
-	case 10:
+	case RPC_ISHARVESTEROBJECT__:
 		resp->insertBoolean(isHarvesterObject());
 		break;
 	default:

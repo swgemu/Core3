@@ -150,7 +150,7 @@ int RecreationBuildingObjectImplementation::writeObjectMembers(ObjectOutputStrea
 
 RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(55):  		Logger.setLoggingName("RecreationBuildingObject");
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  		Logger.setLoggingName("RecreationBuildingObject");
 	Logger::setLoggingName("RecreationBuildingObject");
 }
 
@@ -160,6 +160,8 @@ RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation()
 
 RecreationBuildingObjectAdapter::RecreationBuildingObjectAdapter(RecreationBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
+
+enum {};
 
 Packet* RecreationBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

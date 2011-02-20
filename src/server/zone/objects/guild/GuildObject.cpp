@@ -705,123 +705,123 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 GuildObjectImplementation::GuildObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/guild/GuildObject.idl(83):  		Logger.setLoggingName("GuildObject");
+	// server/zone/objects/guild/GuildObject.idl():  		Logger.setLoggingName("GuildObject");
 	Logger::setLoggingName("GuildObject");
-	// server/zone/objects/guild/GuildObject.idl(85):  		guildLeaderID = 0;
+	// server/zone/objects/guild/GuildObject.idl():  		guildLeaderID = 0;
 	guildLeaderID = 0;
-	// server/zone/objects/guild/GuildObject.idl(86):  		guildID = 0;
+	// server/zone/objects/guild/GuildObject.idl():  		guildID = 0;
 	guildID = 0;
-	// server/zone/objects/guild/GuildObject.idl(87):  		chatRoom = null;
+	// server/zone/objects/guild/GuildObject.idl():  		chatRoom = null;
 	chatRoom = NULL;
-	// server/zone/objects/guild/GuildObject.idl(89):  		sponsoredPlayers.setNoDuplicateInsertPlan();
+	// server/zone/objects/guild/GuildObject.idl():  		sponsoredPlayers.setNoDuplicateInsertPlan();
 	(&sponsoredPlayers)->setNoDuplicateInsertPlan();
-	// server/zone/objects/guild/GuildObject.idl(90):  		guildMembers.setNoDuplicateInsertPlan();
+	// server/zone/objects/guild/GuildObject.idl():  		guildMembers.setNoDuplicateInsertPlan();
 	(&guildMembers)->setNoDuplicateInsertPlan();
 }
 
 void GuildObjectImplementation::addSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/objects/guild/GuildObject.idl(110):  		sponsoredPlayers.put(playerID);
+	// server/zone/objects/guild/GuildObject.idl():  		sponsoredPlayers.put(playerID);
 	(&sponsoredPlayers)->put(playerID);
 }
 
 void GuildObjectImplementation::removeSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/objects/guild/GuildObject.idl(114):  		sponsoredPlayers.drop(playerID);
+	// server/zone/objects/guild/GuildObject.idl():  		sponsoredPlayers.drop(playerID);
 	(&sponsoredPlayers)->drop(playerID);
 }
 
 bool GuildObjectImplementation::hasSponsoredPlayer(unsigned long long playerID) {
 	Locker _locker(_this);
-	// server/zone/objects/guild/GuildObject.idl(118):  		return sponsoredPlayers.contains(playerID);
+	// server/zone/objects/guild/GuildObject.idl():  		return sponsoredPlayers.contains(playerID);
 	return (&sponsoredPlayers)->contains(playerID);
 }
 
 unsigned long long GuildObjectImplementation::getSponsoredPlayer(int idx) {
 	Locker _locker(_this);
-	// server/zone/objects/guild/GuildObject.idl(122):  		return sponsoredPlayers.get(idx);
+	// server/zone/objects/guild/GuildObject.idl():  		return sponsoredPlayers.get(idx);
 	return (&sponsoredPlayers)->get(idx);
 }
 
 int GuildObjectImplementation::getSponsoredPlayerCount() {
-	// server/zone/objects/guild/GuildObject.idl(126):  		return sponsoredPlayers.size();
+	// server/zone/objects/guild/GuildObject.idl():  		return sponsoredPlayers.size();
 	return (&sponsoredPlayers)->size();
 }
 
 void GuildObjectImplementation::setChatRoom(ChatRoom* room) {
-	// server/zone/objects/guild/GuildObject.idl(130):  		chatRoom = room;
+	// server/zone/objects/guild/GuildObject.idl():  		chatRoom = room;
 	chatRoom = room;
 }
 
 ChatRoom* GuildObjectImplementation::getChatRoom() {
-	// server/zone/objects/guild/GuildObject.idl(134):  		return chatRoom;
+	// server/zone/objects/guild/GuildObject.idl():  		return chatRoom;
 	return chatRoom;
 }
 
 int GuildObjectImplementation::getTotalMembers() {
-	// server/zone/objects/guild/GuildObject.idl(138):  		return guildMembers.size();
+	// server/zone/objects/guild/GuildObject.idl():  		return guildMembers.size();
 	return (&guildMembers)->size();
 }
 
 unsigned long long GuildObjectImplementation::getGuildLeaderID() {
-	// server/zone/objects/guild/GuildObject.idl(142):  		return guildLeaderID;
+	// server/zone/objects/guild/GuildObject.idl():  		return guildLeaderID;
 	return guildLeaderID;
 }
 
 GuildMemberList* GuildObjectImplementation::getGuildMemberList() {
-	// server/zone/objects/guild/GuildObject.idl(147):  		return guildMembers;
+	// server/zone/objects/guild/GuildObject.idl():  		return guildMembers;
 	return (&guildMembers);
 }
 
 String GuildObjectImplementation::getGuildAbbrev() {
-	// server/zone/objects/guild/GuildObject.idl(151):  		return guildAbbrev;
+	// server/zone/objects/guild/GuildObject.idl():  		return guildAbbrev;
 	return guildAbbrev;
 }
 
 void GuildObjectImplementation::setGuildAbbrev(const String& abbrev) {
-	// server/zone/objects/guild/GuildObject.idl(155):  		guildAbbrev = abbrev;
+	// server/zone/objects/guild/GuildObject.idl():  		guildAbbrev = abbrev;
 	guildAbbrev = abbrev;
 }
 
 void GuildObjectImplementation::setGuildLeaderID(unsigned long long leaderID) {
-	// server/zone/objects/guild/GuildObject.idl(159):  		guildLeaderID = leaderID;
+	// server/zone/objects/guild/GuildObject.idl():  		guildLeaderID = leaderID;
 	guildLeaderID = leaderID;
 }
 
 void GuildObjectImplementation::setGuildID(unsigned int id) {
-	// server/zone/objects/guild/GuildObject.idl(163):  		guildID = id;
+	// server/zone/objects/guild/GuildObject.idl():  		guildID = id;
 	guildID = id;
 }
 
 unsigned int GuildObjectImplementation::getGuildID() {
-	// server/zone/objects/guild/GuildObject.idl(167):  		return guildID;
+	// server/zone/objects/guild/GuildObject.idl():  		return guildID;
 	return guildID;
 }
 
 void GuildObjectImplementation::setGuildName(const String& gname) {
-	// server/zone/objects/guild/GuildObject.idl(171):  		guildName = gname;
+	// server/zone/objects/guild/GuildObject.idl():  		guildName = gname;
 	guildName = gname;
 }
 
 String GuildObjectImplementation::getGuildName() {
-	// server/zone/objects/guild/GuildObject.idl(175):  		return guildName;
+	// server/zone/objects/guild/GuildObject.idl():  		return guildName;
 	return guildName;
 }
 
 String GuildObjectImplementation::getGuildKey() {
-	// server/zone/objects/guild/GuildObject.idl(179):  		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
+	// server/zone/objects/guild/GuildObject.idl():  		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
 	String guildKey = String::valueOf(guildID) + ":" + guildAbbrev;
-	// server/zone/objects/guild/GuildObject.idl(180):  		return guildKey;
+	// server/zone/objects/guild/GuildObject.idl():  		return guildKey;
 	return guildKey;
 }
 
 bool GuildObjectImplementation::isGuildObject() {
-	// server/zone/objects/guild/GuildObject.idl(184):  		return true;
+	// server/zone/objects/guild/GuildObject.idl():  		return true;
 	return true;
 }
 
 bool GuildObjectImplementation::isGuildLeader(PlayerCreature* player) {
-	// server/zone/objects/guild/GuildObject.idl(188):  		return (guildLeaderID == player.getObjectID());
+	// server/zone/objects/guild/GuildObject.idl():  		return (guildLeaderID == player.getObjectID());
 	return (guildLeaderID == player->getObjectID());
 }
 
@@ -832,104 +832,106 @@ bool GuildObjectImplementation::isGuildLeader(PlayerCreature* player) {
 GuildObjectAdapter::GuildObjectAdapter(GuildObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__PLAYERCREATURE_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_};
+
 Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_:
 		broadcastMessage((PlayerCreature*) inv->getObjectParameter(), (BaseMessage*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 9:
+	case RPC_ADDMEMBER__LONG_:
 		addMember(inv->getUnsignedLongParameter());
 		break;
-	case 10:
+	case RPC_REMOVEMEMBER__LONG_:
 		removeMember(inv->getUnsignedLongParameter());
 		break;
-	case 11:
+	case RPC_HASMEMBER__LONG_:
 		resp->insertBoolean(hasMember(inv->getUnsignedLongParameter()));
 		break;
-	case 12:
+	case RPC_ADDSPONSOREDPLAYER__LONG_:
 		addSponsoredPlayer(inv->getUnsignedLongParameter());
 		break;
-	case 13:
+	case RPC_REMOVESPONSOREDPLAYER__LONG_:
 		removeSponsoredPlayer(inv->getUnsignedLongParameter());
 		break;
-	case 14:
+	case RPC_HASSPONSOREDPLAYER__LONG_:
 		resp->insertBoolean(hasSponsoredPlayer(inv->getUnsignedLongParameter()));
 		break;
-	case 15:
+	case RPC_GETSPONSOREDPLAYER__INT_:
 		resp->insertLong(getSponsoredPlayer(inv->getSignedIntParameter()));
 		break;
-	case 16:
+	case RPC_GETSPONSOREDPLAYERCOUNT__:
 		resp->insertSignedInt(getSponsoredPlayerCount());
 		break;
-	case 17:
+	case RPC_SETCHATROOM__CHATROOM_:
 		setChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_GETCHATROOM__:
 		resp->insertLong(getChatRoom()->_getObjectID());
 		break;
-	case 19:
+	case RPC_GETTOTALMEMBERS__:
 		resp->insertSignedInt(getTotalMembers());
 		break;
-	case 20:
+	case RPC_GETGUILDLEADERID__:
 		resp->insertLong(getGuildLeaderID());
 		break;
-	case 21:
+	case RPC_GETGUILDABBREV__:
 		resp->insertAscii(getGuildAbbrev());
 		break;
-	case 22:
+	case RPC_SETGUILDABBREV__STRING_:
 		setGuildAbbrev(inv->getAsciiParameter(_param0_setGuildAbbrev__String_));
 		break;
-	case 23:
+	case RPC_SETGUILDLEADERID__LONG_:
 		setGuildLeaderID(inv->getUnsignedLongParameter());
 		break;
-	case 24:
+	case RPC_SETGUILDID__INT_:
 		setGuildID(inv->getUnsignedIntParameter());
 		break;
-	case 25:
+	case RPC_GETGUILDID__:
 		resp->insertInt(getGuildID());
 		break;
-	case 26:
+	case RPC_SETGUILDNAME__STRING_:
 		setGuildName(inv->getAsciiParameter(_param0_setGuildName__String_));
 		break;
-	case 27:
+	case RPC_GETGUILDNAME__:
 		resp->insertAscii(getGuildName());
 		break;
-	case 28:
+	case RPC_GETGUILDKEY__:
 		resp->insertAscii(getGuildKey());
 		break;
-	case 29:
+	case RPC_ISGUILDOBJECT__:
 		resp->insertBoolean(isGuildObject());
 		break;
-	case 30:
+	case RPC_ISGUILDLEADER__PLAYERCREATURE_:
 		resp->insertBoolean(isGuildLeader((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 31:
+	case RPC_HASMAILPERMISSION__LONG_:
 		resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 32:
+	case RPC_HASSPONSORPERMISSION__LONG_:
 		resp->insertBoolean(hasSponsorPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 33:
+	case RPC_HASACCEPTPERMISSION__LONG_:
 		resp->insertBoolean(hasAcceptPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 34:
+	case RPC_HASDISBANDPERMISSION__LONG_:
 		resp->insertBoolean(hasDisbandPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 35:
+	case RPC_HASKICKPERMISSION__LONG_:
 		resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
 		break;
-	case 36:
+	case RPC_HASNAMEPERMISSION__LONG_:
 		resp->insertBoolean(hasNamePermission(inv->getUnsignedLongParameter()));
 		break;
-	case 37:
+	case RPC_HASTITLEPERMISSION__LONG_:
 		resp->insertBoolean(hasTitlePermission(inv->getUnsignedLongParameter()));
 		break;
 	default:

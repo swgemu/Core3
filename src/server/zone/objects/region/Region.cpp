@@ -389,89 +389,89 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl(74):  		bazaars.setNoDuplicateInsertPlan();
+	// server/zone/objects/region/Region.idl():  		bazaars.setNoDuplicateInsertPlan();
 	(&bazaars)->setNoDuplicateInsertPlan();
-	// server/zone/objects/region/Region.idl(75):  		bazaars.setNullValue(null);
+	// server/zone/objects/region/Region.idl():  		bazaars.setNullValue(null);
 	(&bazaars)->setNullValue(NULL);
 }
 
 void RegionImplementation::notifyEnter(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(79):  		if 
+	// server/zone/objects/region/Region.idl():  		if 
 	if (object->isBazaarTerminal()){
-	// server/zone/objects/region/Region.idl(80):  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+	// server/zone/objects/region/Region.idl():  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
 }
-	// server/zone/objects/region/Region.idl(83):  		if 
+	// server/zone/objects/region/Region.idl():  		if 
 	if (object->isPlayerCreature()){
-	// server/zone/objects/region/Region.idl(84):  			sendGreetingMessage((PlayerCreature) object);
+	// server/zone/objects/region/Region.idl():  			sendGreetingMessage((PlayerCreature) object);
 	sendGreetingMessage((PlayerCreature*) object);
 }
-	// server/zone/objects/region/Region.idl(87):  	}
+	// server/zone/objects/region/Region.idl():  	}
 	if (object->isShuttleInstallation()){
-	// server/zone/objects/region/Region.idl(88):  			shuttleInstallation = (ShuttleInstallation) object;
+	// server/zone/objects/region/Region.idl():  			shuttleInstallation = (ShuttleInstallation) object;
 	shuttleInstallation = (ShuttleInstallation*) object;
 }
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
-	// server/zone/objects/region/Region.idl(96):  		if 
+	// server/zone/objects/region/Region.idl():  		if 
 	if (object->isBazaarTerminal()){
-	// server/zone/objects/region/Region.idl(97):  			bazaars.drop(object.getObjectID());
+	// server/zone/objects/region/Region.idl():  			bazaars.drop(object.getObjectID());
 	(&bazaars)->drop(object->getObjectID());
 }
-	// server/zone/objects/region/Region.idl(100):  		if 
+	// server/zone/objects/region/Region.idl():  		if 
 	if (object->isPlayerCreature()){
-	// server/zone/objects/region/Region.idl(101):  			sendDepartingMessage((PlayerCreature) object);
+	// server/zone/objects/region/Region.idl():  			sendDepartingMessage((PlayerCreature) object);
 	sendDepartingMessage((PlayerCreature*) object);
 }
-	// server/zone/objects/region/Region.idl(104):  	}
+	// server/zone/objects/region/Region.idl():  	}
 	if (object == shuttleInstallation){
-	// server/zone/objects/region/Region.idl(105):  			shuttleInstallation = null;
+	// server/zone/objects/region/Region.idl():  			shuttleInstallation = null;
 	shuttleInstallation = NULL;
 }
 }
 
 void RegionImplementation::removeFromZone() {
-	// server/zone/objects/region/Region.idl(118):  		despawnCityObjects();
+	// server/zone/objects/region/Region.idl():  		despawnCityObjects();
 	despawnCityObjects();
-	// server/zone/objects/region/Region.idl(120):  		super.removeFromZone();
+	// server/zone/objects/region/Region.idl():  		super.removeFromZone();
 	ActiveAreaImplementation::removeFromZone();
-	// server/zone/objects/region/Region.idl(122):  		updateToDatabaseWithoutChildren();
+	// server/zone/objects/region/Region.idl():  		updateToDatabaseWithoutChildren();
 	updateToDatabaseWithoutChildren();
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
-	// server/zone/objects/region/Region.idl(128):  		bazaars.put(ter.getObjectID(), ter);
+	// server/zone/objects/region/Region.idl():  		bazaars.put(ter.getObjectID(), ter);
 	(&bazaars)->put(ter->getObjectID(), ter);
 }
 
 BazaarTerminal* RegionImplementation::getBazaar(int idx) {
-	// server/zone/objects/region/Region.idl(132):  		return bazaars.get(idx);
+	// server/zone/objects/region/Region.idl():  		return bazaars.get(idx);
 	return (&bazaars)->get(idx);
 }
 
 ShuttleInstallation* RegionImplementation::getShuttle() {
-	// server/zone/objects/region/Region.idl(136):  		return shuttleInstallation;
+	// server/zone/objects/region/Region.idl():  		return shuttleInstallation;
 	return shuttleInstallation;
 }
 
 int RegionImplementation::getBazaarCount() {
-	// server/zone/objects/region/Region.idl(140):  		return bazaars.size();
+	// server/zone/objects/region/Region.idl():  		return bazaars.size();
 	return (&bazaars)->size();
 }
 
 bool RegionImplementation::isRegion() {
-	// server/zone/objects/region/Region.idl(144):  		return true;
+	// server/zone/objects/region/Region.idl():  		return true;
 	return true;
 }
 
 CityHallObject* RegionImplementation::getCityHall() {
-	// server/zone/objects/region/Region.idl(148):  		return cityHall;
+	// server/zone/objects/region/Region.idl():  		return cityHall;
 	return cityHall;
 }
 
 void RegionImplementation::setCityHall(CityHallObject* hall) {
-	// server/zone/objects/region/Region.idl(152):  		cityHall = hall;
+	// server/zone/objects/region/Region.idl():  		cityHall = hall;
 	cityHall = hall;
 }
 
@@ -482,50 +482,52 @@ void RegionImplementation::setCityHall(CityHallObject* hall) {
 RegionAdapter::RegionAdapter(RegionImplementation* obj) : ActiveAreaAdapter(obj) {
 }
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_,RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETSHUTTLE__,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
+
 Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_:
 		sendGreetingMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_:
 		sendDepartingMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_NOTIFYEXIT__SCENEOBJECT_:
 		notifyExit((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_INSERTTOZONE__ZONE_:
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_REMOVEFROMZONE__:
 		removeFromZone();
 		break;
-	case 12:
+	case RPC_DESPAWNCITYOBJECTS__:
 		despawnCityObjects();
 		break;
-	case 13:
+	case RPC_ADDBAZAAR__BAZAARTERMINAL_:
 		addBazaar((BazaarTerminal*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_GETBAZAAR__INT_:
 		resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 15:
+	case RPC_GETSHUTTLE__:
 		resp->insertLong(getShuttle()->_getObjectID());
 		break;
-	case 16:
+	case RPC_GETBAZAARCOUNT__:
 		resp->insertSignedInt(getBazaarCount());
 		break;
-	case 17:
+	case RPC_ISREGION__:
 		resp->insertBoolean(isRegion());
 		break;
-	case 18:
+	case RPC_GETCITYHALL__:
 		resp->insertLong(getCityHall()->_getObjectID());
 		break;
-	case 19:
+	case RPC_SETCITYHALL__CITYHALLOBJECT_:
 		setCityHall((CityHallObject*) inv->getObjectParameter());
 		break;
 	default:

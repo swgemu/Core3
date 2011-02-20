@@ -178,18 +178,18 @@ int SpawnObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 SpawnObserverImplementation::SpawnObserverImplementation(SpawnArea* area) {
 	_initializeImplementation();
-	// server/zone/objects/area/SpawnObserver.idl(57):  		spawnArea = area;
+	// server/zone/objects/area/SpawnObserver.idl():  		spawnArea = area;
 	spawnArea = area;
-	// server/zone/objects/area/SpawnObserver.idl(59):  		Logger.setLoggingName("SpawnObserver");
+	// server/zone/objects/area/SpawnObserver.idl():  		Logger.setLoggingName("SpawnObserver");
 	Logger::setLoggingName("SpawnObserver");
 }
 
 int SpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/area/SpawnObserver.idl(63):  
-	if (spawnArea == NULL)	// server/zone/objects/area/SpawnObserver.idl(64):  			return 1;
+	// server/zone/objects/area/SpawnObserver.idl():  			return spawnArea.notifyObserverEvent(eventType, observable, arg1, arg2);
+	if (spawnArea == NULL)	// server/zone/objects/area/SpawnObserver.idl():  			return 1;
 	return 1;
 
-	else 	// server/zone/objects/area/SpawnObserver.idl(66):  			return spawnArea.notifyObserverEvent(eventType, observable, arg1, arg2);
+	else 	// server/zone/objects/area/SpawnObserver.idl():  			return spawnArea.notifyObserverEvent(eventType, observable, arg1, arg2);
 	return spawnArea->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
@@ -200,11 +200,13 @@ int SpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Obs
 SpawnObserverAdapter::SpawnObserverAdapter(SpawnObserverImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 Packet* SpawnObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
 	default:

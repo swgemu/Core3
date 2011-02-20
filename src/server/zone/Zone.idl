@@ -189,6 +189,12 @@ class Zone extends ManagedObject implements QuadTree {
 	}
 
 	public unsigned int getWeatherID() {
+		if (server != null)
+			server.increaseOnlinePlayers();
+
+		if (server == null)
+			server.decreaseOnlinePlayers();
+
 		return weatherID;
 	}
 

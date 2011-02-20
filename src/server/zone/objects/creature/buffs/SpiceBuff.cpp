@@ -197,16 +197,16 @@ int SpiceBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 SpiceBuffImplementation::SpiceBuffImplementation(CreatureObject* creo, const String& name, unsigned int buffCRC, int duration) : BuffImplementation(creo, buffCRC, duration, BuffType::SPICE) {
 	_initializeImplementation();
-	// server/zone/objects/creature/buffs/SpiceBuff.idl(67):  		super.buffName = name;
+	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		super.buffName = name;
 	BuffImplementation::buffName = name;
-	// server/zone/objects/creature/buffs/SpiceBuff.idl(69):  		Logger.setLoggingName("SpiceBuff " + name);
+	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		Logger.setLoggingName("SpiceBuff " + name);
 	Logger::setLoggingName("SpiceBuff " + name);
 }
 
 void SpiceBuffImplementation::activate(bool applyModifiers) {
-	// server/zone/objects/creature/buffs/SpiceBuff.idl(73):  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_consume");
+	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		super.creature.sendSystemMessage("spice/spice", super.buffName + "_consume");
 	BuffImplementation::creature.getForUpdate()->sendSystemMessage("spice/spice", BuffImplementation::buffName + "_consume");
-	// server/zone/objects/creature/buffs/SpiceBuff.idl(75):  		super.activate(true);
+	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		super.activate(true);
 	BuffImplementation::activate(true);
 }
 
@@ -217,17 +217,19 @@ void SpiceBuffImplementation::activate(bool applyModifiers) {
 SpiceBuffAdapter::SpiceBuffAdapter(SpiceBuffImplementation* obj) : BuffAdapter(obj) {
 }
 
+enum {RPC_ACTIVATE__BOOL_ = 6,RPC_DEACTIVATE__BOOL_,RPC_SETDOWNERATTRIBUTES__CREATUREOBJECT_BUFF_};
+
 Packet* SpiceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ACTIVATE__BOOL_:
 		activate(inv->getBooleanParameter());
 		break;
-	case 7:
+	case RPC_DEACTIVATE__BOOL_:
 		deactivate(inv->getBooleanParameter());
 		break;
-	case 8:
+	case RPC_SETDOWNERATTRIBUTES__CREATUREOBJECT_BUFF_:
 		setDownerAttributes((CreatureObject*) inv->getObjectParameter(), (Buff*) inv->getObjectParameter());
 		break;
 	default:

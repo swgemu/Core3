@@ -240,16 +240,16 @@ int LootManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman) : ZoneManagerImplementation("LootManager") {
 	_initializeImplementation();
-	// server/zone/managers/loot/LootManager.idl(77):  		lootGroups.setNullValue(null);
+	// server/zone/managers/loot/LootManager.idl():  		lootGroups.setNullValue(null);
 	(&lootGroups)->setNullValue(NULL);
-	// server/zone/managers/loot/LootManager.idl(78):  		lootGroups.setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootGroups.setNoDuplicateInsertPlan();
 	(&lootGroups)->setNoDuplicateInsertPlan();
-	// server/zone/managers/loot/LootManager.idl(80):  		craftingManager = craftman;
+	// server/zone/managers/loot/LootManager.idl():  		craftingManager = craftman;
 	craftingManager = craftman;
 }
 
 bool LootManagerImplementation::contains(unsigned int lootGroup) {
-	// server/zone/managers/loot/LootManager.idl(89):  		return (lootGroups.contains(lootGroup));
+	// server/zone/managers/loot/LootManager.idl():  		return (lootGroups.contains(lootGroup));
 	return ((&lootGroups)->contains(lootGroup));
 }
 
@@ -260,20 +260,22 @@ bool LootManagerImplementation::contains(unsigned int lootGroup) {
 LootManagerAdapter::LootManagerAdapter(LootManagerImplementation* obj) : ZoneManagerAdapter(obj) {
 }
 
+enum {RPC_INITIALIZE__ = 6,RPC_CONTAINS__INT_,RPC_CREATELOOT__PLAYERCREATURE_SCENEOBJECT_INT_INT_INT_,RPC_TESTLOOT__PLAYERCREATURE_SCENEOBJECT_};
+
 Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 7:
+	case RPC_CONTAINS__INT_:
 		resp->insertBoolean(contains(inv->getUnsignedIntParameter()));
 		break;
-	case 8:
+	case RPC_CREATELOOT__PLAYERCREATURE_SCENEOBJECT_INT_INT_INT_:
 		createLoot((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 9:
+	case RPC_TESTLOOT__PLAYERCREATURE_SCENEOBJECT_:
 		testLoot((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	default:

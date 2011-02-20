@@ -334,39 +334,39 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 
 SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBoxImplementation(player, windowtype, SuiBoxImplementation::BANKTRANSFERBOX) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(72):  		bank = bankObject;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		bank = bankObject;
 	bank = bankObject;
 }
 
 void SuiBankTransferBoxImplementation::addCash(int cash) {
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(77):  		lblFrom = "Cash";
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		lblFrom = "Cash";
 	lblFrom = "Cash";
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(78):  		lblStartingFrom = String.valueOf(cash);
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		lblStartingFrom = String.valueOf(cash);
 	lblStartingFrom = String::valueOf(cash);
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(80):  		lblInputFrom = lblStartingFrom;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		lblInputFrom = lblStartingFrom;
 	lblInputFrom = lblStartingFrom;
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(82):  		convertRatioFrom = "1";
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		convertRatioFrom = "1";
 	convertRatioFrom = "1";
 }
 
 void SuiBankTransferBoxImplementation::addBank(int bank) {
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(86):  		lblTo = "Bank";
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		lblTo = "Bank";
 	lblTo = "Bank";
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(88):  		lblStartingTo = String.valueOf(bank);
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		lblStartingTo = String.valueOf(bank);
 	lblStartingTo = String::valueOf(bank);
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(89):  		lblInputTo = lblStartingTo;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		lblInputTo = lblStartingTo;
 	lblInputTo = lblStartingTo;
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(90):  		convertRatioTo = "1";
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		convertRatioTo = "1";
 	convertRatioTo = "1";
 }
 
 SceneObject* SuiBankTransferBoxImplementation::getBank() {
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(94):  		return bank;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		return bank;
 	return bank;
 }
 
 bool SuiBankTransferBoxImplementation::isBankTransferBox() {
-	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(100):  		return true;
+	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		return true;
 	return true;
 }
 
@@ -377,23 +377,25 @@ bool SuiBankTransferBoxImplementation::isBankTransferBox() {
 SuiBankTransferBoxAdapter::SuiBankTransferBoxAdapter(SuiBankTransferBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
 
+enum {RPC_ADDCASH__INT_ = 6,RPC_ADDBANK__INT_,RPC_GETBANK__,RPC_GENERATEMESSAGE__,RPC_ISBANKTRANSFERBOX__};
+
 Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ADDCASH__INT_:
 		addCash(inv->getSignedIntParameter());
 		break;
-	case 7:
+	case RPC_ADDBANK__INT_:
 		addBank(inv->getSignedIntParameter());
 		break;
-	case 8:
+	case RPC_GETBANK__:
 		resp->insertLong(getBank()->_getObjectID());
 		break;
-	case 9:
+	case RPC_GENERATEMESSAGE__:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
-	case 10:
+	case RPC_ISBANKTRANSFERBOX__:
 		resp->insertBoolean(isBankTransferBox());
 		break;
 	default:

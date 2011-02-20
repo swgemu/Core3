@@ -201,19 +201,19 @@ int SuiListBoxMenuItemImplementation::writeObjectMembers(ObjectOutputStream* str
 
 SuiListBoxMenuItemImplementation::SuiListBoxMenuItemImplementation(const String& name, unsigned long long oid) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.idl(55):  		optionName = name;
+	// server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.idl():  		optionName = name;
 	optionName = name;
-	// server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.idl(56):  		objectID = oid;
+	// server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.idl():  		objectID = oid;
 	objectID = oid;
 }
 
 unsigned long long SuiListBoxMenuItemImplementation::getObjectID() {
-	// server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.idl(60):  		return objectID;
+	// server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.idl():  		return objectID;
 	return objectID;
 }
 
 String SuiListBoxMenuItemImplementation::getOptionName() {
-	// server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.idl(64):  		return optionName;
+	// server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.idl():  		return optionName;
 	return optionName;
 }
 
@@ -224,14 +224,16 @@ String SuiListBoxMenuItemImplementation::getOptionName() {
 SuiListBoxMenuItemAdapter::SuiListBoxMenuItemAdapter(SuiListBoxMenuItemImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_GETOBJECTID__ = 6,RPC_GETOPTIONNAME__};
+
 Packet* SuiListBoxMenuItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GETOBJECTID__:
 		resp->insertLong(getObjectID());
 		break;
-	case 7:
+	case RPC_GETOPTIONNAME__:
 		resp->insertAscii(getOptionName());
 		break;
 	default:

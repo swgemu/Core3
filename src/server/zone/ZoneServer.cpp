@@ -1319,144 +1319,144 @@ void ZoneServerImplementation::fixScheduler() {
 }
 
 int ZoneServerImplementation::getGalaxyID() {
-	// server/zone/ZoneServer.idl(246):  		return galaxyID;
+	// server/zone/ZoneServer.idl():  		return galaxyID;
 	return galaxyID;
 }
 
 bool ZoneServerImplementation::isServerLocked() {
-	// server/zone/ZoneServer.idl(252):  		return serverState == LOCKED;
+	// server/zone/ZoneServer.idl():  		return serverState == LOCKED;
 	return serverState == LOCKED;
 }
 
 bool ZoneServerImplementation::isServerOnline() {
-	// server/zone/ZoneServer.idl(256):  		return serverState == ONLINE;
+	// server/zone/ZoneServer.idl():  		return serverState == ONLINE;
 	return serverState == ONLINE;
 }
 
 bool ZoneServerImplementation::isServerOffline() {
-	// server/zone/ZoneServer.idl(260):  		return serverState == OFFLINE;
+	// server/zone/ZoneServer.idl():  		return serverState == OFFLINE;
 	return serverState == OFFLINE;
 }
 
 bool ZoneServerImplementation::isServerLoading() {
-	// server/zone/ZoneServer.idl(264):  		return serverState == LOADING;
+	// server/zone/ZoneServer.idl():  		return serverState == LOADING;
 	return serverState == LOADING;
 }
 
 int ZoneServerImplementation::getServerState() {
-	// server/zone/ZoneServer.idl(268):  		return serverState;
+	// server/zone/ZoneServer.idl():  		return serverState;
 	return serverState;
 }
 
 Zone* ZoneServerImplementation::getZone(int index) {
-	// server/zone/ZoneServer.idl(272):  		return zones.get(index);
+	// server/zone/ZoneServer.idl():  		return zones.get(index);
 	return (&zones)->get(index);
 }
 
 int ZoneServerImplementation::getZoneCount() {
-	// server/zone/ZoneServer.idl(276):  		return zones.size();
+	// server/zone/ZoneServer.idl():  		return zones.size();
 	return (&zones)->size();
 }
 
 int ZoneServerImplementation::getMaxPlayers() {
-	// server/zone/ZoneServer.idl(280):  		return maximumPlayers.get();
+	// server/zone/ZoneServer.idl():  		return maximumPlayers.get();
 	return (&maximumPlayers)->get();
 }
 
 int ZoneServerImplementation::getTotalPlayers() {
-	// server/zone/ZoneServer.idl(284):  		return totalPlayers.get();
+	// server/zone/ZoneServer.idl():  		return totalPlayers.get();
 	return (&totalPlayers)->get();
 }
 
 int ZoneServerImplementation::getDeletedPlayers() {
-	// server/zone/ZoneServer.idl(288):  		return totalDeletedPlayers.get();
+	// server/zone/ZoneServer.idl():  		return totalDeletedPlayers.get();
 	return (&totalDeletedPlayers)->get();
 }
 
 ObjectManager* ZoneServerImplementation::getObjectManager() {
-	// server/zone/ZoneServer.idl(293):  		return objectManager;
+	// server/zone/ZoneServer.idl():  		return objectManager;
 	return objectManager;
 }
 
 PlayerManager* ZoneServerImplementation::getPlayerManager() {
-	// server/zone/ZoneServer.idl(297):  		return playerManager;
+	// server/zone/ZoneServer.idl():  		return playerManager;
 	return playerManager;
 }
 
 ChatManager* ZoneServerImplementation::getChatManager() {
-	// server/zone/ZoneServer.idl(301):  		return chatManager;
+	// server/zone/ZoneServer.idl():  		return chatManager;
 	return chatManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
-	// server/zone/ZoneServer.idl(305):  		return processor.getObjectController();
+	// server/zone/ZoneServer.idl():  		return processor.getObjectController();
 	return processor->getObjectController();
 }
 
 MissionManager* ZoneServerImplementation::getMissionManager() {
-	// server/zone/ZoneServer.idl(309):  		return missionManager;
+	// server/zone/ZoneServer.idl():  		return missionManager;
 	return missionManager;
 }
 
 RadialManager* ZoneServerImplementation::getRadialManager() {
-	// server/zone/ZoneServer.idl(313):  		return radialManager;
+	// server/zone/ZoneServer.idl():  		return radialManager;
 	return radialManager;
 }
 
 GuildManager* ZoneServerImplementation::getGuildManager() {
-	// server/zone/ZoneServer.idl(317):  		return guildManager;
+	// server/zone/ZoneServer.idl():  		return guildManager;
 	return guildManager;
 }
 
 ResourceManager* ZoneServerImplementation::getResourceManager() {
-	// server/zone/ZoneServer.idl(321):  		return resourceManager;
+	// server/zone/ZoneServer.idl():  		return resourceManager;
 	return resourceManager;
 }
 
 CraftingManager* ZoneServerImplementation::getCraftingManager() {
-	// server/zone/ZoneServer.idl(325):  		return craftingManager;
+	// server/zone/ZoneServer.idl():  		return craftingManager;
 	return craftingManager;
 }
 
 LootManager* ZoneServerImplementation::getLootManager() {
-	// server/zone/ZoneServer.idl(329):  		return lootManager;
+	// server/zone/ZoneServer.idl():  		return lootManager;
 	return lootManager;
 }
 
 BazaarManager* ZoneServerImplementation::getBazaarManager() {
-	// server/zone/ZoneServer.idl(333):  		return bazaarManager;
+	// server/zone/ZoneServer.idl():  		return bazaarManager;
 	return bazaarManager;
 }
 
 FishingManager* ZoneServerImplementation::getFishingManager() {
-	// server/zone/ZoneServer.idl(337):  		return fishingManager;
+	// server/zone/ZoneServer.idl():  		return fishingManager;
 	return fishingManager;
 }
 
 GamblingManager* ZoneServerImplementation::getGamblingManager() {
-	// server/zone/ZoneServer.idl(341):  		return gamblingManager;
+	// server/zone/ZoneServer.idl():  		return gamblingManager;
 	return gamblingManager;
 }
 
 ProfessionManager* ZoneServerImplementation::getProfessionManager() {
-	// server/zone/ZoneServer.idl(348):  		return processor.getProfessionManager();
+	// server/zone/ZoneServer.idl():  		return processor.getProfessionManager();
 	return processor->getProfessionManager();
 }
 
 Time* ZoneServerImplementation::getStartTimestamp() {
-	// server/zone/ZoneServer.idl(353):  		return startTimestamp;
+	// server/zone/ZoneServer.idl():  		return startTimestamp;
 	return (&startTimestamp);
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(359):  		galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl():  		galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(363):  		serverState = state;
+	// server/zone/ZoneServer.idl():  		serverState = state;
 	serverState = state;
 }
 
@@ -1467,185 +1467,187 @@ void ZoneServerImplementation::setServerState(int state) {
 ZoneServerAdapter::ZoneServerAdapter(ZoneServerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATESTATICOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETSERVERNAME__,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETBAZAARMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETSERVERNAME__STRING_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
+
 Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 8:
+	case RPC_SHUTDOWN__:
 		shutdown();
 		break;
-	case 9:
+	case RPC_STARTMANAGERS__:
 		startManagers();
 		break;
-	case 10:
+	case RPC_STARTZONES__:
 		startZones();
 		break;
-	case 11:
+	case RPC_STOPMANAGERS__:
 		stopManagers();
 		break;
-	case 12:
+	case RPC_START__INT_INT_:
 		start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 13:
+	case RPC_STOP__:
 		stop();
 		break;
-	case 14:
+	case RPC_ADDTOTALSENTPACKET__INT_:
 		addTotalSentPacket(inv->getSignedIntParameter());
 		break;
-	case 15:
+	case RPC_ADDTOTALRESENTPACKET__INT_:
 		addTotalResentPacket(inv->getSignedIntParameter());
 		break;
-	case 16:
+	case RPC_PRINTINFO__BOOL_:
 		printInfo(inv->getBooleanParameter());
 		break;
-	case 17:
+	case RPC_PRINTEVENTS__:
 		printEvents();
 		break;
-	case 18:
+	case RPC_GETOBJECT__LONG_BOOL_:
 		resp->insertLong(getObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
-	case 19:
+	case RPC_CREATEOBJECT__INT_INT_LONG_:
 		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case 20:
+	case RPC_CREATESTATICOBJECT__INT_LONG_:
 		resp->insertLong(createStaticObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case 21:
+	case RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_:
 		updateObjectToDatabase((SceneObject*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_:
 		updateObjectToStaticDatabase((SceneObject*) inv->getObjectParameter());
 		break;
-	case 23:
+	case RPC_DESTROYOBJECTFROMDATABASE__LONG_:
 		destroyObjectFromDatabase(inv->getUnsignedLongParameter());
 		break;
-	case 24:
+	case RPC_LOCK__BOOL_:
 		lock(inv->getBooleanParameter());
 		break;
-	case 25:
+	case RPC_UNLOCK__BOOL_:
 		unlock(inv->getBooleanParameter());
 		break;
-	case 26:
+	case RPC_FIXSCHEDULER__:
 		fixScheduler();
 		break;
-	case 27:
+	case RPC_CHANGEUSERCAP__INT_:
 		changeUserCap(inv->getSignedIntParameter());
 		break;
-	case 28:
+	case RPC_GETCONNECTIONCOUNT__:
 		resp->insertSignedInt(getConnectionCount());
 		break;
-	case 29:
+	case RPC_INCREASEONLINEPLAYERS__:
 		increaseOnlinePlayers();
 		break;
-	case 30:
+	case RPC_DECREASEONLINEPLAYERS__:
 		decreaseOnlinePlayers();
 		break;
-	case 31:
+	case RPC_INCREASETOTALDELETEDPLAYERS__:
 		increaseTotalDeletedPlayers();
 		break;
-	case 32:
+	case RPC_GETGALAXYID__:
 		resp->insertSignedInt(getGalaxyID());
 		break;
-	case 33:
+	case RPC_GETSERVERNAME__:
 		resp->insertAscii(getServerName());
 		break;
-	case 34:
+	case RPC_ISSERVERLOCKED__:
 		resp->insertBoolean(isServerLocked());
 		break;
-	case 35:
+	case RPC_ISSERVERONLINE__:
 		resp->insertBoolean(isServerOnline());
 		break;
-	case 36:
+	case RPC_ISSERVEROFFLINE__:
 		resp->insertBoolean(isServerOffline());
 		break;
-	case 37:
+	case RPC_ISSERVERLOADING__:
 		resp->insertBoolean(isServerLoading());
 		break;
-	case 38:
+	case RPC_GETSERVERSTATE__:
 		resp->insertSignedInt(getServerState());
 		break;
-	case 39:
+	case RPC_GETZONE__INT_:
 		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 40:
+	case RPC_GETZONECOUNT__:
 		resp->insertSignedInt(getZoneCount());
 		break;
-	case 41:
+	case RPC_GETMAXPLAYERS__:
 		resp->insertSignedInt(getMaxPlayers());
 		break;
-	case 42:
+	case RPC_GETTOTALPLAYERS__:
 		resp->insertSignedInt(getTotalPlayers());
 		break;
-	case 43:
+	case RPC_GETDELETEDPLAYERS__:
 		resp->insertSignedInt(getDeletedPlayers());
 		break;
-	case 44:
+	case RPC_GETPLAYERMANAGER__:
 		resp->insertLong(getPlayerManager()->_getObjectID());
 		break;
-	case 45:
+	case RPC_GETCHATMANAGER__:
 		resp->insertLong(getChatManager()->_getObjectID());
 		break;
-	case 46:
+	case RPC_GETOBJECTCONTROLLER__:
 		resp->insertLong(getObjectController()->_getObjectID());
 		break;
-	case 47:
+	case RPC_GETMISSIONMANAGER__:
 		resp->insertLong(getMissionManager()->_getObjectID());
 		break;
-	case 48:
+	case RPC_GETRADIALMANAGER__:
 		resp->insertLong(getRadialManager()->_getObjectID());
 		break;
-	case 49:
+	case RPC_GETGUILDMANAGER__:
 		resp->insertLong(getGuildManager()->_getObjectID());
 		break;
-	case 50:
+	case RPC_GETRESOURCEMANAGER__:
 		resp->insertLong(getResourceManager()->_getObjectID());
 		break;
-	case 51:
+	case RPC_GETCRAFTINGMANAGER__:
 		resp->insertLong(getCraftingManager()->_getObjectID());
 		break;
-	case 52:
+	case RPC_GETLOOTMANAGER__:
 		resp->insertLong(getLootManager()->_getObjectID());
 		break;
-	case 53:
+	case RPC_GETBAZAARMANAGER__:
 		resp->insertLong(getBazaarManager()->_getObjectID());
 		break;
-	case 54:
+	case RPC_GETFISHINGMANAGER__:
 		resp->insertLong(getFishingManager()->_getObjectID());
 		break;
-	case 55:
+	case RPC_GETGAMBLINGMANAGER__:
 		resp->insertLong(getGamblingManager()->_getObjectID());
 		break;
-	case 56:
+	case RPC_GETACCOUNT__INT_:
 		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case 57:
+	case RPC_SETSERVERNAME__STRING_:
 		setServerName(inv->getAsciiParameter(_param0_setServerName__String_));
 		break;
-	case 58:
+	case RPC_SETGALAXYID__INT_:
 		setGalaxyID(inv->getSignedIntParameter());
 		break;
-	case 59:
+	case RPC_SETSERVERSTATE__INT_:
 		setServerState(inv->getSignedIntParameter());
 		break;
-	case 60:
+	case RPC_SETSERVERSTATELOCKED__:
 		setServerStateLocked();
 		break;
-	case 61:
+	case RPC_SETSERVERSTATEONLINE__:
 		setServerStateOnline();
 		break;
-	case 62:
+	case RPC_LOADMESSAGEOFTHEDAY__:
 		loadMessageoftheDay();
 		break;
-	case 63:
+	case RPC_CHANGEMESSAGEOFTHEDAY__STRING_:
 		changeMessageoftheDay(inv->getAsciiParameter(_param0_changeMessageoftheDay__String_));
 		break;
-	case 64:
+	case RPC_GETMESSAGEOFTHEDAY__:
 		resp->insertAscii(getMessageoftheDay());
 		break;
 	default:

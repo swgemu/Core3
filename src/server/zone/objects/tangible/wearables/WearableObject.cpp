@@ -291,36 +291,36 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 WearableObjectImplementation::WearableObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/WearableObject.idl(63):  		socketCount = 0;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount = 0;
 	socketCount = 0;
-	// server/zone/objects/tangible/wearables/WearableObject.idl(64):  		socketsGenerated = false;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketsGenerated = false;
 	socketsGenerated = false;
-	// server/zone/objects/tangible/wearables/WearableObject.idl(66):  		Logger.setLoggingName("WearableObject");
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		Logger.setLoggingName("WearableObject");
 	Logger::setLoggingName("WearableObject");
 }
 
 bool WearableObjectImplementation::isWearableObject() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(85):  		return true;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return true;
 	return true;
 }
 
 int WearableObjectImplementation::getMaxSockets() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(89):  		return socketCount;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return socketCount;
 	return socketCount;
 }
 
 int WearableObjectImplementation::socketsUsed() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(93):  		return wearableSkillModMap.getUsedSocketCount();
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return wearableSkillModMap.getUsedSocketCount();
 	return (&wearableSkillModMap)->getUsedSocketCount();
 }
 
 int WearableObjectImplementation::socketsLeft() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(97):  		return socketCount - socketsUsed();
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return socketCount - socketsUsed();
 	return socketCount - socketsUsed();
 }
 
 void WearableObjectImplementation::setMaxSockets(int sockets) {
-	// server/zone/objects/tangible/wearables/WearableObject.idl(101):  		socketCount = sockets;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount = sockets;
 	socketCount = sockets;
 }
 
@@ -331,29 +331,31 @@ void WearableObjectImplementation::setMaxSockets(int sockets) {
 WearableObjectAdapter::WearableObjectAdapter(WearableObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISWEARABLEOBJECT__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
+
 Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_ISWEARABLEOBJECT__:
 		resp->insertBoolean(isWearableObject());
 		break;
-	case 9:
+	case RPC_GETMAXSOCKETS__:
 		resp->insertSignedInt(getMaxSockets());
 		break;
-	case 10:
+	case RPC_SOCKETSUSED__:
 		resp->insertSignedInt(socketsUsed());
 		break;
-	case 11:
+	case RPC_SOCKETSLEFT__:
 		resp->insertSignedInt(socketsLeft());
 		break;
-	case 12:
+	case RPC_SETMAXSOCKETS__INT_:
 		setMaxSockets(inv->getSignedIntParameter());
 		break;
 	default:

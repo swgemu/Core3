@@ -1149,213 +1149,213 @@ int CityHallObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 CityHallObjectImplementation::CityHallObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/city/CityHallObject.idl(94):  		setLoggingName("CityHallObject");
+	// server/zone/objects/building/city/CityHallObject.idl():  		setLoggingName("CityHallObject");
 	setLoggingName("CityHallObject");
-	// server/zone/objects/building/city/CityHallObject.idl(96):  		cityName = "test city";
+	// server/zone/objects/building/city/CityHallObject.idl():  		cityName = "test city";
 	cityName = "test city";
-	// server/zone/objects/building/city/CityHallObject.idl(98):  		cityRank = CityManager.NEWCITY;
+	// server/zone/objects/building/city/CityHallObject.idl():  		cityRank = CityManager.NEWCITY;
 	cityRank = CityManager::NEWCITY;
-	// server/zone/objects/building/city/CityHallObject.idl(100):  		cityRegion = null;
+	// server/zone/objects/building/city/CityHallObject.idl():  		cityRegion = null;
 	cityRegion = NULL;
-	// server/zone/objects/building/city/CityHallObject.idl(102):  		citySpecialization = 0;
+	// server/zone/objects/building/city/CityHallObject.idl():  		citySpecialization = 0;
 	citySpecialization = 0;
-	// server/zone/objects/building/city/CityHallObject.idl(104):  		mayorObjectID = 0;
+	// server/zone/objects/building/city/CityHallObject.idl():  		mayorObjectID = 0;
 	mayorObjectID = 0;
-	// server/zone/objects/building/city/CityHallObject.idl(106):  		zoningEnabled = false;
+	// server/zone/objects/building/city/CityHallObject.idl():  		zoningEnabled = false;
 	zoningEnabled = false;
-	// server/zone/objects/building/city/CityHallObject.idl(108):  		incomeTax = 0.0f;
+	// server/zone/objects/building/city/CityHallObject.idl():  		incomeTax = 0.0f;
 	incomeTax = 0.0f;
-	// server/zone/objects/building/city/CityHallObject.idl(109):  		propertyTax = 0.0f;
+	// server/zone/objects/building/city/CityHallObject.idl():  		propertyTax = 0.0f;
 	propertyTax = 0.0f;
-	// server/zone/objects/building/city/CityHallObject.idl(110):  		salesTax = 0.0f;
+	// server/zone/objects/building/city/CityHallObject.idl():  		salesTax = 0.0f;
 	salesTax = 0.0f;
-	// server/zone/objects/building/city/CityHallObject.idl(112):  		playerZoningRights.setInsertPlan(3);
+	// server/zone/objects/building/city/CityHallObject.idl():  		playerZoningRights.setInsertPlan(3);
 	(&playerZoningRights)->setInsertPlan(3);
-	// server/zone/objects/building/city/CityHallObject.idl(113):  		playerZoningRights.setNullValue(0);
+	// server/zone/objects/building/city/CityHallObject.idl():  		playerZoningRights.setNullValue(0);
 	(&playerZoningRights)->setNullValue(0);
-	// server/zone/objects/building/city/CityHallObject.idl(115):  		cityStructures.setInsertPlan(3);
+	// server/zone/objects/building/city/CityHallObject.idl():  		cityStructures.setInsertPlan(3);
 	(&cityStructures)->setInsertPlan(3);
-	// server/zone/objects/building/city/CityHallObject.idl(117):  		militiaMembers.setInsertPlan(3);
+	// server/zone/objects/building/city/CityHallObject.idl():  		militiaMembers.setInsertPlan(3);
 	(&militiaMembers)->setInsertPlan(3);
-	// server/zone/objects/building/city/CityHallObject.idl(119):  		declaredCitizens.setInsertPlan(3);
+	// server/zone/objects/building/city/CityHallObject.idl():  		declaredCitizens.setInsertPlan(3);
 	(&declaredCitizens)->setInsertPlan(3);
-	// server/zone/objects/building/city/CityHallObject.idl(121):  		bannedPlayers.setInsertPlan(3);
+	// server/zone/objects/building/city/CityHallObject.idl():  		bannedPlayers.setInsertPlan(3);
 	(&bannedPlayers)->setInsertPlan(3);
 }
 
 void CityHallObjectImplementation::insertToZone(Zone* zone) {
-	// server/zone/objects/building/city/CityHallObject.idl(131):  		super.insertToZone(zone);
+	// server/zone/objects/building/city/CityHallObject.idl():  		super.insertToZone(zone);
 	BuildingObjectImplementation::insertToZone(zone);
-	// server/zone/objects/building/city/CityHallObject.idl(133):  		spawnCityHallObjects();
+	// server/zone/objects/building/city/CityHallObject.idl():  		spawnCityHallObjects();
 	spawnCityHallObjects();
 }
 
 void CityHallObjectImplementation::removeFromZone() {
-	// server/zone/objects/building/city/CityHallObject.idl(137):  		despawnCityHallObjects();
+	// server/zone/objects/building/city/CityHallObject.idl():  		despawnCityHallObjects();
 	despawnCityHallObjects();
-	// server/zone/objects/building/city/CityHallObject.idl(139):  		super.removeFromZone();
+	// server/zone/objects/building/city/CityHallObject.idl():  		super.removeFromZone();
 	BuildingObjectImplementation::removeFromZone();
-	// server/zone/objects/building/city/CityHallObject.idl(141):  		updateToDatabaseWithoutChildren();
+	// server/zone/objects/building/city/CityHallObject.idl():  		updateToDatabaseWithoutChildren();
 	updateToDatabaseWithoutChildren();
 }
 
 void CityHallObjectImplementation::notifyLoadFromDatabase() {
-	// server/zone/objects/building/city/CityHallObject.idl(145):  		super.notifyLoadFromDatabase();
+	// server/zone/objects/building/city/CityHallObject.idl():  		super.notifyLoadFromDatabase();
 	BuildingObjectImplementation::notifyLoadFromDatabase();
-	// server/zone/objects/building/city/CityHallObject.idl(147):  		CityManager cityManager = super.zone.getCityManager();
+	// server/zone/objects/building/city/CityHallObject.idl():  		CityManager cityManager = super.zone.getCityManager();
 	CityManager* cityManager = BuildingObjectImplementation::zone.getForUpdate()->getCityManager();
-	// server/zone/objects/building/city/CityHallObject.idl(149):  		cityManager.addCity(this);
+	// server/zone/objects/building/city/CityHallObject.idl():  		cityManager.addCity(this);
 	cityManager->addCity(_this);
 }
 
 void CityHallObjectImplementation::setCityName(const String& name) {
-	// server/zone/objects/building/city/CityHallObject.idl(158):  		cityName = name;
+	// server/zone/objects/building/city/CityHallObject.idl():  		cityName = name;
 	cityName = name;
 }
 
 String CityHallObjectImplementation::getCityName() {
-	// server/zone/objects/building/city/CityHallObject.idl(162):  		return cityName;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return cityName;
 	return cityName;
 }
 
 byte CityHallObjectImplementation::getCityRank() {
-	// server/zone/objects/building/city/CityHallObject.idl(166):  		return cityRank;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return cityRank;
 	return cityRank;
 }
 
 bool CityHallObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/city/CityHallObject.idl(196):  		return true;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return true;
 	return true;
 }
 
 void CityHallObjectImplementation::removeZoningRights(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(211):  		playerZoningRights.drop(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		playerZoningRights.drop(playerID);
 	(&playerZoningRights)->drop(playerID);
 }
 
 unsigned long long CityHallObjectImplementation::getMayorObjectID() {
-	// server/zone/objects/building/city/CityHallObject.idl(221):  		return mayorObjectID;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return mayorObjectID;
 	return mayorObjectID;
 }
 
 void CityHallObjectImplementation::setMayorObjectID(unsigned long long oid) {
-	// server/zone/objects/building/city/CityHallObject.idl(225):  		mayorObjectID = oid;
+	// server/zone/objects/building/city/CityHallObject.idl():  		mayorObjectID = oid;
 	mayorObjectID = oid;
 }
 
 bool CityHallObjectImplementation::isMayor(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(229):  		return playerID == mayorObjectID;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return playerID == mayorObjectID;
 	return playerID == mayorObjectID;
 }
 
 bool CityHallObjectImplementation::isBanned(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(233):  		return bannedPlayers.contains(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		return bannedPlayers.contains(playerID);
 	return (&bannedPlayers)->contains(playerID);
 }
 
 void CityHallObjectImplementation::addBannedPlayer(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(237):  		bannedPlayers.put(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		bannedPlayers.put(playerID);
 	(&bannedPlayers)->put(playerID);
 }
 
 void CityHallObjectImplementation::removeBannedPlayer(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(241):  		bannedPlayers.drop(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		bannedPlayers.drop(playerID);
 	(&bannedPlayers)->drop(playerID);
 }
 
 CityTerminal* CityHallObjectImplementation::getCityTerminal() {
-	// server/zone/objects/building/city/CityHallObject.idl(245):  		return cityTerminal;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return cityTerminal;
 	return cityTerminal;
 }
 
 CityVoteTerminal* CityHallObjectImplementation::getCityVoteTerminal() {
-	// server/zone/objects/building/city/CityHallObject.idl(249):  		return cityVoteTerminal;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return cityVoteTerminal;
 	return cityVoteTerminal;
 }
 
 Region* CityHallObjectImplementation::getCityRegion() {
-	// server/zone/objects/building/city/CityHallObject.idl(253):  		return cityRegion;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return cityRegion;
 	return cityRegion;
 }
 
 void CityHallObjectImplementation::setCityRegion(Region* region) {
-	// server/zone/objects/building/city/CityHallObject.idl(257):  		cityRegion = region;
+	// server/zone/objects/building/city/CityHallObject.idl():  		cityRegion = region;
 	cityRegion = region;
 }
 
 int CityHallObjectImplementation::getCivicStructureCap() {
-	// server/zone/objects/building/city/CityHallObject.idl(261):  		return cityRank * 6 + 1;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return cityRank * 6 + 1;
 	return cityRank * 6 + 1;
 }
 
 bool CityHallObjectImplementation::isZoningEnabled() {
-	// server/zone/objects/building/city/CityHallObject.idl(265):  		return zoningEnabled;
+	// server/zone/objects/building/city/CityHallObject.idl():  		return zoningEnabled;
 	return zoningEnabled;
 }
 
 void CityHallObjectImplementation::toggleZoningEnabled(PlayerCreature* player) {
-	// server/zone/objects/building/city/CityHallObject.idl(269):  		zoningEnabled = !zoningEnabled;
+	// server/zone/objects/building/city/CityHallObject.idl():  		zoningEnabled = !zoningEnabled;
 	zoningEnabled = !zoningEnabled;
-	// server/zone/objects/building/city/CityHallObject.idl(271):  
-	if (zoningEnabled)	// server/zone/objects/building/city/CityHallObject.idl(272):  			player.sendSystemMessage("@city/city:zoning_enabled");
+	// server/zone/objects/building/city/CityHallObject.idl():  			player.sendSystemMessage("@city/city:zoning_disabled");
+	if (zoningEnabled)	// server/zone/objects/building/city/CityHallObject.idl():  			player.sendSystemMessage("@city/city:zoning_enabled");
 	player->sendSystemMessage("@city/city:zoning_enabled");
 
-	else 	// server/zone/objects/building/city/CityHallObject.idl(274):  			player.sendSystemMessage("@city/city:zoning_disabled");
+	else 	// server/zone/objects/building/city/CityHallObject.idl():  			player.sendSystemMessage("@city/city:zoning_disabled");
 	player->sendSystemMessage("@city/city:zoning_disabled");
 }
 
 void CityHallObjectImplementation::setZoningEnabled(bool enabled) {
-	// server/zone/objects/building/city/CityHallObject.idl(278):  		zoningEnabled = enabled;
+	// server/zone/objects/building/city/CityHallObject.idl():  		zoningEnabled = enabled;
 	zoningEnabled = enabled;
 }
 
 bool CityHallObjectImplementation::isCityUpdatePast() {
-	// server/zone/objects/building/city/CityHallObject.idl(282):  		return nextCityUpdate.isPast();
+	// server/zone/objects/building/city/CityHallObject.idl():  		return nextCityUpdate.isPast();
 	return (&nextCityUpdate)->isPast();
 }
 
 int CityHallObjectImplementation::getCitizenCount() {
-	// server/zone/objects/building/city/CityHallObject.idl(288):  		return declaredCitizens.size();
+	// server/zone/objects/building/city/CityHallObject.idl():  		return declaredCitizens.size();
 	return (&declaredCitizens)->size();
 }
 
 void CityHallObjectImplementation::addCitizen(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(292):  		declaredCitizens.put(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		declaredCitizens.put(playerID);
 	(&declaredCitizens)->put(playerID);
 }
 
 void CityHallObjectImplementation::removeCitizen(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(296):  		declaredCitizens.drop(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		declaredCitizens.drop(playerID);
 	(&declaredCitizens)->drop(playerID);
 }
 
 bool CityHallObjectImplementation::isCitizen(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(300):  		return declaredCitizens.contains(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		return declaredCitizens.contains(playerID);
 	return (&declaredCitizens)->contains(playerID);
 }
 
 void CityHallObjectImplementation::addMilitiaMember(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(304):  		militiaMembers.put(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		militiaMembers.put(playerID);
 	(&militiaMembers)->put(playerID);
 }
 
 void CityHallObjectImplementation::removeMilitiaMember(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(308):  		militiaMembers.drop(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		militiaMembers.drop(playerID);
 	(&militiaMembers)->drop(playerID);
 }
 
 bool CityHallObjectImplementation::isMilitiaMember(unsigned long long playerID) {
-	// server/zone/objects/building/city/CityHallObject.idl(312):  		return militiaMembers.contains(playerID);
+	// server/zone/objects/building/city/CityHallObject.idl():  		return militiaMembers.contains(playerID);
 	return (&militiaMembers)->contains(playerID);
 }
 
 unsigned long long CityHallObjectImplementation::getCitizenObjectID(int idx) {
-	// server/zone/objects/building/city/CityHallObject.idl(316):  		return declaredCitizens.get(idx);
+	// server/zone/objects/building/city/CityHallObject.idl():  		return declaredCitizens.get(idx);
 	return (&declaredCitizens)->get(idx);
 }
 
 void CityHallObjectImplementation::setCityRank(byte rank) {
-	// server/zone/objects/building/city/CityHallObject.idl(320):  		cityRank = rank;
+	// server/zone/objects/building/city/CityHallObject.idl():  		cityRank = rank;
 	cityRank = rank;
 }
 
@@ -1366,176 +1366,178 @@ void CityHallObjectImplementation::setCityRank(byte rank) {
 CityHallObjectAdapter::CityHallObjectAdapter(CityHallObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
 
+enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__PLAYERCREATURE_BOOL_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDCITIZENSHIPREPORTTO__PLAYERCREATURE_,RPC_SENDSTRUCTUREREPORTTO__PLAYERCREATURE_,RPC_SENDTREASURYREPORTTO__PLAYERCREATURE_,RPC_SENDCITYADVANCEMENTTO__PLAYERCREATURE_,RPC_SENDMAINTENANCEREPORTTO__PLAYERCREATURE_,RPC_SENDCHANGECITYNAMETO__PLAYERCREATURE_,RPC_SENDENABLEZONINGTO__PLAYERCREATURE_,RPC_SENDMANAGEMILITIATO__PLAYERCREATURE_,RPC_SENDADDMILITIAMEMBERTO__PLAYERCREATURE_,RPC_SENDADJUSTTAXESTO__PLAYERCREATURE_,RPC_SENDTREASURYDEPOSITTO__PLAYERCREATURE_,RPC_SENDTREASURYWITHDRAWALTO__PLAYERCREATURE_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__PLAYERCREATURE_,RPC_TOGGLECITYREGISTRATION__PLAYERCREATURE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCITYREGION__,RPC_SETCITYREGION__REGION_,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_TOGGLEZONINGENABLED__PLAYERCREATURE_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
+
 Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INSERTTOZONE__ZONE_:
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_REMOVEFROMZONE__:
 		removeFromZone();
 		break;
-	case 8:
+	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
-	case 9:
+	case RPC_SPAWNCITYHALLOBJECTS__:
 		spawnCityHallObjects();
 		break;
-	case 10:
+	case RPC_DESPAWNCITYHALLOBJECTS__:
 		despawnCityHallObjects();
 		break;
-	case 11:
+	case RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_:
 		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 12:
+	case RPC_SETCITYNAME__STRING_:
 		setCityName(inv->getAsciiParameter(_param0_setCityName__String_));
 		break;
-	case 13:
+	case RPC_GETCITYNAME__:
 		resp->insertAscii(getCityName());
 		break;
-	case 14:
+	case RPC_GETCITYRANK__:
 		resp->insertByte(getCityRank());
 		break;
-	case 15:
+	case RPC_SENDCITYNAMEPROMPTTO__PLAYERCREATURE_BOOL_:
 		sendCityNamePromptTo((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 16:
+	case RPC_SENDSTATUSTO__PLAYERCREATURE_:
 		sendStatusTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_SENDCITIZENSHIPREPORTTO__PLAYERCREATURE_:
 		sendCitizenshipReportTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_SENDSTRUCTUREREPORTTO__PLAYERCREATURE_:
 		sendStructureReportTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 19:
+	case RPC_SENDTREASURYREPORTTO__PLAYERCREATURE_:
 		sendTreasuryReportTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 20:
+	case RPC_SENDCITYADVANCEMENTTO__PLAYERCREATURE_:
 		sendCityAdvancementTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 21:
+	case RPC_SENDMAINTENANCEREPORTTO__PLAYERCREATURE_:
 		sendMaintenanceReportTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_SENDCHANGECITYNAMETO__PLAYERCREATURE_:
 		sendChangeCityNameTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 23:
+	case RPC_SENDENABLEZONINGTO__PLAYERCREATURE_:
 		sendEnableZoningTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 24:
+	case RPC_SENDMANAGEMILITIATO__PLAYERCREATURE_:
 		sendManageMilitiaTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 25:
+	case RPC_SENDADDMILITIAMEMBERTO__PLAYERCREATURE_:
 		sendAddMilitiaMemberTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 26:
+	case RPC_SENDADJUSTTAXESTO__PLAYERCREATURE_:
 		sendAdjustTaxesTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 27:
+	case RPC_SENDTREASURYDEPOSITTO__PLAYERCREATURE_:
 		sendTreasuryDepositTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 28:
+	case RPC_SENDTREASURYWITHDRAWALTO__PLAYERCREATURE_:
 		sendTreasuryWithdrawalTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 29:
+	case RPC_SENDCITYSPECIALIZATIONSELECTIONTO__PLAYERCREATURE_:
 		sendCitySpecializationSelectionTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 30:
+	case RPC_TOGGLECITYREGISTRATION__PLAYERCREATURE_:
 		toggleCityRegistration((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 31:
+	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case 32:
+	case RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_:
 		resp->insertSignedInt(notifyStructurePlaced((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 33:
+	case RPC_ISCITYHALLBUILDING__:
 		resp->insertBoolean(isCityHallBuilding());
 		break;
-	case 34:
+	case RPC_ADDZONINGRIGHTS__LONG_INT_:
 		addZoningRights(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 35:
+	case RPC_REMOVEZONINGRIGHTS__LONG_:
 		removeZoningRights(inv->getUnsignedLongParameter());
 		break;
-	case 36:
+	case RPC_HASZONINGRIGHTS__LONG_:
 		resp->insertBoolean(hasZoningRights(inv->getUnsignedLongParameter()));
 		break;
-	case 37:
+	case RPC_GETMAYOROBJECTID__:
 		resp->insertLong(getMayorObjectID());
 		break;
-	case 38:
+	case RPC_SETMAYOROBJECTID__LONG_:
 		setMayorObjectID(inv->getUnsignedLongParameter());
 		break;
-	case 39:
+	case RPC_ISMAYOR__LONG_:
 		resp->insertBoolean(isMayor(inv->getUnsignedLongParameter()));
 		break;
-	case 40:
+	case RPC_ISBANNED__LONG_:
 		resp->insertBoolean(isBanned(inv->getUnsignedLongParameter()));
 		break;
-	case 41:
+	case RPC_ADDBANNEDPLAYER__LONG_:
 		addBannedPlayer(inv->getUnsignedLongParameter());
 		break;
-	case 42:
+	case RPC_REMOVEBANNEDPLAYER__LONG_:
 		removeBannedPlayer(inv->getUnsignedLongParameter());
 		break;
-	case 43:
+	case RPC_GETCITYTERMINAL__:
 		resp->insertLong(getCityTerminal()->_getObjectID());
 		break;
-	case 44:
+	case RPC_GETCITYVOTETERMINAL__:
 		resp->insertLong(getCityVoteTerminal()->_getObjectID());
 		break;
-	case 45:
+	case RPC_GETCITYREGION__:
 		resp->insertLong(getCityRegion()->_getObjectID());
 		break;
-	case 46:
+	case RPC_SETCITYREGION__REGION_:
 		setCityRegion((Region*) inv->getObjectParameter());
 		break;
-	case 47:
+	case RPC_GETCIVICSTRUCTURECAP__:
 		resp->insertSignedInt(getCivicStructureCap());
 		break;
-	case 48:
+	case RPC_ISZONINGENABLED__:
 		resp->insertBoolean(isZoningEnabled());
 		break;
-	case 49:
+	case RPC_TOGGLEZONINGENABLED__PLAYERCREATURE_:
 		toggleZoningEnabled((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 50:
+	case RPC_SETZONINGENABLED__BOOL_:
 		setZoningEnabled(inv->getBooleanParameter());
 		break;
-	case 51:
+	case RPC_ISCITYUPDATEPAST__:
 		resp->insertBoolean(isCityUpdatePast());
 		break;
-	case 52:
+	case RPC_RESCHEDULECITYUPDATE__INT_:
 		rescheduleCityUpdate(inv->getUnsignedIntParameter());
 		break;
-	case 53:
+	case RPC_GETCITIZENCOUNT__:
 		resp->insertSignedInt(getCitizenCount());
 		break;
-	case 54:
+	case RPC_ADDCITIZEN__LONG_:
 		addCitizen(inv->getUnsignedLongParameter());
 		break;
-	case 55:
+	case RPC_REMOVECITIZEN__LONG_:
 		removeCitizen(inv->getUnsignedLongParameter());
 		break;
-	case 56:
+	case RPC_ISCITIZEN__LONG_:
 		resp->insertBoolean(isCitizen(inv->getUnsignedLongParameter()));
 		break;
-	case 57:
+	case RPC_ADDMILITIAMEMBER__LONG_:
 		addMilitiaMember(inv->getUnsignedLongParameter());
 		break;
-	case 58:
+	case RPC_REMOVEMILITIAMEMBER__LONG_:
 		removeMilitiaMember(inv->getUnsignedLongParameter());
 		break;
-	case 59:
+	case RPC_ISMILITIAMEMBER__LONG_:
 		resp->insertBoolean(isMilitiaMember(inv->getUnsignedLongParameter()));
 		break;
-	case 60:
+	case RPC_GETCITIZENOBJECTID__INT_:
 		resp->insertLong(getCitizenObjectID(inv->getSignedIntParameter()));
 		break;
-	case 61:
+	case RPC_SETCITYRANK__BYTE_:
 		setCityRank(inv->getByteParameter());
 		break;
 	default:

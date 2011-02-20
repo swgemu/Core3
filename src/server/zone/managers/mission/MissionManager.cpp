@@ -628,17 +628,17 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, ZoneProcessServer* impl) {
 	_initializeImplementation();
-	// server/zone/managers/mission/MissionManager.idl(74):  		server = srv;
+	// server/zone/managers/mission/MissionManager.idl():  		server = srv;
 	server = srv;
-	// server/zone/managers/mission/MissionManager.idl(75):  		processor = impl;
+	// server/zone/managers/mission/MissionManager.idl():  		processor = impl;
 	processor = impl;
-	// server/zone/managers/mission/MissionManager.idl(76):  		Logger.setLoggingName("MissionManager");
+	// server/zone/managers/mission/MissionManager.idl():  		Logger.setLoggingName("MissionManager");
 	Logger::setLoggingName("MissionManager");
-	// server/zone/managers/mission/MissionManager.idl(78):  		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
+	// server/zone/managers/mission/MissionManager.idl():  		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
 	(&lairObjectTemplatesToSpawn)->setNoDuplicateInsertPlan();
-	// server/zone/managers/mission/MissionManager.idl(80):  		loadLairObjectsToSpawn();
+	// server/zone/managers/mission/MissionManager.idl():  		loadLairObjectsToSpawn();
 	loadLairObjectsToSpawn();
-	// server/zone/managers/mission/MissionManager.idl(81):  		loadNpcObjectsToSpawn();
+	// server/zone/managers/mission/MissionManager.idl():  		loadNpcObjectsToSpawn();
 	loadNpcObjectsToSpawn();
 }
 
@@ -649,92 +649,94 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, Zone
 MissionManagerAdapter::MissionManagerAdapter(MissionManagerImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_LOADLAIROBJECTSTOSPAWN__ = 6,RPC_LOADNPCOBJECTSTOSPAWN__,RPC_HANDLEMISSIONLISTREQUEST__MISSIONTERMINAL_PLAYERCREATURE_INT_,RPC_HANDLEMISSIONACCEPT__MISSIONTERMINAL_MISSIONOBJECT_PLAYERCREATURE_,RPC_HANDLEMISSIONABORT__MISSIONOBJECT_PLAYERCREATURE_,RPC_REMOVEMISSION__MISSIONOBJECT_PLAYERCREATURE_,RPC_POPULATEMISSIONLIST__MISSIONTERMINAL_PLAYERCREATURE_INT_,RPC_RANDOMIZESURVEYMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEDESTROYMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEBOUNTYMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEDELIVERMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZECRAFTINGMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEENTERTAINERMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEHUNTINGMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZERECONMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDESTROYMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEIMPERIALDELIVERMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEREBELDESTROYMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_RANDOMIZEREBELDELIVERMISSION__PLAYERCREATURE_MISSIONOBJECT_,RPC_CREATEMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_,RPC_CREATESURVEYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_,RPC_CREATEDESTROYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_,RPC_CREATEDELIVERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_,RPC_CREATEENTERTAINERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_,RPC_CREATEHUNTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_,RPC_CREATERECONMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_,RPC_CREATEBOUNTYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_,RPC_HASSURVEYMISSION__PLAYERCREATURE_STRING_};
+
 Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_LOADLAIROBJECTSTOSPAWN__:
 		loadLairObjectsToSpawn();
 		break;
-	case 7:
+	case RPC_LOADNPCOBJECTSTOSPAWN__:
 		loadNpcObjectsToSpawn();
 		break;
-	case 8:
+	case RPC_HANDLEMISSIONLISTREQUEST__MISSIONTERMINAL_PLAYERCREATURE_INT_:
 		handleMissionListRequest((MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 9:
+	case RPC_HANDLEMISSIONACCEPT__MISSIONTERMINAL_MISSIONOBJECT_PLAYERCREATURE_:
 		handleMissionAccept((MissionTerminal*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_HANDLEMISSIONABORT__MISSIONOBJECT_PLAYERCREATURE_:
 		handleMissionAbort((MissionObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_REMOVEMISSION__MISSIONOBJECT_PLAYERCREATURE_:
 		removeMission((MissionObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 12:
+	case RPC_POPULATEMISSIONLIST__MISSIONTERMINAL_PLAYERCREATURE_INT_:
 		populateMissionList((MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 13:
+	case RPC_RANDOMIZESURVEYMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeSurveyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_RANDOMIZEDESTROYMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeDestroyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_RANDOMIZEBOUNTYMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeBountyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_RANDOMIZEDELIVERMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeDeliverMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_RANDOMIZECRAFTINGMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeCraftingMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_RANDOMIZEENTERTAINERMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeEntertainerMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 19:
+	case RPC_RANDOMIZEHUNTINGMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeHuntingMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 20:
+	case RPC_RANDOMIZERECONMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeReconMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 21:
+	case RPC_RANDOMIZEIMPERIALDESTROYMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeImperialDestroyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 22:
+	case RPC_RANDOMIZEIMPERIALDELIVERMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeImperialDeliverMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 23:
+	case RPC_RANDOMIZEREBELDESTROYMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeRebelDestroyMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 24:
+	case RPC_RANDOMIZEREBELDELIVERMISSION__PLAYERCREATURE_MISSIONOBJECT_:
 		randomizeRebelDeliverMission((PlayerCreature*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 25:
+	case RPC_CREATEMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_:
 		createMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 26:
+	case RPC_CREATESURVEYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_:
 		createSurveyMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 27:
+	case RPC_CREATEDESTROYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_:
 		createDestroyMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 28:
+	case RPC_CREATEDELIVERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_:
 		createDeliverMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 29:
+	case RPC_CREATEENTERTAINERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_:
 		createEntertainerMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 30:
+	case RPC_CREATEHUNTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_:
 		createHuntingMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 31:
+	case RPC_CREATERECONMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_:
 		createReconMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 32:
+	case RPC_CREATEBOUNTYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_PLAYERCREATURE_:
 		createBountyMissionObjectives((MissionObject*) inv->getObjectParameter(), (MissionTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 33:
+	case RPC_HASSURVEYMISSION__PLAYERCREATURE_STRING_:
 		resp->insertBoolean(hasSurveyMission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_hasSurveyMission__PlayerCreature_String_)));
 		break;
 	default:

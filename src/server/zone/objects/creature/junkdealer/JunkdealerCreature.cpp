@@ -300,16 +300,16 @@ int JunkdealerCreatureImplementation::writeObjectMembers(ObjectOutputStream* str
 
 JunkdealerCreatureImplementation::JunkdealerCreatureImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl(71):  		Logger.setLoggingName("JunkdealerCreature");
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		Logger.setLoggingName("JunkdealerCreature");
 	Logger::setLoggingName("JunkdealerCreature");
 }
 
 void JunkdealerCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl(77):  		super.loadTemplateData(templateData);
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		super.loadTemplateData(templateData);
 	CreatureObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl(79):  		super.optionsBitmask = 0x108;
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		super.optionsBitmask = 0x108;
 	CreatureObjectImplementation::optionsBitmask = 0x108;
-	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl(80):  		super.pvpStatusBitmask = 0;
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		super.pvpStatusBitmask = 0;
 	CreatureObjectImplementation::pvpStatusBitmask = 0;
 }
 
@@ -317,17 +317,17 @@ void JunkdealerCreatureImplementation::activateRecovery() {
 }
 
 String JunkdealerCreatureImplementation::getLocation() {
-	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl(116):  		return location;
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		return location;
 	return location;
 }
 
 void JunkdealerCreatureImplementation::setLocation(const String& loc) {
-	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl(120):  		location = loc;
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		location = loc;
 	location = loc;
 }
 
 bool JunkdealerCreatureImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl(124):  		return false;
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		return false;
 	return false;
 }
 
@@ -338,35 +338,37 @@ bool JunkdealerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 JunkdealerCreatureAdapter::JunkdealerCreatureAdapter(JunkdealerCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
 }
 
+enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__PLAYERCREATURE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CREATESELLJUNKLOOTSELECTION__PLAYERCREATURE_};
+
 Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ACTIVATERECOVERY__:
 		activateRecovery();
 		break;
-	case 7:
+	case RPC_SENDINITIALMESSAGE__PLAYERCREATURE_:
 		sendInitialMessage((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_SENDINITIALCHOICES__PLAYERCREATURE_:
 		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
 		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_GETLOCATION__:
 		resp->insertAscii(getLocation());
 		break;
-	case 12:
+	case RPC_SETLOCATION__STRING_:
 		setLocation(inv->getAsciiParameter(_param0_setLocation__String_));
 		break;
-	case 13:
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 14:
+	case RPC_CREATESELLJUNKLOOTSELECTION__PLAYERCREATURE_:
 		createSellJunkLootSelection((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:

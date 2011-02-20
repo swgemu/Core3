@@ -425,22 +425,22 @@ int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 FactoryObjectImplementation::FactoryObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/factory/FactoryObject.idl(20):  		Logger.setLoggingName("FactoryObject");
+	// server/zone/objects/installation/factory/FactoryObject.idl():  		Logger.setLoggingName("FactoryObject");
 	Logger::setLoggingName("FactoryObject");
 }
 
 void FactoryObjectImplementation::notifyLoadFromDatabase() {
-	// server/zone/objects/installation/factory/FactoryObject.idl(34):  		super.notifyLoadFromDatabase();
+	// server/zone/objects/installation/factory/FactoryObject.idl():  		super.notifyLoadFromDatabase();
 	InstallationObjectImplementation::notifyLoadFromDatabase();
-	// server/zone/objects/installation/factory/FactoryObject.idl(36):  	}
+	// server/zone/objects/installation/factory/FactoryObject.idl():  	}
 	if (InstallationObjectImplementation::operating){
-	// server/zone/objects/installation/factory/FactoryObject.idl(37):  			startFactory();
+	// server/zone/objects/installation/factory/FactoryObject.idl():  			startFactory();
 	startFactory();
 }
 }
 
 bool FactoryObjectImplementation::isFactory() {
-	// server/zone/objects/installation/factory/FactoryObject.idl(71):  		return true;
+	// server/zone/objects/installation/factory/FactoryObject.idl():  		return true;
 	return true;
 }
 
@@ -451,50 +451,52 @@ bool FactoryObjectImplementation::isFactory() {
 FactoryObjectAdapter::FactoryObjectAdapter(FactoryObjectImplementation* obj) : InstallationObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_UPDATEINSTALLATIONWORK__,RPC_SENDINSERTMANUSUI__PLAYERCREATURE_,RPC_SENDINGREDIENTSNEEDEDSUI__PLAYERCREATURE_,RPC_SENDINGREDIENTHOPPER__PLAYERCREATURE_,RPC_SENDOUTPUTHOPPER__PLAYERCREATURE_,RPC_HANDLEINSERTFACTORYSCHEM__PLAYERCREATURE_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__PLAYERCREATURE_,RPC_HANDLEOPERATETOGGLE__PLAYERCREATURE_,RPC_CREATENEWOBJECT__,};
+
 Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
-	case 8:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 9:
+	case RPC_ISFACTORY__:
 		resp->insertBoolean(isFactory());
 		break;
-	case 10:
+	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
 		break;
-	case 11:
+	case RPC_UPDATEINSTALLATIONWORK__:
 		updateInstallationWork();
 		break;
-	case 12:
+	case RPC_SENDINSERTMANUSUI__PLAYERCREATURE_:
 		sendInsertManuSui((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 13:
+	case RPC_SENDINGREDIENTSNEEDEDSUI__PLAYERCREATURE_:
 		sendIngredientsNeededSui((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 14:
+	case RPC_SENDINGREDIENTHOPPER__PLAYERCREATURE_:
 		sendIngredientHopper((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 15:
+	case RPC_SENDOUTPUTHOPPER__PLAYERCREATURE_:
 		sendOutputHopper((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 16:
+	case RPC_HANDLEINSERTFACTORYSCHEM__PLAYERCREATURE_MANUFACTURESCHEMATIC_:
 		handleInsertFactorySchem((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case 17:
+	case RPC_HANDLEREMOVEFACTORYSCHEM__PLAYERCREATURE_:
 		handleRemoveFactorySchem((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 18:
+	case RPC_HANDLEOPERATETOGGLE__PLAYERCREATURE_:
 		handleOperateToggle((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 19:
+	case RPC_CREATENEWOBJECT__:
 		createNewObject();
 		break;
 	default:

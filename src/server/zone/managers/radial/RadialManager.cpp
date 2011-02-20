@@ -204,14 +204,16 @@ int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 RadialManagerAdapter::RadialManagerAdapter(RadialManagerImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_LONG_ = 6,RPC_HANDLEOBJECTMENUREQUEST__PLAYERCREATURE_OBJECTMENURESPONSE_LONG_};
+
 Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_LONG_:
 		handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter(), inv->getUnsignedLongParameter());
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUREQUEST__PLAYERCREATURE_OBJECTMENURESPONSE_LONG_:
 		handleObjectMenuRequest((PlayerCreature*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	default:

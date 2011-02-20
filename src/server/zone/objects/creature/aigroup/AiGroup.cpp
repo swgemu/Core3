@@ -465,30 +465,30 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 AiGroupImplementation::AiGroupImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/creature/aigroup/AiGroup.idl(97):  		Logger.setLoggingName("AiGroup");
+	// server/zone/objects/creature/aigroup/AiGroup.idl():  		Logger.setLoggingName("AiGroup");
 	Logger::setLoggingName("AiGroup");
-	// server/zone/objects/creature/aigroup/AiGroup.idl(99):  		commandLevel = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl():  		commandLevel = 0;
 	commandLevel = 0;
-	// server/zone/objects/creature/aigroup/AiGroup.idl(100):  		wanderRadius = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl():  		wanderRadius = 0;
 	wanderRadius = 0;
-	// server/zone/objects/creature/aigroup/AiGroup.idl(101):  		size = 0;
+	// server/zone/objects/creature/aigroup/AiGroup.idl():  		size = 0;
 	size = 0;
-	// server/zone/objects/creature/aigroup/AiGroup.idl(103):  		isStatic = true;
+	// server/zone/objects/creature/aigroup/AiGroup.idl():  		isStatic = true;
 	isStatic = true;
 }
 
 bool AiGroupImplementation::isHerdGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(118):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl():  		return false;
 	return false;
 }
 
 bool AiGroupImplementation::isPackGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(122):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl():  		return false;
 	return false;
 }
 
 bool AiGroupImplementation::isLairGroup() {
-	// server/zone/objects/creature/aigroup/AiGroup.idl(126):  		return false;
+	// server/zone/objects/creature/aigroup/AiGroup.idl():  		return false;
 	return false;
 }
 
@@ -499,26 +499,28 @@ bool AiGroupImplementation::isLairGroup() {
 AiGroupAdapter::AiGroupAdapter(AiGroupImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_SETPATROLPOINTS__ = 6,RPC_SETPATROLPOINT__AIAGENT_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ISHERDGROUP__,RPC_ISPACKGROUP__,RPC_ISLAIRGROUP__};
+
 Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_SETPATROLPOINTS__:
 		setPatrolPoints();
 		break;
-	case 7:
+	case RPC_SETPATROLPOINT__AIAGENT_:
 		setPatrolPoint((AiAgent*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 9:
+	case RPC_ISHERDGROUP__:
 		resp->insertBoolean(isHerdGroup());
 		break;
-	case 10:
+	case RPC_ISPACKGROUP__:
 		resp->insertBoolean(isPackGroup());
 		break;
-	case 11:
+	case RPC_ISLAIRGROUP__:
 		resp->insertBoolean(isLairGroup());
 		break;
 	default:

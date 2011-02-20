@@ -234,16 +234,16 @@ int ElevatorTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 
 ElevatorTerminalImplementation::ElevatorTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(61):  		Logger.setLoggingName("ElevatorTerminal");
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl():  		Logger.setLoggingName("ElevatorTerminal");
 	Logger::setLoggingName("ElevatorTerminal");
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(63):  		elevatorUp = null;
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl():  		elevatorUp = null;
 	elevatorUp = NULL;
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(64):  		elevatorDown = null;
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl():  		elevatorDown = null;
 	elevatorDown = NULL;
 }
 
 bool ElevatorTerminalImplementation::isElevatorTerminal() {
-	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl(82):  		return true;
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl():  		return true;
 	return true;
 }
 
@@ -254,17 +254,19 @@ bool ElevatorTerminalImplementation::isElevatorTerminal() {
 ElevatorTerminalAdapter::ElevatorTerminalAdapter(ElevatorTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISELEVATORTERMINAL__};
+
 Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
 		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_ISELEVATORTERMINAL__:
 		resp->insertBoolean(isElevatorTerminal());
 		break;
 	default:

@@ -335,128 +335,128 @@ int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 CurePackImplementation::CurePackImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(70):  		setLoggingName("CurePack");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		setLoggingName("CurePack");
 	setLoggingName("CurePack");
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(72):  		effectiveness = 0;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		effectiveness = 0;
 	effectiveness = 0;
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(73):  		area = 0;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		area = 0;
 	area = 0;
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(74):  		state = 0;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		state = 0;
 	state = 0;
 }
 
 void CurePackImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(79):  		CraftingValues craftingValues = schematic.getCraftingValues();
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		CraftingValues craftingValues = schematic.getCraftingValues();
 	CraftingValues* craftingValues = schematic->getCraftingValues();
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(81):  		effectiveness = craftingValues.getCurrentValue("power");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		effectiveness = craftingValues.getCurrentValue("power");
 	effectiveness = craftingValues->getCurrentValue("power");
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(82):  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		super.medicineUseRequired = craftingValues.getCurrentValue("skillmodmin");
 	PharmaceuticalObjectImplementation::medicineUseRequired = craftingValues->getCurrentValue("skillmodmin");
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(83):  		setUseCount(craftingValues.getCurrentValue("charges"));
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		setUseCount(craftingValues.getCurrentValue("charges"));
 	setUseCount(craftingValues->getCurrentValue("charges"));
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(85):  	}
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  	}
 	if (craftingValues->hasProperty("area")){
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(86):  			area = craftingValues.getCurrentValue("area");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			area = craftingValues.getCurrentValue("area");
 	area = craftingValues->getCurrentValue("area");
 }
 }
 
 void CurePackImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(98):  		super.loadTemplateData(templateData);
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		super.loadTemplateData(templateData);
 	PharmaceuticalObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(100):  		CurePackTemplate 
-	if (!templateData->isCurePackTemplate())	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(101):  			return;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		CurePackTemplate 
+	if (!templateData->isCurePackTemplate())	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			return;
 	return;
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(103):  stimPackTemplate = (CurePackTemplate) templateData;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		CurePackTemplate stimPackTemplate = (CurePackTemplate) templateData;
 	CurePackTemplate* stimPackTemplate = (CurePackTemplate*) templateData;
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(105):  		effectiveness = stimPackTemplate.getEffectiveness();
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		effectiveness = stimPackTemplate.getEffectiveness();
 	effectiveness = stimPackTemplate->getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(106):  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 	PharmaceuticalObjectImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(107):  		area = stimPackTemplate.getArea();
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		area = stimPackTemplate.getArea();
 	area = stimPackTemplate->getArea();
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(108):  		state = stimPackTemplate.getState();
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		state = stimPackTemplate.getState();
 	state = stimPackTemplate->getState();
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(109):  		commandToExecute = stimPackTemplate.getCommandToExecute();
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		commandToExecute = stimPackTemplate.getCommandToExecute();
 	commandToExecute = stimPackTemplate->getCommandToExecute();
 }
 
 int CurePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(121):  		if 
-	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(122):  			return 1;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		if 
+	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			return 1;
 	return 1;
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(124):  
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		}
 	if (player->getSkillMod("healing_ability") < PharmaceuticalObjectImplementation::medicineUseRequired){
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(125):  			player.sendSystemMessage("error_message", "insufficient_skill");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			player.sendSystemMessage("error_message", "insufficient_skill");
 	player->sendSystemMessage("error_message", "insufficient_skill");
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(127):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			return 0;
 	return 0;
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(129):  			string command = commandToExecute + " ";
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			string command = commandToExecute + " ";
 	String command = commandToExecute + " ";
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(130):  			command = command + String.valueOf(super.getObjectID());
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			command = command + String.valueOf(super.getObjectID());
 	command = command + String::valueOf(PharmaceuticalObjectImplementation::getObjectID());
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(132):  			player.sendExecuteConsoleCommand(command);
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			player.sendExecuteConsoleCommand(command);
 	player->sendExecuteConsoleCommand(command);
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(134):  			return 0;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			return 0;
 	return 0;
 }
 }
 
 void CurePackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(148):  		super.fillAttributeList(msg, object);
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(150):  		string eff = "@obj_attr_n:dot_type_";
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		string eff = "@obj_attr_n:dot_type_";
 	String eff = "@obj_attr_n:dot_type_";
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(151):  		msg.insertAttribute("examine_dot_cure", eff + CreatureState.getSpecialName(state));
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		msg.insertAttribute("examine_dot_cure", eff + CreatureState.getSpecialName(state));
 	msg->insertAttribute("examine_dot_cure", eff + CreatureState::getSpecialName(state));
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(153):  		msg.insertAttribute("examine_dot_cure_power", effectiveness);
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		msg.insertAttribute("examine_dot_cure_power", effectiveness);
 	msg->insertAttribute("examine_dot_cure_power", effectiveness);
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(155):  
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		}
 	if (isArea()){
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(156):  			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			msg.insertAttribute("examine_heal_area", Math.getPrecision(area, 0));
 	msg->insertAttribute("examine_heal_area", Math::getPrecision(area, 0));
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(157):  			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::getMedicineUseRequired());
 }
 
 	else {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(159):  			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::getMedicineUseRequired());
 }
 }
 
 int CurePackImplementation::calculatePower(CreatureObject* creature) {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(164):  		float modSkill = (float) creature.getSkillMod("healing_wound_treatment");
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		float modSkill = (float) creature.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(165):  		return ((100 + modSkill) / 100 * effectiveness);
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		return ((100 + modSkill) / 100 * effectiveness);
 	return ((100 + modSkill) / 100 * effectiveness);
 }
 
 bool CurePackImplementation::isArea() {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(169):  		return area != 0;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		return area != 0;
 	return area != 0;
 }
 
 float CurePackImplementation::getArea() {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(173):  		return area;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		return area;
 	return area;
 }
 
 unsigned long long CurePackImplementation::getState() {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(177):  		return state;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		return state;
 	return state;
 }
 
 float CurePackImplementation::getEffectiveness() {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(181):  		return effectiveness;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		return effectiveness;
 	return effectiveness;
 }
 
 bool CurePackImplementation::isCurePack() {
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl(185):  		return true;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		return true;
 	return true;
 }
 
@@ -467,29 +467,31 @@ bool CurePackImplementation::isCurePack() {
 CurePackAdapter::CurePackAdapter(CurePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISAREA__,RPC_GETAREA__,RPC_GETSTATE__,RPC_GETEFFECTIVENESS__,RPC_ISCUREPACK__};
+
 Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 7:
+	case RPC_CALCULATEPOWER__CREATUREOBJECT_:
 		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 8:
+	case RPC_ISAREA__:
 		resp->insertBoolean(isArea());
 		break;
-	case 9:
+	case RPC_GETAREA__:
 		resp->insertFloat(getArea());
 		break;
-	case 10:
+	case RPC_GETSTATE__:
 		resp->insertLong(getState());
 		break;
-	case 11:
+	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
 		break;
-	case 12:
+	case RPC_ISCUREPACK__:
 		resp->insertBoolean(isCurePack());
 		break;
 	default:

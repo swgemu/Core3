@@ -256,29 +256,29 @@ int SuiInputBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 SuiInputBoxImplementation::SuiInputBoxImplementation(PlayerCreature* player, unsigned int windowType, int inputtype) : SuiBoxImplementation(player, windowType, SuiBox::INPUTBOX) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(66):  		maxInputSize = 25;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl():  		maxInputSize = 25;
 	maxInputSize = 25;
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(68):  		inputType = inputtype;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl():  		inputType = inputtype;
 	inputType = inputtype;
 }
 
 void SuiInputBoxImplementation::setMaxInputSize(int size) {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(74):  		maxInputSize = size;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl():  		maxInputSize = size;
 	maxInputSize = size;
 }
 
 void SuiInputBoxImplementation::setDefaultInput(const String& text) {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(78):  		defaultInput = text;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl():  		defaultInput = text;
 	defaultInput = text;
 }
 
 bool SuiInputBoxImplementation::isFilterBox() {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(82):  		return inputType == FILTER;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl():  		return inputType == FILTER;
 	return inputType == FILTER;
 }
 
 bool SuiInputBoxImplementation::isInputBox() {
-	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl(86):  		return true;
+	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl():  		return true;
 	return true;
 }
 
@@ -289,23 +289,25 @@ bool SuiInputBoxImplementation::isInputBox() {
 SuiInputBoxAdapter::SuiInputBoxAdapter(SuiInputBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
 
+enum {RPC_GENERATEMESSAGE__ = 6,RPC_SETMAXINPUTSIZE__INT_,RPC_SETDEFAULTINPUT__STRING_,RPC_ISFILTERBOX__,RPC_ISINPUTBOX__};
+
 Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GENERATEMESSAGE__:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
-	case 7:
+	case RPC_SETMAXINPUTSIZE__INT_:
 		setMaxInputSize(inv->getSignedIntParameter());
 		break;
-	case 8:
+	case RPC_SETDEFAULTINPUT__STRING_:
 		setDefaultInput(inv->getAsciiParameter(_param0_setDefaultInput__String_));
 		break;
-	case 9:
+	case RPC_ISFILTERBOX__:
 		resp->insertBoolean(isFilterBox());
 		break;
-	case 10:
+	case RPC_ISINPUTBOX__:
 		resp->insertBoolean(isInputBox());
 		break;
 	default:

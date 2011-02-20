@@ -219,32 +219,32 @@ int DelayedBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 DelayedBuffImplementation::DelayedBuffImplementation(CreatureObject* creo, unsigned int buffcrc, int duration) : BuffImplementation(creo, buffcrc, 1380, BuffType::FOOD) {
 	_initializeImplementation();
-	// server/zone/objects/creature/buffs/DelayedBuff.idl(66):  		usesRemaining = duration;
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		usesRemaining = duration;
 	usesRemaining = duration;
 }
 
 void DelayedBuffImplementation::activate() {
-	// server/zone/objects/creature/buffs/DelayedBuff.idl(73):  		super.activate(false);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		super.activate(false);
 	BuffImplementation::activate(false);
 }
 
 void DelayedBuffImplementation::deactivate() {
-	// server/zone/objects/creature/buffs/DelayedBuff.idl(77):  		super.deactivate(false);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		super.deactivate(false);
 	BuffImplementation::deactivate(false);
 }
 
 void DelayedBuffImplementation::useCharge(CreatureObject* creature) {
-	// server/zone/objects/creature/buffs/DelayedBuff.idl(81):  		usesRemaining = usesRemaining - 1;
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		usesRemaining = usesRemaining - 1;
 	usesRemaining = usesRemaining - 1;
-	// server/zone/objects/creature/buffs/DelayedBuff.idl(83):  	}
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  	}
 	if (usesRemaining < 1){
-	// server/zone/objects/creature/buffs/DelayedBuff.idl(84):  			creature.removeBuff(this);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			creature.removeBuff(this);
 	creature->removeBuff(_this);
 }
 }
 
 void DelayedBuffImplementation::setUsesRemaining(int uses) {
-	// server/zone/objects/creature/buffs/DelayedBuff.idl(89):  		usesRemaining = uses;
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		usesRemaining = uses;
 	usesRemaining = uses;
 }
 
@@ -255,20 +255,22 @@ void DelayedBuffImplementation::setUsesRemaining(int uses) {
 DelayedBuffAdapter::DelayedBuffAdapter(DelayedBuffImplementation* obj) : BuffAdapter(obj) {
 }
 
+enum {RPC_ACTIVATE__ = 6,RPC_DEACTIVATE__,RPC_USECHARGE__CREATUREOBJECT_,RPC_SETUSESREMAINING__INT_};
+
 Packet* DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_ACTIVATE__:
 		activate();
 		break;
-	case 7:
+	case RPC_DEACTIVATE__:
 		deactivate();
 		break;
-	case 8:
+	case RPC_USECHARGE__CREATUREOBJECT_:
 		useCharge((CreatureObject*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SETUSESREMAINING__INT_:
 		setUsesRemaining(inv->getSignedIntParameter());
 		break;
 	default:

@@ -253,34 +253,34 @@ int LootObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 LootObjectImplementation::LootObjectImplementation(unsigned int loID, String& n, unsigned int tCRC, unsigned int lootG, int ch) {
 	_initializeImplementation();
-	// server/zone/managers/loot/lootgroup/LootObject.idl(61):  		lootObjectID = loID;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		lootObjectID = loID;
 	lootObjectID = loID;
-	// server/zone/managers/loot/lootgroup/LootObject.idl(62):  		name = n;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		name = n;
 	name = n;
-	// server/zone/managers/loot/lootgroup/LootObject.idl(63):  		templateCRC = tCRC;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		templateCRC = tCRC;
 	templateCRC = tCRC;
-	// server/zone/managers/loot/lootgroup/LootObject.idl(64):  		lootGroup = lootG;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		lootGroup = lootG;
 	lootGroup = lootG;
-	// server/zone/managers/loot/lootgroup/LootObject.idl(65):  		chance = ch;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		chance = ch;
 	chance = ch;
 }
 
 void LootObjectImplementation::check(String& newName, unsigned int newTemplateCRC, int newChance) {
-	// server/zone/managers/loot/lootgroup/LootObject.idl(69):  		name = newName;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		name = newName;
 	name = newName;
-	// server/zone/managers/loot/lootgroup/LootObject.idl(70):  		templateCRC = newTemplateCRC;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		templateCRC = newTemplateCRC;
 	templateCRC = newTemplateCRC;
-	// server/zone/managers/loot/lootgroup/LootObject.idl(71):  		chance = newChance;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		chance = newChance;
 	chance = newChance;
 }
 
 unsigned int LootObjectImplementation::getTemplateCRC() {
-	// server/zone/managers/loot/lootgroup/LootObject.idl(75):  		return templateCRC;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		return templateCRC;
 	return templateCRC;
 }
 
 int LootObjectImplementation::getChance() {
-	// server/zone/managers/loot/lootgroup/LootObject.idl(79):  		return chance;
+	// server/zone/managers/loot/lootgroup/LootObject.idl():  		return chance;
 	return chance;
 }
 
@@ -291,17 +291,19 @@ int LootObjectImplementation::getChance() {
 LootObjectAdapter::LootObjectAdapter(LootObjectImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
+enum {RPC_CHECK__STRING_INT_INT_ = 6,RPC_GETTEMPLATECRC__,RPC_GETCHANCE__};
+
 Packet* LootObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_CHECK__STRING_INT_INT_:
 		check(inv->getAsciiParameter(_param0_check__String_int_int_), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 7:
+	case RPC_GETTEMPLATECRC__:
 		resp->insertInt(getTemplateCRC());
 		break;
-	case 8:
+	case RPC_GETCHANCE__:
 		resp->insertSignedInt(getChance());
 		break;
 	default:

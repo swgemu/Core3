@@ -582,48 +582,48 @@ int DraftSchematicImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 DraftSchematicImplementation::DraftSchematicImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/draftschematic/DraftSchematic.idl(70):  		schematicTemplate = null;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		schematicTemplate = null;
 	schematicTemplate = NULL;
-	// server/zone/objects/draftschematic/DraftSchematic.idl(71):  		useCount = 0;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		useCount = 0;
 	useCount = 0;
-	// server/zone/objects/draftschematic/DraftSchematic.idl(72):  		schematicID = 0;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		schematicID = 0;
 	schematicID = 0;
-	// server/zone/objects/draftschematic/DraftSchematic.idl(74):  		Logger.setLoggingName("DraftSchematic");
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		Logger.setLoggingName("DraftSchematic");
 	Logger::setLoggingName("DraftSchematic");
 }
 
 void DraftSchematicImplementation::setSchematicID(unsigned int id) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(132):  		schematicID = id;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		schematicID = id;
 	schematicID = id;
 }
 
 unsigned int DraftSchematicImplementation::getSchematicID() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(140):  		return schematicID;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return schematicID;
 	return schematicID;
 }
 
 bool DraftSchematicImplementation::isValidDraftSchematic() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(146):  		return schematicTemplate != null;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return schematicTemplate != null;
 	return schematicTemplate != NULL;
 }
 
 int DraftSchematicImplementation::getUseCount() {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(217):  		return useCount;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return useCount;
 	return useCount;
 }
 
 void DraftSchematicImplementation::setUseCount(int count) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(221):  		useCount = count;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		useCount = count;
 	useCount = count;
 }
 
 void DraftSchematicImplementation::decreaseUseCount(int count) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(225):  		setUseCount(useCount - 1);
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		setUseCount(useCount - 1);
 	setUseCount(useCount - 1);
 }
 
 void DraftSchematicImplementation::increaseUseCount(int count) {
-	// server/zone/objects/draftschematic/DraftSchematic.idl(229):  		setUseCount(useCount + count);
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		setUseCount(useCount + count);
 	setUseCount(useCount + count);
 }
 
@@ -634,83 +634,85 @@ void DraftSchematicImplementation::increaseUseCount(int count) {
 DraftSchematicAdapter::DraftSchematicAdapter(DraftSchematicImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_,RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETGROUPNAME__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_};
+
 Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_:
 		sendDraftSlotsTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_:
 		sendResourceWeightsTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_:
 		resp->insertLong(createManufactureSchematic((SceneObject*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case 11:
+	case RPC_SETSCHEMATICID__INT_:
 		setSchematicID(inv->getUnsignedIntParameter());
 		break;
-	case 12:
+	case RPC_GETSCHEMATICID__:
 		resp->insertInt(getSchematicID());
 		break;
-	case 13:
+	case RPC_GETDRAFTSLOTCOUNT__:
 		resp->insertSignedInt(getDraftSlotCount());
 		break;
-	case 14:
+	case RPC_ISVALIDDRAFTSCHEMATIC__:
 		resp->insertBoolean(isValidDraftSchematic());
 		break;
-	case 15:
+	case RPC_GETRESOURCEWEIGHTCOUNT__:
 		resp->insertSignedInt(getResourceWeightCount());
 		break;
-	case 16:
+	case RPC_GETCOMPLEXITY__:
 		resp->insertFloat(getComplexity());
 		break;
-	case 17:
+	case RPC_GETTOOLTAB__:
 		resp->insertInt(getToolTab());
 		break;
-	case 18:
+	case RPC_GETSIZE__:
 		resp->insertFloat(getSize());
 		break;
-	case 19:
+	case RPC_GETXPTYPE__:
 		resp->insertAscii(getXpType());
 		break;
-	case 20:
+	case RPC_GETXPAMOUNT__:
 		resp->insertSignedInt(getXpAmount());
 		break;
-	case 21:
+	case RPC_GETASSEMBLYSKILL__:
 		resp->insertAscii(getAssemblySkill());
 		break;
-	case 22:
+	case RPC_GETEXPERIMENTATIONSKILL__:
 		resp->insertAscii(getExperimentationSkill());
 		break;
-	case 23:
+	case RPC_GETCUSTOMIZATIONSKILL__:
 		resp->insertAscii(getCustomizationSkill());
 		break;
-	case 24:
+	case RPC_GETCUSTOMNAME__:
 		resp->insertAscii(getCustomName());
 		break;
-	case 25:
+	case RPC_GETTANOCRC__:
 		resp->insertInt(getTanoCRC());
 		break;
-	case 26:
+	case RPC_GETGROUPNAME__:
 		resp->insertAscii(getGroupName());
 		break;
-	case 27:
+	case RPC_GETUSECOUNT__:
 		resp->insertSignedInt(getUseCount());
 		break;
-	case 28:
+	case RPC_SETUSECOUNT__INT_:
 		setUseCount(inv->getSignedIntParameter());
 		break;
-	case 29:
+	case RPC_DECREASEUSECOUNT__INT_:
 		decreaseUseCount(inv->getSignedIntParameter());
 		break;
-	case 30:
+	case RPC_INCREASEUSECOUNT__INT_:
 		increaseUseCount(inv->getSignedIntParameter());
 		break;
 	default:

@@ -173,7 +173,7 @@ int CloningTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 CloningTerminalImplementation::CloningTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/cloning/CloningTerminal.idl(59):  		Logger.setLoggingName("Cloning Terminal");
+	// server/zone/objects/tangible/terminal/cloning/CloningTerminal.idl():  		Logger.setLoggingName("Cloning Terminal");
 	Logger::setLoggingName("Cloning Terminal");
 }
 
@@ -184,11 +184,13 @@ CloningTerminalImplementation::CloningTerminalImplementation() {
 CloningTerminalAdapter::CloningTerminalAdapter(CloningTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6};
+
 Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:

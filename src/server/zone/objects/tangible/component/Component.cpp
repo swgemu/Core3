@@ -469,24 +469,24 @@ int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ComponentImplementation::ComponentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/component/Component.idl(74):  		Logger.setLoggingName("Component");
+	// server/zone/objects/tangible/component/Component.idl():  		Logger.setLoggingName("Component");
 	Logger::setLoggingName("Component");
 }
 
 bool ComponentImplementation::isComponent() {
-	// server/zone/objects/tangible/component/Component.idl(92):  		return true;
+	// server/zone/objects/tangible/component/Component.idl():  		return true;
 	return true;
 }
 
 bool ComponentImplementation::hasKey(const String& key) {
-	// server/zone/objects/tangible/component/Component.idl(100):  
-	for (	// server/zone/objects/tangible/component/Component.idl(100):  		for (int i = 0;
+	// server/zone/objects/tangible/component/Component.idl():  		return 
+	for (	// server/zone/objects/tangible/component/Component.idl():  		for (int i = 0;
 	int i = 0;
 	i < (&keyList)->size();
- ++i) 	// server/zone/objects/tangible/component/Component.idl(101):  		return 
-	if ((&keyList)->get(i) == key)	// server/zone/objects/tangible/component/Component.idl(102):  				return true;
+ ++i) 	// server/zone/objects/tangible/component/Component.idl():  		return 
+	if ((&keyList)->get(i) == key)	// server/zone/objects/tangible/component/Component.idl():  				return true;
 	return true;
-	// server/zone/objects/tangible/component/Component.idl(103):  false;
+	// server/zone/objects/tangible/component/Component.idl():  		return false;
 	return false;
 }
 
@@ -497,56 +497,58 @@ bool ComponentImplementation::hasKey(const String& key) {
 ComponentAdapter::ComponentAdapter(ComponentImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCOMPONENT__,RPC_GENERATELOOTSTATS__STRING_INT_,RPC_COMPARE__COMPONENT_,RPC_HASKEY__STRING_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_,RPC_GETATTRIBUTEVALUE__STRING_,RPC_GETATTRIBUTEPRECISION__STRING_,RPC_GETATTRIBUTETITLE__STRING_,RPC_GETATTRIBUTEHIDDEN__STRING_,RPC_SETPROPERTYTOHIDDEN__STRING_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_,RPC_GETPROPERTYCOUNT__,RPC_GETPROPERTY__INT_,RPC_CHANGEATTRIBUTEVALUE__STRING_FLOAT_};
+
 Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_ISCOMPONENT__:
 		resp->insertBoolean(isComponent());
 		break;
-	case 8:
+	case RPC_GENERATELOOTSTATS__STRING_INT_:
 		generateLootStats(inv->getAsciiParameter(_param0_generateLootStats__String_int_), inv->getSignedIntParameter());
 		break;
-	case 9:
+	case RPC_COMPARE__COMPONENT_:
 		resp->insertBoolean(compare((Component*) inv->getObjectParameter()));
 		break;
-	case 10:
+	case RPC_HASKEY__STRING_:
 		resp->insertBoolean(hasKey(inv->getAsciiParameter(_param0_hasKey__String_)));
 		break;
-	case 11:
+	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case 12:
+	case RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_:
 		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_bool_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_bool_), inv->getBooleanParameter());
 		break;
-	case 13:
+	case RPC_GETATTRIBUTEVALUE__STRING_:
 		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__String_)));
 		break;
-	case 14:
+	case RPC_GETATTRIBUTEPRECISION__STRING_:
 		resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(_param0_getAttributePrecision__String_)));
 		break;
-	case 15:
+	case RPC_GETATTRIBUTETITLE__STRING_:
 		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__String_)));
 		break;
-	case 16:
+	case RPC_GETATTRIBUTEHIDDEN__STRING_:
 		resp->insertBoolean(getAttributeHidden(inv->getAsciiParameter(_param0_getAttributeHidden__String_)));
 		break;
-	case 17:
+	case RPC_SETPROPERTYTOHIDDEN__STRING_:
 		setPropertyToHidden(inv->getAsciiParameter(_param0_setPropertyToHidden__String_));
 		break;
-	case 18:
+	case RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_:
 		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
 		break;
-	case 19:
+	case RPC_GETPROPERTYCOUNT__:
 		resp->insertSignedInt(getPropertyCount());
 		break;
-	case 20:
+	case RPC_GETPROPERTY__INT_:
 		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
 		break;
-	case 21:
+	case RPC_CHANGEATTRIBUTEVALUE__STRING_FLOAT_:
 		resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(_param0_changeAttributeValue__String_float_), inv->getFloatParameter()));
 		break;
 	default:

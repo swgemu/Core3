@@ -192,20 +192,20 @@ int SuiCharacterBuilderBoxImplementation::writeObjectMembers(ObjectOutputStream*
 
 SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(PlayerCreature* player, CharacterBuilderMenuNode* root) : SuiListBoxImplementation(player, SuiWindowType::CHARACTER_BUILDER_LIST, 0) {
 	_initializeImplementation();
-	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl(59):  		Logger.setLoggingName("SuiCharacterBuilderBox");
+	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl():  		Logger.setLoggingName("SuiCharacterBuilderBox");
 	Logger::setLoggingName("SuiCharacterBuilderBox");
-	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl(61):  		setPromptTitle("Character Builder");
+	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl():  		setPromptTitle("Character Builder");
 	setPromptTitle("Character Builder");
-	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl(63):  		setPromptText("Provided below are items which the developers feel are necessary to complete the current testing objectives. Please select only the items which you require.");
+	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl():  		setPromptText("Provided below are items which the developers feel are necessary to complete the current testing objectives. Please select only the items which you require.");
 	setPromptText("Provided below are items which the developers feel are necessary to complete the current testing objectives. Please select only the items which you require.");
-	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl(65):  		rootNode = root;
+	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl():  		rootNode = root;
 	rootNode = root;
-	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl(67):  		currentNode = root;
+	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl():  		currentNode = root;
 	currentNode = root;
 }
 
 bool SuiCharacterBuilderBoxImplementation::isCharacterBuilderBox() {
-	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl(79):  		return true;
+	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl():  		return true;
 	return true;
 }
 
@@ -216,14 +216,16 @@ bool SuiCharacterBuilderBoxImplementation::isCharacterBuilderBox() {
 SuiCharacterBuilderBoxAdapter::SuiCharacterBuilderBoxAdapter(SuiCharacterBuilderBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
 
+enum {RPC_GENERATEMESSAGE__ = 6,RPC_ISCHARACTERBUILDERBOX__};
+
 Packet* SuiCharacterBuilderBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_GENERATEMESSAGE__:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
-	case 7:
+	case RPC_ISCHARACTERBUILDERBOX__:
 		resp->insertBoolean(isCharacterBuilderBox());
 		break;
 	default:

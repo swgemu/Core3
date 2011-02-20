@@ -234,40 +234,40 @@ int BazaarTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 BazaarTerminalImplementation::BazaarTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(62):  		auctions.setNullValue(null);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  		auctions.setNullValue(null);
 	(&auctions)->setNullValue(NULL);
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(63):  		auctions.setNoDuplicateInsertPlan();
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  		auctions.setNoDuplicateInsertPlan();
 	(&auctions)->setNoDuplicateInsertPlan();
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(65):  		Logger.setLoggingName("BazaarTerminal");
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  		Logger.setLoggingName("BazaarTerminal");
 	Logger::setLoggingName("BazaarTerminal");
 }
 
 int BazaarTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(77):  		return 0;
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  		return 0;
 	return 0;
 }
 
 void BazaarTerminalImplementation::addAuction(AuctionItem* item) {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(81):  		item.setBazaarTerminal(this);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  		item.setBazaarTerminal(this);
 	item->setBazaarTerminal(_this);
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(82):  		auctions.put(item.getAuctionedItemObjectID(), item);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  		auctions.put(item.getAuctionedItemObjectID(), item);
 	(&auctions)->put(item->getAuctionedItemObjectID(), item);
 }
 
 void BazaarTerminalImplementation::dropAuction(unsigned long long auctionItemID) {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(86):  		AuctionItem item = auctions.get(auctionItemID);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  		AuctionItem item = auctions.get(auctionItemID);
 	AuctionItem* item = (&auctions)->get(auctionItemID);
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(88):  	}
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  	}
 	if (item != NULL){
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(89):  			item.setBazaarTerminal(null);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  			item.setBazaarTerminal(null);
 	item->setBazaarTerminal(NULL);
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(90):  			auctions.drop(auctionItemID);
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  			auctions.drop(auctionItemID);
 	(&auctions)->drop(auctionItemID);
 }
 }
 
 VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminalImplementation::getAuctions() {
-	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(96):  		return auctions;
+	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl():  		return auctions;
 	return (&auctions);
 }
 
@@ -278,20 +278,22 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminalI
 BazaarTerminalAdapter::BazaarTerminalAdapter(BazaarTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDAUCTION__AUCTIONITEM_,RPC_DROPAUCTION__LONG_,};
+
 Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_ADDAUCTION__AUCTIONITEM_:
 		addAuction((AuctionItem*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_DROPAUCTION__LONG_:
 		dropAuction(inv->getUnsignedLongParameter());
 		break;
 	default:

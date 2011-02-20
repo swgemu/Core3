@@ -900,195 +900,195 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 ResourceSpawnImplementation::ResourceSpawnImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/resource/ResourceSpawn.idl(95):   	spawnType = "";
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnType = "";
 	spawnType = "";
-	// server/zone/objects/resource/ResourceSpawn.idl(96):   	spawnPool = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnPool = 0;
 	spawnPool = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(97):   	spawnAttributes.setNoDuplicateInsertPlan();
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnAttributes.setNoDuplicateInsertPlan();
 	(&spawnAttributes)->setNoDuplicateInsertPlan();
-	// server/zone/objects/resource/ResourceSpawn.idl(99):   	containerReferenceCount = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	containerReferenceCount = 0;
 	containerReferenceCount = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(100):   	unitsInCirculation = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	unitsInCirculation = 0;
 	unitsInCirculation = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(101):   	maxUnitsSpawned = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	maxUnitsSpawned = 0;
 	maxUnitsSpawned = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(102):   	containerCRC = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	containerCRC = 0;
 	containerCRC = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(103):   	spawned = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawned = 0;
 	spawned = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(104):   	despawned = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	despawned = 0;
 	despawned = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(105):   	surveyToolType = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	surveyToolType = 0;
 	surveyToolType = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(106):   	zoneRestriction = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	zoneRestriction = 0;
 	zoneRestriction = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(107):   	spawnPool = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnPool = 0;
 	spawnPool = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl(108):   	dbDestroyed = false;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	dbDestroyed = false;
 	dbDestroyed = false;
-	// server/zone/objects/resource/ResourceSpawn.idl(109):   	energy = false;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	energy = false;
 	energy = false;
-	// server/zone/objects/resource/ResourceSpawn.idl(111):   	setLoggingName("ResourceSpawn");
+	// server/zone/objects/resource/ResourceSpawn.idl():   	setLoggingName("ResourceSpawn");
 	setLoggingName("ResourceSpawn");
 }
 
 void ResourceSpawnImplementation::finalize() {
-	// server/zone/objects/resource/ResourceSpawn.idl(115):   	Logger.info("trying to delete ResourceSpawn: " + spawnName);
+	// server/zone/objects/resource/ResourceSpawn.idl():   	Logger.info("trying to delete ResourceSpawn: " + spawnName);
 	Logger::info("trying to delete ResourceSpawn: " + spawnName);
 }
 
 void ResourceSpawnImplementation::setName(const String& name) {
-	// server/zone/objects/resource/ResourceSpawn.idl(141):   	spawnName = name;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnName = name;
 	spawnName = name;
 }
 
 void ResourceSpawnImplementation::setType(const String& type) {
-	// server/zone/objects/resource/ResourceSpawn.idl(145):   	spawnType = type;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnType = type;
 	spawnType = type;
 }
 
 void ResourceSpawnImplementation::setSpawnPool(int pool) {
-	// server/zone/objects/resource/ResourceSpawn.idl(149):   	spawnPool = pool;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnPool = pool;
 	spawnPool = pool;
-	// server/zone/objects/resource/ResourceSpawn.idl(150):   }
+	// server/zone/objects/resource/ResourceSpawn.idl():   }
 	if (spawnPool == 0){
-	// server/zone/objects/resource/ResourceSpawn.idl(151):   		spawnMaps.removeAll();
+	// server/zone/objects/resource/ResourceSpawn.idl():   		spawnMaps.removeAll();
 	(&spawnMaps)->removeAll();
 }
 }
 
 void ResourceSpawnImplementation::setZoneRestriction(int zone) {
-	// server/zone/objects/resource/ResourceSpawn.idl(156):   	zoneRestriction = zone;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	zoneRestriction = zone;
 	zoneRestriction = zone;
 }
 
 void ResourceSpawnImplementation::addClass(const String& newclass) {
-	// server/zone/objects/resource/ResourceSpawn.idl(166):   	spawnClasses.add(newclass);
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnClasses.add(newclass);
 	(&spawnClasses)->add(newclass);
 }
 
 void ResourceSpawnImplementation::addStfClass(const String& newclass) {
-	// server/zone/objects/resource/ResourceSpawn.idl(170):   	stfSpawnClasses.add(newclass);
+	// server/zone/objects/resource/ResourceSpawn.idl():   	stfSpawnClasses.add(newclass);
 	(&stfSpawnClasses)->add(newclass);
 }
 
 bool ResourceSpawnImplementation::isType(const String& type) {
-	// server/zone/objects/resource/ResourceSpawn.idl(176):  
-	for (	// server/zone/objects/resource/ResourceSpawn.idl(176):  		for(int i = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():  		}
+	for (	// server/zone/objects/resource/ResourceSpawn.idl():  		for(int i = 0;
 	int i = 0;
 	i < (&stfSpawnClasses)->size();
  ++i) {
-	// server/zone/objects/resource/ResourceSpawn.idl(177):  		}
-	if ((&stfSpawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(178):  				return true;
+	// server/zone/objects/resource/ResourceSpawn.idl():  		}
+	if ((&stfSpawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl():  				return true;
 	return true;
 }
-	// server/zone/objects/resource/ResourceSpawn.idl(180):  
-	for (	// server/zone/objects/resource/ResourceSpawn.idl(180):  		for(int i = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():  		}
+	for (	// server/zone/objects/resource/ResourceSpawn.idl():  		for(int i = 0;
 	int i = 0;
 	i < (&spawnClasses)->size();
  ++i) {
-	// server/zone/objects/resource/ResourceSpawn.idl(181):  		}
-	if ((&spawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl(182):  				return true;
+	// server/zone/objects/resource/ResourceSpawn.idl():  		}
+	if ((&spawnClasses)->get(i) == type)	// server/zone/objects/resource/ResourceSpawn.idl():  				return true;
 	return true;
 }
-	// server/zone/objects/resource/ResourceSpawn.idl(184):  		return false;
+	// server/zone/objects/resource/ResourceSpawn.idl():  		return false;
 	return false;
 }
 
 void ResourceSpawnImplementation::setSurveyToolType(int type) {
-	// server/zone/objects/resource/ResourceSpawn.idl(188):  		surveyToolType = type;
+	// server/zone/objects/resource/ResourceSpawn.idl():  		surveyToolType = type;
 	surveyToolType = type;
 }
 
 void ResourceSpawnImplementation::setIsEnergy(bool val) {
-	// server/zone/objects/resource/ResourceSpawn.idl(192):  		energy = val;
+	// server/zone/objects/resource/ResourceSpawn.idl():  		energy = val;
 	energy = val;
 }
 
 String ResourceSpawnImplementation::getName() {
-	// server/zone/objects/resource/ResourceSpawn.idl(197):  		return spawnName;
+	// server/zone/objects/resource/ResourceSpawn.idl():  		return spawnName;
 	return spawnName;
 }
 
 String ResourceSpawnImplementation::getType() {
-	// server/zone/objects/resource/ResourceSpawn.idl(201):   	return spawnType;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return spawnType;
 	return spawnType;
 }
 
 String ResourceSpawnImplementation::getClass(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(205):  
+	// server/zone/objects/resource/ResourceSpawn.idl():   	}
 	if (index < (&spawnClasses)->size()){
-	// server/zone/objects/resource/ResourceSpawn.idl(206):   		return spawnClasses.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl():   		return spawnClasses.get(index);
 	return (&spawnClasses)->get(index);
 }
 
 	else {
-	// server/zone/objects/resource/ResourceSpawn.idl(208):   		return "";
+	// server/zone/objects/resource/ResourceSpawn.idl():   		return "";
 	return "";
 }
 }
 
 String ResourceSpawnImplementation::getFinalClass() {
-	// server/zone/objects/resource/ResourceSpawn.idl(213):  
-	if ((&spawnClasses)->size() > 1)	// server/zone/objects/resource/ResourceSpawn.idl(214):   		return spawnClasses.get(spawnClasses.size() - 1);
+	// server/zone/objects/resource/ResourceSpawn.idl():   		return "";
+	if ((&spawnClasses)->size() > 1)	// server/zone/objects/resource/ResourceSpawn.idl():   		return spawnClasses.get(spawnClasses.size() - 1);
 	return (&spawnClasses)->get((&spawnClasses)->size() - 1);
 
-	else 	// server/zone/objects/resource/ResourceSpawn.idl(216):   		return "";
+	else 	// server/zone/objects/resource/ResourceSpawn.idl():   		return "";
 	return "";
 }
 
 void ResourceSpawnImplementation::setSpawned(unsigned long long t) {
-	// server/zone/objects/resource/ResourceSpawn.idl(222):   	spawned = t;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	spawned = t;
 	spawned = t;
 }
 
 void ResourceSpawnImplementation::setDespawned(unsigned long long t) {
-	// server/zone/objects/resource/ResourceSpawn.idl(226):   	despawned = t;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	despawned = t;
 	despawned = t;
 }
 
 unsigned long long ResourceSpawnImplementation::getDespawned() {
-	// server/zone/objects/resource/ResourceSpawn.idl(230):   	return despawned;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return despawned;
 	return despawned;
 }
 
 void ResourceSpawnImplementation::setContainerCRC(unsigned int crc) {
-	// server/zone/objects/resource/ResourceSpawn.idl(234):   	containerCRC = crc;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	containerCRC = crc;
 	containerCRC = crc;
 }
 
 unsigned int ResourceSpawnImplementation::getContainerCRC() {
-	// server/zone/objects/resource/ResourceSpawn.idl(238):   	return containerCRC;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return containerCRC;
 	return containerCRC;
 }
 
 int ResourceSpawnImplementation::getSpawnPool() {
-	// server/zone/objects/resource/ResourceSpawn.idl(242):   	return spawnPool;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return spawnPool;
 	return spawnPool;
 }
 
 bool ResourceSpawnImplementation::isEnergy() {
-	// server/zone/objects/resource/ResourceSpawn.idl(246):   	return energy;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return energy;
 	return energy;
 }
 
 int ResourceSpawnImplementation::getZoneRestriction() {
-	// server/zone/objects/resource/ResourceSpawn.idl(250):   	return zoneRestriction;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return zoneRestriction;
 	return zoneRestriction;
 }
 
 int ResourceSpawnImplementation::getSurveyToolType() {
-	// server/zone/objects/resource/ResourceSpawn.idl(254):   	return surveyToolType;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return surveyToolType;
 	return surveyToolType;
 }
 
 int ResourceSpawnImplementation::getSpawnMapSize() {
-	// server/zone/objects/resource/ResourceSpawn.idl(258):   	return spawnMaps.size();
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return spawnMaps.size();
 	return (&spawnMaps)->size();
 }
 
 int ResourceSpawnImplementation::getAttributeValue(int index) {
-	// server/zone/objects/resource/ResourceSpawn.idl(293):   	return spawnAttributes.get(index);
+	// server/zone/objects/resource/ResourceSpawn.idl():   	return spawnAttributes.get(index);
 	return (&spawnAttributes)->get(index);
 }
 
@@ -1099,110 +1099,112 @@ int ResourceSpawnImplementation::getAttributeValue(int index) {
 ResourceSpawnAdapter::ResourceSpawnAdapter(ResourceSpawnImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_,RPC_SETZONERESTRICTION__INT_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__INT_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
+
 Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case 7:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 8:
+	case RPC_DECREASECONTAINERREFERENCECOUNT__:
 		decreaseContainerReferenceCount();
 		break;
-	case 9:
+	case RPC_SETNAME__STRING_:
 		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
-	case 10:
+	case RPC_SETTYPE__STRING_:
 		setType(inv->getAsciiParameter(_param0_setType__String_));
 		break;
-	case 11:
+	case RPC_SETSPAWNPOOL__INT_:
 		setSpawnPool(inv->getSignedIntParameter());
 		break;
-	case 12:
+	case RPC_SETZONERESTRICTION__INT_:
 		setZoneRestriction(inv->getSignedIntParameter());
 		break;
-	case 13:
+	case RPC_ADDCLASS__STRING_:
 		addClass(inv->getAsciiParameter(_param0_addClass__String_));
 		break;
-	case 14:
+	case RPC_ADDSTFCLASS__STRING_:
 		addStfClass(inv->getAsciiParameter(_param0_addStfClass__String_));
 		break;
-	case 15:
+	case RPC_ADDATTRIBUTE__STRING_INT_:
 		addAttribute(inv->getAsciiParameter(_param0_addAttribute__String_int_), inv->getSignedIntParameter());
 		break;
-	case 16:
+	case RPC_ISTYPE__STRING_:
 		resp->insertBoolean(isType(inv->getAsciiParameter(_param0_isType__String_)));
 		break;
-	case 17:
+	case RPC_SETSURVEYTOOLTYPE__INT_:
 		setSurveyToolType(inv->getSignedIntParameter());
 		break;
-	case 18:
+	case RPC_SETISENERGY__BOOL_:
 		setIsEnergy(inv->getBooleanParameter());
 		break;
-	case 19:
+	case RPC_GETNAME__:
 		resp->insertAscii(getName());
 		break;
-	case 20:
+	case RPC_GETTYPE__:
 		resp->insertAscii(getType());
 		break;
-	case 21:
+	case RPC_GETCLASS__INT_:
 		resp->insertAscii(getClass(inv->getSignedIntParameter()));
 		break;
-	case 22:
+	case RPC_GETFINALCLASS__:
 		resp->insertAscii(getFinalClass());
 		break;
-	case 23:
+	case RPC_GETFAMILYNAME__:
 		resp->insertAscii(getFamilyName());
 		break;
-	case 24:
+	case RPC_SETSPAWNED__LONG_:
 		setSpawned(inv->getUnsignedLongParameter());
 		break;
-	case 25:
+	case RPC_SETDESPAWNED__LONG_:
 		setDespawned(inv->getUnsignedLongParameter());
 		break;
-	case 26:
+	case RPC_GETDESPAWNED__:
 		resp->insertLong(getDespawned());
 		break;
-	case 27:
+	case RPC_SETCONTAINERCRC__INT_:
 		setContainerCRC(inv->getUnsignedIntParameter());
 		break;
-	case 28:
+	case RPC_GETCONTAINERCRC__:
 		resp->insertInt(getContainerCRC());
 		break;
-	case 29:
+	case RPC_GETSPAWNPOOL__:
 		resp->insertSignedInt(getSpawnPool());
 		break;
-	case 30:
+	case RPC_ISENERGY__:
 		resp->insertBoolean(isEnergy());
 		break;
-	case 31:
+	case RPC_GETZONERESTRICTION__:
 		resp->insertSignedInt(getZoneRestriction());
 		break;
-	case 32:
+	case RPC_GETSURVEYTOOLTYPE__:
 		resp->insertSignedInt(getSurveyToolType());
 		break;
-	case 33:
+	case RPC_GETSPAWNMAPSIZE__:
 		resp->insertSignedInt(getSpawnMapSize());
 		break;
-	case 34:
+	case RPC_EXTRACTRESOURCE__INT_INT_:
 		extractResource(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 35:
+	case RPC_CREATERESOURCE__INT_:
 		resp->insertLong(createResource(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 36:
+	case RPC_GETPLANETCRC__:
 		resp->insertInt(getPlanetCRC());
 		break;
-	case 37:
+	case RPC_GETATTRIBUTEVALUE__INT_:
 		resp->insertSignedInt(getAttributeValue(inv->getSignedIntParameter()));
 		break;
-	case 38:
+	case RPC_GETVALUEOF__INT_:
 		resp->insertSignedInt(getValueOf(inv->getSignedIntParameter()));
 		break;
-	case 39:
+	case RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_:
 		addStatsToDeedListBox((SuiListBox*) inv->getObjectParameter());
 		break;
 	default:

@@ -233,7 +233,7 @@ int CharacterBuilderTerminalImplementation::writeObjectMembers(ObjectOutputStrea
 
 CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.idl(64):  		Logger.setLoggingName("CharacterBuilderTerminal");
+	// server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.idl():  		Logger.setLoggingName("CharacterBuilderTerminal");
 	Logger::setLoggingName("CharacterBuilderTerminal");
 }
 
@@ -244,23 +244,25 @@ CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation()
 CharacterBuilderTerminalAdapter::CharacterBuilderTerminalAdapter(CharacterBuilderTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_GIVELANGUAGES__PLAYERCREATURE_,RPC_ENHANCECHARACTER__PLAYERCREATURE_,};
+
 Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 8:
+	case RPC_SENDINITIALCHOICES__PLAYERCREATURE_:
 		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 9:
+	case RPC_GIVELANGUAGES__PLAYERCREATURE_:
 		giveLanguages((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 10:
+	case RPC_ENHANCECHARACTER__PLAYERCREATURE_:
 		enhanceCharacter((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:

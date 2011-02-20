@@ -252,31 +252,31 @@ int GuildTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 GuildTerminalImplementation::GuildTerminalImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(59):  		Logger.setLoggingName("GuildTerminal");
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl():  		Logger.setLoggingName("GuildTerminal");
 	Logger::setLoggingName("GuildTerminal");
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(61):  		guildObject = null;
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl():  		guildObject = null;
 	guildObject = NULL;
 }
 
 void GuildTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(64):  		super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl():  		super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(66):  		Logger.setLoggingName("GuildTerminal");
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl():  		Logger.setLoggingName("GuildTerminal");
 	Logger::setLoggingName("GuildTerminal");
 }
 
 bool GuildTerminalImplementation::isGuildTerminal() {
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(74):  		return true;
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl():  		return true;
 	return true;
 }
 
 void GuildTerminalImplementation::setGuildObject(GuildObject* guild) {
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(78):  		guildObject = guild;
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl():  		guildObject = guild;
 	guildObject = guild;
 }
 
 GuildObject* GuildTerminalImplementation::getGuildObject() {
-	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl(82):  		return guildObject;
+	// server/zone/objects/tangible/terminal/guild/GuildTerminal.idl():  		return guildObject;
 	return guildObject;
 }
 
@@ -287,26 +287,28 @@ GuildObject* GuildTerminalImplementation::getGuildObject() {
 GuildTerminalAdapter::GuildTerminalAdapter(GuildTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISGUILDTERMINAL__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGUILDOBJECT__};
+
 Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case 7:
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
 		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 8:
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case 9:
+	case RPC_ISGUILDTERMINAL__:
 		resp->insertBoolean(isGuildTerminal());
 		break;
-	case 10:
+	case RPC_SETGUILDOBJECT__GUILDOBJECT_:
 		setGuildObject((GuildObject*) inv->getObjectParameter());
 		break;
-	case 11:
+	case RPC_GETGUILDOBJECT__:
 		resp->insertLong(getGuildObject()->_getObjectID());
 		break;
 	default:

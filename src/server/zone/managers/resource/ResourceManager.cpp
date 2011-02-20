@@ -422,17 +422,17 @@ int ResourceManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) {
 	_initializeImplementation();
-	// server/zone/managers/resource/ResourceManager.idl(82):  		Logger.setLoggingName("ResourceManager");
+	// server/zone/managers/resource/ResourceManager.idl():  		Logger.setLoggingName("ResourceManager");
 	Logger::setLoggingName("ResourceManager");
-	// server/zone/managers/resource/ResourceManager.idl(84):  		Logger.setLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(85):  		Logger.setGlobalLogging(true);
+	// server/zone/managers/resource/ResourceManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/resource/ResourceManager.idl(87):  		zoneServer = server;
+	// server/zone/managers/resource/ResourceManager.idl():  		zoneServer = server;
 	zoneServer = server;
-	// server/zone/managers/resource/ResourceManager.idl(88):  		processor = impl;
+	// server/zone/managers/resource/ResourceManager.idl():  		processor = impl;
 	processor = impl;
-	// server/zone/managers/resource/ResourceManager.idl(89):  		objectManager = objectMan;
+	// server/zone/managers/resource/ResourceManager.idl():  		objectManager = objectMan;
 	objectManager = objectMan;
 }
 
@@ -443,56 +443,58 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server,
 ResourceManagerAdapter::ResourceManagerAdapter(ResourceManagerImplementation* obj) : ObserverAdapter(obj) {
 }
 
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_,RPC_SENDSURVEY__PLAYERCREATURE_STRING_,RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_,RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_,RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_,RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_,RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_INT_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_};
+
 Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
+	case RPC_STOP__:
 		stop();
 		break;
-	case 7:
+	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case 8:
+	case RPC_SHIFTRESOURCES__:
 		shiftResources();
 		break;
-	case 9:
+	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case 10:
+	case RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_:
 		sendResourceListForSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_sendResourceListForSurvey__PlayerCreature_int_String_));
 		break;
-	case 11:
+	case RPC_SENDSURVEY__PLAYERCREATURE_STRING_:
 		sendSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurvey__PlayerCreature_String_));
 		break;
-	case 12:
+	case RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_:
 		sendSample((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSample__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_sendSample__PlayerCreature_String_String_));
 		break;
-	case 13:
+	case RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_:
 		resp->insertLong(harvestResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_harvestResource__PlayerCreature_String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 14:
+	case RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_:
 		harvestResourceToPlayer((PlayerCreature*) inv->getObjectParameter(), (ResourceSpawn*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 15:
+	case RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_:
 		resp->insertInt(getAvailablePowerFromPlayer((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 16:
+	case RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_:
 		removePowerFromPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 17:
+	case RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_:
 		createResourceSpawn((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__PlayerCreature_String_));
 		break;
-	case 18:
+	case RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_:
 		givePlayerResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_givePlayerResource__PlayerCreature_String_int_), inv->getSignedIntParameter());
 		break;
-	case 19:
+	case RPC_GETCURRENTSPAWN__STRING_INT_:
 		resp->insertLong(getCurrentSpawn(inv->getAsciiParameter(_param0_getCurrentSpawn__String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 20:
+	case RPC_GETRESOURCESPAWN__STRING_:
 		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
 		break;
-	case 21:
+	case RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_:
 		addChildrenToDeedListBox(inv->getAsciiParameter(_param0_addChildrenToDeedListBox__String_ResourceDeedListBox_bool_), (ResourceDeedListBox*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	default:
