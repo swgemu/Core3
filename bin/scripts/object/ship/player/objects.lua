@@ -1058,7 +1058,7 @@ object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
-	totalCellNumber = 4,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -1706,7 +1706,7 @@ object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate
 	surfaceType = 0,
 
 	targetable = 1,
-	totalCellNumber = 11,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -2246,7 +2246,7 @@ object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
-	totalCellNumber = 10,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -2300,7 +2300,7 @@ object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 	surfaceType = 0,
 
 	targetable = 1,
-	totalCellNumber = 7,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
@@ -2354,7 +2354,7 @@ object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:
 	surfaceType = 0,
 
 	targetable = 1,
-	totalCellNumber = 7,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 

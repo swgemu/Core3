@@ -46,7 +46,22 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 	collisionMaterialFlags = templateData->getIntField("collisionMaterialFlags");
 	collisionMaterialPassFlags = templateData->getIntField("collisionMaterialPassFlags");
-	scale = templateData->getFloatField("scale");
+
+	LuaObject scaleObject = templateData->getObjectField("scale");
+
+	if (scaleObject.isValidTable()) {
+		scale.removeAll(2, 0);
+
+		for (int i = 1; i <= scaleObject.getTableSize(); ++i) {
+			scale.add(scaleObject.getFloatAt(i));
+		}
+
+		scaleObject.pop();
+	} else {
+		scaleObject.pop();
+
+		scale.add(templateData->getFloatField("scale"));
+	}
 
 	collisionMaterialBlockFlags = templateData->getIntField("collisionMaterialBlockFlags");
 	collisionActionFlags = templateData->getIntField("collisionActionFlags");

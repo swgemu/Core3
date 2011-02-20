@@ -45,13 +45,15 @@ void ImageDesignSessionImplementation::startImageDesign(PlayerCreature* designer
 	targetCreature = targetPlayer;
 
 	idTimeoutEvent = new ImageDesignTimeoutEvent(_this);
-
 }
 
 void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64 targetPlayer, uint64 tent, int type, const ImageDesignData& data) {
 	imageDesignData = data;
 
-	if (targetCreature == NULL || designerCreature == NULL)
+	ManagedReference<SceneObject*> strongReferenceTarget = targetCreature.get();
+	ManagedReference<SceneObject*> strongReferenceDesigner = designerCreature.get();
+
+	if (strongReferenceTarget == NULL || strongReferenceDesigner == NULL)
 		return;
 
 	Locker locker(designerCreature);
@@ -86,6 +88,11 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 			dequeueIdTimeoutEvent();
 	}
 
+	if (targetCreature->getObjectID() == targetPlayer) {
+		targetCreature->sendMessage(message);
+	} else {
+		designerCreature->sendMessage(message);
+	}
 	//Send the update message to the right person (should always be the target I would think).
 }
 

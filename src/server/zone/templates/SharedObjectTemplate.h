@@ -41,7 +41,7 @@ protected:
 
 	int collisionMaterialFlags;
 	int collisionMaterialPassFlags;
-	float scale;
+	Vector<float> scale;
 	int collisionMaterialBlockFlags;
 	int collisionActionFlags;
 	int collisionActionPassFlags;
@@ -229,8 +229,8 @@ public:
 		return &arrangementDescriptors;
 	}
 
-    inline float getScale() const {
-		return scale;
+    inline Vector<float>* getScale() {
+		return &scale;
 	}
 
     inline float getScaleThresholdBeforeExtentTest() const {
