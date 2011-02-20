@@ -31,7 +31,7 @@ public:
 	}
 
 	void parse(Message* message) {
-		//message->shiftOffset(4);//?
+		message->shiftOffset(4);//?
 		designer = message->parseLong();
 		target = message->parseLong();
 		tent = message->parseLong();

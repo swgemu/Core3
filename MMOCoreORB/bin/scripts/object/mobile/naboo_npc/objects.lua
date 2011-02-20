@@ -90,7 +90,7 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -168,7 +168,7 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,

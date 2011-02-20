@@ -90,7 +90,7 @@ object_creature_npc_base_shared_aqualish_base_female = SharedCreatureObjectTempl
 	race = 1,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.85, 0.9},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -168,7 +168,7 @@ object_creature_npc_base_shared_aqualish_base_male = SharedCreatureObjectTemplat
 	race = 1,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.89, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -246,7 +246,7 @@ object_creature_npc_base_shared_aqualish_s02_base_female = SharedCreatureObjectT
 	race = 1,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.85, 0.9},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -324,7 +324,7 @@ object_creature_npc_base_shared_aqualish_s02_base_male = SharedCreatureObjectTem
 	race = 1,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.89, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -402,7 +402,7 @@ object_creature_npc_base_shared_aqualish_s03_base_female = SharedCreatureObjectT
 	race = 1,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.85, 0.9},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -480,7 +480,7 @@ object_creature_npc_base_shared_aqualish_s03_base_male = SharedCreatureObjectTem
 	race = 1,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.89, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -792,7 +792,7 @@ object_creature_npc_base_shared_bith_base_female = SharedCreatureObjectTemplate:
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.75, 0.875},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -870,7 +870,7 @@ object_creature_npc_base_shared_bith_base_male = SharedCreatureObjectTemplate:ne
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.75, 0.875},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -948,7 +948,7 @@ object_creature_npc_base_shared_bothan_base_female = SharedCreatureObjectTemplat
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.76, 0.88},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1026,7 +1026,7 @@ object_creature_npc_base_shared_bothan_base_male = SharedCreatureObjectTemplate:
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.76, 0.88},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1104,7 +1104,7 @@ object_creature_npc_base_shared_chadra_fan_base_female = SharedCreatureObjectTem
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.49, 0.51},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1182,7 +1182,7 @@ object_creature_npc_base_shared_chadra_fan_base_male = SharedCreatureObjectTempl
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.5, 0.55},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1260,7 +1260,7 @@ object_creature_npc_base_shared_dantari_base_male = SharedCreatureObjectTemplate
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.85, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1338,7 +1338,7 @@ object_creature_npc_base_shared_devaronian_base_male = SharedCreatureObjectTempl
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.8, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1572,7 +1572,7 @@ object_creature_npc_base_shared_dulok_base_female = SharedCreatureObjectTemplate
 	race = 2,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.72, 0.74},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1650,7 +1650,7 @@ object_creature_npc_base_shared_dulok_base_male = SharedCreatureObjectTemplate:n
 	race = 2,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.74, 0.78},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1728,7 +1728,7 @@ object_creature_npc_base_shared_ewok_base_female = SharedCreatureObjectTemplate:
 	race = 1,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.72, 0.74},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -1806,7 +1806,7 @@ object_creature_npc_base_shared_ewok_base_male = SharedCreatureObjectTemplate:ne
 	race = 1,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.72, 0.74},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2118,7 +2118,7 @@ object_creature_npc_base_shared_gran_base_male = SharedCreatureObjectTemplate:ne
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.55, 0.9},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2196,7 +2196,7 @@ object_creature_npc_base_shared_gungan_base_male = SharedCreatureObjectTemplate:
 	race = 2,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.85, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2274,7 +2274,7 @@ object_creature_npc_base_shared_human_base_female = SharedCreatureObjectTemplate
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2352,7 +2352,7 @@ object_creature_npc_base_shared_human_base_male = SharedCreatureObjectTemplate:n
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2586,7 +2586,7 @@ object_creature_npc_base_shared_ishi_tib_base_male = SharedCreatureObjectTemplat
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.85, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2664,7 +2664,7 @@ object_creature_npc_base_shared_ithorian_base_male = SharedCreatureObjectTemplat
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.9, 1.65},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2742,7 +2742,7 @@ object_creature_npc_base_shared_jawa_base_male = SharedCreatureObjectTemplate:ne
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.95, 1.05},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2820,7 +2820,7 @@ object_creature_npc_base_shared_jinda_base_female = SharedCreatureObjectTemplate
 	race = 3,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.72, 0.74},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -2898,7 +2898,7 @@ object_creature_npc_base_shared_jinda_base_male = SharedCreatureObjectTemplate:n
 	race = 3,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.72, 0.74},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3210,7 +3210,7 @@ object_creature_npc_base_shared_moncal_base_female = SharedCreatureObjectTemplat
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.88, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3288,7 +3288,7 @@ object_creature_npc_base_shared_moncal_base_male = SharedCreatureObjectTemplate:
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.88, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3366,7 +3366,7 @@ object_creature_npc_base_shared_nikto_base_male = SharedCreatureObjectTemplate:n
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.8, 0.95},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3444,7 +3444,7 @@ object_creature_npc_base_shared_quarren_base_male = SharedCreatureObjectTemplate
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.65, 0.9},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3522,7 +3522,7 @@ object_creature_npc_base_shared_rodian_base_female = SharedCreatureObjectTemplat
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.88, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3600,7 +3600,7 @@ object_creature_npc_base_shared_rodian_base_male = SharedCreatureObjectTemplate:
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.88, 1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3678,7 +3678,7 @@ object_creature_npc_base_shared_selonian_base_female = SharedCreatureObjectTempl
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.9, 1.1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3756,7 +3756,7 @@ object_creature_npc_base_shared_selonian_base_male = SharedCreatureObjectTemplat
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.9, 1.1},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3834,7 +3834,7 @@ object_creature_npc_base_shared_sullustan_base_male = SharedCreatureObjectTempla
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.5, 0.9},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3912,7 +3912,7 @@ object_creature_npc_base_shared_trandoshan_base_female = SharedCreatureObjectTem
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1.12, 1.24},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -3990,7 +3990,7 @@ object_creature_npc_base_shared_trandoshan_base_male = SharedCreatureObjectTempl
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1.12, 1.24},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4146,7 +4146,7 @@ object_creature_npc_base_shared_twilek_base_female = SharedCreatureObjectTemplat
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4224,7 +4224,7 @@ object_creature_npc_base_shared_twilek_base_male = SharedCreatureObjectTemplate:
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1, 1.12},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4302,7 +4302,7 @@ object_creature_npc_base_shared_weequay_base_male = SharedCreatureObjectTemplate
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.75, 0.85},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4380,7 +4380,7 @@ object_creature_npc_base_shared_whiphid_base_female = SharedCreatureObjectTempla
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.5, 1.3},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4458,7 +4458,7 @@ object_creature_npc_base_shared_whiphid_base_male = SharedCreatureObjectTemplate
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.5, 1.3},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4536,7 +4536,7 @@ object_creature_npc_base_shared_wookiee_base_female = SharedCreatureObjectTempla
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1.24, 1.36},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4614,7 +4614,7 @@ object_creature_npc_base_shared_wookiee_base_male = SharedCreatureObjectTemplate
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {1.24, 1.36},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4692,7 +4692,7 @@ object_creature_npc_base_shared_zabrak_base_female = SharedCreatureObjectTemplat
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.94, 1.06},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
@@ -4770,7 +4770,7 @@ object_creature_npc_base_shared_zabrak_base_male = SharedCreatureObjectTemplate:
 	race = 0,
 	rangedIntCustomizationVariables = {},
 
-	scale = 1,
+	scale = {0.94, 1.06},
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
 	slopeModAngle = 15,
