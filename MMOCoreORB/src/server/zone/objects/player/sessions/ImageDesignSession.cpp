@@ -336,6 +336,11 @@ ImageDesignSessionImplementation::ImageDesignSessionImplementation(CreatureObjec
 	imageDesignManager = NULL;
 }
 
+int ImageDesignSessionImplementation::initializeSession() {
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		return 0;
+	return 0;
+}
+
 int ImageDesignSessionImplementation::cancelSession() {
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		if 
 	if (designerCreature != NULL)	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			designerCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
@@ -371,11 +376,15 @@ void ImageDesignSessionImplementation::dequeueIdTimeoutEvent() {
 
 void ImageDesignSessionImplementation::sessionTimeout() {
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		if 
-	if (designerCreature != NULL)	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			designerCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
+	if (designerCreature != NULL){
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			designerCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
 	designerCreature->sendSystemMessage("Image Design session has timed out. Changes aborted.");
+}
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  	}
-	if (targetCreature != NULL)	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			targetCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
+	if (targetCreature != NULL){
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			targetCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
 	targetCreature->sendSystemMessage("Image Design session has timed out. Changes aborted.");
+}
 }
 
 /*

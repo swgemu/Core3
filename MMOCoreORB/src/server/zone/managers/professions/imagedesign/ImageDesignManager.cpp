@@ -57,17 +57,15 @@ ImageDesignManager::ImageDesignManager() {
 }
 
 void ImageDesignManager::updateCustomization(const String& customizationName, float value, CreatureObject* creo) {
-	/*if (creo == NULL)
+	if (creo == NULL)
 		return;
 
 	if (value < 0 || value > 1)
 		return;
 
-	speciesGender = getSpeciesGenderString(creo);
+	String speciesGender = getSpeciesGenderString(creo);
 
-	creatureObject = creo;
-
-	hairCustomization.removeAll();
+	ManagedReference<CreatureObject*> creatureObject = creo;
 
 	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
 
@@ -78,7 +76,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 
 	String variables = customData->getVariables();
 	String type = customData->getType();
-	int choices = customData->getMaxChoices();
+	//int choices = customData->getMaxChoices();
 
 	if (type == "hslider") {
 
@@ -124,7 +122,8 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 
 			if (token_2 == "") {
 				if (customData->getIsVarHairColor())
-					setHairAttribute(token_1, (value * 255));
+					System::out << "hair" << endl;
+					//setHairAttribute(token_1, (value * 255));
 				else
 					creatureObject->setCustomizationVariable(token_1, (value * 255));
 			} else {
@@ -170,8 +169,8 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 			while (tokenizer.hasMoreTokens()) {
 				String attribute;
 				tokenizer.getStringToken(attribute);
-
-				creatureObject->setCustomizationVariable(attribute, ((value / 1.0f) * (choices - 1)));
+				creatureObject->setCustomizationVariable(attribute,(value / 1.0f));
+				//creatureObject->setCustomizationVariable(attribute, ((value / 1.0f) * (choices - 1)));
 			}
 
 		}
@@ -180,16 +179,15 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 	} else
 		creatureObject->sendSystemMessage(
 				"This shouldn't have happend.  Please report repro steps to Polonel - updateCustomization(String customizationName, uint32 value)");
-*/
 }
 
 void ImageDesignManager::updateCustomization(const String& customizationName, uint32 value, CreatureObject* creo) {
-	/*if (value > 255 || creo == NULL)
+	if (value > 255 || creo == NULL)
 		return;
 
-	speciesGender = getSpeciesGenderString(creo);
+	String speciesGender = getSpeciesGenderString(creo);
 
-	creatureObject = creo;
+	ManagedReference<CreatureObject*> creatureObject = creo;
 
 	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
 
@@ -210,7 +208,8 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 			tokenizer.getStringToken(attribute);
 
 			if (customData->getIsVarHairColor())
-				setHairAttribute(attribute, value);
+				System::out << "hair" << endl;
+				//session->setHairAttribute(attribute, value);
 			else
 				creatureObject->setCustomizationVariable(attribute, value);
 		}
@@ -224,7 +223,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 	} else {
 		creatureObject->sendSystemMessage(
 				"This shouldn't have happend.  Please report repro steps to Polonel - updateCustomization(String customizationName, uint32 value)");
-	}*/
+	}
 }
 
 void ImageDesignManager::loadCustomizationData() {
@@ -247,7 +246,6 @@ void ImageDesignManager::loadCustomizationData() {
 
 		//Get the species gender
 		String speciesGender = dataRow->getCell(0)->toString();
-
 		uint32 templateCRC = String("object/creature/player/" + speciesGender + ".iff").hashCode();
 		PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
 
@@ -261,7 +259,13 @@ void ImageDesignManager::loadCustomizationData() {
 
 		CustomizationData customizationData;
 		customizationData.parseRow(dataRow);
+
+		Vector<float>* scale = tmpl->getScale();
+		customizationData.setMinScale(scale->get(0));
+		customizationData.setMaxScale(scale->get(1));
+
 		dataMap->put(customizationData.getCustomizationName(), customizationData);
+
 	}
 
 	//Done with the stream, so delete it.
@@ -269,20 +273,21 @@ void ImageDesignManager::loadCustomizationData() {
 		delete iffStream;
 		iffStream = NULL;
 	}
+
 }
 
 CustomizationData* ImageDesignManager::getCustomizationData(const String& speciesGender, const String& customizationName) {
+	TemplateManager* templateManager = TemplateManager::instance();
 
-	//StringBuffer speciesGenderCustomization;
-	//speciesGenderCustomization << speciesGender << "_" << customizationName;
+	uint32 templateCRC = String("object/creature/player/" + speciesGender + ".iff").hashCode();
 
-	//CustomizationData* customization = customizationData.get(speciesGenderCustomization.toString());
+	PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
+	CustomizationData* customization = tmpl->getCustomizationData(customizationName);
 
-	//if (customization == NULL)
-	//	return NULL;
+	if (customization == NULL)
+		return NULL;
 
-	return NULL;
-	//return customization;
+	return customization;
 }
 
 String ImageDesignManager::getSpeciesGenderString(CreatureObject* creo) {
@@ -312,11 +317,9 @@ void ImageDesignManager::updateCharacterAppearance(CreatureObject* creo) {
 	creo->broadcastMessage(dcreo3, true);
 }
 
-void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObject) {
+void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObject, String& hairCustomization) {
 	if (creo == NULL)
 		return;
-
-	/*
 
 	TangibleObject* hair = (TangibleObject*) creo->getSlottedObject("hair");
 
@@ -327,18 +330,13 @@ void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObje
 	}
 
 	if (!hairObject.isEmpty()) {
-		String h;
-		hairCustomization.getData(h);
-
 		ManagedReference<PlayerManager*> playerMgr = creo->getZoneServer()->getPlayerManager();
-		hair = playerMgr->createHairObject(hairObject, h);
+		hair = playerMgr->createHairObject(hairObject, hairCustomization);
 		creo->addObject(hair, 4);
 		creo->broadcastObject(hair, true);
 
 	}
 
-	hairCustomization.removeAll();
-	*/
 }
 
 ImageDesignManager::~ImageDesignManager() {

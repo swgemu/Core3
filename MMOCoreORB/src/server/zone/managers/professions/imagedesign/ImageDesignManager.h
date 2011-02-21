@@ -31,7 +31,7 @@ public:
 
 	void updateCharacterAppearance(CreatureObject* creo = NULL);
 
-	void updateHairObject(CreatureObject* creo, String& hairObject);
+	void updateHairObject(CreatureObject* creo, String& hairObject, String& hairCustomization);
 
 	void setHairAttribute(String& type, uint8 value);
 	void setHairAttribute(uint8 type, uint8 value);

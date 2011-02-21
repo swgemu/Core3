@@ -43,7 +43,8 @@
 
 object_creature_player_ithorian_male = object_creature_player_shared_ithorian_male:new {
 	baseHAM = { 0, 0, 0, 0, 0, 150, 300, 300, 150 },
-	gameObjectType = 1033
+	gameObjectType = 1033,
+	templateType = PLAYERCREATURE
 }
 
 ObjectTemplates:addTemplate(object_creature_player_ithorian_male, "object/creature/player/ithorian_male.iff")

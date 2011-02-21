@@ -43,7 +43,8 @@
 
 object_creature_player_human_male = object_creature_player_shared_human_male:new {
 	baseHAM = { 100, 100, 100, 100, 100, 100, 100, 100, 100 },
-	gameObjectType = 1033
+	gameObjectType = 1033,
+	templateType = PLAYERCREATURE
 }
 
 ObjectTemplates:addTemplate(object_creature_player_human_male, "object/creature/player/human_male.iff")

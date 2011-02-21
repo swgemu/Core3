@@ -128,6 +128,7 @@ public:
 	const static int FIREWORK = 0x400001B;
 	const static int VEHICLEDEED = 0x400001C;
 	const static int CAMPKIT = 0x400001D;
+	const static int PLAYERCREATURE = 0x400001E;
 
 public:
 	SharedObjectTemplate() {
