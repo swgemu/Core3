@@ -222,14 +222,14 @@ void ZoneServerImplementation::startZones() {
 		Zone* zone = zones.get(i);
 
 		if (zone != NULL) {
-			//zone->startManagers();
+			zone->startManagers();
 
-			Reference<Task*> task = new ZoneLoadManagersTask(zone);
-			Core::getTaskManager()->executeTask(task);
+			/*Reference<Task*> task = new ZoneLoadManagersTask(zone);
+			Core::getTaskManager()->executeTask(task);*/
 		}
 	}
 
-	for (int i = 0; i < zones.size(); ++i) {
+	/*for (int i = 0; i < zones.size(); ++i) {
 		Zone* zone = zones.get(i);
 
 		if (zone != NULL) {
@@ -239,7 +239,7 @@ void ZoneServerImplementation::startZones() {
 				--i;
 			}
 		}
-	}
+	}*/
 
 }
 
@@ -416,7 +416,7 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	try {
 		//lock(doLock); ObjectManager has its own mutex
 
-		DistributedObject* distributedObject = DistributedObjectBroker::instance()->lookUp(oid);
+		DistributedObject* distributedObject = Core::getObjectBroker()->lookUp(oid);
 
 		if (distributedObject != NULL) {
 			obj = dynamic_cast<SceneObject*>(distributedObject); // only for debug purposes
@@ -699,7 +699,7 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 }
 
 Account* ZoneServerImplementation::getAccount(uint32 accountID) {
-	/*ManagedReference<LoginServer*> loginServer = (LoginServer*) DistributedObjectBroker::instance()->lookUp("LoginServer");
+	/*ManagedReference<LoginServer*> loginServer = (LoginServer*) Core::getObjectBroker()->lookUp("LoginServer");
 
 	if (loginServer == NULL)
 		return NULL;
