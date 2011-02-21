@@ -125,6 +125,8 @@ namespace zone {
 
 		ManagedObject* createObject(const String& className, int persistenceLevel, const String& database, uint64 oid = 0);
 
+		void createObjectID(const String& name, DistributedObjectStub* object);
+
 		/**
 		 * Returns a clone of the passed object with new object id
 		 * if the passed object is persistent, the new object will be too
