@@ -110,7 +110,9 @@ class ImageDesignSession extends Facade {
 	@local
 	public native void cancelImageDesign(unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);	
 
-	public native int initializeSession();
+	public int initializeSession() {
+		return 0;
+	}
 	
 	public native int doPayment();
 	
@@ -142,14 +144,15 @@ class ImageDesignSession extends Facade {
 	}
 
 	public void sessionTimeout() {
-		if (designerCreature != null)
+		if (designerCreature != null) {
 			designerCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
+			//cancelImageDesign(designerCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0, @dereference imageDesignData);
+		}
 		
-		if (targetCreature != null)			
+		if (targetCreature != null) {
 			targetCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
+			//cancelImageDesign(targetCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0, @dereference imageDesignData);
+		}
 		
-		//TODO: Something needs doing here.
-		//cancelImageDesign(designerCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0);
-		//cancelImageDesign(targetCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0);
 	}
 }

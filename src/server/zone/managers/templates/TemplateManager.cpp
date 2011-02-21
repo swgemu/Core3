@@ -62,6 +62,7 @@
 #include "server/zone/templates/tangible/DeedTemplate.h"
 #include "server/zone/templates/tangible/VehicleDeedTemplate.h"
 #include "server/zone/templates/tangible/MissionTerminalTemplate.h"
+#include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -254,6 +255,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<ConsumableTemplate>(SharedObjectTemplate::CONSUMABLE);
 	templateFactory.registerObject<InstrumentObjectTemplate>(SharedObjectTemplate::INSTRUMENT);
 	templateFactory.registerObject<CampKitTemplate>(SharedObjectTemplate::CAMPKIT);
+	templateFactory.registerObject<PlayerCreatureTemplate>(SharedObjectTemplate::PLAYERCREATURE);
 
 }
 
@@ -389,6 +391,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CONSUMABLE", SharedObjectTemplate::CONSUMABLE);
 	luaTemplatesInstance->setGlobalInt("INSTRUMENT", SharedObjectTemplate::INSTRUMENT);
 	luaTemplatesInstance->setGlobalInt("CAMPKIT", SharedObjectTemplate::CAMPKIT);
+	luaTemplatesInstance->setGlobalInt("PLAYERCREATURE", SharedObjectTemplate::PLAYERCREATURE);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

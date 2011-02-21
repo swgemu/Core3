@@ -43,7 +43,8 @@
 
 object_creature_player_moncal_male = object_creature_player_shared_moncal_male:new {
 	baseHAM = { 0, 0, 0, 0, 0, 150, 300, 300, 150 },
-	gameObjectType = 1033
+	gameObjectType = 1033,
+	templateType = PLAYERCREATURE
 }
 
 ObjectTemplates:addTemplate(object_creature_player_moncal_male, "object/creature/player/moncal_male.iff")

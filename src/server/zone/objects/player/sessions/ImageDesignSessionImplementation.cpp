@@ -17,14 +17,10 @@
 
 #include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
 
-int ImageDesignSessionImplementation::initializeSession() {
-	return 0;
-}
-
 void ImageDesignSessionImplementation::startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer) {
 	uint64 tentID = 0;
 
-	ManagedReference<SceneObject*> obj = designer->getParentRecursively(SceneObject::BUILDING);
+	ManagedReference<SceneObject*> obj = designer->getParentRecursively(SceneObject::SALONBUILDING);
 
 	if (obj != NULL)
 		tentID = obj->getObjectID();
@@ -78,9 +74,34 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 		}
 	}
 
+	String h = imageDesignData.getHairCustomizationString();
+	//System::out << h << endl;
 	if (commitChanges) {
 		//TODO: set XP Values
 
+		VectorMap<String, float>* bodyAttributes = imageDesignData.getBodyAttributesMap();
+		VectorMap<String, uint32>* colorAttributes = imageDesignData.getColorAttributesMap();
+
+		imageDesignManager = ProfessionManager::instance()->getImageDesignManager();
+
+		for (int i = 0; i < bodyAttributes->size(); ++i) {
+			VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
+
+			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), targetCreature);
+		}
+
+		for (int i = 0; i < colorAttributes->size(); ++i) {
+			VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
+			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), targetCreature);
+		}
+
+		// Update Hair
+		String hairTemplate = imageDesignData.getHairTemplate();
+		String hairCustomization = imageDesignData.getHairCustomizationString();
+
+		imageDesignManager->updateHairObject(targetCreature, hairTemplate, hairCustomization);
+
+		// Drop the Session for both the designer and the targetCreature;
 		designerCreature->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
 		targetCreature->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
 
@@ -93,7 +114,6 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 	} else {
 		designerCreature->sendMessage(message);
 	}
-	//Send the update message to the right person (should always be the target I would think).
 }
 
 int ImageDesignSessionImplementation::doPayment() {
@@ -127,8 +147,11 @@ void ImageDesignSessionImplementation::cancelImageDesign(uint64 designer, uint64
 	Locker locker(designerCreature);
 	Locker clocker(targetCreature, designerCreature);
 
-	ImageDesignRejectMessage* message = NULL;
+	ImageDesignRejectMessage* message = new ImageDesignRejectMessage(designer, targetPlayer,tent, type);
 
+	imageDesignData.insertToMessage(message);
+
+	targetCreature->sendMessage(message);
 	/*
 	if (designerCreature == targetCreature) {
 	} else if(object == designer) {

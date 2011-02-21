@@ -43,7 +43,8 @@
 
 object_creature_player_sullustan_male = object_creature_player_shared_sullustan_male:new {
 	baseHAM = { 150, 0, 0, 250, 50, 50, 200, 100, 100 },
-	gameObjectType = 1033
+	gameObjectType = 1033,
+	templateType = PLAYERCREATURE
 }
 
 ObjectTemplates:addTemplate(object_creature_player_sullustan_male, "object/creature/player/sullustan_male.iff")
