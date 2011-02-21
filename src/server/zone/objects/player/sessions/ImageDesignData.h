@@ -89,6 +89,7 @@ public:
 
 		String customizationString;
 		message->parseAscii(customizationString);
+		System::out << customizationString << endl;
 		hairCustomizationVariables.parseFromString(customizationString);
 
 		unknownInt1 = message->parseInt();
@@ -132,12 +133,13 @@ public:
 		message->parseAscii(holoEmote);
 	}
 
-	void insertToMessage(Message* message) const {
+	void insertToMessage(Message* message) {
 		message->insertAscii(hairTemplate);
 
-		//TODO:figure out a solution for this.
-		message->insertAscii("");
-		//message->insertAscii(hairCustomizationVariables.toString());
+		String data;
+		hairCustomizationVariables.getData(data);
+		message->insertAscii(data);
+
 		message->insertInt(unknownInt1);
 		message->insertInt(timestamp);
 		message->insertInt(requiredPayment);
@@ -189,6 +191,28 @@ public:
 
 	inline uint32 getOfferedPayment() {
 		return offeredPayment;
+	}
+
+	inline String getHairTemplate() {
+		return hairTemplate;
+	}
+
+	inline void setHairAttribute(String& attr, uint32 val) {
+		hairCustomizationVariables.setVariable(attr,val);
+	}
+
+	inline String getHairCustomizationString() {
+		String hairCustomization;
+		hairCustomizationVariables.getData(hairCustomization);
+		return hairCustomization;
+	}
+
+	inline VectorMap<String, float>* getBodyAttributesMap() {
+		return &bodyAttributes;
+	}
+
+	inline VectorMap<String, uint32>* getColorAttributesMap() {
+		return &colorAttributes;
 	}
 };
 

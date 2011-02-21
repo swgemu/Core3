@@ -43,7 +43,8 @@
 
 object_creature_player_twilek_female = object_creature_player_shared_twilek_female:new {
 	baseHAM = { 0, 0, 250, 250, 300, 0, 100, 0, 0 },
-	gameObjectType = 1033
+	gameObjectType = 1033,
+	templateType = PLAYERCREATURE
 }
 
 ObjectTemplates:addTemplate(object_creature_player_twilek_female, "object/creature/player/twilek_female.iff")

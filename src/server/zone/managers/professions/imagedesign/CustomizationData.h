@@ -29,6 +29,8 @@ class CustomizationData : public Object {
 	String imageDesignSkillMod;
 	int skillModValue;
 	String modificationType;
+	float minScale;
+	float maxScale;
 
 public:
 	CustomizationData() {
@@ -40,6 +42,8 @@ public:
 		randomizableGroup = false;
 		isVarHairColor = false;
 		skillModValue = 0;
+		minScale = 0.f;
+		maxScale = 0.f;
 	}
 
 	CustomizationData(const CustomizationData& c) :	Object() {
@@ -60,6 +64,8 @@ public:
 		imageDesignSkillMod = c.imageDesignSkillMod;
 		skillModValue = c.skillModValue;
 		modificationType = c.modificationType;
+		minScale = c.minScale;
+		maxScale = c.maxScale;
 	}
 
 	CustomizationData& operator=(const CustomizationData& c) {
@@ -83,6 +89,8 @@ public:
 		imageDesignSkillMod = c.imageDesignSkillMod;
 		skillModValue = c.skillModValue;
 		modificationType = c.modificationType;
+		minScale = c.minScale;
+		maxScale = c.maxScale;
 
 		return *this;
 	}
@@ -195,6 +203,23 @@ public:
 	inline bool isColorPicker() {
 		return (type == "color");
 	}
+
+	inline float getMinScale() {
+		return minScale;
+	}
+
+	inline float getMaxScale() {
+		return maxScale;
+	}
+
+	inline void setMinScale(float min) {
+		minScale = min;
+	}
+
+	inline void setMaxScale(float max) {
+		maxScale = max;
+	}
+
 };
 
 #endif /* CUSTOMIZATIONDATA_H_ */

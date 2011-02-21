@@ -43,7 +43,8 @@
 
 object_creature_player_rodian_male = object_creature_player_shared_rodian_male:new {
 	baseHAM = { 0, 0, 0, 200, 200, 450, 0, 0, 50 }, 
-	gameObjectType = 1033
+	gameObjectType = 1033,
+	templateType = PLAYERCREATURE
 }
 
 ObjectTemplates:addTemplate(object_creature_player_rodian_male, "object/creature/player/rodian_male.iff")

@@ -43,7 +43,8 @@
 
 object_creature_player_wookiee_female = object_creature_player_shared_wookiee_female:new {
 	baseHAM = { 350, 350, 150, 200, 100, 100, 100, 150, 100 },
-	gameObjectType = 1033
+	gameObjectType = 1033,
+	templateType = PLAYERCREATURE
 }
 
 ObjectTemplates:addTemplate(object_creature_player_wookiee_female, "object/creature/player/wookiee_female.iff")
