@@ -786,6 +786,26 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 	return object;
 }
 
+void ObjectManager::createObjectID(const String& name, DistributedObjectStub* object) {
+	Locker _locker(this);
+
+	uint64 objectid = object->_getObjectID();
+
+	if (objectid == 0) {
+		objectid = getNextFreeObjectID();
+		object->_setObjectID(objectid);
+	}
+
+	if (name.isEmpty() && object->_getName().isEmpty()) {
+		StringBuffer orbname;
+		orbname << "_OrbObject" << objectid;
+
+		object->_setName(orbname.toString());
+	} else
+		object->_setName(name);
+
+}
+
 uint64 ObjectManager::getNextObjectID(const String& database) {
 	uint64 oid = 0;
 
@@ -1006,8 +1026,6 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 
 	info("starting saving objects to database", true);
 
-	DistributedHelperObjectMap* helperMap = localObjectDirectory.getHelperObjectMap();
-
 	Vector<DistributedObject*> objectsToUpdate;
 	Vector<DistributedObject*> objectsToDelete;
 	Vector<Reference<DistributedObject*> > objectsToDeleteFromRAM;
@@ -1032,7 +1050,7 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 	for (int i = 0; i < objectsToDeleteFromRAM.size(); ++i) {
 		DistributedObject* object = objectsToDeleteFromRAM.get(i);
 
-		helperMap->remove(object->_getObjectID());
+		localObjectDirectory.removeHelper(object->_getObjectID());
 	}
 
 #ifndef WITH_STM
