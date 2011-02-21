@@ -796,14 +796,15 @@ void ObjectManager::createObjectID(const String& name, DistributedObjectStub* ob
 		object->_setObjectID(objectid);
 	}
 
-	if (name.isEmpty() && object->_getName().isEmpty()) {
-		StringBuffer orbname;
-		orbname << "_OrbObject" << objectid;
+	if (name.isEmpty()) {
+		/*if (object->_getName().isEmpty())*/ {
+			StringBuffer orbname;
+			orbname << "_OrbObject" << objectid;
 
-		object->_setName(orbname.toString());
+			object->_setName(orbname.toString());
+		}
 	} else
 		object->_setName(name);
-
 }
 
 uint64 ObjectManager::getNextObjectID(const String& database) {

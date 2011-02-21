@@ -41,7 +41,7 @@ void BazaarManagerImplementation::initialize() {
 	uint64 objectID = 0;
 
 	while (iterator.getNextKey(objectID)) {
-		AuctionItem* auctionItem = (AuctionItem*) DistributedObjectBroker::instance()->lookUp(objectID);
+		AuctionItem* auctionItem = (AuctionItem*) Core::getObjectBroker()->lookUp(objectID);
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		auctionMap->addAuction(auctionItem->getAuctionedItemObjectID(), auctionItem);

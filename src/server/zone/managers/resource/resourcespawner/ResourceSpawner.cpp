@@ -160,7 +160,7 @@ void ResourceSpawner::loadResourceSpawns() {
 
 		ManagedReference<ResourceSpawn*>
 				resourceSpawn =
-						dynamic_cast<ResourceSpawn*> (DistributedObjectBroker::instance()->lookUp(
+						dynamic_cast<ResourceSpawn*> (Core::getObjectBroker()->lookUp(
 								objectID));
 		//ObjectDatabaseManager::instance()->commitLocalTransaction();
 
