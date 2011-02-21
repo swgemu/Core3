@@ -89,7 +89,6 @@ public:
 
 		String customizationString;
 		message->parseAscii(customizationString);
-		System::out << customizationString << endl;
 		hairCustomizationVariables.parseFromString(customizationString);
 
 		unknownInt1 = message->parseInt();
