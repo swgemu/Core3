@@ -80,7 +80,7 @@ public:
 				Locker clocker(object, creature);
 
 				object->selectConversationOption(option, player);
-			} catch (...) {
+			} catch (Exception& e) {
 
 			}
 		}

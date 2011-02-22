@@ -62,21 +62,17 @@ public:
 	}
 
 	void run() {
-		try {
-			player->wlock();
+		Locker locker(player);
 
+		try {
 			player->clearDisconnectEvent();
 
 			if (player->isOnline())
 				player->disconnect(true, false);
-
-			player->unlock();
-		} catch (...) {
+		} catch (Exception& e) {
 			player->error("Unreported Exception caught in PlayerDisconnectEvent::activate");
 
 			player->clearDisconnectEvent();
-
-			player->unlock();
 		}
 
 		player = NULL;

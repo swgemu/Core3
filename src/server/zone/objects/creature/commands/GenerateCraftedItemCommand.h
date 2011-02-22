@@ -150,7 +150,7 @@ public:
 				prototype->sendTo(creature, true);
 			}
 
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage("Error in data input, try again");
 			return GENERALERROR;
 		}

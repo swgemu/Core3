@@ -189,7 +189,7 @@ public:
 
 			try {
 				item.templateCRC = templ.hashCode();
-			} catch (...) {
+			} catch (ArrayIndexOutOfBoundsException& e) {
 				StringBuffer msg;
 				msg << "trying to add a default player item with invalid template:" << templ;
 				StartingItemList::instance()->error(msg.toString());
@@ -207,19 +207,12 @@ public:
 
 			StartingItemList::instance()->addItemToProfession(profession, species, sex, item);
 
-
-
 		} catch (Exception& e) {
 			StringBuffer msg;
 			msg << "error adding item to profession list" << endl;
 			msg << "profession: " << profession << " species: " << species << " sex " << sex;
 			StartingItemList::instance()->error(msg.toString());
 			StartingItemList::instance()->error(e.getMessage());
-		} catch (...) {
-			StringBuffer msg;
-			msg << "error adding item to profession list" << endl;
-			msg << "profession: " << profession << " species: " << species << " sex " << sex;
-			StartingItemList::instance()->error(msg.toString());
 		}
 
 		return 0;

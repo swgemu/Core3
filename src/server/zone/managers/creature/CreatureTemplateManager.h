@@ -72,8 +72,6 @@ public:
 		} catch (Exception& e) {
 			error(e.getMessage());
 			e.printStackTrace();
-		} catch (...) {
-			error("unreported exception caught while loading templates");
 		}
 
 		info("done loading mobile templates", true);

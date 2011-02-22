@@ -156,7 +156,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 			}
 
 
-		} catch (...) {
+		} catch (Exception& e) {
 		}
 	}
 

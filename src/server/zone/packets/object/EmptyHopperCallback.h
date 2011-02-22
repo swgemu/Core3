@@ -112,7 +112,7 @@ public:
 
 			inso->broadcastToOperators(new HarvesterObjectMessage7(inso));
 
-		} catch (...) {
+		} catch (Exception& e) {
 			player->error("unreported exception caught in EmptyHopperCallback::run");
 		}
 

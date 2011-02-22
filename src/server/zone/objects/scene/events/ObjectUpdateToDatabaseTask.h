@@ -26,18 +26,12 @@ public:
 
 	void run() {
 		try {
-			object->wlock();
+			Locker locker(object);
 
 			object->clearUpdateToDatabaseTask();
 			object->updateToDatabase();
-
-			object->unlock();
 		} catch (Exception& e) {
 			object->error(e.getMessage());
-			object->unlock();
-		} catch (...) {
-			object->error("unreported exception caught in ObjectSaveToDatabaseTask::run");
-			object->unlock();
 		}
 	}
 };

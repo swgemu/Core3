@@ -118,16 +118,12 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 	if (play == NULL)
 		return;
 
-	try {
-		Locker locker2(play);
+	Locker locker2(play);
 
-		play->removeChatRoom((ChatRoom*) _this);
+	play->removeChatRoom((ChatRoom*) _this);
 
-		ChatOnLeaveRoom* msg = new ChatOnLeaveRoom((ChatRoom*) _this, play);
-		play->sendMessage(msg);
-	} catch (...) {
-		System::out << "unreported Exception in ChatRoom::removePlayer(const String& player)\n";
-	}
+	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom((ChatRoom*) _this, play);
+	play->sendMessage(msg);
 }
 
 void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
@@ -145,14 +141,9 @@ void ChatRoomImplementation::removeAllPlayers() {
 	for (int i = 0; i < playerList.size(); i++) {
 		PlayerCreature* player = playerList.get(i);
 
-		try {
-			Locker clocker(player, _this);
+		Locker clocker(player, _this);
 
-			player->removeChatRoom((ChatRoom*) _this);
-		} catch (...) {
-			System::out << "unreported Exception in ChatRoom::removeAllPlayers(Player* lockedPlayer)\n";
-		}
-
+		player->removeChatRoom((ChatRoom*) _this);
 	}
 
 	playerList.removeAll();

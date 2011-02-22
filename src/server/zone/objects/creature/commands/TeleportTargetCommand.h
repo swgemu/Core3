@@ -97,12 +97,12 @@ public:
 
 					player->switchZone(zoneid, posx, posz, posy, parentid);
 
-				} catch (...) {
+				} catch (Exception& e) {
 
 				}
 			}
 
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for teleport command");
 		}
 

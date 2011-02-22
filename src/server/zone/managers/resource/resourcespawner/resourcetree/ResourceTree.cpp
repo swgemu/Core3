@@ -84,7 +84,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 			"resource_tree.toolType, resource_tree.resourcecontainer FROM resource_tree ORDER BY resource_tree.index ASC";
 
 	try {
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 		if (res->size() != 0) {
 			while (res->next()) {
@@ -140,13 +140,10 @@ bool ResourceTree::buildTreeFromDatabase() {
 			/// Update the Stf Entries now that the tree is built
 			baseNode->updateEntries();
 		}
-		delete res;
 	} catch (DatabaseException& e) {
 		System::out << "Database error in buildTreeFromDatabase\n";
 		System::out << e.getMessage() << endl;
-		return false;
-	} catch (...) {
-		System::out << "unreported exception caught in ResourceTree::buildTreeFromDatabase()\n";
+
 		return false;
 	}
 

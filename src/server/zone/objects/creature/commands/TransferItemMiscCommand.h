@@ -300,7 +300,7 @@ public:
 
 							creature->unlock();
 
-						} catch (...) {
+						} catch (Exception& e) {
 							creature->unlock();
 						}
 

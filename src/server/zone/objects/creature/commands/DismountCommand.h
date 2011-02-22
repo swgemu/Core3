@@ -71,39 +71,33 @@ public:
 
 		CreatureObject* vehicle = (CreatureObject*) mount.get();
 
-		try {
-			Locker clocker(vehicle, creature);
+		Locker clocker(vehicle, creature);
 
-			vehicle->clearState(CreatureState::MOUNTEDCREATURE);
+		vehicle->clearState(CreatureState::MOUNTEDCREATURE);
 
-			if (!vehicle->removeObject(creature, true))
-				vehicle->error("could not remove creature from mount creature");
+		if (!vehicle->removeObject(creature, true))
+			vehicle->error("could not remove creature from mount creature");
 
-			if (creature->hasBuff(String("burstrun").hashCode())
-					|| creature->hasBuff(String("retreat").hashCode())) {
+		if (creature->hasBuff(String("burstrun").hashCode())
+				|| creature->hasBuff(String("retreat").hashCode())) {
 
-				creature->setSpeedMultiplierMod(1.822f);
-				creature->setAccelerationMultiplierMod(1.822f);
-
-			}
-
-			creature->clearState(CreatureState::RIDINGMOUNT);
-
-			SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
-			int bufferSize = changeBuffer->size();
-
-			if (bufferSize > 5) {
-				changeBuffer->remove(0);
-			}
-
-			changeBuffer->add(SpeedModChange(creature->getSpeedMultiplierMod()));
-
-			creature->updateToDatabase();
-
-
-		} catch (...) {
+			creature->setSpeedMultiplierMod(1.822f);
+			creature->setAccelerationMultiplierMod(1.822f);
 
 		}
+
+		creature->clearState(CreatureState::RIDINGMOUNT);
+
+		SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
+		int bufferSize = changeBuffer->size();
+
+		if (bufferSize > 5) {
+			changeBuffer->remove(0);
+		}
+
+		changeBuffer->add(SpeedModChange(creature->getSpeedMultiplierMod()));
+
+		creature->updateToDatabase();
 
 		return SUCCESS;
 	}

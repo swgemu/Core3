@@ -104,7 +104,7 @@ public:
 
 			creature->sendSystemMessage("Experience Successfully changed");
 
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for setExperience command. usage: setExperience <firstName> <experienceType> <amount>");
 		}
 

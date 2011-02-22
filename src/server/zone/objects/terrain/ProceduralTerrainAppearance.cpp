@@ -100,6 +100,8 @@ bool ProceduralTerrainAppearance::load(const String& file) {
 			iffStream = NULL;
 
 			error("error parsing chunks");
+
+			throw;
 		}
 	}
 

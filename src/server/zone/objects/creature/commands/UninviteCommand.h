@@ -90,7 +90,7 @@ public:
 				creature->sendSystemMessage(stringId);
 			}
 
-		} catch (...) {
+		} catch (Exception& e) {
 			System::out << "Exception in parseGroupUninvite(PlayerCreature* player, Message* pack)\n";
 			return GENERALERROR;
 		}

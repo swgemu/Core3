@@ -110,9 +110,8 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 
 		if (prototype != NULL)
 			prototype->fillAttributeList(alm, object);
-	} catch (...) {
-		error(
-				"Unhandled Exception in ManufactureSchematicImplementation::fillAttributeList");
+	} catch (Exception& e) {
+		error("Unhandled Exception in ManufactureSchematicImplementation::fillAttributeList");
 	}
 }
 

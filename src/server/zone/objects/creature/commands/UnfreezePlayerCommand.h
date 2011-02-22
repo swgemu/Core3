@@ -103,7 +103,7 @@ public:
 
 			player->sendSystemMessage(targetPlayer->getFirstName() + " has been unfrozen.");
 
-		} catch (...) {
+		} catch (Exception& e) {
 			player->sendSystemMessage(syntaxerror);
 		}
 

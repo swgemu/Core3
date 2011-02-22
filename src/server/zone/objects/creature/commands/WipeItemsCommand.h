@@ -113,7 +113,7 @@ public:
 			creature->sendSystemMessage(player->getFirstName() + "'s inventory has been wiped.");
 
 		}
-		catch (...)
+		catch (Exception& e)
 		{
 			creature->sendSystemMessage("Invalid arguments for /wipeItems. Usage: /wipeItems playerName");
 		}

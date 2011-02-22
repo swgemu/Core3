@@ -74,8 +74,6 @@ void MissionManagerImplementation::loadNpcObjectsToSpawn() {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in MissionManagerImplementation::loadNpcObjectsToSpawn()\n");
 	}
 }
 

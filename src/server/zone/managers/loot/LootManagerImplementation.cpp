@@ -21,7 +21,6 @@
 
 
 void LootManagerImplementation::initialize() {
-
 	info("Loading loottables...",true);
 
 	int amountGroups = 0;
@@ -76,8 +75,6 @@ void LootManagerImplementation::initialize() {
 		delete result;
 	}  catch (Exception& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in LootManagerImplementation::Initialize()");
 	}
 
 	info("Initialized " + String::valueOf(amountGroups) + " Groups and " + String::valueOf(amountObjects) + " Objects",true);
@@ -109,10 +106,7 @@ LootGroupObject* LootManagerImplementation::createLootGroup(uint32 lootGroup) {
 
 	}  catch (Exception& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in LootManagerImplementation::Initialize()");
 	}
-
 
 	return lootGroupObject;
 }

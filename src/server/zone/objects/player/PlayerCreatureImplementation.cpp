@@ -300,7 +300,7 @@ void PlayerCreatureImplementation::logout(bool doLock) {
 				setLoggingOut();
 			}
 		}
-	} catch (...) {
+	} catch (Exception& e) {
 		error("unreported exception caught in PlayerCreatureImplementation::logout(boolean doLock)");
 	}
 

@@ -146,7 +146,7 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 					}
 				}
 
-			} catch (...) {
+			} catch (Exception& e) {
 				error("Unreported exception caught in EntertainingSessionImplementation::doEntertainerPatronEffects()");
 			}
 		}
@@ -524,8 +524,7 @@ void EntertainingSessionImplementation::addEntertainerFlourishBuff() {
 				if (patronInRange)
 					addEntertainerBuffDuration(obj, performance->getType(), 1.0f);
 
-			} catch (...) {
-
+			} catch (Exception& e) {
 				error("Unreported exception caught in EntertainingSessionImplementation::doHealMindWounds()");
 			}
 		}

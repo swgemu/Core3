@@ -311,6 +311,8 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 		error(e.getMessage());
 	} catch (...) {
 		error("unreported exception caught in CreatureManagerImplementation::loadSingleSpawns()");
+
+		throw;
 	}
 
 	info("static creatures spawned: " + String::valueOf(i), true);
@@ -351,7 +353,13 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		CombatManager::instance()->attemptPeace(destructedObject);
 
 	} catch (...) {
+		destructedObject->scheduleDespawn();
 
+		// now we can safely lock destructor again
+		if (destructedObject != destructor)
+			destructor->wlock(destructedObject);
+
+		throw;
 	}
 
 	destructedObject->scheduleDespawn();
@@ -545,6 +553,10 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 		error(e.getMessage());
 	} catch (...) {
 		error("unreported exception caught in CreatureManagerImplementation::loadMissionSpawns()");
+
+		delete result;
+
+		throw;
 	}
 
 	//info("mission npcs spawned: " + String::valueOf(i), true);
@@ -594,6 +606,10 @@ void CreatureManagerImplementation::loadInformants() {
 		error(e.getMessage());
 	} catch (...) {
 		error("unreported exception caught in CreatureManagerImplementation::loadInformants()");
+
+		delete result;
+
+		throw;
 	}
 
 	delete result;

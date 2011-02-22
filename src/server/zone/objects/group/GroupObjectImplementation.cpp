@@ -189,7 +189,7 @@ void GroupObjectImplementation::disband() {
 
 			sendDestroyTo(crea);
 
-		} catch (...) {
+		} catch (Exception& e) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
 		}
 	}

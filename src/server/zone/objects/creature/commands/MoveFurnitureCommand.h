@@ -79,7 +79,7 @@ public:
 
 		try {
 			appearanceMesh = portalLayout->getMeshAppearanceTemplate(cell->getCellNumber());
-		} catch (...) {
+		} catch (Exception& e) {
 			return true;
 		}
 

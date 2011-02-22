@@ -49,8 +49,6 @@ int TicketObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 					} catch (Exception& e) {
 						error(e.getMessage());
 						e.printStackTrace();
-					} catch (...) {
-						error("unreported exception in int TicketImplementation::useObject(Player* player)");
 					}
 
 					return 1;
@@ -66,7 +64,10 @@ int TicketObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 		zone->runlock();
 	} catch (...) {
 		zone->runlock();
+
 		error("unreported exception in int TicketImplementation::useObject(Player* player)");
+
+		throw;
 	}
 
 	player->sendSystemMessage("travel", "boarding_too_far");

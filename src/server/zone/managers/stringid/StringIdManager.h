@@ -23,7 +23,8 @@ class StringIdManager : public Logger, public Singleton<StringIdManager> {
 
 protected:
 	void populateDatabase() {
-		ResultSet* result = NULL;
+		Reference<ResultSet*> result = NULL;
+
 		String query = "SELECT stringFile, name, value FROM client_strings;";
 
 		try {
@@ -48,14 +49,9 @@ protected:
 
 				stringsDatabase->putData(key, data);
 			}
-
-			delete result;
 		} catch (Exception& e) {
 			error(e.getMessage());
-		} catch (...) {
-			error("unreported exception caught in StringIdManager::populateDatabase()");
 		}
-
 	}
 
 public:

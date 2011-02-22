@@ -109,7 +109,7 @@ void FloorMesh::parseVersion0005(IffStream* iffStream) {
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
+	} catch (Exception& e) {
 		String err = "unable to parse file ";
 		err += iffStream->getFileName();
 		error(err);
@@ -157,7 +157,7 @@ void FloorMesh::parseVersion0006(IffStream* iffStream) {
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
+	} catch (Exception& e) {
 		String err = "unable to parse file ";
 		err += iffStream->getFileName();
 		error(err);
@@ -169,7 +169,7 @@ void FloorMesh::parseBTRE(IffStream* iffStream) {
 
 	try {
 		nextForm = iffStream->getNextFormType();
-	} catch (...) {
+	} catch (Exception& e) {
 		return;
 	}
 
@@ -225,7 +225,7 @@ void FloorMesh::parsePGRF(IffStream* iffStream) {
 
 	try {
 		nextForm = iffStream->getNextFormType();
-	} catch (...) {
+	} catch (Exception& e) {
 		return;
 	}
 

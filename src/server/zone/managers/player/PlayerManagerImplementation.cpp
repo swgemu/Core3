@@ -89,8 +89,6 @@ void PlayerManagerImplementation::loadStartingItems() {
 	} catch (Exception& e) {
 		error("unknown error while loadStartingItems");
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in loadStartingItems");
 	}
 }
 
@@ -134,8 +132,8 @@ bool PlayerManagerImplementation::existsName(const String& name) {
 
 	try {
 		res = nameMap->containsKey(name.toLowerCase());
-	} catch (...) {
-		error("unreported exception caught in bool PlayerManagerImplementation::existsName(const String& name)");
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
 	}
 
 	runlock();
@@ -166,11 +164,7 @@ PlayerCreature* PlayerManagerImplementation::getPlayer(const String& name) {
 
 	rlock();
 
-	try {
-		oid = nameMap->get(name.toLowerCase());
-	} catch (...) {
-		error("unreported exception caught in bool PlayerManagerImplementation::getPlayer(const String& name)");
-	}
+	oid = nameMap->get(name.toLowerCase());
 
 	runlock();
 
@@ -190,11 +184,7 @@ uint64 PlayerManagerImplementation::getObjectID(const String& name) {
 
 	rlock();
 
-	try {
-		oid = nameMap->get(name.toLowerCase());
-	} catch (...) {
-		error("unreported exception caught in bool PlayerManagerImplementation::existsName(const String& name)");
-	}
+	oid = nameMap->get(name.toLowerCase());
 
 	runlock();
 
@@ -387,10 +377,8 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 				<< "'" << firstName.escapeString() << "','" << lastName.escapeString() << "'," << raceID << "," <<  0 << ",'" << race.escapeString() << "')";
 
 		ServerDatabase::instance()->executeStatement(query);
-	} catch (Exception& e) {
+	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught while creating character");
 	}
 
 	nameMap->put(playerCreature);
@@ -449,39 +437,34 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 TangibleObject* PlayerManagerImplementation::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
 	TangibleObject* hairObject = NULL;
 
-	try {
+	if (hairObjectFile.isEmpty()) {
+		info("hairObjectFile empty");
+		return NULL;
+	}
 
-		if (hairObjectFile.isEmpty()) {
-			info("hairObjectFile empty");
-			return NULL;
-		}
+	//String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
 
-		//String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
+	info("trying to create hair object " + hairObjectFile);
+	SceneObject* hair = server->createObject(hairObjectFile.hashCode(), 1);
 
-		info("trying to create hair object " + hairObjectFile);
-		SceneObject* hair = server->createObject(hairObjectFile.hashCode(), 1);
+	if (hair == NULL) {
+		info("objectManager returned NULL hair object");
+		return NULL;
+	}
 
-		if (hair == NULL) {
-			info("objectManager returned NULL hair object");
-			return NULL;
-		}
+	if (hair->getGameObjectType() != SceneObjectImplementation::GENERICITEM || hair->getArrangementDescriptor(0) != "hair") {
+		//info("wrong hair object type");
+		//hair->finalize();
 
-		if (hair->getGameObjectType() != SceneObjectImplementation::GENERICITEM || hair->getArrangementDescriptor(0) != "hair") {
-			//info("wrong hair object type");
-			//hair->finalize();
+		ManagedReference<SceneObject*> clearRef = hair;
 
-			ManagedReference<SceneObject*> clearRef = hair;
+		return NULL;
+	} else {
+		hairObject = (TangibleObject*) hair;
 
-			return NULL;
-		} else {
-			hairObject = (TangibleObject*) hair;
+		hairObject->setCustomizationString(hairCustomization);
 
-			hairObject->setCustomizationString(hairCustomization);
-
-			info("hair object created successfully");
-		}
-	}catch (...) {
-		hairObject = NULL;
+		info("hair object created successfully");
 	}
 
 	return hairObject;
@@ -650,7 +633,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(PlayerCreature* playe
 
 	try {
 		prof = profession.subString(profession.indexOf('_') + 1);
-	} catch (...) {
+	} catch (ArrayIndexOutOfBoundsException& e) {
 		prof = "artisan";
 	}
 
@@ -821,6 +804,11 @@ int PlayerManagerImplementation::notifyDefendersOfIncapacitation(TangibleObject*
 		destructedObject->clearCombatState(true);
 	} catch (...) {
 		error("unreported exception caught in int PlayerManagerImplementation::notifyDefendersOfIncapacitation");
+
+		if (destructor != destructedObject)
+			destructor->wlock(destructedObject);
+
+		throw;
 	}
 
 	if (destructor != destructedObject)
@@ -1356,7 +1344,10 @@ void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player
 		player->unlock(doLock);
 	} catch (...) {
 		player->unlock(doLock);
+
 		error("Unreported exception caught in PlayerManagerImplementation::handleAbortTradeMessage(Player* player)");
+
+		throw;
 	}
 }
 
@@ -1522,92 +1513,83 @@ bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, Player
 
 void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* player) {
 	ObjectController* objectController = server->getObjectController();
-	try {
-		Locker locker(player);
 
-		TradeContainer* tradeContainer = player->getTradeContainer();
+	Locker locker(player);
 
-		if (tradeContainer == NULL) {
+	TradeContainer* tradeContainer = player->getTradeContainer();
+
+	if (tradeContainer == NULL) {
+		return;
+	}
+
+	tradeContainer->setVerifiedTrade(true);
+
+	uint64 targID = tradeContainer->getTradeTargetPlayer();
+	ManagedReference<SceneObject*> obj = server->getObject(targID);
+
+	if (obj != NULL && obj->isPlayerCreature()) {
+		PlayerCreature* receiver = (PlayerCreature*)obj.get();
+
+		Locker clocker(receiver, player);
+
+		TradeContainer* receiverTradeContainer = receiver->getTradeContainer();
+
+		if (receiverTradeContainer == NULL) {
+			locker.release();
 			return;
 		}
 
-		tradeContainer->setVerifiedTrade(true);
+		if (!checkTradeItems(player, receiver)) {
+			clocker.release();
+			handleAbortTradeMessage(player, false);
 
-		uint64 targID = tradeContainer->getTradeTargetPlayer();
-		ManagedReference<SceneObject*> obj = server->getObject(targID);
-
-		if (obj != NULL && obj->isPlayerCreature()) {
-			PlayerCreature* receiver = (PlayerCreature*)obj.get();
-
-			try {
-				Locker clocker(receiver, player);
-
-				TradeContainer* receiverTradeContainer = receiver->getTradeContainer();
-
-				if (receiverTradeContainer == NULL) {
-					locker.release();
-					return;
-				}
-
-				if (!checkTradeItems(player, receiver)) {
-					clocker.release();
-					handleAbortTradeMessage(player, false);
-
-					locker.release();
-					return;
-				}
-
-				if (receiverTradeContainer->hasVerifiedTrade()) {
-					SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
-
-					for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
-						ManagedReference<SceneObject*> item = tradeContainer->getTradeItem(i);
-
-						if (objectController->transferObject(item, receiverInventory, -1, true))
-							item->sendDestroyTo(player);
-					}
-
-					SceneObject* playerInventory = player->getSlottedObject("inventory");
-
-					for (int i = 0; i < receiverTradeContainer->getTradeSize(); ++i) {
-						ManagedReference<SceneObject*> item = receiverTradeContainer->getTradeItem(i);
-
-						if (objectController->transferObject(item, playerInventory, -1, true))
-							item->sendDestroyTo(receiver);
-					}
-
-					uint32 giveMoney = tradeContainer->getMoneyToTrade();
-
-					if (giveMoney > 0) {
-						player->substractCashCredits(giveMoney);
-						receiver->addCashCredits(giveMoney);
-					}
-
-					giveMoney = receiverTradeContainer->getMoneyToTrade();
-
-					if (giveMoney > 0) {
-						receiver->substractCashCredits(giveMoney);
-						player->addCashCredits(giveMoney);
-					}
-
-					receiver->clearTradeContainer();
-
-					player->clearTradeContainer();
-
-					TradeCompleteMessage* msg = new TradeCompleteMessage();
-					receiver->sendMessage(msg->clone());
-					player->sendMessage(msg->clone());
-
-					delete msg;
-				}
-
-			} catch (...) {
-				System::out << "Exception in PlayerManagerImplementation::handleVerifyTradeMessage\n";
-			}
+			locker.release();
+			return;
 		}
 
-	} catch (...) {
-		System::out << "Unreported exception caught in PlayerManagerImplementation::handleVerifyTradeMessage(Player* player)\n";
+		if (receiverTradeContainer->hasVerifiedTrade()) {
+			SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
+
+			for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
+				ManagedReference<SceneObject*> item = tradeContainer->getTradeItem(i);
+
+				if (objectController->transferObject(item, receiverInventory, -1, true))
+					item->sendDestroyTo(player);
+			}
+
+			SceneObject* playerInventory = player->getSlottedObject("inventory");
+
+			for (int i = 0; i < receiverTradeContainer->getTradeSize(); ++i) {
+				ManagedReference<SceneObject*> item = receiverTradeContainer->getTradeItem(i);
+
+				if (objectController->transferObject(item, playerInventory, -1, true))
+					item->sendDestroyTo(receiver);
+			}
+
+			uint32 giveMoney = tradeContainer->getMoneyToTrade();
+
+			if (giveMoney > 0) {
+				player->substractCashCredits(giveMoney);
+				receiver->addCashCredits(giveMoney);
+			}
+
+			giveMoney = receiverTradeContainer->getMoneyToTrade();
+
+			if (giveMoney > 0) {
+				receiver->substractCashCredits(giveMoney);
+				player->addCashCredits(giveMoney);
+			}
+
+			receiver->clearTradeContainer();
+
+			player->clearTradeContainer();
+
+			TradeCompleteMessage* msg = new TradeCompleteMessage();
+			receiver->sendMessage(msg->clone());
+			player->sendMessage(msg->clone());
+
+			delete msg;
+		}
 	}
 }
 int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
@@ -2432,7 +2414,8 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 
 		} catch (...) {
 			aabbTree = NULL;
-			continue;
+
+			throw;
 		}
 
 		if (aabbTree != NULL) {
@@ -2474,7 +2457,7 @@ bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneOb
 					return false;
 				}
 			} catch (...) {
-
+				throw;
 			}
 
 			zone->rlock();
