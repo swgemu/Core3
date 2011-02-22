@@ -67,9 +67,8 @@ public:
 
 			if (deadRecovery)
 				player->playEffect("clienteffect/player_clone_compile.cef");
-		} catch (...) {
+		} catch (Exception& e) {
 			player->error("unreported exception caught in PlayerRecoveryEvent::activate");
-
 		}
 	}
 

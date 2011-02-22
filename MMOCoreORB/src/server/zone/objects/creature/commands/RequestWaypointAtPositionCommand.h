@@ -97,7 +97,7 @@ public:
 
 			playerObject->addWaypoint(obj, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?
 
-		} catch (...) {
+		} catch (Exception& e) {
 
 		}
 

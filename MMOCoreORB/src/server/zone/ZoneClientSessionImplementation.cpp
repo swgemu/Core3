@@ -116,7 +116,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 				}
 
 				//player->unlock();
-			} catch (...) {
+			} catch (Exception& e) {
 				//player->unlock();
 			}
 

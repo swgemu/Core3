@@ -84,7 +84,7 @@ public:
 
 				try {
 					zone = zoneServer->getZone(zoneID);
-				} catch (...) {
+				} catch (Exception& e) {
 					zone = NULL;
 				}
 
@@ -99,7 +99,7 @@ public:
 						else if (parent->isVehicleObject())
 							parent->addObject(player, 4, false);
 
-					} catch (...) {
+					} catch (Exception& e) {
 
 					}
 				}

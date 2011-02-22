@@ -114,9 +114,8 @@ public:
 
 			}
 
-		} catch (...) {
+		} catch (Exception& e) {
 			player->error("unreported exception caught in InvisibleDelayEvent::activate");
-
 		}
 
 	}

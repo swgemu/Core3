@@ -119,8 +119,6 @@ PortalLayout* SharedObjectTemplate::getPortalLayout() {
 				portalLayout = TemplateManager::instance()->getPortalLayout(portalLayoutFilename);
 			} catch(Exception& e) {
 				e.printStackTrace();
-			} catch (...) {
-
 			}
 		}
 	}
@@ -139,8 +137,6 @@ AppearanceTemplate* SharedObjectTemplate::getAppearanceTemplate() {
 				appearanceTemplate = TemplateManager::instance()->getAppearanceTemplate(appearanceFilename);
 			} catch(Exception& e) {
 				e.printStackTrace();
-			} catch (...) {
-
 			}
 		}
 	}

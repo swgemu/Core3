@@ -96,6 +96,8 @@ float HeightMap::getHeight(float x, float y) {
 	} catch (...) {
 		System::out << "Exception while getting height";
 		runlock();
+
+		throw;
 	}
 
 	return retHeight;
@@ -171,6 +173,7 @@ void HeightMap::convert(const String& path) {
 		reader = new FileInputStream(new File(path));
 	} catch (...) {
 		System::out << "could not open reader" << endl;
+
 		exit(1);
 	}
 

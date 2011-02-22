@@ -93,7 +93,7 @@ public:
 			else
 				player->sendSystemMessage("You are too far.");
 
-		} catch (...) {
+		} catch (Exception& e) {
 		}
 
 

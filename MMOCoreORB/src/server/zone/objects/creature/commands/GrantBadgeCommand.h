@@ -94,7 +94,7 @@ public:
 
 		server->getPlayerManager()->awardBadge(player,badgeId);
 
-	} catch (...) {
+	} catch (Exception& e) {
 		creature->sendSystemMessage("invalid arguments for grantBadge command:  /grantBadge <firstname> <badgeId>");
 	}
 		return SUCCESS;

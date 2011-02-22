@@ -86,7 +86,7 @@ public:
 			HarvesterResourceDataMessage* msg = new HarvesterResourceDataMessage(player, inso);
 			player->sendMessage(msg);
 
-		} catch (...) {
+		} catch (Exception& e) {
 		}
 
 		return SUCCESS;

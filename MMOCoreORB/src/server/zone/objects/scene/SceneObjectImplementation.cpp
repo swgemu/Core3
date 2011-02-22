@@ -507,6 +507,8 @@ void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
 		error("unreported exception caught in SceneObjectImplementation::sendAttributeListTo");
 		delete alm;
 		alm = NULL;
+
+		throw;
 	}
 
 	if (alm != NULL)
@@ -608,7 +610,11 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 			}
 		}
 	} catch (...) {
+		zone->runlock(lockZone);
 
+		delete message;
+
+		throw;
 	}
 
 	zone->runlock(lockZone);
@@ -651,7 +657,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 			}
 		}
 
-	} catch (...) {
+	} catch (Exception& e) {
 
 	}
 
@@ -708,19 +714,14 @@ void SceneObjectImplementation::updateVehiclePosition() {
 	if (parent == NULL || !parent->isVehicleObject())
 		return;
 
-	try {
-		Locker locker(parent);
+	Locker locker(parent);
 
-		parent->setDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
-		parent->setPosition(positionX, positionZ, positionY);
+	parent->setDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
+	parent->setPosition(positionX, positionZ, positionY);
 
-		parent->incrementMovementCounter();
+	parent->incrementMovementCounter();
 
-		parent->updateZone(true);
-
-	} catch (...) {
-		error("Unreported exception in SceneObjectImplementation::updateVehiclePosition()");
-	}
+	parent->updateZone(true);
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
@@ -764,7 +765,7 @@ void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 
 	try {
 		notifySelfPositionUpdate();
-	} catch (...) {
+	} catch (Exception& e) {
 
 	}
 
@@ -865,7 +866,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 	try {
 		notifySelfPositionUpdate();
-	} catch (...) {
+	} catch (Exception& e) {
 
 	}
 
@@ -1028,8 +1029,6 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
-		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
 	}
 }
 
@@ -1093,7 +1092,7 @@ void SceneObjectImplementation::removeFromZone() {
 		zone = NULL;
 
 		oldZone->dropSceneObject(_this);
-	} catch (...) {
+	} catch (Exception& e) {
 
 	}
 

@@ -108,8 +108,6 @@ void BuffImplementation::activate(bool applyModifiers) {
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
-		error("unreported exception caught in void BuffImplementation::activate(bool applyModifiers)");
 	}
 }
 
@@ -136,8 +134,6 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
-		error("unreported exception caught in void BuffImplementation::deactivate(bool removeModifiers)");
 	}
 }
 

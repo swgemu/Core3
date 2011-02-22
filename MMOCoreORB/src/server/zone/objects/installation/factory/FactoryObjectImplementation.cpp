@@ -487,7 +487,6 @@ void FactoryObjectImplementation::createNewObject() {
 	}
 
 	try {
-
 		if (removeIngredientsFromHopper(schematic)) {
 
 			ManagedReference<FactoryCrate*> crate = locateCrateInOutputHopper(prototype);
@@ -523,7 +522,7 @@ void FactoryObjectImplementation::createNewObject() {
 		}
 
 		updateToDatabase();
-	} catch (...) {
+	} catch (Exception& e) {
 		error("unhandled exception in FactoryObjectImplementation::createNewObject()");
 	}
 }
@@ -722,8 +721,9 @@ TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
 
 		return NULL;
 
-	} catch (...) {
+	} catch (Exception& e) {
 		error("unreported exception caught in TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(");
+
 		return NULL;
 	}
 }

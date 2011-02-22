@@ -142,7 +142,7 @@ public:
 			}
 
 			return SUCCESS;
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage(
 					"Invalid Parameters, missing resource name");
 			return INVALIDPARAMETERS;

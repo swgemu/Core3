@@ -81,7 +81,7 @@ public:
 				creature->sendSystemMessage("Error extracting object in ExtractObjectCommand");
 			}
 
-		} catch (...) {
+		} catch (Exception& e) {
 			error("Unhandled Exception in ExtractObjectCommand");
 			creature->sendSystemMessage("Unhandled Exception in ExtractObjectCommand");
 		}

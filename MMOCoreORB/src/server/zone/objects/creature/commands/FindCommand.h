@@ -260,7 +260,7 @@ public:
 
 			}
 
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage("@base_player:find_general_error"); // /Find was unable to complete your request. Please try again.
 
 		}

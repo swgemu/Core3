@@ -338,8 +338,6 @@ PlayerCreature* ChatManagerImplementation::getPlayer(const String& name) {
 	} catch (Exception& e) {
 		System::out << e.getMessage();
 		e.printStackTrace();
-	} catch (...) {
-		System::out << "unreported exception caught in ChatManagerImplementation::getPlayer";
 	}
 
 	return player;
@@ -451,11 +449,12 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 				}
 			}
 		} catch (...) {
+			zone->runlock();
 
+			throw;
 		}
 
 		zone->runlock();
-
 	}
 }
 
@@ -493,8 +492,6 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature*
 		msg << "Exception in ChatManagerImplementation::handleMessage " << e.getMessage() << "\n";
 		System::out << msg.toString();
 		e.printStackTrace();
-	} catch (...) {
-		System::out << "unreported exception caught in ChatManagerImplementation::handleMessage\n";
 	}
 }
 
@@ -609,6 +606,8 @@ void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const Un
 	} catch (...) {
 		System::out << "Exception in ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack)\n";
 		group->unlock();
+
+		throw;
 	}
 
 	sender->wlock();

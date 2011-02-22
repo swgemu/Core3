@@ -95,7 +95,7 @@ public:
 
 			creature->sendSystemMessage(player->getFirstName() + " crashed.");
 
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for kick command.");
 		}
 

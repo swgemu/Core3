@@ -126,7 +126,7 @@ public:
 			creature->updateToDatabase();
 
 
-		} catch (...) {
+		} catch (Exception& e) {
 
 		}
 

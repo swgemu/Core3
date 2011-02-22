@@ -412,7 +412,7 @@ void CustomizationVariables::parseFromClientString(const String& custString) {
 
 			setVariable(type, value);
 		}
-	} catch (...) {
+	} catch (Exception& e) {
 		removeAll();
 		//System::out << "Exception in CustomizationVariables& operator=(String& custString)\n";
 	}

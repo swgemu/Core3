@@ -95,7 +95,7 @@ public:
 					posz = player->getPositionZ();
 					parentid = player->getParentID();
 
-				} catch (...) {
+				} catch (Exception& e) {
 
 				}
 
@@ -103,7 +103,7 @@ public:
 			}
 
 
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for teleport command");
 		}
 

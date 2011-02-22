@@ -143,7 +143,7 @@ public:
 				return GENERALERROR;
 			}
 
-		} catch (...) {
+		} catch (Exception& e) {
 			error("unreported exception caught in CombatQueueCommand::doCombatAction");
 		}
 

@@ -61,8 +61,6 @@ void ShuttleCreatureImplementation::sendPlayerTo(PlayerCreature* player, TicketO
 		error(e.getMessage());
 
 		e.printStackTrace();
-	} catch (...) {
-		error("unreported exception caught in ShuttleCreatureImplementation::sendPlayerTo(Player* player, Ticket* ticket)");
 	}
 }
 

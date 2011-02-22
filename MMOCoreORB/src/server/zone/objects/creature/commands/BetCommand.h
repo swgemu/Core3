@@ -113,7 +113,7 @@ public:
 
 					gamblingManager->bet(player, amount, targetBet, 0);
 				}
-			} catch (...) {
+			} catch (Exception& e) {
 				player->sendSystemMessage("@gambling/default_interface:bet_failed_amt");
 			}
 

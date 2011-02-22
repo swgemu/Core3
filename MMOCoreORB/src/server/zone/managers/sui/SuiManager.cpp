@@ -433,16 +433,12 @@ void SuiManager::handleStartDancing(PlayerCreature* player, SuiBox* suiBox, uint
 
 	SuiListBox* listBox = (SuiListBox*) suiBox;
 
-	try {
-		String dance = listBox->getMenuItemName(index);
+	String dance = listBox->getMenuItemName(index);
 
-		if (!change)
-			player->executeObjectControllerAction(String("startdance").hashCode(), 0, dance);
-		else
-			player->executeObjectControllerAction(String("changedance").hashCode(), 0, dance);
-	} catch (...) {
-
-	}
+	if (!change)
+		player->executeObjectControllerAction(String("startdance").hashCode(), 0, dance);
+	else
+		player->executeObjectControllerAction(String("changedance").hashCode(), 0, dance);
 }
 
 void SuiManager::handleStartMusic(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
@@ -460,16 +456,12 @@ void SuiManager::handleStartMusic(PlayerCreature* player, SuiBox* suiBox, uint32
 
 	SuiListBox* listBox = (SuiListBox*) suiBox;
 
-	try {
-		String dance = listBox->getMenuItemName(index);
+	String dance = listBox->getMenuItemName(index);
 
-		if (!change)
-			player->executeObjectControllerAction(String("startmusic").hashCode(), player->getTargetID(), dance);
-		else
-			player->executeObjectControllerAction(String("changemusic").hashCode(), player->getTargetID(), dance);
-	} catch (...) {
-
-	}
+	if (!change)
+		player->executeObjectControllerAction(String("startmusic").hashCode(), player->getTargetID(), dance);
+	else
+		player->executeObjectControllerAction(String("changemusic").hashCode(), player->getTargetID(), dance);
 }
 
 void SuiManager::handleSampleRadioactiveConfirm(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

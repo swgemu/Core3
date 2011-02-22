@@ -62,17 +62,9 @@ public:
 	}
 
 	void run() {
+		Locker locker(player);
 
-		try {
-
-			player->wlock();
-
-			craftingTool->depositObject(player, practice);
-
-			player->unlock();
-		} catch (...) {
-			player->unlock();
-		}
+		craftingTool->depositObject(player, practice);
 	}
 };
 

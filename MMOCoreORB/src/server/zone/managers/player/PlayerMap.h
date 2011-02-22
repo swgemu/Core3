@@ -76,6 +76,10 @@ public:
 			e.printStackTrace();
 		} catch (...) {
 			System::out << "unreported exception caught in PlayerMap::put";
+
+			unlock(doLock);
+
+			throw;
 		}
 
 		unlock(doLock);
@@ -97,6 +101,10 @@ public:
 			e.printStackTrace();
 		} catch (...) {
 			System::out << "unreported exception caught in PlayerMapImpl::get";
+
+			unlock(doLock);
+
+			throw;
 		}
 
 		unlock(doLock);
@@ -113,12 +121,15 @@ public:
 
 			player = HashTable<String, ManagedReference<PlayerCreature*> >::remove(name.toLowerCase());
 
-
 		} catch (Exception& e) {
 			System::out << e.getMessage();
 			e.printStackTrace();
 		} catch (...) {
 			System::out << "unreported exception caught in PlayerMapImpl::remove";
+
+			unlock(doLock);
+
+			throw;
 		}
 
 		unlock(doLock);

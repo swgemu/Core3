@@ -110,7 +110,6 @@ public:
 		leader->unlock();
 
 		try {
-
 			Locker locker(group);
 
 			for (int i = 0; i < group->getGroupSize(); i++) {
@@ -152,8 +151,10 @@ public:
 				}
 
 			}
-		} catch (...) {
+		} catch (Exception& e) {
+			leader->wlock();
 
+			throw;
 		}
 
 		leader->wlock();
@@ -194,27 +195,22 @@ public:
 			return false;
 		}
 
-		try {
-			stringA = "";
-			stringB = "";
+		stringA = "";
+		stringB = "";
 
-			StringTokenizer tokenizer(options);
-			tokenizer.setDelimeter(" ");
-			tokenizer.getStringToken(stringA);
-			stringA.toLowerCase();
+		StringTokenizer tokenizer(options);
+		tokenizer.setDelimeter(" ");
+		tokenizer.getStringToken(stringA);
+		stringA.toLowerCase();
 
-			if (tokenizer.hasMoreTokens()) {
-				tokenizer.getStringToken(stringB);
-				stringB.toLowerCase();
-			}
+		if (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(stringB);
+			stringB.toLowerCase();
+		}
 
-			if (tokenizer.hasMoreTokens()) {
-				leader->sendSystemMessage("performance", "band_flourish_format");
-				return false;
-			}
-
-		} catch (...) {
-			System::out << "Unreported exception in BandFlourishSkill::parseOptions()\n";
+		if (tokenizer.hasMoreTokens()) {
+			leader->sendSystemMessage("performance", "band_flourish_format");
+			return false;
 		}
 
 		return true;

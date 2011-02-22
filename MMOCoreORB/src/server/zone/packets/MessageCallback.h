@@ -48,10 +48,6 @@ namespace packets {
 				e.printStackTrace();
 
 				return false;
-			} catch (...) {
-				error("unknown exception while parsing message in ZonePacketHandler");
-
-				return false;
 			}
 
 			return true;

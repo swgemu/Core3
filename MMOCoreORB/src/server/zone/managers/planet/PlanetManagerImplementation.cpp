@@ -55,7 +55,7 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 
 	query << "SELECT * FROM statictangibleobjects WHERE zoneid = " << zone->getZoneID() << ";";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	int i = 0;
 
@@ -113,13 +113,9 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 
 	} catch (Exception& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in CreatureManagerImplementation::loadSingleSpawns()");
 	}
 
 	info("static creatures spawned: " + String::valueOf(i), true);
-
-	delete result;
 }
 
 void PlanetManagerImplementation::loadNoBuildAreas() {
@@ -178,7 +174,7 @@ void PlanetManagerImplementation::loadRegions() {
 	if (zoneID > 9)
 		return;
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		StringBuffer query;
@@ -197,11 +193,7 @@ void PlanetManagerImplementation::loadRegions() {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unknown exception caught in void PlanetManagerImplementation::loadRegions()");
 	}
-
-	delete result;
 
 	if (regionMap.size() != 0) {
 		StringBuffer msg;
@@ -267,8 +259,6 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 		err << "Loading Player Structures, exception: " << e.getMessage();
 		error(err);
 		return;
-	} catch (...) {
-		throw Exception("problem in StructureManagerImplementation::loadPlayerStructures()");
 	}
 
 	numberOfCities += i;
@@ -296,12 +286,13 @@ void PlanetManagerImplementation::loadShuttles() {
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	lock();
+	Locker locker(_this);
+
 	try {
 		StringBuffer query;
 		query << "SELECT * FROM transports WHERE planet_id = " << planetid << ";";
 
-		ResultSet* shut = ServerDatabase::instance()->executeQuery(query);
+		Reference<ResultSet*> shut = ServerDatabase::instance()->executeQuery(query);
 
 		while (shut->next()) {
 			uint32 shuttleId = shut->getUnsignedInt(0);
@@ -343,7 +334,7 @@ void PlanetManagerImplementation::loadShuttles() {
 			StringBuffer query2;
 			query2 << "SELECT parent, pos_x, pos_y, pos_z, dir_y, dir_w FROM ticket_collectors WHERE transport_id = " << shuttleId << ";";
 
-			ResultSet* collectors = ServerDatabase::instance()->executeQuery(query2);
+			Reference<ResultSet*> collectors = ServerDatabase::instance()->executeQuery(query2);
 
 			while (collectors->next()) {
 				uint64 collCellId = collectors->getUnsignedLong(0);
@@ -365,12 +356,10 @@ void PlanetManagerImplementation::loadShuttles() {
 				colector->setShuttle(shuttle);
 			}
 
-			delete collectors;
-
 			StringBuffer query3;
 			query3 << "SELECT parent, pos_x, pos_y, pos_z, dir_y, dir_w FROM ticket_terminals WHERE transport_id = " << shuttleId << ";";
 
-			ResultSet* terminals = ServerDatabase::instance()->executeQuery(query3);
+			Reference<ResultSet*> terminals = ServerDatabase::instance()->executeQuery(query3);
 
 			while (terminals->next()) {
 				uint64 termCellId = terminals->getUnsignedLong(0);
@@ -392,19 +381,10 @@ void PlanetManagerImplementation::loadShuttles() {
 				travel->insertToZone(zone);
 			}
 
-			delete terminals;
-
 		}
-
-		delete shut;
-
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadShuttles()");
 	}
-
-	unlock();
 }
 
 uint32 PlanetManagerImplementation::getTravelFare(const String& departurePlanet, const String& arrivalPlanet) {
@@ -493,7 +473,7 @@ void PlanetManagerImplementation::loadHuntingTargets() {
 	StringBuffer query;
 	query << "SELECT file1,file2,level from mission_manager_hunt_types WHERE zoneid=" << zone->getZoneID() << ";";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
@@ -507,11 +487,7 @@ void PlanetManagerImplementation::loadHuntingTargets() {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadHuntingTargets()\n");
 	}
-
-	delete result;
 }
 
 
@@ -521,7 +497,8 @@ void PlanetManagerImplementation::loadReconLocations() {
 	StringBuffer query;
 	query << "SELECT * from mission_manager_recon_locs WHERE zoneid=" << zone->getZoneID() << ";";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
+
 	ManagedReference<TangibleObject*> location = NULL;
 
 	try {
@@ -558,9 +535,5 @@ void PlanetManagerImplementation::loadReconLocations() {
 			info(String::valueOf(i) + " recon locations loaded", true);
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadHuntingTargets()\n");
 	}
-
-	delete result;
 }

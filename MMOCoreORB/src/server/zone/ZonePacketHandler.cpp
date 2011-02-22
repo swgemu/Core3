@@ -238,7 +238,7 @@ Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message*
 		} else
 			return messageCallback;
 
-	} catch (...) {
+	} catch (Exception& e) {
 		error("unreported exception caught creating message task");
 	}
 

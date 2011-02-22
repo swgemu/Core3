@@ -52,7 +52,7 @@ public:
 				}
 			}
 		} catch (...) {
-
+			throw;
 		}
 
 		//runlock();

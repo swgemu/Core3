@@ -136,7 +136,7 @@ public:
 			else
 				meditateTask->schedule(5000);
 
-		} catch (...) {
+		} catch (Exception& e) {
 			player->error("unreported exception caught in MeditateTask::activate");
 		}
 	}

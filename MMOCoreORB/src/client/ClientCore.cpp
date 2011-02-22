@@ -159,6 +159,8 @@ void ClientCore::handleCommands() {
 
 		} catch (...) {
 			System::out << "[ClientCore] unreported Exception caught\n";
+
+			throw;
 		}
 	}
 }

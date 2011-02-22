@@ -82,6 +82,10 @@ public:
 
 		} catch (...) {
 			player->error("unreported exception on FishingSplashEvent::removeSplash()");
+
+			player = NULL;
+
+			throw;
 		}
 
 		player = NULL;

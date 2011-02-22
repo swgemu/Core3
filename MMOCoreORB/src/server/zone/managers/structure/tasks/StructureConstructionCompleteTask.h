@@ -30,20 +30,14 @@ public:
 	}
 
 	void run() {
-		try {
-			player->wlock();
+		Locker locker(player);
 
-			Locker _locker(constructionMarker, player);
+		Locker clocker(constructionMarker, player);
 
-			constructionMarker->removeFromZone();
-			constructionMarker->destroyObjectFromDatabase(true);
+		constructionMarker->removeFromZone();
+		constructionMarker->destroyObjectFromDatabase(true);
 
-			structureManager->placeStructure(player, structureObject, structureTemplate, deedID, positionX, positionY, direction);
-
-			player->unlock();
-		} catch (...) {
-			player->unlock();
-		}
+		structureManager->placeStructure(player, structureObject, structureTemplate, deedID, positionX, positionY, direction);
 	}
 
 };

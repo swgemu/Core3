@@ -145,6 +145,8 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 		e.printStackTrace();
 	} catch (...) {
 		error("unreported exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
+
+		throw;
 	}
 
 	return object;

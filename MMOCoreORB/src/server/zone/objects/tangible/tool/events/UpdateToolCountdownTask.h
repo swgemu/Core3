@@ -63,14 +63,12 @@ public:
 
 	void run() {
 		try {
-
 			TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3(craftingTool);
 			dtano3->updateCraftingTimer(timeLeft);
 			dtano3->close();
+
 			player->sendMessage(dtano3);
-
-
-		} catch (...) {
+		} catch (Exception& e) {
 			System::out << "Unreported exception caught in UpdateToolCountdownEvent::activate\n";
 		}
 	}

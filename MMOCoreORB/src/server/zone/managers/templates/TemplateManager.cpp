@@ -129,8 +129,6 @@ void TemplateManager::loadLuaTemplates() {
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
-		error("unreported exception caught while loading templates");
 	}
 
 	info("done loading object templates", true);
@@ -439,7 +437,7 @@ IffStream* TemplateManager::openIffFile(const String& fileName) {
 				delete iffStream;
 				iffStream = NULL;
 			}
-		} catch (...) {
+		} catch (Exception& e) {
 			delete iffStream;
 			iffStream = NULL;
 		}
@@ -465,8 +463,9 @@ FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {
 				floorMesh->readObject(iffStream);
 
 				info("parsed " + fileName);
-			} catch (...) {
+			} catch (Exception& e) {
 				info("could not parse " + fileName);
+
 				delete floorMesh;
 				floorMesh = NULL;
 			}
@@ -512,7 +511,6 @@ AppearanceTemplate* TemplateManager::instantiateAppearanceTemplate(IffStream* if
 	AppearanceTemplate* appTemplate = NULL;
 
 	try {
-
 		switch (formType) {
 		case 'MESH':
 			appTemplate = new MeshAppearanceTemplate();
@@ -545,8 +543,6 @@ AppearanceTemplate* TemplateManager::instantiateAppearanceTemplate(IffStream* if
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
-		error("unreported exception caught in TemplateManager::instantiateAppearanceTemplate(IffStream* iffStream)");
 	}
 
 	return appTemplate;
@@ -567,8 +563,9 @@ PortalLayout* TemplateManager::getPortalLayout(const String& fileName) {
 				portalLayout->readObject(iffStream);
 
 				info("parsed " + fileName);
-			} catch (...) {
+			} catch (Exception& e) {
 				info("could not parse " + fileName);
+
 				delete portalLayout;
 				portalLayout = NULL;
 			}

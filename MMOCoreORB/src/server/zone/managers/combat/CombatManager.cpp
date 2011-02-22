@@ -50,14 +50,8 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 	Locker clocker(defender, attacker);
 
-	try {
-
-		attacker->setDefender(defender);
-		defender->addDefender(attacker);
-
-	} catch (...) {
-		success = false;
-	}
+	attacker->setDefender(defender);
+	defender->addDefender(attacker);
 
 	return success;
 }
@@ -108,10 +102,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 		} catch (Exception& e) {
 			error(e.getMessage());
 			e.printStackTrace();
-		} catch (...) {
-			error("unknown exception in CombatManager::attemptPeace(CreatureObject* attacker)");
 		}
-
 	}
 
 	if (defenderList->size() != 0) {
@@ -138,24 +129,18 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 
 		TangibleObject* defender = (TangibleObject*) object.get();
 
-		try {
-			Locker clocker(defender, attacker);
+		Locker clocker(defender, attacker);
 
-			if (defender->hasDefender(attacker)) {
-				attacker->removeDefender(defender);
-				defender->removeDefender(attacker);
-			} else {
-				attacker->removeDefender(defender);
-			}
-
-			--i;
-
-			clocker.release();
-
-		} catch (...) {
-			error("unknown exception in PlayerImplementation::doPeace()\n");
+		if (defender->hasDefender(attacker)) {
+			attacker->removeDefender(defender);
+			defender->removeDefender(attacker);
+		} else {
+			attacker->removeDefender(defender);
 		}
 
+		--i;
+
+		clocker.release();
 	}
 
 	attacker->clearCombatState(false);
@@ -229,25 +214,21 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject* tano, const CreatureAttackData& data) {
 	int damage = 0;
 
-	try {
-		Locker clocker(tano, attacker);
+	Locker clocker(tano, attacker);
 
-		attacker->addDefender(tano);
-		tano->addDefender(attacker);
+	attacker->addDefender(tano);
+	tano->addDefender(attacker);
 
-		if (tano->isCreatureObject()) {
-			CreatureObject* defender = (CreatureObject*) tano;
+	if (tano->isCreatureObject()) {
+		CreatureObject* defender = (CreatureObject*) tano;
 
-			damage = doTargetCombatAction(attacker, defender, data);
-		} else {
-			int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
+		damage = doTargetCombatAction(attacker, defender, data);
+	} else {
+		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
-			damage = applyDamage(attacker, tano, damage, poolsToDamage);
+		damage = applyDamage(attacker, tano, damage, poolsToDamage);
 
-			broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, data.getCommand()->getCombatSpam() + "_hit");
-		}
-
-	} catch (...) {
+		broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, data.getCommand()->getCombatSpam() + "_hit");
 	}
 
 	return damage;
@@ -1326,11 +1307,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 			zone->runlock();
 
 			if (playerManager->checkLineOfSight(object, attacker)) {
-				try {
-					damage += doTargetCombatAction(attacker, tano, data);
-				} catch (...) {
-					error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) executing doTargetCombatAction");
-				}
+				damage += doTargetCombatAction(attacker, tano, data);
 			}
 
 			zone->rlock();
@@ -1341,6 +1318,8 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 		error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data)");
 
 		zone->runlock();
+
+		throw;
 	}
 
 	return damage;
@@ -1369,62 +1348,47 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 	 * Post: player requests duel to targetPlayer
 	 */
 
-	try {
-		Locker clocker(targetPlayer, player);
+	Locker clocker(targetPlayer, player);
 
-		if (player->requestedDuelTo(targetPlayer)) {
-			StringIdChatParameter stringId("duel", "already_challenged");
-			stringId.setTT(targetPlayer->getObjectID());
-			player->sendSystemMessage(stringId);
+	if (player->requestedDuelTo(targetPlayer)) {
+		StringIdChatParameter stringId("duel", "already_challenged");
+		stringId.setTT(targetPlayer->getObjectID());
+		player->sendSystemMessage(stringId);
 
-			return;
-		}
+		return;
+	}
 
-		player->info("requesting duel");
+	player->info("requesting duel");
 
-		player->addToDuelList(targetPlayer);
+	player->addToDuelList(targetPlayer);
 
-		if (targetPlayer->requestedDuelTo(player)) {
-			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer,
-					targetPlayer->getPvpStatusBitmask()
-							+ CreatureFlag::ATTACKABLE
-							+ CreatureFlag::AGGRESSIVE);
-			player->sendMessage(pvpstat);
+	if (targetPlayer->requestedDuelTo(player)) {
+		BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer,
+				targetPlayer->getPvpStatusBitmask()
+						+ CreatureFlag::ATTACKABLE
+						+ CreatureFlag::AGGRESSIVE);
+		player->sendMessage(pvpstat);
 
-			StringIdChatParameter stringId("duel", "accept_self");
-			stringId.setTT(targetPlayer->getObjectID());
-			player->sendSystemMessage(stringId);
+		StringIdChatParameter stringId("duel", "accept_self");
+		stringId.setTT(targetPlayer->getObjectID());
+		player->sendSystemMessage(stringId);
 
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player,
-					player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE
-							+ CreatureFlag::AGGRESSIVE);
-			targetPlayer->sendMessage(pvpstat2);
+		BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player,
+				player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE
+						+ CreatureFlag::AGGRESSIVE);
+		targetPlayer->sendMessage(pvpstat2);
 
-			StringIdChatParameter stringId2("duel", "accept_target");
-			stringId2.setTT(player->getObjectID());
-			targetPlayer->sendSystemMessage(stringId2);
-		} else {
-			StringIdChatParameter stringId3("duel", "challenge_self");
-			stringId3.setTT(targetPlayer->getObjectID());
-			player->sendSystemMessage(stringId3);
+		StringIdChatParameter stringId2("duel", "accept_target");
+		stringId2.setTT(player->getObjectID());
+		targetPlayer->sendSystemMessage(stringId2);
+	} else {
+		StringIdChatParameter stringId3("duel", "challenge_self");
+		stringId3.setTT(targetPlayer->getObjectID());
+		player->sendSystemMessage(stringId3);
 
-			StringIdChatParameter stringId4("duel", "challenge_target");
-			stringId4.setTT(player->getObjectID());
-			targetPlayer->sendSystemMessage(stringId4);
-		}
-
-
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n"
-				<< e.getMessage();
-
-		error(msg.toString());
-	} catch (...) {
-		StringBuffer msg;
-		msg << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
-
-		error(msg.toString());
+		StringIdChatParameter stringId4("duel", "challenge_target");
+		stringId4.setTT(player->getObjectID());
+		targetPlayer->sendSystemMessage(stringId4);
 	}
 }
 
@@ -1433,41 +1397,36 @@ void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targe
 	 * Post: player requested to end the duel with targetPlayer
 	 */
 
-	try {
-		Locker clocker(targetPlayer, player);
+	Locker clocker(targetPlayer, player);
 
-		if (!player->requestedDuelTo(targetPlayer)) {
-			StringIdChatParameter stringId("duel", "not_dueling");
-			stringId.setTT(targetPlayer->getObjectID());
-			player->sendSystemMessage(stringId);
+	if (!player->requestedDuelTo(targetPlayer)) {
+		StringIdChatParameter stringId("duel", "not_dueling");
+		stringId.setTT(targetPlayer->getObjectID());
+		player->sendSystemMessage(stringId);
 
-			return;
-		}
+		return;
+	}
 
-		player->info("ending duel");
+	player->info("ending duel");
 
-		player->removeFromDuelList(targetPlayer);
-		player->removeDefender(targetPlayer);
+	player->removeFromDuelList(targetPlayer);
+	player->removeDefender(targetPlayer);
 
-		if (targetPlayer->requestedDuelTo(player)) {
-			targetPlayer->removeFromDuelList(player);
-			targetPlayer->removeDefender(player);
+	if (targetPlayer->requestedDuelTo(player)) {
+		targetPlayer->removeFromDuelList(player);
+		targetPlayer->removeDefender(player);
 
-			player->sendPvpStatusTo(targetPlayer);
+		player->sendPvpStatusTo(targetPlayer);
 
-			StringIdChatParameter stringId("duel", "end_self");
-			stringId.setTT(targetPlayer->getObjectID());
-			player->sendSystemMessage(stringId);
+		StringIdChatParameter stringId("duel", "end_self");
+		stringId.setTT(targetPlayer->getObjectID());
+		player->sendSystemMessage(stringId);
 
-			targetPlayer->sendPvpStatusTo(player);
+		targetPlayer->sendPvpStatusTo(player);
 
-			StringIdChatParameter stringId2("duel", "end_target");
-			stringId2.setTT(player->getObjectID());
-			targetPlayer->sendSystemMessage(stringId2);
-		}
-
-	} catch (...) {
-
+		StringIdChatParameter stringId2("duel", "end_target");
+		stringId2.setTT(player->getObjectID());
+		targetPlayer->sendSystemMessage(stringId2);
 	}
 }
 
@@ -1517,8 +1476,6 @@ void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
 
 				System::out << "Exception on CombatManager::freeDuelList()\n"
 						<< e.getMessage() << "\n";
-			} catch (...) {
-
 			}
 		}
 	}
@@ -1529,24 +1486,18 @@ void CombatManager::declineDuel(PlayerCreature* player, PlayerCreature* targetPl
 	 * Post: player declined Duel to targetPlayer
 	 */
 
-	try {
-		Locker clocker(targetPlayer, player);
+	Locker clocker(targetPlayer, player);
 
-		if (targetPlayer->requestedDuelTo(player)) {
-			targetPlayer->removeFromDuelList(player);
+	if (targetPlayer->requestedDuelTo(player)) {
+		targetPlayer->removeFromDuelList(player);
 
-			StringIdChatParameter stringId("duel", "cancel_self");
-			stringId.setTT(targetPlayer->getObjectID());
-			player->sendSystemMessage(stringId);
+		StringIdChatParameter stringId("duel", "cancel_self");
+		stringId.setTT(targetPlayer->getObjectID());
+		player->sendSystemMessage(stringId);
 
-			StringIdChatParameter stringId2("duel", "cancel_target");
-			stringId2.setTT(player->getObjectID());
-			targetPlayer->sendSystemMessage(stringId2);
-		}
-
-
-	} catch (...) {
-
+		StringIdChatParameter stringId2("duel", "cancel_target");
+		stringId2.setTT(player->getObjectID());
+		targetPlayer->sendSystemMessage(stringId2);
 	}
 }
 
