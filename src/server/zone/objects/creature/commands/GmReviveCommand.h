@@ -115,7 +115,7 @@ public:
 			creature->sendSystemMessage(player->getFirstName() + " has been resurrected.");
 		}
 
-		catch (...)
+		catch (Exception& e)
 		{
 
 		}

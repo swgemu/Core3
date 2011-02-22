@@ -57,7 +57,7 @@ public:
 
 	bool activate() {
 		try {
-			object->wlock();
+			Locker locker(object);
 
 			object->info("activating undeployment");
 
@@ -69,16 +69,8 @@ public:
 				object->finalize();
 			} else
 				object->info("undeployment not scheduled for object");
-
-			object->unlock();
 		} catch (Exception& e) {
-			object->unlock();
-
 			System::out << "Execption on scene object undeployment\n" << e.getMessage() << "\n";
-		} catch (...) {
-			object->unlock();
-
-			System::out << "execption on scene object undeployment\n";
 		}
 
 		object = NULL;

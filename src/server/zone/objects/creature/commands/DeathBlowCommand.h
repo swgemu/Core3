@@ -74,26 +74,22 @@ public:
 
 		PlayerCreature* player = (PlayerCreature*) targetObject.get();
 
-		try {
-			Locker clocker(player, creature);
+		Locker clocker(player, creature);
 
-			PlayerManager* playerManager = server->getPlayerManager();
+		PlayerManager* playerManager = server->getPlayerManager();
 
-			if (!playerManager->checkLineOfSight(creature, player)) {
-				creature->sendSystemMessage("@container_error_message:container18");
-				return GENERALERROR;
-			}
+		if (!playerManager->checkLineOfSight(creature, player)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
 
-			if (!player->isIncapacitated()){
-				creature->sendSystemMessage("@error_message:target_not_incapacitated");
-				return GENERALERROR;
-			}
+		if (!player->isIncapacitated()){
+			creature->sendSystemMessage("@error_message:target_not_incapacitated");
+			return GENERALERROR;
+		}
 
-			if (player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
-				playerManager->killPlayer(creature, player);
-			}
-
-		} catch (...) {
+		if (player->isAttackableBy(creature) && player->isInRange(creature, 5)) {
+			playerManager->killPlayer(creature, player);
 		}
 
 		return SUCCESS;

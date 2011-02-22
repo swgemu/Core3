@@ -167,8 +167,6 @@ void LoginServerImplementation::handleMessage(LoginClient* client, Packet* messa
 		error("incorrect packet - " + message->toStringData());
 	} catch (Exception& e) {
 		error(e.getMessage());
-	} catch (...) {
-		System::out << "[LoginServer] unreported Exception caught\n";
 	}
 }
 

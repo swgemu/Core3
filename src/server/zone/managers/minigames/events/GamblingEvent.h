@@ -86,6 +86,8 @@ public:
 
 		} catch (...) {
 			gamblingTerminal->getPlayersWindows()->elementAt(0).getKey()->error("unreported exception on GamblingSlotEvent::nextSlotStep()");
+
+			throw;
 		}
 
 		//gamblingTerminal = NULL; <- ?

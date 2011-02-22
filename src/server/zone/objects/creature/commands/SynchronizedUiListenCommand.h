@@ -77,7 +77,7 @@ public:
 				Locker clocker(object, creature);
 
 				object->synchronizedUIListen(creature, value);
-			} catch (...) {
+			} catch (Exception& e) {
 			}
 		}
 

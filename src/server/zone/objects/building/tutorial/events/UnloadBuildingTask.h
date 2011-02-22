@@ -70,9 +70,7 @@ public:
 			building->clearUnloadEvent();
 
 			building->removeFromZone();
-
-
-		} catch (...) {
+		} catch (Exception& e) {
 			building->error("unreported exception caught in UnloadBuildingTask::run");
 
 			building->clearUnloadEvent();

@@ -97,8 +97,6 @@ void PingServer::handleMessage(ServiceClient* client, Packet* message) {
 		error("incorrect packet - " + message->toStringData());
 	} catch (Exception& e) {
 		error(e.getMessage());
-	} catch (...) {
-		System::out << "[PingServer] unreported Exception caught\n";
 	}
 }
 

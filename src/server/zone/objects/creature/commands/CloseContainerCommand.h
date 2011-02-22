@@ -77,16 +77,10 @@ public:
 		if (container == NULL)
 			return GENERALERROR;
 
-		try {
-			Locker clocker(container, creature);
+		Locker clocker(container, creature);
 
-			container->closeContainerTo((PlayerCreature*)creature, false);
-			container->notifyCloseContainer((PlayerCreature*)creature);
-
-
-		} catch (...) {
-
-		}
+		container->closeContainerTo((PlayerCreature*)creature, false);
+		container->notifyCloseContainer((PlayerCreature*)creature);
 
 		return SUCCESS;
 	}

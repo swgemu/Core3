@@ -78,8 +78,6 @@ void GuildManagerImplementation::loadGuilds() {
 		err << "Loading Guild, exception: " << e.getMessage();
 		error(err);
 		return;
-	} catch (...) {
-		throw Exception("problem in GuildManagerImplementation::loadGuilds()");
 	}
 
 	info(String::valueOf(guildList.size()) + " guilds loaded.", true);

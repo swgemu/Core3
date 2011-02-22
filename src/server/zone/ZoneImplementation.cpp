@@ -325,8 +325,6 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 	} catch (Exception& e) {
 		System::out << e.getMessage() << endl;
 		e.printStackTrace();
-	} catch (...) {
-		System::out << "unreported exception caught in ZoneImplementation::sendMapLocationsTo" << endl;
 	}
 
 	mapLocations.runlock();
@@ -371,7 +369,9 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 
 		}
 	} catch (...) {
+		mapLocations.runlock();
 
+		throw;
 	}
 
 	mapLocations.runlock();
@@ -407,7 +407,9 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 
 		}
 	} catch (...) {
+		mapLocations.runlock();
 
+		throw;
 	}
 
 	mapLocations.runlock();
@@ -433,7 +435,9 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 			}
 		}
 	} catch (...) {
+		mapLocations.runlock();
 
+		throw;
 	}
 
 	mapLocations.runlock();

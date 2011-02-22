@@ -151,7 +151,7 @@ public:
 			}
 		}
 
-		catch (...)
+		catch (Exception& e)
 		{
 			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
 			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");

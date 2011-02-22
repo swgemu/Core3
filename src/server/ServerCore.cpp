@@ -311,7 +311,7 @@ void ServerCore::handleCommands() {
 			System::out << "[ServerCore] " << e.getMessage();
 		} catch (ArrayIndexOutOfBoundsException& e) {
 			System::out << "[ServerCore] " << e.getMessage() << "\n";
-		} catch (...) {
+		} catch (Exception& e) {
 			System::out << "[ServerCore] unreported Exception caught\n";
 		}
 

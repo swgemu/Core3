@@ -105,8 +105,6 @@ void StructureManagerImplementation::createLuaIncludes() {
 	} catch (Exception& e) {
 		error("exception caught creating " + completeName);
 		error(e.getMessage());
-	} catch (...) {
-		error("unknown exception caught creating " + completeName);
 	}
 }
 
@@ -187,10 +185,7 @@ void StructureManagerImplementation::createNewLuas() {
 		} catch (Exception& e) {
 			error("exception caught creating " + completeName);
 			error(e.getMessage());
-		} catch (...) {
-			error("unknown exception caught creating " + completeName);
 		}
-
 	}
 
 	createLuaIncludes();
@@ -207,7 +202,7 @@ void StructureManagerImplementation::loadStaticClientObjects() {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	//query << " AND (type = 512 OR type = 256 OR type = 32);";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	uint64 objectID;
 	String templateFile;
@@ -257,11 +252,7 @@ void StructureManagerImplementation::loadStaticClientObjects() {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
 	}
-
-	delete result;
 }
 
 void StructureManagerImplementation::loadStaticGarages() {
@@ -275,7 +266,7 @@ void StructureManagerImplementation::loadStaticGarages() {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	query << " AND file LIKE '%garage%' AND type = 512;";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
@@ -325,11 +316,7 @@ void StructureManagerImplementation::loadStaticGarages() {
 
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
 	}
-
-	delete result;
 }
 
 void StructureManagerImplementation::loadStaticMissionTerminals() {
@@ -346,7 +333,7 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	query << " AND (file LIKE 'object/tangible/terminal/shared_terminal_mission%');";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
@@ -421,11 +408,7 @@ void StructureManagerImplementation::loadStaticMissionTerminals() {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
 	}
-
-	delete result;
 }
 
 void StructureManagerImplementation::loadStaticElevatorTerminals() {
@@ -441,7 +424,7 @@ void StructureManagerImplementation::loadStaticElevatorTerminals() {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	query << " AND (file LIKE 'object/tangible/terminal/shared_terminal_elevator%');";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
@@ -497,11 +480,7 @@ void StructureManagerImplementation::loadStaticElevatorTerminals() {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
 	}
-
-	delete result;
 }
 
 void StructureManagerImplementation::loadStaticCraftingStations() {
@@ -515,7 +494,7 @@ void StructureManagerImplementation::loadStaticCraftingStations() {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	query << " AND file like '%object/tangible/crafting/station%';";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
@@ -588,11 +567,7 @@ void StructureManagerImplementation::loadStaticCraftingStations() {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticCraftingStations()\n");
 	}
-
-	delete result;
 }
 
 void StructureManagerImplementation::loadStaticBazaars() {
@@ -608,7 +583,7 @@ void StructureManagerImplementation::loadStaticBazaars() {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	query << " AND file = 'object/tangible/terminal/shared_terminal_bazaar.iff';";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
@@ -678,11 +653,7 @@ void StructureManagerImplementation::loadStaticBazaars() {
 
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBazaars()\n");
 	}
-
-	delete result;
 }
 
 void StructureManagerImplementation::loadStaticGamblingTerminals() {
@@ -713,7 +684,7 @@ void StructureManagerImplementation::loadStaticGamblingTerminals(int iff) {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	query << " AND file = '" << iffs << "';";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
 
@@ -784,11 +755,7 @@ void StructureManagerImplementation::loadStaticGamblingTerminals(int iff) {
 
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticGamblingTerminals()\n");
 	}
-
-	delete result;
 }
 
 
@@ -806,7 +773,7 @@ void StructureManagerImplementation::loadStaticBanks() {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	query << " AND file = 'object/tangible/terminal/shared_terminal_bank.iff';";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = ServerDatabase::instance()->executeQuery(query);
@@ -860,13 +827,7 @@ void StructureManagerImplementation::loadStaticBanks() {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
 	}
-
-	delete result;
-
-	//unlock();
 }
 
 void StructureManagerImplementation::loadStaticBuildings() {
@@ -878,7 +839,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 	query << "SELECT objectid FROM staticobjects WHERE type = 512 AND zoneid = " << planetid << ";";
 
 	try {
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next()) {
 			SceneObject* building = NULL;
@@ -892,12 +853,8 @@ void StructureManagerImplementation::loadStaticBuildings() {
 				continue;
 			}
 		}
-
-		delete result;
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuildings()\n");
 	}
 
 	//createNewLuas();
@@ -917,7 +874,7 @@ void StructureManagerImplementation::loadStaticCells(BuildingObject * building) 
 	uint32 cellCRC = String("object/cell/cell.iff").hashCode();
 
 	try {
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next()) {
 			uint64 oid = result->getLong(1);
@@ -945,13 +902,8 @@ void StructureManagerImplementation::loadStaticCells(BuildingObject * building) 
 
 			building->addCell(cell);
 		}
-
-		delete result;
-
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuilding");
 	}
 }
 
@@ -964,12 +916,13 @@ SceneObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 
 		if (obj != NULL/* && obj->isBuildingObject()*/) {
 			info("loading building (" + String::valueOf(oid) + ") from static object db");
-			returnObject = obj.get();
 
+			returnObject = obj.get();
 		} else {
 			StringBuffer query;
 			query << "SELECT * FROM staticobjects WHERE objectid = '" << oid << "';";
-			ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+			Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 			if (result->next()) {
 				info("loading building (" + String::valueOf(oid) + ") from mysql db");
@@ -1032,8 +985,6 @@ SceneObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuilding");
 	}
 
 	return returnObject;
@@ -1044,6 +995,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	StringBuffer msg;
 	msg << "StructureManagerImplementation::loadPlayerStructures()";
 	info(msg.toString());
+
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
 	//dbManager->loadDatabases();
 
@@ -1097,14 +1049,12 @@ void StructureManagerImplementation::loadPlayerStructures() {
 		}
 
 		delete objectData;
-
 	} catch (DatabaseException& e) {
 		StringBuffer err;
 		err << "Loading Player Structures, exception: " << e.getMessage();
 		error(err);
+
 		return;
-	} catch (...) {
-		throw Exception("problem in StructureManagerImplementation::loadPlayerStructures()");
 	}
 
 	info(String::valueOf(i) + " player structures loaded", true);

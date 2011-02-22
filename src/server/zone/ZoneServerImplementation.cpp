@@ -135,7 +135,8 @@ void ZoneServerImplementation::initialize() {
 	try {
 		info("Loading galaxy name from the database.");
 		String query = "SELECT name FROM galaxy WHERE galaxy_id = " + galaxyID;
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 		if (result->next())
 			name = result->getString(0);
@@ -144,8 +145,6 @@ void ZoneServerImplementation::initialize() {
 
 	} catch (DatabaseException& e) {
 		info("Unhandled exception when getting galaxy name from database.");
-	} catch (...) {
-		info("Unhandled exception initializing galaxy name.");
 	}
 
 	processor = new ZoneProcessServer(_this);
@@ -432,9 +431,6 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 		//unlock(doLock);
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
-		//unlock(doLock);
-		error("unreported exception caught in ZoneServerImplementation::getObject");
 	}
 
 	return obj;
@@ -462,9 +458,6 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int pers
 		e.printStackTrace();
 
 		//unlock();
-	} catch (...) {
-		error("unreported exception caught in ZoneServerImplementation::createObject");
-		//unlock();
 	}
 
 	return obj;
@@ -483,9 +476,6 @@ SceneObject* ZoneServerImplementation::createStaticObject(uint32 templateCRC, ui
 		error(e.getMessage());
 		e.printStackTrace();
 
-		//unlock();
-	} catch (...) {
-		error("unreported exception caught in ZoneServerImplementation::createObject");
 		//unlock();
 	}
 

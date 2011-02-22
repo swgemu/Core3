@@ -68,7 +68,7 @@ public:
 			Locker locker(firework);
 
 			firework->removeFromZone();
-		} catch (...) {
+		} catch (Exception& e) {
 			player->error("unreported exception on FireworkEvent::run()");
 		}
 

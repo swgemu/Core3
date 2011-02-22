@@ -88,6 +88,10 @@ namespace server {
 					e.printStackTrace();
 				} catch (...) {
 					System::out << "[LoginMessageProcessor] unreported Exception caught\n";
+
+					delete message;
+
+					throw;
 				}
 
 				delete message;

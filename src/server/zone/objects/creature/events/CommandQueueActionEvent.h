@@ -70,6 +70,10 @@ public:
 			e.printStackTrace();
 		} catch (...) {
 			creature->error("unreported exception on CommandQueueActionEvent::activate()");
+
+			creature = NULL;
+
+			throw;
 		}
 		
 		creature = NULL;

@@ -95,10 +95,13 @@ public:
 
 		} catch (...) {
 			player->error("unreported exception on FishingEvent::fishingStep()");
+
+			player = NULL;
+
+			throw;
 		}
 
 		player = NULL;
-
 	}
 };
 

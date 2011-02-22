@@ -51,30 +51,24 @@ public:
 
 		playerTradeContainer->setTradeTargetPlayer(targetToTrade);
 
-		try {
-			Locker clocker(targetPlayer, player);
+		Locker clocker(targetPlayer, player);
 
-			//player->info("asiodhjsodifjsoijghfoisjg", true);
+		//player->info("asiodhjsodifjsoijghfoisjg", true);
 
-			TradeContainer* targetTradeContainer = targetPlayer->getTradeContainer();
+		TradeContainer* targetTradeContainer = targetPlayer->getTradeContainer();
 
-			if (targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
-				BeginTradeMessage* msg = new BeginTradeMessage(targetPlayer->getObjectID());
-				player->sendMessage(msg);
+		if (targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
+			BeginTradeMessage* msg = new BeginTradeMessage(targetPlayer->getObjectID());
+			player->sendMessage(msg);
 
-				BeginTradeMessage* msg2 = new BeginTradeMessage(player->getObjectID());
-				targetPlayer->sendMessage(msg2);
-			} else {
-				StringIdChatParameter stringId("ui_trade", "requested_prose");
-				stringId.setTU(player->getFirstName());
+			BeginTradeMessage* msg2 = new BeginTradeMessage(player->getObjectID());
+			targetPlayer->sendMessage(msg2);
+		} else {
+			StringIdChatParameter stringId("ui_trade", "requested_prose");
+			stringId.setTU(player->getFirstName());
 
-				targetPlayer->sendSystemMessage(stringId);
-			}
-
-		} catch (...) {
-
+			targetPlayer->sendSystemMessage(stringId);
 		}
-
 	}
 };
 

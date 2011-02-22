@@ -332,18 +332,12 @@ void BazaarManagerImplementation::doInstantBuy(PlayerCreature* player, AuctionIt
 		return;
 	}
 
-	try {
-		Locker clocker(seller, player);
+	Locker clocker(seller, player);
 
-		seller->sendSystemMessage(body2);
-		seller->addBankCredits(price1);
+	seller->sendSystemMessage(body2);
+	seller->addBankCredits(price1);
 
-		seller->updateToDatabase();
-
-	} catch (...) {
-
-	}
-
+	seller->updateToDatabase();
 }
 
 void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionItem* item, int price1, int price2) {
@@ -369,21 +363,16 @@ void BazaarManagerImplementation::doAuctionBid(PlayerCreature* player, AuctionIt
 		StringIdChatParameter body("auction", "bidder_outbid");
 		body.setTO(item->getItemName());
 
-		try {
-			if (priorBidder != NULL) {
-				Locker clocker(priorBidder, player);
+		if (priorBidder != NULL) {
+			Locker clocker(priorBidder, player);
 
-				priorBidder->sendSystemMessage(body);
-				priorBidder->addBankCredits(item->getPrice());
+			priorBidder->sendSystemMessage(body);
+			priorBidder->addBankCredits(item->getPrice());
 
-				priorBidder->updateToDatabase();
+			priorBidder->updateToDatabase();
 
-				clocker.release();
-			}
-		} catch (...) {
-			error("unreported2 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
+			clocker.release();
 		}
-
 
 		// mail prior bidder with outcome
 		UnicodeString subject("@auction:subject_auction_outbid");

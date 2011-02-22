@@ -130,7 +130,7 @@ public:
 			else
 				creature->sendSystemMessage("invalid arguments for credits command:  /credits <firstname> <add/subtract> <amount> <bank/cash>");
 
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for credits command:  /credits <firstname> <add/subtract> <amount> <bank/cash>");
 		}
 

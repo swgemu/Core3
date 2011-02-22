@@ -76,7 +76,7 @@ public:
 				Locker clocker(object, creature);
 
 				object->synchronizedUIStopListen(creature, value);
-			} catch (...) {
+			} catch (Exception& e) {
 			}
 
 		}

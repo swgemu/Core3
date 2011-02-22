@@ -204,7 +204,7 @@ void PerformanceManager::loadPerformances() {
 	try {
 		String query = "SELECT * FROM performance";
 
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 		while (res->next()) {
 			Performance *performance = new Performance();
@@ -239,14 +239,9 @@ void PerformanceManager::loadPerformances() {
 			performances->add(performance);
 			loadedCount++;
 		}
-
-		delete res;
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << endl;
-	} catch (...) {
-		System::out << "unreported exception caught in PerformanceManager::loadPerformances()\n";
 	}
-
 }
 
 Performance* PerformanceManager::getDance(const String& name) {

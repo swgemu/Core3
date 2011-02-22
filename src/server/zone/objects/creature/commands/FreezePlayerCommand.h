@@ -103,7 +103,7 @@ public:
 
 			player->sendSystemMessage(targetPlayer->getFirstName() + " has been frozen.");
 
-		} catch (...) {
+		} catch (Exception& e) {
 			player->sendSystemMessage(syntaxerror);
 		}
 

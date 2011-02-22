@@ -26,15 +26,10 @@ void RadialManagerImplementation::handleObjectMenuRequest(PlayerCreature* player
 	ManagedReference<SceneObject*> menuObject = zoneServer->getObject(objectID);
 
 	if (menuObject != NULL) {
-		try {
-			Locker clocker(menuObject, player);
+		Locker clocker(menuObject, player);
 
-			//info("entering object menu request ");
-			menuObject->fillObjectMenuResponse(defaultMenuResponse, player);
-
-		} catch (...) {
-			error("RadialManagerImplementation::handleObjectMenuRequest");
-		}
+		//info("entering object menu request ");
+		menuObject->fillObjectMenuResponse(defaultMenuResponse, player);
 	}
 
 	defaultMenuResponse->finish();
@@ -61,25 +56,14 @@ void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	try {
 		Locker locker(player);
 
-		try {
-			Locker clocker(selectedObject, player);
+		Locker clocker(selectedObject, player);
 
-			selectedObject->info("entering radial call " + String::valueOf(selectID));
-			selectedObject->handleObjectMenuSelect(player, selectID);
-
-		} catch (...) {
-
-			throw;
-		}
-
-
+		selectedObject->info("entering radial call " + String::valueOf(selectID));
+		selectedObject->handleObjectMenuSelect(player, selectID);
 	} catch (Exception& e) {
 		error("exception caught in void RadialManagerImplementation::handleObjectMenuSelect");
+
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
-
-		error("unreported exception caught in void RadialManagerImplementation::handleObjectMenuSelect");
 	}
-
 }

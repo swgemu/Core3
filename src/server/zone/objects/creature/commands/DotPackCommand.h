@@ -137,7 +137,7 @@ public:
 						doAreaMedicActionTarget(creature, creatureTarget, pharma);
 					}
 
-				} catch (...) {
+				} catch (Exception& e) {
 
 				}
 
@@ -146,7 +146,7 @@ public:
 			}
 
 			zone->runlock();
-		} catch (...) {
+		} catch (Exception& e) {
 			zone->runlock();
 		}
 	}

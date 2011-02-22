@@ -81,7 +81,7 @@ public:
 					creatureObject->sendConversationStartTo(creature);
 				}
 
-			} catch (...) {
+			} catch (Exception& e) {
 				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
 
 			}

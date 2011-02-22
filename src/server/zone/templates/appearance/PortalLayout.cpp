@@ -46,7 +46,7 @@ void PortalLayout::parse(IffStream* iffStream) {
 		iffStream->closeForm(type);
 
 		iffStream->closeForm('PRTO');
-	} catch (...) {
+	} catch (Exception& e) {
 		String err = "unable to parse file ";
 		err += iffStream->getFileName();
 		error(err);
@@ -118,6 +118,8 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 				e.printStackTrace();
 			} catch (...) {
 				error("parsing CELS for " + iffStream->getFileName());
+
+				throw;
 			}
 		}
 
@@ -126,6 +128,8 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 		//error("parsing CELS for " + iffStream->getFileName());
 	} catch (...) {
 		//error("parsing CELS for " + iffStream->getFileName());
+
+		throw;
 	}
 
 	if (cellTotalNumber > 0)

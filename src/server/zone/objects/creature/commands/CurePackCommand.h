@@ -212,27 +212,27 @@ public:
 				zone->runlock();
 
 				try {
-
 					Locker crossLocker(creatureTarget, creature);
 
 					if (checkTarget(creature, creatureTarget)) {
 						doAreaMedicActionTarget(creature, creatureTarget, pharma);
 					}
 
-				} catch (...) {
+				} catch (Exception& e) {
+					zone->rlock();
 
+					throw;
 				}
 
 				zone->rlock();
-
 			}
 
 			zone->runlock();
-		} catch (...) {
+		} catch (Exception& e) {
 			zone->runlock();
+
+			throw;
 		}
-
-
 	}
 
 	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, PharmaceuticalObject* pharma) {

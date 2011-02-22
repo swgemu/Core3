@@ -45,8 +45,7 @@ void RegionImplementation::insertToZone(Zone* zone) {
 		if (shuttleInstallation != NULL) {
 			shuttleInstallation->spawnShuttleObjects();
 		}
-	} catch (...) {
-
+	} catch (Exception& e) {
 	}
 
 	wlock();

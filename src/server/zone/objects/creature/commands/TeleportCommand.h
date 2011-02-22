@@ -76,7 +76,7 @@ public:
 				parent = args.getLongToken();
 
 			creature->switchZone(zoneid, posx, 0, posy, parent);
-		} catch (...) {
+		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for teleport command");
 		}
 

@@ -62,23 +62,13 @@ void ObjectControllerMessageCallback::run() {
 	if (player == NULL || objectControllerCallback == NULL)
 		return;
 
-	try {
-		Locker _locker(player);
+	Locker _locker(player);
 
-		if (objectID != player->getObjectID()) {
-			player->error("wrong object id in object controller message?");
+	if (objectID != player->getObjectID()) {
+		player->error("wrong object id in object controller message?");
 
-			return;
-		}
-
-		objectControllerCallback->run();
-
-	} catch (Exception& e) {
-
-		System::out << "exception executing ObjectControllerMessage" << e.getMessage();
-		e.printStackTrace();
-	} catch (...) {
-
-		System::out << "unknown exception caught in ObjectControllerMessageCallback::execute";
+		return;
 	}
+
+	objectControllerCallback->run();
 }
