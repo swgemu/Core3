@@ -155,6 +155,9 @@ LoginClient* LoginServerImplementation::createConnection(Socket* sock, SocketAdd
 }
 
 void LoginServerImplementation::handleMessage(LoginClient* client, Packet* message) {
+	if (phandler == NULL)
+		return;
+
 	BaseClientProxy* session = (BaseClientProxy*) client->getSession();
 
 	try {
