@@ -70,6 +70,9 @@ namespace server {
 			}
 
 			void run() {
+				if (message == NULL)
+					return;
+
 				try {
 					packetHandler->handleMessage(message);
 				} catch (PacketIndexOutOfBoundsException& e) {
@@ -90,6 +93,7 @@ namespace server {
 					System::out << "[LoginMessageProcessor] unreported Exception caught\n";
 
 					delete message;
+					message = NULL;
 
 					throw;
 				}
