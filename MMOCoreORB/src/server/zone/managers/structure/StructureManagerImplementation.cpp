@@ -981,7 +981,6 @@ SceneObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 				}
 			}
 
-			delete result;
 		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
