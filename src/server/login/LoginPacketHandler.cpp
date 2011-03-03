@@ -64,9 +64,6 @@ LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplem
 }
 
 void LoginPacketHandler::handleMessage(Message* pack) {
-	if (pack->getClient() == NULL)
-		return;
-
 	Reference<LoginClient*> client = server->getLoginClient(pack->getClient());
 
 	if (client == NULL)
