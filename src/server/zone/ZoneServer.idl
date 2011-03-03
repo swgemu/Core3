@@ -82,6 +82,7 @@ import server.zone.managers.bazaar.BazaarManager;
 import server.zone.managers.minigames.FishingManager;
 import server.zone.managers.mission.MissionManager;
 import server.zone.managers.minigames.GamblingManager;
+import server.zone.managers.minigames.ForageManager;
 import server.zone.managers.stringid.StringIdManager;
 import server.zone.managers.creature.CreatureTemplateManager;
 import server.zone.managers.guild.GuildManager;
@@ -112,6 +113,7 @@ class ZoneServer extends ManagedService implements Logger {
 	
 	private FishingManager fishingManager;
 	private GamblingManager gamblingManager;
+	private ForageManager forageManager;
 	
 	private transient StringIdManager stringIdManager;
 	
@@ -258,6 +260,7 @@ class ZoneServer extends ManagedService implements Logger {
 
 	public boolean isServerOffline() {
 		return serverState == OFFLINE;
+
 	}
 
 	public boolean isServerLoading() {
@@ -339,6 +342,10 @@ class ZoneServer extends ManagedService implements Logger {
 	
 	public GamblingManager getGamblingManager() {
 		return gamblingManager;
+	}
+
+	public ForageManager getForageManager() {
+		return forageManager;
 	}
 	
 	public native Account getAccount(unsigned int accountID);

@@ -42,45 +42,28 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORAGECOMMAND_H_
-#define FORAGECOMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "ForageCleanupEvent.h"
 #include "server/zone/managers/minigames/ForageManager.h"
+#include "server/zone/ZoneServer.h"
 
-class ForageCommand : public QueueCommand {
-public:
 
-	bool scoutForage;
+	ForageCleanupEvent::ForageCleanupEvent(String name, ZoneServer* zoneSrv) : Task() {
+		playerName = name;
+		zoneServer = zoneSrv;
+	}
 
-	ForageCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	void ForageCleanupEvent::run() {
+		if (zoneServer == NULL)
+			return;
 
-		scoutForage = true; // True = Forage, False = Medical Forage
+		ManagedReference<ForageManager*> forageManager = zoneServer->getForageManager();
+
+		if (forageManager != NULL)
+			forageManager->deleteForageAreaCollection(playerName);
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
-		if (creature->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) creature;
-			ForageManager* forageManager = player->getZoneServer()->getForageManager();
-			forageManager->startForaging(player, scoutForage);
-		}
-
-		return SUCCESS;
-
-	}
-
-};
-
-#endif //FORAGECOMMAND_H_

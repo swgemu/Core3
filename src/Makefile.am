@@ -175,6 +175,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
 				server/zone/managers/minigames/GamblingManager.cpp \
+				server/zone/managers/minigames/ForageManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
@@ -277,6 +278,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
 		server/zone/managers/minigames/GamblingManagerImplementation.cpp \
+		server/zone/managers/minigames/ForageManagerImplementation.cpp \
+		server/zone/managers/minigames/events/ForageCleanupEvent.cpp \
 		server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp \
 		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.cpp \
 		server/zone/managers/resource/resourcespawner/resourcetree/ResourceTreeNode.cpp \

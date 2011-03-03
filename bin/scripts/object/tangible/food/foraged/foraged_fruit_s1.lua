@@ -40,15 +40,15 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
-
+-- Maroj Melon
 object_tangible_food_foraged_foraged_fruit_s1 = object_tangible_food_foraged_shared_foraged_fruit_s1:new {
 	templateType = CONSUMABLE,
 	
-	duration = 0,
-	filling = 10,
+	duration = 150,
+	filling = 0,
 	nutrition = 0,
 
-	effectType = 0,
+	effectType = 1,
 
 	fillingMin = 0,
 	fillingMax = 0,
@@ -60,13 +60,14 @@ object_tangible_food_foraged_foraged_fruit_s1 = object_tangible_food_foraged_sha
 	quantityMin = 0,
 	quantityMax = 0,
 	
-	modifiers = { },
+	modifiers = { "health", 50, "mind", 50 },
 
-	buffName = "",
+	buffName = "maroj_melon",
 	buffCRC = 0,
 	speciesRestriction = "",
 	
-	consumableType = 1
+	consumableType = 1,
+	foragedFood = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_foraged_fruit_s1, "object/tangible/food/foraged/foraged_fruit_s1.iff")

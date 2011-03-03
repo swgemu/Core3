@@ -42,45 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORAGECOMMAND_H_
-#define FORAGECOMMAND_H_
+#ifndef FORAGECLEANUPEVENT_H_
+#define FORAGECLEANUPEVENT_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/minigames/ForageManager.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 
-class ForageCommand : public QueueCommand {
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+namespace events {
+
+class ForageCleanupEvent : public Task {
+
 public:
+	ForageCleanupEvent(String name, ZoneServer* zoneServer);
 
-	bool scoutForage;
+	void run();
 
-	ForageCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
-		scoutForage = true; // True = Forage, False = Medical Forage
-
-	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
-		if (creature->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) creature;
-			ForageManager* forageManager = player->getZoneServer()->getForageManager();
-			forageManager->startForaging(player, scoutForage);
-		}
-
-		return SUCCESS;
-
-	}
+	String playerName;
+	ManagedReference<ZoneServer*> zoneServer;
 
 };
 
-#endif //FORAGECOMMAND_H_
+}
+}
+}
+}
+}
+
+using namespace server::zone::managers::minigames::events;
+
+#endif /*FORAGECLEANUPEVENT_H_*/

@@ -183,6 +183,8 @@ public:
 
 	bool isFood();
 
+	bool isForagedFood();
+
 	bool isSpice();
 
 	DistributedObjectServant* _getImplementation();
@@ -245,6 +247,8 @@ protected:
 
 	int consumableType;
 
+	int foragedFood;
+
 	String speciesRestriction;
 
 public:
@@ -287,6 +291,8 @@ public:
 	bool isDrink();
 
 	bool isFood();
+
+	bool isForagedFood();
 
 	bool isSpice();
 
@@ -344,6 +350,8 @@ public:
 	bool isDrink();
 
 	bool isFood();
+
+	bool isForagedFood();
 
 	bool isSpice();
 
