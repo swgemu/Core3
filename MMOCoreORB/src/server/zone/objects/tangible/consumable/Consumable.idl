@@ -80,6 +80,7 @@ class Consumable extends TangibleObject {
 	protected unsigned int  buffCRC;
 	
 	protected int consumableType;
+	protected int foragedFood;
 
 	protected string speciesRestriction;
 	
@@ -98,6 +99,7 @@ class Consumable extends TangibleObject {
 		setLoggingName("PharmaceuticalObject");
 		
 		consumableType = 0;
+		foragedFood = 0;
 
 		duration = 30;
 		filling = 0;
@@ -180,6 +182,10 @@ class Consumable extends TangibleObject {
 
 	public boolean isFood() {
 		return (consumableType == FOOD);
+	}
+
+	public boolean isForagedFood() {
+		return (foragedFood == 1);
 	}
 
 	public boolean isSpice() {

@@ -33,6 +33,7 @@ class ConsumableTemplate : public SharedTangibleObjectTemplate {
 	String speciesRestriction;
 
 	int consumableType;
+	int foragedFood;
 
 public:
 	ConsumableTemplate() {
@@ -78,6 +79,7 @@ public:
 
 		speciesRestriction = templateData->getStringField("speciesRestriction");
 		//consumableType = templateData->getIntField("consumableType");
+		foragedFood = templateData->getIntField("foragedFood");
     }
 
     inline uint32 getBuffCRC() const {
@@ -90,6 +92,10 @@ public:
 
     inline int getConsumableType() const {
 		return consumableType;
+	}
+
+    inline int getForagedFood() const {
+		return foragedFood;
 	}
 
     inline int getDuration() const {

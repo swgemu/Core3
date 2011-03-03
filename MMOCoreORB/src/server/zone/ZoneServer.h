@@ -258,6 +258,20 @@ using namespace server::zone::managers::minigames;
 namespace server {
 namespace zone {
 namespace managers {
+namespace minigames {
+
+class ForageManager;
+
+} // namespace minigames
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::minigames;
+
+namespace server {
+namespace zone {
+namespace managers {
 namespace stringid {
 
 class StringIdManager;
@@ -454,6 +468,8 @@ public:
 
 	GamblingManager* getGamblingManager();
 
+	ForageManager* getForageManager();
+
 	Account* getAccount(unsigned int accountID);
 
 	ProfessionManager* getProfessionManager();
@@ -533,6 +549,8 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 	ManagedReference<FishingManager* > fishingManager;
 
 	ManagedReference<GamblingManager* > gamblingManager;
+
+	ManagedReference<ForageManager* > forageManager;
 
 	StringIdManager* stringIdManager;
 
@@ -682,6 +700,8 @@ public:
 	FishingManager* getFishingManager();
 
 	GamblingManager* getGamblingManager();
+
+	ForageManager* getForageManager();
 
 	Account* getAccount(unsigned int accountID);
 
@@ -841,6 +861,8 @@ public:
 	FishingManager* getFishingManager();
 
 	GamblingManager* getGamblingManager();
+
+	ForageManager* getForageManager();
 
 	Account* getAccount(unsigned int accountID);
 

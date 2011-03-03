@@ -148,13 +148,26 @@ bool Consumable::isFood() {
 		return _implementation->isFood();
 }
 
-bool Consumable::isSpice() {
+bool Consumable::isForagedFood() {
 	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isForagedFood();
+}
+
+bool Consumable::isSpice() {
+	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -345,6 +358,11 @@ bool ConsumableImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "foragedFood") {
+		TypeInfo<int >::parseFromBinaryStream(&foragedFood, stream);
+		return true;
+	}
+
 	if (_name == "speciesRestriction") {
 		TypeInfo<String >::parseFromBinaryStream(&speciesRestriction, stream);
 		return true;
@@ -493,6 +511,14 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "foragedFood";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&foragedFood, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "speciesRestriction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -502,7 +528,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 17 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return 18 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ConsumableImplementation::ConsumableImplementation() {
@@ -511,6 +537,8 @@ ConsumableImplementation::ConsumableImplementation() {
 	setLoggingName("PharmaceuticalObject");
 	// server/zone/objects/tangible/consumable/Consumable.idl():  		consumableType = 0;
 	consumableType = 0;
+	// server/zone/objects/tangible/consumable/Consumable.idl():  		foragedFood = 0;
+	foragedFood = 0;
 	// server/zone/objects/tangible/consumable/Consumable.idl():  		duration = 30;
 	duration = 30;
 	// server/zone/objects/tangible/consumable/Consumable.idl():  		filling = 0;
@@ -583,6 +611,11 @@ bool ConsumableImplementation::isFood() {
 	return (consumableType == FOOD);
 }
 
+bool ConsumableImplementation::isForagedFood() {
+	// server/zone/objects/tangible/consumable/Consumable.idl():  		return (foragedFood == 1);
+	return (foragedFood == 1);
+}
+
 bool ConsumableImplementation::isSpice() {
 	// server/zone/objects/tangible/consumable/Consumable.idl():  		return (isSpiceEffect() && isFood());
 	return (isSpiceEffect() && isFood());
@@ -595,7 +628,7 @@ bool ConsumableImplementation::isSpice() {
 ConsumableAdapter::ConsumableAdapter(ConsumableImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SETMODIFIERS__BUFF_BOOL_,RPC_ISSPICEEFFECT__,RPC_ISATTRIBUTEEFFECT__,RPC_ISDRINK__,RPC_ISFOOD__,RPC_ISSPICE__};
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SETMODIFIERS__BUFF_BOOL_,RPC_ISSPICEEFFECT__,RPC_ISATTRIBUTEEFFECT__,RPC_ISDRINK__,RPC_ISFOOD__,RPC_ISFORAGEDFOOD__,RPC_ISSPICE__};
 
 Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -618,6 +651,9 @@ Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ISFOOD__:
 		resp->insertBoolean(isFood());
+		break;
+	case RPC_ISFORAGEDFOOD__:
+		resp->insertBoolean(isForagedFood());
 		break;
 	case RPC_ISSPICE__:
 		resp->insertBoolean(isSpice());
@@ -651,6 +687,10 @@ bool ConsumableAdapter::isDrink() {
 
 bool ConsumableAdapter::isFood() {
 	return ((ConsumableImplementation*) impl)->isFood();
+}
+
+bool ConsumableAdapter::isForagedFood() {
+	return ((ConsumableImplementation*) impl)->isForagedFood();
 }
 
 bool ConsumableAdapter::isSpice() {

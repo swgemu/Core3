@@ -40,8 +40,34 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
-
+-- Jar of Foraged Fungus
 object_tangible_food_foraged_edible_jar_fungus = object_tangible_food_foraged_shared_edible_jar_fungus:new {
+	templateType = CONSUMABLE,
+	
+	duration = 250,
+	filling = 0,
+	nutrition = 0,
+
+	effectType = 1,
+
+	fillingMin = 0,
+	fillingMax = 0,
+
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 0,
+	nutritionMax = 0,
+	quantityMin = 0,
+	quantityMax = 0,
+	
+	modifiers = { "health", 50, "mind", 100 },
+
+	buffName = "jar_fungus",
+	buffCRC = 0,
+	speciesRestriction = "",
+	
+	consumableType = 1,
+	foragedFood = 1
 
 }
 

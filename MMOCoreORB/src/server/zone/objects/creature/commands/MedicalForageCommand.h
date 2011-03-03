@@ -46,12 +46,17 @@ which carries forward this exception.
 #define MEDICALFORAGECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/minigames/ForageManager.h"
 
 class MedicalForageCommand : public QueueCommand {
 public:
 
+	bool scoutForage;
+
 	MedicalForageCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+
+		scoutForage = false; // True = Forage, False = Medical Forage
 
 	}
 
@@ -63,7 +68,17 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		if (creature->isPlayerCreature()) {
+			PlayerCreature* player = (PlayerCreature*) creature;
+			ForageManager* forageManager = player->getZoneServer()->getForageManager();
+			forageManager->startForaging(player, scoutForage);
+		}
+
 		return SUCCESS;
+
 	}
 
 };

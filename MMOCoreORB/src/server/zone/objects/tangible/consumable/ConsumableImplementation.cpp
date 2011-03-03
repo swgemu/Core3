@@ -49,6 +49,8 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 
 	//consumableType = consumable->getConsumableType(); set by the subobject
 
+	foragedFood = consumable->getForagedFood();
+
 	speciesRestriction = consumable->getSpeciesRestriction();
 }
 
@@ -73,7 +75,7 @@ int ConsumableImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 		return 0;
 	}
 
-	if (player->hasBuff(buffCRC)  && !isAttributeEffect()) {
+	if (player->hasBuff(buffCRC)  && (!isAttributeEffect() || isForagedFood())) {
 		player->sendSystemMessage("combat_effects", "already_affected"); //You are already under the influence of that food. Eating more won't enhance the effect.
 		return 0;
 	}
@@ -212,7 +214,7 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 
 		uint8 hamAttribute = CreatureAttribute::getAttribute(attribute);
 
-		if (!isSpice())
+		if (!isSpice() && !isForagedFood())
 			value = nutrition;
 
 		if (!skillModifiers)
@@ -286,9 +288,13 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Play
 
 			for (int i = 0; i < mods; ++i) {
 				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-
 				StringBuffer nutritionstring;
-				nutritionstring << ((nutrition > 0) ? "+" : "") << nutrition << " for " << durationstring.toString();
+
+				if (!isForagedFood())
+					nutritionstring << ((nutrition > 0) ? "+" : "") << nutrition << " for " << durationstring.toString();
+				else
+					nutritionstring << ((entry->getValue() > 0) ? "+" : "") << entry->getValue() << ", " << durationstring.toString();
+
 				alm->insertAttribute("attr_" + entry->getKey(), nutritionstring.toString());
 			}
 		}
