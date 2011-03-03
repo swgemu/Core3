@@ -53,7 +53,7 @@ namespace server {
 	namespace login {
 	
 		class LoginMessageProcessorTask : public Task {
-			Message* message;
+			ManagedReference<Message*> message;
 
 			LoginPacketHandler* packetHandler;
 
@@ -65,14 +65,9 @@ namespace server {
 			}
 
 			~LoginMessageProcessorTask() {
-				delete message;
-				message = NULL;
 			}
 
 			void run() {
-				if (message == NULL)
-					return;
-
 				try {
 					packetHandler->handleMessage(message);
 				} catch (PacketIndexOutOfBoundsException& e) {
@@ -89,18 +84,7 @@ namespace server {
 					//error(msg);
 
 					e.printStackTrace();
-				} catch (...) {
-					System::out << "[LoginMessageProcessor] unreported Exception caught\n";
-
-					delete message;
-					message = NULL;
-
-					throw;
 				}
-
-				delete message;
-				message = NULL;
-
 			}
 
 		};
