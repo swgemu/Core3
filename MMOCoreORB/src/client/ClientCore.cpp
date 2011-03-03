@@ -77,6 +77,8 @@ void ClientCore::run() {
 		zone->start();
 
 		zones.add(zone);
+
+		Thread::sleep(2000);
 	}
 
 	info("initialized", true);
