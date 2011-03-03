@@ -42,6 +42,8 @@
 
 #include "server/zone/managers/minigames/GamblingManager.h"
 
+#include "server/zone/managers/minigames/ForageManager.h"
+
 #include "server/zone/managers/stringid/StringIdManager.h"
 
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
@@ -780,13 +782,26 @@ GamblingManager* ZoneServer::getGamblingManager() {
 		return _implementation->getGamblingManager();
 }
 
-Account* ZoneServer::getAccount(unsigned int accountID) {
+ForageManager* ZoneServer::getForageManager() {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 56);
+
+		return (ForageManager*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getForageManager();
+}
+
+Account* ZoneServer::getAccount(unsigned int accountID) {
+	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 57);
 		method.addUnsignedIntParameter(accountID);
 
 		return (Account*) method.executeWithObjectReturn();
@@ -818,7 +833,7 @@ void ZoneServer::setServerName(const String& servername) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 58);
 		method.addAsciiParameter(servername);
 
 		method.executeWithVoidReturn();
@@ -832,7 +847,7 @@ void ZoneServer::setGalaxyID(int galaxyid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 59);
 		method.addSignedIntParameter(galaxyid);
 
 		method.executeWithVoidReturn();
@@ -846,7 +861,7 @@ void ZoneServer::setServerState(int state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 60);
 		method.addSignedIntParameter(state);
 
 		method.executeWithVoidReturn();
@@ -860,7 +875,7 @@ void ZoneServer::setServerStateLocked() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 61);
 
 		method.executeWithVoidReturn();
 	} else
@@ -873,7 +888,7 @@ void ZoneServer::setServerStateOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 62);
 
 		method.executeWithVoidReturn();
 	} else
@@ -886,7 +901,7 @@ void ZoneServer::loadMessageoftheDay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 63);
 
 		method.executeWithVoidReturn();
 	} else
@@ -899,7 +914,7 @@ void ZoneServer::changeMessageoftheDay(const String& newMOTD) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 64);
 		method.addAsciiParameter(newMOTD);
 
 		method.executeWithVoidReturn();
@@ -913,7 +928,7 @@ String ZoneServer::getMessageoftheDay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 65);
 
 		method.executeWithAsciiReturn(_return_getMessageoftheDay);
 		return _return_getMessageoftheDay;
@@ -1054,6 +1069,11 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 
 	if (_name == "gamblingManager") {
 		TypeInfo<ManagedReference<GamblingManager* > >::parseFromBinaryStream(&gamblingManager, stream);
+		return true;
+	}
+
+	if (_name == "forageManager") {
+		TypeInfo<ManagedReference<ForageManager* > >::parseFromBinaryStream(&forageManager, stream);
 		return true;
 	}
 
@@ -1223,6 +1243,14 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "forageManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<ForageManager* > >::toBinaryStream(&forageManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "totalSentPackets";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1312,7 +1340,7 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 23 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 24 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 void ZoneServerImplementation::fixScheduler() {
@@ -1438,6 +1466,11 @@ GamblingManager* ZoneServerImplementation::getGamblingManager() {
 	return gamblingManager;
 }
 
+ForageManager* ZoneServerImplementation::getForageManager() {
+	// server/zone/ZoneServer.idl():  		return forageManager;
+	return forageManager;
+}
+
 ProfessionManager* ZoneServerImplementation::getProfessionManager() {
 	// server/zone/ZoneServer.idl():  		return processor.getProfessionManager();
 	return processor->getProfessionManager();
@@ -1467,7 +1500,7 @@ void ZoneServerImplementation::setServerState(int state) {
 ZoneServerAdapter::ZoneServerAdapter(ZoneServerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATESTATICOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETSERVERNAME__,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETBAZAARMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETSERVERNAME__STRING_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATESTATICOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETSERVERNAME__,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETBAZAARMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETSERVERNAME__STRING_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
 
 Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -1622,6 +1655,9 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETGAMBLINGMANAGER__:
 		resp->insertLong(getGamblingManager()->_getObjectID());
+		break;
+	case RPC_GETFORAGEMANAGER__:
+		resp->insertLong(getForageManager()->_getObjectID());
 		break;
 	case RPC_GETACCOUNT__INT_:
 		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
@@ -1855,6 +1891,10 @@ FishingManager* ZoneServerAdapter::getFishingManager() {
 
 GamblingManager* ZoneServerAdapter::getGamblingManager() {
 	return ((ZoneServerImplementation*) impl)->getGamblingManager();
+}
+
+ForageManager* ZoneServerAdapter::getForageManager() {
+	return ((ZoneServerImplementation*) impl)->getForageManager();
 }
 
 Account* ZoneServerAdapter::getAccount(unsigned int accountID) {

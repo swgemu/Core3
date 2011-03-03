@@ -42,45 +42,56 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORAGECOMMAND_H_
-#define FORAGECOMMAND_H_
+#ifndef FORAGINGEVENT_H_
+#define FORAGINGEVENT_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/minigames/ForageManager.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/Zone.h"
+#include "../ForageManager.h"
 
-class ForageCommand : public QueueCommand {
-public:
+namespace server {
+namespace zone {
+namespace managers {
+namespace minigames {
+namespace events {
 
+class ForagingEvent : public Task {
+
+	ManagedReference<PlayerCreature*> player;
+	ManagedReference<ZoneServer*> zoneServer;
 	bool scoutForage;
+	float forageX;
+	float forageY;
+	int planet;
 
-	ForageCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
-		scoutForage = true; // True = Forage, False = Medical Forage
-
+public:
+	ForagingEvent(PlayerCreature* player, ZoneServer* zoneServer, bool scoutForage, float playerX, float playerY, int planet) : Task() {
+		this->player = player;
+		this->zoneServer = zoneServer;
+		this->scoutForage = scoutForage;
+		this->forageX = playerX;
+		this->forageY = playerY;
+		this->planet = planet;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	void run() {
+		try {
+			ManagedReference<ForageManager*> forageManager = zoneServer->getForageManager();
+			if (forageManager != NULL)
+				forageManager->finishForaging(player, scoutForage, forageX, forageY, planet);
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
-		if (creature->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) creature;
-			ForageManager* forageManager = player->getZoneServer()->getForageManager();
-			forageManager->startForaging(player, scoutForage);
+		} catch (...) {
+			player->error("unreported exception in ForagingEvent::run()");
 		}
-
-		return SUCCESS;
-
 	}
-
 };
 
-#endif //FORAGECOMMAND_H_
+}
+}
+}
+}
+}
+
+using namespace server::zone::managers::minigames::events;
+
+#endif /*FORAGINGEVENT_H_*/

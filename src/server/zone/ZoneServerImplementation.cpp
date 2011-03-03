@@ -65,6 +65,7 @@ which carries forward this exception.
 #include "managers/bazaar/BazaarManager.h"
 #include "managers/minigames/FishingManager.h"
 #include "managers/minigames/GamblingManager.h"
+#include "managers/minigames/ForageManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "managers/creature/CreatureTemplateManager.h"
 #include "managers/guild/GuildManager.h"
@@ -103,6 +104,7 @@ ZoneServerImplementation::ZoneServerImplementation(int galaxyid) :
 	lootManager = NULL;
 	fishingManager = NULL;
 	gamblingManager = NULL;
+	forageManager = NULL;
 	stringIdManager = NULL;
 	creatureTemplateManager = NULL;
 	guildManager = NULL;
@@ -266,6 +268,9 @@ void ZoneServerImplementation::startManagers() {
 
 	gamblingManager = new GamblingManager(_this);
 	gamblingManager->deploy();
+
+	forageManager = new ForageManager(_this);
+	forageManager->deploy();
 
 	lootManager = new LootManager(craftingManager);
 	lootManager->deploy("LootManager");

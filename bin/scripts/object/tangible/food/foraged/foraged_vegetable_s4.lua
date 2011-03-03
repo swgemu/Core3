@@ -40,8 +40,34 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
-
+-- Etost'Ew Zann
 object_tangible_food_foraged_foraged_vegetable_s4 = object_tangible_food_foraged_shared_foraged_vegetable_s4:new {
+	templateType = CONSUMABLE,
+	
+	duration = 700,
+	filling = 0,
+	nutrition = 0,
+
+	effectType = 1,
+
+	fillingMin = 0,
+	fillingMax = 0,
+
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 0,
+	nutritionMax = 0,
+	quantityMin = 0,
+	quantityMax = 0,
+	
+	modifiers = { "health", 50, "action", 50, "mind", 50 },
+
+	buffName = "etost'ew_zann",
+	buffCRC = 0,
+	speciesRestriction = "",
+	
+	consumableType = 1,
+	foragedFood = 1
 
 }
 
