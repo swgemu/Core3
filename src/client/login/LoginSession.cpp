@@ -21,6 +21,8 @@ LoginSession::LoginSession(int instance) : Logger("LoginSession" + String::value
 	sessionID = 0;
 }
 
+int accountSuffix = 0;
+
 void LoginSession::run() {
 	LoginClient* login = new LoginClient(44453);
 	login->setLoginSession(this);
@@ -59,7 +61,7 @@ void LoginSession::run() {
 	password = password.replaceFirst("\n", "");*/
 
 	//BaseMessage* acc = new AccountVersionMessage(user, password, "20050408-18:00");
-	BaseMessage* acc = new AccountVersionMessage("Akimaki", "4823848", "20050408-18:00");
+	BaseMessage* acc = new AccountVersionMessage("Akimaki" + String::valueOf(accountSuffix++), "4823848", "20050408-18:00");
 	login->sendMessage(acc);
 
 	info("sent account version message", true);
