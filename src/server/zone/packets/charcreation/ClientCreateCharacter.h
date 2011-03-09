@@ -60,7 +60,7 @@ public:
 		insertAscii(""); // location
 		insertAscii(""); // hairobj
 		insertAscii(""); // haircust
-		insertAscii(""); // profession
+		insertAscii("crafting_artisan"); // profession
 		insertByte(0); // unknown byte
 		insertFloat(1); // height
 		insertInt(0); // bio

@@ -8,6 +8,7 @@
 #include "../../server/zone/packets/zone/CmdSceneReady.h"
 #include "managers/object/ObjectManager.h"
 #include "managers/objectcontroller/ObjectController.h"
+#include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
 
 ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 	zone = z;
@@ -17,7 +18,7 @@ ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
-	//info("parsing " + pack->toStringData());
+	//info("parsing " + pack->toStringData(), true);
 
 	sys::uint16 opcount = pack->parseShort();
 	sys::uint32 opcode = pack->parseInt();
@@ -46,6 +47,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 
 	case 04:
 		switch (opcode) {
+
+		case 0xE00730E5:
+			handleClientPermissionsMessage(pack);
+			break;
 
 		case 0x56CBDE9E:
 			handleUpdateContainmentMessage(pack);
@@ -92,6 +97,32 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	default:
 		//error("unhandled operand count" + pack->toString());
 		break;
+	}
+}
+
+void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
+	ZoneClient* client = (ZoneClient*) pack->getClient();
+
+	if (zone->getCharacterID() == 0) {
+		//client->info("enter new Character Name to create", true);
+		/*char name[256];
+				fgets(name, sizeof(name), stdin);*/
+
+		client->info("creating new character", true);
+
+		String name = "character";
+		name += ('a' + ++zone->createdChar);
+
+		client->info("name " + name, true);
+
+		String charName = name;
+		charName = charName.replaceFirst("\n", "");
+
+		BaseMessage* msg = new ClientCreateCharacter(charName);
+		client->sendMessage(msg);
+	} else {
+		BaseMessage* selectChar = new SelectCharacter(zone->getCharacterID());
+		client->sendMessage(selectChar);
 	}
 }
 
