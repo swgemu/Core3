@@ -69,24 +69,6 @@ void Zone::run() {
 
 		client->info("sent client id message", true);
 
-		if (characterID == 0) {
-			//client->info("enter new Character Name to create", true);
-			/*char name[256];
-			fgets(name, sizeof(name), stdin);*/
-
-			String name = "character";
-			name += ('a' + ++createdChar);
-
-			String charName = name;
-			charName = charName.replaceFirst("\n", "");
-
-			BaseMessage* msg = new ClientCreateCharacter(charName);
-			client->sendMessage(msg);
-		} else {
-			BaseMessage* selectChar = new SelectCharacter(characterID);
-			client->sendMessage(selectChar);
-		}
-
 	} catch (sys::lang::Exception& e) {
 		System::out << e.getMessage() << "\n";
 		exit(0);

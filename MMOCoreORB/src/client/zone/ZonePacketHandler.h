@@ -70,6 +70,7 @@ public:
 	void handleObjectControllerMessage(Message* pack);
 	void handleUpdateContainmentMessage(Message* pack);
 	void handleSceneObejctDestroyMessage(Message* pack);
+	void handleClientPermissionsMessage(Message* pack);
 
 };
 
