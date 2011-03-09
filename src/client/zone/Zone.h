@@ -133,6 +133,10 @@ public:
 		unlock();
 	}
 
+	inline uint64 getCharacterID() {
+		return characterID;
+	}
+
 	inline ZoneClient* getZoneClient() {
 		return client;
 	}
