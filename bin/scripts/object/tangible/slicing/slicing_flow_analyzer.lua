@@ -42,6 +42,9 @@
 
 
 object_tangible_slicing_slicing_flow_analyzer = object_tangible_slicing_shared_slicing_flow_analyzer:new {
+	templateType = SLICINGTOOL,
+	gameObjectType = 32776,
+	effectiveness = -15.0
 
 }
 

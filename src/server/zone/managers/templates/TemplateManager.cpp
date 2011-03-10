@@ -57,12 +57,14 @@
 #include "server/zone/templates/tangible/tool/SurveyToolTemplate.h"
 #include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
+#include "server/zone/templates/tangible/tool/SlicingToolTemplate.h"
 #include "server/zone/templates/tangible/CloningBuildingObjectTemplate.h"
 #include "server/zone/templates/resource_container/ResourceSpawnTemplate.h"
 #include "server/zone/templates/tangible/DeedTemplate.h"
 #include "server/zone/templates/tangible/VehicleDeedTemplate.h"
 #include "server/zone/templates/tangible/MissionTerminalTemplate.h"
 #include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
+#include "server/zone/templates/tangible/ContainerTemplate.h"
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -254,6 +256,8 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<InstrumentObjectTemplate>(SharedObjectTemplate::INSTRUMENT);
 	templateFactory.registerObject<CampKitTemplate>(SharedObjectTemplate::CAMPKIT);
 	templateFactory.registerObject<PlayerCreatureTemplate>(SharedObjectTemplate::PLAYERCREATURE);
+	templateFactory.registerObject<SlicingToolTemplate>(SharedObjectTemplate::SLICINGTOOL);
+	templateFactory.registerObject<ContainerTemplate>(SharedObjectTemplate::CONTAINER);
 
 }
 
@@ -390,6 +394,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("INSTRUMENT", SharedObjectTemplate::INSTRUMENT);
 	luaTemplatesInstance->setGlobalInt("CAMPKIT", SharedObjectTemplate::CAMPKIT);
 	luaTemplatesInstance->setGlobalInt("PLAYERCREATURE", SharedObjectTemplate::PLAYERCREATURE);
+	luaTemplatesInstance->setGlobalInt("SLICINGTOOL", SharedObjectTemplate::SLICINGTOOL);
+	luaTemplatesInstance->setGlobalInt("CONTAINER", SharedObjectTemplate::CONTAINER);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

@@ -92,7 +92,8 @@ public:
 
 		SceneObject* objectsParent = objectToTransfer->getParent();
 
-		if (objectsParent != NULL) {
+		// TODO: Maybe a better way to handle this. (If its a world loot container, ignore parent) ??
+		if (objectsParent != NULL && objectsParent->getGameObjectType() != SceneObject::STATICLOOTCONTAINER) {
 			if (objectsParent->isCellObject()) {
 
 				ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();

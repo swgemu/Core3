@@ -134,6 +134,15 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Container>(SceneObject::WEARABLECONTAINER);
 	objectFactory.registerObject<LootkitObject>(SceneObject::LOOTKIT);
 	objectFactory.registerObject<CampKit>(SceneObject::CAMPKIT);
+	objectFactory.registerObject<Container>(SceneObject::STATICLOOTCONTAINER);
+	objectFactory.registerObject<TangibleObject>(SceneObject::PLAYERLOOTCRATE);
+
+	objectFactory.registerObject<SlicingTool>(SceneObject::SLICINGTOOL);
+	objectFactory.registerObject<SlicingTool>(SceneObject::FLOWANALYZER);
+	objectFactory.registerObject<SlicingTool>(SceneObject::MOLECULARCLAMP);
+	objectFactory.registerObject<SlicingTool>(SceneObject::WEAPONUPGRADEKIT);
+	objectFactory.registerObject<SlicingTool>(SceneObject::ARMORUPGRADEKIT);
+	objectFactory.registerObject<PrecisionLaserKnife>(SceneObject::LASERKNIFE);
 
 	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
 	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);

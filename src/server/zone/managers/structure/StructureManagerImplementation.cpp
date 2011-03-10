@@ -30,6 +30,7 @@
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
+#include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
@@ -250,6 +251,85 @@ void StructureManagerImplementation::loadStaticClientObjects() {
 
 			//++i;
 		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	}
+}
+
+void StructureManagerImplementation::loadStaticLootCrates() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	//lock();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file LIKE '%placable_loot_crate%' AND type = 50;";
+
+	Reference<ResultSet*> result = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		Container* container = NULL;
+		CellObject* cell = NULL;
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		String templateFile;
+		float positionX, positionZ, positionY;
+		int i = 0;
+
+		while (result->next()) {
+			parentId = result->getUnsignedLong(2);
+			objectID = result->getUnsignedLong(1);
+			templateFile = result->getString(3);
+
+			String serverTemplate = templateFile.replaceFirst("shared_", "");
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			/*if (parentId != 0) {
+				SceneObject* scene = zoneServer->getObject(parentId);
+
+				if (scene != NULL && scene->isCellObject())
+					cell = (CellObject*) scene;
+				else {
+					cell = NULL;
+
+					error("loot crate unknown parentid " + String::valueOf(parentId));
+					continue;
+				}
+			} else */
+				cell = NULL;
+
+			container = (Container*) zoneServer->createStaticObject(serverTemplate.hashCode(), objectID);
+			container->setStaticObject(true);
+
+			if (cell != NULL)
+				cell->addObject(container, -1);
+
+			container->initializePosition(positionX, positionZ, positionY);
+			container->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				container->updateToDatabase();
+
+			++i;
+		}
+
+		if (i > 0)
+			info(String::valueOf(i) + " lootcrates loaded", true);
+
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	}

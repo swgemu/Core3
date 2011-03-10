@@ -16,6 +16,8 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
 /*
  *	WeaponObjectStub
  */
@@ -78,13 +80,28 @@ void WeaponObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* 
 		_implementation->fillAttributeList(msg, object);
 }
 
-void WeaponObject::updateCraftingValues(ManufactureSchematic* schematic) {
+int WeaponObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+void WeaponObject::updateCraftingValues(ManufactureSchematic* schematic) {
+	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -98,7 +115,7 @@ bool WeaponObject::isCertifiedFor(PlayerCreature* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -157,7 +174,7 @@ void WeaponObject::setCertified(bool cert) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addBooleanParameter(cert);
 
 		method.executeWithVoidReturn();
@@ -171,7 +188,7 @@ int WeaponObject::getAttackType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -184,7 +201,7 @@ bool WeaponObject::isCertified() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -197,7 +214,7 @@ int WeaponObject::getPointBlankAccuracy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -210,7 +227,7 @@ void WeaponObject::setPointBlankAccuracy(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -224,7 +241,7 @@ int WeaponObject::getPointBlankRange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -237,7 +254,7 @@ int WeaponObject::getIdealRange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -250,7 +267,7 @@ void WeaponObject::setIdealRange(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -264,7 +281,7 @@ int WeaponObject::getMaxRange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -277,7 +294,7 @@ void WeaponObject::setMaxRange(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -291,7 +308,7 @@ int WeaponObject::getIdealAccuracy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -304,7 +321,7 @@ void WeaponObject::setIdealAccuracy(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -318,7 +335,7 @@ int WeaponObject::getArmorPiercing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -331,7 +348,7 @@ int WeaponObject::getMaxRangeAccuracy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -344,7 +361,7 @@ void WeaponObject::setMaxRangeAccuracy(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -358,7 +375,7 @@ float WeaponObject::getAttackSpeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -371,7 +388,7 @@ void WeaponObject::setAttackSpeed(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -385,7 +402,7 @@ float WeaponObject::getMaxDamage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -398,7 +415,7 @@ void WeaponObject::setMaxDamage(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -412,7 +429,7 @@ float WeaponObject::getMinDamage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -425,7 +442,7 @@ void WeaponObject::setMinDamage(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -439,7 +456,7 @@ float WeaponObject::getWoundsRatio() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -452,7 +469,7 @@ void WeaponObject::setWoundsRatio(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -466,7 +483,7 @@ int WeaponObject::getHealthAttackCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -479,7 +496,7 @@ void WeaponObject::setHealthAttackCost(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -493,7 +510,7 @@ int WeaponObject::getActionAttackCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -506,7 +523,7 @@ void WeaponObject::setActionAttackCost(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -520,7 +537,7 @@ int WeaponObject::getMindAttackCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -533,7 +550,7 @@ void WeaponObject::setMindAttackCost(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -547,7 +564,7 @@ int WeaponObject::getForceCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -560,7 +577,7 @@ int WeaponObject::getDamageType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -573,7 +590,7 @@ String WeaponObject::getXpType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		method.executeWithAsciiReturn(_return_getXpType);
 		return _return_getXpType;
@@ -587,7 +604,7 @@ bool WeaponObject::isUnarmedWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -600,7 +617,7 @@ bool WeaponObject::isMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -613,7 +630,7 @@ bool WeaponObject::isRangedWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -626,7 +643,7 @@ bool WeaponObject::isRifleWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -639,7 +656,7 @@ bool WeaponObject::isThrownWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -652,7 +669,7 @@ bool WeaponObject::isHeavyWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -665,7 +682,7 @@ bool WeaponObject::isSpecialHeavyWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -678,7 +695,7 @@ bool WeaponObject::isLightningRifle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -691,7 +708,7 @@ bool WeaponObject::isCarbineWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -704,7 +721,7 @@ bool WeaponObject::isPistolWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -717,7 +734,7 @@ bool WeaponObject::isOneHandMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -730,7 +747,7 @@ bool WeaponObject::isPolearmWeaponObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -743,7 +760,7 @@ bool WeaponObject::isTwoHandMeleeWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -756,7 +773,7 @@ bool WeaponObject::isWeaponObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 56);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1465,7 +1482,7 @@ bool WeaponObjectImplementation::isWeaponObject() {
 WeaponObjectAdapter::WeaponObjectAdapter(WeaponObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCERTIFIEDFOR__PLAYERCREATURE_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__,RPC_GETIDEALRANGE__,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETHEALTHATTACKCOST__,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISWEAPONOBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCERTIFIEDFOR__PLAYERCREATURE_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__,RPC_GETIDEALRANGE__,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETHEALTHATTACKCOST__,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISWEAPONOBJECT__};
 
 Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -1476,6 +1493,9 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
@@ -1634,6 +1654,10 @@ void WeaponObjectAdapter::initializeTransientMembers() {
 
 void WeaponObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((WeaponObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+int WeaponObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((WeaponObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void WeaponObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {

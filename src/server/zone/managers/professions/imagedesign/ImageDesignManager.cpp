@@ -56,7 +56,7 @@ ImageDesignManager::ImageDesignManager() {
 	loadCustomizationData();
 }
 
-void ImageDesignManager::updateCustomization(const String& customizationName, float value, CreatureObject* creo) {
+void ImageDesignManager::updateCustomization(const String& customizationName, float value, String& hairTemplate, CreatureObject* creo) {
 	if (creo == NULL)
 		return;
 
@@ -68,6 +68,8 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 	ManagedReference<CreatureObject*> creatureObject = creo;
 
 	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
+
+	CustomizationVariables hairCustomization;
 
 	if (customData == NULL) {
 		System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
@@ -122,8 +124,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 
 			if (token_2 == "") {
 				if (customData->getIsVarHairColor())
-					System::out << "hair" << endl;
-					//setHairAttribute(token_1, (value * 255));
+					hairCustomization.setVariable(token_1, (value * 255));
 				else
 					creatureObject->setCustomizationVariable(token_1, (value * 255));
 			} else {
@@ -174,6 +175,10 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 			}
 
 		}
+		String hairCustomizationString;
+		hairCustomization.getData(hairCustomizationString);
+		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
+
 		updateCharacterAppearance(creatureObject);
 
 	} else
@@ -181,7 +186,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 				"This shouldn't have happend.  Please report repro steps to Polonel - updateCustomization(String customizationName, uint32 value)");
 }
 
-void ImageDesignManager::updateCustomization(const String& customizationName, uint32 value, CreatureObject* creo) {
+void ImageDesignManager::updateCustomization(const String& customizationName, uint32 value, String& hairTemplate, CreatureObject* creo) {
 	if (value > 255 || creo == NULL)
 		return;
 
@@ -190,6 +195,8 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 	ManagedReference<CreatureObject*> creatureObject = creo;
 
 	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
+
+	CustomizationVariables hairCustomization;
 
 	if (customData == NULL) {
 		System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
@@ -208,16 +215,20 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 			tokenizer.getStringToken(attribute);
 
 			if (customData->getIsVarHairColor())
-				System::out << "hair" << endl;
+				hairCustomization.setVariable(attribute,value);
 				//session->setHairAttribute(attribute, value);
 			else
 				creatureObject->setCustomizationVariable(attribute, value);
 		}
 
+		String hairCustomizationString;
+		hairCustomization.getData(hairCustomizationString);
+		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
+
 		updateCharacterAppearance(creatureObject);
 
 	} else if (type == "hslider") {
-		updateCustomization(customizationName, (float) value, creo);
+		updateCustomization(customizationName, (float) value, hairTemplate, creo);
 		return;
 
 	} else {

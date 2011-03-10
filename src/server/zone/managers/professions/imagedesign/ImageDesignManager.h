@@ -22,8 +22,8 @@ public:
 	ImageDesignManager();
 	~ImageDesignManager();
 
-	void updateCustomization(const String& customizationName, float value, CreatureObject* creo = NULL);
-	void updateCustomization(const String& customizationName, uint32 value, CreatureObject* creo = NULL);
+	void updateCustomization(const String& customizationName, float value, String& hairTemplate, CreatureObject* creo = NULL);
+	void updateCustomization(const String& customizationName, uint32 value, String& hairTemplate, CreatureObject* creo = NULL);
 
 	CustomizationData* getCustomizationData(const String& speciesGender, const String& customizationName);
 

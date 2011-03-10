@@ -42,7 +42,8 @@
 
 
 object_tangible_slicing_slicing_molecular_clamp = object_tangible_slicing_shared_slicing_molecular_clamp:new {
-
+	templateType = SLICINGTOOL,
+	gameObjectType = 32775
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_slicing_molecular_clamp, "object/tangible/slicing/slicing_molecular_clamp.iff")

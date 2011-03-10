@@ -422,6 +422,10 @@ public:
 
 	static const int REVIVEPACK = 0x2033;
 
+	static const int STATICLOOTCONTAINER = 0x2034;
+
+	static const int PLAYERLOOTCRATE = 0x2035;
+
 	static const int TERMINAL = 0x4000;
 
 	static const int BANK = 0x4001;
@@ -471,6 +475,18 @@ public:
 	static const int CAMPKIT = 0x8004;
 
 	static const int SHIPCOMPONENTREPAIRITEM = 0x8005;
+
+	static const int SLICINGTOOL = 0x8006;
+
+	static const int MOLECULARCLAMP = 0x8007;
+
+	static const int FLOWANALYZER = 0x8008;
+
+	static const int LASERKNIFE = 0x8009;
+
+	static const int WEAPONUPGRADEKIT = 0x800A;
+
+	static const int ARMORUPGRADEKIT = 0x800B;
 
 	static const int VEHICLE = 0x10000;
 
@@ -1018,7 +1034,7 @@ public:
 
 	bool isStaticObject();
 
-	bool isContainerOject();
+	bool isContainerObject();
 
 	bool isTerminal();
 
@@ -1346,6 +1362,10 @@ public:
 
 	static const int REVIVEPACK = 0x2033;
 
+	static const int STATICLOOTCONTAINER = 0x2034;
+
+	static const int PLAYERLOOTCRATE = 0x2035;
+
 	static const int TERMINAL = 0x4000;
 
 	static const int BANK = 0x4001;
@@ -1395,6 +1415,18 @@ public:
 	static const int CAMPKIT = 0x8004;
 
 	static const int SHIPCOMPONENTREPAIRITEM = 0x8005;
+
+	static const int SLICINGTOOL = 0x8006;
+
+	static const int MOLECULARCLAMP = 0x8007;
+
+	static const int FLOWANALYZER = 0x8008;
+
+	static const int LASERKNIFE = 0x8009;
+
+	static const int WEAPONUPGRADEKIT = 0x800A;
+
+	static const int ARMORUPGRADEKIT = 0x800B;
 
 	static const int VEHICLE = 0x10000;
 
@@ -1946,7 +1978,7 @@ public:
 
 	bool isStaticObject();
 
-	virtual bool isContainerOject();
+	virtual bool isContainerObject();
 
 	virtual bool isTerminal();
 
@@ -2337,7 +2369,7 @@ public:
 
 	bool isStaticObject();
 
-	bool isContainerOject();
+	bool isContainerObject();
 
 	bool isTerminal();
 

@@ -31,4 +31,6 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 
 	optionsBitmask = templateData->getIntField("optionsBitmask");
 	pvpStatusBitmask = templateData->getIntField("pvpStatusBitmask");
+
+	sliceable = templateData->getIntField("sliceable");
 }

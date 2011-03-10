@@ -9,6 +9,7 @@
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/player/sessions/SlicingSession.h"
 
 void ArmorObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -44,6 +45,7 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	specialBase = armorTemplate->getSpecialBase();
 
+	setSliceable(true);
 }
 
 void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
@@ -229,6 +231,31 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pla
 	if (sliced)
 		alm->insertAttribute("arm_attr", "@obj_attr_n:hacked");
 
+}
+
+int ArmorObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (selectedID == 69) {
+		if (isSliced()) {
+			player->sendSystemMessage("@slicing/slicing:already_sliced");
+			return 0;
+		}
+
+		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
+		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
+
+		if (session != NULL) {
+			player->sendSystemMessage("@slicing/slicing:already_slicing");
+			return 0;
+		}
+
+		//Create Session
+		session = new SlicingSession(player);
+		session->initalizeSlicingMenu(player, _this);
+
+		return 0;
+
+	} else
+		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 void ArmorObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {

@@ -41,6 +41,20 @@ using namespace server::zone::objects::player;
 
 namespace server {
 namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -70,6 +84,8 @@ public:
 
 	void initializeTransientMembers();
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	bool isMissionTerminal();
 
 	bool isArtisanTerminal();
@@ -89,6 +105,12 @@ public:
 	bool isScoutTerminal();
 
 	bool isStatueTerminal();
+
+	bool isSlicer(PlayerCreature* slicer);
+
+	void addSlicer(PlayerCreature* slicer);
+
+	void removeSlicer(PlayerCreature* slicer);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -122,6 +144,8 @@ class MissionTerminalImplementation : public TerminalImplementation {
 protected:
 	String terminalType;
 
+	Vector<ManagedReference<PlayerCreature* > > slicers;
+
 public:
 	MissionTerminalImplementation();
 
@@ -130,6 +154,8 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isMissionTerminal();
 
@@ -150,6 +176,12 @@ public:
 	bool isScoutTerminal();
 
 	bool isStatueTerminal();
+
+	bool isSlicer(PlayerCreature* slicer);
+
+	void addSlicer(PlayerCreature* slicer);
+
+	void removeSlicer(PlayerCreature* slicer);
 
 	MissionTerminal* _this;
 
@@ -196,6 +228,8 @@ public:
 
 	void initializeTransientMembers();
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	bool isMissionTerminal();
 
 	bool isArtisanTerminal();
@@ -215,6 +249,12 @@ public:
 	bool isScoutTerminal();
 
 	bool isStatueTerminal();
+
+	bool isSlicer(PlayerCreature* slicer);
+
+	void addSlicer(PlayerCreature* slicer);
+
+	void removeSlicer(PlayerCreature* slicer);
 
 };
 

@@ -103,6 +103,20 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -202,6 +216,10 @@ public:
 
 	void initializeTransientMembers();
 
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -298,7 +316,13 @@ public:
 
 	bool isNeutral();
 
+	bool isSliceable();
+
 	bool isSliced();
+
+	void setSliceable(bool val);
+
+	bool setSliced(bool slice);
 
 	bool isPharmaceuticalObject();
 
@@ -385,6 +409,8 @@ protected:
 
 	unsigned short playerUseMask;
 
+	bool sliceable;
+
 	bool sliced;
 
 public:
@@ -463,6 +489,10 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
@@ -560,7 +590,13 @@ public:
 
 	bool isNeutral();
 
+	bool isSliceable();
+
 	bool isSliced();
+
+	void setSliceable(bool val);
+
+	bool setSliced(bool slice);
 
 	virtual bool isPharmaceuticalObject();
 
@@ -632,6 +668,8 @@ public:
 	void initializeMembers();
 
 	void initializeTransientMembers();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
@@ -721,7 +759,13 @@ public:
 
 	bool isNeutral();
 
+	bool isSliceable();
+
 	bool isSliced();
+
+	void setSliceable(bool val);
+
+	bool setSliced(bool slice);
 
 	bool isPharmaceuticalObject();
 

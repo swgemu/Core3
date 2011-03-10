@@ -82,7 +82,9 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	pvpStatusBitmask = 0,
 
 	certificationsRequired = { },
-	customizationVariableMapping = { }
+	customizationVariableMapping = { },
+
+	sliceable = 0
 }
 
 function SharedTangibleObjectTemplate:addRangedIntCustomizationVariables(rangedIntCustomizationVariable)

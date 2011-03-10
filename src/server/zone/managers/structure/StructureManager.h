@@ -222,6 +222,8 @@ private:
 
 	void loadStaticClientObjects();
 
+	void loadStaticLootCrates();
+
 public:
 	void loadStructures();
 
