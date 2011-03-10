@@ -49,10 +49,14 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 include server.zone.templates.tangible.MissionTerminalTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.Zone;
 
 class MissionTerminal extends Terminal {
 	protected string terminalType;
+	
+	@dereferenced
+	protected transient Vector<PlayerCreature> slicers;
 	
 	public MissionTerminal() {
 		Logger.setLoggingName("MissionTerminal");
@@ -74,6 +78,10 @@ class MissionTerminal extends Terminal {
 		MissionTerminalTemplate templ = (MissionTerminalTemplate) templateData;
 		
 		terminalType = templ.getMissionTerminalType();
+
+		boolean sliceTempFix = true; // Temporary Hack.
+		setSliceable(sliceTempFix);
+
 	}
 	
 	public void initializeTransientMembers() {
@@ -81,6 +89,16 @@ class MissionTerminal extends Terminal {
 		
 		Logger.setLoggingName("MissionTerminal");
 	}
+
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
 	public boolean isMissionTerminal() {
 		return true;
@@ -120,5 +138,26 @@ class MissionTerminal extends Terminal {
 	
 	public boolean isStatueTerminal() {
 		return terminalType == "statue";
+	}
+
+	public boolean isSlicer(PlayerCreature slicer) {
+		if (slicer == null)
+			return 0;
+
+		for (int i = 0; slicers.size(); ++i) {
+			PlayerCreature player = slicers.get(i);
+			if (player == slicer)
+				return true;
+		}
+
+		return 0;
+	}
+
+	public void addSlicer(PlayerCreature slicer) {
+		slicers.add(slicer);
+	}
+
+	public void removeSlicer(PlayerCreature slicer) {
+		slicers.removeElement(slicer);
 	}
 }

@@ -89,6 +89,20 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -160,6 +174,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -402,6 +418,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isCertifiedFor(PlayerCreature* object);
@@ -554,6 +572,8 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 

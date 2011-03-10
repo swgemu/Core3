@@ -92,6 +92,8 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/sui/FindCommandCallback.h"
 #include "server/zone/objects/creature/commands/sui/ListGuildsResponseCallback.h"
 
+#include "server/zone/objects/player/sessions/sui/SlicingSessionCallback.h"
+
 #include "server/zone/objects/guild/sui/GuildCreateNameResponseCallback.h"
 #include "server/zone/objects/guild/sui/GuildCreateAbbrevResponseCallback.h"
 #include "server/zone/objects/guild/sui/GuildDisbandCallback.h"
@@ -146,6 +148,8 @@ void SuiManager::registerMessages() {
 
 	messageCallbackFactory.registerObject<ListGuildsResponseCallback>(SuiWindowType::ADMIN_GUILDLIST);
 	messageCallbackFactory.registerObject<DestroyCommandCallback>(SuiWindowType::ADMIN_DESTROY_CONFIRM);
+
+	messageCallbackFactory.registerObject<SlicingSessionCallback>(SuiWindowType::SLICING_MENU);
 }
 
 void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args) {

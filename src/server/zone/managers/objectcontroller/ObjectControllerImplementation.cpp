@@ -102,7 +102,7 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		}
 	}
 
-	if (objectToTransfer->isContainerOject()) {
+	if (parent->isContainerObject() && parent->getGameObjectType() == SceneObject::STATICLOOTCONTAINER) {
 		objectToTransfer->sendTo(destinationObject, true);
 	}
 

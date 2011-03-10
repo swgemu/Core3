@@ -35,6 +35,8 @@ protected:
 
 	int useCount;
 
+	bool sliceable;
+
 	//CustomizationVariableMapping customizationVariableMapping;
 
 public:
@@ -118,6 +120,10 @@ public:
 
 	void setUseStructureFootprintOutline(bool useStructureFootprintOutline) {
 		this->useStructureFootprintOutline = useStructureFootprintOutline;
+	}
+
+	inline bool getSliceable() const {
+		return sliceable;
 	}
 
 };

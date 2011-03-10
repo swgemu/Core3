@@ -42,6 +42,10 @@
 
 
 object_tangible_container_loot_placable_loot_crate = object_tangible_container_loot_shared_placable_loot_crate:new {
+	templateType = CONTAINER,
+	gameObjectType = 8244,
+	locked = 1,
+	sliceable = 1,
 
 }
 

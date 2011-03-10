@@ -13,6 +13,9 @@
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
+#include "server/zone/objects/player/sessions/SlicingSession.h"
 
 
 void WeaponObjectImplementation::initializeTransientMembers() {
@@ -21,6 +24,7 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 	weaponTemplate = dynamic_cast<SharedWeaponObjectTemplate*>(TemplateManager::instance()->getTemplate(serverObjectCRC));
 
 	setLoggingName("WeaponObject");
+
 }
 
 void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -67,6 +71,8 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	if (templateAttackSpeed > 1)
 		attackSpeed = templateAttackSpeed;
+
+	setSliceable(true);
 }
 
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -74,6 +80,31 @@ void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* weao3 = new WeaponObjectMessage3(_this);
 	player->sendMessage(weao3);
+}
+
+int WeaponObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	if (selectedID == 69) {
+		if (isSliced()) {
+			player->sendSystemMessage("@slicing/slicing:already_sliced");
+			return 0;
+		}
+
+		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
+		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
+
+		if (session != NULL) {
+			player->sendSystemMessage("@slicing/slicing:already_slicing");
+			return 0;
+		}
+
+		//Create Session
+		session = new SlicingSession(player);
+		session->initalizeSlicingMenu(player, _this);
+
+		return 0;
+
+	} else
+		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {

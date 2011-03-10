@@ -129,6 +129,8 @@ public:
 	const static int VEHICLEDEED = 0x400001C;
 	const static int CAMPKIT = 0x400001D;
 	const static int PLAYERCREATURE = 0x400001E;
+	const static int SLICINGTOOL = 0x400001F;
+	const static int CONTAINER = 0x4000020;
 
 public:
 	SharedObjectTemplate() {

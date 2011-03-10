@@ -313,15 +313,25 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 
 		// TODO: make mission distribution function more like live
 		if (missionTerminal->isGeneralTerminal()) {
-			if (i < bagSize / 2)
+			if (i < bagSize / 2) {
 				randomizeDestroyMission(player, mission);
-			else
+				if (missionTerminal->isSlicer(player))
+					mission->setRewardCredits(mission->getRewardCredits() * 2);
+			} else {
 				randomizeDeliverMission(player, mission);
+				if (missionTerminal->isSlicer(player))
+					mission->setRewardCredits(mission->getRewardCredits() * 2);
+			}
 		} else if (missionTerminal->isArtisanTerminal()) {
-			if (i < bagSize / 2)
+			if (i < bagSize / 2) {
 				randomizeSurveyMission(player, mission);
-			else
+				if (missionTerminal->isSlicer(player))
+					mission->setRewardCredits(mission->getRewardCredits() * 2);
+			} else {
 				randomizeCraftingMission(player, mission);
+				if (missionTerminal->isSlicer(player))
+					mission->setRewardCredits(mission->getRewardCredits() * 2);
+			}
 		} else if (missionTerminal->isEntertainerTerminal()) {
 			// TODO: implement entertainer missions after entertainer is implemented
 			/*randomizeEntertainerMission(player, mission);if (!dancing)
@@ -350,6 +360,11 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 
 		mission->setRefreshCounter(counter, true);
 	}
+
+	// Remove the Slicer from the List. They have recived their one time mission reward increase.
+	if (missionTerminal->isSlicer(player))
+		missionTerminal->removeSlicer(player);
+
 }
 
 void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* player, MissionObject* mission) {
