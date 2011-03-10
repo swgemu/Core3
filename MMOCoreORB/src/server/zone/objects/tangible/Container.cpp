@@ -107,21 +107,20 @@ int Container::canAddObject(SceneObject* object, int containmentType, String& er
 		return _implementation->canAddObject(object, containmentType, errorDescription);
 }
 
-void Container::sendContainerObjectsTo(SceneObject* player) {
+bool Container::isContainerObject() {
 	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
-		method.addObjectParameter(player);
 
-		method.executeWithVoidReturn();
+		return method.executeWithBooleanReturn();
 	} else
-		_implementation->sendContainerObjectsTo(player);
+		return _implementation->isContainerObject();
 }
 
-bool Container::isContainerOject() {
+bool Container::isContainerLocked() {
 	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -131,7 +130,21 @@ bool Container::isContainerOject() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isContainerOject();
+		return _implementation->isContainerLocked();
+}
+
+void Container::setLockedStatus(bool lock) {
+	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addBooleanParameter(lock);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setLockedStatus(lock);
 }
 
 DistributedObjectServant* Container::_getImplementation() {
@@ -238,6 +251,11 @@ bool ContainerImplementation::readObjectMember(ObjectInputStream* stream, const 
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "locked") {
+		TypeInfo<bool >::parseFromBinaryStream(&locked, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -253,19 +271,39 @@ int ContainerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "locked";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&locked, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 0 + TangibleObjectImplementation::writeObjectMembers(stream);
+
+	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ContainerImplementation::ContainerImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/Container.idl():  		Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");
+	// server/zone/objects/tangible/Container.idl():  		locked = false;
+	locked = false;
 }
 
-bool ContainerImplementation::isContainerOject() {
+bool ContainerImplementation::isContainerObject() {
 	// server/zone/objects/tangible/Container.idl():  		return true;
 	return true;
+}
+
+bool ContainerImplementation::isContainerLocked() {
+	// server/zone/objects/tangible/Container.idl():  		return locked;
+	return locked;
+}
+
+void ContainerImplementation::setLockedStatus(bool lock) {
+	// server/zone/objects/tangible/Container.idl():  		locked = lock;
+	locked = lock;
 }
 
 /*
@@ -275,7 +313,7 @@ bool ContainerImplementation::isContainerOject() {
 ContainerAdapter::ContainerAdapter(ContainerImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CHECKPERMISSION__PLAYERCREATURE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_ISCONTAINEROJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CHECKPERMISSION__PLAYERCREATURE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ISCONTAINEROBJECT__,RPC_ISCONTAINERLOCKED__,RPC_SETLOCKEDSTATUS__BOOL_};
 
 Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -293,11 +331,14 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
-	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
-		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+	case RPC_ISCONTAINEROBJECT__:
+		resp->insertBoolean(isContainerObject());
 		break;
-	case RPC_ISCONTAINEROJECT__:
-		resp->insertBoolean(isContainerOject());
+	case RPC_ISCONTAINERLOCKED__:
+		resp->insertBoolean(isContainerLocked());
+		break;
+	case RPC_SETLOCKEDSTATUS__BOOL_:
+		setLockedStatus(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -322,12 +363,16 @@ int ContainerAdapter::canAddObject(SceneObject* object, int containmentType, Str
 	return ((ContainerImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
 }
 
-void ContainerAdapter::sendContainerObjectsTo(SceneObject* player) {
-	((ContainerImplementation*) impl)->sendContainerObjectsTo(player);
+bool ContainerAdapter::isContainerObject() {
+	return ((ContainerImplementation*) impl)->isContainerObject();
 }
 
-bool ContainerAdapter::isContainerOject() {
-	return ((ContainerImplementation*) impl)->isContainerOject();
+bool ContainerAdapter::isContainerLocked() {
+	return ((ContainerImplementation*) impl)->isContainerLocked();
+}
+
+void ContainerAdapter::setLockedStatus(bool lock) {
+	((ContainerImplementation*) impl)->setLockedStatus(lock);
 }
 
 /*

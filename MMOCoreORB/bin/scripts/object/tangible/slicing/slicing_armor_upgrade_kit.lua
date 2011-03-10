@@ -42,6 +42,9 @@
 
 
 object_tangible_slicing_slicing_armor_upgrade_kit = object_tangible_slicing_shared_slicing_armor_upgrade_kit:new {
+	templateType = SLICINGTOOL,
+	gameObjectType = 32779,
+	effectiveness = -15
 
 }
 

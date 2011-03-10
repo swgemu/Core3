@@ -100,9 +100,11 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	void sendContainerObjectsTo(SceneObject* player);
+	bool isContainerObject();
 
-	bool isContainerOject();
+	bool isContainerLocked();
+
+	void setLockedStatus(bool lock);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -129,6 +131,8 @@ namespace objects {
 namespace tangible {
 
 class ContainerImplementation : public TangibleObjectImplementation {
+protected:
+	bool locked;
 
 public:
 	ContainerImplementation();
@@ -147,9 +151,11 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	void sendContainerObjectsTo(SceneObject* player);
+	bool isContainerObject();
 
-	bool isContainerOject();
+	bool isContainerLocked();
+
+	void setLockedStatus(bool lock);
 
 	Container* _this;
 
@@ -202,9 +208,11 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	void sendContainerObjectsTo(SceneObject* player);
+	bool isContainerObject();
 
-	bool isContainerOject();
+	bool isContainerLocked();
+
+	void setLockedStatus(bool lock);
 
 protected:
 	String _param2_canAddObject__SceneObject_int_String_;

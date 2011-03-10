@@ -56,13 +56,28 @@ void ArmorObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* o
 		_implementation->fillAttributeList(msg, object);
 }
 
-void ArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
+int ArmorObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+void ArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
+	ArmorObjectImplementation* _implementation = (ArmorObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -76,7 +91,7 @@ bool ArmorObject::isSpecial(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(type);
 
 		return method.executeWithBooleanReturn();
@@ -90,7 +105,7 @@ bool ArmorObject::isVulnerable(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addSignedIntParameter(type);
 
 		return method.executeWithBooleanReturn();
@@ -104,7 +119,7 @@ bool ArmorObject::isArmorObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -117,7 +132,7 @@ void ArmorObject::setRating(int rate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -131,7 +146,7 @@ int ArmorObject::getRating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -144,7 +159,7 @@ float ArmorObject::getKinetic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -157,7 +172,7 @@ void ArmorObject::setKinetic(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -171,7 +186,7 @@ float ArmorObject::getEnergy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -184,7 +199,7 @@ void ArmorObject::setEnergy(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -198,7 +213,7 @@ float ArmorObject::getElectricity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -211,7 +226,7 @@ void ArmorObject::setElectricity(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -225,7 +240,7 @@ float ArmorObject::getStun() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -238,7 +253,7 @@ void ArmorObject::setStun(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -252,7 +267,7 @@ float ArmorObject::getBlast() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -265,7 +280,7 @@ void ArmorObject::setBlast(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -279,7 +294,7 @@ float ArmorObject::getHeat() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -292,7 +307,7 @@ void ArmorObject::setHeat(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -306,7 +321,7 @@ float ArmorObject::getCold() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -319,7 +334,7 @@ void ArmorObject::setCold(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -333,7 +348,7 @@ float ArmorObject::getAcid() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -346,7 +361,7 @@ void ArmorObject::setAcid(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -360,7 +375,7 @@ float ArmorObject::getLightSaber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -373,7 +388,7 @@ void ArmorObject::setLightSaber(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -387,7 +402,7 @@ int ArmorObject::getHealthEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -400,7 +415,7 @@ void ArmorObject::setHealthEncumbrance(int encumber) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addSignedIntParameter(encumber);
 
 		method.executeWithVoidReturn();
@@ -414,7 +429,7 @@ int ArmorObject::getActionEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -427,7 +442,7 @@ void ArmorObject::setActionEncumbrance(int encumber) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addSignedIntParameter(encumber);
 
 		method.executeWithVoidReturn();
@@ -441,7 +456,7 @@ int ArmorObject::getMindEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -454,7 +469,7 @@ void ArmorObject::setMindEncumbrance(int encumber) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addSignedIntParameter(encumber);
 
 		method.executeWithVoidReturn();
@@ -979,7 +994,7 @@ void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
 ArmorObjectAdapter::ArmorObjectAdapter(ArmorObjectImplementation* obj) : WearableObjectAdapter(obj) {
 }
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_};
 
 Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -987,6 +1002,9 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
+		break;
+	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
@@ -1087,6 +1105,10 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 void ArmorObjectAdapter::initializeTransientMembers() {
 	((ArmorObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+int ArmorObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	return ((ArmorObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 void ArmorObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) {

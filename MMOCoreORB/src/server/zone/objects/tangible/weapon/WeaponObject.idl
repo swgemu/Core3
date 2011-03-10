@@ -54,6 +54,7 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.SharedWeaponObjectTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
 
 class WeaponObject extends TangibleObject {
 	protected int attackType;
@@ -168,6 +169,16 @@ class WeaponObject extends TangibleObject {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 	

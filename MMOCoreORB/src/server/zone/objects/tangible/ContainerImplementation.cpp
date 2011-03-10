@@ -47,32 +47,48 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/templates/tangible/ContainerTemplate.h"
 
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("Container");
+
 }
 
 void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	ContainerTemplate* containerTemplate = dynamic_cast<ContainerTemplate*>(templateData);
+
+	if (containerTemplate == NULL)
+		return;
+
+	locked = containerTemplate->getLocked();
+
 }
 
-void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
-	SceneObjectImplementation::sendContainerObjectsTo(player);
-}
+/*void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
+	if (!locked)
+		SceneObjectImplementation::sendContainerObjectsTo(player);
+}*/
 
 bool ContainerImplementation::checkPermission(PlayerCreature* player) {
 	if (!isASubChildOf(player)) {
 		if (parent == NULL || !parent->isCellObject())
 			return false;
 		else {
+
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 
 			if (!building->isOnAdminList(player))
 				return false;
 		}
 	}
+
+	if (locked)
+		return false;
 
 	return true;
 }
@@ -81,29 +97,51 @@ void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if (checkPermission(player))
-		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Rotate
+		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Set Name
+
+	if (isSliceable() && isContainerLocked() && player->hasSkillBox("combat_smuggler_novice"))
+		menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
 }
 
 int ContainerImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (selectedID != 50 || !checkPermission(player))
+	if (selectedID == 50 && checkPermission(player)) {
+		ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
+
+		inputBox->setPromptTitle("@sui:set_name_title");
+		inputBox->setPromptText("@sui:set_name_prompt");
+		inputBox->setUsingObject(_this);
+		inputBox->setMaxInputSize(255);
+
+		inputBox->setDefaultInput(objectName.getCustomString().toString());
+
+		player->addSuiBox(inputBox);
+		player->sendMessage(inputBox->generateMessage());
+
+		return 0;
+
+	} else if (selectedID == 69) {
+		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
+		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
+
+		if (session != NULL) {
+			player->sendSystemMessage("@slicing/slicing:already_slicing");
+			return 0;
+		}
+
+		//Create Session
+		session = new SlicingSession(player);
+		session->initalizeSlicingMenu(player, _this);
+
+		return 0;
+
+	} else
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
-
-	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
-
-	inputBox->setPromptTitle("@sui:set_name_title");
-	inputBox->setPromptText("@sui:set_name_prompt");
-	inputBox->setUsingObject(_this);
-	inputBox->setMaxInputSize(255);
-
-	inputBox->setDefaultInput(objectName.getCustomString().toString());
-
-	player->addSuiBox(inputBox);
-	player->sendMessage(inputBox->generateMessage());
-
-	return 0;
 }
 
 int ContainerImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+//	if (locked)
+	//	return TransferErrorCode::CONTAINERLOCKED;
+
 	if ((object->isIntangibleObject() && containerType != 3)
 			|| (containerType == 3 && !object->isIntangibleObject())) {
 		errorDescription = "@container_error_message:container07";

@@ -79,27 +79,28 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 	if (commitChanges) {
 		//TODO: set XP Values
 
+		String hairTemplate = imageDesignData.getHairTemplate();
+
 		VectorMap<String, float>* bodyAttributes = imageDesignData.getBodyAttributesMap();
 		VectorMap<String, uint32>* colorAttributes = imageDesignData.getColorAttributesMap();
 
 		imageDesignManager = ProfessionManager::instance()->getImageDesignManager();
 
+		// if Designer is changing just Hair (with no color changes) set default hair template. BUG FIX!
+		if (bodyAttributes->isEmpty() && colorAttributes->isEmpty()) {
+			String hairCustomization = "";
+			imageDesignManager->updateHairObject(targetCreature, hairTemplate, hairCustomization);
+		}
+
 		for (int i = 0; i < bodyAttributes->size(); ++i) {
 			VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
-
-			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), targetCreature);
+			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
 		}
 
 		for (int i = 0; i < colorAttributes->size(); ++i) {
 			VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
-			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), targetCreature);
+			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
 		}
-
-		// Update Hair
-		String hairTemplate = imageDesignData.getHairTemplate();
-		String hairCustomization = imageDesignData.getHairCustomizationString();
-
-		imageDesignManager->updateHairObject(targetCreature, hairTemplate, hairCustomization);
 
 		// Drop the Session for both the designer and the targetCreature;
 		designerCreature->dropActiveSession(SessionFacadeType::IMAGEDESIGN);

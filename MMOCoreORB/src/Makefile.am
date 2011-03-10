@@ -129,6 +129,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/player/sessions/EntertainingSession.cpp \
 				server/zone/objects/player/sessions/MigrateStatsSession.cpp \
 				server/zone/objects/player/sessions/ImageDesignSession.cpp \
+				server/zone/objects/player/sessions/SlicingSession.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
@@ -197,6 +198,8 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/tool/CraftingTool.cpp \
 				server/zone/objects/tangible/tool/CraftingStation.cpp \
 				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
+				server/zone/objects/tangible/tool/smuggler/SlicingTool.cpp \
+				server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.cpp \
 				server/zone/objects/tangible/tool/SurveyTool.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
 				server/zone/objects/tangible/wearables/ClothingObject.cpp \
@@ -306,15 +309,15 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
+		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/InstrumentImplementation.cpp \
+		server/zone/objects/tangible/InstrumentObserverImplementation.cpp \
+		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishingPoleObjectImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishingBaitObjectImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishObjectImplementation.cpp \
 		server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp \
 		server/zone/objects/tangible/loot/LootkitObjectImplementation.cpp \
-		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
-		server/zone/objects/tangible/InstrumentImplementation.cpp \
-		server/zone/objects/tangible/InstrumentObserverImplementation.cpp \
-		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/city/CityTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.cpp \
@@ -340,6 +343,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/tool/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/tool/CraftingStationImplementation.cpp \
+		server/zone/objects/tangible/tool/smuggler/SlicingToolImplementation.cpp \
+		server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnifeImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
@@ -385,6 +390,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/ValidatedPosition.cpp \
 		server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp \
+		server/zone/objects/player/sessions/SlicingSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
@@ -422,6 +428,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.cpp \
+		server/zone/objects/tangible/terminal/mission/MissionTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketObjectImplementation.cpp \

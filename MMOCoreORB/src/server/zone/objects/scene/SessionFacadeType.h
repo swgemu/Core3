@@ -13,6 +13,7 @@ public:
 	const static int ENTERTAINING = 1;
 	const static int MIGRATESTATS = 2;
 	const static int IMAGEDESIGN = 3;
+	const static int SLICING = 4;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

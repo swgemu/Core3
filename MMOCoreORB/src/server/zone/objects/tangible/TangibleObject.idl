@@ -61,6 +61,7 @@ include server.zone.objects.scene.variables.DeltaVector;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.templates.SharedObjectTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -91,6 +92,7 @@ class TangibleObject extends SceneObject {
 	
 	protected unsigned short playerUseMask;
 	
+	protected boolean sliceable;
 	protected boolean sliced;
 	
 	//item mask
@@ -158,6 +160,7 @@ class TangibleObject extends SceneObject {
 
 		conditionDamage = 0;
 		
+		sliceable = false;
 		sliced = false;
 	}
 	
@@ -176,6 +179,25 @@ class TangibleObject extends SceneObject {
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
+
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
 	/**
 	 * Updates the custom name of the object
@@ -461,8 +483,33 @@ class TangibleObject extends SceneObject {
 		return faction == 0;
 	}
 	
+	public boolean isSliceable() {
+		if (sliced)
+			return false;
+		else if (isContainerObject())
+			return sliceable;
+		else if (isMissionTerminal())
+			return sliceable;
+		else if (isWeaponObject())
+			return sliceable;
+		else if (isArmorObject())
+			return sliceable;
+		else if (super.gameObjectType == super.PLAYERLOOTCRATE)
+			return sliceable;
+
+		return false;
+	}
+
 	public boolean isSliced() {
 		return sliced;
+	}
+
+	public void setSliceable(boolean val) {
+		sliceable = val;
+	}
+
+	public boolean setSliced(boolean slice) {
+		sliced = slice;
 	}
 	
 	public abstract boolean isPharmaceuticalObject() {

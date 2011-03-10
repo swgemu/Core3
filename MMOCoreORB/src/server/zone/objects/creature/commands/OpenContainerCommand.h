@@ -46,6 +46,7 @@ which carries forward this exception.
 #define OPENCONTAINERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/Container.h"
 
 class OpenContainerCommand : public QueueCommand {
 public:
@@ -70,6 +71,21 @@ public:
 
 		if (objectToOpen == NULL)
 			return GENERALERROR;
+
+		if (objectToOpen->isContainerObject()) {
+			Container* container = (Container*) objectToOpen.get();
+			if (container->isContainerLocked() && container->isSliced()) {
+				creature->sendSystemMessage("@slicing/slicing:broken");
+				return GENERALERROR;
+			} else if (container->isContainerLocked()) {
+				creature->sendSystemMessage("@slicing/slicing:locked");
+				return GENERALERROR;
+			} else if (objectToOpen->getGameObjectType() == SceneObject::STATICLOOTCONTAINER) {
+				// TODO: Maybe a better way to handle this. (If its a world loot container, ignore parent) ??
+				objectToOpen->openContainerTo((PlayerCreature*) creature);
+				return SUCCESS;
+			}
+		}
 
 		ManagedReference<SceneObject*> objectsParent = objectToOpen->getParent();
 

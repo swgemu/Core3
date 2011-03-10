@@ -336,6 +336,8 @@ void StructureManagerImplementation::loadStructures() {
 	loadStaticGarages();
 	// server/zone/managers/structure/StructureManager.idl():  		loadStaticClientObjects();
 	loadStaticClientObjects();
+	// server/zone/managers/structure/StructureManager.idl():  		loadStaticLootCrates();
+	loadStaticLootCrates();
 }
 
 /*

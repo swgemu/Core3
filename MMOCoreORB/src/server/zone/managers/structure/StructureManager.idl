@@ -94,6 +94,7 @@ class StructureManager extends ManagedService implements Logger {
 	private native SceneObject loadStaticBuilding(unsigned long oid);
 	private native void loadStaticCells(BuildingObject building);
 	private native void loadStaticClientObjects();
+	private native void loadStaticLootCrates();
 	
 	//PUBLIC METHODS
 	
@@ -112,6 +113,7 @@ class StructureManager extends ManagedService implements Logger {
 		loadStaticElevatorTerminals();
 		loadStaticGarages();
 		loadStaticClientObjects();
+		loadStaticLootCrates();
 	}
 	
 	/**

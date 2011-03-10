@@ -42,6 +42,9 @@
 
 
 object_tangible_slicing_slicing_laser_knife = object_tangible_slicing_shared_slicing_laser_knife:new {
+	templateType = SLICINGTOOL,
+	gameObjectType = 32777,
+	effectiveness = 0
 
 }
 

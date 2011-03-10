@@ -73,8 +73,8 @@ class MissionManager extends Observer implements Logger {
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
 		processor = impl;
-		Logger.setLoggingName("MissionManager");
-		
+		Logger.setLoggingName("MissionManager");		
+
 		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
 		
 		loadLairObjectsToSpawn();

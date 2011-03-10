@@ -63,6 +63,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 	bool isSpecial(int type);
@@ -200,6 +202,8 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
 private:
@@ -314,6 +318,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
