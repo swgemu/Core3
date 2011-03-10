@@ -106,6 +106,10 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		objectToTransfer->sendTo(destinationObject, true);
 	}
 
+	if (objectToTransfer->isContainerObject()) {
+		objectToTransfer->sendTo(destinationObject, true);
+	}
+
 	if (destinationObject->isPlayerCreature() && parent->isCellObject())
 		objectToTransfer->sendTo(destinationObject, true);
 
