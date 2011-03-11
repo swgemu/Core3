@@ -253,8 +253,6 @@ bool SlicingSessionImplementation::hasWeaponUpgradeKit() {
 	if (player == NULL)
 		return false;
 
-	return true; // DISABLED FOR NOW!!!
-
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 	if (inventory == NULL)
