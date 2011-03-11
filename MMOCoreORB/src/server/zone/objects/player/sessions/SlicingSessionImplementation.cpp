@@ -57,7 +57,7 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 		return;
 	}
 
-	if (tangibleObject->isWaypointObject() && !hasWeaponUpgradeKit()) {
+	if (tangibleObject->isWeaponObject() && !hasWeaponUpgradeKit()) {
 		player->sendSystemMessage("@slicing/slicing:no_weapon_kit");
 		return;
 	}
