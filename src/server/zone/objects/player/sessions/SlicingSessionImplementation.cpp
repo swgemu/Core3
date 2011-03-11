@@ -57,11 +57,6 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 		return;
 	}
 
-	if (!hasPrecisionLaserKnife()) {
-		player->sendSystemMessage("@slicing/slicing:no_knife");
-		return;
-	}
-
 	if (tangibleObject->isWaypointObject() && !hasWeaponUpgradeKit()) {
 		player->sendSystemMessage("@slicing/slicing:no_weapon_kit");
 		return;
@@ -69,6 +64,11 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 
 	if (tangibleObject->isArmorObject() && !hasArmorUpgradeKit()) {
 		player->sendSystemMessage("@slicing/slicing:no_armor_kit");
+		return;
+	}
+
+	if (!hasPrecisionLaserKnife()) {
+		player->sendSystemMessage("@slicing/slicing:no_knife");
 		return;
 	}
 
