@@ -58,9 +58,13 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	}
 
 	SharedObjectTemplate* templateObject = building->getObjectTemplate();
+
+	if (templateObject == NULL)
+		return NULL;
+
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (templateObject == NULL || portalLayout == NULL)
+	if (portalLayout == NULL)
 		return NULL;
 
 	//find nearest entrance
@@ -230,9 +234,13 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	BuildingObject* building = (BuildingObject*) ourCell->getParent();
 	int ourCellID = ourCell->getCellNumber();
 	SharedObjectTemplate* templateObject = ourCell->getParent()->getObjectTemplate();
+
+	if (templateObject == NULL)
+		return NULL;
+
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (templateObject == NULL || portalLayout == NULL)
+	if (portalLayout == NULL)
 		return NULL;
 
 	FloorMesh* sourceFloorMesh = portalLayout->getFloorMesh(ourCellID);
@@ -389,9 +397,13 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		return NULL;
 
 	SharedObjectTemplate* templateObject = building1->getObjectTemplate();
+
+	if (templateObject == NULL)
+		return NULL;
+
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (templateObject == NULL || portalLayout == NULL)
+	if (portalLayout == NULL)
 		return NULL;
 
 	FloorMesh* floorMesh1 = portalLayout->getFloorMesh(ourCellID);
@@ -530,9 +542,13 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 	BuildingObject* building = (BuildingObject*) ourCell->getParent();
 
 	SharedObjectTemplate* templateObject = building->getObjectTemplate();
+
+	if (templateObject == NULL)
+		return NULL;
+
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (templateObject == NULL || portalLayout == NULL)
+	if (portalLayout == NULL)
 		return NULL;
 
 	FloorMesh* floorMesh1 = portalLayout->getFloorMesh(ourCellID);
