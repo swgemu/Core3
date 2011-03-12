@@ -183,7 +183,7 @@ class AiAgent extends CreatureObject {
 	
 	public native void doMovement();
 	
-	protected native boolean findNextPosition(float nextPosition, @dereferenced WorldCoordinates nextPosition);
+	protected native boolean findNextPosition(float maxDistance, @dereferenced WorldCoordinates nextPosition);
 	
 	@local
 	public abstract void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target) {
