@@ -80,6 +80,10 @@ void PortalLayout::parse(IffStream* iffStream) {
 void PortalLayout::connectFloorMeshGraphs() {
 	for (int i = 0; i < floorMeshes.size(); ++i) {
 		FloorMesh* floorMesh = floorMeshes.get(i);
+
+		if (floorMesh == NULL)
+			continue;
+
 		PathGraph* pathGraph = floorMesh->getPathGraph();
 
 		if (pathGraph == NULL)
@@ -95,18 +99,21 @@ void PortalLayout::connectFloorMeshGraphs() {
 			for (int k = 0; k < floorMeshes.size(); ++k) {
 				if (i != k) {
 					FloorMesh* newMesh = floorMeshes.get(k);
-					PathGraph* newPathGraph = newMesh->getPathGraph();
 
-					if (newPathGraph != NULL) {
-						Vector<PathNode*> newGlobalNodes = newPathGraph->getGlobalNodes();
+					if (newMesh != NULL) {
+						PathGraph* newPathGraph = newMesh->getPathGraph();
 
-						for (int l = 0; l < newGlobalNodes.size(); ++l) {
-							PathNode* newNode = newGlobalNodes.get(l);
+						if (newPathGraph != NULL) {
+							Vector<PathNode*> newGlobalNodes = newPathGraph->getGlobalNodes();
 
-							int newGlobalID = newNode->getGlobalGraphNodeID();
+							for (int l = 0; l < newGlobalNodes.size(); ++l) {
+								PathNode* newNode = newGlobalNodes.get(l);
 
-							if (globalID == newGlobalID)
-								node->addChild(newNode);
+								int newGlobalID = newNode->getGlobalGraphNodeID();
+
+								if (globalID == newGlobalID)
+									node->addChild(newNode);
+							}
 						}
 					}
 				}
