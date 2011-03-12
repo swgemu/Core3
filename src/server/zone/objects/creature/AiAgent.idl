@@ -60,6 +60,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.tangible.weapon.WeaponObject;
 include server.zone.objects.creature.PatrolPointsVector;
 include server.zone.objects.creature.PatrolPoint;
+include server.zone.objects.scene.WorldCoordinates;
 import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
@@ -181,6 +182,8 @@ class AiAgent extends CreatureObject {
 	public native void doRecovery();
 	
 	public native void doMovement();
+	
+	protected native boolean findNextPosition(float nextPosition, @dereferenced WorldCoordinates nextPosition);
 	
 	@local
 	public abstract void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target) {

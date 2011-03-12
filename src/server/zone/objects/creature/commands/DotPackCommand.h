@@ -13,6 +13,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/events/InjuryTreatmentTask.h"
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "server/zone/objects/creature/BuffAttribute.h"
@@ -77,7 +78,7 @@ public:
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
-		if (creature != targetCreature && !playerManager->checkLineOfSight(creature, targetCreature)) {
+		if (creature != targetCreature && !CollisionManager::checkLineOfSight(creature, targetCreature)) {
 			return false;
 		}
 
@@ -280,7 +281,7 @@ public:
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
-		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@container_error_message:container18");
 			return GENERALERROR;
 		}

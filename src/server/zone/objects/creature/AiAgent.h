@@ -235,6 +235,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/creature/PatrolPoint.h"
 
+#include "server/zone/objects/scene/WorldCoordinates.h"
+
 #include "server/zone/objects/tangible/DamageMap.h"
 
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
@@ -546,6 +548,10 @@ public:
 
 	void doMovement();
 
+protected:
+	bool findNextPosition(float nextPosition, WorldCoordinates& nextPosition);
+
+public:
 	virtual void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	void checkNewAngle();

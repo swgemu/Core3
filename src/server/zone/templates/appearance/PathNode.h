@@ -10,15 +10,20 @@
 
 #include "engine/engine.h"
 
+class PathGraph;
+
 class PathNode : public Object {
 	Vector<PathNode*> children;
 
-	int id, var2, var3, var4;
+	uint32 id;
+	int var2, globalGraphNodeID, var4;
 	float x, z, y, var8;
 
-public:
-	PathNode() {
+	PathGraph* pathGraph;
 
+public:
+	PathNode(PathGraph* graph) {
+		pathGraph = graph;
 	}
 
 	inline void addChild(PathNode* node) {
@@ -28,13 +33,47 @@ public:
 	void readObject(IffStream* iffStream) {
 		id = iffStream->getInt();
 		var2 = iffStream->getInt();
-		var3 = iffStream->getInt();
+		globalGraphNodeID = iffStream->getInt();
 		var4 = iffStream->getInt();
 
 		x = iffStream->getFloat();
 		z = iffStream->getFloat();
 		y = iffStream->getFloat();
 		var8 = iffStream->getFloat();
+	}
+
+	inline float getX() {
+		return x;
+	}
+
+	inline float getY() {
+		return y;
+	}
+
+	inline float getZ() {
+		return z;
+	}
+
+	/*inline uint32 getID() {
+		return id;
+	}*/
+
+	uint32 getID();
+
+	inline Vector3 getPosition() {
+		return Vector3(x, y, z);
+	}
+
+	Vector<PathNode*>* getNeighbors() {
+		return &children;
+	}
+
+	inline int getGlobalGraphNodeID() {
+		return globalGraphNodeID;
+	}
+
+	inline PathGraph* getPathGraph() {
+		return pathGraph;
 	}
 
 };

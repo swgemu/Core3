@@ -46,6 +46,8 @@ which carries forward this exception.
 #define FINDOBJECTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
+#include "server/zone/packets/ui/DestroyClientPathMessage.h"
 
 class FindObjectCommand : public QueueCommand {
 public:
@@ -62,6 +64,69 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		Reference<SceneObject*> targetObject = server->getZoneServer()->getObject(creature->getTargetID());
+
+		if (targetObject == NULL) {
+			creature->info("invalid targetObject 0x" + String::hexvalueOf((int64)target), true);
+			return INVALIDTARGET;
+		}
+
+		PathFinderManager* manager = PathFinderManager::instance();
+
+		Vector<WorldCoordinates>* path = manager->findPath(creature, targetObject.get());
+
+		if (path == NULL || path->size() == 0) {
+			creature->info("path NULL ||Êsize == 0", true);
+			return GENERALERROR;
+		}
+
+		//if (path-)
+
+		//creature->sendMessage(new DestroyClientPathMessage());
+
+		//CreateClientPathMessage* msg = new CreateClientPathMessage();
+
+		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
+
+		for (int i = 0; i < path->size(); ++i) {
+			WorldCoordinates* coord = &path->get(i);
+			Vector3 worldPosition = coord->getWorldPosition();
+
+			//msg->addCoordinate(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+
+			ManagedReference<WaypointObject*> obj = (WaypointObject*) server->getZoneServer()->createObject(0xc456e788, 1);
+			obj->setPlanetCRC(targetObject->getPlanetCRC());
+			obj->setPosition(worldPosition.getX(), 0, worldPosition.getY());
+
+			if (coord->getCell() != NULL) {
+				CellObject* cell = (CellObject*) coord->getCell();
+				obj->setCellID(cell->getCellNumber());
+			}
+
+			obj->setActive(true);
+
+			ghost->addWaypoint(obj, false, true);
+
+			/*if (coord->getCell() != NULL)
+				obj->setUnknown(coord->getCell()->getObjectID());*/
+
+			//obj->setActive(true);
+
+
+			//ghost->addWaypoint("tatooine", worldPosition.getX(), worldPosition.getY(), true);
+
+			StringBuffer objectFoorBar;
+			objectFoorBar << "path node point x:" << worldPosition.getX() << " z:" << worldPosition.getZ() << " y:" << worldPosition.getY();
+			creature->info(objectFoorBar.toString(), true);
+		}
+
+		//creature->sendMessage(msg);
+
+		delete path;
 
 		return SUCCESS;
 	}

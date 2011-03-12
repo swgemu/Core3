@@ -469,44 +469,13 @@ void PlayerManager::startListen(CreatureObject* creature, unsigned long long ent
 		_implementation->startListen(creature, entid);
 }
 
-bool PlayerManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
-	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 33);
-		method.addObjectParameter(object1);
-		method.addObjectParameter(object2);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->checkLineOfSight(object1, object2);
-}
-
-bool PlayerManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building) {
-	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 34);
-		method.addObjectParameter(object1);
-		method.addObjectParameter(object2);
-		method.addObjectParameter(building);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->checkLineOfSightInBuilding(object1, object2, building);
-}
-
 int PlayerManager::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(enhancer);
 		method.addObjectParameter(patient);
 		method.addByteParameter(attribute);
@@ -533,7 +502,7 @@ bool PlayerManager::squadLeaderCheck(PlayerCreature* player, GroupObject* group)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 34);
 		method.addObjectParameter(player);
 		method.addObjectParameter(group);
 
@@ -548,7 +517,7 @@ void PlayerManager::awardSquadLeaderExperience(GroupObject* group, int amount, T
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(group);
 		method.addSignedIntParameter(amount);
 		method.addObjectParameter(source);
@@ -564,7 +533,7 @@ void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -578,7 +547,7 @@ void PlayerManager::sendActivateCloneRequest(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -592,7 +561,7 @@ void PlayerManager::sendPlayerToCloner(PlayerCreature* player, unsigned long lon
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 38);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(clonerID);
 
@@ -607,7 +576,7 @@ bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 39);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -621,7 +590,7 @@ TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, co
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 40);
 		method.addAsciiParameter(hairObjectFile);
 		method.addAsciiParameter(hairCustomization);
 
@@ -636,7 +605,7 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 41);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -650,7 +619,7 @@ void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 42);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(profession);
 		method.addAsciiParameter(templateFile);
@@ -666,7 +635,7 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 43);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -680,7 +649,7 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 44);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -703,7 +672,7 @@ int PlayerManager::checkSpeedHackSecondTest(PlayerCreature* player, float newX, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 45);
 		method.addObjectParameter(player);
 		method.addFloatParameter(newX);
 		method.addFloatParameter(newZ);
@@ -722,7 +691,7 @@ bool PlayerManager::existsName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 46);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -736,7 +705,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 47);
 		method.addAsciiParameter(name);
 
 		return method.executeWithUnsignedLongReturn();
@@ -750,7 +719,7 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 48);
 		method.addAsciiParameter(name);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -764,7 +733,7 @@ void PlayerManager::updateAdminLevel(PlayerCreature* player, const String& targe
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 49);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetName);
 		method.addSignedIntParameter(adminLevel);
@@ -774,27 +743,13 @@ void PlayerManager::updateAdminLevel(PlayerCreature* player, const String& targe
 		_implementation->updateAdminLevel(player, targetName, adminLevel);
 }
 
-float PlayerManager::getCollisionPoint(CreatureObject* creature) {
-	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 52);
-		method.addObjectParameter(creature);
-
-		return method.executeWithFloatReturn();
-	} else
-		return _implementation->getCollisionPoint(creature);
-}
-
 void PlayerManager::generateHologrindProfessions(PlayerCreature* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 50);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -956,7 +911,7 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 PlayerManagerAdapter::PlayerManagerAdapter(PlayerManagerImplementation* obj) : ObserverAdapter(obj) {
 }
 
-enum {RPC_LOADNAMEMAP__ = 6,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_,RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_,RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_AWARDBADGE__PLAYERCREATURE_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_,RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_CHECKLINEOFSIGHT__SCENEOBJECT_SCENEOBJECT_,RPC_CHECKLINEOFSIGHTINBUILDING__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_,RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_,RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_,RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_,RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_,RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_,RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_,RPC_GETCOLLISIONPOINT__CREATUREOBJECT_,RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_};
+enum {RPC_LOADNAMEMAP__ = 6,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_,RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_,RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_AWARDBADGE__PLAYERCREATURE_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_,RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_,RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_,RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_,RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_,RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_,RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_,RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_,RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_};
 
 Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -1046,12 +1001,6 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_STARTLISTEN__CREATUREOBJECT_LONG_:
 		startListen((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case RPC_CHECKLINEOFSIGHT__SCENEOBJECT_SCENEOBJECT_:
-		resp->insertBoolean(checkLineOfSight((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
-		break;
-	case RPC_CHECKLINEOFSIGHTINBUILDING__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_:
-		resp->insertBoolean(checkLineOfSightInBuilding((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
-		break;
 	case RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_:
 		resp->insertSignedInt(healEnhance((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getFloatParameter()));
 		break;
@@ -1102,9 +1051,6 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_:
 		updateAdminLevel((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_updateAdminLevel__PlayerCreature_String_int_), inv->getSignedIntParameter());
-		break;
-	case RPC_GETCOLLISIONPOINT__CREATUREOBJECT_:
-		resp->insertFloat(getCollisionPoint((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_:
 		generateHologrindProfessions((PlayerCreature*) inv->getObjectParameter());
@@ -1228,14 +1174,6 @@ void PlayerManagerAdapter::startListen(CreatureObject* creature, unsigned long l
 	((PlayerManagerImplementation*) impl)->startListen(creature, entid);
 }
 
-bool PlayerManagerAdapter::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
-	return ((PlayerManagerImplementation*) impl)->checkLineOfSight(object1, object2);
-}
-
-bool PlayerManagerAdapter::checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building) {
-	return ((PlayerManagerImplementation*) impl)->checkLineOfSightInBuilding(object1, object2, building);
-}
-
 int PlayerManagerAdapter::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
 	return ((PlayerManagerImplementation*) impl)->healEnhance(enhancer, patient, attribute, buffvalue, duration);
 }
@@ -1302,10 +1240,6 @@ PlayerCreature* PlayerManagerAdapter::getPlayer(const String& name) {
 
 void PlayerManagerAdapter::updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel) {
 	((PlayerManagerImplementation*) impl)->updateAdminLevel(player, targetName, adminLevel);
-}
-
-float PlayerManagerAdapter::getCollisionPoint(CreatureObject* creature) {
-	return ((PlayerManagerImplementation*) impl)->getCollisionPoint(creature);
 }
 
 void PlayerManagerAdapter::generateHologrindProfessions(PlayerCreature* player) {

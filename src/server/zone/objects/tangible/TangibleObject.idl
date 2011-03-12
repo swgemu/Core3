@@ -508,7 +508,7 @@ class TangibleObject extends SceneObject {
 		sliceable = val;
 	}
 
-	public boolean setSliced(boolean slice) {
+	public void setSliced(boolean slice) {
 		sliced = slice;
 	}
 	

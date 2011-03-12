@@ -8,6 +8,21 @@
 #include "PortalLayout.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "MeshAppearanceTemplate.h"
+#include "PathNode.h"
+#include "FloorMesh.h"
+#include "engine/util/u3d/AStarAlgorithm.h"
+
+PortalLayout::PortalLayout() {
+	cellTotalNumber = 0;
+	pathGraph = NULL;
+
+	setLoggingName("PortalLayout");
+}
+
+PortalLayout::~PortalLayout() {
+	delete pathGraph;
+	pathGraph = NULL;
+}
 
 void PortalLayout::parse(IffStream* iffStream) {
 	try {
@@ -39,9 +54,16 @@ void PortalLayout::parse(IffStream* iffStream) {
 		iffStream->closeForm('PRTS');
 
 		//open CELS form
-
 		parseCELSForm(iffStream);
 
+		//path graph
+
+		uint32 nextType = iffStream->getNextFormType();
+
+		if (nextType == 'PGRF') {
+			pathGraph = new PathGraph(NULL);
+			pathGraph->readObject(iffStream);
+		}
 
 		iffStream->closeForm(type);
 
@@ -51,6 +73,62 @@ void PortalLayout::parse(IffStream* iffStream) {
 		err += iffStream->getFileName();
 		error(err);
 	}
+
+	connectFloorMeshGraphs();
+}
+
+void PortalLayout::connectFloorMeshGraphs() {
+	for (int i = 0; i < floorMeshes.size(); ++i) {
+		FloorMesh* floorMesh = floorMeshes.get(i);
+		PathGraph* pathGraph = floorMesh->getPathGraph();
+
+		if (pathGraph == NULL)
+			continue;
+
+		Vector<PathNode*> globalNodes = pathGraph->getGlobalNodes();
+
+		for (int j = 0; j < globalNodes.size(); ++j) {
+			PathNode* node = globalNodes.get(j);
+
+			int globalID = node->getGlobalGraphNodeID();
+
+			for (int k = 0; k < floorMeshes.size(); ++k) {
+				if (i != k) {
+					FloorMesh* newMesh = floorMeshes.get(k);
+					PathGraph* newPathGraph = newMesh->getPathGraph();
+
+					if (newPathGraph != NULL) {
+						Vector<PathNode*> newGlobalNodes = newPathGraph->getGlobalNodes();
+
+						for (int l = 0; l < newGlobalNodes.size(); ++l) {
+							PathNode* newNode = newGlobalNodes.get(l);
+
+							int newGlobalID = newNode->getGlobalGraphNodeID();
+
+							if (globalID == newGlobalID)
+								node->addChild(newNode);
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+int PortalLayout::getFloorMeshID(int globalNodeID, int floorMeshToExclude) {
+	for (int i = 0; i < floorMeshes.size(); ++i) {
+		if (i == floorMeshToExclude)
+			continue;
+
+		FloorMesh* floorMesh = floorMeshes.get(i);
+		PathNode* node = floorMesh->getGlobalNode(globalNodeID);
+
+		if (node != NULL)
+			return i;
+	}
+
+	return -1;
 }
 
 void PortalLayout::parseCELSForm(IffStream* iffStream) {
@@ -59,7 +137,7 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 
 		uint32 nextType;
 
-		while ((nextType = iffStream->getNextFormType()) == 'CELL') {
+		while (iffStream->getRemainingSubChunksNumber() > 0 && (nextType = iffStream->getNextFormType()) == 'CELL') {
 			try {
 				iffStream->openForm('CELL');
 
@@ -104,34 +182,45 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 						FloorMesh* floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
 
 						floorMeshes.add(floorMesh);
-					}
-				}
+
+						floorMesh->setCellID(floorMeshes.size() - 1);
+					} else
+						floorMeshes.add(NULL);
+				} else
+					floorMeshes.add(NULL);
 
 				iffStream->closeChunk();
 
 				iffStream->closeForm('0005');
 
-				iffStream->closeForm('CELS');
+				iffStream->closeForm('CELL');
 			} catch (Exception& e) {
 				error(e.getMessage());
-				error("parsing CELS for " + iffStream->getFileName());
+				error("parsing CELL for " + iffStream->getFileName());
 				e.printStackTrace();
 			} catch (...) {
-				error("parsing CELS for " + iffStream->getFileName());
+				error("parsing CELL for " + iffStream->getFileName());
 
 				throw;
 			}
 		}
 
+		iffStream->closeForm('CELS');
+
 	} catch (Exception& e) {
-		//error(e.getMessage());
-		//error("parsing CELS for " + iffStream->getFileName());
+		error(e.getMessage());
+		error("parsing CELS for " + iffStream->getFileName());
 	} catch (...) {
 		//error("parsing CELS for " + iffStream->getFileName());
 
 		throw;
 	}
 
+
 	if (cellTotalNumber > 0)
 		--cellTotalNumber;
+}
+
+Vector<PathNode*>* PortalLayout::getPath(PathNode* node1, PathNode* node2) {
+	return AStarAlgorithm<PathGraph, PathNode>::search<uint32>(node1->getPathGraph(), node1, node2);
 }

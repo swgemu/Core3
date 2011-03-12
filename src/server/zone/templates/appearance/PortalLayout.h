@@ -10,20 +10,20 @@
 
 #include "../IffTemplate.h"
 
-class FloorMesh;
 class MeshAppearanceTemplate;
+class PathNode;
+class FloorMesh;
+class PathGraph;
 
 class PortalLayout : public IffTemplate, public Logger {
 	int cellTotalNumber;
 	Vector<FloorMesh*> floorMeshes; // indexed by cells started by 0
 	Vector<MeshAppearanceTemplate*> appearanceTemplates;
+	PathGraph* pathGraph;
 
 public:
-	PortalLayout() {
-		cellTotalNumber = 0;
-
-		setLoggingName("PortalLayout");
-	}
+	PortalLayout();
+	~PortalLayout();
 
 	void readObject(IffStream* templateData) {
 		parse(templateData);
@@ -32,6 +32,12 @@ public:
 	void parse(IffStream* iffStream);
 
 	void parseCELSForm(IffStream* iffStream);
+
+	void connectFloorMeshGraphs();
+
+	int getFloorMeshID(int globalNodeID, int floorMeshToExclude);
+
+	Vector<PathNode*>* getPath(PathNode* node1, PathNode* node2);
 
 	inline int getCellTotalNumber() {
 		return cellTotalNumber;

@@ -123,7 +123,7 @@ public:
 		return this;
 	}
 
-	inline void getTriangles(Vector<Triangle>& triangles) {
+	inline void getTriangles(Vector<Triangle*>& triangles) {
 		if (aabbTree != NULL)
 			aabbTree->getTriangles(triangles);
 	}

@@ -33,7 +33,7 @@ void MeshAppearanceTemplate::parse(IffStream* iffStream) {
 }
 
 void MeshAppearanceTemplate::createAABB() {
-	Vector<Triangle> triangles;
+	Vector<Triangle*> triangles;
 
 	for (int k = 0; k < meshes->size(); ++k) {
 		MeshData* meshData = &meshes->get(k);
@@ -54,7 +54,7 @@ void MeshAppearanceTemplate::createAABB() {
 			trian[1] = Vector3(vert2->getX(), vert2->getY(), vert2->getZ());
 			trian[2] = Vector3(vert3->getX(), vert3->getY(), vert3->getZ());
 
-			triangles.add(Triangle(trian));
+			triangles.add(new Triangle(trian));
 		}
 	}
 

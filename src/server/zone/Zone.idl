@@ -66,6 +66,7 @@ import system.util.SortedVector;
 include server.zone.managers.planet.HeightMap;
 include server.zone.managers.object.ObjectMap;
 include server.zone.managers.planet.MapLocationTable;
+include engine.util.u3d.Vector3;
 
 import system.lang.System;
 import server.zone.objects.building.cloning.CloningBuildingObject;
@@ -149,7 +150,7 @@ class Zone extends ManagedObject implements QuadTree {
 	public native void stopManagers();
 	
 	public native float getHeight(float x, float y);
-	
+
 	public native void addSceneObject(SceneObject object);
 	
 	public native void sendMapLocationsTo(final string planetName, SceneObject player);

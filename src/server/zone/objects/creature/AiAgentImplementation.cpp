@@ -22,6 +22,7 @@
 #include "server/zone/managers/creature/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
@@ -36,6 +37,8 @@
 #include "PatrolPoint.h"
 #include "AiObserver.h"
 #include "CreatureSetDefenderTask.h"
+#include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/appearance/FloorMesh.h"
 
 
 void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -486,7 +489,7 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	PatrolPoint* nextPosition = pos;
 
 	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(),
-		nextPosition->getPositionY());
+			nextPosition->getPositionY());
 
 	SceneObject* cell = nextPosition->getCell();
 
@@ -541,6 +544,188 @@ void AiAgentImplementation::checkNewAngle() {
 	}
 }
 
+bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates& nextPosition) {
+	Vector3 thisWorldPos = getWorldPosition();
+
+	float newSpeed = runSpeed;
+	if (followObject == NULL && !isFleeing() && !isRetreating()) // TODO: think about implementing a more generic "walk, don't run" criterion
+		newSpeed = walkSpeed;
+
+	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
+	currentSpeed = newSpeed;
+
+	newSpeed *= updateTicks;
+
+	float newSpeedSquared = newSpeed * newSpeed;
+	float newPositionX, newPositionZ, newPositionY;
+	PathFinderManager* pathFinder = PathFinderManager::instance();
+
+	bool found = false;
+	float dist = 0;
+	float dx, dy;
+	ManagedReference<SceneObject*> cellObject;
+
+
+	while (!found && patrolPoints.size() != 0) {
+		PatrolPoint* targetPosition = &patrolPoints.get(0);
+
+		/*StringBuffer msg;
+			msg << "targetPosition " << targetPosition->getPositionX() << " " << targetPosition->getPositionZ() << " " << targetPosition->getPositionY() << " " << targetPosition->getCell();
+			info(msg.toString(), true);*/
+
+		Vector<WorldCoordinates>* path = pathFinder->findPath(_this, targetPosition->getCoordinates());
+
+		if (path == NULL) {
+			patrolPoints.remove(0);
+
+			continue;
+		}
+
+		WorldCoordinates* oldCoord = NULL;
+		float pathDistance = 0;
+
+		bool remove = true;
+
+		for (int i = 1; i < path->size() && !found; ++i) { // i = 0 is our position
+			WorldCoordinates* coord = &path->get(i);
+
+			/*if (parent != NULL) {
+					if (coord->getCell() != NULL) {
+						StringBuffer msg2;
+						msg2 << "checking coord " << coord->getX() << " " << coord->getZ() << " " << coord->getY() << " " << coord->getCell()->getObjectID();
+						info(msg2.toString(), true);
+					} else {
+						StringBuffer msg2;
+						msg2 << "checking coord " << coord->getX() << " " << coord->getZ() << " " << coord->getY();
+						info(msg2.toString(), true);
+					}
+				}*/
+
+			Vector3 nextWorldPos = coord->getWorldPosition();
+
+			if (oldCoord == NULL) {
+				pathDistance += nextWorldPos.squaredDistanceTo(thisWorldPos);
+				oldCoord = &path->get(0);
+			} else {
+				pathDistance += oldCoord->getWorldPosition().squaredDistanceTo(nextWorldPos);
+			}
+
+			if (i == path->size() - 1 || pathDistance >= newSpeedSquared || coord->getCell() != parent) { //last waypoint
+				cellObject = coord->getCell();
+
+				//TODO: calculate height
+				Vector3 noHeightWorldPos(thisWorldPos.getX(), thisWorldPos.getY(), 0);
+				Vector3 noHeightNextWorldPos(nextWorldPos.getX(), nextWorldPos.getY(), 0);
+				dist = noHeightNextWorldPos.squaredDistanceTo(noHeightWorldPos);
+
+				nextPosition = *coord;
+				found = true;
+
+				if (dist <= maxDistance * maxDistance && cellObject == parent) {
+					if (i == path->size() - 1) {
+						patrolPoints.remove(0);
+						remove = false;
+					}
+
+					found = false;
+				} else {
+					/*if (parent != NULL) {
+							info("pathDistance = " + String::valueOf(pathDistance), true);
+							info("newSpeedSquared = " + String::valueOf(newSpeedSquared), true);
+							info("maxDistance = " + String::valueOf(maxDistance), true);
+							info("i = " + String::valueOf(i), true);
+							info("path->size() - 1 = " + String::valueOf(path->size() - 1), true);
+						}*/
+
+					//lets convert source and target coordinates to model or world space
+
+					Vector3 oldCoordinates = oldCoord->getPoint();
+
+					if (coord->getCell() != NULL) { //target coord in cell
+						if (oldCoord->getCell() == NULL)  // convert old coord to model space
+							oldCoordinates = PathFinderManager::transformToModelSpace(oldCoord->getPoint(), coord->getCell()->getParent());
+
+					} else { // target coord in world
+						oldCoordinates = oldCoord->getWorldPosition();
+					}
+
+					if (pathDistance > newSpeedSquared) {
+						Vector3 oldWorldCoord = oldCoord->getWorldPosition();
+
+						dist = oldWorldCoord.squaredDistanceTo(nextWorldPos);
+
+						float distanceToTravel = dist - (pathDistance - newSpeedSquared);
+
+						if (distanceToTravel <= 0) {
+							newPositionX = nextPosition.getX();
+							newPositionY = nextPosition.getY();
+						} else {
+							float rest = Math::sqrt(distanceToTravel);
+
+							dist = Math::sqrt(dist);
+
+							if (dist != 0 && !isnan(dist)) {
+								dx = nextPosition.getX() - oldCoordinates.getX();
+								dy = nextPosition.getY() - oldCoordinates.getY();
+
+								newPositionX = oldCoordinates.getX() + (rest * (dx / dist));// (newSpeed * (dx / dist));
+								newPositionY = oldCoordinates.getY() + (rest * (dy / dist)); //(newSpeed * (dy / dist));
+							} else {
+								newPositionX = nextPosition.getX();
+								newPositionY = nextPosition.getY();
+							}
+						}
+
+
+						/*if (parent != NULL) {
+								info("dx = " + String::valueOf(dx), true);
+								info("dy = " + String::valueOf(dy), true);
+								info("dist = " + String::valueOf(dist), true);
+								info("rest = " + String::valueOf(newSpeed), true);
+								info("oldCoord x = " + String::valueOf(oldCoordinates.getX()), true);
+								info("oldCoord y = " + String::valueOf(oldCoordinates.getY()), true);
+								info("current x = " + String::valueOf(getPositionX()), true);
+								info("current y = " + String::valueOf(getPositionY()), true);
+								info("next x = " + String::valueOf(nextPosition.getX()), true);
+								info("next y = " + String::valueOf(nextPosition.getY()), true);
+								info("new x = " + String::valueOf(newPositionX), true);
+								info("new y = " + String::valueOf(newPositionY), true);
+							}*/
+
+						if (nextPosition.getCell() == NULL) {
+							newPositionZ = zone->getHeight(newPositionX, newPositionY);
+							//newPositionZ = nextPosition.getZ();
+						} else {
+							newPositionZ = nextPosition.getZ();
+						}
+					} else {
+						//info("setting nextPosition point", true);
+						newPositionX = nextPosition.getX();
+						newPositionY = nextPosition.getY();
+						newPositionZ = nextPosition.getZ();
+					}
+				}
+			}
+
+
+			oldCoord = coord;
+		}
+
+		if (!found && remove) {
+			patrolPoints.remove(0);
+		}
+
+		delete path;
+	}
+
+	nextPosition.setX(newPositionX);
+	nextPosition.setY(newPositionY);
+	nextPosition.setZ(newPositionZ);
+	nextPosition.setCell(cellObject);
+
+	return found;
+}
+
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
 	if (isDead() || zone == NULL)
@@ -570,12 +755,18 @@ void AiAgentImplementation::doMovement() {
 			setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
 			maxDistance = 25;
 			break;
-		case AiAgent::FOLLOWING:
+		case AiAgent::FOLLOWING: {
+
+			//we might get out of the floor
+			/*float newX = followObject->getPositionX() + (-3 + System::random(6));
+			float newY = followObject->getPositionY() + (-3 + System::random(6));*/
+
 			setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
 			// stop in weapons range
 			if (weapon != NULL )
 				maxDistance = weapon->getIdealRange();
 			break;
+		}
 		default:
 			setOblivious();
 			break;
@@ -585,35 +776,9 @@ void AiAgentImplementation::doMovement() {
 	if (isRetreating() || isFleeing())
 		maxDistance = 0.5;
 
-	float dist = 0;
+	WorldCoordinates nextPosition;
 
-	float dx, dy;
-	ManagedReference<SceneObject*> cellObject;
-
-	bool found = false;
-
-	Vector3 thisWorldPos = getWorldPosition();
-	PatrolPoint* nextPosition = NULL;
-
-	while (!found && patrolPoints.size() != 0) {
-		nextPosition = &patrolPoints.elementAt(0);
-
-		cellObject = nextPosition->getCell();
-
-		Vector3 nextWorldPos = nextPosition->getWorldPosition();
-
-		dx = nextWorldPos.getX() - thisWorldPos.getX();
-		dy = nextWorldPos.getY() - thisWorldPos.getY();
-
-		dist = thisWorldPos.squaredDistanceTo(nextWorldPos);
-
-		if (dist <= maxDistance * maxDistance && cellObject == parent) {
-			patrolPoints.remove(0);
-
-			nextPosition = NULL;
-		} else
-			found = true;
-	}
+	bool found = findNextPosition(maxDistance, nextPosition);
 
 	if (!found) {
 		currentSpeed = 0;
@@ -638,39 +803,24 @@ void AiAgentImplementation::doMovement() {
 		return;
 	}
 
-	float newPositionX, newPositionZ, newPositionY;
+	nextStepPosition.setPosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
+	nextStepPosition.setCell(nextPosition.getCell());
 
-	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
 
-	//info("runSpeed: " + String::valueOf(runSpeed), true);
+	/*if (parent != NULL) {
+		StringBuffer msg;
+		msg << "setting nextPosition to " << nextStepPosition.getPositionX() << " " << nextStepPosition.getPositionZ() << " " << nextStepPosition.getPositionY() << " 0x" << hex << nextStepPosition.getCell();
+		info(msg.toString(), true);
+	}*/
 
-	float newSpeed = runSpeed;
-	if (followObject == NULL && !isFleeing() && !isRetreating()) // TODO: think about implementing a more generic "walk, don't run" criterion
-		newSpeed = walkSpeed;
+	Vector3 nextStepWorldPosition = nextStepPosition.getWorldPosition();
 
-	currentSpeed = newSpeed;
-	newSpeed *= updateTicks;
+	float directionangle = atan2(nextPosition.getX() - getPositionX(), nextPosition.getY() - getPositionY());
 
-	dist = Math::sqrt(dist);
-
-	newPositionX = thisWorldPos.getX() + (newSpeed * (dx / dist));
-	newPositionY = thisWorldPos.getY() + (newSpeed * (dy / dist));
-	newPositionZ = zone->getHeight(newPositionX, newPositionY);
-
-	float directionangle = atan2(newPositionX - thisWorldPos.getX(), newPositionY - thisWorldPos.getY());
+	if (directionangle < 0)
+		directionangle = 2 * M_PI + directionangle;
 
 	direction.setHeadingDirection(directionangle);
-
-	if ((parent != NULL && parent != cellObject) || (cellObject != NULL && dist <= newSpeed)) {
-		nextStepPosition = *nextPosition;
-	} else {
-		if (dist <= newSpeed)
-			nextStepPosition = *nextPosition;
-		else
-			nextStepPosition.setPosition(newPositionX, newPositionZ, newPositionY);
-
-		nextStepPosition.setCell(NULL);
-	}
 
 	nextStepPosition.setReached(false);
 

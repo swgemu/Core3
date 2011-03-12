@@ -47,39 +47,37 @@ which carries forward this exception.
 
 #include "system/lang.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/scene/WorldCoordinates.h"
 
 class PatrolPoint : public Serializable {
-	Vector3 position;
-	
-	ManagedReference<SceneObject*> cell;
-	
+	WorldCoordinates position;
+
 	bool reached;
 	
 	Time estimatedTimeOfArrival;
 
 public:
 	PatrolPoint() {
-		cell = NULL;
-
 		reached = true;
 
 		addSerializableVariables();
 	}
 
-	PatrolPoint(float posX, float posZ, float posY, SceneObject* cell = NULL) {
-		position.set(posX, posZ, posY);
-		this->cell = cell;
+	PatrolPoint(const Vector3& pos, SceneObject* cell = NULL) : position(pos, cell) {
+		reached = false;
 
-		if (cell != NULL && !cell->isCellObject())
-			this->cell = NULL;
+		addSerializableVariables();
+	}
 
+	PatrolPoint(float posX, float posZ, float posY, SceneObject* cell = NULL) : position(Vector3(posX, posY, posZ), cell) {
 		reached = false;
 
 		addSerializableVariables();
 	}
 	
 	PatrolPoint(const PatrolPoint& point) : Object(), Serializable() {
-		cell = point.cell;
 		position = point.position;
 
 		reached = point.reached;
@@ -91,7 +89,6 @@ public:
 		if (this == &p)
 			return *this;
 
-		cell = p.cell;
 		position = p.position;
 
 		reached = p.reached;
@@ -101,27 +98,12 @@ public:
 
 	inline void addSerializableVariables() {
 		addSerializableVariable("position", &position);
-		addSerializableVariable("cell", &cell);
 		addSerializableVariable("reached", &reached);
 		addSerializableVariable("estimatedTimeOfArrival", &estimatedTimeOfArrival);
 	}
 
 	Vector3 getWorldPosition() {
-		if (cell == NULL)
-			return position;
-
-		SceneObject* root = cell->getRootParent();
-
-		float length = Math::sqrt(position.getX() * position.getX() + position.getY() * position.getY());
-		float angle = root->getDirection()->getRadians() + atan2(position.getX(), position.getY());
-
-		float posX = root->getPositionX() + (sin(angle) * length);
-		float posY = root->getPositionY() + (cos(angle) * length);
-		float posZ = root->getPositionZ() + position.getZ();
-
-		Vector3 pos(posX, posY, posZ);
-
-		return pos;
+		return position.getWorldPosition();
 	}
 
 	bool isInRange(SceneObject* obj, float range) {
@@ -138,6 +120,10 @@ public:
 		return thisWorldPos.squaredDistanceTo(objWorldPos) <= (range * range);
 	}
 
+	inline WorldCoordinates getCoordinates() {
+		return position;
+	}
+
 	//getters
 	inline float getPositionX() {
 		return position.getX();
@@ -152,7 +138,7 @@ public:
 	}
 	
 	inline SceneObject* getCell() {
-		return cell;
+		return position.getCell();
 	}
 	
 	inline Time* getEstimatedTimeOfArrival() {
@@ -169,7 +155,7 @@ public:
 
 	//setters
 	inline void setPosition(float x, float z, float y) {
-		position.set(x, z, y);
+		position.setCoordinates(Vector3(x, y, z));
 	}
 	
 	inline void setPositionX(float x) {
@@ -185,10 +171,8 @@ public:
 	}
 	
 	inline void setCell(SceneObject* cell) {
-		this->cell = cell;
-
-		if (cell != NULL && !cell->isCellObject())
-			this->cell = NULL;
+		if (cell != NULL && cell->isCellObject() || cell == NULL)
+			position.setCell(cell);
 	}
 	
 	inline void setReached(bool value) {
