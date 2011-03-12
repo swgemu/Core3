@@ -110,6 +110,7 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 
+
 	fleeing = true;
 
 	CombatManager::instance()->forcePeace(_this);

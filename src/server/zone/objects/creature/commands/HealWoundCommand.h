@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
 #include "server/zone/packets/object/CombatAction.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 class HealWoundCommand : public QueueCommand {
 	int mindCost;
@@ -217,7 +218,7 @@ public:
 			return false;
 		}
 
-		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@container_error_message:container18");
 			return false;
 		}

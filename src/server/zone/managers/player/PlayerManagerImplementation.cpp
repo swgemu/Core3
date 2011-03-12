@@ -24,6 +24,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/professions/Performance.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
@@ -59,9 +60,6 @@
 #include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
 
 #include "server/zone/Zone.h"
-
-#include "server/zone/templates/appearance/PortalLayout.h"
-#include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 	Logger("PlayerManager") {
@@ -339,9 +337,12 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 	PlayerObject* ghost = playerCreature->getPlayerObject();
 
+	//ghost->setAdminLevel(2);
+
 	//Accounts with an admin level of > 0 are automatically given admin at character creation
 	/*if (account->getAdminLevel() > 0) {
-		ghost->setAdminLevel(account->getAdminLevel());
+		//ghost->setAdminLevel(account->getAdminLevel());
+		ghost->setAdminLevel(2);
 
 		Vector<String> skills;
 		skills.add("admin");
@@ -2283,192 +2284,6 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player
 	return ret;
 
 	//return 0;
-}
-
-bool PlayerManagerImplementation::checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building) {
-	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
-	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
-
-	if (portalLayout == NULL)
-		return true;
-
-	//we are in model space... in cells
-	Vector3 rayOrigin = object1->getPosition();
-	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + 1.f);
-
-	Vector3 rayEnd = object2->getPosition();
-	rayEnd.set(rayEnd.getX(), rayEnd.getY(), rayEnd.getZ() + 1.f);
-
-	Vector3 direction(Vector3(rayEnd - rayOrigin));
-	direction.normalize();
-
-	float distance = rayEnd.distanceTo(rayOrigin);
-	float intersectionDistance;
-
-	Ray ray(rayOrigin, direction);
-
-	// we check interior cells
-	for (int i = 1; i < portalLayout->getAppearanceTemplatesSize(); ++i) {
-		MeshAppearanceTemplate* app = portalLayout->getMeshAppearanceTemplate(i);
-
-		AABBTree* aabbTree = app->getAABBTree();
-
-		if (aabbTree == NULL)
-			continue;
-
-		if (aabbTree->intersects(ray, distance, intersectionDistance, true))
-			return false;
-	}
-
-	return true;
-}
-
-float PlayerManagerImplementation::getCollisionPoint(CreatureObject* creature) {
-	float heightOrigin = creature->getHeight() - 0.3f;
-
-	if (creature->isProne() || creature->isKnockedDown() || creature->isIncapacitated()) {
-		heightOrigin = 0.3;
-	} else if (creature->isKneeling()) {
-		heightOrigin /= 2.f;
-	}
-
-	return heightOrigin;
-}
-
-bool PlayerManagerImplementation::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
-	Zone* zone = object1->getZone();
-
-	if (zone == NULL)
-		return false;
-
-	if (object2->getZone() != zone)
-		return false;
-
-	SceneObject* rootParent1 = object1->getRootParent();
-	SceneObject* rootParent2 = object2->getRootParent();
-
-	if (rootParent1 != NULL || rootParent2 != NULL) {
-		if (rootParent1 == rootParent2) {
-			return checkLineOfSightInBuilding(object1, object2, rootParent1);
-		} else if (rootParent1 != NULL && rootParent2 != NULL)
-			return false; //different buildings
-	}
-
-	//switching x<->y, adding player height (head)
-	Vector3 rayOrigin = object1->getWorldPosition();
-
-	float heightOrigin = 1.f;
-	float heightEnd = 1.f;
-
-	if (object1->isCreatureObject())
-		heightOrigin = getCollisionPoint((CreatureObject*)object1);
-
-	if (object2->isCreatureObject())
-		heightEnd = getCollisionPoint((CreatureObject*)object2);
-
-	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + heightOrigin);
-
-	Vector3 rayEnd = object2->getWorldPosition();
-	rayEnd.set(rayEnd.getX(), rayEnd.getY(), rayEnd.getZ() + heightEnd);
-
-	float dist = rayEnd.distanceTo(rayOrigin);
-	float intersectionDistance;
-
-	zone->rlock();
-
-	for (int i = 0; i < object1->inRangeObjectCount(); ++i) {
-		AABBTree* aabbTree = NULL;
-
-		SceneObject* scno = (SceneObject*) object1->getInRangeObject(i);
-
-		try {
-			SharedObjectTemplate* templateObject = scno->getObjectTemplate();
-
-			if (templateObject == NULL)
-				continue;
-
-			if (templateObject->getCollisionActionBlockFlags() != 255)
-				continue;
-
-			PortalLayout* portalLayout = templateObject->getPortalLayout();
-			MeshAppearanceTemplate* mesh = NULL;
-
-			if (portalLayout != NULL) {
-				mesh = portalLayout->getMeshAppearanceTemplate(0);
-			} else {
-				AppearanceTemplate* appTemplate = templateObject->getAppearanceTemplate();
-
-				if (appTemplate == NULL)
-					continue;
-
-				mesh = dynamic_cast<MeshAppearanceTemplate*>(appTemplate->getFirstMesh());
-			}
-
-			if (mesh == NULL)
-				continue;
-
-			aabbTree = mesh->getAABBTree();
-
-			if (aabbTree == NULL)
-				continue;
-
-		} catch (...) {
-			aabbTree = NULL;
-
-			throw;
-		}
-
-		if (aabbTree != NULL) {
-			//moving ray to model space
-			zone->runlock();
-
-			try {
-				Matrix4 translationMatrix;
-				translationMatrix.setTranslation(-scno->getPositionX(), -scno->getPositionZ(), -scno->getPositionY());
-
-				float rad = -scno->getDirection()->getRadians();
-				float cosRad = cos(rad);
-				float sinRad = sin(rad);
-
-				Matrix3 rot;
-				rot[0][0] = cosRad;
-				rot[0][2] = -sinRad;
-				rot[1][1] = 1;
-				rot[2][0] = sinRad;
-				rot[2][2] = cosRad;
-
-				Matrix4 rotateMatrix;
-				rotateMatrix.setRotationMatrix(rot);
-
-				Matrix4 modelMatrix;
-				modelMatrix = translationMatrix * rotateMatrix;
-
-				Vector3 transformedOrigin = rayOrigin * modelMatrix;
-				Vector3 transformedEnd = rayEnd * modelMatrix;
-
-				Vector3 norm = transformedEnd - transformedOrigin;
-				norm.normalize();
-
-				Ray ray(transformedOrigin, norm);
-
-				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
-
-				if (aabbTree->intersects(ray, dist, intersectionDistance, true)) {
-					return false;
-				}
-			} catch (...) {
-				throw;
-			}
-
-			zone->rlock();
-
-		}
-	}
-
-	zone->runlock();
-
-	return true;
-
 }
 
 void PlayerManagerImplementation::generateHologrindProfessions(PlayerCreature* player) {

@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 class DeathBlowCommand : public QueueCommand {
 public:
@@ -78,7 +79,7 @@ public:
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
-		if (!playerManager->checkLineOfSight(creature, player)) {
+		if (!CollisionManager::checkLineOfSight(creature, player)) {
 			creature->sendSystemMessage("@container_error_message:container18");
 			return GENERALERROR;
 		}

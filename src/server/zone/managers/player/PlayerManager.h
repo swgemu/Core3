@@ -222,10 +222,6 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
-
-	bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
-
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
@@ -263,8 +259,6 @@ public:
 	PlayerCreature* getPlayer(const String& name);
 
 	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel = 1);
-
-	float getCollisionPoint(CreatureObject* creature);
 
 	void generateHologrindProfessions(PlayerCreature* player);
 
@@ -374,10 +368,6 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
-
-	bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
-
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
@@ -415,8 +405,6 @@ public:
 	PlayerCreature* getPlayer(const String& name);
 
 	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel = 1);
-
-	float getCollisionPoint(CreatureObject* creature);
 
 	void generateHologrindProfessions(PlayerCreature* player);
 
@@ -517,10 +505,6 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
-
-	bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
-
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	bool squadLeaderCheck(PlayerCreature* player, GroupObject* group);
@@ -554,8 +538,6 @@ public:
 	PlayerCreature* getPlayer(const String& name);
 
 	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel);
-
-	float getCollisionPoint(CreatureObject* creature);
 
 	void generateHologrindProfessions(PlayerCreature* player);
 

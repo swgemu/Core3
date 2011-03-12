@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/BuffAttribute.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
 #include "server/zone/packets/object/CombatAction.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 class HealEnhanceCommand : public QueueCommand {
 	float mindCost;
@@ -194,7 +195,7 @@ public:
 			return false;
 		}
 
-		if (enhancer != patient && !playerManager->checkLineOfSight(enhancer, patient)) {
+		if (enhancer != patient && !CollisionManager::checkLineOfSight(enhancer, patient)) {
 			enhancer->sendSystemMessage("@container_error_message:container18");
 			return false;
 		}

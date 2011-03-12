@@ -165,9 +165,6 @@ class PlayerManager extends Observer implements Logger {
 	public native void startWatch(CreatureObject creature, unsigned long entid);
 	public native void startListen(CreatureObject creature, unsigned long entid);
 	
-	public native boolean checkLineOfSight(SceneObject object1, SceneObject object2);
-	public native boolean checkLineOfSightInBuilding(SceneObject object1, SceneObject object2, SceneObject building);
-	
 	/**
 	 * Enhances the patients attribute by a specified amount for a specified duration.
 	 * @param patient The patient to enhance.
@@ -208,8 +205,6 @@ class PlayerManager extends Observer implements Logger {
 	public native PlayerCreature getPlayer(final string name);
 	
 	public native void updateAdminLevel(PlayerCreature player, final string targetName, int adminLevel = 1);
-	
-	public native float getCollisionPoint(CreatureObject creature);
 	
 	/**
 	 * Generates 5 random hologrind professions for the player.

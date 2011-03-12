@@ -107,7 +107,16 @@ public:
 
 		Ray ray(startPoint, dir);
 
-		if (aabbTree->intersects(ray, distance, intersectionDistance, true))
+		Triangle* triangle = NULL;
+
+		//nothing in the middle
+		if (aabbTree->intersects(ray, distance, intersectionDistance, triangle, true))
+			return false;
+
+		Ray ray2(endPoint, Vector3(0, -1, 0));
+
+		//check if we are in the cell with dir (0, -1, 0)
+		if (!aabbTree->intersects(ray2, 64000.f, intersectionDistance, triangle, true))
 			return false;
 
 		return true;

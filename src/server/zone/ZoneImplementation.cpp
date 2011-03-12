@@ -56,6 +56,12 @@ which carries forward this exception.
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/appearance/FloorMesh.h"
+#include "server/zone/templates/appearance/PathGraph.h"
+
 
 ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
