@@ -69,6 +69,10 @@ void Zone::run() {
 
 		client->info("sent client id message", true);
 
+#ifdef WITH_STM
+	TransactionalMemoryManager::commitPureTransaction();
+#endif
+
 	} catch (sys::lang::Exception& e) {
 		System::out << e.getMessage() << "\n";
 		exit(0);

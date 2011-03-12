@@ -69,6 +69,8 @@ namespace server {
 
 			void run() {
 				try {
+					message->reset();
+
 					packetHandler->handleMessage(message);
 				} catch (PacketIndexOutOfBoundsException& e) {
 					System::out << e.getMessage();
