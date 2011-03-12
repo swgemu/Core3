@@ -121,6 +121,8 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 		BaseMessage* msg = new ClientCreateCharacter(charName);
 		client->sendMessage(msg);
 	} else {
+		client->info("selecting sent character", true);
+
 		BaseMessage* selectChar = new SelectCharacter(zone->getCharacterID());
 		client->sendMessage(selectChar);
 	}
