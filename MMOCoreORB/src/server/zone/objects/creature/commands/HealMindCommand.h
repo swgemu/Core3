@@ -46,6 +46,7 @@ which carries forward this exception.
 #define HEALMINDCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 class HealMindCommand : public QueueCommand {
 	float mindCost;
@@ -197,7 +198,7 @@ public:
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
-		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@container_error_message:container18");
 			return GENERALERROR;
 		}

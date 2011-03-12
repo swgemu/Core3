@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
 #include "server/zone/packets/object/CombatAction.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 class HealDamageCommand : public QueueCommand {
 	float range;
@@ -181,7 +182,7 @@ public:
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
-		if (creature != creatureTarget && !playerManager->checkLineOfSight(creature, creatureTarget)) {
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			return false;
 		}
 
@@ -457,7 +458,7 @@ public:
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
-		if (creature != targetCreature && !playerManager->checkLineOfSight(creature, targetCreature)) {
+		if (creature != targetCreature && !CollisionManager::checkLineOfSight(creature, targetCreature)) {
 			creature->sendSystemMessage("@container_error_message:container18");
 			return GENERALERROR;
 		}

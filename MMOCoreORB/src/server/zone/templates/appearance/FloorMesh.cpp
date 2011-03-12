@@ -9,6 +9,63 @@
 
 #include "MeshAppearanceTemplate.h"
 
+void FloorMeshTriangleNode::readObject(IffStream* iffStream) {
+	int pointA = iffStream->getInt();
+	int pointB = iffStream->getInt();
+	int pointC = iffStream->getInt();
+
+	Vert* vert1 = mesh->getVertex(pointA);
+	Vert* vert2 = mesh->getVertex(pointB);
+	Vert* vert3 = mesh->getVertex(pointC);
+
+	Vector3 trian[3];
+	trian[0] = Vector3(vert1->getX(), vert1->getY(), vert1->getZ());
+	trian[1] = Vector3(vert2->getX(), vert2->getY(), vert2->getZ());
+	trian[2] = Vector3(vert3->getX(), vert3->getY(), vert3->getZ());
+
+	set(trian);
+
+	id = iffStream->getUnsignedInt();
+	northWestTriangle = iffStream->getInt();
+	northEastTriangle = iffStream->getInt();
+	southTriangle = iffStream->getInt();
+
+	var8 = iffStream->getFloat();
+	var9 = iffStream->getFloat();
+	var10 = iffStream->getFloat();
+
+	uint8 hasNorthWestTriangle = iffStream->getByte();
+	uint8 hasNorthEastTriangle = iffStream->getByte();
+	uint8 hasSouthTriangle = iffStream->getByte();
+	var14 = iffStream->getByte();
+
+	var15 = iffStream->getInt();
+	var16 = iffStream->getInt();
+	var17 = iffStream->getInt();
+	var18 = iffStream->getInt();
+}
+
+FloorMesh::FloorMesh() {
+	setLoggingName("FloorMesh");
+	pathGraph = NULL;
+	aabbTree = NULL;
+
+	cellID = -1;
+}
+
+FloorMesh::~FloorMesh() {
+	if (pathGraph != NULL) {
+		delete pathGraph;
+		pathGraph = NULL;
+	}
+
+	delete aabbTree;
+	aabbTree = NULL;
+
+	for (int i = 0; i < tris.size(); ++i)
+		delete tris.get(i);
+}
+
 void FloorMesh::readObject(IffStream* iffStream) {
 	iffStream->openForm('FLOR');
 
@@ -28,28 +85,30 @@ void FloorMesh::readObject(IffStream* iffStream) {
 
 	// Generating our own tree from triangles
 
-	Vector<Triangle> triangles;
+	Vector<Triangle*> triangles;
 
 	for (int i = 0; i < tris.size(); ++i) {
-		Tri* tri = &tris.get(i);
+		FloorMeshTriangleNode* tri = tris.get(i);
 
-		int pointA = tri->getVertex1();
-		int pointB = tri->getVertex2();
-		int pointC = tri->getVertex3();
+		if (tri->hasSouthTriangle())
+			tri->addNeighbor(tris.get(tri->getSouthTriangle()));
 
-		Vert* vert1 = &vertices.get(pointA);
-		Vert* vert2 = &vertices.get(pointB);
-		Vert* vert3 = &vertices.get(pointC);
+		if (tri->hasNorthEastTriangle())
+			tri->addNeighbor(tris.get(tri->getNorthEastTriangle()));
 
-		Vector3 trian[3];
-		trian[0] = Vector3(vert1->getX(), vert1->getY(), vert1->getZ());
-		trian[1] = Vector3(vert2->getX(), vert2->getY(), vert2->getZ());
-		trian[2] = Vector3(vert3->getX(), vert3->getY(), vert3->getZ());
+		if (tri->hasNorthWestTriangle())
+			tri->addNeighbor(tris.get(tri->getNorthWestTriangle()));
 
-		triangles.add(Triangle(trian));
+		triangles.add(tri);
 	}
 
-	tris.removeAll(1, 1);
+	/*if (tris.size() > 2) {
+		Vector<TriangleNode*>* path = getPath(tris.get(0), tris.get(tris.size() - 1));
+
+		delete path;
+	}*/
+
+	//tris.removeAll(1, 1);
 	vertices.removeAll(1, 1);
 
 	AABBTreeHeuristic heurData;
@@ -62,6 +121,39 @@ void FloorMesh::readObject(IffStream* iffStream) {
 	aabbTree = new AABBTree(triangles, 0, heurData);
 
 	iffStream->closeForm('FLOR');
+}
+
+Vector<TriangleNode*>* FloorMesh::getNeighbors(uint32 triangleID) {
+	TriangleNode* triangle = tris.get(triangleID);
+
+	return triangle->getNeighbors();
+}
+
+TriangleNode* FloorMesh::findNearestTriangle(const Vector3& point) {
+	float dist = MAX_FLOAT;
+	TriangleNode* found = NULL;
+
+	for (int i = 0; i < tris.size(); ++i) {
+		TriangleNode* node = tris.get(i);
+
+		Vector3 bary = node->getBarycenter();
+
+		float sqrDistance = bary.squaredDistanceTo(point);
+
+		if (sqrDistance < dist) {
+			found = node;
+			dist = sqrDistance;
+		}
+	}
+
+	if (found == NULL) {
+		System::out << "ERROR findNearestTriangle NULL tris.size() = " << tris.size() << "point: x:" << point.getX() << " y:"
+				<< point.getY() << " z:" << point.getZ() << endl;
+
+		StackTrace::printStackTrace();
+	}
+
+	return found;
 }
 
 void FloorMesh::parseVersion0005(IffStream* iffStream) {
@@ -88,9 +180,9 @@ void FloorMesh::parseVersion0005(IffStream* iffStream) {
 		int trisDataSize = trisData->getChunkSize();
 
 		while (trisDataSize > 0) {
-			Tri tri;
+			FloorMeshTriangleNode* tri = new FloorMeshTriangleNode(this);
 
-			tri.readObject(iffStream);
+			tri->readObject(iffStream);
 
 			tris.add(tri);
 
@@ -138,9 +230,9 @@ void FloorMesh::parseVersion0006(IffStream* iffStream) {
 		int trisCount = iffStream->getInt();
 
 		for (int i = 0; i < trisCount; ++i) {
-			Tri tri;
+			FloorMeshTriangleNode* tri = new FloorMeshTriangleNode(this);
 
-			tri.readObject(iffStream);
+			tri->readObject(iffStream);
 
 			tris.add(tri);
 		}
@@ -199,7 +291,7 @@ void FloorMesh::parseBTRE(IffStream* iffStream) {
 }
 
 void FloorMesh::parseBEDG(IffStream* iffStream) {
-	/*Vector<Bedg> edges;
+	Vector<Bedg> edges;
 
 	iffStream->openChunk('BEDG');
 
@@ -210,10 +302,12 @@ void FloorMesh::parseBEDG(IffStream* iffStream) {
 
 		bedg.readObject(iffStream);
 
-		edges.add(bedg);
+		//edges.add(bedg);
+
+		tris.get(bedg.getTriangleID())->setEdge(true);
 	}
 
-	iffStream->closeChunk('BEDG');*/
+	iffStream->closeChunk('BEDG');
 }
 
 void FloorMesh::parsePGRF(IffStream* iffStream) {
@@ -229,11 +323,17 @@ void FloorMesh::parsePGRF(IffStream* iffStream) {
 		return;
 	}
 
-	if (nextForm != 'PGRF')
+	if (nextForm != 'PGRF') {
+		System::out << "EXPECTED PGRF PARSED " << hex << nextForm << endl;
 		return;
+	}
 
-	pathGraph = new PathGraph();
+	pathGraph = new PathGraph(this);
 	pathGraph->readObject(iffStream);
+}
+
+PathNode* FloorMesh::getGlobalNode(int globalID) {
+	return pathGraph->findGlobalNode(globalID);
 }
 
 bool FloorMesh::testCollide(float x, float z, float y, float radius) {

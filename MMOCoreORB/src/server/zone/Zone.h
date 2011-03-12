@@ -143,6 +143,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/managers/planet/MapLocationTable.h"
 
+#include "engine/util/u3d/Vector3.h"
+
 #include "engine/util/u3d/QuadTree.h"
 
 #include "engine/util/u3d/QuadTreeEntry.h"

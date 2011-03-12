@@ -19,6 +19,7 @@
 
 
 void ClientCreateCharacterCallback::parse(Message* message) {
+
 	message->parseAscii(customization);
 	message->parseUnicode(characterName);
 
@@ -47,6 +48,14 @@ void ClientCreateCharacterCallback::parse(Message* message) {
 }
 
 void ClientCreateCharacterCallback::run() {
+	client->info("ClientCreateCharacterCallback::run()", true);
+
 	PlayerManager* playerManager = server->getPlayerManager();
 	bool success = playerManager->createPlayer(this);
+
+	if (success) {
+		client->info("success creating char", true);
+	} else {
+		client->info("failed to create char", true);
+	}
 }

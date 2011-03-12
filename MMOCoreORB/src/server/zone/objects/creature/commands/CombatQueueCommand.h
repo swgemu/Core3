@@ -13,6 +13,7 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "QueueCommand.h"
@@ -124,7 +125,7 @@ public:
 		if (!targetObject->isInRange(creature, checkRange))
 			return TOOFAR;
 
-		if (!playerManager->checkLineOfSight(creature, targetObject)) {
+		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {
 			creature->sendSystemMessage("@container_error_message:container18");
 			return GENERALERROR;
 		}

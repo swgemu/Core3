@@ -132,6 +132,8 @@ public:
 			StringBuffer msg;
 			msg << "position out of bounds cell:[" << parent << "]";
 			object->error(msg.toString());
+
+			return;
 		}
 
 		if (object->getZone() == NULL)

@@ -785,7 +785,7 @@ void TangibleObject::setSliceable(bool val) {
 		_implementation->setSliceable(val);
 }
 
-bool TangibleObject::setSliced(bool slice) {
+void TangibleObject::setSliced(bool slice) {
 	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -794,9 +794,9 @@ bool TangibleObject::setSliced(bool slice) {
 		DistributedMethod method(this, 56);
 		method.addBooleanParameter(slice);
 
-		return method.executeWithBooleanReturn();
+		method.executeWithVoidReturn();
 	} else
-		return _implementation->setSliced(slice);
+		_implementation->setSliced(slice);
 }
 
 bool TangibleObject::isPharmaceuticalObject() {
@@ -1545,7 +1545,7 @@ void TangibleObjectImplementation::setSliceable(bool val) {
 	sliceable = val;
 }
 
-bool TangibleObjectImplementation::setSliced(bool slice) {
+void TangibleObjectImplementation::setSliced(bool slice) {
 	// server/zone/objects/tangible/TangibleObject.idl():  		sliced = slice;
 	sliced = slice;
 }
@@ -1759,7 +1759,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setSliceable(inv->getBooleanParameter());
 		break;
 	case RPC_SETSLICED__BOOL_:
-		resp->insertBoolean(setSliced(inv->getBooleanParameter()));
+		setSliced(inv->getBooleanParameter());
 		break;
 	case RPC_ISPHARMACEUTICALOBJECT__:
 		resp->insertBoolean(isPharmaceuticalObject());
@@ -2004,8 +2004,8 @@ void TangibleObjectAdapter::setSliceable(bool val) {
 	((TangibleObjectImplementation*) impl)->setSliceable(val);
 }
 
-bool TangibleObjectAdapter::setSliced(bool slice) {
-	return ((TangibleObjectImplementation*) impl)->setSliced(slice);
+void TangibleObjectAdapter::setSliced(bool slice) {
+	((TangibleObjectImplementation*) impl)->setSliced(slice);
 }
 
 bool TangibleObjectAdapter::isPharmaceuticalObject() {

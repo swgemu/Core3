@@ -322,7 +322,7 @@ public:
 
 	void setSliceable(bool val);
 
-	bool setSliced(bool slice);
+	void setSliced(bool slice);
 
 	bool isPharmaceuticalObject();
 
@@ -596,7 +596,7 @@ public:
 
 	void setSliceable(bool val);
 
-	bool setSliced(bool slice);
+	void setSliced(bool slice);
 
 	virtual bool isPharmaceuticalObject();
 
@@ -765,7 +765,7 @@ public:
 
 	void setSliceable(bool val);
 
-	bool setSliced(bool slice);
+	void setSliced(bool slice);
 
 	bool isPharmaceuticalObject();
 

@@ -13,12 +13,20 @@
 #include "PathNode.h"
 #include "PathGraph.h"
 
+class PortalLayout;
+
 class Vert : public Object {
 	float x, z, y;
 
 public:
 	Vert() {
 
+	}
+
+	Vert(const Vert& v) : Object() {
+		x = v.x;
+		z = v.z;
+		y = v.y;
 	}
 
 	Vert(float px, float py, float pz) {
@@ -86,66 +94,81 @@ public:
 		var3 = iffStream->getByte();
 	}
 
-	inline int getFrom() {
+	inline int getTriangleID() {
 		return var1;
-	}
-
-	inline int getTo() {
-		return var2;
 	}
 
 };
 
-class Tri : public Object  {
-	int var1, var2, var3, var4, var5, var6, var7;
+class FloorMeshTriangleNode : public TriangleNode {
+	//int vertex1, vertex2, vertex3,
+	int northWestTriangle, northEastTriangle, southTriangle;
+	uint32 id;
+	Vector<TriangleNode*> neighbors;
+
 	float var8, var9, var10;
-	byte var11, var12, var13, var14;
+	byte /*hasNorthWestTriangle, hasNorthEastTriangle, hasSouthTriangle,*/ var14;
 	int var15, var16, var17, var18;
+	FloorMesh* mesh;
+	bool edge;
 
 public:
-	Tri() {
-
+	FloorMeshTriangleNode(FloorMesh* floorMesh) : neighbors(1, 1) {
+		mesh = floorMesh;
+		edge = false;
 	}
 
-	void readObject(IffStream* iffStream) {
-		var1 = iffStream->getInt();
-		var2 = iffStream->getInt();
-		var3 = iffStream->getInt();
-		var4 = iffStream->getInt();
-		var5 = iffStream->getInt();
-		var6 = iffStream->getInt();
-		var7 = iffStream->getInt();
-		var8 = iffStream->getFloat();
-		var9 = iffStream->getFloat();
-		var10 = iffStream->getFloat();
+	void readObject(IffStream* iffStream);
 
-		var11 = iffStream->getByte();
-		var12 = iffStream->getByte();
-		var13 = iffStream->getByte();
-		var14 = iffStream->getByte();
-
-		var15 = iffStream->getInt();
-		var16 = iffStream->getInt();
-		var17 = iffStream->getInt();
-		var18 = iffStream->getInt();
+	inline void setEdge(bool val) {
+		edge = val;
 	}
 
-	inline int getVertex1() {
-		return var1;
+	inline bool isEdge() {
+		//return edge;
+		return neighbors.size() < 3;
 	}
 
-	inline int getVertex2() {
-		return var2;
+	inline bool hasNorthWestTriangle() {
+		return northWestTriangle != -1;
 	}
 
-	inline int getVertex3() {
-		return var3;
+	inline bool hasNorthEastTriangle() {
+		return northEastTriangle != -1;
+	}
+
+	inline bool hasSouthTriangle() {
+		return southTriangle != -1;
+	}
+
+	inline uint32 getID() {
+		return id;
+	}
+
+	inline void addNeighbor(TriangleNode* node) {
+		neighbors.add(node);
+	}
+
+	inline int getNorthWestTriangle() {
+		return northWestTriangle;
+	}
+
+	inline int getNorthEastTriangle() {
+		return northEastTriangle;
+	}
+
+	inline int getSouthTriangle() {
+		return southTriangle;
+	}
+
+	inline Vector<TriangleNode*>* getNeighbors() {
+		return &neighbors;
 	}
 };
 
 class FloorMesh : public IffTemplate, public Logger {
 	Vector<Vert> vertices;
-	Vector<Tri> tris;
+	Vector<FloorMeshTriangleNode*> tris;
 	//Vector<Nods> nodes;
 	//Vector<Bedg> edges; these disabed cause of ram
 
@@ -153,22 +176,11 @@ class FloorMesh : public IffTemplate, public Logger {
 
 	AABBTree* aabbTree;
 
+	int cellID;
+
 public:
-	FloorMesh() {
-		setLoggingName("FloorMesh");
-		pathGraph = NULL;
-		aabbTree = NULL;
-	}
-
-	~FloorMesh() {
-		if (pathGraph != NULL) {
-			delete pathGraph;
-			pathGraph = NULL;
-		}
-
-		delete aabbTree;
-		aabbTree = NULL;
-	}
+	FloorMesh();
+	~FloorMesh();
 
 	void readObject(IffStream* iffStream);
 	void parseBTRE(IffStream* iffStream);
@@ -177,8 +189,46 @@ public:
 	void parseVersion0006(IffStream* iffStream);
 	void parseVersion0005(IffStream* iffStream);
 
+	Vector<TriangleNode*>* getNeighbors(uint32 triangleID);
+
+	TriangleNode* findNearestTriangle(const Vector3& point);
 
 	bool testCollide(float x, float z, float y, float radius);
+
+	PathNode* getGlobalNode(int globalID);
+
+	inline PathGraph* getPathGraph() {
+		return pathGraph;
+	}
+
+	inline AABBTree* getAABBTree() {
+		return aabbTree;
+	}
+
+	inline Vert* getVertex(int vert) {
+		return &vertices.get(vert);
+	}
+
+	inline int getCellID() {
+		return cellID;
+	}
+
+	inline void setCellID(int id) {
+		if (cellID != -1)
+			System::out << "UIWBIUGFISUBGSFIUBGSODIFGN" << endl;
+
+		cellID = id;
+	}
+
+	float calculateManhattanDistance(TriangleNode* node1, TriangleNode* node2) {
+		Vector3 bary = node1->getBarycenter();
+		Vector3 bary2 = node2->getBarycenter();
+
+		return bary.squaredDistanceTo(bary2);
+
+		/*return abs(bary.getX() - bary2.getX()) + abs(bary.getY() - bary2.getY())
+				+ abs(bary.getZ() - bary2.getZ());*/
+	}
 
 
 };
