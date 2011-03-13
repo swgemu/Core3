@@ -42,6 +42,7 @@
 
 
 object_tangible_gem_armor = object_tangible_gem_shared_armor:new {
+	gameObjectType = 8223
 
 }
 

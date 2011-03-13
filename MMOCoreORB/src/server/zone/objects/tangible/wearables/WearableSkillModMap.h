@@ -54,6 +54,7 @@ protected:
 	 * skillModifiers is an ordered index of skill mods in the entry
 	 */
 	Vector<String> skillModifiers;
+	Vector<int> skillModValues;
 	/*
 	 * skillModifierValues is a list of the skill mod values
 	 */
@@ -107,9 +108,27 @@ public:
 		return skillModifierValues.get(key);
 	}
 
-	int size(){
+	int size() {
 		return skillModifiers.size();
 	}
+
+	String getHighestSkillMod() {
+		String highestSkillMod;
+		int highestValue = -26;
+
+		for (int i = 0; i < skillModifierValues.size(); ++i) {
+			int value = skillModifierValues.elementAt(i).getValue();
+
+			if (highestValue < value) {
+				highestValue = value;
+				highestSkillMod = skillModifierValues.elementAt(i).getKey();
+			}
+
+		}
+
+		return highestSkillMod;
+	}
+
 };
 
 /*
@@ -161,8 +180,8 @@ public:
 			statname = "cat_skill_mod_bonus.@stat_n:" + key;
 			value = activeSkillModMap.get(key);
 
-			if (value > 0)
-				alm->insertAttribute(statname, value);
+			alm->insertAttribute(statname, value);
+
 		}
 	}
 
@@ -229,6 +248,69 @@ public:
 		}
 	}
 
+	void rebuildActiveSkillModMap() {
+		activeSkillModMap.removeAll();
+		activeSkillModIndex.removeAll();
+		AttachmentEntry* entry;
+		int statValue;
+
+		for (int i = 0; i < attachmentVector.size(); ++i) {
+			entry = &attachmentVector.get(i);
+
+			if (entry != NULL) {
+				String statName = getBestAttachmentSkillMod(entry);
+
+				if (!statName.isEmpty()) {
+					statValue = entry->get(statName);
+
+					if (statValue < 0)
+						statValue = statValue * -1;
+
+					activeSkillModMap.put(statName, statValue);
+					activeSkillModIndex.add(statName);
+
+				} else
+					// If a skill mod wasn't actually added. Remove the Attachment from the Vector
+					// This can occur if the tape is applied to a wearable that already has a higher value
+					attachmentVector.remove(i);
+			}
+		}
+	}
+
+	String getBestAttachmentSkillMod(AttachmentEntry* entry) {
+		int lowestValue = -26;
+		String highestSkillMod = entry->getHighestSkillMod();
+		int highestSkillValue = entry->get(highestSkillMod);
+
+		for (int i = 0; i < entry->size(); ++i) {
+			String key = entry->getKey(i);
+			int value = entry->get(key);
+
+			if (value > lowestValue) {
+				if (!activeSkillModMap.contains(highestSkillMod))
+					return highestSkillMod;
+
+				if (!activeSkillModMap.contains(key)) {
+					if (key != highestSkillMod) {
+						if (highestSkillValue > activeSkillModMap.get(highestSkillMod))
+							return highestSkillMod;
+						else
+							return key;
+					}
+
+					return highestSkillMod;
+
+				} else if (value > activeSkillModMap.get(key))
+					return key;
+
+			}
+
+		}
+
+		return "";
+
+	}
+
 	String getAttachmentString() {
 
 		int key;
@@ -275,10 +357,11 @@ public:
 
 	void addAttachment(const AttachmentEntry& entry) {
 		attachmentVector.add(entry);
+		rebuildActiveSkillModMap();
 	}
 
 	String& getActiveSkillModKey(int i) {
-		return activeSkillModIndex.get(i);
+		return activeSkillModMap.elementAt(i).getKey();
 	}
 
 	int getActiveSkillModValue(String key) {
@@ -287,6 +370,19 @@ public:
 
 	bool contains(String key) {
 		return activeSkillModMap.contains(key);
+	}
+
+	bool hasAttachmentSkillMod(String skillMod) {
+		AttachmentEntry* entry;
+		for (int i = 0; i < attachmentVector.size(); ++i) {
+			entry = &attachmentVector.get(i);
+			String name = entry->getKey(i);
+
+			if (skillMod == name)
+				return true;
+		}
+
+		return false;
 	}
 
 	int getUsedSocketCount() {
@@ -298,7 +394,7 @@ public:
 	}
 
 	int getActiveSkillModCount() {
-		return activeSkillModIndex.size();
+		return activeSkillModMap.size();
 	}
 };
 

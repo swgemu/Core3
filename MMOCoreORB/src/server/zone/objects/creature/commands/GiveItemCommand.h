@@ -49,6 +49,9 @@ which carries forward this exception.
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "../../../managers/player/PlayerManager.h"
 
+#include "server/zone/objects/tangible/attachment/Attachment.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
+
 class GiveItemCommand : public QueueCommand {
 public:
 
@@ -65,12 +68,37 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<SceneObject* > object =
-				server->getZoneServer()->getObject(target);
+		StringTokenizer args(arguments.toString());
+
+		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
+
+		if (object != NULL) {
+			if (object->isAttachment()) {
+				Attachment* attachment = (Attachment*) object.get();
+
+				if (!args.hasMoreTokens())
+					return GENERALERROR;
+
+				uint64 targetObjectID = args.getLongToken();
+
+				ManagedReference<SceneObject*> scenObj = server->getZoneServer()->getObject(targetObjectID);
+
+				if (scenObj->isWearableObject()) {
+					WearableObject* wearable = (WearableObject*) scenObj.get();
+					wearable->applyAttachment((PlayerCreature*) creature, attachment);
+					return SUCCESS;
+				}
+			}
+		}
+
+		if (creature->isPlayerCreature()) {
+			ManagedReference<PlayerCreature*> pl = (PlayerCreature*) creature;
+			ManagedReference<PlayerObject*> ghost = pl->getPlayerObject();
+			if (!ghost->hasSkill("admin"))
+				return GENERALERROR;
+		}
 
 		ManagedReference<PlayerCreature*> player = NULL;
-
-		StringTokenizer args(arguments.toString());
 
 		if (object == NULL || !object->isPlayerCreature()) {
 
@@ -87,7 +115,7 @@ public:
 		}
 
 		if (player == NULL) {
-			creature->sendSystemMessage("invalid target for giveItem command");
+			creature->sendSystemMessage("Invalid target for GiveItem command");
 			return GENERALERROR;
 		}
 
@@ -96,8 +124,8 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		try {
 
+		try {
 
 			String itemtype;
 			args.getStringToken(itemtype);
@@ -126,22 +154,138 @@ public:
 					return INVALIDPARAMETERS;
 				}
 
-				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 				String object;
 				args.getStringToken(object);
 
-				SceneObject* item = creature->getZoneServer()->createObject(object.hashCode(), 1);
+				if (inventory == NULL)
+					return GENERALERROR;
+
+				Locker inventoryLocker(inventory);
+
+				SceneObject* item = player->getZoneServer()->createObject(object.hashCode(), 1);
 
 				if (item == NULL) {
-					player->sendSystemMessage("There was an error creating the requested item.");
+					creature->sendSystemMessage("There was an error creating the requested item.");
 					return GENERALERROR;
 				}
 
 				inventory->addObject(item, -1);
 				item->sendTo(player, true);
+
+			} else if (itemtype.toLowerCase() == "attachment") { // Admins spawn CA/AA with skillMods -- TESTING
+				String errorMsg = "Usage: /giveItem <target> <attachment> <CA/AA> <SkillMod> <Value>";
+				if (!args.hasMoreTokens()) {
+					creature->sendSystemMessage(errorMsg);
+					return INVALIDPARAMETERS;
+				}
+
+				String attachmentType;
+				args.getStringToken(attachmentType);
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+				if (inventory == NULL)
+					return GENERALERROR;
+
+				Locker inventoryLocker(inventory);
+
+				if (attachmentType.toLowerCase() == "ca") {
+					SceneObject* clothing = player->getZoneServer()->createObject(String("object/tangible/gem/clothing.iff").hashCode(), 1);
+
+					if (clothing == NULL || !clothing->isAttachment())
+						return GENERALERROR;
+
+					Attachment* attachment = (Attachment*) clothing;
+
+					if (args.hasMoreTokens()) {
+						String skillMod;
+						int skillModValue = 0;
+						args.getStringToken(skillMod);
+						if (args.hasMoreTokens())
+							skillModValue = args.getIntToken();
+
+						attachment->setSkillModCount(1);
+						attachment->addSkillMod(skillMod, skillModValue);
+
+						if (args.hasMoreTokens()) {
+							args.getStringToken(skillMod);
+							skillModValue = 0;
+							if (args.hasMoreTokens())
+								skillModValue = args.getIntToken();
+
+							attachment->setSkillModCount(2);
+							attachment->addSkillMod(skillMod, skillModValue);
+
+							if (args.hasMoreTokens()) {
+								args.getStringToken(skillMod);
+								skillModValue = 0;
+								if (args.hasMoreTokens())
+									skillModValue = args.getIntToken();
+
+								attachment->setSkillModCount(3);
+								attachment->addSkillMod(skillMod, skillModValue);
+							}
+						}
+					}
+
+					inventory->addObject(attachment, -1);
+					attachment->sendTo(player, true);
+					return SUCCESS;
+
+
+				} else if (attachmentType.toLowerCase() == "aa") {
+					SceneObject* armor = player->getZoneServer()->createObject(String("object/tangible/gem/armor.iff").hashCode(), 1);
+
+					if (armor == NULL || !armor->isAttachment())
+						return GENERALERROR;
+
+					Attachment* attachment = (Attachment*) armor;
+
+					if (args.hasMoreTokens()) {
+						String skillMod;
+						int skillModValue = 0;
+						args.getStringToken(skillMod);
+						if (args.hasMoreTokens())
+							skillModValue = args.getIntToken();
+
+						attachment->setSkillModCount(1);
+						attachment->addSkillMod(skillMod, skillModValue);
+
+						if (args.hasMoreTokens()) {
+							args.getStringToken(skillMod);
+							skillModValue = 0;
+							if (args.hasMoreTokens())
+								skillModValue = args.getIntToken();
+
+							attachment->setSkillModCount(2);
+							attachment->addSkillMod(skillMod, skillModValue);
+
+							if (args.hasMoreTokens()) {
+								args.getStringToken(skillMod);
+								skillModValue = 0;
+								if (args.hasMoreTokens())
+									skillModValue = args.getIntToken();
+
+								attachment->setSkillModCount(3);
+								attachment->addSkillMod(skillMod, skillModValue);
+							}
+
+						}
+
+					}
+
+					inventory->addObject(attachment, -1);
+					attachment->sendTo(player, true);
+					return SUCCESS;
+
+				} else {
+					creature->sendSystemMessage(errorMsg);
+					return INVALIDPARAMETERS;
+				}
 			}
 
 			return SUCCESS;
+
 		} catch (Exception& e) {
 			creature->sendSystemMessage(
 					"Invalid Parameters, missing resource name");

@@ -1319,6 +1319,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return gameObjectType == FISHINGBAIT;
 	}
 
+	public abstract boolean isAttachment() {
+		return false;
+	}
+
 	public void setGameObjectType(unsigned int type) {
 		gameObjectType = type;
 	}

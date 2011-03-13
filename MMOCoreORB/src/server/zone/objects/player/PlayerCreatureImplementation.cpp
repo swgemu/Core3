@@ -805,6 +805,14 @@ int PlayerCreatureImplementation::notifyObjectInserted(SceneObject* object) {
 		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 
 		playerManager->applyEncumbrancies(_this, (ArmorObject*)object);
+
+		WearableObject* armor = (WearableObject*) object;
+		armor->setAttachmentMods(_this);
+
+	} else if (object->isWearableObject()) {
+		WearableObject* clothing = (WearableObject*) object;
+		clothing->setAttachmentMods(_this);
+
 	}
 
 	if (object->isInstrument() && isEntertaining())
@@ -823,6 +831,13 @@ int PlayerCreatureImplementation::notifyObjectRemoved(SceneObject* object) {
 		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
 
 		playerManager->removeEncumbrancies(_this, (ArmorObject*)object);
+
+		WearableObject* armor = (WearableObject*) object;
+		armor->setAttachmentMods(_this, true);
+
+	} else if (object->isWearableObject()) {
+		WearableObject* clothing = (WearableObject*) object;
+		clothing->setAttachmentMods(_this, true);
 	}
 
 	if (object->isInstrument()) {

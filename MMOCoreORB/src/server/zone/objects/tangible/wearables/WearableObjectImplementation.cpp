@@ -9,6 +9,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/tangible/attachment/Attachment.h"
 
 
 void WearableObjectImplementation::initializeTransientMembers() {
@@ -32,6 +33,7 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 	}
 
 	wearableSkillModMap.insertStatMods(alm);
+
 }
 
 void WearableObjectImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
@@ -79,3 +81,50 @@ void WearableObjectImplementation::generateSockets(ManufactureSchematic* schemat
 
 	socketsGenerated = true;
 }
+
+void WearableObjectImplementation::applyAttachment(PlayerCreature* player, Attachment* attachment) {
+	if (socketsLeft() > 0) {
+		AttachmentEntry entry;
+
+		for (int i = 0; i < attachment->getSkillModCount(); ++i) {
+			String name = attachment->getSkillModName(i);
+			int value = attachment->getSkillModValue(i);
+
+			entry.add(name, value);
+
+		}
+
+		wearableSkillModMap.addAttachment(entry);
+
+		if (isEquipped())
+			setAttachmentMods(player);
+
+		attachment->removeAttachment(player);
+
+	}
+
+}
+
+void WearableObjectImplementation::setAttachmentMods(PlayerCreature* player, bool remove) {
+	if (player == NULL)
+		return;
+
+	for (int i = 0; i < wearableSkillModMap.getActiveSkillModCount(); ++i) {
+		String name = wearableSkillModMap.getActiveSkillModKey(i);
+		int value = wearableSkillModMap.getActiveSkillModValue(name);
+
+		if (!remove)
+			player->addSkillMod(name, value, true);
+		else
+			player->addSkillMod(name, -value, true);
+	}
+}
+
+bool WearableObjectImplementation::isEquipped() {
+	ManagedReference<SceneObject*> parent = getParent();
+	if (parent != NULL && parent->isPlayerCreature())
+		return true;
+
+	return false;
+}
+
