@@ -180,7 +180,8 @@ public:
 			statname = "cat_skill_mod_bonus.@stat_n:" + key;
 			value = activeSkillModMap.get(key);
 
-			alm->insertAttribute(statname, value);
+			if (value > 0)
+				alm->insertAttribute(statname, value);
 
 		}
 	}
@@ -370,19 +371,6 @@ public:
 
 	bool contains(String key) {
 		return activeSkillModMap.contains(key);
-	}
-
-	bool hasAttachmentSkillMod(String skillMod) {
-		AttachmentEntry* entry;
-		for (int i = 0; i < attachmentVector.size(); ++i) {
-			entry = &attachmentVector.get(i);
-			String name = entry->getKey(i);
-
-			if (skillMod == name)
-				return true;
-		}
-
-		return false;
 	}
 
 	int getUsedSocketCount() {
