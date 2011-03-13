@@ -61,17 +61,60 @@ void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
 		_implementation->updateCraftingValues(schematic);
 }
 
-bool WearableObject::isWearableObject() {
+void WearableObject::applyAttachment(PlayerCreature* player, Attachment* attachment) {
 	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addObjectParameter(attachment);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->applyAttachment(player, attachment);
+}
+
+void WearableObject::setAttachmentMods(PlayerCreature* player, bool remove) {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addBooleanParameter(remove);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAttachmentMods(player, remove);
+}
+
+bool WearableObject::isWearableObject() {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isWearableObject();
+}
+
+bool WearableObject::isEquipped() {
+	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isEquipped();
 }
 
 int WearableObject::getMaxSockets() {
@@ -80,7 +123,7 @@ int WearableObject::getMaxSockets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -93,7 +136,7 @@ int WearableObject::socketsUsed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -106,7 +149,7 @@ int WearableObject::socketsLeft() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -119,7 +162,7 @@ void WearableObject::setMaxSockets(int sockets) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 15);
 		method.addSignedIntParameter(sockets);
 
 		method.executeWithVoidReturn();
@@ -331,7 +374,7 @@ void WearableObjectImplementation::setMaxSockets(int sockets) {
 WearableObjectAdapter::WearableObjectAdapter(WearableObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISWEARABLEOBJECT__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_APPLYATTACHMENT__PLAYERCREATURE_ATTACHMENT_,RPC_SETATTACHMENTMODS__PLAYERCREATURE_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
 
 Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -343,8 +386,17 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
+	case RPC_APPLYATTACHMENT__PLAYERCREATURE_ATTACHMENT_:
+		applyAttachment((PlayerCreature*) inv->getObjectParameter(), (Attachment*) inv->getObjectParameter());
+		break;
+	case RPC_SETATTACHMENTMODS__PLAYERCREATURE_BOOL_:
+		setAttachmentMods((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
 	case RPC_ISWEARABLEOBJECT__:
 		resp->insertBoolean(isWearableObject());
+		break;
+	case RPC_ISEQUIPPED__:
+		resp->insertBoolean(isEquipped());
 		break;
 	case RPC_GETMAXSOCKETS__:
 		resp->insertSignedInt(getMaxSockets());
@@ -373,8 +425,20 @@ void WearableObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic
 	((WearableObjectImplementation*) impl)->updateCraftingValues(schematic);
 }
 
+void WearableObjectAdapter::applyAttachment(PlayerCreature* player, Attachment* attachment) {
+	((WearableObjectImplementation*) impl)->applyAttachment(player, attachment);
+}
+
+void WearableObjectAdapter::setAttachmentMods(PlayerCreature* player, bool remove) {
+	((WearableObjectImplementation*) impl)->setAttachmentMods(player, remove);
+}
+
 bool WearableObjectAdapter::isWearableObject() {
 	return ((WearableObjectImplementation*) impl)->isWearableObject();
+}
+
+bool WearableObjectAdapter::isEquipped() {
+	return ((WearableObjectImplementation*) impl)->isEquipped();
 }
 
 int WearableObjectAdapter::getMaxSockets() {

@@ -35,6 +35,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/objects/tangible/attachment/Attachment.h"
+
 #include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -59,7 +61,13 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
+	void applyAttachment(PlayerCreature* player, Attachment* attachment);
+
+	void setAttachmentMods(PlayerCreature* player, bool remove = false);
+
 	bool isWearableObject();
+
+	bool isEquipped();
 
 	int getMaxSockets();
 
@@ -118,7 +126,13 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
+	void applyAttachment(PlayerCreature* player, Attachment* attachment);
+
+	void setAttachmentMods(PlayerCreature* player, bool remove = false);
+
 	bool isWearableObject();
+
+	bool isEquipped();
 
 	int getMaxSockets();
 
@@ -179,7 +193,13 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
+	void applyAttachment(PlayerCreature* player, Attachment* attachment);
+
+	void setAttachmentMods(PlayerCreature* player, bool remove);
+
 	bool isWearableObject();
+
+	bool isEquipped();
 
 	int getMaxSockets();
 

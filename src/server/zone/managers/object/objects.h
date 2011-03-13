@@ -36,6 +36,7 @@
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"
 #include "server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.h"
+#include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/building/medical/MedicalBuildingObject.h"

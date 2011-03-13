@@ -1213,6 +1213,11 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 		},
 		"Items",
 		{
+			"Attachments",
+			{
+				"Armor Attachment", "object/tangible/gem/armor.iff",
+				"Clothing Attachment", "object/tangible/gem/clothing.iff",	
+			},
 			"Armor",
 			{
 				"Bone Armor",

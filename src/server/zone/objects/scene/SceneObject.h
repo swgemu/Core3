@@ -988,6 +988,8 @@ public:
 
 	bool isFishingBait();
 
+	bool isAttachment();
+
 	void setGameObjectType(unsigned int type);
 
 	void addActiveArea(ActiveArea* area);
@@ -1932,6 +1934,8 @@ public:
 
 	bool isFishingBait();
 
+	virtual bool isAttachment();
+
 	void setGameObjectType(unsigned int type);
 
 	void addActiveArea(ActiveArea* area);
@@ -2330,6 +2334,8 @@ public:
 	bool isBazaarTerminal();
 
 	bool isFishingBait();
+
+	bool isAttachment();
 
 	void setGameObjectType(unsigned int type);
 
