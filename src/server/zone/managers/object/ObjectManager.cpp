@@ -155,6 +155,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<WearableObject>(SceneObject::NECKLACE);
 	objectFactory.registerObject<WearableObject>(SceneObject::EARRING);
 
+	objectFactory.registerObject<Attachment>(SceneObject::ARMORATTACHMENT);
+	objectFactory.registerObject<Attachment>(SceneObject::CLOTHINGATTACHMENT);
 
 	objectFactory.registerObject<BuildingObject>(SceneObject::BUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObject::CAPITOLBUILDING);

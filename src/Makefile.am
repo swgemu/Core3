@@ -205,6 +205,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/wearables/ClothingObject.cpp \
 				server/zone/objects/tangible/wearables/ArmorObject.cpp \
 				server/zone/objects/tangible/wearables/PsgArmorObject.cpp \
+				server/zone/objects/tangible/attachment/Attachment.cpp \
 				server/zone/objects/tangible/deed/Deed.cpp \
 				server/zone/objects/tangible/deed/vehicle/VehicleDeed.cpp \
 				server/zone/objects/tangible/deed/building/BuildingDeed.cpp \
@@ -426,6 +427,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/PsgArmorObjectImplementation.cpp \
+		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
