@@ -111,7 +111,11 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 		client->info("creating new character", true);
 
 		String name = "character";
-		name += ('a' + ++zone->createdChar);
+		name += ('a' + System::random(22));
+		name += ('a' + System::random(22));
+		name += ('a' + System::random(22));
+		name += ('a' + System::random(22));
+		name += ('a' + System::random(22));
 
 		client->info("name " + name, true);
 
