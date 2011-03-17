@@ -43,8 +43,7 @@
 
 object_tangible_deed_harvester_deed_harvester_ore_s1_deed = object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/mining_ore/mining_ore_harvester_style_1.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/installation/mining_ore/mining_ore_harvester_style_1.iff"
 
 
 }

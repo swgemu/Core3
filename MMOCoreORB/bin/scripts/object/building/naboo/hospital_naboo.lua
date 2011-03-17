@@ -45,7 +45,21 @@ object_building_naboo_hospital_naboo = object_building_naboo_shared_hospital_nab
 	gameObjectType = 517,
 	mapLocationsType1 = 13,
 	mapLocationsType2 = 0,
-	mapLocationsType3 = 0
+	mapLocationsType3 = 0,
+	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0.122, z = 0.25, y = -2.16, ow = 0.906308, ox = 0, oy = 0.422618, oz = 0, cellid = 12, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0.14, z = 7.25, y = -2.19, ow = 0.915698, ox = 0, oy = 0.401868, oz = 0, cellid = 12, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 0.29, z = 7.25, y = -2.34, ow = 0.944977, ox = 0, oy = 0.327135, oz = 0, cellid = 12, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 0.29, z = 13.5, y = -2.34, ow = 0.906308, ox = 0, oy = 0.422618, oz = 0, cellid = 12, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = -0.14, z = 0.25, y = 2.24, ow = -0.390731, ox = 0, oy = 0.920505, oz = 0, cellid = 13, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = -0.13, z = 7.25, y = 2.18, ow = -0.423804, ox = 0, oy = 0.905754, oz = 0, cellid = 13, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = -0.29, z = 7.25, y = 2.34, ow = -0.303035, ox = 0, oy = 0.952979, oz = 0, cellid = 13, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = -0.29, z = 13.5, y = 2.34, ow = -0.390731, ox = 0, oy = 0.920505, oz = 0, cellid = 13, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 1.05087, z = -3.66955, y = -15.5655, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 12, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 1.05852, z = 1.33045, y = -15.563, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 12, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 3.27517, z = 1.23045, y = -21.8704, ow = 0.707107, ox = 0, oy = -0.707107, oz = 0, cellid = 13, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 3.25385, z = 5.33045, y = -21.8635, ow = -0.707107, ox = 0, oy = 0.707107, oz = 0, cellid = 13, containmentType = -1}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_hospital_naboo, "object/building/naboo/hospital_naboo.iff")

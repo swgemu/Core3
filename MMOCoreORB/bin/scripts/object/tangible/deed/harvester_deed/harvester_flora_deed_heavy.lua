@@ -43,8 +43,7 @@
 
 object_tangible_deed_harvester_deed_harvester_flora_deed_heavy = object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/mining_organic/mining_organic_flora_farm_heavy.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/installation/mining_organic/mining_organic_flora_farm_heavy.iff"
 
 
 }

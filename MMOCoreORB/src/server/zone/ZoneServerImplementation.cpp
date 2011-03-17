@@ -70,6 +70,7 @@ which carries forward this exception.
 #include "managers/creature/CreatureTemplateManager.h"
 #include "managers/guild/GuildManager.h"
 #include "managers/creature/CreatureManager.h"
+#include "managers/faction/FactionManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -281,6 +282,9 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->deploy("GuildManager");
 	guildManager->setChatManager(chatManager);
 	guildManager->loadGuilds();
+
+	//Loads the FactionManager LUA Config.
+	FactionManager::instance()->loadLuaConfig();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {

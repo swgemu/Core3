@@ -10,15 +10,21 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 
 void ElevatorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	if (player->getParent() != parent) //Must be in same cell to use
 		return;
 
-	if (elevatorDown != NULL)
+	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(templateObject);
+
+	if (temp == NULL)
+		return;
+
+	if (elevatorDown != NULL && temp->isMovingDown())
 		menuResponse->addRadialMenuItem(199, 3, "@elevator_text:down"); //DOWN
 
-	if (elevatorUp != NULL)
+	if (elevatorUp != NULL && temp->isMovingUp())
 		menuResponse->addRadialMenuItem(198, 3, "@elevator_text:up"); //UP
 }
 
@@ -33,6 +39,8 @@ int ElevatorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* playe
 	if (player->getParent() != parentObj)
 		return 1;
 
+	uint64 cellID = parentObj->getObjectID();
+
 	float x = player->getPositionX();
 	float z = player->getPositionZ();
 	float y = player->getPositionY();
@@ -45,23 +53,28 @@ int ElevatorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* playe
 		if (elevatorUp != NULL) {
 			z = elevatorUp->getPositionZ();
 			player->playEffect("clienteffect/elevator_rise.cef", "");
-			player->teleport(x, z, y, parentObj->getObjectID());
 		}
 		break;
 	case 199: //DOWN
 		if (elevatorDown != NULL) {
 			z = elevatorDown->getPositionZ();
 			player->playEffect("clienteffect/elevator_descend.cef", "");
-			player->teleport(x, z, y, parentObj->getObjectID());
 		}
 		break;
 	}
+
+	player->teleport(x, z, y, cellID);
 
 	return 0;
 }
 
 void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	TerminalImplementation::notifyInsert(obj);
+
+	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(templateObject);
+
+	if (temp == NULL)
+		return;
 
 	SceneObject* scno = (SceneObject*) obj;
 
@@ -78,12 +91,16 @@ void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 	float z = eterm->getPositionZ();
 
-	if (z > positionZ) {
+	if (z > positionZ && temp->isMovingUp()) {
 		//Make sure that this is the closest elevator terminal.
-		if (elevatorUp == NULL || elevatorUp->getPositionZ() > z)
+		if (elevatorUp == NULL || elevatorUp->getPositionZ() > z) {
 			elevatorUp = eterm;
-	} else if (z < positionZ) {
-		if (elevatorDown == NULL || elevatorDown->getPositionZ() < z)
+			eterm->setElevatorDown(_this);
+		}
+	} else if (z < positionZ && temp->isMovingDown()) {
+		if (elevatorDown == NULL || elevatorDown->getPositionZ() < z) {
 			elevatorDown = eterm;
+			eterm->setElevatorUp(_this);
+		}
 	}
 }

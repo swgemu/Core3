@@ -44,8 +44,7 @@
 object_tangible_deed_city_deed_hospital_naboo_deed = object_tangible_deed_city_deed_shared_hospital_naboo_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/hospital_naboo.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/player/city/hospital_naboo.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_hospital_naboo_deed, "object/tangible/deed/city_deed/hospital_naboo_deed.iff")
