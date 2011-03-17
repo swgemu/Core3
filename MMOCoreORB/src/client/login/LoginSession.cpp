@@ -34,7 +34,6 @@ void LoginSession::run() {
 
 	if (!login->connect()) {
 		error("could not connect to login server");
-		exit(1);
 		return;
 	}
 
@@ -68,7 +67,10 @@ void LoginSession::run() {
 
 	lock();
 
-	sessionFinalized.wait(this);
+	Time timeout;
+	timeout.addMiliTime(2000);
+
+	sessionFinalized.timedWait(this, &timeout);
 
 	unlock();
 }

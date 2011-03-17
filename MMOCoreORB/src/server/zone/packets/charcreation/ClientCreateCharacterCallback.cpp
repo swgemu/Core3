@@ -54,7 +54,7 @@ void ClientCreateCharacterCallback::run() {
 	bool success = playerManager->createPlayer(this);
 
 	if (success) {
-		client->info("success creating char", true);
+		client->info("success creating char");
 	} else {
 		client->info("failed to create char", true);
 	}

@@ -58,27 +58,31 @@ void ClientCore::initialize() {
 
 void ClientCore::run() {
 	for (int i = 0; i < instances; ++i) {
-		LoginSession loginSession(i);
-		loginSession.run();
+		try {
+			LoginSession loginSession(i);
+			loginSession.run();
 
-		uint32 selectedCharacter = loginSession.getSelectedCharacter();
-		uint64 objid = 0;
+			uint32 selectedCharacter = loginSession.getSelectedCharacter();
+			uint64 objid = 0;
 
-		if (selectedCharacter != -1) {
-			objid = loginSession.getCharacterObjectID(selectedCharacter);
+			if (selectedCharacter != -1) {
+				objid = loginSession.getCharacterObjectID(selectedCharacter);
 
-			info("trying to login " + String::valueOf(objid), true);
+				info("trying to login " + String::valueOf(objid), true);
+			}
+
+			uint32 acc = loginSession.getAccountID();
+			uint32 session = loginSession.getSessionID();
+
+			Zone* zone = new Zone(i, objid, acc, session);
+			zone->start();
+
+			zones.add(zone);
+		} catch (Exception& e) {
+
 		}
 
-		uint32 acc = loginSession.getAccountID();
-		uint32 session = loginSession.getSessionID();
-
-		Zone* zone = new Zone(i, objid, acc, session);
-		zone->start();
-
-		zones.add(zone);
-
-		Thread::sleep(200);
+		Thread::sleep(1 + System::random(5));
 	}
 
 	info("initialized", true);
