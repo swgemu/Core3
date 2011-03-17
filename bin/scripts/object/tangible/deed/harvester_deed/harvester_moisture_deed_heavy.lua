@@ -43,8 +43,7 @@
 
 object_tangible_deed_harvester_deed_harvester_moisture_deed_heavy = object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/mining_liquid/mining_liquid_moisture_harvester_heavy.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/installation/mining_liquid/mining_liquid_moisture_harvester_heavy.iff"
 
 
 }

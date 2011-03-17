@@ -83,6 +83,60 @@ bool ElevatorTerminal::isElevatorTerminal() {
 		return _implementation->isElevatorTerminal();
 }
 
+void ElevatorTerminal::setElevatorUp(ElevatorTerminal* term) {
+	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(term);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setElevatorUp(term);
+}
+
+void ElevatorTerminal::setElevatorDown(ElevatorTerminal* term) {
+	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(term);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setElevatorDown(term);
+}
+
+ElevatorTerminal* ElevatorTerminal::getElevatorUp() {
+	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return (ElevatorTerminal*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getElevatorUp();
+}
+
+ElevatorTerminal* ElevatorTerminal::getElevatorDown() {
+	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return (ElevatorTerminal*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getElevatorDown();
+}
+
 DistributedObjectServant* ElevatorTerminal::_getImplementation() {
 
 	_updated = true;
@@ -247,6 +301,26 @@ bool ElevatorTerminalImplementation::isElevatorTerminal() {
 	return true;
 }
 
+void ElevatorTerminalImplementation::setElevatorUp(ElevatorTerminal* term) {
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl():  		elevatorUp = term;
+	elevatorUp = term;
+}
+
+void ElevatorTerminalImplementation::setElevatorDown(ElevatorTerminal* term) {
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl():  		elevatorDown = term;
+	elevatorDown = term;
+}
+
+ElevatorTerminal* ElevatorTerminalImplementation::getElevatorUp() {
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl():  		return elevatorUp;
+	return elevatorUp;
+}
+
+ElevatorTerminal* ElevatorTerminalImplementation::getElevatorDown() {
+	// server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.idl():  		return elevatorDown;
+	return elevatorDown;
+}
+
 /*
  *	ElevatorTerminalAdapter
  */
@@ -254,7 +328,7 @@ bool ElevatorTerminalImplementation::isElevatorTerminal() {
 ElevatorTerminalAdapter::ElevatorTerminalAdapter(ElevatorTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
 
-enum {RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISELEVATORTERMINAL__};
+enum {RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISELEVATORTERMINAL__,RPC_SETELEVATORUP__ELEVATORTERMINAL_,RPC_SETELEVATORDOWN__ELEVATORTERMINAL_,RPC_GETELEVATORUP__,RPC_GETELEVATORDOWN__};
 
 Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -268,6 +342,18 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		break;
 	case RPC_ISELEVATORTERMINAL__:
 		resp->insertBoolean(isElevatorTerminal());
+		break;
+	case RPC_SETELEVATORUP__ELEVATORTERMINAL_:
+		setElevatorUp((ElevatorTerminal*) inv->getObjectParameter());
+		break;
+	case RPC_SETELEVATORDOWN__ELEVATORTERMINAL_:
+		setElevatorDown((ElevatorTerminal*) inv->getObjectParameter());
+		break;
+	case RPC_GETELEVATORUP__:
+		resp->insertLong(getElevatorUp()->_getObjectID());
+		break;
+	case RPC_GETELEVATORDOWN__:
+		resp->insertLong(getElevatorDown()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -286,6 +372,22 @@ int ElevatorTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte
 
 bool ElevatorTerminalAdapter::isElevatorTerminal() {
 	return ((ElevatorTerminalImplementation*) impl)->isElevatorTerminal();
+}
+
+void ElevatorTerminalAdapter::setElevatorUp(ElevatorTerminal* term) {
+	((ElevatorTerminalImplementation*) impl)->setElevatorUp(term);
+}
+
+void ElevatorTerminalAdapter::setElevatorDown(ElevatorTerminal* term) {
+	((ElevatorTerminalImplementation*) impl)->setElevatorDown(term);
+}
+
+ElevatorTerminal* ElevatorTerminalAdapter::getElevatorUp() {
+	return ((ElevatorTerminalImplementation*) impl)->getElevatorUp();
+}
+
+ElevatorTerminal* ElevatorTerminalAdapter::getElevatorDown() {
+	return ((ElevatorTerminalImplementation*) impl)->getElevatorDown();
 }
 
 /*

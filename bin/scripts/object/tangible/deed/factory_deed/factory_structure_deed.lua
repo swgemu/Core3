@@ -43,8 +43,7 @@
 
 object_tangible_deed_factory_deed_factory_structure_deed = object_tangible_deed_factory_deed_shared_factory_structure_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/manufacture/structure_factory.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/installation/manufacture/structure_factory.iff"
 
 
 }

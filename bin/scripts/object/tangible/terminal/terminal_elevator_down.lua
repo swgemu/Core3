@@ -42,8 +42,9 @@
 
 
 object_tangible_terminal_terminal_elevator_down = object_tangible_terminal_shared_terminal_elevator_down:new {
+	templateType = ELEVATORTERMINAL,
 	gameObjectType = 16403,
-	maxCondition = 0
+	movementType = 1 -- Down only
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_elevator_down, "object/tangible/terminal/terminal_elevator_down.iff")

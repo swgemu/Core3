@@ -44,8 +44,7 @@
 object_tangible_deed_city_deed_shuttleport_naboo_deed = object_tangible_deed_city_deed_shared_shuttleport_naboo_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/shuttleport_naboo.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/player/city/shuttleport_naboo.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shuttleport_naboo_deed, "object/tangible/deed/city_deed/shuttleport_naboo_deed.iff")

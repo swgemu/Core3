@@ -43,8 +43,7 @@
 
 object_tangible_deed_harvester_deed_harvester_liquid_deed_medium = object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/mining_liquid/mining_liquid_harvester_style_2.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/installation/mining_liquid/mining_liquid_harvester_style_2.iff"
 
 
 }

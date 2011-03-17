@@ -44,8 +44,7 @@
 object_tangible_deed_city_deed_theater_corellia_deed = object_tangible_deed_city_deed_shared_theater_corellia_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/theater_corellia.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/player/city/theater_corellia.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_theater_corellia_deed, "object/tangible/deed/city_deed/theater_corellia_deed.iff")

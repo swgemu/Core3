@@ -44,7 +44,6 @@
 object_tangible_deed_player_house_deed_corellia_house_medium_style_02_deed = object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/building/player/player_house_corellia_medium_style_02.iff",
-	maxCondition = 0,
 	objectName = "@deed:corellia_house_medium_deed",
 }
 

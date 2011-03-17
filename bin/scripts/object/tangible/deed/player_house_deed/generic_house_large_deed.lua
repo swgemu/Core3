@@ -43,8 +43,7 @@
 
 object_tangible_deed_player_house_deed_generic_house_large_deed = object_tangible_deed_player_house_deed_shared_generic_house_large_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/player_house_generic_large_style_01.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/player/player_house_generic_large_style_01.iff"
 
 
 }

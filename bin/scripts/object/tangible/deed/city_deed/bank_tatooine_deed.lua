@@ -44,8 +44,7 @@
 object_tangible_deed_city_deed_bank_tatooine_deed = object_tangible_deed_city_deed_shared_bank_tatooine_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/bank_tatooine.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/player/city/bank_tatooine.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_bank_tatooine_deed, "object/tangible/deed/city_deed/bank_tatooine_deed.iff")

@@ -43,8 +43,7 @@
 
 object_tangible_deed_generator_deed_generator_photo_bio_deed = object_tangible_deed_generator_deed_shared_generator_photo_bio_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/generators/power_generator_photo_bio_style_1.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/installation/generators/power_generator_photo_bio_style_1.iff"
 
 
 }

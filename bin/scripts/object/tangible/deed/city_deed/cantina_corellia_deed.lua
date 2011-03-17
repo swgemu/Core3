@@ -44,8 +44,7 @@
 object_tangible_deed_city_deed_cantina_corellia_deed = object_tangible_deed_city_deed_shared_cantina_corellia_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/cantina_corellia.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/player/city/cantina_corellia.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_cantina_corellia_deed, "object/tangible/deed/city_deed/cantina_corellia_deed.iff")
