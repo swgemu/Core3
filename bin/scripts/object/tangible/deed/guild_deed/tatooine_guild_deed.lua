@@ -43,8 +43,7 @@
 
 object_tangible_deed_guild_deed_tatooine_guild_deed = object_tangible_deed_guild_deed_shared_tatooine_guild_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/player_guildhall_tatooine_style_01.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/player/player_guildhall_tatooine_style_01.iff"
 
 
 }

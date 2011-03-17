@@ -81,4 +81,20 @@ class ElevatorTerminal extends Terminal {
 	public boolean isElevatorTerminal() {
 		return true;
 	}
+	
+	public void setElevatorUp(ElevatorTerminal term) {
+		elevatorUp = term;
+	}
+	
+	public void setElevatorDown(ElevatorTerminal term) {
+		elevatorDown = term;
+	}
+	
+	public ElevatorTerminal getElevatorUp() {
+		return elevatorUp;
+	}
+	
+	public ElevatorTerminal getElevatorDown() {
+		return elevatorDown;
+	}
 }

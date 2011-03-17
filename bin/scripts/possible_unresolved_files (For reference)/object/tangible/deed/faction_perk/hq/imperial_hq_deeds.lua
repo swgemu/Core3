@@ -43,8 +43,7 @@
 object_tangible_deed_faction_perk_hq_hq_s01_imp = object_tangible_deed_faction_perk_hq_shared_hq_s01:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s01_imp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s01_imp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s01_imp, "object/tangible/deed/faction_perk/hq/hq_s01_imp.iff")
@@ -52,8 +51,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s01_imp, "ob
 object_tangible_deed_faction_perk_hq_hq_s01_imp_pvp = object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s01_imp_pvp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s01_imp_pvp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s01_imp_pvp, "object/tangible/deed/faction_perk/hq/hq_s01_imp_pvp.iff")
@@ -61,8 +59,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s01_imp_pvp,
 object_tangible_deed_faction_perk_hq_hq_s02_imp = object_tangible_deed_faction_perk_hq_shared_hq_s02:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s02_imp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s02_imp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s02_imp, "object/tangible/deed/faction_perk/hq/hq_s02_imp.iff")
@@ -70,8 +67,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s02_imp, "ob
 object_tangible_deed_faction_perk_hq_hq_s02_imp_pvp = object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s02_imp_pvp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s02_imp_pvp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s02_imp_pvp, "object/tangible/deed/faction_perk/hq/hq_s02_imp_pvp.iff")
@@ -79,8 +75,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s02_imp_pvp,
 object_tangible_deed_faction_perk_hq_hq_s03_imp = object_tangible_deed_faction_perk_hq_shared_hq_s03:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s03_imp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s03_imp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s03_imp, "object/tangible/deed/faction_perk/hq/hq_s03_imp.iff")
@@ -88,8 +83,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s03_imp, "ob
 object_tangible_deed_faction_perk_hq_hq_s03_imp_pvp = object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s03_imp_pvp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s03_imp_pvp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s03_imp_pvp, "object/tangible/deed/faction_perk/hq/hq_s03_imp_pvp.iff")
@@ -97,8 +91,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s03_imp_pvp,
 object_tangible_deed_faction_perk_hq_hq_s04_imp = object_tangible_deed_faction_perk_hq_shared_hq_s04:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s04_imp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s04_imp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s04_imp, "object/tangible/deed/faction_perk/hq/hq_s04_imp.iff")
@@ -106,8 +99,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s04_imp, "ob
 object_tangible_deed_faction_perk_hq_hq_s04_imp_pvp = object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s04_imp_pvp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s04_imp_pvp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s04_imp_pvp, "object/tangible/deed/faction_perk/hq/hq_s04_imp_pvp.iff")
@@ -115,8 +107,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s04_imp_pvp,
 object_tangible_deed_faction_perk_hq_hq_s05_imp = object_tangible_deed_faction_perk_hq_shared_hq_s05:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s05_imp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s05_imp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s05_imp, "object/tangible/deed/faction_perk/hq/hq_s05_imp.iff")
@@ -124,8 +115,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s05_imp, "ob
 object_tangible_deed_faction_perk_hq_hq_s05_imp_pvp = object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s05_imp_pvp.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/faction_perk/hq/hq_s05_imp_pvp.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s05_imp_pvp, "object/tangible/deed/faction_perk/hq/hq_s05_imp_pvp.iff")

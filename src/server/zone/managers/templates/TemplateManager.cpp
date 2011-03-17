@@ -65,6 +65,7 @@
 #include "server/zone/templates/tangible/MissionTerminalTemplate.h"
 #include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
 #include "server/zone/templates/tangible/ContainerTemplate.h"
+#include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -258,7 +259,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<PlayerCreatureTemplate>(SharedObjectTemplate::PLAYERCREATURE);
 	templateFactory.registerObject<SlicingToolTemplate>(SharedObjectTemplate::SLICINGTOOL);
 	templateFactory.registerObject<ContainerTemplate>(SharedObjectTemplate::CONTAINER);
-
+	templateFactory.registerObject<ElevatorTerminalTemplate>(SharedObjectTemplate::ELEVATORTERMINAL);
 }
 
 
@@ -396,6 +397,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("PLAYERCREATURE", SharedObjectTemplate::PLAYERCREATURE);
 	luaTemplatesInstance->setGlobalInt("SLICINGTOOL", SharedObjectTemplate::SLICINGTOOL);
 	luaTemplatesInstance->setGlobalInt("CONTAINER", SharedObjectTemplate::CONTAINER);
+	luaTemplatesInstance->setGlobalInt("ELEVATORTERMINAL", SharedObjectTemplate::ELEVATORTERMINAL);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

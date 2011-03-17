@@ -63,6 +63,7 @@ include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
+include server.zone.objects.player.variables.FactionPointList;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 
@@ -104,6 +105,9 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected IgnoreList ignoreList;
+	
+	@dereferenced
+	protected FactionPointList factionPointList;
 	
 	@dereferenced
 	protected SchematicList schematicList;
@@ -290,6 +294,25 @@ class PlayerObject extends IntangibleObject {
 	
 	public native void setFoodFilling(int newValue, boolean notifyClient = true);
 	public native void setDrinkFilling(int newValue, boolean notifyClient = true);
+	
+	/**
+	 * Adds the amount of faction points to the faction point list.
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param faction The string key for the faction the faction points are to be added.
+	 * @param amount The signed integer amount of faction points to add. 
+	 */
+	public native void addFactionPoints(final string faction, int amount);
+	public native void subtractFactionPoints(final string faction, int amount);
+	public native int getFactionPoints(final string faction);
+	
+	/**
+	 * Gets the faction point list.
+	 */
+	@local
+	public FactionPointList getFactionPointList() {
+		return factionPointList;
+	}
 	
 	public void setCommandMessageString(unsigned int actionCRC, string message) {
 		commandMessageStrings.put(actionCRC, message);

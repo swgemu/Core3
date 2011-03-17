@@ -42,8 +42,7 @@
 
 
 object_tangible_terminal_terminal_city_vote = object_tangible_terminal_shared_terminal_city_vote:new {
-	gameObjectType = 16406,
-	maxCondition = 0
+	gameObjectType = 16406
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_city_vote, "object/tangible/terminal/terminal_city_vote.iff")

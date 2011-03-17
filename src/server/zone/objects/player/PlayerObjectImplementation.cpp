@@ -849,3 +849,15 @@ void PlayerObjectImplementation::setDrinkFilling(int newValue, bool notifyClient
 		parent->sendMessage(dplay9);
 	}
 }
+
+void PlayerObjectImplementation::addFactionPoints(const String& faction, int amount) {
+
+}
+
+void PlayerObjectImplementation::subtractFactionPoints(const String& faction, int amount) {
+
+}
+
+int PlayerObjectImplementation::getFactionPoints(const String& faction) {
+
+}

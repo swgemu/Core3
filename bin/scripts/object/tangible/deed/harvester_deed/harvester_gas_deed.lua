@@ -43,8 +43,7 @@
 
 object_tangible_deed_harvester_deed_harvester_gas_deed = object_tangible_deed_harvester_deed_shared_harvester_gas_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/mining_gas/mining_gas_harvester_style_1.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/installation/mining_gas/mining_gas_harvester_style_1.iff"
 
 
 }

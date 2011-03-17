@@ -100,6 +100,14 @@ public:
 
 	bool isElevatorTerminal();
 
+	void setElevatorUp(ElevatorTerminal* term);
+
+	void setElevatorDown(ElevatorTerminal* term);
+
+	ElevatorTerminal* getElevatorUp();
+
+	ElevatorTerminal* getElevatorDown();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -146,6 +154,14 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isElevatorTerminal();
+
+	void setElevatorUp(ElevatorTerminal* term);
+
+	void setElevatorDown(ElevatorTerminal* term);
+
+	ElevatorTerminal* getElevatorUp();
+
+	ElevatorTerminal* getElevatorDown();
 
 	ElevatorTerminal* _this;
 
@@ -195,6 +211,14 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	bool isElevatorTerminal();
+
+	void setElevatorUp(ElevatorTerminal* term);
+
+	void setElevatorDown(ElevatorTerminal* term);
+
+	ElevatorTerminal* getElevatorUp();
+
+	ElevatorTerminal* getElevatorDown();
 
 };
 

@@ -44,8 +44,7 @@
 object_tangible_deed_city_deed_garden_corellia_sml_02_deed = object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/garden_corellia_sml_02.iff",
-	maxCondition = 0
+	generatedObjectTemplate = "object/building/player/city/garden_corellia_sml_02.iff"
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_garden_corellia_sml_02_deed, "object/tangible/deed/city_deed/garden_corellia_sml_02_deed.iff")

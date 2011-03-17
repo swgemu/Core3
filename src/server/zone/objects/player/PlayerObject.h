@@ -137,6 +137,8 @@ using namespace server::zone::templates;
 
 #include "server/zone/objects/player/variables/SchematicList.h"
 
+#include "server/zone/objects/player/variables/FactionPointList.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -221,6 +223,14 @@ public:
 	void setFoodFilling(int newValue, bool notifyClient = true);
 
 	void setDrinkFilling(int newValue, bool notifyClient = true);
+
+	void addFactionPoints(const String& faction, int amount);
+
+	void subtractFactionPoints(const String& faction, int amount);
+
+	int getFactionPoints(const String& faction);
+
+	FactionPointList* getFactionPointList();
 
 	void setCommandMessageString(unsigned int actionCRC, String& message);
 
@@ -375,6 +385,8 @@ protected:
 
 	IgnoreList ignoreList;
 
+	FactionPointList factionPointList;
+
 	SchematicList schematicList;
 
 public:
@@ -455,6 +467,14 @@ public:
 	void setFoodFilling(int newValue, bool notifyClient = true);
 
 	void setDrinkFilling(int newValue, bool notifyClient = true);
+
+	void addFactionPoints(const String& faction, int amount);
+
+	void subtractFactionPoints(const String& faction, int amount);
+
+	int getFactionPoints(const String& faction);
+
+	FactionPointList* getFactionPointList();
 
 	void setCommandMessageString(unsigned int actionCRC, String& message);
 
@@ -621,6 +641,12 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient);
 
+	void addFactionPoints(const String& faction, int amount);
+
+	void subtractFactionPoints(const String& faction, int amount);
+
+	int getFactionPoints(const String& faction);
+
 	void setCommandMessageString(unsigned int actionCRC, String& message);
 
 	void removeCommandMessageString(unsigned int actionCRC);
@@ -700,6 +726,9 @@ protected:
 	String _param0_addIgnore__String_bool_;
 	String _param0_removeIgnore__String_bool_;
 	String _param0_setTitle__String_bool_;
+	String _param0_addFactionPoints__String_int_;
+	String _param0_subtractFactionPoints__String_int_;
+	String _param0_getFactionPoints__String_;
 	String _param1_setCommandMessageString__int_String_;
 	String _param0_hasFriend__String_;
 	String _param0_isIgnoring__String_;
