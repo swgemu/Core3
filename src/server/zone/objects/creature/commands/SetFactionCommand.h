@@ -46,6 +46,8 @@ which carries forward this exception.
 #define SETFACTIONCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 
 class SetFactionCommand : public QueueCommand {
 public:
@@ -62,6 +64,56 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return INVALIDPARAMETERS;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+		if (obj == NULL || !obj->isTangibleObject())
+			return INVALIDTARGET;
+
+		TangibleObject* tano = (TangibleObject*) obj.get();
+
+		//First, check if they passed a name with the command.
+		UnicodeTokenizer tokenizer(arguments);
+		tokenizer.setDelimeter(" ");
+
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
+
+		String faction;
+		tokenizer.getStringToken(faction);
+
+		uint32 pvpStatus = tano->getPvpStatusBitmask();
+
+		if (faction == "neutral")
+			tano->setFaction(0);
+
+		if (faction == "imperial" || faction == "rebel")
+			tano->setFaction(faction.hashCode());
+
+		if (tokenizer.hasMoreTokens()) {
+			//The next argument should be whether they are overt, onleave, or covert
+			String status;
+			tokenizer.getStringToken(status);
+
+			if (status == "overt")
+				pvpStatus |= CreatureFlag::OVERT;
+
+			if (status == "covert")
+				pvpStatus &= ~CreatureFlag::OVERT;
+
+			//if (status == "onleave")
+				//Do something
+
+			tano->setPvpStatusBitmask(pvpStatus);
+		}
+
+		UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano);
+		tano->sendMessage(upvpsm);
 
 		return SUCCESS;
 	}

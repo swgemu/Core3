@@ -2,7 +2,7 @@ rebel_recruiter = Creature:new {
 	objectName = "@mob/creature_names:rebel_recruiter",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 20,
 	chanceHit = 0.330000,
 	damageMin = 190,
@@ -25,7 +25,7 @@ rebel_recruiter = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_recruiter_human_female_01.iff", "object/mobile/dressed_rebel_recruiter_human_female_02.iff", "object/mobile/dressed_rebel_recruiter_moncal_male_01.iff", "object/mobile/dressed_rebel_recruiter_twilek_female_01.iff"},
 	lootgroups = {},
 	weapons = {""},
 	attacks = {}

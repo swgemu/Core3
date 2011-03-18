@@ -74,7 +74,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
