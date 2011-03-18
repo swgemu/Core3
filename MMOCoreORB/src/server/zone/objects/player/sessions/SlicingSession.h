@@ -82,7 +82,7 @@ public:
 
 	int getSlicingSkill(PlayerCreature* slicer);
 
-	bool hasPrecisionLaserKnife();
+	bool hasPrecisionLaserKnife(bool removeItem = true);
 
 	bool hasWeaponUpgradeKit();
 
@@ -165,7 +165,7 @@ private:
 public:
 	int getSlicingSkill(PlayerCreature* slicer);
 
-	bool hasPrecisionLaserKnife();
+	bool hasPrecisionLaserKnife(bool removeItem = true);
 
 	bool hasWeaponUpgradeKit();
 
@@ -248,7 +248,7 @@ public:
 
 	int getSlicingSkill(PlayerCreature* slicer);
 
-	bool hasPrecisionLaserKnife();
+	bool hasPrecisionLaserKnife(bool removeItem);
 
 	bool hasWeaponUpgradeKit();
 

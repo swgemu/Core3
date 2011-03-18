@@ -160,7 +160,7 @@ class SlicingSession extends Facade {
 
 	public native int getSlicingSkill(PlayerCreature slicer);
 
-	public native boolean hasPrecisionLaserKnife();
+	public native boolean hasPrecisionLaserKnife(boolean removeItem = true);
 
 	public native boolean hasWeaponUpgradeKit();
 	
