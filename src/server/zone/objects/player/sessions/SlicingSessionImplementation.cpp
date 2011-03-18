@@ -67,7 +67,7 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 		return;
 	}
 
-	if (!hasPrecisionLaserKnife()) {
+	if (!hasPrecisionLaserKnife(false)) { // do not remove the item on inital window
 		player->sendSystemMessage("@slicing/slicing:no_knife");
 		return;
 	}
@@ -188,7 +188,7 @@ void SlicingSessionImplementation::endSlicing() {
 	}
 
 	if (tangibleObject->isMissionTerminal())
-		player->addCooldown("slicing.terminal", (30 * (60 * 1000))); // 30min Cooldown
+		player->addCooldown("slicing.terminal", (2 * (60 * 1000))); // 2min Cooldown
 
 	cancelSession();
 
@@ -220,7 +220,7 @@ int SlicingSessionImplementation::getSlicingSkill(PlayerCreature* slicer) {
 
 }
 
-bool SlicingSessionImplementation::hasPrecisionLaserKnife() {
+bool SlicingSessionImplementation::hasPrecisionLaserKnife(bool removeItem) {
 	if (player == NULL)
 		return 0;
 
@@ -240,7 +240,8 @@ bool SlicingSessionImplementation::hasPrecisionLaserKnife() {
 
 		if (objType == SceneObject::LASERKNIFE) {
 			PrecisionLaserKnife* knife = (PrecisionLaserKnife*) sceno.get();
-			knife->useCharge(player);
+			if (removeItem)
+				knife->useCharge(player);
 			return 1;
 		}
 	}

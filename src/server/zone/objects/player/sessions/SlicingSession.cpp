@@ -109,17 +109,18 @@ int SlicingSession::getSlicingSkill(PlayerCreature* slicer) {
 		return _implementation->getSlicingSkill(slicer);
 }
 
-bool SlicingSession::hasPrecisionLaserKnife() {
+bool SlicingSession::hasPrecisionLaserKnife(bool removeItem) {
 	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addBooleanParameter(removeItem);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->hasPrecisionLaserKnife();
+		return _implementation->hasPrecisionLaserKnife(removeItem);
 }
 
 bool SlicingSession::hasWeaponUpgradeKit() {
@@ -454,7 +455,7 @@ byte SlicingSessionImplementation::getProgress() {
 SlicingSessionAdapter::SlicingSessionAdapter(SlicingSessionImplementation* obj) : FacadeAdapter(obj) {
 }
 
-enum {RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ENDSLICING__,RPC_GETSLICINGSKILL__PLAYERCREATURE_,RPC_HASPRECISIONLASERKNIFE__,RPC_HASWEAPONUPGRADEKIT__,RPC_HASARMORUPGRADEKIT__,RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_,};
+enum {RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ENDSLICING__,RPC_GETSLICINGSKILL__PLAYERCREATURE_,RPC_HASPRECISIONLASERKNIFE__BOOL_,RPC_HASWEAPONUPGRADEKIT__,RPC_HASARMORUPGRADEKIT__,RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_,};
 
 Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -475,8 +476,8 @@ Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETSLICINGSKILL__PLAYERCREATURE_:
 		resp->insertSignedInt(getSlicingSkill((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case RPC_HASPRECISIONLASERKNIFE__:
-		resp->insertBoolean(hasPrecisionLaserKnife());
+	case RPC_HASPRECISIONLASERKNIFE__BOOL_:
+		resp->insertBoolean(hasPrecisionLaserKnife(inv->getBooleanParameter()));
 		break;
 	case RPC_HASWEAPONUPGRADEKIT__:
 		resp->insertBoolean(hasWeaponUpgradeKit());
@@ -514,8 +515,8 @@ int SlicingSessionAdapter::getSlicingSkill(PlayerCreature* slicer) {
 	return ((SlicingSessionImplementation*) impl)->getSlicingSkill(slicer);
 }
 
-bool SlicingSessionAdapter::hasPrecisionLaserKnife() {
-	return ((SlicingSessionImplementation*) impl)->hasPrecisionLaserKnife();
+bool SlicingSessionAdapter::hasPrecisionLaserKnife(bool removeItem) {
+	return ((SlicingSessionImplementation*) impl)->hasPrecisionLaserKnife(removeItem);
 }
 
 bool SlicingSessionAdapter::hasWeaponUpgradeKit() {
