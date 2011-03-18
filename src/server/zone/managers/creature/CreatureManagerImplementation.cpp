@@ -13,6 +13,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/name/NameManager.h"
@@ -342,10 +343,13 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	try {
 		ManagedReference<PlayerCreature*> player = copyDamageMap.getHighestDamagePlayer();
+
 		if (player != NULL)
 			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
 
 		destructedObject->setLootOwner(player);
+
+		FactionManager::instance()->awardFactionPoints(player, destructedObject->getFactionString());
 
 		if (playerManager != NULL)
 			playerManager->disseminateExperience(destructedObject, &copyDamageMap);
