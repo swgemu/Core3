@@ -46,7 +46,7 @@ IDL_CLASSPATH = ../MMOEngine/include
 
 IDL_DIRECTIVES = -cp $(IDL_CLASSPATH)
 
-all:
+all: build
 
 build: idl
 	cd src/trelib/src && make ../lib/libtreLib.a
