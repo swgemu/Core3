@@ -850,14 +850,64 @@ void PlayerObjectImplementation::setDrinkFilling(int newValue, bool notifyClient
 	}
 }
 
-void PlayerObjectImplementation::addFactionPoints(const String& faction, int amount) {
+void PlayerObjectImplementation::increaseFactionStanding(const String& factionName, float amount) {
+	if (amount < 0)
+		return; //Don't allow negative values to be sent to this method.
 
+	//Get the current amount of faction standing
+	float currentAmount = factionStandingList.get(factionName);
+
+	//Ensure that the new amount is not greater than 5000.
+	float newAmount = MIN(5000.f, currentAmount + amount);
+
+	if (factionStandingList.contains(factionName))
+		factionStandingList.get(factionName) = newAmount;
+	else
+		factionStandingList.put(factionName, newAmount);
+
+	int change = floor(newAmount - currentAmount);
+
+	//Send the proper system message.
+	StringIdChatParameter msg("@base_player:prose_award_faction");
+	msg.setTO("@faction/faction_names:" + factionName);
+	msg.setDI(change);
+
+	if (newAmount == 0)
+		msg.setStringId("@base_player:prose_max_faction");
+
+	PlayerCreature* player = (PlayerCreature*) parent.get();
+	player->sendSystemMessage(msg);
 }
 
-void PlayerObjectImplementation::subtractFactionPoints(const String& faction, int amount) {
+void PlayerObjectImplementation::decreaseFactionStanding(const String& factionName, float amount) {
+	if (amount < 0)
+		return; //Don't allow negative values to be sent to this method.
 
+	//Get the current amount of faction standing
+	float currentAmount = factionStandingList.get(factionName);
+
+	//Ensure that the new amount is not less than -5000.
+	float newAmount = MAX(-5000.f, currentAmount - amount);
+
+	if (factionStandingList.contains(factionName))
+		factionStandingList.get(factionName) = newAmount;
+	else
+		factionStandingList.put(factionName, newAmount);
+
+	int change = floor(currentAmount - newAmount);
+
+	//Send the proper system message.
+	StringIdChatParameter msg("@base_player:prose_lose_faction");
+	msg.setTO("@faction/faction_names:" + factionName);
+	msg.setDI(change);
+
+	if (newAmount == 0)
+		msg.setStringId("@base_player:prose_min_faction");
+
+	PlayerCreature* player = (PlayerCreature*) parent.get();
+	player->sendSystemMessage(msg);
 }
 
-int PlayerObjectImplementation::getFactionPoints(const String& faction) {
-
+float PlayerObjectImplementation::getFactionStanding(const String& factionName) {
+	return factionStandingList.get(factionName);
 }

@@ -63,7 +63,7 @@ include server.zone.objects.player.variables.SkillList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
-include server.zone.objects.player.variables.FactionPointList;
+include server.zone.objects.player.variables.FactionStandingList;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 
@@ -107,7 +107,7 @@ class PlayerObject extends IntangibleObject {
 	protected IgnoreList ignoreList;
 	
 	@dereferenced
-	protected FactionPointList factionPointList;
+	protected FactionStandingList factionStandingList;
 	
 	@dereferenced
 	protected SchematicList schematicList;
@@ -299,19 +299,29 @@ class PlayerObject extends IntangibleObject {
 	 * Adds the amount of faction points to the faction point list.
 	 * @pre { this locked }
 	 * @post { this locked }
-	 * @param faction The string key for the faction the faction points are to be added.
-	 * @param amount The signed integer amount of faction points to add. 
+	 * @param factionName The string key for the faction the faction points are to be added.
+	 * @param amount The float amount of faction points to add. 
 	 */
-	public native void addFactionPoints(final string faction, int amount);
-	public native void subtractFactionPoints(final string faction, int amount);
-	public native int getFactionPoints(final string faction);
+	public native void increaseFactionStanding(final string factionName, float amount);
+	public native void decreaseFactionStanding(final string factionName, float amount);
+	public native float getFactionStanding(final string factionName);
 	
 	/**
 	 * Gets the faction point list.
 	 */
 	@local
-	public FactionPointList getFactionPointList() {
-		return factionPointList;
+	public FactionStandingList getFactionStandingList() {
+		return factionStandingList;
+	}
+	
+	@local
+	public string getFactionRank() {
+		return factionStandingList.getFactionRank();
+	}
+	
+	@local
+	public void setFactionRank(final string rank) {
+		factionStandingList.setFactionRank(rank);
 	}
 	
 	public void setCommandMessageString(unsigned int actionCRC, string message) {
