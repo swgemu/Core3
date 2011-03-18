@@ -373,57 +373,75 @@ void PlayerObject::setDrinkFilling(int newValue, bool notifyClient) {
 		_implementation->setDrinkFilling(newValue, notifyClient);
 }
 
-void PlayerObject::addFactionPoints(const String& faction, int amount) {
+void PlayerObject::increaseFactionStanding(const String& factionName, float amount) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 23);
-		method.addAsciiParameter(faction);
-		method.addSignedIntParameter(amount);
+		method.addAsciiParameter(factionName);
+		method.addFloatParameter(amount);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addFactionPoints(faction, amount);
+		_implementation->increaseFactionStanding(factionName, amount);
 }
 
-void PlayerObject::subtractFactionPoints(const String& faction, int amount) {
+void PlayerObject::decreaseFactionStanding(const String& factionName, float amount) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 24);
-		method.addAsciiParameter(faction);
-		method.addSignedIntParameter(amount);
+		method.addAsciiParameter(factionName);
+		method.addFloatParameter(amount);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->subtractFactionPoints(faction, amount);
+		_implementation->decreaseFactionStanding(factionName, amount);
 }
 
-int PlayerObject::getFactionPoints(const String& faction) {
+float PlayerObject::getFactionStanding(const String& factionName) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 25);
-		method.addAsciiParameter(faction);
+		method.addAsciiParameter(factionName);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithFloatReturn();
 	} else
-		return _implementation->getFactionPoints(faction);
+		return _implementation->getFactionStanding(factionName);
 }
 
-FactionPointList* PlayerObject::getFactionPointList() {
+FactionStandingList* PlayerObject::getFactionStandingList() {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getFactionPointList();
+		return _implementation->getFactionStandingList();
+}
+
+String PlayerObject::getFactionRank() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getFactionRank();
+}
+
+void PlayerObject::setFactionRank(const String& rank) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setFactionRank(rank);
 }
 
 void PlayerObject::setCommandMessageString(unsigned int actionCRC, String& message) {
@@ -1175,8 +1193,8 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
-	if (_name == "factionPointList") {
-		TypeInfo<FactionPointList >::parseFromBinaryStream(&factionPointList, stream);
+	if (_name == "factionStandingList") {
+		TypeInfo<FactionStandingList >::parseFromBinaryStream(&factionStandingList, stream);
 		return true;
 	}
 
@@ -1344,11 +1362,11 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "factionPointList";
+	_name = "factionStandingList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<FactionPointList >::toBinaryStream(&factionPointList, stream);
+	TypeInfo<FactionStandingList >::toBinaryStream(&factionStandingList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1375,9 +1393,19 @@ PlayerObjectImplementation::PlayerObjectImplementation() {
 void PlayerObjectImplementation::finalize() {
 }
 
-FactionPointList* PlayerObjectImplementation::getFactionPointList() {
-	// server/zone/objects/player/PlayerObject.idl():  		return factionPointList;
-	return (&factionPointList);
+FactionStandingList* PlayerObjectImplementation::getFactionStandingList() {
+	// server/zone/objects/player/PlayerObject.idl():  		return factionStandingList;
+	return (&factionStandingList);
+}
+
+String PlayerObjectImplementation::getFactionRank() {
+	// server/zone/objects/player/PlayerObject.idl():  		return factionStandingList.getFactionRank();
+	return (&factionStandingList)->getFactionRank();
+}
+
+void PlayerObjectImplementation::setFactionRank(const String& rank) {
+	// server/zone/objects/player/PlayerObject.idl():  		factionStandingList.setFactionRank(rank);
+	(&factionStandingList)->setFactionRank(rank);
 }
 
 void PlayerObjectImplementation::setCommandMessageString(unsigned int actionCRC, String& message) {
@@ -1575,7 +1603,7 @@ String PlayerObjectImplementation::getCommandMessageString(unsigned int actionCR
 PlayerObjectAdapter::PlayerObjectAdapter(PlayerObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_ADDFACTIONPOINTS__STRING_INT_,RPC_SUBTRACTFACTIONPOINTS__STRING_INT_,RPC_GETFACTIONPOINTS__STRING_,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_NOTIFYOFFLINE__,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_NOTIFYOFFLINE__,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_};
 
 Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
@@ -1635,14 +1663,14 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_SETDRINKFILLING__INT_BOOL_:
 		setDrinkFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_ADDFACTIONPOINTS__STRING_INT_:
-		addFactionPoints(inv->getAsciiParameter(_param0_addFactionPoints__String_int_), inv->getSignedIntParameter());
+	case RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_:
+		increaseFactionStanding(inv->getAsciiParameter(_param0_increaseFactionStanding__String_float_), inv->getFloatParameter());
 		break;
-	case RPC_SUBTRACTFACTIONPOINTS__STRING_INT_:
-		subtractFactionPoints(inv->getAsciiParameter(_param0_subtractFactionPoints__String_int_), inv->getSignedIntParameter());
+	case RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_:
+		decreaseFactionStanding(inv->getAsciiParameter(_param0_decreaseFactionStanding__String_float_), inv->getFloatParameter());
 		break;
-	case RPC_GETFACTIONPOINTS__STRING_:
-		resp->insertSignedInt(getFactionPoints(inv->getAsciiParameter(_param0_getFactionPoints__String_)));
+	case RPC_GETFACTIONSTANDING__STRING_:
+		resp->insertFloat(getFactionStanding(inv->getAsciiParameter(_param0_getFactionStanding__String_)));
 		break;
 	case RPC_SETCOMMANDMESSAGESTRING__INT_STRING_:
 		setCommandMessageString(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_setCommandMessageString__int_String_));
@@ -1828,16 +1856,16 @@ void PlayerObjectAdapter::setDrinkFilling(int newValue, bool notifyClient) {
 	((PlayerObjectImplementation*) impl)->setDrinkFilling(newValue, notifyClient);
 }
 
-void PlayerObjectAdapter::addFactionPoints(const String& faction, int amount) {
-	((PlayerObjectImplementation*) impl)->addFactionPoints(faction, amount);
+void PlayerObjectAdapter::increaseFactionStanding(const String& factionName, float amount) {
+	((PlayerObjectImplementation*) impl)->increaseFactionStanding(factionName, amount);
 }
 
-void PlayerObjectAdapter::subtractFactionPoints(const String& faction, int amount) {
-	((PlayerObjectImplementation*) impl)->subtractFactionPoints(faction, amount);
+void PlayerObjectAdapter::decreaseFactionStanding(const String& factionName, float amount) {
+	((PlayerObjectImplementation*) impl)->decreaseFactionStanding(factionName, amount);
 }
 
-int PlayerObjectAdapter::getFactionPoints(const String& faction) {
-	return ((PlayerObjectImplementation*) impl)->getFactionPoints(faction);
+float PlayerObjectAdapter::getFactionStanding(const String& factionName) {
+	return ((PlayerObjectImplementation*) impl)->getFactionStanding(factionName);
 }
 
 void PlayerObjectAdapter::setCommandMessageString(unsigned int actionCRC, String& message) {

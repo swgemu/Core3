@@ -1,5 +1,5 @@
 /*
- * FactionRelationship.h
+ * Faction.h
  *
  *  Created on: Mar 17, 2011
  *      Author: crush
@@ -10,32 +10,32 @@
 
 #include "engine/engine.h"
 
-class FactionRelationship : public Object {
+class Faction : public Object {
 	String factionName;
 	SortedVector<String> enemies;
 	SortedVector<String> allies;
 
 public:
-	FactionRelationship() : Object() {
+	Faction() : Object() {
 	}
 
-	FactionRelationship(const String& name) : Object() {
+	Faction(const String& name) : Object() {
 		factionName = name;
 	}
 
-	FactionRelationship(const FactionRelationship& fe) : Object() {
-		factionName = fe.factionName;
-		enemies = fe.enemies;
-		allies = fe.allies;
+	Faction(const Faction& f) : Object() {
+		factionName = f.factionName;
+		enemies = f.enemies;
+		allies = f.allies;
 	}
 
-	FactionRelationship& operator= (const FactionRelationship& fe) {
-		if (this == &fe)
+	Faction& operator= (const Faction& f) {
+		if (this == &f)
 			return *this;
 
-		factionName = fe.factionName;
-		enemies = fe.enemies;
-		allies = fe.allies;
+		factionName = f.factionName;
+		enemies = f.enemies;
+		allies = f.allies;
 
 		return *this;
 	}
@@ -64,7 +64,7 @@ public:
 		}
 	}
 
-	String& getFactionName() {
+	String getFactionName() const {
 		return factionName;
 	}
 

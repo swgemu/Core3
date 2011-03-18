@@ -263,7 +263,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/loot/LootManagerImplementation.cpp \
 		server/zone/managers/loot/lootgroup/LootGroupObjectImplementation.cpp \
 		server/zone/managers/faction/FactionManager.cpp \
-		server/zone/managers/faction/FactionRelationshipMap.cpp \
+		server/zone/managers/faction/FactionMap.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/object/ObjectVersionUpdateManager.cpp \

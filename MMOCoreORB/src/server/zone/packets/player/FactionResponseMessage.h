@@ -50,46 +50,15 @@ which carries forward this exception.
 class FactionResponseMessage : public BaseMessage {
 public:
 
-	FactionResponseMessage(String rank, uint32 rebpts, uint32 imppts) : BaseMessage() {
+	FactionResponseMessage(FactionStandingList* fpl) : BaseMessage() {
 		insertShort(0x07);
 		insertInt(0x5DD53957);  // CRC
 
-		insertAscii(rank);
-		
-		insertInt(rebpts);
-		insertInt(imppts);
-		insertInt(0); //hutt points - unused.
+		fpl->insertToMessage(this);
 		
 		setCompression(true);
 
 	}
-	
-	/*
-	void addFactionLists(Player* plyobj) {
-		insertInt(plyobj->getFactionListSize());
-		for (int i = 0; i < plyobj->getFactionListSize(); i++) {
-			insertAscii(plyobj->getFactionListMember(i));
-		}
-		
-		insertInt(plyobj->getFactionListSize());
-		for (int i = 0; i < plyobj->getFactionListSize(); i++) {
-			insertInt(plyobj->getFactionPointsListMember(i));
-		}
-	}
-	*/
-	
-	void addFactionCount(int factionCount) {
-		insertInt(factionCount);
-	}
-	
-	void addFactionName(String name) {
-		insertAscii(name);
-	}
-	
-	void addFactionPoint(float point) {
-		insertFloat(point);
-	}
-	
 };
 
 #endif /*FACTIONRESPONSEMESSAGE_H_*/

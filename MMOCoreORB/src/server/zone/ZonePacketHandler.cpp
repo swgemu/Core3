@@ -101,6 +101,7 @@ which carries forward this exception.
 #include "packets/player/PlanetTravelPointListRequestCallback.h"
 #include "packets/player/GetMapLocationsCallback.h"
 #include "packets/player/GuildRequestCallback.h"
+#include "packets/player/FactionRequestMessageCallback.h"
 
 #include "packets/chat/ChatRoomList.h"
 #include "packets/chat/ChatInstantMessageToCharacter.h"
@@ -180,6 +181,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ChatEnterRoomByIdCallback>(0xbc6bddf2);
 	messageCallbackFactory.registerObject<VerifyPlayerNameCallback>(0xBB8CAD45);
 	messageCallbackFactory.registerObject<CreateTicketMessageCallback>(0x40E64DAC);
+	messageCallbackFactory.registerObject<FactionRequestMessageCallback>(0xC1B03B81);
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
