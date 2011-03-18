@@ -137,7 +137,7 @@ using namespace server::zone::templates;
 
 #include "server/zone/objects/player/variables/SchematicList.h"
 
-#include "server/zone/objects/player/variables/FactionPointList.h"
+#include "server/zone/objects/player/variables/FactionStandingList.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -224,13 +224,17 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient = true);
 
-	void addFactionPoints(const String& faction, int amount);
+	void increaseFactionStanding(const String& factionName, float amount);
 
-	void subtractFactionPoints(const String& faction, int amount);
+	void decreaseFactionStanding(const String& factionName, float amount);
 
-	int getFactionPoints(const String& faction);
+	float getFactionStanding(const String& factionName);
 
-	FactionPointList* getFactionPointList();
+	FactionStandingList* getFactionStandingList();
+
+	String getFactionRank();
+
+	void setFactionRank(const String& rank);
 
 	void setCommandMessageString(unsigned int actionCRC, String& message);
 
@@ -330,6 +334,7 @@ protected:
 	virtual ~PlayerObject();
 
 	String _return_getCommandMessageString;
+	String _return_getFactionRank;
 	String _return_getTitle;
 
 	friend class PlayerObjectHelper;
@@ -385,7 +390,7 @@ protected:
 
 	IgnoreList ignoreList;
 
-	FactionPointList factionPointList;
+	FactionStandingList factionStandingList;
 
 	SchematicList schematicList;
 
@@ -468,13 +473,17 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient = true);
 
-	void addFactionPoints(const String& faction, int amount);
+	void increaseFactionStanding(const String& factionName, float amount);
 
-	void subtractFactionPoints(const String& faction, int amount);
+	void decreaseFactionStanding(const String& factionName, float amount);
 
-	int getFactionPoints(const String& faction);
+	float getFactionStanding(const String& factionName);
 
-	FactionPointList* getFactionPointList();
+	FactionStandingList* getFactionStandingList();
+
+	String getFactionRank();
+
+	void setFactionRank(const String& rank);
 
 	void setCommandMessageString(unsigned int actionCRC, String& message);
 
@@ -641,11 +650,11 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient);
 
-	void addFactionPoints(const String& faction, int amount);
+	void increaseFactionStanding(const String& factionName, float amount);
 
-	void subtractFactionPoints(const String& faction, int amount);
+	void decreaseFactionStanding(const String& factionName, float amount);
 
-	int getFactionPoints(const String& faction);
+	float getFactionStanding(const String& factionName);
 
 	void setCommandMessageString(unsigned int actionCRC, String& message);
 
@@ -726,9 +735,9 @@ protected:
 	String _param0_addIgnore__String_bool_;
 	String _param0_removeIgnore__String_bool_;
 	String _param0_setTitle__String_bool_;
-	String _param0_addFactionPoints__String_int_;
-	String _param0_subtractFactionPoints__String_int_;
-	String _param0_getFactionPoints__String_;
+	String _param0_increaseFactionStanding__String_float_;
+	String _param0_decreaseFactionStanding__String_float_;
+	String _param0_getFactionStanding__String_;
 	String _param1_setCommandMessageString__int_String_;
 	String _param0_hasFriend__String_;
 	String _param0_isIgnoring__String_;

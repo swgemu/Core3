@@ -9,13 +9,13 @@
 #define FACTIONMANAGER_H_
 
 #include "engine/engine.h"
-#include "FactionRelationshipMap.h"
+#include "FactionMap.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 
-class FactionRelationshipMap;
+class FactionMap;
 
 class FactionManager : public Singleton<FactionManager>, public Logger {
-	FactionRelationshipMap factionRelationshipMap;
+	FactionMap factionMap;
 
 public:
 	FactionManager() {
@@ -31,10 +31,10 @@ public:
 	void loadLuaConfig();
 
 	/**
-	 * Lua Interface function that adds a faction relationship to the FactionRelationshipMap.
+	 * Lua Interface function that adds a faction relationship to the FactionMap.
 	 * @param L The Lua State containing the data.
 	 */
-	static int addFactionRelationship(lua_State* L);
+	static int addFaction(lua_State* L);
 
 	/**
 	 * Awards points to the player based on the faction they killed.
@@ -43,7 +43,7 @@ public:
 	 * @param player The player receiving the faction points for the kill.
 	 * @param faction The string key of the faction that was killed.
 	 */
-	void awardFactionPoints(PlayerCreature* player, const String& faction);
+	void awardFactionStanding(PlayerCreature* player, const String& factionName);
 
 	/**
 	 * Gets a list of enemy factions to the faction passed to the method.
@@ -57,7 +57,7 @@ public:
 	 */
 	SortedVector<String> getAllyFactions(const String& faction);
 
-	FactionRelationshipMap* getFactionRelationshipMap();
+	FactionMap* getFactionMap();
 };
 
 #endif /* FACTIONMANAGER_H_ */
