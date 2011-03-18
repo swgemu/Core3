@@ -46,6 +46,8 @@ SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
 	niche = 0,
 	species = 0,
 	race = 0,
+	
+	optionsBitmask = 0, --Set it back to 0 for creatures
 
 	acceleration = { },
 	speed = { },
