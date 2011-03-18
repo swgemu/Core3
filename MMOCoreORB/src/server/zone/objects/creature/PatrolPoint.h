@@ -171,7 +171,7 @@ public:
 	}
 	
 	inline void setCell(SceneObject* cell) {
-		if (cell != NULL && cell->isCellObject() || cell == NULL)
+		if ((cell != NULL && cell->isCellObject()) || cell == NULL)
 			position.setCell(cell);
 	}
 	

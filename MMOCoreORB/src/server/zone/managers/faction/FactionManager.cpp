@@ -79,3 +79,7 @@ void FactionManager::awardFactionStanding(PlayerCreature* player, const String& 
 		ghost->increaseFactionStanding(enemy, gain);
 	}
 }
+
+void FactionManager::awardFactionPoints(PlayerCreature* player, TangibleObject* destructedObject) {
+
+}

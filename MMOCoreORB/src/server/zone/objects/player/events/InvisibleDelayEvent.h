@@ -55,7 +55,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 
 class InvisibleDelayEvent: public Task {
 	ManagedReference<PlayerCreature*> player;

@@ -109,7 +109,7 @@ public:
 
 			}
 
-			UpdatePVPStatusMessage* mess = new UpdatePVPStatusMessage(playerImpl, player->getPvpStatusBitmask());
+			UpdatePVPStatusMessage* mess = new UpdatePVPStatusMessage(player);
 			player->broadcastMessage(mess, true);
 
 		}

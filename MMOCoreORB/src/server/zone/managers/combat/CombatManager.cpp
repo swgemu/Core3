@@ -15,7 +15,7 @@
 #include "server/zone/packets/object/CombatSpam.h"
 #include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 
