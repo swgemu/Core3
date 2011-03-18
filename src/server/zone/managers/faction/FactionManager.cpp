@@ -58,8 +58,8 @@ void FactionManager::awardFactionStanding(PlayerCreature* player, const String& 
 	if (!factionMap.contains(factionName))
 		return;
 
-	float lose = floor(20); //TODO: Find the equation for this.
-	float gain = floor(lose * 2 /3); //2/3 of lose
+	float lose = floor(130); //TODO: Find the equation for this.
+	float gain = floor(lose / 2); //you gain half of what you lose
 
 	Faction faction = factionMap.get(factionName);
 	SortedVector<String>* enemies = faction.getEnemies();
@@ -80,6 +80,20 @@ void FactionManager::awardFactionStanding(PlayerCreature* player, const String& 
 	}
 }
 
-void FactionManager::awardFactionPoints(PlayerCreature* player, TangibleObject* destructedObject) {
+void FactionManager::awardFactionPoints(TangibleObject* killer, TangibleObject* destructedObject) {
+	//Temporary for testing.
 
+	if (killer->isPlayerCreature()) {
+		PlayerCreature* playerKiller = (PlayerCreature*) killer;
+
+		ManagedReference<PlayerObject*> ghost = playerKiller->getPlayerObject();
+		ghost->getFactionStandingList()->increaseRebelPoints(45);
+	}
+
+	if (destructedObject->isPlayerCreature()) {
+		PlayerCreature* victim = (PlayerCreature*) destructedObject;
+
+		ManagedReference<PlayerObject*> ghost = victim->getPlayerObject();
+		ghost->getFactionStandingList()->decreaseImperialPoints(30);
+	}
 }

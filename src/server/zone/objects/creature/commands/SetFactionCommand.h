@@ -92,7 +92,7 @@ public:
 		if (faction == "neutral")
 			tano->setFaction(0);
 
-		if (faction == "imperial" || faction == "rebel")
+		if (faction == "imperial" || faction == "rebel" || faction == "hutt")
 			tano->setFaction(faction.hashCode());
 
 		if (tokenizer.hasMoreTokens()) {
@@ -113,7 +113,7 @@ public:
 		}
 
 		UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano);
-		tano->sendMessage(upvpsm);
+		tano->broadcastMessage(upvpsm, true, true);
 
 		return SUCCESS;
 	}
