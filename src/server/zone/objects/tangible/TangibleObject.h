@@ -308,6 +308,8 @@ public:
 
 	unsigned int getPlayerUseMask();
 
+	void setFaction(unsigned int crc);
+
 	int getFaction();
 
 	bool isRebel();
@@ -582,6 +584,8 @@ public:
 
 	unsigned int getPlayerUseMask();
 
+	void setFaction(unsigned int crc);
+
 	int getFaction();
 
 	bool isRebel();
@@ -750,6 +754,8 @@ public:
 	bool isDestroyed();
 
 	unsigned int getPlayerUseMask();
+
+	void setFaction(unsigned int crc);
 
 	int getFaction();
 

@@ -467,6 +467,10 @@ class TangibleObject extends SceneObject {
 		return playerUseMask;
 	}
 	
+	public void setFaction(unsigned int crc) {
+		faction = crc;
+	}
+	
 	public int getFaction() {
 		return faction;
 	}

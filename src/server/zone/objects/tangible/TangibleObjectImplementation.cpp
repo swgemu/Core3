@@ -55,7 +55,7 @@ which carries forward this exception.
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
-#include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/objects/tangible/component/Component.h"
