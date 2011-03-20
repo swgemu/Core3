@@ -218,25 +218,7 @@ public:
 
 	unsigned long long getGalacticTime();
 
-	unsigned int getWeatherID();
-
-	void setWeatherID(unsigned int value);
-
-	void changeWeatherID(int value);
-
-	bool isWeatherEnabled();
-
 	bool hasManagersStarted();
-
-	void setWeatherEnabled(bool value);
-
-	void setWeatherWindX(float value);
-
-	void setWeatherWindY(float value);
-
-	float getWeatherWindX();
-
-	float getWeatherWindY();
 
 	float getMinX();
 
@@ -292,14 +274,6 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 	MapLocationTable mapLocations;
 
 	bool managersStarted;
-
-	float weatherWindX;
-
-	float weatherWindY;
-
-	unsigned int weatherID;
-
-	bool weatherEnabled;
 
 public:
 	ZoneImplementation(ZoneProcessServer* processor, int zoneid);
@@ -358,25 +332,7 @@ public:
 
 	unsigned long long getGalacticTime();
 
-	unsigned int getWeatherID();
-
-	void setWeatherID(unsigned int value);
-
-	void changeWeatherID(int value);
-
-	bool isWeatherEnabled();
-
 	bool hasManagersStarted();
-
-	void setWeatherEnabled(bool value);
-
-	void setWeatherWindX(float value);
-
-	void setWeatherWindY(float value);
-
-	float getWeatherWindX();
-
-	float getWeatherWindY();
 
 	float getMinX();
 
@@ -465,25 +421,7 @@ public:
 
 	unsigned long long getGalacticTime();
 
-	unsigned int getWeatherID();
-
-	void setWeatherID(unsigned int value);
-
-	void changeWeatherID(int value);
-
-	bool isWeatherEnabled();
-
 	bool hasManagersStarted();
-
-	void setWeatherEnabled(bool value);
-
-	void setWeatherWindX(float value);
-
-	void setWeatherWindY(float value);
-
-	float getWeatherWindX();
-
-	float getWeatherWindY();
 
 	float getMinX();
 

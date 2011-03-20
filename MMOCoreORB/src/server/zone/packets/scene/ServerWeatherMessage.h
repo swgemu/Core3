@@ -47,34 +47,21 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../Zone.h"
+#include "server/zone/managers/weather/WeatherManager.h"
 
 class ServerWeatherMessage : public BaseMessage {
 public:
-	ServerWeatherMessage(Zone* zone) : BaseMessage() {
+	ServerWeatherMessage(WeatherManager* weatherManager) : BaseMessage() {
 
 		insertShort(0x03);
 		insertInt(0x486356EA);
-		insertInt(zone->getWeatherID());
+		insertInt(weatherManager->getWeatherID());
 
-		insertFloat(zone->getWeatherWindX());
+		insertFloat(weatherManager->getWindX());
 		insertFloat(0.0f);
-		insertFloat(zone->getWeatherWindY());
+		insertFloat(weatherManager->getWindY());
 
 	}
-
-    //for setting custom weather by @ command
-	/*ServerWeatherMessage(int weatherid) : BaseMessage() {
-		insertShort(0x03);
-		insertInt(0x486356EA);
-
-		insertInt(weatherid);
-		insertFloat(0.0f);
-		insertFloat(0.0f);
-		insertFloat(0.0f);
-
-
-	}*/
 
 };
 

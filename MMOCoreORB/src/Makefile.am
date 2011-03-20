@@ -184,6 +184,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/managers/loot/lootgroup/LootObject.cpp \
 				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
+				server/zone/managers/weather/WeatherManager.cpp \
 				server/zone/managers/city/CityManager.cpp \
 				server/zone/managers/planet/PlanetManager.cpp \
 				server/zone/managers/radial/RadialManager.cpp \
@@ -424,6 +425,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
+		server/zone/managers/weather/WeatherManagerImplementation.cpp \
 		server/zone/managers/city/CityManagerImplementation.cpp \
 		server/zone/objects/structure/StructureObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \

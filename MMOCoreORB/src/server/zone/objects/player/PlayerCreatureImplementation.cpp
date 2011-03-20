@@ -9,6 +9,7 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/weather/WeatherManager.h"
 #include "server/zone/packets/zone/unkByteFlag.h"
 #include "server/zone/packets/zone/CmdStartScene.h"
 #include "server/zone/packets/zone/CmdSceneReady.h"
@@ -38,6 +39,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
@@ -727,6 +729,12 @@ void PlayerCreatureImplementation::notifySceneReady() {
 	}
 
 	playerObject->sendFriendLists();
+
+	//Update weather if on a planet.
+	if (getZone()->getZoneID() < 10) {
+		ManagedReference<WeatherManager*> weatherManager = getZone()->getPlanetManager()->getWeatherManager();
+		weatherManager->sendWeatherPacket(_this);
+	}
 
 	if (isDead()) {
 		//If the player is dead, see if they already have a clone box. If so, resend it.

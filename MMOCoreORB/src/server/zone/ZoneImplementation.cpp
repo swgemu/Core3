@@ -69,12 +69,6 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, int id) : Manage
 	processor = serv;
 	server = processor->getZoneServer();
 
-	//Weather
-	weatherID = 0;
-	weatherWindX = 1.0f;
-	weatherWindY = -1.0f;
-	weatherEnabled = true;
-
 	heightMap = new HeightMap();
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
 

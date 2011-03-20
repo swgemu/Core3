@@ -14,6 +14,8 @@
 
 #include "server/zone/managers/structure/StructureManager.h"
 
+#include "server/zone/managers/weather/WeatherManager.h"
+
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 #include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
@@ -23,6 +25,8 @@
 /*
  *	PlanetManagerStub
  */
+
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADSHUTTLES__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETSHUTTLE__STRING_,RPC_ADDSHUTTLE__STRING_SHUTTLECREATURE_,RPC_DROPSHUTTLE__STRING_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -43,7 +47,7 @@ void PlanetManager::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -56,7 +60,7 @@ void PlanetManager::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -69,7 +73,7 @@ void PlanetManager::loadRegions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_LOADREGIONS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -82,7 +86,7 @@ void PlanetManager::loadPlayerRegions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_LOADPLAYERREGIONS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -95,7 +99,7 @@ void PlanetManager::loadNoBuildAreas() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_LOADNOBUILDAREAS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -108,7 +112,7 @@ void PlanetManager::loadShuttles() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_LOADSHUTTLES__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -121,7 +125,7 @@ void PlanetManager::loadBadgeAreas() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_LOADBADGEAREAS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -134,7 +138,7 @@ void PlanetManager::loadPerformanceLocations() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_LOADPERFORMANCELOCATIONS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -147,7 +151,7 @@ void PlanetManager::loadHuntingTargets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_LOADHUNTINGTARGETS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -160,7 +164,7 @@ void PlanetManager::loadReconLocations() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_LOADRECONLOCATIONS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -173,7 +177,7 @@ ShuttleCreature* PlanetManager::getShuttle(const String& arrivalPoint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETSHUTTLE__STRING_);
 		method.addAsciiParameter(arrivalPoint);
 
 		return (ShuttleCreature*) method.executeWithObjectReturn();
@@ -187,7 +191,7 @@ void PlanetManager::addShuttle(const String& city, ShuttleCreature* shuttle) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ADDSHUTTLE__STRING_SHUTTLECREATURE_);
 		method.addAsciiParameter(city);
 		method.addObjectParameter(shuttle);
 
@@ -202,7 +206,7 @@ void PlanetManager::dropShuttle(const String& city) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_DROPSHUTTLE__STRING_);
 		method.addAsciiParameter(city);
 
 		method.executeWithVoidReturn();
@@ -225,7 +229,7 @@ unsigned int PlanetManager::getTravelFare(const String& departurePlanet, const S
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETTRAVELFARE__STRING_STRING_);
 		method.addAsciiParameter(departurePlanet);
 		method.addAsciiParameter(arrivalPlanet);
 
@@ -240,7 +244,7 @@ void PlanetManager::sendPlanetTravelPointListResponse(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -263,11 +267,24 @@ StructureManager* PlanetManager::getStructureManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETSTRUCTUREMANAGER__);
 
 		return (StructureManager*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getStructureManager();
+}
+
+WeatherManager* PlanetManager::getWeatherManager() {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETWEATHERMANAGER__);
+
+		return (WeatherManager*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getWeatherManager();
 }
 
 TerrainManager* PlanetManager::getTerrainManager() {
@@ -285,7 +302,7 @@ Region* PlanetManager::getRegion(float x, float y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_GETREGION__FLOAT_FLOAT_);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -300,7 +317,7 @@ int PlanetManager::getRegionCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_GETREGIONCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -313,7 +330,7 @@ int PlanetManager::getNumberOfCities() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_GETNUMBEROFCITIES__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -326,7 +343,7 @@ void PlanetManager::increaseNumberOfCities() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_INCREASENUMBEROFCITIES__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -339,7 +356,7 @@ Region* PlanetManager::getRegion(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_GETREGION__INT_);
 		method.addSignedIntParameter(index);
 
 		return (Region*) method.executeWithObjectReturn();
@@ -353,7 +370,7 @@ void PlanetManager::addRegion(Region* region) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_ADDREGION__REGION_);
 		method.addObjectParameter(region);
 
 		method.executeWithVoidReturn();
@@ -367,7 +384,7 @@ void PlanetManager::dropRegion(Region* region) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_DROPREGION__REGION_);
 		method.addObjectParameter(region);
 
 		method.executeWithVoidReturn();
@@ -381,7 +398,7 @@ bool PlanetManager::hasRegion(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_HASREGION__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -395,7 +412,7 @@ void PlanetManager::addPerformanceLocation(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -418,7 +435,7 @@ void PlanetManager::addMissionNpc(SceneObject* npc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_ADDMISSIONNPC__SCENEOBJECT_);
 		method.addObjectParameter(npc);
 
 		method.executeWithVoidReturn();
@@ -441,7 +458,7 @@ void PlanetManager::addHuntingTargetTemplate(const String& temp1, const String& 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_);
 		method.addAsciiParameter(temp1);
 		method.addAsciiParameter(temp2);
 		method.addSignedIntParameter(level);
@@ -466,7 +483,7 @@ void PlanetManager::addReconLoc(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_ADDRECONLOC__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -489,7 +506,7 @@ void PlanetManager::addInformant(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_ADDINFORMANT__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -623,6 +640,11 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "weatherManager") {
+		TypeInfo<ManagedReference<WeatherManager* > >::parseFromBinaryStream(&weatherManager, stream);
+		return true;
+	}
+
 	if (_name == "numberOfCities") {
 		TypeInfo<int >::parseFromBinaryStream(&numberOfCities, stream);
 		return true;
@@ -667,6 +689,14 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "weatherManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<WeatherManager* > >::toBinaryStream(&weatherManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "numberOfCities";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -676,7 +706,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 5 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
@@ -697,6 +727,8 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	numberOfCities = 0;
 	// server/zone/managers/planet/PlanetManager.idl():  		structureManager = null;
 	structureManager = NULL;
+	// server/zone/managers/planet/PlanetManager.idl():  		weatherManager = null;
+	weatherManager = NULL;
 }
 
 ShuttleCreature* PlanetManagerImplementation::getShuttle(const String& arrivalPoint) {
@@ -725,6 +757,11 @@ Vector<ManagedReference<Region* > > PlanetManagerImplementation::getRegions(Stri
 StructureManager* PlanetManagerImplementation::getStructureManager() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return structureManager;
 	return structureManager;
+}
+
+WeatherManager* PlanetManagerImplementation::getWeatherManager() {
+	// server/zone/managers/planet/PlanetManager.idl():  		return weatherManager;
+	return weatherManager;
 }
 
 TerrainManager* PlanetManagerImplementation::getTerrainManager() {
@@ -829,8 +866,6 @@ MissionTargetMap* PlanetManagerImplementation::getInformants() {
 PlanetManagerAdapter::PlanetManagerAdapter(PlanetManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADSHUTTLES__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETSHUTTLE__STRING_,RPC_ADDSHUTTLE__STRING_SHUTTLECREATURE_,RPC_DROPSHUTTLE__STRING_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,};
-
 Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
@@ -885,6 +920,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_GETSTRUCTUREMANAGER__:
 		resp->insertLong(getStructureManager()->_getObjectID());
+		break;
+	case RPC_GETWEATHERMANAGER__:
+		resp->insertLong(getWeatherManager()->_getObjectID());
 		break;
 	case RPC_GETREGION__FLOAT_FLOAT_:
 		resp->insertLong(getRegion(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
@@ -998,6 +1036,10 @@ void PlanetManagerAdapter::sendPlanetTravelPointListResponse(PlayerCreature* pla
 
 StructureManager* PlanetManagerAdapter::getStructureManager() {
 	return ((PlanetManagerImplementation*) impl)->getStructureManager();
+}
+
+WeatherManager* PlanetManagerAdapter::getWeatherManager() {
+	return ((PlanetManagerImplementation*) impl)->getWeatherManager();
 }
 
 Region* PlanetManagerAdapter::getRegion(float x, float y) {
