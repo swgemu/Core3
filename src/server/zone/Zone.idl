@@ -102,12 +102,6 @@ class Zone extends ManagedObject implements QuadTree {
 	private transient MapLocationTable mapLocations;
 	
 	private boolean managersStarted;
-
-	//Weather
-	private float weatherWindX; //1.0 = east, -1.0 = west
-	private float weatherWindY; //1.0 = north, -1.0 = south
-	private unsigned int weatherID;
-	private boolean weatherEnabled;
 	
 	public native Zone(ZoneProcessServer processor, int zoneid);
 	public native void initializeTransientMembers();
@@ -189,60 +183,8 @@ class Zone extends ManagedObject implements QuadTree {
 		return galacticTime.miliDifference() / 1000;
 	}
 
-	public unsigned int getWeatherID() {
-		if (server != null)
-			server.increaseOnlinePlayers();
-
-		if (server == null)
-			server.decreaseOnlinePlayers();
-
-		return weatherID;
-	}
-
-	public void setWeatherID(unsigned int value) {
-		weatherID = value;
-	}
-
-	public void changeWeatherID(int value) {
-		if (weatherID == 0 && value < 0) {
-			weatherID = 0;
-			return;
-		}
-
-		weatherID += value;
-
-		if (weatherID > 4) {
-			weatherID = 4;
-			return;
-		}
-	}
-
-	public boolean isWeatherEnabled() {
-		return weatherEnabled;
-	}
-	
 	public boolean hasManagersStarted() {
 		return managersStarted;
-	}
-
-	public void setWeatherEnabled(boolean value) {
-		weatherEnabled = value;
-	}
-
-	public void setWeatherWindX(float value) {
-		weatherWindX = value;
-	}
-
-	public void setWeatherWindY(float value) {
-		weatherWindY = value;
-	}
-
-	public float getWeatherWindX() {
-		return weatherWindX;
-	}
-
-	public float getWeatherWindY() {
-		return weatherWindY;
 	}
 	
 	/**

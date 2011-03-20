@@ -262,6 +262,8 @@ public:
 
 	int getPlayerCount();
 
+	PlayerMap* getPlayerMap();
+
 	ChatRoom* getGuildRoom();
 
 	ChatRoom* getGroupRoom();
@@ -393,6 +395,8 @@ public:
 	unsigned int getNextRoomID();
 
 	int getPlayerCount();
+
+	PlayerMap* getPlayerMap();
 
 	ChatRoom* getGuildRoom();
 

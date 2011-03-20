@@ -211,6 +211,11 @@ class ChatManager extends ManagedService implements Logger {
 	public int getPlayerCount() {
 		return playerMap.size();
 	}
+
+	@local
+	public PlayerMap getPlayerMap() {
+		return playerMap;
+	}
 	
 	/**
 	 * Returns the parent room for guild chat rooms.
