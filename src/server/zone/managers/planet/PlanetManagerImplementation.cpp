@@ -7,11 +7,16 @@
 
 #include "PlanetManager.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/db/ServerDatabase.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/weather/WeatherManager.h"
+
+
+
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -48,6 +53,11 @@ void PlanetManagerImplementation::initialize() {
 
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();
+
+	if (zone->getZoneID() < 10) { //No need for a weather manager in tutorial or corvette etc.
+		weatherManager = new WeatherManager(zone);
+		weatherManager->initialize();
+	}
 }
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {
@@ -537,3 +547,5 @@ void PlanetManagerImplementation::loadReconLocations() {
 		error(e.getMessage());
 	}
 }
+
+
