@@ -72,7 +72,7 @@ public:
 
 		int counter = 0;
 		String dummy;
-
+		System::out << arguments.toString() << endl;
 		String usageError = "Usage: /waypoint X Y <name> or /waypoint <name>";
 
 		String waypointData = arguments.toString();

@@ -206,6 +206,8 @@ public:
 		box->addMenuItem("@find_display:trainer_entertainer", MapLocationType::TRAINER_ENTERTAINER);
 		box->addMenuItem("@find_display:trainer_medic", MapLocationType::TRAINER_MEDIC);
 
+		//TODO Add Vendor Options...
+
 		player->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
 	}

@@ -1,0 +1,48 @@
+/*
+ * CreateVendorCallback.h
+ *
+ *  Created on: Mar 18, 2011
+ *      Author: polonel
+ */
+
+#ifndef CREATEVENDORCALLBACK_H_
+#define CREATEVENDORCALLBACK_H_
+
+#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
+
+class CreateVendorCallback : public SuiMessageCallback {
+public:
+	CreateVendorCallback(ZoneClientSession* client, ZoneProcessServer* server)
+		: SuiMessageCallback(client, server) {
+	}
+
+	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+		if (!suiBox->isListBox())
+			return;
+
+		if (args->size() < 1)
+			return;
+
+		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::CREATEVENDOR);
+		ManagedReference<CreateVendorSession*> session = dynamic_cast<CreateVendorSession*>(facade.get());
+
+		if (session == NULL)
+			return;
+
+		if (cancelPressed) {
+			session->cancelSession();
+			return;
+		}
+
+		int idx = Integer::valueOf(args->get(0).toString());
+		SuiListBox* box = (SuiListBox*) suiBox;
+		byte menuID = box->getMenuObjectID(idx);
+
+		session->handleMenuSelect(menuID);
+
+	}
+};
+
+#endif /* CREATEVENDORCALLBACK_H_ */

@@ -742,6 +742,8 @@ public:
 
 	bool isInformantCreature();
 
+	bool isVendorCreature();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -1385,6 +1387,8 @@ public:
 
 	virtual bool isInformantCreature();
 
+	virtual bool isVendorCreature();
+
 	CreatureObject* _this;
 
 	operator const CreatureObject*();
@@ -1869,6 +1873,8 @@ public:
 	bool isAiAgent();
 
 	bool isInformantCreature();
+
+	bool isVendorCreature();
 
 protected:
 	String _param0_sendSystemMessage__String_;

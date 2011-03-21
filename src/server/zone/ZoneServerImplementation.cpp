@@ -62,7 +62,7 @@ which carries forward this exception.
 #include "managers/crafting/CraftingManager.h"
 #include "managers/loot/LootManager.h"
 #include "managers/professions/ProfessionManager.h"
-#include "managers/bazaar/BazaarManager.h"
+#include "managers/auction/AuctionManager.h"
 #include "managers/minigames/FishingManager.h"
 #include "managers/minigames/GamblingManager.h"
 #include "managers/minigames/ForageManager.h"
@@ -250,9 +250,9 @@ void ZoneServerImplementation::startManagers() {
 
 	objectManager->loadStaticObjects();
 
-	bazaarManager = new BazaarManager(_this);
-	bazaarManager->deploy();
-	bazaarManager->initialize();
+	auctionManager = new AuctionManager(_this);
+	auctionManager->deploy();
+	auctionManager->initialize();
 
 	missionManager = new MissionManager(_this, processor);
 	missionManager->deploy("MissionManager");
@@ -342,7 +342,7 @@ void ZoneServerImplementation::stopManagers() {
 	radialManager = NULL;
 	craftingManager = NULL;
 	lootManager = NULL;
-	bazaarManager = NULL;
+	auctionManager = NULL;
 	missionManager = NULL;
 	fishingManager = NULL;
 	guildManager = NULL;

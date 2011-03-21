@@ -75,7 +75,7 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 	}
 
 	String h = imageDesignData.getHairCustomizationString();
-	//System::out << h << endl;
+
 	if (commitChanges) {
 		//TODO: set XP Values
 
