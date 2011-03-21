@@ -98,7 +98,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
 	objectFactory.registerObject<TrainerCreature>(SceneObject::TRAINERCREATURE);
 	objectFactory.registerObject<InformantCreature>(SceneObject::INFORMANTCREATURE);
-	objectFactory.registerObject<VendorCreature>(SceneObject::VENDORCREATURE);
 
 	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
 
@@ -217,7 +216,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CityVoteTerminal>(SceneObject::CITYVOTETERMINAL);
 	objectFactory.registerObject<GamblingTerminal>(SceneObject::GAMBLINGTERMINAL);
 	objectFactory.registerObject<CloningTerminal>(SceneObject::CLONING);
-	objectFactory.registerObject<VendorTerminal>(SceneObject::VENDORTERMINAL);
 
 	objectFactory.registerObject<LairObject>(SceneObject::LAIR);
 

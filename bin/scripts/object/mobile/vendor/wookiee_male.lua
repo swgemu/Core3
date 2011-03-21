@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_wookiee_male = object_mobile_vendor_shared_wookiee_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_wookiee_male, "object/mobile/vendor/wookiee_male.iff")

@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_trandoshan_male = object_mobile_vendor_shared_trandoshan_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_trandoshan_male, "object/mobile/vendor/trandoshan_male.iff")

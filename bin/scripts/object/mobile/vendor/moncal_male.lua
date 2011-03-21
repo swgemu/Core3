@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_moncal_male = object_mobile_vendor_shared_moncal_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_moncal_male, "object/mobile/vendor/moncal_male.iff")

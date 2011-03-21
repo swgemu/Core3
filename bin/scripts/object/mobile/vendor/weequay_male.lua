@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_weequay_male = object_mobile_vendor_shared_weequay_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_weequay_male, "object/mobile/vendor/weequay_male.iff")

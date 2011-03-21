@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_twilek_male = object_mobile_vendor_shared_twilek_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_twilek_male, "object/mobile/vendor/twilek_male.iff")
