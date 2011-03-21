@@ -14,6 +14,8 @@
  *	MissionSpawnActiveAreaStub
  */
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETMISSIONOBJECTIVE__DESTROYMISSIONOBJECTIVE_};
+
 MissionSpawnActiveArea::MissionSpawnActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	MissionSpawnActiveAreaImplementation* _implementation = new MissionSpawnActiveAreaImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void MissionSpawnActiveArea::notifyEnter(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYENTER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -47,7 +49,7 @@ void MissionSpawnActiveArea::setMissionObjective(DestroyMissionObjective* missio
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETMISSIONOBJECTIVE__DESTROYMISSIONOBJECTIVE_);
 		method.addObjectParameter(mission);
 
 		method.executeWithVoidReturn();
@@ -236,8 +238,6 @@ void MissionSpawnActiveAreaImplementation::setMissionObjective(DestroyMissionObj
 
 MissionSpawnActiveAreaAdapter::MissionSpawnActiveAreaAdapter(MissionSpawnActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
-
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETMISSIONOBJECTIVE__DESTROYMISSIONOBJECTIVE_};
 
 Packet* MissionSpawnActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

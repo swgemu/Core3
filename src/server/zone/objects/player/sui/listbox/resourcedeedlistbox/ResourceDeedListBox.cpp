@@ -12,6 +12,8 @@
  *	ResourceDeedListBoxStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ADDBOX__STRING_,RPC_GETBOXCOUNT__,RPC_GETBOX__INT_,RPC_REMOVEBOX__,RPC_GETCURRENTBOX__,RPC_GETPREVIOUSBOX__};
+
 ResourceDeedListBox::ResourceDeedListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiListBox(DummyConstructorParameter::instance()) {
 	ResourceDeedListBoxImplementation* _implementation = new ResourceDeedListBoxImplementation(player, windowType, listBoxType);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void ResourceDeedListBox::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ void ResourceDeedListBox::addBox(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ADDBOX__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -58,7 +60,7 @@ int ResourceDeedListBox::getBoxCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETBOXCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -71,7 +73,7 @@ String ResourceDeedListBox::getBox(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETBOX__INT_);
 		method.addSignedIntParameter(index);
 
 		method.executeWithAsciiReturn(_return_getBox);
@@ -86,7 +88,7 @@ void ResourceDeedListBox::removeBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_REMOVEBOX__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -99,7 +101,7 @@ String ResourceDeedListBox::getCurrentBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETCURRENTBOX__);
 
 		method.executeWithAsciiReturn(_return_getCurrentBox);
 		return _return_getCurrentBox;
@@ -113,7 +115,7 @@ String ResourceDeedListBox::getPreviousBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETPREVIOUSBOX__);
 
 		method.executeWithAsciiReturn(_return_getPreviousBox);
 		return _return_getPreviousBox;
@@ -272,8 +274,6 @@ String ResourceDeedListBoxImplementation::getCurrentBox() {
 
 ResourceDeedListBoxAdapter::ResourceDeedListBoxAdapter(ResourceDeedListBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ADDBOX__STRING_,RPC_GETBOXCOUNT__,RPC_GETBOX__INT_,RPC_REMOVEBOX__,RPC_GETCURRENTBOX__,RPC_GETPREVIOUSBOX__};
 
 Packet* ResourceDeedListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

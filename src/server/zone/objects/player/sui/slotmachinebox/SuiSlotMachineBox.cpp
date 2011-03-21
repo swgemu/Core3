@@ -14,6 +14,8 @@
  *	SuiSlotMachineBoxStub
  */
 
+enum {RPC_GETPAYOUTBOXID__ = 6};
+
 SuiSlotMachineBox::SuiSlotMachineBox(PlayerCreature* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBox(DummyConstructorParameter::instance()) {
 	SuiSlotMachineBoxImplementation* _implementation = new SuiSlotMachineBoxImplementation(player, windowType, payoutBox, listBoxType);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ unsigned int SuiSlotMachineBox::getPayoutBoxID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_GETPAYOUTBOXID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -193,8 +195,6 @@ unsigned int SuiSlotMachineBoxImplementation::getPayoutBoxID() {
 
 SuiSlotMachineBoxAdapter::SuiSlotMachineBoxAdapter(SuiSlotMachineBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
-
-enum {RPC_GETPAYOUTBOXID__ = 6};
 
 Packet* SuiSlotMachineBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

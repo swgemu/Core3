@@ -28,6 +28,8 @@
  *	ShuttleInstallationStub
  */
 
+enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_SPAWNSHUTTLEOBJECTS__,RPC_DESPAWNSHUTTLEOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_};
+
 ShuttleInstallation::ShuttleInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	ShuttleInstallationImplementation* _implementation = new ShuttleInstallationImplementation();
 	_impl = _implementation;
@@ -47,7 +49,7 @@ void ShuttleInstallation::insertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -61,7 +63,7 @@ void ShuttleInstallation::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -74,7 +76,7 @@ void ShuttleInstallation::spawnShuttleObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SPAWNSHUTTLEOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -87,7 +89,7 @@ void ShuttleInstallation::despawnShuttleObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_DESPAWNSHUTTLEOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -100,7 +102,7 @@ bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -298,8 +300,6 @@ void ShuttleInstallationImplementation::removeFromZone() {
 
 ShuttleInstallationAdapter::ShuttleInstallationAdapter(ShuttleInstallationImplementation* obj) : InstallationObjectAdapter(obj) {
 }
-
-enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_SPAWNSHUTTLEOBJECTS__,RPC_DESPAWNSHUTTLEOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_};
 
 Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

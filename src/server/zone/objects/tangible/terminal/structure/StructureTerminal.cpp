@@ -16,6 +16,8 @@
  *	StructureTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,};
+
 StructureTerminal::StructureTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	StructureTerminalImplementation* _implementation = new StructureTerminalImplementation();
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void StructureTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -48,7 +50,7 @@ int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selec
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -208,8 +210,6 @@ void StructureTerminalImplementation::initializeTransientMembers() {
 
 StructureTerminalAdapter::StructureTerminalAdapter(StructureTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,};
 
 Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

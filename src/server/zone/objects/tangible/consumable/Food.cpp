@@ -12,6 +12,8 @@
  *	FoodStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEPRIVATEDATA__};
+
 Food::Food() : Consumable(DummyConstructorParameter::instance()) {
 	FoodImplementation* _implementation = new FoodImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void Food::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ void Food::initializePrivateData() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZEPRIVATEDATA__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -200,8 +202,6 @@ void FoodImplementation::initializePrivateData() {
 
 FoodAdapter::FoodAdapter(FoodImplementation* obj) : ConsumableAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEPRIVATEDATA__};
 
 Packet* FoodAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

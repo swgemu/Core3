@@ -30,6 +30,8 @@
  *	SceneObjectStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__PLAYERCREATURE_,RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_,RPC_INSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_REMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETCONTAINEROBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETZONE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISBAZAARTERMINAL__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETSTATICOBJECT__BOOL_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETACTIVEREGION__,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_GETMAPLOCATIONSTYPE1__,RPC_GETMAPLOCATIONSTYPE2__,RPC_GETMAPLOCATIONSTYPE3__,RPC_CREATECHILDOBJECTS__};
+
 SceneObject::SceneObject() : QuadTreeEntry(DummyConstructorParameter::instance()) {
 	SceneObjectImplementation* _implementation = new SceneObjectImplementation();
 	_impl = _implementation;
@@ -49,7 +51,7 @@ void SceneObject::initializePrivateData() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZEPRIVATEDATA__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -71,7 +73,7 @@ void SceneObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -84,7 +86,7 @@ void SceneObject::notifyLoadFromDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -97,7 +99,7 @@ void SceneObject::info(const String& msg, bool forced) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_INFO__STRING_BOOL_);
 		method.addAsciiParameter(msg);
 		method.addBooleanParameter(forced);
 
@@ -112,7 +114,7 @@ void SceneObject::error(const String& msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ERROR__STRING_);
 		method.addAsciiParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -126,7 +128,7 @@ int SceneObject::inRangeObjects(unsigned int gameObjectType, float range) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_INRANGEOBJECTS__INT_FLOAT_);
 		method.addUnsignedIntParameter(gameObjectType);
 		method.addFloatParameter(range);
 
@@ -141,7 +143,7 @@ bool SceneObject::isInRange(SceneObject* obj, float range) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISINRANGE__SCENEOBJECT_FLOAT_);
 		method.addObjectParameter(obj);
 		method.addFloatParameter(range);
 
@@ -156,7 +158,7 @@ bool SceneObject::addObject(SceneObject* object, int containmentType, bool notif
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addBooleanParameter(notifyClient);
@@ -172,7 +174,7 @@ bool SceneObject::removeObject(SceneObject* object, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(notifyClient);
 
@@ -187,7 +189,7 @@ int SceneObject::canAddObject(SceneObject* object, int containmentType, String& 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
@@ -203,7 +205,7 @@ void SceneObject::synchronizedUIListen(SceneObject* player, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -218,7 +220,7 @@ void SceneObject::synchronizedUIStopListen(SceneObject* player, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -233,7 +235,7 @@ void SceneObject::updateToDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_UPDATETODATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -246,7 +248,7 @@ void SceneObject::updateToDatabaseWithoutChildren() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_UPDATETODATABASEWITHOUTCHILDREN__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -259,7 +261,7 @@ void SceneObject::updateToDatabaseAllObjects(bool startTask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_UPDATETODATABASEALLOBJECTS__BOOL_);
 		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
@@ -273,7 +275,7 @@ void SceneObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
 		method.addBooleanParameter(destroyContainedObjects);
 
 		method.executeWithVoidReturn();
@@ -287,7 +289,7 @@ int SceneObject::canBeDestroyed(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_CANBEDESTROYED__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -301,7 +303,7 @@ void SceneObject::create(ZoneClientSession* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_CREATE__ZONECLIENTSESSION_);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -315,7 +317,7 @@ void SceneObject::destroy(ZoneClientSession* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_DESTROY__ZONECLIENTSESSION_);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -329,7 +331,7 @@ void SceneObject::close(ZoneClientSession* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_CLOSE__ZONECLIENTSESSION_);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -343,7 +345,7 @@ void SceneObject::link(ZoneClientSession* client, unsigned int containmentType) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_LINK__ZONECLIENTSESSION_INT_);
 		method.addObjectParameter(client);
 		method.addUnsignedIntParameter(containmentType);
 
@@ -358,7 +360,7 @@ BaseMessage* SceneObject::link(unsigned long long objectID, unsigned int contain
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_LINK__LONG_INT_);
 		method.addUnsignedLongParameter(objectID);
 		method.addUnsignedIntParameter(containmentType);
 
@@ -373,7 +375,7 @@ void SceneObject::sendTo(SceneObject* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SENDTO__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -388,7 +390,7 @@ void SceneObject::sendWithoutParentTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -402,7 +404,7 @@ void SceneObject::sendWithoutContainerObjectsTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -416,7 +418,7 @@ void SceneObject::sendDestroyTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_SENDDESTROYTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -430,7 +432,7 @@ void SceneObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -444,7 +446,7 @@ void SceneObject::sendContainerObjectsTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -458,7 +460,7 @@ void SceneObject::sendSlottedObjectsTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -472,7 +474,7 @@ void SceneObject::sendToOwner(bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_SENDTOOWNER__BOOL_);
 		method.addBooleanParameter(doClose);
 
 		method.executeWithVoidReturn();
@@ -486,7 +488,7 @@ void SceneObject::sendAttributeListTo(PlayerCreature* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -509,7 +511,7 @@ void SceneObject::setCustomObjectName(const UnicodeString& name, bool notifyClie
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_);
 		method.addUnicodeParameter(name);
 		method.addBooleanParameter(notifyClient);
 
@@ -533,7 +535,7 @@ void SceneObject::openContainerTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_OPENCONTAINERTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -547,7 +549,7 @@ void SceneObject::closeContainerTo(PlayerCreature* player, bool notify) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(notify);
 
@@ -562,7 +564,7 @@ void SceneObject::insertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -576,7 +578,7 @@ void SceneObject::insertToBuilding(BuildingObject* building) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_INSERTTOBUILDING__BUILDINGOBJECT_);
 		method.addObjectParameter(building);
 
 		method.executeWithVoidReturn();
@@ -590,7 +592,7 @@ void SceneObject::switchZone(int newZoneID, float newPostionX, float newPosition
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_SWITCHZONE__INT_FLOAT_FLOAT_FLOAT_LONG_);
 		method.addSignedIntParameter(newZoneID);
 		method.addFloatParameter(newPostionX);
 		method.addFloatParameter(newPositionZ);
@@ -608,7 +610,7 @@ void SceneObject::teleport(float newPositionX, float newPositionZ, float newPosi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_);
 		method.addFloatParameter(newPositionX);
 		method.addFloatParameter(newPositionZ);
 		method.addFloatParameter(newPositionY);
@@ -625,7 +627,7 @@ void SceneObject::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -638,7 +640,7 @@ void SceneObject::removeFromBuilding(BuildingObject* building) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_);
 		method.addObjectParameter(building);
 
 		method.executeWithVoidReturn();
@@ -652,7 +654,7 @@ void SceneObject::updateZone(bool lightUpdate, bool sendPackets) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_UPDATEZONE__BOOL_BOOL_);
 		method.addBooleanParameter(lightUpdate);
 		method.addBooleanParameter(sendPackets);
 
@@ -667,7 +669,7 @@ void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_);
 		method.addObjectParameter(newParent);
 		method.addBooleanParameter(lightUpdate);
 		method.addBooleanParameter(sendPackets);
@@ -683,7 +685,7 @@ void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf, bool lock
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_);
 		method.addObjectParameter(message);
 		method.addBooleanParameter(sendSelf);
 		method.addBooleanParameter(lockZone);
@@ -699,7 +701,7 @@ void SceneObject::broadcastObject(SceneObject* object, bool sendSelf) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(sendSelf);
 
@@ -714,7 +716,7 @@ void SceneObject::broadcastDestroy(SceneObject* object, bool sendSelf) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(sendSelf);
 
@@ -738,7 +740,7 @@ void SceneObject::sendMessage(BasePacket* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, RPC_SENDMESSAGE__BASEPACKET_);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -752,7 +754,7 @@ int SceneObject::compareTo(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, RPC_COMPARETO__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		return method.executeWithSignedIntReturn();
@@ -775,7 +777,7 @@ unsigned long long SceneObject::getParentID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, RPC_GETPARENTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -815,7 +817,7 @@ Facade* SceneObject::getActiveSession(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, RPC_GETACTIVESESSION__INT_);
 		method.addUnsignedIntParameter(type);
 
 		return (Facade*) method.executeWithObjectReturn();
@@ -829,7 +831,7 @@ void SceneObject::addActiveSession(unsigned int type, Facade* session) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, RPC_ADDACTIVESESSION__INT_FACADE_);
 		method.addUnsignedIntParameter(type);
 		method.addObjectParameter(session);
 
@@ -844,7 +846,7 @@ bool SceneObject::containsActiveSession(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, RPC_CONTAINSACTIVESESSION__INT_);
 		method.addUnsignedIntParameter(type);
 
 		return method.executeWithBooleanReturn();
@@ -858,7 +860,7 @@ bool SceneObject::dropActiveSession(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, RPC_DROPACTIVESESSION__INT_);
 		method.addUnsignedIntParameter(type);
 
 		return method.executeWithBooleanReturn();
@@ -872,7 +874,7 @@ int SceneObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -887,7 +889,7 @@ void SceneObject::notifyAddedToCloseObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, RPC_NOTIFYADDEDTOCLOSEOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -900,7 +902,7 @@ void SceneObject::notifyRemovedFromCloseObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -913,7 +915,7 @@ float SceneObject::getDistanceTo(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, RPC_GETDISTANCETO__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithFloatReturn();
@@ -936,7 +938,7 @@ void SceneObject::updateVehiclePosition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, RPC_UPDATEVEHICLEPOSITION__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -949,7 +951,7 @@ int SceneObject::notifyObjectInserted(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithSignedIntReturn();
@@ -963,7 +965,7 @@ int SceneObject::notifyObjectRemoved(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithSignedIntReturn();
@@ -977,7 +979,7 @@ bool SceneObject::hasNotifiedSentObject(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -991,7 +993,7 @@ void SceneObject::addNotifiedSentObject(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -1005,7 +1007,7 @@ void SceneObject::removeNotifiedSentObject(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -1019,7 +1021,7 @@ unsigned long long SceneObject::getObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, RPC_GETOBJECTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -1041,7 +1043,7 @@ float SceneObject::getWorldPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, RPC_GETWORLDPOSITIONX__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1054,7 +1056,7 @@ float SceneObject::getWorldPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, RPC_GETWORLDPOSITIONY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1067,7 +1069,7 @@ float SceneObject::getWorldPositionZ() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, RPC_GETWORLDPOSITIONZ__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1089,7 +1091,7 @@ float SceneObject::getDirectionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, RPC_GETDIRECTIONX__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1102,7 +1104,7 @@ float SceneObject::getDirectionZ() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, RPC_GETDIRECTIONZ__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1115,7 +1117,7 @@ float SceneObject::getDirectionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, RPC_GETDIRECTIONY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1128,7 +1130,7 @@ float SceneObject::getDirectionW() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, RPC_GETDIRECTIONW__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1150,7 +1152,7 @@ unsigned int SceneObject::getClientObjectCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, RPC_GETCLIENTOBJECTCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1163,7 +1165,7 @@ unsigned int SceneObject::getServerObjectCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, RPC_GETSERVEROBJECTCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1176,7 +1178,7 @@ bool SceneObject::isWaypointObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, RPC_ISWAYPOINTOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1198,7 +1200,7 @@ String SceneObject::getObjectNameStringIdFile() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, RPC_GETOBJECTNAMESTRINGIDFILE__);
 
 		method.executeWithAsciiReturn(_return_getObjectNameStringIdFile);
 		return _return_getObjectNameStringIdFile;
@@ -1212,7 +1214,7 @@ String SceneObject::getObjectNameStringIdName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, RPC_GETOBJECTNAMESTRINGIDNAME__);
 
 		method.executeWithAsciiReturn(_return_getObjectNameStringIdName);
 		return _return_getObjectNameStringIdName;
@@ -1235,7 +1237,7 @@ int SceneObject::getArrangementDescriptorSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, RPC_GETARRANGEMENTDESCRIPTORSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1248,7 +1250,7 @@ String SceneObject::getArrangementDescriptor(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 82);
+		DistributedMethod method(this, RPC_GETARRANGEMENTDESCRIPTOR__INT_);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getArrangementDescriptor);
@@ -1263,7 +1265,7 @@ String SceneObject::getSlotDescriptor(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, RPC_GETSLOTDESCRIPTOR__INT_);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getSlotDescriptor);
@@ -1278,7 +1280,7 @@ bool SceneObject::hasSlotDescriptor(const String& descr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, RPC_HASSLOTDESCRIPTOR__STRING_);
 		method.addAsciiParameter(descr);
 
 		return method.executeWithBooleanReturn();
@@ -1292,7 +1294,7 @@ SceneObject* SceneObject::getSlottedObject(const String& slot) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, RPC_GETSLOTTEDOBJECT__STRING_);
 		method.addAsciiParameter(slot);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -1306,7 +1308,7 @@ int SceneObject::getSlotDescriptorSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 86);
+		DistributedMethod method(this, RPC_GETSLOTDESCRIPTORSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1319,7 +1321,7 @@ int SceneObject::getContainerObjectsSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 87);
+		DistributedMethod method(this, RPC_GETCONTAINEROBJECTSSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1332,7 +1334,7 @@ bool SceneObject::hasFullContainerObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 88);
+		DistributedMethod method(this, RPC_HASFULLCONTAINEROBJECTS__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1345,7 +1347,7 @@ int SceneObject::getContainerVolumeLimit() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 89);
+		DistributedMethod method(this, RPC_GETCONTAINERVOLUMELIMIT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1358,7 +1360,7 @@ SceneObject* SceneObject::getContainerObject(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 90);
+		DistributedMethod method(this, RPC_GETCONTAINEROBJECT__INT_);
 		method.addSignedIntParameter(idx);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -1372,7 +1374,7 @@ ZoneClientSession* SceneObject::getClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 91);
+		DistributedMethod method(this, RPC_GETCLIENT__);
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
@@ -1385,7 +1387,7 @@ unsigned int SceneObject::getGameObjectType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 92);
+		DistributedMethod method(this, RPC_GETGAMEOBJECTTYPE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1398,7 +1400,7 @@ unsigned int SceneObject::getClientGameObjectType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 93);
+		DistributedMethod method(this, RPC_GETCLIENTGAMEOBJECTTYPE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1411,7 +1413,7 @@ unsigned int SceneObject::getContainmentType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 94);
+		DistributedMethod method(this, RPC_GETCONTAINMENTTYPE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1424,7 +1426,7 @@ Zone* SceneObject::getZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 95);
+		DistributedMethod method(this, RPC_GETZONE__);
 
 		return (Zone*) method.executeWithObjectReturn();
 	} else
@@ -1437,7 +1439,7 @@ float SceneObject::getDirectionAngle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 96);
+		DistributedMethod method(this, RPC_GETDIRECTIONANGLE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1450,7 +1452,7 @@ float SceneObject::getSpecialDirectionAngle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 97);
+		DistributedMethod method(this, RPC_GETSPECIALDIRECTIONANGLE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1463,7 +1465,7 @@ void SceneObject::rotate(int degrees) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 98);
+		DistributedMethod method(this, RPC_ROTATE__INT_);
 		method.addSignedIntParameter(degrees);
 
 		method.executeWithVoidReturn();
@@ -1477,7 +1479,7 @@ void SceneObject::notifySelfPositionUpdate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 99);
+		DistributedMethod method(this, RPC_NOTIFYSELFPOSITIONUPDATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1490,7 +1492,7 @@ void SceneObject::notifyCloseContainer(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 100);
+		DistributedMethod method(this, RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -1504,7 +1506,7 @@ unsigned int SceneObject::getMovementCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 101);
+		DistributedMethod method(this, RPC_GETMOVEMENTCOUNTER__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1517,7 +1519,7 @@ SceneObject* SceneObject::getParent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 102);
+		DistributedMethod method(this, RPC_GETPARENT__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -1530,7 +1532,7 @@ ZoneServer* SceneObject::getZoneServer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 103);
+		DistributedMethod method(this, RPC_GETZONESERVER__);
 
 		return (ZoneServer*) method.executeWithObjectReturn();
 	} else
@@ -1543,7 +1545,7 @@ SceneObject* SceneObject::getRootParent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 104);
+		DistributedMethod method(this, RPC_GETROOTPARENT__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -1556,7 +1558,7 @@ SceneObject* SceneObject::getParentRecursively(unsigned int gameObjectType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 105);
+		DistributedMethod method(this, RPC_GETPARENTRECURSIVELY__INT_);
 		method.addUnsignedIntParameter(gameObjectType);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -1570,7 +1572,7 @@ bool SceneObject::isASubChildOf(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 106);
+		DistributedMethod method(this, RPC_ISASUBCHILDOF__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -1584,7 +1586,7 @@ UnicodeString SceneObject::getCustomObjectName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 107);
+		DistributedMethod method(this, RPC_GETCUSTOMOBJECTNAME__);
 
 		method.executeWithUnicodeReturn(_return_getCustomObjectName);
 		return _return_getCustomObjectName;
@@ -1598,7 +1600,7 @@ String SceneObject::getLoggingName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 108);
+		DistributedMethod method(this, RPC_GETLOGGINGNAME__);
 
 		method.executeWithAsciiReturn(_return_getLoggingName);
 		return _return_getLoggingName;
@@ -1612,7 +1614,7 @@ bool SceneObject::isPlayerCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 109);
+		DistributedMethod method(this, RPC_ISPLAYERCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1625,7 +1627,7 @@ bool SceneObject::isShuttleInstallation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 110);
+		DistributedMethod method(this, RPC_ISSHUTTLEINSTALLATION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1638,7 +1640,7 @@ bool SceneObject::isPlayerObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 111);
+		DistributedMethod method(this, RPC_ISPLAYEROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1651,7 +1653,7 @@ bool SceneObject::isActiveArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 112);
+		DistributedMethod method(this, RPC_ISACTIVEAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1664,7 +1666,7 @@ bool SceneObject::isRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 113);
+		DistributedMethod method(this, RPC_ISREGION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1677,7 +1679,7 @@ bool SceneObject::isCreatureObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 114);
+		DistributedMethod method(this, RPC_ISCREATUREOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1690,7 +1692,7 @@ bool SceneObject::isVehicleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 115);
+		DistributedMethod method(this, RPC_ISVEHICLEOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1703,7 +1705,7 @@ bool SceneObject::isBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 116);
+		DistributedMethod method(this, RPC_ISBUILDINGOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1716,7 +1718,7 @@ bool SceneObject::isCloningBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 117);
+		DistributedMethod method(this, RPC_ISCLONINGBUILDINGOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1729,7 +1731,7 @@ bool SceneObject::isGarage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 118);
+		DistributedMethod method(this, RPC_ISGARAGE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1742,7 +1744,7 @@ bool SceneObject::isWeaponObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 119);
+		DistributedMethod method(this, RPC_ISWEAPONOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1755,7 +1757,7 @@ bool SceneObject::isWearableObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 120);
+		DistributedMethod method(this, RPC_ISWEARABLEOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1768,7 +1770,7 @@ bool SceneObject::isArmorObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 121);
+		DistributedMethod method(this, RPC_ISARMOROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1781,7 +1783,7 @@ bool SceneObject::isPsgArmorObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 122);
+		DistributedMethod method(this, RPC_ISPSGARMOROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1794,7 +1796,7 @@ bool SceneObject::isCellObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 123);
+		DistributedMethod method(this, RPC_ISCELLOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1807,7 +1809,7 @@ bool SceneObject::isTangibleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 124);
+		DistributedMethod method(this, RPC_ISTANGIBLEOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1820,7 +1822,7 @@ bool SceneObject::isResourceContainer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 125);
+		DistributedMethod method(this, RPC_ISRESOURCECONTAINER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1833,7 +1835,7 @@ bool SceneObject::isComponent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 126);
+		DistributedMethod method(this, RPC_ISCOMPONENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1846,7 +1848,7 @@ bool SceneObject::isIntangibleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 127);
+		DistributedMethod method(this, RPC_ISINTANGIBLEOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1859,7 +1861,7 @@ bool SceneObject::isInstrument() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 128);
+		DistributedMethod method(this, RPC_ISINSTRUMENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1872,7 +1874,7 @@ bool SceneObject::isInstallationObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 129);
+		DistributedMethod method(this, RPC_ISINSTALLATIONOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1885,7 +1887,7 @@ bool SceneObject::isCityTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 130);
+		DistributedMethod method(this, RPC_ISCITYTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1898,7 +1900,7 @@ bool SceneObject::isCityVoteTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 131);
+		DistributedMethod method(this, RPC_ISCITYVOTETERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1911,7 +1913,7 @@ bool SceneObject::isFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 132);
+		DistributedMethod method(this, RPC_ISFACTORY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1924,7 +1926,7 @@ bool SceneObject::isFactoryCrate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 133);
+		DistributedMethod method(this, RPC_ISFACTORYCRATE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1937,7 +1939,7 @@ bool SceneObject::isFishingPoleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 134);
+		DistributedMethod method(this, RPC_ISFISHINGPOLEOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1950,7 +1952,7 @@ bool SceneObject::isDeedObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 135);
+		DistributedMethod method(this, RPC_ISDEEDOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1963,7 +1965,7 @@ bool SceneObject::isVehicleDeedObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 136);
+		DistributedMethod method(this, RPC_ISVEHICLEDEEDOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1976,7 +1978,7 @@ bool SceneObject::isBuildingDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 137);
+		DistributedMethod method(this, RPC_ISBUILDINGDEED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1989,7 +1991,7 @@ bool SceneObject::isSignObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 138);
+		DistributedMethod method(this, RPC_ISSIGNOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2002,7 +2004,7 @@ bool SceneObject::isInstallationDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 139);
+		DistributedMethod method(this, RPC_ISINSTALLATIONDEED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2015,7 +2017,7 @@ bool SceneObject::isCraftingTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 140);
+		DistributedMethod method(this, RPC_ISCRAFTINGTOOL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2028,7 +2030,7 @@ bool SceneObject::isCraftingStation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 141);
+		DistributedMethod method(this, RPC_ISCRAFTINGSTATION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2041,7 +2043,7 @@ bool SceneObject::isManufactureSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 142);
+		DistributedMethod method(this, RPC_ISMANUFACTURESCHEMATIC__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2054,7 +2056,7 @@ bool SceneObject::isStructureObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 143);
+		DistributedMethod method(this, RPC_ISSTRUCTUREOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2067,7 +2069,7 @@ bool SceneObject::isBazaarTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 144);
+		DistributedMethod method(this, RPC_ISBAZAARTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2080,7 +2082,7 @@ bool SceneObject::isFishingBait() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 145);
+		DistributedMethod method(this, RPC_ISFISHINGBAIT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2093,7 +2095,7 @@ bool SceneObject::isAttachment() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 146);
+		DistributedMethod method(this, RPC_ISATTACHMENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2106,7 +2108,7 @@ void SceneObject::setGameObjectType(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 147);
+		DistributedMethod method(this, RPC_SETGAMEOBJECTTYPE__INT_);
 		method.addUnsignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -2120,7 +2122,7 @@ void SceneObject::addActiveArea(ActiveArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 148);
+		DistributedMethod method(this, RPC_ADDACTIVEAREA__ACTIVEAREA_);
 		method.addObjectParameter(area);
 
 		method.executeWithVoidReturn();
@@ -2134,7 +2136,7 @@ void SceneObject::dropActiveArea(ActiveArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 149);
+		DistributedMethod method(this, RPC_DROPACTIVEAREA__ACTIVEAREA_);
 		method.addObjectParameter(area);
 
 		method.executeWithVoidReturn();
@@ -2148,7 +2150,7 @@ void SceneObject::setClientObjectCRC(unsigned int objCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 150);
+		DistributedMethod method(this, RPC_SETCLIENTOBJECTCRC__INT_);
 		method.addUnsignedIntParameter(objCRC);
 
 		method.executeWithVoidReturn();
@@ -2162,7 +2164,7 @@ void SceneObject::setServerObjectCRC(unsigned int objCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 151);
+		DistributedMethod method(this, RPC_SETSERVEROBJECTCRC__INT_);
 		method.addUnsignedIntParameter(objCRC);
 
 		method.executeWithVoidReturn();
@@ -2176,7 +2178,7 @@ void SceneObject::setParent(SceneObject* par) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 152);
+		DistributedMethod method(this, RPC_SETPARENT__SCENEOBJECT_);
 		method.addObjectParameter(par);
 
 		method.executeWithVoidReturn();
@@ -2208,7 +2210,7 @@ void SceneObject::setZone(Zone* zon) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 153);
+		DistributedMethod method(this, RPC_SETZONE__ZONE_);
 		method.addObjectParameter(zon);
 
 		method.executeWithVoidReturn();
@@ -2222,7 +2224,7 @@ void SceneObject::setDirection(float fw, float fx, float fy, float fz) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 154);
+		DistributedMethod method(this, RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_);
 		method.addFloatParameter(fw);
 		method.addFloatParameter(fx);
 		method.addFloatParameter(fy);
@@ -2239,7 +2241,7 @@ void SceneObject::setDirection(float headingAngleRadians) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 155);
+		DistributedMethod method(this, RPC_SETDIRECTION__FLOAT_);
 		method.addFloatParameter(headingAngleRadians);
 
 		method.executeWithVoidReturn();
@@ -2262,7 +2264,7 @@ void SceneObject::setMovementCounter(unsigned int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 156);
+		DistributedMethod method(this, RPC_SETMOVEMENTCOUNTER__INT_);
 		method.addUnsignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -2276,7 +2278,7 @@ void SceneObject::incrementMovementCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 157);
+		DistributedMethod method(this, RPC_INCREMENTMOVEMENTCOUNTER__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2289,7 +2291,7 @@ void SceneObject::setContainmentType(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 158);
+		DistributedMethod method(this, RPC_SETCONTAINMENTTYPE__INT_);
 		method.addUnsignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -2303,7 +2305,7 @@ void SceneObject::setLoggingName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 159);
+		DistributedMethod method(this, RPC_SETLOGGINGNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -2317,7 +2319,7 @@ void SceneObject::setStaticObject(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 160);
+		DistributedMethod method(this, RPC_SETSTATICOBJECT__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -2340,7 +2342,7 @@ bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 161);
+		DistributedMethod method(this, RPC_HASOBJECTINCONTAINER__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		return method.executeWithBooleanReturn();
@@ -2354,7 +2356,7 @@ bool SceneObject::hasObjectInSlottedContainer(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 162);
+		DistributedMethod method(this, RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -2368,7 +2370,7 @@ SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 163);
+		DistributedMethod method(this, RPC_GETCONTAINEROBJECT__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -2382,7 +2384,7 @@ unsigned int SceneObject::getPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 164);
+		DistributedMethod method(this, RPC_GETPLANETCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2395,7 +2397,7 @@ bool SceneObject::isStaticObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 165);
+		DistributedMethod method(this, RPC_ISSTATICOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2408,7 +2410,7 @@ bool SceneObject::isContainerObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 166);
+		DistributedMethod method(this, RPC_ISCONTAINEROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2421,7 +2423,7 @@ bool SceneObject::isTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 167);
+		DistributedMethod method(this, RPC_ISTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2434,7 +2436,7 @@ bool SceneObject::isGroupObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 168);
+		DistributedMethod method(this, RPC_ISGROUPOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2447,7 +2449,7 @@ bool SceneObject::isGuildObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 169);
+		DistributedMethod method(this, RPC_ISGUILDOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2460,7 +2462,7 @@ bool SceneObject::isControlDevice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 170);
+		DistributedMethod method(this, RPC_ISCONTROLDEVICE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2473,7 +2475,7 @@ bool SceneObject::isMissionTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 171);
+		DistributedMethod method(this, RPC_ISMISSIONTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2486,7 +2488,7 @@ bool SceneObject::isMissionObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 172);
+		DistributedMethod method(this, RPC_ISMISSIONOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2508,7 +2510,7 @@ ActiveArea* SceneObject::getActiveRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 173);
+		DistributedMethod method(this, RPC_GETACTIVEREGION__);
 
 		return (ActiveArea*) method.executeWithObjectReturn();
 	} else
@@ -2521,7 +2523,7 @@ bool SceneObject::hasActiveArea(ActiveArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 174);
+		DistributedMethod method(this, RPC_HASACTIVEAREA__ACTIVEAREA_);
 		method.addObjectParameter(area);
 
 		return method.executeWithBooleanReturn();
@@ -2535,7 +2537,7 @@ int SceneObject::getMapLocationsType1() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 175);
+		DistributedMethod method(this, RPC_GETMAPLOCATIONSTYPE1__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2548,7 +2550,7 @@ int SceneObject::getMapLocationsType2() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 176);
+		DistributedMethod method(this, RPC_GETMAPLOCATIONSTYPE2__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2561,7 +2563,7 @@ int SceneObject::getMapLocationsType3() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 177);
+		DistributedMethod method(this, RPC_GETMAPLOCATIONSTYPE3__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2583,7 +2585,7 @@ void SceneObject::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 178);
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3647,8 +3649,6 @@ SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {
 
 SceneObjectAdapter::SceneObjectAdapter(SceneObjectImplementation* obj) : QuadTreeEntryAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__PLAYERCREATURE_,RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_,RPC_INSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_REMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETCONTAINEROBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETZONE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISBAZAARTERMINAL__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETSTATICOBJECT__BOOL_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETACTIVEREGION__,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_GETMAPLOCATIONSTYPE1__,RPC_GETMAPLOCATIONSTYPE2__,RPC_GETMAPLOCATIONSTYPE3__,RPC_CREATECHILDOBJECTS__};
 
 Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -14,6 +14,8 @@
  *	TrainerCreatureStub
  */
 
+enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__PLAYERCREATURE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDSKILLBOXES__PLAYERCREATURE_BOOL_,RPC_SENDSKILLBOXLIST__PLAYERCREATURE_BOOL_,RPC_SENDCONFIRMATION__PLAYERCREATURE_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SETTRAINERID__INT_,RPC_GETTRAINERID__,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISTRAINERCREATURE__,RPC_ISATTACKABLEBY__CREATUREOBJECT_};
+
 TrainerCreature::TrainerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	TrainerCreatureImplementation* _implementation = new TrainerCreatureImplementation();
 	_impl = _implementation;
@@ -42,7 +44,7 @@ void TrainerCreature::activateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ACTIVATERECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -55,7 +57,7 @@ void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDINITIALMESSAGE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -69,7 +71,7 @@ void TrainerCreature::sendInitialChoices(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDINITIALCHOICES__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -83,7 +85,7 @@ void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -97,7 +99,7 @@ void TrainerCreature::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SENDSKILLBOXES__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(checkXp);
 
@@ -112,7 +114,7 @@ void TrainerCreature::sendSkillBoxList(PlayerCreature* player, bool checkLearned
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SENDSKILLBOXLIST__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(checkLearned);
 
@@ -127,7 +129,7 @@ void TrainerCreature::sendConfirmation(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SENDCONFIRMATION__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -141,7 +143,7 @@ void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -156,7 +158,7 @@ void TrainerCreature::setTrainerID(int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETTRAINERID__INT_);
 		method.addSignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -179,7 +181,7 @@ int TrainerCreature::getTrainerID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETTRAINERID__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -192,7 +194,7 @@ String TrainerCreature::getLocation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETLOCATION__);
 
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
@@ -206,7 +208,7 @@ void TrainerCreature::setLocation(const String& loc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETLOCATION__STRING_);
 		method.addAsciiParameter(loc);
 
 		method.executeWithVoidReturn();
@@ -220,7 +222,7 @@ bool TrainerCreature::isTrainerCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_ISTRAINERCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -233,7 +235,7 @@ bool TrainerCreature::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -466,8 +468,6 @@ bool TrainerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 
 TrainerCreatureAdapter::TrainerCreatureAdapter(TrainerCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
 }
-
-enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__PLAYERCREATURE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDSKILLBOXES__PLAYERCREATURE_BOOL_,RPC_SENDSKILLBOXLIST__PLAYERCREATURE_BOOL_,RPC_SENDCONFIRMATION__PLAYERCREATURE_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SETTRAINERID__INT_,RPC_GETTRAINERID__,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISTRAINERCREATURE__,RPC_ISATTACKABLEBY__CREATUREOBJECT_};
 
 Packet* TrainerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -14,6 +14,8 @@
  *	ImageDesignSessionStub
  */
 
+enum {RPC_INITIALIZESESSION__,RPC_DOPAYMENT__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_CLEARIDTIMEOUTEVENT__,RPC_DEQUEUEIDTIMEOUTEVENT__,RPC_SESSIONTIMEOUT__};
+
 ImageDesignSession::ImageDesignSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	ImageDesignSessionImplementation* _implementation = new ImageDesignSessionImplementation(parent);
 	_impl = _implementation;
@@ -60,7 +62,7 @@ int ImageDesignSession::initializeSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZESESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -73,7 +75,7 @@ int ImageDesignSession::doPayment() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DOPAYMENT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -86,7 +88,7 @@ int ImageDesignSession::cancelSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CANCELSESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -99,7 +101,7 @@ int ImageDesignSession::clearSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_CLEARSESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -112,7 +114,7 @@ void ImageDesignSession::clearIdTimeoutEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_CLEARIDTIMEOUTEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -125,7 +127,7 @@ void ImageDesignSession::dequeueIdTimeoutEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_DEQUEUEIDTIMEOUTEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -138,7 +140,7 @@ void ImageDesignSession::sessionTimeout() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SESSIONTIMEOUT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -393,8 +395,6 @@ void ImageDesignSessionImplementation::sessionTimeout() {
 
 ImageDesignSessionAdapter::ImageDesignSessionAdapter(ImageDesignSessionImplementation* obj) : FacadeAdapter(obj) {
 }
-
-enum {RPC_INITIALIZESESSION__,RPC_DOPAYMENT__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_CLEARIDTIMEOUTEVENT__,RPC_DEQUEUEIDTIMEOUTEVENT__,RPC_SESSIONTIMEOUT__};
 
 Packet* ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

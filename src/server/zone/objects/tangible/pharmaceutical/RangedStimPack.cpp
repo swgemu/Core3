@@ -26,6 +26,8 @@
  *	RangedStimPackStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETRANGE__CREATUREOBJECT_,RPC_GETEFFECTIVENESS__,RPC_GETAREA__,RPC_ISAREA__,RPC_GETRANGEMOD__,RPC_ISRANGEDSTIMPACK__};
+
 RangedStimPack::RangedStimPack() : StimPack(DummyConstructorParameter::instance()) {
 	RangedStimPackImplementation* _implementation = new RangedStimPackImplementation();
 	_impl = _implementation;
@@ -63,7 +65,7 @@ int RangedStimPack::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -87,7 +89,7 @@ unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObje
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(healer);
 		method.addObjectParameter(patient);
 		method.addBooleanParameter(applyBattleFatigue);
@@ -103,7 +105,7 @@ float RangedStimPack::getRange(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETRANGE__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		return method.executeWithFloatReturn();
@@ -117,7 +119,7 @@ float RangedStimPack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETEFFECTIVENESS__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -130,7 +132,7 @@ float RangedStimPack::getArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETAREA__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -143,7 +145,7 @@ bool RangedStimPack::isArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -156,7 +158,7 @@ float RangedStimPack::getRangeMod() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETRANGEMOD__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -169,7 +171,7 @@ bool RangedStimPack::isRangedStimPack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISRANGEDSTIMPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -490,8 +492,6 @@ bool RangedStimPackImplementation::isRangedStimPack() {
 
 RangedStimPackAdapter::RangedStimPackAdapter(RangedStimPackImplementation* obj) : StimPackAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETRANGE__CREATUREOBJECT_,RPC_GETEFFECTIVENESS__,RPC_GETAREA__,RPC_ISAREA__,RPC_GETRANGEMOD__,RPC_ISRANGEDSTIMPACK__};
 
 Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

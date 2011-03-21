@@ -14,6 +14,8 @@
  *	ZoneClientSessionStub
  */
 
+enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNT__ACCOUNT_,RPC_SETACCOUNTID__INT_,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_GETACCOUNT__};
+
 ZoneClientSession::ZoneClientSession(BaseClientProxy* session) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneClientSessionImplementation* _implementation = new ZoneClientSessionImplementation(session);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void ZoneClientSession::disconnect() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_DISCONNECT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -46,7 +48,7 @@ void ZoneClientSession::disconnect(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DISCONNECT__BOOL_);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -60,7 +62,7 @@ void ZoneClientSession::sendMessage(BasePacket* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDMESSAGE__BASEPACKET_);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -74,7 +76,7 @@ void ZoneClientSession::balancePacketCheckupTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_BALANCEPACKETCHECKUPTIME__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -87,7 +89,7 @@ void ZoneClientSession::resetPacketCheckupTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_RESETPACKETCHECKUPTIME__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -100,7 +102,7 @@ void ZoneClientSession::closeConnection(bool lockPlayer, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_CLOSECONNECTION__BOOL_BOOL_);
 		method.addBooleanParameter(lockPlayer);
 		method.addBooleanParameter(doLock);
 
@@ -115,7 +117,7 @@ void ZoneClientSession::info(const String& msg, bool force) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_INFO__STRING_BOOL_);
 		method.addAsciiParameter(msg);
 		method.addBooleanParameter(force);
 
@@ -130,7 +132,7 @@ void ZoneClientSession::error(const String& msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ERROR__STRING_);
 		method.addAsciiParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -144,7 +146,7 @@ String ZoneClientSession::getAddress() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETADDRESS__);
 
 		method.executeWithAsciiReturn(_return_getAddress);
 		return _return_getAddress;
@@ -158,7 +160,7 @@ void ZoneClientSession::setPlayer(SceneObject* playerCreature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETPLAYER__SCENEOBJECT_);
 		method.addObjectParameter(playerCreature);
 
 		method.executeWithVoidReturn();
@@ -172,7 +174,7 @@ void ZoneClientSession::setSessionID(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETSESSIONID__INT_);
 		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -186,7 +188,7 @@ void ZoneClientSession::setAccount(Account* acc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETACCOUNT__ACCOUNT_);
 		method.addObjectParameter(acc);
 
 		method.executeWithVoidReturn();
@@ -200,7 +202,7 @@ void ZoneClientSession::setAccountID(unsigned int acc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SETACCOUNTID__INT_);
 		method.addUnsignedIntParameter(acc);
 
 		method.executeWithVoidReturn();
@@ -223,7 +225,7 @@ SceneObject* ZoneClientSession::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETPLAYER__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -236,7 +238,7 @@ unsigned int ZoneClientSession::getSessionID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETSESSIONID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -249,7 +251,7 @@ unsigned int ZoneClientSession::getAccountID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETACCOUNTID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -262,7 +264,7 @@ Account* ZoneClientSession::getAccount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_GETACCOUNT__);
 
 		return (Account*) method.executeWithObjectReturn();
 	} else
@@ -522,8 +524,6 @@ Account* ZoneClientSessionImplementation::getAccount() {
 
 ZoneClientSessionAdapter::ZoneClientSessionAdapter(ZoneClientSessionImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNT__ACCOUNT_,RPC_SETACCOUNTID__INT_,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_GETACCOUNT__};
 
 Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

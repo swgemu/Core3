@@ -16,6 +16,8 @@
  *	ResourceSpawnStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_,RPC_SETZONERESTRICTION__INT_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__INT_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
+
 ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance()) {
 	ResourceSpawnImplementation* _implementation = new ResourceSpawnImplementation();
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void ResourceSpawn::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -57,7 +59,7 @@ void ResourceSpawn::decreaseContainerReferenceCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DECREASECONTAINERREFERENCECOUNT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -70,7 +72,7 @@ void ResourceSpawn::setName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -84,7 +86,7 @@ void ResourceSpawn::setType(const String& type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETTYPE__STRING_);
 		method.addAsciiParameter(type);
 
 		method.executeWithVoidReturn();
@@ -98,7 +100,7 @@ void ResourceSpawn::setSpawnPool(int pool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SETSPAWNPOOL__INT_);
 		method.addSignedIntParameter(pool);
 
 		method.executeWithVoidReturn();
@@ -112,7 +114,7 @@ void ResourceSpawn::setZoneRestriction(int zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETZONERESTRICTION__INT_);
 		method.addSignedIntParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -126,7 +128,7 @@ void ResourceSpawn::addClass(const String& newclass) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ADDCLASS__STRING_);
 		method.addAsciiParameter(newclass);
 
 		method.executeWithVoidReturn();
@@ -140,7 +142,7 @@ void ResourceSpawn::addStfClass(const String& newclass) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ADDSTFCLASS__STRING_);
 		method.addAsciiParameter(newclass);
 
 		method.executeWithVoidReturn();
@@ -154,7 +156,7 @@ void ResourceSpawn::addAttribute(const String& attribute, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ADDATTRIBUTE__STRING_INT_);
 		method.addAsciiParameter(attribute);
 		method.addSignedIntParameter(value);
 
@@ -169,7 +171,7 @@ bool ResourceSpawn::isType(const String& type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_ISTYPE__STRING_);
 		method.addAsciiParameter(type);
 
 		return method.executeWithBooleanReturn();
@@ -183,7 +185,7 @@ void ResourceSpawn::setSurveyToolType(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETSURVEYTOOLTYPE__INT_);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -197,7 +199,7 @@ void ResourceSpawn::setIsEnergy(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETISENERGY__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -211,7 +213,7 @@ String ResourceSpawn::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETNAME__);
 
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -225,7 +227,7 @@ String ResourceSpawn::getType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETTYPE__);
 
 		method.executeWithAsciiReturn(_return_getType);
 		return _return_getType;
@@ -239,7 +241,7 @@ String ResourceSpawn::getClass(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETCLASS__INT_);
 		method.addSignedIntParameter(index);
 
 		method.executeWithAsciiReturn(_return_getClass);
@@ -254,7 +256,7 @@ String ResourceSpawn::getFinalClass() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETFINALCLASS__);
 
 		method.executeWithAsciiReturn(_return_getFinalClass);
 		return _return_getFinalClass;
@@ -268,7 +270,7 @@ String ResourceSpawn::getFamilyName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_GETFAMILYNAME__);
 
 		method.executeWithAsciiReturn(_return_getFamilyName);
 		return _return_getFamilyName;
@@ -282,7 +284,7 @@ void ResourceSpawn::setSpawned(unsigned long long t) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_SETSPAWNED__LONG_);
 		method.addUnsignedLongParameter(t);
 
 		method.executeWithVoidReturn();
@@ -296,7 +298,7 @@ void ResourceSpawn::setDespawned(unsigned long long t) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_SETDESPAWNED__LONG_);
 		method.addUnsignedLongParameter(t);
 
 		method.executeWithVoidReturn();
@@ -310,7 +312,7 @@ unsigned long long ResourceSpawn::getDespawned() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_GETDESPAWNED__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -323,7 +325,7 @@ void ResourceSpawn::setContainerCRC(unsigned int crc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETCONTAINERCRC__INT_);
 		method.addUnsignedIntParameter(crc);
 
 		method.executeWithVoidReturn();
@@ -337,7 +339,7 @@ unsigned int ResourceSpawn::getContainerCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_GETCONTAINERCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -350,7 +352,7 @@ int ResourceSpawn::getSpawnPool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_GETSPAWNPOOL__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -363,7 +365,7 @@ bool ResourceSpawn::isEnergy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_ISENERGY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -376,7 +378,7 @@ int ResourceSpawn::getZoneRestriction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_GETZONERESTRICTION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -389,7 +391,7 @@ int ResourceSpawn::getSurveyToolType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_GETSURVEYTOOLTYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -402,7 +404,7 @@ int ResourceSpawn::getSpawnMapSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_GETSPAWNMAPSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -415,7 +417,7 @@ void ResourceSpawn::extractResource(int zoneid, int units) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_EXTRACTRESOURCE__INT_INT_);
 		method.addSignedIntParameter(zoneid);
 		method.addSignedIntParameter(units);
 
@@ -430,7 +432,7 @@ ResourceContainer* ResourceSpawn::createResource(int units) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_CREATERESOURCE__INT_);
 		method.addSignedIntParameter(units);
 
 		return (ResourceContainer*) method.executeWithObjectReturn();
@@ -471,7 +473,7 @@ unsigned int ResourceSpawn::getPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_GETPLANETCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -511,7 +513,7 @@ int ResourceSpawn::getAttributeValue(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_GETATTRIBUTEVALUE__INT_);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
@@ -525,7 +527,7 @@ int ResourceSpawn::getValueOf(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_GETVALUEOF__INT_);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
@@ -539,7 +541,7 @@ void ResourceSpawn::addStatsToDeedListBox(SuiListBox* suil) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_);
 		method.addObjectParameter(suil);
 
 		method.executeWithVoidReturn();
@@ -1098,8 +1100,6 @@ int ResourceSpawnImplementation::getAttributeValue(int index) {
 
 ResourceSpawnAdapter::ResourceSpawnAdapter(ResourceSpawnImplementation* obj) : SceneObjectAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_,RPC_SETZONERESTRICTION__INT_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__INT_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
 
 Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

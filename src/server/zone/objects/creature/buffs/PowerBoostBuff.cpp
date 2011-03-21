@@ -14,6 +14,8 @@
  *	PowerBoostBuffStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_DOHEALTHANDACTIONTICK__BOOL_,RPC_DOMINDTICK__BOOL_,RPC_CLEARBUFFEVENT__};
+
 PowerBoostBuff::PowerBoostBuff(CreatureObject* creo, const String& name, unsigned int buffCRC, int value, int duration) : Buff(DummyConstructorParameter::instance()) {
 	PowerBoostBuffImplementation* _implementation = new PowerBoostBuffImplementation(creo, name, buffCRC, value, duration);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void PowerBoostBuff::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -46,7 +48,7 @@ void PowerBoostBuff::activate(bool applyModifiers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ACTIVATE__BOOL_);
 		method.addBooleanParameter(applyModifiers);
 
 		method.executeWithVoidReturn();
@@ -60,7 +62,7 @@ void PowerBoostBuff::deactivate(bool removeModifiers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_DEACTIVATE__BOOL_);
 		method.addBooleanParameter(removeModifiers);
 
 		method.executeWithVoidReturn();
@@ -74,7 +76,7 @@ void PowerBoostBuff::doHealthAndActionTick(bool up) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_DOHEALTHANDACTIONTICK__BOOL_);
 		method.addBooleanParameter(up);
 
 		method.executeWithVoidReturn();
@@ -88,7 +90,7 @@ void PowerBoostBuff::doMindTick(bool up) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_DOMINDTICK__BOOL_);
 		method.addBooleanParameter(up);
 
 		method.executeWithVoidReturn();
@@ -102,7 +104,7 @@ void PowerBoostBuff::clearBuffEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_CLEARBUFFEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -317,8 +319,6 @@ PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo,
 
 PowerBoostBuffAdapter::PowerBoostBuffAdapter(PowerBoostBuffImplementation* obj) : BuffAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_DOHEALTHANDACTIONTICK__BOOL_,RPC_DOMINDTICK__BOOL_,RPC_CLEARBUFFEVENT__};
 
 Packet* PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

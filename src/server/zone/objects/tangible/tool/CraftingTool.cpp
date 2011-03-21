@@ -20,6 +20,8 @@
  *	CraftingToolStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__PLAYERCREATURE_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__PLAYERCREATURE_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__PLAYERCREATURE_INT_,RPC_CREATESESSIONOBJECTS__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__PLAYERCREATURE_,RPC_ADDINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__PLAYERCREATURE_INT_,RPC_EXPERIMENT__PLAYERCREATURE_INT_STRING_INT_,RPC_CUSTOMIZATION__PLAYERCREATURE_STRING_INT_STRING_,RPC_CREATEPROTOTYPE__PLAYERCREATURE_INT_INT_,RPC_CREATEMANFSCHEMATIC__PLAYERCREATURE_INT_,RPC_CREATEOBJECT__PLAYERCREATURE_INT_BOOL_,RPC_DEPOSITOBJECT__PLAYERCREATURE_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
+
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
 	_impl = _implementation;
@@ -39,7 +41,7 @@ void CraftingTool::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -70,7 +72,7 @@ int CraftingTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -94,7 +96,7 @@ void CraftingTool::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -108,7 +110,7 @@ bool CraftingTool::isCraftingTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISCRAFTINGTOOL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -121,7 +123,7 @@ bool CraftingTool::isReady() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISREADY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -134,7 +136,7 @@ int CraftingTool::getToolType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETTOOLTYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -147,7 +149,7 @@ TangibleObject* CraftingTool::getPrototype() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETPROTOTYPE__);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -160,7 +162,7 @@ ManufactureSchematic* CraftingTool::getManufactureSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETMANUFACTURESCHEMATIC__);
 
 		return (ManufactureSchematic*) method.executeWithObjectReturn();
 	} else
@@ -182,7 +184,7 @@ void CraftingTool::requestCraftingSession(PlayerCreature* player, CraftingStatio
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_REQUESTCRAFTINGSESSION__PLAYERCREATURE_CRAFTINGSTATION_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(craftingStation);
 
@@ -197,7 +199,7 @@ void CraftingTool::cancelCraftingSession(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_CANCELCRAFTINGSESSION__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -211,7 +213,7 @@ void CraftingTool::clearCraftingSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_CLEARCRAFTINGSESSION__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -224,7 +226,7 @@ void CraftingTool::selectDraftSchematic(PlayerCreature* player, int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SELECTDRAFTSCHEMATIC__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(index);
 
@@ -239,7 +241,7 @@ bool CraftingTool::createSessionObjects(PlayerCreature* player, DraftSchematic* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_CREATESESSIONOBJECTS__PLAYERCREATURE_DRAFTSCHEMATIC_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftschematic);
 
@@ -254,7 +256,7 @@ bool CraftingTool::createManufactureSchematic(PlayerCreature* player, DraftSchem
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_CREATEMANUFACTURESCHEMATIC__PLAYERCREATURE_DRAFTSCHEMATIC_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftschematic);
 
@@ -269,7 +271,7 @@ bool CraftingTool::createPrototype(PlayerCreature* player, DraftSchematic* draft
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_CREATEPROTOTYPE__PLAYERCREATURE_DRAFTSCHEMATIC_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftschematic);
 
@@ -284,7 +286,7 @@ void CraftingTool::synchronizedUIListenForSchematic(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -298,7 +300,7 @@ void CraftingTool::addIngredient(PlayerCreature* player, TangibleObject* tano, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_ADDINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
@@ -315,7 +317,7 @@ void CraftingTool::removeIngredient(PlayerCreature* player, TangibleObject* tano
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_REMOVEINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
@@ -332,7 +334,7 @@ void CraftingTool::nextCraftingStage(PlayerCreature* player, int clientCounter) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_NEXTCRAFTINGSTAGE__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 
@@ -347,7 +349,7 @@ void CraftingTool::experiment(PlayerCreature* player, int numRowsAttempted, Stri
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_EXPERIMENT__PLAYERCREATURE_INT_STRING_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(numRowsAttempted);
 		method.addAsciiParameter(expString);
@@ -364,7 +366,7 @@ void CraftingTool::customization(PlayerCreature* player, String& name, int schem
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_CUSTOMIZATION__PLAYERCREATURE_STRING_INT_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(schematicCount);
@@ -381,7 +383,7 @@ void CraftingTool::createPrototype(PlayerCreature* player, int clientCounter, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_CREATEPROTOTYPE__PLAYERCREATURE_INT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 		method.addSignedIntParameter(practice);
@@ -397,7 +399,7 @@ void CraftingTool::createManfSchematic(PlayerCreature* player, int clientCounter
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_CREATEMANFSCHEMATIC__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 
@@ -412,7 +414,7 @@ void CraftingTool::createObject(PlayerCreature* player, int timer, bool create) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_CREATEOBJECT__PLAYERCREATURE_INT_BOOL_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(timer);
 		method.addBooleanParameter(create);
@@ -428,7 +430,7 @@ void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_DEPOSITOBJECT__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(practice);
 
@@ -443,7 +445,7 @@ unsigned long long CraftingTool::getLastExperimentationTimestamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_GETLASTEXPERIMENTATIONTIMESTAMP__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -456,7 +458,7 @@ int CraftingTool::getExperimentationResult() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_GETEXPERIMENTATIONRESULT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -758,8 +760,6 @@ int CraftingToolImplementation::getExperimentationResult() {
 
 CraftingToolAdapter::CraftingToolAdapter(CraftingToolImplementation* obj) : ToolTangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__PLAYERCREATURE_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__PLAYERCREATURE_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__PLAYERCREATURE_INT_,RPC_CREATESESSIONOBJECTS__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__PLAYERCREATURE_,RPC_ADDINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__PLAYERCREATURE_INT_,RPC_EXPERIMENT__PLAYERCREATURE_INT_STRING_INT_,RPC_CUSTOMIZATION__PLAYERCREATURE_STRING_INT_STRING_,RPC_CREATEPROTOTYPE__PLAYERCREATURE_INT_INT_,RPC_CREATEMANFSCHEMATIC__PLAYERCREATURE_INT_,RPC_CREATEOBJECT__PLAYERCREATURE_INT_BOOL_,RPC_DEPOSITOBJECT__PLAYERCREATURE_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
 
 Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

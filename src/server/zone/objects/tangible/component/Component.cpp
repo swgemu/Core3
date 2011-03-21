@@ -16,6 +16,8 @@
  *	ComponentStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCOMPONENT__,RPC_GENERATELOOTSTATS__STRING_INT_,RPC_COMPARE__COMPONENT_,RPC_HASKEY__STRING_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_,RPC_GETATTRIBUTEVALUE__STRING_,RPC_GETATTRIBUTEPRECISION__STRING_,RPC_GETATTRIBUTETITLE__STRING_,RPC_GETATTRIBUTEHIDDEN__STRING_,RPC_SETPROPERTYTOHIDDEN__STRING_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_,RPC_GETPROPERTYCOUNT__,RPC_GETPROPERTY__INT_,RPC_CHANGEATTRIBUTEVALUE__STRING_FLOAT_};
+
 Component::Component() : TangibleObject(DummyConstructorParameter::instance()) {
 	ComponentImplementation* _implementation = new ComponentImplementation();
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void Component::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -66,7 +68,7 @@ bool Component::isComponent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ISCOMPONENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -79,7 +81,7 @@ void Component::generateLootStats(const String& lootstring, int level) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GENERATELOOTSTATS__STRING_INT_);
 		method.addAsciiParameter(lootstring);
 		method.addSignedIntParameter(level);
 
@@ -94,7 +96,7 @@ bool Component::compare(Component* inCmpo) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_COMPARE__COMPONENT_);
 		method.addObjectParameter(inCmpo);
 
 		return method.executeWithBooleanReturn();
@@ -108,7 +110,7 @@ bool Component::hasKey(const String& key) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_HASKEY__STRING_);
 		method.addAsciiParameter(key);
 
 		return method.executeWithBooleanReturn();
@@ -122,7 +124,7 @@ void Component::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -136,7 +138,7 @@ void Component::addProperty(const String& attributeName, const float value, cons
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_);
 		method.addAsciiParameter(attributeName);
 		method.addFloatParameter(value);
 		method.addSignedIntParameter(precision);
@@ -154,7 +156,7 @@ float Component::getAttributeValue(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETATTRIBUTEVALUE__STRING_);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithFloatReturn();
@@ -168,7 +170,7 @@ int Component::getAttributePrecision(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETATTRIBUTEPRECISION__STRING_);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithSignedIntReturn();
@@ -182,7 +184,7 @@ String Component::getAttributeTitle(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETATTRIBUTETITLE__STRING_);
 		method.addAsciiParameter(attributeName);
 
 		method.executeWithAsciiReturn(_return_getAttributeTitle);
@@ -197,7 +199,7 @@ bool Component::getAttributeHidden(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETATTRIBUTEHIDDEN__STRING_);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithBooleanReturn();
@@ -211,7 +213,7 @@ void Component::setPropertyToHidden(const String& property) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETPROPERTYTOHIDDEN__STRING_);
 		method.addAsciiParameter(property);
 
 		method.executeWithVoidReturn();
@@ -225,7 +227,7 @@ void Component::addProperty(const String& attribute, const float value, const in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(value);
 		method.addSignedIntParameter(precision);
@@ -242,7 +244,7 @@ int Component::getPropertyCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETPROPERTYCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -255,7 +257,7 @@ String Component::getProperty(const int j) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETPROPERTY__INT_);
 		method.addSignedIntParameter(j);
 
 		method.executeWithAsciiReturn(_return_getProperty);
@@ -270,7 +272,7 @@ bool Component::changeAttributeValue(String& property, float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_CHANGEATTRIBUTEVALUE__STRING_FLOAT_);
 		method.addAsciiParameter(property);
 		method.addFloatParameter(value);
 
@@ -496,8 +498,6 @@ bool ComponentImplementation::hasKey(const String& key) {
 
 ComponentAdapter::ComponentAdapter(ComponentImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCOMPONENT__,RPC_GENERATELOOTSTATS__STRING_INT_,RPC_COMPARE__COMPONENT_,RPC_HASKEY__STRING_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_,RPC_GETATTRIBUTEVALUE__STRING_,RPC_GETATTRIBUTEPRECISION__STRING_,RPC_GETATTRIBUTETITLE__STRING_,RPC_GETATTRIBUTEHIDDEN__STRING_,RPC_SETPROPERTYTOHIDDEN__STRING_,RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_,RPC_GETPROPERTYCOUNT__,RPC_GETPROPERTY__INT_,RPC_CHANGEATTRIBUTEVALUE__STRING_FLOAT_};
 
 Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

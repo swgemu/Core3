@@ -22,6 +22,8 @@
  *	ObjectControllerStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_LOADCOMMANDS__,RPC_TRANSFEROBJECT__SCENEOBJECT_SCENEOBJECT_INT_BOOL_,RPC_ACTIVATECOMMAND__CREATUREOBJECT_INT_INT_LONG_UNICODESTRING_,};
+
 ObjectController::ObjectController(ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	ObjectControllerImplementation* _implementation = new ObjectControllerImplementation(srv);
 	_impl = _implementation;
@@ -41,7 +43,7 @@ void ObjectController::loadCommands() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_LOADCOMMANDS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -54,7 +56,7 @@ bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_TRANSFEROBJECT__SCENEOBJECT_SCENEOBJECT_INT_BOOL_);
 		method.addObjectParameter(objectToTransfer);
 		method.addObjectParameter(destinationObject);
 		method.addSignedIntParameter(containmentType);
@@ -71,7 +73,7 @@ float ObjectController::activateCommand(CreatureObject* object, unsigned int act
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ACTIVATECOMMAND__CREATUREOBJECT_INT_INT_LONG_UNICODESTRING_);
 		method.addObjectParameter(object);
 		method.addUnsignedIntParameter(actionCRC);
 		method.addUnsignedIntParameter(actionCount);
@@ -251,8 +253,6 @@ ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer
 
 ObjectControllerAdapter::ObjectControllerAdapter(ObjectControllerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_LOADCOMMANDS__,RPC_TRANSFEROBJECT__SCENEOBJECT_SCENEOBJECT_INT_BOOL_,RPC_ACTIVATECOMMAND__CREATUREOBJECT_INT_INT_LONG_UNICODESTRING_,};
 
 Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

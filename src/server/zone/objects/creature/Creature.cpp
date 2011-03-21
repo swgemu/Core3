@@ -18,6 +18,8 @@
  *	CreatureStub
  */
 
+enum {RPC_ISCREATURE__ = 6,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ bool Creature::isCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ISCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -68,7 +70,7 @@ void Creature::runAway(CreatureObject* target) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_RUNAWAY__CREATUREOBJECT_);
 		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
@@ -91,7 +93,7 @@ int Creature::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -106,7 +108,7 @@ void Creature::fillAttributeList(AttributeListMessage* msg, PlayerCreature* obje
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -121,7 +123,7 @@ void Creature::scheduleDespawn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SCHEDULEDESPAWN__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -134,7 +136,7 @@ bool Creature::hasOrganics() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_HASORGANICS__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -147,7 +149,7 @@ bool Creature::canHarvestMe(CreatureObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_CANHARVESTME__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -161,7 +163,7 @@ bool Creature::isBaby() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISBABY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -174,7 +176,7 @@ float Creature::getTame() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETTAME__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -187,7 +189,7 @@ String Creature::getMeatType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETMEATTYPE__);
 
 		method.executeWithAsciiReturn(_return_getMeatType);
 		return _return_getMeatType;
@@ -201,7 +203,7 @@ String Creature::getBoneType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETBONETYPE__);
 
 		method.executeWithAsciiReturn(_return_getBoneType);
 		return _return_getBoneType;
@@ -215,7 +217,7 @@ String Creature::getHideType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETHIDETYPE__);
 
 		method.executeWithAsciiReturn(_return_getHideType);
 		return _return_getHideType;
@@ -229,7 +231,7 @@ float Creature::getMilk() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETMILK__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -242,7 +244,7 @@ float Creature::getHideMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETHIDEMAX__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -255,7 +257,7 @@ float Creature::getBoneMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETBONEMAX__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -268,7 +270,7 @@ float Creature::getMeatMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETMEATMAX__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -488,8 +490,6 @@ float CreatureImplementation::getMeatMax() {
 
 CreatureAdapter::CreatureAdapter(CreatureImplementation* obj) : AiAgentAdapter(obj) {
 }
-
-enum {RPC_ISCREATURE__ = 6,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

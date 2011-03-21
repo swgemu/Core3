@@ -12,6 +12,8 @@
  *	RecreationBuildingObjectStub
  */
 
+enum {};
+
 RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	RecreationBuildingObjectImplementation* _implementation = new RecreationBuildingObjectImplementation();
 	_impl = _implementation;
@@ -160,8 +162,6 @@ RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation()
 
 RecreationBuildingObjectAdapter::RecreationBuildingObjectAdapter(RecreationBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
-
-enum {};
 
 Packet* RecreationBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -24,6 +24,8 @@
  *	DotPackStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISPOISONDELIVERYUNIT__,RPC_ISDISEASEDELIVERYUNIT__,RPC_GETEFFECTIVENESS__,RPC_GETRANGE__,RPC_GETAREA__,RPC_GETRANGEMOD__,RPC_GETPOTENCY__,RPC_GETDURATION__,RPC_ISAREA__,RPC_GETPOOL__,RPC_GETDOTTYPE__};
+
 DotPack::DotPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	DotPackImplementation* _implementation = new DotPackImplementation();
 	_impl = _implementation;
@@ -70,7 +72,7 @@ int DotPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -85,7 +87,7 @@ int DotPack::calculatePower(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CALCULATEPOWER__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		return method.executeWithSignedIntReturn();
@@ -99,7 +101,7 @@ bool DotPack::isPoisonDeliveryUnit() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISPOISONDELIVERYUNIT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -112,7 +114,7 @@ bool DotPack::isDiseaseDeliveryUnit() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISDISEASEDELIVERYUNIT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -125,7 +127,7 @@ float DotPack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETEFFECTIVENESS__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -138,7 +140,7 @@ float DotPack::getRange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETRANGE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -151,7 +153,7 @@ float DotPack::getArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETAREA__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -164,7 +166,7 @@ float DotPack::getRangeMod() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETRANGEMOD__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -177,7 +179,7 @@ float DotPack::getPotency() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETPOTENCY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -190,7 +192,7 @@ unsigned int DotPack::getDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETDURATION__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -203,7 +205,7 @@ bool DotPack::isArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ISAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -216,7 +218,7 @@ unsigned int DotPack::getPool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETPOOL__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -229,7 +231,7 @@ unsigned int DotPack::getDotType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETDOTTYPE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -678,8 +680,6 @@ unsigned int DotPackImplementation::getDotType() {
 
 DotPackAdapter::DotPackAdapter(DotPackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISPOISONDELIVERYUNIT__,RPC_ISDISEASEDELIVERYUNIT__,RPC_GETEFFECTIVENESS__,RPC_GETRANGE__,RPC_GETAREA__,RPC_GETRANGEMOD__,RPC_GETPOTENCY__,RPC_GETDURATION__,RPC_ISAREA__,RPC_GETPOOL__,RPC_GETDOTTYPE__};
 
 Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

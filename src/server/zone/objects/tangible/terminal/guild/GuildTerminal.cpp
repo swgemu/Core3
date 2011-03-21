@@ -18,6 +18,8 @@
  *	GuildTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISGUILDTERMINAL__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGUILDOBJECT__};
+
 GuildTerminal::GuildTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	GuildTerminalImplementation* _implementation = new GuildTerminalImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void GuildTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void GuildTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Pla
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -65,7 +67,7 @@ int GuildTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -80,7 +82,7 @@ bool GuildTerminal::isGuildTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISGUILDTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -93,7 +95,7 @@ void GuildTerminal::setGuildObject(GuildObject* guild) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SETGUILDOBJECT__GUILDOBJECT_);
 		method.addObjectParameter(guild);
 
 		method.executeWithVoidReturn();
@@ -107,7 +109,7 @@ GuildObject* GuildTerminal::getGuildObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETGUILDOBJECT__);
 
 		return (GuildObject*) method.executeWithObjectReturn();
 	} else
@@ -286,8 +288,6 @@ GuildObject* GuildTerminalImplementation::getGuildObject() {
 
 GuildTerminalAdapter::GuildTerminalAdapter(GuildTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISGUILDTERMINAL__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGUILDOBJECT__};
 
 Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

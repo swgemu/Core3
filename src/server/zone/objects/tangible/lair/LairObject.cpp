@@ -16,6 +16,8 @@
  *	LairObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_CHECKFORNEWSPAWNS__,RPC_CHECKFORHEAL__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_GETMAXOBJECTSTOSPAWN__,};
+
 LairObject::LairObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	LairObjectImplementation* _implementation = new LairObjectImplementation();
 	_impl = _implementation;
@@ -44,7 +46,7 @@ void LairObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -57,7 +59,7 @@ int LairObject::inflictDamage(TangibleObject* attacker, int damageType, int dama
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
@@ -75,7 +77,7 @@ void LairObject::checkForNewSpawns() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CHECKFORNEWSPAWNS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -88,7 +90,7 @@ void LairObject::checkForHeal(TangibleObject* attacker, bool forceNewUpdate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_CHECKFORHEAL__TANGIBLEOBJECT_BOOL_);
 		method.addObjectParameter(attacker);
 		method.addBooleanParameter(forceNewUpdate);
 
@@ -103,7 +105,7 @@ void LairObject::healLair(TangibleObject* attacker) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_HEALLAIR__TANGIBLEOBJECT_);
 		method.addObjectParameter(attacker);
 
 		method.executeWithVoidReturn();
@@ -117,7 +119,7 @@ int LairObject::notifyObjectDestructionObservers(TangibleObject* attacker, int c
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(condition);
 
@@ -132,7 +134,7 @@ bool LairObject::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -146,7 +148,7 @@ int LairObject::getMaxObjectsToSpawn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETMAXOBJECTSTOSPAWN__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -340,8 +342,6 @@ SortedVector<unsigned int>* LairObjectImplementation::getObjectsToSpawn() {
 
 LairObjectAdapter::LairObjectAdapter(LairObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_CHECKFORNEWSPAWNS__,RPC_CHECKFORHEAL__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_GETMAXOBJECTSTOSPAWN__,};
 
 Packet* LairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

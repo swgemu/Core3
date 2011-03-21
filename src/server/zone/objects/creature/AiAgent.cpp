@@ -38,6 +38,8 @@
  *	AiAgentStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOMOVEMENT__,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_SETLOOTOWNER__CREATUREOBJECT_,RPC_GETLOOTOWNER__,RPC_HASLOOT__};
+
 AiAgent::AiAgent() : CreatureObject(DummyConstructorParameter::instance()) {
 	AiAgentImplementation* _implementation = new AiAgentImplementation();
 	_impl = _implementation;
@@ -57,7 +59,7 @@ void AiAgent::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -70,7 +72,7 @@ void AiAgent::activateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ACTIVATERECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -83,7 +85,7 @@ void AiAgent::activateMovementEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ACTIVATEMOVEMENTEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -96,7 +98,7 @@ void AiAgent::activateWaitEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ACTIVATEWAITEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -109,7 +111,7 @@ void AiAgent::activateAwarenessEvent(CreatureObject* target) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_);
 		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
@@ -123,7 +125,7 @@ bool AiAgent::tryRetreat() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_TRYRETREAT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -136,7 +138,7 @@ void AiAgent::doRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_DORECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -149,7 +151,7 @@ void AiAgent::doMovement() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_DOMOVEMENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -171,7 +173,7 @@ void AiAgent::checkNewAngle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_CHECKNEWANGLE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -184,7 +186,7 @@ void AiAgent::fillAttributeList(AttributeListMessage* msg, PlayerCreature* objec
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -199,7 +201,7 @@ void AiAgent::setNextPosition(float x, float z, float y, SceneObject* cell) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
 		method.addFloatParameter(y);
@@ -234,7 +236,7 @@ void AiAgent::clearPatrolPoints() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_CLEARPATROLPOINTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -283,7 +285,7 @@ int AiAgent::inflictDamage(TangibleObject* attacker, int damageType, int damage,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
@@ -301,7 +303,7 @@ void AiAgent::sendConversationStartTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -315,7 +317,7 @@ void AiAgent::sendDefaultConversationTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -329,7 +331,7 @@ void AiAgent::selectConversationOption(int option, SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -344,7 +346,7 @@ int AiAgent::notifyObjectDestructionObservers(TangibleObject* attacker, int cond
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(condition);
 
@@ -359,7 +361,7 @@ int AiAgent::notifyConverseObservers(CreatureObject* converser) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_);
 		method.addObjectParameter(converser);
 
 		return method.executeWithSignedIntReturn();
@@ -373,7 +375,7 @@ int AiAgent::notifyAttack(Observable* observable) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_NOTIFYATTACK__OBSERVABLE_);
 		method.addObjectParameter(observable);
 
 		return method.executeWithSignedIntReturn();
@@ -387,7 +389,7 @@ int AiAgent::notifyCallForHelp(Observable* observable, ManagedObject* arg1) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
 
@@ -402,7 +404,7 @@ void AiAgent::activatePostureRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_ACTIVATEPOSTURERECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -415,7 +417,7 @@ void AiAgent::clearCombatState(bool clearDefenders) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_CLEARCOMBATSTATE__BOOL_);
 		method.addBooleanParameter(clearDefenders);
 
 		method.executeWithVoidReturn();
@@ -429,7 +431,7 @@ void AiAgent::setDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SETDEFENDER__SCENEOBJECT_);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -443,7 +445,7 @@ void AiAgent::addDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_ADDDEFENDER__SCENEOBJECT_);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -457,7 +459,7 @@ void AiAgent::removeDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_REMOVEDEFENDER__SCENEOBJECT_);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -471,7 +473,7 @@ void AiAgent::setDespawnOnNoPlayerInRange(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -485,7 +487,7 @@ void AiAgent::notifyDespawn(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_NOTIFYDESPAWN__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -499,7 +501,7 @@ void AiAgent::scheduleDespawn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_SCHEDULEDESPAWN__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -512,7 +514,7 @@ void AiAgent::respawn(Zone* zone, int level) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_RESPAWN__ZONE_INT_);
 		method.addObjectParameter(zone);
 		method.addSignedIntParameter(level);
 
@@ -536,7 +538,7 @@ void AiAgent::setHomeLocation(float x, float z, float y, SceneObject* cell) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
 		method.addFloatParameter(y);
@@ -553,7 +555,7 @@ void AiAgent::setRespawnTimer(float resp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_SETRESPAWNTIMER__FLOAT_);
 		method.addFloatParameter(resp);
 
 		method.executeWithVoidReturn();
@@ -567,7 +569,7 @@ bool AiAgent::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -581,7 +583,7 @@ bool AiAgent::isAggressiveTo(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_ISAGGRESSIVETO__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -595,7 +597,7 @@ void AiAgent::setOblivious() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_SETOBLIVIOUS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -608,7 +610,7 @@ void AiAgent::setWatchObject(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_SETWATCHOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -622,7 +624,7 @@ void AiAgent::setStalkObject(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_SETSTALKOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -636,7 +638,7 @@ void AiAgent::setFollowObject(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_SETFOLLOWOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -650,7 +652,7 @@ void AiAgent::setTargetObject(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_SETTARGETOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -664,7 +666,7 @@ void AiAgent::selectWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_SELECTWEAPON__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -677,7 +679,7 @@ bool AiAgent::validateStateAttack(CreatureObject* target, String& args) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_);
 		method.addObjectParameter(target);
 		method.addAsciiParameter(args);
 
@@ -692,7 +694,7 @@ bool AiAgent::isRetreating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_ISRETREATING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -705,7 +707,7 @@ bool AiAgent::isFleeing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_ISFLEEING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -718,7 +720,7 @@ void AiAgent::clearDespawnEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_CLEARDESPAWNEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -731,7 +733,7 @@ float AiAgent::getKinetic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_GETKINETIC__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -744,7 +746,7 @@ float AiAgent::getEnergy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_GETENERGY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -757,7 +759,7 @@ float AiAgent::getElectricity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, RPC_GETELECTRICITY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -770,7 +772,7 @@ float AiAgent::getStun() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, RPC_GETSTUN__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -783,7 +785,7 @@ float AiAgent::getBlast() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, RPC_GETBLAST__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -796,7 +798,7 @@ float AiAgent::getHeat() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, RPC_GETHEAT__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -809,7 +811,7 @@ float AiAgent::getCold() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, RPC_GETCOLD__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -822,7 +824,7 @@ float AiAgent::getAcid() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, RPC_GETACID__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -835,7 +837,7 @@ float AiAgent::getLightSaber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, RPC_GETLIGHTSABER__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -848,7 +850,7 @@ bool AiAgent::isStalker() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, RPC_ISSTALKER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -861,7 +863,7 @@ bool AiAgent::isKiller() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, RPC_ISKILLER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -874,7 +876,7 @@ unsigned int AiAgent::getFerocity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, RPC_GETFEROCITY__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -887,7 +889,7 @@ unsigned int AiAgent::getArmor() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, RPC_GETARMOR__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -900,7 +902,7 @@ bool AiAgent::getDespawnOnNoPlayerInRange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, RPC_GETDESPAWNONNOPLAYERINRANGE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -913,7 +915,7 @@ int AiAgent::getNumberOfPlayersInRange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, RPC_GETNUMBEROFPLAYERSINRANGE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -935,7 +937,7 @@ String AiAgent::getFactionString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, RPC_GETFACTIONSTRING__);
 
 		method.executeWithAsciiReturn(_return_getFactionString);
 		return _return_getFactionString;
@@ -949,7 +951,7 @@ String AiAgent::getSocialGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, RPC_GETSOCIALGROUP__);
 
 		method.executeWithAsciiReturn(_return_getSocialGroup);
 		return _return_getSocialGroup;
@@ -963,7 +965,7 @@ float AiAgent::getChanceHit() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, RPC_GETCHANCEHIT__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -976,7 +978,7 @@ int AiAgent::getDamageMin() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, RPC_GETDAMAGEMIN__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -989,7 +991,7 @@ int AiAgent::getDamageMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, RPC_GETDAMAGEMAX__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1002,7 +1004,7 @@ int AiAgent::getBaseXp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, RPC_GETBASEXP__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1015,7 +1017,7 @@ unsigned int AiAgent::getDiet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, RPC_GETDIET__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1037,7 +1039,7 @@ float AiAgent::getRespawnTimer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, RPC_GETRESPAWNTIMER__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1059,7 +1061,7 @@ bool AiAgent::isAiAgent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, RPC_ISAIAGENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1072,7 +1074,7 @@ void AiAgent::setLootOwner(CreatureObject* owner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, RPC_SETLOOTOWNER__CREATUREOBJECT_);
 		method.addObjectParameter(owner);
 
 		method.executeWithVoidReturn();
@@ -1086,7 +1088,7 @@ CreatureObject* AiAgent::getLootOwner() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, RPC_GETLOOTOWNER__);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
@@ -1099,7 +1101,7 @@ bool AiAgent::hasLoot() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, RPC_HASLOOT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1794,8 +1796,6 @@ bool AiAgentImplementation::hasLoot() {
 
 AiAgentAdapter::AiAgentAdapter(AiAgentImplementation* obj) : CreatureObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOMOVEMENT__,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_SETLOOTOWNER__CREATUREOBJECT_,RPC_GETLOOTOWNER__,RPC_HASLOOT__};
 
 Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

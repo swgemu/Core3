@@ -20,6 +20,8 @@
  *	LootManagerStub
  */
 
+enum {RPC_INITIALIZE__ = 6,RPC_CONTAINS__INT_,RPC_CREATELOOT__PLAYERCREATURE_SCENEOBJECT_INT_INT_INT_,RPC_TESTLOOT__PLAYERCREATURE_SCENEOBJECT_};
+
 LootManager::LootManager(CraftingManager* craftman) : ZoneManager(DummyConstructorParameter::instance()) {
 	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman);
 	_impl = _implementation;
@@ -39,7 +41,7 @@ void LootManager::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -52,7 +54,7 @@ bool LootManager::contains(unsigned int lootGroup) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CONTAINS__INT_);
 		method.addUnsignedIntParameter(lootGroup);
 
 		return method.executeWithBooleanReturn();
@@ -66,7 +68,7 @@ void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CREATELOOT__PLAYERCREATURE_SCENEOBJECT_INT_INT_INT_);
 		method.addObjectParameter(receiver);
 		method.addObjectParameter(container);
 		method.addSignedIntParameter(level);
@@ -93,7 +95,7 @@ void LootManager::testLoot(PlayerCreature* receiver, SceneObject* container) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_TESTLOOT__PLAYERCREATURE_SCENEOBJECT_);
 		method.addObjectParameter(receiver);
 		method.addObjectParameter(container);
 
@@ -259,8 +261,6 @@ bool LootManagerImplementation::contains(unsigned int lootGroup) {
 
 LootManagerAdapter::LootManagerAdapter(LootManagerImplementation* obj) : ZoneManagerAdapter(obj) {
 }
-
-enum {RPC_INITIALIZE__ = 6,RPC_CONTAINS__INT_,RPC_CREATELOOT__PLAYERCREATURE_SCENEOBJECT_INT_INT_INT_,RPC_TESTLOOT__PLAYERCREATURE_SCENEOBJECT_};
 
 Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -16,6 +16,8 @@
  *	CharacterBuilderTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_GIVELANGUAGES__PLAYERCREATURE_,RPC_ENHANCECHARACTER__PLAYERCREATURE_,};
+
 CharacterBuilderTerminal::CharacterBuilderTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CharacterBuilderTerminalImplementation* _implementation = new CharacterBuilderTerminalImplementation();
 	_impl = _implementation;
@@ -44,7 +46,7 @@ void CharacterBuilderTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -57,7 +59,7 @@ int CharacterBuilderTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -72,7 +74,7 @@ void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDINITIALCHOICES__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -86,7 +88,7 @@ void CharacterBuilderTerminal::giveLanguages(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GIVELANGUAGES__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -100,7 +102,7 @@ void CharacterBuilderTerminal::enhanceCharacter(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ENHANCECHARACTER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -243,8 +245,6 @@ CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation()
 
 CharacterBuilderTerminalAdapter::CharacterBuilderTerminalAdapter(CharacterBuilderTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_GIVELANGUAGES__PLAYERCREATURE_,RPC_ENHANCECHARACTER__PLAYERCREATURE_,};
 
 Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

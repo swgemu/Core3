@@ -12,6 +12,8 @@
  *	StaticObjectStub
  */
 
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_};
+
 StaticObject::StaticObject() : SceneObject(DummyConstructorParameter::instance()) {
 	StaticObjectImplementation* _implementation = new StaticObjectImplementation();
 	_impl = _implementation;
@@ -40,7 +42,7 @@ void StaticObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -192,8 +194,6 @@ void StaticObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 StaticObjectAdapter::StaticObjectAdapter(StaticObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
-
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_};
 
 Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

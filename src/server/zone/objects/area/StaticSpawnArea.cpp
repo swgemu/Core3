@@ -16,6 +16,8 @@
  *	StaticSpawnAreaStub
  */
 
+enum {RPC_SPAWNCREATURES__ = 6,RPC_ISSTATICAREA__};
+
 StaticSpawnArea::StaticSpawnArea() : SpawnArea(DummyConstructorParameter::instance()) {
 	StaticSpawnAreaImplementation* _implementation = new StaticSpawnAreaImplementation();
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void StaticSpawnArea::spawnCreatures() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SPAWNCREATURES__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -48,7 +50,7 @@ bool StaticSpawnArea::isStaticArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ISSTATICAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -208,8 +210,6 @@ bool StaticSpawnAreaImplementation::isStaticArea() {
 
 StaticSpawnAreaAdapter::StaticSpawnAreaAdapter(StaticSpawnAreaImplementation* obj) : SpawnAreaAdapter(obj) {
 }
-
-enum {RPC_SPAWNCREATURES__ = 6,RPC_ISSTATICAREA__};
 
 Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -14,6 +14,8 @@
  *	ChatRoomStub
  */
 
+enum {RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_ = 6,RPC_SENDTO__PLAYERCREATURE_,RPC_SENDDESTROYTO__PLAYERCREATURE_,RPC_ADDSUBROOM__CHATROOM_,RPC_REMOVESUBROOM__CHATROOM_,RPC_GETSUBROOM__INT_,RPC_GETSUBROOM__STRING_,RPC_ADDPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__STRING_,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_HASPLAYER__PLAYERCREATURE_,RPC_HASPLAYER__STRING_,RPC_REMOVEALLPLAYERS__,RPC_SETPRIVATE__,RPC_SETPUBLIC__,RPC_ISPUBLIC__,RPC_ISPRIVATE__,RPC_ISMODERATED__,RPC_SETMODERATED__BOOL_,RPC_GETPLAYER__INT_,RPC_GETPLAYERSIZE__,RPC_SETNAME__STRING_,RPC_GETNAME__,RPC_GETFULLPATH__,RPC_GETOWNER__,RPC_GETCREATOR__,RPC_GETTITLE__,RPC_GETSERVERNAME__,RPC_SETOWNER__STRING_,RPC_SETCREATOR__STRING_,RPC_SETTITLE__STRING_,RPC_SETROOMID__INT_,RPC_GETROOMID__,RPC_GETSUBROOMSSIZE__,RPC_GETPARENT__,RPC_COMPARETO__CHATROOM_};
+
 ChatRoom::ChatRoom() : ManagedObject(DummyConstructorParameter::instance()) {
 	ChatRoomImplementation* _implementation = new ChatRoomImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void ChatRoom::init(ZoneServer* serv, ChatRoom* par, const String& roomName, uns
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_);
 		method.addObjectParameter(serv);
 		method.addObjectParameter(par);
 		method.addAsciiParameter(roomName);
@@ -50,7 +52,7 @@ void ChatRoom::sendTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -64,7 +66,7 @@ void ChatRoom::sendDestroyTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDDESTROYTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -78,7 +80,7 @@ void ChatRoom::addSubRoom(ChatRoom* channel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ADDSUBROOM__CHATROOM_);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -92,7 +94,7 @@ void ChatRoom::removeSubRoom(ChatRoom* channel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_REMOVESUBROOM__CHATROOM_);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -106,7 +108,7 @@ ChatRoom* ChatRoom::getSubRoom(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETSUBROOM__INT_);
 		method.addSignedIntParameter(i);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -120,7 +122,7 @@ ChatRoom* ChatRoom::getSubRoom(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETSUBROOM__STRING_);
 		method.addAsciiParameter(name);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -134,7 +136,7 @@ void ChatRoom::addPlayer(PlayerCreature* player, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ADDPLAYER__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -149,7 +151,7 @@ void ChatRoom::removePlayer(PlayerCreature* player, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_REMOVEPLAYER__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -164,7 +166,7 @@ void ChatRoom::removePlayer(const String& player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_REMOVEPLAYER__STRING_);
 		method.addAsciiParameter(player);
 
 		method.executeWithVoidReturn();
@@ -178,7 +180,7 @@ void ChatRoom::broadcastMessage(BaseMessage* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__BASEMESSAGE_);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -201,7 +203,7 @@ bool ChatRoom::hasPlayer(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_HASPLAYER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -215,7 +217,7 @@ bool ChatRoom::hasPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_HASPLAYER__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -229,7 +231,7 @@ void ChatRoom::removeAllPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_REMOVEALLPLAYERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -242,7 +244,7 @@ void ChatRoom::setPrivate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SETPRIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -255,7 +257,7 @@ void ChatRoom::setPublic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SETPUBLIC__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -268,7 +270,7 @@ bool ChatRoom::isPublic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_ISPUBLIC__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -281,7 +283,7 @@ bool ChatRoom::isPrivate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_ISPRIVATE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -294,7 +296,7 @@ bool ChatRoom::isModerated() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_ISMODERATED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -307,7 +309,7 @@ void ChatRoom::setModerated(bool moderate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_SETMODERATED__BOOL_);
 		method.addBooleanParameter(moderate);
 
 		method.executeWithVoidReturn();
@@ -321,7 +323,7 @@ PlayerCreature* ChatRoom::getPlayer(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_GETPLAYER__INT_);
 		method.addSignedIntParameter(idx);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -335,7 +337,7 @@ int ChatRoom::getPlayerSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_GETPLAYERSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -348,7 +350,7 @@ void ChatRoom::setName(const String& Name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SETNAME__STRING_);
 		method.addAsciiParameter(Name);
 
 		method.executeWithVoidReturn();
@@ -362,7 +364,7 @@ String ChatRoom::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_GETNAME__);
 
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -376,7 +378,7 @@ String ChatRoom::getFullPath() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_GETFULLPATH__);
 
 		method.executeWithAsciiReturn(_return_getFullPath);
 		return _return_getFullPath;
@@ -390,7 +392,7 @@ String ChatRoom::getOwner() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_GETOWNER__);
 
 		method.executeWithAsciiReturn(_return_getOwner);
 		return _return_getOwner;
@@ -404,7 +406,7 @@ String ChatRoom::getCreator() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_GETCREATOR__);
 
 		method.executeWithAsciiReturn(_return_getCreator);
 		return _return_getCreator;
@@ -418,7 +420,7 @@ UnicodeString ChatRoom::getTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_GETTITLE__);
 
 		method.executeWithUnicodeReturn(_return_getTitle);
 		return _return_getTitle;
@@ -432,7 +434,7 @@ String ChatRoom::getServerName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_GETSERVERNAME__);
 
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -446,7 +448,7 @@ void ChatRoom::setOwner(const String& Owner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_SETOWNER__STRING_);
 		method.addAsciiParameter(Owner);
 
 		method.executeWithVoidReturn();
@@ -460,7 +462,7 @@ void ChatRoom::setCreator(const String& Creator) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_SETCREATOR__STRING_);
 		method.addAsciiParameter(Creator);
 
 		method.executeWithVoidReturn();
@@ -474,7 +476,7 @@ void ChatRoom::setTitle(const String& Title) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_SETTITLE__STRING_);
 		method.addAsciiParameter(Title);
 
 		method.executeWithVoidReturn();
@@ -488,7 +490,7 @@ void ChatRoom::setRoomID(int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_SETROOMID__INT_);
 		method.addSignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -502,7 +504,7 @@ unsigned int ChatRoom::getRoomID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_GETROOMID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -515,7 +517,7 @@ int ChatRoom::getSubRoomsSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_GETSUBROOMSSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -528,7 +530,7 @@ ChatRoom* ChatRoom::getParent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_GETPARENT__);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -541,7 +543,7 @@ int ChatRoom::compareTo(ChatRoom* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_COMPARETO__CHATROOM_);
 		method.addObjectParameter(obj);
 
 		return method.executeWithSignedIntReturn();
@@ -1108,8 +1110,6 @@ int ChatRoomImplementation::compareTo(ChatRoom* obj) {
 
 ChatRoomAdapter::ChatRoomAdapter(ChatRoomImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_ = 6,RPC_SENDTO__PLAYERCREATURE_,RPC_SENDDESTROYTO__PLAYERCREATURE_,RPC_ADDSUBROOM__CHATROOM_,RPC_REMOVESUBROOM__CHATROOM_,RPC_GETSUBROOM__INT_,RPC_GETSUBROOM__STRING_,RPC_ADDPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__STRING_,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_HASPLAYER__PLAYERCREATURE_,RPC_HASPLAYER__STRING_,RPC_REMOVEALLPLAYERS__,RPC_SETPRIVATE__,RPC_SETPUBLIC__,RPC_ISPUBLIC__,RPC_ISPRIVATE__,RPC_ISMODERATED__,RPC_SETMODERATED__BOOL_,RPC_GETPLAYER__INT_,RPC_GETPLAYERSIZE__,RPC_SETNAME__STRING_,RPC_GETNAME__,RPC_GETFULLPATH__,RPC_GETOWNER__,RPC_GETCREATOR__,RPC_GETTITLE__,RPC_GETSERVERNAME__,RPC_SETOWNER__STRING_,RPC_SETCREATOR__STRING_,RPC_SETTITLE__STRING_,RPC_SETROOMID__INT_,RPC_GETROOMID__,RPC_GETSUBROOMSSIZE__,RPC_GETPARENT__,RPC_COMPARETO__CHATROOM_};
 
 Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

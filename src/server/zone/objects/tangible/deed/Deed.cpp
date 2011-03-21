@@ -14,6 +14,8 @@
  *	DeedStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETGENERATEDOBJECTTEMPLATE__STRING_,RPC_GETGENERATEDOBJECTTEMPLATE__,RPC_ISDEEDOBJECT__};
+
 Deed::Deed() : TangibleObject(DummyConstructorParameter::instance()) {
 	DeedImplementation* _implementation = new DeedImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void Deed::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -73,7 +75,7 @@ void Deed::setGeneratedObjectTemplate(const String& templ) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETGENERATEDOBJECTTEMPLATE__STRING_);
 		method.addAsciiParameter(templ);
 
 		method.executeWithVoidReturn();
@@ -87,7 +89,7 @@ String Deed::getGeneratedObjectTemplate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETGENERATEDOBJECTTEMPLATE__);
 
 		method.executeWithAsciiReturn(_return_getGeneratedObjectTemplate);
 		return _return_getGeneratedObjectTemplate;
@@ -101,7 +103,7 @@ bool Deed::isDeedObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISDEEDOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -291,8 +293,6 @@ bool DeedImplementation::isDeedObject() {
 
 DeedAdapter::DeedAdapter(DeedImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETGENERATEDOBJECTTEMPLATE__STRING_,RPC_GETGENERATEDOBJECTTEMPLATE__,RPC_ISDEEDOBJECT__};
 
 Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

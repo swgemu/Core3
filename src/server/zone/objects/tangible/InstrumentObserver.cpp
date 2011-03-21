@@ -12,6 +12,8 @@
  *	InstrumentObserverStub
  */
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 InstrumentObserver::InstrumentObserver(Instrument* instr) : Observer(DummyConstructorParameter::instance()) {
 	InstrumentObserverImplementation* _implementation = new InstrumentObserverImplementation(instr);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ int InstrumentObserver::notifyObserverEvent(unsigned int eventType, Observable* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -190,8 +192,6 @@ InstrumentObserverImplementation::InstrumentObserverImplementation(Instrument* i
 
 InstrumentObserverAdapter::InstrumentObserverAdapter(InstrumentObserverImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
 
 Packet* InstrumentObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

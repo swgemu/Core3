@@ -22,6 +22,8 @@
  *	PharmaceuticalObjectStub
  */
 
+enum {RPC_GETMEDICINEUSEREQUIRED__ = 6,RPC_GETRANGE__CREATUREOBJECT_,RPC_ISAREA__,RPC_GETAREA__,RPC_ISPHARMACEUTICALOBJECT__,RPC_ISSTIMPACK__,RPC_ISRANGEDSTIMPACK__,RPC_ISENHANCEPACK__,RPC_ISWOUNDPACK__,RPC_ISCUREPACK__,RPC_ISSTATEPACK__,RPC_ISREVIVEPACK__};
+
 PharmaceuticalObject::PharmaceuticalObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	PharmaceuticalObjectImplementation* _implementation = new PharmaceuticalObjectImplementation();
 	_impl = _implementation;
@@ -41,7 +43,7 @@ int PharmaceuticalObject::getMedicineUseRequired() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_GETMEDICINEUSEREQUIRED__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -54,7 +56,7 @@ float PharmaceuticalObject::getRange(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETRANGE__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		return method.executeWithFloatReturn();
@@ -68,7 +70,7 @@ bool PharmaceuticalObject::isArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -81,7 +83,7 @@ float PharmaceuticalObject::getArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETAREA__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -94,7 +96,7 @@ bool PharmaceuticalObject::isPharmaceuticalObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISPHARMACEUTICALOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -107,7 +109,7 @@ bool PharmaceuticalObject::isStimPack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISSTIMPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -120,7 +122,7 @@ bool PharmaceuticalObject::isRangedStimPack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISRANGEDSTIMPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -133,7 +135,7 @@ bool PharmaceuticalObject::isEnhancePack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISENHANCEPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -146,7 +148,7 @@ bool PharmaceuticalObject::isWoundPack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ISWOUNDPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -159,7 +161,7 @@ bool PharmaceuticalObject::isCurePack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_ISCUREPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -172,7 +174,7 @@ bool PharmaceuticalObject::isStatePack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ISSTATEPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -185,7 +187,7 @@ bool PharmaceuticalObject::isRevivePack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ISREVIVEPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -402,8 +404,6 @@ bool PharmaceuticalObjectImplementation::isRevivePack() {
 
 PharmaceuticalObjectAdapter::PharmaceuticalObjectAdapter(PharmaceuticalObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_GETMEDICINEUSEREQUIRED__ = 6,RPC_GETRANGE__CREATUREOBJECT_,RPC_ISAREA__,RPC_GETAREA__,RPC_ISPHARMACEUTICALOBJECT__,RPC_ISSTIMPACK__,RPC_ISRANGEDSTIMPACK__,RPC_ISENHANCEPACK__,RPC_ISWOUNDPACK__,RPC_ISCUREPACK__,RPC_ISSTATEPACK__,RPC_ISREVIVEPACK__};
 
 Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

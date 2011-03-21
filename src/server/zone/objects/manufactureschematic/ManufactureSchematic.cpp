@@ -18,6 +18,8 @@
  *	ManufactureSchematicStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__PLAYERCREATURE_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_INITIALIZEFACTORYINGREDIENTS__,RPC_GETFACTORYINGREDIENTSSIZE__,RPC_GETFACTORYINGREDIENT__INT_,RPC_GETFACTORYINGREDIENTSLOTTYPE__INT_};
+
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void ManufactureSchematic::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -59,7 +61,7 @@ void ManufactureSchematic::sendTo(SceneObject* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDTO__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -74,7 +76,7 @@ void ManufactureSchematic::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -88,7 +90,7 @@ void ManufactureSchematic::synchronizedUIListen(SceneObject* player, int value) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -103,7 +105,7 @@ void ManufactureSchematic::synchronizedUIStopListen(SceneObject* player, int val
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -118,7 +120,7 @@ void ManufactureSchematic::updateToDatabaseAllObjects(bool startTask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_UPDATETODATABASEALLOBJECTS__BOOL_);
 		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
@@ -132,7 +134,7 @@ bool ManufactureSchematic::isManufactureSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISMANUFACTURESCHEMATIC__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -145,7 +147,7 @@ void ManufactureSchematic::setDraftSchematic(SceneObject* craftingTool, DraftSch
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_);
 		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(schematic);
 
@@ -160,7 +162,7 @@ void ManufactureSchematic::initializeIngredientSlots(SceneObject* craftingTool, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_);
 		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(schematic);
 
@@ -175,7 +177,7 @@ void ManufactureSchematic::cleanupIngredientSlots() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_CLEANUPINGREDIENTSLOTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -188,7 +190,7 @@ DraftSchematic* ManufactureSchematic::getDraftSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETDRAFTSCHEMATIC__);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
 	} else
@@ -210,7 +212,7 @@ int ManufactureSchematic::getSlotCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETSLOTCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -223,7 +225,7 @@ void ManufactureSchematic::increaseComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_INCREASECOMPLEXITY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -236,7 +238,7 @@ void ManufactureSchematic::decreaseComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_DECREASECOMPLEXITY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -249,7 +251,7 @@ float ManufactureSchematic::getComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETCOMPLEXITY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -262,7 +264,7 @@ bool ManufactureSchematic::isFirstCraftingUpdate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_ISFIRSTCRAFTINGUPDATE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -275,7 +277,7 @@ void ManufactureSchematic::setFirstCraftingUpdateComplete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -288,7 +290,7 @@ bool ManufactureSchematic::isReadyForAssembly() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_ISREADYFORASSEMBLY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -301,7 +303,7 @@ void ManufactureSchematic::setAssembled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_SETASSEMBLED__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -314,7 +316,7 @@ bool ManufactureSchematic::isAssembled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_ISASSEMBLED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -327,7 +329,7 @@ void ManufactureSchematic::setCompleted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETCOMPLETED__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -340,7 +342,7 @@ bool ManufactureSchematic::isCompleted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_ISCOMPLETED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -353,7 +355,7 @@ void ManufactureSchematic::setCrafter(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SETCRAFTER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -367,7 +369,7 @@ PlayerCreature* ManufactureSchematic::getCrafter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_GETCRAFTER__);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
@@ -389,7 +391,7 @@ void ManufactureSchematic::setExperimentingCounter(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_SETEXPERIMENTINGCOUNTER__INT_);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -403,7 +405,7 @@ int ManufactureSchematic::getExperimentingCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_GETEXPERIMENTINGCOUNTER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -416,7 +418,7 @@ int ManufactureSchematic::getExperimentingCounterPrevious() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -429,7 +431,7 @@ void ManufactureSchematic::setManufactureLimit(int limit) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_SETMANUFACTURELIMIT__INT_);
 		method.addSignedIntParameter(limit);
 
 		method.executeWithVoidReturn();
@@ -443,7 +445,7 @@ int ManufactureSchematic::getManufactureLimit() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_GETMANUFACTURELIMIT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -456,7 +458,7 @@ void ManufactureSchematic::setPrototype(TangibleObject* tano) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_SETPROTOTYPE__TANGIBLEOBJECT_);
 		method.addObjectParameter(tano);
 
 		method.executeWithVoidReturn();
@@ -470,7 +472,7 @@ TangibleObject* ManufactureSchematic::getPrototype() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_GETPROTOTYPE__);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -483,7 +485,7 @@ void ManufactureSchematic::initializeFactoryIngredients() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_INITIALIZEFACTORYINGREDIENTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -496,7 +498,7 @@ int ManufactureSchematic::getFactoryIngredientsSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_GETFACTORYINGREDIENTSSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -509,7 +511,7 @@ SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_GETFACTORYINGREDIENT__INT_);
 		method.addSignedIntParameter(i);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -523,7 +525,7 @@ int ManufactureSchematic::getFactoryIngredientSlotType(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_GETFACTORYINGREDIENTSLOTTYPE__INT_);
 		method.addSignedIntParameter(i);
 
 		return method.executeWithSignedIntReturn();
@@ -1031,8 +1033,6 @@ int ManufactureSchematicImplementation::getFactoryIngredientSlotType(int i) {
 
 ManufactureSchematicAdapter::ManufactureSchematicAdapter(ManufactureSchematicImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__PLAYERCREATURE_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_INITIALIZEFACTORYINGREDIENTS__,RPC_GETFACTORYINGREDIENTSSIZE__,RPC_GETFACTORYINGREDIENT__INT_,RPC_GETFACTORYINGREDIENTSLOTTYPE__INT_};
 
 Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

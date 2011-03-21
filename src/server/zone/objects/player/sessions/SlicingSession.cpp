@@ -12,6 +12,8 @@
  *	SlicingSessionStub
  */
 
+enum {RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ENDSLICING__,RPC_GETSLICINGSKILL__PLAYERCREATURE_,RPC_HASPRECISIONLASERKNIFE__BOOL_,RPC_HASWEAPONUPGRADEKIT__,RPC_HASARMORUPGRADEKIT__,RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_,};
+
 SlicingSession::SlicingSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	SlicingSessionImplementation* _implementation = new SlicingSessionImplementation(parent);
 	_impl = _implementation;
@@ -49,7 +51,7 @@ int SlicingSession::initializeSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZESESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -62,7 +64,7 @@ int SlicingSession::cancelSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CANCELSESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -75,7 +77,7 @@ int SlicingSession::clearSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CLEARSESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -88,7 +90,7 @@ void SlicingSession::endSlicing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ENDSLICING__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -101,7 +103,7 @@ int SlicingSession::getSlicingSkill(PlayerCreature* slicer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETSLICINGSKILL__PLAYERCREATURE_);
 		method.addObjectParameter(slicer);
 
 		return method.executeWithSignedIntReturn();
@@ -115,7 +117,7 @@ bool SlicingSession::hasPrecisionLaserKnife(bool removeItem) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_HASPRECISIONLASERKNIFE__BOOL_);
 		method.addBooleanParameter(removeItem);
 
 		return method.executeWithBooleanReturn();
@@ -129,7 +131,7 @@ bool SlicingSession::hasWeaponUpgradeKit() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_HASWEAPONUPGRADEKIT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -142,7 +144,7 @@ bool SlicingSession::hasArmorUpgradeKit() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_HASARMORUPGRADEKIT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -155,7 +157,7 @@ void SlicingSession::useClampFromInventory(SlicingTool* clamp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_);
 		method.addObjectParameter(clamp);
 
 		method.executeWithVoidReturn();
@@ -454,8 +456,6 @@ byte SlicingSessionImplementation::getProgress() {
 
 SlicingSessionAdapter::SlicingSessionAdapter(SlicingSessionImplementation* obj) : FacadeAdapter(obj) {
 }
-
-enum {RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ENDSLICING__,RPC_GETSLICINGSKILL__PLAYERCREATURE_,RPC_HASPRECISIONLASERKNIFE__BOOL_,RPC_HASWEAPONUPGRADEKIT__,RPC_HASARMORUPGRADEKIT__,RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_,};
 
 Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

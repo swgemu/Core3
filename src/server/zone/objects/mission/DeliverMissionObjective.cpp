@@ -26,6 +26,8 @@
  *	DeliverMissionObjectiveStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETTARGET__AIAGENT_,RPC_SETTARGETDEST__AIAGENT_,RPC_GETITEM__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_};
+
 DeliverMissionObjective::DeliverMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	DeliverMissionObjectiveImplementation* _implementation = new DeliverMissionObjectiveImplementation(mission);
 	_impl = _implementation;
@@ -45,7 +47,7 @@ void DeliverMissionObjective::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -58,7 +60,7 @@ void DeliverMissionObjective::setTarget(AiAgent* t) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETTARGET__AIAGENT_);
 		method.addObjectParameter(t);
 
 		method.executeWithVoidReturn();
@@ -72,7 +74,7 @@ void DeliverMissionObjective::setTargetDest(AiAgent* t) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETTARGETDEST__AIAGENT_);
 		method.addObjectParameter(t);
 
 		method.executeWithVoidReturn();
@@ -86,7 +88,7 @@ TangibleObject* DeliverMissionObjective::getItem() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETITEM__);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -99,7 +101,7 @@ void DeliverMissionObjective::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -112,7 +114,7 @@ void DeliverMissionObjective::abort() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ABORT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -125,7 +127,7 @@ void DeliverMissionObjective::complete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_COMPLETE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -138,7 +140,7 @@ int DeliverMissionObjective::notifyObserverEvent(MissionObserver* observer, unsi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -156,7 +158,7 @@ bool DeliverMissionObjective::updateMissionTarget(CreatureObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -376,8 +378,6 @@ TangibleObject* DeliverMissionObjectiveImplementation::getItem() {
 
 DeliverMissionObjectiveAdapter::DeliverMissionObjectiveAdapter(DeliverMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETTARGET__AIAGENT_,RPC_SETTARGETDEST__AIAGENT_,RPC_GETITEM__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_};
 
 Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

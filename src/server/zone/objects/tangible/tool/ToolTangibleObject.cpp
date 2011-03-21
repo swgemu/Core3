@@ -12,6 +12,8 @@
  *	ToolTangibleObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6};
+
 ToolTangibleObject::ToolTangibleObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	ToolTangibleObjectImplementation* _implementation = new ToolTangibleObjectImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void ToolTangibleObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -180,8 +182,6 @@ void ToolTangibleObjectImplementation::initializeTransientMembers() {
 
 ToolTangibleObjectAdapter::ToolTangibleObjectAdapter(ToolTangibleObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6};
 
 Packet* ToolTangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

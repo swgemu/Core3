@@ -12,6 +12,8 @@
  *	SuiTransferBoxStub
  */
 
+enum {RPC_GENERATEMESSAGE__ = 6,RPC_ADDFROM__STRING_STRING_STRING_STRING_,RPC_ADDTO__STRING_STRING_STRING_STRING_,RPC_ISTRANSFERBOX__};
+
 SuiTransferBox::SuiTransferBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiTransferBoxImplementation* _implementation = new SuiTransferBoxImplementation(player, windowType);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ BaseMessage* SuiTransferBox::generateMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
@@ -44,7 +46,7 @@ void SuiTransferBox::addFrom(const String& from, const String& startingFrom, con
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ADDFROM__STRING_STRING_STRING_STRING_);
 		method.addAsciiParameter(from);
 		method.addAsciiParameter(startingFrom);
 		method.addAsciiParameter(inputFrom);
@@ -61,7 +63,7 @@ void SuiTransferBox::addTo(const String& to, const String& startingTo, const Str
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ADDTO__STRING_STRING_STRING_STRING_);
 		method.addAsciiParameter(to);
 		method.addAsciiParameter(startingTo);
 		method.addAsciiParameter(inputTo);
@@ -78,7 +80,7 @@ bool SuiTransferBox::isTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISTRANSFERBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -327,8 +329,6 @@ bool SuiTransferBoxImplementation::isTransferBox() {
 
 SuiTransferBoxAdapter::SuiTransferBoxAdapter(SuiTransferBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
-
-enum {RPC_GENERATEMESSAGE__ = 6,RPC_ADDFROM__STRING_STRING_STRING_STRING_,RPC_ADDTO__STRING_STRING_STRING_STRING_,RPC_ISTRANSFERBOX__};
 
 Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

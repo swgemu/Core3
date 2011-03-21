@@ -20,6 +20,8 @@
  *	StructureObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_,RPC_SENDDESTROYCODETO__PLAYERCREATURE_,RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_GETTIMESTRING__INT_,RPC_GENERATEDESTROYCODE__,RPC_ISVALIDDESTROYCODE__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETDESTROYCODE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETLOTSIZE__INT_,RPC_SETDESTROYCODE__INT_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,RPC_GETLENGTH__,RPC_SETLENGTH__INT_,RPC_GETWIDTH__,RPC_SETWIDTH__INT_};
+
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
 	_impl = _implementation;
@@ -39,7 +41,7 @@ void StructureObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -61,7 +63,7 @@ void StructureObject::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -74,7 +76,7 @@ int StructureObject::notifyStructurePlaced(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -88,7 +90,7 @@ bool StructureObject::checkRequisitesForPlacement(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -102,7 +104,7 @@ void StructureObject::sendStatusTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SENDSTATUSTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -116,7 +118,7 @@ void StructureObject::sendDestroyConfirmTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -130,7 +132,7 @@ void StructureObject::sendDestroyCodeTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SENDDESTROYCODETO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -144,7 +146,7 @@ void StructureObject::sendManageMaintenanceTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -158,7 +160,7 @@ void StructureObject::sendChangeNamePromptTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -172,7 +174,7 @@ String StructureObject::getTimeString(unsigned int timestamp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETTIMESTRING__INT_);
 		method.addUnsignedIntParameter(timestamp);
 
 		method.executeWithAsciiReturn(_return_getTimeString);
@@ -187,7 +189,7 @@ unsigned int StructureObject::generateDestroyCode() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GENERATEDESTROYCODE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -200,7 +202,7 @@ bool StructureObject::isValidDestroyCode(unsigned int code) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ISVALIDDESTROYCODE__INT_);
 		method.addUnsignedIntParameter(code);
 
 		return method.executeWithBooleanReturn();
@@ -214,7 +216,7 @@ void StructureObject::scheduleMaintenanceExpirationEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -227,7 +229,7 @@ bool StructureObject::isOnAdminList(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_ISONADMINLIST__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -241,7 +243,7 @@ bool StructureObject::isOnAdminList(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_ISONADMINLIST__LONG_);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -255,7 +257,7 @@ bool StructureObject::isOnEntryList(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_ISONENTRYLIST__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -269,7 +271,7 @@ bool StructureObject::isOnEntryList(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_ISONENTRYLIST__LONG_);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -283,7 +285,7 @@ bool StructureObject::isOnBanList(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_ISONBANLIST__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -297,7 +299,7 @@ bool StructureObject::isOnBanList(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_ISONBANLIST__LONG_);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -311,7 +313,7 @@ bool StructureObject::isOwnerOf(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_ISOWNEROF__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -325,7 +327,7 @@ bool StructureObject::isOwnerOf(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_ISOWNEROF__LONG_);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -339,7 +341,7 @@ bool StructureObject::isOnAccessList(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_ISONACCESSLIST__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -353,7 +355,7 @@ bool StructureObject::isOnAccessList(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_ISONACCESSLIST__LONG_);
 		method.addUnsignedLongParameter(oid);
 
 		return method.executeWithBooleanReturn();
@@ -367,7 +369,7 @@ void StructureObject::sendPermissionListTo(PlayerCreature* player, const String&
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(listName);
 
@@ -382,7 +384,7 @@ bool StructureObject::addPermission(PlayerCreature* player, PlayerCreature* targ
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(targetPlayer);
 		method.addAsciiParameter(listName);
@@ -398,7 +400,7 @@ bool StructureObject::addPermission(PlayerCreature* player, const String& target
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetPlayerName);
 		method.addAsciiParameter(listName);
@@ -414,7 +416,7 @@ bool StructureObject::removePermission(PlayerCreature* player, PlayerCreature* t
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(targetPlayer);
 		method.addAsciiParameter(listName);
@@ -430,7 +432,7 @@ bool StructureObject::removePermission(PlayerCreature* player, const String& tar
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetPlayerName);
 		method.addAsciiParameter(listName);
@@ -446,7 +448,7 @@ int StructureObject::getRedeedCost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_GETREDEEDCOST__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -459,7 +461,7 @@ unsigned long long StructureObject::getOwnerObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_GETOWNEROBJECTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -472,7 +474,7 @@ unsigned long long StructureObject::getDeedObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_GETDEEDOBJECTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -485,7 +487,7 @@ int StructureObject::getLotSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_GETLOTSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -498,7 +500,7 @@ unsigned int StructureObject::getDestroyCode() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_GETDESTROYCODE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -511,7 +513,7 @@ int StructureObject::getBaseMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_GETBASEMAINTENANCERATE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -524,7 +526,7 @@ int StructureObject::getBasePowerRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_GETBASEPOWERRATE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -537,7 +539,7 @@ int StructureObject::getSurplusMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_GETSURPLUSMAINTENANCE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -550,7 +552,7 @@ int StructureObject::getSurplusPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_GETSURPLUSPOWER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -563,7 +565,7 @@ bool StructureObject::isPublicStructure() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_ISPUBLICSTRUCTURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -576,7 +578,7 @@ void StructureObject::setOwnerObjectID(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_SETOWNEROBJECTID__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		method.executeWithVoidReturn();
@@ -590,7 +592,7 @@ void StructureObject::setDeedObjectID(unsigned long long deedID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_SETDEEDOBJECTID__LONG_);
 		method.addUnsignedLongParameter(deedID);
 
 		method.executeWithVoidReturn();
@@ -604,7 +606,7 @@ void StructureObject::setLotSize(int lots) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_SETLOTSIZE__INT_);
 		method.addSignedIntParameter(lots);
 
 		method.executeWithVoidReturn();
@@ -618,7 +620,7 @@ void StructureObject::setDestroyCode(unsigned int code) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_SETDESTROYCODE__INT_);
 		method.addUnsignedIntParameter(code);
 
 		method.executeWithVoidReturn();
@@ -632,7 +634,7 @@ void StructureObject::setBaseMaintenanceRate(int rate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_SETBASEMAINTENANCERATE__INT_);
 		method.addSignedIntParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -646,7 +648,7 @@ void StructureObject::setBasePowerRate(int rate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_SETBASEPOWERRATE__INT_);
 		method.addSignedIntParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -660,7 +662,7 @@ void StructureObject::setSurplusMaintenance(int surplus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_SETSURPLUSMAINTENANCE__INT_);
 		method.addSignedIntParameter(surplus);
 
 		method.executeWithVoidReturn();
@@ -674,7 +676,7 @@ void StructureObject::addMaintenance(int add) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, RPC_ADDMAINTENANCE__INT_);
 		method.addSignedIntParameter(add);
 
 		method.executeWithVoidReturn();
@@ -688,7 +690,7 @@ void StructureObject::setSurplusPower(int surplus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, RPC_SETSURPLUSPOWER__INT_);
 		method.addSignedIntParameter(surplus);
 
 		method.executeWithVoidReturn();
@@ -702,7 +704,7 @@ void StructureObject::addPower(int add) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, RPC_ADDPOWER__INT_);
 		method.addSignedIntParameter(add);
 
 		method.executeWithVoidReturn();
@@ -716,7 +718,7 @@ void StructureObject::setPublicStructure(bool privacy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, RPC_SETPUBLICSTRUCTURE__BOOL_);
 		method.addBooleanParameter(privacy);
 
 		method.executeWithVoidReturn();
@@ -730,7 +732,7 @@ bool StructureObject::isStructureObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, RPC_ISSTRUCTUREOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -743,7 +745,7 @@ bool StructureObject::isRedeedable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, RPC_ISREDEEDABLE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -756,7 +758,7 @@ int StructureObject::getLength() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, RPC_GETLENGTH__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -778,7 +780,7 @@ void StructureObject::setLength(int len) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, RPC_SETLENGTH__INT_);
 		method.addSignedIntParameter(len);
 
 		method.executeWithVoidReturn();
@@ -792,7 +794,7 @@ int StructureObject::getWidth() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, RPC_GETWIDTH__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -805,7 +807,7 @@ void StructureObject::setWidth(int wid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, RPC_SETWIDTH__INT_);
 		method.addSignedIntParameter(wid);
 
 		method.executeWithVoidReturn();
@@ -1348,8 +1350,6 @@ void StructureObjectImplementation::setWidth(int wid) {
 
 StructureObjectAdapter::StructureObjectAdapter(StructureObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_,RPC_SENDDESTROYCODETO__PLAYERCREATURE_,RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_GETTIMESTRING__INT_,RPC_GENERATEDESTROYCODE__,RPC_ISVALIDDESTROYCODE__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETDESTROYCODE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETLOTSIZE__INT_,RPC_SETDESTROYCODE__INT_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,RPC_GETLENGTH__,RPC_SETLENGTH__INT_,RPC_GETWIDTH__,RPC_SETWIDTH__INT_};
 
 Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

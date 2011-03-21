@@ -22,6 +22,8 @@
  *	RegionStub
  */
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_,RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETSHUTTLE__,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
+
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
 	_impl = _implementation;
@@ -41,7 +43,7 @@ void Region::notifyEnter(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYENTER__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -55,7 +57,7 @@ void Region::sendGreetingMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -69,7 +71,7 @@ void Region::sendDepartingMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -83,7 +85,7 @@ void Region::notifyExit(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_NOTIFYEXIT__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -97,7 +99,7 @@ void Region::insertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -111,7 +113,7 @@ void Region::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -124,7 +126,7 @@ void Region::despawnCityObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_DESPAWNCITYOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -137,7 +139,7 @@ void Region::addBazaar(BazaarTerminal* ter) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ADDBAZAAR__BAZAARTERMINAL_);
 		method.addObjectParameter(ter);
 
 		method.executeWithVoidReturn();
@@ -151,7 +153,7 @@ BazaarTerminal* Region::getBazaar(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETBAZAAR__INT_);
 		method.addSignedIntParameter(idx);
 
 		return (BazaarTerminal*) method.executeWithObjectReturn();
@@ -165,7 +167,7 @@ ShuttleInstallation* Region::getShuttle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETSHUTTLE__);
 
 		return (ShuttleInstallation*) method.executeWithObjectReturn();
 	} else
@@ -178,7 +180,7 @@ int Region::getBazaarCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETBAZAARCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -191,7 +193,7 @@ bool Region::isRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ISREGION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -204,7 +206,7 @@ CityHallObject* Region::getCityHall() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETCITYHALL__);
 
 		return (CityHallObject*) method.executeWithObjectReturn();
 	} else
@@ -217,7 +219,7 @@ void Region::setCityHall(CityHallObject* hall) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SETCITYHALL__CITYHALLOBJECT_);
 		method.addObjectParameter(hall);
 
 		method.executeWithVoidReturn();
@@ -481,8 +483,6 @@ void RegionImplementation::setCityHall(CityHallObject* hall) {
 
 RegionAdapter::RegionAdapter(RegionImplementation* obj) : ActiveAreaAdapter(obj) {
 }
-
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_,RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETSHUTTLE__,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
 
 Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

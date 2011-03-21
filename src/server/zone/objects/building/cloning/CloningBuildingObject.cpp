@@ -12,6 +12,8 @@
  *	CloningBuildingObjectStub
  */
 
+enum {RPC_ISCLONINGBUILDINGOBJECT__,};
+
 CloningBuildingObject::CloningBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	CloningBuildingObjectImplementation* _implementation = new CloningBuildingObjectImplementation();
 	_impl = _implementation;
@@ -40,7 +42,7 @@ bool CloningBuildingObject::isCloningBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ISCLONINGBUILDINGOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -218,8 +220,6 @@ CloneSpawnPoint* CloningBuildingObjectImplementation::getRandomSpawnPoint() {
 
 CloningBuildingObjectAdapter::CloningBuildingObjectAdapter(CloningBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
-
-enum {RPC_ISCLONINGBUILDINGOBJECT__,};
 
 Packet* CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

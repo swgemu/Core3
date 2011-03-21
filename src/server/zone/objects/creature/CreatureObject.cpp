@@ -36,6 +36,8 @@
  *	CreatureObjectStub
  */
 
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_SENDSYSTEMMESSAGE__UNICODESTRING_,RPC_SENDSYSTEMMESSAGE__STRING_STRING_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SETCOMBATSTATE__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETPOSTURE__INT_BOOL_,RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETRUNSPEED__FLOAT_BOOL_,RPC_SETHAM__INT_INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HASDAMAGE__INT_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETBASEHAM__INT_INT_BOOL_,RPC_SETWOUNDS__INT_INT_BOOL_,RPC_ADDWOUNDS__INT_INT_BOOL_,RPC_SETMAXHAM__INT_INT_BOOL_,RPC_ADDMAXHAM__INT_INT_BOOL_,RPC_SETENCUMBRANCE__INT_INT_BOOL_,RPC_ADDENCUMBRANCE__INT_INT_BOOL_,RPC_SETWEAPON__WEAPONOBJECT_BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_SETINSTRUMENTID__INT_BOOL_,RPC_SETLISTENTOID__LONG_BOOL_,RPC_SETPERFORMANCECOUNTER__INT_BOOL_,RPC_SETPERFORMANCEANIMATION__STRING_BOOL_,RPC_SETSHOCKWOUNDS__INT_BOOL_,RPC_ADDSHOCKWOUNDS__INT_BOOL_,RPC_SETTARGETID__LONG_BOOL_,RPC_SETBANKCREDITS__INT_BOOL_,RPC_ADDBUFF__BUFF_,RPC_REMOVEBUFF__INT_,RPC_REMOVEBUFF__BUFF_,RPC_CLEARBUFFS__BOOL_,RPC_GETBUFF__INT_,RPC_ADDDOTSTATE__LONG_INT_BYTE_INT_FLOAT_INT_,RPC_HEALDOT__LONG_INT_,RPC_CLEARDOTS__,RPC_HASBUFF__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSTURECHANGE__INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISRESUSCITABLE__,RPC_ADDBANKCREDITS__INT_BOOL_,RPC_ADDCASHCREDITS__INT_BOOL_,RPC_SUBSTRACTBANKCREDITS__INT_,RPC_SUBSTRACTCASHCREDITS__INT_,RPC_VERIFYCASHCREDITS__INT_,RPC_VERIFYBANKCREDITS__INT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_STOPENTERTAINING__,RPC_ISENTERTAINING__,RPC_SETCASHCREDITS__INT_BOOL_,RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_,RPC_ADDSKILLBOX__STRING_BOOL_,RPC_REMOVESKILLBOX__STRING_BOOL_,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_REMOVESKILLMOD__STRING_BOOL_,RPC_UPDATEGROUPINVITERID__LONG_BOOL_,RPC_UPDATEGROUP__GROUPOBJECT_BOOL_,RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_,RPC_SETMOOD__BYTE_BOOL_,RPC_SETMOODSTRING__STRING_BOOL_,RPC_DELETEQUEUEACTION__INT_,RPC_SETSTATE__LONG_BOOL_,RPC_CLEARSTATE__LONG_BOOL_,RPC_SETCONTROLDEVICE__CONTROLDEVICE_,RPC_GETWEARABLEMASK__,RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_CANTREATINJURIES__,RPC_CANTREATSTATES__,RPC_CANTREATWOUNDS__,RPC_CANTREATCONDITIONS__,RPC_ISLISTENING__,RPC_ISWATCHING__,RPC_DISMOUNT__,RPC_CALCULATEBFRATIO__,RPC_SETDIZZIEDSTATE__INT_,RPC_SETRALLIEDSTATE__INT_,RPC_SETAIMINGSTATE__INT_,RPC_SETCOVERSTATE__INT_,RPC_SETBERSERKEDSTATE__INT_,RPC_SETSTUNNEDSTATE__INT_,RPC_SETBLINDEDSTATE__INT_,RPC_SETINTIMIDATEDSTATE__INT_,RPC_SETSNAREDSTATE__INT_,RPC_SETROOTEDSTATE__INT_,RPC_SETNEXTATTACKDELAY__INT_,RPC_SETMEDITATESTATE__,RPC_ACTIVATEHAMREGENERATION__,RPC_ACTIVATESTATERECOVERY__,RPC_UPDATETIMEOFDEATH__,RPC_HASATTACKDELAY__,RPC_REMOVEATTACKDELAY__,RPC_HASSPICE__,RPC_UPDATELASTSUCCESSFULCOMBATACTION__,RPC_UPDATEKNOCKDOWNRECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_UPDATELASTKNOCKDOWN__,RPC_CHECKKNOCKDOWNRECOVERY__,RPC_CHECKLASTKNOCKDOWN__,RPC_UPDATEPOSTUREDOWNRECOVERY__,RPC_UPDATEPOSTUREUPRECOVERY__,RPC_CHECKPOSTUREDOWNRECOVERY__,RPC_CHECKPOSTUREUPRECOVERY__,RPC_UPDATECOOLDOWNTIMER__STRING_INT_,RPC_CHECKCOOLDOWNRECOVERY__STRING_,RPC_ADDCOOLDOWN__STRING_INT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_DOANIMATION__STRING_,RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_,RPC_PLAYEFFECT__STRING_STRING_,RPC_PLAYEFFECT__STRING_,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_ACTIVATEQUEUEACTION__,RPC_GETCREATURENAME__,RPC_ISGROUPED__,RPC_GETBANKCREDITS__,RPC_GETCASHCREDITS__,RPC_GETBASEHAM__INT_,RPC_GETWOUNDS__INT_,RPC_GETHAM__INT_,RPC_GETMAXHAM__INT_,RPC_GETENCUMBRANCE__INT_,RPC_GETPOSTURE__,RPC_GETFACTIONRANK__,RPC_GETLINKEDCREATURE__,RPC_GETCREATURELINKID__,RPC_GETSHOCKWOUNDS__,RPC_GETWATCHTOID__,RPC_GETSTATEBITMASK__,RPC_HASSTATE__LONG_,RPC_HASSTATES__,RPC_GETLISTENID__,RPC_GETACCELERATIONMULTIPLIERBASE__,RPC_GETACCELERATIONMULTIPLIERMOD__,RPC_GETSPEEDMULTIPLIERBASE__,RPC_GETSPEEDMULTIPLIERMOD__,RPC_GETRUNSPEED__,RPC_GETWALKSPEED__,RPC_GETTERRAINNEGOTIATION__,RPC_GETRUNACCELERATION__,RPC_GETWALKACCELERATION__,RPC_GETPERFORMANCEANIMATION__,RPC_GETMOODSTRING__,RPC_GETWEAPONID__,RPC_GETWEAPON__,RPC_GETGUILDOBJECT__,RPC_GETGUILDID__,RPC_ISINGUILD__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGROUPID__,RPC_GETGROUPINVITERID__,RPC_GETGROUP__,RPC_GETGROUPINVITECOUNTER__,RPC_GETTARGETID__,RPC_GETMOODID__,RPC_GETSLOPEMODPERCENT__,RPC_GETPERFORMANCECOUNTER__,RPC_GETINSTRUMENTID__,RPC_GETFROZEN__,RPC_GETHEIGHT__,RPC_GETSPECIES__,RPC_GETSPECIESNAME__,RPC_GETGENDER__,RPC_GETSKILLMOD__STRING_,RPC_HASSKILLBOX__STRING_,RPC_SETHEIGHT__FLOAT_,RPC_SETWATCHTOID__LONG_,RPC_ISCREATUREOBJECT__,RPC_ISTRAINERCREATURE__,RPC_ISSWIMMING__,RPC_ISRIDINGMOUNT__,RPC_GETCONTROLDEVICE__,RPC_GETSWIMHEIGHT__,RPC_ISINCAPACITATED__,RPC_ISDEAD__,RPC_ISKNOCKEDDOWN__,RPC_ISKNEELING__,RPC_ISPRONE__,RPC_ISSTANDING__,RPC_ISSITTING__,RPC_ISSKILLANIMATING__,RPC_ISRALLIED__,RPC_ISINCOMBAT__,RPC_ISDIZZIED__,RPC_ISBERSERKED__,RPC_ISSTUNNED__,RPC_ISBLINDED__,RPC_ISINTIMIDATED__,RPC_ISSNARED__,RPC_ISROOTED__,RPC_ISDISEASED__,RPC_ISPOISONED__,RPC_ISBLEEDING__,RPC_ISONFIRE__,RPC_ISMOUNTED__,RPC_ISRIDINGCREATURE__,RPC_ISPEACED__,RPC_ISMEDITATING__,RPC_ISAIMING__,RPC_ISINCOVER__,RPC_ISSHUTTLECREATURE__,RPC_ISNONPLAYERCREATURE__,RPC_ISCREATURE__,RPC_ISAIAGENT__,RPC_ISINFORMANTCREATURE__};
+
 CreatureObject::CreatureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	CreatureObjectImplementation* _implementation = new CreatureObjectImplementation();
 	_impl = _implementation;
@@ -55,7 +57,7 @@ void CreatureObject::initializeMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZEMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -77,7 +79,7 @@ void CreatureObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -90,7 +92,7 @@ void CreatureObject::clearQueueAction(unsigned int actioncntr, float timer, unsi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_);
 		method.addUnsignedIntParameter(actioncntr);
 		method.addFloatParameter(timer);
 		method.addUnsignedIntParameter(tab1);
@@ -107,7 +109,7 @@ void CreatureObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -121,7 +123,7 @@ void CreatureObject::sendSystemMessage(const String& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SENDSYSTEMMESSAGE__STRING_);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -135,7 +137,7 @@ void CreatureObject::sendSystemMessage(UnicodeString& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SENDSYSTEMMESSAGE__UNICODESTRING_);
 		method.addUnicodeParameter(message);
 
 		method.executeWithVoidReturn();
@@ -149,7 +151,7 @@ void CreatureObject::sendSystemMessage(const String& file, const String& stringi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SENDSYSTEMMESSAGE__STRING_STRING_);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(stringid);
 
@@ -173,7 +175,7 @@ void CreatureObject::sendSlottedObjectsTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -187,7 +189,7 @@ void CreatureObject::setCombatState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETCOMBATSTATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -200,7 +202,7 @@ void CreatureObject::clearCombatState(bool clearDefenders) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_CLEARCOMBATSTATE__BOOL_);
 		method.addBooleanParameter(clearDefenders);
 
 		method.executeWithVoidReturn();
@@ -214,7 +216,7 @@ void CreatureObject::setPosture(int newPosture, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETPOSTURE__INT_BOOL_);
 		method.addSignedIntParameter(newPosture);
 		method.addBooleanParameter(notifyClient);
 
@@ -229,7 +231,7 @@ void CreatureObject::setAccelerationMultiplierBase(float newMultiplierBase, bool
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_);
 		method.addFloatParameter(newMultiplierBase);
 		method.addBooleanParameter(notifyClient);
 
@@ -244,7 +246,7 @@ void CreatureObject::setAccelerationMultiplierMod(float newMultiplierMod, bool n
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_);
 		method.addFloatParameter(newMultiplierMod);
 		method.addBooleanParameter(notifyClient);
 
@@ -259,7 +261,7 @@ void CreatureObject::setSpeedMultiplierBase(float newMultiplierBase, bool notify
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_);
 		method.addFloatParameter(newMultiplierBase);
 		method.addBooleanParameter(notifyClient);
 
@@ -274,7 +276,7 @@ void CreatureObject::setSpeedMultiplierMod(float newMultiplierMod, bool notifyCl
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_);
 		method.addFloatParameter(newMultiplierMod);
 		method.addBooleanParameter(notifyClient);
 
@@ -289,7 +291,7 @@ void CreatureObject::setRunSpeed(float newSpeed, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SETRUNSPEED__FLOAT_BOOL_);
 		method.addFloatParameter(newSpeed);
 		method.addBooleanParameter(notifyClient);
 
@@ -304,7 +306,7 @@ void CreatureObject::setHAM(int type, int value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_SETHAM__INT_INT_BOOL_);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -320,7 +322,7 @@ int CreatureObject::inflictDamage(TangibleObject* attacker, int damageType, int 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
@@ -338,7 +340,7 @@ bool CreatureObject::hasDamage(int attribute) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_HASDAMAGE__INT_);
 		method.addSignedIntParameter(attribute);
 
 		return method.executeWithBooleanReturn();
@@ -352,7 +354,7 @@ int CreatureObject::healDamage(TangibleObject* healer, int damageType, int damag
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_);
 		method.addObjectParameter(healer);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
@@ -369,7 +371,7 @@ void CreatureObject::setBaseHAM(int type, int value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETBASEHAM__INT_INT_BOOL_);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -385,7 +387,7 @@ void CreatureObject::setWounds(int type, int value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_SETWOUNDS__INT_INT_BOOL_);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -401,7 +403,7 @@ int CreatureObject::addWounds(int type, int value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_ADDWOUNDS__INT_INT_BOOL_);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -417,7 +419,7 @@ void CreatureObject::setMaxHAM(int type, int value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_SETMAXHAM__INT_INT_BOOL_);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -433,7 +435,7 @@ void CreatureObject::addMaxHAM(int type, int value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_ADDMAXHAM__INT_INT_BOOL_);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -449,7 +451,7 @@ void CreatureObject::setEncumbrance(int type, int value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_SETENCUMBRANCE__INT_INT_BOOL_);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -465,7 +467,7 @@ void CreatureObject::addEncumbrance(int type, int value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_ADDENCUMBRANCE__INT_INT_BOOL_);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -481,7 +483,7 @@ void CreatureObject::setWeapon(WeaponObject* weao, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_SETWEAPON__WEAPONOBJECT_BOOL_);
 		method.addObjectParameter(weao);
 		method.addBooleanParameter(notifyClient);
 
@@ -496,7 +498,7 @@ int CreatureObject::notifyObjectInserted(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithSignedIntReturn();
@@ -510,7 +512,7 @@ int CreatureObject::notifyObjectRemoved(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithSignedIntReturn();
@@ -524,7 +526,7 @@ void CreatureObject::setInstrumentID(int instrumentid, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_SETINSTRUMENTID__INT_BOOL_);
 		method.addSignedIntParameter(instrumentid);
 		method.addBooleanParameter(notifyClient);
 
@@ -539,7 +541,7 @@ void CreatureObject::setListenToID(unsigned long long id, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_SETLISTENTOID__LONG_BOOL_);
 		method.addUnsignedLongParameter(id);
 		method.addBooleanParameter(notifyClient);
 
@@ -554,7 +556,7 @@ void CreatureObject::setPerformanceCounter(int counter, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_SETPERFORMANCECOUNTER__INT_BOOL_);
 		method.addSignedIntParameter(counter);
 		method.addBooleanParameter(notifyClient);
 
@@ -569,7 +571,7 @@ void CreatureObject::setPerformanceAnimation(const String& animation, bool notif
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_SETPERFORMANCEANIMATION__STRING_BOOL_);
 		method.addAsciiParameter(animation);
 		method.addBooleanParameter(notifyClient);
 
@@ -584,7 +586,7 @@ void CreatureObject::setShockWounds(int newShock, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_SETSHOCKWOUNDS__INT_BOOL_);
 		method.addSignedIntParameter(newShock);
 		method.addBooleanParameter(notifyClient);
 
@@ -599,7 +601,7 @@ void CreatureObject::addShockWounds(int shockToAdd, bool notiyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_ADDSHOCKWOUNDS__INT_BOOL_);
 		method.addSignedIntParameter(shockToAdd);
 		method.addBooleanParameter(notiyClient);
 
@@ -614,7 +616,7 @@ void CreatureObject::setTargetID(unsigned long long targetID, bool notifyClient)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_SETTARGETID__LONG_BOOL_);
 		method.addUnsignedLongParameter(targetID);
 		method.addBooleanParameter(notifyClient);
 
@@ -629,7 +631,7 @@ void CreatureObject::setBankCredits(int credits, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_SETBANKCREDITS__INT_BOOL_);
 		method.addSignedIntParameter(credits);
 		method.addBooleanParameter(notifyClient);
 
@@ -644,7 +646,7 @@ void CreatureObject::addBuff(Buff* buff) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_ADDBUFF__BUFF_);
 		method.addObjectParameter(buff);
 
 		method.executeWithVoidReturn();
@@ -658,7 +660,7 @@ void CreatureObject::removeBuff(unsigned int buffcrc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_REMOVEBUFF__INT_);
 		method.addUnsignedIntParameter(buffcrc);
 
 		method.executeWithVoidReturn();
@@ -672,7 +674,7 @@ void CreatureObject::removeBuff(Buff* buff) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_REMOVEBUFF__BUFF_);
 		method.addObjectParameter(buff);
 
 		method.executeWithVoidReturn();
@@ -686,7 +688,7 @@ void CreatureObject::clearBuffs(bool updateclient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_CLEARBUFFS__BOOL_);
 		method.addBooleanParameter(updateclient);
 
 		method.executeWithVoidReturn();
@@ -700,7 +702,7 @@ Buff* CreatureObject::getBuff(unsigned int buffcrc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_GETBUFF__INT_);
 		method.addUnsignedIntParameter(buffcrc);
 
 		return (Buff*) method.executeWithObjectReturn();
@@ -714,7 +716,7 @@ int CreatureObject::addDotState(unsigned long long dotType, unsigned int strengt
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_ADDDOTSTATE__LONG_INT_BYTE_INT_FLOAT_INT_);
 		method.addUnsignedLongParameter(dotType);
 		method.addUnsignedIntParameter(strength);
 		method.addByteParameter(type);
@@ -733,7 +735,7 @@ bool CreatureObject::healDot(unsigned long long dotType, int reduction) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_HEALDOT__LONG_INT_);
 		method.addUnsignedLongParameter(dotType);
 		method.addSignedIntParameter(reduction);
 
@@ -748,7 +750,7 @@ void CreatureObject::clearDots() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, RPC_CLEARDOTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -761,7 +763,7 @@ bool CreatureObject::hasBuff(unsigned int buffcrc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, RPC_HASBUFF__INT_);
 		method.addUnsignedIntParameter(buffcrc);
 
 		return method.executeWithBooleanReturn();
@@ -775,7 +777,7 @@ void CreatureObject::notifySelfPositionUpdate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, RPC_NOTIFYSELFPOSITIONUPDATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -788,7 +790,7 @@ void CreatureObject::notifyPostureChange(int newPosture) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, RPC_NOTIFYPOSTURECHANGE__INT_);
 		method.addSignedIntParameter(newPosture);
 
 		method.executeWithVoidReturn();
@@ -802,7 +804,7 @@ void CreatureObject::updateToDatabaseAllObjects(bool startTask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, RPC_UPDATETODATABASEALLOBJECTS__BOOL_);
 		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
@@ -816,7 +818,7 @@ bool CreatureObject::isResuscitable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, RPC_ISRESUSCITABLE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -829,7 +831,7 @@ void CreatureObject::addBankCredits(int credits, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, RPC_ADDBANKCREDITS__INT_BOOL_);
 		method.addSignedIntParameter(credits);
 		method.addBooleanParameter(notifyClient);
 
@@ -844,7 +846,7 @@ void CreatureObject::addCashCredits(int credits, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, RPC_ADDCASHCREDITS__INT_BOOL_);
 		method.addSignedIntParameter(credits);
 		method.addBooleanParameter(notifyClient);
 
@@ -859,7 +861,7 @@ void CreatureObject::substractBankCredits(int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, RPC_SUBSTRACTBANKCREDITS__INT_);
 		method.addSignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -873,7 +875,7 @@ void CreatureObject::substractCashCredits(int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, RPC_SUBSTRACTCASHCREDITS__INT_);
 		method.addSignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -887,7 +889,7 @@ bool CreatureObject::verifyCashCredits(int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, RPC_VERIFYCASHCREDITS__INT_);
 		method.addSignedIntParameter(credits);
 
 		return method.executeWithBooleanReturn();
@@ -901,7 +903,7 @@ bool CreatureObject::verifyBankCredits(int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, RPC_VERIFYBANKCREDITS__INT_);
 		method.addSignedIntParameter(credits);
 
 		return method.executeWithBooleanReturn();
@@ -915,7 +917,7 @@ bool CreatureObject::isDancing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, RPC_ISDANCING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -928,7 +930,7 @@ bool CreatureObject::isPlayingMusic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, RPC_ISPLAYINGMUSIC__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -941,7 +943,7 @@ void CreatureObject::stopEntertaining() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, RPC_STOPENTERTAINING__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -954,7 +956,7 @@ bool CreatureObject::isEntertaining() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, RPC_ISENTERTAINING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -967,7 +969,7 @@ void CreatureObject::setCashCredits(int credits, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, RPC_SETCASHCREDITS__INT_BOOL_);
 		method.addSignedIntParameter(credits);
 		method.addBooleanParameter(notifyClient);
 
@@ -982,7 +984,7 @@ void CreatureObject::setTerrainNegotiation(float value, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_);
 		method.addFloatParameter(value);
 		method.addBooleanParameter(notifyClient);
 
@@ -1006,7 +1008,7 @@ void CreatureObject::addSkillBox(const String& skillBox, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, RPC_ADDSKILLBOX__STRING_BOOL_);
 		method.addAsciiParameter(skillBox);
 		method.addBooleanParameter(notifyClient);
 
@@ -1030,7 +1032,7 @@ void CreatureObject::removeSkillBox(const String& skillBox, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, RPC_REMOVESKILLBOX__STRING_BOOL_);
 		method.addAsciiParameter(skillBox);
 		method.addBooleanParameter(notifyClient);
 
@@ -1045,7 +1047,7 @@ void CreatureObject::addSkillMod(const String& skillMod, long long value, bool n
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, RPC_ADDSKILLMOD__STRING_LONG_BOOL_);
 		method.addAsciiParameter(skillMod);
 		method.addSignedLongParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -1061,7 +1063,7 @@ void CreatureObject::removeSkillMod(const String& skillMod, bool notifyCLient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, RPC_REMOVESKILLMOD__STRING_BOOL_);
 		method.addAsciiParameter(skillMod);
 		method.addBooleanParameter(notifyCLient);
 
@@ -1076,7 +1078,7 @@ void CreatureObject::updateGroupInviterID(unsigned long long id, bool notifyClie
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, RPC_UPDATEGROUPINVITERID__LONG_BOOL_);
 		method.addUnsignedLongParameter(id);
 		method.addBooleanParameter(notifyClient);
 
@@ -1091,7 +1093,7 @@ void CreatureObject::updateGroup(GroupObject* group, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, RPC_UPDATEGROUP__GROUPOBJECT_BOOL_);
 		method.addObjectParameter(group);
 		method.addBooleanParameter(notifyClient);
 
@@ -1106,7 +1108,7 @@ void CreatureObject::enqueueCommand(unsigned int actionCRC, unsigned int actionC
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_);
 		method.addUnsignedIntParameter(actionCRC);
 		method.addUnsignedIntParameter(actionCount);
 		method.addUnsignedLongParameter(targetID);
@@ -1124,7 +1126,7 @@ void CreatureObject::setMood(byte moodID, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, RPC_SETMOOD__BYTE_BOOL_);
 		method.addByteParameter(moodID);
 		method.addBooleanParameter(notifyClient);
 
@@ -1139,7 +1141,7 @@ void CreatureObject::setMoodString(const String& animation, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, RPC_SETMOODSTRING__STRING_BOOL_);
 		method.addAsciiParameter(animation);
 		method.addBooleanParameter(notifyClient);
 
@@ -1154,7 +1156,7 @@ void CreatureObject::deleteQueueAction(unsigned int actionCount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, RPC_DELETEQUEUEACTION__INT_);
 		method.addUnsignedIntParameter(actionCount);
 
 		method.executeWithVoidReturn();
@@ -1168,7 +1170,7 @@ bool CreatureObject::setState(unsigned long long state, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, RPC_SETSTATE__LONG_BOOL_);
 		method.addUnsignedLongParameter(state);
 		method.addBooleanParameter(notifyClient);
 
@@ -1183,7 +1185,7 @@ bool CreatureObject::clearState(unsigned long long state, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, RPC_CLEARSTATE__LONG_BOOL_);
 		method.addUnsignedLongParameter(state);
 		method.addBooleanParameter(notifyClient);
 
@@ -1198,7 +1200,7 @@ void CreatureObject::setControlDevice(ControlDevice* device) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, RPC_SETCONTROLDEVICE__CONTROLDEVICE_);
 		method.addObjectParameter(device);
 
 		method.executeWithVoidReturn();
@@ -1212,7 +1214,7 @@ unsigned int CreatureObject::getWearableMask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 82);
+		DistributedMethod method(this, RPC_GETWEARABLEMASK__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1225,7 +1227,7 @@ void CreatureObject::setCreatureLink(CreatureObject* object, bool notifyClient) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(notifyClient);
 
@@ -1240,7 +1242,7 @@ void CreatureObject::executeObjectControllerAction(unsigned int actionCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, RPC_EXECUTEOBJECTCONTROLLERACTION__INT_);
 		method.addUnsignedIntParameter(actionCRC);
 
 		method.executeWithVoidReturn();
@@ -1254,7 +1256,7 @@ void CreatureObject::executeObjectControllerAction(unsigned int actionCRC, unsig
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_);
 		method.addUnsignedIntParameter(actionCRC);
 		method.addUnsignedLongParameter(targetID);
 		method.addUnicodeParameter(args);
@@ -1270,7 +1272,7 @@ bool CreatureObject::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 86);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -1284,7 +1286,7 @@ void CreatureObject::sendConversationStartTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 87);
+		DistributedMethod method(this, RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -1298,7 +1300,7 @@ void CreatureObject::selectConversationOption(int option, SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 88);
+		DistributedMethod method(this, RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -1313,7 +1315,7 @@ bool CreatureObject::canTreatInjuries() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 89);
+		DistributedMethod method(this, RPC_CANTREATINJURIES__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1326,7 +1328,7 @@ bool CreatureObject::canTreatStates() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 90);
+		DistributedMethod method(this, RPC_CANTREATSTATES__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1339,7 +1341,7 @@ bool CreatureObject::canTreatWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 91);
+		DistributedMethod method(this, RPC_CANTREATWOUNDS__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1352,7 +1354,7 @@ bool CreatureObject::canTreatConditions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 92);
+		DistributedMethod method(this, RPC_CANTREATCONDITIONS__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1365,7 +1367,7 @@ bool CreatureObject::isListening() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 93);
+		DistributedMethod method(this, RPC_ISLISTENING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1378,7 +1380,7 @@ bool CreatureObject::isWatching() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 94);
+		DistributedMethod method(this, RPC_ISWATCHING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1391,7 +1393,7 @@ void CreatureObject::dismount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 95);
+		DistributedMethod method(this, RPC_DISMOUNT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1404,7 +1406,7 @@ float CreatureObject::calculateBFRatio() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 96);
+		DistributedMethod method(this, RPC_CALCULATEBFRATIO__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1417,7 +1419,7 @@ void CreatureObject::setDizziedState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 97);
+		DistributedMethod method(this, RPC_SETDIZZIEDSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1431,7 +1433,7 @@ void CreatureObject::setRalliedState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 98);
+		DistributedMethod method(this, RPC_SETRALLIEDSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1445,7 +1447,7 @@ void CreatureObject::setAimingState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 99);
+		DistributedMethod method(this, RPC_SETAIMINGSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1459,7 +1461,7 @@ void CreatureObject::setCoverState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 100);
+		DistributedMethod method(this, RPC_SETCOVERSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1473,7 +1475,7 @@ void CreatureObject::setBerserkedState(unsigned int duration) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 101);
+		DistributedMethod method(this, RPC_SETBERSERKEDSTATE__INT_);
 		method.addUnsignedIntParameter(duration);
 
 		method.executeWithVoidReturn();
@@ -1487,7 +1489,7 @@ void CreatureObject::setStunnedState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 102);
+		DistributedMethod method(this, RPC_SETSTUNNEDSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1501,7 +1503,7 @@ void CreatureObject::setBlindedState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 103);
+		DistributedMethod method(this, RPC_SETBLINDEDSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1515,7 +1517,7 @@ void CreatureObject::setIntimidatedState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 104);
+		DistributedMethod method(this, RPC_SETINTIMIDATEDSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1529,7 +1531,7 @@ void CreatureObject::setSnaredState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 105);
+		DistributedMethod method(this, RPC_SETSNAREDSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1543,7 +1545,7 @@ void CreatureObject::setRootedState(int durationSeconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 106);
+		DistributedMethod method(this, RPC_SETROOTEDSTATE__INT_);
 		method.addSignedIntParameter(durationSeconds);
 
 		method.executeWithVoidReturn();
@@ -1557,7 +1559,7 @@ bool CreatureObject::setNextAttackDelay(int del) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 107);
+		DistributedMethod method(this, RPC_SETNEXTATTACKDELAY__INT_);
 		method.addSignedIntParameter(del);
 
 		return method.executeWithBooleanReturn();
@@ -1571,7 +1573,7 @@ void CreatureObject::setMeditateState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 108);
+		DistributedMethod method(this, RPC_SETMEDITATESTATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1584,7 +1586,7 @@ void CreatureObject::activateHAMRegeneration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 109);
+		DistributedMethod method(this, RPC_ACTIVATEHAMREGENERATION__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1597,7 +1599,7 @@ void CreatureObject::activateStateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 110);
+		DistributedMethod method(this, RPC_ACTIVATESTATERECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1610,7 +1612,7 @@ void CreatureObject::updateTimeOfDeath() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 111);
+		DistributedMethod method(this, RPC_UPDATETIMEOFDEATH__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1623,7 +1625,7 @@ bool CreatureObject::hasAttackDelay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 112);
+		DistributedMethod method(this, RPC_HASATTACKDELAY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1636,7 +1638,7 @@ void CreatureObject::removeAttackDelay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 113);
+		DistributedMethod method(this, RPC_REMOVEATTACKDELAY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1649,7 +1651,7 @@ bool CreatureObject::hasSpice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 114);
+		DistributedMethod method(this, RPC_HASSPICE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1662,7 +1664,7 @@ void CreatureObject::updateLastSuccessfulCombatAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 115);
+		DistributedMethod method(this, RPC_UPDATELASTSUCCESSFULCOMBATACTION__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1675,7 +1677,7 @@ void CreatureObject::updateKnockdownRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 116);
+		DistributedMethod method(this, RPC_UPDATEKNOCKDOWNRECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1688,7 +1690,7 @@ void CreatureObject::queueDizzyFallEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 117);
+		DistributedMethod method(this, RPC_QUEUEDIZZYFALLEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1701,7 +1703,7 @@ void CreatureObject::updateLastKnockdown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 118);
+		DistributedMethod method(this, RPC_UPDATELASTKNOCKDOWN__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1714,7 +1716,7 @@ bool CreatureObject::checkKnockdownRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 119);
+		DistributedMethod method(this, RPC_CHECKKNOCKDOWNRECOVERY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1727,7 +1729,7 @@ bool CreatureObject::checkLastKnockdown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 120);
+		DistributedMethod method(this, RPC_CHECKLASTKNOCKDOWN__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1740,7 +1742,7 @@ void CreatureObject::updatePostureDownRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 121);
+		DistributedMethod method(this, RPC_UPDATEPOSTUREDOWNRECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1753,7 +1755,7 @@ void CreatureObject::updatePostureUpRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 122);
+		DistributedMethod method(this, RPC_UPDATEPOSTUREUPRECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1766,7 +1768,7 @@ bool CreatureObject::checkPostureDownRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 123);
+		DistributedMethod method(this, RPC_CHECKPOSTUREDOWNRECOVERY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1779,7 +1781,7 @@ bool CreatureObject::checkPostureUpRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 124);
+		DistributedMethod method(this, RPC_CHECKPOSTUREUPRECOVERY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1792,7 +1794,7 @@ void CreatureObject::updateCooldownTimer(const String& coooldownTimer, unsigned 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 125);
+		DistributedMethod method(this, RPC_UPDATECOOLDOWNTIMER__STRING_INT_);
 		method.addAsciiParameter(coooldownTimer);
 		method.addUnsignedIntParameter(miliSecondsToAdd);
 
@@ -1807,7 +1809,7 @@ bool CreatureObject::checkCooldownRecovery(const String& cooldown) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 126);
+		DistributedMethod method(this, RPC_CHECKCOOLDOWNRECOVERY__STRING_);
 		method.addAsciiParameter(cooldown);
 
 		return method.executeWithBooleanReturn();
@@ -1830,7 +1832,7 @@ void CreatureObject::addCooldown(const String& name, unsigned int miliseconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 127);
+		DistributedMethod method(this, RPC_ADDCOOLDOWN__STRING_INT_);
 		method.addAsciiParameter(name);
 		method.addUnsignedIntParameter(miliseconds);
 
@@ -1845,7 +1847,7 @@ int CreatureObject::canAddObject(SceneObject* object, int containmentType, Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 128);
+		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
@@ -1861,7 +1863,7 @@ void CreatureObject::doAnimation(const String& animation) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 129);
+		DistributedMethod method(this, RPC_DOANIMATION__STRING_);
 		method.addAsciiParameter(animation);
 
 		method.executeWithVoidReturn();
@@ -1875,7 +1877,7 @@ void CreatureObject::doCombatAnimation(CreatureObject* defender, unsigned int an
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 130);
+		DistributedMethod method(this, RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_);
 		method.addObjectParameter(defender);
 		method.addUnsignedIntParameter(animationCRC);
 		method.addByteParameter(hit);
@@ -1891,7 +1893,7 @@ void CreatureObject::playEffect(const String& file, const String& aux) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 131);
+		DistributedMethod method(this, RPC_PLAYEFFECT__STRING_STRING_);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(aux);
 
@@ -1906,7 +1908,7 @@ void CreatureObject::playEffect(const String& file) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 132);
+		DistributedMethod method(this, RPC_PLAYEFFECT__STRING_);
 		method.addAsciiParameter(file);
 
 		method.executeWithVoidReturn();
@@ -1920,7 +1922,7 @@ void CreatureObject::showFlyText(const String& file, const String& uax, byte red
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 133);
+		DistributedMethod method(this, RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(uax);
 		method.addByteParameter(red);
@@ -1938,7 +1940,7 @@ void CreatureObject::activateQueueAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 134);
+		DistributedMethod method(this, RPC_ACTIVATEQUEUEACTION__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1951,7 +1953,7 @@ UnicodeString CreatureObject::getCreatureName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 135);
+		DistributedMethod method(this, RPC_GETCREATURENAME__);
 
 		method.executeWithUnicodeReturn(_return_getCreatureName);
 		return _return_getCreatureName;
@@ -1965,7 +1967,7 @@ bool CreatureObject::isGrouped() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 136);
+		DistributedMethod method(this, RPC_ISGROUPED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1978,7 +1980,7 @@ int CreatureObject::getBankCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 137);
+		DistributedMethod method(this, RPC_GETBANKCREDITS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1991,7 +1993,7 @@ int CreatureObject::getCashCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 138);
+		DistributedMethod method(this, RPC_GETCASHCREDITS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2004,7 +2006,7 @@ int CreatureObject::getBaseHAM(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 139);
+		DistributedMethod method(this, RPC_GETBASEHAM__INT_);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -2018,7 +2020,7 @@ int CreatureObject::getWounds(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 140);
+		DistributedMethod method(this, RPC_GETWOUNDS__INT_);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -2041,7 +2043,7 @@ int CreatureObject::getHAM(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 141);
+		DistributedMethod method(this, RPC_GETHAM__INT_);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -2064,7 +2066,7 @@ int CreatureObject::getMaxHAM(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 142);
+		DistributedMethod method(this, RPC_GETMAXHAM__INT_);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -2087,7 +2089,7 @@ int CreatureObject::getEncumbrance(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 143);
+		DistributedMethod method(this, RPC_GETENCUMBRANCE__INT_);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -2110,7 +2112,7 @@ byte CreatureObject::getPosture() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 144);
+		DistributedMethod method(this, RPC_GETPOSTURE__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -2123,7 +2125,7 @@ byte CreatureObject::getFactionRank() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 145);
+		DistributedMethod method(this, RPC_GETFACTIONRANK__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -2136,7 +2138,7 @@ CreatureObject* CreatureObject::getLinkedCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 146);
+		DistributedMethod method(this, RPC_GETLINKEDCREATURE__);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
@@ -2149,7 +2151,7 @@ unsigned long long CreatureObject::getCreatureLinkID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 147);
+		DistributedMethod method(this, RPC_GETCREATURELINKID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2162,7 +2164,7 @@ float CreatureObject::getShockWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 148);
+		DistributedMethod method(this, RPC_GETSHOCKWOUNDS__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2175,7 +2177,7 @@ unsigned long long CreatureObject::getWatchToID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 149);
+		DistributedMethod method(this, RPC_GETWATCHTOID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2188,7 +2190,7 @@ unsigned long long CreatureObject::getStateBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 150);
+		DistributedMethod method(this, RPC_GETSTATEBITMASK__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2201,7 +2203,7 @@ bool CreatureObject::hasState(unsigned long long state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 151);
+		DistributedMethod method(this, RPC_HASSTATE__LONG_);
 		method.addUnsignedLongParameter(state);
 
 		return method.executeWithBooleanReturn();
@@ -2215,7 +2217,7 @@ bool CreatureObject::hasStates() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 152);
+		DistributedMethod method(this, RPC_HASSTATES__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2228,7 +2230,7 @@ unsigned long long CreatureObject::getListenID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 153);
+		DistributedMethod method(this, RPC_GETLISTENID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2241,7 +2243,7 @@ float CreatureObject::getAccelerationMultiplierBase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 154);
+		DistributedMethod method(this, RPC_GETACCELERATIONMULTIPLIERBASE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2254,7 +2256,7 @@ float CreatureObject::getAccelerationMultiplierMod() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 155);
+		DistributedMethod method(this, RPC_GETACCELERATIONMULTIPLIERMOD__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2267,7 +2269,7 @@ float CreatureObject::getSpeedMultiplierBase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 156);
+		DistributedMethod method(this, RPC_GETSPEEDMULTIPLIERBASE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2280,7 +2282,7 @@ float CreatureObject::getSpeedMultiplierMod() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 157);
+		DistributedMethod method(this, RPC_GETSPEEDMULTIPLIERMOD__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2302,7 +2304,7 @@ float CreatureObject::getRunSpeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 158);
+		DistributedMethod method(this, RPC_GETRUNSPEED__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2315,7 +2317,7 @@ float CreatureObject::getWalkSpeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 159);
+		DistributedMethod method(this, RPC_GETWALKSPEED__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2328,7 +2330,7 @@ float CreatureObject::getTerrainNegotiation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 160);
+		DistributedMethod method(this, RPC_GETTERRAINNEGOTIATION__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2341,7 +2343,7 @@ float CreatureObject::getRunAcceleration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 161);
+		DistributedMethod method(this, RPC_GETRUNACCELERATION__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2354,7 +2356,7 @@ float CreatureObject::getWalkAcceleration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 162);
+		DistributedMethod method(this, RPC_GETWALKACCELERATION__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2367,7 +2369,7 @@ String CreatureObject::getPerformanceAnimation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 163);
+		DistributedMethod method(this, RPC_GETPERFORMANCEANIMATION__);
 
 		method.executeWithAsciiReturn(_return_getPerformanceAnimation);
 		return _return_getPerformanceAnimation;
@@ -2381,7 +2383,7 @@ String CreatureObject::getMoodString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 164);
+		DistributedMethod method(this, RPC_GETMOODSTRING__);
 
 		method.executeWithAsciiReturn(_return_getMoodString);
 		return _return_getMoodString;
@@ -2395,7 +2397,7 @@ unsigned long long CreatureObject::getWeaponID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 165);
+		DistributedMethod method(this, RPC_GETWEAPONID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2408,7 +2410,7 @@ WeaponObject* CreatureObject::getWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 166);
+		DistributedMethod method(this, RPC_GETWEAPON__);
 
 		return (WeaponObject*) method.executeWithObjectReturn();
 	} else
@@ -2421,7 +2423,7 @@ GuildObject* CreatureObject::getGuildObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 167);
+		DistributedMethod method(this, RPC_GETGUILDOBJECT__);
 
 		return (GuildObject*) method.executeWithObjectReturn();
 	} else
@@ -2434,7 +2436,7 @@ int CreatureObject::getGuildID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 168);
+		DistributedMethod method(this, RPC_GETGUILDID__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2447,7 +2449,7 @@ bool CreatureObject::isInGuild() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 169);
+		DistributedMethod method(this, RPC_ISINGUILD__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2460,7 +2462,7 @@ void CreatureObject::setGuildObject(GuildObject* guildobj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 170);
+		DistributedMethod method(this, RPC_SETGUILDOBJECT__GUILDOBJECT_);
 		method.addObjectParameter(guildobj);
 
 		method.executeWithVoidReturn();
@@ -2474,7 +2476,7 @@ unsigned long long CreatureObject::getGroupID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 171);
+		DistributedMethod method(this, RPC_GETGROUPID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2487,7 +2489,7 @@ unsigned long long CreatureObject::getGroupInviterID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 172);
+		DistributedMethod method(this, RPC_GETGROUPINVITERID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2500,7 +2502,7 @@ GroupObject* CreatureObject::getGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 173);
+		DistributedMethod method(this, RPC_GETGROUP__);
 
 		return (GroupObject*) method.executeWithObjectReturn();
 	} else
@@ -2513,7 +2515,7 @@ unsigned long long CreatureObject::getGroupInviteCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 174);
+		DistributedMethod method(this, RPC_GETGROUPINVITECOUNTER__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2526,7 +2528,7 @@ unsigned long long CreatureObject::getTargetID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 175);
+		DistributedMethod method(this, RPC_GETTARGETID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2539,7 +2541,7 @@ byte CreatureObject::getMoodID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 176);
+		DistributedMethod method(this, RPC_GETMOODID__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -2552,7 +2554,7 @@ float CreatureObject::getSlopeModPercent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 177);
+		DistributedMethod method(this, RPC_GETSLOPEMODPERCENT__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2565,7 +2567,7 @@ int CreatureObject::getPerformanceCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 178);
+		DistributedMethod method(this, RPC_GETPERFORMANCECOUNTER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2578,7 +2580,7 @@ int CreatureObject::getInstrumentID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 179);
+		DistributedMethod method(this, RPC_GETINSTRUMENTID__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2591,7 +2593,7 @@ byte CreatureObject::getFrozen() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 180);
+		DistributedMethod method(this, RPC_GETFROZEN__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -2604,7 +2606,7 @@ float CreatureObject::getHeight() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 181);
+		DistributedMethod method(this, RPC_GETHEIGHT__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2617,7 +2619,7 @@ int CreatureObject::getSpecies() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 182);
+		DistributedMethod method(this, RPC_GETSPECIES__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2630,7 +2632,7 @@ String CreatureObject::getSpeciesName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 183);
+		DistributedMethod method(this, RPC_GETSPECIESNAME__);
 
 		method.executeWithAsciiReturn(_return_getSpeciesName);
 		return _return_getSpeciesName;
@@ -2644,7 +2646,7 @@ int CreatureObject::getGender() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 184);
+		DistributedMethod method(this, RPC_GETGENDER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2675,7 +2677,7 @@ long long CreatureObject::getSkillMod(const String& skillmod) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 185);
+		DistributedMethod method(this, RPC_GETSKILLMOD__STRING_);
 		method.addAsciiParameter(skillmod);
 
 		return method.executeWithSignedLongReturn();
@@ -2689,7 +2691,7 @@ bool CreatureObject::hasSkillBox(const String& skillBox) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 186);
+		DistributedMethod method(this, RPC_HASSKILLBOX__STRING_);
 		method.addAsciiParameter(skillBox);
 
 		return method.executeWithBooleanReturn();
@@ -2712,7 +2714,7 @@ void CreatureObject::setHeight(float heigh) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 187);
+		DistributedMethod method(this, RPC_SETHEIGHT__FLOAT_);
 		method.addFloatParameter(heigh);
 
 		method.executeWithVoidReturn();
@@ -2726,7 +2728,7 @@ void CreatureObject::setWatchToID(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 188);
+		DistributedMethod method(this, RPC_SETWATCHTOID__LONG_);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -2740,7 +2742,7 @@ bool CreatureObject::isCreatureObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 189);
+		DistributedMethod method(this, RPC_ISCREATUREOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2753,7 +2755,7 @@ bool CreatureObject::isTrainerCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 190);
+		DistributedMethod method(this, RPC_ISTRAINERCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2766,7 +2768,7 @@ bool CreatureObject::isSwimming() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 191);
+		DistributedMethod method(this, RPC_ISSWIMMING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2779,7 +2781,7 @@ bool CreatureObject::isRidingMount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 192);
+		DistributedMethod method(this, RPC_ISRIDINGMOUNT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2792,7 +2794,7 @@ ControlDevice* CreatureObject::getControlDevice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 193);
+		DistributedMethod method(this, RPC_GETCONTROLDEVICE__);
 
 		return (ControlDevice*) method.executeWithObjectReturn();
 	} else
@@ -2805,7 +2807,7 @@ float CreatureObject::getSwimHeight() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 194);
+		DistributedMethod method(this, RPC_GETSWIMHEIGHT__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2818,7 +2820,7 @@ bool CreatureObject::isIncapacitated() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 195);
+		DistributedMethod method(this, RPC_ISINCAPACITATED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2831,7 +2833,7 @@ bool CreatureObject::isDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 196);
+		DistributedMethod method(this, RPC_ISDEAD__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2844,7 +2846,7 @@ bool CreatureObject::isKnockedDown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 197);
+		DistributedMethod method(this, RPC_ISKNOCKEDDOWN__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2857,7 +2859,7 @@ bool CreatureObject::isKneeling() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 198);
+		DistributedMethod method(this, RPC_ISKNEELING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2870,7 +2872,7 @@ bool CreatureObject::isProne() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 199);
+		DistributedMethod method(this, RPC_ISPRONE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2883,7 +2885,7 @@ bool CreatureObject::isStanding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 200);
+		DistributedMethod method(this, RPC_ISSTANDING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2896,7 +2898,7 @@ bool CreatureObject::isSitting() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 201);
+		DistributedMethod method(this, RPC_ISSITTING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2909,7 +2911,7 @@ bool CreatureObject::isSkillAnimating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 202);
+		DistributedMethod method(this, RPC_ISSKILLANIMATING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2922,7 +2924,7 @@ bool CreatureObject::isRallied() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 203);
+		DistributedMethod method(this, RPC_ISRALLIED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2935,7 +2937,7 @@ bool CreatureObject::isInCombat() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 204);
+		DistributedMethod method(this, RPC_ISINCOMBAT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2948,7 +2950,7 @@ bool CreatureObject::isDizzied() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 205);
+		DistributedMethod method(this, RPC_ISDIZZIED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2961,7 +2963,7 @@ bool CreatureObject::isBerserked() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 206);
+		DistributedMethod method(this, RPC_ISBERSERKED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2974,7 +2976,7 @@ bool CreatureObject::isStunned() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 207);
+		DistributedMethod method(this, RPC_ISSTUNNED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2987,7 +2989,7 @@ bool CreatureObject::isBlinded() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 208);
+		DistributedMethod method(this, RPC_ISBLINDED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3000,7 +3002,7 @@ bool CreatureObject::isIntimidated() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 209);
+		DistributedMethod method(this, RPC_ISINTIMIDATED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3013,7 +3015,7 @@ bool CreatureObject::isSnared() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 210);
+		DistributedMethod method(this, RPC_ISSNARED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3026,7 +3028,7 @@ bool CreatureObject::isRooted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 211);
+		DistributedMethod method(this, RPC_ISROOTED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3039,7 +3041,7 @@ bool CreatureObject::isDiseased() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 212);
+		DistributedMethod method(this, RPC_ISDISEASED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3052,7 +3054,7 @@ bool CreatureObject::isPoisoned() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 213);
+		DistributedMethod method(this, RPC_ISPOISONED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3065,7 +3067,7 @@ bool CreatureObject::isBleeding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 214);
+		DistributedMethod method(this, RPC_ISBLEEDING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3078,7 +3080,7 @@ bool CreatureObject::isOnFire() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 215);
+		DistributedMethod method(this, RPC_ISONFIRE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3091,7 +3093,7 @@ bool CreatureObject::isMounted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 216);
+		DistributedMethod method(this, RPC_ISMOUNTED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3104,7 +3106,7 @@ bool CreatureObject::isRidingCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 217);
+		DistributedMethod method(this, RPC_ISRIDINGCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3117,7 +3119,7 @@ bool CreatureObject::isPeaced() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 218);
+		DistributedMethod method(this, RPC_ISPEACED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3130,7 +3132,7 @@ bool CreatureObject::isMeditating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 219);
+		DistributedMethod method(this, RPC_ISMEDITATING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3143,7 +3145,7 @@ bool CreatureObject::isAiming() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 220);
+		DistributedMethod method(this, RPC_ISAIMING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3156,7 +3158,7 @@ bool CreatureObject::isInCover() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 221);
+		DistributedMethod method(this, RPC_ISINCOVER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3169,7 +3171,7 @@ bool CreatureObject::isShuttleCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 222);
+		DistributedMethod method(this, RPC_ISSHUTTLECREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3182,7 +3184,7 @@ bool CreatureObject::isNonPlayerCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 223);
+		DistributedMethod method(this, RPC_ISNONPLAYERCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3195,7 +3197,7 @@ bool CreatureObject::isCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 224);
+		DistributedMethod method(this, RPC_ISCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3208,7 +3210,7 @@ bool CreatureObject::isAiAgent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 225);
+		DistributedMethod method(this, RPC_ISAIAGENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3221,7 +3223,7 @@ bool CreatureObject::isInformantCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 226);
+		DistributedMethod method(this, RPC_ISINFORMANTCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -4853,8 +4855,6 @@ bool CreatureObjectImplementation::isInformantCreature() {
 
 CreatureObjectAdapter::CreatureObjectAdapter(CreatureObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_SENDSYSTEMMESSAGE__UNICODESTRING_,RPC_SENDSYSTEMMESSAGE__STRING_STRING_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SETCOMBATSTATE__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETPOSTURE__INT_BOOL_,RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETRUNSPEED__FLOAT_BOOL_,RPC_SETHAM__INT_INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HASDAMAGE__INT_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETBASEHAM__INT_INT_BOOL_,RPC_SETWOUNDS__INT_INT_BOOL_,RPC_ADDWOUNDS__INT_INT_BOOL_,RPC_SETMAXHAM__INT_INT_BOOL_,RPC_ADDMAXHAM__INT_INT_BOOL_,RPC_SETENCUMBRANCE__INT_INT_BOOL_,RPC_ADDENCUMBRANCE__INT_INT_BOOL_,RPC_SETWEAPON__WEAPONOBJECT_BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_SETINSTRUMENTID__INT_BOOL_,RPC_SETLISTENTOID__LONG_BOOL_,RPC_SETPERFORMANCECOUNTER__INT_BOOL_,RPC_SETPERFORMANCEANIMATION__STRING_BOOL_,RPC_SETSHOCKWOUNDS__INT_BOOL_,RPC_ADDSHOCKWOUNDS__INT_BOOL_,RPC_SETTARGETID__LONG_BOOL_,RPC_SETBANKCREDITS__INT_BOOL_,RPC_ADDBUFF__BUFF_,RPC_REMOVEBUFF__INT_,RPC_REMOVEBUFF__BUFF_,RPC_CLEARBUFFS__BOOL_,RPC_GETBUFF__INT_,RPC_ADDDOTSTATE__LONG_INT_BYTE_INT_FLOAT_INT_,RPC_HEALDOT__LONG_INT_,RPC_CLEARDOTS__,RPC_HASBUFF__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSTURECHANGE__INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISRESUSCITABLE__,RPC_ADDBANKCREDITS__INT_BOOL_,RPC_ADDCASHCREDITS__INT_BOOL_,RPC_SUBSTRACTBANKCREDITS__INT_,RPC_SUBSTRACTCASHCREDITS__INT_,RPC_VERIFYCASHCREDITS__INT_,RPC_VERIFYBANKCREDITS__INT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_STOPENTERTAINING__,RPC_ISENTERTAINING__,RPC_SETCASHCREDITS__INT_BOOL_,RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_,RPC_ADDSKILLBOX__STRING_BOOL_,RPC_REMOVESKILLBOX__STRING_BOOL_,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_REMOVESKILLMOD__STRING_BOOL_,RPC_UPDATEGROUPINVITERID__LONG_BOOL_,RPC_UPDATEGROUP__GROUPOBJECT_BOOL_,RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_,RPC_SETMOOD__BYTE_BOOL_,RPC_SETMOODSTRING__STRING_BOOL_,RPC_DELETEQUEUEACTION__INT_,RPC_SETSTATE__LONG_BOOL_,RPC_CLEARSTATE__LONG_BOOL_,RPC_SETCONTROLDEVICE__CONTROLDEVICE_,RPC_GETWEARABLEMASK__,RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_CANTREATINJURIES__,RPC_CANTREATSTATES__,RPC_CANTREATWOUNDS__,RPC_CANTREATCONDITIONS__,RPC_ISLISTENING__,RPC_ISWATCHING__,RPC_DISMOUNT__,RPC_CALCULATEBFRATIO__,RPC_SETDIZZIEDSTATE__INT_,RPC_SETRALLIEDSTATE__INT_,RPC_SETAIMINGSTATE__INT_,RPC_SETCOVERSTATE__INT_,RPC_SETBERSERKEDSTATE__INT_,RPC_SETSTUNNEDSTATE__INT_,RPC_SETBLINDEDSTATE__INT_,RPC_SETINTIMIDATEDSTATE__INT_,RPC_SETSNAREDSTATE__INT_,RPC_SETROOTEDSTATE__INT_,RPC_SETNEXTATTACKDELAY__INT_,RPC_SETMEDITATESTATE__,RPC_ACTIVATEHAMREGENERATION__,RPC_ACTIVATESTATERECOVERY__,RPC_UPDATETIMEOFDEATH__,RPC_HASATTACKDELAY__,RPC_REMOVEATTACKDELAY__,RPC_HASSPICE__,RPC_UPDATELASTSUCCESSFULCOMBATACTION__,RPC_UPDATEKNOCKDOWNRECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_UPDATELASTKNOCKDOWN__,RPC_CHECKKNOCKDOWNRECOVERY__,RPC_CHECKLASTKNOCKDOWN__,RPC_UPDATEPOSTUREDOWNRECOVERY__,RPC_UPDATEPOSTUREUPRECOVERY__,RPC_CHECKPOSTUREDOWNRECOVERY__,RPC_CHECKPOSTUREUPRECOVERY__,RPC_UPDATECOOLDOWNTIMER__STRING_INT_,RPC_CHECKCOOLDOWNRECOVERY__STRING_,RPC_ADDCOOLDOWN__STRING_INT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_DOANIMATION__STRING_,RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_,RPC_PLAYEFFECT__STRING_STRING_,RPC_PLAYEFFECT__STRING_,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_ACTIVATEQUEUEACTION__,RPC_GETCREATURENAME__,RPC_ISGROUPED__,RPC_GETBANKCREDITS__,RPC_GETCASHCREDITS__,RPC_GETBASEHAM__INT_,RPC_GETWOUNDS__INT_,RPC_GETHAM__INT_,RPC_GETMAXHAM__INT_,RPC_GETENCUMBRANCE__INT_,RPC_GETPOSTURE__,RPC_GETFACTIONRANK__,RPC_GETLINKEDCREATURE__,RPC_GETCREATURELINKID__,RPC_GETSHOCKWOUNDS__,RPC_GETWATCHTOID__,RPC_GETSTATEBITMASK__,RPC_HASSTATE__LONG_,RPC_HASSTATES__,RPC_GETLISTENID__,RPC_GETACCELERATIONMULTIPLIERBASE__,RPC_GETACCELERATIONMULTIPLIERMOD__,RPC_GETSPEEDMULTIPLIERBASE__,RPC_GETSPEEDMULTIPLIERMOD__,RPC_GETRUNSPEED__,RPC_GETWALKSPEED__,RPC_GETTERRAINNEGOTIATION__,RPC_GETRUNACCELERATION__,RPC_GETWALKACCELERATION__,RPC_GETPERFORMANCEANIMATION__,RPC_GETMOODSTRING__,RPC_GETWEAPONID__,RPC_GETWEAPON__,RPC_GETGUILDOBJECT__,RPC_GETGUILDID__,RPC_ISINGUILD__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGROUPID__,RPC_GETGROUPINVITERID__,RPC_GETGROUP__,RPC_GETGROUPINVITECOUNTER__,RPC_GETTARGETID__,RPC_GETMOODID__,RPC_GETSLOPEMODPERCENT__,RPC_GETPERFORMANCECOUNTER__,RPC_GETINSTRUMENTID__,RPC_GETFROZEN__,RPC_GETHEIGHT__,RPC_GETSPECIES__,RPC_GETSPECIESNAME__,RPC_GETGENDER__,RPC_GETSKILLMOD__STRING_,RPC_HASSKILLBOX__STRING_,RPC_SETHEIGHT__FLOAT_,RPC_SETWATCHTOID__LONG_,RPC_ISCREATUREOBJECT__,RPC_ISTRAINERCREATURE__,RPC_ISSWIMMING__,RPC_ISRIDINGMOUNT__,RPC_GETCONTROLDEVICE__,RPC_GETSWIMHEIGHT__,RPC_ISINCAPACITATED__,RPC_ISDEAD__,RPC_ISKNOCKEDDOWN__,RPC_ISKNEELING__,RPC_ISPRONE__,RPC_ISSTANDING__,RPC_ISSITTING__,RPC_ISSKILLANIMATING__,RPC_ISRALLIED__,RPC_ISINCOMBAT__,RPC_ISDIZZIED__,RPC_ISBERSERKED__,RPC_ISSTUNNED__,RPC_ISBLINDED__,RPC_ISINTIMIDATED__,RPC_ISSNARED__,RPC_ISROOTED__,RPC_ISDISEASED__,RPC_ISPOISONED__,RPC_ISBLEEDING__,RPC_ISONFIRE__,RPC_ISMOUNTED__,RPC_ISRIDINGCREATURE__,RPC_ISPEACED__,RPC_ISMEDITATING__,RPC_ISAIMING__,RPC_ISINCOVER__,RPC_ISSHUTTLECREATURE__,RPC_ISNONPLAYERCREATURE__,RPC_ISCREATURE__,RPC_ISAIAGENT__,RPC_ISINFORMANTCREATURE__};
 
 Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

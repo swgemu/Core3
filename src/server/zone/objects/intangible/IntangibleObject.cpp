@@ -12,6 +12,8 @@
  *	IntangibleObjectStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ISINTANGIBLEOBJECT__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_UPDATESTATUS__INT_BOOL_,RPC_GETSTATUS__};
+
 IntangibleObject::IntangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	IntangibleObjectImplementation* _implementation = new IntangibleObjectImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void IntangibleObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -53,7 +55,7 @@ bool IntangibleObject::isIntangibleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ISINTANGIBLEOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -66,7 +68,7 @@ void IntangibleObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -80,7 +82,7 @@ void IntangibleObject::updateStatus(int newStatus, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_UPDATESTATUS__INT_BOOL_);
 		method.addSignedIntParameter(newStatus);
 		method.addBooleanParameter(notifyClient);
 
@@ -95,7 +97,7 @@ unsigned int IntangibleObject::getStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETSTATUS__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -268,8 +270,6 @@ unsigned int IntangibleObjectImplementation::getStatus() {
 
 IntangibleObjectAdapter::IntangibleObjectAdapter(IntangibleObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ISINTANGIBLEOBJECT__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_UPDATESTATUS__INT_BOOL_,RPC_GETSTATUS__};
 
 Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

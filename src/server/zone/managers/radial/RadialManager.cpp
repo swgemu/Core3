@@ -16,6 +16,8 @@
  *	RadialManagerStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_LONG_ = 6,RPC_HANDLEOBJECTMENUREQUEST__PLAYERCREATURE_OBJECTMENURESPONSE_LONG_};
+
 RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
 	RadialManagerImplementation* _implementation = new RadialManagerImplementation(server);
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_LONG_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectID);
 		method.addUnsignedLongParameter(objectID);
@@ -51,7 +53,7 @@ void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuRe
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUREQUEST__PLAYERCREATURE_OBJECTMENURESPONSE_LONG_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(defaultMenuResponse);
 		method.addUnsignedLongParameter(objectID);
@@ -203,8 +205,6 @@ int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 RadialManagerAdapter::RadialManagerAdapter(RadialManagerImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_LONG_ = 6,RPC_HANDLEOBJECTMENUREQUEST__PLAYERCREATURE_OBJECTMENURESPONSE_LONG_};
 
 Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

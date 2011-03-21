@@ -18,6 +18,8 @@
  *	CityHallObjectStub
  */
 
+enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__PLAYERCREATURE_BOOL_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDCITIZENSHIPREPORTTO__PLAYERCREATURE_,RPC_SENDSTRUCTUREREPORTTO__PLAYERCREATURE_,RPC_SENDTREASURYREPORTTO__PLAYERCREATURE_,RPC_SENDCITYADVANCEMENTTO__PLAYERCREATURE_,RPC_SENDMAINTENANCEREPORTTO__PLAYERCREATURE_,RPC_SENDCHANGECITYNAMETO__PLAYERCREATURE_,RPC_SENDENABLEZONINGTO__PLAYERCREATURE_,RPC_SENDMANAGEMILITIATO__PLAYERCREATURE_,RPC_SENDADDMILITIAMEMBERTO__PLAYERCREATURE_,RPC_SENDADJUSTTAXESTO__PLAYERCREATURE_,RPC_SENDTREASURYDEPOSITTO__PLAYERCREATURE_,RPC_SENDTREASURYWITHDRAWALTO__PLAYERCREATURE_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__PLAYERCREATURE_,RPC_TOGGLECITYREGISTRATION__PLAYERCREATURE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCITYREGION__,RPC_SETCITYREGION__REGION_,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_TOGGLEZONINGENABLED__PLAYERCREATURE_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
+
 CityHallObject::CityHallObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	CityHallObjectImplementation* _implementation = new CityHallObjectImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void CityHallObject::insertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -51,7 +53,7 @@ void CityHallObject::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -64,7 +66,7 @@ void CityHallObject::notifyLoadFromDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -77,7 +79,7 @@ void CityHallObject::spawnCityHallObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SPAWNCITYHALLOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -90,7 +92,7 @@ void CityHallObject::despawnCityHallObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_DESPAWNCITYHALLOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -103,7 +105,7 @@ bool CityHallObject::checkRequisitesForPlacement(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -117,7 +119,7 @@ void CityHallObject::setCityName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETCITYNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -131,7 +133,7 @@ String CityHallObject::getCityName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETCITYNAME__);
 
 		method.executeWithAsciiReturn(_return_getCityName);
 		return _return_getCityName;
@@ -145,7 +147,7 @@ byte CityHallObject::getCityRank() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETCITYRANK__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -158,7 +160,7 @@ void CityHallObject::sendCityNamePromptTo(PlayerCreature* player, bool newCity) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SENDCITYNAMEPROMPTTO__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(newCity);
 
@@ -173,7 +175,7 @@ void CityHallObject::sendStatusTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SENDSTATUSTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -187,7 +189,7 @@ void CityHallObject::sendCitizenshipReportTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SENDCITIZENSHIPREPORTTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -201,7 +203,7 @@ void CityHallObject::sendStructureReportTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SENDSTRUCTUREREPORTTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -215,7 +217,7 @@ void CityHallObject::sendTreasuryReportTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SENDTREASURYREPORTTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -229,7 +231,7 @@ void CityHallObject::sendCityAdvancementTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SENDCITYADVANCEMENTTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -243,7 +245,7 @@ void CityHallObject::sendMaintenanceReportTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SENDMAINTENANCEREPORTTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -257,7 +259,7 @@ void CityHallObject::sendChangeCityNameTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_SENDCHANGECITYNAMETO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -271,7 +273,7 @@ void CityHallObject::sendEnableZoningTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_SENDENABLEZONINGTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -285,7 +287,7 @@ void CityHallObject::sendManageMilitiaTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_SENDMANAGEMILITIATO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -299,7 +301,7 @@ void CityHallObject::sendAddMilitiaMemberTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_SENDADDMILITIAMEMBERTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -313,7 +315,7 @@ void CityHallObject::sendAdjustTaxesTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SENDADJUSTTAXESTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -327,7 +329,7 @@ void CityHallObject::sendTreasuryDepositTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_SENDTREASURYDEPOSITTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -341,7 +343,7 @@ void CityHallObject::sendTreasuryWithdrawalTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SENDTREASURYWITHDRAWALTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -355,7 +357,7 @@ void CityHallObject::sendCitySpecializationSelectionTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_SENDCITYSPECIALIZATIONSELECTIONTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -369,7 +371,7 @@ void CityHallObject::toggleCityRegistration(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_TOGGLECITYREGISTRATION__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -383,7 +385,7 @@ void CityHallObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
 		method.addBooleanParameter(destroyContainedObjects);
 
 		method.executeWithVoidReturn();
@@ -397,7 +399,7 @@ int CityHallObject::notifyStructurePlaced(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -411,7 +413,7 @@ bool CityHallObject::isCityHallBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_ISCITYHALLBUILDING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -424,7 +426,7 @@ void CityHallObject::addZoningRights(unsigned long long playerID, unsigned int s
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_ADDZONINGRIGHTS__LONG_INT_);
 		method.addUnsignedLongParameter(playerID);
 		method.addUnsignedIntParameter(seconds);
 
@@ -439,7 +441,7 @@ void CityHallObject::removeZoningRights(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_REMOVEZONINGRIGHTS__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -453,7 +455,7 @@ bool CityHallObject::hasZoningRights(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_HASZONINGRIGHTS__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -467,7 +469,7 @@ unsigned long long CityHallObject::getMayorObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_GETMAYOROBJECTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -480,7 +482,7 @@ void CityHallObject::setMayorObjectID(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_SETMAYOROBJECTID__LONG_);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -494,7 +496,7 @@ bool CityHallObject::isMayor(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_ISMAYOR__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -508,7 +510,7 @@ bool CityHallObject::isBanned(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_ISBANNED__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -522,7 +524,7 @@ void CityHallObject::addBannedPlayer(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_ADDBANNEDPLAYER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -536,7 +538,7 @@ void CityHallObject::removeBannedPlayer(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_REMOVEBANNEDPLAYER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -550,7 +552,7 @@ CityTerminal* CityHallObject::getCityTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_GETCITYTERMINAL__);
 
 		return (CityTerminal*) method.executeWithObjectReturn();
 	} else
@@ -563,7 +565,7 @@ CityVoteTerminal* CityHallObject::getCityVoteTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_GETCITYVOTETERMINAL__);
 
 		return (CityVoteTerminal*) method.executeWithObjectReturn();
 	} else
@@ -576,7 +578,7 @@ Region* CityHallObject::getCityRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_GETCITYREGION__);
 
 		return (Region*) method.executeWithObjectReturn();
 	} else
@@ -589,7 +591,7 @@ void CityHallObject::setCityRegion(Region* region) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_SETCITYREGION__REGION_);
 		method.addObjectParameter(region);
 
 		method.executeWithVoidReturn();
@@ -603,7 +605,7 @@ int CityHallObject::getCivicStructureCap() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_GETCIVICSTRUCTURECAP__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -616,7 +618,7 @@ bool CityHallObject::isZoningEnabled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_ISZONINGENABLED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -629,7 +631,7 @@ void CityHallObject::toggleZoningEnabled(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_TOGGLEZONINGENABLED__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -643,7 +645,7 @@ void CityHallObject::setZoningEnabled(bool enabled) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_SETZONINGENABLED__BOOL_);
 		method.addBooleanParameter(enabled);
 
 		method.executeWithVoidReturn();
@@ -657,7 +659,7 @@ bool CityHallObject::isCityUpdatePast() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, RPC_ISCITYUPDATEPAST__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -670,7 +672,7 @@ void CityHallObject::rescheduleCityUpdate(unsigned int minutes) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, RPC_RESCHEDULECITYUPDATE__INT_);
 		method.addUnsignedIntParameter(minutes);
 
 		method.executeWithVoidReturn();
@@ -684,7 +686,7 @@ int CityHallObject::getCitizenCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, RPC_GETCITIZENCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -697,7 +699,7 @@ void CityHallObject::addCitizen(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, RPC_ADDCITIZEN__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -711,7 +713,7 @@ void CityHallObject::removeCitizen(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, RPC_REMOVECITIZEN__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -725,7 +727,7 @@ bool CityHallObject::isCitizen(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, RPC_ISCITIZEN__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -739,7 +741,7 @@ void CityHallObject::addMilitiaMember(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, RPC_ADDMILITIAMEMBER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -753,7 +755,7 @@ void CityHallObject::removeMilitiaMember(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, RPC_REMOVEMILITIAMEMBER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -767,7 +769,7 @@ bool CityHallObject::isMilitiaMember(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, RPC_ISMILITIAMEMBER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -781,7 +783,7 @@ unsigned long long CityHallObject::getCitizenObjectID(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, RPC_GETCITIZENOBJECTID__INT_);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithUnsignedLongReturn();
@@ -795,7 +797,7 @@ void CityHallObject::setCityRank(byte rank) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, RPC_SETCITYRANK__BYTE_);
 		method.addByteParameter(rank);
 
 		method.executeWithVoidReturn();
@@ -1365,8 +1367,6 @@ void CityHallObjectImplementation::setCityRank(byte rank) {
 
 CityHallObjectAdapter::CityHallObjectAdapter(CityHallObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
-
-enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__PLAYERCREATURE_BOOL_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDCITIZENSHIPREPORTTO__PLAYERCREATURE_,RPC_SENDSTRUCTUREREPORTTO__PLAYERCREATURE_,RPC_SENDTREASURYREPORTTO__PLAYERCREATURE_,RPC_SENDCITYADVANCEMENTTO__PLAYERCREATURE_,RPC_SENDMAINTENANCEREPORTTO__PLAYERCREATURE_,RPC_SENDCHANGECITYNAMETO__PLAYERCREATURE_,RPC_SENDENABLEZONINGTO__PLAYERCREATURE_,RPC_SENDMANAGEMILITIATO__PLAYERCREATURE_,RPC_SENDADDMILITIAMEMBERTO__PLAYERCREATURE_,RPC_SENDADJUSTTAXESTO__PLAYERCREATURE_,RPC_SENDTREASURYDEPOSITTO__PLAYERCREATURE_,RPC_SENDTREASURYWITHDRAWALTO__PLAYERCREATURE_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__PLAYERCREATURE_,RPC_TOGGLECITYREGISTRATION__PLAYERCREATURE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCITYREGION__,RPC_SETCITYREGION__REGION_,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_TOGGLEZONINGENABLED__PLAYERCREATURE_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
 
 Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

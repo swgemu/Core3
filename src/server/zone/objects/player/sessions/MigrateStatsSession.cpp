@@ -12,6 +12,8 @@
  *	MigrateStatsSessionStub
  */
 
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_SETATTRIBUTETOMODIFY__INT_INT_,RPC_GETATTRIBTUETOMODIFY__INT_,RPC_MIGRATESTATS__};
+
 MigrateStatsSession::MigrateStatsSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	MigrateStatsSessionImplementation* _implementation = new MigrateStatsSessionImplementation(parent);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ int MigrateStatsSession::initializeSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZESESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -44,7 +46,7 @@ int MigrateStatsSession::cancelSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CANCELSESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -57,7 +59,7 @@ int MigrateStatsSession::clearSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CLEARSESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -70,7 +72,7 @@ void MigrateStatsSession::setAttributeToModify(int attribute, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETATTRIBUTETOMODIFY__INT_INT_);
 		method.addSignedIntParameter(attribute);
 		method.addSignedIntParameter(value);
 
@@ -85,7 +87,7 @@ int MigrateStatsSession::getAttribtueToModify(int attribute) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETATTRIBTUETOMODIFY__INT_);
 		method.addSignedIntParameter(attribute);
 
 		return method.executeWithSignedIntReturn();
@@ -99,7 +101,7 @@ void MigrateStatsSession::migrateStats() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_MIGRATESTATS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -337,8 +339,6 @@ i = i + 1) {
 
 MigrateStatsSessionAdapter::MigrateStatsSessionAdapter(MigrateStatsSessionImplementation* obj) : FacadeAdapter(obj) {
 }
-
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_SETATTRIBUTETOMODIFY__INT_INT_,RPC_GETATTRIBTUETOMODIFY__INT_,RPC_MIGRATESTATS__};
 
 Packet* MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

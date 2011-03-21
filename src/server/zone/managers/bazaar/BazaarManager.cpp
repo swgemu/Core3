@@ -24,6 +24,8 @@
  *	BazaarManagerStub
  */
 
+enum {RPC_INITIALIZE__ = 6,RPC_CHECKAUCTIONS__,RPC_ADDSALEITEM__PLAYERCREATURE_LONG_LONG_UNICODESTRING_INT_INT_BOOL_,RPC_CREATEAUCTIONITEM__PLAYERCREATURE_SCENEOBJECT_BAZAARTERMINAL_UNICODESTRING_INT_INT_BOOL_,RPC_CHECKSALEITEM__PLAYERCREATURE_SCENEOBJECT_INT_,RPC_GETITEMATTRIBUTES__PLAYERCREATURE_LONG_,RPC_GETBAZAARDATA__PLAYERCREATURE_INT_LONG_INT_INT_INT_INT_,RPC_GETALLBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_GETPLANETBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_GETREGIONBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_CHECKRETRIEVE__PLAYERCREATURE_LONG_BAZAARTERMINAL_,RPC_RETRIEVEITEM__PLAYERCREATURE_LONG_LONG_,RPC_BUYITEM__PLAYERCREATURE_LONG_INT_INT_,RPC_DOAUCTIONBID__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__PLAYERCREATURE_AUCTIONITEM_INT_INT_,};
+
 BazaarManager::BazaarManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	BazaarManagerImplementation* _implementation = new BazaarManagerImplementation(server);
 	_impl = _implementation;
@@ -43,7 +45,7 @@ void BazaarManager::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -56,7 +58,7 @@ void BazaarManager::checkAuctions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CHECKAUCTIONS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -69,7 +71,7 @@ void BazaarManager::addSaleItem(PlayerCreature* player, unsigned long long objec
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ADDSALEITEM__PLAYERCREATURE_LONG_LONG_UNICODESTRING_INT_INT_BOOL_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(objectid);
 		method.addUnsignedLongParameter(bazaarid);
@@ -89,7 +91,7 @@ AuctionItem* BazaarManager::createAuctionItem(PlayerCreature* player, SceneObjec
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_CREATEAUCTIONITEM__PLAYERCREATURE_SCENEOBJECT_BAZAARTERMINAL_UNICODESTRING_INT_INT_BOOL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(objectToSell);
 		method.addObjectParameter(terminal);
@@ -109,7 +111,7 @@ int BazaarManager::checkSaleItem(PlayerCreature* player, SceneObject* object, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_CHECKSALEITEM__PLAYERCREATURE_SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(price);
@@ -125,7 +127,7 @@ void BazaarManager::getItemAttributes(PlayerCreature* player, unsigned long long
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETITEMATTRIBUTES__PLAYERCREATURE_LONG_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(objectid);
 
@@ -140,7 +142,7 @@ void BazaarManager::getBazaarData(PlayerCreature* player, int extent, unsigned l
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETBAZAARDATA__PLAYERCREATURE_INT_LONG_INT_INT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(extent);
 		method.addUnsignedLongParameter(bazaarObjectid);
@@ -160,7 +162,7 @@ void BazaarManager::getAllBazaarData(PlayerCreature* player, BazaarTerminal* ter
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETALLBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(terminal);
 		method.addSignedIntParameter(screen);
@@ -179,7 +181,7 @@ void BazaarManager::getPlanetBazaarData(PlayerCreature* player, BazaarTerminal* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETPLANETBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(terminal);
 		method.addSignedIntParameter(screen);
@@ -198,7 +200,7 @@ void BazaarManager::getRegionBazaarData(PlayerCreature* player, BazaarTerminal* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETREGIONBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(terminal);
 		method.addSignedIntParameter(screen);
@@ -217,7 +219,7 @@ int BazaarManager::checkRetrieve(PlayerCreature* player, unsigned long long obje
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_CHECKRETRIEVE__PLAYERCREATURE_LONG_BAZAARTERMINAL_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(objectIdToRetrieve);
 		method.addObjectParameter(terminal);
@@ -233,7 +235,7 @@ void BazaarManager::retrieveItem(PlayerCreature* player, unsigned long long obje
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_RETRIEVEITEM__PLAYERCREATURE_LONG_LONG_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(objectid);
 		method.addUnsignedLongParameter(bazaarid);
@@ -249,7 +251,7 @@ void BazaarManager::buyItem(PlayerCreature* player, unsigned long long objectid,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_BUYITEM__PLAYERCREATURE_LONG_INT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(objectid);
 		method.addSignedIntParameter(price1);
@@ -266,7 +268,7 @@ void BazaarManager::doAuctionBid(PlayerCreature* player, AuctionItem* item, int 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_DOAUCTIONBID__PLAYERCREATURE_AUCTIONITEM_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
 		method.addSignedIntParameter(price1);
@@ -283,7 +285,7 @@ void BazaarManager::doInstantBuy(PlayerCreature* player, AuctionItem* item, int 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_DOINSTANTBUY__PLAYERCREATURE_AUCTIONITEM_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
 		method.addSignedIntParameter(price1);
@@ -300,7 +302,7 @@ int BazaarManager::checkBidAuction(PlayerCreature* player, AuctionItem* item, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_CHECKBIDAUCTION__PLAYERCREATURE_AUCTIONITEM_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
 		method.addSignedIntParameter(price1);
@@ -487,8 +489,6 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) {
 
 BazaarManagerAdapter::BazaarManagerAdapter(BazaarManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_INITIALIZE__ = 6,RPC_CHECKAUCTIONS__,RPC_ADDSALEITEM__PLAYERCREATURE_LONG_LONG_UNICODESTRING_INT_INT_BOOL_,RPC_CREATEAUCTIONITEM__PLAYERCREATURE_SCENEOBJECT_BAZAARTERMINAL_UNICODESTRING_INT_INT_BOOL_,RPC_CHECKSALEITEM__PLAYERCREATURE_SCENEOBJECT_INT_,RPC_GETITEMATTRIBUTES__PLAYERCREATURE_LONG_,RPC_GETBAZAARDATA__PLAYERCREATURE_INT_LONG_INT_INT_INT_INT_,RPC_GETALLBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_GETPLANETBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_GETREGIONBAZAARDATA__PLAYERCREATURE_BAZAARTERMINAL_INT_INT_INT_INT_,RPC_CHECKRETRIEVE__PLAYERCREATURE_LONG_BAZAARTERMINAL_,RPC_RETRIEVEITEM__PLAYERCREATURE_LONG_LONG_,RPC_BUYITEM__PLAYERCREATURE_LONG_INT_INT_,RPC_DOAUCTIONBID__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__PLAYERCREATURE_AUCTIONITEM_INT_INT_,};
 
 Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

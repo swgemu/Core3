@@ -22,6 +22,8 @@
  *	GamblingTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_RESET__,RPC_GETFIRST__,RPC_GETSECOND__,RPC_GETTHIRD__,RPC_SETFIRST__INT_,RPC_SETSECOND__INT_,RPC_SETTHIRD__INT_,RPC_GETMINBET__,RPC_GETMAXBET__,RPC_GETSTATE__,RPC_SETSTATE__INT_,RPC_GETMACHINETYPE__,RPC_INCGAMECOUNT__,RPC_GETGAMECOUNT__,RPC_ISGONEEMPTY__,RPC_GETMACHINETYPETEXT__,RPC_GETTEXT__PLAYERCREATURE_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETGAMBLINGREGION__STRING_,RPC_GETGAMBLINGREGION__,RPC_GAMERUNNING__,RPC_CHECKJOIN__PLAYERCREATURE_,RPC_JOINTERMINAL__PLAYERCREATURE_,RPC_LEAVETERMINAL__PLAYERCREATURE_,RPC_CLOSEMENU__PLAYERCREATURE_BOOL_,RPC_CLOSEALLMENUS__,RPC_STATUSUPDATE__PLAYERCREATURE_INT_,RPC_STATUSUPDATE__INT_,};
+
 GamblingTerminal::GamblingTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	GamblingTerminalImplementation* _implementation = new GamblingTerminalImplementation();
 	_impl = _implementation;
@@ -41,7 +43,7 @@ void GamblingTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -54,7 +56,7 @@ void GamblingTerminal::reset() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_RESET__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -94,7 +96,7 @@ int GamblingTerminal::getFirst() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETFIRST__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -107,7 +109,7 @@ int GamblingTerminal::getSecond() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETSECOND__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -120,7 +122,7 @@ int GamblingTerminal::getThird() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETTHIRD__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -133,7 +135,7 @@ void GamblingTerminal::setFirst(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETFIRST__INT_);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -147,7 +149,7 @@ void GamblingTerminal::setSecond(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETSECOND__INT_);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -161,7 +163,7 @@ void GamblingTerminal::setThird(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETTHIRD__INT_);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -175,7 +177,7 @@ int GamblingTerminal::getMinBet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETMINBET__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -188,7 +190,7 @@ int GamblingTerminal::getMaxBet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETMAXBET__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -201,7 +203,7 @@ int GamblingTerminal::getState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETSTATE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -214,7 +216,7 @@ void GamblingTerminal::setState(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETSTATE__INT_);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -228,7 +230,7 @@ int GamblingTerminal::getMachineType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETMACHINETYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -259,7 +261,7 @@ void GamblingTerminal::incGameCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_INCGAMECOUNT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -272,7 +274,7 @@ int GamblingTerminal::getGameCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETGAMECOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -285,7 +287,7 @@ bool GamblingTerminal::isGoneEmpty() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_ISGONEEMPTY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -298,7 +300,7 @@ String GamblingTerminal::getMachineTypeText() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_GETMACHINETYPETEXT__);
 
 		method.executeWithAsciiReturn(_return_getMachineTypeText);
 		return _return_getMachineTypeText;
@@ -321,7 +323,7 @@ String GamblingTerminal::getText(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_GETTEXT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithAsciiReturn(_return_getText);
@@ -336,7 +338,7 @@ void GamblingTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -351,7 +353,7 @@ int GamblingTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -366,7 +368,7 @@ void GamblingTerminal::setGamblingRegion(const String& region) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETGAMBLINGREGION__STRING_);
 		method.addAsciiParameter(region);
 
 		method.executeWithVoidReturn();
@@ -380,7 +382,7 @@ String GamblingTerminal::getGamblingRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_GETGAMBLINGREGION__);
 
 		method.executeWithAsciiReturn(_return_getGamblingRegion);
 		return _return_getGamblingRegion;
@@ -394,7 +396,7 @@ bool GamblingTerminal::gameRunning() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_GAMERUNNING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -425,7 +427,7 @@ bool GamblingTerminal::checkJoin(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_CHECKJOIN__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -439,7 +441,7 @@ void GamblingTerminal::joinTerminal(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_JOINTERMINAL__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -453,7 +455,7 @@ void GamblingTerminal::leaveTerminal(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_LEAVETERMINAL__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -467,7 +469,7 @@ void GamblingTerminal::closeMenu(PlayerCreature* player, bool payout) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_CLOSEMENU__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(payout);
 
@@ -482,7 +484,7 @@ void GamblingTerminal::closeAllMenus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_CLOSEALLMENUS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -495,7 +497,7 @@ void GamblingTerminal::statusUpdate(PlayerCreature* player, int event) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_STATUSUPDATE__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(event);
 
@@ -510,7 +512,7 @@ void GamblingTerminal::statusUpdate(int event) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_STATUSUPDATE__INT_);
 		method.addSignedIntParameter(event);
 
 		method.executeWithVoidReturn();
@@ -1004,8 +1006,6 @@ bool GamblingTerminalImplementation::gameRunning() {
 
 GamblingTerminalAdapter::GamblingTerminalAdapter(GamblingTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_RESET__,RPC_GETFIRST__,RPC_GETSECOND__,RPC_GETTHIRD__,RPC_SETFIRST__INT_,RPC_SETSECOND__INT_,RPC_SETTHIRD__INT_,RPC_GETMINBET__,RPC_GETMAXBET__,RPC_GETSTATE__,RPC_SETSTATE__INT_,RPC_GETMACHINETYPE__,RPC_INCGAMECOUNT__,RPC_GETGAMECOUNT__,RPC_ISGONEEMPTY__,RPC_GETMACHINETYPETEXT__,RPC_GETTEXT__PLAYERCREATURE_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETGAMBLINGREGION__STRING_,RPC_GETGAMBLINGREGION__,RPC_GAMERUNNING__,RPC_CHECKJOIN__PLAYERCREATURE_,RPC_JOINTERMINAL__PLAYERCREATURE_,RPC_LEAVETERMINAL__PLAYERCREATURE_,RPC_CLOSEMENU__PLAYERCREATURE_BOOL_,RPC_CLOSEALLMENUS__,RPC_STATUSUPDATE__PLAYERCREATURE_INT_,RPC_STATUSUPDATE__INT_,};
 
 Packet* GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

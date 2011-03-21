@@ -18,6 +18,8 @@
  *	TravelTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSHUTTLE__SHUTTLECREATURE_};
+
 TravelTerminal::TravelTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	TravelTerminalImplementation* _implementation = new TravelTerminalImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void TravelTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ int TravelTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -65,7 +67,7 @@ void TravelTerminal::setShuttle(ShuttleCreature* shut) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETSHUTTLE__SHUTTLECREATURE_);
 		method.addObjectParameter(shut);
 
 		method.executeWithVoidReturn();
@@ -233,8 +235,6 @@ void TravelTerminalImplementation::setShuttle(ShuttleCreature* shut) {
 
 TravelTerminalAdapter::TravelTerminalAdapter(TravelTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSHUTTLE__SHUTTLECREATURE_};
 
 Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

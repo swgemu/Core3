@@ -10,6 +10,8 @@
  *	SpawnObserverStub
  */
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 SpawnObserver::SpawnObserver(SpawnArea* area) : Observer(DummyConstructorParameter::instance()) {
 	SpawnObserverImplementation* _implementation = new SpawnObserverImplementation(area);
 	_impl = _implementation;
@@ -29,7 +31,7 @@ int SpawnObserver::notifyObserverEvent(unsigned int eventType, Observable* obser
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -199,8 +201,6 @@ int SpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Obs
 
 SpawnObserverAdapter::SpawnObserverAdapter(SpawnObserverImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
 
 Packet* SpawnObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -26,6 +26,8 @@
  *	ConsumableStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SETMODIFIERS__BUFF_BOOL_,RPC_ISSPICEEFFECT__,RPC_ISATTRIBUTEEFFECT__,RPC_ISDRINK__,RPC_ISFOOD__,RPC_ISFORAGEDFOOD__,RPC_ISSPICE__};
+
 Consumable::Consumable() : TangibleObject(DummyConstructorParameter::instance()) {
 	ConsumableImplementation* _implementation = new ConsumableImplementation();
 	_impl = _implementation;
@@ -45,7 +47,7 @@ int Consumable::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -87,7 +89,7 @@ void Consumable::setModifiers(Buff* buff, bool skillModifiers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETMODIFIERS__BUFF_BOOL_);
 		method.addObjectParameter(buff);
 		method.addBooleanParameter(skillModifiers);
 
@@ -102,7 +104,7 @@ bool Consumable::isSpiceEffect() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISSPICEEFFECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -115,7 +117,7 @@ bool Consumable::isAttributeEffect() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISATTRIBUTEEFFECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -128,7 +130,7 @@ bool Consumable::isDrink() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISDRINK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -141,7 +143,7 @@ bool Consumable::isFood() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISFOOD__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -154,7 +156,7 @@ bool Consumable::isForagedFood() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISFORAGEDFOOD__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -167,7 +169,7 @@ bool Consumable::isSpice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISSPICE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -627,8 +629,6 @@ bool ConsumableImplementation::isSpice() {
 
 ConsumableAdapter::ConsumableAdapter(ConsumableImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SETMODIFIERS__BUFF_BOOL_,RPC_ISSPICEEFFECT__,RPC_ISATTRIBUTEEFFECT__,RPC_ISDRINK__,RPC_ISFOOD__,RPC_ISFORAGEDFOOD__,RPC_ISSPICE__};
 
 Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

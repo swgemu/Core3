@@ -12,6 +12,8 @@
  *	SuiInputBoxStub
  */
 
+enum {RPC_GENERATEMESSAGE__ = 6,RPC_SETMAXINPUTSIZE__INT_,RPC_SETDEFAULTINPUT__STRING_,RPC_ISFILTERBOX__,RPC_ISINPUTBOX__};
+
 SuiInputBox::SuiInputBox(PlayerCreature* player, unsigned int windowType, int inputtype) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiInputBoxImplementation* _implementation = new SuiInputBoxImplementation(player, windowType, inputtype);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ BaseMessage* SuiInputBox::generateMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
@@ -44,7 +46,7 @@ void SuiInputBox::setMaxInputSize(int size) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETMAXINPUTSIZE__INT_);
 		method.addSignedIntParameter(size);
 
 		method.executeWithVoidReturn();
@@ -58,7 +60,7 @@ void SuiInputBox::setDefaultInput(const String& text) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETDEFAULTINPUT__STRING_);
 		method.addAsciiParameter(text);
 
 		method.executeWithVoidReturn();
@@ -72,7 +74,7 @@ bool SuiInputBox::isFilterBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISFILTERBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -85,7 +87,7 @@ bool SuiInputBox::isInputBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISINPUTBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -288,8 +290,6 @@ bool SuiInputBoxImplementation::isInputBox() {
 
 SuiInputBoxAdapter::SuiInputBoxAdapter(SuiInputBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
-
-enum {RPC_GENERATEMESSAGE__ = 6,RPC_SETMAXINPUTSIZE__INT_,RPC_SETDEFAULTINPUT__STRING_,RPC_ISFILTERBOX__,RPC_ISINPUTBOX__};
 
 Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

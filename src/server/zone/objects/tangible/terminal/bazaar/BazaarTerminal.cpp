@@ -18,6 +18,8 @@
  *	BazaarTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDAUCTION__AUCTIONITEM_,RPC_DROPAUCTION__LONG_,};
+
 BazaarTerminal::BazaarTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	BazaarTerminalImplementation* _implementation = new BazaarTerminalImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void BazaarTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ int BazaarTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -65,7 +67,7 @@ void BazaarTerminal::addAuction(AuctionItem* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ADDAUCTION__AUCTIONITEM_);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -79,7 +81,7 @@ void BazaarTerminal::dropAuction(unsigned long long auctionItemID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_DROPAUCTION__LONG_);
 		method.addUnsignedLongParameter(auctionItemID);
 
 		method.executeWithVoidReturn();
@@ -277,8 +279,6 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarTerminalI
 
 BazaarTerminalAdapter::BazaarTerminalAdapter(BazaarTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDAUCTION__AUCTIONITEM_,RPC_DROPAUCTION__LONG_,};
 
 Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

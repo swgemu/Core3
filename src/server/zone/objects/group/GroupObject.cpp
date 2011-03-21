@@ -14,6 +14,8 @@
  *	GroupObjectStub
  */
 
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__PLAYERCREATURE_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__PLAYERCREATURE_,RPC_REMOVEGROUPMODIFIERS__PLAYERCREATURE_};
+
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GroupObjectImplementation* _implementation = new GroupObjectImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void GroupObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -47,7 +49,7 @@ void GroupObject::broadcastMessage(BaseMessage* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__BASEMESSAGE_);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -61,7 +63,7 @@ void GroupObject::broadcastMessage(PlayerCreature* player, BaseMessage* msg, boo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(msg);
 		method.addBooleanParameter(sendSelf);
@@ -77,7 +79,7 @@ void GroupObject::addMember(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ADDMEMBER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -91,7 +93,7 @@ void GroupObject::removeMember(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_REMOVEMEMBER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -105,7 +107,7 @@ void GroupObject::disband() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_DISBAND__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -118,7 +120,7 @@ void GroupObject::makeLeader(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_MAKELEADER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -132,7 +134,7 @@ bool GroupObject::hasMember(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_HASMEMBER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -146,7 +148,7 @@ void GroupObject::startChatRoom() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_STARTCHATROOM__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -159,7 +161,7 @@ void GroupObject::destroyChatRoom() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_DESTROYCHATROOM__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -172,7 +174,7 @@ float GroupObject::getGroupHarvestModifier(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETGROUPHARVESTMODIFIER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithFloatReturn();
@@ -186,7 +188,7 @@ int GroupObject::getGroupLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETGROUPLEVEL__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -199,7 +201,7 @@ ChatRoom* GroupObject::getGroupChannel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETGROUPCHANNEL__);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -212,7 +214,7 @@ int GroupObject::getGroupSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETGROUPSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -225,7 +227,7 @@ SceneObject* GroupObject::getGroupMember(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETGROUPMEMBER__INT_);
 		method.addSignedIntParameter(index);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -239,7 +241,7 @@ void GroupObject::initializeLeader(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_INITIALIZELEADER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -253,7 +255,7 @@ SceneObject* GroupObject::getLeader() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_GETLEADER__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -275,7 +277,7 @@ bool GroupObject::isGroupObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_ISGROUPOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -288,7 +290,7 @@ bool GroupObject::hasSquadLeader() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_HASSQUADLEADER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -301,7 +303,7 @@ void GroupObject::addGroupModifiers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_ADDGROUPMODIFIERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -314,7 +316,7 @@ void GroupObject::removeGroupModifiers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_REMOVEGROUPMODIFIERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -327,7 +329,7 @@ void GroupObject::addGroupModifiers(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_ADDGROUPMODIFIERS__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -341,7 +343,7 @@ void GroupObject::removeGroupModifiers(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_REMOVEGROUPMODIFIERS__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -567,8 +569,6 @@ bool GroupObjectImplementation::isGroupObject() {
 
 GroupObjectAdapter::GroupObjectAdapter(GroupObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
-
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__PLAYERCREATURE_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__PLAYERCREATURE_,RPC_REMOVEGROUPMODIFIERS__PLAYERCREATURE_};
 
 Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
