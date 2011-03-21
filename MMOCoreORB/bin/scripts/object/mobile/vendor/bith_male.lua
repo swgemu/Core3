@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_bith_male = object_mobile_vendor_shared_bith_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_bith_male, "object/mobile/vendor/bith_male.iff")

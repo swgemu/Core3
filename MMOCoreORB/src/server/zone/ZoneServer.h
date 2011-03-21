@@ -202,16 +202,16 @@ using namespace server::zone::managers::loot;
 namespace server {
 namespace zone {
 namespace managers {
-namespace auction {
+namespace bazaar {
 
-class AuctionManager;
+class BazaarManager;
 
-} // namespace auction
+} // namespace bazaar
 } // namespace managers
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::managers::auction;
+using namespace server::zone::managers::bazaar;
 
 namespace server {
 namespace zone {
@@ -462,7 +462,7 @@ public:
 
 	LootManager* getLootManager();
 
-	AuctionManager* getAuctionManager();
+	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
 
@@ -540,7 +540,7 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 
 	ManagedReference<LootManager* > lootManager;
 
-	ManagedReference<AuctionManager* > auctionManager;
+	ManagedReference<BazaarManager* > bazaarManager;
 
 	ManagedReference<MissionManager* > missionManager;
 
@@ -695,7 +695,7 @@ public:
 
 	LootManager* getLootManager();
 
-	AuctionManager* getAuctionManager();
+	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
 
@@ -856,7 +856,7 @@ public:
 
 	LootManager* getLootManager();
 
-	AuctionManager* getAuctionManager();
+	BazaarManager* getBazaarManager();
 
 	FishingManager* getFishingManager();
 

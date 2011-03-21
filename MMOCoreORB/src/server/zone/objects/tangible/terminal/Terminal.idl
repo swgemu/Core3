@@ -80,12 +80,4 @@ class Terminal extends TangibleObject {
 	public abstract boolean isElevatorTerminal() {
 		return false;
 	}
-
-	public abstract boolean isVendorTerminal() {
-		return false;
-	}
-
-	public abstract boolean isBazaarTerminal() {
-		return false;
-	}
 }

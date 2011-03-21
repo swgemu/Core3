@@ -91,7 +91,6 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/loot/LootkitObject.cpp \
 				server/zone/objects/tangible/camp/CampKit.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
-				server/zone/objects/creature/vendor/VendorCreature.cpp \
 				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/informant/InformantCreature.cpp \
 				server/zone/objects/creature/junkdealer/JunkdealerCreature.cpp \
@@ -131,7 +130,6 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/player/sessions/MigrateStatsSession.cpp \
 				server/zone/objects/player/sessions/ImageDesignSession.cpp \
 				server/zone/objects/player/sessions/SlicingSession.cpp \
-				server/zone/objects/player/sessions/vendor/CreateVendorSession.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
@@ -192,8 +190,8 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/managers/radial/RadialManager.cpp \
 				server/zone/managers/resource/ResourceManager.cpp \
 				server/zone/managers/creature/CreatureManager.cpp \
-				server/zone/managers/auction/AuctionManager.cpp \
-				server/zone/managers/auction/AuctionsMap.cpp \
+				server/zone/managers/bazaar/BazaarManager.cpp \
+				server/zone/managers/bazaar/BazaarAuctionsMap.cpp \
 				server/zone/managers/mission/MissionManager.cpp \
 				server/zone/objects/resource/ResourceContainer.cpp \
 				server/zone/objects/tangible/component/Component.cpp \
@@ -222,10 +220,8 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/terminal/city/CityVoteTerminal.cpp \
 				server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
-				server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
-				server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.cpp \
-				server/zone/objects/auction/AuctionItem.cpp \
-				server/zone/objects/auction/Vendor.cpp \
+				server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.cpp \
+				server/zone/objects/tangible/terminal/bazaar/AuctionItem.cpp \
 				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
 				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
@@ -288,7 +284,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/professions/PerformanceManager.cpp \
 		server/zone/managers/professions/imagedesign/ImageDesignManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
-		server/zone/managers/auction/AuctionManagerImplementation.cpp \
+		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
 		server/zone/managers/minigames/GamblingManagerImplementation.cpp \
 		server/zone/managers/minigames/ForageManagerImplementation.cpp \
@@ -329,9 +325,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/fishing/FishObjectImplementation.cpp \
 		server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp \
 		server/zone/objects/tangible/loot/LootkitObjectImplementation.cpp \
-		server/zone/objects/tangible/terminal/vendor/VendorTerminalImplementation.cpp \
-		server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminalImplementation.cpp \
-		server/zone/objects/auction/AuctionItemImplementation.cpp \
+		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/city/CityTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/city/CityVoteTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.cpp \
@@ -371,7 +365,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
-		server/zone/objects/creature/vendor/VendorCreatureImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/informant/InformantCreatureImplementation.cpp \
 		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
@@ -405,7 +398,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp \
 		server/zone/objects/player/sessions/SlicingSessionImplementation.cpp \
-		server/zone/objects/player/sessions/vendor/CreateVendorSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
@@ -444,6 +436,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalImplementation.cpp \
+		server/zone/objects/tangible/terminal/bazaar/AuctionItemImplementation.cpp \
 		server/zone/objects/tangible/terminal/mission/MissionTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.cpp \

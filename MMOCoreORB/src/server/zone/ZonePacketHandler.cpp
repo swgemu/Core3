@@ -61,7 +61,6 @@ which carries forward this exception.
 #include "packets/charcreation/ClientRandomNameRequest.h"
 
 #include "packets/auction/AuctionQueryHeadersMessageCallback.h"
-#include "packets/auction/CancelLiveAuctionMessageCallback.h"
 #include "packets/auction/CreateAuctionMessageCallback.h"
 #include "packets/auction/CreateImmediateAuctionMessageCallback.h"
 #include "packets/auction/GetAuctionDetailsCallback.h"
@@ -182,7 +181,6 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ChatEnterRoomByIdCallback>(0xbc6bddf2);
 	messageCallbackFactory.registerObject<VerifyPlayerNameCallback>(0xBB8CAD45);
 	messageCallbackFactory.registerObject<CreateTicketMessageCallback>(0x40E64DAC);
-	messageCallbackFactory.registerObject<CancelLiveAuctionMessageCallback>(0x3687A4D2);
 	messageCallbackFactory.registerObject<FactionRequestMessageCallback>(0xC1B03B81);
 }
 

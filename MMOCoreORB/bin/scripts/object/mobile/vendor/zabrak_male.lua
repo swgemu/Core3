@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_zabrak_male = object_mobile_vendor_shared_zabrak_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_zabrak_male, "object/mobile/vendor/zabrak_male.iff")

@@ -9,7 +9,7 @@
 #define GETAUCTIONDETAILSCALLBACK
 
 #include "../MessageCallback.h"
-#include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/managers/bazaar/BazaarManager.h"
 
 
 class GetAuctionDetailsCallback : public MessageCallback {
@@ -31,8 +31,8 @@ public:
 		if (player == NULL)
 			return;
 
-		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
-		auctionManager->getItemAttributes(player, objectid);
+		BazaarManager* bazaarManager = server->getZoneServer()->getBazaarManager();
+		bazaarManager->getItemAttributes(player, objectid);
 	}
 
 };

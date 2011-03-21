@@ -174,8 +174,6 @@ public:
 
 	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
 
-	void createVendor(PlayerCreature* player);
-
 	int getRedeedCost();
 
 	unsigned long long getOwnerObjectID();
@@ -353,8 +351,6 @@ public:
 
 	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
 
-	void createVendor(PlayerCreature* player);
-
 	int getRedeedCost();
 
 	unsigned long long getOwnerObjectID();
@@ -509,8 +505,6 @@ public:
 	bool removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
 
 	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
-
-	void createVendor(PlayerCreature* player);
 
 	int getRedeedCost();
 
