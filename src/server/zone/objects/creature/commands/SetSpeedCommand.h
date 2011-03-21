@@ -63,6 +63,10 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+
+		creature->setAccelerationMultiplierMod(5.0f, true);
+		creature->setSpeedMultiplierMod(5.0f, true);
+
 		return SUCCESS;
 	}
 

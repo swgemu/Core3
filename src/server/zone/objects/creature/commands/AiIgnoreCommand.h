@@ -46,6 +46,8 @@ which carries forward this exception.
 #define AIIGNORECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/tangible/attachment/Attachment.h"
 
 class AiIgnoreCommand : public QueueCommand {
 public:
@@ -62,6 +64,36 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		ZoneServer* zs = creature->getZoneServer();
+		SceneObject* scno = zs->createObject(String("object/tangible/gem/clothing.iff").hashCode(), 1);
+
+		StringTokenizer args(arguments.toString());
+		Attachment* att = (Attachment*) scno;
+		int v = 0;
+		int i = 0;
+		int k = 0;
+		if (args.hasMoreTokens()) {
+			v = args.getIntToken();
+			att->addSkillMod("jedi_force_power_max", v);
+			if (args.hasMoreTokens()) {
+				i = args.getIntToken();
+				att->addSkillMod("jedi_saber_experimentation", i);
+				if (args.hasMoreTokens()) {
+					k = args.getIntToken();
+					att->addSkillMod("polearmlightsaber_speed", k);
+				}
+			}
+		}
+
+
+
+		SceneObject* inventory = creature->getSlottedObject("inventory");
+
+		Locker inventoryLocker(inventory);
+
+		inventory->addObject(att, -1, true);
+		att->sendTo(creature, true);
 
 		return SUCCESS;
 	}

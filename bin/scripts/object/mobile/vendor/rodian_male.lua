@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_rodian_male = object_mobile_vendor_shared_rodian_male:new {
-
+	gameObjectType = 1038
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_rodian_male, "object/mobile/vendor/rodian_male.iff")

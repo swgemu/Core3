@@ -48,35 +48,76 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "../BaseLineMessage.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/auction/Vendor.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
+#include "server/zone/objects/creature/vendor/VendorCreature.h"
 
 class IsVendorOwnerResponseMessage : public BaseMessage {
 public:
-    IsVendorOwnerResponseMessage(bool vendor, uint64 objectId, String& planet, String& header, int x, int z ) {
+    IsVendorOwnerResponseMessage(SceneObject* sceno, PlayerCreature* player, String& planet, String& header, uint32 errorCode = 0) {
 		insertShort(3);
 		insertInt(0xCE04173E);
+
+		// Make sure sceno is a valid Vendor Object.
+		if (!sceno->isVendor())
+			return;
+
+		// And now we figure out what Vendor Class
+		Vendor* vendor = NULL;
+		String vendorName = "unknown";
+
+		if (sceno->isTerminal()) {
+			Terminal* term = (Terminal*) sceno;
+			if (term->isVendorTerminal()) {
+				VendorTerminal* terminal = (VendorTerminal*) term;
+				vendor = terminal->getVendor();
+				if (!terminal->getCustomObjectName().isEmpty())
+					vendorName = terminal->getCustomObjectName().toString();
+			}
+
+		} else if (sceno->isCreatureObject()) {
+			CreatureObject* cero = (CreatureObject*) sceno;
+			if (!cero->isVendorCreature())
+				return;
+
+			VendorCreature* vendorCreature = (VendorCreature*) sceno;
+			vendor = vendorCreature->getVendor();
+			if (!vendorCreature->getCustomObjectName().isEmpty())
+				vendorName = vendorCreature->getCustomObjectName().toString();
+
+		} else
+			return;
+
+		if (vendor == NULL)
+			return;
+
+		uint64 objectID = sceno->getObjectID();
+
+		// 0: own vendor, 1: someone else owns the vendor, 2: the galaxy owns the vendor (bazaar)
+		insertInt(vendor->getOwnershipRightsOf(player));
+
+		insertInt(errorCode);
 		
-		if (!vendor)
-			insertInt(2);
-		else
-			insertInt(1);
-		
-		insertInt(0);
-		
-		insertLong(objectId);
+		insertLong(objectID);
 
 		StringBuffer title;
 		title << planet << ".@";
 		
-		if (vendor)
-			title << "planet_n:" << planet <<  ".Vendor: " << "test";
+		int x = sceno->getWorldPositionX();
+		int y = sceno->getWorldPositionY();
+
+		if (!vendor->isBazaarTerminal())
+			title << "planet_n:" << planet <<  ".Vendor: " << vendorName; // VendorName
 		else
 			title << planet << "_region_names:" << header << ".@terminal_name:terminal_bazaar";
 		
-		title << "." << objectId << "#" << x << "," << z;
+		title << "." << objectID << "#" << x << "," << y;
 		
 		insertAscii(title.toString());
 		
-		insertShort(0x64);
+		insertShort(0x64); // ?? 64
 	}
 };
 

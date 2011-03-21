@@ -17,6 +17,8 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
+#include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
+
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
@@ -465,4 +467,18 @@ bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
 	}
 
 	return objid == ownerObjectID;
+}
+
+void StructureObjectImplementation::createVendor(PlayerCreature* player) {
+	if (!isPublicStructure()) {
+		player->sendSystemMessage("@player_structure:vendor_no_private");
+		return;
+	}
+
+	//Create Session
+	ManagedReference<CreateVendorSession*> session = new CreateVendorSession(player);
+	session->initalizeWindow(player);
+
+	player->addActiveSession(SessionFacadeType::CREATEVENDOR, session);
+
 }
