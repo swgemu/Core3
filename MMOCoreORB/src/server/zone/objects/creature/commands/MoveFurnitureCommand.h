@@ -187,6 +187,11 @@ public:
 			}
 		}
 
+		if (obj->isVendor()) {
+			creature->sendSystemMessage("@player_structure:cant_move_vendor"); // To move a vendor, pick it up and drop it again in the new location.
+			return GENERALERROR;
+		}
+
 		float degrees = creature->getDirectionAngle();
 		float radians = Math::deg2rad(degrees);
 

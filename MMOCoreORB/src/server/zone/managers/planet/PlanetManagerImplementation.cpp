@@ -43,7 +43,7 @@ void PlanetManagerImplementation::initialize() {
 
 	loadRegions();
 	loadBadgeAreas();
-	loadNoBuildAreas();
+	//loadNoBuildAreas();
 	loadPerformanceLocations();
 	loadHuntingTargets();
 	loadReconLocations();

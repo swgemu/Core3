@@ -14,6 +14,7 @@ public:
 	const static int MIGRATESTATS = 2;
 	const static int IMAGEDESIGN = 3;
 	const static int SLICING = 4;
+	const static int CREATEVENDOR = 5;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

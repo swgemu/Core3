@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_quarren_male = object_mobile_vendor_shared_quarren_male:new {
-
+	gameObjectType = 1038
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_quarren_male, "object/mobile/vendor/quarren_male.iff")

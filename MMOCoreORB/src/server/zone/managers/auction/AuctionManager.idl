@@ -1,0 +1,132 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.managers.auction;
+
+import engine.log.Logger;
+import server.zone.ZoneServer;
+import server.zone.managers.object.ObjectManager;
+import engine.core.ManagedService;
+import server.zone.ZoneServer;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.managers.auction.AuctionsMap;
+import server.zone.objects.tangible.terminal.vendor.VendorTerminal;
+import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
+import server.zone.objects.auction.AuctionItem;
+include server.zone.objects.auction.Vendor;
+import server.zone.objects.scene.SceneObject;
+import system.util.VectorMap;
+
+include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
+
+class AuctionManager extends ManagedService implements Logger {
+	protected AuctionsMap auctionMap;
+	
+	@weakReference
+	protected ZoneServer zoneServer;
+	
+	public final static int MAXPRICE = 20000;
+	public final static int MAXSALES = 20; // this only apply to bazaars
+	public final static int SALESFEE = 20;
+	public final static int CHECKEVERY = 1; // Minutes
+	
+	
+	public AuctionManager(ZoneServer server) {
+		zoneServer = server;
+		
+		Logger.setLoggingName("AuctionManager");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
+	}
+	
+	public native void initialize();
+
+	public native void checkVendorItems();
+	
+	public native void checkAuctions();
+	
+	@local
+	public native void addSaleItem(PlayerCreature player, unsigned long objectid, Vendor vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
+	@local
+	public native AuctionItem createVendorItem(PlayerCreature player, SceneObject objectToSell, Vendor vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
+	
+	@local
+	public native int checkSaleItem(PlayerCreature player, SceneObject object, Vendor vendor, int price);
+	
+	public native void getItemAttributes(PlayerCreature player, unsigned long objectid);
+
+	public native void getData(PlayerCreature player, int extent, unsigned long vendorObjectID, int screen, unsigned int category, int count, int offset);	
+
+	@local
+	public native void getLocalVendorData(PlayerCreature player, Vendor vendor, int screen, unsigned int category, int count, int offset);
+
+	@local
+	public native void getGalaxyData(PlayerCreature player, Vendor vendor, int screen, unsigned int category, int count, int offset);
+	
+	@local
+	public native void getPlanetData(PlayerCreature player, Vendor vendor, int screen, unsigned int category, int count, int offset);
+
+	@local
+	public native void getRegionData(PlayerCreature player, Vendor vendor, int screen, unsigned int category, int count, int offset);
+	
+	private native void refundAuction(AuctionItem item); 
+
+	@local
+	public native int checkRetrieve(PlayerCreature player, unsigned long objectIdToRetrieve, Vendor vendor);
+	public native void retrieveItem(PlayerCreature player, unsigned long objectid, unsigned long vendorID);
+	
+	public native void buyItem(PlayerCreature player, unsigned long objectid, int price1, int price2);
+	public native void doAuctionBid(PlayerCreature player, AuctionItem item, int price1, int price2);
+	public native void doInstantBuy(PlayerCreature player, AuctionItem item, int price1, int price2);
+	public native int checkBidAuction(PlayerCreature player, AuctionItem item, int price1, int price2);
+
+	public native void cancelItem(PlayerCreature player, unsigned long objectID);
+	
+	@local
+	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(PlayerCreature player, Vendor vendor, VectorMap<unsigned long, AuctionItem> items, int screen, unsigned int category, int count, int offset);
+
+	@local
+	private native Vendor getVendorFromObject(SceneObject obj);	
+}
+

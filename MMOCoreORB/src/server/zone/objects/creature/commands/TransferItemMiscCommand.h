@@ -85,7 +85,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (objectToTransfer->isCreatureObject()) {
+		if (objectToTransfer->isCreatureObject() && !objectToTransfer->isVendor()) {
 			//creature->sendSystemMessage("You cant pickup creatures");
 			return GENERALERROR;
 		}
@@ -102,7 +102,7 @@ public:
 					return GENERALERROR;
 				}
 
-				if (objectToTransfer->isTerminal())
+				if (objectToTransfer->isTerminal() && !objectToTransfer->isVendor())
 					return GENERALERROR;
 			} else {
 				SceneObject* rootParent = objectToTransfer->getRootParent();

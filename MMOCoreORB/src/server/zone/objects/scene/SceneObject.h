@@ -216,6 +216,8 @@ public:
 
 	static const int STATICOBJECT = 5;
 
+	static const int VENDORTERMINAL = 7;
+
 	static const int ARMOR = 0x100;
 
 	static const int BODYARMOR = 0x101;
@@ -287,6 +289,8 @@ public:
 	static const int JUNKDEALERCREATURE = 0x40C;
 
 	static const int INFORMANTCREATURE = 0x40D;
+
+	static const int VENDORCREATURE = 0x40E;
 
 	static const int INTANGIBLE = 0x800;
 
@@ -916,6 +920,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isVendor();
+
 	bool isShuttleInstallation();
 
 	bool isPlayerObject();
@@ -983,8 +989,6 @@ public:
 	bool isManufactureSchematic();
 
 	bool isStructureObject();
-
-	bool isBazaarTerminal();
 
 	bool isFishingBait();
 
@@ -1158,6 +1162,8 @@ public:
 
 	static const int STATICOBJECT = 5;
 
+	static const int VENDORTERMINAL = 7;
+
 	static const int ARMOR = 0x100;
 
 	static const int BODYARMOR = 0x101;
@@ -1229,6 +1235,8 @@ public:
 	static const int JUNKDEALERCREATURE = 0x40C;
 
 	static const int INFORMANTCREATURE = 0x40D;
+
+	static const int VENDORCREATURE = 0x40E;
 
 	static const int INTANGIBLE = 0x800;
 
@@ -1862,6 +1870,8 @@ public:
 
 	bool isPlayerCreature();
 
+	virtual bool isVendor();
+
 	bool isShuttleInstallation();
 
 	bool isPlayerObject();
@@ -1929,8 +1939,6 @@ public:
 	virtual bool isManufactureSchematic();
 
 	virtual bool isStructureObject();
-
-	bool isBazaarTerminal();
 
 	bool isFishingBait();
 
@@ -2263,6 +2271,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isVendor();
+
 	bool isShuttleInstallation();
 
 	bool isPlayerObject();
@@ -2330,8 +2340,6 @@ public:
 	bool isManufactureSchematic();
 
 	bool isStructureObject();
-
-	bool isBazaarTerminal();
 
 	bool isFishingBait();
 
