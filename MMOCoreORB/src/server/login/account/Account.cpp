@@ -12,6 +12,8 @@
  *	AccountStub
  */
 
+enum {RPC_HASMAXONLINECHARACTERS__ = 6,RPC_GETZONESESSION__INT_,RPC_CONTAINSZONESESSION__INT_,RPC_ADDZONESESSION__ZONECLIENTSESSION_,RPC_REMOVEZONESESSION__INT_,RPC_SETACCOUNTID__INT_,RPC_SETSTATIONID__INT_,RPC_SETADMINLEVEL__INT_,RPC_SETUSERNAME__STRING_,RPC_SETTIMECREATED__INT_,RPC_GETACCOUNTID__,RPC_GETSTATIONID__,RPC_GETADMINLEVEL__,RPC_GETUSERNAME__,RPC_GETTIMECREATED__};
+
 Account::Account(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AccountImplementation* _implementation = new AccountImplementation(accManage, usern, accountid, stationid);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ bool Account::hasMaxOnlineCharacters() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HASMAXONLINECHARACTERS__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -44,7 +46,7 @@ ZoneClientSession* Account::getZoneSession(unsigned int sessionID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETZONESESSION__INT_);
 		method.addUnsignedIntParameter(sessionID);
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
@@ -58,7 +60,7 @@ bool Account::containsZoneSession(unsigned int sessionID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CONTAINSZONESESSION__INT_);
 		method.addUnsignedIntParameter(sessionID);
 
 		return method.executeWithBooleanReturn();
@@ -72,7 +74,7 @@ void Account::addZoneSession(ZoneClientSession* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ADDZONESESSION__ZONECLIENTSESSION_);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -86,7 +88,7 @@ void Account::removeZoneSession(unsigned int sessionID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_REMOVEZONESESSION__INT_);
 		method.addUnsignedIntParameter(sessionID);
 
 		method.executeWithVoidReturn();
@@ -100,7 +102,7 @@ void Account::setAccountID(unsigned int accountid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETACCOUNTID__INT_);
 		method.addUnsignedIntParameter(accountid);
 
 		method.executeWithVoidReturn();
@@ -114,7 +116,7 @@ void Account::setStationID(unsigned int stationid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETSTATIONID__INT_);
 		method.addUnsignedIntParameter(stationid);
 
 		method.executeWithVoidReturn();
@@ -128,7 +130,7 @@ void Account::setAdminLevel(unsigned int adminlvl) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETADMINLEVEL__INT_);
 		method.addUnsignedIntParameter(adminlvl);
 
 		method.executeWithVoidReturn();
@@ -142,7 +144,7 @@ void Account::setUsername(const String& usern) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETUSERNAME__STRING_);
 		method.addAsciiParameter(usern);
 
 		method.executeWithVoidReturn();
@@ -156,7 +158,7 @@ void Account::setTimeCreated(unsigned int seconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETTIMECREATED__INT_);
 		method.addUnsignedIntParameter(seconds);
 
 		method.executeWithVoidReturn();
@@ -170,7 +172,7 @@ unsigned int Account::getAccountID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETACCOUNTID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -183,7 +185,7 @@ unsigned int Account::getStationID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETSTATIONID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -196,7 +198,7 @@ unsigned int Account::getAdminLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETADMINLEVEL__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -209,7 +211,7 @@ String Account::getUsername() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETUSERNAME__);
 
 		method.executeWithAsciiReturn(_return_getUsername);
 		return _return_getUsername;
@@ -223,7 +225,7 @@ unsigned int Account::getTimeCreated() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETTIMECREATED__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -535,8 +537,6 @@ unsigned int AccountImplementation::getTimeCreated() {
 
 AccountAdapter::AccountAdapter(AccountImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_HASMAXONLINECHARACTERS__ = 6,RPC_GETZONESESSION__INT_,RPC_CONTAINSZONESESSION__INT_,RPC_ADDZONESESSION__ZONECLIENTSESSION_,RPC_REMOVEZONESESSION__INT_,RPC_SETACCOUNTID__INT_,RPC_SETSTATIONID__INT_,RPC_SETADMINLEVEL__INT_,RPC_SETUSERNAME__STRING_,RPC_SETTIMECREATED__INT_,RPC_GETACCOUNTID__,RPC_GETSTATIONID__,RPC_GETADMINLEVEL__,RPC_GETUSERNAME__,RPC_GETTIMECREATED__};
 
 Packet* AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

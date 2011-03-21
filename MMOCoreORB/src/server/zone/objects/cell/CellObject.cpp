@@ -12,6 +12,8 @@
  *	CellObjectStub
  */
 
+enum {RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
+
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
 	CellObjectImplementation* _implementation = new CellObjectImplementation();
 	_impl = _implementation;
@@ -40,7 +42,7 @@ void CellObject::notifyLoadFromDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -53,7 +55,7 @@ void CellObject::sendContainerObjectsTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -67,7 +69,7 @@ int CellObject::canAddObject(SceneObject* object, int containmentType, String& e
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
@@ -83,7 +85,7 @@ bool CellObject::addObject(SceneObject* object, int containmentType, bool notify
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addBooleanParameter(notifyClient);
@@ -99,7 +101,7 @@ bool CellObject::removeObject(SceneObject* object, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(notifyClient);
 
@@ -114,7 +116,7 @@ void CellObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -127,7 +129,7 @@ void CellObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -141,7 +143,7 @@ int CellObject::getCurrentNumerOfPlayerItems() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETCURRENTNUMEROFPLAYERITEMS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -154,7 +156,7 @@ int CellObject::getCellNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETCELLNUMBER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -167,7 +169,7 @@ void CellObject::setCellNumber(int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETCELLNUMBER__INT_);
 		method.addSignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -181,7 +183,7 @@ bool CellObject::isCellObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ISCELLOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -368,8 +370,6 @@ bool CellObjectImplementation::isCellObject() {
 
 CellObjectAdapter::CellObjectAdapter(CellObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
-
-enum {RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
 
 Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

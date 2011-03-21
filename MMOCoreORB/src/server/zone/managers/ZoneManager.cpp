@@ -14,6 +14,8 @@
  *	ZoneManagerStub
  */
 
+enum {RPC_SETZONEPROCESSOR__ZONEPROCESSSERVER_ = 6};
+
 ZoneManager::ZoneManager(const String& name) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneManagerImplementation* _implementation = new ZoneManagerImplementation(name);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void ZoneManager::setZoneProcessor(ZoneProcessServer* server) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SETZONEPROCESSOR__ZONEPROCESSSERVER_);
 		method.addObjectParameter(server);
 
 		method.executeWithVoidReturn();
@@ -195,8 +197,6 @@ void ZoneManagerImplementation::setZoneProcessor(ZoneProcessServer* server) {
 
 ZoneManagerAdapter::ZoneManagerAdapter(ZoneManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_SETZONEPROCESSOR__ZONEPROCESSSERVER_ = 6};
 
 Packet* ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

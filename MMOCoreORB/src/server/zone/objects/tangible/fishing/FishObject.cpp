@@ -20,6 +20,8 @@
  *	FishObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETATTRIBUTES__STRING_INT_STRING_FLOAT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_FILET__PLAYERCREATURE_};
+
 FishObject::FishObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FishObjectImplementation* _implementation = new FishObjectImplementation();
 	_impl = _implementation;
@@ -39,7 +41,7 @@ void FishObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -52,7 +54,7 @@ void FishObject::setAttributes(String& playerName, int planetID, String& timesta
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETATTRIBUTES__STRING_INT_STRING_FLOAT_);
 		method.addAsciiParameter(playerName);
 		method.addSignedIntParameter(planetID);
 		method.addAsciiParameter(timestamp);
@@ -69,7 +71,7 @@ void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Player
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -84,7 +86,7 @@ int FishObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -99,7 +101,7 @@ void FishObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* ob
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -114,7 +116,7 @@ void FishObject::filet(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_FILET__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -335,8 +337,6 @@ void FishObjectImplementation::setAttributes(String& playerName, int planetID, S
 
 FishObjectAdapter::FishObjectAdapter(FishObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETATTRIBUTES__STRING_INT_STRING_FLOAT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_FILET__PLAYERCREATURE_};
 
 Packet* FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

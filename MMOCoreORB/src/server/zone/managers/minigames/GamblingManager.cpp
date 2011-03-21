@@ -20,6 +20,8 @@
  *	GamblingManagerStub
  */
 
+enum {RPC_INITIALIZESLOTTIMER__,RPC_INITIALIZEROULETTETIMER__,RPC_INITIALIZESLOTS__,RPC_INITIALIZEROULETTERED__,RPC_INITIALIZEROULETTE__,RPC_NOTIFY__SCENEOBJECT_,RPC_ISHIGH__INT_,RPC_ISLOW__INT_,RPC_ISEVEN__INT_,RPC_ISODD__INT_,RPC_ISBLACK__INT_,RPC_ISRED__INT_,RPC_HANDLESLOT__PLAYERCREATURE_BOOL_BOOL_,RPC_BET__PLAYERCREATURE_INT_INT_INT_,RPC_BET__GAMBLINGTERMINAL_PLAYERCREATURE_INT_INT_,RPC_STARTGAME__PLAYERCREATURE_INT_,RPC_STARTGAME__GAMBLINGTERMINAL_,RPC_LEAVETERMINAL__PLAYERCREATURE_INT_,RPC_REGISTERPLAYER__GAMBLINGTERMINAL_PLAYERCREATURE_,RPC_REFRESHROULETTEMENU__PLAYERCREATURE_,RPC_CONTINUEGAME__GAMBLINGTERMINAL_,RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_,RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_,RPC_CREATEWINDOW__GAMBLINGTERMINAL_PLAYERCREATURE_,RPC_CREATEPAYOUTWINDOW__PLAYERCREATURE_,RPC_CREATESLOTWINDOW__PLAYERCREATURE_INT_,RPC_CREATEROULETTEWINDOW__PLAYERCREATURE_,RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_,RPC_ISPLAYING__PLAYERCREATURE_};
+
 GamblingManager::GamblingManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
 	GamblingManagerImplementation* _implementation = new GamblingManagerImplementation(server);
 	_impl = _implementation;
@@ -48,7 +50,7 @@ void GamblingManager::initializeSlotTimer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZESLOTTIMER__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -61,7 +63,7 @@ void GamblingManager::initializeRouletteTimer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZEROULETTETIMER__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -74,7 +76,7 @@ void GamblingManager::initializeSlots() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_INITIALIZESLOTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -87,7 +89,7 @@ void GamblingManager::initializeRouletteRed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_INITIALIZEROULETTERED__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -100,7 +102,7 @@ void GamblingManager::initializeRoulette() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_INITIALIZEROULETTE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -113,7 +115,7 @@ int GamblingManager::notify(SceneObject* sceneObject) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_NOTIFY__SCENEOBJECT_);
 		method.addObjectParameter(sceneObject);
 
 		return method.executeWithSignedIntReturn();
@@ -127,7 +129,7 @@ bool GamblingManager::isHigh(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISHIGH__INT_);
 		method.addSignedIntParameter(value);
 
 		return method.executeWithBooleanReturn();
@@ -141,7 +143,7 @@ bool GamblingManager::isLow(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISLOW__INT_);
 		method.addSignedIntParameter(value);
 
 		return method.executeWithBooleanReturn();
@@ -155,7 +157,7 @@ bool GamblingManager::isEven(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ISEVEN__INT_);
 		method.addSignedIntParameter(value);
 
 		return method.executeWithBooleanReturn();
@@ -169,7 +171,7 @@ bool GamblingManager::isOdd(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_ISODD__INT_);
 		method.addSignedIntParameter(value);
 
 		return method.executeWithBooleanReturn();
@@ -183,7 +185,7 @@ bool GamblingManager::isBlack(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ISBLACK__INT_);
 		method.addSignedIntParameter(value);
 
 		return method.executeWithBooleanReturn();
@@ -197,7 +199,7 @@ bool GamblingManager::isRed(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ISRED__INT_);
 		method.addSignedIntParameter(value);
 
 		return method.executeWithBooleanReturn();
@@ -211,7 +213,7 @@ void GamblingManager::handleSlot(PlayerCreature* player, bool cancel, bool other
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_HANDLESLOT__PLAYERCREATURE_BOOL_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(cancel);
 		method.addBooleanParameter(other);
@@ -227,7 +229,7 @@ void GamblingManager::bet(PlayerCreature* player, int amount, int target, int ma
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_BET__PLAYERCREATURE_INT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(amount);
 		method.addSignedIntParameter(target);
@@ -244,7 +246,7 @@ void GamblingManager::bet(GamblingTerminal* terminal, PlayerCreature* player, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_BET__GAMBLINGTERMINAL_PLAYERCREATURE_INT_INT_);
 		method.addObjectParameter(terminal);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(amount);
@@ -261,7 +263,7 @@ void GamblingManager::startGame(PlayerCreature* player, int machineType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_STARTGAME__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(machineType);
 
@@ -276,7 +278,7 @@ void GamblingManager::startGame(GamblingTerminal* terminal) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_STARTGAME__GAMBLINGTERMINAL_);
 		method.addObjectParameter(terminal);
 
 		method.executeWithVoidReturn();
@@ -290,7 +292,7 @@ void GamblingManager::leaveTerminal(PlayerCreature* player, int machineType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_LEAVETERMINAL__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(machineType);
 
@@ -305,7 +307,7 @@ void GamblingManager::registerPlayer(GamblingTerminal* terminal, PlayerCreature*
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_REGISTERPLAYER__GAMBLINGTERMINAL_PLAYERCREATURE_);
 		method.addObjectParameter(terminal);
 		method.addObjectParameter(player);
 
@@ -320,7 +322,7 @@ void GamblingManager::refreshRouletteMenu(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_REFRESHROULETTEMENU__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -334,7 +336,7 @@ void GamblingManager::continueGame(GamblingTerminal* terminal) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_CONTINUEGAME__GAMBLINGTERMINAL_);
 		method.addObjectParameter(terminal);
 
 		method.executeWithVoidReturn();
@@ -348,7 +350,7 @@ void GamblingManager::stopGame(GamblingTerminal* terminal, bool cancel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_);
 		method.addObjectParameter(terminal);
 		method.addBooleanParameter(cancel);
 
@@ -363,7 +365,7 @@ void GamblingManager::calculateOutcome(GamblingTerminal* terminal) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_);
 		method.addObjectParameter(terminal);
 
 		method.executeWithVoidReturn();
@@ -377,7 +379,7 @@ unsigned int GamblingManager::createWindow(GamblingTerminal* terminal, PlayerCre
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_CREATEWINDOW__GAMBLINGTERMINAL_PLAYERCREATURE_);
 		method.addObjectParameter(terminal);
 		method.addObjectParameter(player);
 
@@ -392,7 +394,7 @@ unsigned int GamblingManager::createPayoutWindow(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_CREATEPAYOUTWINDOW__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedIntReturn();
@@ -406,7 +408,7 @@ unsigned int GamblingManager::createSlotWindow(PlayerCreature* player, unsigned 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_CREATESLOTWINDOW__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(payoutBoxID);
 
@@ -421,7 +423,7 @@ unsigned int GamblingManager::createRouletteWindow(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_CREATEROULETTEWINDOW__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedIntReturn();
@@ -435,7 +437,7 @@ void GamblingManager::createEvent(GamblingTerminal* terminal, int time) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_);
 		method.addObjectParameter(terminal);
 		method.addSignedIntParameter(time);
 
@@ -450,7 +452,7 @@ bool GamblingManager::isPlaying(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_ISPLAYING__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -988,8 +990,6 @@ bool GamblingManagerImplementation::isPlaying(PlayerCreature* player) {
 
 GamblingManagerAdapter::GamblingManagerAdapter(GamblingManagerImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_INITIALIZESLOTTIMER__,RPC_INITIALIZEROULETTETIMER__,RPC_INITIALIZESLOTS__,RPC_INITIALIZEROULETTERED__,RPC_INITIALIZEROULETTE__,RPC_NOTIFY__SCENEOBJECT_,RPC_ISHIGH__INT_,RPC_ISLOW__INT_,RPC_ISEVEN__INT_,RPC_ISODD__INT_,RPC_ISBLACK__INT_,RPC_ISRED__INT_,RPC_HANDLESLOT__PLAYERCREATURE_BOOL_BOOL_,RPC_BET__PLAYERCREATURE_INT_INT_INT_,RPC_BET__GAMBLINGTERMINAL_PLAYERCREATURE_INT_INT_,RPC_STARTGAME__PLAYERCREATURE_INT_,RPC_STARTGAME__GAMBLINGTERMINAL_,RPC_LEAVETERMINAL__PLAYERCREATURE_INT_,RPC_REGISTERPLAYER__GAMBLINGTERMINAL_PLAYERCREATURE_,RPC_REFRESHROULETTEMENU__PLAYERCREATURE_,RPC_CONTINUEGAME__GAMBLINGTERMINAL_,RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_,RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_,RPC_CREATEWINDOW__GAMBLINGTERMINAL_PLAYERCREATURE_,RPC_CREATEPAYOUTWINDOW__PLAYERCREATURE_,RPC_CREATESLOTWINDOW__PLAYERCREATURE_INT_,RPC_CREATEROULETTEWINDOW__PLAYERCREATURE_,RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_,RPC_ISPLAYING__PLAYERCREATURE_};
 
 Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

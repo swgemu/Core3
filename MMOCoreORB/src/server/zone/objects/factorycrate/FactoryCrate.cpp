@@ -18,6 +18,8 @@
  *	FactoryCrateStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISFACTORYCRATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETCRAFTERSSERIAL__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
+
 FactoryCrate::FactoryCrate() : TangibleObject(DummyConstructorParameter::instance()) {
 	FactoryCrateImplementation* _implementation = new FactoryCrateImplementation();
 	_impl = _implementation;
@@ -46,7 +48,7 @@ void FactoryCrate::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -59,7 +61,7 @@ void FactoryCrate::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -91,7 +93,7 @@ int FactoryCrate::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -106,7 +108,7 @@ bool FactoryCrate::isFactoryCrate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISFACTORYCRATE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -119,7 +121,7 @@ void FactoryCrate::setUseCount(unsigned int newUseCount, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SETUSECOUNT__INT_BOOL_);
 		method.addUnsignedIntParameter(newUseCount);
 		method.addBooleanParameter(notifyClient);
 
@@ -134,7 +136,7 @@ TangibleObject* FactoryCrate::getPrototype() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETPROTOTYPE__);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -147,7 +149,7 @@ String FactoryCrate::getCraftersName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETCRAFTERSNAME__);
 
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
@@ -161,7 +163,7 @@ String FactoryCrate::getCraftersSerial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETCRAFTERSSERIAL__);
 
 		method.executeWithAsciiReturn(_return_getCraftersSerial);
 		return _return_getCraftersSerial;
@@ -175,7 +177,7 @@ bool FactoryCrate::extractObjectToParent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_EXTRACTOBJECTTOPARENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -188,7 +190,7 @@ TangibleObject* FactoryCrate::extractObject(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_EXTRACTOBJECT__INT_);
 		method.addSignedIntParameter(count);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
@@ -202,7 +204,7 @@ void FactoryCrate::split(int newStackSize) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SPLIT__INT_);
 		method.addSignedIntParameter(newStackSize);
 
 		method.executeWithVoidReturn();
@@ -350,8 +352,6 @@ bool FactoryCrateImplementation::isFactoryCrate() {
 
 FactoryCrateAdapter::FactoryCrateAdapter(FactoryCrateImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISFACTORYCRATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETCRAFTERSSERIAL__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
 
 Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

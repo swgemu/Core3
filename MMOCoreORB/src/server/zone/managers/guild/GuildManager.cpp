@@ -22,6 +22,8 @@
  *	GuildManagerStub
  */
 
+enum {RPC_SETCHATMANAGER__CHATMANAGER_ = 6,RPC_SENDGUILDLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPENDINGGUILD__LONG_STRING_,RPC_REMOVEPENDINGGUILD__LONG_,RPC_GETPENDINGGUILDNAME__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_ISCREATINGGUILD__LONG_,RPC_ISSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDGUILD__LONG_,RPC_SENDBASELINESTO__PLAYERCREATURE_,RPC_LOADGUILDS__,RPC_SENDGUILDCREATENAMETO__PLAYERCREATURE_GUILDTERMINAL_,RPC_SENDGUILDCREATEABBREVTO__PLAYERCREATURE_GUILDTERMINAL_,RPC_SENDGUILDINFORMATIONTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBERLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBEROPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDDISBANDCONFIRMTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDOPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDSPONSORTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSORVERIFYTO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDGUILDKICKPROMPTTO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDGUILDSETTITLETO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDMEMBERPERMISSIONSTO__PLAYERCREATURE_LONG_GUILDTERMINAL_,RPC_VALIDATEGUILDNAME__PLAYERCREATURE_STRING_,RPC_VALIDATEGUILDABBREV__PLAYERCREATURE_STRING_,RPC_GUILDNAMEEXISTS__STRING_,RPC_GUILDABBREVEXISTS__STRING_,RPC_CREATEGUILD__PLAYERCREATURE_GUILDTERMINAL_STRING_STRING_,RPC_DISBANDGUILD__PLAYERCREATURE_GUILDOBJECT_,RPC_SPONSORPLAYER__PLAYERCREATURE_GUILDTERMINAL_STRING_,RPC_ACCEPTSPONSORSHIPREQUEST__PLAYERCREATURE_PLAYERCREATURE_,RPC_ACCEPTSPONSOREDPLAYER__PLAYERCREATURE_LONG_,RPC_KICKMEMBER__PLAYERCREATURE_PLAYERCREATURE_,RPC_LEAVEGUILD__PLAYERCREATURE_GUILDOBJECT_,RPC_SETMEMBERTITLE__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_SETALLEGIANCETO__PLAYERCREATURE_LONG_GUILDTERMINAL_,RPC_TOGGLEGUILDPERMISSION__PLAYERCREATURE_LONG_INT_GUILDTERMINAL_,RPC_CREATEGUILDCHANNELS__GUILDOBJECT_,};
+
 GuildManager::GuildManager(ZoneServer* serv, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	GuildManagerImplementation* _implementation = new GuildManagerImplementation(serv, proc);
 	_impl = _implementation;
@@ -41,7 +43,7 @@ void GuildManager::setChatManager(ChatManager* chatmanager) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SETCHATMANAGER__CHATMANAGER_);
 		method.addObjectParameter(chatmanager);
 
 		method.executeWithVoidReturn();
@@ -55,7 +57,7 @@ void GuildManager::sendGuildListTo(PlayerCreature* player, const String& guildFi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDGUILDLISTTO__PLAYERCREATURE_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(guildFilter);
 
@@ -70,7 +72,7 @@ void GuildManager::addPendingGuild(unsigned long long playerID, const String& gu
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ADDPENDINGGUILD__LONG_STRING_);
 		method.addUnsignedLongParameter(playerID);
 		method.addAsciiParameter(guildName);
 
@@ -85,7 +87,7 @@ void GuildManager::removePendingGuild(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_REMOVEPENDINGGUILD__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -99,7 +101,7 @@ String GuildManager::getPendingGuildName(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETPENDINGGUILDNAME__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithAsciiReturn(_return_getPendingGuildName);
@@ -114,7 +116,7 @@ void GuildManager::addSponsoredPlayer(unsigned long long playerID, GuildObject* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_);
 		method.addUnsignedLongParameter(playerID);
 		method.addObjectParameter(guild);
 
@@ -129,7 +131,7 @@ void GuildManager::removeSponsoredPlayer(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_REMOVESPONSOREDPLAYER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -143,7 +145,7 @@ bool GuildManager::isCreatingGuild(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISCREATINGGUILD__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -157,7 +159,7 @@ bool GuildManager::isSponsoredPlayer(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ISSPONSOREDPLAYER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -171,7 +173,7 @@ GuildObject* GuildManager::getSponsoredGuild(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETSPONSOREDGUILD__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return (GuildObject*) method.executeWithObjectReturn();
@@ -185,7 +187,7 @@ void GuildManager::sendBaselinesTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -199,7 +201,7 @@ void GuildManager::loadGuilds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_LOADGUILDS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -212,7 +214,7 @@ void GuildManager::sendGuildCreateNameTo(PlayerCreature* player, GuildTerminal* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SENDGUILDCREATENAMETO__PLAYERCREATURE_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guildTerminal);
 
@@ -227,7 +229,7 @@ void GuildManager::sendGuildCreateAbbrevTo(PlayerCreature* player, GuildTerminal
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SENDGUILDCREATEABBREVTO__PLAYERCREATURE_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guildTerminal);
 
@@ -242,7 +244,7 @@ void GuildManager::sendGuildInformationTo(PlayerCreature* player, GuildObject* g
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SENDGUILDINFORMATIONTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 		method.addObjectParameter(guildTerminal);
@@ -258,7 +260,7 @@ void GuildManager::sendGuildMemberListTo(PlayerCreature* player, GuildObject* gu
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SENDGUILDMEMBERLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 		method.addObjectParameter(guildTerminal);
@@ -274,7 +276,7 @@ void GuildManager::sendGuildMemberOptionsTo(PlayerCreature* player, GuildObject*
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_SENDGUILDMEMBEROPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 		method.addUnsignedLongParameter(memberID);
@@ -291,7 +293,7 @@ void GuildManager::sendGuildDisbandConfirmTo(PlayerCreature* player, GuildObject
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_SENDGUILDDISBANDCONFIRMTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 		method.addObjectParameter(guildTerminal);
@@ -307,7 +309,7 @@ void GuildManager::sendGuildSponsoredListTo(PlayerCreature* player, GuildObject*
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_SENDGUILDSPONSOREDLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 		method.addObjectParameter(guildTerminal);
@@ -323,7 +325,7 @@ void GuildManager::sendGuildSponsoredOptionsTo(PlayerCreature* player, GuildObje
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_SENDGUILDSPONSOREDOPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 		method.addUnsignedLongParameter(playerID);
@@ -340,7 +342,7 @@ void GuildManager::sendGuildSponsorTo(PlayerCreature* player, GuildObject* guild
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SENDGUILDSPONSORTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 		method.addObjectParameter(guildTerminal);
@@ -356,7 +358,7 @@ void GuildManager::sendGuildSponsorVerifyTo(PlayerCreature* player, PlayerCreatu
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_SENDGUILDSPONSORVERIFYTO__PLAYERCREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(target);
 
@@ -371,7 +373,7 @@ void GuildManager::sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature*
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SENDGUILDKICKPROMPTTO__PLAYERCREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(target);
 
@@ -386,7 +388,7 @@ void GuildManager::sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* t
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_SENDGUILDSETTITLETO__PLAYERCREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(target);
 
@@ -401,7 +403,7 @@ void GuildManager::sendMemberPermissionsTo(PlayerCreature* player, unsigned long
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_SENDMEMBERPERMISSIONSTO__PLAYERCREATURE_LONG_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(targetID);
 		method.addObjectParameter(guildTerminal);
@@ -417,7 +419,7 @@ bool GuildManager::validateGuildName(PlayerCreature* player, const String& guild
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_VALIDATEGUILDNAME__PLAYERCREATURE_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(guildName);
 
@@ -432,7 +434,7 @@ bool GuildManager::validateGuildAbbrev(PlayerCreature* player, const String& gui
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_VALIDATEGUILDABBREV__PLAYERCREATURE_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(guildAbbrev);
 
@@ -447,7 +449,7 @@ bool GuildManager::guildNameExists(const String& guildName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_GUILDNAMEEXISTS__STRING_);
 		method.addAsciiParameter(guildName);
 
 		return method.executeWithBooleanReturn();
@@ -461,7 +463,7 @@ bool GuildManager::guildAbbrevExists(const String& guildAbbrev) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_GUILDABBREVEXISTS__STRING_);
 		method.addAsciiParameter(guildAbbrev);
 
 		return method.executeWithBooleanReturn();
@@ -475,7 +477,7 @@ GuildObject* GuildManager::createGuild(PlayerCreature* player, GuildTerminal* gu
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_CREATEGUILD__PLAYERCREATURE_GUILDTERMINAL_STRING_STRING_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guildTerminal);
 		method.addAsciiParameter(guildName);
@@ -492,7 +494,7 @@ bool GuildManager::disbandGuild(PlayerCreature* player, GuildObject* guild) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_DISBANDGUILD__PLAYERCREATURE_GUILDOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 
@@ -507,7 +509,7 @@ void GuildManager::sponsorPlayer(PlayerCreature* player, GuildTerminal* guildTer
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_SPONSORPLAYER__PLAYERCREATURE_GUILDTERMINAL_STRING_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guildTerminal);
 		method.addAsciiParameter(playerName);
@@ -523,7 +525,7 @@ void GuildManager::acceptSponsorshipRequest(PlayerCreature* player, PlayerCreatu
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_ACCEPTSPONSORSHIPREQUEST__PLAYERCREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(target);
 
@@ -538,7 +540,7 @@ void GuildManager::acceptSponsoredPlayer(PlayerCreature* player, unsigned long l
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_ACCEPTSPONSOREDPLAYER__PLAYERCREATURE_LONG_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(targetID);
 
@@ -553,7 +555,7 @@ void GuildManager::kickMember(PlayerCreature* player, PlayerCreature* target) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_KICKMEMBER__PLAYERCREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(target);
 
@@ -568,7 +570,7 @@ void GuildManager::leaveGuild(PlayerCreature* player, GuildObject* guild) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_LEAVEGUILD__PLAYERCREATURE_GUILDOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(guild);
 
@@ -583,7 +585,7 @@ void GuildManager::setMemberTitle(PlayerCreature* player, PlayerCreature* target
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_SETMEMBERTITLE__PLAYERCREATURE_PLAYERCREATURE_STRING_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(target);
 		method.addAsciiParameter(title);
@@ -599,7 +601,7 @@ void GuildManager::setAllegianceTo(PlayerCreature* player, unsigned long long ta
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_SETALLEGIANCETO__PLAYERCREATURE_LONG_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(targetID);
 		method.addObjectParameter(guildTerminal);
@@ -615,7 +617,7 @@ void GuildManager::toggleGuildPermission(PlayerCreature* player, unsigned long l
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_TOGGLEGUILDPERMISSION__PLAYERCREATURE_LONG_INT_GUILDTERMINAL_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(targetID);
 		method.addSignedIntParameter(permissionIndex);
@@ -632,7 +634,7 @@ ChatRoom* GuildManager::createGuildChannels(GuildObject* guild) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_CREATEGUILDCHANNELS__GUILDOBJECT_);
 		method.addObjectParameter(guild);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -909,8 +911,6 @@ GuildObject* GuildManagerImplementation::getSponsoredGuild(unsigned long long pl
 
 GuildManagerAdapter::GuildManagerAdapter(GuildManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_SETCHATMANAGER__CHATMANAGER_ = 6,RPC_SENDGUILDLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPENDINGGUILD__LONG_STRING_,RPC_REMOVEPENDINGGUILD__LONG_,RPC_GETPENDINGGUILDNAME__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_ISCREATINGGUILD__LONG_,RPC_ISSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDGUILD__LONG_,RPC_SENDBASELINESTO__PLAYERCREATURE_,RPC_LOADGUILDS__,RPC_SENDGUILDCREATENAMETO__PLAYERCREATURE_GUILDTERMINAL_,RPC_SENDGUILDCREATEABBREVTO__PLAYERCREATURE_GUILDTERMINAL_,RPC_SENDGUILDINFORMATIONTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBERLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBEROPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDDISBANDCONFIRMTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDLISTTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDOPTIONSTO__PLAYERCREATURE_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDSPONSORTO__PLAYERCREATURE_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSORVERIFYTO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDGUILDKICKPROMPTTO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDGUILDSETTITLETO__PLAYERCREATURE_PLAYERCREATURE_,RPC_SENDMEMBERPERMISSIONSTO__PLAYERCREATURE_LONG_GUILDTERMINAL_,RPC_VALIDATEGUILDNAME__PLAYERCREATURE_STRING_,RPC_VALIDATEGUILDABBREV__PLAYERCREATURE_STRING_,RPC_GUILDNAMEEXISTS__STRING_,RPC_GUILDABBREVEXISTS__STRING_,RPC_CREATEGUILD__PLAYERCREATURE_GUILDTERMINAL_STRING_STRING_,RPC_DISBANDGUILD__PLAYERCREATURE_GUILDOBJECT_,RPC_SPONSORPLAYER__PLAYERCREATURE_GUILDTERMINAL_STRING_,RPC_ACCEPTSPONSORSHIPREQUEST__PLAYERCREATURE_PLAYERCREATURE_,RPC_ACCEPTSPONSOREDPLAYER__PLAYERCREATURE_LONG_,RPC_KICKMEMBER__PLAYERCREATURE_PLAYERCREATURE_,RPC_LEAVEGUILD__PLAYERCREATURE_GUILDOBJECT_,RPC_SETMEMBERTITLE__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_SETALLEGIANCETO__PLAYERCREATURE_LONG_GUILDTERMINAL_,RPC_TOGGLEGUILDPERMISSION__PLAYERCREATURE_LONG_INT_GUILDTERMINAL_,RPC_CREATEGUILDCHANNELS__GUILDOBJECT_,};
 
 Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

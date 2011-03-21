@@ -10,6 +10,8 @@
  *	GeneratorObjectStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISGENERATOROBJECT__};
+
 GeneratorObject::GeneratorObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	GeneratorObjectImplementation* _implementation = new GeneratorObjectImplementation();
 	_impl = _implementation;
@@ -38,7 +40,7 @@ int GeneratorObject::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -53,7 +55,7 @@ void GeneratorObject::synchronizedUIListen(SceneObject* player, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -68,7 +70,7 @@ void GeneratorObject::synchronizedUIStopListen(SceneObject* player, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -83,7 +85,7 @@ bool GeneratorObject::isGeneratorObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISGENERATOROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -230,8 +232,6 @@ bool GeneratorObjectImplementation::isGeneratorObject() {
 
 GeneratorObjectAdapter::GeneratorObjectAdapter(GeneratorObjectImplementation* obj) : InstallationObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISGENERATOROBJECT__};
 
 Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

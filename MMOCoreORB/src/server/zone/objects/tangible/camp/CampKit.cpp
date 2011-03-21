@@ -14,6 +14,8 @@
  *	CampKitStub
  */
 
+enum {RPC_ISCAMPKITOJECT__};
+
 CampKit::CampKit() : TangibleObject(DummyConstructorParameter::instance()) {
 	CampKitImplementation* _implementation = new CampKitImplementation();
 	_impl = _implementation;
@@ -42,7 +44,7 @@ bool CampKit::isCampKitOject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ISCAMPKITOJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -250,8 +252,6 @@ bool CampKitImplementation::isCampKitOject() {
 
 CampKitAdapter::CampKitAdapter(CampKitImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_ISCAMPKITOJECT__};
 
 Packet* CampKitAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

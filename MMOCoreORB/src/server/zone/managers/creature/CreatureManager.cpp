@@ -26,6 +26,8 @@
  *	CreatureManagerStub
  */
 
+enum {RPC_INITIALIZE__ = 6,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_CREATECREATURE__INT_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_PLAYERCREATURE_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__};
+
 CreatureManager::CreatureManager(Zone* planet) : ZoneManager(DummyConstructorParameter::instance()) {
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet);
 	_impl = _implementation;
@@ -45,7 +47,7 @@ void CreatureManager::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -58,7 +60,7 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_);
 		method.addUnsignedIntParameter(templateCRC);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
@@ -76,7 +78,7 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, unsigne
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_);
 		method.addUnsignedIntParameter(templateCRC);
 		method.addUnsignedIntParameter(objectCRC);
 		method.addFloatParameter(x);
@@ -95,7 +97,7 @@ CreatureObject* CreatureManager::createCreature(unsigned int templateCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_CREATECREATURE__INT_);
 		method.addUnsignedIntParameter(templateCRC);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
@@ -109,7 +111,7 @@ void CreatureManager::placeCreature(CreatureObject* creature, float x, float z, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_);
 		method.addObjectParameter(creature);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
@@ -136,7 +138,7 @@ void CreatureManager::loadSpawnAreas() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_LOADSPAWNAREAS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -149,7 +151,7 @@ void CreatureManager::loadSingleSpawns() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_LOADSINGLESPAWNS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -162,7 +164,7 @@ void CreatureManager::loadTrainers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_LOADTRAINERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -175,7 +177,7 @@ void CreatureManager::loadMissionSpawns() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_LOADMISSIONSPAWNS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -188,7 +190,7 @@ void CreatureManager::loadInformants() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_LOADINFORMANTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -201,7 +203,7 @@ void CreatureManager::spawnRandomCreaturesAround(SceneObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -215,7 +217,7 @@ void CreatureManager::spawnRandomCreature(int number, float x, float z, float y,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_);
 		method.addSignedIntParameter(number);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
@@ -233,7 +235,7 @@ void CreatureManager::harvest(Creature* creature, PlayerCreature* player, int se
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_HARVEST__CREATURE_PLAYERCREATURE_INT_);
 		method.addObjectParameter(creature);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(selectedID);
@@ -249,7 +251,7 @@ void CreatureManager::addToReservePool(AiAgent* agent) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_ADDTORESERVEPOOL__AIAGENT_);
 		method.addObjectParameter(agent);
 
 		method.executeWithVoidReturn();
@@ -263,7 +265,7 @@ int CreatureManager::getSpawnedRandomCreatures() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETSPAWNEDRANDOMCREATURES__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -493,8 +495,6 @@ int CreatureManagerImplementation::getSpawnedRandomCreatures() {
 
 CreatureManagerAdapter::CreatureManagerAdapter(CreatureManagerImplementation* obj) : ZoneManagerAdapter(obj) {
 }
-
-enum {RPC_INITIALIZE__ = 6,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_CREATECREATURE__INT_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_PLAYERCREATURE_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__};
 
 Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

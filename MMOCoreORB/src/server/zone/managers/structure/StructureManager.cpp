@@ -22,6 +22,8 @@
  *	StructureManagerStub
  */
 
+enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
+
 StructureManager::StructureManager(Zone* zone, ZoneProcessServer* processor) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zone, processor);
 	_impl = _implementation;
@@ -41,7 +43,7 @@ void StructureManager::loadStructures() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_LOADSTRUCTURES__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -54,7 +56,7 @@ int StructureManager::placeStructureFromDeed(PlayerCreature* player, unsigned lo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(deedID);
 		method.addFloatParameter(x);
@@ -90,7 +92,7 @@ int StructureManager::destroyStructure(PlayerCreature* player, StructureObject* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(structureObject);
 
@@ -105,7 +107,7 @@ int StructureManager::redeedStructure(PlayerCreature* player, StructureObject* s
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(structureObject);
 		method.addBooleanParameter(destroy);
@@ -121,7 +123,7 @@ int StructureManager::declareResidence(PlayerCreature* player, StructureObject* 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(structureObject);
 
@@ -136,7 +138,7 @@ int StructureManager::changePrivacy(PlayerCreature* player, StructureObject* str
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(structureObject);
 
@@ -151,7 +153,7 @@ String StructureManager::getTimeString(unsigned int timestamp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETTIMESTRING__INT_);
 		method.addUnsignedIntParameter(timestamp);
 
 		method.executeWithAsciiReturn(_return_getTimeString);
@@ -166,7 +168,7 @@ SceneObject* StructureManager::getInRangeParkingGarage(SceneObject* obj, int ran
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_);
 		method.addObjectParameter(obj);
 		method.addSignedIntParameter(range);
 
@@ -346,8 +348,6 @@ void StructureManagerImplementation::loadStructures() {
 
 StructureManagerAdapter::StructureManagerAdapter(StructureManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
 
 Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

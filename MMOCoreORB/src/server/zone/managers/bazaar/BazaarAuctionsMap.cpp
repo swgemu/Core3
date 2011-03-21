@@ -10,6 +10,8 @@
  *	BazaarAuctionsMapStub
  */
 
+enum {RPC_GETAUCTIONCOUNT__ = 6,RPC_CONTAINSAUCTION__LONG_,RPC_ADDAUCTION__LONG_AUCTIONITEM_,RPC_GETPLAYERAUCTIONCOUNT__LONG_,RPC_DROPAUCTION__LONG_,RPC_GETAUCTION__LONG_,RPC_GETAUCTION__INT_,};
+
 BazaarAuctionsMap::BazaarAuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	BazaarAuctionsMapImplementation* _implementation = new BazaarAuctionsMapImplementation();
 	_impl = _implementation;
@@ -29,7 +31,7 @@ int BazaarAuctionsMap::getAuctionCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_GETAUCTIONCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -42,7 +44,7 @@ bool BazaarAuctionsMap::containsAuction(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CONTAINSAUCTION__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		return method.executeWithBooleanReturn();
@@ -56,7 +58,7 @@ void BazaarAuctionsMap::addAuction(unsigned long long objectID, AuctionItem* ite
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ADDAUCTION__LONG_AUCTIONITEM_);
 		method.addUnsignedLongParameter(objectID);
 		method.addObjectParameter(item);
 
@@ -71,7 +73,7 @@ int BazaarAuctionsMap::getPlayerAuctionCount(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETPLAYERAUCTIONCOUNT__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		return method.executeWithSignedIntReturn();
@@ -85,7 +87,7 @@ void BazaarAuctionsMap::dropAuction(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_DROPAUCTION__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		method.executeWithVoidReturn();
@@ -99,7 +101,7 @@ AuctionItem* BazaarAuctionsMap::getAuction(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETAUCTION__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		return (AuctionItem*) method.executeWithObjectReturn();
@@ -113,7 +115,7 @@ AuctionItem* BazaarAuctionsMap::getAuction(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETAUCTION__INT_);
 		method.addSignedIntParameter(index);
 
 		return (AuctionItem*) method.executeWithObjectReturn();
@@ -354,8 +356,6 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* BazaarAuctionsM
 
 BazaarAuctionsMapAdapter::BazaarAuctionsMapAdapter(BazaarAuctionsMapImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_GETAUCTIONCOUNT__ = 6,RPC_CONTAINSAUCTION__LONG_,RPC_ADDAUCTION__LONG_AUCTIONITEM_,RPC_GETPLAYERAUCTIONCOUNT__LONG_,RPC_DROPAUCTION__LONG_,RPC_GETAUCTION__LONG_,RPC_GETAUCTION__INT_,};
 
 Packet* BazaarAuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

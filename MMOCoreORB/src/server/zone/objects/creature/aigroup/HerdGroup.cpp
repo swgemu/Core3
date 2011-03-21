@@ -8,6 +8,8 @@
  *	HerdGroupStub
  */
 
+enum {RPC_ISHERDGROUP__ = 6};
+
 HerdGroup::HerdGroup() : AiGroup(DummyConstructorParameter::instance()) {
 	HerdGroupImplementation* _implementation = new HerdGroupImplementation();
 	_impl = _implementation;
@@ -27,7 +29,7 @@ bool HerdGroup::isHerdGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ISHERDGROUP__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -172,8 +174,6 @@ bool HerdGroupImplementation::isHerdGroup() {
 
 HerdGroupAdapter::HerdGroupAdapter(HerdGroupImplementation* obj) : AiGroupAdapter(obj) {
 }
-
-enum {RPC_ISHERDGROUP__ = 6};
 
 Packet* HerdGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

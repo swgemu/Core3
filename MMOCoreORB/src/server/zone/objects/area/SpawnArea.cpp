@@ -12,6 +12,8 @@
  *	SpawnAreaStub
  */
 
+enum {RPC_REGISTEROBSERVERS__ = 6,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDTEMPLATE__INT_,RPC_SETTIER__INT_,RPC_SETSPAWNCONSTANT__INT_,RPC_ISSTATICAREA__,RPC_ISDYNAMICAREA__};
+
 SpawnArea::SpawnArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	SpawnAreaImplementation* _implementation = new SpawnAreaImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void SpawnArea::registerObservers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_REGISTEROBSERVERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ int SpawnArea::notifyObserverEvent(unsigned int eventType, Observable* observabl
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -61,7 +63,7 @@ void SpawnArea::addTemplate(unsigned int tempCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ADDTEMPLATE__INT_);
 		method.addUnsignedIntParameter(tempCRC);
 
 		method.executeWithVoidReturn();
@@ -75,7 +77,7 @@ void SpawnArea::setTier(int n) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETTIER__INT_);
 		method.addSignedIntParameter(n);
 
 		method.executeWithVoidReturn();
@@ -89,7 +91,7 @@ void SpawnArea::setSpawnConstant(int n) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SETSPAWNCONSTANT__INT_);
 		method.addSignedIntParameter(n);
 
 		method.executeWithVoidReturn();
@@ -103,7 +105,7 @@ bool SpawnArea::isStaticArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISSTATICAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -116,7 +118,7 @@ bool SpawnArea::isDynamicArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISDYNAMICAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -345,8 +347,6 @@ bool SpawnAreaImplementation::isDynamicArea() {
 
 SpawnAreaAdapter::SpawnAreaAdapter(SpawnAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
-
-enum {RPC_REGISTEROBSERVERS__ = 6,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDTEMPLATE__INT_,RPC_SETTIER__INT_,RPC_SETSPAWNCONSTANT__INT_,RPC_ISSTATICAREA__,RPC_ISDYNAMICAREA__};
 
 Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

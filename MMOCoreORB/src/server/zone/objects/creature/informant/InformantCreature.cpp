@@ -14,6 +14,8 @@
  *	InformantCreatureStub
  */
 
+enum {RPC_ACTIVATERECOVERY__,RPC_SETLEVEL__INT_,RPC_GETLEVEL__,RPC_ISINFORMANTCREATURE__,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_};
+
 InformantCreature::InformantCreature() : AiAgent(DummyConstructorParameter::instance()) {
 	InformantCreatureImplementation* _implementation = new InformantCreatureImplementation();
 	_impl = _implementation;
@@ -42,7 +44,7 @@ void InformantCreature::activateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ACTIVATERECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -55,7 +57,7 @@ void InformantCreature::setLevel(int l) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETLEVEL__INT_);
 		method.addSignedIntParameter(l);
 
 		method.executeWithVoidReturn();
@@ -69,7 +71,7 @@ int InformantCreature::getLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETLEVEL__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -82,7 +84,7 @@ bool InformantCreature::isInformantCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISINFORMANTCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -95,7 +97,7 @@ bool InformantCreature::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -109,7 +111,7 @@ void InformantCreature::sendConversationStartTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -299,8 +301,6 @@ bool InformantCreatureImplementation::isAttackableBy(CreatureObject* object) {
 
 InformantCreatureAdapter::InformantCreatureAdapter(InformantCreatureImplementation* obj) : AiAgentAdapter(obj) {
 }
-
-enum {RPC_ACTIVATERECOVERY__,RPC_SETLEVEL__INT_,RPC_GETLEVEL__,RPC_ISINFORMANTCREATURE__,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_};
 
 Packet* InformantCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

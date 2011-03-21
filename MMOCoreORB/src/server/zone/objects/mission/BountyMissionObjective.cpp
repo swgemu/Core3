@@ -18,6 +18,8 @@
  *	BountyMissionObjectiveStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__INT_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,};
+
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void BountyMissionObjective::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void BountyMissionObjective::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -63,7 +65,7 @@ void BountyMissionObjective::abort() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ABORT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -76,7 +78,7 @@ void BountyMissionObjective::complete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_COMPLETE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -89,7 +91,7 @@ void BountyMissionObjective::spawnTarget(int zoneID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SPAWNTARGET__INT_);
 		method.addSignedIntParameter(zoneID);
 
 		method.executeWithVoidReturn();
@@ -103,7 +105,7 @@ int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -295,8 +297,6 @@ void BountyMissionObjectiveImplementation::initializeTransientMembers() {
 
 BountyMissionObjectiveAdapter::BountyMissionObjectiveAdapter(BountyMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__INT_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,};
 
 Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

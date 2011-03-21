@@ -22,6 +22,8 @@
  *	ResourceManagerStub
  */
 
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_,RPC_SENDSURVEY__PLAYERCREATURE_STRING_,RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_,RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_,RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_,RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_,RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_INT_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_};
+
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
 	_impl = _implementation;
@@ -41,7 +43,7 @@ void ResourceManager::stop() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_STOP__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -54,7 +56,7 @@ void ResourceManager::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -67,7 +69,7 @@ void ResourceManager::shiftResources() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SHIFTRESOURCES__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -80,7 +82,7 @@ int ResourceManager::notifyObserverEvent(unsigned int eventType, Observable* obs
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -97,7 +99,7 @@ void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_);
 		method.addObjectParameter(playerCreature);
 		method.addSignedIntParameter(toolType);
 		method.addAsciiParameter(surveyType);
@@ -113,7 +115,7 @@ void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& r
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SENDSURVEY__PLAYERCREATURE_STRING_);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
 
@@ -128,7 +130,7 @@ void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& r
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
 		method.addAsciiParameter(sampleAnimation);
@@ -144,7 +146,7 @@ ResourceContainer* ResourceManager::harvestResource(PlayerCreature* player, cons
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(type);
 		method.addSignedIntParameter(quantity);
@@ -160,7 +162,7 @@ void ResourceManager::harvestResourceToPlayer(PlayerCreature* player, ResourceSp
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(resourceSpawn);
 		method.addSignedIntParameter(quantity);
@@ -176,7 +178,7 @@ unsigned int ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedIntReturn();
@@ -190,7 +192,7 @@ void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned int
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(power);
 
@@ -214,7 +216,7 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(restype);
 
@@ -229,7 +231,7 @@ void ResourceManager::givePlayerResource(PlayerCreature* playerCreature, const S
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(restype);
 		method.addSignedIntParameter(quantity);
@@ -245,7 +247,7 @@ ResourceSpawn* ResourceManager::getCurrentSpawn(const String& restype, int zonei
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETCURRENTSPAWN__STRING_INT_);
 		method.addAsciiParameter(restype);
 		method.addSignedIntParameter(zoneid);
 
@@ -260,7 +262,7 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETRESOURCESPAWN__STRING_);
 		method.addAsciiParameter(spawnName);
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
@@ -274,7 +276,7 @@ void ResourceManager::addChildrenToDeedListBox(const String& name, ResourceDeedL
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_);
 		method.addAsciiParameter(name);
 		method.addObjectParameter(suil);
 		method.addBooleanParameter(parent);
@@ -442,8 +444,6 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* server,
 
 ResourceManagerAdapter::ResourceManagerAdapter(ResourceManagerImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_,RPC_SENDSURVEY__PLAYERCREATURE_STRING_,RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_,RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_,RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_,RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_,RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_INT_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_};
 
 Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

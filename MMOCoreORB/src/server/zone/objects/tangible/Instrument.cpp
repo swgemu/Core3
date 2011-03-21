@@ -24,6 +24,8 @@
  *	InstrumentStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SPAWNINFOREIGNCELL__PLAYERCREATURE_,RPC_SPAWNINADMINCELL__PLAYERCREATURE_,RPC_SPAWNOUTSIDE__PLAYERCREATURE_,RPC_GETINSTRUMENTTYPE__,RPC_GETSPAWNERPLAYER__,RPC_SETSPAWNERPLAYER__PLAYERCREATURE_,RPC_ISBEINGUSED__,RPC_SETBEINGUSED__BOOL_};
+
 Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
 	InstrumentImplementation* _implementation = new InstrumentImplementation();
 	_impl = _implementation;
@@ -43,7 +45,7 @@ void Instrument::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -56,7 +58,7 @@ void Instrument::notifyLoadFromDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -87,7 +89,7 @@ int Instrument::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -102,7 +104,7 @@ void Instrument::spawnInForeignCell(PlayerCreature* spawner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SPAWNINFOREIGNCELL__PLAYERCREATURE_);
 		method.addObjectParameter(spawner);
 
 		method.executeWithVoidReturn();
@@ -116,7 +118,7 @@ void Instrument::spawnInAdminCell(PlayerCreature* spawner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SPAWNINADMINCELL__PLAYERCREATURE_);
 		method.addObjectParameter(spawner);
 
 		method.executeWithVoidReturn();
@@ -130,7 +132,7 @@ void Instrument::spawnOutside(PlayerCreature* spawner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SPAWNOUTSIDE__PLAYERCREATURE_);
 		method.addObjectParameter(spawner);
 
 		method.executeWithVoidReturn();
@@ -144,7 +146,7 @@ int Instrument::getInstrumentType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETINSTRUMENTTYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -157,7 +159,7 @@ PlayerCreature* Instrument::getSpawnerPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETSPAWNERPLAYER__);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
@@ -170,7 +172,7 @@ void Instrument::setSpawnerPlayer(PlayerCreature* pla) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETSPAWNERPLAYER__PLAYERCREATURE_);
 		method.addObjectParameter(pla);
 
 		method.executeWithVoidReturn();
@@ -184,7 +186,7 @@ bool Instrument::isBeingUsed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_ISBEINGUSED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -197,7 +199,7 @@ void Instrument::setBeingUsed(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETBEINGUSED__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -471,8 +473,6 @@ void InstrumentImplementation::setBeingUsed(bool val) {
 
 InstrumentAdapter::InstrumentAdapter(InstrumentImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SPAWNINFOREIGNCELL__PLAYERCREATURE_,RPC_SPAWNINADMINCELL__PLAYERCREATURE_,RPC_SPAWNOUTSIDE__PLAYERCREATURE_,RPC_GETINSTRUMENTTYPE__,RPC_GETSPAWNERPLAYER__,RPC_SETSPAWNERPLAYER__PLAYERCREATURE_,RPC_ISBEINGUSED__,RPC_SETBEINGUSED__BOOL_};
 
 Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

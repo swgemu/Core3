@@ -18,6 +18,8 @@
  *	ControlDeviceStub
  */
 
+enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__PLAYERCREATURE_,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_SETCONTROLLEDOBJECT__CREATUREOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
+
 ControlDevice::ControlDevice() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ControlDeviceImplementation* _implementation = new ControlDeviceImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_UPDATETODATABASEALLOBJECTS__BOOL_);
 		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
@@ -51,7 +53,7 @@ void ControlDevice::storeObject(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_STOREOBJECT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -65,7 +67,7 @@ void ControlDevice::generateObject(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GENERATEOBJECT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -79,7 +81,7 @@ void ControlDevice::setControlledObject(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETCONTROLLEDOBJECT__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -93,7 +95,7 @@ CreatureObject* ControlDevice::getControlledObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETCONTROLLEDOBJECT__);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
@@ -106,7 +108,7 @@ bool ControlDevice::isControlDevice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISCONTROLDEVICE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -307,8 +309,6 @@ bool ControlDeviceImplementation::isControlDevice() {
 
 ControlDeviceAdapter::ControlDeviceAdapter(ControlDeviceImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
-
-enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__PLAYERCREATURE_,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_SETCONTROLLEDOBJECT__CREATUREOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
 
 Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

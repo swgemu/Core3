@@ -22,6 +22,8 @@
  *	DynamicSpawnAreaStub
  */
 
+enum {RPC_REGISTEROBSERVERS__ = 6,RPC_SPAWNCREATURE__INT_PLAYEROBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_DOSPAWNEVENT__PLAYEROBJECT_,RPC_DODESPAWNEVENT__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETMAXCREATURESTOSPAWN__INT_,RPC_ADDNOSPAWNAREA__SPAWNAREA_,RPC_ISDYNAMICAREA__};
+
 DynamicSpawnArea::DynamicSpawnArea() : SpawnArea(DummyConstructorParameter::instance()) {
 	DynamicSpawnAreaImplementation* _implementation = new DynamicSpawnAreaImplementation();
 	_impl = _implementation;
@@ -41,7 +43,7 @@ void DynamicSpawnArea::registerObservers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_REGISTEROBSERVERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -54,7 +56,7 @@ void DynamicSpawnArea::spawnCreature(unsigned int templateCRC, PlayerObject* pla
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SPAWNCREATURE__INT_PLAYEROBJECT_);
 		method.addUnsignedIntParameter(templateCRC);
 		method.addObjectParameter(player);
 
@@ -78,7 +80,7 @@ void DynamicSpawnArea::notifyEnter(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_NOTIFYENTER__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -92,7 +94,7 @@ void DynamicSpawnArea::notifyExit(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_NOTIFYEXIT__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -115,7 +117,7 @@ void DynamicSpawnArea::doSpawnEvent(PlayerObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_DOSPAWNEVENT__PLAYEROBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -129,7 +131,7 @@ void DynamicSpawnArea::doDespawnEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_DODESPAWNEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -142,7 +144,7 @@ int DynamicSpawnArea::notifyObserverEvent(unsigned int eventType, Observable* ob
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -159,7 +161,7 @@ void DynamicSpawnArea::setMaxCreaturesToSpawn(int num) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETMAXCREATURESTOSPAWN__INT_);
 		method.addSignedIntParameter(num);
 
 		method.executeWithVoidReturn();
@@ -173,7 +175,7 @@ void DynamicSpawnArea::addNoSpawnArea(SpawnArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ADDNOSPAWNAREA__SPAWNAREA_);
 		method.addObjectParameter(area);
 
 		method.executeWithVoidReturn();
@@ -187,7 +189,7 @@ bool DynamicSpawnArea::isDynamicArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_ISDYNAMICAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -443,8 +445,6 @@ bool DynamicSpawnAreaImplementation::isDynamicArea() {
 
 DynamicSpawnAreaAdapter::DynamicSpawnAreaAdapter(DynamicSpawnAreaImplementation* obj) : SpawnAreaAdapter(obj) {
 }
-
-enum {RPC_REGISTEROBSERVERS__ = 6,RPC_SPAWNCREATURE__INT_PLAYEROBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_DOSPAWNEVENT__PLAYEROBJECT_,RPC_DODESPAWNEVENT__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETMAXCREATURESTOSPAWN__INT_,RPC_ADDNOSPAWNAREA__SPAWNAREA_,RPC_ISDYNAMICAREA__};
 
 Packet* DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

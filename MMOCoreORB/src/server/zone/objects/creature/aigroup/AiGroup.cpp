@@ -18,6 +18,8 @@
  *	AiGroupStub
  */
 
+enum {RPC_SETPATROLPOINTS__ = 6,RPC_SETPATROLPOINT__AIAGENT_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ISHERDGROUP__,RPC_ISPACKGROUP__,RPC_ISLAIRGROUP__};
+
 AiGroup::AiGroup() : SceneObject(DummyConstructorParameter::instance()) {
 	AiGroupImplementation* _implementation = new AiGroupImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void AiGroup::setPatrolPoints() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SETPATROLPOINTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void AiGroup::setPatrolPoint(AiAgent* member) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETPATROLPOINT__AIAGENT_);
 		method.addObjectParameter(member);
 
 		method.executeWithVoidReturn();
@@ -82,7 +84,7 @@ int AiGroup::notifyObserverEvent(unsigned int eventType, Observable* observable,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -99,7 +101,7 @@ bool AiGroup::isHerdGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISHERDGROUP__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -112,7 +114,7 @@ bool AiGroup::isPackGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISPACKGROUP__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -125,7 +127,7 @@ bool AiGroup::isLairGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISLAIRGROUP__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -498,8 +500,6 @@ bool AiGroupImplementation::isLairGroup() {
 
 AiGroupAdapter::AiGroupAdapter(AiGroupImplementation* obj) : SceneObjectAdapter(obj) {
 }
-
-enum {RPC_SETPATROLPOINTS__ = 6,RPC_SETPATROLPOINT__AIAGENT_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ISHERDGROUP__,RPC_ISPACKGROUP__,RPC_ISLAIRGROUP__};
 
 Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

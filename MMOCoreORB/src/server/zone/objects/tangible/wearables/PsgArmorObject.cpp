@@ -12,6 +12,8 @@
  *	PsgArmorObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISPSGARMOROBJECT__,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+
 PsgArmorObject::PsgArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
 	PsgArmorObjectImplementation* _implementation = new PsgArmorObjectImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void PsgArmorObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ bool PsgArmorObject::isPsgArmorObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ISPSGARMOROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -66,7 +68,7 @@ void PsgArmorObject::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -214,8 +216,6 @@ bool PsgArmorObjectImplementation::isPsgArmorObject() {
 
 PsgArmorObjectAdapter::PsgArmorObjectAdapter(PsgArmorObjectImplementation* obj) : WearableObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISPSGARMOROBJECT__,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
 
 Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

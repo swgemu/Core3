@@ -12,6 +12,8 @@
  *	TravelBuildingObjectStub
  */
 
+enum {};
+
 TravelBuildingObject::TravelBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	TravelBuildingObjectImplementation* _implementation = new TravelBuildingObjectImplementation();
 	_impl = _implementation;
@@ -160,8 +162,6 @@ TravelBuildingObjectImplementation::TravelBuildingObjectImplementation() {
 
 TravelBuildingObjectAdapter::TravelBuildingObjectAdapter(TravelBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
-
-enum {};
 
 Packet* TravelBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

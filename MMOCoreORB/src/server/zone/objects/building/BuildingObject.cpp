@@ -24,6 +24,8 @@
  *	BuildingObjectStub
  */
 
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
 	_impl = _implementation;
@@ -43,7 +45,7 @@ void BuildingObject::createCellObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_CREATECELLOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -56,7 +58,7 @@ void BuildingObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
 		method.addBooleanParameter(destroyContainedObjects);
 
 		method.executeWithVoidReturn();
@@ -79,7 +81,7 @@ void BuildingObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -92,7 +94,7 @@ void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -106,7 +108,7 @@ void BuildingObject::updateCellPermissionsTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -120,7 +122,7 @@ int BuildingObject::notifyStructurePlaced(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -143,7 +145,7 @@ void BuildingObject::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -174,7 +176,7 @@ void BuildingObject::notifyInsertToZone(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -224,7 +226,7 @@ void BuildingObject::sendTo(SceneObject* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SENDTO__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -239,7 +241,7 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -253,7 +255,7 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SENDDESTROYTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -267,7 +269,7 @@ void BuildingObject::addCell(CellObject* cell) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ADDCELL__CELLOBJECT_);
 		method.addObjectParameter(cell);
 
 		method.executeWithVoidReturn();
@@ -281,7 +283,7 @@ bool BuildingObject::isStaticBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_ISSTATICBUILDING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -294,7 +296,7 @@ CellObject* BuildingObject::getCell(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETCELL__INT_);
 		method.addSignedIntParameter(idx);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -308,7 +310,7 @@ int BuildingObject::getTotalCellNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETTOTALCELLNUMBER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -321,7 +323,7 @@ int BuildingObject::getCurrentNumerOfPlayerItems() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETCURRENTNUMEROFPLAYERITEMS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -334,7 +336,7 @@ void BuildingObject::onEnter(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_ONENTER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -348,7 +350,7 @@ void BuildingObject::onExit(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_ONEXIT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -362,7 +364,7 @@ bool BuildingObject::isBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_ISBUILDINGOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -375,7 +377,7 @@ bool BuildingObject::isMedicalBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_ISMEDICALBUILDINGOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -388,7 +390,7 @@ void BuildingObject::setSignObject(SignObject* sign) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETSIGNOBJECT__SIGNOBJECT_);
 		method.addObjectParameter(sign);
 
 		method.executeWithVoidReturn();
@@ -402,7 +404,7 @@ SignObject* BuildingObject::getSignObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_GETSIGNOBJECT__);
 
 		return (SignObject*) method.executeWithObjectReturn();
 	} else
@@ -415,7 +417,7 @@ bool BuildingObject::isCityHallBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_ISCITYHALLBUILDING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -428,7 +430,7 @@ void BuildingObject::setAccessFee(int fee) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_SETACCESSFEE__INT_);
 		method.addSignedIntParameter(fee);
 
 		method.executeWithVoidReturn();
@@ -442,7 +444,7 @@ int BuildingObject::getAccessFee() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_GETACCESSFEE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -455,7 +457,7 @@ bool BuildingObject::isPublicStructure() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_ISPUBLICSTRUCTURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -468,7 +470,7 @@ void BuildingObject::setPublicStructure(bool privacy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_SETPUBLICSTRUCTURE__BOOL_);
 		method.addBooleanParameter(privacy);
 
 		method.executeWithVoidReturn();
@@ -482,7 +484,7 @@ unsigned int BuildingObject::getMaximumNumberOfPlayerItems() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -801,8 +803,6 @@ void BuildingObjectImplementation::setPublicStructure(bool privacy) {
 
 BuildingObjectAdapter::BuildingObjectAdapter(BuildingObjectImplementation* obj) : StructureObjectAdapter(obj) {
 }
-
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -24,6 +24,8 @@
  *	ShuttleCreatureStub
  */
 
+enum {RPC_DOTAKEOFF__ = 6,RPC_DOLANDING__,RPC_ACTIVATERECOVERY__,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDPLAYERTO__PLAYERCREATURE_TICKETOBJECT_,RPC_GETARRIVALTIME__,RPC_GETLANDINGTIME__,RPC_SETARRIVALPOINT__FLOAT_FLOAT_FLOAT_,RPC_SETSTARPORT__BOOL_,RPC_SETPLANET__STRING_,RPC_SETCITY__STRING_,RPC_SETTAX__INT_,RPC_GETPLANET__,RPC_GETCITY__,RPC_GETTAX__,RPC_ISSTARPORT__,RPC_ISSHUTTLECREATURE__};
+
 ShuttleCreature::ShuttleCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	ShuttleCreatureImplementation* _implementation = new ShuttleCreatureImplementation();
 	_impl = _implementation;
@@ -43,7 +45,7 @@ void ShuttleCreature::doTakeOff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_DOTAKEOFF__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -56,7 +58,7 @@ void ShuttleCreature::doLanding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DOLANDING__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -69,7 +71,7 @@ void ShuttleCreature::activateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ACTIVATERECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -82,7 +84,7 @@ bool ShuttleCreature::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -96,7 +98,7 @@ void ShuttleCreature::sendPlayerTo(PlayerCreature* player, TicketObject* ticket)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SENDPLAYERTO__PLAYERCREATURE_TICKETOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(ticket);
 
@@ -111,7 +113,7 @@ int ShuttleCreature::getArrivalTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETARRIVALTIME__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -124,7 +126,7 @@ long long ShuttleCreature::getLandingTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETLANDINGTIME__);
 
 		return method.executeWithSignedLongReturn();
 	} else
@@ -146,7 +148,7 @@ void ShuttleCreature::setArrivalPoint(float x, float y, float z) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETARRIVALPOINT__FLOAT_FLOAT_FLOAT_);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 		method.addFloatParameter(z);
@@ -162,7 +164,7 @@ void ShuttleCreature::setStarport(bool st) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETSTARPORT__BOOL_);
 		method.addBooleanParameter(st);
 
 		method.executeWithVoidReturn();
@@ -176,7 +178,7 @@ void ShuttleCreature::setPlanet(const String& plan) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETPLANET__STRING_);
 		method.addAsciiParameter(plan);
 
 		method.executeWithVoidReturn();
@@ -190,7 +192,7 @@ void ShuttleCreature::setCity(const String& cit) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETCITY__STRING_);
 		method.addAsciiParameter(cit);
 
 		method.executeWithVoidReturn();
@@ -204,7 +206,7 @@ void ShuttleCreature::setTax(unsigned int t) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETTAX__INT_);
 		method.addUnsignedIntParameter(t);
 
 		method.executeWithVoidReturn();
@@ -218,7 +220,7 @@ String ShuttleCreature::getPlanet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETPLANET__);
 
 		method.executeWithAsciiReturn(_return_getPlanet);
 		return _return_getPlanet;
@@ -232,7 +234,7 @@ String ShuttleCreature::getCity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETCITY__);
 
 		method.executeWithAsciiReturn(_return_getCity);
 		return _return_getCity;
@@ -246,7 +248,7 @@ unsigned int ShuttleCreature::getTax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETTAX__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -259,7 +261,7 @@ bool ShuttleCreature::isStarport() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_ISSTARPORT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -272,7 +274,7 @@ bool ShuttleCreature::isShuttleCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_ISSHUTTLECREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -595,8 +597,6 @@ bool ShuttleCreatureImplementation::isShuttleCreature() {
 
 ShuttleCreatureAdapter::ShuttleCreatureAdapter(ShuttleCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
 }
-
-enum {RPC_DOTAKEOFF__ = 6,RPC_DOLANDING__,RPC_ACTIVATERECOVERY__,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDPLAYERTO__PLAYERCREATURE_TICKETOBJECT_,RPC_GETARRIVALTIME__,RPC_GETLANDINGTIME__,RPC_SETARRIVALPOINT__FLOAT_FLOAT_FLOAT_,RPC_SETSTARPORT__BOOL_,RPC_SETPLANET__STRING_,RPC_SETCITY__STRING_,RPC_SETTAX__INT_,RPC_GETPLANET__,RPC_GETCITY__,RPC_GETTAX__,RPC_ISSTARPORT__,RPC_ISSHUTTLECREATURE__};
 
 Packet* ShuttleCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -24,6 +24,8 @@
  *	CurePackStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISAREA__,RPC_GETAREA__,RPC_GETSTATE__,RPC_GETEFFECTIVENESS__,RPC_ISCUREPACK__};
+
 CurePack::CurePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	CurePackImplementation* _implementation = new CurePackImplementation();
 	_impl = _implementation;
@@ -61,7 +63,7 @@ int CurePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -85,7 +87,7 @@ int CurePack::calculatePower(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CALCULATEPOWER__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		return method.executeWithSignedIntReturn();
@@ -99,7 +101,7 @@ bool CurePack::isArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -112,7 +114,7 @@ float CurePack::getArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETAREA__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -125,7 +127,7 @@ unsigned long long CurePack::getState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETSTATE__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -138,7 +140,7 @@ float CurePack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETEFFECTIVENESS__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -151,7 +153,7 @@ bool CurePack::isCurePack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISCUREPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -466,8 +468,6 @@ bool CurePackImplementation::isCurePack() {
 
 CurePackAdapter::CurePackAdapter(CurePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISAREA__,RPC_GETAREA__,RPC_GETSTATE__,RPC_GETEFFECTIVENESS__,RPC_ISCUREPACK__};
 
 Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

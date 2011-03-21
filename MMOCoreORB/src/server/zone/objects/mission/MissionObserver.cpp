@@ -14,6 +14,8 @@
  *	MissionObserverStub
  */
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_DESTROYOBJECTFROMDATABASE__};
+
 MissionObserver::MissionObserver(MissionObjective* objective) : Observer(DummyConstructorParameter::instance()) {
 	MissionObserverImplementation* _implementation = new MissionObserverImplementation(objective);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ int MissionObserver::notifyObserverEvent(unsigned int eventType, Observable* obs
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -50,7 +52,7 @@ void MissionObserver::destroyObjectFromDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -207,8 +209,6 @@ MissionObserverImplementation::MissionObserverImplementation(MissionObjective* o
 
 MissionObserverAdapter::MissionObserverAdapter(MissionObserverImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_DESTROYOBJECTFROMDATABASE__};
 
 Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -12,6 +12,8 @@
  *	ResourceContainerStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETQUANTITY__INT_BOOL_,RPC_ISRESOURCECONTAINER__,RPC_GETQUANTITY__,RPC_GETUSECOUNT__,RPC_SETSPAWNOBJECT__RESOURCESPAWN_,RPC_GETSPAWNNAME__,RPC_GETSPAWNTYPE__,RPC_GETSPAWNID__,RPC_GETSPAWNOBJECT__,RPC_SPLIT__INT_,RPC_SPLIT__INT_PLAYERCREATURE_,RPC_COMBINE__RESOURCECONTAINER_};
+
 ResourceContainer::ResourceContainer() : TangibleObject(DummyConstructorParameter::instance()) {
 	ResourceContainerImplementation* _implementation = new ResourceContainerImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void ResourceContainer::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ void ResourceContainer::destroyObjectFromDatabase(bool destroyContainedObjects) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
 		method.addBooleanParameter(destroyContainedObjects);
 
 		method.executeWithVoidReturn();
@@ -67,7 +69,7 @@ void ResourceContainer::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -81,7 +83,7 @@ void ResourceContainer::setQuantity(int quantity, bool destroyOnZero) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETQUANTITY__INT_BOOL_);
 		method.addSignedIntParameter(quantity);
 		method.addBooleanParameter(destroyOnZero);
 
@@ -96,7 +98,7 @@ bool ResourceContainer::isResourceContainer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISRESOURCECONTAINER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -109,7 +111,7 @@ int ResourceContainer::getQuantity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETQUANTITY__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -122,7 +124,7 @@ int ResourceContainer::getUseCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETUSECOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -135,7 +137,7 @@ void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETSPAWNOBJECT__RESOURCESPAWN_);
 		method.addObjectParameter(spawn);
 
 		method.executeWithVoidReturn();
@@ -149,7 +151,7 @@ String ResourceContainer::getSpawnName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETSPAWNNAME__);
 
 		method.executeWithAsciiReturn(_return_getSpawnName);
 		return _return_getSpawnName;
@@ -163,7 +165,7 @@ String ResourceContainer::getSpawnType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETSPAWNTYPE__);
 
 		method.executeWithAsciiReturn(_return_getSpawnType);
 		return _return_getSpawnType;
@@ -177,7 +179,7 @@ unsigned long long ResourceContainer::getSpawnID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETSPAWNID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -190,7 +192,7 @@ ResourceSpawn* ResourceContainer::getSpawnObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETSPAWNOBJECT__);
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
 	} else
@@ -203,7 +205,7 @@ void ResourceContainer::split(int newStackSize) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SPLIT__INT_);
 		method.addSignedIntParameter(newStackSize);
 
 		method.executeWithVoidReturn();
@@ -217,7 +219,7 @@ void ResourceContainer::split(int newStackSize, PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SPLIT__INT_PLAYERCREATURE_);
 		method.addSignedIntParameter(newStackSize);
 		method.addObjectParameter(player);
 
@@ -232,7 +234,7 @@ void ResourceContainer::combine(ResourceContainer* fromContainer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_COMBINE__RESOURCECONTAINER_);
 		method.addObjectParameter(fromContainer);
 
 		method.executeWithVoidReturn();
@@ -469,8 +471,6 @@ ResourceSpawn* ResourceContainerImplementation::getSpawnObject() {
 
 ResourceContainerAdapter::ResourceContainerAdapter(ResourceContainerImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETQUANTITY__INT_BOOL_,RPC_ISRESOURCECONTAINER__,RPC_GETQUANTITY__,RPC_GETUSECOUNT__,RPC_SETSPAWNOBJECT__RESOURCESPAWN_,RPC_GETSPAWNNAME__,RPC_GETSPAWNTYPE__,RPC_GETSPAWNID__,RPC_GETSPAWNOBJECT__,RPC_SPLIT__INT_,RPC_SPLIT__INT_PLAYERCREATURE_,RPC_COMBINE__RESOURCECONTAINER_};
 
 Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

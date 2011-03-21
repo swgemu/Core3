@@ -18,6 +18,8 @@
  *	CraftingMissionObjectiveStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
+
 CraftingMissionObjective::CraftingMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	CraftingMissionObjectiveImplementation* _implementation = new CraftingMissionObjectiveImplementation(mission);
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void CraftingMissionObjective::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void CraftingMissionObjective::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -63,7 +65,7 @@ void CraftingMissionObjective::abort() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ABORT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -76,7 +78,7 @@ void CraftingMissionObjective::complete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_COMPLETE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -89,7 +91,7 @@ int CraftingMissionObjective::notifyObserverEvent(MissionObserver* observer, uns
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -246,8 +248,6 @@ void CraftingMissionObjectiveImplementation::initializeTransientMembers() {
 
 CraftingMissionObjectiveAdapter::CraftingMissionObjectiveAdapter(CraftingMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
 
 Packet* CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

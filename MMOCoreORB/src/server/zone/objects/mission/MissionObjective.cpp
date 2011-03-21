@@ -16,6 +16,8 @@
  *	MissionObjectiveStub
  */
 
+enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__};
+
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void MissionObjective::destroyObjectFromDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -48,7 +50,7 @@ int MissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -66,7 +68,7 @@ void MissionObjective::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -79,7 +81,7 @@ void MissionObjective::abort() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ABORT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -92,7 +94,7 @@ void MissionObjective::complete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_COMPLETE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -105,7 +107,7 @@ MissionObject* MissionObjective::getMissionObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETMISSIONOBJECT__);
 
 		return (MissionObject*) method.executeWithObjectReturn();
 	} else
@@ -118,7 +120,7 @@ unsigned int MissionObjective::getObjectiveType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETOBJECTIVETYPE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -131,7 +133,7 @@ PlayerCreature* MissionObjective::getPlayerOwner() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETPLAYEROWNER__);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
@@ -338,8 +340,6 @@ unsigned int MissionObjectiveImplementation::getObjectiveType() {
 
 MissionObjectiveAdapter::MissionObjectiveAdapter(MissionObjectiveImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__};
 
 Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

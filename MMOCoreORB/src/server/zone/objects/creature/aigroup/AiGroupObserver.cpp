@@ -12,6 +12,8 @@
  *	AiGroupObserverStub
  */
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 AiGroupObserver::AiGroupObserver(AiGroup* group) : Observer(DummyConstructorParameter::instance()) {
 	AiGroupObserverImplementation* _implementation = new AiGroupObserverImplementation(group);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ int AiGroupObserver::notifyObserverEvent(unsigned int eventType, Observable* obs
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -201,8 +203,6 @@ int AiGroupObserverImplementation::notifyObserverEvent(unsigned int eventType, O
 
 AiGroupObserverAdapter::AiGroupObserverAdapter(AiGroupObserverImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
 
 Packet* AiGroupObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

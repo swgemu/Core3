@@ -12,6 +12,8 @@
  *	SuiMessageBoxStub
  */
 
+enum {RPC_GENERATEMESSAGE__ = 6,RPC_ISMESSAGEBOX__};
+
 SuiMessageBox::SuiMessageBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiMessageBoxImplementation* _implementation = new SuiMessageBoxImplementation(player, windowType);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ BaseMessage* SuiMessageBox::generateMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
@@ -44,7 +46,7 @@ bool SuiMessageBox::isMessageBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ISMESSAGEBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -190,8 +192,6 @@ bool SuiMessageBoxImplementation::isMessageBox() {
 
 SuiMessageBoxAdapter::SuiMessageBoxAdapter(SuiMessageBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
-
-enum {RPC_GENERATEMESSAGE__ = 6,RPC_ISMESSAGEBOX__};
 
 Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

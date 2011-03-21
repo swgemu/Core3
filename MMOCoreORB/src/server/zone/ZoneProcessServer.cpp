@@ -28,6 +28,8 @@
  *	ZoneProcessServerStub
  */
 
+enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_GETZONESERVER__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,};
+
 ZoneProcessServer::ZoneProcessServer(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneProcessServerImplementation* _implementation = new ZoneProcessServerImplementation(server);
 	_impl = _implementation;
@@ -47,7 +49,7 @@ void ZoneProcessServer::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -60,7 +62,7 @@ ZoneServer* ZoneProcessServer::getZoneServer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETZONESERVER__);
 
 		return (ZoneServer*) method.executeWithObjectReturn();
 	} else
@@ -100,7 +102,7 @@ PlayerManager* ZoneProcessServer::getPlayerManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETPLAYERMANAGER__);
 
 		return (PlayerManager*) method.executeWithObjectReturn();
 	} else
@@ -131,7 +133,7 @@ ChatManager* ZoneProcessServer::getChatManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETCHATMANAGER__);
 
 		return (ChatManager*) method.executeWithObjectReturn();
 	} else
@@ -319,8 +321,6 @@ SuiManager* ZoneProcessServerImplementation::getSuiManager() {
 
 ZoneProcessServerAdapter::ZoneProcessServerAdapter(ZoneProcessServerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_GETZONESERVER__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,};
 
 Packet* ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

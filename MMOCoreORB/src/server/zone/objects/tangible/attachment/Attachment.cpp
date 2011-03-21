@@ -18,6 +18,8 @@
  *	AttachmentStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEMEMBERS__,RPC_SETSKILLMODCOUNT__INT_,RPC_GETSKILLMODCOUNT__,RPC_GETSKILLMODNAME__INT_,RPC_GETSKILLMODVALUE__INT_,RPC_GETSKILLMODVALUE__STRING_,RPC_PARSESKILLMODATTRIBUTESTRING__STRING_,RPC_ADDSKILLMOD__STRING_INT_,RPC_REMOVEATTACHMENT__PLAYERCREATURE_,RPC_GENERATESKILLMODS__,RPC_GETRANDOMMODVALUE__INT_INT_,RPC_ISATTACHMENT__,RPC_ISARMORATTACHMENT__,RPC_ISCLOTHINGATTACHMENT__};
+
 Attachment::Attachment() : TangibleObject(DummyConstructorParameter::instance()) {
 	AttachmentImplementation* _implementation = new AttachmentImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void Attachment::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void Attachment::initializeMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZEMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -81,7 +83,7 @@ void Attachment::setSkillModCount(int modCount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETSKILLMODCOUNT__INT_);
 		method.addSignedIntParameter(modCount);
 
 		method.executeWithVoidReturn();
@@ -95,7 +97,7 @@ int Attachment::getSkillModCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETSKILLMODCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -108,7 +110,7 @@ String Attachment::getSkillModName(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETSKILLMODNAME__INT_);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getSkillModName);
@@ -123,7 +125,7 @@ int Attachment::getSkillModValue(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETSKILLMODVALUE__INT_);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -137,7 +139,7 @@ int Attachment::getSkillModValue(String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETSKILLMODVALUE__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithSignedIntReturn();
@@ -151,7 +153,7 @@ void Attachment::parseSkillModAttributeString(String& attr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_PARSESKILLMODATTRIBUTESTRING__STRING_);
 		method.addAsciiParameter(attr);
 
 		method.executeWithVoidReturn();
@@ -165,7 +167,7 @@ void Attachment::addSkillMod(const String& skillModType, int skillModValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ADDSKILLMOD__STRING_INT_);
 		method.addAsciiParameter(skillModType);
 		method.addSignedIntParameter(skillModValue);
 
@@ -180,7 +182,7 @@ void Attachment::removeAttachment(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_REMOVEATTACHMENT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -194,7 +196,7 @@ void Attachment::generateSkillMods() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GENERATESKILLMODS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -207,7 +209,7 @@ int Attachment::getRandomModValue(int luck, int creatureLevel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETRANDOMMODVALUE__INT_INT_);
 		method.addSignedIntParameter(luck);
 		method.addSignedIntParameter(creatureLevel);
 
@@ -222,7 +224,7 @@ bool Attachment::isAttachment() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_ISATTACHMENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -235,7 +237,7 @@ bool Attachment::isArmorAttachment() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_ISARMORATTACHMENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -248,7 +250,7 @@ bool Attachment::isClothingAttachment() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_ISCLOTHINGATTACHMENT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -485,8 +487,6 @@ bool AttachmentImplementation::isClothingAttachment() {
 
 AttachmentAdapter::AttachmentAdapter(AttachmentImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEMEMBERS__,RPC_SETSKILLMODCOUNT__INT_,RPC_GETSKILLMODCOUNT__,RPC_GETSKILLMODNAME__INT_,RPC_GETSKILLMODVALUE__INT_,RPC_GETSKILLMODVALUE__STRING_,RPC_PARSESKILLMODATTRIBUTESTRING__STRING_,RPC_ADDSKILLMOD__STRING_INT_,RPC_REMOVEATTACHMENT__PLAYERCREATURE_,RPC_GENERATESKILLMODS__,RPC_GETRANDOMMODVALUE__INT_INT_,RPC_ISATTACHMENT__,RPC_ISARMORATTACHMENT__,RPC_ISCLOTHINGATTACHMENT__};
 
 Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -12,6 +12,8 @@
  *	GarageAreaStub
  */
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6};
+
 GarageArea::GarageArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	GarageAreaImplementation* _implementation = new GarageAreaImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void GarageArea::notifyEnter(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYENTER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -184,8 +186,6 @@ void GarageAreaImplementation::notifyEnter(SceneObject* player) {
 
 GarageAreaAdapter::GarageAreaAdapter(GarageAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
-
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6};
 
 Packet* GarageAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

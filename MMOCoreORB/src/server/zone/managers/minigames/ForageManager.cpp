@@ -14,6 +14,8 @@
  *	ForageManagerStub
  */
 
+enum {RPC_DELETEFORAGEAREACOLLECTION__STRING_ = 6,RPC_STARTFORAGING__PLAYERCREATURE_BOOL_,RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_,RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_,RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_INT_};
+
 ForageManager::ForageManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
 	ForageManagerImplementation* _implementation = new ForageManagerImplementation(server);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void ForageManager::deleteForageAreaCollection(String& playerName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_DELETEFORAGEAREACOLLECTION__STRING_);
 		method.addAsciiParameter(playerName);
 
 		method.executeWithVoidReturn();
@@ -47,7 +49,7 @@ void ForageManager::startForaging(PlayerCreature* player, bool scoutForage) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_STARTFORAGING__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(scoutForage);
 
@@ -62,7 +64,7 @@ void ForageManager::finishForaging(PlayerCreature* player, bool scoutForage, flo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(scoutForage);
 		method.addFloatParameter(forageX);
@@ -80,7 +82,7 @@ void ForageManager::forageGiveItems(PlayerCreature* player, bool scoutForage, fl
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(scoutForage);
 		method.addFloatParameter(forageX);
@@ -98,7 +100,7 @@ void ForageManager::forageGiveResource(PlayerCreature* player, float forageX, fl
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_INT_);
 		method.addObjectParameter(player);
 		method.addFloatParameter(forageX);
 		method.addFloatParameter(forageY);
@@ -281,8 +283,6 @@ void ForageManagerImplementation::deleteForageAreaCollection(String& playerName)
 
 ForageManagerAdapter::ForageManagerAdapter(ForageManagerImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_DELETEFORAGEAREACOLLECTION__STRING_ = 6,RPC_STARTFORAGING__PLAYERCREATURE_BOOL_,RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_,RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_,RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_INT_};
 
 Packet* ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

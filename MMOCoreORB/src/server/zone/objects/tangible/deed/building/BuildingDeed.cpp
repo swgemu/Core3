@@ -16,6 +16,8 @@
  *	BuildingDeedStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_ISBUILDINGDEED__};
+
 BuildingDeed::BuildingDeed() : Deed(DummyConstructorParameter::instance()) {
 	BuildingDeedImplementation* _implementation = new BuildingDeedImplementation();
 	_impl = _implementation;
@@ -44,7 +46,7 @@ void BuildingDeed::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -57,7 +59,7 @@ int BuildingDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -72,7 +74,7 @@ void BuildingDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETSURPLUSMAINTENANCE__INT_);
 		method.addUnsignedIntParameter(surplusMaint);
 
 		method.executeWithVoidReturn();
@@ -86,7 +88,7 @@ unsigned int BuildingDeed::getSurplusMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETSURPLUSMAINTENANCE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -99,7 +101,7 @@ bool BuildingDeed::isBuildingDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISBUILDINGDEED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -271,8 +273,6 @@ bool BuildingDeedImplementation::isBuildingDeed() {
 
 BuildingDeedAdapter::BuildingDeedAdapter(BuildingDeedImplementation* obj) : DeedAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_ISBUILDINGDEED__};
 
 Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

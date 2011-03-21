@@ -14,6 +14,8 @@
  *	DelayedBuffStub
  */
 
+enum {RPC_ACTIVATE__ = 6,RPC_DEACTIVATE__,RPC_USECHARGE__CREATUREOBJECT_,RPC_SETUSESREMAINING__INT_};
+
 DelayedBuff::DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int duration) : Buff(DummyConstructorParameter::instance()) {
 	DelayedBuffImplementation* _implementation = new DelayedBuffImplementation(creo, buffcrc, duration);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void DelayedBuff::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -46,7 +48,7 @@ void DelayedBuff::deactivate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DEACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -59,7 +61,7 @@ void DelayedBuff::useCharge(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_USECHARGE__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -73,7 +75,7 @@ void DelayedBuff::setUsesRemaining(int uses) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETUSESREMAINING__INT_);
 		method.addSignedIntParameter(uses);
 
 		method.executeWithVoidReturn();
@@ -254,8 +256,6 @@ void DelayedBuffImplementation::setUsesRemaining(int uses) {
 
 DelayedBuffAdapter::DelayedBuffAdapter(DelayedBuffImplementation* obj) : BuffAdapter(obj) {
 }
-
-enum {RPC_ACTIVATE__ = 6,RPC_DEACTIVATE__,RPC_USECHARGE__CREATUREOBJECT_,RPC_SETUSESREMAINING__INT_};
 
 Packet* DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

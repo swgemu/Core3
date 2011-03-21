@@ -12,6 +12,8 @@
  *	ClothingObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+
 ClothingObject::ClothingObject() : WearableObject(DummyConstructorParameter::instance()) {
 	ClothingObjectImplementation* _implementation = new ClothingObjectImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void ClothingObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ void ClothingObject::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -199,8 +201,6 @@ void ClothingObjectImplementation::updateCraftingValues(ManufactureSchematic* sc
 
 ClothingObjectAdapter::ClothingObjectAdapter(ClothingObjectImplementation* obj) : WearableObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
 
 Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

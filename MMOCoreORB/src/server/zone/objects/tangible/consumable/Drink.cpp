@@ -12,6 +12,8 @@
  *	DrinkStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEPRIVATEDATA__};
+
 Drink::Drink() : Consumable(DummyConstructorParameter::instance()) {
 	DrinkImplementation* _implementation = new DrinkImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void Drink::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ void Drink::initializePrivateData() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZEPRIVATEDATA__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -200,8 +202,6 @@ void DrinkImplementation::initializePrivateData() {
 
 DrinkAdapter::DrinkAdapter(DrinkImplementation* obj) : ConsumableAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEPRIVATEDATA__};
 
 Packet* DrinkAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -16,6 +16,8 @@
  *	FishingBaitObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETFRESHNESS__,RPC_SETFRESHNESS__INT_,RPC_LESSFRESH__,RPC_GETUSECOUNT__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_};
+
 FishingBaitObject::FishingBaitObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FishingBaitObjectImplementation* _implementation = new FishingBaitObjectImplementation();
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void FishingBaitObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -48,7 +50,7 @@ int FishingBaitObject::getFreshness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETFRESHNESS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -61,7 +63,7 @@ void FishingBaitObject::setFreshness(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETFRESHNESS__INT_);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -75,7 +77,7 @@ void FishingBaitObject::lessFresh() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_LESSFRESH__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -88,7 +90,7 @@ int FishingBaitObject::getUseCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETUSECOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -101,7 +103,7 @@ void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -283,8 +285,6 @@ void FishingBaitObjectImplementation::lessFresh() {
 
 FishingBaitObjectAdapter::FishingBaitObjectAdapter(FishingBaitObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETFRESHNESS__,RPC_SETFRESHNESS__INT_,RPC_LESSFRESH__,RPC_GETUSECOUNT__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_};
 
 Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

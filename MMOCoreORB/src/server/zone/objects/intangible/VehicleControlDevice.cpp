@@ -20,6 +20,8 @@
  *	VehicleControlDeviceStub
  */
 
+enum {RPC_STOREOBJECT__PLAYERCREATURE_ = 6,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_};
+
 VehicleControlDevice::VehicleControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
 	VehicleControlDeviceImplementation* _implementation = new VehicleControlDeviceImplementation();
 	_impl = _implementation;
@@ -39,7 +41,7 @@ void VehicleControlDevice::storeObject(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_STOREOBJECT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -53,7 +55,7 @@ void VehicleControlDevice::generateObject(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GENERATEOBJECT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -67,7 +69,7 @@ int VehicleControlDevice::handleObjectMenuSelect(PlayerCreature* player, byte se
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -82,7 +84,7 @@ void VehicleControlDevice::destroyObjectFromDatabase(bool destroyContainedObject
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
 		method.addBooleanParameter(destroyContainedObjects);
 
 		method.executeWithVoidReturn();
@@ -96,7 +98,7 @@ int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_CANBEDESTROYED__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -289,8 +291,6 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(PlayerCreature* p
 
 VehicleControlDeviceAdapter::VehicleControlDeviceAdapter(VehicleControlDeviceImplementation* obj) : ControlDeviceAdapter(obj) {
 }
-
-enum {RPC_STOREOBJECT__PLAYERCREATURE_ = 6,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_};
 
 Packet* VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

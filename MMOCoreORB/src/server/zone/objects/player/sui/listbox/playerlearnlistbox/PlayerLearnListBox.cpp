@@ -12,6 +12,8 @@
  *	PlayerLearnListBoxStub
  */
 
+enum {RPC_SETTEACHER__PLAYERCREATURE_,RPC_SETTEACHINGOFFER__STRING_,};
+
 PlayerLearnListBox::PlayerLearnListBox(PlayerCreature* player) : SuiListBox(DummyConstructorParameter::instance()) {
 	PlayerLearnListBoxImplementation* _implementation = new PlayerLearnListBoxImplementation(player);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void PlayerLearnListBox::setTeacher(PlayerCreature* teacher) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SETTEACHER__PLAYERCREATURE_);
 		method.addObjectParameter(teacher);
 
 		method.executeWithVoidReturn();
@@ -54,7 +56,7 @@ void PlayerLearnListBox::setTeachingOffer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETTEACHINGOFFER__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -250,8 +252,6 @@ const String PlayerLearnListBoxImplementation::getTeachingOffer() {
 
 PlayerLearnListBoxAdapter::PlayerLearnListBoxAdapter(PlayerLearnListBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
-
-enum {RPC_SETTEACHER__PLAYERCREATURE_,RPC_SETTEACHINGOFFER__STRING_,};
 
 Packet* PlayerLearnListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

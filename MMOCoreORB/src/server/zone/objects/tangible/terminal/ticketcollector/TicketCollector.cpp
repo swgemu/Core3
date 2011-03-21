@@ -18,6 +18,8 @@
  *	TicketCollectorStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_,RPC_CHECKTIME__SHUTTLECREATURE_PLAYERCREATURE_,RPC_ISTICKETCOLLECTOR__,RPC_SETSHUTTLE__SHUTTLECREATURE_};
+
 TicketCollector::TicketCollector() : Terminal(DummyConstructorParameter::instance()) {
 	TicketCollectorImplementation* _implementation = new TicketCollectorImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void TicketCollector::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ int TicketCollector::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -65,7 +67,7 @@ void TicketCollector::useTicket(PlayerCreature* player, TicketObject* ticket) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(ticket);
 
@@ -80,7 +82,7 @@ bool TicketCollector::checkTime(ShuttleCreature* shuttle, PlayerCreature* player
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_CHECKTIME__SHUTTLECREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(shuttle);
 		method.addObjectParameter(player);
 
@@ -95,7 +97,7 @@ bool TicketCollector::isTicketCollector() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISTICKETCOLLECTOR__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -108,7 +110,7 @@ void TicketCollector::setShuttle(ShuttleCreature* shut) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETSHUTTLE__SHUTTLECREATURE_);
 		method.addObjectParameter(shut);
 
 		method.executeWithVoidReturn();
@@ -281,8 +283,6 @@ void TicketCollectorImplementation::setShuttle(ShuttleCreature* shut) {
 
 TicketCollectorAdapter::TicketCollectorAdapter(TicketCollectorImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_,RPC_CHECKTIME__SHUTTLECREATURE_PLAYERCREATURE_,RPC_ISTICKETCOLLECTOR__,RPC_SETSHUTTLE__SHUTTLECREATURE_};
 
 Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

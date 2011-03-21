@@ -20,6 +20,8 @@
  *	FireworkObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_LAUNCH__PLAYERCREATURE_};
+
 FireworkObject::FireworkObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FireworkObjectImplementation* _implementation = new FireworkObjectImplementation();
 	_impl = _implementation;
@@ -39,7 +41,7 @@ void FireworkObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -52,7 +54,7 @@ int FireworkObject::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -76,7 +78,7 @@ void FireworkObject::launch(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_LAUNCH__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -260,8 +262,6 @@ void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 FireworkObjectAdapter::FireworkObjectAdapter(FireworkObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_LAUNCH__PLAYERCREATURE_};
 
 Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

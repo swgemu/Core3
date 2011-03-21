@@ -10,6 +10,8 @@
  *	HarvesterObjectStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__};
+
 HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	HarvesterObjectImplementation* _implementation = new HarvesterObjectImplementation();
 	_impl = _implementation;
@@ -47,7 +49,7 @@ int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -62,7 +64,7 @@ void HarvesterObject::synchronizedUIListen(SceneObject* player, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -77,7 +79,7 @@ void HarvesterObject::synchronizedUIStopListen(SceneObject* player, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -92,7 +94,7 @@ void HarvesterObject::updateOperators() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_UPDATEOPERATORS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -105,7 +107,7 @@ bool HarvesterObject::isHarvesterObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISHARVESTEROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -261,8 +263,6 @@ bool HarvesterObjectImplementation::isHarvesterObject() {
 
 HarvesterObjectAdapter::HarvesterObjectAdapter(HarvesterObjectImplementation* obj) : InstallationObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__};
 
 Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -12,6 +12,8 @@
  *	TeachPlayerListBoxStub
  */
 
+enum {RPC_SETSTUDENT__PLAYERCREATURE_,RPC_GENERATESKILLLIST__PLAYERCREATURE_PLAYERCREATURE_};
+
 TeachPlayerListBox::TeachPlayerListBox(PlayerCreature* player) : SuiListBox(DummyConstructorParameter::instance()) {
 	TeachPlayerListBoxImplementation* _implementation = new TeachPlayerListBoxImplementation(player);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void TeachPlayerListBox::setStudent(PlayerCreature* student) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SETSTUDENT__PLAYERCREATURE_);
 		method.addObjectParameter(student);
 
 		method.executeWithVoidReturn();
@@ -63,7 +65,7 @@ bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreatu
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GENERATESKILLLIST__PLAYERCREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(teacher);
 		method.addObjectParameter(student);
 
@@ -246,8 +248,6 @@ const String TeachPlayerListBoxImplementation::getTeachingSkillOption(int index)
 
 TeachPlayerListBoxAdapter::TeachPlayerListBoxAdapter(TeachPlayerListBoxImplementation* obj) : SuiListBoxAdapter(obj) {
 }
-
-enum {RPC_SETSTUDENT__PLAYERCREATURE_,RPC_GENERATESKILLLIST__PLAYERCREATURE_PLAYERCREATURE_};
 
 Packet* TeachPlayerListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

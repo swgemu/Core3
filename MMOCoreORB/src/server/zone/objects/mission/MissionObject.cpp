@@ -22,6 +22,8 @@
  *	MissionObjectStub
  */
 
+enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANETCRC__INT_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__SCENEOBJECT_,RPC_SETMISSIONTARGETDEST__SCENEOBJECT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETSTARTPLANETCRC__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
+
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	MissionObjectImplementation* _implementation = new MissionObjectImplementation();
 	_impl = _implementation;
@@ -41,7 +43,7 @@ WaypointObject* MissionObject::createWaypoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_CREATEWAYPOINT__);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -54,7 +56,7 @@ void MissionObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
 		method.addBooleanParameter(destroyContainedObjects);
 
 		method.executeWithVoidReturn();
@@ -68,7 +70,7 @@ void MissionObject::updateToDatabaseAllObjects(bool startTask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_UPDATETODATABASEALLOBJECTS__BOOL_);
 		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
@@ -82,7 +84,7 @@ void MissionObject::setRefreshCounter(int ctr, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETREFRESHCOUNTER__INT_BOOL_);
 		method.addSignedIntParameter(ctr);
 		method.addBooleanParameter(notifyClient);
 
@@ -97,7 +99,7 @@ void MissionObject::setTypeCRC(unsigned int crc, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SETTYPECRC__INT_BOOL_);
 		method.addUnsignedIntParameter(crc);
 		method.addBooleanParameter(notifyClient);
 
@@ -112,7 +114,7 @@ void MissionObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -125,7 +127,7 @@ void MissionObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -139,7 +141,7 @@ void MissionObject::setMissionDescription(const String& file, const String& id, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(id);
 		method.addBooleanParameter(notifyClient);
@@ -155,7 +157,7 @@ void MissionObject::setMissionTitle(const String& file, const String& id, bool n
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETMISSIONTITLE__STRING_STRING_BOOL_);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(id);
 		method.addBooleanParameter(notifyClient);
@@ -171,7 +173,7 @@ void MissionObject::setMissionTargetName(const String& target, bool notifyClient
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETMISSIONTARGETNAME__STRING_BOOL_);
 		method.addAsciiParameter(target);
 		method.addBooleanParameter(notifyClient);
 
@@ -186,7 +188,7 @@ void MissionObject::setMissionDifficulty(int difficulty, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETMISSIONDIFFICULTY__INT_BOOL_);
 		method.addSignedIntParameter(difficulty);
 		method.addBooleanParameter(notifyClient);
 
@@ -201,7 +203,7 @@ void MissionObject::setRewardCredits(int creds, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETREWARDCREDITS__INT_BOOL_);
 		method.addSignedIntParameter(creds);
 		method.addBooleanParameter(notifyClient);
 
@@ -225,7 +227,7 @@ void MissionObject::setStartPosition(float posX, float posY, unsigned int planet
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SETSTARTPOSITION__FLOAT_FLOAT_INT_BOOL_);
 		method.addFloatParameter(posX);
 		method.addFloatParameter(posY);
 		method.addUnsignedIntParameter(planetCRC);
@@ -242,7 +244,7 @@ void MissionObject::setEndPosition(float posX, float posY, unsigned int planetCR
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_);
 		method.addFloatParameter(posX);
 		method.addFloatParameter(posY);
 		method.addUnsignedIntParameter(planetCRC);
@@ -259,7 +261,7 @@ void MissionObject::setCreatorName(const String& name, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SETCREATORNAME__STRING_BOOL_);
 		method.addAsciiParameter(name);
 		method.addBooleanParameter(notifyClient);
 
@@ -274,7 +276,7 @@ void MissionObject::updateMissionLocation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_UPDATEMISSIONLOCATION__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -287,7 +289,7 @@ void MissionObject::abort() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_ABORT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -300,7 +302,7 @@ void MissionObject::setMissionObjective(MissionObjective* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -314,7 +316,7 @@ void MissionObject::setStartPlanetCRC(unsigned int crc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_SETSTARTPLANETCRC__INT_);
 		method.addUnsignedIntParameter(crc);
 
 		method.executeWithVoidReturn();
@@ -328,7 +330,7 @@ void MissionObject::setEndPlanetCRC(unsigned int crc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_SETENDPLANETCRC__INT_);
 		method.addUnsignedIntParameter(crc);
 
 		method.executeWithVoidReturn();
@@ -342,7 +344,7 @@ void MissionObject::setMissionTarget(SceneObject* target) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETMISSIONTARGET__SCENEOBJECT_);
 		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
@@ -356,7 +358,7 @@ void MissionObject::setMissionTargetDest(SceneObject* target) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_SETMISSIONTARGETDEST__SCENEOBJECT_);
 		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
@@ -370,7 +372,7 @@ void MissionObject::setMissionNumber(int num) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SETMISSIONNUMBER__INT_);
 		method.addSignedIntParameter(num);
 
 		method.executeWithVoidReturn();
@@ -384,7 +386,7 @@ void MissionObject::setTemplateStrings(const String& temp1, const String& temp2)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_SETTEMPLATESTRINGS__STRING_STRING_);
 		method.addAsciiParameter(temp1);
 		method.addAsciiParameter(temp2);
 
@@ -399,7 +401,7 @@ float MissionObject::getStartPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_GETSTARTPOSITIONX__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -412,7 +414,7 @@ float MissionObject::getStartPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_GETSTARTPOSITIONY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -425,7 +427,7 @@ unsigned int MissionObject::getStartPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_GETSTARTPLANETCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -438,7 +440,7 @@ float MissionObject::getEndPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_GETENDPOSITIONX__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -451,7 +453,7 @@ float MissionObject::getEndPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_GETENDPOSITIONY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -464,7 +466,7 @@ unsigned int MissionObject::getEndPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_GETENDPLANETCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -477,7 +479,7 @@ WaypointObject* MissionObject::getWaypointToMission() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_GETWAYPOINTTOMISSION__);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -490,7 +492,7 @@ SceneObject* MissionObject::getMissionTarget() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_GETMISSIONTARGET__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -503,7 +505,7 @@ SceneObject* MissionObject::getMissionTargetDest() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_GETMISSIONTARGETDEST__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -516,7 +518,7 @@ unsigned int MissionObject::getTypeCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_GETTYPECRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -529,7 +531,7 @@ int MissionObject::getRewardCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_GETREWARDCREDITS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -542,7 +544,7 @@ UnicodeString MissionObject::getCreatorName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_GETCREATORNAME__);
 
 		method.executeWithUnicodeReturn(_return_getCreatorName);
 		return _return_getCreatorName;
@@ -556,7 +558,7 @@ int MissionObject::getDifficultyLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_GETDIFFICULTYLEVEL__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -587,7 +589,7 @@ String MissionObject::getTargetName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_GETTARGETNAME__);
 
 		method.executeWithAsciiReturn(_return_getTargetName);
 		return _return_getTargetName;
@@ -601,7 +603,7 @@ int MissionObject::getRefreshCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_GETREFRESHCOUNTER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -614,7 +616,7 @@ int MissionObject::getMissionNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_GETMISSIONNUMBER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -636,7 +638,7 @@ bool MissionObject::isSurveyMission() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_ISSURVEYMISSION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -649,7 +651,7 @@ bool MissionObject::isMissionObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_ISMISSIONOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -662,7 +664,7 @@ String MissionObject::getTemplateString1() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_GETTEMPLATESTRING1__);
 
 		method.executeWithAsciiReturn(_return_getTemplateString1);
 		return _return_getTemplateString1;
@@ -676,7 +678,7 @@ String MissionObject::getTemplateString2() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_GETTEMPLATESTRING2__);
 
 		method.executeWithAsciiReturn(_return_getTemplateString2);
 		return _return_getTemplateString2;
@@ -1278,8 +1280,6 @@ String MissionObjectImplementation::getTemplateString2() {
 
 MissionObjectAdapter::MissionObjectAdapter(MissionObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
-
-enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_INT_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANETCRC__INT_,RPC_SETENDPLANETCRC__INT_,RPC_SETMISSIONTARGET__SCENEOBJECT_,RPC_SETMISSIONTARGETDEST__SCENEOBJECT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETSTARTPLANETCRC__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANETCRC__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__};
 
 Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

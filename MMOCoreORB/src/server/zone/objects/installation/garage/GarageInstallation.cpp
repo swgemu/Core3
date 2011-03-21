@@ -10,6 +10,8 @@
  *	GarageInstallationStub
  */
 
+enum {RPC_CREATECHILDOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_};
+
 GarageInstallation::GarageInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	GarageInstallationImplementation* _implementation = new GarageInstallationImplementation();
 	_impl = _implementation;
@@ -29,7 +31,7 @@ void GarageInstallation::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -42,7 +44,7 @@ void GarageInstallation::destroyObjectFromDatabase(bool destroyContainedObjects)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
 		method.addBooleanParameter(destroyContainedObjects);
 
 		method.executeWithVoidReturn();
@@ -198,8 +200,6 @@ GarageInstallationImplementation::GarageInstallationImplementation() {
 
 GarageInstallationAdapter::GarageInstallationAdapter(GarageInstallationImplementation* obj) : InstallationObjectAdapter(obj) {
 }
-
-enum {RPC_CREATECHILDOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_};
 
 Packet* GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

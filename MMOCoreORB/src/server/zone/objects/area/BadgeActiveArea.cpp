@@ -12,6 +12,8 @@
  *	BadgeActiveAreaStub
  */
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETBADGE__INT_,RPC_GETBADGE__};
+
 BadgeActiveArea::BadgeActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	BadgeActiveAreaImplementation* _implementation = new BadgeActiveAreaImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void BadgeActiveArea::notifyEnter(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYENTER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -45,7 +47,7 @@ void BadgeActiveArea::setBadge(unsigned int a) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETBADGE__INT_);
 		method.addUnsignedIntParameter(a);
 
 		method.executeWithVoidReturn();
@@ -59,7 +61,7 @@ unsigned int BadgeActiveArea::getBadge() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETBADGE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -239,8 +241,6 @@ unsigned int BadgeActiveAreaImplementation::getBadge() {
 
 BadgeActiveAreaAdapter::BadgeActiveAreaAdapter(BadgeActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
-
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETBADGE__INT_,RPC_GETBADGE__};
 
 Packet* BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

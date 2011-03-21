@@ -14,6 +14,8 @@
  *	JunkdealerCreatureStub
  */
 
+enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__PLAYERCREATURE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CREATESELLJUNKLOOTSELECTION__PLAYERCREATURE_};
+
 JunkdealerCreature::JunkdealerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	JunkdealerCreatureImplementation* _implementation = new JunkdealerCreatureImplementation();
 	_impl = _implementation;
@@ -42,7 +44,7 @@ void JunkdealerCreature::activateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ACTIVATERECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -55,7 +57,7 @@ void JunkdealerCreature::sendInitialMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDINITIALMESSAGE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -69,7 +71,7 @@ void JunkdealerCreature::sendInitialChoices(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDINITIALCHOICES__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -83,7 +85,7 @@ void JunkdealerCreature::sendConversationStartTo(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -97,7 +99,7 @@ void JunkdealerCreature::selectConversationOption(int option, SceneObject* obj) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -112,7 +114,7 @@ String JunkdealerCreature::getLocation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETLOCATION__);
 
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
@@ -126,7 +128,7 @@ void JunkdealerCreature::setLocation(const String& loc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETLOCATION__STRING_);
 		method.addAsciiParameter(loc);
 
 		method.executeWithVoidReturn();
@@ -140,7 +142,7 @@ bool JunkdealerCreature::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -154,7 +156,7 @@ void JunkdealerCreature::createSellJunkLootSelection(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_CREATESELLJUNKLOOTSELECTION__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -337,8 +339,6 @@ bool JunkdealerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 
 JunkdealerCreatureAdapter::JunkdealerCreatureAdapter(JunkdealerCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
 }
-
-enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__PLAYERCREATURE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CREATESELLJUNKLOOTSELECTION__PLAYERCREATURE_};
 
 Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

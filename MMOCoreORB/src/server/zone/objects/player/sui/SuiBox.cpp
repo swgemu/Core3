@@ -12,6 +12,8 @@
  *	SuiBoxStub
  */
 
+enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_,RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_,RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_,RPC_GENERATEMESSAGE__,RPC_GENERATECLOSEMESSAGE__,RPC_ADDSETTING__STRING_STRING_STRING_STRING_,RPC_ADDHEADER__STRING_STRING_,RPC_CLEAROPTIONS__,RPC_COMPARETO__SUIBOX_,RPC_HASGENERATEDMESSAGE__,RPC_SETPROMPTTITLE__STRING_,RPC_SETPROMPTTEXT__STRING_,RPC_GETPROMPTTITLE__,RPC_SETHANDLERTEXT__STRING_,RPC_SETWINDOWTYPE__INT_,RPC_SETBOXTYPE__INT_,RPC_ISINPUTBOX__,RPC_ISLISTBOX__,RPC_ISMESSAGEBOX__,RPC_ISTRANSFERBOX__,RPC_ISBANKTRANSFERBOX__,RPC_ISSLICINGBOX__,RPC_ISCHARACTERBUILDERBOX__,RPC_ISCOLORPICKER__,RPC_SETCANCELBUTTON__BOOL_STRING_,RPC_SETOTHERBUTTON__BOOL_STRING_,RPC_SETOKBUTTON__BOOL_STRING_,RPC_SETFORCECLOSEDISTANCE__FLOAT_,RPC_SETFORCECLOSEDISABLED__,RPC_GETPLAYER__,RPC_GETBOXID__,RPC_GETWINDOWTYPE__,RPC_GETUSINGOBJECT__,RPC_SETUSINGOBJECT__SCENEOBJECT_};
+
 SuiBox::SuiBox(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) : ManagedObject(DummyConstructorParameter::instance()) {
 	SuiBoxImplementation* _implementation = new SuiBoxImplementation(play, windowtype, boxtype);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void SuiBox::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ void SuiBox::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -57,7 +59,7 @@ void SuiBox::generateHeader(SuiCreatePageMessage* message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_);
 		method.addObjectParameter(message);
 
 		method.executeWithVoidReturn();
@@ -71,7 +73,7 @@ void SuiBox::generateBody(SuiCreatePageMessage* message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_);
 		method.addObjectParameter(message);
 
 		method.executeWithVoidReturn();
@@ -85,7 +87,7 @@ void SuiBox::generateFooter(SuiCreatePageMessage* message, int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_);
 		method.addObjectParameter(message);
 		method.addSignedIntParameter(type);
 
@@ -100,7 +102,7 @@ BaseMessage* SuiBox::generateMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
@@ -113,7 +115,7 @@ BaseMessage* SuiBox::generateCloseMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GENERATECLOSEMESSAGE__);
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
@@ -126,7 +128,7 @@ void SuiBox::addSetting(const String& optType, const String& variable, const Str
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ADDSETTING__STRING_STRING_STRING_STRING_);
 		method.addAsciiParameter(optType);
 		method.addAsciiParameter(variable);
 		method.addAsciiParameter(setting);
@@ -143,7 +145,7 @@ void SuiBox::addHeader(const String& variable, const String& type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ADDHEADER__STRING_STRING_);
 		method.addAsciiParameter(variable);
 		method.addAsciiParameter(type);
 
@@ -158,7 +160,7 @@ void SuiBox::clearOptions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_CLEAROPTIONS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -171,7 +173,7 @@ int SuiBox::compareTo(SuiBox* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_COMPARETO__SUIBOX_);
 		method.addObjectParameter(obj);
 
 		return method.executeWithSignedIntReturn();
@@ -185,7 +187,7 @@ bool SuiBox::hasGeneratedMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_HASGENERATEDMESSAGE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -198,7 +200,7 @@ void SuiBox::setPromptTitle(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SETPROMPTTITLE__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -212,7 +214,7 @@ void SuiBox::setPromptText(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SETPROMPTTEXT__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -226,7 +228,7 @@ String SuiBox::getPromptTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETPROMPTTITLE__);
 
 		method.executeWithAsciiReturn(_return_getPromptTitle);
 		return _return_getPromptTitle;
@@ -240,7 +242,7 @@ void SuiBox::setHandlerText(const String& text) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SETHANDLERTEXT__STRING_);
 		method.addAsciiParameter(text);
 
 		method.executeWithVoidReturn();
@@ -254,7 +256,7 @@ void SuiBox::setWindowType(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_SETWINDOWTYPE__INT_);
 		method.addUnsignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -268,7 +270,7 @@ void SuiBox::setBoxType(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_SETBOXTYPE__INT_);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -282,7 +284,7 @@ bool SuiBox::isInputBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_ISINPUTBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -295,7 +297,7 @@ bool SuiBox::isListBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_ISLISTBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -308,7 +310,7 @@ bool SuiBox::isMessageBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_ISMESSAGEBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -321,7 +323,7 @@ bool SuiBox::isTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_ISTRANSFERBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -334,7 +336,7 @@ bool SuiBox::isBankTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_ISBANKTRANSFERBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -347,7 +349,7 @@ bool SuiBox::isSlicingBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_ISSLICINGBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -360,7 +362,7 @@ bool SuiBox::isCharacterBuilderBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_ISCHARACTERBUILDERBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -373,7 +375,7 @@ bool SuiBox::isColorPicker() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_ISCOLORPICKER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -386,7 +388,7 @@ void SuiBox::setCancelButton(bool value, const String& cancelText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_SETCANCELBUTTON__BOOL_STRING_);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(cancelText);
 
@@ -401,7 +403,7 @@ void SuiBox::setOtherButton(bool value, const String& backText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_SETOTHERBUTTON__BOOL_STRING_);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(backText);
 
@@ -416,7 +418,7 @@ void SuiBox::setOkButton(bool value, const String& okText) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_SETOKBUTTON__BOOL_STRING_);
 		method.addBooleanParameter(value);
 		method.addAsciiParameter(okText);
 
@@ -431,7 +433,7 @@ void SuiBox::setForceCloseDistance(float dist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_SETFORCECLOSEDISTANCE__FLOAT_);
 		method.addFloatParameter(dist);
 
 		method.executeWithVoidReturn();
@@ -445,7 +447,7 @@ void SuiBox::setForceCloseDisabled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_SETFORCECLOSEDISABLED__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -458,7 +460,7 @@ PlayerCreature* SuiBox::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_GETPLAYER__);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
@@ -471,7 +473,7 @@ unsigned int SuiBox::getBoxID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_GETBOXID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -484,7 +486,7 @@ int SuiBox::getWindowType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_GETWINDOWTYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -497,7 +499,7 @@ SceneObject* SuiBox::getUsingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_GETUSINGOBJECT__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -510,7 +512,7 @@ void SuiBox::setUsingObject(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_SETUSINGOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -1068,8 +1070,6 @@ void SuiBoxImplementation::setUsingObject(SceneObject* object) {
 
 SuiBoxAdapter::SuiBoxAdapter(SuiBoxImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_,RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_,RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_,RPC_GENERATEMESSAGE__,RPC_GENERATECLOSEMESSAGE__,RPC_ADDSETTING__STRING_STRING_STRING_STRING_,RPC_ADDHEADER__STRING_STRING_,RPC_CLEAROPTIONS__,RPC_COMPARETO__SUIBOX_,RPC_HASGENERATEDMESSAGE__,RPC_SETPROMPTTITLE__STRING_,RPC_SETPROMPTTEXT__STRING_,RPC_GETPROMPTTITLE__,RPC_SETHANDLERTEXT__STRING_,RPC_SETWINDOWTYPE__INT_,RPC_SETBOXTYPE__INT_,RPC_ISINPUTBOX__,RPC_ISLISTBOX__,RPC_ISMESSAGEBOX__,RPC_ISTRANSFERBOX__,RPC_ISBANKTRANSFERBOX__,RPC_ISSLICINGBOX__,RPC_ISCHARACTERBUILDERBOX__,RPC_ISCOLORPICKER__,RPC_SETCANCELBUTTON__BOOL_STRING_,RPC_SETOTHERBUTTON__BOOL_STRING_,RPC_SETOKBUTTON__BOOL_STRING_,RPC_SETFORCECLOSEDISTANCE__FLOAT_,RPC_SETFORCECLOSEDISABLED__,RPC_GETPLAYER__,RPC_GETBOXID__,RPC_GETWINDOWTYPE__,RPC_GETUSINGOBJECT__,RPC_SETUSINGOBJECT__SCENEOBJECT_};
 
 Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

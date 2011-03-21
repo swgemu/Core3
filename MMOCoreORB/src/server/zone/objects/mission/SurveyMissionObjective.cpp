@@ -16,6 +16,8 @@
  *	SurveyMissionObjectiveStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETSPAWN__RESOURCESPAWN_,RPC_SETMISSIONGIVER__SCENEOBJECT_,RPC_SETEFFICIENCY__INT_};
+
 SurveyMissionObjective::SurveyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	SurveyMissionObjectiveImplementation* _implementation = new SurveyMissionObjectiveImplementation(mission);
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void SurveyMissionObjective::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -48,7 +50,7 @@ void SurveyMissionObjective::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -61,7 +63,7 @@ void SurveyMissionObjective::abort() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ABORT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -74,7 +76,7 @@ void SurveyMissionObjective::complete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_COMPLETE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -87,7 +89,7 @@ int SurveyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsig
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -105,7 +107,7 @@ void SurveyMissionObjective::setSpawn(ResourceSpawn* sp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETSPAWN__RESOURCESPAWN_);
 		method.addObjectParameter(sp);
 
 		method.executeWithVoidReturn();
@@ -119,7 +121,7 @@ void SurveyMissionObjective::setMissionGiver(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETMISSIONGIVER__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -133,7 +135,7 @@ void SurveyMissionObjective::setEfficiency(unsigned int eff) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETEFFICIENCY__INT_);
 		method.addUnsignedIntParameter(eff);
 
 		method.executeWithVoidReturn();
@@ -344,8 +346,6 @@ void SurveyMissionObjectiveImplementation::setEfficiency(unsigned int eff) {
 
 SurveyMissionObjectiveAdapter::SurveyMissionObjectiveAdapter(SurveyMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETSPAWN__RESOURCESPAWN_,RPC_SETMISSIONGIVER__SCENEOBJECT_,RPC_SETEFFICIENCY__INT_};
 
 Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

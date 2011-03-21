@@ -10,6 +10,8 @@
  *	EntertainingObserverStub
  */
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 EntertainingObserver::EntertainingObserver() : Observer(DummyConstructorParameter::instance()) {
 	EntertainingObserverImplementation* _implementation = new EntertainingObserverImplementation();
 	_impl = _implementation;
@@ -29,7 +31,7 @@ int EntertainingObserver::notifyObserverEvent(unsigned int eventType, Observable
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -188,8 +190,6 @@ int EntertainingObserverImplementation::notifyObserverEvent(unsigned int eventTy
 
 EntertainingObserverAdapter::EntertainingObserverAdapter(EntertainingObserverImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
 
 Packet* EntertainingObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

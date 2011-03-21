@@ -18,6 +18,8 @@
  *	ResourceDeedStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USEOBJECT__PLAYERCREATURE_,RPC_DESTROYDEED__};
+
 ResourceDeed::ResourceDeed() : Deed(DummyConstructorParameter::instance()) {
 	ResourceDeedImplementation* _implementation = new ResourceDeedImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void ResourceDeed::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -59,7 +61,7 @@ int ResourceDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -74,7 +76,7 @@ int ResourceDeed::useObject(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_USEOBJECT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -88,7 +90,7 @@ void ResourceDeed::destroyDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_DESTROYDEED__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -230,8 +232,6 @@ ResourceDeedImplementation::ResourceDeedImplementation() {
 
 ResourceDeedAdapter::ResourceDeedAdapter(ResourceDeedImplementation* obj) : DeedAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USEOBJECT__PLAYERCREATURE_,RPC_DESTROYDEED__};
 
 Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

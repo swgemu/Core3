@@ -10,6 +10,8 @@
  *	PersistentMessageStub
  */
 
+enum {RPC_SENDTO__PLAYERCREATURE_BOOL_ = 6,RPC_GETMAILID__,RPC_GETOBJECTID__,RPC_GETSENDERNAME__,RPC_GETRECEIVEROBJECTID__,RPC_GETSTATUS__,RPC_GETTIMESTAMP__,RPC_GETBODY__,RPC_GETSUBJECT__,RPC_SETSENDERNAME__STRING_,RPC_SETRECEIVEROBJECTID__LONG_,RPC_SETSTATUS__BYTE_,RPC_SETTIMESTAMP__INT_,RPC_SETBODY__UNICODESTRING_,RPC_SETSUBJECT__UNICODESTRING_,RPC_ISNEW__,RPC_ISREAD__,RPC_ISUNREAD__,};
+
 PersistentMessage::PersistentMessage() : ManagedObject(DummyConstructorParameter::instance()) {
 	PersistentMessageImplementation* _implementation = new PersistentMessageImplementation();
 	_impl = _implementation;
@@ -29,7 +31,7 @@ void PersistentMessage::sendTo(PlayerCreature* player, bool sendBody) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SENDTO__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(sendBody);
 
@@ -62,7 +64,7 @@ int PersistentMessage::getMailID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETMAILID__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -75,7 +77,7 @@ unsigned long long PersistentMessage::getObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETOBJECTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -88,7 +90,7 @@ String PersistentMessage::getSenderName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETSENDERNAME__);
 
 		method.executeWithAsciiReturn(_return_getSenderName);
 		return _return_getSenderName;
@@ -102,7 +104,7 @@ unsigned long long PersistentMessage::getReceiverObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETRECEIVEROBJECTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -115,7 +117,7 @@ byte PersistentMessage::getStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETSTATUS__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -128,7 +130,7 @@ int PersistentMessage::getTimeStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETTIMESTAMP__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -141,7 +143,7 @@ UnicodeString PersistentMessage::getBody() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETBODY__);
 
 		method.executeWithUnicodeReturn(_return_getBody);
 		return _return_getBody;
@@ -155,7 +157,7 @@ UnicodeString PersistentMessage::getSubject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETSUBJECT__);
 
 		method.executeWithUnicodeReturn(_return_getSubject);
 		return _return_getSubject;
@@ -169,7 +171,7 @@ void PersistentMessage::setSenderName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETSENDERNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -183,7 +185,7 @@ void PersistentMessage::setReceiverObjectID(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETRECEIVEROBJECTID__LONG_);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -197,7 +199,7 @@ void PersistentMessage::setStatus(byte stat) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETSTATUS__BYTE_);
 		method.addByteParameter(stat);
 
 		method.executeWithVoidReturn();
@@ -211,7 +213,7 @@ void PersistentMessage::setTimeStamp(int stamp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SETTIMESTAMP__INT_);
 		method.addSignedIntParameter(stamp);
 
 		method.executeWithVoidReturn();
@@ -225,7 +227,7 @@ void PersistentMessage::setBody(const UnicodeString& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SETBODY__UNICODESTRING_);
 		method.addUnicodeParameter(message);
 
 		method.executeWithVoidReturn();
@@ -239,7 +241,7 @@ void PersistentMessage::setSubject(const UnicodeString& subj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SETSUBJECT__UNICODESTRING_);
 		method.addUnicodeParameter(subj);
 
 		method.executeWithVoidReturn();
@@ -253,7 +255,7 @@ bool PersistentMessage::isNew() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_ISNEW__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -266,7 +268,7 @@ bool PersistentMessage::isRead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_ISREAD__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -279,7 +281,7 @@ bool PersistentMessage::isUnread() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_ISUNREAD__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -632,8 +634,6 @@ bool PersistentMessageImplementation::isUnread() {
 
 PersistentMessageAdapter::PersistentMessageAdapter(PersistentMessageImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_SENDTO__PLAYERCREATURE_BOOL_ = 6,RPC_GETMAILID__,RPC_GETOBJECTID__,RPC_GETSENDERNAME__,RPC_GETRECEIVEROBJECTID__,RPC_GETSTATUS__,RPC_GETTIMESTAMP__,RPC_GETBODY__,RPC_GETSUBJECT__,RPC_SETSENDERNAME__STRING_,RPC_SETRECEIVEROBJECTID__LONG_,RPC_SETSTATUS__BYTE_,RPC_SETTIMESTAMP__INT_,RPC_SETBODY__UNICODESTRING_,RPC_SETSUBJECT__UNICODESTRING_,RPC_ISNEW__,RPC_ISREAD__,RPC_ISUNREAD__,};
 
 Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

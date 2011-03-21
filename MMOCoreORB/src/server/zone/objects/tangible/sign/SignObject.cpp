@@ -12,6 +12,8 @@
  *	SignObjectStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__};
+
 SignObject::SignObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	SignObjectImplementation* _implementation = new SignObjectImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ int SignObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -46,7 +48,7 @@ void SignObject::sendSignNameTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDSIGNNAMETO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -60,7 +62,7 @@ bool SignObject::isSignObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISSIGNOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -207,8 +209,6 @@ bool SignObjectImplementation::isSignObject() {
 
 SignObjectAdapter::SignObjectAdapter(SignObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__};
 
 Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

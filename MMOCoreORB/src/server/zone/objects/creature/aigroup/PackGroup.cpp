@@ -8,6 +8,8 @@
  *	PackGroupStub
  */
 
+enum {RPC_ISPACKGROUP__ = 6};
+
 PackGroup::PackGroup() : AiGroup(DummyConstructorParameter::instance()) {
 	PackGroupImplementation* _implementation = new PackGroupImplementation();
 	_impl = _implementation;
@@ -27,7 +29,7 @@ bool PackGroup::isPackGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ISPACKGROUP__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -172,8 +174,6 @@ bool PackGroupImplementation::isPackGroup() {
 
 PackGroupAdapter::PackGroupAdapter(PackGroupImplementation* obj) : AiGroupAdapter(obj) {
 }
-
-enum {RPC_ISPACKGROUP__ = 6};
 
 Packet* PackGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
