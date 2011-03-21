@@ -24,6 +24,8 @@
  *	StatePackStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETSTATE__,RPC_ISSTATEPACK__};
+
 StatePack::StatePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	StatePackImplementation* _implementation = new StatePackImplementation();
 	_impl = _implementation;
@@ -61,7 +63,7 @@ int StatePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -85,7 +87,7 @@ unsigned long long StatePack::getState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETSTATE__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -98,7 +100,7 @@ bool StatePack::isStatePack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISSTATEPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -333,8 +335,6 @@ bool StatePackImplementation::isStatePack() {
 
 StatePackAdapter::StatePackAdapter(StatePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETSTATE__,RPC_ISSTATEPACK__};
 
 Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

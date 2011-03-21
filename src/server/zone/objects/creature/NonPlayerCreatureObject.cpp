@@ -12,6 +12,8 @@
  *	NonPlayerCreatureObjectStub
  */
 
+enum {RPC_ISNONPLAYERCREATURE__ = 6,};
+
 NonPlayerCreatureObject::NonPlayerCreatureObject() : AiAgent(DummyConstructorParameter::instance()) {
 	NonPlayerCreatureObjectImplementation* _implementation = new NonPlayerCreatureObjectImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ bool NonPlayerCreatureObject::isNonPlayerCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ISNONPLAYERCREATURE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -200,8 +202,6 @@ bool NonPlayerCreatureObjectImplementation::isNonPlayerCreature() {
 
 NonPlayerCreatureObjectAdapter::NonPlayerCreatureObjectAdapter(NonPlayerCreatureObjectImplementation* obj) : AiAgentAdapter(obj) {
 }
-
-enum {RPC_ISNONPLAYERCREATURE__ = 6,};
 
 Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

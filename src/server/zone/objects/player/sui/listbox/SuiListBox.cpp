@@ -12,6 +12,8 @@
  *	SuiListBoxStub
  */
 
+enum {RPC_INIT__ = 6,RPC_ADDMENUITEM__STRING_LONG_,RPC_GETMENUITEMNAME__INT_,RPC_REMOVEALLMENUITEMS__,RPC_GETMENUOBJECTID__INT_,RPC_GETMENUSIZE__,RPC_GENERATEMESSAGE__,RPC_SETNEXTBOX__INT_,RPC_SETPREVIOUSBOX__INT_,RPC_GETNEXTBOX__,RPC_GETPREVIOUSBOX__,RPC_ISLISTBOX__};
+
 SuiListBox::SuiListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiListBoxImplementation* _implementation = new SuiListBoxImplementation(player, windowType, listBoxType);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void SuiListBox::init() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INIT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ void SuiListBox::addMenuItem(const String& name, unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ADDMENUITEM__STRING_LONG_);
 		method.addAsciiParameter(name);
 		method.addUnsignedLongParameter(objectID);
 
@@ -59,7 +61,7 @@ String SuiListBox::getMenuItemName(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETMENUITEMNAME__INT_);
 		method.addSignedIntParameter(index);
 
 		method.executeWithAsciiReturn(_return_getMenuItemName);
@@ -74,7 +76,7 @@ void SuiListBox::removeAllMenuItems() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_REMOVEALLMENUITEMS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -87,7 +89,7 @@ unsigned long long SuiListBox::getMenuObjectID(unsigned int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETMENUOBJECTID__INT_);
 		method.addUnsignedIntParameter(idx);
 
 		return method.executeWithUnsignedLongReturn();
@@ -101,7 +103,7 @@ int SuiListBox::getMenuSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETMENUSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -114,7 +116,7 @@ BaseMessage* SuiListBox::generateMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
@@ -127,7 +129,7 @@ void SuiListBox::setNextBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETNEXTBOX__INT_);
 		method.addUnsignedIntParameter(boxID);
 
 		method.executeWithVoidReturn();
@@ -141,7 +143,7 @@ void SuiListBox::setPreviousBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETPREVIOUSBOX__INT_);
 		method.addUnsignedIntParameter(boxID);
 
 		method.executeWithVoidReturn();
@@ -155,7 +157,7 @@ unsigned long long SuiListBox::getNextBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETNEXTBOX__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -168,7 +170,7 @@ unsigned long long SuiListBox::getPreviousBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETPREVIOUSBOX__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -181,7 +183,7 @@ bool SuiListBox::isListBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ISLISTBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -447,8 +449,6 @@ bool SuiListBoxImplementation::isListBox() {
 
 SuiListBoxAdapter::SuiListBoxAdapter(SuiListBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
-
-enum {RPC_INIT__ = 6,RPC_ADDMENUITEM__STRING_LONG_,RPC_GETMENUITEMNAME__INT_,RPC_REMOVEALLMENUITEMS__,RPC_GETMENUOBJECTID__INT_,RPC_GETMENUSIZE__,RPC_GENERATEMESSAGE__,RPC_SETNEXTBOX__INT_,RPC_SETPREVIOUSBOX__INT_,RPC_GETNEXTBOX__,RPC_GETPREVIOUSBOX__,RPC_ISLISTBOX__};
 
 Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

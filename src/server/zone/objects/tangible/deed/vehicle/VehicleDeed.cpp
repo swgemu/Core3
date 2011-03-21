@@ -18,6 +18,8 @@
  *	VehicleDeedStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISVEHICLEDEEDOBJECT__};
+
 VehicleDeed::VehicleDeed() : Deed(DummyConstructorParameter::instance()) {
 	VehicleDeedImplementation* _implementation = new VehicleDeedImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void VehicleDeed::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -77,7 +79,7 @@ int VehicleDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -92,7 +94,7 @@ void VehicleDeed::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -106,7 +108,7 @@ bool VehicleDeed::isVehicleDeedObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISVEHICLEDEEDOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -281,8 +283,6 @@ bool VehicleDeedImplementation::isVehicleDeedObject() {
 
 VehicleDeedAdapter::VehicleDeedAdapter(VehicleDeedImplementation* obj) : DeedAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISVEHICLEDEEDOBJECT__};
 
 Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

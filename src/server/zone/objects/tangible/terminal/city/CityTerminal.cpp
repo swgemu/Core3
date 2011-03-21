@@ -18,6 +18,8 @@
  *	CityTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISCITYTERMINAL__};
+
 CityTerminal::CityTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CityTerminalImplementation* _implementation = new CityTerminalImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void CityTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void CityTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -65,7 +67,7 @@ int CityTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -80,7 +82,7 @@ bool CityTerminal::isCityTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISCITYTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -234,8 +236,6 @@ bool CityTerminalImplementation::isCityTerminal() {
 
 CityTerminalAdapter::CityTerminalAdapter(CityTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISCITYTERMINAL__};
 
 Packet* CityTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

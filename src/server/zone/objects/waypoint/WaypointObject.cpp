@@ -12,6 +12,8 @@
  *	WaypointObjectStub
  */
 
+enum {RPC_SETCELLID__INT_,RPC_SETPLANETCRC__INT_,RPC_GETPLANETCRC__,RPC_SETCUSTOMNAME__UNICODESTRING_,RPC_GETCUSTOMNAME__,RPC_SETCOLOR__BYTE_,RPC_SETACTIVE__BYTE_,RPC_SETUNKNOWN__LONG_,RPC_SETSPECIALTYPEID__INT_,RPC_GETSPECIALTYPEID__,RPC_TOGGLESTATUS__,RPC_ISACTIVE__,RPC_GETCOLOR__};
+
 WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	WaypointObjectImplementation* _implementation = new WaypointObjectImplementation();
 	_impl = _implementation;
@@ -49,7 +51,7 @@ void WaypointObject::setCellID(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SETCELLID__INT_);
 		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -63,7 +65,7 @@ void WaypointObject::setPlanetCRC(unsigned int crc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETPLANETCRC__INT_);
 		method.addUnsignedIntParameter(crc);
 
 		method.executeWithVoidReturn();
@@ -77,7 +79,7 @@ unsigned int WaypointObject::getPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETPLANETCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -90,7 +92,7 @@ void WaypointObject::setCustomName(const UnicodeString& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETCUSTOMNAME__UNICODESTRING_);
 		method.addUnicodeParameter(name);
 
 		method.executeWithVoidReturn();
@@ -104,7 +106,7 @@ UnicodeString WaypointObject::getCustomName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETCUSTOMNAME__);
 
 		method.executeWithUnicodeReturn(_return_getCustomName);
 		return _return_getCustomName;
@@ -118,7 +120,7 @@ void WaypointObject::setColor(byte newColor) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETCOLOR__BYTE_);
 		method.addByteParameter(newColor);
 
 		method.executeWithVoidReturn();
@@ -132,7 +134,7 @@ void WaypointObject::setActive(byte newStatus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETACTIVE__BYTE_);
 		method.addByteParameter(newStatus);
 
 		method.executeWithVoidReturn();
@@ -146,7 +148,7 @@ void WaypointObject::setUnknown(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETUNKNOWN__LONG_);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -160,7 +162,7 @@ void WaypointObject::setSpecialTypeID(int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETSPECIALTYPEID__INT_);
 		method.addSignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -174,7 +176,7 @@ int WaypointObject::getSpecialTypeID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETSPECIALTYPEID__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -187,7 +189,7 @@ void WaypointObject::toggleStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_TOGGLESTATUS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -200,7 +202,7 @@ bool WaypointObject::isActive() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ISACTIVE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -213,7 +215,7 @@ byte WaypointObject::getColor() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETCOLOR__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -511,8 +513,6 @@ byte WaypointObjectImplementation::getColor() {
 
 WaypointObjectAdapter::WaypointObjectAdapter(WaypointObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
-
-enum {RPC_SETCELLID__INT_,RPC_SETPLANETCRC__INT_,RPC_GETPLANETCRC__,RPC_SETCUSTOMNAME__UNICODESTRING_,RPC_GETCUSTOMNAME__,RPC_SETCOLOR__BYTE_,RPC_SETACTIVE__BYTE_,RPC_SETUNKNOWN__LONG_,RPC_SETSPECIALTYPEID__INT_,RPC_GETSPECIALTYPEID__,RPC_TOGGLESTATUS__,RPC_ISACTIVE__,RPC_GETCOLOR__};
 
 Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

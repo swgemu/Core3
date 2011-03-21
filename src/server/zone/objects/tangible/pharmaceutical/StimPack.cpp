@@ -24,6 +24,8 @@
  *	StimPackStub
  */
 
+enum {RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETEFFECTIVENESS__,RPC_ISSTIMPACK__};
+
 StimPack::StimPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	StimPackImplementation* _implementation = new StimPackImplementation();
 	_impl = _implementation;
@@ -61,7 +63,7 @@ unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* pa
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(healer);
 		method.addObjectParameter(patient);
 		method.addBooleanParameter(applyBattleFatigue);
@@ -77,7 +79,7 @@ int StimPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -101,7 +103,7 @@ float StimPack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETEFFECTIVENESS__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -114,7 +116,7 @@ bool StimPack::isStimPack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISSTIMPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -353,8 +355,6 @@ bool StimPackImplementation::isStimPack() {
 
 StimPackAdapter::StimPackAdapter(StimPackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
-
-enum {RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETEFFECTIVENESS__,RPC_ISSTIMPACK__};
 
 Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

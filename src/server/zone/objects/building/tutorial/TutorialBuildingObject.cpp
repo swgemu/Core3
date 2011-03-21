@@ -16,6 +16,8 @@
  *	TutorialBuildingObjectStub
  */
 
+enum {RPC_REMOVEFROMZONE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_CLEARUNLOADEVENT__,};
+
 TutorialBuildingObject::TutorialBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	TutorialBuildingObjectImplementation* _implementation = new TutorialBuildingObjectImplementation();
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void TutorialBuildingObject::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -48,7 +50,7 @@ void TutorialBuildingObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -61,7 +63,7 @@ void TutorialBuildingObject::onEnter(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ONENTER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -75,7 +77,7 @@ void TutorialBuildingObject::onExit(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ONEXIT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -89,7 +91,7 @@ void TutorialBuildingObject::clearUnloadEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_CLEARUNLOADEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -265,8 +267,6 @@ void TutorialBuildingObjectImplementation::dequeueUnloadEvent() {
 
 TutorialBuildingObjectAdapter::TutorialBuildingObjectAdapter(TutorialBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
-
-enum {RPC_REMOVEFROMZONE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_CLEARUNLOADEVENT__,};
 
 Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -18,6 +18,8 @@
  *	LootkitObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_GETPLAYER__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_};
+
 LootkitObject::LootkitObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	LootkitObjectImplementation* _implementation = new LootkitObjectImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void LootkitObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ int LootkitObject::canAddObject(SceneObject* object, int containmentType, String
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
@@ -66,7 +68,7 @@ int LootkitObject::notifyObjectInserted(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithSignedIntReturn();
@@ -80,7 +82,7 @@ PlayerCreature* LootkitObject::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETPLAYER__);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
 	} else
@@ -102,7 +104,7 @@ void LootkitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature*
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -318,8 +320,6 @@ void LootkitObjectImplementation::initializeTransientMembers() {
 
 LootkitObjectAdapter::LootkitObjectAdapter(LootkitObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_GETPLAYER__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_};
 
 Packet* LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

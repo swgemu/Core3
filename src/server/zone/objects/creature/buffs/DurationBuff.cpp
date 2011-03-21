@@ -16,6 +16,8 @@
  *	DurationBuffStub
  */
 
+enum {RPC_ACTIVATE__BOOL_ = 6};
+
 DurationBuff::DurationBuff(CreatureObject* creo, unsigned int buffcrc, float duration) : Buff(DummyConstructorParameter::instance()) {
 	DurationBuffImplementation* _implementation = new DurationBuffImplementation(creo, buffcrc, duration);
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void DurationBuff::activate(bool applyModifiers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ACTIVATE__BOOL_);
 		method.addBooleanParameter(applyModifiers);
 
 		method.executeWithVoidReturn();
@@ -181,8 +183,6 @@ void DurationBuffImplementation::activate(bool applyModifiers) {
 
 DurationBuffAdapter::DurationBuffAdapter(DurationBuffImplementation* obj) : BuffAdapter(obj) {
 }
-
-enum {RPC_ACTIVATE__BOOL_ = 6};
 
 Packet* DurationBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

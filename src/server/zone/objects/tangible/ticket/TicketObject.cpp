@@ -18,6 +18,8 @@
  *	TicketObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETDEPARTUREPLANET__STRING_,RPC_SETDEPARTUREPOINT__STRING_,RPC_SETARRIVALPLANET__STRING_,RPC_SETARRIVALPOINT__STRING_,RPC_GETDEPARTUREPLANET__,RPC_GETDEPARTUREPOINT__,RPC_GETARRIVALPLANET__,RPC_GETARRIVALPOINT__,RPC_ISTICKETOBJECT__};
+
 TicketObject::TicketObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	TicketObjectImplementation* _implementation = new TicketObjectImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void TicketObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -59,7 +61,7 @@ int TicketObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -74,7 +76,7 @@ void TicketObject::setDeparturePlanet(const String& departureplanet) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETDEPARTUREPLANET__STRING_);
 		method.addAsciiParameter(departureplanet);
 
 		method.executeWithVoidReturn();
@@ -88,7 +90,7 @@ void TicketObject::setDeparturePoint(const String& departurepoint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETDEPARTUREPOINT__STRING_);
 		method.addAsciiParameter(departurepoint);
 
 		method.executeWithVoidReturn();
@@ -102,7 +104,7 @@ void TicketObject::setArrivalPlanet(const String& arrival) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SETARRIVALPLANET__STRING_);
 		method.addAsciiParameter(arrival);
 
 		method.executeWithVoidReturn();
@@ -116,7 +118,7 @@ void TicketObject::setArrivalPoint(const String& arrival) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETARRIVALPOINT__STRING_);
 		method.addAsciiParameter(arrival);
 
 		method.executeWithVoidReturn();
@@ -130,7 +132,7 @@ String TicketObject::getDeparturePlanet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETDEPARTUREPLANET__);
 
 		method.executeWithAsciiReturn(_return_getDeparturePlanet);
 		return _return_getDeparturePlanet;
@@ -144,7 +146,7 @@ String TicketObject::getDeparturePoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETDEPARTUREPOINT__);
 
 		method.executeWithAsciiReturn(_return_getDeparturePoint);
 		return _return_getDeparturePoint;
@@ -158,7 +160,7 @@ String TicketObject::getArrivalPlanet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETARRIVALPLANET__);
 
 		method.executeWithAsciiReturn(_return_getArrivalPlanet);
 		return _return_getArrivalPlanet;
@@ -172,7 +174,7 @@ String TicketObject::getArrivalPoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETARRIVALPOINT__);
 
 		method.executeWithAsciiReturn(_return_getArrivalPoint);
 		return _return_getArrivalPoint;
@@ -186,7 +188,7 @@ bool TicketObject::isTicketObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ISTICKETOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -432,8 +434,6 @@ bool TicketObjectImplementation::isTicketObject() {
 
 TicketObjectAdapter::TicketObjectAdapter(TicketObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETDEPARTUREPLANET__STRING_,RPC_SETDEPARTUREPOINT__STRING_,RPC_SETARRIVALPLANET__STRING_,RPC_SETARRIVALPOINT__STRING_,RPC_GETDEPARTUREPLANET__,RPC_GETDEPARTUREPOINT__,RPC_GETARRIVALPLANET__,RPC_GETARRIVALPOINT__,RPC_ISTICKETOBJECT__};
 
 Packet* TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

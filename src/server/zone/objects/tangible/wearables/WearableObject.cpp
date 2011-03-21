@@ -12,6 +12,8 @@
  *	WearableObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_APPLYATTACHMENT__PLAYERCREATURE_ATTACHMENT_,RPC_SETATTACHMENTMODS__PLAYERCREATURE_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
+
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void WearableObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -53,7 +55,7 @@ void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -67,7 +69,7 @@ void WearableObject::applyAttachment(PlayerCreature* player, Attachment* attachm
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_APPLYATTACHMENT__PLAYERCREATURE_ATTACHMENT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(attachment);
 
@@ -82,7 +84,7 @@ void WearableObject::setAttachmentMods(PlayerCreature* player, bool remove) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETATTACHMENTMODS__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(remove);
 
@@ -97,7 +99,7 @@ bool WearableObject::isWearableObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISWEARABLEOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -110,7 +112,7 @@ bool WearableObject::isEquipped() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISEQUIPPED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -123,7 +125,7 @@ int WearableObject::getMaxSockets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETMAXSOCKETS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -136,7 +138,7 @@ int WearableObject::socketsUsed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SOCKETSUSED__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -149,7 +151,7 @@ int WearableObject::socketsLeft() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SOCKETSLEFT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -162,7 +164,7 @@ void WearableObject::setMaxSockets(int sockets) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETMAXSOCKETS__INT_);
 		method.addSignedIntParameter(sockets);
 
 		method.executeWithVoidReturn();
@@ -373,8 +375,6 @@ void WearableObjectImplementation::setMaxSockets(int sockets) {
 
 WearableObjectAdapter::WearableObjectAdapter(WearableObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_APPLYATTACHMENT__PLAYERCREATURE_ATTACHMENT_,RPC_SETATTACHMENTMODS__PLAYERCREATURE_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
 
 Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -14,6 +14,8 @@
  *	BuffStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INIT__,RPC_SENDTO__PLAYERCREATURE_,RPC_SENDDESTROYTO__PLAYERCREATURE_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTIRBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,};
+
 Buff::Buff(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) : ManagedObject(DummyConstructorParameter::instance()) {
 	BuffImplementation* _implementation = new BuffImplementation(creo, buffcrc, duration, bufftype);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void Buff::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -46,7 +48,7 @@ void Buff::init() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INIT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -59,7 +61,7 @@ void Buff::sendTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -73,7 +75,7 @@ void Buff::sendDestroyTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SENDDESTROYTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -87,7 +89,7 @@ void Buff::activate(bool applyModifiers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ACTIVATE__BOOL_);
 		method.addBooleanParameter(applyModifiers);
 
 		method.executeWithVoidReturn();
@@ -101,7 +103,7 @@ void Buff::deactivate(bool removeModifiers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_DEACTIVATE__BOOL_);
 		method.addBooleanParameter(removeModifiers);
 
 		method.executeWithVoidReturn();
@@ -115,7 +117,7 @@ void Buff::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -128,7 +130,7 @@ void Buff::deactivate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_DEACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -141,7 +143,7 @@ void Buff::applyAttributeModifiers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_APPLYATTRIBUTEMODIFIERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -154,7 +156,7 @@ void Buff::applySkillModifiers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_APPLYSKILLMODIFIERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -167,7 +169,7 @@ void Buff::removeAttributeModifiers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_REMOVEATTRIBUTEMODIFIERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -180,7 +182,7 @@ void Buff::removeSkillModifiers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_REMOVESKILLMODIFIERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -193,7 +195,7 @@ void Buff::clearBuffEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_CLEARBUFFEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -206,7 +208,7 @@ void Buff::setBuffEventNull() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SETBUFFEVENTNULL__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -219,7 +221,7 @@ void Buff::scheduleBuffEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SCHEDULEBUFFEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -232,7 +234,7 @@ void Buff::parseAttributeModifierString(const String& modifierstring) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_);
 		method.addAsciiParameter(modifierstring);
 
 		method.executeWithVoidReturn();
@@ -246,7 +248,7 @@ void Buff::parseSkillModifierString(const String& modifierstring) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_PARSESKILLMODIFIERSTRING__STRING_);
 		method.addAsciiParameter(modifierstring);
 
 		method.executeWithVoidReturn();
@@ -260,7 +262,7 @@ String Buff::getAttributeModifierString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_GETATTRIBUTEMODIFIERSTRING__);
 
 		method.executeWithAsciiReturn(_return_getAttributeModifierString);
 		return _return_getAttributeModifierString;
@@ -274,7 +276,7 @@ String Buff::getSkillModifierString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_GETSKILLMODIFIERSTRING__);
 
 		method.executeWithAsciiReturn(_return_getSkillModifierString);
 		return _return_getSkillModifierString;
@@ -288,7 +290,7 @@ float Buff::getTimeLeft() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_GETTIMELEFT__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -301,7 +303,7 @@ void Buff::setAttributeModifier(byte attribute, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETATTRIBUTEMODIFIER__BYTE_INT_);
 		method.addByteParameter(attribute);
 		method.addSignedIntParameter(value);
 
@@ -316,7 +318,7 @@ void Buff::setSkillModifier(const String& modname, int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_SETSKILLMODIFIER__STRING_INT_);
 		method.addAsciiParameter(modname);
 		method.addSignedIntParameter(value);
 
@@ -331,7 +333,7 @@ void Buff::setSpeedMultiplierMod(float multiplier) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SETSPEEDMULTIPLIERMOD__FLOAT_);
 		method.addFloatParameter(multiplier);
 
 		method.executeWithVoidReturn();
@@ -345,7 +347,7 @@ void Buff::setAccelerationMultiplierMod(float multiplier) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_);
 		method.addFloatParameter(multiplier);
 
 		method.executeWithVoidReturn();
@@ -359,7 +361,7 @@ void Buff::setFillAttirbutesOnBuff(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_SETFILLATTIRBUTESONBUFF__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -373,7 +375,7 @@ String Buff::getBuffName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_GETBUFFNAME__);
 
 		method.executeWithAsciiReturn(_return_getBuffName);
 		return _return_getBuffName;
@@ -387,7 +389,7 @@ int Buff::getBuffCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_GETBUFFCRC__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -400,7 +402,7 @@ float Buff::getBuffDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_GETBUFFDURATION__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -413,7 +415,7 @@ int Buff::getBuffType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_GETBUFFTYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -426,7 +428,7 @@ int Buff::getAttributeModifierValue(byte attribute) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_);
 		method.addByteParameter(attribute);
 
 		return method.executeWithSignedIntReturn();
@@ -440,7 +442,7 @@ int Buff::getSkillModifierValue(const String& modname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_GETSKILLMODIFIERVALUE__STRING_);
 		method.addAsciiParameter(modname);
 
 		return method.executeWithSignedIntReturn();
@@ -454,7 +456,7 @@ bool Buff::isActive() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_ISACTIVE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -467,7 +469,7 @@ bool Buff::isSpiceBuff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_ISSPICEBUFF__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -480,7 +482,7 @@ bool Buff::isAttributeBuff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_ISATTRIBUTEBUFF__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -925,8 +927,6 @@ bool BuffImplementation::isAttributeBuff() {
 
 BuffAdapter::BuffAdapter(BuffImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INIT__,RPC_SENDTO__PLAYERCREATURE_,RPC_SENDDESTROYTO__PLAYERCREATURE_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTIRBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,};
 
 Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

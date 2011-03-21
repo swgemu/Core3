@@ -28,6 +28,8 @@
  *	InstallationObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__PLAYERCREATURE_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__PLAYERCREATURE_,RPC_REMOVEOPERATOR__PLAYERCREATURE_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__};
+
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
 	_impl = _implementation;
@@ -47,7 +49,7 @@ void InstallationObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -60,7 +62,7 @@ void InstallationObject::destroyObjectFromDatabase(bool destroyContainedObjects)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
 		method.addBooleanParameter(destroyContainedObjects);
 
 		method.executeWithVoidReturn();
@@ -101,7 +103,7 @@ int InstallationObject::handleObjectMenuSelect(PlayerCreature* player, byte sele
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -116,7 +118,7 @@ void InstallationObject::broadcastMessage(BasePacket* message, bool sendSelf) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_);
 		method.addObjectParameter(message);
 		method.addBooleanParameter(sendSelf);
 
@@ -131,7 +133,7 @@ void InstallationObject::updateResourceContainerQuantity(ResourceContainer* cont
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_);
 		method.addObjectParameter(container);
 		method.addSignedIntParameter(newQuantity);
 		method.addBooleanParameter(notifyClient);
@@ -147,7 +149,7 @@ void InstallationObject::updateToDatabaseAllObjects(bool startTask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_UPDATETODATABASEALLOBJECTS__BOOL_);
 		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
@@ -161,7 +163,7 @@ void InstallationObject::setOperating(bool operating, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETOPERATING__BOOL_BOOL_);
 		method.addBooleanParameter(operating);
 		method.addBooleanParameter(notifyClient);
 
@@ -176,7 +178,7 @@ void InstallationObject::activateUiSync() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ACTIVATEUISYNC__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -189,7 +191,7 @@ void InstallationObject::updateOperators() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_UPDATEOPERATORS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -202,7 +204,7 @@ void InstallationObject::verifyOperators() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_VERIFYOPERATORS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -215,7 +217,7 @@ void InstallationObject::updateInstallationWork() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_UPDATEINSTALLATIONWORK__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -228,7 +230,7 @@ void InstallationObject::handleStructureAddEnergy(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_HANDLESTRUCTUREADDENERGY__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -242,7 +244,7 @@ void InstallationObject::setActiveResource(ResourceContainer* container) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SETACTIVERESOURCE__RESOURCECONTAINER_);
 		method.addObjectParameter(container);
 
 		method.executeWithVoidReturn();
@@ -256,7 +258,7 @@ void InstallationObject::changeActiveResourceID(unsigned long long spawnObjectID
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_CHANGEACTIVERESOURCEID__LONG_);
 		method.addUnsignedLongParameter(spawnObjectID);
 
 		method.executeWithVoidReturn();
@@ -270,7 +272,7 @@ void InstallationObject::addResourceToHopper(ResourceContainer* container) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_);
 		method.addObjectParameter(container);
 
 		method.executeWithVoidReturn();
@@ -284,7 +286,7 @@ void InstallationObject::removeResourceFromHopper(ResourceContainer* container) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_);
 		method.addObjectParameter(container);
 
 		method.executeWithVoidReturn();
@@ -298,7 +300,7 @@ void InstallationObject::clearResourceHopper() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_CLEARRESOURCEHOPPER__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -311,7 +313,7 @@ float InstallationObject::getHopperSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_GETHOPPERSIZE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -342,7 +344,7 @@ int InstallationObject::getHopperItemQuantity(ResourceSpawn* spawn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_);
 		method.addObjectParameter(spawn);
 
 		return method.executeWithSignedIntReturn();
@@ -356,7 +358,7 @@ ResourceContainer* InstallationObject::getContainerFromHopper(ResourceSpawn* spa
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_);
 		method.addObjectParameter(spawn);
 
 		return (ResourceContainer*) method.executeWithObjectReturn();
@@ -370,7 +372,7 @@ unsigned long long InstallationObject::getActiveResourceSpawnID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_GETACTIVERESOURCESPAWNID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -383,7 +385,7 @@ float InstallationObject::getActualRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_GETACTUALRATE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -396,7 +398,7 @@ void InstallationObject::broadcastToOperators(BasePacket* packet) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_BROADCASTTOOPERATORS__BASEPACKET_);
 		method.addObjectParameter(packet);
 
 		method.executeWithVoidReturn();
@@ -410,7 +412,7 @@ void InstallationObject::addOperator(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_ADDOPERATOR__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -424,7 +426,7 @@ void InstallationObject::removeOperator(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_REMOVEOPERATOR__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -438,7 +440,7 @@ void InstallationObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -452,7 +454,7 @@ bool InstallationObject::isInstallationObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_ISINSTALLATIONOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -465,7 +467,7 @@ bool InstallationObject::isOperating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_ISOPERATING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -478,7 +480,7 @@ int InstallationObject::getInstallationType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_GETINSTALLATIONTYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -491,7 +493,7 @@ float InstallationObject::getExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_GETEXTRACTIONRATE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -504,7 +506,7 @@ float InstallationObject::getHopperSizeMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_GETHOPPERSIZEMAX__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -526,7 +528,7 @@ bool InstallationObject::isHarvesterObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_ISHARVESTEROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -539,7 +541,7 @@ bool InstallationObject::isGeneratorObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_ISGENERATOROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -859,8 +861,6 @@ bool InstallationObjectImplementation::isGeneratorObject() {
 
 InstallationObjectAdapter::InstallationObjectAdapter(InstallationObjectImplementation* obj) : StructureObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__PLAYERCREATURE_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__PLAYERCREATURE_,RPC_REMOVEOPERATOR__PLAYERCREATURE_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__};
 
 Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

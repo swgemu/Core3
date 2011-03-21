@@ -22,6 +22,8 @@
  *	SlicingToolStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_CALCULATESUCCESSRATE__,RPC_GETEFFECTIVENESS__};
+
 SlicingTool::SlicingTool() : TangibleObject(DummyConstructorParameter::instance()) {
 	SlicingToolImplementation* _implementation = new SlicingToolImplementation();
 	_impl = _implementation;
@@ -41,7 +43,7 @@ int SlicingTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -74,7 +76,7 @@ void SlicingTool::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -88,7 +90,7 @@ bool SlicingTool::calculateSuccessRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CALCULATESUCCESSRATE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -101,7 +103,7 @@ float SlicingTool::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETEFFECTIVENESS__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -263,8 +265,6 @@ float SlicingToolImplementation::getEffectiveness() {
 
 SlicingToolAdapter::SlicingToolAdapter(SlicingToolImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_CALCULATESUCCESSRATE__,RPC_GETEFFECTIVENESS__};
 
 Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

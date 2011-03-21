@@ -12,6 +12,8 @@
  *	ActiveAreaStub
  */
 
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_SETRADIUS__FLOAT_};
+
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void ActiveArea::sendTo(SceneObject* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SENDTO__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -46,7 +48,7 @@ void ActiveArea::enqueueEnterEvent(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ENQUEUEENTEREVENT__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -60,7 +62,7 @@ void ActiveArea::enqueueExitEvent(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ENQUEUEEXITEVENT__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -74,7 +76,7 @@ void ActiveArea::notifyEnter(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_NOTIFYENTER__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -88,7 +90,7 @@ void ActiveArea::notifyExit(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_NOTIFYEXIT__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -102,7 +104,7 @@ bool ActiveArea::isActiveArea() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISACTIVEAREA__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -115,7 +117,7 @@ bool ActiveArea::isRegion() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISREGION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -128,7 +130,7 @@ void ActiveArea::insertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -142,7 +144,7 @@ void ActiveArea::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -155,7 +157,7 @@ bool ActiveArea::containsPoint(float x, float y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_CONTAINSPOINT__FLOAT_FLOAT_);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -170,7 +172,7 @@ float ActiveArea::getRadius() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETRADIUS__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -183,7 +185,7 @@ float ActiveArea::getRadius2() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETRADIUS2__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -196,7 +198,7 @@ void ActiveArea::setRadius(float r) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SETRADIUS__FLOAT_);
 		method.addFloatParameter(r);
 
 		method.executeWithVoidReturn();
@@ -405,8 +407,6 @@ void ActiveAreaImplementation::setRadius(float r) {
 
 ActiveAreaAdapter::ActiveAreaAdapter(ActiveAreaImplementation* obj) : SceneObjectAdapter(obj) {
 }
-
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_SETRADIUS__FLOAT_};
 
 Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

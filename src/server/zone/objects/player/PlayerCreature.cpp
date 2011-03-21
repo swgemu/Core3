@@ -48,6 +48,8 @@
  *	PlayerCreatureStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_DISCONNECT__BOOL_BOOL_,RPC_UNLOAD__,RPC_RELOAD__ZONECLIENTSESSION_,RPC_LOGOUT__BOOL_,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATETODATABASE__,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDTOOWNER__BOOL_,RPC_SENDBADGESRESPONSETO__PLAYERCREATURE_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ISAGGRESSIVETO__PLAYERCREATURE_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_SETCOMBATSTATE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_ADDTODUELLIST__PLAYERCREATURE_,RPC_REMOVEFROMDUELLIST__PLAYERCREATURE_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__PLAYERCREATURE_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_NOTIFYSCENEREADY__,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_GETPLAYEROBJECT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_GETACCOUNTID__,RPC_ISTELEPORTING__,RPC_GETCLIENT__,RPC_GETRACEID__,RPC_GETSAVEDPARENTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_GETSAVEDZONEID__,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDZONEID__INT_,RPC_SETSKILLPOINTS__INT_,RPC_SETTELEPORTING__BOOL_,RPC_ADDSKILLPOINTS__INT_,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_SETRACEID__BYTE_,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SETACCOUNTID__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_GETSKILLPOINTS__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_GETLOTSREMAINING__,RPC_SETLOTSREMAINING__INT_,RPC_GETFACTIONSTATUS__,RPC_GETBIOGRAPHY__,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_SETSURVEYTOOL__SURVEYTOOL_,RPC_GETSURVEYTOOL__,RPC_SETTEACHINGORLEARNING__BOOL_,RPC_GETSURVEYWAYPOINT__,RPC_GETCONVERSATINGCREATURE__,RPC_GETCENTEREDBONUS__,RPC_SETCENTEREDBONUS__INT_,RPC_HASBADGE__INT_,RPC_GETLASTCRAFTINGTOOLUSED__,RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,};
+
 PlayerCreature::PlayerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	PlayerCreatureImplementation* _implementation = new PlayerCreatureImplementation();
 	_impl = _implementation;
@@ -76,7 +78,7 @@ void PlayerCreature::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -89,7 +91,7 @@ void PlayerCreature::notifyLoadFromDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -120,7 +122,7 @@ void PlayerCreature::disconnect(bool closeClient, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_DISCONNECT__BOOL_BOOL_);
 		method.addBooleanParameter(closeClient);
 		method.addBooleanParameter(doLock);
 
@@ -135,7 +137,7 @@ void PlayerCreature::unload() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_UNLOAD__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -148,7 +150,7 @@ void PlayerCreature::reload(ZoneClientSession* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_RELOAD__ZONECLIENTSESSION_);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -162,7 +164,7 @@ void PlayerCreature::logout(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_LOGOUT__BOOL_);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -176,7 +178,7 @@ void PlayerCreature::activateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ACTIVATERECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -189,7 +191,7 @@ void PlayerCreature::doRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_DORECOVERY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -202,7 +204,7 @@ void PlayerCreature::teleport(float newPositionX, float newPositionZ, float newP
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_);
 		method.addFloatParameter(newPositionX);
 		method.addFloatParameter(newPositionZ);
 		method.addFloatParameter(newPositionY);
@@ -219,7 +221,7 @@ void PlayerCreature::updateZone(bool lightUpdate, bool sendPackets) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_UPDATEZONE__BOOL_BOOL_);
 		method.addBooleanParameter(lightUpdate);
 		method.addBooleanParameter(sendPackets);
 
@@ -234,7 +236,7 @@ void PlayerCreature::updateZoneWithParent(SceneObject* newParent, bool lightUpda
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_);
 		method.addObjectParameter(newParent);
 		method.addBooleanParameter(lightUpdate);
 		method.addBooleanParameter(sendPackets);
@@ -259,7 +261,7 @@ int PlayerCreature::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -274,7 +276,7 @@ void PlayerCreature::insertToBuilding(BuildingObject* building) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_INSERTTOBUILDING__BUILDINGOBJECT_);
 		method.addObjectParameter(building);
 
 		method.executeWithVoidReturn();
@@ -288,7 +290,7 @@ void PlayerCreature::removeFromBuilding(BuildingObject* building) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_);
 		method.addObjectParameter(building);
 
 		method.executeWithVoidReturn();
@@ -302,7 +304,7 @@ void PlayerCreature::updateToDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_UPDATETODATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -315,7 +317,7 @@ void PlayerCreature::sendMessage(BasePacket* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SENDMESSAGE__BASEPACKET_);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -329,7 +331,7 @@ void PlayerCreature::sendToOwner(bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_SENDTOOWNER__BOOL_);
 		method.addBooleanParameter(doClose);
 
 		method.executeWithVoidReturn();
@@ -343,7 +345,7 @@ void PlayerCreature::sendBadgesResponseTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_SENDBADGESRESPONSETO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -357,7 +359,7 @@ void PlayerCreature::unloadSpawnedChildren() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_UNLOADSPAWNEDCHILDREN__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -370,7 +372,7 @@ bool PlayerCreature::isAggressiveTo(PlayerCreature* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_ISAGGRESSIVETO__PLAYERCREATURE_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -384,7 +386,7 @@ void PlayerCreature::sendExecuteConsoleCommand(const String& command) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SENDEXECUTECONSOLECOMMAND__STRING_);
 		method.addAsciiParameter(command);
 
 		method.executeWithVoidReturn();
@@ -398,7 +400,7 @@ bool PlayerCreature::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -412,7 +414,7 @@ int PlayerCreature::canAddObject(SceneObject* object, int containmentType, Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
@@ -428,7 +430,7 @@ int PlayerCreature::notifyObjectInserted(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithSignedIntReturn();
@@ -442,7 +444,7 @@ int PlayerCreature::notifyObjectRemoved(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithSignedIntReturn();
@@ -456,7 +458,7 @@ int PlayerCreature::notifyObjectDestructionObservers(TangibleObject* attacker, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(condition);
 
@@ -471,7 +473,7 @@ void PlayerCreature::setCombatState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_SETCOMBATSTATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -484,7 +486,7 @@ void PlayerCreature::setBadge(unsigned int badge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_SETBADGE__INT_);
 		method.addUnsignedIntParameter(badge);
 
 		method.executeWithVoidReturn();
@@ -498,7 +500,7 @@ void PlayerCreature::awardBadge(unsigned int badge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_AWARDBADGE__INT_);
 		method.addUnsignedIntParameter(badge);
 
 		method.executeWithVoidReturn();
@@ -512,7 +514,7 @@ int PlayerCreature::getNumBadges() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_GETNUMBADGES__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -525,7 +527,7 @@ int PlayerCreature::getBadgeTypeCount(byte type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_GETBADGETYPECOUNT__BYTE_);
 		method.addByteParameter(type);
 
 		return method.executeWithSignedIntReturn();
@@ -539,7 +541,7 @@ bool PlayerCreature::isFirstIncapacitationExpired() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_ISFIRSTINCAPACITATIONEXPIRED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -552,7 +554,7 @@ void PlayerCreature::resetIncapacitationCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_RESETINCAPACITATIONCOUNTER__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -565,7 +567,7 @@ void PlayerCreature::resetFirstIncapacitationTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_RESETFIRSTINCAPACITATIONTIME__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -578,7 +580,7 @@ void PlayerCreature::updateIncapacitationCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_UPDATEINCAPACITATIONCOUNTER__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -591,7 +593,7 @@ bool PlayerCreature::isFirstIncapacitation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_ISFIRSTINCAPACITATION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -604,7 +606,7 @@ byte PlayerCreature::getIncapacitationCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_GETINCAPACITATIONCOUNTER__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -617,7 +619,7 @@ void PlayerCreature::setLastNpcConvStr(const String& conv) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_SETLASTNPCCONVSTR__STRING_);
 		method.addAsciiParameter(conv);
 
 		method.executeWithVoidReturn();
@@ -631,7 +633,7 @@ void PlayerCreature::setLastNpcConvMessStr(const String& mess) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_SETLASTNPCCONVMESSSTR__STRING_);
 		method.addAsciiParameter(mess);
 
 		method.executeWithVoidReturn();
@@ -645,7 +647,7 @@ String PlayerCreature::getLastNpcConvStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_GETLASTNPCCONVSTR__);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvStr);
 		return _return_getLastNpcConvStr;
@@ -668,7 +670,7 @@ String PlayerCreature::getLastNpcConvMessStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_GETLASTNPCCONVMESSSTR__);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvMessStr);
 		return _return_getLastNpcConvMessStr;
@@ -682,7 +684,7 @@ String PlayerCreature::getLastNpcConvOption(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_GETLASTNPCCONVOPTION__INT_);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvOption);
@@ -697,7 +699,7 @@ void PlayerCreature::addLastNpcConvOptions(const String& option) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_ADDLASTNPCCONVOPTIONS__STRING_);
 		method.addAsciiParameter(option);
 
 		method.executeWithVoidReturn();
@@ -711,7 +713,7 @@ int PlayerCreature::countLastNpcConvOptions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_COUNTLASTNPCCONVOPTIONS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -724,7 +726,7 @@ void PlayerCreature::clearLastNpcConvOptions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_CLEARLASTNPCCONVOPTIONS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -737,7 +739,7 @@ void PlayerCreature::setSpawnedBlueFrog() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, RPC_SETSPAWNEDBLUEFROG__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -750,7 +752,7 @@ bool PlayerCreature::hasSpawnedBlueFrog() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, RPC_HASSPAWNEDBLUEFROG__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -763,7 +765,7 @@ void PlayerCreature::addToConsentList(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, RPC_ADDTOCONSENTLIST__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -777,7 +779,7 @@ bool PlayerCreature::hasInConsentList(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, RPC_HASINCONSENTLIST__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -791,7 +793,7 @@ void PlayerCreature::removeFromConsentList(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, RPC_REMOVEFROMCONSENTLIST__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -805,7 +807,7 @@ String PlayerCreature::getConsentName(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, RPC_GETCONSENTNAME__INT_);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getConsentName);
@@ -820,7 +822,7 @@ int PlayerCreature::getConsentListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, RPC_GETCONSENTLISTSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -833,7 +835,7 @@ void PlayerCreature::addToDuelList(PlayerCreature* targetPlayer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, RPC_ADDTODUELLIST__PLAYERCREATURE_);
 		method.addObjectParameter(targetPlayer);
 
 		method.executeWithVoidReturn();
@@ -847,7 +849,7 @@ void PlayerCreature::removeFromDuelList(PlayerCreature* targetPlayer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, RPC_REMOVEFROMDUELLIST__PLAYERCREATURE_);
 		method.addObjectParameter(targetPlayer);
 
 		method.executeWithVoidReturn();
@@ -861,7 +863,7 @@ PlayerCreature* PlayerCreature::getDuelListObject(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, RPC_GETDUELLISTOBJECT__INT_);
 		method.addSignedIntParameter(index);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -875,7 +877,7 @@ bool PlayerCreature::requestedDuelTo(PlayerCreature* targetPlayer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, RPC_REQUESTEDDUELTO__PLAYERCREATURE_);
 		method.addObjectParameter(targetPlayer);
 
 		return method.executeWithBooleanReturn();
@@ -889,7 +891,7 @@ bool PlayerCreature::isDuelListEmpty() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, RPC_ISDUELLISTEMPTY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -902,7 +904,7 @@ int PlayerCreature::getDuelListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, RPC_GETDUELLISTSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -915,7 +917,7 @@ void PlayerCreature::notifySceneReady() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, RPC_NOTIFYSCENEREADY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -928,7 +930,7 @@ void PlayerCreature::notifySelfPositionUpdate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, RPC_NOTIFYSELFPOSITIONUPDATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -950,7 +952,7 @@ void PlayerCreature::addPersistentMessage(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, RPC_ADDPERSISTENTMESSAGE__LONG_);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -964,7 +966,7 @@ void PlayerCreature::dropPersistentMessage(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, RPC_DROPPERSISTENTMESSAGE__LONG_);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -978,7 +980,7 @@ PlayerObject* PlayerCreature::getPlayerObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, RPC_GETPLAYEROBJECT__);
 
 		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
@@ -991,7 +993,7 @@ bool PlayerCreature::isOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, RPC_ISONLINE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1004,7 +1006,7 @@ bool PlayerCreature::isOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, RPC_ISOFFLINE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1017,7 +1019,7 @@ bool PlayerCreature::isLoading() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, RPC_ISLOADING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1030,7 +1032,7 @@ bool PlayerCreature::isLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, RPC_ISLINKDEAD__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1043,7 +1045,7 @@ bool PlayerCreature::isLoggingIn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, RPC_ISLOGGINGIN__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1056,7 +1058,7 @@ bool PlayerCreature::isLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, RPC_ISLOGGINGOUT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1069,7 +1071,7 @@ unsigned int PlayerCreature::getAccountID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, RPC_GETACCOUNTID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1082,7 +1084,7 @@ bool PlayerCreature::isTeleporting() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, RPC_ISTELEPORTING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1095,7 +1097,7 @@ ZoneClientSession* PlayerCreature::getClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, RPC_GETCLIENT__);
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
@@ -1108,7 +1110,7 @@ byte PlayerCreature::getRaceID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, RPC_GETRACEID__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -1121,7 +1123,7 @@ unsigned long long PlayerCreature::getSavedParentID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, RPC_GETSAVEDPARENTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -1134,7 +1136,7 @@ unsigned long long PlayerCreature::getServerMovementTimeDelta() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, RPC_GETSERVERMOVEMENTTIMEDELTA__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -1156,7 +1158,7 @@ int PlayerCreature::getSavedZoneID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, RPC_GETSAVEDZONEID__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1169,7 +1171,7 @@ String PlayerCreature::getFirstName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 82);
+		DistributedMethod method(this, RPC_GETFIRSTNAME__);
 
 		method.executeWithAsciiReturn(_return_getFirstName);
 		return _return_getFirstName;
@@ -1183,7 +1185,7 @@ String PlayerCreature::getLastName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, RPC_GETLASTNAME__);
 
 		method.executeWithAsciiReturn(_return_getLastName);
 		return _return_getLastName;
@@ -1197,7 +1199,7 @@ void PlayerCreature::setSavedParentID(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, RPC_SETSAVEDPARENTID__LONG_);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -1211,7 +1213,7 @@ void PlayerCreature::setSavedZoneID(int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, RPC_SETSAVEDZONEID__INT_);
 		method.addSignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -1225,7 +1227,7 @@ void PlayerCreature::setSkillPoints(int points) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 86);
+		DistributedMethod method(this, RPC_SETSKILLPOINTS__INT_);
 		method.addSignedIntParameter(points);
 
 		method.executeWithVoidReturn();
@@ -1239,7 +1241,7 @@ void PlayerCreature::setTeleporting(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 87);
+		DistributedMethod method(this, RPC_SETTELEPORTING__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -1253,7 +1255,7 @@ void PlayerCreature::addSkillPoints(int points) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 88);
+		DistributedMethod method(this, RPC_ADDSKILLPOINTS__INT_);
 		method.addSignedIntParameter(points);
 
 		method.executeWithVoidReturn();
@@ -1267,7 +1269,7 @@ void PlayerCreature::setClient(ZoneClientSession* cli) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 89);
+		DistributedMethod method(this, RPC_SETCLIENT__ZONECLIENTSESSION_);
 		method.addObjectParameter(cli);
 
 		method.executeWithVoidReturn();
@@ -1281,7 +1283,7 @@ void PlayerCreature::setBiography(const UnicodeString& bio) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 90);
+		DistributedMethod method(this, RPC_SETBIOGRAPHY__UNICODESTRING_);
 		method.addUnicodeParameter(bio);
 
 		method.executeWithVoidReturn();
@@ -1295,7 +1297,7 @@ void PlayerCreature::setRaceID(byte id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 91);
+		DistributedMethod method(this, RPC_SETRACEID__BYTE_);
 		method.addByteParameter(id);
 
 		method.executeWithVoidReturn();
@@ -1309,7 +1311,7 @@ void PlayerCreature::setConversatingCreature(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 92);
+		DistributedMethod method(this, RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -1323,7 +1325,7 @@ void PlayerCreature::setClientLastMovementStamp(unsigned int stamp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 93);
+		DistributedMethod method(this, RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_);
 		method.addUnsignedIntParameter(stamp);
 
 		method.executeWithVoidReturn();
@@ -1337,7 +1339,7 @@ void PlayerCreature::updateServerLastMovementStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 94);
+		DistributedMethod method(this, RPC_UPDATESERVERLASTMOVEMENTSTAMP__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1350,7 +1352,7 @@ void PlayerCreature::setOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 95);
+		DistributedMethod method(this, RPC_SETOFFLINE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1363,7 +1365,7 @@ void PlayerCreature::setLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 96);
+		DistributedMethod method(this, RPC_SETLINKDEAD__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1376,7 +1378,7 @@ void PlayerCreature::setOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 97);
+		DistributedMethod method(this, RPC_SETONLINE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1389,7 +1391,7 @@ void PlayerCreature::setLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 98);
+		DistributedMethod method(this, RPC_SETLOGGINGOUT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1402,7 +1404,7 @@ void PlayerCreature::setAccountID(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 99);
+		DistributedMethod method(this, RPC_SETACCOUNTID__INT_);
 		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -1416,7 +1418,7 @@ void PlayerCreature::clearDisconnectEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 100);
+		DistributedMethod method(this, RPC_CLEARDISCONNECTEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1429,7 +1431,7 @@ void PlayerCreature::clearRecoveryEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 101);
+		DistributedMethod method(this, RPC_CLEARRECOVERYEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1442,7 +1444,7 @@ void PlayerCreature::addChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 102);
+		DistributedMethod method(this, RPC_ADDCHATROOM__CHATROOM_);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -1456,7 +1458,7 @@ void PlayerCreature::removeChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 103);
+		DistributedMethod method(this, RPC_REMOVECHATROOM__CHATROOM_);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -1470,7 +1472,7 @@ int PlayerCreature::getSkillPoints() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 104);
+		DistributedMethod method(this, RPC_GETSKILLPOINTS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1483,7 +1485,7 @@ unsigned int PlayerCreature::getNewSuiBoxID(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 105);
+		DistributedMethod method(this, RPC_GETNEWSUIBOXID__INT_);
 		method.addUnsignedIntParameter(type);
 
 		return method.executeWithUnsignedIntReturn();
@@ -1497,7 +1499,7 @@ bool PlayerCreature::hasSuiBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 106);
+		DistributedMethod method(this, RPC_HASSUIBOX__INT_);
 		method.addUnsignedIntParameter(boxID);
 
 		return method.executeWithBooleanReturn();
@@ -1511,7 +1513,7 @@ SuiBox* PlayerCreature::getSuiBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 107);
+		DistributedMethod method(this, RPC_GETSUIBOX__INT_);
 		method.addUnsignedIntParameter(boxID);
 
 		return (SuiBox*) method.executeWithObjectReturn();
@@ -1525,7 +1527,7 @@ void PlayerCreature::removeSuiBox(unsigned int boxID, bool closeWindowToClient) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 108);
+		DistributedMethod method(this, RPC_REMOVESUIBOX__INT_BOOL_);
 		method.addUnsignedIntParameter(boxID);
 		method.addBooleanParameter(closeWindowToClient);
 
@@ -1540,7 +1542,7 @@ void PlayerCreature::removeSuiBoxType(unsigned int windowType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 109);
+		DistributedMethod method(this, RPC_REMOVESUIBOXTYPE__INT_);
 		method.addUnsignedIntParameter(windowType);
 
 		method.executeWithVoidReturn();
@@ -1554,7 +1556,7 @@ bool PlayerCreature::hasSuiBoxWindowType(unsigned int windowType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 110);
+		DistributedMethod method(this, RPC_HASSUIBOXWINDOWTYPE__INT_);
 		method.addUnsignedIntParameter(windowType);
 
 		return method.executeWithBooleanReturn();
@@ -1568,7 +1570,7 @@ void PlayerCreature::closeSuiWindowType(unsigned int windowType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 111);
+		DistributedMethod method(this, RPC_CLOSESUIWINDOWTYPE__INT_);
 		method.addUnsignedIntParameter(windowType);
 
 		method.executeWithVoidReturn();
@@ -1582,7 +1584,7 @@ SuiBox* PlayerCreature::getSuiBoxFromWindowType(unsigned int windowType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 112);
+		DistributedMethod method(this, RPC_GETSUIBOXFROMWINDOWTYPE__INT_);
 		method.addUnsignedIntParameter(windowType);
 
 		return (SuiBox*) method.executeWithObjectReturn();
@@ -1596,7 +1598,7 @@ void PlayerCreature::addSuiBox(SuiBox* sui) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 113);
+		DistributedMethod method(this, RPC_ADDSUIBOX__SUIBOX_);
 		method.addObjectParameter(sui);
 
 		method.executeWithVoidReturn();
@@ -1610,7 +1612,7 @@ int PlayerCreature::getLotsRemaining() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 114);
+		DistributedMethod method(this, RPC_GETLOTSREMAINING__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1623,7 +1625,7 @@ void PlayerCreature::setLotsRemaining(int lots) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 115);
+		DistributedMethod method(this, RPC_SETLOTSREMAINING__INT_);
 		method.addSignedIntParameter(lots);
 
 		method.executeWithVoidReturn();
@@ -1637,7 +1639,7 @@ int PlayerCreature::getFactionStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 116);
+		DistributedMethod method(this, RPC_GETFACTIONSTATUS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1650,7 +1652,7 @@ UnicodeString PlayerCreature::getBiography() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 117);
+		DistributedMethod method(this, RPC_GETBIOGRAPHY__);
 
 		method.executeWithUnicodeReturn(_return_getBiography);
 		return _return_getBiography;
@@ -1664,7 +1666,7 @@ unsigned int PlayerCreature::getClientLastMovementStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 118);
+		DistributedMethod method(this, RPC_GETCLIENTLASTMOVEMENTSTAMP__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1677,7 +1679,7 @@ void PlayerCreature::setSurveyTool(SurveyTool* tool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 119);
+		DistributedMethod method(this, RPC_SETSURVEYTOOL__SURVEYTOOL_);
 		method.addObjectParameter(tool);
 
 		method.executeWithVoidReturn();
@@ -1691,7 +1693,7 @@ SurveyTool* PlayerCreature::getSurveyTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 120);
+		DistributedMethod method(this, RPC_GETSURVEYTOOL__);
 
 		return (SurveyTool*) method.executeWithObjectReturn();
 	} else
@@ -1713,7 +1715,7 @@ void PlayerCreature::setTeachingOrLearning(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 121);
+		DistributedMethod method(this, RPC_SETTEACHINGORLEARNING__BOOL_);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -1736,7 +1738,7 @@ WaypointObject* PlayerCreature::getSurveyWaypoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 122);
+		DistributedMethod method(this, RPC_GETSURVEYWAYPOINT__);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -1749,7 +1751,7 @@ CreatureObject* PlayerCreature::getConversatingCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 123);
+		DistributedMethod method(this, RPC_GETCONVERSATINGCREATURE__);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
@@ -1762,7 +1764,7 @@ int PlayerCreature::getCenteredBonus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 124);
+		DistributedMethod method(this, RPC_GETCENTEREDBONUS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1775,7 +1777,7 @@ void PlayerCreature::setCenteredBonus(int bonus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 125);
+		DistributedMethod method(this, RPC_SETCENTEREDBONUS__INT_);
 		method.addSignedIntParameter(bonus);
 
 		method.executeWithVoidReturn();
@@ -1798,7 +1800,7 @@ bool PlayerCreature::hasBadge(unsigned int badge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 126);
+		DistributedMethod method(this, RPC_HASBADGE__INT_);
 		method.addUnsignedIntParameter(badge);
 
 		return method.executeWithBooleanReturn();
@@ -1812,7 +1814,7 @@ CraftingTool* PlayerCreature::getLastCraftingToolUsed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 127);
+		DistributedMethod method(this, RPC_GETLASTCRAFTINGTOOLUSED__);
 
 		return (CraftingTool*) method.executeWithObjectReturn();
 	} else
@@ -1825,7 +1827,7 @@ void PlayerCreature::setLastCraftingToolUsed(CraftingTool* tool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 128);
+		DistributedMethod method(this, RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_);
 		method.addObjectParameter(tool);
 
 		method.executeWithVoidReturn();
@@ -1839,7 +1841,7 @@ bool PlayerCreature::isInvisible() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 129);
+		DistributedMethod method(this, RPC_ISINVISIBLE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1852,7 +1854,7 @@ void PlayerCreature::setInvisible(bool invis) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 130);
+		DistributedMethod method(this, RPC_SETINVISIBLE__BOOL_);
 		method.addBooleanParameter(invis);
 
 		method.executeWithVoidReturn();
@@ -1866,7 +1868,7 @@ BuildingObject* PlayerCreature::getDeclaredResidence() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 131);
+		DistributedMethod method(this, RPC_GETDECLAREDRESIDENCE__);
 
 		return (BuildingObject*) method.executeWithObjectReturn();
 	} else
@@ -1879,7 +1881,7 @@ void PlayerCreature::setDeclaredResidence(BuildingObject* residence) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 132);
+		DistributedMethod method(this, RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_);
 		method.addObjectParameter(residence);
 
 		method.executeWithVoidReturn();
@@ -1893,7 +1895,7 @@ void PlayerCreature::setCloningFacility(BuildingObject* cloningfac) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 133);
+		DistributedMethod method(this, RPC_SETCLONINGFACILITY__BUILDINGOBJECT_);
 		method.addObjectParameter(cloningfac);
 
 		method.executeWithVoidReturn();
@@ -1907,7 +1909,7 @@ BuildingObject* PlayerCreature::getCloningFacility() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 134);
+		DistributedMethod method(this, RPC_GETCLONINGFACILITY__);
 
 		return (BuildingObject*) method.executeWithObjectReturn();
 	} else
@@ -3132,8 +3134,6 @@ BuildingObject* PlayerCreatureImplementation::getCloningFacility() {
 
 PlayerCreatureAdapter::PlayerCreatureAdapter(PlayerCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_DISCONNECT__BOOL_BOOL_,RPC_UNLOAD__,RPC_RELOAD__ZONECLIENTSESSION_,RPC_LOGOUT__BOOL_,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATETODATABASE__,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDTOOWNER__BOOL_,RPC_SENDBADGESRESPONSETO__PLAYERCREATURE_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ISAGGRESSIVETO__PLAYERCREATURE_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_SETCOMBATSTATE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_ADDTODUELLIST__PLAYERCREATURE_,RPC_REMOVEFROMDUELLIST__PLAYERCREATURE_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__PLAYERCREATURE_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_NOTIFYSCENEREADY__,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_GETPLAYEROBJECT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_GETACCOUNTID__,RPC_ISTELEPORTING__,RPC_GETCLIENT__,RPC_GETRACEID__,RPC_GETSAVEDPARENTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_GETSAVEDZONEID__,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDZONEID__INT_,RPC_SETSKILLPOINTS__INT_,RPC_SETTELEPORTING__BOOL_,RPC_ADDSKILLPOINTS__INT_,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_SETRACEID__BYTE_,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SETACCOUNTID__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_GETSKILLPOINTS__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_GETLOTSREMAINING__,RPC_SETLOTSREMAINING__INT_,RPC_GETFACTIONSTATUS__,RPC_GETBIOGRAPHY__,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_SETSURVEYTOOL__SURVEYTOOL_,RPC_GETSURVEYTOOL__,RPC_SETTEACHINGORLEARNING__BOOL_,RPC_GETSURVEYWAYPOINT__,RPC_GETCONVERSATINGCREATURE__,RPC_GETCENTEREDBONUS__,RPC_SETCENTEREDBONUS__INT_,RPC_HASBADGE__INT_,RPC_GETLASTCRAFTINGTOOLUSED__,RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,};
 
 Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

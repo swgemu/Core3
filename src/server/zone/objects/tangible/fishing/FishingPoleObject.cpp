@@ -20,6 +20,8 @@
  *	FishingPoleObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETQUALITY__,RPC_SETQUALITY__INT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_DOFISHING__PLAYERCREATURE_,RPC_GETTEXT__PLAYERCREATURE_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_};
+
 FishingPoleObject::FishingPoleObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FishingPoleObjectImplementation* _implementation = new FishingPoleObjectImplementation();
 	_impl = _implementation;
@@ -39,7 +41,7 @@ void FishingPoleObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -52,7 +54,7 @@ int FishingPoleObject::getQuality() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETQUALITY__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -65,7 +67,7 @@ void FishingPoleObject::setQuality(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETQUALITY__INT_);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -79,7 +81,7 @@ void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -94,7 +96,7 @@ int FishingPoleObject::handleObjectMenuSelect(PlayerCreature* player, byte selec
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -109,7 +111,7 @@ int FishingPoleObject::canAddObject(SceneObject* object, int containmentType, St
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
@@ -125,7 +127,7 @@ void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -140,7 +142,7 @@ void FishingPoleObject::doFishing(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_DOFISHING__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -154,7 +156,7 @@ String FishingPoleObject::getText(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_GETTEXT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithAsciiReturn(_return_getText);
@@ -169,7 +171,7 @@ bool FishingPoleObject::removeObject(SceneObject* object, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(notifyClient);
 
@@ -346,8 +348,6 @@ void FishingPoleObjectImplementation::setQuality(int value) {
 
 FishingPoleObjectAdapter::FishingPoleObjectAdapter(FishingPoleObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETQUALITY__,RPC_SETQUALITY__INT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_DOFISHING__PLAYERCREATURE_,RPC_GETTEXT__PLAYERCREATURE_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_};
 
 Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

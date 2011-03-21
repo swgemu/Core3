@@ -14,6 +14,8 @@
  *	CampSiteActiveAreaStub
  */
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6};
+
 CampSiteActiveArea::CampSiteActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	CampSiteActiveAreaImplementation* _implementation = new CampSiteActiveAreaImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void CampSiteActiveArea::notifyEnter(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYENTER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -380,8 +382,6 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* player) {
 
 CampSiteActiveAreaAdapter::CampSiteActiveAreaAdapter(CampSiteActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
-
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6};
 
 Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

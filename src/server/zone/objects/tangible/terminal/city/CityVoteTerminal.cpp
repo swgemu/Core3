@@ -18,6 +18,8 @@
  *	CityVoteTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISCITYVOTETERMINAL__};
+
 CityVoteTerminal::CityVoteTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CityVoteTerminalImplementation* _implementation = new CityVoteTerminalImplementation();
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void CityVoteTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void CityVoteTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -65,7 +67,7 @@ int CityVoteTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -80,7 +82,7 @@ bool CityVoteTerminal::isCityVoteTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISCITYVOTETERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -234,8 +236,6 @@ bool CityVoteTerminalImplementation::isCityVoteTerminal() {
 
 CityVoteTerminalAdapter::CityVoteTerminalAdapter(CityVoteTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISCITYVOTETERMINAL__};
 
 Packet* CityVoteTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

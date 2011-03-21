@@ -20,6 +20,8 @@
  *	EntertainingSessionStub
  */
 
+enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_};
+
 EntertainingSession::EntertainingSession(CreatureObject* ent) : Facade(DummyConstructorParameter::instance()) {
 	EntertainingSessionImplementation* _implementation = new EntertainingSessionImplementation(ent);
 	_impl = _implementation;
@@ -39,7 +41,7 @@ void EntertainingSession::doEntertainerPatronEffects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_DOENTERTAINERPATRONEFFECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -52,7 +54,7 @@ void EntertainingSession::doPerformanceAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DOPERFORMANCEACTION__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -65,7 +67,7 @@ void EntertainingSession::addEntertainerFlourishBuff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ADDENTERTAINERFLOURISHBUFF__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -78,7 +80,7 @@ void EntertainingSession::startDancing(const String& dance, const String& animat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_STARTDANCING__STRING_STRING_);
 		method.addAsciiParameter(dance);
 		method.addAsciiParameter(animation);
 
@@ -93,7 +95,7 @@ void EntertainingSession::startPlayingMusic(const String& song, const String& in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_);
 		method.addAsciiParameter(song);
 		method.addAsciiParameter(instrumentAnimation);
 		method.addSignedIntParameter(instrid);
@@ -109,7 +111,7 @@ void EntertainingSession::startEntertaining() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_STARTENTERTAINING__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -122,7 +124,7 @@ void EntertainingSession::healWounds(CreatureObject* creature, float woundHeal, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_);
 		method.addObjectParameter(creature);
 		method.addFloatParameter(woundHeal);
 		method.addFloatParameter(shockHeal);
@@ -138,7 +140,7 @@ bool EntertainingSession::isInEntertainingBuilding(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		return method.executeWithBooleanReturn();
@@ -152,7 +154,7 @@ void EntertainingSession::doFlourish(int flourishNumber) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_DOFLOURISH__INT_);
 		method.addSignedIntParameter(flourishNumber);
 
 		method.executeWithVoidReturn();
@@ -166,7 +168,7 @@ bool EntertainingSession::canGiveEntertainBuff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_CANGIVEENTERTAINBUFF__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -179,7 +181,7 @@ void EntertainingSession::addFlourishXp(int xp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ADDFLOURISHXP__INT_);
 		method.addSignedIntParameter(xp);
 
 		method.executeWithVoidReturn();
@@ -193,7 +195,7 @@ void EntertainingSession::addHealingXp(int xp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ADDHEALINGXP__INT_);
 		method.addSignedIntParameter(xp);
 
 		method.executeWithVoidReturn();
@@ -207,7 +209,7 @@ int EntertainingSession::initializeSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_INITIALIZESESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -220,7 +222,7 @@ int EntertainingSession::cancelSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_CANCELSESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -233,7 +235,7 @@ int EntertainingSession::clearSession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_CLEARSESSION__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -246,7 +248,7 @@ void EntertainingSession::stopPlayingMusic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_STOPPLAYINGMUSIC__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -259,7 +261,7 @@ void EntertainingSession::stopDancing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_STOPDANCING__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -272,7 +274,7 @@ void EntertainingSession::activateAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_ACTIVATEACTION__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -285,7 +287,7 @@ void EntertainingSession::startTickTask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_STARTTICKTASK__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -334,7 +336,7 @@ int EntertainingSession::getEntertainerBuffStrength(CreatureObject* creature, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_);
 		method.addObjectParameter(creature);
 		method.addSignedIntParameter(performanceType);
 
@@ -349,7 +351,7 @@ int EntertainingSession::getEntertainerBuffDuration(CreatureObject* creature, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_);
 		method.addObjectParameter(creature);
 		method.addSignedIntParameter(performanceType);
 
@@ -364,7 +366,7 @@ void EntertainingSession::sendEntertainingUpdate(CreatureObject* creature, float
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_);
 		method.addObjectParameter(creature);
 		method.addFloatParameter(entval);
 		method.addAsciiParameter(performance);
@@ -382,7 +384,7 @@ void EntertainingSession::sendEntertainmentUpdate(CreatureObject* creature, unsi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_);
 		method.addObjectParameter(creature);
 		method.addUnsignedLongParameter(entid);
 		method.addAsciiParameter(mood);
@@ -399,7 +401,7 @@ void EntertainingSession::activateEntertainerBuff(CreatureObject* creature, int 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_);
 		method.addObjectParameter(creature);
 		method.addSignedIntParameter(performanceType);
 
@@ -414,7 +416,7 @@ Instrument* EntertainingSession::getInstrument(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_GETINSTRUMENT__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		return (Instrument*) method.executeWithObjectReturn();
@@ -428,7 +430,7 @@ void EntertainingSession::addWatcher(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_ADDWATCHER__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -442,7 +444,7 @@ void EntertainingSession::addListener(CreatureObject* listener) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_ADDLISTENER__CREATUREOBJECT_);
 		method.addObjectParameter(listener);
 
 		method.executeWithVoidReturn();
@@ -456,7 +458,7 @@ bool EntertainingSession::isDancing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_ISDANCING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -469,7 +471,7 @@ bool EntertainingSession::isPlayingMusic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_ISPLAYINGMUSIC__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -482,7 +484,7 @@ bool EntertainingSession::isAcceptingBandFlourishes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_ISACCEPTINGBANDFLOURISHES__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -495,7 +497,7 @@ void EntertainingSession::setAcceptingBandFlourishes(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_SETACCEPTINGBANDFLOURISHES__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -509,7 +511,7 @@ void EntertainingSession::removeWatcher(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_REMOVEWATCHER__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -523,7 +525,7 @@ void EntertainingSession::removeListener(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_REMOVELISTENER__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -537,7 +539,7 @@ void EntertainingSession::setPerformanceName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_SETPERFORMANCENAME__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -551,7 +553,7 @@ void EntertainingSession::setDancing(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_SETDANCING__BOOL_);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -565,7 +567,7 @@ void EntertainingSession::setTargetInstrument(bool var) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_SETTARGETINSTRUMENT__BOOL_);
 		method.addBooleanParameter(var);
 
 		method.executeWithVoidReturn();
@@ -997,8 +999,6 @@ void EntertainingSessionImplementation::setTargetInstrument(bool var) {
 
 EntertainingSessionAdapter::EntertainingSessionAdapter(EntertainingSessionImplementation* obj) : FacadeAdapter(obj) {
 }
-
-enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_};
 
 Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

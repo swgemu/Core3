@@ -12,6 +12,8 @@
  *	MedicalBuildingObjectStub
  */
 
+enum {RPC_ISMEDICALBUILDINGOBJECT__ = 6};
+
 MedicalBuildingObject::MedicalBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	MedicalBuildingObjectImplementation* _implementation = new MedicalBuildingObjectImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ bool MedicalBuildingObject::isMedicalBuildingObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ISMEDICALBUILDINGOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -178,8 +180,6 @@ bool MedicalBuildingObjectImplementation::isMedicalBuildingObject() {
 
 MedicalBuildingObjectAdapter::MedicalBuildingObjectAdapter(MedicalBuildingObjectImplementation* obj) : BuildingObjectAdapter(obj) {
 }
-
-enum {RPC_ISMEDICALBUILDINGOBJECT__ = 6};
 
 Packet* MedicalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -18,6 +18,8 @@
  *	ContainerStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CHECKPERMISSION__PLAYERCREATURE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ISCONTAINEROBJECT__,RPC_ISCONTAINERLOCKED__,RPC_SETLOCKEDSTATUS__BOOL_};
+
 Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
 	ContainerImplementation* _implementation = new ContainerImplementation();
 	_impl = _implementation;
@@ -46,7 +48,7 @@ void Container::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -68,7 +70,7 @@ int Container::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -83,7 +85,7 @@ bool Container::checkPermission(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CHECKPERMISSION__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -97,7 +99,7 @@ int Container::canAddObject(SceneObject* object, int containmentType, String& er
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addAsciiParameter(errorDescription);
@@ -113,7 +115,7 @@ bool Container::isContainerObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISCONTAINEROBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -126,7 +128,7 @@ bool Container::isContainerLocked() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISCONTAINERLOCKED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -139,7 +141,7 @@ void Container::setLockedStatus(bool lock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETLOCKEDSTATUS__BOOL_);
 		method.addBooleanParameter(lock);
 
 		method.executeWithVoidReturn();
@@ -312,8 +314,6 @@ void ContainerImplementation::setLockedStatus(bool lock) {
 
 ContainerAdapter::ContainerAdapter(ContainerImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CHECKPERMISSION__PLAYERCREATURE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ISCONTAINEROBJECT__,RPC_ISCONTAINERLOCKED__,RPC_SETLOCKEDSTATUS__BOOL_};
 
 Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

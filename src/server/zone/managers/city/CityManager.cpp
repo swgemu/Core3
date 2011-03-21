@@ -16,6 +16,8 @@
  *	CityManagerStub
  */
 
+enum {RPC_LOADLUACONFIG__ = 6,RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_CHANGECITYNAME__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_VALIDATECITYNAME__STRING_,RPC_HANDLECITYADVANCEMENT__CITYHALLOBJECT_,RPC_EXPANDCITY__CITYHALLOBJECT_,RPC_CONTRACTCITY__CITYHALLOBJECT_,RPC_DESTROYCITY__CITYHALLOBJECT_,RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_,RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_,RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_LONG_,RPC_CHECKCITIESCAPPEDATRANK__BYTE_,RPC_GETCITIESALLOWED__BYTE_,RPC_ADDCITY__CITYHALLOBJECT_,RPC_GETTOTALCITIES__};
+
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void CityManager::loadLuaConfig() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_LOADLUACONFIG__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -48,7 +50,7 @@ void CityManager::createNewCity(CityHallObject* city, PlayerCreature* player, co
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_STRING_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
@@ -64,7 +66,7 @@ void CityManager::changeCityName(CityHallObject* city, PlayerCreature* player, c
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_CHANGECITYNAME__CITYHALLOBJECT_PLAYERCREATURE_STRING_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
@@ -80,7 +82,7 @@ bool CityManager::validateCityName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_VALIDATECITYNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -112,7 +114,7 @@ void CityManager::handleCityAdvancement(CityHallObject* city) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_HANDLECITYADVANCEMENT__CITYHALLOBJECT_);
 		method.addObjectParameter(city);
 
 		method.executeWithVoidReturn();
@@ -126,7 +128,7 @@ void CityManager::expandCity(CityHallObject* city) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_EXPANDCITY__CITYHALLOBJECT_);
 		method.addObjectParameter(city);
 
 		method.executeWithVoidReturn();
@@ -140,7 +142,7 @@ void CityManager::contractCity(CityHallObject* city) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_CONTRACTCITY__CITYHALLOBJECT_);
 		method.addObjectParameter(city);
 
 		method.executeWithVoidReturn();
@@ -154,7 +156,7 @@ void CityManager::destroyCity(CityHallObject* city) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_DESTROYCITY__CITYHALLOBJECT_);
 		method.addObjectParameter(city);
 
 		method.executeWithVoidReturn();
@@ -168,7 +170,7 @@ void CityManager::declareCitizenship(CityHallObject* city, PlayerCreature* playe
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(sendMail);
@@ -184,7 +186,7 @@ void CityManager::revokeCitizenship(CityHallObject* city, PlayerCreature* player
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(sendMail);
@@ -200,7 +202,7 @@ void CityManager::addMilitiaMember(CityHallObject* city, PlayerCreature* player,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_STRING_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(citizenName);
@@ -216,7 +218,7 @@ void CityManager::removeMilitiaMember(CityHallObject* city, PlayerCreature* play
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_LONG_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(playerID);
@@ -232,7 +234,7 @@ bool CityManager::checkCitiesCappedAtRank(byte rank) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_CHECKCITIESCAPPEDATRANK__BYTE_);
 		method.addByteParameter(rank);
 
 		return method.executeWithBooleanReturn();
@@ -246,7 +248,7 @@ byte CityManager::getCitiesAllowed(byte rank) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETCITIESALLOWED__BYTE_);
 		method.addByteParameter(rank);
 
 		return method.executeWithByteReturn();
@@ -260,7 +262,7 @@ void CityManager::addCity(CityHallObject* city) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_ADDCITY__CITYHALLOBJECT_);
 		method.addObjectParameter(city);
 
 		method.executeWithVoidReturn();
@@ -274,7 +276,7 @@ int CityManager::getTotalCities() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETTOTALCITIES__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -469,8 +471,6 @@ int CityManagerImplementation::getTotalCities() {
 
 CityManagerAdapter::CityManagerAdapter(CityManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_LOADLUACONFIG__ = 6,RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_CHANGECITYNAME__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_VALIDATECITYNAME__STRING_,RPC_HANDLECITYADVANCEMENT__CITYHALLOBJECT_,RPC_EXPANDCITY__CITYHALLOBJECT_,RPC_CONTRACTCITY__CITYHALLOBJECT_,RPC_DESTROYCITY__CITYHALLOBJECT_,RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_,RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_,RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_LONG_,RPC_CHECKCITIESCAPPEDATRANK__BYTE_,RPC_GETCITIESALLOWED__BYTE_,RPC_ADDCITY__CITYHALLOBJECT_,RPC_GETTOTALCITIES__};
 
 Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

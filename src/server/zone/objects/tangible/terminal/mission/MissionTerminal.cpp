@@ -16,6 +16,8 @@
  *	MissionTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__,RPC_ISSLICER__PLAYERCREATURE_,RPC_ADDSLICER__PLAYERCREATURE_,RPC_REMOVESLICER__PLAYERCREATURE_};
+
 MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	MissionTerminalImplementation* _implementation = new MissionTerminalImplementation();
 	_impl = _implementation;
@@ -44,7 +46,7 @@ void MissionTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -57,7 +59,7 @@ int MissionTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -72,7 +74,7 @@ bool MissionTerminal::isMissionTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISMISSIONTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -85,7 +87,7 @@ bool MissionTerminal::isArtisanTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISARTISANTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -98,7 +100,7 @@ bool MissionTerminal::isGeneralTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISGENERALTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -111,7 +113,7 @@ bool MissionTerminal::isBountyTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISBOUNTYTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -124,7 +126,7 @@ bool MissionTerminal::isEntertainerTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISENTERTAINERTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -137,7 +139,7 @@ bool MissionTerminal::isImperialTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISIMPERIALTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -150,7 +152,7 @@ bool MissionTerminal::isNewbieTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ISNEWBIETERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -163,7 +165,7 @@ bool MissionTerminal::isRebelTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_ISREBELTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -176,7 +178,7 @@ bool MissionTerminal::isScoutTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ISSCOUTTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -189,7 +191,7 @@ bool MissionTerminal::isStatueTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_ISSTATUETERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -202,7 +204,7 @@ bool MissionTerminal::isSlicer(PlayerCreature* slicer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_ISSLICER__PLAYERCREATURE_);
 		method.addObjectParameter(slicer);
 
 		return method.executeWithBooleanReturn();
@@ -216,7 +218,7 @@ void MissionTerminal::addSlicer(PlayerCreature* slicer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_ADDSLICER__PLAYERCREATURE_);
 		method.addObjectParameter(slicer);
 
 		method.executeWithVoidReturn();
@@ -230,7 +232,7 @@ void MissionTerminal::removeSlicer(PlayerCreature* slicer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_REMOVESLICER__PLAYERCREATURE_);
 		method.addObjectParameter(slicer);
 
 		method.executeWithVoidReturn();
@@ -488,8 +490,6 @@ void MissionTerminalImplementation::removeSlicer(PlayerCreature* slicer) {
 
 MissionTerminalAdapter::MissionTerminalAdapter(MissionTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__,RPC_ISSLICER__PLAYERCREATURE_,RPC_ADDSLICER__PLAYERCREATURE_,RPC_REMOVESLICER__PLAYERCREATURE_};
 
 Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

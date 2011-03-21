@@ -16,6 +16,8 @@
  *	DraftSchematicStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_,RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETGROUPNAME__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_};
+
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void DraftSchematic::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -66,7 +68,7 @@ void DraftSchematic::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -80,7 +82,7 @@ void DraftSchematic::sendDraftSlotsTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -94,7 +96,7 @@ void DraftSchematic::sendResourceWeightsTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -108,7 +110,7 @@ SceneObject* DraftSchematic::createManufactureSchematic(SceneObject* craftingToo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_);
 		method.addObjectParameter(craftingTool);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -122,7 +124,7 @@ void DraftSchematic::setSchematicID(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETSCHEMATICID__INT_);
 		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -136,7 +138,7 @@ unsigned int DraftSchematic::getSchematicID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETSCHEMATICID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -149,7 +151,7 @@ int DraftSchematic::getDraftSlotCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_GETDRAFTSLOTCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -162,7 +164,7 @@ bool DraftSchematic::isValidDraftSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ISVALIDDRAFTSCHEMATIC__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -184,7 +186,7 @@ int DraftSchematic::getResourceWeightCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETRESOURCEWEIGHTCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -206,7 +208,7 @@ float DraftSchematic::getComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETCOMPLEXITY__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -219,7 +221,7 @@ unsigned int DraftSchematic::getToolTab() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETTOOLTAB__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -232,7 +234,7 @@ float DraftSchematic::getSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETSIZE__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -245,7 +247,7 @@ String DraftSchematic::getXpType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETXPTYPE__);
 
 		method.executeWithAsciiReturn(_return_getXpType);
 		return _return_getXpType;
@@ -259,7 +261,7 @@ int DraftSchematic::getXpAmount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETXPAMOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -272,7 +274,7 @@ String DraftSchematic::getAssemblySkill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETASSEMBLYSKILL__);
 
 		method.executeWithAsciiReturn(_return_getAssemblySkill);
 		return _return_getAssemblySkill;
@@ -286,7 +288,7 @@ String DraftSchematic::getExperimentationSkill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_GETEXPERIMENTATIONSKILL__);
 
 		method.executeWithAsciiReturn(_return_getExperimentationSkill);
 		return _return_getExperimentationSkill;
@@ -300,7 +302,7 @@ String DraftSchematic::getCustomizationSkill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_GETCUSTOMIZATIONSKILL__);
 
 		method.executeWithAsciiReturn(_return_getCustomizationSkill);
 		return _return_getCustomizationSkill;
@@ -341,7 +343,7 @@ String DraftSchematic::getCustomName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_GETCUSTOMNAME__);
 
 		method.executeWithAsciiReturn(_return_getCustomName);
 		return _return_getCustomName;
@@ -355,7 +357,7 @@ unsigned int DraftSchematic::getTanoCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_GETTANOCRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -368,7 +370,7 @@ String DraftSchematic::getGroupName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_GETGROUPNAME__);
 
 		method.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
@@ -382,7 +384,7 @@ int DraftSchematic::getUseCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_GETUSECOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -395,7 +397,7 @@ void DraftSchematic::setUseCount(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_SETUSECOUNT__INT_);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -409,7 +411,7 @@ void DraftSchematic::decreaseUseCount(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_DECREASEUSECOUNT__INT_);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -423,7 +425,7 @@ void DraftSchematic::increaseUseCount(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_INCREASEUSECOUNT__INT_);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -633,8 +635,6 @@ void DraftSchematicImplementation::increaseUseCount(int count) {
 
 DraftSchematicAdapter::DraftSchematicAdapter(DraftSchematicImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_,RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETGROUPNAME__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_};
 
 Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

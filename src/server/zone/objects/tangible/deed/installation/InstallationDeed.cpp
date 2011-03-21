@@ -14,6 +14,8 @@
  *	InstallationDeedStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__};
+
 InstallationDeed::InstallationDeed() : Deed(DummyConstructorParameter::instance()) {
 	InstallationDeedImplementation* _implementation = new InstallationDeedImplementation();
 	_impl = _implementation;
@@ -42,7 +44,7 @@ void InstallationDeed::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -55,7 +57,7 @@ int InstallationDeed::handleObjectMenuSelect(PlayerCreature* player, byte select
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -70,7 +72,7 @@ void InstallationDeed::setSurplusMaintenance(unsigned int surplusMaint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETSURPLUSMAINTENANCE__INT_);
 		method.addUnsignedIntParameter(surplusMaint);
 
 		method.executeWithVoidReturn();
@@ -84,7 +86,7 @@ unsigned int InstallationDeed::getSurplusMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETSURPLUSMAINTENANCE__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -97,7 +99,7 @@ unsigned int InstallationDeed::getSurplusPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETSURPLUSPOWER__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -110,7 +112,7 @@ void InstallationDeed::setSurplusPower(unsigned int power) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETSURPLUSPOWER__INT_);
 		method.addUnsignedIntParameter(power);
 
 		method.executeWithVoidReturn();
@@ -124,7 +126,7 @@ bool InstallationDeed::isInstallationDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ISINSTALLATIONDEED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -321,8 +323,6 @@ bool InstallationDeedImplementation::isInstallationDeed() {
 
 InstallationDeedAdapter::InstallationDeedAdapter(InstallationDeedImplementation* obj) : DeedAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__};
 
 Packet* InstallationDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

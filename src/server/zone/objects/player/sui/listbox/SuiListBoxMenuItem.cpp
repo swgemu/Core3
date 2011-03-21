@@ -10,6 +10,8 @@
  *	SuiListBoxMenuItemStub
  */
 
+enum {RPC_GETOBJECTID__ = 6,RPC_GETOPTIONNAME__};
+
 SuiListBoxMenuItem::SuiListBoxMenuItem(const String& name, unsigned long long oid) : ManagedObject(DummyConstructorParameter::instance()) {
 	SuiListBoxMenuItemImplementation* _implementation = new SuiListBoxMenuItemImplementation(name, oid);
 	_impl = _implementation;
@@ -29,7 +31,7 @@ unsigned long long SuiListBoxMenuItem::getObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_GETOBJECTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -42,7 +44,7 @@ String SuiListBoxMenuItem::getOptionName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETOPTIONNAME__);
 
 		method.executeWithAsciiReturn(_return_getOptionName);
 		return _return_getOptionName;
@@ -223,8 +225,6 @@ String SuiListBoxMenuItemImplementation::getOptionName() {
 
 SuiListBoxMenuItemAdapter::SuiListBoxMenuItemAdapter(SuiListBoxMenuItemImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_GETOBJECTID__ = 6,RPC_GETOPTIONNAME__};
 
 Packet* SuiListBoxMenuItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

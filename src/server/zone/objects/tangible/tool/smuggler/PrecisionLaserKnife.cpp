@@ -24,6 +24,8 @@
  *	PrecisionLaserKnifeStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_UPDATECHARGES__INT_,RPC_USECHARGE__PLAYERCREATURE_,RPC_GETCHARGES__};
+
 PrecisionLaserKnife::PrecisionLaserKnife() : SlicingTool(DummyConstructorParameter::instance()) {
 	PrecisionLaserKnifeImplementation* _implementation = new PrecisionLaserKnifeImplementation();
 	_impl = _implementation;
@@ -43,7 +45,7 @@ int PrecisionLaserKnife::handleObjectMenuSelect(PlayerCreature* player, byte sel
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -67,7 +69,7 @@ void PrecisionLaserKnife::updateCraftingValues(ManufactureSchematic* schematic) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -81,7 +83,7 @@ void PrecisionLaserKnife::updateCharges(int val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_UPDATECHARGES__INT_);
 		method.addSignedIntParameter(val);
 
 		method.executeWithVoidReturn();
@@ -95,7 +97,7 @@ void PrecisionLaserKnife::useCharge(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_USECHARGE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -109,7 +111,7 @@ int PrecisionLaserKnife::getCharges() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETCHARGES__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -292,8 +294,6 @@ int PrecisionLaserKnifeImplementation::getCharges() {
 
 PrecisionLaserKnifeAdapter::PrecisionLaserKnifeAdapter(PrecisionLaserKnifeImplementation* obj) : SlicingToolAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_UPDATECHARGES__INT_,RPC_USECHARGE__PLAYERCREATURE_,RPC_GETCHARGES__};
 
 Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

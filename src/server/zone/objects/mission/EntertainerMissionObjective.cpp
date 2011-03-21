@@ -18,6 +18,8 @@
  *	EntertainerMissionObjectiveStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
+
 EntertainerMissionObjective::EntertainerMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	EntertainerMissionObjectiveImplementation* _implementation = new EntertainerMissionObjectiveImplementation(mission);
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void EntertainerMissionObjective::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void EntertainerMissionObjective::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -63,7 +65,7 @@ void EntertainerMissionObjective::abort() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ABORT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -76,7 +78,7 @@ void EntertainerMissionObjective::complete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_COMPLETE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -89,7 +91,7 @@ int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addObjectParameter(observer);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
@@ -246,8 +248,6 @@ void EntertainerMissionObjectiveImplementation::initializeTransientMembers() {
 
 EntertainerMissionObjectiveAdapter::EntertainerMissionObjectiveAdapter(EntertainerMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
 
 Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -18,6 +18,8 @@
  *	ReconMissionObjectiveStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__};
+
 ReconMissionObjective::ReconMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	ReconMissionObjectiveImplementation* _implementation = new ReconMissionObjectiveImplementation(mission);
 	_impl = _implementation;
@@ -37,7 +39,7 @@ void ReconMissionObjective::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -50,7 +52,7 @@ void ReconMissionObjective::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ACTIVATE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -63,7 +65,7 @@ void ReconMissionObjective::abort() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ABORT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -76,7 +78,7 @@ void ReconMissionObjective::complete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_COMPLETE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -243,8 +245,6 @@ void ReconMissionObjectiveImplementation::initializeTransientMembers() {
 
 ReconMissionObjectiveAdapter::ReconMissionObjectiveAdapter(ReconMissionObjectiveImplementation* obj) : MissionObjectiveAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__};
 
 Packet* ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

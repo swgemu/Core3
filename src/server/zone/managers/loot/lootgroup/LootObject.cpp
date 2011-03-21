@@ -8,6 +8,8 @@
  *	LootObjectStub
  */
 
+enum {RPC_CHECK__STRING_INT_INT_ = 6,RPC_GETTEMPLATECRC__,RPC_GETCHANCE__};
+
 LootObject::LootObject(unsigned int loID, String& n, unsigned int tCRC, unsigned int lootG, int ch) : ManagedObject(DummyConstructorParameter::instance()) {
 	LootObjectImplementation* _implementation = new LootObjectImplementation(loID, n, tCRC, lootG, ch);
 	_impl = _implementation;
@@ -27,7 +29,7 @@ void LootObject::check(String& newName, unsigned int newTemplateCRC, int newChan
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_CHECK__STRING_INT_INT_);
 		method.addAsciiParameter(newName);
 		method.addUnsignedIntParameter(newTemplateCRC);
 		method.addSignedIntParameter(newChance);
@@ -43,7 +45,7 @@ unsigned int LootObject::getTemplateCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETTEMPLATECRC__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -56,7 +58,7 @@ int LootObject::getChance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETCHANCE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -290,8 +292,6 @@ int LootObjectImplementation::getChance() {
 
 LootObjectAdapter::LootObjectAdapter(LootObjectImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_CHECK__STRING_INT_INT_ = 6,RPC_GETTEMPLATECRC__,RPC_GETCHANCE__};
 
 Packet* LootObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

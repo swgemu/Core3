@@ -14,6 +14,8 @@
  *	GuildObjectStub
  */
 
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__PLAYERCREATURE_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_};
+
 GuildObject::GuildObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GuildObjectImplementation* _implementation = new GuildObjectImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void GuildObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -47,7 +49,7 @@ void GuildObject::broadcastMessage(BaseMessage* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__BASEMESSAGE_);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -61,7 +63,7 @@ void GuildObject::broadcastMessage(PlayerCreature* player, BaseMessage* msg, boo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(msg);
 		method.addBooleanParameter(sendSelf);
@@ -77,7 +79,7 @@ void GuildObject::addMember(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ADDMEMBER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -91,7 +93,7 @@ void GuildObject::removeMember(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_REMOVEMEMBER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -105,7 +107,7 @@ bool GuildObject::hasMember(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_HASMEMBER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -128,7 +130,7 @@ void GuildObject::addSponsoredPlayer(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_ADDSPONSOREDPLAYER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -142,7 +144,7 @@ void GuildObject::removeSponsoredPlayer(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_REMOVESPONSOREDPLAYER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		method.executeWithVoidReturn();
@@ -156,7 +158,7 @@ bool GuildObject::hasSponsoredPlayer(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_HASSPONSOREDPLAYER__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -170,7 +172,7 @@ unsigned long long GuildObject::getSponsoredPlayer(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETSPONSOREDPLAYER__INT_);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithUnsignedLongReturn();
@@ -184,7 +186,7 @@ int GuildObject::getSponsoredPlayerCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETSPONSOREDPLAYERCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -197,7 +199,7 @@ void GuildObject::setChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETCHATROOM__CHATROOM_);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -211,7 +213,7 @@ ChatRoom* GuildObject::getChatRoom() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETCHATROOM__);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -224,7 +226,7 @@ int GuildObject::getTotalMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_GETTOTALMEMBERS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -237,7 +239,7 @@ unsigned long long GuildObject::getGuildLeaderID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_GETGUILDLEADERID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -259,7 +261,7 @@ String GuildObject::getGuildAbbrev() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETGUILDABBREV__);
 
 		method.executeWithAsciiReturn(_return_getGuildAbbrev);
 		return _return_getGuildAbbrev;
@@ -273,7 +275,7 @@ void GuildObject::setGuildAbbrev(const String& abbrev) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_SETGUILDABBREV__STRING_);
 		method.addAsciiParameter(abbrev);
 
 		method.executeWithVoidReturn();
@@ -287,7 +289,7 @@ void GuildObject::setGuildLeaderID(unsigned long long leaderID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_SETGUILDLEADERID__LONG_);
 		method.addUnsignedLongParameter(leaderID);
 
 		method.executeWithVoidReturn();
@@ -301,7 +303,7 @@ void GuildObject::setGuildID(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_SETGUILDID__INT_);
 		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -315,7 +317,7 @@ unsigned int GuildObject::getGuildID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_GETGUILDID__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -328,7 +330,7 @@ void GuildObject::setGuildName(const String& gname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETGUILDNAME__STRING_);
 		method.addAsciiParameter(gname);
 
 		method.executeWithVoidReturn();
@@ -342,7 +344,7 @@ String GuildObject::getGuildName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_GETGUILDNAME__);
 
 		method.executeWithAsciiReturn(_return_getGuildName);
 		return _return_getGuildName;
@@ -356,7 +358,7 @@ String GuildObject::getGuildKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_GETGUILDKEY__);
 
 		method.executeWithAsciiReturn(_return_getGuildKey);
 		return _return_getGuildKey;
@@ -370,7 +372,7 @@ bool GuildObject::isGuildObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_ISGUILDOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -383,7 +385,7 @@ bool GuildObject::isGuildLeader(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_ISGUILDLEADER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -397,7 +399,7 @@ bool GuildObject::hasMailPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_HASMAILPERMISSION__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -411,7 +413,7 @@ bool GuildObject::hasSponsorPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_HASSPONSORPERMISSION__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -425,7 +427,7 @@ bool GuildObject::hasAcceptPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_HASACCEPTPERMISSION__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -439,7 +441,7 @@ bool GuildObject::hasDisbandPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_HASDISBANDPERMISSION__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -453,7 +455,7 @@ bool GuildObject::hasKickPermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_HASKICKPERMISSION__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -467,7 +469,7 @@ bool GuildObject::hasNamePermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_HASNAMEPERMISSION__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -481,7 +483,7 @@ bool GuildObject::hasTitlePermission(unsigned long long playerID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_HASTITLEPERMISSION__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
 		return method.executeWithBooleanReturn();
@@ -831,8 +833,6 @@ bool GuildObjectImplementation::isGuildLeader(PlayerCreature* player) {
 
 GuildObjectAdapter::GuildObjectAdapter(GuildObjectImplementation* obj) : SceneObjectAdapter(obj) {
 }
-
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__PLAYERCREATURE_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_};
 
 Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

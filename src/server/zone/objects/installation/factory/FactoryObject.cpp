@@ -16,6 +16,8 @@
  *	FactoryObjectStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_UPDATEINSTALLATIONWORK__,RPC_SENDINSERTMANUSUI__PLAYERCREATURE_,RPC_SENDINGREDIENTSNEEDEDSUI__PLAYERCREATURE_,RPC_SENDINGREDIENTHOPPER__PLAYERCREATURE_,RPC_SENDOUTPUTHOPPER__PLAYERCREATURE_,RPC_HANDLEINSERTFACTORYSCHEM__PLAYERCREATURE_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__PLAYERCREATURE_,RPC_HANDLEOPERATETOGGLE__PLAYERCREATURE_,RPC_CREATENEWOBJECT__,};
+
 FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	FactoryObjectImplementation* _implementation = new FactoryObjectImplementation();
 	_impl = _implementation;
@@ -44,7 +46,7 @@ void FactoryObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -57,7 +59,7 @@ void FactoryObject::notifyLoadFromDatabase() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -88,7 +90,7 @@ int FactoryObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -103,7 +105,7 @@ bool FactoryObject::isFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISFACTORY__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -116,7 +118,7 @@ void FactoryObject::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -129,7 +131,7 @@ void FactoryObject::updateInstallationWork() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_UPDATEINSTALLATIONWORK__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -142,7 +144,7 @@ void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SENDINSERTMANUSUI__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -156,7 +158,7 @@ void FactoryObject::sendIngredientsNeededSui(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SENDINGREDIENTSNEEDEDSUI__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -170,7 +172,7 @@ void FactoryObject::sendIngredientHopper(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SENDINGREDIENTHOPPER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -184,7 +186,7 @@ void FactoryObject::sendOutputHopper(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SENDOUTPUTHOPPER__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -198,7 +200,7 @@ void FactoryObject::handleInsertFactorySchem(PlayerCreature* player, Manufacture
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_HANDLEINSERTFACTORYSCHEM__PLAYERCREATURE_MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(schematic);
 
@@ -213,7 +215,7 @@ void FactoryObject::handleRemoveFactorySchem(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_HANDLEREMOVEFACTORYSCHEM__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -227,7 +229,7 @@ void FactoryObject::handleOperateToggle(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_HANDLEOPERATETOGGLE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -241,7 +243,7 @@ void FactoryObject::createNewObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_CREATENEWOBJECT__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -450,8 +452,6 @@ bool FactoryObjectImplementation::isFactory() {
 
 FactoryObjectAdapter::FactoryObjectAdapter(FactoryObjectImplementation* obj) : InstallationObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_UPDATEINSTALLATIONWORK__,RPC_SENDINSERTMANUSUI__PLAYERCREATURE_,RPC_SENDINGREDIENTSNEEDEDSUI__PLAYERCREATURE_,RPC_SENDINGREDIENTHOPPER__PLAYERCREATURE_,RPC_SENDOUTPUTHOPPER__PLAYERCREATURE_,RPC_HANDLEINSERTFACTORYSCHEM__PLAYERCREATURE_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__PLAYERCREATURE_,RPC_HANDLEOPERATETOGGLE__PLAYERCREATURE_,RPC_CREATENEWOBJECT__,};
 
 Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -10,6 +10,8 @@
  *	LairGroupStub
  */
 
+enum {RPC_ISLAIRGROUP__ = 6};
+
 LairGroup::LairGroup() : AiGroup(DummyConstructorParameter::instance()) {
 	LairGroupImplementation* _implementation = new LairGroupImplementation();
 	_impl = _implementation;
@@ -29,7 +31,7 @@ bool LairGroup::isLairGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ISLAIRGROUP__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -187,8 +189,6 @@ bool LairGroupImplementation::isLairGroup() {
 
 LairGroupAdapter::LairGroupAdapter(LairGroupImplementation* obj) : AiGroupAdapter(obj) {
 }
-
-enum {RPC_ISLAIRGROUP__ = 6};
 
 Packet* LairGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

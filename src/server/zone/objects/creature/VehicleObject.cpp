@@ -22,6 +22,8 @@
  *	VehicleObjectStub
  */
 
+enum {RPC_CHECKINRANGEGARAGE__,RPC_INSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_REPAIRVEHICLE__PLAYERCREATURE_,RPC_CALCULATEREPAIRCOST__PLAYERCREATURE_,RPC_SENDREPAIRCONFIRMTO__PLAYERCREATURE_,RPC_ISVEHICLEOBJECT__};
+
 VehicleObject::VehicleObject() : CreatureObject(DummyConstructorParameter::instance()) {
 	VehicleObjectImplementation* _implementation = new VehicleObjectImplementation();
 	_impl = _implementation;
@@ -59,7 +61,7 @@ bool VehicleObject::checkInRangeGarage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_CHECKINRANGEGARAGE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -72,7 +74,7 @@ void VehicleObject::insertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -86,7 +88,7 @@ void VehicleObject::setPosture(int newPosture, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETPOSTURE__INT_BOOL_);
 		method.addSignedIntParameter(newPosture);
 		method.addBooleanParameter(notifyClient);
 
@@ -101,7 +103,7 @@ int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, int d
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damage);
@@ -119,7 +121,7 @@ int VehicleObject::healDamage(TangibleObject* healer, int damageType, int damage
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_);
 		method.addObjectParameter(healer);
 		method.addSignedIntParameter(damageType);
 		method.addSignedIntParameter(damageToHeal);
@@ -136,7 +138,7 @@ void VehicleObject::addDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ADDDEFENDER__SCENEOBJECT_);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -150,7 +152,7 @@ void VehicleObject::removeDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_REMOVEDEFENDER__SCENEOBJECT_);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -164,7 +166,7 @@ void VehicleObject::setDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETDEFENDER__SCENEOBJECT_);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -178,7 +180,7 @@ bool VehicleObject::isAttackableBy(CreatureObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -192,7 +194,7 @@ int VehicleObject::notifyObjectDestructionObservers(TangibleObject* attacker, in
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(condition);
 
@@ -207,7 +209,7 @@ int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -222,7 +224,7 @@ void VehicleObject::repairVehicle(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_REPAIRVEHICLE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -236,7 +238,7 @@ int VehicleObject::calculateRepairCost(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_CALCULATEREPAIRCOST__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -250,7 +252,7 @@ void VehicleObject::sendRepairConfirmTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SENDREPAIRCONFIRMTO__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -264,7 +266,7 @@ bool VehicleObject::isVehicleObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_ISVEHICLEOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -461,8 +463,6 @@ bool VehicleObjectImplementation::isVehicleObject() {
 
 VehicleObjectAdapter::VehicleObjectAdapter(VehicleObjectImplementation* obj) : CreatureObjectAdapter(obj) {
 }
-
-enum {RPC_CHECKINRANGEGARAGE__,RPC_INSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_REPAIRVEHICLE__PLAYERCREATURE_,RPC_CALCULATEREPAIRCOST__PLAYERCREATURE_,RPC_SENDREPAIRCONFIRMTO__PLAYERCREATURE_,RPC_ISVEHICLEOBJECT__};
 
 Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

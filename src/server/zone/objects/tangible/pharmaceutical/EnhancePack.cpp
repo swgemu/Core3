@@ -30,6 +30,8 @@
  *	EnhancePackStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETEFFECTIVENESS__,RPC_GETATTRIBUTE__,RPC_GETDURATION__,RPC_ISENHANCEPACK__};
+
 EnhancePack::EnhancePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	EnhancePackImplementation* _implementation = new EnhancePackImplementation();
 	_impl = _implementation;
@@ -76,7 +78,7 @@ int EnhancePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -91,7 +93,7 @@ unsigned int EnhancePack::calculatePower(CreatureObject* healer, CreatureObject*
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(healer);
 		method.addObjectParameter(patient);
 		method.addBooleanParameter(applyBattleFatigue);
@@ -107,7 +109,7 @@ float EnhancePack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETEFFECTIVENESS__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -120,7 +122,7 @@ byte EnhancePack::getAttribute() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETATTRIBUTE__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -133,7 +135,7 @@ float EnhancePack::getDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETDURATION__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -146,7 +148,7 @@ bool EnhancePack::isEnhancePack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISENHANCEPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -449,8 +451,6 @@ bool EnhancePackImplementation::isEnhancePack() {
 
 EnhancePackAdapter::EnhancePackAdapter(EnhancePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETEFFECTIVENESS__,RPC_GETATTRIBUTE__,RPC_GETDURATION__,RPC_ISENHANCEPACK__};
 
 Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

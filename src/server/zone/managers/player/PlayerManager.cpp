@@ -26,6 +26,8 @@
  *	PlayerManagerStub
  */
 
+enum {RPC_LOADNAMEMAP__ = 6,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_,RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_,RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_AWARDBADGE__PLAYERCREATURE_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_,RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_,RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_,RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_,RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_,RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_,RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_,RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_,RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_};
+
 PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl) : Observer(DummyConstructorParameter::instance()) {
 	PlayerManagerImplementation* _implementation = new PlayerManagerImplementation(zoneServer, impl);
 	_impl = _implementation;
@@ -45,7 +47,7 @@ void PlayerManager::loadNameMap() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_LOADNAMEMAP__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -58,7 +60,7 @@ bool PlayerManager::kickUser(const String& name, const String& admin) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_KICKUSER__STRING_STRING_);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(admin);
 
@@ -91,7 +93,7 @@ int PlayerManager::notifyObserverEvent(unsigned int eventType, Observable* obser
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -108,7 +110,7 @@ int PlayerManager::notifyDestruction(TangibleObject* destructor, TangibleObject*
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_);
 		method.addObjectParameter(destructor);
 		method.addObjectParameter(destructedObject);
 		method.addSignedIntParameter(condition);
@@ -124,7 +126,7 @@ int PlayerManager::notifyDefendersOfIncapacitation(TangibleObject* destructor, T
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_);
 		method.addObjectParameter(destructor);
 		method.addObjectParameter(destructedObject);
 
@@ -139,7 +141,7 @@ void PlayerManager::killPlayer(TangibleObject* attacker, PlayerCreature* player)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_);
 		method.addObjectParameter(attacker);
 		method.addObjectParameter(player);
 
@@ -154,7 +156,7 @@ byte PlayerManager::calculateIncapacitationTimer(PlayerCreature* player, int con
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(condition);
 
@@ -169,7 +171,7 @@ bool PlayerManager::checkEncumbrancies(PlayerCreature* player, ArmorObject* armo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -184,7 +186,7 @@ void PlayerManager::applyEncumbrancies(PlayerCreature* player, ArmorObject* armo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -199,7 +201,7 @@ void PlayerManager::removeEncumbrancies(PlayerCreature* player, ArmorObject* arm
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -214,7 +216,7 @@ void PlayerManager::awardBadge(PlayerCreature* player, unsigned int badge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_AWARDBADGE__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(badge);
 
@@ -229,7 +231,7 @@ void PlayerManager::setExperienceMultiplier(float globalMultiplier) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETEXPERIENCEMULTIPLIER__FLOAT_);
 		method.addFloatParameter(globalMultiplier);
 
 		method.executeWithVoidReturn();
@@ -243,7 +245,7 @@ void PlayerManager::awardExperience(PlayerCreature* player, const String& xpType
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(xpType);
 		method.addSignedIntParameter(amount);
@@ -261,7 +263,7 @@ void PlayerManager::handleAbortTradeMessage(PlayerCreature* player, bool doLock)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -276,7 +278,7 @@ void PlayerManager::handleAddItemToTradeWindow(PlayerCreature* player, unsigned 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(itemID);
 
@@ -291,7 +293,7 @@ void PlayerManager::handleGiveMoneyMessage(PlayerCreature* player, unsigned int 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(value);
 
@@ -306,7 +308,7 @@ void PlayerManager::handleAcceptTransactionMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -320,7 +322,7 @@ void PlayerManager::handleUnAcceptTransactionMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -334,7 +336,7 @@ void PlayerManager::handleVerifyTradeMessage(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -348,7 +350,7 @@ bool PlayerManager::checkTradeItems(PlayerCreature* player, PlayerCreature* rece
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(receiver);
 
@@ -363,7 +365,7 @@ SceneObject* PlayerManager::getInRangeStructureWithAdminRights(CreatureObject* c
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_);
 		method.addObjectParameter(creature);
 		method.addUnsignedLongParameter(targetID);
 
@@ -378,7 +380,7 @@ void PlayerManager::sendBattleFatigueMessage(PlayerCreature* player, PlayerCreat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(target);
 
@@ -393,7 +395,7 @@ int PlayerManager::getMedicalFacilityRating(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_);
 		method.addObjectParameter(creature);
 
 		return method.executeWithSignedIntReturn();
@@ -407,7 +409,7 @@ void PlayerManager::stopWatch(CreatureObject* creature, unsigned long long entid
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_);
 		method.addObjectParameter(creature);
 		method.addUnsignedLongParameter(entid);
 		method.addBooleanParameter(doSendPackets);
@@ -426,7 +428,7 @@ void PlayerManager::stopListen(CreatureObject* creature, unsigned long long enti
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_);
 		method.addObjectParameter(creature);
 		method.addUnsignedLongParameter(entid);
 		method.addBooleanParameter(doSendPackets);
@@ -445,7 +447,7 @@ void PlayerManager::startWatch(CreatureObject* creature, unsigned long long enti
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_STARTWATCH__CREATUREOBJECT_LONG_);
 		method.addObjectParameter(creature);
 		method.addUnsignedLongParameter(entid);
 
@@ -460,7 +462,7 @@ void PlayerManager::startListen(CreatureObject* creature, unsigned long long ent
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_STARTLISTEN__CREATUREOBJECT_LONG_);
 		method.addObjectParameter(creature);
 		method.addUnsignedLongParameter(entid);
 
@@ -475,7 +477,7 @@ int PlayerManager::healEnhance(CreatureObject* enhancer, CreatureObject* patient
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_);
 		method.addObjectParameter(enhancer);
 		method.addObjectParameter(patient);
 		method.addByteParameter(attribute);
@@ -502,7 +504,7 @@ bool PlayerManager::squadLeaderCheck(PlayerCreature* player, GroupObject* group)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(group);
 
@@ -517,7 +519,7 @@ void PlayerManager::awardSquadLeaderExperience(GroupObject* group, int amount, T
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_);
 		method.addObjectParameter(group);
 		method.addSignedIntParameter(amount);
 		method.addObjectParameter(source);
@@ -533,7 +535,7 @@ void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -547,7 +549,7 @@ void PlayerManager::sendActivateCloneRequest(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -561,7 +563,7 @@ void PlayerManager::sendPlayerToCloner(PlayerCreature* player, unsigned long lon
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(clonerID);
 
@@ -576,7 +578,7 @@ bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_CHECKEXISTENTNAMEINDATABASE__STRING_);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -590,7 +592,7 @@ TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, co
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_CREATEHAIROBJECT__STRING_STRING_);
 		method.addAsciiParameter(hairObjectFile);
 		method.addAsciiParameter(hairCustomization);
 
@@ -605,7 +607,7 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -619,7 +621,7 @@ void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(profession);
 		method.addAsciiParameter(templateFile);
@@ -635,7 +637,7 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -649,7 +651,7 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -672,7 +674,7 @@ int PlayerManager::checkSpeedHackSecondTest(PlayerCreature* player, float newX, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_);
 		method.addObjectParameter(player);
 		method.addFloatParameter(newX);
 		method.addFloatParameter(newZ);
@@ -691,7 +693,7 @@ bool PlayerManager::existsName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_EXISTSNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -705,7 +707,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_GETOBJECTID__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithUnsignedLongReturn();
@@ -719,7 +721,7 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_GETPLAYER__STRING_);
 		method.addAsciiParameter(name);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -733,7 +735,7 @@ void PlayerManager::updateAdminLevel(PlayerCreature* player, const String& targe
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetName);
 		method.addSignedIntParameter(adminLevel);
@@ -749,7 +751,7 @@ void PlayerManager::generateHologrindProfessions(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -910,8 +912,6 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 PlayerManagerAdapter::PlayerManagerAdapter(PlayerManagerImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_LOADNAMEMAP__ = 6,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_,RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_,RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_AWARDBADGE__PLAYERCREATURE_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_,RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_,RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_,RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_,RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_,RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_,RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_,RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_,RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_};
 
 Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

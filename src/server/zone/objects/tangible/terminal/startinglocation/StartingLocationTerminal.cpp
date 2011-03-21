@@ -14,6 +14,8 @@
  *	StartingLocationTerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_};
+
 StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	StartingLocationTerminalImplementation* _implementation = new StartingLocationTerminalImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void StartingLocationTerminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -46,7 +48,7 @@ int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -190,8 +192,6 @@ StartingLocationTerminalImplementation::StartingLocationTerminalImplementation()
 
 StartingLocationTerminalAdapter::StartingLocationTerminalAdapter(StartingLocationTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_};
 
 Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

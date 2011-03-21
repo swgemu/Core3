@@ -16,6 +16,8 @@
  *	CraftingManagerStub
  */
 
+enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_,RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_INT_,RPC_CALCULATEASSEMBLYSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_,RPC_GETASSEMBLYPERCENTAGE__FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__PLAYERCREATURE_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_,RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_,RPC_GENERATESERIAL__};
+
 CraftingManager::CraftingManager() : ZoneManager(DummyConstructorParameter::instance()) {
 	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation();
 	_impl = _implementation;
@@ -62,7 +64,7 @@ DraftSchematic* CraftingManager::getSchematic(unsigned int schematicID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_GETSCHEMATIC__INT_);
 		method.addUnsignedIntParameter(schematicID);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
@@ -76,7 +78,7 @@ void CraftingManager::sendDraftSlotsTo(PlayerCreature* player, unsigned int sche
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(schematicID);
 
@@ -91,7 +93,7 @@ void CraftingManager::sendResourceWeightsTo(PlayerCreature* player, unsigned int
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(schematicID);
 
@@ -106,7 +108,7 @@ int CraftingManager::calculateAssemblySuccess(PlayerCreature* player, DraftSchem
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_CALCULATEASSEMBLYSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftSchematic);
 		method.addFloatParameter(effectiveness);
@@ -122,7 +124,7 @@ float CraftingManager::calculateAssemblyValueModifier(int assemblyResult) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_);
 		method.addSignedIntParameter(assemblyResult);
 
 		return method.executeWithFloatReturn();
@@ -136,7 +138,7 @@ float CraftingManager::getAssemblyPercentage(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETASSEMBLYPERCENTAGE__FLOAT_);
 		method.addFloatParameter(value);
 
 		return method.executeWithFloatReturn();
@@ -150,7 +152,7 @@ int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_CALCULATEEXPERIMENTATIONFAILURERATE__PLAYERCREATURE_MANUFACTURESCHEMATIC_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(manufactureSchematic);
 		method.addSignedIntParameter(pointsUsed);
@@ -166,7 +168,7 @@ int CraftingManager::calculateExperimentationSuccess(PlayerCreature* player, Dra
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_CALCULATEEXPERIMENTATIONSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftSchematic);
 		method.addFloatParameter(effectiveness);
@@ -182,7 +184,7 @@ float CraftingManager::calculateExperimentationValueModifier(int experimentation
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_);
 		method.addSignedIntParameter(experimentationResult);
 		method.addSignedIntParameter(pointsAttempted);
 
@@ -197,7 +199,7 @@ float CraftingManager::getWeightedValue(ManufactureSchematic* manufactureSchemat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_);
 		method.addObjectParameter(manufactureSchematic);
 		method.addSignedIntParameter(type);
 
@@ -212,7 +214,7 @@ String CraftingManager::generateSerial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GENERATESERIAL__);
 
 		method.executeWithAsciiReturn(_return_generateSerial);
 		return _return_generateSerial;
@@ -358,8 +360,6 @@ DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schemat
 
 CraftingManagerAdapter::CraftingManagerAdapter(CraftingManagerImplementation* obj) : ZoneManagerAdapter(obj) {
 }
-
-enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_,RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_INT_,RPC_CALCULATEASSEMBLYSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_,RPC_GETASSEMBLYPERCENTAGE__FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__PLAYERCREATURE_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_,RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_,RPC_GENERATESERIAL__};
 
 Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

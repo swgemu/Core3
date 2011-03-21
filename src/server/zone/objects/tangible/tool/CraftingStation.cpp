@@ -16,6 +16,8 @@
  *	CraftingStationStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__PLAYERCREATURE_,RPC_CREATECHILDOBJECTS__};
+
 CraftingStation::CraftingStation() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingStationImplementation* _implementation = new CraftingStationImplementation();
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void CraftingStation::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -66,7 +68,7 @@ int CraftingStation::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -90,7 +92,7 @@ void CraftingStation::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -104,7 +106,7 @@ bool CraftingStation::isCraftingStation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ISCRAFTINGSTATION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -117,7 +119,7 @@ int CraftingStation::getComplexityLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETCOMPLEXITYLEVEL__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -130,7 +132,7 @@ int CraftingStation::getStationType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETSTATIONTYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -143,7 +145,7 @@ void CraftingStation::setComplexityLevel(int level) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETCOMPLEXITYLEVEL__INT_);
 		method.addSignedIntParameter(level);
 
 		method.executeWithVoidReturn();
@@ -157,7 +159,7 @@ SceneObject* CraftingStation::findCraftingTool(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_FINDCRAFTINGTOOL__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -171,7 +173,7 @@ void CraftingStation::createChildObjects() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -383,8 +385,6 @@ void CraftingStationImplementation::setComplexityLevel(int level) {
 
 CraftingStationAdapter::CraftingStationAdapter(CraftingStationImplementation* obj) : ToolTangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__PLAYERCREATURE_,RPC_CREATECHILDOBJECTS__};
 
 Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

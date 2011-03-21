@@ -12,6 +12,8 @@
  *	SuiBankTransferBoxStub
  */
 
+enum {RPC_ADDCASH__INT_ = 6,RPC_ADDBANK__INT_,RPC_GETBANK__,RPC_GENERATEMESSAGE__,RPC_ISBANKTRANSFERBOX__};
+
 SuiBankTransferBox::SuiBankTransferBox(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiBankTransferBoxImplementation* _implementation = new SuiBankTransferBoxImplementation(bankObject, player, windowtype);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void SuiBankTransferBox::addCash(int cash) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ADDCASH__INT_);
 		method.addSignedIntParameter(cash);
 
 		method.executeWithVoidReturn();
@@ -45,7 +47,7 @@ void SuiBankTransferBox::addBank(int bank) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ADDBANK__INT_);
 		method.addSignedIntParameter(bank);
 
 		method.executeWithVoidReturn();
@@ -59,7 +61,7 @@ SceneObject* SuiBankTransferBox::getBank() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETBANK__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -72,7 +74,7 @@ BaseMessage* SuiBankTransferBox::generateMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GENERATEMESSAGE__);
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
@@ -85,7 +87,7 @@ bool SuiBankTransferBox::isBankTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_ISBANKTRANSFERBOX__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -376,8 +378,6 @@ bool SuiBankTransferBoxImplementation::isBankTransferBox() {
 
 SuiBankTransferBoxAdapter::SuiBankTransferBoxAdapter(SuiBankTransferBoxImplementation* obj) : SuiBoxAdapter(obj) {
 }
-
-enum {RPC_ADDCASH__INT_ = 6,RPC_ADDBANK__INT_,RPC_GETBANK__,RPC_GENERATEMESSAGE__,RPC_ISBANKTRANSFERBOX__};
 
 Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -54,6 +54,8 @@
  *	ZoneServerStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATESTATICOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETSERVERNAME__,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETBAZAARMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETSERVERNAME__STRING_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
+
 ZoneServer::ZoneServer(int galaxyid) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(galaxyid);
 	_impl = _implementation;
@@ -73,7 +75,7 @@ void ZoneServer::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -95,7 +97,7 @@ void ZoneServer::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -108,7 +110,7 @@ void ZoneServer::shutdown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SHUTDOWN__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -121,7 +123,7 @@ void ZoneServer::startManagers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_STARTMANAGERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -134,7 +136,7 @@ void ZoneServer::startZones() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_STARTZONES__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -147,7 +149,7 @@ void ZoneServer::stopManagers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_STOPMANAGERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -160,7 +162,7 @@ void ZoneServer::start(int p, int mconn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_START__INT_INT_);
 		method.addSignedIntParameter(p);
 		method.addSignedIntParameter(mconn);
 
@@ -175,7 +177,7 @@ void ZoneServer::stop() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_STOP__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -215,7 +217,7 @@ void ZoneServer::addTotalSentPacket(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_ADDTOTALSENTPACKET__INT_);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -229,7 +231,7 @@ void ZoneServer::addTotalResentPacket(int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_ADDTOTALRESENTPACKET__INT_);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -243,7 +245,7 @@ void ZoneServer::printInfo(bool forcedLog) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_PRINTINFO__BOOL_);
 		method.addBooleanParameter(forcedLog);
 
 		method.executeWithVoidReturn();
@@ -257,7 +259,7 @@ void ZoneServer::printEvents() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_PRINTEVENTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -270,7 +272,7 @@ SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_GETOBJECT__LONG_BOOL_);
 		method.addUnsignedLongParameter(objectID);
 		method.addBooleanParameter(doLock);
 
@@ -285,7 +287,7 @@ SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceL
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_CREATEOBJECT__INT_INT_LONG_);
 		method.addUnsignedIntParameter(templateCRC);
 		method.addSignedIntParameter(persistenceLevel);
 		method.addUnsignedLongParameter(objectID);
@@ -301,7 +303,7 @@ SceneObject* ZoneServer::createStaticObject(unsigned int templateCRC, unsigned l
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_CREATESTATICOBJECT__INT_LONG_);
 		method.addUnsignedIntParameter(templateCRC);
 		method.addUnsignedLongParameter(objectID);
 
@@ -316,7 +318,7 @@ void ZoneServer::updateObjectToDatabase(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -330,7 +332,7 @@ void ZoneServer::updateObjectToStaticDatabase(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -344,7 +346,7 @@ void ZoneServer::destroyObjectFromDatabase(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		method.executeWithVoidReturn();
@@ -358,7 +360,7 @@ void ZoneServer::lock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_LOCK__BOOL_);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -372,7 +374,7 @@ void ZoneServer::unlock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_UNLOCK__BOOL_);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -386,7 +388,7 @@ void ZoneServer::fixScheduler() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_FIXSCHEDULER__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -399,7 +401,7 @@ void ZoneServer::changeUserCap(int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_CHANGEUSERCAP__INT_);
 		method.addSignedIntParameter(amount);
 
 		method.executeWithVoidReturn();
@@ -413,7 +415,7 @@ int ZoneServer::getConnectionCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_GETCONNECTIONCOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -426,7 +428,7 @@ void ZoneServer::increaseOnlinePlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_INCREASEONLINEPLAYERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -439,7 +441,7 @@ void ZoneServer::decreaseOnlinePlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_DECREASEONLINEPLAYERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -452,7 +454,7 @@ void ZoneServer::increaseTotalDeletedPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_INCREASETOTALDELETEDPLAYERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -465,7 +467,7 @@ int ZoneServer::getGalaxyID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_GETGALAXYID__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -478,7 +480,7 @@ String ZoneServer::getServerName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_GETSERVERNAME__);
 
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -492,7 +494,7 @@ bool ZoneServer::isServerLocked() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_ISSERVERLOCKED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -505,7 +507,7 @@ bool ZoneServer::isServerOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_ISSERVERONLINE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -518,7 +520,7 @@ bool ZoneServer::isServerOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_ISSERVEROFFLINE__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -531,7 +533,7 @@ bool ZoneServer::isServerLoading() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_ISSERVERLOADING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -544,7 +546,7 @@ int ZoneServer::getServerState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_GETSERVERSTATE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -557,7 +559,7 @@ Zone* ZoneServer::getZone(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_GETZONE__INT_);
 		method.addSignedIntParameter(index);
 
 		return (Zone*) method.executeWithObjectReturn();
@@ -571,7 +573,7 @@ int ZoneServer::getZoneCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_GETZONECOUNT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -584,7 +586,7 @@ int ZoneServer::getMaxPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_GETMAXPLAYERS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -597,7 +599,7 @@ int ZoneServer::getTotalPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_GETTOTALPLAYERS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -610,7 +612,7 @@ int ZoneServer::getDeletedPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_GETDELETEDPLAYERS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -632,7 +634,7 @@ PlayerManager* ZoneServer::getPlayerManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_GETPLAYERMANAGER__);
 
 		return (PlayerManager*) method.executeWithObjectReturn();
 	} else
@@ -645,7 +647,7 @@ ChatManager* ZoneServer::getChatManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_GETCHATMANAGER__);
 
 		return (ChatManager*) method.executeWithObjectReturn();
 	} else
@@ -658,7 +660,7 @@ ObjectController* ZoneServer::getObjectController() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_GETOBJECTCONTROLLER__);
 
 		return (ObjectController*) method.executeWithObjectReturn();
 	} else
@@ -671,7 +673,7 @@ MissionManager* ZoneServer::getMissionManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_GETMISSIONMANAGER__);
 
 		return (MissionManager*) method.executeWithObjectReturn();
 	} else
@@ -684,7 +686,7 @@ RadialManager* ZoneServer::getRadialManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_GETRADIALMANAGER__);
 
 		return (RadialManager*) method.executeWithObjectReturn();
 	} else
@@ -697,7 +699,7 @@ GuildManager* ZoneServer::getGuildManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_GETGUILDMANAGER__);
 
 		return (GuildManager*) method.executeWithObjectReturn();
 	} else
@@ -710,7 +712,7 @@ ResourceManager* ZoneServer::getResourceManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_GETRESOURCEMANAGER__);
 
 		return (ResourceManager*) method.executeWithObjectReturn();
 	} else
@@ -723,7 +725,7 @@ CraftingManager* ZoneServer::getCraftingManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, RPC_GETCRAFTINGMANAGER__);
 
 		return (CraftingManager*) method.executeWithObjectReturn();
 	} else
@@ -736,7 +738,7 @@ LootManager* ZoneServer::getLootManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, RPC_GETLOOTMANAGER__);
 
 		return (LootManager*) method.executeWithObjectReturn();
 	} else
@@ -749,7 +751,7 @@ BazaarManager* ZoneServer::getBazaarManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, RPC_GETBAZAARMANAGER__);
 
 		return (BazaarManager*) method.executeWithObjectReturn();
 	} else
@@ -762,7 +764,7 @@ FishingManager* ZoneServer::getFishingManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, RPC_GETFISHINGMANAGER__);
 
 		return (FishingManager*) method.executeWithObjectReturn();
 	} else
@@ -775,7 +777,7 @@ GamblingManager* ZoneServer::getGamblingManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, RPC_GETGAMBLINGMANAGER__);
 
 		return (GamblingManager*) method.executeWithObjectReturn();
 	} else
@@ -788,7 +790,7 @@ ForageManager* ZoneServer::getForageManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, RPC_GETFORAGEMANAGER__);
 
 		return (ForageManager*) method.executeWithObjectReturn();
 	} else
@@ -801,7 +803,7 @@ Account* ZoneServer::getAccount(unsigned int accountID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, RPC_GETACCOUNT__INT_);
 		method.addUnsignedIntParameter(accountID);
 
 		return (Account*) method.executeWithObjectReturn();
@@ -833,7 +835,7 @@ void ZoneServer::setServerName(const String& servername) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, RPC_SETSERVERNAME__STRING_);
 		method.addAsciiParameter(servername);
 
 		method.executeWithVoidReturn();
@@ -847,7 +849,7 @@ void ZoneServer::setGalaxyID(int galaxyid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, RPC_SETGALAXYID__INT_);
 		method.addSignedIntParameter(galaxyid);
 
 		method.executeWithVoidReturn();
@@ -861,7 +863,7 @@ void ZoneServer::setServerState(int state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, RPC_SETSERVERSTATE__INT_);
 		method.addSignedIntParameter(state);
 
 		method.executeWithVoidReturn();
@@ -875,7 +877,7 @@ void ZoneServer::setServerStateLocked() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, RPC_SETSERVERSTATELOCKED__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -888,7 +890,7 @@ void ZoneServer::setServerStateOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, RPC_SETSERVERSTATEONLINE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -901,7 +903,7 @@ void ZoneServer::loadMessageoftheDay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, RPC_LOADMESSAGEOFTHEDAY__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -914,7 +916,7 @@ void ZoneServer::changeMessageoftheDay(const String& newMOTD) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, RPC_CHANGEMESSAGEOFTHEDAY__STRING_);
 		method.addAsciiParameter(newMOTD);
 
 		method.executeWithVoidReturn();
@@ -928,7 +930,7 @@ String ZoneServer::getMessageoftheDay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, RPC_GETMESSAGEOFTHEDAY__);
 
 		method.executeWithAsciiReturn(_return_getMessageoftheDay);
 		return _return_getMessageoftheDay;
@@ -1499,8 +1501,6 @@ void ZoneServerImplementation::setServerState(int state) {
 
 ZoneServerAdapter::ZoneServerAdapter(ZoneServerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATESTATICOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETSERVERNAME__,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETBAZAARMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETSERVERNAME__STRING_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
 
 Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

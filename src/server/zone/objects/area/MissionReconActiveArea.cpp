@@ -14,6 +14,8 @@
  *	MissionReconActiveAreaStub
  */
 
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_};
+
 MissionReconActiveArea::MissionReconActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	MissionReconActiveAreaImplementation* _implementation = new MissionReconActiveAreaImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void MissionReconActiveArea::notifyEnter(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYENTER__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -47,7 +49,7 @@ void MissionReconActiveArea::setMissionObjective(ReconMissionObjective* mission)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_);
 		method.addObjectParameter(mission);
 
 		method.executeWithVoidReturn();
@@ -238,8 +240,6 @@ void MissionReconActiveAreaImplementation::setMissionObjective(ReconMissionObjec
 
 MissionReconActiveAreaAdapter::MissionReconActiveAreaAdapter(MissionReconActiveAreaImplementation* obj) : ActiveAreaAdapter(obj) {
 }
-
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_};
 
 Packet* MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

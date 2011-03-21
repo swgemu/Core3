@@ -14,6 +14,8 @@
  *	ArmorComponentStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
+
 ArmorComponent::ArmorComponent() : Component(DummyConstructorParameter::instance()) {
 	ArmorComponentImplementation* _implementation = new ArmorComponentImplementation();
 	_impl = _implementation;
@@ -33,7 +35,7 @@ void ArmorComponent::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -46,7 +48,7 @@ void ArmorComponent::updateCraftingValues(ManufactureSchematic* schematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(schematic);
 
 		method.executeWithVoidReturn();
@@ -204,8 +206,6 @@ ArmorComponentImplementation::ArmorComponentImplementation() {
 
 ArmorComponentAdapter::ArmorComponentAdapter(ArmorComponentImplementation* obj) : ComponentAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_};
 
 Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

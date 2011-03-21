@@ -20,6 +20,8 @@
  *	CloningTerminalStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6};
+
 CloningTerminal::CloningTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CloningTerminalImplementation* _implementation = new CloningTerminalImplementation();
 	_impl = _implementation;
@@ -39,7 +41,7 @@ int CloningTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -183,8 +185,6 @@ CloningTerminalImplementation::CloningTerminalImplementation() {
 
 CloningTerminalAdapter::CloningTerminalAdapter(CloningTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6};
 
 Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

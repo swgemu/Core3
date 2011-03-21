@@ -12,6 +12,8 @@
  *	AiObserverStub
  */
 
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
+
 AiObserver::AiObserver(AiAgent* agent) : Observer(DummyConstructorParameter::instance()) {
 	AiObserverImplementation* _implementation = new AiObserverImplementation(agent);
 	_impl = _implementation;
@@ -31,7 +33,7 @@ int AiObserver::notifyObserverEvent(unsigned int eventType, Observable* observab
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_);
 		method.addUnsignedIntParameter(eventType);
 		method.addObjectParameter(observable);
 		method.addObjectParameter(arg1);
@@ -209,8 +211,6 @@ int AiObserverImplementation::notifyObserverEvent(unsigned int eventType, Observ
 
 AiObserverAdapter::AiObserverAdapter(AiObserverImplementation* obj) : ObserverAdapter(obj) {
 }
-
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
 
 Packet* AiObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

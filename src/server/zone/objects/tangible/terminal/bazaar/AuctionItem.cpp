@@ -10,6 +10,8 @@
  *	AuctionItemStub
  */
 
+enum {RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_ = 6,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETBAZAARTERMINAL__BAZAARTERMINAL_,RPC_SETAUCTION__BOOL_,RPC_SETSOLD__BOOL_,RPC_SETREMOVEDBYOWNER__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_GETBAZAARTERMINAL__,RPC_ISSOLD__,RPC_ISAUCTION__,RPC_ISREMOVEDBYOWNER__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETTERMINALTITLE__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETLOCATION__};
+
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
 	_impl = _implementation;
@@ -29,7 +31,7 @@ void AuctionItem::setLocation(const String& planet, const String& header, unsign
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_);
 		method.addAsciiParameter(planet);
 		method.addAsciiParameter(header);
 		method.addUnsignedLongParameter(vendorid);
@@ -48,7 +50,7 @@ void AuctionItem::setItemName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SETITEMNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -62,7 +64,7 @@ void AuctionItem::setItemDescription(const String& descr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETITEMDESCRIPTION__STRING_);
 		method.addAsciiParameter(descr);
 
 		method.executeWithVoidReturn();
@@ -76,7 +78,7 @@ void AuctionItem::setPrice(int newPrice) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETPRICE__INT_);
 		method.addSignedIntParameter(newPrice);
 
 		method.executeWithVoidReturn();
@@ -90,7 +92,7 @@ void AuctionItem::setAuctionedItemObjectID(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SETAUCTIONEDITEMOBJECTID__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		method.executeWithVoidReturn();
@@ -104,7 +106,7 @@ void AuctionItem::setItemType(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_SETITEMTYPE__INT_);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -118,7 +120,7 @@ void AuctionItem::setOwnerID(unsigned long long ownerObjectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETOWNERID__LONG_);
 		method.addUnsignedLongParameter(ownerObjectID);
 
 		method.executeWithVoidReturn();
@@ -132,7 +134,7 @@ void AuctionItem::setBidderName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_SETBIDDERNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -155,7 +157,7 @@ void AuctionItem::setOwnerName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_SETOWNERNAME__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -169,7 +171,7 @@ void AuctionItem::setBazaarTerminal(BazaarTerminal* term) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETBAZAARTERMINAL__BAZAARTERMINAL_);
 		method.addObjectParameter(term);
 
 		method.executeWithVoidReturn();
@@ -183,7 +185,7 @@ void AuctionItem::setAuction(bool isAuction) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_SETAUCTION__BOOL_);
 		method.addBooleanParameter(isAuction);
 
 		method.executeWithVoidReturn();
@@ -197,7 +199,7 @@ void AuctionItem::setSold(bool isSold) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_SETSOLD__BOOL_);
 		method.addBooleanParameter(isSold);
 
 		method.executeWithVoidReturn();
@@ -211,7 +213,7 @@ void AuctionItem::setRemovedByOwner(bool isRemovedByOwner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_SETREMOVEDBYOWNER__BOOL_);
 		method.addBooleanParameter(isRemovedByOwner);
 
 		method.executeWithVoidReturn();
@@ -225,7 +227,7 @@ void AuctionItem::setExpireTime(int time) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_SETEXPIRETIME__INT_);
 		method.addSignedIntParameter(time);
 
 		method.executeWithVoidReturn();
@@ -239,7 +241,7 @@ void AuctionItem::setBuyerID(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SETBUYERID__LONG_);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -253,7 +255,7 @@ BazaarTerminal* AuctionItem::getBazaarTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_GETBAZAARTERMINAL__);
 
 		return (BazaarTerminal*) method.executeWithObjectReturn();
 	} else
@@ -266,7 +268,7 @@ bool AuctionItem::isSold() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_ISSOLD__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -279,7 +281,7 @@ bool AuctionItem::isAuction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_ISAUCTION__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -292,7 +294,7 @@ bool AuctionItem::isRemovedByOwner() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_ISREMOVEDBYOWNER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -305,7 +307,7 @@ unsigned long long AuctionItem::getAuctionedItemObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_GETAUCTIONEDITEMOBJECTID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -318,7 +320,7 @@ unsigned long long AuctionItem::getOwnerID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_GETOWNERID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -331,7 +333,7 @@ String AuctionItem::getTerminalTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_GETTERMINALTITLE__);
 
 		method.executeWithAsciiReturn(_return_getTerminalTitle);
 		return _return_getTerminalTitle;
@@ -345,7 +347,7 @@ String AuctionItem::getOwnerName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_GETOWNERNAME__);
 
 		method.executeWithAsciiReturn(_return_getOwnerName);
 		return _return_getOwnerName;
@@ -359,7 +361,7 @@ String AuctionItem::getItemName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_GETITEMNAME__);
 
 		method.executeWithAsciiReturn(_return_getItemName);
 		return _return_getItemName;
@@ -373,7 +375,7 @@ int AuctionItem::getExpireTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_GETEXPIRETIME__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -386,7 +388,7 @@ int AuctionItem::getPrice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_GETPRICE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -399,7 +401,7 @@ int AuctionItem::getItemType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_GETITEMTYPE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -412,7 +414,7 @@ unsigned long long AuctionItem::getBuyerID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_GETBUYERID__);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -425,7 +427,7 @@ String AuctionItem::getBidderName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_GETBIDDERNAME__);
 
 		method.executeWithAsciiReturn(_return_getBidderName);
 		return _return_getBidderName;
@@ -439,7 +441,7 @@ String AuctionItem::getItemDescription() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_GETITEMDESCRIPTION__);
 
 		method.executeWithAsciiReturn(_return_getItemDescription);
 		return _return_getItemDescription;
@@ -453,7 +455,7 @@ String AuctionItem::getLocation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_GETLOCATION__);
 
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
@@ -1035,8 +1037,6 @@ String AuctionItemImplementation::getLocation() {
 
 AuctionItemAdapter::AuctionItemAdapter(AuctionItemImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_ = 6,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETBAZAARTERMINAL__BAZAARTERMINAL_,RPC_SETAUCTION__BOOL_,RPC_SETSOLD__BOOL_,RPC_SETREMOVEDBYOWNER__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_GETBAZAARTERMINAL__,RPC_ISSOLD__,RPC_ISAUCTION__,RPC_ISREMOVEDBYOWNER__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETTERMINALTITLE__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETLOCATION__};
 
 Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

@@ -14,6 +14,8 @@
  *	LootGroupObjectStub
  */
 
+enum {RPC_CONTAINS__INT_ = 6,RPC_GET__INT_,RPC_PUT__INT_LOOTOBJECT_,RPC_SIZE__,RPC_GETMAXDROP__,RPC_GETWEIGHT__,RPC_GETLOOTGROUP__};
+
 LootGroupObject::LootGroupObject(unsigned int group, int w, int max) : ManagedObject(DummyConstructorParameter::instance()) {
 	LootGroupObjectImplementation* _implementation = new LootGroupObjectImplementation(group, w, max);
 	_impl = _implementation;
@@ -33,7 +35,7 @@ bool LootGroupObject::contains(unsigned int objIndex) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_CONTAINS__INT_);
 		method.addUnsignedIntParameter(objIndex);
 
 		return method.executeWithBooleanReturn();
@@ -47,7 +49,7 @@ LootObject* LootGroupObject::get(unsigned int lootObjectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GET__INT_);
 		method.addUnsignedIntParameter(lootObjectID);
 
 		return (LootObject*) method.executeWithObjectReturn();
@@ -61,7 +63,7 @@ void LootGroupObject::put(unsigned int index, LootObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_PUT__INT_LOOTOBJECT_);
 		method.addUnsignedIntParameter(index);
 		method.addObjectParameter(obj);
 
@@ -85,7 +87,7 @@ int LootGroupObject::size() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -98,7 +100,7 @@ int LootGroupObject::getMaxDrop() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETMAXDROP__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -111,7 +113,7 @@ int LootGroupObject::getWeight() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETWEIGHT__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -124,7 +126,7 @@ unsigned int LootGroupObject::getLootGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETLOOTGROUP__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -388,8 +390,6 @@ unsigned int LootGroupObjectImplementation::getLootGroup() {
 
 LootGroupObjectAdapter::LootGroupObjectAdapter(LootGroupObjectImplementation* obj) : ManagedObjectAdapter(obj) {
 }
-
-enum {RPC_CONTAINS__INT_ = 6,RPC_GET__INT_,RPC_PUT__INT_LOOTOBJECT_,RPC_SIZE__,RPC_GETMAXDROP__,RPC_GETWEIGHT__,RPC_GETLOOTGROUP__};
 
 Packet* LootGroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

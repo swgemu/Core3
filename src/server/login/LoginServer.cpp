@@ -24,6 +24,8 @@
  *	LoginServerStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_PRINTINFO__,RPC_POPULATEGALAXYLIST__,RPC_GETACCOUNT__INT_,RPC_GETLOGINENUMCLUSTERMESSAGE__,RPC_GETLOGINCLUSTERSTATUSMESSAGE__};
+
 LoginServer::LoginServer(ConfigManager* config) : ManagedService(DummyConstructorParameter::instance()) {
 	LoginServerImplementation* _implementation = new LoginServerImplementation(config);
 	_impl = _implementation;
@@ -43,7 +45,7 @@ void LoginServer::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -65,7 +67,7 @@ void LoginServer::initialize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -78,7 +80,7 @@ void LoginServer::shutdown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SHUTDOWN__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -91,7 +93,7 @@ void LoginServer::startManagers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_STARTMANAGERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -104,7 +106,7 @@ void LoginServer::stopManagers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_STOPMANAGERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -117,7 +119,7 @@ void LoginServer::start(int p, int mconn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_START__INT_INT_);
 		method.addSignedIntParameter(p);
 		method.addSignedIntParameter(mconn);
 
@@ -132,7 +134,7 @@ void LoginServer::stop() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_STOP__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -172,7 +174,7 @@ void LoginServer::printInfo() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_PRINTINFO__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -185,7 +187,7 @@ void LoginServer::populateGalaxyList() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_POPULATEGALAXYLIST__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -207,7 +209,7 @@ Account* LoginServer::getAccount(unsigned int accountID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_GETACCOUNT__INT_);
 		method.addUnsignedIntParameter(accountID);
 
 		return (Account*) method.executeWithObjectReturn();
@@ -230,7 +232,7 @@ LoginEnumCluster* LoginServer::getLoginEnumClusterMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_GETLOGINENUMCLUSTERMESSAGE__);
 
 		return (LoginEnumCluster*) method.executeWithObjectReturn();
 	} else
@@ -243,7 +245,7 @@ LoginClusterStatus* LoginServer::getLoginClusterStatusMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_GETLOGINCLUSTERSTATUSMESSAGE__);
 
 		return (LoginClusterStatus*) method.executeWithObjectReturn();
 	} else
@@ -399,8 +401,6 @@ LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
 
 LoginServerAdapter::LoginServerAdapter(LoginServerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_PRINTINFO__,RPC_POPULATEGALAXYLIST__,RPC_GETACCOUNT__INT_,RPC_GETLOGINENUMCLUSTERMESSAGE__,RPC_GETLOGINCLUSTERSTATUSMESSAGE__};
 
 Packet* LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

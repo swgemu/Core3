@@ -18,6 +18,8 @@
  *	ElevatorTerminalStub
  */
 
+enum {RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISELEVATORTERMINAL__,RPC_SETELEVATORUP__ELEVATORTERMINAL_,RPC_SETELEVATORDOWN__ELEVATORTERMINAL_,RPC_GETELEVATORUP__,RPC_GETELEVATORDOWN__};
+
 ElevatorTerminal::ElevatorTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	ElevatorTerminalImplementation* _implementation = new ElevatorTerminalImplementation();
 	_impl = _implementation;
@@ -46,7 +48,7 @@ void ElevatorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -61,7 +63,7 @@ int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte select
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -76,7 +78,7 @@ bool ElevatorTerminal::isElevatorTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISELEVATORTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -89,7 +91,7 @@ void ElevatorTerminal::setElevatorUp(ElevatorTerminal* term) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETELEVATORUP__ELEVATORTERMINAL_);
 		method.addObjectParameter(term);
 
 		method.executeWithVoidReturn();
@@ -103,7 +105,7 @@ void ElevatorTerminal::setElevatorDown(ElevatorTerminal* term) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_SETELEVATORDOWN__ELEVATORTERMINAL_);
 		method.addObjectParameter(term);
 
 		method.executeWithVoidReturn();
@@ -117,7 +119,7 @@ ElevatorTerminal* ElevatorTerminal::getElevatorUp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETELEVATORUP__);
 
 		return (ElevatorTerminal*) method.executeWithObjectReturn();
 	} else
@@ -130,7 +132,7 @@ ElevatorTerminal* ElevatorTerminal::getElevatorDown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETELEVATORDOWN__);
 
 		return (ElevatorTerminal*) method.executeWithObjectReturn();
 	} else
@@ -327,8 +329,6 @@ ElevatorTerminal* ElevatorTerminalImplementation::getElevatorDown() {
 
 ElevatorTerminalAdapter::ElevatorTerminalAdapter(ElevatorTerminalImplementation* obj) : TerminalAdapter(obj) {
 }
-
-enum {RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISELEVATORTERMINAL__,RPC_SETELEVATORUP__ELEVATORTERMINAL_,RPC_SETELEVATORDOWN__ELEVATORTERMINAL_,RPC_GETELEVATORUP__,RPC_GETELEVATORDOWN__};
 
 Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

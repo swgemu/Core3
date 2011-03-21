@@ -16,6 +16,8 @@
  *	SpiceBuffStub
  */
 
+enum {RPC_ACTIVATE__BOOL_ = 6,RPC_DEACTIVATE__BOOL_,RPC_SETDOWNERATTRIBUTES__CREATUREOBJECT_BUFF_};
+
 SpiceBuff::SpiceBuff(CreatureObject* creo, const String& name, unsigned int buffCRC, int duration) : Buff(DummyConstructorParameter::instance()) {
 	SpiceBuffImplementation* _implementation = new SpiceBuffImplementation(creo, name, buffCRC, duration);
 	_impl = _implementation;
@@ -35,7 +37,7 @@ void SpiceBuff::activate(bool applyModifiers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_ACTIVATE__BOOL_);
 		method.addBooleanParameter(applyModifiers);
 
 		method.executeWithVoidReturn();
@@ -49,7 +51,7 @@ void SpiceBuff::deactivate(bool removeModifiers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_DEACTIVATE__BOOL_);
 		method.addBooleanParameter(removeModifiers);
 
 		method.executeWithVoidReturn();
@@ -63,7 +65,7 @@ void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SETDOWNERATTRIBUTES__CREATUREOBJECT_BUFF_);
 		method.addObjectParameter(creature);
 		method.addObjectParameter(buff);
 
@@ -216,8 +218,6 @@ void SpiceBuffImplementation::activate(bool applyModifiers) {
 
 SpiceBuffAdapter::SpiceBuffAdapter(SpiceBuffImplementation* obj) : BuffAdapter(obj) {
 }
-
-enum {RPC_ACTIVATE__BOOL_ = 6,RPC_DEACTIVATE__BOOL_,RPC_SETDOWNERATTRIBUTES__CREATUREOBJECT_BUFF_};
 
 Packet* SpiceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

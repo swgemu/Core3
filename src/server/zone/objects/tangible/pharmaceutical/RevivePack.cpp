@@ -24,6 +24,8 @@
  *	RevivePackStub
  */
 
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETHEALTHWOUNDHEALED__,RPC_GETHEALTHHEALED__,RPC_GETACTIONWOUNDHEALED__,RPC_GETACTIONHEALED__,RPC_GETMINDWOUNDHEALED__,RPC_GETMINDHEALED__,RPC_ISREVIVEPACK__};
+
 RevivePack::RevivePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	RevivePackImplementation* _implementation = new RevivePackImplementation();
 	_impl = _implementation;
@@ -61,7 +63,7 @@ int RevivePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -76,7 +78,7 @@ float RevivePack::getHealthWoundHealed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_GETHEALTHWOUNDHEALED__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -89,7 +91,7 @@ float RevivePack::getHealthHealed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_GETHEALTHHEALED__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -102,7 +104,7 @@ float RevivePack::getActionWoundHealed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_GETACTIONWOUNDHEALED__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -115,7 +117,7 @@ float RevivePack::getActionHealed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETACTIONHEALED__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -128,7 +130,7 @@ float RevivePack::getMindWoundHealed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_GETMINDWOUNDHEALED__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -141,7 +143,7 @@ float RevivePack::getMindHealed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_GETMINDHEALED__);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -154,7 +156,7 @@ bool RevivePack::isRevivePack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ISREVIVEPACK__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -503,8 +505,6 @@ bool RevivePackImplementation::isRevivePack() {
 
 RevivePackAdapter::RevivePackAdapter(RevivePackImplementation* obj) : PharmaceuticalObjectAdapter(obj) {
 }
-
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETHEALTHWOUNDHEALED__,RPC_GETHEALTHHEALED__,RPC_GETACTIONWOUNDHEALED__,RPC_GETACTIONHEALED__,RPC_GETMINDWOUNDHEALED__,RPC_GETMINDHEALED__,RPC_ISREVIVEPACK__};
 
 Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

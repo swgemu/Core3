@@ -12,6 +12,8 @@
  *	TerminalStub
  */
 
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISTERMINAL__,RPC_ISGUILDTERMINAL__,RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISELEVATORTERMINAL__};
+
 Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
 	TerminalImplementation* _implementation = new TerminalImplementation();
 	_impl = _implementation;
@@ -31,7 +33,7 @@ void Terminal::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -44,7 +46,7 @@ bool Terminal::isTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_ISTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -57,7 +59,7 @@ bool Terminal::isGuildTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_ISGUILDTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -70,7 +72,7 @@ void Terminal::setControlledObject(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -84,7 +86,7 @@ SceneObject* Terminal::getControlledObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_GETCONTROLLEDOBJECT__);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -97,7 +99,7 @@ bool Terminal::isElevatorTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ISELEVATORTERMINAL__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -279,8 +281,6 @@ bool TerminalImplementation::isElevatorTerminal() {
 
 TerminalAdapter::TerminalAdapter(TerminalImplementation* obj) : TangibleObjectAdapter(obj) {
 }
-
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISTERMINAL__,RPC_ISGUILDTERMINAL__,RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISELEVATORTERMINAL__};
 
 Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);

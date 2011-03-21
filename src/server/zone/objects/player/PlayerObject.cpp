@@ -24,6 +24,8 @@
  *	PlayerObjectStub
  */
 
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_NOTIFYOFFLINE__,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_};
+
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	PlayerObjectImplementation* _implementation = new PlayerObjectImplementation();
 	_impl = _implementation;
@@ -52,7 +54,7 @@ void PlayerObject::initializeTransientMembers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 6);
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -65,7 +67,7 @@ void PlayerObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, RPC_SENDBASELINESTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -79,7 +81,7 @@ void PlayerObject::sendMessage(BasePacket* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, RPC_SENDMESSAGE__BASEPACKET_);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -93,7 +95,7 @@ int PlayerObject::addExperience(const String& xpType, int xp, bool notifyClient)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, RPC_ADDEXPERIENCE__STRING_INT_BOOL_);
 		method.addAsciiParameter(xpType);
 		method.addSignedIntParameter(xp);
 		method.addBooleanParameter(notifyClient);
@@ -109,7 +111,7 @@ void PlayerObject::removeExperience(const String& xpType, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, RPC_REMOVEEXPERIENCE__STRING_BOOL_);
 		method.addAsciiParameter(xpType);
 		method.addBooleanParameter(notifyClient);
 
@@ -124,7 +126,7 @@ void PlayerObject::addWaypoint(WaypointObject* waypoint, bool checkName, bool no
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_);
 		method.addObjectParameter(waypoint);
 		method.addBooleanParameter(checkName);
 		method.addBooleanParameter(notifyClient);
@@ -140,7 +142,7 @@ void PlayerObject::setWaypoint(WaypointObject* waypoint, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_);
 		method.addObjectParameter(waypoint);
 		method.addBooleanParameter(notifyClient);
 
@@ -155,7 +157,7 @@ void PlayerObject::addWaypoint(const String& planet, float positionX, float posi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_);
 		method.addAsciiParameter(planet);
 		method.addFloatParameter(positionX);
 		method.addFloatParameter(positionY);
@@ -172,7 +174,7 @@ void PlayerObject::removeWaypoint(unsigned long long waypointID, bool notifyClie
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, RPC_REMOVEWAYPOINT__LONG_BOOL_);
 		method.addUnsignedLongParameter(waypointID);
 		method.addBooleanParameter(notifyClient);
 
@@ -259,7 +261,7 @@ void PlayerObject::setLanguageID(byte language, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, RPC_SETLANGUAGEID__BYTE_BOOL_);
 		method.addByteParameter(language);
 		method.addBooleanParameter(notifyClient);
 
@@ -274,7 +276,7 @@ void PlayerObject::addFriend(const String& name, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, RPC_ADDFRIEND__STRING_BOOL_);
 		method.addAsciiParameter(name);
 		method.addBooleanParameter(notifyClient);
 
@@ -289,7 +291,7 @@ void PlayerObject::removeFriend(const String& name, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, RPC_REMOVEFRIEND__STRING_BOOL_);
 		method.addAsciiParameter(name);
 		method.addBooleanParameter(notifyClient);
 
@@ -304,7 +306,7 @@ void PlayerObject::addIgnore(const String& name, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, RPC_ADDIGNORE__STRING_BOOL_);
 		method.addAsciiParameter(name);
 		method.addBooleanParameter(notifyClient);
 
@@ -319,7 +321,7 @@ void PlayerObject::removeIgnore(const String& name, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, RPC_REMOVEIGNORE__STRING_BOOL_);
 		method.addAsciiParameter(name);
 		method.addBooleanParameter(notifyClient);
 
@@ -334,7 +336,7 @@ void PlayerObject::setTitle(const String& characterTitle, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, RPC_SETTITLE__STRING_BOOL_);
 		method.addAsciiParameter(characterTitle);
 		method.addBooleanParameter(notifyClient);
 
@@ -349,7 +351,7 @@ void PlayerObject::setFoodFilling(int newValue, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, RPC_SETFOODFILLING__INT_BOOL_);
 		method.addSignedIntParameter(newValue);
 		method.addBooleanParameter(notifyClient);
 
@@ -364,7 +366,7 @@ void PlayerObject::setDrinkFilling(int newValue, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, RPC_SETDRINKFILLING__INT_BOOL_);
 		method.addSignedIntParameter(newValue);
 		method.addBooleanParameter(notifyClient);
 
@@ -379,7 +381,7 @@ void PlayerObject::increaseFactionStanding(const String& factionName, float amou
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_);
 		method.addAsciiParameter(factionName);
 		method.addFloatParameter(amount);
 
@@ -394,7 +396,7 @@ void PlayerObject::decreaseFactionStanding(const String& factionName, float amou
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_);
 		method.addAsciiParameter(factionName);
 		method.addFloatParameter(amount);
 
@@ -409,7 +411,7 @@ float PlayerObject::getFactionStanding(const String& factionName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, RPC_GETFACTIONSTANDING__STRING_);
 		method.addAsciiParameter(factionName);
 
 		return method.executeWithFloatReturn();
@@ -450,7 +452,7 @@ void PlayerObject::setCommandMessageString(unsigned int actionCRC, String& messa
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, RPC_SETCOMMANDMESSAGESTRING__INT_STRING_);
 		method.addUnsignedIntParameter(actionCRC);
 		method.addAsciiParameter(message);
 
@@ -465,7 +467,7 @@ void PlayerObject::removeCommandMessageString(unsigned int actionCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, RPC_REMOVECOMMANDMESSAGESTRING__INT_);
 		method.addUnsignedIntParameter(actionCRC);
 
 		method.executeWithVoidReturn();
@@ -479,7 +481,7 @@ void PlayerObject::notifyOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, RPC_NOTIFYONLINE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -492,7 +494,7 @@ void PlayerObject::doDigest() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, RPC_DODIGEST__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -505,7 +507,7 @@ bool PlayerObject::isDigesting() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, RPC_ISDIGESTING__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -518,7 +520,7 @@ void PlayerObject::notifyOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, RPC_NOTIFYOFFLINE__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -531,7 +533,7 @@ bool PlayerObject::hasFriend(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, RPC_HASFRIEND__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -545,7 +547,7 @@ bool PlayerObject::isIgnoring(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, RPC_ISIGNORING__STRING_);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -559,7 +561,7 @@ void PlayerObject::addReverseFriend(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, RPC_ADDREVERSEFRIEND__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -573,7 +575,7 @@ void PlayerObject::removeReverseFriend(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, RPC_REMOVEREVERSEFRIEND__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -587,7 +589,7 @@ void PlayerObject::sendFriendLists() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, RPC_SENDFRIENDLISTS__);
 
 		method.executeWithVoidReturn();
 	} else
@@ -600,7 +602,7 @@ bool PlayerObject::hasWaypoint(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, RPC_HASWAYPOINT__LONG_);
 		method.addUnsignedLongParameter(objectID);
 
 		return method.executeWithBooleanReturn();
@@ -623,7 +625,7 @@ bool PlayerObject::hasCommandMessageString(unsigned int actionCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, RPC_HASCOMMANDMESSAGESTRING__INT_);
 		method.addUnsignedIntParameter(actionCRC);
 
 		return method.executeWithBooleanReturn();
@@ -637,7 +639,7 @@ unsigned int PlayerObject::getCharacterBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, RPC_GETCHARACTERBITMASK__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -650,7 +652,7 @@ String PlayerObject::getTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, RPC_GETTITLE__);
 
 		method.executeWithAsciiReturn(_return_getTitle);
 		return _return_getTitle;
@@ -664,7 +666,7 @@ unsigned int PlayerObject::getAdminLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, RPC_GETADMINLEVEL__);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -677,7 +679,7 @@ void PlayerObject::setAdminLevel(unsigned int adminlvl) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, RPC_SETADMINLEVEL__INT_);
 		method.addUnsignedIntParameter(adminlvl);
 
 		method.executeWithVoidReturn();
@@ -691,7 +693,7 @@ bool PlayerObject::isDeveloper() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, RPC_ISDEVELOPER__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -704,7 +706,7 @@ bool PlayerObject::isCSR() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, RPC_ISCSR__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -717,7 +719,7 @@ bool PlayerObject::isPrivileged() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, RPC_ISPRIVILEGED__);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -730,7 +732,7 @@ void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, RPC_SETCHARACTERBITMASK__INT_);
 		method.addUnsignedIntParameter(bitmask);
 
 		method.executeWithVoidReturn();
@@ -744,7 +746,7 @@ bool PlayerObject::setCharacterBit(unsigned int bit, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, RPC_SETCHARACTERBIT__INT_BOOL_);
 		method.addUnsignedIntParameter(bit);
 		method.addBooleanParameter(notifyClient);
 
@@ -759,7 +761,7 @@ bool PlayerObject::clearCharacterBit(unsigned int bit, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, RPC_CLEARCHARACTERBIT__INT_BOOL_);
 		method.addUnsignedIntParameter(bit);
 		method.addBooleanParameter(notifyClient);
 
@@ -774,7 +776,7 @@ void PlayerObject::toggleCharacterBit(unsigned int bit) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, RPC_TOGGLECHARACTERBIT__INT_);
 		method.addUnsignedIntParameter(bit);
 
 		method.executeWithVoidReturn();
@@ -806,7 +808,7 @@ int PlayerObject::getForcePower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, RPC_GETFORCEPOWER__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -819,7 +821,7 @@ int PlayerObject::getForcePowerMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, RPC_GETFORCEPOWERMAX__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -859,7 +861,7 @@ DraftSchematic* PlayerObject::getSchematic(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, RPC_GETSCHEMATIC__INT_);
 		method.addSignedIntParameter(i);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
@@ -882,7 +884,7 @@ int PlayerObject::getFoodFilling() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, RPC_GETFOODFILLING__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -895,7 +897,7 @@ int PlayerObject::getFoodFillingMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, RPC_GETFOODFILLINGMAX__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -908,7 +910,7 @@ int PlayerObject::getDrinkFilling() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, RPC_GETDRINKFILLING__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -921,7 +923,7 @@ int PlayerObject::getDrinkFillingMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, RPC_GETDRINKFILLINGMAX__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -934,7 +936,7 @@ int PlayerObject::getJediState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, RPC_GETJEDISTATE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -947,7 +949,7 @@ byte PlayerObject::getLanguageID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, RPC_GETLANGUAGEID__);
 
 		return method.executeWithByteReturn();
 	} else
@@ -978,7 +980,7 @@ int PlayerObject::getExperience(const String& xp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, RPC_GETEXPERIENCE__STRING_);
 		method.addAsciiParameter(xp);
 
 		return method.executeWithSignedIntReturn();
@@ -992,7 +994,7 @@ String PlayerObject::getCommandMessageString(unsigned int actionCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, RPC_GETCOMMANDMESSAGESTRING__INT_);
 		method.addUnsignedIntParameter(actionCRC);
 
 		method.executeWithAsciiReturn(_return_getCommandMessageString);
@@ -1602,8 +1604,6 @@ String PlayerObjectImplementation::getCommandMessageString(unsigned int actionCR
 
 PlayerObjectAdapter::PlayerObjectAdapter(PlayerObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
-
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_NOTIFYOFFLINE__,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_};
 
 Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
