@@ -4,9 +4,7 @@
 
 #include "Region.h"
 
-#include "server/zone/objects/tangible/terminal/Terminal.h"
-
-#include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
+#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
@@ -401,11 +399,8 @@ RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 
 void RegionImplementation::notifyEnter(SceneObject* object) {
 	// server/zone/objects/region/Region.idl():  		if 
-	if (object->isTerminal()){
-	// server/zone/objects/region/Region.idl():  			Terminal term = (Terminal) object;
-	Terminal* term = (Terminal*) object;
-	// server/zone/objects/region/Region.idl():  		}
-	if (term->isBazaarTerminal())	// server/zone/objects/region/Region.idl():  				bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+	if (object->isBazaarTerminal()){
+	// server/zone/objects/region/Region.idl():  			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
 }
 	// server/zone/objects/region/Region.idl():  		if 
@@ -422,11 +417,8 @@ void RegionImplementation::notifyEnter(SceneObject* object) {
 
 void RegionImplementation::notifyExit(SceneObject* object) {
 	// server/zone/objects/region/Region.idl():  		if 
-	if (object->isTerminal()){
-	// server/zone/objects/region/Region.idl():  			Terminal term = (Terminal) object;
-	Terminal* term = (Terminal*) object;
-	// server/zone/objects/region/Region.idl():  		}
-	if (term->isBazaarTerminal())	// server/zone/objects/region/Region.idl():  				bazaars.drop(object.getObjectID());
+	if (object->isBazaarTerminal()){
+	// server/zone/objects/region/Region.idl():  			bazaars.drop(object.getObjectID());
 	(&bazaars)->drop(object->getObjectID());
 }
 	// server/zone/objects/region/Region.idl():  		if 

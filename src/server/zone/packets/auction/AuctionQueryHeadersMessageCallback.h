@@ -10,16 +10,14 @@
 
 #include "../MessageCallback.h"
 
-#include "server/zone/objects/auction/Vendor.h"
-#include "server/zone/objects/tangible/terminal/Terminal.h"
-#include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/managers/bazaar/BazaarManager.h"
 
 class AuctionQueryHeadersMessageCallback : public MessageCallback {
 	int extent;
 	int counter;
 	int screen;
 	uint32 category;
-	uint64 vendorID;
+	uint64 bazaarID;
 	char unk1;
 	int offset;
 
@@ -35,11 +33,11 @@ public:
 		counter = message->parseInt();
 		screen = message->parseInt();
 		// 2 - all items, 3 - my sales, 4 - my bids, 5 - available items,
-		// 7 - for sale (vendor), 9 - offers to vendor
+		// 7 - for sale, 9 - offers to vendor
 		category = message->parseInt();  // Bitmask
 		message->shiftOffset(21);
-		vendorID = message->parseLong();
-		unk1 = message->parseByte(); //Becomes one when using a vendor.
+		bazaarID = message->parseLong();
+		unk1 = message->parseByte();
 		offset = message->parseShort();
 
 
@@ -51,9 +49,8 @@ public:
 		if (player == NULL)
 			return;
 
-		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
-
-		auctionManager->getData(player, extent, vendorID, screen, category, counter, offset);
+		BazaarManager* bazaarManager = server->getZoneServer()->getBazaarManager();
+		bazaarManager->getBazaarData(player, extent, bazaarID, screen, category, counter, offset);
 	}
 };
 

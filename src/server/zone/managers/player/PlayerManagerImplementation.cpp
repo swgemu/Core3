@@ -350,14 +350,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		//ghost->addSkills(skills, false);
 	//}
 
-	if (name.toString() == "Polonel") {
-		Vector<String> skills;
-		skills.add("admin");
-		ghost->setAdminLevel(2);
-		ghost->addSkills(skills, false);
-	}
-
-
 	createAllPlayerObjects(playerCreature);
 	createDefaultPlayerItems(playerCreature, profession, race);
 

@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_ishi_tib_male = object_mobile_vendor_shared_ishi_tib_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_ishi_tib_male, "object/mobile/vendor/ishi_tib_male.iff")

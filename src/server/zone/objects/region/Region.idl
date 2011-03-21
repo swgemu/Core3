@@ -46,8 +46,7 @@ package server.zone.objects.region;
 
 import system.util.VectorMap;
 import engine.core.ManagedObject;
-import server.zone.objects.tangible.terminal.Terminal;
-import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
+import server.zone.objects.tangible.terminal.bazaar.BazaarTerminal;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.creature.shuttle.ShuttleCreature;
@@ -74,14 +73,11 @@ class Region extends ActiveArea {
 		
 		bazaars.setNoDuplicateInsertPlan();
 		bazaars.setNullValue(null);
-
 	}
 	
 	public void notifyEnter(SceneObject object) {
-		if (object.isTerminal()) {
-			Terminal term = (Terminal) object;
-			if (term.isBazaarTerminal())
-				bazaars.put(object.getObjectID(), (BazaarTerminal)object);
+		if (object.isBazaarTerminal()) {
+			bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 		}
 		
 		if (object.isPlayerCreature()) {
@@ -97,11 +93,8 @@ class Region extends ActiveArea {
 	public native void sendDepartingMessage(PlayerCreature player);
 	
 	public void notifyExit(SceneObject object) {
-		if (object.isTerminal()) {
-			Terminal term = (Terminal) object;
-			if (term.isBazaarTerminal())
-				bazaars.drop(object.getObjectID());
-
+		if (object.isBazaarTerminal()) {
+			bazaars.drop(object.getObjectID());
 		}
 		
 		if (object.isPlayerCreature()) {

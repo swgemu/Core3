@@ -34,7 +34,7 @@
 
 #include "server/zone/managers/loot/LootManager.h"
 
-#include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/managers/bazaar/BazaarManager.h"
 
 #include "server/zone/managers/minigames/FishingManager.h"
 
@@ -54,7 +54,7 @@
  *	ZoneServerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATESTATICOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETSERVERNAME__,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETSERVERNAME__STRING_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATESTATICOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETSERVERNAME__,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETBAZAARMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETSERVERNAME__STRING_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
 
 ZoneServer::ZoneServer(int galaxyid) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(galaxyid);
@@ -745,17 +745,17 @@ LootManager* ZoneServer::getLootManager() {
 		return _implementation->getLootManager();
 }
 
-AuctionManager* ZoneServer::getAuctionManager() {
+BazaarManager* ZoneServer::getBazaarManager() {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETAUCTIONMANAGER__);
+		DistributedMethod method(this, RPC_GETBAZAARMANAGER__);
 
-		return (AuctionManager*) method.executeWithObjectReturn();
+		return (BazaarManager*) method.executeWithObjectReturn();
 	} else
-		return _implementation->getAuctionManager();
+		return _implementation->getBazaarManager();
 }
 
 FishingManager* ZoneServer::getFishingManager() {
@@ -1049,8 +1049,8 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
-	if (_name == "auctionManager") {
-		TypeInfo<ManagedReference<AuctionManager* > >::parseFromBinaryStream(&auctionManager, stream);
+	if (_name == "bazaarManager") {
+		TypeInfo<ManagedReference<BazaarManager* > >::parseFromBinaryStream(&bazaarManager, stream);
 		return true;
 	}
 
@@ -1205,11 +1205,11 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "auctionManager";
+	_name = "bazaarManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<AuctionManager* > >::toBinaryStream(&auctionManager, stream);
+	TypeInfo<ManagedReference<BazaarManager* > >::toBinaryStream(&bazaarManager, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1453,9 +1453,9 @@ LootManager* ZoneServerImplementation::getLootManager() {
 	return lootManager;
 }
 
-AuctionManager* ZoneServerImplementation::getAuctionManager() {
-	// server/zone/ZoneServer.idl():  		return auctionManager;
-	return auctionManager;
+BazaarManager* ZoneServerImplementation::getBazaarManager() {
+	// server/zone/ZoneServer.idl():  		return bazaarManager;
+	return bazaarManager;
 }
 
 FishingManager* ZoneServerImplementation::getFishingManager() {
@@ -1647,8 +1647,8 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETLOOTMANAGER__:
 		resp->insertLong(getLootManager()->_getObjectID());
 		break;
-	case RPC_GETAUCTIONMANAGER__:
-		resp->insertLong(getAuctionManager()->_getObjectID());
+	case RPC_GETBAZAARMANAGER__:
+		resp->insertLong(getBazaarManager()->_getObjectID());
 		break;
 	case RPC_GETFISHINGMANAGER__:
 		resp->insertLong(getFishingManager()->_getObjectID());
@@ -1881,8 +1881,8 @@ LootManager* ZoneServerAdapter::getLootManager() {
 	return ((ZoneServerImplementation*) impl)->getLootManager();
 }
 
-AuctionManager* ZoneServerAdapter::getAuctionManager() {
-	return ((ZoneServerImplementation*) impl)->getAuctionManager();
+BazaarManager* ZoneServerAdapter::getBazaarManager() {
+	return ((ZoneServerImplementation*) impl)->getBazaarManager();
 }
 
 FishingManager* ZoneServerAdapter::getFishingManager() {

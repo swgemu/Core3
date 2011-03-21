@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_sullustan_male = object_mobile_vendor_shared_sullustan_male:new {
-	gameObjectType = 1038
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_sullustan_male, "object/mobile/vendor/sullustan_male.iff")
