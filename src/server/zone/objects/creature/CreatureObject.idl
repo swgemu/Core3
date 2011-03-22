@@ -1408,4 +1408,8 @@ class CreatureObject extends TangibleObject {
 		return false;
 	}
 
+	public abstract boolean isVendorCreature() {
+		return false;
+	}
+
 }

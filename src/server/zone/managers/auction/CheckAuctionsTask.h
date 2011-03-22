@@ -10,18 +10,18 @@
 
 #include "engine/engine.h"
 
-#include "BazaarManager.h"
+#include "AuctionManager.h"
 
 class CheckAuctionsTask : public Task {
-	ManagedWeakReference<BazaarManager*> bazaarManager;
+	ManagedWeakReference<AuctionManager*> auctionManager;
 
 public:
-	CheckAuctionsTask(BazaarManager* bazaar) {
-		bazaarManager = bazaar;
+	CheckAuctionsTask(AuctionManager* manager) {
+		auctionManager = manager;
 	}
 
 	void run() {
-		ManagedReference<BazaarManager*> strongRef = bazaarManager.get();
+		ManagedReference<AuctionManager*> strongRef = auctionManager.get();
 
 		if (strongRef == NULL)
 			return;

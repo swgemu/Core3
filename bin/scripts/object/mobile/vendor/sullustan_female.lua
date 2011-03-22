@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_sullustan_female = object_mobile_vendor_shared_sullustan_female:new {
-
+	gameObjectType = 1038
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_sullustan_female, "object/mobile/vendor/sullustan_female.iff")

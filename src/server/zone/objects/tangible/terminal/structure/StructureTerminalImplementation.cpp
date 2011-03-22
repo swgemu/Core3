@@ -39,7 +39,9 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@base_player:set_name"); //Set Name
 	menuResponse->addRadialMenuItemToRadialID(118, 127, 3, "@player_structure:management_residence"); //Declare Residence
 	menuResponse->addRadialMenuItemToRadialID(118, 125, 3, "@player_structure:management_privacy"); //Privacy
-	//Create Vendor - 130
+	if (player->hasSkillBox("crafting_artisan_business_03"))
+		menuResponse->addRadialMenuItemToRadialID(118, 130, 3, "@player_structure:create_vendor"); //Create Vendor - 130
+
 	//Set Access Fee
 	//Change Sign
 
@@ -53,6 +55,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	menuResponse->addRadialMenuItemToRadialID(117, 119, 3, "@player_structure:permission_enter"); //Entry List
 	menuResponse->addRadialMenuItemToRadialID(117, 120, 3, "@player_structure:permission_banned"); //Ban List
 	//menuResponse->addRadialMenuItemToRadialID(118, 122, 3, "@player_structure:permission_vendor"); //Vendor List
+
 }
 
 int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
@@ -106,6 +109,9 @@ int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* play
 		break;
 	case 50:
 		structureObject->sendChangeNamePromptTo(player);
+		break;
+	case 130:
+		structureObject->createVendor(player);
 		break;
 	}
 

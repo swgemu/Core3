@@ -12,7 +12,6 @@
 
 #include "IsVendorOwnerResponseMessage.h"
 #include "server/zone/objects/terrain/PlanetNames.h"
-#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 
 #include "server/zone/Zone.h"
 
@@ -33,33 +32,40 @@ public:
 	}
 
 	void run() {
-		ManagedReference<SceneObject*> bazaar = server->getZoneServer()->getObject(oid);
+		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(oid);
 
-		if (bazaar == NULL)
+		if (sceno == NULL)
 			return;
 
-		Zone* zone = bazaar->getZone();
+		Zone* zone = sceno->getZone();
 
 		if (zone == NULL)
 			return;
 
-		if (bazaar->isBazaarTerminal()) {
-			ActiveArea* area = bazaar->getActiveRegion();
+		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+
+		if (player == NULL)
+			return;
+
+		String planetString = Planet::getPlanetName(zone->getZoneID());
+		String vendorRegion = ""; // TODO: Vendors don't have regions impl yet.
+
+		//TODO: Relook at this! - POLONEL
+		if (sceno->isTerminal() && ((Terminal*)sceno.get())->isBazaarTerminal()) {
+			ActiveArea* area = sceno->getActiveRegion();
 
 			if (area == NULL) {
-				bazaar->error("NULL AREA FOR THIS BAZAAR");
-
+				sceno->error("NULL AREA FOR THIS TERMINAL");
 				return;
 			}
 
-			String bazaarRegion = area->getObjectName()->getStringID();
-			//String bazaarRegion = ((BazaarTerminal*) bazaar.get())->getBazaarRegion();
-			String planetString = Planet::getPlanetName(zone->getZoneID());
+			vendorRegion = area->getObjectName()->getStringID();
 
-			//client->getPlayer()->info(String("sending for bazaar region ") + bazaarRegion, true);
-			IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(false, oid, planetString, bazaarRegion, 0, 0);
-			client->sendMessage(msg);
 		}
+
+		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion, 0);
+		client->sendMessage(msg);
+
 	}
 };
 

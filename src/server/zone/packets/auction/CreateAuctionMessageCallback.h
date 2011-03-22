@@ -10,17 +10,21 @@
 
 
 #include "../MessageCallback.h"
-#include "server/zone/managers/bazaar/BazaarManager.h"
+#include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
+#include "server/zone/objects/creature/vendor/VendorCreature.h"
 
 
 class CreateAuctionMessageCallback : public MessageCallback {
-	uint64 objectid;
-	uint64 bazaarid;
+	uint64 objectID;
+	uint64 vendorID;
 
 	uint32 price;
 	uint32 duration;
 
 	UnicodeString description;
+
+	byte premium;
 public:
 	CreateAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 			MessageCallback(client, server) {
@@ -29,24 +33,52 @@ public:
 
 	void parse(Message* message) {
 
-		objectid = message->parseLong(); // object for sale
-		bazaarid = message->parseLong(); // bazaar
+		objectID = message->parseLong(); // object for sale
+		vendorID = message->parseLong(); // vendor
 
 		price = message->parseInt(); // Sale price
 		duration = message->parseInt(); // How long to sell for in minutes
 
 		message->parseUnicode(description);
 
+		premium = message->parseByte();
+
 	}
 
 	void run() {
 		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(vendorID);
 
-		if (player == NULL)
+		if (player == NULL || sceno == NULL || !sceno->isVendor())
 			return;
 
-		BazaarManager* bazaarManager = server->getZoneServer()->getBazaarManager();
-		bazaarManager->addSaleItem(player, objectid, bazaarid, description, price, duration, true);
+		// And now we figure out what Vendor Class
+		Vendor* vendor = NULL;
+
+		if (sceno->isTerminal()) {
+			Terminal* term = (Terminal*) sceno.get();
+			if (term->isVendorTerminal()) {
+				VendorTerminal* terminal = (VendorTerminal*) term;
+				vendor = terminal->getVendor();
+			}
+
+		} else if (sceno->isCreatureObject()) {
+			CreatureObject* cero = (CreatureObject*) sceno.get();
+			if (!cero->isVendorCreature())
+				return;
+
+			VendorCreature* vendorCreature = (VendorCreature*) cero;
+			vendor = vendorCreature->getVendor();
+
+		} else
+			return;
+
+		if (vendor == NULL)
+			return;
+
+		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
+		//duration = 60;
+		auctionManager->addSaleItem(player, objectID, vendor, description, price, duration, true, premium);
 	}
 
 };

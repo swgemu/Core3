@@ -42,26 +42,83 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.managers.bazaar;
+package server.zone.managers.auction;
 
 import engine.core.ManagedObject;
 import system.util.VectorMap;
-import server.zone.objects.tangible.terminal.bazaar.AuctionItem;
+import server.zone.objects.auction.AuctionItem;
 
-class BazaarAuctionsMap extends ManagedObject {
+class AuctionsMap extends ManagedObject {
 	@dereferenced
 	protected VectorMap<unsigned long, AuctionItem> auctions;
+
+	@dereferenced 
+	protected VectorMap<unsigned long, AuctionItem> vendorItems;
 	
 	@dereferenced
 	protected VectorMap<unsigned long, int> playerAuctionCount;
+
+	@dereferenced
+	protected VectorMap<unsigned long, int> playerVendorItemCount;
 	
-	public BazaarAuctionsMap() {
+	public AuctionsMap() {
 		auctions.setNullValue(null);
 		auctions.setNoDuplicateInsertPlan();
+
+		vendorItems.setNullValue(null);
+		vendorItems.setNoDuplicateInsertPlan();
 		
 		playerAuctionCount.setNullValue(0);
 		playerAuctionCount.setAllowOverwriteInsertPlan();
+
+		playerVendorItemCount.setNullValue(0);
+		playerVendorItemCount.setAllowOverwriteInsertPlan();
 	}
+
+	public int getVendorItemCount() {
+		return vendorItems.size();
+	}
+
+	public boolean containsVendorItem(unsigned long objectID) {
+		return vendorItems.contains(objectID);
+	}
+
+	public void addVendorItem(unsigned long objectID, AuctionItem item) {
+		vendorItems.put(objectID, item);
+		playerVendorItemCount.put(item.getOwnerID(), playerVendorItemCount.get(item.getOwnerID()) + 1);
+	}
+	
+	public int getPlayerVendorItemCount(unsigned long objectID) {
+		return playerVendorItemCount.get(objectID);
+	}
+
+	public void dropVendorItem(unsigned long objectID) {
+		AuctionItem item = vendorItems.get(objectID);
+		
+		if (item == null)
+			return;
+		
+		int count = playerVendorItemCount.get(item.getOwnerID());
+		
+		count = count - 1;
+		
+		if (count < 1)
+			playerVendorItemCount.drop(item.getOwnerID());
+		else
+			playerVendorItemCount.put(item.getOwnerID(), count);
+		
+		vendorItems.drop(objectID);
+	}
+	
+	public AuctionItem getVendorItem(unsigned long objectID) {
+		return vendorItems.get(objectID);
+	}
+	
+	public AuctionItem getVendorItem(int index) {
+		return vendorItems.get(index);
+	}
+
+//=========================
 	
 	public int getAuctionCount() {
 		return auctions.size();
@@ -71,7 +128,7 @@ class BazaarAuctionsMap extends ManagedObject {
 		return auctions.contains(objectID);
 	}
 	
-	public void addAuction(unsigned long objectID, AuctionItem item) {
+	public void addBazaarItem(unsigned long objectID, AuctionItem item) {
 		auctions.put(objectID, item);
 		playerAuctionCount.put(item.getOwnerID(), playerAuctionCount.get(item.getOwnerID()) + 1);
 	}
@@ -80,7 +137,7 @@ class BazaarAuctionsMap extends ManagedObject {
 		return playerAuctionCount.get(objectID);
 	}
 	
-	public void dropAuction(unsigned long objectID) {
+	public void dropBazaarItem(unsigned long objectID) {
 		AuctionItem item = auctions.get(objectID);
 		
 		if (item == null)
@@ -98,16 +155,26 @@ class BazaarAuctionsMap extends ManagedObject {
 		auctions.drop(objectID);
 	}
 	
-	public AuctionItem getAuction(unsigned long objectID) {
+	public AuctionItem getBazaarItem(unsigned long objectID) {
 		return auctions.get(objectID);
 	}
 	
-	public AuctionItem getAuction(int index) {
+	public AuctionItem getBazaarItem(int index) {
 		return auctions.get(index);
+	}
+
+	public boolean checkInStockroom(unsigned long objectID) {
+		AuctionItem item = vendorItems.get(objectID);
+		return item.isInStockroom();
 	}
 	
 	@local
-	public VectorMap<unsigned long, AuctionItem> getAuctions() {
+	public VectorMap<unsigned long, AuctionItem> getBazaarItems() {
 		return auctions;
+	}
+
+	@local
+	public VectorMap<unsigned long, AuctionItem> getVendorItems() {
+		return vendorItems;
 	}
 }

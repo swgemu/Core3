@@ -16,18 +16,36 @@ namespace zone {
 namespace objects {
 namespace tangible {
 namespace terminal {
-namespace bazaar {
 
-class BazaarTerminal;
+class Terminal;
 
-} // namespace bazaar
 } // namespace terminal
 } // namespace tangible
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::tangible::terminal::bazaar;
+using namespace server::zone::objects::tangible::terminal;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace terminal {
+namespace vendor {
+namespace bazaar {
+
+class BazaarTerminal;
+
+} // namespace bazaar
+} // namespace vendor
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
 
 namespace server {
 namespace zone {
