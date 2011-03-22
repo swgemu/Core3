@@ -152,6 +152,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public static final int GENERALTANGIBLEOBJECT = 4;
 	public static final int STATICOBJECT = 5;
+	public static final int VENDORTERMINAL = 7;
 
 	public static final int ARMOR = 0x100;
 	public static final int BODYARMOR = 0x101;
@@ -191,6 +192,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public static final int SHUTTLECREATURE = 0x40B;
 	public static final int JUNKDEALERCREATURE = 0x40C;
 	public static final int INFORMANTCREATURE = 0x40D;
+	public static final int VENDORCREATURE = 0x40E;
 
 	public static final int INTANGIBLE = 0x800;
 	public static final int DRAFTSCHEMATIC = 0x801;
@@ -1174,6 +1176,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isPlayerCreature() {
 		return gameObjectType == PLAYERCREATURE;
 	}
+
+	public abstract boolean isVendor() {
+		return false;
+	}
 	
 	public boolean isShuttleInstallation() {
 		return gameObjectType == SHUTTLEINSTALLATION;
@@ -1309,10 +1315,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public abstract boolean isStructureObject() {
 		return false;
-	}
-	
-	public boolean isBazaarTerminal() {
-		return gameObjectType == BAZAAR;
 	}
 
 	public boolean isFishingBait() {

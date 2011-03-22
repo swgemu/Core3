@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_devaronian_male = object_mobile_vendor_shared_devaronian_male:new {
-
+	gameObjectType = 1038
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_devaronian_male, "object/mobile/vendor/devaronian_male.iff")

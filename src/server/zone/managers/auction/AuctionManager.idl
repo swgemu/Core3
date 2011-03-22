@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.managers.bazaar;
+package server.zone.managers.auction;
 
 import engine.log.Logger;
 import server.zone.ZoneServer;
@@ -50,61 +50,83 @@ import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedService;
 import server.zone.ZoneServer;
 import server.zone.objects.player.PlayerCreature;
-import server.zone.managers.bazaar.BazaarAuctionsMap;
-import server.zone.objects.tangible.terminal.bazaar.BazaarTerminal;
-import server.zone.objects.tangible.terminal.bazaar.AuctionItem;
+import server.zone.managers.auction.AuctionsMap;
+import server.zone.objects.tangible.terminal.vendor.VendorTerminal;
+import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
+import server.zone.objects.auction.AuctionItem;
+include server.zone.objects.auction.Vendor;
 import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
 
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
 
-class BazaarManager extends ManagedService implements Logger {
-	protected BazaarAuctionsMap auctionMap;
+class AuctionManager extends ManagedService implements Logger {
+	protected AuctionsMap auctionMap;
 	
 	@weakReference
 	protected ZoneServer zoneServer;
 	
 	public final static int MAXPRICE = 20000;
-	public final static int MAXSALES = 20;
-	public final static int SALESFEE = 5;
+	public final static int MAXSALES = 20; // this only apply to bazaars
+	public final static int SALESFEE = 20;
 	public final static int CHECKEVERY = 2; // Minutes
 	
 	
-	public BazaarManager(ZoneServer server) {
+	public AuctionManager(ZoneServer server) {
 		zoneServer = server;
 		
-		Logger.setLoggingName("BazaarManager");
+		Logger.setLoggingName("AuctionManager");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
 	
 	public native void initialize();
+
+	public native void checkVendorItems();
 	
 	public native void checkAuctions();
 	
-	public native void addSaleItem(PlayerCreature player, unsigned long objectid, unsigned long bazaarid, final unicode description, int price, unsigned int duration, boolean auction);
-	public native AuctionItem createAuctionItem(PlayerCreature player, SceneObject objectToSell, BazaarTerminal terminal, final unicode description, int price, unsigned int duration, boolean auction);
+	@local
+	public native void addSaleItem(PlayerCreature player, unsigned long objectid, Vendor vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
+	@local
+	public native AuctionItem createVendorItem(PlayerCreature player, SceneObject objectToSell, Vendor vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
 	
-	public native int checkSaleItem(PlayerCreature player, SceneObject object, int price);
+	@local
+	public native int checkSaleItem(PlayerCreature player, SceneObject object, Vendor vendor, int price);
 	
 	public native void getItemAttributes(PlayerCreature player, unsigned long objectid);
+
+	public native void getData(PlayerCreature player, int extent, unsigned long vendorObjectID, int screen, unsigned int category, int count, int offset);	
+
+	@local
+	public native void getLocalVendorData(PlayerCreature player, Vendor vendor, int screen, unsigned int category, int count, int offset);
+
+	@local
+	public native void getGalaxyData(PlayerCreature player, Vendor vendor, int screen, unsigned int category, int count, int offset);
 	
-	public native void getBazaarData(PlayerCreature player, int extent, unsigned long bazaarObjectid, int screen, unsigned int category, int count, int offset);
-	public native void getAllBazaarData(PlayerCreature player, BazaarTerminal terminal, int screen, unsigned int category, int count, int offset);
-	public native void getPlanetBazaarData(PlayerCreature player, BazaarTerminal terminal, int screen, unsigned int category, int count, int offset);
-	public native void getRegionBazaarData(PlayerCreature player, BazaarTerminal terminal, int screen, unsigned int category, int count, int offset);
+	@local
+	public native void getPlanetData(PlayerCreature player, Vendor vendor, int screen, unsigned int category, int count, int offset);
+
+	@local
+	public native void getRegionData(PlayerCreature player, Vendor vendor, int screen, unsigned int category, int count, int offset);
 	
 	private native void refundAuction(AuctionItem item); 
-	public native int checkRetrieve(PlayerCreature player, unsigned long objectIdToRetrieve, BazaarTerminal terminal);
-	public native void retrieveItem(PlayerCreature player, unsigned long objectid, unsigned long bazaarid);
+
+	@local
+	public native int checkRetrieve(PlayerCreature player, unsigned long objectIdToRetrieve, Vendor vendor);
+	public native void retrieveItem(PlayerCreature player, unsigned long objectid, unsigned long vendorID);
 	
 	public native void buyItem(PlayerCreature player, unsigned long objectid, int price1, int price2);
 	public native void doAuctionBid(PlayerCreature player, AuctionItem item, int price1, int price2);
 	public native void doInstantBuy(PlayerCreature player, AuctionItem item, int price1, int price2);
 	public native int checkBidAuction(PlayerCreature player, AuctionItem item, int price1, int price2);
+
+	public native void cancelItem(PlayerCreature player, unsigned long objectID);
 	
 	@local
-	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(PlayerCreature player, VectorMap<unsigned long, AuctionItem> items, int screen, unsigned int category, int count, int offset);
-	
+	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(PlayerCreature player, Vendor vendor, VectorMap<unsigned long, AuctionItem> items, int screen, unsigned int category, int count, int offset);
+
+	@local
+	private native Vendor getVendorFromObject(SceneObject obj);	
 }
 

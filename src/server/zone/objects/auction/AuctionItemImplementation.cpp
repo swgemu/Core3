@@ -21,3 +21,8 @@ void AuctionItemImplementation::setLocation(const String& planet, const String& 
 	title << "." << vendorid << "#" << x << "," << z;
 	terminalTitle = title.toString();
 }
+
+void AuctionItemImplementation::clearAuctionWithdraw() {
+	if (auctionOptions & OPTION_WITHDRAW)
+		auctionOptions &= ~OPTION_WITHDRAW;
+}

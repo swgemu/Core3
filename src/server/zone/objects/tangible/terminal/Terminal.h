@@ -61,6 +61,10 @@ public:
 
 	bool isElevatorTerminal();
 
+	bool isVendorTerminal();
+
+	bool isBazaarTerminal();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -107,6 +111,10 @@ public:
 	SceneObject* getControlledObject();
 
 	virtual bool isElevatorTerminal();
+
+	virtual bool isVendorTerminal();
+
+	virtual bool isBazaarTerminal();
 
 	Terminal* _this;
 
@@ -162,6 +170,10 @@ public:
 	SceneObject* getControlledObject();
 
 	bool isElevatorTerminal();
+
+	bool isVendorTerminal();
+
+	bool isBazaarTerminal();
 
 };
 

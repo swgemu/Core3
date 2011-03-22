@@ -10,7 +10,7 @@
 
 
 #include "../MessageCallback.h"
-#include "server/zone/managers/bazaar/BazaarManager.h"
+#include "server/zone/managers/auction/AuctionManager.h"
 
 
 class BidAuctionMessageCallback : public MessageCallback {
@@ -36,8 +36,8 @@ public:
 		if (player == NULL)
 			return;
 
-		BazaarManager* bazaarManager = server->getZoneServer()->getBazaarManager();
-	   	bazaarManager->buyItem(player, objectid, price1, price2);
+		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
+		auctionManager->buyItem(player, objectid, price1, price2);
 	}
 
 };

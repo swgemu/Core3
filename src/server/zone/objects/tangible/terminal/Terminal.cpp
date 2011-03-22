@@ -12,7 +12,7 @@
  *	TerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISTERMINAL__,RPC_ISGUILDTERMINAL__,RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISELEVATORTERMINAL__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISTERMINAL__,RPC_ISGUILDTERMINAL__,RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISELEVATORTERMINAL__,RPC_ISVENDORTERMINAL__,RPC_ISBAZAARTERMINAL__};
 
 Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
 	TerminalImplementation* _implementation = new TerminalImplementation();
@@ -104,6 +104,32 @@ bool Terminal::isElevatorTerminal() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isElevatorTerminal();
+}
+
+bool Terminal::isVendorTerminal() {
+	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISVENDORTERMINAL__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isVendorTerminal();
+}
+
+bool Terminal::isBazaarTerminal() {
+	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISBAZAARTERMINAL__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isBazaarTerminal();
 }
 
 DistributedObjectServant* Terminal::_getImplementation() {
@@ -275,6 +301,16 @@ bool TerminalImplementation::isElevatorTerminal() {
 	return false;
 }
 
+bool TerminalImplementation::isVendorTerminal() {
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		return false;
+	return false;
+}
+
+bool TerminalImplementation::isBazaarTerminal() {
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		return false;
+	return false;
+}
+
 /*
  *	TerminalAdapter
  */
@@ -303,6 +339,12 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ISELEVATORTERMINAL__:
 		resp->insertBoolean(isElevatorTerminal());
+		break;
+	case RPC_ISVENDORTERMINAL__:
+		resp->insertBoolean(isVendorTerminal());
+		break;
+	case RPC_ISBAZAARTERMINAL__:
+		resp->insertBoolean(isBazaarTerminal());
 		break;
 	default:
 		return NULL;
@@ -333,6 +375,14 @@ SceneObject* TerminalAdapter::getControlledObject() {
 
 bool TerminalAdapter::isElevatorTerminal() {
 	return ((TerminalImplementation*) impl)->isElevatorTerminal();
+}
+
+bool TerminalAdapter::isVendorTerminal() {
+	return ((TerminalImplementation*) impl)->isVendorTerminal();
+}
+
+bool TerminalAdapter::isBazaarTerminal() {
+	return ((TerminalImplementation*) impl)->isBazaarTerminal();
 }
 
 /*

@@ -218,6 +218,8 @@ class StructureObject extends TangibleObject {
 	public native boolean addPermission(PlayerCreature player, final string targetPlayerName, final string listName);
 	public native boolean removePermission(PlayerCreature player, PlayerCreature targetPlayer, final string listName);
 	public native boolean removePermission(PlayerCreature player, final string targetPlayerName, final string listName);
+
+	public native void createVendor(PlayerCreature player);
 	
 	/**
 	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
