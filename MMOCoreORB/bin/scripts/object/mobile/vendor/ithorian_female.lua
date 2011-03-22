@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_ithorian_female = object_mobile_vendor_shared_ithorian_female:new {
-
+	gameObjectType = 1038
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_ithorian_female, "object/mobile/vendor/ithorian_female.iff")

@@ -42,19 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
-package server.zone.objects.tangible.terminal.bazaar;
+package server.zone.objects.auction;
 
 import system.util.VectorMap;
 import engine.core.ManagedObject;
-import server.zone.objects.tangible.terminal.bazaar.BazaarTerminal;
+import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
+import server.zone.objects.tangible.terminal.vendor.VendorTerminal;
 import system.lang.StringBuffer;
 
 include server.zone.objects.scene.variables.StringId;
 
 class AuctionItem extends ManagedObject {
 	
-	@weakReference
-	protected BazaarTerminal bazaarTerminal;
+	protected unsigned long vendorID;
 	
 	protected unsigned long auctionedItemObjectID;
 	protected int itemType;
@@ -76,6 +76,10 @@ class AuctionItem extends ManagedObject {
 	protected boolean auction;
 	protected boolean sold;
 	protected boolean ownerRemove;
+	protected boolean inStockroom;
+	protected boolean offer;
+
+	protected boolean onBazaar;
 
 	protected unsigned long buyerID;
 
@@ -83,6 +87,11 @@ class AuctionItem extends ManagedObject {
 	protected int remainingTime;
 
 	protected boolean updated;
+
+	protected int auctionOptions;
+
+	public final static int OPTION_PREMIUM = 0x400;
+	public final static int OPTION_WITHDRAW = 0x800;
 	
 	public AuctionItem(unsigned long objectid) {
 		auctionedItemObjectID = objectid;
@@ -96,20 +105,28 @@ class AuctionItem extends ManagedObject {
 		auction = true;
 		sold = false;
 		ownerRemove = false;
+		inStockroom = false;
+		offer = false;
+
+		onBazaar = false;
 		
 		buyerID = 0;
 		expireTime = 0;
 		remainingTime = 0;
 		
 		updated = false;
-		
-		bazaarTerminal = null;
+
+		auctionOptions = 0;
 		
 		//Logger.setLoggingName("AuctionItem");
 	}
 	
 	public native void setLocation(final string planet, final string header, unsigned long vendorid, int x, int z, boolean vendor);
-	
+		
+	public void setVendorID(unsigned long val) {
+		vendorID = val;
+	}		
+
 	public void setItemName(final string name) {
 		itemName = name;
 	}
@@ -147,10 +164,6 @@ class AuctionItem extends ManagedObject {
 		ownerName = name;
 	}
 	
-	public void setBazaarTerminal(BazaarTerminal term) {
-		bazaarTerminal = term;
-	}
-	
 	public void setAuction(boolean isAuction) {
 		auction = isAuction;
 	}
@@ -162,6 +175,28 @@ class AuctionItem extends ManagedObject {
 	public void setRemovedByOwner(boolean isRemovedByOwner) {
 		ownerRemove = isRemovedByOwner;
 	}
+
+	public void setAuctionPremium() {
+		auctionOptions = auctionOptions | OPTION_PREMIUM;
+	}
+
+	public void setAuctionWithdraw() {
+		auctionOptions = auctionOptions | OPTION_WITHDRAW;
+	}
+	
+	public native void clearAuctionWithdraw();
+
+	public void setInStockroom(boolean inStock) {
+		inStockroom = inStock;
+	}
+
+	public void setOfferToVendor(boolean val) {
+		offer = val;
+	}
+
+	public void setOnBazaar(boolean val) {
+		onBazaar = val;
+	}
 	
 	public void setExpireTime(int time) {
 		expireTime = time;
@@ -170,9 +205,9 @@ class AuctionItem extends ManagedObject {
 	public void setBuyerID(unsigned long id) {
 		buyerID = id;
 	}
-	
-	public BazaarTerminal getBazaarTerminal() {
-		return bazaarTerminal;
+
+	public boolean isOnBazaar() {
+		return onBazaar;
 	}
 	
 	public boolean isSold() {
@@ -186,7 +221,19 @@ class AuctionItem extends ManagedObject {
 	public boolean isRemovedByOwner() {
 		return ownerRemove;
 	}
+
+	public boolean isInStockroom() {
+		return inStockroom;
+	}
+
+	public boolean isOfferToVendor() {
+		return offer;
+	}
 	
+	public unsigned long getVendorID() {
+		return vendorID;
+	}
+
 	public unsigned long getAuctionedItemObjectID() {
 		return auctionedItemObjectID;
 	}
@@ -234,4 +281,17 @@ class AuctionItem extends ManagedObject {
 	public string getLocation() {
 		return location;
 	}
+
+	public int getAuctionOptions() {
+		return auctionOptions;
+	}
+
+	public boolean isPremiumAuction() {
+		return auctionOptions & OPTION_PREMIUM;
+	}
+
+	public boolean isOwner() {
+		return auctionOptions & OPTION_WITHDRAW;
+	}
+
 }

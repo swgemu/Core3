@@ -42,7 +42,7 @@
 
 
 object_mobile_vendor_aqualish_male = object_mobile_vendor_shared_aqualish_male:new {
-
+	gameObjectType = 1038
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_aqualish_male, "object/mobile/vendor/aqualish_male.iff")

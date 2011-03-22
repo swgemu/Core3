@@ -42,30 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
-package server.zone.objects.tangible.terminal.bazaar;
+package server.zone.objects.tangible.terminal.vendor.bazaar;
 
-import server.zone.objects.tangible.terminal.Terminal;
+include server.zone.objects.auction.Vendor;
+import server.zone.objects.tangible.terminal.vendor.VendorTerminal;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.tangible.terminal.bazaar.AuctionItem;
 import system.util.VectorMap;
 import server.zone.Zone;
 
-class BazaarTerminal extends Terminal {
-	//protected string bazaarRegion;
-	
-	@dereferenced
-	protected VectorMap<unsigned long, AuctionItem> auctions;
+class BazaarTerminal extends VendorTerminal {
 	
 	public BazaarTerminal() {		
-		auctions.setNullValue(null);
-		auctions.setNoDuplicateInsertPlan();
-		
 		Logger.setLoggingName("BazaarTerminal");
+			
 	}
 	
-	public native void initializeTransientMembers();
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -76,31 +77,8 @@ class BazaarTerminal extends Terminal {
 	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
 		return 0;
 	}
-	
-	public void addAuction(AuctionItem item) {
-		item.setBazaarTerminal(this);
-		auctions.put(item.getAuctionedItemObjectID(), item);
+
+	public abstract boolean isBazaarTerminal() {
+		return true;
 	}
-	
-	public void dropAuction(unsigned long auctionItemID) {
-		AuctionItem item = auctions.get(auctionItemID);
-		
-		if (item != null) {
-			item.setBazaarTerminal(null);
-			auctions.drop(auctionItemID);
-		}
-	}
-	
-	@local
-	public VectorMap<unsigned long, AuctionItem> getAuctions() {
-		return auctions;
-	}
-	
-	/*public void setBazaarRegion(final string region) {
-		bazaarRegion = region;
-	}
-	
-	public string getBazaarRegion() {
-		return bazaarRegion;
-	}*/
 }

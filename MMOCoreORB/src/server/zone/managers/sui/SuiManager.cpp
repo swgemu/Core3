@@ -107,6 +107,9 @@ which carries forward this exception.
 #include "server/zone/objects/guild/sui/GuildSponsoredListCallback.h"
 #include "server/zone/objects/guild/sui/GuildSponsoredOptionsCallback.h"
 
+#include "server/zone/objects/player/sessions/vendor/sui/CreateVendorCallback.h"
+#include "server/zone/objects/player/sessions/vendor/sui/NameVendorCallback.h"
+
 #include "server/zone/objects/creature/sui/RepairVehicleCallback.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
@@ -145,6 +148,9 @@ void SuiManager::registerMessages() {
 	messageCallbackFactory.registerObject<GuildSponsoredListCallback>(SuiWindowType::GUILD_SPONSORED_LIST);
 	messageCallbackFactory.registerObject<GuildSponsoredOptionsCallback>(SuiWindowType::GUILD_SPONSORED_OPTIONS);
 	messageCallbackFactory.registerObject<RepairVehicleCallback>(SuiWindowType::GARAGE_REPAIR);
+
+	messageCallbackFactory.registerObject<CreateVendorCallback>(SuiWindowType::STRUCTURE_CREATE_VENDOR);
+	messageCallbackFactory.registerObject<NameVendorCallback>(SuiWindowType::STRUCTURE_NAME_VENDOR);
 
 	messageCallbackFactory.registerObject<ListGuildsResponseCallback>(SuiWindowType::ADMIN_GUILDLIST);
 	messageCallbackFactory.registerObject<DestroyCommandCallback>(SuiWindowType::ADMIN_DESTROY_CONFIRM);

@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "server/zone/objects/tangible/terminal/bazaar/AuctionItem.h"
+#include "server/zone/objects/auction/AuctionItem.h"
 
 class AuctionQueryHeadersResponseMessage : public BaseMessage {
 
@@ -71,6 +71,7 @@ public:
 	void addItemToList(AuctionItem* ai) {
 		locationList.put(ai->getTerminalTitle());
 		locationList.put(ai->getOwnerName());
+		locationList.put(ai->getBidderName());
 
 		itemList.add(ai);
 	}
@@ -127,15 +128,16 @@ public:
 	    	insertShort(locationList.find(il->getOwnerName()));
 
 	    	insertLong(il->getBuyerID()); // buyer ID
+	    	insertShort(locationList.find(il->getBidderName()));
 
-	    	insertShort(0);
 	    	insertInt(il->getPrice()); // my proxy not implemented yet
 	    	insertInt(il->getPrice()); // my bid default to price
 
 	    	insertInt(il->getItemType());
 
-	    	insertInt(10);
-	    	insertInt(20);  // Vendor entrance fee
+	    	insertInt(il->getAuctionOptions()); // autionOptions 0x400 = Premium, 0x800 = withdraw
+
+	    	insertInt(0);  //TODO: Vendor entrance fee
 		}
 	}
 
