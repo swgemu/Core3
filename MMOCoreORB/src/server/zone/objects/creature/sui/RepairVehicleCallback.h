@@ -9,7 +9,7 @@
 #define REPAIRVEHICLECALLBACK_H_
 
 
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
@@ -17,10 +17,10 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 
-class RepairVehicleCallback : public SuiMessageCallback {
+class RepairVehicleCallback : public SuiCallback {
 public:
 	RepairVehicleCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

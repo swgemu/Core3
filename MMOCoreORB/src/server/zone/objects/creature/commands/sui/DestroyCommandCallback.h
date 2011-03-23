@@ -8,12 +8,12 @@
 #ifndef DESTROYCOMMANDCALLBACK_H_
 #define DESTROYCOMMANDCALLBACK_H_
 
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 
-class DestroyCommandCallback : public SuiMessageCallback {
+class DestroyCommandCallback : public SuiCallback {
 public:
-	DestroyCommandCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+	DestroyCommandCallback(ZoneProcessServer* server)
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

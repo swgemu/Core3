@@ -8,12 +8,12 @@
 #ifndef FINDCOMMANDCALLBACK_H_
 #define FINDCOMMANDCALLBACK_H_
 
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 
-class FindCommandCallback : public SuiMessageCallback {
+class FindCommandCallback : public SuiCallback {
 public:
-	FindCommandCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+	FindCommandCallback(ZoneProcessServer* server)
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

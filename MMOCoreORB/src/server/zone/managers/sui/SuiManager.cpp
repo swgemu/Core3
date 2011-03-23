@@ -128,39 +128,9 @@ SuiManager::SuiManager(ZoneProcessServer* serv) : Logger("SuiManager") {
 
 	setGlobalLogging(true);
 	setLogging(false);
-
-	registerMessages();
-}
-
-void SuiManager::registerMessages() {
-	messageCallbackFactory.registerObject<SurveyToolSetRangeCallback>(SuiWindowType::SURVEY_TOOL_RANGE);
-	messageCallbackFactory.registerObject<FindCommandCallback>(SuiWindowType::COMMAND_FIND);
-	messageCallbackFactory.registerObject<GuildCreateNameResponseCallback>(SuiWindowType::GUILD_CREATE_NAME);
-	messageCallbackFactory.registerObject<GuildCreateAbbrevResponseCallback>(SuiWindowType::GUILD_CREATE_ABBREV);
-	messageCallbackFactory.registerObject<GuildDisbandCallback>(SuiWindowType::GUILD_DISBAND);
-	messageCallbackFactory.registerObject<GuildMemberListCallback>(SuiWindowType::GUILD_MEMBER_LIST);
-	messageCallbackFactory.registerObject<GuildMemberOptionsCallback>(SuiWindowType::GUILD_MEMBER_OPTIONS);
-	messageCallbackFactory.registerObject<GuildMemberPermissionsResponseCallback>(SuiWindowType::GUILD_MEMBER_PERMISSIONS);
-	messageCallbackFactory.registerObject<GuildMemberRemoveCallback>(SuiWindowType::GUILD_MEMBER_REMOVE);
-	messageCallbackFactory.registerObject<GuildTitleResponseCallback>(SuiWindowType::GUILD_MEMBER_TITLE);
-	messageCallbackFactory.registerObject<GuildSponsorCallback>(SuiWindowType::GUILD_SPONSOR);
-	messageCallbackFactory.registerObject<GuildSponsorVerifyCallback>(SuiWindowType::GUILD_SPONSOR_VERIFY);
-	messageCallbackFactory.registerObject<GuildSponsoredListCallback>(SuiWindowType::GUILD_SPONSORED_LIST);
-	messageCallbackFactory.registerObject<GuildSponsoredOptionsCallback>(SuiWindowType::GUILD_SPONSORED_OPTIONS);
-	messageCallbackFactory.registerObject<RepairVehicleCallback>(SuiWindowType::GARAGE_REPAIR);
-
-	messageCallbackFactory.registerObject<CreateVendorCallback>(SuiWindowType::STRUCTURE_CREATE_VENDOR);
-	messageCallbackFactory.registerObject<NameVendorCallback>(SuiWindowType::STRUCTURE_NAME_VENDOR);
-
-	messageCallbackFactory.registerObject<ListGuildsResponseCallback>(SuiWindowType::ADMIN_GUILDLIST);
-	messageCallbackFactory.registerObject<DestroyCommandCallback>(SuiWindowType::ADMIN_DESTROY_CONFIRM);
-
-	messageCallbackFactory.registerObject<SlicingSessionCallback>(SuiWindowType::SLICING_MENU);
 }
 
 void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args) {
-
-	//TODO: Move the parsing to the SuiMessageCallback
 	uint16 windowType = (uint16) boxID;
 
 	Locker _lock(player);
@@ -170,25 +140,16 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	if (suiBox == NULL)
 		return;
 
+	//Remove the box from the player, callback can readd it to the player if needed.
 	player->removeSuiBox(boxID);
-	suiBox->clearOptions();
+	suiBox->clearOptions(); //TODO: Eventually SuiBox needs to be cleaned up to not need this.
 
-	ManagedReference<ZoneClientSession*> client = player->getClient();
+	SuiCallback* callback = suiBox->getCallback();
 
-	if (client == NULL)
-		return;
+	if (callback != NULL)
+		callback->run(player, suiBox, cancel, args);
 
-	bool cancelPressed = (bool) cancel;
-	SuiMessageCallback* messageCallback = messageCallbackFactory.createObject(windowType, client, server);
-
-	if (messageCallback != NULL) {
-		//if (parseMessage(pack, messageCallback))
-		messageCallback->run(player, suiBox, cancelPressed, args);
-
-		delete messageCallback;
-
-		return;
-	}
+	return;
 
 	StringBuffer msg;
 	msg << "Unknown message callback with SuiWindowType: " << hex << windowType << ". Falling back on old handler system.";

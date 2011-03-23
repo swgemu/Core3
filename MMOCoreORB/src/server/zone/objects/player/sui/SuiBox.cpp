@@ -12,7 +12,7 @@
  *	SuiBoxStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_,RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_,RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_,RPC_GENERATEMESSAGE__,RPC_GENERATECLOSEMESSAGE__,RPC_ADDSETTING__STRING_STRING_STRING_STRING_,RPC_ADDHEADER__STRING_STRING_,RPC_CLEAROPTIONS__,RPC_COMPARETO__SUIBOX_,RPC_HASGENERATEDMESSAGE__,RPC_SETPROMPTTITLE__STRING_,RPC_SETPROMPTTEXT__STRING_,RPC_GETPROMPTTITLE__,RPC_SETHANDLERTEXT__STRING_,RPC_SETWINDOWTYPE__INT_,RPC_SETBOXTYPE__INT_,RPC_ISINPUTBOX__,RPC_ISLISTBOX__,RPC_ISMESSAGEBOX__,RPC_ISTRANSFERBOX__,RPC_ISBANKTRANSFERBOX__,RPC_ISSLICINGBOX__,RPC_ISCHARACTERBUILDERBOX__,RPC_ISCOLORPICKER__,RPC_SETCANCELBUTTON__BOOL_STRING_,RPC_SETOTHERBUTTON__BOOL_STRING_,RPC_SETOKBUTTON__BOOL_STRING_,RPC_SETFORCECLOSEDISTANCE__FLOAT_,RPC_SETFORCECLOSEDISABLED__,RPC_GETPLAYER__,RPC_GETBOXID__,RPC_GETWINDOWTYPE__,RPC_GETUSINGOBJECT__,RPC_SETUSINGOBJECT__SCENEOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_,RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_,RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_,RPC_GENERATEMESSAGE__,RPC_GENERATECLOSEMESSAGE__,RPC_ADDSETTING__STRING_STRING_STRING_STRING_,RPC_ADDHEADER__STRING_STRING_,RPC_CLEAROPTIONS__,RPC_COMPARETO__SUIBOX_,RPC_HASGENERATEDMESSAGE__,RPC_SETPROMPTTITLE__STRING_,RPC_SETPROMPTTEXT__STRING_,RPC_GETPROMPTTITLE__,RPC_SETHANDLERTEXT__STRING_,RPC_SETWINDOWTYPE__INT_,RPC_SETBOXTYPE__INT_,RPC_ISINPUTBOX__,RPC_ISLISTBOX__,RPC_ISMESSAGEBOX__,RPC_ISTRANSFERBOX__,RPC_ISBANKTRANSFERBOX__,RPC_ISSLICINGBOX__,RPC_ISCHARACTERBUILDERBOX__,RPC_ISCOLORPICKER__,RPC_SETCANCELBUTTON__BOOL_STRING_,RPC_SETOTHERBUTTON__BOOL_STRING_,RPC_SETOKBUTTON__BOOL_STRING_,RPC_SETFORCECLOSEDISTANCE__FLOAT_,RPC_SETFORCECLOSEDISABLED__,RPC_GETPLAYER__,RPC_GETBOXID__,RPC_GETWINDOWTYPE__,RPC_GETUSINGOBJECT__,RPC_SETUSINGOBJECT__SCENEOBJECT_,};
 
 SuiBox::SuiBox(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) : ManagedObject(DummyConstructorParameter::instance()) {
 	SuiBoxImplementation* _implementation = new SuiBoxImplementation(play, windowtype, boxtype);
@@ -520,6 +520,24 @@ void SuiBox::setUsingObject(SceneObject* object) {
 		_implementation->setUsingObject(object);
 }
 
+void SuiBox::setCallback(SuiCallback* callback) {
+	SuiBoxImplementation* _implementation = (SuiBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setCallback(callback);
+}
+
+SuiCallback* SuiBox::getCallback() {
+	SuiBoxImplementation* _implementation = (SuiBoxImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCallback();
+}
+
 DistributedObjectServant* SuiBox::_getImplementation() {
 
 	_updated = true;
@@ -624,6 +642,11 @@ bool SuiBoxImplementation::readObjectMember(ObjectInputStream* stream, const Str
 
 	if (_name == "player") {
 		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&player, stream);
+		return true;
+	}
+
+	if (_name == "suiCallback") {
+		TypeInfo<SuiCallback* >::parseFromBinaryStream(&suiCallback, stream);
 		return true;
 	}
 
@@ -737,6 +760,14 @@ int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&player, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "suiCallback";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SuiCallback* >::toBinaryStream(&suiCallback, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -885,7 +916,7 @@ int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 19 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 20 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 SuiBoxImplementation::SuiBoxImplementation(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) {
@@ -925,6 +956,8 @@ void SuiBoxImplementation::initialize() {
 	hdrOptCount = 0;
 	// server/zone/objects/player/sui/SuiBox.idl():  		hasGenerated = false;
 	hasGenerated = false;
+	// server/zone/objects/player/sui/SuiBox.idl():  		suiCallback = null;
+	suiCallback = NULL;
 }
 
 void SuiBoxImplementation::finalize() {
@@ -1062,6 +1095,16 @@ SceneObject* SuiBoxImplementation::getUsingObject() {
 void SuiBoxImplementation::setUsingObject(SceneObject* object) {
 	// server/zone/objects/player/sui/SuiBox.idl():  		usingObject = object;
 	usingObject = object;
+}
+
+void SuiBoxImplementation::setCallback(SuiCallback* callback) {
+	// server/zone/objects/player/sui/SuiBox.idl():  		suiCallback = callback;
+	suiCallback = callback;
+}
+
+SuiCallback* SuiBoxImplementation::getCallback() {
+	// server/zone/objects/player/sui/SuiBox.idl():  		return suiCallback;
+	return suiCallback;
 }
 
 /*
