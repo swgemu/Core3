@@ -72,6 +72,15 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 		return;
 	}
 
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	if (inventory == NULL)
+		return;
+
+	if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObject::STATICLOOTCONTAINER) {
+		player->sendSystemMessage("The object must be in your inventory in order to perform the slice.");
+		return;
+	}
+
 	slicingSuiBox = new SuiListBox(player, SuiWindowType::SLICING_MENU, 2);
 	if (tangibleObject->getGameObjectType() == SceneObject::PLAYERLOOTCRATE)
 		// Don't close the window when we remove PlayerLootContainer from the player's inventory.
