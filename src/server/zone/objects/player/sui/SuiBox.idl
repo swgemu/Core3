@@ -53,10 +53,14 @@ import engine.service.proto.BaseMessage;
 
 include server.zone.packets.ui.SuiCreatePageMessage;
 include server.zone.objects.player.sui.SuiWindowType;
+include server.zone.objects.player.sui.SuiCallback;
 
 class SuiBox extends ManagedObject implements Logger {
 	@weakReference
 	protected PlayerCreature player;
+	
+	@local
+	protected SuiCallback suiCallback;
 
 	protected unsigned int boxID;
 	
@@ -133,6 +137,8 @@ class SuiBox extends ManagedObject implements Logger {
 
 		hdrOptCount = 0; //header option count
 		hasGenerated = false;
+		
+		suiCallback = null;
 	}
 	
 	public void finalize() {
@@ -309,5 +315,15 @@ class SuiBox extends ManagedObject implements Logger {
 	
 	public void setUsingObject(SceneObject object) {
 		usingObject = object;
+	}
+	
+	@local
+	public void setCallback(SuiCallback callback) {
+		suiCallback = callback;
+	}
+	
+	@local
+	public SuiCallback getCallback() {
+		return suiCallback;
 	}
 }

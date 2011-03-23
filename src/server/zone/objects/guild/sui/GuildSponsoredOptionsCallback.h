@@ -8,10 +8,10 @@
 #ifndef GUILDSPONSOREDOPTIONSCALLBACK_H_
 #define GUILDSPONSOREDOPTIONSCALLBACK_H_
 
-class GuildSponsoredOptionsCallback : public SuiMessageCallback {
+class GuildSponsoredOptionsCallback : public SuiCallback {
 public:
 	GuildSponsoredOptionsCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

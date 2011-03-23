@@ -11,12 +11,12 @@
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildDisbandCallback : public SuiMessageCallback {
+class GuildDisbandCallback : public SuiCallback {
 public:
 	GuildDisbandCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

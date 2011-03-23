@@ -10,12 +10,12 @@
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildSponsoredListCallback : public SuiMessageCallback {
+class GuildSponsoredListCallback : public SuiCallback {
 public:
 	GuildSponsoredListCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

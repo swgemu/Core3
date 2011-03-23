@@ -10,12 +10,12 @@
 
 
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 
-class SurveyToolSetRangeCallback : public SuiMessageCallback {
+class SurveyToolSetRangeCallback : public SuiCallback {
 public:
 	SurveyToolSetRangeCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
