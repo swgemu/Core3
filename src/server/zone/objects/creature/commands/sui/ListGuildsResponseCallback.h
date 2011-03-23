@@ -8,13 +8,13 @@
 #ifndef LISTGUILDSRESPONSECALLBACK_H_
 #define LISTGUILDSRESPONSECALLBACK_H_
 
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/managers/guild/GuildManager.h"
 
-class ListGuildsResponseCallback : public SuiMessageCallback {
+class ListGuildsResponseCallback : public SuiCallback {
 public:
-	ListGuildsResponseCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+	ListGuildsResponseCallback(ZoneProcessServer* server)
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

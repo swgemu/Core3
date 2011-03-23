@@ -49,9 +49,6 @@ which carries forward this exception.
 
 #include "server/zone/ZoneProcessServer.h"
 
-#include "server/zone/MessageCallbackFactory.h"
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
-
 namespace server {
  namespace zone {
   namespace objects {
@@ -76,18 +73,10 @@ namespace server {
 	  class SuiManager : public Logger {
 	  	ZoneProcessServer* server;
 
-	  	MessageCallbackFactory<SuiMessageCallback* (ZoneClientSession*, ZoneProcessServer*), uint32> messageCallbackFactory;
-
 	  public:
 	  	SuiManager(ZoneProcessServer* serv);
 
-	  	void registerMessages();
 	  	void handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args);
-
-	  	//TODO: Implement these
-	  	//bool parseMessage(Message* message, SuiMessageCallback* messageCallback); //Use this to parse the arguments into class members?
-	  	//void runMessage(SuiMessageCallback* messageCallback);
-
 
 	  	//Handlers
 	  	void handleMessageoftheDay(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);

@@ -8,13 +8,13 @@
 #ifndef SLICINGSESSIONCALLBACK_H_
 #define SLICINGSESSIONCALLBACK_H_
 
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
-class SlicingSessionCallback : public SuiMessageCallback {
+class SlicingSessionCallback : public SuiCallback {
 public:
 	SlicingSessionCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

@@ -1,14 +1,14 @@
 /*
- * SuiMessageCallback.h
+ * SuiCallback.h
  *
  *  Created on: Nov 3, 2010
  *      Author: crush
  */
 
-#ifndef SUIMESSAGECALLBACK_H_
-#define SUIMESSAGECALLBACK_H_
+#ifndef SUICALLBACK_H_
+#define SUICALLBACK_H_
 
-#include "server/zone/packets/MessageCallback.h"
+#include "server/zone/ZoneProcessServer.h"
 
 namespace server {
 namespace zone {
@@ -21,18 +21,13 @@ namespace sui {
 
 	class SuiBox;
 
-	class SuiMessageCallback : public MessageCallback {
+	class SuiCallback {
+	protected:
+		ZoneProcessServer* server;
+
 	public:
-		SuiMessageCallback(ZoneClientSession* client, ZoneProcessServer* server)
-			: MessageCallback(client, server) {
-		}
-
-		void parse(Message* message) {
-
-		}
-
-		void run() {
-
+		SuiCallback(ZoneProcessServer* serv) {
+			server = serv;
 		}
 
 		/**
@@ -43,7 +38,6 @@ namespace sui {
 		 */
 		virtual void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) = 0;
 	};
-
 }
 }
 }
@@ -52,4 +46,4 @@ namespace sui {
 
 using namespace server::zone::objects::player::sui;
 
-#endif /* SUIMESSAGECALLBACK_H_ */
+#endif /* SUICALLBACK_H_ */

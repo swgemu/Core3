@@ -8,14 +8,14 @@
 #ifndef NAMEVENDORCALLBACK_H_
 #define NAMEVENDORCALLBACK_H_
 
-#include "server/zone/objects/player/sui/SuiMessageCallback.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 
-class NameVendorCallback : public SuiMessageCallback {
+class NameVendorCallback : public SuiCallback {
 public:
 	NameVendorCallback(ZoneClientSession* client, ZoneProcessServer* server)
-		: SuiMessageCallback(client, server) {
+		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

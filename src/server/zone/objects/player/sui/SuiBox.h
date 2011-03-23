@@ -43,6 +43,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 
+#include "server/zone/objects/player/sui/SuiCallback.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/io/StringTokenizer.h"
@@ -147,6 +149,10 @@ public:
 
 	void setUsingObject(SceneObject* object);
 
+	void setCallback(SuiCallback* callback);
+
+	SuiCallback* getCallback();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -178,6 +184,8 @@ namespace sui {
 class SuiBoxImplementation : public ManagedObjectImplementation, public Logger {
 protected:
 	ManagedWeakReference<PlayerCreature* > player;
+
+	SuiCallback* suiCallback;
 
 	unsigned int boxID;
 
@@ -309,6 +317,10 @@ public:
 	SceneObject* getUsingObject();
 
 	void setUsingObject(SceneObject* object);
+
+	void setCallback(SuiCallback* callback);
+
+	SuiCallback* getCallback();
 
 	SuiBox* _this;
 
