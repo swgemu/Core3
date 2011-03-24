@@ -14,7 +14,7 @@
 
 class GuildTitleResponseSuiCallback : public SuiCallback {
 public:
-	GuildTitleResponseSuiCallback(ZoneProcessServer* server)
+	GuildTitleResponseSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -27,7 +27,7 @@ public:
 
 		String title = args->get(0).toString();
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		if (guildManager == NULL)
 			return;

@@ -139,7 +139,6 @@ namespace server {
 	  	void handleInsertFactorySchem2(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleInsertFactorySchem3(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleSellJunkLootSelection(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleBanListSelection(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleCommandsListSelection(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleAccountListSelection(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);

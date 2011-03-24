@@ -182,7 +182,7 @@ public:
 
 	void createOptions(PlayerCreature* player) {
 		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::COMMAND_FIND, 2);
-		box->setCallback(new FindCommandSuiCallback(server));
+		box->setCallback(new FindCommandSuiCallback(server->getZoneServer()));
 		box->setPromptTitle("@base_player:find_title"); // /Find Category Selector
 		box->setPromptText("@base_player:find_prompt"); // Select a category of planetary map locations to search for.
 		box->setCancelButton(true, "@cancel");

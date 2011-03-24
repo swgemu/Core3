@@ -14,7 +14,7 @@
 
 class GuildMemberPermissionsResponseSuiCallback : public SuiCallback {
 public:
-	GuildMemberPermissionsResponseSuiCallback(ZoneProcessServer* server)
+	GuildMemberPermissionsResponseSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -34,7 +34,7 @@ public:
 
 		uint64 memberID = listBox->getMenuObjectID(index);
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		if (guildManager == NULL)
 			return;

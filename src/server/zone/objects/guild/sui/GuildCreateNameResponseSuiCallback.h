@@ -14,7 +14,7 @@
 
 class GuildCreateNameResponseSuiCallback : public SuiCallback {
 public:
-	GuildCreateNameResponseSuiCallback(ZoneProcessServer* server)
+	GuildCreateNameResponseSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -48,7 +48,7 @@ public:
 		if (guildTerminal->getGuildObject() != NULL)
 			return;
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		uint64 playerID = player->getObjectID();
 
