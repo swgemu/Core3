@@ -20,6 +20,8 @@
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.h"
 
+#include "server/zone/objects/player/sessions/sui/SlicingSessionSuiCallback.h"
+
 #include "server/zone/ZoneServer.h"
 
 int SlicingSessionImplementation::initializeSession() {
@@ -82,6 +84,8 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 	}
 
 	slicingSuiBox = new SuiListBox(player, SuiWindowType::SLICING_MENU, 2);
+	slicingSuiBox->setCallback(new SlicingSessionSuiCallback(player->getZoneServer()));
+
 	if (tangibleObject->getGameObjectType() == SceneObject::PLAYERLOOTCRATE)
 		// Don't close the window when we remove PlayerLootContainer from the player's inventory.
 		slicingSuiBox->setForceCloseDisabled();
