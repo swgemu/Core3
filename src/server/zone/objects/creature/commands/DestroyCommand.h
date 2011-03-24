@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/creature/commands/sui/DestroyCommandSuiCallback.h"
 
 class DestroyCommand : public QueueCommand {
 public:
@@ -81,6 +82,7 @@ public:
 		text << "Really destroy \\#dd3300" << obj->getObjectName()->getDisplayedName() << "\\#.?";
 
 		ManagedReference<SuiMessageBox*> confirmbox = new SuiMessageBox(player, SuiWindowType::ADMIN_DESTROY_CONFIRM);
+		confirmbox->setCallback(new DestroyCommandSuiCallback(server));
 		confirmbox->setPromptTitle("Destroy");
 		confirmbox->setPromptText(text.toString());
 		confirmbox->setUsingObject(obj);

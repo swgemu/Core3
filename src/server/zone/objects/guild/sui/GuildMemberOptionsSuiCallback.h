@@ -1,20 +1,20 @@
 /*
- * GuildMemberOptionsCallback.h
+ * GuildMemberOptionsSuiCallback.h
  *
  *  Created on: Nov 3, 2010
  *      Author: crush
  */
 
-#ifndef GUILDMEMBEROPTIONSCALLBACK_H_
-#define GUILDMEMBEROPTIONSCALLBACK_H_
+#ifndef GUILDMEMBEROPTIONSSUICALLBACK_H_
+#define GUILDMEMBEROPTIONSSUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildMemberOptionsCallback : public SuiCallback {
+class GuildMemberOptionsSuiCallback : public SuiCallback {
 public:
-	GuildMemberOptionsCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildMemberOptionsSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -86,4 +86,4 @@ public:
 	}
 };
 
-#endif /* GUILDMEMBEROPTIONSCALLBACK_H_ */
+#endif /* GUILDMEMBEROPTIONSSUICALLBACK_H_ */

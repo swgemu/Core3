@@ -1,5 +1,5 @@
 /*
- * SlicingSessionCallback.h
+ * SlicingSessionSuiCallback.h
  *
  *  Created on: Mar 5, 2011
  *      Author: polonel
@@ -11,9 +11,9 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
-class SlicingSessionCallback : public SuiCallback {
+class SlicingSessionSuiCallback : public SuiCallback {
 public:
-	SlicingSessionCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	SlicingSessionSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 

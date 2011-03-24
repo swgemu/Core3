@@ -1,16 +1,20 @@
 /*
- * GuildSponsoredOptionsCallback.h
+ * GuildSponsoredListSuiCallback.h
  *
  *  Created on: Nov 3, 2010
  *      Author: crush
  */
 
-#ifndef GUILDSPONSOREDOPTIONSCALLBACK_H_
-#define GUILDSPONSOREDOPTIONSCALLBACK_H_
+#ifndef GUILDSPONSOREDLISTSUICALLBACK_H_
+#define GUILDSPONSOREDLISTSUICALLBACK_H_
 
-class GuildSponsoredOptionsCallback : public SuiCallback {
+#include "server/zone/managers/guild/GuildManager.h"
+#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
+
+class GuildSponsoredListSuiCallback : public SuiCallback {
 public:
-	GuildSponsoredOptionsCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildSponsoredListSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -22,6 +26,9 @@ public:
 			return;
 
 		int index = Integer::valueOf(args->get(0).toString());
+
+		if (index == -1)
+			return;
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 
@@ -51,13 +58,8 @@ public:
 
 		uint64 playerID = listBox->getMenuObjectID(index);
 
-		//Whether they accept, or decline, we are removing them from the sponsored list.
-		guild->removeSponsoredPlayer(playerID);
-		guildManager->removeSponsoredPlayer(playerID);
-
-		if (index == 0) //If they accepted, then ...
-			guildManager->acceptSponsoredPlayer(player, playerID);
+		guildManager->sendGuildSponsoredOptionsTo(player, guild, playerID, guildTerminal);
 	}
 };
 
-#endif /* GUILDSPONSOREDOPTIONSCALLBACK_H_ */
+#endif /* GUILDSPONSOREDLISTSUICALLBACK_H_ */

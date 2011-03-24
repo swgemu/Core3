@@ -1,5 +1,5 @@
 /*
- * SurveyToolSetRangeCallback.h
+ * SurveyToolSetRangeSuiCallback.h
  *
  *  Created on: Nov 3, 2010
  *      Author: crush
@@ -12,9 +12,9 @@
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class SurveyToolSetRangeCallback : public SuiCallback {
+class SurveyToolSetRangeSuiCallback : public SuiCallback {
 public:
-	SurveyToolSetRangeCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	SurveyToolSetRangeSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 

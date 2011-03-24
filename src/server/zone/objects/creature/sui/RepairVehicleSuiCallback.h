@@ -1,12 +1,12 @@
 /*
- * RepairVehicleCallback.h
+ * RepairVehicleSuiCallback.h
  *
  *  Created on: Dec 6, 2010
  *      Author: crush
  */
 
-#ifndef REPAIRVEHICLECALLBACK_H_
-#define REPAIRVEHICLECALLBACK_H_
+#ifndef REPAIRVEHICLESUICALLBACK_H_
+#define REPAIRVEHICLESUICALLBACK_H_
 
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
@@ -17,9 +17,9 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 
-class RepairVehicleCallback : public SuiCallback {
+class RepairVehicleSuiCallback : public SuiCallback {
 public:
-	RepairVehicleCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	RepairVehicleSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -70,4 +70,4 @@ public:
 	}
 };
 
-#endif /* REPAIRVEHICLECALLBACK_H_ */
+#endif /* REPAIRVEHICLESUICALLBACK_H_ */

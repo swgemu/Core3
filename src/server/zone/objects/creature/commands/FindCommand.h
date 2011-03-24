@@ -54,8 +54,12 @@
 #include "server/zone/managers/planet/MapLocationType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+
+#include "server/zone/objects/creature/commands/sui/FindCommandSuiCallback.h"
 
 class FindCommand: public QueueCommand {
 	HashTable<String, uint8> argsHashMap;
@@ -178,6 +182,7 @@ public:
 
 	void createOptions(PlayerCreature* player) {
 		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::COMMAND_FIND, 2);
+		box->setCallback(new FindCommandSuiCallback(server));
 		box->setPromptTitle("@base_player:find_title"); // /Find Category Selector
 		box->setPromptText("@base_player:find_prompt"); // Select a category of planetary map locations to search for.
 		box->setCancelButton(true, "@cancel");
