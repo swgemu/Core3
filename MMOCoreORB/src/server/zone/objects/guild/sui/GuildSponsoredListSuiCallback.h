@@ -14,7 +14,7 @@
 
 class GuildSponsoredListSuiCallback : public SuiCallback {
 public:
-	GuildSponsoredListSuiCallback(ZoneProcessServer* server)
+	GuildSponsoredListSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -30,7 +30,7 @@ public:
 		if (index == -1)
 			return;
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		if (guildManager == NULL)
 			return;

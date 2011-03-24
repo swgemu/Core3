@@ -14,7 +14,7 @@
 
 class NameVendorSuiCallback : public SuiCallback {
 public:
-	NameVendorSuiCallback(ZoneProcessServer* server)
+	NameVendorSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 

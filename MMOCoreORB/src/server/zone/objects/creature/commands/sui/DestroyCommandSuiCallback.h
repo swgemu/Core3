@@ -12,7 +12,7 @@
 
 class DestroyCommandSuiCallback : public SuiCallback {
 public:
-	DestroyCommandSuiCallback(ZoneProcessServer* server)
+	DestroyCommandSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 

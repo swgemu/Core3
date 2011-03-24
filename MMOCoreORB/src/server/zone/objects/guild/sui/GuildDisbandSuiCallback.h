@@ -15,7 +15,7 @@
 
 class GuildDisbandSuiCallback : public SuiCallback {
 public:
-	GuildDisbandSuiCallback(ZoneProcessServer* server)
+	GuildDisbandSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -23,7 +23,7 @@ public:
 		if (!suiBox->isMessageBox() || cancelPressed)
 			return;
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 

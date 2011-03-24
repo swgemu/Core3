@@ -14,7 +14,7 @@
 
 class SurveyToolSetRangeSuiCallback : public SuiCallback {
 public:
-	SurveyToolSetRangeSuiCallback(ZoneProcessServer* server)
+	SurveyToolSetRangeSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 

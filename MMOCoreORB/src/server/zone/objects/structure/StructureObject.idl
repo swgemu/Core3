@@ -61,6 +61,9 @@ import engine.util.u3d.Vector3;
 include server.zone.packets.ui.CreateClientPathMessage;
 
 class StructureObject extends TangibleObject {
+	//@dereferenced
+	//protected PlayerStructureComponent playerStructureComponent;
+	
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
 	//protected transient StructurePowerTask structurePowerTask;
 	

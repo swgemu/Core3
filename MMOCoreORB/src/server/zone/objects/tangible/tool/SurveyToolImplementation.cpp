@@ -121,7 +121,7 @@ void SurveyToolImplementation::sendRangeSui(PlayerCreature* player) {
 	int surveyMod = player->getSkillMod("surveying");
 
 	ManagedReference<SuiListBox*> suiToolRangeBox = new SuiListBox(player, SuiWindowType::SURVEY_TOOL_RANGE, 0);
-	suiToolRangeBox->setCallback(new SurveyToolSetRangeSuiCallback(server));
+	suiToolRangeBox->setCallback(new SurveyToolSetRangeSuiCallback(server->getZoneServer()));
 
 	suiToolRangeBox->setPromptTitle("@base_player:swg");
 	suiToolRangeBox->setPromptText("@survey:select_range");

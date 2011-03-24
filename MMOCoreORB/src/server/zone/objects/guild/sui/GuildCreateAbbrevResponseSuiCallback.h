@@ -14,14 +14,14 @@
 
 class GuildCreateAbbrevResponseSuiCallback : public SuiCallback {
 public:
-	GuildCreateAbbrevResponseSuiCallback(ZoneProcessServer* server)
+	GuildCreateAbbrevResponseSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		uint64 playerID = player->getObjectID();
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		//If the player isn't already creating a guild, then exit.
 		if (!guildManager->isCreatingGuild(playerID))

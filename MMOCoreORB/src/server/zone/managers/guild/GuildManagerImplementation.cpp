@@ -105,7 +105,7 @@ void GuildManagerImplementation::sendGuildCreateNameTo(PlayerCreature* player, G
 	}
 
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_NAME);
-	inputBox->setCallback(new GuildCreateNameResponseSuiCallback(processor.get()));
+	inputBox->setCallback(new GuildCreateNameResponseSuiCallback(server));
 	inputBox->setPromptTitle("@guild:create_name_title"); //Guild Name
 	inputBox->setPromptText("@guild:create_name_prompt");
 	inputBox->setMaxInputSize(24);
@@ -170,7 +170,7 @@ bool GuildManagerImplementation::guildAbbrevExists(const String& guildAbbrev) {
 
 void GuildManagerImplementation::sendGuildCreateAbbrevTo(PlayerCreature* player, GuildTerminal* terminal) {
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_ABBREV);
-	inputBox->setCallback(new GuildCreateAbbrevResponseSuiCallback(processor.get()));
+	inputBox->setCallback(new GuildCreateAbbrevResponseSuiCallback(server));
 	inputBox->setPromptTitle("@guild:create_abbrev_title"); //Guild Abbreviation
 	inputBox->setPromptText("@guild:create_abbrev_prompt");
 	inputBox->setMaxInputSize(4);
@@ -240,7 +240,7 @@ void GuildManagerImplementation::sendGuildDisbandConfirmTo(PlayerCreature* playe
 	}
 
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::GUILD_DISBAND);
-	suiBox->setCallback(new GuildDisbandSuiCallback(processor.get()));
+	suiBox->setCallback(new GuildDisbandSuiCallback(server));
 	suiBox->setPromptTitle("@guild:disband_title"); //Disband Guild
 	suiBox->setPromptText("@guild:disband_prompt"); //Are you sure you wish to disband your guild?
 	suiBox->setUsingObject(guildTerminal);
@@ -271,7 +271,7 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(PlayerCreature* player
 		return;
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_OPTIONS);
-	suiBox->setCallback(new GuildMemberOptionsSuiCallback(processor.get()));
+	suiBox->setCallback(new GuildMemberOptionsSuiCallback(server));
 	suiBox->setPromptTitle("@guild:member_options_title"); //Guild Member Options
 	suiBox->setPromptText("@guild:member_options_prompt");
 	suiBox->setUsingObject(guildTerminal);
@@ -296,7 +296,7 @@ void GuildManagerImplementation::sendGuildMemberListTo(PlayerCreature* player, G
 	Locker _lock(guild);
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_LIST);
-	suiBox->setCallback(new GuildMemberListSuiCallback(processor.get()));
+	suiBox->setCallback(new GuildMemberListSuiCallback(server));
 	suiBox->setPromptTitle("@guild:members_title"); //Guild Members
 	suiBox->setPromptText("@guild:members_prompt");
 	suiBox->setUsingObject(guildTerminal);
@@ -337,7 +337,7 @@ void GuildManagerImplementation::sendGuildSponsoredOptionsTo(PlayerCreature* pla
 	}
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_OPTIONS);
-	suiBox->setCallback(new GuildSponsoredOptionsSuiCallback(processor.get()));
+	suiBox->setCallback(new GuildSponsoredOptionsSuiCallback(server));
 	suiBox->setPromptTitle("@guild:sponsored_options_title"); //Sponsored For Membership
 	suiBox->setPromptText("@guild:sponsored_options_prompt");
 	suiBox->setUsingObject(guildTerminal);
@@ -357,7 +357,7 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(PlayerCreature* player
 	Locker _lock(guild);
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_SPONSORED_LIST);
-	suiBox->setCallback(new GuildSponsoredListSuiCallback(processor.get()));
+	suiBox->setCallback(new GuildSponsoredListSuiCallback(server));
 	suiBox->setPromptTitle("@guild:sponsored_title"); //Sponsored for Membership
 	suiBox->setPromptText("@guild:sponsored_prompt");
 	suiBox->setUsingObject(guildTerminal);
@@ -392,7 +392,7 @@ void GuildManagerImplementation::sendGuildSponsorTo(PlayerCreature* player, Guil
 	}
 
 	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_SPONSOR);
-	suiBox->setCallback(new GuildSponsorSuiCallback(processor.get()));
+	suiBox->setCallback(new GuildSponsorSuiCallback(server));
 	suiBox->setPromptTitle("@guild:sponsor_title"); //Sponsor for Membership
 	suiBox->setPromptText("@guild:sponsor_prompt");
 	suiBox->setUsingObject(guildTerminal);
@@ -625,7 +625,7 @@ void GuildManagerImplementation::sponsorPlayer(PlayerCreature* player, GuildTerm
 
 void GuildManagerImplementation::sendGuildSponsorVerifyTo(PlayerCreature* player, PlayerCreature* target) {
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_SPONSOR_VERIFY);
-	suiBox->setCallback(new GuildSponsorVerifySuiCallback(processor.get()));
+	suiBox->setCallback(new GuildSponsorVerifySuiCallback(server));
 	suiBox->setPromptTitle("@guild:sponsor_verify_title"); //Sponsored For Guild Membership
 	suiBox->setPromptText("@guild:sponsor_verify_prompt");
 	suiBox->setUsingObject(player);
@@ -729,7 +729,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(PlayerCreature* player, u
 
 void GuildManagerImplementation::sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target) {
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_MEMBER_REMOVE);
-	suiBox->setCallback(new GuildMemberRemoveSuiCallback(processor.get()));
+	suiBox->setCallback(new GuildMemberRemoveSuiCallback(server));
 	suiBox->setPromptTitle("@guild:kick_title"); //Kick From Guild
 	suiBox->setPromptText("@guild:kick_prompt"); //Are you sure you want to kick %TU out of the guild?
 	suiBox->setUsingObject(target);
@@ -750,7 +750,7 @@ void GuildManagerImplementation::sendGuildSetTitleTo(PlayerCreature* player, Pla
 	}
 
 	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_MEMBER_TITLE);
-	suiBox->setCallback(new GuildTitleResponseSuiCallback(processor.get()));
+	suiBox->setCallback(new GuildTitleResponseSuiCallback(server));
 	suiBox->setPromptTitle("@guild:title_title"); //Set Title
 	suiBox->setPromptText("@guild:title_prompt"); //Enter a title to set for %TU.
 	suiBox->setUsingObject(target);
@@ -870,7 +870,7 @@ void GuildManagerImplementation::sendMemberPermissionsTo(PlayerCreature* player,
 		return;
 
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_PERMISSIONS);
-	listBox->setCallback(new GuildMemberPermissionsResponseSuiCallback(processor.get()));
+	listBox->setCallback(new GuildMemberPermissionsResponseSuiCallback(server));
 	listBox->setPromptTitle("@guild:permissions_title"); //Guild Member Permissions
 	listBox->setPromptText("@guild:permissions_prompt");
 	listBox->setUsingObject(guildTerminal);
@@ -955,7 +955,7 @@ void GuildManagerImplementation::sendGuildListTo(PlayerCreature* player, const S
 	Locker _lock(_this);
 
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::ADMIN_GUILDLIST);
-	listBox->setCallback(new ListGuildsResponseSuiCallback(processor.get()));
+	listBox->setCallback(new ListGuildsResponseSuiCallback(server));
 	listBox->setPromptTitle("Guild List");
 	listBox->setCancelButton(true, "@cancel");
 

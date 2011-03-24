@@ -14,7 +14,7 @@
 
 class GuildSponsorVerifySuiCallback : public SuiCallback {
 public:
-	GuildSponsorVerifySuiCallback(ZoneProcessServer* server)
+	GuildSponsorVerifySuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -22,7 +22,7 @@ public:
 		if (!suiBox->isMessageBox())
 			return;
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		if (guildManager == NULL)
 			return;

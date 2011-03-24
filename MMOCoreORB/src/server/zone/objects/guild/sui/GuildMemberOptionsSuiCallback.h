@@ -14,7 +14,7 @@
 
 class GuildMemberOptionsSuiCallback : public SuiCallback {
 public:
-	GuildMemberOptionsSuiCallback(ZoneProcessServer* server)
+	GuildMemberOptionsSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -34,7 +34,7 @@ public:
 
 		uint64 memberID = listBox->getMenuObjectID(index);
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		if (guildManager == NULL)
 			return;
@@ -56,7 +56,7 @@ public:
 		if (guild == NULL)
 			return;
 
-		ManagedReference<SceneObject*> playObj = server->getZoneServer()->getObject(memberID);
+		ManagedReference<SceneObject*> playObj = server->getObject(memberID);
 
 		if (playObj == NULL || !playObj->isPlayerCreature())
 			return;

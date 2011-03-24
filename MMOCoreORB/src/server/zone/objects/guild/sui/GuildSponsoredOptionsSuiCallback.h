@@ -10,7 +10,7 @@
 
 class GuildSponsoredOptionsSuiCallback : public SuiCallback {
 public:
-	GuildSponsoredOptionsSuiCallback(ZoneProcessServer* server)
+	GuildSponsoredOptionsSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -23,7 +23,7 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		if (guildManager == NULL)
 			return;
