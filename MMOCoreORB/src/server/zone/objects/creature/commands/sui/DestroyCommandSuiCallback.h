@@ -1,18 +1,18 @@
 /*
- * DestroyCommandCallback.h
+ * DestroyCommandSuiCallback.h
  *
  *  Created on: Nov 3, 2010
  *      Author: crush
  */
 
-#ifndef DESTROYCOMMANDCALLBACK_H_
-#define DESTROYCOMMANDCALLBACK_H_
+#ifndef DESTROYCOMMANDSUICALLBACK_H_
+#define DESTROYCOMMANDSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class DestroyCommandCallback : public SuiCallback {
+class DestroyCommandSuiCallback : public SuiCallback {
 public:
-	DestroyCommandCallback(ZoneProcessServer* server)
+	DestroyCommandSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -39,4 +39,4 @@ public:
 	}
 };
 
-#endif /* DESTROYCOMMANDCALLBACK_H_ */
+#endif /* DESTROYCOMMANDSUICALLBACK_H_ */

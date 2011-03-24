@@ -371,6 +371,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
+		server/zone/objects/creature/commands/sui/FindCommandSuiCallback.cpp \
 		server/zone/objects/creature/vendor/VendorCreatureImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/informant/InformantCreatureImplementation.cpp \

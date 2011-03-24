@@ -88,33 +88,22 @@ which carries forward this exception.
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/commands/FindCommand.h"
 
-#include "server/zone/objects/creature/commands/sui/DestroyCommandCallback.h"
-#include "server/zone/objects/creature/commands/sui/FindCommandCallback.h"
-#include "server/zone/objects/creature/commands/sui/ListGuildsResponseCallback.h"
+#include "server/zone/objects/creature/commands/sui/DestroyCommandSuiCallback.h"
+#include "server/zone/objects/creature/commands/sui/FindCommandSuiCallback.h"
+#include "server/zone/objects/creature/commands/sui/ListGuildsResponseSuiCallback.h"
 
-#include "server/zone/objects/player/sessions/sui/SlicingSessionCallback.h"
+#include "server/zone/objects/player/sessions/sui/SlicingSessionSuiCallback.h"
 
-#include "server/zone/objects/guild/sui/GuildCreateNameResponseCallback.h"
-#include "server/zone/objects/guild/sui/GuildCreateAbbrevResponseCallback.h"
-#include "server/zone/objects/guild/sui/GuildDisbandCallback.h"
-#include "server/zone/objects/guild/sui/GuildMemberListCallback.h"
-#include "server/zone/objects/guild/sui/GuildMemberOptionsCallback.h"
-#include "server/zone/objects/guild/sui/GuildMemberPermissionsResponseCallback.h"
-#include "server/zone/objects/guild/sui/GuildMemberRemoveCallback.h"
-#include "server/zone/objects/guild/sui/GuildTitleResponseCallback.h"
-#include "server/zone/objects/guild/sui/GuildSponsorCallback.h"
-#include "server/zone/objects/guild/sui/GuildSponsorVerifyCallback.h"
-#include "server/zone/objects/guild/sui/GuildSponsoredListCallback.h"
-#include "server/zone/objects/guild/sui/GuildSponsoredOptionsCallback.h"
 
-#include "server/zone/objects/player/sessions/vendor/sui/CreateVendorCallback.h"
-#include "server/zone/objects/player/sessions/vendor/sui/NameVendorCallback.h"
 
-#include "server/zone/objects/creature/sui/RepairVehicleCallback.h"
+#include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
+#include "server/zone/objects/player/sessions/vendor/sui/NameVendorSuiCallback.h"
+
+#include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
 
-#include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeCallback.h"
+#include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeSuiCallback.h"
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"

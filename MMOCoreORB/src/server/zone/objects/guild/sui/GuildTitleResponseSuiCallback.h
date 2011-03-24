@@ -1,27 +1,31 @@
 /*
- * GuildMemberRemoveCallback.h
+ * GuildMemberTitleCallback.h
  *
  *  Created on: Nov 4, 2010
  *      Author: crush
  */
 
-#ifndef GUILDMEMBERREMOVECALLBACK_H_
-#define GUILDMEMBERREMOVECALLBACK_H_
-
+#ifndef GUILDMEMBERTITLESUICALLBACK_H_
+#define GUILDMEMBERTITLESUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildMemberRemoveCallback : public SuiCallback {
+class GuildTitleResponseSuiCallback : public SuiCallback {
 public:
-	GuildMemberRemoveCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildTitleResponseSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		if (!suiBox->isMessageBox() || cancelPressed)
+		if (!suiBox->isInputBox() || cancelPressed)
 			return;
+
+		if (args->size() < 1)
+			return;
+
+		String title = args->get(0).toString();
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 
@@ -35,8 +39,8 @@ public:
 
 		PlayerCreature* target = (PlayerCreature*) obj.get();
 
-		guildManager->kickMember(player, target);
+		guildManager->setMemberTitle(player, target, title);
 	}
 };
 
-#endif /* GUILDMEMBERREMOVECALLBACK_H_ */
+#endif /* GUILDMEMBERTITLESUICALLBACK_H_ */

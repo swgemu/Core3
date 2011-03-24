@@ -1,32 +1,27 @@
 /*
- * GuildSponsorCallback.h
+ * GuildDisbandSuiCallback.h
  *
  *  Created on: Nov 3, 2010
  *      Author: crush
  */
 
-#ifndef GUILDSPONSORCALLBACK_H_
-#define GUILDSPONSORCALLBACK_H_
+#ifndef GUILDDISBANDSUICALLBACK_H_
+#define GUILDDISBANDSUICALLBACK_H_
 
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildSponsorCallback : public SuiCallback {
+class GuildDisbandSuiCallback : public SuiCallback {
 public:
-	GuildSponsorCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildDisbandSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		if (!suiBox->isInputBox() || cancelPressed)
+		if (!suiBox->isMessageBox() || cancelPressed)
 			return;
-
-		if (args->size() < 1)
-			return;
-
-		String playerName = args->get(0).toString();
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 
@@ -44,9 +39,14 @@ public:
 
 		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
 
-		guildManager->sponsorPlayer(player, guildTerminal, playerName);
+		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+
+		if (guild == NULL)
+			return;
+
+		guildManager->disbandGuild(player, guild);
 	}
 };
 
 
-#endif /* GUILDSPONSORCALLBACK_H_ */
+#endif /* GUILDDISBANDSUICALLBACK_H_ */

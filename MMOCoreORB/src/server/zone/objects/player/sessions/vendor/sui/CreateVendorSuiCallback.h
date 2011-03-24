@@ -1,25 +1,25 @@
 /*
- * NameVendorCallback.h
+ * CreateVendorSuiCallback.h
  *
- *  Created on: Mar 20, 2011
+ *  Created on: Mar 18, 2011
  *      Author: polonel
  */
 
-#ifndef NAMEVENDORCALLBACK_H_
-#define NAMEVENDORCALLBACK_H_
+#ifndef CREATEVENDORCALLBACK_H_
+#define CREATEVENDORCALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 
-class NameVendorCallback : public SuiCallback {
+class CreateVendorSuiCallback : public SuiCallback {
 public:
-	NameVendorCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	CreateVendorSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		if (!suiBox->isInputBox())
+		if (!suiBox->isListBox())
 			return;
 
 		if (args->size() < 1)
@@ -36,10 +36,13 @@ public:
 			return;
 		}
 
-		String name = args->get(0).toString();
+		int idx = Integer::valueOf(args->get(0).toString());
+		SuiListBox* box = (SuiListBox*) suiBox;
+		byte menuID = box->getMenuObjectID(idx);
 
-		session->handleNameVendor(name);
+		session->handleMenuSelect(menuID);
+
 	}
 };
 
-#endif /* NAMEVENDORCALLBACK_H_ */
+#endif /* CREATEVENDORCALLBACK_H_ */

@@ -1,19 +1,19 @@
 /*
- * ListGuildsResponseCallback.h
+ * ListGuildsResponseSuiCallback.h
  *
  *  Created on: Nov 4, 2010
  *      Author: crush
  */
 
-#ifndef LISTGUILDSRESPONSECALLBACK_H_
-#define LISTGUILDSRESPONSECALLBACK_H_
+#ifndef LISTGUILDSRESPONSESUICALLBACK_H_
+#define LISTGUILDSRESPONSESUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/managers/guild/GuildManager.h"
 
-class ListGuildsResponseCallback : public SuiCallback {
+class ListGuildsResponseSuiCallback : public SuiCallback {
 public:
-	ListGuildsResponseCallback(ZoneProcessServer* server)
+	ListGuildsResponseSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -46,4 +46,4 @@ public:
 	}
 };
 
-#endif /* LISTGUILDSRESPONSECALLBACK_H_ */
+#endif /* LISTGUILDSRESPONSESUICALLBACK_H_ */

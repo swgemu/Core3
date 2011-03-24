@@ -1,20 +1,20 @@
 /*
- * GuildSponsorVerifyCallback.h
+ * GuildSponsorVerifySuiCallback.h
  *
  *  Created on: Nov 3, 2010
  *      Author: crush
  */
 
-#ifndef GUILDSPONSORVERIFYCALLBACK_H_
-#define GUILDSPONSORVERIFYCALLBACK_H_
+#ifndef GUILDSPONSORVERIFYSUICALLBACK_H_
+#define GUILDSPONSORVERIFYSUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildSponsorVerifyCallback : public SuiCallback {
+class GuildSponsorVerifySuiCallback : public SuiCallback {
 public:
-	GuildSponsorVerifyCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildSponsorVerifySuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -52,4 +52,4 @@ public:
 	}
 };
 
-#endif /* GUILDSPONSORVERIFYCALLBACK_H_ */
+#endif /* GUILDSPONSORVERIFYSUICALLBACK_H_ */
