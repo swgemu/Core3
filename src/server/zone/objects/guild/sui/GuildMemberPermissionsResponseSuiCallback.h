@@ -1,29 +1,43 @@
 /*
- * GuildDisbandCallback.h
+ * GuildMemberPermissionsResponseSuiCallback.h
  *
- *  Created on: Nov 3, 2010
+ *  Created on: Nov 5, 2010
  *      Author: crush
  */
 
-#ifndef GUILDDISBANDCALLBACK_H_
-#define GUILDDISBANDCALLBACK_H_
-
+#ifndef GUILDMEMBERPERMISSIONSRESPONSESUICALLBACK_H_
+#define GUILDMEMBERPERMISSIONSRESPONSESUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildDisbandCallback : public SuiCallback {
+class GuildMemberPermissionsResponseSuiCallback : public SuiCallback {
 public:
-	GuildDisbandCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildMemberPermissionsResponseSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
 	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		if (!suiBox->isMessageBox() || cancelPressed)
+		if (!suiBox->isListBox() || cancelPressed)
 			return;
 
+		if (args->size() < 1)
+			return;
+
+		int index = Integer::valueOf(args->get(0).toString());
+
+		if (index == -1)
+			return;
+
+		SuiListBox* listBox = (SuiListBox*) suiBox;
+
+		uint64 memberID = listBox->getMenuObjectID(index);
+
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+
+		if (guildManager == NULL)
+			return;
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
@@ -35,8 +49,6 @@ public:
 		if (!terminal->isGuildTerminal())
 			return;
 
-		Locker _lock(terminal);
-
 		GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
 
 		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
@@ -44,9 +56,8 @@ public:
 		if (guild == NULL)
 			return;
 
-		guildManager->disbandGuild(player, guild);
+		guildManager->toggleGuildPermission(player, memberID, index, guildTerminal);
 	}
 };
 
-
-#endif /* GUILDDISBANDCALLBACK_H_ */
+#endif /* GUILDMEMBERPERMISSIONSRESPONSESUICALLBACK_H_ */

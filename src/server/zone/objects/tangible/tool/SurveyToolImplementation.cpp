@@ -62,6 +62,8 @@ which carries forward this exception.
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 
+#include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeSuiCallback.h"
+
 void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
@@ -118,8 +120,8 @@ int SurveyToolImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 void SurveyToolImplementation::sendRangeSui(PlayerCreature* player) {
 	int surveyMod = player->getSkillMod("surveying");
 
-	ManagedReference<SuiListBox*> suiToolRangeBox = new SuiListBox(
-			player, SuiWindowType::SURVEY_TOOL_RANGE, 0);
+	ManagedReference<SuiListBox*> suiToolRangeBox = new SuiListBox(player, SuiWindowType::SURVEY_TOOL_RANGE, 0);
+	suiToolRangeBox->setCallback(new SurveyToolSetRangeSuiCallback(server));
 
 	suiToolRangeBox->setPromptTitle("@base_player:swg");
 	suiToolRangeBox->setPromptText("@survey:select_range");

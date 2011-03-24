@@ -1,20 +1,20 @@
 /*
- * GuildCreateAbbrevResponseCallback.h
+ * GuildCreateAbbrevResponseSuiCallback.h
  *
  *  Created on: Oct 29, 2010
  *      Author: crush
  */
 
-#ifndef GUILDCREATEABBREVRESPONSECALLBACK_H_
-#define GUILDCREATEABBREVRESPONSECALLBACK_H_
+#ifndef GUILDCREATEABBREVRESPONSESUICALLBACK_H_
+#define GUILDCREATEABBREVRESPONSESUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildCreateAbbrevResponseCallback : public SuiCallback {
+class GuildCreateAbbrevResponseSuiCallback : public SuiCallback {
 public:
-	GuildCreateAbbrevResponseCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildCreateAbbrevResponseSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -76,4 +76,4 @@ public:
 };
 
 
-#endif /* GUILDCREATEABBREVRESPONSECALLBACK_H_ */
+#endif /* GUILDCREATEABBREVRESPONSESUICALLBACK_H_ */

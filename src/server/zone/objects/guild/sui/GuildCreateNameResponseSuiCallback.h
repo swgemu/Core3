@@ -1,20 +1,20 @@
 /*
- * GuildCreateNameResponseCallback.h
+ * GuildCreateNameResponseSuiCallback.h
  *
  *  Created on: Oct 29, 2010
  *      Author: crush
  */
 
-#ifndef GUILDCREATENAMERESPONSECALLBACK_H_
-#define GUILDCREATENAMERESPONSECALLBACK_H_
+#ifndef GUILDCREATENAMERESPONSESUICALLBACK_H_
+#define GUILDCREATENAMERESPONSESUICALLBACK_H_
 
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
-class GuildCreateNameResponseCallback : public SuiCallback {
+class GuildCreateNameResponseSuiCallback : public SuiCallback {
 public:
-	GuildCreateNameResponseCallback(ZoneClientSession* client, ZoneProcessServer* server)
+	GuildCreateNameResponseSuiCallback(ZoneProcessServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -68,4 +68,4 @@ public:
 	}
 };
 
-#endif /* GUILDCREATENAMERESPONSECALLBACK_H_ */
+#endif /* GUILDCREATENAMERESPONSESUICALLBACK_H_ */
