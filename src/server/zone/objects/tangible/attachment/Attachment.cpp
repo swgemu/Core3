@@ -176,7 +176,7 @@ void Attachment::addSkillMod(const String& skillModType, int skillModValue) {
 		_implementation->addSkillMod(skillModType, skillModValue);
 }
 
-void Attachment::removeAttachment(PlayerCreature* player) {
+bool Attachment::removeAttachment(PlayerCreature* player) {
 	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -185,9 +185,9 @@ void Attachment::removeAttachment(PlayerCreature* player) {
 		DistributedMethod method(this, RPC_REMOVEATTACHMENT__PLAYERCREATURE_);
 		method.addObjectParameter(player);
 
-		method.executeWithVoidReturn();
+		return method.executeWithBooleanReturn();
 	} else
-		_implementation->removeAttachment(player);
+		return _implementation->removeAttachment(player);
 }
 
 void Attachment::generateSkillMods() {
@@ -520,7 +520,7 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_int_), inv->getSignedIntParameter());
 		break;
 	case RPC_REMOVEATTACHMENT__PLAYERCREATURE_:
-		removeAttachment((PlayerCreature*) inv->getObjectParameter());
+		resp->insertBoolean(removeAttachment((PlayerCreature*) inv->getObjectParameter()));
 		break;
 	case RPC_GENERATESKILLMODS__:
 		generateSkillMods();
@@ -580,8 +580,8 @@ void AttachmentAdapter::addSkillMod(const String& skillModType, int skillModValu
 	((AttachmentImplementation*) impl)->addSkillMod(skillModType, skillModValue);
 }
 
-void AttachmentAdapter::removeAttachment(PlayerCreature* player) {
-	((AttachmentImplementation*) impl)->removeAttachment(player);
+bool AttachmentAdapter::removeAttachment(PlayerCreature* player) {
+	return ((AttachmentImplementation*) impl)->removeAttachment(player);
 }
 
 void AttachmentAdapter::generateSkillMods() {

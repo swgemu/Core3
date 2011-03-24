@@ -165,7 +165,7 @@ class Attachment extends TangibleObject {
 	 * @post { }
 	 * @param player The player to remove the attachment from
 	 */
-	public native void removeAttachment(PlayerCreature player);
+	public native boolean removeAttachment(PlayerCreature player);
 
 	/**
 	 * Generates random skill mods
