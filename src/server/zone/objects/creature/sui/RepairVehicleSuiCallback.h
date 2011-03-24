@@ -19,7 +19,7 @@
 
 class RepairVehicleSuiCallback : public SuiCallback {
 public:
-	RepairVehicleSuiCallback(ZoneProcessServer* server)
+	RepairVehicleSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 

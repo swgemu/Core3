@@ -13,7 +13,7 @@
 
 class ListGuildsResponseSuiCallback : public SuiCallback {
 public:
-	ListGuildsResponseSuiCallback(ZoneProcessServer* server)
+	ListGuildsResponseSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -33,14 +33,14 @@ public:
 
 		uint64 guildObjectID = listBox->getMenuObjectID(index);
 
-		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(guildObjectID);
+		ManagedReference<SceneObject*> obj = server->getObject(guildObjectID);
 
 		if (obj == NULL || !obj->isGuildObject())
 			return;
 
 		GuildObject* guild = (GuildObject*) obj.get();
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		guildManager->sendGuildInformationTo(player, guild, NULL);
 	}

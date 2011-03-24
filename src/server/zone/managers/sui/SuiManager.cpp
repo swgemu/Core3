@@ -145,9 +145,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	//info(msg, true);
 
 	switch (windowType) {
-	case SuiWindowType::JUNK_DEALER_SELL_LIST:
-		handleSellJunkLootSelection(player, suiBox, cancel, args);
-		break;
 	case SuiWindowType::STRUCTURE_STATUS:
 		handleStructureStatus(player, suiBox, cancel, args);
 		break;
@@ -1054,119 +1051,6 @@ void SuiManager::handleInsertFactorySchem3(PlayerCreature* player, SuiBox* suiBo
 	}
 }
 
-void SuiManager::handleSellJunkLootSelection(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 2)
-		return;
-
-	bool otherPressed = Bool::valueOf(args->get(0).toString());
-	int index = Integer::valueOf(args->get(1).toString());
-
-	if (otherPressed)
-		info("Sell All",true);
-	else if (cancel == 0)
-		info("Sell",true);
-
-	//player->sendSystemMessage("Index: " + String::valueOf(index) + " Cancel: " + String::valueOf(cancel) + " Other: " + String::valueOf(otherPressed));
-	/*try {
-		player->wlock();
-
-		SuiListBox* listbox = (SuiListBox*) player->getSuiBox(boxid);
-
-		if (listbox == NULL) {
-			player->unlock();
-			return;
-		}
-
-		if (cancel != 1 && index != -1) {
-			Zone* zone = player->getZone();
-
-			if (zone == NULL || zone->getZoneServer() == NULL) {
-				player->removeSuiBox(boxid);
-				listbox->finalize();
-				player->unlock();
-				return;
-			}
-
-			ZoneServer* zoneserver = zone->getZoneServer();
-
-			ItemManager* itemmanager = zoneserver->getItemManager();
-
-			if (itemmanager == NULL) {
-				player->removeSuiBox(boxid);
-				listbox->finalize();
-				player->unlock();
-				return;
-			}
-
-			ManagedReference<SceneObject*> dealerobj = suiBox->getUsingObject();
-
-			if (dealerobj == NULL)
-				return;
-
-			//TODO: Check if the dealerobj is a junkdealer creature and cast.
-
-			if (junkdealer == NULL) {
-				player->sendSystemMessage("An error has occurred, preventing you from selling your junk to the junk dealer.");
-				player->removeSuiBox(boxid);
-				listbox->finalize();
-				player->unlock();
-				return;
-			}
-
-			uint64 itemid = listbox->getMenuObjectID(index);
-			TangibleObject* item = (TangibleObject*) player->getInventoryItem(itemid);
-
-			if (item == NULL) {
-				player->sendSystemMessage("An error has occurred, preventing you from selling your junk to the junk dealer.");
-				player->removeSuiBox(boxid);
-				listbox->finalize();
-				player->unlock();
-				return;
-			}
-
-			int lootvalue = item->getLootValue();
-
-			if (lootvalue <= 0) {
-				StfParameter* params = new StfParameter();
-				params->addTU(junkdealerid);
-				params->addTT(itemid);
-				player->sendSystemMessage("junk_dealer", "prose_no_buy", params); //%TU shows no interest in purchasing %TT.
-				delete params;
-
-				player->removeSuiBox(boxid);
-				listbox->finalize();
-				player->unlock();
-				return;
-			}
-
-			player->removeInventoryItem(itemid);
-			item->sendDestroyTo(player);
-			itemmanager->deletePlayerItem(player, item, false);
-			item->finalize();
-
-			player->addCashCredits(lootvalue);
-
-			StfParameter* params = new StfParameter();
-			params->addTT(itemid);
-			params->addDI(lootvalue);
-			player->sendSystemMessage("junk_dealer", "prose_sold_junk", params);
-			delete params;
-
-			//Send the list again.
-			junkdealer->sendSellJunkListTo(player);
-		}
-
-		player->removeSuiBox(boxid);
-		listbox->finalize();
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleSellJunkLootSelection");
-		player->unlock();
-	}*/
-}
 
 void SuiManager::handleStructureStatus(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 

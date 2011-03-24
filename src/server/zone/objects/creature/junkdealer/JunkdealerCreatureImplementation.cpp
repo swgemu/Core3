@@ -19,6 +19,8 @@
 #include "server/zone/objects/tangible/loot/LootkitObject.h"
 #include "server/chat/StringIdChatParameter.h"
 
+#include "server/zone/objects/creature/junkdealer/sui/JunkDealerSellListSuiCallback.h"
+
 
 void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	if (!obj->isPlayerCreature())
@@ -284,6 +286,7 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(PlayerCreatur
 
 	// create new window
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::JUNK_DEALER_SELL_LIST, SuiListBox::HANDLETHREEBUTTON);
+	box->setCallback(new JunkDealerSellListSuiCallback(server->getZoneServer()));
 
 	box->setPromptText("@loot_dealer:sell_prompt");
 	box->setOtherButton(true, "@loot_dealer:btn_sell_all");

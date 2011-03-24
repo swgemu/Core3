@@ -15,7 +15,7 @@
 
 class GuildSponsorSuiCallback : public SuiCallback {
 public:
-	GuildSponsorSuiCallback(ZoneProcessServer* server)
+	GuildSponsorSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -28,7 +28,7 @@ public:
 
 		String playerName = args->get(0).toString();
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 

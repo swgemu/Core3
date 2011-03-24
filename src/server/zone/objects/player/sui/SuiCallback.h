@@ -8,7 +8,7 @@
 #ifndef SUICALLBACK_H_
 #define SUICALLBACK_H_
 
-#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
 
 namespace server {
 namespace zone {
@@ -23,10 +23,10 @@ namespace sui {
 
 	class SuiCallback {
 	protected:
-		ZoneProcessServer* server;
+		ZoneServer* server;
 
 	public:
-		SuiCallback(ZoneProcessServer* serv) {
+		SuiCallback(ZoneServer* serv) {
 			server = serv;
 		}
 

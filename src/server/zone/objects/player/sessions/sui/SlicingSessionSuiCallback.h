@@ -13,7 +13,7 @@
 
 class SlicingSessionSuiCallback : public SuiCallback {
 public:
-	SlicingSessionSuiCallback(ZoneProcessServer* server)
+	SlicingSessionSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 

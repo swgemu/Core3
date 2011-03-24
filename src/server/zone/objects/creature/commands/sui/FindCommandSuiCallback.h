@@ -29,7 +29,7 @@ using namespace server::zone::objects::player::sui;
 
 class FindCommandSuiCallback : public SuiCallback {
 public:
-	FindCommandSuiCallback(ZoneProcessServer* server)
+	FindCommandSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 

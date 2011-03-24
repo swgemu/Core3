@@ -82,7 +82,8 @@ public:
 		text << "Really destroy \\#dd3300" << obj->getObjectName()->getDisplayedName() << "\\#.?";
 
 		ManagedReference<SuiMessageBox*> confirmbox = new SuiMessageBox(player, SuiWindowType::ADMIN_DESTROY_CONFIRM);
-		confirmbox->setCallback(new DestroyCommandSuiCallback(server));
+		confirmbox->setCallback(new DestroyCommandSuiCallback(server->getZoneServer()));
+
 		confirmbox->setPromptTitle("Destroy");
 		confirmbox->setPromptText(text.toString());
 		confirmbox->setUsingObject(obj);
