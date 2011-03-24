@@ -119,7 +119,7 @@ public:
 
 	void addSkillMod(const String& skillModType, int skillModValue);
 
-	void removeAttachment(PlayerCreature* player);
+	bool removeAttachment(PlayerCreature* player);
 
 	void generateSkillMods();
 
@@ -200,7 +200,7 @@ public:
 
 	void addSkillMod(const String& skillModType, int skillModValue);
 
-	void removeAttachment(PlayerCreature* player);
+	bool removeAttachment(PlayerCreature* player);
 
 	void generateSkillMods();
 
@@ -273,7 +273,7 @@ public:
 
 	void addSkillMod(const String& skillModType, int skillModValue);
 
-	void removeAttachment(PlayerCreature* player);
+	bool removeAttachment(PlayerCreature* player);
 
 	void generateSkillMods();
 

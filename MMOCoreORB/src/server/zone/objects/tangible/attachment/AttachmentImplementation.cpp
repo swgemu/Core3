@@ -75,18 +75,24 @@ void AttachmentImplementation::addSkillMod(const String& skillModType, int skill
 
 }
 
-void AttachmentImplementation::removeAttachment(PlayerCreature* player) {
-	SceneObject* inventory = player->getSlottedObject("inventory");
+bool AttachmentImplementation::removeAttachment(PlayerCreature* player) {
+	SceneObject* container = _this->getParent();
 
-	if (inventory == NULL)
-		return;
+	if (container == NULL)
+		return 0;
 
-	Locker inventoryLocker(inventory);
+	if (!container->isContainerObject())
+		return 0;
 
-	if (!inventory->hasObjectInContainer(getObjectID()))
-		return;
+	Locker _locker(container);
 
-	inventory->removeObject(_this, true);
+	if (container->hasObjectInContainer(getObjectID())) {
+		container->removeObject(_this, true);
+
+		return 1;
+	}
+
+	return 0;
 
 }
 

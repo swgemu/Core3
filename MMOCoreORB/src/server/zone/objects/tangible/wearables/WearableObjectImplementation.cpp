@@ -86,20 +86,22 @@ void WearableObjectImplementation::applyAttachment(PlayerCreature* player, Attac
 	if (socketsLeft() > 0) {
 		AttachmentEntry entry;
 
-		for (int i = 0; i < attachment->getSkillModCount(); ++i) {
-			String name = attachment->getSkillModName(i);
-			int value = attachment->getSkillModValue(i);
+		if (attachment->removeAttachment(player)) {
 
-			entry.add(name, value);
+			for (int i = 0; i < attachment->getSkillModCount(); ++i) {
+				String name = attachment->getSkillModName(i);
+				int value = attachment->getSkillModValue(i);
+
+				entry.add(name, value);
+
+			}
+
+			wearableSkillModMap.addAttachment(entry);
+
+			if (isEquipped())
+				setAttachmentMods(player);
 
 		}
-
-		wearableSkillModMap.addAttachment(entry);
-
-		if (isEquipped())
-			setAttachmentMods(player);
-
-		attachment->removeAttachment(player);
 
 	}
 
