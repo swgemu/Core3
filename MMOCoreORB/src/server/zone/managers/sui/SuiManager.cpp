@@ -135,10 +135,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 
 	SuiCallback* callback = suiBox->getCallback();
 
-	if (callback != NULL)
+	if (callback != NULL) {
 		callback->run(player, suiBox, cancel, args);
-
-	return;
+		return;
+	}
 
 	StringBuffer msg;
 	msg << "Unknown message callback with SuiWindowType: " << hex << windowType << ". Falling back on old handler system.";
