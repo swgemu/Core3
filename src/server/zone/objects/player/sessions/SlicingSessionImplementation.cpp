@@ -49,13 +49,13 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 	if (!tangibleObject->isSliceable())
 		return;
 
-	if (player->hasSuiBoxWindowType(SuiWindowType::SLICING_MENU)) {
-		player->sendSystemMessage("@slicing/slicing:already_slicing");
+	if (tangibleObject->containsActiveSession(SessionFacadeType::SLICING)) {
+		player->sendSystemMessage("@slicing/slicing:slicing_underway");
 		return;
 	}
 
-	if (tangibleObject->containsActiveSession(SessionFacadeType::SLICING)) {
-		player->sendSystemMessage("@slicing/slicing:slicing_underway");
+	if (!hasPrecisionLaserKnife(false)) { // do not remove the item on inital window
+		player->sendSystemMessage("@slicing/slicing:no_knife");
 		return;
 	}
 
@@ -66,11 +66,6 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 
 	if (tangibleObject->isArmorObject() && !hasArmorUpgradeKit()) {
 		player->sendSystemMessage("@slicing/slicing:no_armor_kit");
-		return;
-	}
-
-	if (!hasPrecisionLaserKnife(false)) { // do not remove the item on inital window
-		player->sendSystemMessage("@slicing/slicing:no_knife");
 		return;
 	}
 
