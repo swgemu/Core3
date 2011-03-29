@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.constructorcomment_context" deleted="false" description="Comment for created constructors" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.constructorcomment" name="constructorcomment">/*
+ *
+ */</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.destructorcomment_context" deleted="false" description="Comment for created destructors" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.destructorcomment" name="destructorcomment">/*
+ *
+ */</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.filecomment_context" deleted="false" description="Comment for created C/C++ files" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.filecomment" name="filecomment">/*
+ * ${file_name}
+ *
+ *  Created on: ${date}
+ *      Author: ${user}
+ */</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.typecomment_context" deleted="false" description="Comment for created classes" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.typecomment" name="typecomment">/*
+ *
+ */</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.fieldcomment_context" deleted="false" description="Comment for fields" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.fieldcomment" name="fieldcomment">/*
+ *
+ */</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.methodcomment_context" deleted="false" description="Comment for methods" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.methodcomment" name="methodcomment">/*
+ *
+ */</template><template autoinsert="true" context="org.eclipse.cdt.core.cxxSource.contenttype_context" deleted="false" description="Default template for newly created C++ source files" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.cppsourcefile" name="Default C++ source template">${filecomment}
+
+${declarations}</template><template autoinsert="true" context="org.eclipse.cdt.core.cxxHeader.contenttype_context" deleted="false" description="Default template for newly created C++ header files" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.cppheaderfile" name="Default C++ header template">${filecomment}
+
+#ifndef ${include_guard_symbol}
+#define ${include_guard_symbol}
+
+${typecomment}
+${declarations}
+
+#endif /* ${include_guard_symbol} */
+</template><template autoinsert="true" context="org.eclipse.cdt.core.cSource.contenttype_context" deleted="false" description="Default template for newly created C source files" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.csourcefile" name="Default C source template">${filecomment}
+
+${declarations}</template><template autoinsert="true" context="org.eclipse.cdt.core.cHeader.contenttype_context" deleted="false" description="Default template for newly created C header files" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.cheaderfile" name="Default C header template">${filecomment}
+
+#ifndef ${include_guard_symbol}
+#define ${include_guard_symbol}
+
+${declarations}
+
+#endif /* ${include_guard_symbol} */
+</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.methodbody_context" deleted="false" description="Code in created method stubs" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.methodbody" name="methodbody">// ${todo} Auto-generated method stub
+${body_statement}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.constructorbody_context" deleted="false" description="Code in created constructor stubs" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.constructorbody" name="constructorbody">// ${todo} Auto-generated constructor stub
+${body_statement}</template><template autoinsert="true" context="org.eclipse.cdt.ui.text.codetemplates.destructorbody_context" deleted="false" description="Code in created destructor stubs" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.destructorbody" name="destructorbody">${body_statement}
+// ${todo} Auto-generated destructor stub</template><template autoinsert="true" context="org.eclipse.cdt.core.asmSource.contenttype_context" deleted="false" description="Default template for newly created assembly files" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.asmsourcefile" name="Default assembly template">${filecomment}
+</template><template autoinsert="true" context="org.eclipse.core.runtime.text.contenttype_context" deleted="false" description="Default template for newly created text files" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.textfile" name="Default text file template">${file_name}
+
+ Created on: ${date}
+     Author: ${user}
+
+</template><template autoinsert="false" context="org.eclipse.cdt.core.cxxHeader.contenttype_context" deleted="false" description="" enabled="true" name="SWGEmu SuiCallback">${filecomment}
+
+#ifndef ${include_guard_symbol}
+#define ${include_guard_symbol}
+
+#include "server/zone/objects/player/sui/SuiCallback.h"
+
+${typecomment}
+${declarations}
+
+class ${file_base} : public SuiCallback {
+public:
+	${file_base}(ZoneServer* serv) : SuiCallback(serv) {
+	}
+
+	void run(PlayerCreature* player, SuiBox* sui, bool cancelPressed, Vector&lt;UnicodeString&gt;* args) {
+	}
+};
+
+#endif /* ${include_guard_symbol} */
+</template><template autoinsert="false" context="org.eclipse.core.runtime.text.contenttype_context" deleted="false" description="" enabled="true" name="SWGEmu Session Template">/*
+Copyright (C) 2007 &lt;SWGEmu&gt;
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+ */
+
+package server.zone.objects.player;
+
+import engine.util.Facade;
+include server.zone.objects.scene.SessionFacadeType;
+
+class ${file_base} extends Facade {	
+	public ${file_base}() {
+		Logger.setLoggingName("${file_base}");
+		Logger.setLogging(true);
+		
+		initializeSession();
+	}
+
+	public int initializeSession() {
+		return 0;
+	}
+	
+	public int cancelSession() {
+		return 0;
+	}
+	
+	public int clearSession() {
+		return 0;
+	}
+}
+</template></templates>
