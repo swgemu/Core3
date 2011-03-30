@@ -88,9 +88,6 @@ object_weapon_ranged_carbine_carbine_dxr6 = object_weapon_ranged_carbine_shared_
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
-	
-	minDamage = 116,
-	maxDamage = 216,
 
 	idealRange = 0,
 	idealAccuracy = 0,
