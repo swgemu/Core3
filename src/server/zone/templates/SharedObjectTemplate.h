@@ -131,6 +131,7 @@ public:
 	const static int PLAYERCREATURE = 0x400001E;
 	const static int SLICINGTOOL = 0x400001F;
 	const static int CONTAINER = 0x4000020;
+	const static int VENDORCREATURE = 0x4000021;
 
 public:
 	SharedObjectTemplate() {
@@ -487,6 +488,10 @@ public:
 	}
 
 	virtual bool isCampKitTemplate() {
+		return false;
+	}
+
+	virtual bool isVendorCreatureTemplate() {
 		return false;
 	}
 

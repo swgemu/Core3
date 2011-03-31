@@ -57,8 +57,7 @@ import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.listbox.SuiListBox;
 include server.zone.objects.player.sui.inputbox.SuiInputBox;
-
-include server.zone.objects.player.sessions.vendor.VendorType;
+include server.zone.managers.vendor.VendorSelectionNode;
 
 class CreateVendorSession extends Facade {
 	@weakReference
@@ -66,13 +65,13 @@ class CreateVendorSession extends Facade {
 
 	@weakReference
 	protected SceneObject vendor;
+
+	VendorSelectionNode currentNode;
 	
 	protected SuiListBox suiSelectVendor;
 	protected SuiInputBox suiNameVendor;
 
-	private string vendorName;
-	private int selectedVendorType;
-	private string gender;
+	private string templatePath;
 		
 	public CreateVendorSession(PlayerCreature parent) {
 		Logger.setLoggingName("CreateVendorSession");
@@ -86,19 +85,17 @@ class CreateVendorSession extends Facade {
 
 	public native void handleMenuSelect(byte menuID);
 
-	public native void handleNameVendor(string name);
+	public native void createVendor(string name);
 
-	public native void createTerminalDroidVendor(int vendorType);
-
-	public native void createNpcVendor();
-
-	
 	// Session
 	public native int initializeSession();
 	
 	public int cancelSession() {
 		if (player != null)
 			player.dropActiveSession(SessionFacadeType.CREATEVENDOR);
+
+		if (vendor != null)
+			vendor.dropActiveSession(SessionFacadeType.CREATEVENDOR);
 
 		clearSession();
 		return 0;
@@ -107,6 +104,9 @@ class CreateVendorSession extends Facade {
 	public int clearSession() {
 		player = null;
 		vendor = null;
+		currentNode = null;
+		suiSelectVendor = null;
+		suiNameVendor = null;
 
 		return 0;
 	}

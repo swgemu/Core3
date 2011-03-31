@@ -16,11 +16,13 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
+
 /*
  *	VendorCreatureStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDCLOTHINGITEM__WEARABLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
 
 VendorCreature::VendorCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	VendorCreatureImplementation* _implementation = new VendorCreatureImplementation();
@@ -75,6 +77,34 @@ void VendorCreature::fillAttributeList(AttributeListMessage* msg, PlayerCreature
 
 	} else
 		_implementation->fillAttributeList(msg, object);
+}
+
+void VendorCreature::addClothingItem(WearableObject* clothing) {
+	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDCLOTHINGITEM__WEARABLEOBJECT_);
+		method.addObjectParameter(clothing);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addClothingItem(clothing);
+}
+
+void VendorCreature::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
+		method.addBooleanParameter(destroyContainedObjects);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 Vendor* VendorCreature::getVendor() {
@@ -302,6 +332,12 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
+	case RPC_ADDCLOTHINGITEM__WEARABLEOBJECT_:
+		addClothingItem((WearableObject*) inv->getObjectParameter());
+		break;
+	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
+		destroyObjectFromDatabase(inv->getBooleanParameter());
+		break;
 	case RPC_SETOWNERID__LONG_:
 		setOwnerID(inv->getUnsignedLongParameter());
 		break;
@@ -320,6 +356,14 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 int VendorCreatureAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((VendorCreatureImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+void VendorCreatureAdapter::addClothingItem(WearableObject* clothing) {
+	((VendorCreatureImplementation*) impl)->addClothingItem(clothing);
+}
+
+void VendorCreatureAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	((VendorCreatureImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 void VendorCreatureAdapter::setOwnerID(unsigned long long ownerID) {

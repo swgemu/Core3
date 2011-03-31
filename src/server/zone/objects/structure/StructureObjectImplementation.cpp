@@ -471,14 +471,12 @@ bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
 
 void StructureObjectImplementation::createVendor(PlayerCreature* player) {
 	if (!isPublicStructure()) {
-		player->sendSystemMessage("@player_structure:vendor_no_private");
+		player->sendSystemMessage("@player_structure:vendor_public_only");
 		return;
 	}
 
 	//Create Session
 	ManagedReference<CreateVendorSession*> session = new CreateVendorSession(player);
 	session->initalizeWindow(player);
-
-	player->addActiveSession(SessionFacadeType::CREATEVENDOR, session);
 
 }

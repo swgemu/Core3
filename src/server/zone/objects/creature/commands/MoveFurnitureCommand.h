@@ -158,6 +158,7 @@ public:
 
 		String dir;
 		tokenizer.getStringToken(dir);
+		dir = dir.toLowerCase();
 
 		if (dir != "up" && dir != "down" && dir != "forward" && dir != "back")
 			return GENERALERROR;
@@ -181,8 +182,11 @@ public:
 		}
 
 		if (!player->getPlayerObject()->isPrivileged()) {
-			if (obj->getRootParent() != buildingObject || obj->isTerminal()) {
-				creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
+			if (obj->getRootParent() != buildingObject || obj->isTerminal() || obj->isVendor()) {
+				if (obj->isVendor())
+					creature->sendSystemMessage("@player_structure:cant_move_vendor"); // To move a vendor, pick it up and drop it again in the new location.
+				else
+					creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 				return false;
 			}
 		}

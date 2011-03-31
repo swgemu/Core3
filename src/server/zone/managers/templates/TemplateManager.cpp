@@ -64,6 +64,7 @@
 #include "server/zone/templates/tangible/VehicleDeedTemplate.h"
 #include "server/zone/templates/tangible/MissionTerminalTemplate.h"
 #include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
+#include "server/zone/templates/tangible/VendorCreatureTemplate.h"
 #include "server/zone/templates/tangible/ContainerTemplate.h"
 #include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 
@@ -260,6 +261,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<SlicingToolTemplate>(SharedObjectTemplate::SLICINGTOOL);
 	templateFactory.registerObject<ContainerTemplate>(SharedObjectTemplate::CONTAINER);
 	templateFactory.registerObject<ElevatorTerminalTemplate>(SharedObjectTemplate::ELEVATORTERMINAL);
+	templateFactory.registerObject<VendorCreatureTemplate>(SharedObjectTemplate::VENDORCREATURE);
 }
 
 
@@ -398,6 +400,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("SLICINGTOOL", SharedObjectTemplate::SLICINGTOOL);
 	luaTemplatesInstance->setGlobalInt("CONTAINER", SharedObjectTemplate::CONTAINER);
 	luaTemplatesInstance->setGlobalInt("ELEVATORTERMINAL", SharedObjectTemplate::ELEVATORTERMINAL);
+	luaTemplatesInstance->setGlobalInt("VENDORCREATURE", SharedObjectTemplate::VENDORCREATURE);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

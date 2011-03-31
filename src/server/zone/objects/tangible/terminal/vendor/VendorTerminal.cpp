@@ -20,7 +20,7 @@
  *	VendorTerminalStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__};
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETOWNERID__LONG_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__};
 
 VendorTerminal::VendorTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	VendorTerminalImplementation* _implementation = new VendorTerminalImplementation();
@@ -80,6 +80,20 @@ void VendorTerminal::setOwnerID(unsigned long long ownerID) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setOwnerID(ownerID);
+}
+
+void VendorTerminal::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
+		method.addBooleanParameter(destroyContainedObjects);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 Vendor* VendorTerminal::getVendor() {
@@ -296,6 +310,9 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SETOWNERID__LONG_:
 		setOwnerID(inv->getUnsignedLongParameter());
 		break;
+	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
+		destroyObjectFromDatabase(inv->getBooleanParameter());
+		break;
 	case RPC_ISVENDOR__:
 		resp->insertBoolean(isVendor());
 		break;
@@ -315,6 +332,10 @@ int VendorTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte s
 
 void VendorTerminalAdapter::setOwnerID(unsigned long long ownerID) {
 	((VendorTerminalImplementation*) impl)->setOwnerID(ownerID);
+}
+
+void VendorTerminalAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	((VendorTerminalImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 bool VendorTerminalAdapter::isVendor() {
