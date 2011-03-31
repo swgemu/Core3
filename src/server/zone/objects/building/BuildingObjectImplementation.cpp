@@ -377,3 +377,12 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 
 	return MIN(MAXPLAYERITEMS, lots * 100);
 }
+
+bool BuildingObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+	if (object->isCellObject()) {
+		addCell((CellObject*) object);
+		return true;
+	}
+
+	return StructureObjectImplementation::addObject(object, containmentType, notifyClient);
+}

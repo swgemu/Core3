@@ -192,6 +192,8 @@ public:
 
 	int getTotalCellNumber();
 
+	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
+
 	int getCurrentNumerOfPlayerItems();
 
 	void onEnter(PlayerCreature* player);
@@ -309,6 +311,8 @@ public:
 
 	int getTotalCellNumber();
 
+	virtual bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
+
 	int getCurrentNumerOfPlayerItems();
 
 	virtual void onEnter(PlayerCreature* player);
@@ -407,6 +411,8 @@ public:
 	CellObject* getCell(int idx);
 
 	int getTotalCellNumber();
+
+	bool addObject(SceneObject* object, int containmentType, bool notifyClient);
 
 	int getCurrentNumerOfPlayerItems();
 
