@@ -66,6 +66,11 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL || zone->getZoneID() != 42)
+			return GENERALERROR;
+
 		ManagedReference<SceneObject*> cell = creature->getParent();
 
 		if (cell == NULL)
