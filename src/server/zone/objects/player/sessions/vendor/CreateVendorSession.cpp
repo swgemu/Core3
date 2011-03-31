@@ -14,7 +14,7 @@
  *	CreateVendorSessionStub
  */
 
-enum {RPC_INITALIZEWINDOW__PLAYERCREATURE_ = 6,RPC_HANDLEMENUSELECT__BYTE_,RPC_HANDLENAMEVENDOR__STRING_,RPC_CREATETERMINALDROIDVENDOR__INT_,RPC_CREATENPCVENDOR__,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
+enum {RPC_INITALIZEWINDOW__PLAYERCREATURE_ = 6,RPC_HANDLEMENUSELECT__BYTE_,RPC_CREATEVENDOR__STRING_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
 
 CreateVendorSession::CreateVendorSession(PlayerCreature* parent) : Facade(DummyConstructorParameter::instance()) {
 	CreateVendorSessionImplementation* _implementation = new CreateVendorSessionImplementation(parent);
@@ -57,45 +57,18 @@ void CreateVendorSession::handleMenuSelect(byte menuID) {
 		_implementation->handleMenuSelect(menuID);
 }
 
-void CreateVendorSession::handleNameVendor(String& name) {
+void CreateVendorSession::createVendor(String& name) {
 	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLENAMEVENDOR__STRING_);
+		DistributedMethod method(this, RPC_CREATEVENDOR__STRING_);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->handleNameVendor(name);
-}
-
-void CreateVendorSession::createTerminalDroidVendor(int vendorType) {
-	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATETERMINALDROIDVENDOR__INT_);
-		method.addSignedIntParameter(vendorType);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createTerminalDroidVendor(vendorType);
-}
-
-void CreateVendorSession::createNpcVendor() {
-	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATENPCVENDOR__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createNpcVendor();
+		_implementation->createVendor(name);
 }
 
 int CreateVendorSession::initializeSession() {
@@ -251,6 +224,11 @@ bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stre
 		return true;
 	}
 
+	if (_name == "currentNode") {
+		TypeInfo<VendorSelectionNode* >::parseFromBinaryStream(&currentNode, stream);
+		return true;
+	}
+
 	if (_name == "suiSelectVendor") {
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&suiSelectVendor, stream);
 		return true;
@@ -261,18 +239,8 @@ bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stre
 		return true;
 	}
 
-	if (_name == "vendorName") {
-		TypeInfo<String >::parseFromBinaryStream(&vendorName, stream);
-		return true;
-	}
-
-	if (_name == "selectedVendorType") {
-		TypeInfo<int >::parseFromBinaryStream(&selectedVendorType, stream);
-		return true;
-	}
-
-	if (_name == "gender") {
-		TypeInfo<String >::parseFromBinaryStream(&gender, stream);
+	if (_name == "templatePath") {
+		TypeInfo<String >::parseFromBinaryStream(&templatePath, stream);
 		return true;
 	}
 
@@ -307,6 +275,14 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "currentNode";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VendorSelectionNode* >::toBinaryStream(&currentNode, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "suiSelectVendor";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -323,32 +299,16 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "vendorName";
+	_name = "templatePath";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&vendorName, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "selectedVendorType";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&selectedVendorType, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "gender";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&gender, stream);
+	TypeInfo<String >::toBinaryStream(&templatePath, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + FacadeImplementation::writeObjectMembers(stream);
+	return 6 + FacadeImplementation::writeObjectMembers(stream);
 }
 
 CreateVendorSessionImplementation::CreateVendorSessionImplementation(PlayerCreature* parent) {
@@ -362,9 +322,12 @@ CreateVendorSessionImplementation::CreateVendorSessionImplementation(PlayerCreat
 }
 
 int CreateVendorSessionImplementation::cancelSession() {
-	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession(
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		if 
 	if (player != NULL)	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  			player.dropActiveSession(SessionFacadeType.CREATEVENDOR);
 	player->dropActiveSession(SessionFacadeType::CREATEVENDOR);
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession(
+	if (vendor != NULL)	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  			vendor.dropActiveSession(SessionFacadeType.CREATEVENDOR);
+	vendor->dropActiveSession(SessionFacadeType::CREATEVENDOR);
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession();
 	clearSession();
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		return 0;
@@ -376,6 +339,12 @@ int CreateVendorSessionImplementation::clearSession() {
 	player = NULL;
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		vendor = null;
 	vendor = NULL;
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		currentNode = null;
+	currentNode = NULL;
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		suiSelectVendor = null;
+	suiSelectVendor = NULL;
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		suiNameVendor = null;
+	suiNameVendor = NULL;
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		return 0;
 	return 0;
 }
@@ -397,14 +366,8 @@ Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 	case RPC_HANDLEMENUSELECT__BYTE_:
 		handleMenuSelect(inv->getByteParameter());
 		break;
-	case RPC_HANDLENAMEVENDOR__STRING_:
-		handleNameVendor(inv->getAsciiParameter(_param0_handleNameVendor__String_));
-		break;
-	case RPC_CREATETERMINALDROIDVENDOR__INT_:
-		createTerminalDroidVendor(inv->getSignedIntParameter());
-		break;
-	case RPC_CREATENPCVENDOR__:
-		createNpcVendor();
+	case RPC_CREATEVENDOR__STRING_:
+		createVendor(inv->getAsciiParameter(_param0_createVendor__String_));
 		break;
 	case RPC_INITIALIZESESSION__:
 		resp->insertSignedInt(initializeSession());
@@ -430,16 +393,8 @@ void CreateVendorSessionAdapter::handleMenuSelect(byte menuID) {
 	((CreateVendorSessionImplementation*) impl)->handleMenuSelect(menuID);
 }
 
-void CreateVendorSessionAdapter::handleNameVendor(String& name) {
-	((CreateVendorSessionImplementation*) impl)->handleNameVendor(name);
-}
-
-void CreateVendorSessionAdapter::createTerminalDroidVendor(int vendorType) {
-	((CreateVendorSessionImplementation*) impl)->createTerminalDroidVendor(vendorType);
-}
-
-void CreateVendorSessionAdapter::createNpcVendor() {
-	((CreateVendorSessionImplementation*) impl)->createNpcVendor();
+void CreateVendorSessionAdapter::createVendor(String& name) {
+	((CreateVendorSessionImplementation*) impl)->createVendor(name);
 }
 
 int CreateVendorSessionAdapter::initializeSession() {

@@ -22,6 +22,9 @@ protected:
 	String location;
 	byte vendorType;
 	bool initialized;
+	bool vendorSearchEnabled;
+	bool disabled;
+	bool registered;
 
 	inline void addSerializableVariables() {
 		addSerializableVariable("vendorItems", &vendorItems);
@@ -29,6 +32,9 @@ protected:
 		addSerializableVariable("location", &location);
 		addSerializableVariable("vendorType", &vendorType);
 		addSerializableVariable("initialized", &initialized);
+		addSerializableVariable("vendorSearchEnabled", &vendorSearchEnabled);
+		addSerializableVariable("disabled", &disabled);
+		addSerializableVariable("registered", &registered);
 	}
 
 public:
@@ -45,11 +51,16 @@ public:
 		location = v.location;
 		vendorType = v.vendorType;
 		initialized = v.initialized;
+		vendorSearchEnabled = v.vendorSearchEnabled;
+		disabled = v.disabled;
+		registered = v.registered;
 
 		return *this;
 	}
 
-	~Vendor();
+	~Vendor() {
+		vendorRef = NULL;
+	}
 
 	inline void setVendor(SceneObject* objRef) {
 		vendorRef = objRef;
@@ -57,6 +68,10 @@ public:
 
 	inline void addVendorItem(AuctionItem* item) {
 		vendorItems.put(item->getAuctionedItemObjectID(), item);
+	}
+
+	inline bool containsVendorItem(unsigned long long itemID) {
+		return vendorItems.contains(itemID);
 	}
 
 	inline void dropVendorItem(unsigned long long itemID) {
@@ -73,6 +88,18 @@ public:
 
 	inline void setInitialized (bool val) {
 		initialized = val;
+	}
+
+	inline void setVendorSearchEnabled (bool enabled) {
+		vendorSearchEnabled = enabled;
+	}
+
+	inline void setDisabled (bool isDisabled) {
+		disabled = isDisabled;
+	}
+
+	inline void setRegistered (bool reg) {
+		registered = reg;
 	}
 
 	inline SceneObject* getVendor() {
@@ -126,6 +153,10 @@ public:
 		return &vendorItems;
 	}
 
+	inline bool isVendorOwner(unsigned long long playerID) {
+		return playerID == ownerID;
+	}
+
 	inline bool isVendorTerminal() {
 		return vendorType == VENDORTERMINAL;
 	}
@@ -140,6 +171,18 @@ public:
 
 	inline bool isInitialized() {
 		return initialized;
+	}
+
+	inline bool isVendorSearchEnabled() {
+		return vendorSearchEnabled;
+	}
+
+	inline bool isDisabled() {
+		return disabled;
+	}
+
+	inline bool isRegistered() {
+		return registered;
 	}
 
 };

@@ -162,7 +162,7 @@ public:
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 2;
+	static const int CHECKEVERY = 1;
 
 	AuctionManager(ZoneServer* server);
 
@@ -206,6 +206,8 @@ public:
 
 	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, Vendor* vendor, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
 
+	AuctionsMap* getAuctionMap();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -243,7 +245,7 @@ public:
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 2;
+	static const int CHECKEVERY = 1;
 
 	AuctionManagerImplementation(ZoneServer* server);
 
@@ -297,6 +299,8 @@ private:
 	Vendor* getVendorFromObject(SceneObject* obj);
 
 public:
+	AuctionsMap* getAuctionMap();
+
 	AuctionManager* _this;
 
 	operator const AuctionManager*();
@@ -361,6 +365,8 @@ public:
 	int checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2);
 
 	void cancelItem(PlayerCreature* player, unsigned long long objectID);
+
+	AuctionsMap* getAuctionMap();
 
 };
 

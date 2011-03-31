@@ -52,6 +52,12 @@ public:
 
 	AuctionItem* getVendorItem(int index);
 
+	void increasePlayerVendorCount(unsigned long long playerID);
+
+	void decreasePlayerVendorCount(unsigned long long playerID);
+
+	int getPlayerVendorCount(unsigned long long playerID);
+
 	int getAuctionCount();
 
 	bool containsAuction(unsigned long long objectID);
@@ -106,6 +112,8 @@ protected:
 
 	VectorMap<unsigned long long, int> playerVendorItemCount;
 
+	VectorMap<unsigned long long, int> playerVendorCount;
+
 public:
 	AuctionsMapImplementation();
 
@@ -124,6 +132,12 @@ public:
 	AuctionItem* getVendorItem(unsigned long long objectID);
 
 	AuctionItem* getVendorItem(int index);
+
+	void increasePlayerVendorCount(unsigned long long playerID);
+
+	void decreasePlayerVendorCount(unsigned long long playerID);
+
+	int getPlayerVendorCount(unsigned long long playerID);
 
 	int getAuctionCount();
 
@@ -201,6 +215,12 @@ public:
 	AuctionItem* getVendorItem(unsigned long long objectID);
 
 	AuctionItem* getVendorItem(int index);
+
+	void increasePlayerVendorCount(unsigned long long playerID);
+
+	void decreasePlayerVendorCount(unsigned long long playerID);
+
+	int getPlayerVendorCount(unsigned long long playerID);
 
 	int getAuctionCount();
 

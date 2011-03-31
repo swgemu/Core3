@@ -60,6 +60,9 @@ class AuctionsMap extends ManagedObject {
 
 	@dereferenced
 	protected VectorMap<unsigned long, int> playerVendorItemCount;
+
+	@dereferenced
+	protected VectorMap<unsigned long, int> playerVendorCount;
 	
 	public AuctionsMap() {
 		auctions.setNullValue(null);
@@ -73,6 +76,10 @@ class AuctionsMap extends ManagedObject {
 
 		playerVendorItemCount.setNullValue(0);
 		playerVendorItemCount.setAllowOverwriteInsertPlan();
+
+		playerVendorCount.setNullValue(0);
+		playerVendorCount.setAllowOverwriteInsertPlan();
+
 	}
 
 	public int getVendorItemCount() {
@@ -116,6 +123,22 @@ class AuctionsMap extends ManagedObject {
 	
 	public AuctionItem getVendorItem(int index) {
 		return vendorItems.get(index);
+	}
+
+	public void increasePlayerVendorCount(unsigned long playerID) {
+		playerVendorCount.put(playerID, playerVendorCount.get(playerID) + 1);
+	}
+
+	public void decreasePlayerVendorCount(unsigned long playerID) {
+		int count = playerVendorCount.get(playerID) - 1;
+		if (count <= 0)
+			playerVendorCount.drop(playerID);
+
+		playerVendorCount.put(playerID, count);
+	}
+
+	public int getPlayerVendorCount(unsigned long playerID) {
+		return playerVendorCount.get(playerID);
 	}
 
 //=========================

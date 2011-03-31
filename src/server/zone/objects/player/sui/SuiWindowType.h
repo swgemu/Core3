@@ -120,6 +120,8 @@ public:
 	static const uint16 STRUCTURE_ADD_ENERGY = 145;
 	static const uint16 STRUCTURE_CREATE_VENDOR = 146;
 	static const uint16 STRUCTURE_NAME_VENDOR = 147;
+	static const uint16 STRUCTURE_DESTROY_VENDOR_CONFIRM = 148;
+	static const uint16 STRUCTURE_VENDOR_STATUS = 149;
 
 	//Admin 171 - 220
 	static const uint16 ADMIN_COMMANDS = 171;

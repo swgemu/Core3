@@ -90,6 +90,32 @@ public:
 			return GENERALERROR;
 		}
 
+		// Check if the object is a Vendor and if its initalized before attempting to drop/pickup
+		if (objectToTransfer->isVendor()) {
+			SceneObject* vendorObj = objectToTransfer.get();
+			Vendor* vendor = NULL;
+			if (vendorObj->isCreatureObject()) {
+				VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(vendorObj);
+				vendor = vendorCreature->getVendor();
+			} else if (vendorObj->isTerminal()) {
+				VendorTerminal* vendorTerminal = dynamic_cast<VendorTerminal*>(vendorObj);
+				vendor = vendorTerminal->getVendor();
+			}
+
+			if (vendor == NULL)
+				return GENERALERROR;
+
+			if (vendor->getOwnerID() != creature->getObjectID()) {
+				creature->sendSystemMessage("Only the vendor owner can do that.");
+				return GENERALERROR;
+			}
+
+			if (vendor->isInitialized()) {
+				creature->sendSystemMessage("@player_structure:cant_move");
+				return GENERALERROR;
+			}
+		}
+
 		SceneObject* objectsParent = objectToTransfer->getParent();
 
 		// TODO: Maybe a better way to handle this. (If its a world loot container, ignore parent) ??

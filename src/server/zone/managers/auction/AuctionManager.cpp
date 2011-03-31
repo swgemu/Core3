@@ -26,7 +26,7 @@
  *	AuctionManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETITEMATTRIBUTES__PLAYERCREATURE_LONG_,RPC_GETDATA__PLAYERCREATURE_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__PLAYERCREATURE_LONG_LONG_,RPC_BUYITEM__PLAYERCREATURE_LONG_INT_INT_,RPC_DOAUCTIONBID__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__PLAYERCREATURE_LONG_,};
+enum {RPC_INITIALIZE__ = 6,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETITEMATTRIBUTES__PLAYERCREATURE_LONG_,RPC_GETDATA__PLAYERCREATURE_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__PLAYERCREATURE_LONG_LONG_,RPC_BUYITEM__PLAYERCREATURE_LONG_INT_INT_,RPC_DOAUCTIONBID__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__PLAYERCREATURE_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__PLAYERCREATURE_LONG_,RPC_GETAUCTIONMAP__};
 
 AuctionManager::AuctionManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	AuctionManagerImplementation* _implementation = new AuctionManagerImplementation(server);
@@ -295,6 +295,19 @@ AuctionQueryHeadersResponseMessage* AuctionManager::fillAuctionQueryHeadersRespo
 		return _implementation->fillAuctionQueryHeadersResponseMessage(player, vendor, items, screen, category, count, offset);
 }
 
+AuctionsMap* AuctionManager::getAuctionMap() {
+	AuctionManagerImplementation* _implementation = (AuctionManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETAUCTIONMAP__);
+
+		return (AuctionsMap*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getAuctionMap();
+}
+
 DistributedObjectServant* AuctionManager::_getImplementation() {
 
 	_updated = true;
@@ -456,6 +469,11 @@ AuctionManagerImplementation::AuctionManagerImplementation(ZoneServer* server) {
 	Logger::setGlobalLogging(true);
 }
 
+AuctionsMap* AuctionManagerImplementation::getAuctionMap() {
+	// server/zone/managers/auction/AuctionManager.idl():  		return auctionMap;
+	return auctionMap;
+}
+
 /*
  *	AuctionManagerAdapter
  */
@@ -499,6 +517,9 @@ Packet* AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_CANCELITEM__PLAYERCREATURE_LONG_:
 		cancelItem((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		break;
+	case RPC_GETAUCTIONMAP__:
+		resp->insertLong(getAuctionMap()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -549,6 +570,10 @@ int AuctionManagerAdapter::checkBidAuction(PlayerCreature* player, AuctionItem* 
 
 void AuctionManagerAdapter::cancelItem(PlayerCreature* player, unsigned long long objectID) {
 	((AuctionManagerImplementation*) impl)->cancelItem(player, objectID);
+}
+
+AuctionsMap* AuctionManagerAdapter::getAuctionMap() {
+	return ((AuctionManagerImplementation*) impl)->getAuctionMap();
 }
 
 /*

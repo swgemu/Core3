@@ -42,7 +42,14 @@
 
 
 object_mobile_vendor_human_female = object_mobile_vendor_shared_human_female:new {
-	gameObjectType = 1038
+	gameObjectType = 1038,
+	templateType = VENDORCREATURE,
+
+	hair = "object/tangible/hair/human/hair_human_female_s08.iff",
+
+	clothes = { "object/tangible/wearables/shirt/shirt_s04.iff",
+		  "object/tangible/wearables/pants/pants_s04.iff",
+		  "object/tangible/wearables/shoes/shoes_s01.iff" }
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_human_female, "object/mobile/vendor/human_female.iff")

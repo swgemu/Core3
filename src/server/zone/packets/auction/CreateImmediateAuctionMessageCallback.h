@@ -32,10 +32,10 @@ public:
 	void parse(Message* message) {
 
 		objectID = message->parseLong(); // object for sale
-		vendorID = message->parseLong(); // bazaar
+		vendorID = message->parseLong(); // vendor
 
 		price = message->parseInt(); // Sale price
-		duration = message->parseInt(); // How long to sell for in minutes
+		duration = message->parseInt(); // How long to sell for in seconds
 
 		message->parseUnicode(description);
 
@@ -75,7 +75,7 @@ public:
 			return;
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
-		//duration = 60;
+
 		auctionManager->addSaleItem(player, objectID, vendor, description, price, duration, false, premium);
 	}
 

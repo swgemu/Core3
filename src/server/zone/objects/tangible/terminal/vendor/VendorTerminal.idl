@@ -92,10 +92,12 @@ class VendorTerminal extends Terminal {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
-	
+
 	public void setOwnerID(unsigned long ownerID) {
 		vendor.setOwnerID(ownerID);
 	}
+
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
 	@local
 	public Vendor getVendor() {

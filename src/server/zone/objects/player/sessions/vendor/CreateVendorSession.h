@@ -63,7 +63,7 @@ using namespace server::zone::objects::tangible;
 
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 
-#include "server/zone/objects/player/sessions/vendor/VendorType.h"
+#include "server/zone/managers/vendor/VendorSelectionNode.h"
 
 #include "engine/log/Logger.h"
 
@@ -86,11 +86,7 @@ public:
 
 	void handleMenuSelect(byte menuID);
 
-	void handleNameVendor(String& name);
-
-	void createTerminalDroidVendor(int vendorType);
-
-	void createNpcVendor();
+	void createVendor(String& name);
 
 	int initializeSession();
 
@@ -128,16 +124,16 @@ protected:
 
 	ManagedWeakReference<SceneObject* > vendor;
 
+private:
+	VendorSelectionNode* currentNode;
+
+protected:
 	ManagedReference<SuiListBox* > suiSelectVendor;
 
 	ManagedReference<SuiInputBox* > suiNameVendor;
 
 private:
-	String vendorName;
-
-	int selectedVendorType;
-
-	String gender;
+	String templatePath;
 
 public:
 	CreateVendorSessionImplementation(PlayerCreature* parent);
@@ -148,11 +144,7 @@ public:
 
 	void handleMenuSelect(byte menuID);
 
-	void handleNameVendor(String& name);
-
-	void createTerminalDroidVendor(int vendorType);
-
-	void createNpcVendor();
+	void createVendor(String& name);
 
 	int initializeSession();
 
@@ -207,11 +199,7 @@ public:
 
 	void handleMenuSelect(byte menuID);
 
-	void handleNameVendor(String& name);
-
-	void createTerminalDroidVendor(int vendorType);
-
-	void createNpcVendor();
+	void createVendor(String& name);
 
 	int initializeSession();
 
@@ -220,7 +208,7 @@ public:
 	int clearSession();
 
 protected:
-	String _param0_handleNameVendor__String_;
+	String _param0_createVendor__String_;
 };
 
 class CreateVendorSessionHelper : public DistributedObjectClassHelper, public Singleton<CreateVendorSessionHelper> {
