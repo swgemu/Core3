@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
+#include "server/zone/objects/creature/vendor/VendorCreature.h"
 
 class RotateFurnitureCommand : public QueueCommand {
 public:

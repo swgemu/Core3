@@ -48,6 +48,9 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/auction/Vendor.h"
+#include "server/zone/objects/creature/vendor/VendorCreature.h"
+#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
 
 
 class TransferItemMiscCommand : public QueueCommand {
