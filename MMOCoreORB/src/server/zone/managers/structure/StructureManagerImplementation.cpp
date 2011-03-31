@@ -103,6 +103,8 @@ void StructureManagerImplementation::loadWorldSnapshotObjects() {
 		object->initializePosition(position.getX(), position.getZ(), position.getY());
 		object->setDirection(node->getDirection());
 
+		object->createChildObjects();
+
 		if (parentObject != NULL)
 			parentObject->addObject(object, -1);
 

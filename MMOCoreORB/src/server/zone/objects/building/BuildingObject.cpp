@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -315,6 +315,22 @@ int BuildingObject::getTotalCellNumber() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getTotalCellNumber();
+}
+
+bool BuildingObject::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_);
+		method.addObjectParameter(object);
+		method.addSignedIntParameter(containmentType);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->addObject(object, containmentType, notifyClient);
 }
 
 int BuildingObject::getCurrentNumerOfPlayerItems() {
@@ -853,6 +869,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETTOTALCELLNUMBER__:
 		resp->insertSignedInt(getTotalCellNumber());
 		break;
+	case RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_:
+		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
 	case RPC_GETCURRENTNUMEROFPLAYERITEMS__:
 		resp->insertSignedInt(getCurrentNumerOfPlayerItems());
 		break;
@@ -957,6 +976,10 @@ CellObject* BuildingObjectAdapter::getCell(int idx) {
 
 int BuildingObjectAdapter::getTotalCellNumber() {
 	return ((BuildingObjectImplementation*) impl)->getTotalCellNumber();
+}
+
+bool BuildingObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+	return ((BuildingObjectImplementation*) impl)->addObject(object, containmentType, notifyClient);
 }
 
 int BuildingObjectAdapter::getCurrentNumerOfPlayerItems() {
