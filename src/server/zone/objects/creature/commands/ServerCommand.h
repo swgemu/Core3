@@ -47,12 +47,20 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "WeatherCommand.h"
+
+
+#include "ServerCommandFactory.h"
+
 class ServerCommand : public QueueCommand {
+	MethodFactory<String, CreatureObject*, uint64, const String&> methodFactory;
+
 public:
 
 	ServerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
+		methodFactory.registerMethod<WeatherCommand>("weather");
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -62,6 +70,19 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		if (!tokenizer.hasMoreTokens())
+			return GENERALERROR;
+
+		String commandName;
+		tokenizer.getStringToken(commandName);
+
+		String restOfArguments;
+		tokenizer.finalToken(restOfArguments);
+
+		int ret = methodFactory.runMethod(commandName, creature, target, restOfArguments);
 
 		return SUCCESS;
 	}
