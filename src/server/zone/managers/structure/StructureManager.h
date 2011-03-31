@@ -126,7 +126,7 @@ namespace structure {
 
 class StructureManager : public ManagedService {
 public:
-	StructureManager(Zone* zone, ZoneProcessServer* processor);
+	StructureManager(Zone* zne, ZoneProcessServer* proc);
 
 	void loadStructures();
 
@@ -181,48 +181,15 @@ class StructureManagerImplementation : public ManagedServiceImplementation, publ
 
 	TemplateManager* templateManager;
 
-protected:
-	static SortedVector<String> listOfStaticBuildings;
-
-	static SortedVector<String> createdFiles;
-
 public:
-	StructureManagerImplementation(Zone* zone, ZoneProcessServer* processor);
+	StructureManagerImplementation(Zone* zne, ZoneProcessServer* proc);
 
 	StructureManagerImplementation(DummyConstructorParameter* param);
 
 private:
-	void createNewLuas();
-
-	void createLuaIncludes();
-
-	void loadStaticBuildings();
-
-	void loadStaticBanks();
-
-	void loadStaticBazaars();
-
-	void loadStaticMissionTerminals();
-
-	void loadStaticElevatorTerminals();
-
-	void loadStaticCraftingStations();
-
 	void loadPlayerStructures();
 
-	void loadStaticGamblingTerminals();
-
-	void loadStaticGamblingTerminals(int iff);
-
-	void loadStaticGarages();
-
-	SceneObject* loadStaticBuilding(unsigned long long oid);
-
-	void loadStaticCells(BuildingObject* building);
-
-	void loadStaticClientObjects();
-
-	void loadStaticLootCrates();
+	void loadWorldSnapshotObjects();
 
 public:
 	void loadStructures();

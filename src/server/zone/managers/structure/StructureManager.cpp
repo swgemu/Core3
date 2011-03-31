@@ -24,8 +24,8 @@
 
 enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
 
-StructureManager::StructureManager(Zone* zone, ZoneProcessServer* processor) : ManagedService(DummyConstructorParameter::instance()) {
-	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zone, processor);
+StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
+	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -313,33 +313,31 @@ int StructureManagerImplementation::writeObjectMembers(ObjectOutputStream* strea
 	return 1 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
+StructureManagerImplementation::StructureManagerImplementation(Zone* zne, ZoneProcessServer* proc) {
+	_initializeImplementation();
+	// server/zone/managers/structure/StructureManager.idl():  		zone = zne;
+	zone = zne;
+	// server/zone/managers/structure/StructureManager.idl():  		server = proc;
+	server = proc;
+	// server/zone/managers/structure/StructureManager.idl():  		templateManager = TemplateManager.instance();
+	templateManager = TemplateManager::instance();
+	// server/zone/managers/structure/StructureManager.idl():  		string managerName = "StructureManager " + zone.getPlanetName();
+	String managerName = "StructureManager " + zone->getPlanetName();
+	// server/zone/managers/structure/StructureManager.idl():  		Logger.setLoggingName(managerName);
+	Logger::setLoggingName(managerName);
+	// server/zone/managers/structure/StructureManager.idl():  		Logger.setGlobalLogging(true);
+	Logger::setGlobalLogging(true);
+	// server/zone/managers/structure/StructureManager.idl():  		Logger.setLogging(false);
+	Logger::setLogging(false);
+}
+
 void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl():  		Logger.info("loading structures...", true);
-	Logger::info("loading structures...", true);
-	// server/zone/managers/structure/StructureManager.idl():  		listOfStaticBuildings.setNoDuplicateInsertPlan();
-	(&listOfStaticBuildings)->setNoDuplicateInsertPlan();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticBuildings();
-	loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl():  		Logger.info("Loading structures...", true);
+	Logger::info("Loading structures...", true);
+	// server/zone/managers/structure/StructureManager.idl():  		loadWorldSnapshotObjects();
+	loadWorldSnapshotObjects();
 	// server/zone/managers/structure/StructureManager.idl():  		loadPlayerStructures();
 	loadPlayerStructures();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticBanks();
-	loadStaticBanks();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticBazaars();
-	loadStaticBazaars();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticMissionTerminals();
-	loadStaticMissionTerminals();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticGamblingTerminals();
-	loadStaticGamblingTerminals();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticCraftingStations();
-	loadStaticCraftingStations();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticElevatorTerminals();
-	loadStaticElevatorTerminals();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticGarages();
-	loadStaticGarages();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticClientObjects();
-	loadStaticClientObjects();
-	// server/zone/managers/structure/StructureManager.idl():  		loadStaticLootCrates();
-	loadStaticLootCrates();
 }
 
 /*
