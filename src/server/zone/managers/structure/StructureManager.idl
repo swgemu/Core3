@@ -69,51 +69,27 @@ class StructureManager extends ManagedService implements Logger {
 	
 	private transient TemplateManager templateManager;
 	
-	@dereferenced
-	static protected transient SortedVector<string> listOfStaticBuildings;
+	public StructureManager(Zone zne, ZoneProcessServer proc) {
+		zone = zne;
+		server = proc;
+
+		templateManager = TemplateManager.instance();
+
+		string managerName = "StructureManager " + zone.getPlanetName();
+		Logger.setLoggingName(managerName);
+
+		Logger.setGlobalLogging(true);
+		Logger.setLogging(false);
+	}
 	
-	@dereferenced
-	static protected transient SortedVector<string> createdFiles;
-	
-	public native StructureManager(Zone zone, ZoneProcessServer processor);
-	
-	//PRIVATE METHODS
-	
-	private native void createNewLuas();
-	private native void createLuaIncludes();
-	private native void loadStaticBuildings();
-	private native void loadStaticBanks();
-	private native void loadStaticBazaars();
-	private native void loadStaticMissionTerminals();
-	private native void loadStaticElevatorTerminals();
-	private native void loadStaticCraftingStations();
 	private native void loadPlayerStructures();
-	private native void loadStaticGamblingTerminals();
-	private native void loadStaticGamblingTerminals(int iff);
-	private native void loadStaticGarages();
-	private native SceneObject loadStaticBuilding(unsigned long oid);
-	private native void loadStaticCells(BuildingObject building);
-	private native void loadStaticClientObjects();
-	private native void loadStaticLootCrates();
-	
-	//PUBLIC METHODS
+	private native void loadWorldSnapshotObjects();
 	
 	public void loadStructures() {
-		Logger.info("loading structures...", true);
-		
-		listOfStaticBuildings.setNoDuplicateInsertPlan();
-		
-		loadStaticBuildings();
+		Logger.info("Loading structures...", true);
+
+		loadWorldSnapshotObjects();
 		loadPlayerStructures();
-		loadStaticBanks();
-		loadStaticBazaars();
-		loadStaticMissionTerminals();
-		loadStaticGamblingTerminals();
-		loadStaticCraftingStations();
-		loadStaticElevatorTerminals();
-		loadStaticGarages();
-		loadStaticClientObjects();
-		loadStaticLootCrates();
 	}
 	
 	/**
