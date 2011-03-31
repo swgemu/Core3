@@ -162,7 +162,7 @@ public:
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 1;
+	static const int CHECKEVERY = 2;
 
 	AuctionManager(ZoneServer* server);
 
@@ -245,7 +245,7 @@ public:
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 1;
+	static const int CHECKEVERY = 2;
 
 	AuctionManagerImplementation(ZoneServer* server);
 
